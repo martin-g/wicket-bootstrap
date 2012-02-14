@@ -1,5 +1,10 @@
 package de.agilecoders.wicket.settings;
 
+import de.agilecoders.wicket.markup.html.references.BootstrapCssReference;
+import de.agilecoders.wicket.markup.html.references.BootstrapJavaScriptReference;
+import de.agilecoders.wicket.markup.html.references.BootstrapResponsiveCssReference;
+import org.apache.wicket.request.resource.ResourceReference;
+
 /**
  * TODO: document
  *
@@ -18,32 +23,24 @@ public class BootstrapSettings implements IBootstrapSettings {
     }
 
     @Override
-    public String getJavaScriptUri() {
-        if (isMinified()) {
-            return "/js/bootstrap.min.js";
-        } else {
-            return "/js/bootstrap.js";
-        }
+    public ResourceReference getCssResourceReference() {
+        return BootstrapCssReference.INSTANCE;
     }
 
     @Override
-    public String getCssUri() {
-        if (isMinified()) {
-            return "/css/bootstrap/bootstrap.min.css";
-        } else {
-            return "/css/bootstrap/bootstrap.css";
-        }
+    public ResourceReference getResponsiveCssResourceReference() {
+        return BootstrapResponsiveCssReference.INSTANCE;
     }
 
     @Override
-    public String getCssResponsiveUri() {
-        if (isMinified()) {
-            return "/css/bootstrap/bootstrap-responsive.min.css";
-        } else {
-            return "/css/bootstrap/bootstrap-responsive.css";
-        }
+    public ResourceReference getJsResourceReference() {
+        return BootstrapJavaScriptReference.INSTANCE;
     }
 
+    @Override
+    public String getJqueryUrl() {
+        return "//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js";
+    }
 
     @Override
     public boolean isMinified() {

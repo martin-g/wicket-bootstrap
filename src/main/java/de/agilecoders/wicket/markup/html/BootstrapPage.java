@@ -1,16 +1,20 @@
 package de.agilecoders.wicket.markup.html;
 
 import de.agilecoders.wicket.protocol.http.BootstrapApplication;
+import org.apache.wicket.WicketRuntimeException;
 import org.apache.wicket.markup.html.IHeaderResponse;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 
 /**
- * TODO: document
+ * Base class for bootstrap HTML pages. This subclass of WebPage simply adds all needed bootstrap
+ * framework resource references.
+ * <p/>
  *
  * @author miha
  * @version 1.0
+ * @see WebPage
  */
 public abstract class BootstrapPage extends WebPage {
 
@@ -54,17 +58,23 @@ public abstract class BootstrapPage extends WebPage {
         // so far a noop
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void renderHead(IHeaderResponse response) {
         super.renderHead(response);
 
-        // TODO: add all necessary references according to bootstrap settings
-        //response.renderJavaScriptReference(BootstrapJavaScriptReference.INSTANCE, new PageParameters(), BootstrapJavaScriptReference.ID, true);
-        BootstrapApplication application = (BootstrapApplication) getApplication();
-        
-        response.renderCSSReference(application.getBootstrapSettings().getCssUri());
-        response.renderCSSReference(application.getBootstrapSettings().getCssResponsiveUri());
-        
-        response.renderJavaScriptReference(application.getBootstrapSettings().getJavaScriptUri(), "bootstrap-js", true);
+        if (getApplication() instanceof BootstrapApplication) {
+            BootstrapApplication application = (BootstrapApplication) getApplication();
+
+            response.renderCSSReference(application.getBootstrapSettings().getCssResourceReference());
+            response.renderCSSReference(application.getBootstrapSettings().getResponsiveCssResourceReference());
+
+            response.renderJavaScriptReference(application.getBootstrapSettings().getJqueryUrl(), "jquery");
+            response.renderJavaScriptReference(application.getBootstrapSettings().getJsResourceReference(), new PageParameters(), "bootstrap-js", true);
+        } else {
+            throw new WicketRuntimeException("you have to extend BootstrapApplication to use this page.");
+        }
     }
 }

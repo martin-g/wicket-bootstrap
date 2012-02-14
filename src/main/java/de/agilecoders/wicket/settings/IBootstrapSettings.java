@@ -1,5 +1,7 @@
 package de.agilecoders.wicket.settings;
 
+import org.apache.wicket.request.resource.ResourceReference;
+
 /**
  * TODO: document
  *
@@ -8,11 +10,13 @@ package de.agilecoders.wicket.settings;
  */
 public interface IBootstrapSettings {
 
-    String getJavaScriptUri();
+    ResourceReference getCssResourceReference();
 
-    String getCssUri();
+    ResourceReference getResponsiveCssResourceReference();
 
-    String getCssResponsiveUri();
+    ResourceReference getJsResourceReference();
+
+    String getJqueryUrl();
 
     boolean isMinified();
 
