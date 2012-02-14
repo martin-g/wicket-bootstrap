@@ -1,6 +1,7 @@
 package de.agilecoders.wicket.markup.html;
 
 import de.agilecoders.wicket.protocol.http.BootstrapApplication;
+import de.agilecoders.wicket.settings.IBootstrapSettings;
 import org.apache.wicket.WicketRuntimeException;
 import org.apache.wicket.markup.html.IHeaderResponse;
 import org.apache.wicket.markup.html.WebPage;
@@ -66,13 +67,16 @@ public abstract class BootstrapPage extends WebPage {
         super.renderHead(response);
 
         if (getApplication() instanceof BootstrapApplication) {
-            BootstrapApplication application = (BootstrapApplication) getApplication();
+            IBootstrapSettings settings = ((BootstrapApplication) getApplication()).getBootstrapSettings();
 
-            response.renderCSSReference(application.getBootstrapSettings().getCssResourceReference());
-            response.renderCSSReference(application.getBootstrapSettings().getResponsiveCssResourceReference());
+            response.renderCSSReference(settings.getCssResourceReference());
 
-            response.renderJavaScriptReference(application.getBootstrapSettings().getJqueryUrl(), "jquery");
-            response.renderJavaScriptReference(application.getBootstrapSettings().getJsResourceReference(), new PageParameters(), "bootstrap-js", true);
+            if (settings.useResponsiveCss()) {
+                response.renderCSSReference(settings.getResponsiveCssResourceReference());
+            }
+
+            response.renderJavaScriptReference(settings.getJqueryUrl(), "jquery");
+            response.renderJavaScriptReference(settings.getJsResourceReference(), new PageParameters(), "bootstrap-js", true);
         } else {
             throw new WicketRuntimeException("you have to extend BootstrapApplication to use this page.");
         }

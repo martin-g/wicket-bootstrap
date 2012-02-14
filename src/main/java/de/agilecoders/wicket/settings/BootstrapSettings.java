@@ -6,7 +6,7 @@ import de.agilecoders.wicket.markup.html.references.BootstrapResponsiveCssRefere
 import org.apache.wicket.request.resource.ResourceReference;
 
 /**
- * TODO: document
+ * @see IBootstrapSettings
  *
  * @author miha
  * @version 1.0
@@ -14,12 +14,14 @@ import org.apache.wicket.request.resource.ResourceReference;
 public class BootstrapSettings implements IBootstrapSettings {
 
     private boolean minify = false;
+    private String jqueryUrl = "//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js";
+    private boolean useResponsiveCss = true;
 
     /**
      * Constructor.
      */
     public BootstrapSettings() {
-        // noop till now
+        // so far nothing to do here
     }
 
     @Override
@@ -39,7 +41,12 @@ public class BootstrapSettings implements IBootstrapSettings {
 
     @Override
     public String getJqueryUrl() {
-        return "//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js";
+        return jqueryUrl;
+    }
+
+    @Override
+    public final void setJqueryUrl(final String url) {
+        jqueryUrl = url;
     }
 
     @Override
@@ -48,7 +55,17 @@ public class BootstrapSettings implements IBootstrapSettings {
     }
 
     @Override
-    public void minify(boolean minify) {
+    public final void minify(final boolean minify) {
         this.minify = minify;
+    }
+
+    @Override
+    public boolean useResponsiveCss() {
+        return useResponsiveCss;
+    }
+
+    @Override
+    public final void setUseResponsiveCss(final boolean useResponsiveCss) {
+        this.useResponsiveCss = useResponsiveCss;
     }
 }
