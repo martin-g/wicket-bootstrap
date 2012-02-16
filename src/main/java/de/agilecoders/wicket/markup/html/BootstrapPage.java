@@ -1,6 +1,7 @@
 package de.agilecoders.wicket.markup.html;
 
 import de.agilecoders.wicket.protocol.http.BootstrapApplication;
+import de.agilecoders.wicket.protocol.http.IBootstrapApplication;
 import de.agilecoders.wicket.settings.IBootstrapSettings;
 import org.apache.wicket.WicketRuntimeException;
 import org.apache.wicket.markup.html.IHeaderResponse;
@@ -66,19 +67,6 @@ public abstract class BootstrapPage extends WebPage {
     public void renderHead(IHeaderResponse response) {
         super.renderHead(response);
 
-        if (getApplication() instanceof BootstrapApplication) {
-            IBootstrapSettings settings = ((BootstrapApplication) getApplication()).getBootstrapSettings();
-
-            response.renderCSSReference(settings.getCssResourceReference());
-
-            if (settings.useResponsiveCss()) {
-                response.renderCSSReference(settings.getResponsiveCssResourceReference());
-            }
-
-            response.renderJavaScriptReference(settings.getJqueryUrl(), "jquery");
-            response.renderJavaScriptReference(settings.getJsResourceReference(), new PageParameters(), "bootstrap-js", true);
-        } else {
-            throw new WicketRuntimeException("you have to extend BootstrapApplication to use this page.");
-        }
+        new BootstrapHead(getApplication()).renderHead(response);
     }
 }

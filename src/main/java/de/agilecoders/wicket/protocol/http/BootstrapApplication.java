@@ -10,7 +10,7 @@ import org.apache.wicket.settings.def.MarkupSettings;
 /**
  * Application object for your web application. If you want to run this application without deploying, run the Start class.
  */
-public abstract class BootstrapApplication extends WebApplication {
+public abstract class BootstrapApplication extends WebApplication implements IBootstrapApplication {
 
     private IBootstrapSettings bootstrapSettings;
 
