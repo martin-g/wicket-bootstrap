@@ -12,11 +12,11 @@ Installation
 
 * as maven dependency:
     add the following dependency to your pom:
-            <code><dependency>
-                <groupId>de.agile-coders.wicket</groupId>
-                <artifactId>bootstrap</artifactId>
-                <version>0.1.0</version>
-            </dependency></code>
+            <code>&lt;dependency&gt;
+                &lt;groupId&gt;de.agile-coders.wicket&lt;/groupId&gt;
+                &lt;artifactId&gt;bootstrap&lt;/artifactId&gt;
+                &lt;version&gt;0.1.0&lt;/version&gt;
+            &lt;/dependency&gt;</code>
 * as java library:
   download and add the bootstrap-0.1.0.jar to your library path
 * use the sources: <code>git@github.com:l0rdn1kk0n/wicket-bootstrap.git</code>
