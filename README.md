@@ -11,7 +11,7 @@ Installation
 ------------
 
 * as maven dependency:
-    add the following dependency to your pom:
+    add the following dependency to your pom:<br>
             <code>&lt;dependency&gt;<br>
                 &lt;groupId&gt;de.agile-coders.wicket&lt;/groupId&gt;<br>
                 &lt;artifactId&gt;bootstrap&lt;/artifactId&gt;<br>
@@ -33,7 +33,7 @@ Setup
 Usage
 -----
 
- TBD
+* https://github.com/l0rdn1kk0n/wicket-bootstrap/wiki
 
 
 Bug tracker
@@ -43,6 +43,23 @@ Have a bug? Please create an issue here on GitHub!
 
 https://github.com/l0rdn1kk0n/wicket-bootstrap/issues
 
+
+Versioning
+----------
+
+Wicket-Bootstrap will be maintained under the Semantic Versioning guidelines as much as possible.
+
+Releases will be numbered with the follow format:
+
+`<major>.<minor>.<patch>`
+
+And constructed with the following guidelines:
+
+* Breaking backward compatibility bumps the major
+* New additions without breaking backward compatibility bumps the minor
+* Bug fixes and misc changes bump the patch
+
+For more information on SemVer, please visit http://semver.org/.
 
 
 Copyright and license
