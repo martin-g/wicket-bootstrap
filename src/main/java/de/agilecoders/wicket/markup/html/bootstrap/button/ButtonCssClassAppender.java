@@ -1,11 +1,11 @@
 package de.agilecoders.wicket.markup.html.bootstrap.button;
 
 import com.google.common.base.Joiner;
+import com.google.common.collect.Lists;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
 import org.apache.wicket.Component;
 import org.apache.wicket.model.IModel;
 
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -50,10 +50,10 @@ public class ButtonCssClassAppender extends CssClassNameAppender {
      * @return a list of all css class names.
      */
     private List<String> classNames(final boolean enabled) {
-        return Arrays.asList(DEFAULT_CLASSNAME,
-                             type.getObject().cssClassName(),
-                             size.getObject().cssClassName(),
-                             (enabled ? "" : DISABLED_CLASSNAME));
+        return Lists.newArrayList(DEFAULT_CLASSNAME,
+                                  type.getObject().cssClassName(),
+                                  size.getObject().cssClassName(),
+                                  (enabled ? "" : DISABLED_CLASSNAME));
     }
 
     /**

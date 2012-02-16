@@ -1,5 +1,6 @@
 package de.agilecoders.wicket.markup.html.bootstrap.navbar;
 
+import com.google.common.collect.Lists;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
 import org.apache.wicket.Component;
 import org.apache.wicket.Page;
@@ -13,7 +14,6 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -139,7 +139,7 @@ public class Navbar extends Panel {
 
     public final Navbar addButton(Position position, NavbarButton... buttons) {
         if (Position.LEFT.equals(position)) {
-            buttonLeftList.addAll(Arrays.asList(buttons));
+            buttonLeftList.addAll(Lists.newArrayList(buttons));
         } // TODO: add a navigation on the right side
 
         return this;

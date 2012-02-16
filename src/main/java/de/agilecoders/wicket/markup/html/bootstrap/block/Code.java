@@ -1,5 +1,6 @@
 package de.agilecoders.wicket.markup.html.bootstrap.block;
 
+import com.google.common.collect.Lists;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
 import de.agilecoders.wicket.markup.html.bootstrap.block.prettyprint.PrettyCssResourceReference;
 import de.agilecoders.wicket.markup.html.bootstrap.block.prettyprint.PrettyJavaScriptReference;
@@ -9,7 +10,6 @@ import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -87,9 +87,9 @@ public class Code extends WebMarkupContainer {
      * @return a list of css classnames
      */
     private List<String> createCssClassNames() {
-        return Arrays.asList("prettyprint",
-                             createLinenumsCssClass(),
-                             language.cssClassName());
+        return Lists.newArrayList("prettyprint",
+                                  createLinenumsCssClass(),
+                                  language.cssClassName());
     }
 
     /**

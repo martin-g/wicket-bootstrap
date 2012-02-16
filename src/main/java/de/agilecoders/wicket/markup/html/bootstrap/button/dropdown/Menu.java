@@ -1,5 +1,6 @@
 package de.agilecoders.wicket.markup.html.bootstrap.button.dropdown;
 
+import com.google.common.collect.Lists;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.WebMarkupContainer;
@@ -50,7 +51,7 @@ public class Menu extends WebMarkupContainer {
      * @return
      */
     final Menu addMenuButton(final Component... buttons) {
-        buttonList.addAll(Arrays.asList(buttons));
+        buttonList.addAll(Lists.newArrayList(buttons));
 
         return this;
     }

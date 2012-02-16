@@ -1,5 +1,6 @@
 package de.agilecoders.wicket.markup.html.bootstrap.image;
 
+import com.google.common.collect.Lists;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.html.WebMarkupContainer;
@@ -74,7 +75,7 @@ public class Icon extends WebMarkupContainer {
         if (type != null && !type.equals(Type.NULL)) {
             final String invertPostfix = isInverted() ? "icon-white" : "";
 
-            add(new CssClassNameAppender(Arrays.asList(type.cssClassName(), invertPostfix)));
+            add(new CssClassNameAppender(Lists.newArrayList(type.cssClassName(), invertPostfix)));
         } else {
             setVisible(false);
         }
