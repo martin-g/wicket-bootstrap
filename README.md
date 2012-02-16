@@ -12,22 +12,21 @@ Installation
 
 * as maven dependency:
     add the following dependency to your pom:
-            <dependency>
+            <code><dependency>
                 <groupId>de.agile-coders.wicket</groupId>
                 <artifactId>bootstrap</artifactId>
                 <version>0.1.0</version>
-            </dependency>
+            </dependency></code>
 * as java library:
   download and add the bootstrap-0.1.0.jar to your library path
-* use the sources:
-  checkout http://twitter.github.com/wicket-bootstrap
+* use the sources: <code>git@github.com:l0rdn1kk0n/wicket-bootstrap.git</code>
 
 Setup
 -----
 
 + extend the BootstrapApplication instead of WebApplication or implement IBootstrapApplication, this is necessary to add the BootstrapSettings to your application.
   you are able to implement the IBootstrapSettings or extend BootstrapSettings to change the path of each file / jquery version / etc by yourself.
-+ every Page has to extend the BootstrapPage to ensure that all js/css files will be loaded. If you don't want to extend the BootstrapPage you have to add the following lines of code to your BasePage#renderHead or on each page you want to use a twitter bootstrap component:
++ every Page has to extend the BootstrapPage to ensure that all js/css files will be loaded. If you don't want to extend the BootstrapPage you have to add the following lines of code to your <code>BasePage#renderHead</code> or on each page you want to use a twitter bootstrap component:
   <code>new BootstrapHead(getApplication()).renderHead(response);</code>
 
 
@@ -42,7 +41,7 @@ Bug tracker
 
 Have a bug? Please create an issue here on GitHub!
 
-https://github.com/twitter/bootstrap/issues
+https://github.com/l0rdn1kk0n/wicket-bootstrap/issues
 
 
 
