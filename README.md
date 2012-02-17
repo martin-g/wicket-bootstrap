@@ -26,8 +26,8 @@ Setup
 
 + extend the BootstrapApplication instead of WebApplication or implement IBootstrapApplication, this is necessary to add the BootstrapSettings to your application.
   you are able to implement the IBootstrapSettings or extend BootstrapSettings to change the path of each file / jquery version / etc by yourself.
-+ every Page has to extend the BootstrapPage to ensure that all js/css files will be loaded. If you don't want to extend the BootstrapPage you have to add the following lines of code to your <code>BasePage#renderHead</code> or on each page you want to use a twitter bootstrap component:
-  <code>new BootstrapHead(getApplication()).renderHead(response);</code>
++ every Page has to extend the BootstrapPage to ensure that all js/css files will be loaded. If you don't want to extend the BootstrapPage you have to add the BootstrapResourcesBehavior on each page you want to use a twitter bootstrap component:
+  <code>add(new BootstrapResourcesBehavior());</code>
 
 
 Usage

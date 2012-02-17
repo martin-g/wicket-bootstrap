@@ -1,9 +1,5 @@
 package de.agilecoders.wicket.markup.html;
 
-import de.agilecoders.wicket.protocol.http.BootstrapApplication;
-import de.agilecoders.wicket.protocol.http.IBootstrapApplication;
-import de.agilecoders.wicket.settings.IBootstrapSettings;
-import org.apache.wicket.WicketRuntimeException;
 import org.apache.wicket.markup.html.IHeaderResponse;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.model.IModel;
@@ -57,16 +53,7 @@ public abstract class BootstrapPage extends WebPage {
      * Common code executed by constructors.
      */
     private void commonInit() {
-        // so far a noop
+        add(new BootstrapResourcesBehavior());
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void renderHead(IHeaderResponse response) {
-        super.renderHead(response);
-
-        new BootstrapHead(getApplication()).renderHead(response);
-    }
 }
