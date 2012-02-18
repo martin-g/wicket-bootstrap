@@ -79,4 +79,15 @@ public class CssClassNameAppender extends AttributeAppender {
     public CssClassNameAppender(List<String> appendValueList) {
         this(Model.of(Joiner.on(SEPARATOR).join(appendValueList)));
     }
+
+    /**
+     * Constructor.
+     * {@link CssClassNameAppender#CssClassNameAppender(org.apache.wicket.model.IModel)}
+     *
+     * @param cssClassNameProvider a css class name provider
+     */
+    public CssClassNameAppender(CssClassNameProvider cssClassNameProvider) {
+        this(Model.of(cssClassNameProvider.cssClassName()));
+    }
+
 }

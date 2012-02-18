@@ -1,6 +1,6 @@
 package de.agilecoders.wicket.markup.html;
 
-import org.apache.wicket.markup.html.IHeaderResponse;
+import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapResourcesBehavior;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;

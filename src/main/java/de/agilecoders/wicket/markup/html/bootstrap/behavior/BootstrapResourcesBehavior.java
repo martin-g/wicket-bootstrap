@@ -1,4 +1,4 @@
-package de.agilecoders.wicket.markup.html;
+package de.agilecoders.wicket.markup.html.bootstrap.behavior;
 
 import de.agilecoders.wicket.protocol.http.BootstrapApplication;
 import de.agilecoders.wicket.protocol.http.IBootstrapApplication;

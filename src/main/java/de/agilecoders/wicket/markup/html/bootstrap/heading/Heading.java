@@ -37,7 +37,7 @@ public class Heading extends Label {
      * @param componentId The non-null id of a new component
      * @param model which holds the label text
      */
-    public Heading(final String componentId, final IModel<?> model) {
+    public Heading(final String componentId, final IModel<String> model) {
         super(componentId, model);
     }
 }
