@@ -1,5 +1,6 @@
 package de.agilecoders.wicket.markup.html.bootstrap.button;
 
+import de.agilecoders.wicket.markup.html.bootstrap.image.Icon;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.html.form.Form;
@@ -16,6 +17,7 @@ public abstract class TypedAjaxButton extends AjaxButton implements BootstrapBut
 
     private final IModel<ButtonType> buttonType;
     private IModel<ButtonSize> buttonSize;
+    private Icon icon;
 
     public TypedAjaxButton(final String componentId, final ButtonType buttonType) {
         this(componentId, new Model<String>(), buttonType);
@@ -26,6 +28,8 @@ public abstract class TypedAjaxButton extends AjaxButton implements BootstrapBut
 
         this.buttonType = Model.of(buttonType);
         this.buttonSize = Model.of(ButtonSize.Medium);
+
+        this.icon = new Icon("icon", Icon.Type.NULL);
     }
 
     public TypedAjaxButton(String id, Form<?> form, IModel<ButtonType> buttonType) {
@@ -37,6 +41,20 @@ public abstract class TypedAjaxButton extends AjaxButton implements BootstrapBut
 
         this.buttonType = buttonType;
         this.buttonSize = Model.of(ButtonSize.Medium);
+
+        this.icon = new Icon("icon", Icon.Type.NULL);
+    }
+
+    /**
+     * sets the button's icon which will be rendered in front of the label.
+     *
+     * @param icon the new button icon
+     * @return reference to the current instance
+     */
+    public TypedAjaxButton setIcon(Icon icon) {
+        this.icon = icon.invert();
+
+        return this;
     }
 
     public TypedAjaxButton setSize(ButtonSize buttonSize) {
@@ -50,6 +68,7 @@ public abstract class TypedAjaxButton extends AjaxButton implements BootstrapBut
         super.onConfigure();
 
         add(new ButtonCssClassAppender(buttonType, buttonSize));
+        //add(icon);
     }
 
     @Override

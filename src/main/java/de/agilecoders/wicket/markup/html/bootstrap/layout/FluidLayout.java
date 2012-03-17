@@ -19,8 +19,8 @@ public class FluidLayout extends AbstractLayout {
     }
 
     @Override
-    protected String newCssClassName() {
-        return "container-fluid";
+    protected Layout newLayout() {
+        return Layout.Fluid;
     }
 
 }

@@ -2,12 +2,6 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <artifactId>agile-coders</artifactId>
-        <groupId>de.agile-coders</groupId>
-        <version>1.0.0</version>
-    </parent>
-
     <groupId>de.agile-coders.wicket</groupId>
     <artifactId>bootstrap</artifactId>
     <version>0.1.0</version>
@@ -16,8 +10,77 @@
     <description>wicket bootstrap integration</description>
 
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <com.google.guava.version>11.0.1</com.google.guava.version>
+        <javax.javaee-web-api.version>6.0</javax.javaee-web-api.version>
+        <junit.version>4.8.1</junit.version>
+        <mockito.version>1.8.5</mockito.version>
+        <hamcrest.version>1.1</hamcrest.version>
+        <logback.version>1.0.0</logback.version>
+        <slf4j.version>1.6.4</slf4j.version>
+        <wro4j.version>1.4.2</wro4j.version>
         <wicket.version>1.5.4</wicket.version>
     </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${com.google.guava.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>javax</groupId>
+                <artifactId>javaee-web-api</artifactId>
+                <version>${javax.javaee-web-api.version}</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-classic</artifactId>
+                <version>${logback.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+
+            <!--  WRO4J DEPENDENCIES -->
+            <dependency>
+                <groupId>ro.isdc.wro4j</groupId>
+                <artifactId>wro4j-core</artifactId>
+                <version>${wro4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ro.isdc.wro4j</groupId>
+                <artifactId>wro4j-extensions</artifactId>
+                <version>${wro4j.version}</version>
+            </dependency>
+
+            <!-- Test dependencies -->
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.hamcrest</groupId>
+                <artifactId>hamcrest-all</artifactId>
+                <version>${hamcrest.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-core</artifactId>
+                <version>${mockito.version}</version>
+                <scope>test</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <dependencies>
         <dependency>
@@ -80,4 +143,10 @@
         </testResources>
     </build>
 
+    <licenses>
+        <license>
+            <name>agile-coders.de</name>
+            <comments>Copyright by AGILE CODERS, all rights reserved.</comments>
+        </license>
+    </licenses>
 </project>

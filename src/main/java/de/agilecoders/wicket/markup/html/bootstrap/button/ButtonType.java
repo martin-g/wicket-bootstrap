@@ -1,5 +1,8 @@
 package de.agilecoders.wicket.markup.html.bootstrap.button;
 
+import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.Model;
+
 /**
  * TODO: document
  *
@@ -24,5 +27,9 @@ public enum ButtonType {
 
     String cssClassName() {
         return cssClassName;
+    }
+
+    public IModel<ButtonType> asModel() {
+        return Model.of(this);
     }
 }

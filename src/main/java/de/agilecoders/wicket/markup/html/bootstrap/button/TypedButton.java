@@ -1,5 +1,6 @@
 package de.agilecoders.wicket.markup.html.bootstrap.button;
 
+import de.agilecoders.wicket.markup.html.bootstrap.image.Icon;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.model.IModel;
@@ -15,6 +16,7 @@ public class TypedButton extends Button implements BootstrapButton<TypedButton> 
 
     private final IModel<ButtonType> buttonType;
     private IModel<ButtonSize> buttonSize;
+    private Icon icon;
 
     public TypedButton(final String componentId, final ButtonType buttonType) {
         this(componentId, new Model<String>(), buttonType);
@@ -25,6 +27,20 @@ public class TypedButton extends Button implements BootstrapButton<TypedButton> 
 
         this.buttonType = Model.of(buttonType);
         this.buttonSize = Model.of(ButtonSize.Medium);
+
+        this.icon = new Icon("icon", Icon.Type.NULL);
+    }
+
+    /**
+     * sets the button's icon which will be rendered in front of the label.
+     *
+     * @param icon the new button icon
+     * @return reference to the current instance
+     */
+    public TypedButton setIcon(Icon icon) {
+        this.icon = icon.invert();
+
+        return this;
     }
 
     public TypedButton setSize(ButtonSize buttonSize) {
@@ -38,6 +54,7 @@ public class TypedButton extends Button implements BootstrapButton<TypedButton> 
         super.onConfigure();
 
         add(new ButtonCssClassAppender(buttonType, buttonSize));
+        //add(icon);
     }
 
     @Override

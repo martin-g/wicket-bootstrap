@@ -19,7 +19,8 @@ public class FixedLayout extends AbstractLayout {
     }
 
     @Override
-    protected String newCssClassName() {
-        return "container";
+    protected Layout newLayout() {
+        return Layout.Fixed;
     }
+
 }
