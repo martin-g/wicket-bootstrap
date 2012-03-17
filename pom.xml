@@ -4,7 +4,7 @@
 
     <groupId>de.agile-coders.wicket</groupId>
     <artifactId>bootstrap</artifactId>
-    <version>0.1.0</version>
+    <version>0.2.0</version>
     <packaging>jar</packaging>
     <name>bootstrap</name>
     <description>wicket bootstrap integration</description>

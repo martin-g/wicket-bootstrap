@@ -1,11 +1,9 @@
 package de.agilecoders.wicket.protocol.http;
 
-import de.agilecoders.wicket.io.Encoding;
+import com.google.common.base.Charsets;
 import de.agilecoders.wicket.settings.BootstrapSettings;
 import de.agilecoders.wicket.settings.IBootstrapSettings;
 import org.apache.wicket.protocol.http.WebApplication;
-import org.apache.wicket.settings.IMarkupSettings;
-import org.apache.wicket.settings.def.MarkupSettings;
 
 /**
  * Application object for your web application. If you want to run this application without deploying, run the Start class.
@@ -21,8 +19,8 @@ public abstract class BootstrapApplication extends WebApplication implements IBo
     public void init() {
         super.init();
 
-        getMarkupSettings().setDefaultMarkupEncoding(Encoding.UTF8);
-        getRequestCycleSettings().setResponseRequestEncoding(Encoding.UTF8);
+        getMarkupSettings().setDefaultMarkupEncoding(Charsets.UTF_8.name());
+        getRequestCycleSettings().setResponseRequestEncoding(Charsets.UTF_8.name());
     }
 
     /**
