@@ -12,15 +12,16 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <com.google.guava.version>11.0.1</com.google.guava.version>
+        <com.google.guava.version>12.0</com.google.guava.version>
         <javax.javaee-web-api.version>6.0</javax.javaee-web-api.version>
-        <junit.version>4.8.1</junit.version>
-        <mockito.version>1.8.5</mockito.version>
+        <junit.version>4.10</junit.version>
+        <mockito.version>1.9.0</mockito.version>
         <hamcrest.version>1.1</hamcrest.version>
-        <logback.version>1.0.0</logback.version>
+        <logback.version>1.0.4</logback.version>
         <slf4j.version>1.6.4</slf4j.version>
-        <wro4j.version>1.4.2</wro4j.version>
-        <wicket.version>1.5.4</wicket.version>
+        <wro4j.version>1.4.6</wro4j.version>
+        <wicket.version>1.5.7</wicket.version>
+        <versions-maven-plugin.version>1.3.1</versions-maven-plugin.version>
     </properties>
 
     <dependencyManagement>
@@ -141,6 +142,41 @@
                 </excludes>
             </testResource>
         </testResources>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-enforcer-plugin</artifactId>
+                <version>1.1</version>
+                <executions>
+                    <execution>
+                        <id>enforce-versions</id>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <requireMavenVersion>
+                                    <version>2.0.6</version>
+                                </requireMavenVersion>
+                                <requireJavaVersion>
+                                    <version>1.5</version>
+                                </requireJavaVersion>
+                                <requireOS>
+                                    <family>unix</family>
+                                </requireOS>
+                            </rules>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>versions-maven-plugin</artifactId>
+                <version>${versions-maven-plugin.version}</version>
+                <inherited>true</inherited>
+            </plugin>
+        </plugins>
     </build>
 
     <licenses>
