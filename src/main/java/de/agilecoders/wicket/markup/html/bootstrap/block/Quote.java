@@ -1,7 +1,6 @@
 package de.agilecoders.wicket.markup.html.bootstrap.block;
 
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
-import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.model.IModel;
 
@@ -20,13 +19,15 @@ import org.apache.wicket.model.IModel;
  */
 public class Quote extends WebMarkupContainer {
 
+    private final QuoteBehavior quoteBehavior;
+
     /**
      * Constructor.
      *
      * @param componentId The non-null id of a new component
      */
     public Quote(final String componentId) {
-        super(componentId);
+        this(componentId, null);
     }
 
     /**
@@ -37,6 +38,9 @@ public class Quote extends WebMarkupContainer {
      */
     public Quote(final String componentId, final IModel<?> model) {
         super(componentId, model);
+
+        quoteBehavior = new QuoteBehavior();
+        add(quoteBehavior);
     }
 
     /**
@@ -45,20 +49,11 @@ public class Quote extends WebMarkupContainer {
      * @return the component's current instance
      */
     public Quote pullRight() {
-        add(new CssClassNameAppender("pull-right"));
+        quoteBehavior.pullRight();
 
         return this;
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void onComponentTag(ComponentTag tag) {
-        super.onComponentTag(tag);
-
-        checkComponentTag(tag, "blockquote");
-    }
 }
 
 

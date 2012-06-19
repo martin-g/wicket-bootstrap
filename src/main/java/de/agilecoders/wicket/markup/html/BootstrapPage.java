@@ -74,7 +74,11 @@ public abstract class BootstrapPage extends WebPage {
 
     @Override
     public BootstrapPage add(Component... childs) {
-        border.addToBorder(childs);
+        if(childs.length == 1 && childs[0] instanceof ContainerBorder) {
+            super.add(childs[0]);
+        } else {
+            border.addToBorder(childs);
+        }
 
         return this;
     }

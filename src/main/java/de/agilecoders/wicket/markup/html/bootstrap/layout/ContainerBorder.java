@@ -9,7 +9,7 @@ import org.apache.wicket.model.IModel;
  * @author miha
  * @version 1.0
  */
-public class ContainerBorder extends CssClassNameBorder {
+public class ContainerBorder extends CssClassNameBorder<Layout> {
 
     public ContainerBorder(String id) {
         super(id);
@@ -28,7 +28,7 @@ public class ContainerBorder extends CssClassNameBorder {
     }
 
     public Layout layout() {
-        return (Layout) cssClassNameProvider();
+        return cssClassNameProvider();
     }
 
     public ContainerBorder withLayout(Layout layout) {

@@ -10,8 +10,8 @@ import org.apache.wicket.model.IModel;
  * @author miha
  * @version 1.0
  */
-public class CssClassNameBorder extends Border {
-    private CssClassNameProvider provider;
+public class CssClassNameBorder<T extends CssClassNameProvider> extends Border {
+    private T provider;
 
     public CssClassNameBorder(String id) {
         super(id);
@@ -21,13 +21,13 @@ public class CssClassNameBorder extends Border {
         super(id, model);
     }
 
-    public CssClassNameBorder withCssClassNameProvider(CssClassNameProvider provider) {
+    public CssClassNameBorder withCssClassNameProvider(T provider) {
         this.provider = provider;
 
         return this;
     }
 
-    public CssClassNameProvider cssClassNameProvider() {
+    public T cssClassNameProvider() {
         return provider;
     }
 

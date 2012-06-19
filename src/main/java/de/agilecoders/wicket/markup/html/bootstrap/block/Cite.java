@@ -1,6 +1,5 @@
 package de.agilecoders.wicket.markup.html.bootstrap.block;
 
-import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.model.IModel;
 
@@ -18,7 +17,7 @@ public class Cite extends WebMarkupContainer {
      * @param componentId The non-null id of a new component
      */
     public Cite(final String componentId) {
-        super(componentId);
+        this(componentId, null);
     }
 
     /**
@@ -29,15 +28,7 @@ public class Cite extends WebMarkupContainer {
      */
     public Cite(final String componentId, final IModel<?> model) {
         super(componentId, model);
-    }
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void onComponentTag(ComponentTag tag) {
-        super.onComponentTag(tag);
-
-        checkComponentTag(tag, "cite");
+        add(new CiteBehavior());
     }
 }

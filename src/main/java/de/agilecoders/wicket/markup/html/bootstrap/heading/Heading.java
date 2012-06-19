@@ -1,11 +1,13 @@
 package de.agilecoders.wicket.markup.html.bootstrap.heading;
 
+import de.agilecoders.wicket.markup.html.bootstrap.common.AssertTagNameBehavior;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.Model;
 
 /**
  * TODO: document
- * TODO: assert tag name
+ * TODO: add level?
  *
  * @author miha
  * @version 1.0
@@ -18,7 +20,7 @@ public class Heading extends Label {
      * @param componentId The non-null id of a new component
      */
     public Heading(final String componentId) {
-        super(componentId);
+        this(componentId, Model.<String>of());
     }
 
     /**
@@ -28,7 +30,7 @@ public class Heading extends Label {
      * @param label The label text
      */
     public Heading(final String componentId, final String label) {
-        super(componentId, label);
+        this(componentId, Model.of(label));
     }
 
     /**
@@ -39,5 +41,7 @@ public class Heading extends Label {
      */
     public Heading(final String componentId, final IModel<String> model) {
         super(componentId, model);
+
+        add(new AssertTagNameBehavior("h1", "h2", "h3", "h4", "h5", "h6"));
     }
 }

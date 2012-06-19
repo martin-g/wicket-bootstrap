@@ -1,6 +1,6 @@
 package de.agilecoders.wicket.markup.html.bootstrap.layout;
 
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
+import com.google.common.collect.Lists;
 import de.agilecoders.wicket.markup.html.bootstrap.layout.row.AbstractRow;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.list.ListItem;
@@ -8,7 +8,6 @@ import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,7 +20,7 @@ public abstract class AbstractLayout extends Panel {
     public static final int MAX_WIDTH = 12;
     public static final int MAX_ROWS = 9999;
 
-    List<AbstractRow> rowList = new ArrayList<>();
+    List<AbstractRow> rowList;
     private Layout layout;
 
     public AbstractLayout(String id) {
@@ -37,6 +36,7 @@ public abstract class AbstractLayout extends Panel {
     }
 
     private void commonInit() {
+        rowList = Lists.newArrayList();
         this.layout = newLayout();
     }
 
@@ -49,7 +49,8 @@ public abstract class AbstractLayout extends Panel {
                 if (component instanceof AbstractRow) {
                     addRow((AbstractRow) component);
                 } else {
-                    throw new IllegalArgumentException("child component must be subclass of AbstractRow.");
+                    super.add(component);
+                    //throw new IllegalArgumentException("child component must be subclass of AbstractRow.");
                 }
             }
         } else {
@@ -77,13 +78,13 @@ public abstract class AbstractLayout extends Panel {
     protected void onConfigure() {
         super.onConfigure();
 
-        add(new ListView<AbstractRow>("rows", rowList) {
+        super.add(new ListView<AbstractRow>("rows", rowList) {
             @Override
             protected void populateItem(ListItem<AbstractRow> components) {
                 components.add(components.getModelObject());
             }
         }.setVisible(rowList.size() > 0));
 
-        add(layout.newCssClassNameAppender());
+        super.add(layout.newCssClassNameAppender());
     }
 }
