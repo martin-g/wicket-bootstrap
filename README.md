@@ -3,8 +3,8 @@ WICKET COMPONENTS FOR TWITTER BOOTSTRAP
 
 Wicket-Bootstrap is based on Twitter's toolkit (bootstrap) and the Apache Wicket Framework.
 
-* Twitter Bootstrap: http://twitter.github.com/bootstrap
-* Apache Wicket: http://wicket.apache.org/
+* Twitter Bootstrap (2.0.4): http://twitter.github.com/bootstrap
+* Apache Wicket (6-beta): http://wicket.apache.org/
 
 
 Installation
