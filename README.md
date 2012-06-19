@@ -10,15 +10,8 @@ Wicket-Bootstrap is based on Twitter's toolkit (bootstrap) and the Apache Wicket
 Installation
 ------------
 
-* as maven dependency:
-    add the following dependency to your pom:<br>
-            <code>&lt;dependency&gt;<br>
-                &lt;groupId&gt;de.agile-coders.wicket&lt;/groupId&gt;<br>
-                &lt;artifactId&gt;bootstrap&lt;/artifactId&gt;<br>
-                &lt;version&gt;0.1.0&lt;/version&gt;<br>
-            &lt;/dependency&gt;</code>
 * as java library:
-  download and add the bootstrap-0.1.0.jar to your library path
+  download and add the bootstrap-0.3.0.jar to your library path
 * use the sources: <code>git@github.com:l0rdn1kk0n/wicket-bootstrap.git</code>
 
 Setup

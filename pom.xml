@@ -4,10 +4,16 @@
 
     <groupId>de.agile-coders.wicket</groupId>
     <artifactId>bootstrap</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.0</version>
     <packaging>jar</packaging>
     <name>bootstrap</name>
-    <description>wicket bootstrap integration</description>
+    <description>wicket with twitter bootstrap integration</description>
+    <url>https://github.com/l0rdn1kk0n/wicket-bootstrap</url>
+
+    <scm>
+        <url>https://github.com/l0rdn1kk0n/wicket-bootstrap</url>
+        <connection>https://github.com/l0rdn1kk0n/wicket-bootstrap</connection>
+    </scm>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -181,8 +187,19 @@
 
     <licenses>
         <license>
-            <name>agile-coders.de</name>
-            <comments>Copyright by AGILE CODERS, all rights reserved.</comments>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
         </license>
     </licenses>
+
+    <developers>
+        <developer>
+            <id>miha</id>
+            <name>Michael Haitz</name>
+            <email>michael.haitz@agile-coders.de</email>
+            <organization>Agile Coders</organization>
+        </developer>
+    </developers>
+
 </project>
