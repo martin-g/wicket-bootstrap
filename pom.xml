@@ -2,7 +2,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>de.agile-coders.wicket</groupId>
+    <groupId>de.agilecoders.wicket</groupId>
     <artifactId>bootstrap</artifactId>
     <version>0.3.0</version>
     <packaging>jar</packaging>
