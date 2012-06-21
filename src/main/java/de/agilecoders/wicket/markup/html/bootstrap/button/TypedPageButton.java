@@ -1,7 +1,7 @@
 package de.agilecoders.wicket.markup.html.bootstrap.button;
 
 import de.agilecoders.wicket.markup.html.bootstrap.image.Icon;
-import de.agilecoders.wicket.markup.html.bootstrap.image.IconBehavior;
+import de.agilecoders.wicket.markup.html.bootstrap.image.IconType;
 import org.apache.wicket.Page;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.html.basic.Label;
@@ -60,7 +60,7 @@ public class TypedPageButton<T> extends BookmarkablePageLink<T> implements Boots
         this.buttonType = Model.of(buttonType);
         this.buttonSize = Model.of(ButtonSize.Medium);
 
-        this.icon = new Icon("icon", IconBehavior.Type.NULL);
+        this.icon = new Icon("icon", IconType.NULL);
 
         this.label = new Label("label", new Model<>(""));
         this.label.setRenderBodyOnly(true);

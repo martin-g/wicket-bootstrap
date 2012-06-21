@@ -1,7 +1,7 @@
 package de.agilecoders.wicket.markup.html.bootstrap.button.dropdown;
 
 import de.agilecoders.wicket.markup.html.bootstrap.image.Icon;
-import de.agilecoders.wicket.markup.html.bootstrap.image.IconBehavior;
+import de.agilecoders.wicket.markup.html.bootstrap.image.IconType;
 import org.apache.wicket.Page;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.BookmarkablePageLink;
@@ -40,7 +40,7 @@ public class MenuPageButton<T extends Page> extends BookmarkablePageLink<T> {
     public <T extends org.apache.wicket.Page> MenuPageButton(Class<T> pageClass, PageParameters parameters) {
         super("menuElement", pageClass, parameters);
 
-        this.icon = new Icon("icon", IconBehavior.Type.NULL);
+        this.icon = new Icon("icon", IconType.NULL);
 
         this.label = new Label("label", new Model<>(""));
         this.label.setRenderBodyOnly(true);

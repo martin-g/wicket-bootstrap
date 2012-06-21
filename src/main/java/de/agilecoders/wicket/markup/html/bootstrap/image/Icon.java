@@ -1,6 +1,5 @@
 package de.agilecoders.wicket.markup.html.bootstrap.image;
 
-import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 
 /**
@@ -17,7 +16,7 @@ public class Icon extends WebMarkupContainer {
      * @param componentId The non-null id of a new component
      * @param type        The type of the icon, e.g. Search, Home, User,...
      */
-    public Icon(final String componentId, final IconBehavior.Type type) {
+    public Icon(final String componentId, final IconType type) {
         super(componentId);
 
         iconBehavior = new IconBehavior(type);
