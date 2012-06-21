@@ -1,6 +1,7 @@
 package de.agilecoders.wicket.markup.html.bootstrap.button;
 
 import de.agilecoders.wicket.markup.html.bootstrap.image.Icon;
+import de.agilecoders.wicket.markup.html.bootstrap.image.IconBehavior;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.html.form.Form;
@@ -29,7 +30,7 @@ public abstract class TypedAjaxButton extends AjaxButton implements BootstrapBut
         this.buttonType = Model.of(buttonType);
         this.buttonSize = Model.of(ButtonSize.Medium);
 
-        this.icon = new Icon("icon", Icon.Type.NULL);
+        this.icon = new Icon("icon", IconBehavior.Type.NULL);
     }
 
     public TypedAjaxButton(String id, Form<?> form, IModel<ButtonType> buttonType) {
@@ -42,7 +43,7 @@ public abstract class TypedAjaxButton extends AjaxButton implements BootstrapBut
         this.buttonType = buttonType;
         this.buttonSize = Model.of(ButtonSize.Medium);
 
-        this.icon = new Icon("icon", Icon.Type.NULL);
+        this.icon = new Icon("icon", IconBehavior.Type.NULL);
     }
 
     /**

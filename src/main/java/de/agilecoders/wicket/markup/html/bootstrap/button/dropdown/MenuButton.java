@@ -1,6 +1,7 @@
 package de.agilecoders.wicket.markup.html.bootstrap.button.dropdown;
 
 import de.agilecoders.wicket.markup.html.bootstrap.image.Icon;
+import de.agilecoders.wicket.markup.html.bootstrap.image.IconBehavior;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
@@ -22,7 +23,7 @@ public class MenuButton extends Button {
     public MenuButton(IModel<String> model) {
         super("menuElement", model);
 
-        this.icon = new Icon("icon", Icon.Type.NULL);
+        this.icon = new Icon("icon", IconBehavior.Type.NULL);
     }
 
     @Override

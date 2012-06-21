@@ -17,6 +17,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <mvn.build.java.version>1.7</mvn.build.java.version>
 
         <com.google.guava.version>12.0</com.google.guava.version>
         <javax.javaee-web-api.version>6.0</javax.javaee-web-api.version>
@@ -166,7 +167,7 @@
                                     <version>2.0.6</version>
                                 </requireMavenVersion>
                                 <requireJavaVersion>
-                                    <version>1.5</version>
+                                    <version>${mvn.build.java.version}</version>
                                 </requireJavaVersion>
                                 <requireOS>
                                     <family>unix</family>
@@ -175,6 +176,16 @@
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${mvn.build.java.version}</source>
+                    <target>${mvn.build.java.version}</target>
+                    <showDeprecation>true</showDeprecation>
+                    <showWarnings>true</showWarnings>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>

@@ -1,6 +1,7 @@
 package de.agilecoders.wicket.markup.html.bootstrap.button;
 
 import de.agilecoders.wicket.markup.html.bootstrap.image.Icon;
+import de.agilecoders.wicket.markup.html.bootstrap.image.IconBehavior;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.model.IModel;
@@ -28,7 +29,7 @@ public class TypedButton extends Button implements BootstrapButton<TypedButton> 
         this.buttonType = Model.of(buttonType);
         this.buttonSize = Model.of(ButtonSize.Medium);
 
-        this.icon = new Icon("icon", Icon.Type.NULL);
+        this.icon = new Icon("icon", IconBehavior.Type.NULL);
     }
 
     /**
