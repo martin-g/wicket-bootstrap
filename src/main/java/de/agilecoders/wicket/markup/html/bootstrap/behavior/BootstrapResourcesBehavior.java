@@ -1,7 +1,6 @@
 package de.agilecoders.wicket.markup.html.bootstrap.behavior;
 
 import de.agilecoders.wicket.Bootstrap;
-import de.agilecoders.wicket.settings.BootstrapSettings;
 import de.agilecoders.wicket.settings.IBootstrapSettings;
 import org.apache.wicket.Component;
 import org.apache.wicket.WicketRuntimeException;
@@ -19,9 +18,9 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
  */
 public class BootstrapResourcesBehavior extends Behavior {
 
-    private BootstrapSettings getBoostrapSettings(Component component) {
+    private IBootstrapSettings getBoostrapSettings(Component component) {
 
-	BootstrapSettings settings = Bootstrap.getSettings(component.getApplication());
+	IBootstrapSettings settings = Bootstrap.getSettings(component.getApplication());
 	if (settings == null){
             throw new WicketRuntimeException("No BootstrapSettings associated with this Application. Did you call Bootstrap.install()?");
         }
