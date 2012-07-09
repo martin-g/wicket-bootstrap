@@ -177,6 +177,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+		<version>2.5.1</version>
                 <configuration>
                     <source>${mvn.build.java.version}</source>
                     <target>${mvn.build.java.version}</target>
