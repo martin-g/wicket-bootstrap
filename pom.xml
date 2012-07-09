@@ -169,9 +169,6 @@
                                 <requireJavaVersion>
                                     <version>${mvn.build.java.version}</version>
                                 </requireJavaVersion>
-                                <requireOS>
-                                    <family>unix</family>
-                                </requireOS>
                             </rules>
                         </configuration>
                     </execution>
