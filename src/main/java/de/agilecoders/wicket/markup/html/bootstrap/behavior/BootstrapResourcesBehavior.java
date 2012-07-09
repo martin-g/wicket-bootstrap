@@ -1,7 +1,6 @@
 package de.agilecoders.wicket.markup.html.bootstrap.behavior;
 
-import de.agilecoders.wicket.protocol.http.BootstrapApplication;
-import de.agilecoders.wicket.protocol.http.IBootstrapApplication;
+import de.agilecoders.wicket.Bootstrap;
 import de.agilecoders.wicket.settings.IBootstrapSettings;
 import org.apache.wicket.Component;
 import org.apache.wicket.WicketRuntimeException;
@@ -19,17 +18,19 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
  */
 public class BootstrapResourcesBehavior extends Behavior {
 
-    private BootstrapApplication getApplication(Component component) {
-        if (component.getApplication() instanceof IBootstrapApplication) {
-            return (BootstrapApplication) component.getApplication();
-        } else {
-            throw new WicketRuntimeException("you have to extend BootstrapApplication or implement IBootstrapApplication to use this behavior.");
+    private IBootstrapSettings getBoostrapSettings(Component component) {
+
+	IBootstrapSettings settings = Bootstrap.getSettings(component.getApplication());
+	if (settings == null){
+            throw new WicketRuntimeException("No BootstrapSettings associated with this Application. Did you call Bootstrap.install()?");
         }
+	
+	return settings;
     }
 
     @Override
     public void renderHead(Component component, IHeaderResponse headerResponse) {
-        IBootstrapSettings settings = getApplication(component).getBootstrapSettings();
+        IBootstrapSettings settings = getBoostrapSettings(component);
 
         headerResponse.render(CssHeaderItem.forReference(settings.getCssResourceReference()));
 
