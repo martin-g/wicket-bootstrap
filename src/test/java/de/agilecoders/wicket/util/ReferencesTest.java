@@ -17,14 +17,14 @@ public class ReferencesTest extends WicketApplicationTest {
 
     @Test
     public void minificationIdentifierWasAppended() {
-        application().getBootstrapSettings().minify(true);
+        getBootstrapSettings().minify(true);
 
         assertThat(References.appendMinificationIdentifier("file.ext"), is(equalTo("file.min.ext")));
     }
 
     @Test
     public void minificationIdentifierWasntAppended() {
-        application().getBootstrapSettings().minify(false);
+        getBootstrapSettings().minify(false);
 
         assertThat(References.appendMinificationIdentifier("file.ext"), is(equalTo("file.ext")));
     }

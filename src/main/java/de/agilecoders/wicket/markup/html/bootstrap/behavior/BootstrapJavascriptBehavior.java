@@ -16,7 +16,7 @@ public class BootstrapJavascriptBehavior extends BootstrapBaseBehavior {
 
     @Override
     public void renderHead(Component component, IHeaderResponse headerResponse) {
-        IBootstrapSettings settings = getApplication(component).getBootstrapSettings();
+        IBootstrapSettings settings = getBootstrapSettings(component);
 
         headerResponse.render(JavaScriptHeaderItem.forReference(settings.getJsResourceReference(), new PageParameters(), "bootstrap-js", true));
     }

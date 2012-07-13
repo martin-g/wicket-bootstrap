@@ -1,7 +1,6 @@
 package de.agilecoders.wicket.markup.html.bootstrap.behavior;
 
-import de.agilecoders.wicket.protocol.http.BootstrapApplication;
-import de.agilecoders.wicket.protocol.http.IBootstrapApplication;
+import de.agilecoders.wicket.Bootstrap;
 import de.agilecoders.wicket.settings.IBootstrapSettings;
 import org.apache.wicket.Component;
 import org.apache.wicket.WicketRuntimeException;
@@ -18,22 +17,23 @@ import org.apache.wicket.markup.head.IHeaderResponse;
 public class BootstrapBaseBehavior extends Behavior {
 
     /**
-     * returns the application
+     * returns the bootstrap settings
      *
      * @param component
      * @return
      */
-    protected final BootstrapApplication getApplication(Component component) {
-        if (component.getApplication() instanceof IBootstrapApplication) {
-            return (BootstrapApplication) component.getApplication();
-        } else {
-            throw new WicketRuntimeException("you have to extend BootstrapApplication or implement IBootstrapApplication to use this behavior.");
+    protected final IBootstrapSettings getBootstrapSettings(Component component) {
+        IBootstrapSettings settings = Bootstrap.getSettings(component.getApplication());
+        if (settings == null) {
+            throw new WicketRuntimeException("No BootstrapSettings associated with this Application. Did you call Bootstrap.install()?");
         }
+
+        return settings;
     }
 
     @Override
     public void renderHead(Component component, IHeaderResponse headerResponse) {
-        IBootstrapSettings settings = getApplication(component).getBootstrapSettings();
+        IBootstrapSettings settings = getBootstrapSettings(component);
 
         headerResponse.render(CssHeaderItem.forReference(settings.getCssResourceReference()));
         if (settings.useResponsiveCss()) {

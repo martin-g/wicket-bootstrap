@@ -1,9 +1,8 @@
 package de.agilecoders.wicket;
 
-import de.agilecoders.wicket.protocol.http.BootstrapApplication;
-import de.agilecoders.wicket.protocol.http.IBootstrapApplication;
 import de.agilecoders.wicket.settings.BootstrapSettings;
 import de.agilecoders.wicket.settings.IBootstrapSettings;
+import org.apache.wicket.Application;
 import org.apache.wicket.Page;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.util.tester.WicketTester;
@@ -22,15 +21,20 @@ public class WicketApplicationTest {
 
     @Before
     public final void before() {
-        application = new BootstrapApplication() {
+        application = new WebApplication() {
             @Override
             public Class<? extends Page> getHomePage() {
-                return Page.class;
+                return WicketApplicationTest.this.getHomePage();
             }
         };
-        ((IBootstrapApplication) application).setBootstrapSettings(createBootstrapSettings());
+
+        Bootstrap.install(application, createBootstrapSettings());
 
         tester = new WicketTester(application);
+    }
+
+    protected Class<? extends Page> getHomePage() {
+        return Page.class;
     }
 
     protected IBootstrapSettings createBootstrapSettings() {
@@ -41,8 +45,12 @@ public class WicketApplicationTest {
         return tester;
     }
 
-    protected final IBootstrapApplication application() {
-        return (IBootstrapApplication) application;
+    protected final Application application() {
+        return application;
+    }
+
+    protected final IBootstrapSettings getBootstrapSettings() {
+        return Bootstrap.getSettings(application);
     }
 
 }

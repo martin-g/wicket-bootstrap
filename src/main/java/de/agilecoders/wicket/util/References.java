@@ -1,7 +1,7 @@
 package de.agilecoders.wicket.util;
 
 import com.google.common.base.Strings;
-import de.agilecoders.wicket.protocol.http.IBootstrapApplication;
+import de.agilecoders.wicket.Bootstrap;
 import org.apache.wicket.Application;
 
 /**
@@ -22,7 +22,7 @@ public final class References {
      */
     public static String appendMinificationIdentifier(final String referenceUrl) {
         if (!Strings.isNullOrEmpty(referenceUrl) && referenceUrl.contains(".") &&
-            ((IBootstrapApplication) Application.get()).getBootstrapSettings().isMinified()) {
+            (Bootstrap.getSettings(Application.get()).isMinified())) {
             return referenceUrl.replaceFirst("\\.(?=[^.]*$)", ".min.");
         }
 
