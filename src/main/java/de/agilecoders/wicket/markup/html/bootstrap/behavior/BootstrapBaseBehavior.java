@@ -8,8 +8,6 @@ import org.apache.wicket.WicketRuntimeException;
 import org.apache.wicket.behavior.Behavior;
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
-import org.apache.wicket.markup.head.JavaScriptHeaderItem;
-import org.apache.wicket.request.mapper.parameter.PageParameters;
 
 /**
  * TODO: document
@@ -19,7 +17,13 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
  */
 public class BootstrapBaseBehavior extends Behavior {
 
-    private BootstrapApplication getApplication(Component component) {
+    /**
+     * returns the application
+     *
+     * @param component
+     * @return
+     */
+    protected final BootstrapApplication getApplication(Component component) {
         if (component.getApplication() instanceof IBootstrapApplication) {
             return (BootstrapApplication) component.getApplication();
         } else {
@@ -32,12 +36,8 @@ public class BootstrapBaseBehavior extends Behavior {
         IBootstrapSettings settings = getApplication(component).getBootstrapSettings();
 
         headerResponse.render(CssHeaderItem.forReference(settings.getCssResourceReference()));
-
         if (settings.useResponsiveCss()) {
             headerResponse.render(CssHeaderItem.forReference(settings.getResponsiveCssResourceReference()));
         }
-
-        headerResponse.render(JavaScriptHeaderItem.forUrl(settings.getJqueryUrl(), "jquery"));
-        headerResponse.render(JavaScriptHeaderItem.forReference(settings.getJsResourceReference(), new PageParameters(), "bootstrap-js", true));
     }
 }

@@ -16,9 +16,9 @@ import org.apache.wicket.model.IModel;
  * @author miha
  * @version 1.0
  */
-public class Hero extends WebMarkupContainer {
+public abstract class Hero extends WebMarkupContainer {
 
-    private final QuoteBehavior quoteBehavior;
+    private final HeroBehavior heroBehavior;
 
     /**
      * Constructor.
@@ -38,19 +38,8 @@ public class Hero extends WebMarkupContainer {
     public Hero(final String componentId, final IModel<?> model) {
         super(componentId, model);
 
-        quoteBehavior = new QuoteBehavior();
-        add(quoteBehavior);
-    }
-
-    /**
-     * floats the quote to the right.
-     *
-     * @return the component's current instance
-     */
-    public Hero pullRight() {
-        quoteBehavior.pullRight();
-
-        return this;
+        heroBehavior = new HeroBehavior();
+        add(heroBehavior);
     }
 
 }

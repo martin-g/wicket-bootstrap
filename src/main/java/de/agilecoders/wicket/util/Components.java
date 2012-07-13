@@ -17,9 +17,7 @@ import java.util.Set;
 public final class Components {
 
     public static void assertTag(final Component component, final ComponentTag tag, final String tagName) {
-        if (!tag.getName().equalsIgnoreCase(tagName)) {
-            throw createMarkupException(component, tag, Sets.newHashSet(tagName));
-        }
+        assertTag(component, tag, Sets.newHashSet(tagName));
     }
 
     public static void assertTag(Component component, ComponentTag tag, Set<String> tagNames) {

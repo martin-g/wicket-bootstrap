@@ -1,9 +1,9 @@
 package de.agilecoders.wicket.markup.html.bootstrap.common;
 
 import com.google.common.collect.Sets;
+import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
 import de.agilecoders.wicket.util.Components;
 import org.apache.wicket.Component;
-import org.apache.wicket.behavior.Behavior;
 import org.apache.wicket.markup.ComponentTag;
 
 import java.util.Set;
@@ -14,7 +14,7 @@ import java.util.Set;
  * @author miha
  * @version 1.0
  */
-public class AssertTagNameBehavior extends Behavior {
+public class AssertTagNameBehavior extends BootstrapBaseBehavior {
 
     private final Set<String> tagNames;
 

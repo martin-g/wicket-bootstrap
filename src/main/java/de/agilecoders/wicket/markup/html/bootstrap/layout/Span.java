@@ -1,6 +1,7 @@
 package de.agilecoders.wicket.markup.html.bootstrap.layout;
 
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
+import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
 

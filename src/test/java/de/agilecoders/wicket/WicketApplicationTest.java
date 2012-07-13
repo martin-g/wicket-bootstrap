@@ -7,6 +7,7 @@ import de.agilecoders.wicket.settings.IBootstrapSettings;
 import org.apache.wicket.Page;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.util.tester.WicketTester;
+import org.junit.Before;
 
 /**
  * TODO: document
@@ -19,7 +20,7 @@ public class WicketApplicationTest {
     private WebApplication application;
     private WicketTester tester;
 
-    // @Before
+    @Before
     public final void before() {
         application = new BootstrapApplication() {
             @Override
@@ -36,11 +37,11 @@ public class WicketApplicationTest {
         return new BootstrapSettings();
     }
 
-    protected WicketTester tester() {
+    protected final WicketTester tester() {
         return tester;
     }
 
-    protected IBootstrapApplication application() {
+    protected final IBootstrapApplication application() {
         return (IBootstrapApplication) application;
     }
 

@@ -1,7 +1,13 @@
 package de.agilecoders.wicket.markup.html.references;
 
+import com.google.common.collect.Lists;
+import de.agilecoders.wicket.util.References;
+import org.apache.wicket.markup.head.HeaderItem;
+import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.request.resource.JavaScriptResourceReference;
 import org.apache.wicket.request.resource.ResourceReference;
+
+import java.util.List;
 
 /**
  * TODO: document
@@ -12,8 +18,6 @@ import org.apache.wicket.request.resource.ResourceReference;
 public class BootstrapJavaScriptReference extends JavaScriptResourceReference {
     private static final long serialVersionUID = 1L;
 
-    public static final String ID = "bootstrap-js";
-    
     /**
      * Singleton instance of this reference
      */
@@ -23,7 +27,14 @@ public class BootstrapJavaScriptReference extends JavaScriptResourceReference {
      * Private constructor.
      */
     private BootstrapJavaScriptReference() {
-        super(BootstrapJavaScriptReference.class, "bootstrap.min.js");
+        super(BootstrapJavaScriptReference.class, References.appendMinificationIdentifier("bootstrap.js"));
     }
 
+    @Override
+    public Iterable<? extends HeaderItem> getDependencies() {
+        List<HeaderItem> dependencies = Lists.newArrayList(super.getDependencies());
+        dependencies.add(JavaScriptHeaderItem.forReference(JqueryReference.INSTANCE));
+
+        return dependencies;
+    }
 }

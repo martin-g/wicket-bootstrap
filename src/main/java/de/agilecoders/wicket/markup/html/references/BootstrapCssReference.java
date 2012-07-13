@@ -1,5 +1,6 @@
 package de.agilecoders.wicket.markup.html.references;
 
+import de.agilecoders.wicket.util.References;
 import org.apache.wicket.request.resource.CssResourceReference;
 import org.apache.wicket.request.resource.ResourceReference;
 
@@ -12,8 +13,6 @@ import org.apache.wicket.request.resource.ResourceReference;
 public class BootstrapCssReference extends CssResourceReference {
     private static final long serialVersionUID = 1L;
 
-    public static final String ID = "bootstrap-css";
-
     /**
      * Singleton instance of this reference
      */
@@ -23,7 +22,7 @@ public class BootstrapCssReference extends CssResourceReference {
      * Private constructor.
      */
     private BootstrapCssReference() {
-        super(BootstrapCssReference.class, "bootstrap.min.css");
+        super(BootstrapCssReference.class, References.appendMinificationIdentifier("bootstrap.css"));
     }
 
 }

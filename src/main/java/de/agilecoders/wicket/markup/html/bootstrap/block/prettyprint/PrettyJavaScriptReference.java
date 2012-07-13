@@ -1,7 +1,13 @@
 package de.agilecoders.wicket.markup.html.bootstrap.block.prettyprint;
 
+import com.google.common.collect.Lists;
+import de.agilecoders.wicket.markup.html.references.BootstrapJavaScriptReference;
+import org.apache.wicket.markup.head.HeaderItem;
+import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.request.resource.JavaScriptResourceReference;
 import org.apache.wicket.request.resource.ResourceReference;
+
+import java.util.List;
 
 /**
  * TODO: document
@@ -26,4 +32,11 @@ public class PrettyJavaScriptReference extends JavaScriptResourceReference {
         super(PrettyJavaScriptReference.class, "prettify.js");
     }
 
+    @Override
+    public Iterable<? extends HeaderItem> getDependencies() {
+        List<HeaderItem> dependencies = Lists.newArrayList(super.getDependencies());
+        dependencies.add(JavaScriptHeaderItem.forReference(BootstrapJavaScriptReference.INSTANCE));
+
+        return dependencies;
+    }
 }

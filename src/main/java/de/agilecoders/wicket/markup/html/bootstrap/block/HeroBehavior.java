@@ -3,7 +3,6 @@ package de.agilecoders.wicket.markup.html.bootstrap.block;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
 import de.agilecoders.wicket.markup.html.bootstrap.common.AssertTagNameBehavior;
 import org.apache.wicket.Component;
-import org.apache.wicket.markup.ComponentTag;
 
 /**
  * TODO: document
@@ -13,24 +12,14 @@ import org.apache.wicket.markup.ComponentTag;
  */
 public class HeroBehavior extends AssertTagNameBehavior {
 
-    private boolean pullRight = false;
-
     public HeroBehavior() {
-        super("blockquote");
-    }
-
-    public HeroBehavior pullRight() {
-        pullRight = true;
-
-        return this;
+        super("div");
     }
 
     @Override
-    public void onComponentTag(Component component, ComponentTag tag) {
-        super.onComponentTag(component, tag);
+    public void onConfigure(Component component) {
+        super.onConfigure(component);
 
-        if (pullRight) {
-            component.add(new CssClassNameAppender("pull-right"));
-        }
+        component.add(new CssClassNameAppender("hero-unit"));
     }
 }

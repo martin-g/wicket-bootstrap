@@ -50,7 +50,7 @@ public class CodeBehavior extends AssertTagNameBehavior {
      * Constructor.
      */
     public CodeBehavior() {
-        super("code");
+        super("code", "pre");
     }
 
     @Override

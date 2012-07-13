@@ -3,6 +3,7 @@ package de.agilecoders.wicket.settings;
 import de.agilecoders.wicket.markup.html.references.BootstrapCssReference;
 import de.agilecoders.wicket.markup.html.references.BootstrapJavaScriptReference;
 import de.agilecoders.wicket.markup.html.references.BootstrapResponsiveCssReference;
+import org.apache.wicket.request.resource.CssResourceReference;
 import org.apache.wicket.request.resource.ResourceReference;
 
 /**
@@ -30,7 +31,7 @@ public class BootstrapSettings implements IBootstrapSettings {
     }
 
     @Override
-    public ResourceReference getResponsiveCssResourceReference() {
+    public CssResourceReference getResponsiveCssResourceReference() {
         return BootstrapResponsiveCssReference.INSTANCE;
     }
 

@@ -1,6 +1,6 @@
 package de.agilecoders.wicket.markup.html;
 
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapResourcesBehavior;
+import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.layout.ContainerBorder;
 import de.agilecoders.wicket.markup.html.bootstrap.layout.Layout;
 import org.apache.wicket.Component;
@@ -63,7 +63,7 @@ public abstract class BootstrapPage extends WebPage {
         border = new ContainerBorder("border");
 
         add(border);
-        add(new BootstrapResourcesBehavior());
+        add(new BootstrapBaseBehavior());
     }
 
     protected BootstrapPage withLayout(Layout layout) {
