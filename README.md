@@ -6,10 +6,11 @@ Wicket-Bootstrap is based on Twitter's toolkit (bootstrap) and the Apache Wicket
 * Twitter Bootstrap (2.0.4): http://twitter.github.com/bootstrap
 * Apache Wicket (6-beta): http://wicket.apache.org/
 
-Demo
+Info
 ----
 
 * you can see wicket-bootstrap in action: http://wb.agile-coders.de/demo
+* CI: [![Build Status](https://buildhive.cloudbees.com/job/l0rdn1kk0n/job/wicket-bootstrap/badge/icon)](https://buildhive.cloudbees.com/job/l0rdn1kk0n/job/wicket-bootstrap/)
 
 Installation
 ------------

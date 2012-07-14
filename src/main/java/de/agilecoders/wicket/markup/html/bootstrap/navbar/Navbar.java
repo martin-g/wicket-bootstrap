@@ -40,7 +40,7 @@ public class Navbar extends Panel {
     private boolean fluid = false;
     private boolean fixedTop = false;
 
-    private final List<NavbarButton> buttonLeftList = new ArrayList<>();
+    private final List<NavbarButton> buttonLeftList = Lists.newArrayList();
 
     /**
      * TODO document

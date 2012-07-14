@@ -62,7 +62,7 @@ public class TypedPageButton<T> extends BookmarkablePageLink<T> implements Boots
 
         this.icon = new Icon("icon", IconType.NULL);
 
-        this.label = new Label("label", new Model<>(""));
+        this.label = new Label("label", new Model<String>(""));
         this.label.setRenderBodyOnly(true);
     }
 

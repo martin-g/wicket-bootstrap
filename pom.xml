@@ -22,7 +22,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>${project.build.sourceEncoding}</project.reporting.outputEncoding>
-        <mvn.build.java.version>1.7</mvn.build.java.version>
+        <mvn.build.java.version>1.6</mvn.build.java.version>
         <mvn.version>3.0.0</mvn.version>
 
         <com.google.guava.version>12.0</com.google.guava.version>

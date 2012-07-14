@@ -9,8 +9,6 @@ import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -21,7 +19,7 @@ import java.util.List;
  */
 public class Menu extends WebMarkupContainer {
     
-    private List<Component> buttonList = new ArrayList<>();
+    private List<Component> buttonList = Lists.newArrayList();
 
     /**
      * TODO document

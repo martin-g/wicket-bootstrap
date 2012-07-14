@@ -1,5 +1,6 @@
 package de.agilecoders.wicket.markup.html.bootstrap.layout.row;
 
+import com.google.common.collect.Lists;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
 import de.agilecoders.wicket.markup.html.bootstrap.layout.AbstractLayout;
 import de.agilecoders.wicket.markup.html.bootstrap.layout.Span;
@@ -9,7 +10,6 @@ import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.util.string.Strings;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -20,7 +20,7 @@ import java.util.List;
  */
 public abstract class AbstractRow extends Panel {
 
-    List<Span> spanList = new ArrayList<>();
+    List<Span> spanList = Lists.newArrayList();
 
     private AbstractRow(String id) {
         this();
