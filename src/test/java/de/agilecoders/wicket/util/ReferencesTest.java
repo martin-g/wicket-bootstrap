@@ -1,11 +1,11 @@
 package de.agilecoders.wicket.util;
 
 import de.agilecoders.wicket.WicketApplicationTest;
+import org.junit.Assert;
 import org.junit.Test;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.is;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.is;
 
 /**
  * TODO: document
@@ -19,23 +19,23 @@ public class ReferencesTest extends WicketApplicationTest {
     public void minificationIdentifierWasAppended() {
         getBootstrapSettings().minify(true);
 
-        assertThat(References.appendMinificationIdentifier("file.ext"), is(equalTo("file.min.ext")));
+        Assert.assertThat(References.appendMinificationIdentifier("file.ext"), is(equalTo("file.min.ext")));
     }
 
     @Test
     public void minificationIdentifierWasntAppended() {
         getBootstrapSettings().minify(false);
 
-        assertThat(References.appendMinificationIdentifier("file.ext"), is(equalTo("file.ext")));
+        Assert.assertThat(References.appendMinificationIdentifier("file.ext"), is(equalTo("file.ext")));
     }
 
     @Test
     public void nameWithoutDotReturnsSameName() {
-        assertThat(References.appendMinificationIdentifier("file"), is(equalTo("file")));
+        Assert.assertThat(References.appendMinificationIdentifier("file"), is(equalTo("file")));
     }
 
     @Test
     public void nullNameReturnsEmptyString() {
-        assertThat(References.appendMinificationIdentifier(null), is(equalTo("")));
+        Assert.assertThat(References.appendMinificationIdentifier(null), is(equalTo("")));
     }
 }
