@@ -1,14 +1,9 @@
 package de.agilecoders.wicket.markup.html.bootstrap.navbar;
 
-import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonSize;
 import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonType;
 import de.agilecoders.wicket.markup.html.bootstrap.button.TypedAjaxButton;
-import de.agilecoders.wicket.markup.html.bootstrap.button.TypedPageButton;
-import de.agilecoders.wicket.markup.html.bootstrap.image.Icon;
-import org.apache.wicket.Page;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
-import org.apache.wicket.request.mapper.parameter.PageParameters;
 
 /**
  *

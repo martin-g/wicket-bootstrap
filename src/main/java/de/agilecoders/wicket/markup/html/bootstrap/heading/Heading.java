@@ -1,6 +1,5 @@
 package de.agilecoders.wicket.markup.html.bootstrap.heading;
 
-import de.agilecoders.wicket.markup.html.bootstrap.common.AssertTagNameBehavior;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
@@ -42,6 +41,6 @@ public class Heading extends Label {
     public Heading(final String componentId, final IModel<String> model) {
         super(componentId, model);
 
-        add(new AssertTagNameBehavior("h1", "h2", "h3", "h4", "h5", "h6"));
+        add(new HeadingBehavior());
     }
 }

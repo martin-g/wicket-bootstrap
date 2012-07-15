@@ -25,7 +25,6 @@ public class BootstrapResourcesBehavior extends BootstrapJavascriptBehavior {
             headerResponse.render(CssHeaderItem.forReference(settings.getResponsiveCssResourceReference()));
         }
 
-        headerResponse.render(JavaScriptHeaderItem.forUrl(settings.getJqueryUrl(), "jquery"));
         headerResponse.render(JavaScriptHeaderItem.forReference(settings.getJsResourceReference(), new PageParameters(), "bootstrap-js", true));
     }
 

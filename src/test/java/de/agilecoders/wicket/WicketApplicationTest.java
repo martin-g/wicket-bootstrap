@@ -22,13 +22,19 @@ public class WicketApplicationTest {
     @Before
     public final void before() {
         application = new WebApplication() {
+
+            @Override
+            protected void init() {
+                super.init();
+
+                Bootstrap.install(this, WicketApplicationTest.this.createBootstrapSettings());
+            }
+
             @Override
             public Class<? extends Page> getHomePage() {
                 return WicketApplicationTest.this.getHomePage();
             }
         };
-
-        Bootstrap.install(application, createBootstrapSettings());
 
         tester = new WicketTester(application);
     }

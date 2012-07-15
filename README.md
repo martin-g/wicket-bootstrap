@@ -10,22 +10,20 @@ Info
 ----
 
 * you can see wicket-bootstrap in action: http://wb.agile-coders.de/demo
-* CI: [![Build Status](https://buildhive.cloudbees.com/job/l0rdn1kk0n/job/wicket-bootstrap/badge/icon)](https://buildhive.cloudbees.com/job/l0rdn1kk0n/job/wicket-bootstrap/)
+* Continuous Integration: [![Build Status](https://buildhive.cloudbees.com/job/l0rdn1kk0n/job/wicket-bootstrap/badge/icon)](https://buildhive.cloudbees.com/job/l0rdn1kk0n/job/wicket-bootstrap/)
 
 Installation
 ------------
 
 * as java library:
   download and add the bootstrap-0.3.0.jar to your library path
-* use the sources: <code>git@github.com:l0rdn1kk0n/wicket-bootstrap.git</code>
+* use the sources: <code>git@github.com:l0rdn1kk0n/wicket-bootstrap.git</code> and run `mvn install`
 
 Setup
 -----
 
 + Call `Bootstrap.install()` in your `WebApplication.init()` to install the bootstrap setting for your application.
   you are able to implement the IBootstrapSettings or extend BootstrapSettings to change the path of each file / jquery version / etc by yourself.
-+ every Page has to extend the BootstrapPage to ensure that all js/css files will be loaded. If you don't want to extend the BootstrapPage you have to add the BootstrapResourcesBehavior on each page you want to use a twitter bootstrap component:
-  <code>add(new BootstrapResourcesBehavior());</code>
 
 
 Usage

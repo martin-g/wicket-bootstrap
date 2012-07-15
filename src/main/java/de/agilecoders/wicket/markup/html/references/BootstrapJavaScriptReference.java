@@ -6,6 +6,7 @@ import org.apache.wicket.markup.head.HeaderItem;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.request.resource.JavaScriptResourceReference;
 import org.apache.wicket.request.resource.ResourceReference;
+import org.apache.wicket.resource.JQueryResourceReference;
 
 import java.util.List;
 
@@ -33,7 +34,7 @@ public class BootstrapJavaScriptReference extends JavaScriptResourceReference {
     @Override
     public Iterable<? extends HeaderItem> getDependencies() {
         List<HeaderItem> dependencies = Lists.newArrayList(super.getDependencies());
-        dependencies.add(JavaScriptHeaderItem.forReference(JqueryReference.INSTANCE));
+        dependencies.add(JavaScriptHeaderItem.forReference(JQueryResourceReference.get()));
 
         return dependencies;
     }

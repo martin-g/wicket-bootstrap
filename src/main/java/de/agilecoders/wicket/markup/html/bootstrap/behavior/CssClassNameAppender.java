@@ -77,7 +77,7 @@ public class CssClassNameAppender extends AttributeAppender {
      * @param appendValueList a list of values to append
      */
     public CssClassNameAppender(List<String> appendValueList) {
-        this(Model.of(Joiner.on(SEPARATOR).join(appendValueList)));
+        this(Model.of(Joiner.on(SEPARATOR).skipNulls().join(appendValueList)));
     }
 
     /**
