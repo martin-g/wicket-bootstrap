@@ -16,7 +16,7 @@ Installation
 ------------
 
 * as java library:
-  download and add the bootstrap-0.3.0.jar to your library path
+  download and add the bootstrap-0.4.0.jar to your library path
 * use the sources: <code>git@github.com:l0rdn1kk0n/wicket-bootstrap.git</code> and run `mvn install`
 
 Setup
