@@ -44,14 +44,12 @@ public class NavbarTest extends WicketApplicationTest {
     @Test
     public void fixedTopClassIsRendered() {
         Navbar navbar = new Navbar("id");
-        navbar.fluid();
         navbar.fixedTop();
 
         tester().startComponentInPage(navbar);
-        TagTester tagTester = tester().getTagByWicketId("container");
 
         Assert.assertThat(navbar.isFixedTop(), is(equalTo(true)));
-        Assert.assertThat(tagTester.getAttribute("class"), is(equalTo(("container-fluid navbar-fixed-top"))));
+        Assert.assertThat(tester().getTagByWicketId("id").getAttribute("class"), is(equalTo(("navbar navbar-fixed-top"))));
     }
 
     @Test

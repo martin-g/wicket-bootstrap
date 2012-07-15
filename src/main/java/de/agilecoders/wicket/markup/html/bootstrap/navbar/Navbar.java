@@ -112,10 +112,12 @@ public class Navbar extends Panel {
     protected void onConfigure() {
         super.onConfigure();
 
-        container.add(new CssClassNameAppender(Lists.newArrayList(
-                isFluid() ? "container-fluid" : "container",
-                isFixedTop() ? "navbar-fixed-top" : null
-        )));
+        add(new CssClassNameAppender("navbar"));
+        container.add(new CssClassNameAppender(isFluid() ? "container-fluid" : "container"));
+
+        if (isFixedTop()) {
+            add(new CssClassNameAppender("navbar-fixed-top"));
+        }
 
         brandNameLink.setVisible(brandNameLink.getBody() != null);
         navLeftList.setVisible(buttonLeftList.size() > 0);
