@@ -6,10 +6,15 @@ Wicket-Bootstrap is based on Twitter's toolkit (bootstrap) and the Apache Wicket
 * Twitter Bootstrap (2.0.4): http://twitter.github.com/bootstrap
 * Apache Wicket (6-beta): http://wicket.apache.org/
 
+Usage
+-----
+
+* you can see wicket-bootstrap in action: http://wb.agilecoders.de/demo
+* https://github.com/l0rdn1kk0n/wicket-bootstrap/wiki
+
 Info
 ----
 
-* you can see wicket-bootstrap in action: http://wb.agile-coders.de/demo
 * Continuous Integration: [![Build Status](https://buildhive.cloudbees.com/job/l0rdn1kk0n/job/wicket-bootstrap/badge/icon)](https://buildhive.cloudbees.com/job/l0rdn1kk0n/job/wicket-bootstrap/)
 
 Installation
@@ -24,12 +29,6 @@ Setup
 
 + Call `Bootstrap.install()` in your `WebApplication.init()` to install the bootstrap setting for your application.
   you are able to implement the IBootstrapSettings or extend BootstrapSettings to change the path of each file / jquery version / etc by yourself.
-
-
-Usage
------
-
-* https://github.com/l0rdn1kk0n/wicket-bootstrap/wiki
 
 
 Bug tracker
