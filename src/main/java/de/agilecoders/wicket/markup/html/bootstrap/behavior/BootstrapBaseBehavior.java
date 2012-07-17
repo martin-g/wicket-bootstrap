@@ -35,6 +35,10 @@ public class BootstrapBaseBehavior extends Behavior {
     public void renderHead(Component component, IHeaderResponse headerResponse) {
         IBootstrapSettings settings = getBootstrapSettings(component);
 
+        renderHead(settings, headerResponse);
+    }
+
+    public void renderHead(IBootstrapSettings settings, IHeaderResponse headerResponse) {
         headerResponse.render(CssHeaderItem.forReference(settings.getCssResourceReference()));
         if (settings.useResponsiveCss()) {
             headerResponse.render(CssHeaderItem.forReference(settings.getResponsiveCssResourceReference()));

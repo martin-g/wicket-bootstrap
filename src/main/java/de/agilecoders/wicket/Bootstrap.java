@@ -26,6 +26,10 @@ public class Bootstrap {
     }
 
     public static void renderHead(Component component, IHeaderResponse response) {
-        new BootstrapResourcesBehavior().renderHead(component, response);
+        new BootstrapResourcesBehavior().renderHead(getSettings(component.getApplication()), response);
+    }
+
+    public static void renderHead(IHeaderResponse response) {
+        new BootstrapResourcesBehavior().renderHead(getSettings(Application.get()), response);
     }
 }

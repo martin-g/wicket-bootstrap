@@ -1,7 +1,6 @@
 package de.agilecoders.wicket.markup.html.bootstrap.behavior;
 
 import de.agilecoders.wicket.settings.IBootstrapSettings;
-import org.apache.wicket.Component;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
@@ -15,8 +14,8 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
 public class BootstrapJavascriptBehavior extends BootstrapBaseBehavior {
 
     @Override
-    public void renderHead(Component component, IHeaderResponse headerResponse) {
-        IBootstrapSettings settings = getBootstrapSettings(component);
+    public void renderHead(IBootstrapSettings settings, IHeaderResponse headerResponse) {
+        super.renderHead(settings, headerResponse);
 
         headerResponse.render(JavaScriptHeaderItem.forReference(settings.getJsResourceReference(), new PageParameters(), "bootstrap-js", true));
     }
