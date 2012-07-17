@@ -2,6 +2,7 @@ package de.agilecoders.wicket.markup.html.bootstrap.navbar;
 
 import com.google.common.collect.Lists;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
+import de.agilecoders.wicket.markup.html.bootstrap.button.Bookmarkable;
 import org.apache.wicket.Component;
 import org.apache.wicket.Page;
 import org.apache.wicket.markup.html.TransparentWebMarkupContainer;
@@ -33,13 +34,16 @@ public class Navbar extends Panel {
     }
 
     private final WebMarkupContainer container;
+
     private final BookmarkablePageLink<Page> brandNameLink;
+    private final Component navRightList;
     private final Component navLeftList;
 
     private boolean fluid = false;
     private boolean fixedTop = false;
 
-    private final List<NavbarButton> buttonLeftList = Lists.newArrayList();
+    private final List<Component> buttonLeftList = Lists.newArrayList();
+    private final List<Component> buttonRightList = Lists.newArrayList();
 
     /**
      * TODO document
@@ -62,8 +66,9 @@ public class Navbar extends Panel {
         container = newContainer("container");
         brandNameLink = newBrandNameLink("brandName");
         navLeftList = newNavigation("navLeftList", buttonLeftList);
+        navRightList = newNavigation("navRightList", buttonRightList);
 
-        add(container, brandNameLink, navLeftList);
+        add(container, brandNameLink, navLeftList, navRightList);
     }
 
     /**
@@ -73,16 +78,17 @@ public class Navbar extends Panel {
      * @param listModel   The component's model
      * @return a new navigation list view instance
      */
-    private Component newNavigation(final String componentId, final List<NavbarButton> listModel) {
-        return new ListView<NavbarButton>(componentId, listModel) {
+    private Component newNavigation(final String componentId, final List<Component> listModel) {
+        return new ListView<Component>(componentId, listModel) {
             @Override
-            protected void populateItem(ListItem<NavbarButton> components) {
-                NavbarButton button = components.getModelObject();
+            protected void populateItem(ListItem<Component> components) {
+                Component button = components.getModelObject();
                 components.add(button);
 
-                if (getPage().getClass().equals(button.getPageClass())) {
+                Class pageClass = getPage().getClass();
+                if (button instanceof Bookmarkable && pageClass.equals(((Bookmarkable)button).getPageClass())) {
                     components.add(new CssClassNameAppender("active"));
-                }
+                } // TODO: add Activatable interface
             }
         };
     }
@@ -121,6 +127,7 @@ public class Navbar extends Panel {
 
         brandNameLink.setVisible(brandNameLink.getBody() != null);
         navLeftList.setVisible(buttonLeftList.size() > 0);
+        navRightList.setVisible(buttonRightList.size() > 0);
     }
 
     /**
@@ -137,10 +144,19 @@ public class Navbar extends Panel {
         return fluid;
     }
 
-    public final Navbar addButton(Position position, NavbarButton... buttons) {
+    /**
+     * adds a button to the given position inside the navbar
+     *
+     * @param position The position of the button (left, right)
+     * @param buttons  the buttons to add
+     * @return this component
+     */
+    public final Navbar addButton(Position position, Component... buttons) {
         if (Position.LEFT.equals(position)) {
             buttonLeftList.addAll(Lists.newArrayList(buttons));
-        } // TODO: add a navigation on the right side
+        } else if (Position.RIGHT.equals(position)) {
+            buttonRightList.addAll(Lists.newArrayList(buttons));
+        }
 
         return this;
     }

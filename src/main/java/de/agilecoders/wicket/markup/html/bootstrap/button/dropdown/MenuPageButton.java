@@ -1,5 +1,6 @@
 package de.agilecoders.wicket.markup.html.bootstrap.button.dropdown;
 
+import de.agilecoders.wicket.markup.html.bootstrap.button.Bookmarkable;
 import de.agilecoders.wicket.markup.html.bootstrap.image.Icon;
 import de.agilecoders.wicket.markup.html.bootstrap.image.IconType;
 import org.apache.wicket.Page;
@@ -17,7 +18,7 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
  * @author miha
  * @version 1.0
  */
-public class MenuPageButton<T extends Page> extends BookmarkablePageLink<T> {
+public class MenuPageButton<T extends Page> extends BookmarkablePageLink<T> implements Bookmarkable {
     private Icon icon;
     private Label label;
 

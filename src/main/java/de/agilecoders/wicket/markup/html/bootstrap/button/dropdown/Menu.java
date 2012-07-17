@@ -67,6 +67,8 @@ public class Menu extends WebMarkupContainer {
             protected void populateItem(ListItem<Component> components) {
                 if(components.getModelObject() instanceof MenuDividerButton) {
                     components.add(new CssClassNameAppender("divider"));
+                } else if (components.getModelObject() instanceof MenuHeader) {
+                    components.add(new CssClassNameAppender("nav-header"));
                 }
 
                 components.add(components.getModelObject());

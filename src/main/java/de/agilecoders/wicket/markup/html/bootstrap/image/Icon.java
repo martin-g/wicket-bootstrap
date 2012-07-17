@@ -23,6 +23,10 @@ public class Icon extends WebMarkupContainer {
         add(iconBehavior);
     }
 
+    public Icon(final IconType type) {
+        this("icon", type);
+    }
+
     /**
      * @return true, if the icon color is inverted
      */

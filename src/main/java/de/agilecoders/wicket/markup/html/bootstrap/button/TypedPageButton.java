@@ -24,7 +24,7 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
  * @author miha
  * @version 1.0
  */
-public class TypedPageButton<T> extends BookmarkablePageLink<T> implements BootstrapButton<TypedPageButton> {
+public class TypedPageButton<T> extends BookmarkablePageLink<T> implements BootstrapButton<TypedPageButton>, Bookmarkable {
 
     private final IModel<ButtonType> buttonType;
     private final IModel<ButtonSize> buttonSize;

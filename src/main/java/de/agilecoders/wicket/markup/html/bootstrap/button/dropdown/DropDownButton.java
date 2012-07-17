@@ -1,12 +1,14 @@
 package de.agilecoders.wicket.markup.html.bootstrap.button.dropdown;
 
+import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapResourcesBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
 import de.agilecoders.wicket.markup.html.bootstrap.button.BootstrapButton;
-import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonCssClassAppender;
 import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonSize;
 import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonType;
 import org.apache.wicket.Component;
-import org.apache.wicket.markup.html.WebMarkupContainer;
+import org.apache.wicket.markup.head.IHeaderResponse;
+import org.apache.wicket.markup.head.OnLoadHeaderItem;
+import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
@@ -19,11 +21,10 @@ import org.apache.wicket.model.Model;
  */
 public class DropDownButton extends Panel implements BootstrapButton<DropDownButton> {
 
-    private Component button;
+    private Component label;
     private Menu menu;
     private IModel<ButtonSize> buttonSize;
     private IModel<ButtonType> buttonType;
-    private WebMarkupContainer icon;
 
     public DropDownButton(String id) {
         this(id, Model.of());
@@ -34,33 +35,32 @@ public class DropDownButton extends Panel implements BootstrapButton<DropDownBut
 
         buttonSize = Model.of(ButtonSize.Medium);
         buttonType = Model.of(ButtonType.Default);
-        
-        menu = new Menu("menu");
-        icon = new WebMarkupContainer("icon");
 
-        add(menu);
-        add(icon);
-        
+        label = new Label("label");
+        label.setRenderBodyOnly(true);
+        menu = new Menu("menu");
+        add(menu, label);
+
         add(new CssClassNameAppender("btn-group"));
+        add(new BootstrapResourcesBehavior());
+    }
+
+    @Override
+    public void renderHead(IHeaderResponse response) {
+        super.renderHead(response);
+
+        response.render(OnLoadHeaderItem.forScript("$('.dropdown-toggle').dropdown()"));
     }
 
     @Override
     protected void onConfigure() {
         super.onConfigure();
 
-        if (button == null) {
-            throw new IllegalArgumentException("missing root button");
-        }
-
-        button.add(new ButtonCssClassAppender(buttonType, buttonSize));
-        icon.add(new ButtonCssClassAppender(buttonType, buttonSize));
-
-        add(button);
+        //label.add(new ButtonCssClassAppender(buttonType, buttonSize));
     }
 
-    public DropDownButton setButton(Component button) {
-        button.setMarkupId("button");
-        this.button = button;
+    public DropDownButton setButtonLabel(IModel<String> label) {
+        this.label.setDefaultModel(label);
 
         return this;
     }
