@@ -16,8 +16,8 @@ import java.util.Set;
  */
 public final class Components {
 
-    public static void assertTag(final Component component, final ComponentTag tag, final String tagName) {
-        assertTag(component, tag, Sets.newHashSet(tagName));
+    public static void assertTag(final Component component, final ComponentTag tag, final String... tagNames) {
+        assertTag(component, tag, Sets.newHashSet(tagNames));
     }
 
     public static void assertTag(Component component, ComponentTag tag, Set<String> tagNames) {

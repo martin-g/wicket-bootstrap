@@ -2,17 +2,24 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <parent>
+        <groupId>org.sonatype.oss</groupId>
+        <artifactId>oss-parent</artifactId>
+        <version>7</version>
+    </parent>
+
     <groupId>de.agilecoders.wicket</groupId>
     <artifactId>bootstrap</artifactId>
-    <version>0.5-SNAPSHOT</version>
+    <version>0.4-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>bootstrap</name>
     <description>wicket with twitter bootstrap integration</description>
     <url>https://github.com/l0rdn1kk0n/wicket-bootstrap</url>
 
     <scm>
-        <url>https://github.com/l0rdn1kk0n/wicket-bootstrap</url>
-        <connection>https://github.com/l0rdn1kk0n/wicket-bootstrap</connection>
+        <url>git@github.com:l0rdn1kk0n/wicket-bootstrap.git</url>
+        <connection>scm:git:git@github.com:l0rdn1kk0n/wicket-bootstrap.git</connection>
+        <developerConnection>scm:git:git@github.com:l0rdn1kk0n/wicket-bootstrap.git</developerConnection>
     </scm>
 
     <prerequisites>
@@ -195,6 +202,30 @@
             </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>sign</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>1.4</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 
     <licenses>
         <license>
