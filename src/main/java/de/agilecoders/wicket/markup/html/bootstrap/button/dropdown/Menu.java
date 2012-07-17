@@ -1,7 +1,6 @@
 package de.agilecoders.wicket.markup.html.bootstrap.button.dropdown;
 
 import com.google.common.collect.Lists;
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.list.ListItem;
@@ -17,8 +16,8 @@ import java.util.List;
  * @author miha
  * @version 1.0
  */
-public class Menu extends WebMarkupContainer {
-    
+class Menu extends WebMarkupContainer {
+
     private List<Component> buttonList = Lists.newArrayList();
 
     /**
@@ -65,12 +64,6 @@ public class Menu extends WebMarkupContainer {
         return new ListView<Component>(componentId, listModel) {
             @Override
             protected void populateItem(ListItem<Component> components) {
-                if(components.getModelObject() instanceof MenuDividerButton) {
-                    components.add(new CssClassNameAppender("divider"));
-                } else if (components.getModelObject() instanceof MenuHeader) {
-                    components.add(new CssClassNameAppender("nav-header"));
-                }
-
                 components.add(components.getModelObject());
             }
         };

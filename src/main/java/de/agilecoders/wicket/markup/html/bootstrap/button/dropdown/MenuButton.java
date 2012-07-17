@@ -2,6 +2,7 @@ package de.agilecoders.wicket.markup.html.bootstrap.button.dropdown;
 
 import de.agilecoders.wicket.markup.html.bootstrap.image.Icon;
 import de.agilecoders.wicket.markup.html.bootstrap.image.IconType;
+import org.apache.wicket.markup.MarkupException;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
@@ -34,7 +35,10 @@ public class MenuButton extends Button {
     }
 
     public MenuButton setIcon(Icon icon) {
-        icon.setMarkupId("icon");
+        if (!"icon".equals(icon.getId())) {
+            throw new MarkupException("icon must use 'icon' as markup id. Please use 'new Icon(IconType)' to create your Icon instance.");
+        }
+
         this.icon = icon;
         
         return this;
