@@ -45,4 +45,7 @@ public class Icon extends WebMarkupContainer {
         return this;
     }
 
+    public IconType type() {
+        return iconBehavior.type();
+    }
 }

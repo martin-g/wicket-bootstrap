@@ -2,6 +2,7 @@ package de.agilecoders.wicket.markup.html.bootstrap.behavior;
 
 import de.agilecoders.wicket.Bootstrap;
 import de.agilecoders.wicket.settings.IBootstrapSettings;
+import de.agilecoders.wicket.settings.Theme;
 import org.apache.wicket.Component;
 import org.apache.wicket.WicketRuntimeException;
 import org.apache.wicket.behavior.Behavior;
@@ -39,7 +40,9 @@ public class BootstrapBaseBehavior extends Behavior {
     }
 
     public void renderHead(IBootstrapSettings settings, IHeaderResponse headerResponse) {
-        headerResponse.render(CssHeaderItem.forReference(settings.getCssResourceReference()));
+        Theme theme = settings.getActiveThemeProvider().getActiveTheme();
+        theme.renderHead(headerResponse);
+
         if (settings.useResponsiveCss()) {
             headerResponse.render(CssHeaderItem.forReference(settings.getResponsiveCssResourceReference()));
         }

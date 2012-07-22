@@ -56,4 +56,7 @@ public class IconBehavior extends AssertTagNameBehavior {
         return this;
     }
 
+    public IconType type() {
+        return type;
+    }
 }

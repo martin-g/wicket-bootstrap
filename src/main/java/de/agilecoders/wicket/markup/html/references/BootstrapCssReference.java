@@ -22,7 +22,7 @@ public class BootstrapCssReference extends CssResourceReference {
      * Private constructor.
      */
     private BootstrapCssReference() {
-        super(BootstrapCssReference.class, References.appendMinificationIdentifier("bootstrap.css"));
+        super(BootstrapCssReference.class, "css/bootstrap.css");
     }
 
 }

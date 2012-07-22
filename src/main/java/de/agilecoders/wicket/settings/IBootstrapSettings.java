@@ -39,4 +39,12 @@ public interface IBootstrapSettings {
     boolean useResponsiveCss();
 
     void setUseResponsiveCss(final boolean useResponsiveCss);
+
+    void setActiveThemeProvider(ActiveThemeProvider themeProvider);
+
+    ActiveThemeProvider getActiveThemeProvider();
+
+    ThemeProvider getThemeProvider();
+
+    void setThemeProvider(ThemeProvider themeProvider);
 }

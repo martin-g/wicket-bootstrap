@@ -2,15 +2,14 @@ package de.agilecoders.wicket.markup.html.bootstrap.block;
 
 import com.google.common.collect.Lists;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
-import de.agilecoders.wicket.markup.html.bootstrap.block.prettyprint.PrettyCssResourceReference;
-import de.agilecoders.wicket.markup.html.bootstrap.block.prettyprint.PrettyJavaScriptReference;
 import de.agilecoders.wicket.markup.html.bootstrap.common.AssertTagNameBehavior;
+import de.agilecoders.wicket.markup.html.references.BootstrapPrettifyCssReference;
+import de.agilecoders.wicket.markup.html.references.BootstrapPrettifyJavaScriptReference;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.head.OnLoadHeaderItem;
-import org.apache.wicket.request.mapper.parameter.PageParameters;
 
 import java.util.List;
 
@@ -57,8 +56,8 @@ public class CodeBehavior extends AssertTagNameBehavior {
     public void renderHead(Component component, IHeaderResponse response) {
         super.renderHead(component, response);
 
-        response.render(CssHeaderItem.forReference(PrettyCssResourceReference.INSTANCE, PrettyCssResourceReference.ID));
-        response.render(JavaScriptHeaderItem.forReference(PrettyJavaScriptReference.INSTANCE, new PageParameters(), PrettyJavaScriptReference.ID, true));
+        response.render(CssHeaderItem.forReference(BootstrapPrettifyCssReference.INSTANCE));
+        response.render(JavaScriptHeaderItem.forReference(BootstrapPrettifyJavaScriptReference.INSTANCE));
 
         response.render(OnLoadHeaderItem.forScript("window.prettyPrint && prettyPrint();"));
     }

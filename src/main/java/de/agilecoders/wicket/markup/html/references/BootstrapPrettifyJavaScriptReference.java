@@ -5,7 +5,6 @@ import org.apache.wicket.markup.head.HeaderItem;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.request.resource.JavaScriptResourceReference;
 import org.apache.wicket.request.resource.ResourceReference;
-import org.apache.wicket.resource.JQueryResourceReference;
 
 import java.util.List;
 
@@ -15,25 +14,25 @@ import java.util.List;
  * @author miha
  * @version 1.0
  */
-public class BootstrapJavaScriptReference extends JavaScriptResourceReference {
+public class BootstrapPrettifyJavaScriptReference extends JavaScriptResourceReference {
     private static final long serialVersionUID = 1L;
 
     /**
      * Singleton instance of this reference
      */
-    public static final ResourceReference INSTANCE = new BootstrapJavaScriptReference();
+    public static final ResourceReference INSTANCE = new BootstrapPrettifyJavaScriptReference();
 
     /**
      * Private constructor.
      */
-    private BootstrapJavaScriptReference() {
-        super(BootstrapJavaScriptReference.class, "js/bootstrap.js");
+    private BootstrapPrettifyJavaScriptReference() {
+        super(BootstrapPrettifyJavaScriptReference.class, "js/prettify.js");
     }
 
     @Override
     public Iterable<? extends HeaderItem> getDependencies() {
         List<HeaderItem> dependencies = Lists.newArrayList(super.getDependencies());
-        dependencies.add(JavaScriptHeaderItem.forReference(JQueryResourceReference.get()));
+        dependencies.add(JavaScriptHeaderItem.forReference(BootstrapJavaScriptReference.INSTANCE));
 
         return dependencies;
     }

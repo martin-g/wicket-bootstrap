@@ -16,6 +16,11 @@ public class MenuHeader extends MenuPageButton<Page> {
 
         setRenderBodyOnly(true);
         setLabel(label);
+    }
+
+    @Override
+    protected void onConfigure() {
+        super.onConfigure();
 
         getParent().add(new CssClassNameAppender("nav-header"));
     }
