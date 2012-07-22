@@ -1,5 +1,6 @@
 package de.agilecoders.wicket.settings;
 
+import com.google.common.base.Strings;
 import org.apache.wicket.Session;
 
 import java.io.Serializable;
@@ -36,10 +37,20 @@ public class SessionThemeProvider implements ActiveThemeProvider {
 
     @Override
     public void setActiveTheme(Theme theme) {
+        assertBoundSession();
+
         if (theme != null) {
             Session.get().setAttribute(KEY, theme.name());
         } else {
             Session.get().removeAttribute(KEY);
+        }
+    }
+
+    private void assertBoundSession() {
+        Session session = Session.get();
+
+        if (Strings.isNullOrEmpty(session.getId())) {
+            session.bind();
         }
     }
 }
