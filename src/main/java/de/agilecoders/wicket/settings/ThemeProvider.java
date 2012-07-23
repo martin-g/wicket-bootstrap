@@ -3,7 +3,7 @@ package de.agilecoders.wicket.settings;
 import java.util.List;
 
 /**
- * TODO: document
+ * The {@code ThemeProvider} interface
  *
  * @author miha
  * @version 1.0

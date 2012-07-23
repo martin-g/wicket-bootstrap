@@ -1,8 +1,6 @@
 package de.agilecoders.wicket.markup.html.bootstrap.button;
 
-import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.ajax.markup.html.form.AjaxFallbackButton;
-import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
@@ -15,8 +13,7 @@ import org.apache.wicket.model.Model;
  */
 public abstract class TypedAjaxFallbackButton extends AjaxFallbackButton implements BootstrapButton<TypedAjaxFallbackButton> {
 
-    private final IModel<ButtonType> buttonType;
-    private IModel<ButtonSize> buttonSize;
+    private final ButtonBehavior buttonBehavior;
 
     public TypedAjaxFallbackButton(String id, Form<?> form, IModel<ButtonType> buttonType) {
         this(id, Model.<String>of(), form, buttonType);
@@ -25,31 +22,14 @@ public abstract class TypedAjaxFallbackButton extends AjaxFallbackButton impleme
     public TypedAjaxFallbackButton(String id, IModel<String> model, Form<?> form, IModel<ButtonType> buttonType) {
         super(id, model, form);
 
-        this.buttonType = buttonType;
-        this.buttonSize = Model.of(ButtonSize.Medium);
+        // fix
+        buttonBehavior = new ButtonBehavior(buttonType.getObject(), ButtonSize.Medium);
+        add(buttonBehavior);
     }
 
     public TypedAjaxFallbackButton setSize(ButtonSize buttonSize) {
-        this.buttonSize.setObject(buttonSize);
+        this.buttonBehavior.withSize(buttonSize);
 
         return this;
     }
-
-    @Override
-    protected void onConfigure() {
-        super.onConfigure();
-
-        add(new ButtonCssClassAppender(buttonType, buttonSize));
-    }
-
-    @Override
-    protected final void onComponentTag(final ComponentTag tag) {
-        super.onComponentTag(tag);
-
-        if (!tag.getName().equalsIgnoreCase("a") && !tag.getName().equalsIgnoreCase("button")) {
-            checkComponentTag(tag, "a or button");
-        }
-    }
-
-
 }

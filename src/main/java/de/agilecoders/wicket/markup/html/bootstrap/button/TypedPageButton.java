@@ -3,7 +3,6 @@ package de.agilecoders.wicket.markup.html.bootstrap.button;
 import de.agilecoders.wicket.markup.html.bootstrap.image.Icon;
 import de.agilecoders.wicket.markup.html.bootstrap.image.IconType;
 import org.apache.wicket.Page;
-import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.BookmarkablePageLink;
 import org.apache.wicket.markup.html.panel.IMarkupSourcingStrategy;
@@ -26,12 +25,11 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
  */
 public class TypedPageButton<T> extends BookmarkablePageLink<T> implements BootstrapButton<TypedPageButton>, Bookmarkable {
 
-    private final IModel<ButtonType> buttonType;
-    private final IModel<ButtonSize> buttonSize;
     private final Label label;
 
     // TODO: should be immutable
     private Icon icon;
+    private final ButtonBehavior buttonBehavior;
 
     /**
      * Constructor.
@@ -57,8 +55,7 @@ public class TypedPageButton<T> extends BookmarkablePageLink<T> implements Boots
     public <T extends Page> TypedPageButton(final String componentId, final Class<T> pageClass, final PageParameters parameters, final ButtonType buttonType) {
         super(componentId, pageClass, parameters);
 
-        this.buttonType = Model.of(buttonType);
-        this.buttonSize = Model.of(ButtonSize.Medium);
+        buttonBehavior = new ButtonBehavior(buttonType, ButtonSize.Medium);
 
         this.icon = new Icon("icon", IconType.NULL);
 
@@ -81,7 +78,7 @@ public class TypedPageButton<T> extends BookmarkablePageLink<T> implements Boots
      * @return reference to the current instance
      */
     public TypedPageButton setSize(ButtonSize buttonSize) {
-        this.buttonSize.setObject(buttonSize);
+        this.buttonBehavior.withSize(buttonSize);
 
         return this;
     }
@@ -117,21 +114,6 @@ public class TypedPageButton<T> extends BookmarkablePageLink<T> implements Boots
     protected void onConfigure() {
         super.onConfigure();
 
-        // a menu button has no css classes, inherits its styles from the menu
-        if (!ButtonType.Menu.equals(buttonType.getObject())) {
-            add(new ButtonCssClassAppender(buttonType, buttonSize));
-        }
-
         add(icon, label);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected final void onComponentTag(final ComponentTag tag) {
-        super.onComponentTag(tag);
-
-        checkComponentTag(tag, "a");
     }
 }

@@ -2,7 +2,6 @@ package de.agilecoders.wicket.markup.html.bootstrap.button;
 
 import de.agilecoders.wicket.markup.html.bootstrap.image.Icon;
 import de.agilecoders.wicket.markup.html.bootstrap.image.IconType;
-import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
@@ -15,9 +14,8 @@ import org.apache.wicket.model.Model;
  */
 public class TypedButton extends Button implements BootstrapButton<TypedButton> {
 
-    private final IModel<ButtonType> buttonType;
-    private IModel<ButtonSize> buttonSize;
     private Icon icon;
+    private final ButtonBehavior buttonBehavior;
 
     public TypedButton(final String componentId, final ButtonType buttonType) {
         this(componentId, new Model<String>(), buttonType);
@@ -26,8 +24,8 @@ public class TypedButton extends Button implements BootstrapButton<TypedButton> 
     public TypedButton(final String componentId, final IModel<String> model, final ButtonType buttonType) {
         super(componentId, model);
 
-        this.buttonType = Model.of(buttonType);
-        this.buttonSize = Model.of(ButtonSize.Medium);
+        buttonBehavior = new ButtonBehavior(buttonType, ButtonSize.Medium);
+        add(buttonBehavior);
 
         this.icon = new Icon("icon", IconType.NULL);
     }
@@ -45,27 +43,9 @@ public class TypedButton extends Button implements BootstrapButton<TypedButton> 
     }
 
     public TypedButton setSize(ButtonSize buttonSize) {
-        this.buttonSize.setObject(buttonSize);
+        this.buttonBehavior.withSize(buttonSize);
 
         return this;
     }
-
-    @Override
-    protected void onConfigure() {
-        super.onConfigure();
-
-        add(new ButtonCssClassAppender(buttonType, buttonSize));
-        //add(icon);
-    }
-
-    @Override
-    protected final void onComponentTag(final ComponentTag tag) {
-        super.onComponentTag(tag);
-
-        if (!tag.getName().equalsIgnoreCase("a") && !tag.getName().equalsIgnoreCase("button")) {
-            checkComponentTag(tag, "a or button");
-        }
-    }
-
 
 }
