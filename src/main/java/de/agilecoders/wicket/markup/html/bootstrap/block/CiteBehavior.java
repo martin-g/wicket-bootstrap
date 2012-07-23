@@ -1,6 +1,6 @@
 package de.agilecoders.wicket.markup.html.bootstrap.block;
 
-import de.agilecoders.wicket.markup.html.bootstrap.common.AssertTagNameBehavior;
+import de.agilecoders.wicket.markup.html.bootstrap.behavior.AssertTagNameBehavior;
 
 /**
  * TODO: document

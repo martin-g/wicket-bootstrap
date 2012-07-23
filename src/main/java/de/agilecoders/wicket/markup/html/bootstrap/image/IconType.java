@@ -1,11 +1,14 @@
 package de.agilecoders.wicket.markup.html.bootstrap.image;
 
+import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
+import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameProvider;
+
 /**
  * References all available icons inside the icon sprite.
  *
  * @see {http://twitter.github.com/bootstrap/base-css.html#buttons}
  */
-public enum IconType {
+public enum IconType implements CssClassNameProvider {
 
     NULL, Repeat, Glass, Music, Search, Envelope, Star, StarEmpty("star-empty"), Heart, User, Film, Th,
     ThLarge("th-large"), ThList("th-list"), ZoomIn("zoom-in"), ZoomOut("zoom-out"), Ok, PlayCircle("play-circle"),
@@ -33,10 +36,13 @@ public enum IconType {
         this.cssClassName = cssClassName.toLowerCase();
     }
 
-    /**
-     * @return the icon's css class name
-     */
+    @Override
     public String cssClassName() {
         return "icon-" + cssClassName;
+    }
+
+    @Override
+    public CssClassNameAppender newCssClassNameAppender() {
+        return new CssClassNameAppender(cssClassName());
     }
 }

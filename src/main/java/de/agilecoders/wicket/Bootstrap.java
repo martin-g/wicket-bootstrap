@@ -2,7 +2,6 @@ package de.agilecoders.wicket;
 
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapResourcesBehavior;
 import de.agilecoders.wicket.settings.IBootstrapSettings;
-import de.agilecoders.wicket.settings.ThemeProvider;
 import org.apache.wicket.Application;
 import org.apache.wicket.Component;
 import org.apache.wicket.MetaDataKey;
@@ -16,10 +15,6 @@ public class Bootstrap {
     };
 
     private Bootstrap() {
-    }
-
-    public static void install(ThemeProvider themeProvider) {
-
     }
 
     public static void install(Application app, IBootstrapSettings settings) {

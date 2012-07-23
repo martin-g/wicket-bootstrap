@@ -1,4 +1,4 @@
-package de.agilecoders.wicket.markup.html.bootstrap.common;
+package de.agilecoders.wicket.markup.html.bootstrap.behavior;
 
 import com.google.common.collect.Sets;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapBaseBehavior;

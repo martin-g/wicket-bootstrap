@@ -1,5 +1,6 @@
 package de.agilecoders.wicket.markup.html.bootstrap.list;
 
+import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.model.IModel;
 
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.List;
  * @author miha
  * @version 1.0
  */
-public abstract class BootstrapListView<T> extends org.apache.wicket.markup.html.list.ListView<T> {
+public abstract class BootstrapListView<T> extends ListView<T> {
 
     private ListBehavior listBehavior;
 

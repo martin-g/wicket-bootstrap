@@ -1,7 +1,7 @@
 package de.agilecoders.wicket.markup.html.bootstrap.block;
 
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
-import de.agilecoders.wicket.markup.html.bootstrap.common.AssertTagNameBehavior;
+import de.agilecoders.wicket.markup.html.bootstrap.behavior.AssertTagNameBehavior;
 import org.apache.wicket.Component;
 
 /**
