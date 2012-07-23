@@ -36,6 +36,10 @@ public interface IBootstrapSettings {
 
     void minify(final boolean minify);
 
+    boolean useModernizr();
+
+    void setUseModernizr(final boolean useModernizr);
+
     boolean useResponsiveCss();
 
     void setUseResponsiveCss(final boolean useResponsiveCss);

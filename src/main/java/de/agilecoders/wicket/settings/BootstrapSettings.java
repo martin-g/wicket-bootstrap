@@ -20,6 +20,7 @@ public class BootstrapSettings implements IBootstrapSettings {
     private boolean useResponsiveCss = true;
     private ThemeProvider themeProvider = new BootswatchThemeProvider();
     private ActiveThemeProvider activeThemeProvider = new SessionThemeProvider(themeProvider);
+    private boolean useModernizr = false;
 
     /**
      * Constructor.
@@ -61,6 +62,16 @@ public class BootstrapSettings implements IBootstrapSettings {
     @Override
     public final void minify(final boolean minify) {
         Application.get().getResourceSettings().setUseMinifiedResources(minify);
+    }
+
+    @Override
+    public boolean useModernizr() {
+        return useModernizr;
+    }
+
+    @Override
+    public void setUseModernizr(boolean useModernizr) {
+        this.useModernizr = useModernizr;
     }
 
     @Override
