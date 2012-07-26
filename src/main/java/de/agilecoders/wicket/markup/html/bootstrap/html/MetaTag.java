@@ -39,8 +39,16 @@ public class MetaTag extends WebMarkupContainer {
     private final IModel<String> content;
     private Type type;
 
+    public MetaTag(String id, String name) {
+        this(id, Model.<String>of(name));
+    }
+
     public MetaTag(String id, IModel<String> name) {
         this(id, name, Model.<String>of(""));
+    }
+
+    public MetaTag(String id, String name, String content) {
+        this(id, Model.<String>of(name), Model.<String>of(content));
     }
 
     public MetaTag(String id, IModel<String> name, IModel<String> content) {

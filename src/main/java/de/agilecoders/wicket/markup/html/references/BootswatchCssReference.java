@@ -26,6 +26,7 @@ public class BootswatchCssReference extends CssResourceReference {
     public static final ResourceReference SPRUCE = new BootswatchCssReference("css/bootstrap.spruce.css");
     public static final ResourceReference SUPERHERO = new BootswatchCssReference("css/bootstrap.superhero.css");
     public static final ResourceReference UNITED = new BootswatchCssReference("css/bootstrap.united.css");
+    public static final ResourceReference METRO = new BootswatchCssReference("css/bootstrap.metro.css");
 
     /**
      * Private constructor.

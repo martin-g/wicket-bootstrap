@@ -34,6 +34,7 @@ public class BootswatchThemeProvider implements ThemeProvider {
         themes.add(new Theme("slate", BootswatchCssReference.SLATE));
         themes.add(new Theme("simplex", BootswatchCssReference.SIMPLEX));
         themes.add(new Theme("superhero", BootswatchCssReference.SUPERHERO));
+        //themes.add(new Theme("metro", BootswatchCssReference.METRO));
     }
 
     protected void add(Theme... theme) {
