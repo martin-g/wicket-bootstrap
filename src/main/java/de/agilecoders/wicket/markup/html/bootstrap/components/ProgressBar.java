@@ -21,6 +21,11 @@ import java.util.List;
  * @version 1.0
  */
 public class ProgressBar extends Panel {
+    private static final int MIN = 0;
+    private static final int MAX = 100;
+
+
+    private Component indicator;
 
     public enum Type implements CssClassNameProvider {
         DEFAULT, INFO, SUCCESS, WARNING, DANGER;
@@ -39,7 +44,7 @@ public class ProgressBar extends Panel {
     private boolean striped = false;
 
     public ProgressBar(String id) {
-        super(id, Model.of(0));
+        super(id, Model.of(MIN));
 
         commonInit();
     }
@@ -51,9 +56,13 @@ public class ProgressBar extends Panel {
     }
 
     private void commonInit() {
-        Component indicator = newIndicator("indicator");
+        indicator = newIndicator("indicator");
 
         add(indicator);
+    }
+
+    protected final Component indicator() {
+        return indicator;
     }
 
     public boolean striped() {
@@ -72,6 +81,10 @@ public class ProgressBar extends Panel {
     public ProgressBar active(boolean value) {
         active = value;
         return this;
+    }
+
+    public final boolean complete() {
+        return value() == MAX;
     }
 
     public Type type() {
@@ -109,7 +122,7 @@ public class ProgressBar extends Panel {
     }
 
     public Integer value() {
-        return Math.max(Math.min((Integer) getDefaultModelObject(), 100), 0);
+        return Math.max(Math.min((Integer) getDefaultModelObject(), MAX), MIN);
     }
 
     @Override

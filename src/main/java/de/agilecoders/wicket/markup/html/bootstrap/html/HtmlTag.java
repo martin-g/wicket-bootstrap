@@ -3,7 +3,6 @@ package de.agilecoders.wicket.markup.html.bootstrap.html;
 import de.agilecoders.wicket.Bootstrap;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
 import de.agilecoders.wicket.markup.html.references.ModernizrJavaScriptReference;
-import de.agilecoders.wicket.settings.IBootstrapSettings;
 import de.agilecoders.wicket.util.Components;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.markup.ComponentTag;
@@ -24,7 +23,6 @@ import java.util.Locale;
  * @version 1.0
  */
 public class HtmlTag extends TransparentWebMarkupContainer {
-    private final IBootstrapSettings settings;
     private Locale locale;
     private final ClientProperties clientProperties;
 
@@ -37,7 +35,6 @@ public class HtmlTag extends TransparentWebMarkupContainer {
         super(id);
 
         this.clientProperties = new WebClientInfo(getRequestCycle()).getProperties();
-        settings = Bootstrap.getSettings(getApplication());
         locale = Locale.ENGLISH;
     }
 
@@ -65,7 +62,7 @@ public class HtmlTag extends TransparentWebMarkupContainer {
     protected void onConfigure() {
         super.onConfigure();
 
-        if (settings.useModernizr()) {
+        if (Bootstrap.getSettings(getApplication()).useModernizr()) {
             add(new CssClassNameAppender("no-js"));
         }
 
@@ -100,7 +97,7 @@ public class HtmlTag extends TransparentWebMarkupContainer {
     public void renderHead(IHeaderResponse response) {
         super.renderHead(response);
 
-        if (settings.useModernizr()) {
+        if (Bootstrap.getSettings(getApplication()).useModernizr()) {
             response.render(JavaScriptHeaderItem.forReference(ModernizrJavaScriptReference.INSTANCE));
         }
     }
