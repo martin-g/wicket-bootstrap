@@ -1,6 +1,7 @@
 package de.agilecoders.wicket.markup.html.bootstrap.behavior;
 
 import com.google.common.base.Joiner;
+import com.google.common.collect.Lists;
 import org.apache.wicket.behavior.AttributeAppender;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
@@ -64,10 +65,10 @@ public class CssClassNameAppender extends AttributeAppender {
      * Constructor.
      * {@link CssClassNameAppender#CssClassNameAppender(org.apache.wicket.model.IModel)}
      *
-     * @param appendValue a single value to append
+     * @param appendValue one or more values to append
      */
-    public CssClassNameAppender(String appendValue) {
-        this(Model.of(appendValue));
+    public CssClassNameAppender(String... appendValue) {
+        this(Lists.newArrayList(appendValue));
     }
 
     /**
