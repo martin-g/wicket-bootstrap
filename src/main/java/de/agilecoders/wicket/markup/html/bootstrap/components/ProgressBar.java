@@ -2,6 +2,7 @@ package de.agilecoders.wicket.markup.html.bootstrap.components;
 
 import com.google.common.collect.Lists;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
+import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameModifier;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameProvider;
 import de.agilecoders.wicket.util.Components;
 import org.apache.wicket.AttributeModifier;
@@ -129,6 +130,10 @@ public class ProgressBar extends Panel {
     protected void onConfigure() {
         super.onConfigure();
 
+        add(new CssClassNameModifier(cssClassNames()));
+    }
+
+    private List<String> cssClassNames() {
         List<String> classNames = Lists.newArrayList(
                 "progress",
                 type().cssClassName()
@@ -138,12 +143,13 @@ public class ProgressBar extends Panel {
             classNames.add("active");
         }
 
-        if(striped()) {
+        if (striped()) {
             classNames.add("progress-striped");
         }
 
-        add(new CssClassNameAppender(classNames));
+        return classNames;
     }
+
 
     @Override
     protected void onComponentTag(ComponentTag tag) {
