@@ -20,7 +20,8 @@ import java.util.List;
  */
 public class TableBehavior extends BootstrapBaseBehavior {
 
-    private enum Type implements CssClassNameProvider {
+    private
+    enum Type implements CssClassNameProvider {
         Basic, Bordered, Zebra, Condensed;
 
         @Override
