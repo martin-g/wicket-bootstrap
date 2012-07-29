@@ -10,7 +10,10 @@ import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
 
 /**
- * TODO: document
+ * The {@code BootstrapBaseBehavior} renders the current active
+ * {@link Theme} which includes the {@link de.agilecoders.wicket.markup.html.references.BootstrapCssReference}
+ * and the {@link de.agilecoders.wicket.markup.html.references.BootstrapResponsiveCssReference}
+ * if enabled to the response.
  *
  * @author miha
  * @version 1.0
@@ -18,10 +21,11 @@ import org.apache.wicket.markup.head.IHeaderResponse;
 public class BootstrapBaseBehavior extends Behavior {
 
     /**
-     * returns the bootstrap settings
+     * returns the {@link IBootstrapSettings} implementation like {@link de.agilecoders.wicket.settings.BootstrapSettings}
+     * which was bound to the current application.
      *
-     * @param component
-     * @return
+     * @param component the bound component
+     * @return the bound {@link IBootstrapSettings}
      */
     protected final IBootstrapSettings getBootstrapSettings(Component component) {
         IBootstrapSettings settings = Bootstrap.getSettings(component.getApplication());
@@ -32,6 +36,9 @@ public class BootstrapBaseBehavior extends Behavior {
         return settings;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void renderHead(Component component, IHeaderResponse headerResponse) {
         IBootstrapSettings settings = getBootstrapSettings(component);
@@ -39,6 +46,14 @@ public class BootstrapBaseBehavior extends Behavior {
         renderHead(settings, headerResponse);
     }
 
+    /**
+     * Render the current active {@link Theme} which includes the {@link de.agilecoders.wicket.markup.html.references.BootstrapCssReference}
+     * and the {@link de.agilecoders.wicket.markup.html.references.BootstrapResponsiveCssReference}
+     * if enabled to the response. Also it allows all subclasses to get the {@link IBootstrapSettings} by overriding this method.
+     *
+     * @param settings       the bound {@link IBootstrapSettings}
+     * @param headerResponse the current {@link IHeaderResponse}
+     */
     public void renderHead(IBootstrapSettings settings, IHeaderResponse headerResponse) {
         Theme theme = settings.getActiveThemeProvider().getActiveTheme();
         theme.renderHead(headerResponse);

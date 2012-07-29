@@ -9,8 +9,7 @@ import org.apache.wicket.model.Model;
 import java.util.List;
 
 /**
- * A CssClassNameAppender appends the given value, rather than replace it. This is especially useful
- * for adding CSS classes to markup elements.
+ * A CssClassNameModifier replaces an existing value with the given value.
  *
  * <pre>
  *     &lt;span class=&quot;className&quot; wicket:id=&quot;foo&quot;&gt;
@@ -19,14 +18,14 @@ import java.util.List;
  * can be modified with these CssClassNameAppender:
  *
  * <pre>
- * link.add(new CssClassNameAppender(&quot;className2&quot;));
- * link.add(new CssClassNameAppender(Arrays.asList(&quot;className2&quot;,&quot;className3&quot;)));
+ * link.add(new CssClassNameModifier(&quot;className1&quot;));
+ * link.add(new CssClassNameModifier(Arrays.asList(&quot;className2&quot;,&quot;className3&quot;)));
  * </pre>
  *
  * this will result in the following markup:
  *
  * <pre>
- *     &lt;span class=&quot;className className2 className3&quot; wicket:id=&quot;foo&quot; &gt;
+ *     &lt;span class=&quot;className2 className3&quot; wicket:id=&quot;foo&quot; &gt;
  * </pre>
  *
  * @author miha

@@ -6,13 +6,22 @@ import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 
 /**
- * TODO: document
+ * The {@code BootstrapJavascriptBehavior} renders the
+ * {@link de.agilecoders.wicket.markup.html.references.BootstrapJavaScriptReference}
+ * to the response.
  *
  * @author miha
  * @version 1.0
  */
 public class BootstrapJavascriptBehavior extends BootstrapBaseBehavior {
 
+    /**
+     * render the {@link de.agilecoders.wicket.markup.html.references.BootstrapJavaScriptReference} to
+     * the response.
+     *
+     * @param settings       the bound {@link IBootstrapSettings}
+     * @param headerResponse the current {@link IHeaderResponse}
+     */
     @Override
     public void renderHead(IBootstrapSettings settings, IHeaderResponse headerResponse) {
         super.renderHead(settings, headerResponse);
