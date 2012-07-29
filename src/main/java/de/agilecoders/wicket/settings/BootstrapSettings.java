@@ -3,6 +3,7 @@ package de.agilecoders.wicket.settings;
 import de.agilecoders.wicket.markup.html.references.BootstrapCssReference;
 import de.agilecoders.wicket.markup.html.references.BootstrapJavaScriptReference;
 import de.agilecoders.wicket.markup.html.references.BootstrapResponsiveCssReference;
+import de.agilecoders.wicket.markup.html.references.JqueryPPJavaScriptReference;
 import org.apache.wicket.Application;
 import org.apache.wicket.request.resource.CssResourceReference;
 import org.apache.wicket.request.resource.ResourceReference;
@@ -15,12 +16,11 @@ import org.apache.wicket.request.resource.ResourceReference;
  */
 public class BootstrapSettings implements IBootstrapSettings {
 
-    private boolean minify = false;
-    private String jqueryUrl = "//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js";
     private boolean useResponsiveCss = true;
     private ThemeProvider themeProvider = new BootswatchThemeProvider();
     private ActiveThemeProvider activeThemeProvider = new SessionThemeProvider(themeProvider);
     private boolean useModernizr = false;
+    private boolean useJqueryPP = false;
 
     /**
      * Constructor.
@@ -45,13 +45,18 @@ public class BootstrapSettings implements IBootstrapSettings {
     }
 
     @Override
-    public String getJqueryUrl() {
-        return jqueryUrl;
+    public ResourceReference getJqueryPPResourceReference() {
+        return JqueryPPJavaScriptReference.INSTANCE;
     }
 
     @Override
-    public final void setJqueryUrl(final String url) {
-        jqueryUrl = url;
+    public boolean useJqueryPP() {
+        return useJqueryPP;
+    }
+
+    @Override
+    public void useJqueryPP(boolean useJqueryPP) {
+        this.useJqueryPP = useJqueryPP;
     }
 
     @Override
@@ -70,7 +75,7 @@ public class BootstrapSettings implements IBootstrapSettings {
     }
 
     @Override
-    public void setUseModernizr(boolean useModernizr) {
+    public void useModernizr(boolean useModernizr) {
         this.useModernizr = useModernizr;
     }
 
@@ -80,7 +85,7 @@ public class BootstrapSettings implements IBootstrapSettings {
     }
 
     @Override
-    public final void setUseResponsiveCss(final boolean useResponsiveCss) {
+    public final void useResponsiveCss(final boolean useResponsiveCss) {
         this.useResponsiveCss = useResponsiveCss;
     }
 

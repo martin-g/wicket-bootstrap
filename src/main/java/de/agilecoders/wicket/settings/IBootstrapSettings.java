@@ -26,23 +26,40 @@ public interface IBootstrapSettings {
     ResourceReference getJsResourceReference();
 
     /**
-     * @return returns the jquery cdn url
+     * @return the jquery++ resource reference
      */
-    String getJqueryUrl();
+    ResourceReference getJqueryPPResourceReference();
 
-    void setJqueryUrl(final String url);
+    /**
+     * @return true, if modernizr should be loaded
+     */
+    boolean useJqueryPP();
 
+    /**
+     * @param useJqueryPP true, if modernizr should be loaded
+     */
+    void useJqueryPP(final boolean useJqueryPP);
+
+    /**
+     * @return true if minification is active
+     */
     boolean isMinified();
 
+    /**
+     * @param minify true, if all references should be loaded minified
+     */
     void minify(final boolean minify);
 
+    /**
+     * @return true, if modernizr should be loaded
+     */
     boolean useModernizr();
 
-    void setUseModernizr(final boolean useModernizr);
+    void useModernizr(final boolean useModernizr);
 
     boolean useResponsiveCss();
 
-    void setUseResponsiveCss(final boolean useResponsiveCss);
+    void useResponsiveCss(final boolean useResponsiveCss);
 
     void setActiveThemeProvider(ActiveThemeProvider themeProvider);
 

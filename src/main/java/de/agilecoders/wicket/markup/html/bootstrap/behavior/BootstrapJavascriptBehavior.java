@@ -7,8 +7,9 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
 
 /**
  * The {@code BootstrapJavascriptBehavior} renders the
- * {@link de.agilecoders.wicket.markup.html.references.BootstrapJavaScriptReference}
- * to the response.
+ * {@link de.agilecoders.wicket.markup.html.references.BootstrapJavaScriptReference} and if active
+ * the {@link de.agilecoders.wicket.markup.html.references.JqueryPPJavaScriptReference} to
+ * the response.
  *
  * @author miha
  * @version 1.0
@@ -16,7 +17,8 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
 public class BootstrapJavascriptBehavior extends BootstrapBaseBehavior {
 
     /**
-     * render the {@link de.agilecoders.wicket.markup.html.references.BootstrapJavaScriptReference} to
+     * render the {@link de.agilecoders.wicket.markup.html.references.BootstrapJavaScriptReference} and if active
+     * the {@link de.agilecoders.wicket.markup.html.references.JqueryPPJavaScriptReference} to
      * the response.
      *
      * @param settings       the bound {@link IBootstrapSettings}
@@ -27,5 +29,9 @@ public class BootstrapJavascriptBehavior extends BootstrapBaseBehavior {
         super.renderHead(settings, headerResponse);
 
         headerResponse.render(JavaScriptHeaderItem.forReference(settings.getJsResourceReference(), new PageParameters(), "bootstrap-js", true));
+
+        if (settings.useJqueryPP()) {
+            headerResponse.render(JavaScriptHeaderItem.forReference(settings.getJqueryPPResourceReference(), new PageParameters(), "jquerypp-js", true));
+        }
     }
 }
