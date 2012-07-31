@@ -51,7 +51,18 @@ public class DefaultThemeProvider implements ThemeProvider {
     }
 
     public DefaultThemeProvider defaultTheme(Theme theme) {
-        defaultTheme = theme;
+        return defaultTheme(theme.name());
+    }
+
+    public DefaultThemeProvider defaultTheme(String themeName) {
+        Theme newDefaultTheme = byName(themeName);
+
+        if (defaultTheme != newDefaultTheme) {
+            defaultTheme = newDefaultTheme;
+        } else {
+            // throw WicketRuntimeException(???);
+        }
+
         return this;
     }
 
@@ -65,7 +76,7 @@ public class DefaultThemeProvider implements ThemeProvider {
             }
         }
 
-        return defaultTheme;
+        throw new WicketRuntimeException("theme does not exists: " + name);
     }
 
     @Override
