@@ -2,17 +2,15 @@ package de.agilecoders.wicket.markup.html.bootstrap.dialog;
 
 import com.google.common.collect.Lists;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
-import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonBehavior;
-import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonType;
 import de.agilecoders.wicket.util.Components;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
+import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.markup.html.panel.Panel;
@@ -23,7 +21,8 @@ import org.apache.wicket.util.string.Strings;
 import java.util.List;
 
 /**
- * TODO: document
+ * The {@code Modal} dialog is a simple component with header,
+ * footer and body.
  *
  * @author miha
  * @version 1.0
@@ -31,13 +30,19 @@ import java.util.List;
 public class Modal extends Panel {
 
     private WebMarkupContainer header;
-    private boolean showAfterInitialize = false;
+    private boolean show = false;
     private boolean fadein = true;
     private boolean keyboard = true;
     private Label headerLabel;
     private List<Component> buttons = Lists.newArrayList();
     private WebMarkupContainer footer;
 
+    /**
+     * Constructor.
+     *
+     * @param id   The non-null id of this component
+     * @param body The component's body component
+     */
     public Modal(String id, Component body) {
         super(id);
 
@@ -49,6 +54,12 @@ public class Modal extends Panel {
         commonInit();
     }
 
+    /**
+     * Constructor.
+     *
+     * @param id    The non-null id of this component
+     * @param model The component's body model
+     */
     public Modal(String id, IModel<String> model) {
         super(id, model);
 
@@ -57,6 +68,9 @@ public class Modal extends Panel {
         commonInit();
     }
 
+    /**
+     * Common initializer. Initializes all children like footer and header.
+     */
     private void commonInit() {
         setOutputMarkupId(true);
 
@@ -76,24 +90,68 @@ public class Modal extends Panel {
         add(new CssClassNameAppender("modal", "hide"));
     }
 
+    /**
+     * Sets the header label text.
+     *
+     * @param label The header label
+     * @return This
+     */
     public Modal header(IModel<String> label) {
         headerLabel.setDefaultModel(label);
         return this;
     }
 
+    /**
+     * Sets whether the footer and any children are visible.
+     *
+     * @param visible True if footer and any children should be visible
+     * @return This
+     */
     public Modal setFooterVisible(boolean visible) {
         footer.setVisible(visible);
         return this;
     }
 
+    /**
+     * Sets whether the header and any children are visible.
+     *
+     * @param visible True if header and any children should be visible
+     * @return This
+     */
     public Modal setHeaderVisible(boolean visible) {
         header.setVisible(visible);
         return this;
     }
 
-    public Modal showAfterInitialize(boolean showAfterInitialize) {
-        this.showAfterInitialize = showAfterInitialize;
+    /**
+     * Sets the initial visibility of the modal dialog.
+     *
+     * @param show Whether to show the dialog or not
+     * @return This
+     */
+    public Modal show(boolean show) {
+        this.show = show;
         return this;
+    }
+
+    public Modal appendCloseDialogJavaScript(AjaxRequestTarget target) {
+        target.appendJavaScript(createScript("hide"));
+        return this;
+    }
+
+    public Modal appendShowDialogJavaScript(AjaxRequestTarget target) {
+        target.appendJavaScript(createScript("show"));
+        return this;
+    }
+
+    /**
+     * creates an action script to open/close the dialog on client side.
+     *
+     * @param action Possible values: show/hide
+     * @return new script.
+     */
+    private String createScript(final String action) {
+        return "$('#" + getMarkupId() + "').modal('" + action + "');";
     }
 
     public Modal addOpenerAttributesTo(Component component) {
@@ -103,17 +161,8 @@ public class Modal extends Panel {
     }
 
     public Modal addCloseButton(IModel<String> label) {
-        Link button = new Link("button") {
-            @Override
-            public void onClick() {
-                // do nothing
-            }
-        };
+        ModalCloseButton button = new ModalCloseButton(label);
         button.setAnchor(this);
-        button.setBody(label);
-
-        button.add(new ButtonBehavior(ButtonType.Default));
-        button.add(new AttributeModifier("data-dismiss", "modal"));
 
         return addButton(button);
     }
@@ -163,14 +212,26 @@ public class Modal extends Panel {
         super.renderHead(response);
 
         response.render(OnDomReadyHeaderItem.forScript("$('#" + getMarkupId(true) + "').modal({keyboard:" + keyboard +
-                                                       ", show:" + showAfterInitialize + "});"));
+                                                       ", show:" + show + "});"));
     }
 
+    /**
+     * Whether to fadin/fadeout the modal dialog or not
+     *
+     * @param fadein true, if dialog should be animated
+     * @return This
+     */
     public Modal fadein(boolean fadein) {
         this.fadein = fadein;
         return this;
     }
 
+    /**
+     * Whether to enable keyboard interaction like ESC to close the dialog.
+     *
+     * @param keyboard true, if keyboard interaction is enabled
+     * @return This
+     */
     public Modal keyboard(boolean keyboard) {
         this.keyboard = keyboard;
         return this;
