@@ -26,7 +26,7 @@ public class BootswatchThemeProvider extends DefaultThemeProvider {
             new Theme("united", BootswatchCssReference.UNITED),
             new Theme("slate", BootswatchCssReference.SLATE),
             new Theme("simplex", BootswatchCssReference.SIMPLEX),
-            //new Theme("metro", BootswatchCssReference.METRO),
+            //new Theme("metro", BootswatchCssReference.METRO), // comes with kickstrap
             new Theme("superhero", BootswatchCssReference.SUPERHERO));
     }
 

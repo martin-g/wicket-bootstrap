@@ -20,9 +20,7 @@ public class DefaultThemeProvider implements ThemeProvider {
     private Theme defaultTheme;
 
     public DefaultThemeProvider() {
-        defaultTheme = new Theme("bootstrap", BootstrapCssReference.INSTANCE);
-
-        themes.add(defaultTheme);
+        addDefaultTheme(new Theme("bootstrap", BootstrapCssReference.INSTANCE));
     }
 
     public DefaultThemeProvider add(Theme... themes) {
@@ -43,11 +41,20 @@ public class DefaultThemeProvider implements ThemeProvider {
             }
 
             for (Theme existingTheme : this.themes) {
+                if (existingTheme.equals(newTheme)) {
+                    throw new WicketRuntimeException("duplicated theme entry: " + newTheme.name());
+                }
+
                 if (newTheme.name().equalsIgnoreCase(existingTheme.name())) {
                     throw new WicketRuntimeException("duplicated theme name: " + newTheme.name());
                 }
             }
         }
+    }
+
+    public DefaultThemeProvider addDefaultTheme(Theme theme) {
+        add(theme);
+        return defaultTheme(theme);
     }
 
     public DefaultThemeProvider defaultTheme(Theme theme) {
