@@ -1,66 +1,34 @@
 package de.agilecoders.wicket.settings;
 
-import com.google.common.base.Strings;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import de.agilecoders.wicket.markup.html.references.BootstrapCssReference;
 import de.agilecoders.wicket.markup.html.references.BootswatchCssReference;
 
-import java.util.List;
-
 /**
- * TODO: document
+ * The {@code BootswatchThemeProvider} provides access to all available bootswatch themes.
  *
  * @author miha
  * @version 1.0
  */
-public class BootswatchThemeProvider implements ThemeProvider {
+public class BootswatchThemeProvider extends DefaultThemeProvider {
 
-    List<Theme> themes = Lists.newArrayList();
-    private Theme defaultTheme;
-
+    /**
+     * Constructor.
+     */
     public BootswatchThemeProvider() {
-        defaultTheme = new Theme("bootstrap", BootstrapCssReference.INSTANCE);
+        super();
 
-        themes.add(defaultTheme);
-        themes.add(new Theme("cerulean", BootswatchCssReference.CERULEAN));
-        themes.add(new Theme("amelia", BootswatchCssReference.AMELIA));
-        themes.add(new Theme("cyborg", BootswatchCssReference.CYBORG));
-        themes.add(new Theme("journal", BootswatchCssReference.JOURNAL));
-        themes.add(new Theme("readable", BootswatchCssReference.READABLE));
-        themes.add(new Theme("spruce", BootswatchCssReference.SPRUCE));
-        themes.add(new Theme("spacelab", BootswatchCssReference.SPACELAB));
-        themes.add(new Theme("united", BootswatchCssReference.UNITED));
-        themes.add(new Theme("slate", BootswatchCssReference.SLATE));
-        themes.add(new Theme("simplex", BootswatchCssReference.SIMPLEX));
-        themes.add(new Theme("superhero", BootswatchCssReference.SUPERHERO));
-        //themes.add(new Theme("metro", BootswatchCssReference.METRO));
+        add(new Theme("cerulean", BootswatchCssReference.CERULEAN),
+            new Theme("amelia", BootswatchCssReference.AMELIA),
+            new Theme("cyborg", BootswatchCssReference.CYBORG),
+            new Theme("journal", BootswatchCssReference.JOURNAL),
+            new Theme("readable", BootswatchCssReference.READABLE),
+            new Theme("spruce", BootswatchCssReference.SPRUCE),
+            new Theme("spacelab", BootswatchCssReference.SPACELAB),
+            new Theme("united", BootswatchCssReference.UNITED),
+            new Theme("slate", BootswatchCssReference.SLATE),
+            new Theme("simplex", BootswatchCssReference.SIMPLEX),
+            //new Theme("metro", BootswatchCssReference.METRO),
+            new Theme("superhero", BootswatchCssReference.SUPERHERO));
     }
 
-    protected void add(Theme... theme) {
-        themes.addAll(Lists.newArrayList(theme));
-    }
 
-    @Override
-    public Theme byName(String name) {
-        if (!Strings.isNullOrEmpty(name)) {
-            for (Theme theme : themes) {
-                if (name.equalsIgnoreCase(theme.name())) {
-                    return theme;
-                }
-            }
-        }
-
-        return defaultTheme;
-    }
-
-    @Override
-    public List<Theme> available() {
-        return ImmutableList.copyOf(themes);
-    }
-
-    @Override
-    public Theme defaultTheme() {
-        return defaultTheme;
-    }
 }
