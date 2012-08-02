@@ -13,9 +13,13 @@ import java.io.Serializable;
  */
 public class SessionThemeProvider implements ActiveThemeProvider {
     private static final String KEY = "theme";
-    private final ThemeProvider themeProvider;
+    private ThemeProvider themeProvider;
 
     public SessionThemeProvider(ThemeProvider themeProvider) {
+        this.themeProvider = themeProvider;
+    }
+
+    void setThemeProvider(ThemeProvider themeProvider) {
         this.themeProvider = themeProvider;
     }
 
