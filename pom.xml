@@ -103,6 +103,19 @@
             <version>${wicket.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.asual.lesscss</groupId>
+            <artifactId>lesscss-engine</artifactId>
+            <version>1.3.0</version>
+        </dependency>
+
+        <!-- SCAN ANNOTATION -->
+        <dependency>
+            <groupId>eu.infomas</groupId>
+            <artifactId>annotation-detector</artifactId>
+            <version>3.0.0</version>
+        </dependency>
+
         <!-- LOGGING DEPENDENCIES - LOG4J -->
         <dependency>
             <groupId>org.slf4j</groupId>
