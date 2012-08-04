@@ -38,8 +38,17 @@ public class NotificationPanel extends FeedbackPanel {
 
     @Override
     protected Component newMessageDisplayComponent(String id, FeedbackMessage message) {
-        return new Alert(id, Model.<String>of(String.valueOf(message.getMessage())))
-                .type(Alert.Type.from(message.getLevelAsString()))
-                .hideAfter(duration);
+        if (message.getMessage() instanceof NotificationMessage) {
+            NotificationMessage notificationMessage = (NotificationMessage) message.getMessage();
+
+            return new Alert(id, notificationMessage.message(), notificationMessage.header())
+                    .type(Alert.Type.from(message.getLevelAsString()))
+                    .hideAfter(notificationMessage.hideAfter() == null ? duration : notificationMessage.hideAfter())
+                    .useInlineHeader(notificationMessage.inlineHeader());
+        }
+
+        return new Alert(id, Model.of(message.getMessage().toString()))
+                .hideAfter(duration)
+                .type(Alert.Type.from(message.getLevelAsString()));
     }
 }
