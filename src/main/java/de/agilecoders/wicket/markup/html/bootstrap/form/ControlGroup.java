@@ -1,9 +1,9 @@
 package de.agilecoders.wicket.markup.html.bootstrap.form;
 
-import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.AssertTagNameBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
+import de.agilecoders.wicket.util.Components;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.feedback.FeedbackMessages;
 import org.apache.wicket.markup.html.basic.Label;
@@ -29,6 +29,7 @@ public class ControlGroup extends Border implements IFormModelUpdateListener {
     private final Label help;
     private final Label error;
     private CssClassNameAppender stateClassNameAppender;
+    private Model<String> stateClassName;
 
     /**
      * Construct.
@@ -52,8 +53,11 @@ public class ControlGroup extends Border implements IFormModelUpdateListener {
         this.help = new Label("help", help);
         this.error = new Label("error", Model.<Serializable>of(""));
 
+        stateClassName = Model.of("");
+
         add(new AssertTagNameBehavior("div"));
         add(new CssClassNameAppender("control-group"));
+        add(new CssClassNameAppender(stateClassName));
         addToBorder(this.label, this.help, this.error);
     }
 
@@ -68,38 +72,45 @@ public class ControlGroup extends Border implements IFormModelUpdateListener {
     }
 
     @Override
-    protected void onConfigure() {
-        super.onConfigure();
+    protected void onInitialize() {
+        super.onInitialize();
 
-        boolean stateRendered = false;
         List<FormComponent<?>> formComponents = findFormComponents();
-
         for (FormComponent fc : formComponents) {
-            FeedbackMessages messages = fc.getFeedbackMessages();
-            if (!messages.isEmpty()) {
-                stateClassNameAppender = toClassNameAppender(messages.first().getLevelAsString());
-                add(stateClassNameAppender);
-                error.setDefaultModelObject(messages.first().getMessage());
-                messages.first().markRendered();
-                stateRendered = true;
-                break;
-            }
-
             fc.setOutputMarkupId(true);
             label.add(new AttributeModifier("for", fc.getMarkupId()));
         }
+    }
 
-        if (!stateRendered) {
-            error.setDefaultModelObject("");
+    @Override
+    protected void onConfigure() {
+        super.onConfigure();
+        Components.show(help, label, error);
 
-            if (stateClassNameAppender != null) {
-                remove(stateClassNameAppender);
+        List<FormComponent<?>> formComponents = findFormComponents();
+        for (FormComponent fc : formComponents) {
+            FeedbackMessages messages = fc.getFeedbackMessages();
+            if (!messages.isEmpty()) {
+                stateClassName.setObject(toClassName(messages.first().getLevelAsString()));
+
+                error.setDefaultModelObject(messages.first().getMessage());
+                messages.first().markRendered();
+
+                break;
+            } else {
+                stateClassName.setObject("");
+                error.setDefaultModelObject("");
             }
         }
 
-        help.setVisible(!Strings.isNullOrEmpty(help.getDefaultModelObjectAsString()));
-        label.setVisible(!Strings.isNullOrEmpty(label.getDefaultModelObjectAsString()));
-        error.setVisible(!Strings.isNullOrEmpty(error.getDefaultModelObjectAsString()));
+        if (formComponents.isEmpty()) {
+            stateClassName.setObject("");
+            error.setDefaultModelObject("");
+        }
+
+        Components.hideIfModelIsEmpty(help);
+        Components.hideIfModelIsEmpty(label);
+        Components.hideIfModelIsEmpty(error);
     }
 
     private List<FormComponent<?>> findFormComponents() {
@@ -116,7 +127,7 @@ public class ControlGroup extends Border implements IFormModelUpdateListener {
         return components;
     }
 
-    private CssClassNameAppender toClassNameAppender(final String level) {
+    private String toClassName(final String level) {
         final String className;
 
         if (level.equalsIgnoreCase("ERROR") || level.equalsIgnoreCase("FATAL")) {
@@ -129,7 +140,7 @@ public class ControlGroup extends Border implements IFormModelUpdateListener {
             className = "";
         }
 
-        return new CssClassNameAppender(className);
+        return className;
     }
 
     @Override

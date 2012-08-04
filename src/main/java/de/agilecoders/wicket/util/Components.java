@@ -1,6 +1,7 @@
 package de.agilecoders.wicket.util;
 
 import com.google.common.base.Joiner;
+import com.google.common.base.Strings;
 import com.google.common.collect.Sets;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.ComponentTag;
@@ -39,5 +40,20 @@ public final class Components {
                                    component.getId(), component.getPath(), Joiner.on(',').join(tagNames), tag.toUserDebugString());
 
         throw new MarkupException(component.getMarkup().getMarkupResourceStream(), msg);
+    }
+
+    public static void hideIfModelIsEmpty(Component component) {
+        if (component != null && (component.getDefaultModel() == null || component.getDefaultModelObject() == null ||
+                                  Strings.isNullOrEmpty(component.getDefaultModelObjectAsString()))) {
+            component.setVisible(false);
+        }
+    }
+
+    public static void show(Component... components) {
+        if (components != null) {
+            for (Component component : components) {
+                component.setVisible(true);
+            }
+        }
     }
 }
