@@ -3,6 +3,7 @@ package de.agilecoders.wicket.markup.html.bootstrap.common;
 import de.agilecoders.wicket.markup.html.bootstrap.dialog.Alert;
 import org.apache.wicket.Component;
 import org.apache.wicket.feedback.FeedbackMessage;
+import org.apache.wicket.feedback.FeedbackMessagesModel;
 import org.apache.wicket.feedback.IFeedbackMessageFilter;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.Model;
@@ -17,6 +18,7 @@ import org.apache.wicket.util.time.Duration;
 public class NotificationPanel extends FeedbackPanel {
 
     private Duration duration;
+    private boolean showRenderedMessages = false;
 
     public NotificationPanel(String id) {
         super(id);
@@ -26,9 +28,30 @@ public class NotificationPanel extends FeedbackPanel {
         super(id, filter);
     }
 
+    public NotificationPanel showRenderedMessages(boolean showRenderedMessages) {
+        this.showRenderedMessages = showRenderedMessages;
+        return this;
+    }
+
     public NotificationPanel hideAfter(Duration duration) {
         this.duration = duration;
         return this;
+    }
+
+    @Override
+    protected FeedbackMessagesModel newFeedbackMessagesModel() {
+        FeedbackMessagesModel model = new FeedbackMessagesModel(this);
+
+        if (!showRenderedMessages) {
+            model.setFilter(new IFeedbackMessageFilter() {
+                @Override
+                public boolean accept(FeedbackMessage message) {
+                    return !message.isRendered();
+                }
+            });
+        }
+
+        return model;
     }
 
     @Override
