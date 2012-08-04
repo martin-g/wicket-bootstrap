@@ -6,11 +6,14 @@ import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapBaseBehavio
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapJavascriptBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameProvider;
+import org.apache.wicket.markup.head.IHeaderResponse;
+import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
+import org.apache.wicket.util.time.Duration;
 
 /**
  * TODO: document
@@ -36,14 +39,27 @@ public class Alert extends Panel {
             return new CssClassNameAppender(cssClassName());
         }
 
+        public static Type from(String level) {
+            if (level.equalsIgnoreCase("ERROR") || level.equalsIgnoreCase("FATAL")) {
+                return Error;
+            } else if (level.equalsIgnoreCase("WARNING")) {
+                return Warning;
+            } else if (level.equalsIgnoreCase("SUCCESS")) {
+                return Success;
+            } else {
+                return Info;
+            }
+        }
+
     }
 
     private WebMarkupContainer closeButton;
     private Label message;
     private Label blockHeader;
     private Label inlineHeader;
-
     private Type type;
+    private Duration duration;
+    private Model<String> typeModel;
     private boolean useInlineHeader = true;
 
     /**
@@ -72,6 +88,8 @@ public class Alert extends Panel {
         this.blockHeader = new Label("block", header);
         this.message = new Label("message", getDefaultModel());
         this.closeButton = new WebMarkupContainer("close");
+        this.typeModel = Model.of(type.cssClassName());
+        add(new CssClassNameAppender(typeModel));
 
         add(this.inlineHeader, this.blockHeader, this.message, this.closeButton);
 
@@ -91,6 +109,16 @@ public class Alert extends Panel {
         return this;
     }
 
+    @Override
+    public void renderHead(IHeaderResponse response) {
+        super.renderHead(response);
+
+        if (duration != null && duration.seconds() > 0) {
+            response.render(OnDomReadyHeaderItem.forScript("window.setTimeout(function(){ $('#" + getMarkupId() + "').alert('close');}," +
+                                                           duration.getMilliseconds() + ");"));
+        }
+    }
+
     /**
      * Sets the alert type.
      *
@@ -99,6 +127,17 @@ public class Alert extends Panel {
      */
     public Alert type(Type type) {
         this.type = type;
+        return this;
+    }
+
+    /**
+     * hides the alert box after given duration.
+     *
+     * @param duration the duration to use for closing the alert box
+     * @return this.
+     */
+    public Alert hideAfter(Duration duration) {
+        this.duration = duration;
         return this;
     }
 
@@ -131,6 +170,6 @@ public class Alert extends Panel {
             add(new BootstrapJavascriptBehavior());
         }
 
-        add(type.newCssClassNameAppender());
+        typeModel.setObject(type.cssClassName());
     }
 }
