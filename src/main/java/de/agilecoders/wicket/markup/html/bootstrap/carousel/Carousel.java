@@ -1,5 +1,6 @@
 package de.agilecoders.wicket.markup.html.bootstrap.carousel;
 
+import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapResourcesBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
 import de.agilecoders.wicket.util.Components;
 import org.apache.wicket.AttributeModifier;
@@ -7,6 +8,7 @@ import org.apache.wicket.Component;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
+import org.apache.wicket.markup.html.TransparentWebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
@@ -35,6 +37,7 @@ public class Carousel extends Panel {
         setOutputMarkupId(true);
 
         add(new CssClassNameAppender("carousel", "slide"));
+        add(new BootstrapResourcesBehavior());
 
         add(newImageList("images"),
             newNavigationButton("prev"),
@@ -89,12 +92,15 @@ public class Carousel extends Panel {
                     description.setVisible(false);
                 }
 
+                TransparentWebMarkupContainer caption = new TransparentWebMarkupContainer("caption");
+                caption.setVisible(header.isVisible() || description.isVisible());
+
                 if(!renderedActive) {
                     renderedActive = true;
                     item.add(new CssClassNameAppender("active"));
                 }
 
-                item.add(image, header, description);
+                item.add(image, header, description, caption);
             }
         };
     }
