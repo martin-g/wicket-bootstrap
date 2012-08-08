@@ -43,6 +43,7 @@ public class Navbar extends Panel {
 
     private boolean fluid = false;
     private boolean fixedTop = false;
+    private boolean fixedBottom = false;
 
     private final List<Component> buttonLeftList = Lists.newArrayList();
     private final List<Component> buttonRightList = Lists.newArrayList();
@@ -132,6 +133,8 @@ public class Navbar extends Panel {
 
         if (isFixedTop()) {
             add(new CssClassNameAppender("navbar-fixed-top"));
+        } else if (isFixedBootom()) {
+            add(new CssClassNameAppender("navbar-fixed-bottom"));
         }
 
         brandNameLink.setVisible(brandNameLink.getBody() != null);
@@ -146,6 +149,12 @@ public class Navbar extends Panel {
         return fixedTop;
     }
 
+    /**
+     * @return true, if the navigation is fixed on the bottom of the screen.
+     */
+    public boolean isFixedBootom() {
+        return fixedBottom;
+    }
     /**
      * @return true, if the navigation is rendered for a fluid page layout.
      */
@@ -211,6 +220,19 @@ public class Navbar extends Panel {
      */
     public Navbar fixedTop() {
         this.fixedTop = true;
+        this.fixedBottom = false;
+
+        return this;
+    }
+
+    /**
+     * fixates the navigation on the top of the screen.
+     *
+     * @return the component's current instance.
+     */
+    public Navbar fixedBottom() {
+        this.fixedTop = false;
+        this.fixedBottom = true;
 
         return this;
     }
