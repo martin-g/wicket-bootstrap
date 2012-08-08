@@ -1,8 +1,9 @@
 package de.agilecoders.wicket.markup.html.bootstrap.block;
 
+import com.google.common.base.Joiner;
 import com.google.common.collect.Lists;
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.AssertTagNameBehavior;
+import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
 import de.agilecoders.wicket.markup.html.references.BootstrapPrettifyCssReference;
 import de.agilecoders.wicket.markup.html.references.BootstrapPrettifyJavaScriptReference;
 import org.apache.wicket.Component;
@@ -10,6 +11,7 @@ import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.head.OnLoadHeaderItem;
+import org.apache.wicket.model.Model;
 
 import java.util.List;
 
@@ -39,9 +41,11 @@ public class CodeBehavior extends AssertTagNameBehavior {
 
             return "";
         }
+
     }
 
     private boolean lineNumbers = false;
+    private Model<String> cssClassNameModel;
     private Language language = Language.DYNAMIC;
     private int from = 0;
 
@@ -50,6 +54,8 @@ public class CodeBehavior extends AssertTagNameBehavior {
      */
     public CodeBehavior() {
         super("code", "pre");
+
+        this.cssClassNameModel = Model.of("");
     }
 
     @Override
@@ -62,6 +68,13 @@ public class CodeBehavior extends AssertTagNameBehavior {
         response.render(OnLoadHeaderItem.forScript("window.prettyPrint && prettyPrint();"));
     }
 
+    @Override
+    public void bind(Component component) {
+        super.bind(component);
+
+        component.add(new CssClassNameAppender(cssClassNameModel));
+    }
+
     /**
      * {@inheritDoc}
      */
@@ -69,7 +82,7 @@ public class CodeBehavior extends AssertTagNameBehavior {
     public void onConfigure(Component component) {
         super.onConfigure(component);
 
-        component.add(new CssClassNameAppender(createCssClassNames()));
+        cssClassNameModel.setObject(Joiner.on(" ").join(createCssClassNames()));
     }
 
     /**

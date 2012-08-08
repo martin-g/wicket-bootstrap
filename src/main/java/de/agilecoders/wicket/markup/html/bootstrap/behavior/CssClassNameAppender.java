@@ -2,11 +2,14 @@ package de.agilecoders.wicket.markup.html.bootstrap.behavior;
 
 import com.google.common.base.Joiner;
 import com.google.common.collect.Lists;
+import org.apache.wicket.Component;
 import org.apache.wicket.behavior.AttributeAppender;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
 import java.util.List;
+
+import static com.google.common.base.Strings.nullToEmpty;
 
 /**
  * A CssClassNameAppender appends the given value, rather than replace it. This is especially useful
@@ -91,4 +94,28 @@ public class CssClassNameAppender extends AttributeAppender {
         this(Model.of(cssClassNameProvider.cssClassName()));
     }
 
+    private String value() {
+        return nullToEmpty((String) getReplaceModel().getObject());
+    }
+
+    @Override
+    public void beforeRender(Component component) {
+        super.beforeRender(component);
+
+        removeDuplicates(component);
+    }
+
+    /**
+     * removes all duplicated css class name appender
+     *
+     * @param component the bound component
+     */
+    private void removeDuplicates(Component component) {
+        List<CssClassNameAppender> behaviors = component.getBehaviors(CssClassNameAppender.class);
+        for (CssClassNameAppender behavior : behaviors) {
+            if (behavior.value().equals(value())) {
+                component.remove(behavior);
+            }
+        }
+    }
 }

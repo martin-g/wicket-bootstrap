@@ -1,9 +1,9 @@
 package de.agilecoders.wicket.markup.html.bootstrap.image;
 
-import com.google.common.collect.Lists;
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.AssertTagNameBehavior;
+import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
 import org.apache.wicket.Component;
+import org.apache.wicket.model.Model;
 
 /**
  * An Icon component displays a non localizable image resource.
@@ -15,14 +15,35 @@ public class IconBehavior extends AssertTagNameBehavior {
 
     private final IconType type;
     private boolean invert = false;
+    private final Model<String> value;
 
     /**
-     * @param type The type of the icon, e.g. Search, Home, User,...
+     * Construct.
+     *
+     * @param type   The type of the icon, e.g. Search, Home, User,...
+     * @param invert whether to invert the icon or not
      */
-    public IconBehavior(final IconType type) {
+    public IconBehavior(final IconType type, final boolean invert) {
         super("i");
 
         this.type = type;
+        this.value = Model.of("");
+    }
+
+    /**
+     * Construct.
+     *
+     * @param type The type of the icon, e.g. Search, Home, User,...
+     */
+    public IconBehavior(final IconType type) {
+        this(type, false);
+    }
+
+    @Override
+    public void bind(Component component) {
+        super.bind(component);
+
+        component.add(new CssClassNameAppender(value));
     }
 
     @Override
@@ -32,8 +53,9 @@ public class IconBehavior extends AssertTagNameBehavior {
         if (type != null && !type.equals(IconType.NULL)) {
             final String invertPostfix = isInverted() ? "icon-white" : "";
 
-            component.add(new CssClassNameAppender(Lists.newArrayList(type.cssClassName(), invertPostfix)));
+            value.setObject(type.cssClassName() + " " + invertPostfix);
         } else {
+            value.setObject("");
             component.setVisible(false);
         }
     }
@@ -56,6 +78,9 @@ public class IconBehavior extends AssertTagNameBehavior {
         return this;
     }
 
+    /**
+     * @return the current icon type
+     */
     public IconType type() {
         return type;
     }
