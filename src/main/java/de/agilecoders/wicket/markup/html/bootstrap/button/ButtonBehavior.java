@@ -63,6 +63,6 @@ public class ButtonBehavior extends BootstrapBaseBehavior {
     public void onComponentTag(Component component, ComponentTag tag) {
         super.onComponentTag(component, tag);
 
-        Components.assertTag(component, tag, "a", "button");
+        Components.assertTag(component, tag, "a", "button", "input");
     }
 }
