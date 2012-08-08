@@ -2,6 +2,7 @@ package de.agilecoders.wicket.markup.html.bootstrap.navbar;
 
 import com.google.common.collect.Lists;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
+import de.agilecoders.wicket.markup.html.bootstrap.button.Activateable;
 import de.agilecoders.wicket.markup.html.bootstrap.button.Bookmarkable;
 import org.apache.wicket.Component;
 import org.apache.wicket.Page;
@@ -85,10 +86,18 @@ public class Navbar extends Panel {
                 Component button = components.getModelObject();
                 components.add(button);
 
-                Class pageClass = getPage().getClass();
-                if (button instanceof Bookmarkable && pageClass.equals(((Bookmarkable)button).getPageClass())) {
+                Page page = getPage();
+                if (button instanceof Activateable) {
+                    Activateable activateable = (Activateable) button;
+                    if (activateable.isActive(button)) {
+                        components.add(new CssClassNameAppender("active"));
+                    }
+                }
+                // TODO consider removing Bookmarkable. Often the PageParameters are needed as well to make this next check.
+                // Activateable can handle all of this
+                else if (button instanceof Bookmarkable && page.getClass().equals(((Bookmarkable)button).getPageClass())) {
                     components.add(new CssClassNameAppender("active"));
-                } // TODO: add Activatable interface
+                }
             }
         };
     }
