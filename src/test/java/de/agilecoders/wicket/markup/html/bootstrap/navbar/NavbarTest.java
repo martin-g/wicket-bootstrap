@@ -44,12 +44,23 @@ public class NavbarTest extends WicketApplicationTest {
     @Test
     public void fixedTopClassIsRendered() {
         Navbar navbar = new Navbar("id");
-        navbar.fixedTop();
+        navbar.setPosition(Navbar.Position.TOP);
 
         tester().startComponentInPage(navbar);
 
-        Assert.assertThat(navbar.isFixedTop(), is(equalTo(true)));
+        Assert.assertThat(navbar.getPosition(), is(equalTo(Navbar.Position.TOP)));
         Assert.assertThat(tester().getTagByWicketId("id").getAttribute("class"), is(equalTo(("navbar navbar-fixed-top"))));
+    }
+
+    @Test
+    public void fixedBottomClassIsRendered() {
+        Navbar navbar = new Navbar("id");
+        navbar.setPosition(Navbar.Position.BOTTOM);
+
+        tester().startComponentInPage(navbar);
+
+        Assert.assertThat(navbar.getPosition(), is(equalTo(Navbar.Position.BOTTOM)));
+        Assert.assertThat(tester().getTagByWicketId("id").getAttribute("class"), is(equalTo(("navbar navbar-fixed-bottom"))));
     }
 
     @Test
@@ -79,7 +90,7 @@ public class NavbarTest extends WicketApplicationTest {
     @Test
     public void buttonIsAddedToLeftNavigation() {
         Navbar navbar = new Navbar("id");
-        navbar.addButton(Navbar.Position.LEFT, new NavbarButton<Page>(Page.class, Model.of("Link Name")));
+        navbar.addButton(Navbar.ButtonPosition.LEFT, new NavbarButton<Page>(Page.class, Model.of("Link Name")));
 
         tester().startComponentInPage(navbar);
         TagTester tagTester = tester().getTagByWicketId("navLeftList");
@@ -92,7 +103,7 @@ public class NavbarTest extends WicketApplicationTest {
     @Test
     public void buttonWithIconIsAddedToLeftNavigation() {
         Navbar navbar = new Navbar("id");
-        navbar.addButton(Navbar.Position.LEFT, new NavbarButton<Page>(Page.class, Model.of("Link Name")).setIcon(new Icon("icon", IconType.AlignCenter)));
+        navbar.addButton(Navbar.ButtonPosition.LEFT, new NavbarButton<Page>(Page.class, Model.of("Link Name")).setIcon(new Icon("icon", IconType.AlignCenter)));
 
         tester().startComponentInPage(navbar);
 
