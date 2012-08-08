@@ -1,8 +1,9 @@
 package de.agilecoders.wicket.markup.html.bootstrap.button.dropdown;
 
-import de.agilecoders.wicket.markup.html.bootstrap.button.Bookmarkable;
+import de.agilecoders.wicket.markup.html.bootstrap.button.Activatable;
 import de.agilecoders.wicket.markup.html.bootstrap.image.Icon;
 import de.agilecoders.wicket.markup.html.bootstrap.image.IconType;
+import org.apache.wicket.Component;
 import org.apache.wicket.Page;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.BookmarkablePageLink;
@@ -18,7 +19,7 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
  * @author miha
  * @version 1.0
  */
-public class MenuPageButton<T extends Page> extends BookmarkablePageLink<T> implements Bookmarkable {
+public class MenuPageButton<T extends Page> extends BookmarkablePageLink<T> implements Activatable {
     private Icon icon;
     private Label label;
 
@@ -73,5 +74,10 @@ public class MenuPageButton<T extends Page> extends BookmarkablePageLink<T> impl
         this.icon = icon;
 
         return this;
+    }
+
+    @Override
+    public boolean isActive(Component button) {
+        return getPageClass().equals(button.getPage().getClass());
     }
 }

@@ -37,6 +37,10 @@ public class WicketApplicationTest {
         };
 
         tester = new WicketTester(application);
+        onBefore();
+    }
+
+    protected void onBefore() {
     }
 
     protected Class<? extends Page> getHomePage() {

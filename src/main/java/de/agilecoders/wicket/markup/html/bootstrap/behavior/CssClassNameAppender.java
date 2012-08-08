@@ -1,33 +1,32 @@
 package de.agilecoders.wicket.markup.html.bootstrap.behavior;
 
 import com.google.common.base.Joiner;
+import com.google.common.base.Splitter;
 import com.google.common.collect.Lists;
-import org.apache.wicket.Component;
 import org.apache.wicket.behavior.AttributeAppender;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
+import org.apache.wicket.util.string.Strings;
 
 import java.util.List;
-
-import static com.google.common.base.Strings.nullToEmpty;
 
 /**
  * A CssClassNameAppender appends the given value, rather than replace it. This is especially useful
  * for adding CSS classes to markup elements.
- *
+ * <p/>
  * <pre>
  *     &lt;span class=&quot;className&quot; wicket:id=&quot;foo&quot;&gt;
  * </pre>
- *
+ * <p/>
  * can be modified with these CssClassNameAppender:
- *
+ * <p/>
  * <pre>
  * link.add(new CssClassNameAppender(&quot;className2&quot;));
  * link.add(new CssClassNameAppender(Arrays.asList(&quot;className2&quot;,&quot;className3&quot;)));
  * </pre>
- *
+ * <p/>
  * this will result in the following markup:
- *
+ * <p/>
  * <pre>
  *     &lt;span class=&quot;className className2 className3&quot; wicket:id=&quot;foo&quot; &gt;
  * </pre>
@@ -53,7 +52,7 @@ public class CssClassNameAppender extends AttributeAppender {
     public static String separator() {
         return SEPARATOR;
     }
-    
+
     /**
      * Creates an AttributeModifier that appends the appendModel's value to the current value of the
      * class attribute, and will add the attribute when it is not there already.
@@ -94,28 +93,27 @@ public class CssClassNameAppender extends AttributeAppender {
         this(Model.of(cssClassNameProvider.cssClassName()));
     }
 
-    private String value() {
-        return nullToEmpty((String) getReplaceModel().getObject());
-    }
-
     @Override
-    public void beforeRender(Component component) {
-        super.beforeRender(component);
+    protected String newValue(String currentValue, String appendValue) {
+        // Short circuit when one of the values is empty: return the other value.
+        if (Strings.isEmpty(currentValue)) {
+            return appendValue != null ? appendValue : null;
+        } else if (Strings.isEmpty(appendValue)) {
+            return currentValue != null ? currentValue : null;
+        }
 
-        removeDuplicates(component);
-    }
+        List<String> values = Lists.newArrayList(Splitter.on(separator()).split(currentValue));
+        List<String> appendValues = Lists.newArrayList(Splitter.on(separator()).split(appendValue));
 
-    /**
-     * removes all duplicated css class name appender
-     *
-     * @param component the bound component
-     */
-    private void removeDuplicates(Component component) {
-        List<CssClassNameAppender> behaviors = component.getBehaviors(CssClassNameAppender.class);
-        for (CssClassNameAppender behavior : behaviors) {
-            if (behavior.value().equals(value())) {
-                component.remove(behavior);
+        StringBuilder sb = new StringBuilder(currentValue);
+
+        for (String append : appendValues) {
+            if (!values.contains(append)) {
+                sb.append(separator());
+                sb.append(append);
             }
         }
+
+        return sb.toString();
     }
 }

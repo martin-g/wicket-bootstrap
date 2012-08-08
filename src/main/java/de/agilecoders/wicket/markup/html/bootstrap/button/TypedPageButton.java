@@ -2,6 +2,7 @@ package de.agilecoders.wicket.markup.html.bootstrap.button;
 
 import de.agilecoders.wicket.markup.html.bootstrap.image.Icon;
 import de.agilecoders.wicket.markup.html.bootstrap.image.IconType;
+import org.apache.wicket.Component;
 import org.apache.wicket.Page;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.BookmarkablePageLink;
@@ -23,7 +24,7 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
  * @author miha
  * @version 1.0
  */
-public class TypedPageButton<T> extends BookmarkablePageLink<T> implements BootstrapButton<TypedPageButton>, Bookmarkable {
+public class TypedPageButton<T> extends BookmarkablePageLink<T> implements BootstrapButton<TypedPageButton>, Activatable {
 
     private final Label label;
 
@@ -115,5 +116,10 @@ public class TypedPageButton<T> extends BookmarkablePageLink<T> implements Boots
         super.onConfigure();
 
         add(icon, label);
+    }
+
+    @Override
+    public boolean isActive(Component button) {
+        return button.getPage().getClass().equals(getPageClass());
     }
 }

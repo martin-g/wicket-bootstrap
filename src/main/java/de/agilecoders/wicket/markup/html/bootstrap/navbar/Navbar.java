@@ -2,8 +2,8 @@ package de.agilecoders.wicket.markup.html.bootstrap.navbar;
 
 import com.google.common.collect.Lists;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
-import de.agilecoders.wicket.markup.html.bootstrap.button.Activateable;
-import de.agilecoders.wicket.markup.html.bootstrap.button.Bookmarkable;
+import de.agilecoders.wicket.markup.html.bootstrap.button.Activatable;
+import de.agilecoders.wicket.util.Components;
 import org.apache.wicket.Component;
 import org.apache.wicket.Page;
 import org.apache.wicket.markup.html.TransparentWebMarkupContainer;
@@ -35,6 +35,7 @@ public class Navbar extends Panel {
     }
 
     private final WebMarkupContainer container;
+    private CssClassNameAppender activeStateAppender;
 
     private final BookmarkablePageLink<Page> brandNameLink;
     private final Component navRightList;
@@ -69,11 +70,13 @@ public class Navbar extends Panel {
         navLeftList = newNavigation("navLeftList", buttonLeftList);
         navRightList = newNavigation("navRightList", buttonRightList);
 
+        activeStateAppender = new CssClassNameAppender("active");
+
         add(container, brandNameLink, navLeftList, navRightList);
     }
 
     /**
-     * TODO document
+     * creates a new navigation list
      *
      * @param componentId The non-null id of a new navigation component
      * @param listModel   The component's model
@@ -86,17 +89,14 @@ public class Navbar extends Panel {
                 Component button = components.getModelObject();
                 components.add(button);
 
-                Page page = getPage();
-                if (button instanceof Activateable) {
-                    Activateable activateable = (Activateable) button;
-                    if (activateable.isActive(button)) {
-                        components.add(new CssClassNameAppender("active"));
+                Components.remove(components, activeStateAppender);
+
+                if (button instanceof Activatable) {
+                    Activatable activatable = (Activatable) button;
+
+                    if (activatable.isActive(button)) {
+                        components.add(activeStateAppender);
                     }
-                }
-                // TODO consider removing Bookmarkable. Often the PageParameters are needed as well to make this next check.
-                // Activateable can handle all of this
-                else if (button instanceof Bookmarkable && page.getClass().equals(((Bookmarkable)button).getPageClass())) {
-                    components.add(new CssClassNameAppender("active"));
                 }
             }
         };
