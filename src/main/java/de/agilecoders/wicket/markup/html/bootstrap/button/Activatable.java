@@ -5,7 +5,7 @@ import org.apache.wicket.Component;
 /**
  * An interface used by Navbar to decide whether a component is the currently active one
  */
-public interface Activateable {
+public interface Activatable {
 
     /**
      * Decides whether the current instance ({@code this}) is the active button
