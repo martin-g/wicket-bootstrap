@@ -3,8 +3,6 @@ package de.agilecoders.wicket.settings;
 import com.google.common.base.Strings;
 import org.apache.wicket.Session;
 
-import java.io.Serializable;
-
 /**
  * TODO: document
  *
@@ -12,7 +10,7 @@ import java.io.Serializable;
  * @version 1.0
  */
 public class SessionThemeProvider implements ActiveThemeProvider {
-    private static final String KEY = "theme";
+
     private ThemeProvider themeProvider;
 
     public SessionThemeProvider(ThemeProvider themeProvider) {
@@ -25,12 +23,12 @@ public class SessionThemeProvider implements ActiveThemeProvider {
 
     @Override
     public Theme getActiveTheme() {
-        Serializable value = Session.get().getAttribute(KEY);
+        String style = Session.get().getStyle();
 
-        if (value != null) {
-            return themeProvider.byName(String.valueOf(value));
-        } else {
+        if (Strings.isNullOrEmpty(style)) {
             return themeProvider.defaultTheme();
+        } else {
+            return themeProvider.byName(style);
         }
     }
 
@@ -44,9 +42,9 @@ public class SessionThemeProvider implements ActiveThemeProvider {
         assertBoundSession();
 
         if (theme != null) {
-            Session.get().setAttribute(KEY, theme.name());
+            Session.get().setStyle(theme.name());
         } else {
-            Session.get().removeAttribute(KEY);
+            Session.get().setStyle(null);
         }
     }
 
