@@ -26,7 +26,17 @@ public final class Bootstrap {
     private static final MetaDataKey<IBootstrapSettings> BOOTSTRAP_SETTINGS_METADATA_KEY = new MetaDataKey<IBootstrapSettings>() {
     };
 
-    private static final LessEngine LESS_ENGINE = new LessEngine();
+    /**
+     * Use http://en.wikipedia.org/wiki/Initialization_on_demand_holder_idiom
+     * to load LessEngine if it is really needed
+     */
+    private static class LessEngineHolder {
+        private final static LessEngine instance = new LessEngine();
+    }
+
+    private static LessEngine getLessEngine() {
+        return LessEngineHolder.instance;
+    }
 
     private Bootstrap() {
     }
