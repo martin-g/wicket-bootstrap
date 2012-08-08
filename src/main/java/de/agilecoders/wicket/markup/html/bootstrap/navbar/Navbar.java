@@ -2,8 +2,10 @@ package de.agilecoders.wicket.markup.html.bootstrap.navbar;
 
 import com.google.common.collect.Lists;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
+import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameModifier;
 import de.agilecoders.wicket.markup.html.bootstrap.button.Activateable;
 import de.agilecoders.wicket.markup.html.bootstrap.button.Bookmarkable;
+import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.Page;
 import org.apache.wicket.markup.html.TransparentWebMarkupContainer;
@@ -28,9 +30,22 @@ import java.util.List;
 public class Navbar extends Panel {
 
     /**
+     * indicates the position of the navigation bar itself
+     */
+    public static enum Position {
+        /** fixate at the top of the screen */
+        TOP,
+
+        /** fixate at the bottom of the screen */
+        BOTTOM,
+
+        /** do not fixate the position */
+        NONE
+    }
+    /**
      * indicates the position of a button inside the navigation bar.
      */
-    public enum Position {
+    public static enum ButtonPosition {
         LEFT, RIGHT
     }
 
@@ -40,9 +55,8 @@ public class Navbar extends Panel {
     private final Component navRightList;
     private final Component navLeftList;
 
+    private Position position = Position.NONE;
     private boolean fluid = false;
-    private boolean fixedTop = false;
-    private boolean fixedBottom = false;
 
     private final List<Component> buttonLeftList = Lists.newArrayList();
     private final List<Component> buttonRightList = Lists.newArrayList();
@@ -131,10 +145,13 @@ public class Navbar extends Panel {
         add(new CssClassNameAppender("navbar"));
         container.add(new CssClassNameAppender(isFluid() ? "container-fluid" : "container"));
 
-        if (isFixedTop()) {
+        if (Position.TOP == getPosition()) {
             add(new CssClassNameAppender("navbar-fixed-top"));
-        } else if (isFixedBootom()) {
+        } else if (Position.BOTTOM == getPosition()) {
             add(new CssClassNameAppender("navbar-fixed-bottom"));
+        } else {
+            add(new CssClassNameModifier("navbar-fixed-top", AttributeModifier.VALUELESS_ATTRIBUTE_REMOVE));
+            add(new CssClassNameModifier("navbar-fixed-bottom", AttributeModifier.VALUELESS_ATTRIBUTE_REMOVE));
         }
 
         brandNameLink.setVisible(brandNameLink.getBody() != null);
@@ -145,16 +162,10 @@ public class Navbar extends Panel {
     /**
      * @return true, if the navigation is fixed on the top of the screen.
      */
-    public boolean isFixedTop() {
-        return fixedTop;
+    public Position getPosition() {
+        return position;
     }
 
-    /**
-     * @return true, if the navigation is fixed on the bottom of the screen.
-     */
-    public boolean isFixedBootom() {
-        return fixedBottom;
-    }
     /**
      * @return true, if the navigation is rendered for a fluid page layout.
      */
@@ -169,10 +180,10 @@ public class Navbar extends Panel {
      * @param buttons  the buttons to add
      * @return this component
      */
-    public final Navbar addButton(Position position, Component... buttons) {
-        if (Position.LEFT.equals(position)) {
+    public final Navbar addButton(ButtonPosition position, Component... buttons) {
+        if (ButtonPosition.LEFT.equals(position)) {
             buttonLeftList.addAll(Lists.newArrayList(buttons));
-        } else if (Position.RIGHT.equals(position)) {
+        } else if (ButtonPosition.RIGHT.equals(position)) {
             buttonRightList.addAll(Lists.newArrayList(buttons));
         }
 
@@ -214,26 +225,14 @@ public class Navbar extends Panel {
     }
 
     /**
-     * fixates the navigation on the top of the screen.
+     * Sets the prefered position of the navigation bar on the screen.
      *
      * @return the component's current instance.
      */
-    public Navbar fixedTop() {
-        this.fixedTop = true;
-        this.fixedBottom = false;
+    public Navbar setPosition(Position position) {
+        this.position = position;
 
         return this;
     }
 
-    /**
-     * fixates the navigation on the top of the screen.
-     *
-     * @return the component's current instance.
-     */
-    public Navbar fixedBottom() {
-        this.fixedTop = false;
-        this.fixedBottom = true;
-
-        return this;
-    }
 }
