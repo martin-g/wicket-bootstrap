@@ -7,6 +7,7 @@ package de.agilecoders.wicket.markup.html.bootstrap.button;
  * @version 1.0
  */
 public enum ButtonSize {
+    Mini("btn-mini"),
     Small("btn-small"),
     Medium(""),
     Large("btn-large");
