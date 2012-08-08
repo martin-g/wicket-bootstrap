@@ -3,12 +3,14 @@ package de.agilecoders.wicket.markup.html.bootstrap.image;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameProvider;
 
+import java.io.Serializable;
+
 /**
  * References all available icons inside the icon sprite.
  *
  * @see {http://twitter.github.com/bootstrap/base-css.html#buttons}
  */
-public class IconType implements CssClassNameProvider {
+public class IconType implements CssClassNameProvider, Serializable {
 
     public static final IconType NULL = new IconType("null");
     public static final IconType Repeat = new IconType("repeat");
