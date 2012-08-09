@@ -10,4 +10,6 @@ public interface BootstrapButton<T> {
 
     T setSize(ButtonSize buttonSize);
 
+    T setType(ButtonType buttonType);
+
 }

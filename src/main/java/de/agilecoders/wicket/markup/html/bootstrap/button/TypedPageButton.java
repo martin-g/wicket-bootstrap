@@ -84,6 +84,13 @@ public class TypedPageButton<T> extends BookmarkablePageLink<T> implements Boots
         return this;
     }
 
+    @Override
+    public TypedPageButton setType(ButtonType buttonType) {
+        this.buttonBehavior.withType(buttonType);
+
+        return this;
+    }
+
     /**
      * sets the label of the button.
      *

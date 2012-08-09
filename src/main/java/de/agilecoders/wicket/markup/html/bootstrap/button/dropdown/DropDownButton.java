@@ -52,13 +52,6 @@ public class DropDownButton extends Panel implements BootstrapButton<DropDownBut
         response.render(OnLoadHeaderItem.forScript("$('.dropdown-toggle').dropdown()"));
     }
 
-    @Override
-    protected void onConfigure() {
-        super.onConfigure();
-
-        //label.add(new ButtonCssClassAppender(buttonType, buttonSize));
-    }
-
     public DropDownButton setButtonLabel(IModel<String> label) {
         this.label.setDefaultModel(label);
 

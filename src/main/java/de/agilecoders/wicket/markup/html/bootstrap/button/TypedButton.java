@@ -48,4 +48,11 @@ public class TypedButton extends Button implements BootstrapButton<TypedButton> 
         return this;
     }
 
+    @Override
+    public TypedButton setType(ButtonType buttonType) {
+        this.buttonBehavior.withType(buttonType);
+
+        return this;
+    }
+
 }

@@ -17,7 +17,7 @@ import java.util.Set;
  * {@code AssertTagNameBehavior} with both tag names.
  *
  * <pre>
- *     add(new AssertTagNameBehavior("div", "span));
+ *     add(new AssertTagNameBehavior("div", "span"));
  * </pre>
  *
  * @author miha
