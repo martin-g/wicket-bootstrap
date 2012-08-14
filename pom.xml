@@ -75,6 +75,12 @@
                 <version>1.7R4</version>
             </dependency>
 
+            <dependency>
+                <groupId>org.kohsuke</groupId>
+                <artifactId>doxia-module-markdown</artifactId>
+                <version>1.0</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
@@ -154,6 +160,11 @@
             <scope>provided</scope>
         </dependency>
 
+        <dependency>
+            <groupId>org.kohsuke</groupId>
+            <artifactId>doxia-module-markdown</artifactId>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -193,23 +204,46 @@
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-enforcer-plugin</artifactId>
-                <version>1.1</version>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <skipDeploy>true</skipDeploy>
+                    <reportPlugins>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-project-info-reports-plugin</artifactId>
+                            <version>2.4</version>
+                            <configuration>
+                                <dependencyDetailsEnabled>false</dependencyDetailsEnabled>
+                                <dependencyLocationsEnabled>false</dependencyLocationsEnabled>
+                            </configuration>
+                            <reports>
+                                <report>dependencies</report>
+                                <report>scm</report>
+                            </reports>
+                        </plugin>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-javadoc-plugin</artifactId>
+                            <version>2.8</version>
+                        </plugin>
+                    </reportPlugins>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.github.github</groupId>
+                <artifactId>site-maven-plugin</artifactId>
+                <version>0.5</version>
                 <executions>
                     <execution>
-                        <id>enforce-versions</id>
                         <goals>
-                            <goal>enforce</goal>
+                            <goal>site</goal>
                         </goals>
+                        <phase>site-deploy</phase>
                         <configuration>
-                            <rules>
-                                <requireMavenVersion>
-                                    <version>2.0.6</version>
-                                </requireMavenVersion>
-                                <requireJavaVersion>
-                                    <version>${mvn.build.java.version}</version>
-                                </requireJavaVersion>
-                            </rules>
+                            <path>${project.version}</path>
+                            <merge>true</merge>
+                            <message>update maven-site</message>
                         </configuration>
                     </execution>
                 </executions>

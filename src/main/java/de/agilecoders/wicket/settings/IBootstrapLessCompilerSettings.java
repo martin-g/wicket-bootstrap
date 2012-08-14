@@ -1,7 +1,7 @@
 package de.agilecoders.wicket.settings;
 
 import com.asual.lesscss.LessOptions;
-import de.agilecoders.wicket.util.BootstrapLessCompiler;
+import de.agilecoders.wicket.util.IBootstrapLessCompiler;
 
 import java.nio.charset.Charset;
 
@@ -47,12 +47,12 @@ public interface IBootstrapLessCompilerSettings {
      *
      * @param lessCompiler The less compiler to use
      */
-    void setLessCompiler(BootstrapLessCompiler lessCompiler);
+    void setLessCompiler(IBootstrapLessCompiler lessCompiler);
 
     /**
      * @return The less compiler to use
      */
-    BootstrapLessCompiler getLessCompiler();
+    IBootstrapLessCompiler getLessCompiler();
 
     /**
      * sets the less compiler options
