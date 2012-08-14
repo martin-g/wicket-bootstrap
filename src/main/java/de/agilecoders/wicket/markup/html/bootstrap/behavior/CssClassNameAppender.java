@@ -102,8 +102,8 @@ public class CssClassNameAppender extends AttributeAppender {
             return currentValue != null ? currentValue : null;
         }
 
-        List<String> values = Lists.newArrayList(Splitter.on(separator()).split(currentValue));
-        List<String> appendValues = Lists.newArrayList(Splitter.on(separator()).split(appendValue));
+        List<String> values = Lists.newArrayList(Splitter.on(separator()).trimResults().split(currentValue));
+        List<String> appendValues = Lists.newArrayList(Splitter.on(separator()).trimResults().split(appendValue));
 
         StringBuilder sb = new StringBuilder(currentValue);
 

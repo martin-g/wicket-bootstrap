@@ -1,6 +1,6 @@
 package de.agilecoders.wicket.markup.html.references;
 
-import de.agilecoders.wicket.util.References;
+import de.agilecoders.wicket.markup.html.themes.bootstrap.BootstrapCssReference;
 import org.apache.wicket.request.resource.CssResourceReference;
 import org.apache.wicket.request.resource.ResourceReference;
 

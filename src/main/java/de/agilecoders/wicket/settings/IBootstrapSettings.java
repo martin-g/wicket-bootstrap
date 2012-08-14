@@ -68,4 +68,9 @@ public interface IBootstrapSettings {
     ThemeProvider getThemeProvider();
 
     void setThemeProvider(ThemeProvider themeProvider);
+
+    /**
+     * @return the {@link IBootstrapLessCompilerSettings} implementation
+     */
+    IBootstrapLessCompilerSettings getBootstrapLessCompilerSettings();
 }

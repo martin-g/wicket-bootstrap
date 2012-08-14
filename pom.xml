@@ -68,6 +68,13 @@
                 <version>${junit.version}</version>
                 <scope>test</scope>
             </dependency>
+
+            <dependency>
+                <groupId>org.mozilla</groupId>
+                <artifactId>rhino</artifactId>
+                <version>1.7R4</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
@@ -107,6 +114,11 @@
             <groupId>com.asual.lesscss</groupId>
             <artifactId>lesscss-engine</artifactId>
             <version>1.3.0</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-vfs</groupId>
+            <artifactId>commons-vfs</artifactId>
+            <version>20050307052300</version>
         </dependency>
 
         <!-- SCAN ANNOTATION -->

@@ -97,7 +97,7 @@ public class Navbar extends Panel {
      * @param listModel   The component's model
      * @return a new navigation list view instance
      */
-    private Component newNavigation(final String componentId, final List<Component> listModel) {
+    protected Component newNavigation(final String componentId, final List<Component> listModel) {
         return new ListView<Component>(componentId, listModel) {
             @Override
             protected void populateItem(ListItem<Component> components) {
@@ -123,7 +123,7 @@ public class Navbar extends Panel {
      * @param componentId The non-null id of a new navigation component
      * @return a new brand name page link instance
      */
-    private BookmarkablePageLink<Page> newBrandNameLink(String componentId) {
+    protected BookmarkablePageLink<Page> newBrandNameLink(String componentId) {
         return new BookmarkablePageLink<Page>(componentId, getHomePage());
     }
 

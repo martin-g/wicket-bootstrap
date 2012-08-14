@@ -3,7 +3,7 @@ package de.agilecoders.wicket.settings;
 import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-import de.agilecoders.wicket.markup.html.references.BootstrapCssReference;
+import de.agilecoders.wicket.markup.html.themes.bootstrap.BootstrapCssReference;
 import org.apache.wicket.WicketRuntimeException;
 
 import java.util.List;

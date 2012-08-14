@@ -1,5 +1,6 @@
 package de.agilecoders.wicket.markup.html.references;
 
+import de.agilecoders.wicket.markup.html.themes.cerulean.CeruleanCssReference;
 import org.apache.wicket.request.resource.CssResourceReference;
 import org.apache.wicket.request.resource.ResourceReference;
 
@@ -15,7 +16,7 @@ public class BootswatchCssReference extends CssResourceReference {
     /**
      * Singleton instance of this reference
      */
-    public static final ResourceReference CERULEAN = new BootswatchCssReference("css/bootstrap.cerulean.css");
+    public static final ResourceReference CERULEAN = new CeruleanCssReference();
     public static final ResourceReference AMELIA = new BootswatchCssReference("css/bootstrap.amelia.css");
     public static final ResourceReference JOURNAL = new BootswatchCssReference("css/bootstrap.journal.css");
     public static final ResourceReference CYBORG = new BootswatchCssReference("css/bootstrap.cyborg.css");
@@ -26,7 +27,6 @@ public class BootswatchCssReference extends CssResourceReference {
     public static final ResourceReference SPRUCE = new BootswatchCssReference("css/bootstrap.spruce.css");
     public static final ResourceReference SUPERHERO = new BootswatchCssReference("css/bootstrap.superhero.css");
     public static final ResourceReference UNITED = new BootswatchCssReference("css/bootstrap.united.css");
-    public static final ResourceReference METRO = new BootswatchCssReference("css/bootstrap.metro.css");
 
     /**
      * Private constructor.

@@ -1,18 +1,17 @@
 package de.agilecoders.wicket.settings;
 
-import de.agilecoders.wicket.markup.html.references.BootstrapCssReference;
 import de.agilecoders.wicket.markup.html.references.BootstrapJavaScriptReference;
 import de.agilecoders.wicket.markup.html.references.BootstrapResponsiveCssReference;
 import de.agilecoders.wicket.markup.html.references.JqueryPPJavaScriptReference;
+import de.agilecoders.wicket.markup.html.themes.bootstrap.BootstrapCssReference;
 import org.apache.wicket.Application;
 import org.apache.wicket.request.resource.CssResourceReference;
 import org.apache.wicket.request.resource.ResourceReference;
 
 /**
- * @see IBootstrapSettings
- *
  * @author miha
  * @version 1.0
+ * @see IBootstrapSettings
  */
 public class BootstrapSettings implements IBootstrapSettings {
 
@@ -21,6 +20,7 @@ public class BootstrapSettings implements IBootstrapSettings {
     private ActiveThemeProvider activeThemeProvider = new SessionThemeProvider(themeProvider);
     private boolean useModernizr = false;
     private boolean useJqueryPP = false;
+    private IBootstrapLessCompilerSettings bootstrapLessCompilerSettings = new BootstrapLessCompilerSettings();
 
     /**
      * Constructor.
@@ -107,5 +107,10 @@ public class BootstrapSettings implements IBootstrapSettings {
     @Override
     public void setThemeProvider(ThemeProvider themeProvider) {
         this.themeProvider = themeProvider;
+    }
+
+    @Override
+    public IBootstrapLessCompilerSettings getBootstrapLessCompilerSettings() {
+        return bootstrapLessCompilerSettings;
     }
 }

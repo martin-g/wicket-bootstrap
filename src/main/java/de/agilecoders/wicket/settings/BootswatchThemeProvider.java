@@ -1,6 +1,7 @@
 package de.agilecoders.wicket.settings;
 
 import de.agilecoders.wicket.markup.html.references.BootswatchCssReference;
+import de.agilecoders.wicket.markup.html.themes.cerulean.CeruleanTheme;
 
 /**
  * The {@code BootswatchThemeProvider} provides access to all available bootswatch themes.
@@ -16,7 +17,7 @@ public class BootswatchThemeProvider extends DefaultThemeProvider {
     public BootswatchThemeProvider() {
         super();
 
-        add(new Theme("cerulean", BootswatchCssReference.CERULEAN),
+        add(new CeruleanTheme(),
             new Theme("amelia", BootswatchCssReference.AMELIA),
             new Theme("cyborg", BootswatchCssReference.CYBORG),
             new Theme("journal", BootswatchCssReference.JOURNAL),
@@ -26,7 +27,6 @@ public class BootswatchThemeProvider extends DefaultThemeProvider {
             new Theme("united", BootswatchCssReference.UNITED),
             new Theme("slate", BootswatchCssReference.SLATE),
             new Theme("simplex", BootswatchCssReference.SIMPLEX),
-            //new Theme("metro", BootswatchCssReference.METRO), // comes with kickstrap
             new Theme("superhero", BootswatchCssReference.SUPERHERO));
     }
 

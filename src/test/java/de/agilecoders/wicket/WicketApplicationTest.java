@@ -2,11 +2,12 @@ package de.agilecoders.wicket;
 
 import de.agilecoders.wicket.settings.BootstrapSettings;
 import de.agilecoders.wicket.settings.IBootstrapSettings;
-import org.apache.wicket.Application;
 import org.apache.wicket.Page;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.util.tester.WicketTester;
 import org.junit.Before;
+
+import javax.servlet.ServletContext;
 
 /**
  * TODO: document
@@ -34,6 +35,7 @@ public class WicketApplicationTest {
             public Class<? extends Page> getHomePage() {
                 return WicketApplicationTest.this.getHomePage();
             }
+
         };
 
         tester = new WicketTester(application);
@@ -55,7 +57,7 @@ public class WicketApplicationTest {
         return tester;
     }
 
-    protected final Application application() {
+    protected final WebApplication application() {
         return application;
     }
 
