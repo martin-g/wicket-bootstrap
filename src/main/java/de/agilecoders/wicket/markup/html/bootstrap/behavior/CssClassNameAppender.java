@@ -39,12 +39,12 @@ public class CssClassNameAppender extends AttributeAppender {
     /**
      * Separator between the current value and the concatenated value.
      */
-    private static final String SEPARATOR = " ";
+    protected static final String SEPARATOR = " ";
 
     /**
      * The name of the html class attribute name.
      */
-    private static final String ATTRIBUTE_NAME = "class";
+    protected static final String ATTRIBUTE_NAME = "class";
 
     /**
      * @return separator between the current value and the concatenated value.

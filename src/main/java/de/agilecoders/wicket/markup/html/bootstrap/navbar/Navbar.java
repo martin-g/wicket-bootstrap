@@ -2,10 +2,9 @@ package de.agilecoders.wicket.markup.html.bootstrap.navbar;
 
 import com.google.common.collect.Lists;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameModifier;
+import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameRemover;
 import de.agilecoders.wicket.markup.html.bootstrap.button.Activatable;
 import de.agilecoders.wicket.util.Components;
-import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.Page;
 import org.apache.wicket.markup.html.TransparentWebMarkupContainer;
@@ -150,8 +149,8 @@ public class Navbar extends Panel {
         } else if (Position.BOTTOM == getPosition()) {
             add(new CssClassNameAppender("navbar-fixed-bottom"));
         } else {
-            add(new CssClassNameModifier("navbar-fixed-top", AttributeModifier.VALUELESS_ATTRIBUTE_REMOVE));
-            add(new CssClassNameModifier("navbar-fixed-bottom", AttributeModifier.VALUELESS_ATTRIBUTE_REMOVE));
+            add(new CssClassNameRemover("navbar-fixed-top"));
+            add(new CssClassNameRemover("navbar-fixed-bottom"));
         }
 
         brandNameLink.setVisible(brandNameLink.getBody() != null);
