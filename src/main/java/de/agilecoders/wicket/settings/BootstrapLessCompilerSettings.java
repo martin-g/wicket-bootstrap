@@ -3,6 +3,7 @@ package de.agilecoders.wicket.settings;
 import com.asual.lesscss.LessOptions;
 import com.google.common.base.Charsets;
 import de.agilecoders.wicket.util.BootstrapLessCompiler;
+import de.agilecoders.wicket.util.IBootstrapLessCompiler;
 
 import java.nio.charset.Charset;
 
@@ -15,7 +16,7 @@ import java.nio.charset.Charset;
 public class BootstrapLessCompilerSettings implements IBootstrapLessCompilerSettings {
     private boolean useLessCompiler = false;
     private Charset charset = Charsets.UTF_8;
-    private BootstrapLessCompiler lessCompiler = new BootstrapLessCompiler();
+    private IBootstrapLessCompiler lessCompiler = new BootstrapLessCompiler();
     private LessOptions lessOptions = new LessOptions();
     private CacheStrategy cacheStrategy = CacheStrategy.Modified;
     private boolean storeChanges = false;
@@ -45,12 +46,12 @@ public class BootstrapLessCompilerSettings implements IBootstrapLessCompilerSett
     }
 
     @Override
-    public void setLessCompiler(BootstrapLessCompiler lessCompiler) {
+    public void setLessCompiler(IBootstrapLessCompiler lessCompiler) {
         this.lessCompiler = lessCompiler;
     }
 
     @Override
-    public BootstrapLessCompiler getLessCompiler() {
+    public IBootstrapLessCompiler getLessCompiler() {
         return lessCompiler;
     }
 
