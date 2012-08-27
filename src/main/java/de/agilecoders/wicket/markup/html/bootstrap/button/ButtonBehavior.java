@@ -17,6 +17,7 @@ public class ButtonBehavior extends BootstrapBaseBehavior {
 
     private IModel<ButtonType> buttonType;
     private IModel<ButtonSize> buttonSize;
+    private IModel<Boolean> block;
 
     public ButtonBehavior(final ButtonSize buttonSize) {
         this(ButtonType.Default, buttonSize);
@@ -29,6 +30,11 @@ public class ButtonBehavior extends BootstrapBaseBehavior {
     public ButtonBehavior(ButtonType buttonType, ButtonSize buttonSize) {
         this.buttonType = Model.of(buttonType);
         this.buttonSize = Model.of(buttonSize);
+        this.block = Model.of(false);
+    }
+
+    public boolean isBlock() {
+        return block.getObject();
     }
 
     public ButtonSize size() {
@@ -37,6 +43,11 @@ public class ButtonBehavior extends BootstrapBaseBehavior {
 
     public ButtonType type() {
         return buttonType.getObject();
+    }
+
+    public final ButtonBehavior block(Boolean block) {
+        this.block.setObject(block);
+        return this;
     }
 
     public final ButtonBehavior withType(ButtonType buttonType) {
@@ -55,7 +66,7 @@ public class ButtonBehavior extends BootstrapBaseBehavior {
 
         // a menu button has no css classes, inherits its styles from the menu
         if (!ButtonType.Menu.equals(type())) {
-            component.add(new ButtonCssClassAppender(buttonType, buttonSize));
+            component.add(new ButtonCssClassAppender(buttonType, buttonSize, block));
         }
     }
 

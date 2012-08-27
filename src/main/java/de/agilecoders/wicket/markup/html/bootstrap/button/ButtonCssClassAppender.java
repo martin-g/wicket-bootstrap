@@ -20,6 +20,7 @@ public class ButtonCssClassAppender extends CssClassNameAppender {
 
     private final IModel<ButtonType> type;
     private final IModel<ButtonSize> size;
+    private final IModel<Boolean> block;
 
     /**
      * Constructor.
@@ -27,11 +28,12 @@ public class ButtonCssClassAppender extends CssClassNameAppender {
      * @param type TODO: document
      * @param size TODO: document
      */
-    public ButtonCssClassAppender(IModel<ButtonType> type, IModel<ButtonSize> size) {
+    public ButtonCssClassAppender(IModel<ButtonType> type, IModel<ButtonSize> size, IModel<Boolean> block) {
         super("");
 
         this.type = type;
         this.size = size;
+        this.block = block;
     }
 
 
@@ -53,6 +55,7 @@ public class ButtonCssClassAppender extends CssClassNameAppender {
         return Lists.newArrayList(DEFAULT_CLASSNAME,
                                   type.getObject().cssClassName(),
                                   size.getObject().cssClassName(),
+                                  (block.getObject() ? "btn-block" : ""),
                                   (enabled ? "" : DISABLED_CLASSNAME));
     }
 
