@@ -13,9 +13,12 @@ import java.io.IOException;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
+import static org.mockito.Mockito.spy;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 
 /**
- * TODO: document
+ * Tests the {@link CeruleanCssReference} class.
  *
  * @author miha
  * @version 1.0
@@ -44,6 +47,14 @@ public class CeruleanCssReferenceTest extends WicketApplicationTest {
 
         tester().startResourceReference(ref);
         tester().assertNoErrorMessage();
+    }
+
+    @Test
+    public void lessFileWasGeneratedWithCorrectResource() {
+        BootstrapCssReference ref = spy(CeruleanCssReference.INSTANCE);
+
+        tester().startResourceReference(ref);
+        verify(ref, times(1)).getResource();
     }
 
     @Test

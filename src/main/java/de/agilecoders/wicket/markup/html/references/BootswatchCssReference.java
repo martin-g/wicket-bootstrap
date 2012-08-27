@@ -16,7 +16,7 @@ public class BootswatchCssReference extends CssResourceReference {
     /**
      * Singleton instance of this reference
      */
-    public static final ResourceReference CERULEAN = new CeruleanCssReference();
+    public static final ResourceReference CERULEAN = CeruleanCssReference.INSTANCE;
     public static final ResourceReference AMELIA = new BootswatchCssReference("css/bootstrap.amelia.css");
     public static final ResourceReference JOURNAL = new BootswatchCssReference("css/bootstrap.journal.css");
     public static final ResourceReference CYBORG = new BootswatchCssReference("css/bootstrap.cyborg.css");

@@ -6,7 +6,7 @@ import de.agilecoders.wicket.util.IBootstrapLessCompiler;
 import java.nio.charset.Charset;
 
 /**
- * TODO: document
+ * The {@link IBootstrapLessCompilerSettings} interface.
  *
  * @author miha
  * @version 1.0

@@ -4,14 +4,25 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * TODO: document
+ * Interface to identify all less compatible {@link org.apache.wicket.request.resource.ResourceReference} classes.
  *
  * @author miha
  * @version 1.0
  */
 public interface LessCompilable {
 
-    List<Resource> files();
+    /**
+     * @return a list of less/css resources that should be compiled.
+     */
+    List<Resource> getLessResources();
 
-    void writeTo(byte[] content) throws IOException;
+    /**
+     * This method is called after the less/css content was generated. But only if
+     * {@link de.agilecoders.wicket.settings.BootstrapLessCompilerSettings#storeChanges()} is set
+     * to true and there are changes inside the less/css files.
+     *
+     * @param content The css content as byte array.
+     * @throws IOException if content can't be stored.
+     */
+    void storeCompiledLess(byte[] content) throws IOException;
 }

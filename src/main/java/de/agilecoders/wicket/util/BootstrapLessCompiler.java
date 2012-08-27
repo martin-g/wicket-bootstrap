@@ -4,8 +4,6 @@ import com.asual.lesscss.LessEngine;
 import com.asual.lesscss.LessException;
 import com.google.common.base.Joiner;
 import com.google.common.base.Strings;
-import com.google.common.cache.Cache;
-import com.google.common.cache.CacheBuilder;
 import com.google.common.collect.Lists;
 import de.agilecoders.wicket.Bootstrap;
 import de.agilecoders.wicket.less.LessCompilable;
@@ -25,25 +23,18 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.Charset;
 import java.util.List;
-import java.util.concurrent.Callable;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * TODO: document
+ * An {@link IBootstrapLessCompiler} implementation that loads all less files and their
+ * imports and compiles them to an optimized css stream.
  *
  * @author miha
  * @version 1.0
  */
 public class BootstrapLessCompiler implements IBootstrapLessCompiler {
     private static final Logger LOG = LoggerFactory.getLogger(BootstrapLessCompiler.class);
-    private static final Cache<String, Object> CACHE = CacheBuilder.newBuilder().build();
-    private static final Callable<Object> VoidLoader = new Callable<Object>() {
-        @Override
-        public Object call() throws Exception {
-            return null;
-        }
-    };
 
     /**
      * Use http://en.wikipedia.org/wiki/Initialization_on_demand_holder_idiom
@@ -68,9 +59,6 @@ public class BootstrapLessCompiler implements IBootstrapLessCompiler {
         return compile(newCombinedLessFile(lessCompilable));
     }
 
-    /**
-     * TODO: Maybe prevent infinite looping here, in case of an import loop?
-     */
     @Override
     public Time lastModifiedRecursive(LessCompilable lessCompilable) {
         return newCombinedLessFile(lessCompilable).lastModified();
@@ -79,7 +67,7 @@ public class BootstrapLessCompiler implements IBootstrapLessCompiler {
     private CombinedLessResource newCombinedLessFile(LessCompilable lessCompilable) {
         CombinedLessResource lessResource = new CombinedLessResource();
 
-        for (Resource resource : lessCompilable.files()) {
+        for (Resource resource : lessCompilable.getLessResources()) {
             addAllImports(lessResource, resource);
         }
 
@@ -113,6 +101,13 @@ public class BootstrapLessCompiler implements IBootstrapLessCompiler {
         }
     }
 
+    /**
+     * calls the underlying less compiler (less.js/Rhino) and compiles the less
+     * content.
+     *
+     * @param lessFile the {@link CombinedLessResource}
+     * @return generated css as byte array
+     */
     protected byte[] compile(CombinedLessResource lessFile) {
         try {
             return getLessEngine().compile(lessFile.createText()).getBytes(charset());
@@ -121,10 +116,16 @@ public class BootstrapLessCompiler implements IBootstrapLessCompiler {
         }
     }
 
+    /**
+     * @return the charset to use for {@code BootstrapLessCompiler}
+     */
     protected final Charset charset() {
         return settings().getBootstrapLessCompilerSettings().getCharset();
     }
 
+    /**
+     * @return the settings to use for {@code BootstrapLessCompiler}
+     */
     protected final IBootstrapSettings settings() {
         return Bootstrap.getSettings(app());
     }
@@ -153,12 +154,18 @@ public class BootstrapLessCompiler implements IBootstrapLessCompiler {
         throw new WicketRuntimeException("can't parse " + filename + "; error in line " + e.getLine() + " on column " + e.getColumn() + "; " + e.getType() + ": " + extract);
     }
 
+    /**
+     * Holder class for all less resources and their imports.
+     */
     private static final class CombinedLessResource {
         private final List<String> cache = Lists.newArrayList();
         private final Resource resource;
         private final StringBuilder builder;
         private Time lastModified;
 
+        /**
+         * Construct.
+         */
         private CombinedLessResource() {
             this(null);
         }

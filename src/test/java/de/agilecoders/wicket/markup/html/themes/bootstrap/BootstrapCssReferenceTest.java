@@ -2,6 +2,7 @@ package de.agilecoders.wicket.markup.html.themes.bootstrap;
 
 import de.agilecoders.wicket.WicketApplicationTest;
 import de.agilecoders.wicket.settings.IBootstrapLessCompilerSettings;
+import de.agilecoders.wicket.settings.IBootstrapSettings;
 import org.apache.wicket.util.io.IOUtils;
 import org.apache.wicket.util.resource.ResourceStreamNotFoundException;
 import org.junit.Assert;
@@ -31,9 +32,14 @@ public class BootstrapCssReferenceTest extends WicketApplicationTest {
         } catch (ResourceStreamNotFoundException e) {
             throw new RuntimeException(e);
         }
+    }
 
-        getBootstrapSettings().getBootstrapLessCompilerSettings().setCacheStrategy(IBootstrapLessCompilerSettings.CacheStrategy.Never);
-        getBootstrapSettings().getBootstrapLessCompilerSettings().setUseLessCompiler(true);
+    @Override
+    protected IBootstrapSettings createBootstrapSettings() {
+        IBootstrapSettings settings = super.createBootstrapSettings();
+        settings.getBootstrapLessCompilerSettings().setUseLessCompiler(true);
+        settings.getBootstrapLessCompilerSettings().setCacheStrategy(IBootstrapLessCompilerSettings.CacheStrategy.Never);
+        return settings;
     }
 
     @Test

@@ -81,7 +81,7 @@ public class LessPackageResource extends CssPackageResource {
 
     protected void storeChanges(byte[] content) {
         try {
-            lessCompilable.writeTo(content);
+            lessCompilable.storeCompiledLess(content);
         } catch (IOException e) {
             throw new WicketRuntimeException(e);
         }

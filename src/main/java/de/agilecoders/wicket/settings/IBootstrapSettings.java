@@ -55,18 +55,43 @@ public interface IBootstrapSettings {
      */
     boolean useModernizr();
 
+    /**
+     * @param useModernizr true, if modernizr js library will be included
+     */
     void useModernizr(final boolean useModernizr);
 
+    /**
+     * @return true, if responsive css will be included
+     */
     boolean useResponsiveCss();
 
+    /**
+     * @param useResponsiveCss set to true if responsive css should be included
+     */
     void useResponsiveCss(final boolean useResponsiveCss);
 
+    /**
+     * The {@link ActiveThemeProvider} provides access to the active theme
+     *
+     * @param themeProvider The {@link ActiveThemeProvider} instance
+     */
     void setActiveThemeProvider(ActiveThemeProvider themeProvider);
 
+    /**
+     * @return The {@link ActiveThemeProvider} instance
+     */
     ActiveThemeProvider getActiveThemeProvider();
 
+    /**
+     * @return The {@link ThemeProvider} instance
+     */
     ThemeProvider getThemeProvider();
 
+    /**
+     * The {@link ThemeProvider} instance provides access to all available themes.
+     *
+     * @param themeProvider The {@link ThemeProvider} instance
+     */
     void setThemeProvider(ThemeProvider themeProvider);
 
     /**

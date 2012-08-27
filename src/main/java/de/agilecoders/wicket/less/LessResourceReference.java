@@ -7,6 +7,7 @@ import org.apache.wicket.util.io.IOUtils;
 import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.util.Locale;
 
 /**
@@ -46,6 +47,9 @@ public abstract class LessResourceReference extends CssResourceReference impleme
         super(scope, name);
     }
 
+    /**
+     * @return The {@link ResourceLocator} instance to find resources inside the classpath.
+     */
     protected ResourceLocator resourceLocator() {
         return RESOURCE_LOCATOR;
     }
@@ -56,11 +60,17 @@ public abstract class LessResourceReference extends CssResourceReference impleme
     }
 
     @Override
-    public void writeTo(byte[] content) throws IOException {
+    public void storeCompiledLess(byte[] content) throws IOException {
         Resource resource = resourceLocator().findResource(getScope(), getName());
 
         if (resource != null) {
-            IOUtils.write(content, new BufferedOutputStream(new FileOutputStream(resource.toFile())));
+            OutputStream bufferedFileOutputStream = null;
+            try {
+                bufferedFileOutputStream = new BufferedOutputStream(new FileOutputStream(resource.toFile()));
+                IOUtils.write(content, bufferedFileOutputStream);
+            } finally {
+                IOUtils.closeQuietly(bufferedFileOutputStream);
+            }
         } else {
             throw new WicketRuntimeException("invalid out file: " + resource);
         }

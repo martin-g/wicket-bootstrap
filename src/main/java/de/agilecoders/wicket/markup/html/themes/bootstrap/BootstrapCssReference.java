@@ -7,7 +7,7 @@ import de.agilecoders.wicket.less.Resource;
 import java.util.List;
 
 /**
- * TODO: document
+ * The default bootstrap css.
  *
  * @author miha
  * @version 1.0
@@ -32,7 +32,7 @@ public class BootstrapCssReference extends LessResourceReference {
     }
 
     @Override
-    public List<Resource> files() {
+    public List<Resource> getLessResources() {
         return Lists.newArrayList(
                 resourceLocator().findResource(BootstrapCssReference.class, "less/bootstrap.less")
         );

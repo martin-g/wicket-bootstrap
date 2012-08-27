@@ -1,6 +1,7 @@
 package de.agilecoders.wicket.settings;
 
 import com.google.common.collect.Lists;
+import de.agilecoders.wicket.less.LessResourceReference;
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
