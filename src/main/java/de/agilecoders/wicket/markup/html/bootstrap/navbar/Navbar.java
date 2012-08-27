@@ -2,7 +2,6 @@ package de.agilecoders.wicket.markup.html.bootstrap.navbar;
 
 import com.google.common.collect.Lists;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameRemover;
 import de.agilecoders.wicket.markup.html.bootstrap.button.Activatable;
 import de.agilecoders.wicket.util.Components;
 import org.apache.wicket.Component;
@@ -41,6 +40,7 @@ public class Navbar extends Panel {
         /** do not fixate the position */
         NONE
     }
+
     /**
      * indicates the position of a button inside the navigation bar.
      */
@@ -49,6 +49,9 @@ public class Navbar extends Panel {
     }
 
     private final WebMarkupContainer container;
+
+    private IModel<String> positionModel;
+    private IModel<String> containerModel;
     private CssClassNameAppender activeStateAppender;
 
     private final BookmarkablePageLink<Page> brandNameLink;
@@ -62,7 +65,7 @@ public class Navbar extends Panel {
     private final List<Component> buttonRightList = Lists.newArrayList();
 
     /**
-     * TODO document
+     * Construct.
      *
      * @param componentId The non-null id of this component
      */
@@ -71,7 +74,7 @@ public class Navbar extends Panel {
     }
 
     /**
-     * TODO document
+     * Construct.
      *
      * @param componentId The non-null id of this component
      * @param model       The component's model
@@ -85,6 +88,13 @@ public class Navbar extends Panel {
         navRightList = newNavigation("navRightList", buttonRightList);
 
         activeStateAppender = new CssClassNameAppender("active");
+
+        positionModel = Model.of("");
+        containerModel = Model.of("");
+
+        add(new CssClassNameAppender(positionModel));
+        container.add(new CssClassNameAppender(containerModel));
+        add(new CssClassNameAppender("navbar"));
 
         add(container, brandNameLink, navLeftList, navRightList);
     }
@@ -141,16 +151,14 @@ public class Navbar extends Panel {
     protected void onConfigure() {
         super.onConfigure();
 
-        add(new CssClassNameAppender("navbar"));
-        container.add(new CssClassNameAppender(isFluid() ? "container-fluid" : "container"));
+        containerModel.setObject(isFluid() ? "container-fluid" : "container");
 
         if (Position.TOP == getPosition()) {
-            add(new CssClassNameAppender("navbar-fixed-top"));
+            positionModel.setObject("navbar-fixed-top");
         } else if (Position.BOTTOM == getPosition()) {
-            add(new CssClassNameAppender("navbar-fixed-bottom"));
+            positionModel.setObject("navbar-fixed-bottom");
         } else {
-            add(new CssClassNameRemover("navbar-fixed-top"));
-            add(new CssClassNameRemover("navbar-fixed-bottom"));
+            positionModel.setObject("");
         }
 
         brandNameLink.setVisible(brandNameLink.getBody() != null);
