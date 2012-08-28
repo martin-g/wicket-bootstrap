@@ -17,7 +17,7 @@ public class BootstrapSettings implements IBootstrapSettings {
 
     private boolean useResponsiveCss = true;
     private ThemeProvider themeProvider = new BootswatchThemeProvider();
-    private ActiveThemeProvider activeThemeProvider = new SessionThemeProvider(themeProvider);
+    private ActiveThemeProvider activeThemeProvider = new SessionThemeProvider();
     private boolean useModernizr = false;
     private boolean useJqueryPP = false;
     private IBootstrapLessCompilerSettings bootstrapLessCompilerSettings = new BootstrapLessCompilerSettings();
