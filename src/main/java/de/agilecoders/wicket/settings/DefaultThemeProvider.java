@@ -9,16 +9,20 @@ import org.apache.wicket.WicketRuntimeException;
 import java.util.List;
 
 /**
- * TODO: document
+ * A default {@link ThemeProvider} implementation that only contains
+ * the {@link de.agilecoders.wicket.markup.html.themes.bootstrap.BootstrapTheme}.
  *
  * @author miha
  * @version 1.0
  */
 public class DefaultThemeProvider implements ThemeProvider {
 
-    List<Theme> themes = Lists.newArrayList();
+    private final List<Theme> themes = Lists.newArrayList();
     private Theme defaultTheme;
 
+    /**
+     * Construct.
+     */
     public DefaultThemeProvider() {
         addDefaultTheme(new Theme("bootstrap", BootstrapCssReference.INSTANCE));
     }
@@ -66,8 +70,6 @@ public class DefaultThemeProvider implements ThemeProvider {
 
         if (defaultTheme != newDefaultTheme) {
             defaultTheme = newDefaultTheme;
-        } else {
-            // throw WicketRuntimeException(???);
         }
 
         return this;
