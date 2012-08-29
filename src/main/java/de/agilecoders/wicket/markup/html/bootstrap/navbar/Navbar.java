@@ -100,11 +100,10 @@ public class Navbar extends Panel {
         containerModel = Model.of("");
         invertModel = Model.of("");
 
+        add(new CssClassNameAppender("navbar"));
         add(new CssClassNameAppender(positionModel));
         container.add(new CssClassNameAppender(containerModel));
         container.add(new CssClassNameAppender(invertModel));
-        add(new CssClassNameAppender("navbar"));
-
         add(container, brandNameLink, navLeftList, navRightList);
     }
 

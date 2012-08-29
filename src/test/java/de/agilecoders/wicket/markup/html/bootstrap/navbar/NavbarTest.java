@@ -1,5 +1,6 @@
 package de.agilecoders.wicket.markup.html.bootstrap.navbar;
 
+import com.google.common.base.Splitter;
 import de.agilecoders.wicket.WicketApplicationTest;
 import de.agilecoders.wicket.markup.html.bootstrap.image.Icon;
 import de.agilecoders.wicket.markup.html.bootstrap.image.IconType;
@@ -9,6 +10,10 @@ import org.apache.wicket.util.tester.TagTester;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.List;
+
+import static com.google.common.base.Strings.nullToEmpty;
+import static com.google.common.collect.Lists.newArrayList;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.matchers.JUnitMatchers.containsString;
@@ -49,7 +54,11 @@ public class NavbarTest extends WicketApplicationTest {
         tester().startComponentInPage(navbar);
 
         Assert.assertThat(navbar.getPosition(), is(equalTo(Navbar.Position.TOP)));
-        Assert.assertThat(tester().getTagByWicketId("id").getAttribute("class"), is(equalTo(("navbar navbar-fixed-top"))));
+
+        List<String> classes = extractClassNames(tester().getTagByWicketId("id"));
+
+        Assert.assertThat(classes.contains("navbar"), is(equalTo(true)));
+        Assert.assertThat(classes.contains("navbar-fixed-top"), is(equalTo(true)));
     }
 
     @Test
@@ -60,7 +69,11 @@ public class NavbarTest extends WicketApplicationTest {
         tester().startComponentInPage(navbar);
 
         Assert.assertThat(navbar.getPosition(), is(equalTo(Navbar.Position.BOTTOM)));
-        Assert.assertThat(tester().getTagByWicketId("id").getAttribute("class"), is(equalTo(("navbar navbar-fixed-bottom"))));
+
+        List<String> classes = extractClassNames(tester().getTagByWicketId("id"));
+
+        Assert.assertThat(classes.contains("navbar"), is(equalTo(true)));
+        Assert.assertThat(classes.contains("navbar-fixed-bottom"), is(equalTo(true)));
     }
 
     @Test
@@ -110,5 +123,9 @@ public class NavbarTest extends WicketApplicationTest {
         Assert.assertThat(tester().getTagByWicketId("button").hasChildTag("i"), is(equalTo(true)));
         Assert.assertThat(tester().getTagByWicketId("icon").getAttribute("class"), containsString("icon-align-center"));
         Assert.assertThat(tester().getTagByWicketId("icon").getAttribute("class"), containsString("icon-white"));
+    }
+
+    private List<String> extractClassNames(TagTester tagTester) {
+        return newArrayList(Splitter.on(' ').trimResults().split(nullToEmpty(tagTester.getAttribute("class"))));
     }
 }
