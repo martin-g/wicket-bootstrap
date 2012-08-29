@@ -31,13 +31,19 @@ public class Navbar extends Panel {
      * indicates the position of the navigation bar itself
      */
     public static enum Position {
-        /** fixate at the top of the screen */
+        /**
+         * fixate at the top of the screen
+         */
         TOP,
 
-        /** fixate at the bottom of the screen */
+        /**
+         * fixate at the bottom of the screen
+         */
         BOTTOM,
 
-        /** do not fixate the position */
+        /**
+         * do not fixate the position
+         */
         NONE
     }
 
@@ -52,6 +58,7 @@ public class Navbar extends Panel {
 
     private IModel<String> positionModel;
     private IModel<String> containerModel;
+    private IModel<String> invertModel;
     private CssClassNameAppender activeStateAppender;
 
     private final BookmarkablePageLink<Page> brandNameLink;
@@ -91,9 +98,11 @@ public class Navbar extends Panel {
 
         positionModel = Model.of("");
         containerModel = Model.of("");
+        invertModel = Model.of("");
 
         add(new CssClassNameAppender(positionModel));
         container.add(new CssClassNameAppender(containerModel));
+        container.add(new CssClassNameAppender(invertModel));
         add(new CssClassNameAppender("navbar"));
 
         add(container, brandNameLink, navLeftList, navRightList);
@@ -216,6 +225,18 @@ public class Navbar extends Panel {
      */
     public Navbar brandName(IModel<String> brandName) {
         this.brandNameLink.setBody(brandName);
+
+        return this;
+    }
+
+    /**
+     * inverts the navbar backgorund color
+     *
+     * @param invert whether to invert the color or not
+     * @return the component's current instance
+     */
+    public Navbar invert(boolean invert) {
+        this.invertModel.setObject(invert ? "navbar-inverse" : "");
 
         return this;
     }

@@ -47,7 +47,7 @@ public class BootstrapBaseBehavior extends Behavior {
     }
 
     /**
-     * Render the current active {@link Theme} which includes the {@link de.agilecoders.wicket.markup.html.references.BootstrapCssReference}
+     * Render the current active {@link Theme} which includes all {@link org.apache.wicket.request.resource.ResourceReference} objects
      * and the {@link de.agilecoders.wicket.markup.html.references.BootstrapResponsiveCssReference}
      * if enabled to the response. Also it allows all subclasses to get the {@link IBootstrapSettings} by overriding this method.
      *

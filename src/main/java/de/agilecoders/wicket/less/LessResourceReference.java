@@ -44,7 +44,7 @@ public abstract class LessResourceReference extends CssResourceReference impleme
      * @param name  mandatory parameter
      */
     public LessResourceReference(Class<?> scope, String name) {
-        super(scope, name);
+        this(scope, name, null, null, null);
     }
 
     /**
