@@ -1,6 +1,5 @@
 package de.agilecoders.wicket.markup.html.bootstrap.navbar;
 
-import com.google.common.base.Splitter;
 import de.agilecoders.wicket.WicketApplicationTest;
 import de.agilecoders.wicket.markup.html.bootstrap.image.Icon;
 import de.agilecoders.wicket.markup.html.bootstrap.image.IconType;
@@ -12,8 +11,6 @@ import org.junit.Test;
 
 import java.util.List;
 
-import static com.google.common.base.Strings.nullToEmpty;
-import static com.google.common.collect.Lists.newArrayList;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.matchers.JUnitMatchers.containsString;
@@ -123,9 +120,5 @@ public class NavbarTest extends WicketApplicationTest {
         Assert.assertThat(tester().getTagByWicketId("button").hasChildTag("i"), is(equalTo(true)));
         Assert.assertThat(tester().getTagByWicketId("icon").getAttribute("class"), containsString("icon-align-center"));
         Assert.assertThat(tester().getTagByWicketId("icon").getAttribute("class"), containsString("icon-white"));
-    }
-
-    private List<String> extractClassNames(TagTester tagTester) {
-        return newArrayList(Splitter.on(' ').trimResults().split(nullToEmpty(tagTester.getAttribute("class"))));
     }
 }
