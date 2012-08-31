@@ -1,7 +1,5 @@
 package de.agilecoders.wicket.markup.html.bootstrap.form;
 
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameProvider;
 import org.apache.wicket.model.IModel;
 
 /**
@@ -12,33 +10,7 @@ import org.apache.wicket.model.IModel;
  */
 public class BootstrapForm<T> extends org.apache.wicket.markup.html.form.Form<T> {
 
-    private Type type;
-
-    /**
-     * TODO document
-     */
-    public enum Type implements CssClassNameProvider {
-        Vertical("form-vertical"), // Stacked, left-aligned labels over controls
-        Inline("form-inline"), // Left-aligned label and inline-block controls for compact style
-        Search("form-search"), // Extra-rounded text input for a typical search aesthetic
-        Horizontal("form-horizontal"); // (default) Float left, right-aligned labels on same line as controls
-
-        private final String cssClassName;
-
-        Type(String cssClassName) {
-            this.cssClassName = cssClassName;
-        }
-
-        @Override
-        public String cssClassName() {
-            return cssClassName;
-        }
-
-        @Override
-        public CssClassNameAppender newCssClassNameAppender() {
-            return new CssClassNameAppender(this);
-        }
-    }
+    private FormBehavior formBehavior;
 
     /**
      * Constructs a from with no validation
@@ -66,19 +38,11 @@ public class BootstrapForm<T> extends org.apache.wicket.markup.html.form.Form<T>
      * Common code executed by constructors.
      */
     private void commonInit() {
-        type = Type.Horizontal;
+        add(formBehavior = new FormBehavior());
     }
     
-    public BootstrapForm<T> type(Type type) {
-        this.type = type;
-
+    public BootstrapForm<T> type(FormType type) {
+        formBehavior.type(type);
         return this;
-    }
-
-    @Override
-    protected void onConfigure() {
-        super.onConfigure();
-        
-        add(type.newCssClassNameAppender());
     }
 }
