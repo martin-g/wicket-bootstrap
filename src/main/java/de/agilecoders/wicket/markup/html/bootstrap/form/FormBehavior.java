@@ -1,8 +1,6 @@
 package de.agilecoders.wicket.markup.html.bootstrap.form;
 
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameProvider;
 import org.apache.wicket.Component;
 
 /**
@@ -13,32 +11,17 @@ import org.apache.wicket.Component;
  */
 public class FormBehavior extends BootstrapBaseBehavior {
 
-    public enum Type implements CssClassNameProvider {
-        Default, Vertical, Inline, Search, Horizontal;
-
-        @Override
-        public String cssClassName() {
-            return equals(Default) ? "" : "form-" + name().toLowerCase();
-        }
-
-        @Override
-        public CssClassNameAppender newCssClassNameAppender() {
-            return new CssClassNameAppender(cssClassName());
-        }
-
-    }
-
-    private Type type;
+    private FormType type;
 
     public FormBehavior() {
-        this(Type.Default);
+        this(FormType.Default);
     }
 
-    public FormBehavior(Type type) {
+    public FormBehavior(FormType type) {
         this.type = type;
     }
 
-    public FormBehavior type(Type type) {
+    public FormBehavior type(FormType type) {
         this.type = type;
         return this;
     }

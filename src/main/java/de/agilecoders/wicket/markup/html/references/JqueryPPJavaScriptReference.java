@@ -1,6 +1,7 @@
 package de.agilecoders.wicket.markup.html.references;
 
 import com.google.common.collect.Lists;
+import org.apache.wicket.Application;
 import org.apache.wicket.markup.head.HeaderItem;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.request.resource.JavaScriptResourceReference;
@@ -33,7 +34,7 @@ public class JqueryPPJavaScriptReference extends JavaScriptResourceReference {
     @Override
     public Iterable<? extends HeaderItem> getDependencies() {
         List<HeaderItem> dependencies = Lists.newArrayList(super.getDependencies());
-        dependencies.add(JavaScriptHeaderItem.forReference(JQueryResourceReference.get()));
+        dependencies.add(JavaScriptHeaderItem.forReference(Application.get().getJavaScriptLibrarySettings().getJQueryReference()));
 
         return dependencies;
     }
