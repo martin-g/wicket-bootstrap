@@ -12,8 +12,6 @@ import org.apache.wicket.request.resource.ResourceReference;
 public class PrettyCssResourceReference extends CssResourceReference {
     private static final long serialVersionUID = 1L;
 
-    public static final String ID = "prettify-css";
-
     /**
      * Singleton instance of this reference
      */

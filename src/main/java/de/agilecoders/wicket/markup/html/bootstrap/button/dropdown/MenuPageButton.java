@@ -40,7 +40,7 @@ public class MenuPageButton<T extends Page> extends BookmarkablePageLink<T> impl
     }
 
     public <T extends org.apache.wicket.Page> MenuPageButton(Class<T> pageClass, PageParameters parameters) {
-        super("menuElement", pageClass, parameters);
+        super(DropDownButton.getButtonMarkupId(), pageClass, parameters);
 
         this.icon = new Icon("icon", IconType.NULL);
 

@@ -1,79 +1,137 @@
 package de.agilecoders.wicket.markup.html.bootstrap.button.dropdown;
 
+import com.google.common.collect.Lists;
+import de.agilecoders.wicket.markup.html.bootstrap.behavior.AssertTagNameBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapResourcesBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
-import de.agilecoders.wicket.markup.html.bootstrap.button.BootstrapButton;
+import de.agilecoders.wicket.markup.html.bootstrap.button.AssertValidButtonPredicate;
+import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonSize;
 import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonType;
+import de.agilecoders.wicket.util.Iterables;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.head.IHeaderResponse;
-import org.apache.wicket.markup.head.OnLoadHeaderItem;
+import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
+import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.markup.html.panel.Panel;
+import org.apache.wicket.markup.html.link.AbstractLink;
+import org.apache.wicket.markup.html.list.ListItem;
+import org.apache.wicket.markup.html.list.ListView;
+import org.apache.wicket.markup.html.panel.IMarkupSourcingStrategy;
+import org.apache.wicket.markup.html.panel.PanelMarkupSourcingStrategy;
 import org.apache.wicket.model.IModel;
-import org.apache.wicket.model.Model;
+import org.apache.wicket.model.LoadableDetachableModel;
+
+import java.util.List;
 
 /**
- * TODO: document
+ * Use any button to trigger a dropdown menu by placing it within a .btn-group and providing the proper menu markup.
  *
  * @author miha
  * @version 1.0
  */
-public class DropDownButton extends Panel implements BootstrapButton<DropDownButton> {
+public class DropDownButton extends AbstractLink {
 
-    private Component label;
-    private Menu menu;
-    private IModel<ButtonSize> buttonSize;
-    private IModel<ButtonType> buttonType;
-
-    public DropDownButton(String id) {
-        this(id, Model.of());
+    public static String getButtonMarkupId() {
+        return "button";
     }
 
-    public DropDownButton(String id, IModel<?> model) {
+    private ButtonSize buttonSize = ButtonSize.Medium;
+    private ButtonType buttonType = ButtonType.Menu;
+
+    private WebMarkupContainer baseButton;
+    private List<AbstractLink> buttonList;
+
+    /**
+     * Construct.
+     *
+     * @param id    The markup id
+     * @param model The label of the main button
+     */
+    public DropDownButton(String id, IModel<String> model) {
         super(id, model);
 
-        buttonSize = Model.of(ButtonSize.Medium);
-        buttonType = Model.of(ButtonType.Default);
+        buttonList = Lists.newArrayList();
 
-        label = new Label("label");
+        baseButton = new WebMarkupContainer("btn");
+        baseButton.setOutputMarkupId(true);
+
+        Label label = new Label("label", getDefaultModel());
         label.setRenderBodyOnly(true);
-        menu = new Menu("menu");
-        add(menu, label);
+
+        baseButton.add(label);
+        add(baseButton);
 
         add(new CssClassNameAppender("btn-group"));
+        add(new AssertTagNameBehavior("div"));
         add(new BootstrapResourcesBehavior());
+        add(newButtonList("buttons"));
     }
 
     @Override
     public void renderHead(IHeaderResponse response) {
         super.renderHead(response);
 
-        response.render(OnLoadHeaderItem.forScript("$('.dropdown-toggle').dropdown()"));
-    }
-
-    public DropDownButton setButtonLabel(IModel<String> label) {
-        this.label.setDefaultModel(label);
-
-        return this;
-    }
-
-    public DropDownButton addMenuButton(Component... buttons) {
-        menu.addMenuButton(buttons);
-
-        return this;
+        response.render(OnDomReadyHeaderItem.forScript("$('.dropdown-toggle').dropdown()"));
     }
 
     @Override
+    protected void onInitialize() {
+        super.onInitialize();
+
+        updateButtonBehavior(buttonType, buttonSize);
+    }
+
+    protected void updateButtonBehavior(ButtonType buttonType, ButtonSize buttonSize) {
+        baseButton.add(new ButtonBehavior(buttonType, buttonSize));
+    }
+
+    public DropDownButton addButton(AbstractLink button) {
+        return addButtons(button);
+    }
+
+    public DropDownButton addButtons(AbstractLink... buttons) {
+        List<? extends AbstractLink> buttonsList = Iterables.forEach(buttons, new AssertValidButtonPredicate(getButtonMarkupId()));
+
+        buttonList.addAll(buttonsList);
+        return this;
+    }
+
+    protected Component newButtonList(final String markupId) {
+        return new ListView<AbstractLink>(markupId, newButtonListModel()) {
+            @Override
+            protected void populateItem(ListItem<AbstractLink> item) {
+                AbstractLink link = item.getModelObject();
+
+                item.add(link);
+            }
+        }.setRenderBodyOnly(true)
+                .setOutputMarkupId(true);
+    }
+
+    protected IModel<List<? extends AbstractLink>> newButtonListModel() {
+        return new LoadableDetachableModel<List<? extends AbstractLink>>() {
+            @Override
+            protected List<? extends AbstractLink> load() {
+                return buttonList;
+            }
+        };
+    }
+
     public DropDownButton setSize(ButtonSize buttonSize) {
-        this.buttonSize = Model.of(buttonSize);
+        this.buttonSize = buttonSize;
 
         return this;
     }
 
     public DropDownButton setType(ButtonType buttonType) {
-        this.buttonType = Model.of(buttonType);
+        this.buttonType = buttonType;
 
         return this;
+    }
+
+    @Override
+    protected IMarkupSourcingStrategy newMarkupSourcingStrategy() {
+        return new PanelMarkupSourcingStrategy(false);
     }
 }

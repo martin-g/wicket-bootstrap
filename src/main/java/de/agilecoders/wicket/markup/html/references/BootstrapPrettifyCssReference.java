@@ -5,7 +5,7 @@ import org.apache.wicket.request.resource.CssResourceReference;
 import org.apache.wicket.request.resource.ResourceReference;
 
 /**
- * TODO: document
+ * The {@link CssResourceReference} for the prettify component.
  *
  * @author miha
  * @version 1.0

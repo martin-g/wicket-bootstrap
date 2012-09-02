@@ -22,7 +22,7 @@ public class MenuButton extends Button {
     }
 
     public MenuButton(IModel<String> model) {
-        super("menuElement", model);
+        super(DropDownButton.getButtonMarkupId(), model);
 
         this.setLabel(model);
         this.icon = new Icon("icon", IconType.NULL);

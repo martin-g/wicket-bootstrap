@@ -108,12 +108,12 @@ public class CssClassNameAppender extends AttributeAppender {
         StringBuilder sb = new StringBuilder(currentValue);
 
         for (String append : appendValues) {
-            if (!values.contains(append)) {
+            if (!values.contains(append) && append != null && !"".equals(append)) {
                 sb.append(separator());
                 sb.append(append);
             }
         }
 
-        return sb.toString();
+        return sb.toString().trim();
     }
 }
