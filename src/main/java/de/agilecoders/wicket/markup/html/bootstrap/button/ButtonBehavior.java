@@ -23,6 +23,10 @@ public class ButtonBehavior extends BootstrapBaseBehavior {
         this(ButtonType.Default, buttonSize);
     }
 
+    public ButtonBehavior() {
+        this(ButtonType.Default, ButtonSize.Medium);
+    }
+
     public ButtonBehavior(final ButtonType buttonType) {
         this(buttonType, ButtonSize.Medium);
     }

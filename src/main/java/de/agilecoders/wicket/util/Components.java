@@ -4,7 +4,6 @@ import com.google.common.base.Joiner;
 import com.google.common.base.Strings;
 import com.google.common.collect.Sets;
 import org.apache.wicket.Component;
-import org.apache.wicket.behavior.Behavior;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.MarkupException;
 import org.apache.wicket.model.IModel;
@@ -61,23 +60,5 @@ public final class Components {
                 component.setVisible(true);
             }
         }
-    }
-
-    public static void remove(Component component, Behavior checkBehavior) {
-        for (Behavior behavior : component.getBehaviors()) {
-            if (behavior.equals(checkBehavior)) {
-                component.remove(behavior);
-            }
-        }
-    }
-
-    public static boolean contains(Component component, Behavior checkBehavior) {
-        for (Behavior behavior : component.getBehaviors()) {
-            if (behavior.equals(checkBehavior)) {
-                return true;
-            }
-        }
-
-        return false;
     }
 }

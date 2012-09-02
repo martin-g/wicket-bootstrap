@@ -3,7 +3,7 @@ package de.agilecoders.wicket.markup.html.bootstrap.navbar;
 import com.google.common.collect.Lists;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
 import de.agilecoders.wicket.markup.html.bootstrap.button.Activatable;
-import de.agilecoders.wicket.util.Components;
+import de.agilecoders.wicket.util.Behaviors;
 import org.apache.wicket.Component;
 import org.apache.wicket.Page;
 import org.apache.wicket.markup.html.TransparentWebMarkupContainer;
@@ -121,7 +121,7 @@ public class Navbar extends Panel {
                 Component button = components.getModelObject();
                 components.add(button);
 
-                Components.remove(components, activeStateAppender);
+                Behaviors.remove(components, activeStateAppender);
 
                 if (button instanceof Activatable) {
                     Activatable activatable = (Activatable) button;
