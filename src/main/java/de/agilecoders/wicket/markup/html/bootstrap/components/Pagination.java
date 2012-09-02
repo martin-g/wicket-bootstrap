@@ -1,20 +1,11 @@
 package de.agilecoders.wicket.markup.html.bootstrap.components;
 
-import com.google.common.collect.Lists;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameProvider;
-import de.agilecoders.wicket.markup.html.bootstrap.button.AssertValidButtonPredicate;
-import de.agilecoders.wicket.util.Iterables;
-import org.apache.wicket.Component;
+import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonList;
 import org.apache.wicket.markup.html.link.AbstractLink;
-import org.apache.wicket.markup.html.list.ListItem;
-import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.markup.html.panel.Panel;
-import org.apache.wicket.model.IModel;
-import org.apache.wicket.model.LoadableDetachableModel;
-
-import java.util.List;
 
 /**
  * Simple pagination inspired by Rdio, great for apps and search results.
@@ -24,10 +15,6 @@ import java.util.List;
  * @version 1.0
  */
 public class Pagination extends Panel {
-
-    public static String getButtonMarkupId() {
-        return "button";
-    }
 
     /**
      * Add one of two optional classes to change the alignment of pagination links: .pagination-centered and .pagination-right.
@@ -46,21 +33,30 @@ public class Pagination extends Panel {
         }
     }
 
-    private List<AbstractLink> buttonList;
+    private ButtonList buttonList;
 
+    /**
+     * Construct.
+     *
+     * @param markupId The markup id.
+     */
     public Pagination(final String markupId) {
         this(markupId, Alignment.Left);
     }
 
+    /**
+     * Construct.
+     *
+     * @param markupId  The markup id.
+     * @param alignment The alignment of the buttons
+     */
     public Pagination(final String markupId, final Alignment alignment) {
         super(markupId);
-
-        buttonList = Lists.newArrayList();
 
         add(alignment.newCssClassNameAppender());
         add(new BootstrapBaseBehavior());
         add(new CssClassNameAppender("pagination"));
-        add(newButtonList("buttons"));
+        add(buttonList = newButtonList("buttons"));
     }
 
     public Pagination addButton(AbstractLink button) {
@@ -68,30 +64,12 @@ public class Pagination extends Panel {
     }
 
     public Pagination addButtons(AbstractLink... buttons) {
-        List<? extends AbstractLink> buttonsList = Iterables.forEach(buttons, new AssertValidButtonPredicate(getButtonMarkupId()));
-
-        buttonList.addAll(buttonsList);
+        buttonList.addButtons(buttons);
         return this;
     }
 
-    protected Component newButtonList(final String markupId) {
-        return new ListView<AbstractLink>(markupId, newButtonListModel()) {
-            @Override
-            protected void populateItem(ListItem<AbstractLink> item) {
-                AbstractLink link = item.getModelObject();
-
-                item.add(link);
-            }
-        }.setOutputMarkupId(true);
-    }
-
-    protected IModel<List<? extends AbstractLink>> newButtonListModel() {
-        return new LoadableDetachableModel<List<? extends AbstractLink>>() {
-            @Override
-            protected List<? extends AbstractLink> load() {
-                return buttonList;
-            }
-        };
+    protected ButtonList newButtonList(final String markupId) {
+        return new ButtonList(markupId);
     }
 
 }

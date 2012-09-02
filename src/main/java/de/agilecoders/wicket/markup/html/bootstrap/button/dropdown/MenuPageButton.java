@@ -1,6 +1,7 @@
 package de.agilecoders.wicket.markup.html.bootstrap.button.dropdown;
 
 import de.agilecoders.wicket.markup.html.bootstrap.button.Activatable;
+import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonList;
 import de.agilecoders.wicket.markup.html.bootstrap.image.Icon;
 import de.agilecoders.wicket.markup.html.bootstrap.image.IconType;
 import org.apache.wicket.Component;
@@ -40,7 +41,7 @@ public class MenuPageButton<T extends Page> extends BookmarkablePageLink<T> impl
     }
 
     public <T extends org.apache.wicket.Page> MenuPageButton(Class<T> pageClass, PageParameters parameters) {
-        super(DropDownButton.getButtonMarkupId(), pageClass, parameters);
+        super(ButtonList.getButtonMarkupId(), pageClass, parameters);
 
         this.icon = new Icon("icon", IconType.NULL);
 

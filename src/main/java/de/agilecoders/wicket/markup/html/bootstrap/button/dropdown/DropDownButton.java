@@ -1,28 +1,21 @@
 package de.agilecoders.wicket.markup.html.bootstrap.button.dropdown;
 
-import com.google.common.collect.Lists;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.AssertTagNameBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapResourcesBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
-import de.agilecoders.wicket.markup.html.bootstrap.button.AssertValidButtonPredicate;
 import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonBehavior;
+import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonList;
 import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonSize;
 import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonType;
-import de.agilecoders.wicket.util.Iterables;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.AbstractLink;
-import org.apache.wicket.markup.html.list.ListItem;
-import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.markup.html.panel.IMarkupSourcingStrategy;
 import org.apache.wicket.markup.html.panel.PanelMarkupSourcingStrategy;
 import org.apache.wicket.model.IModel;
-import org.apache.wicket.model.LoadableDetachableModel;
-
-import java.util.List;
 
 /**
  * Use any button to trigger a dropdown menu by placing it within a .btn-group and providing the proper menu markup.
@@ -32,15 +25,11 @@ import java.util.List;
  */
 public class DropDownButton extends AbstractLink {
 
-    public static String getButtonMarkupId() {
-        return "button";
-    }
-
     private ButtonSize buttonSize = ButtonSize.Medium;
     private ButtonType buttonType = ButtonType.Menu;
     private Component baseButton;
     private boolean dropUp = false;
-    private List<AbstractLink> buttonList;
+    private ButtonList buttonListView;
 
     /**
      * Construct.
@@ -51,14 +40,12 @@ public class DropDownButton extends AbstractLink {
     public DropDownButton(String id, IModel<String> model) {
         super(id, model);
 
-        buttonList = Lists.newArrayList();
-
         addBaseButton("btn");
 
         add(new CssClassNameAppender("btn-group"));
         add(new AssertTagNameBehavior("div"));
         add(new BootstrapResourcesBehavior());
-        add(newButtonList("buttons"));
+        add(buttonListView = newButtonList("buttons"));
     }
 
     protected void addBaseButton(final String markupId) {
@@ -108,31 +95,14 @@ public class DropDownButton extends AbstractLink {
     }
 
     public DropDownButton addButtons(AbstractLink... buttons) {
-        List<? extends AbstractLink> buttonsList = Iterables.forEach(buttons, new AssertValidButtonPredicate(getButtonMarkupId()));
-
-        buttonList.addAll(buttonsList);
+        buttonListView.addButtons(buttons);
         return this;
     }
 
-    protected Component newButtonList(final String markupId) {
-        return new ListView<AbstractLink>(markupId, newButtonListModel()) {
-            @Override
-            protected void populateItem(ListItem<AbstractLink> item) {
-                AbstractLink link = item.getModelObject();
-
-                item.add(link);
-            }
-        }.setRenderBodyOnly(true)
-                .setOutputMarkupId(true);
-    }
-
-    protected IModel<List<? extends AbstractLink>> newButtonListModel() {
-        return new LoadableDetachableModel<List<? extends AbstractLink>>() {
-            @Override
-            protected List<? extends AbstractLink> load() {
-                return buttonList;
-            }
-        };
+    protected ButtonList newButtonList(final String markupId) {
+        ButtonList buttonList = new ButtonList(markupId);
+        buttonList.setRenderBodyOnly(true);
+        return buttonList;
     }
 
     public DropDownButton setSize(ButtonSize buttonSize) {
