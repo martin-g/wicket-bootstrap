@@ -18,8 +18,8 @@ import java.util.List;
  */
 public class Theme {
 
-    private String name;
-    private List<ResourceReference> resourceReferences;
+    private final String name;
+    private final List<ResourceReference> resourceReferences;
 
     public Theme(final String name, final ResourceReference... resourceReferences) {
         this.name = name;

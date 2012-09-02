@@ -29,6 +29,7 @@ public class CeruleanCssReference extends BootstrapCssReference {
     @Override
     public List<Resource> files() {
         List<Resource> resources = super.files();
+        resources.add(resourceLocator().findResource(CeruleanCssReference.class, "less/variables.less"));
         resources.add(resourceLocator().findResource(CeruleanCssReference.class, "less/cerulean.less"));
 
         return resources;
