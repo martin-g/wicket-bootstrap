@@ -1,7 +1,6 @@
 package de.agilecoders.wicket.markup.html.bootstrap.components;
 
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapJavascriptBehavior;
-import de.agilecoders.wicket.settings.IBootstrapSettings;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.WicketRuntimeException;
@@ -32,33 +31,46 @@ public class TooltipBehavior extends BootstrapJavascriptBehavior {
     }
 
     @Override
-    public void onConfigure(Component component) {
-        super.onConfigure(component);
+    public void bind(Component component) {
+        super.bind(component);
 
+        component.setOutputMarkupId(true);
+        addAttributes(component);
+    }
+
+    protected void addAttributes(final Component component) {
         //rel="tooltip" title="first tooltip"
         component.add(new AttributeModifier("rel", "tooltip"));
         component.add(new AttributeModifier("title", label.getObject()));
     }
 
     @Override
-    public void renderHead(IBootstrapSettings settings, IHeaderResponse headerResponse) {
-        super.renderHead(settings, headerResponse);
+    public void renderHead(Component component, IHeaderResponse headerResponse) {
+        super.renderHead(component, headerResponse);
 
-        headerResponse.render(OnDomReadyHeaderItem.forScript("$().tooltip("+buildScript()+")"));
+        headerResponse.render(OnDomReadyHeaderItem.forScript("$('#" + component.getMarkupId() + "').tooltip(" + buildScript() + ")"));
+    }
+
+    protected JSONObject createJsonObject() throws JSONException {
+        JSONObject json = new JSONObject();
+
+        json.put("placement", placement.name().toLowerCase());
+        json.put("delay", delay.getMilliseconds());
+        json.put("trigger", trigger.name().toLowerCase());
+
+        if (animate) {
+            json.put("animation", animate);
+        }
+
+        return json;
     }
 
     private String buildScript() {
-        JSONObject json = new JSONObject();
         try {
-            json.put("placement", placement.name().toLowerCase());
-            json.put("delay", delay.getMilliseconds());
-            json.put("trigger", trigger.name().toLowerCase());
-            json.put("animation", animate);
+            return createJsonObject().toString();
         } catch (JSONException e) {
             throw new WicketRuntimeException(e);
         }
-
-        return json.toString();
     }
 
     public boolean isAnimated() {
