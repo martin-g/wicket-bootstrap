@@ -38,8 +38,8 @@ public class DropDownButton extends AbstractLink {
 
     private ButtonSize buttonSize = ButtonSize.Medium;
     private ButtonType buttonType = ButtonType.Menu;
-
-    private WebMarkupContainer baseButton;
+    private Component baseButton;
+    private boolean dropUp = false;
     private List<AbstractLink> buttonList;
 
     /**
@@ -53,19 +53,27 @@ public class DropDownButton extends AbstractLink {
 
         buttonList = Lists.newArrayList();
 
-        baseButton = new WebMarkupContainer("btn");
+        addBaseButton("btn");
+
+        add(new CssClassNameAppender("btn-group"));
+        add(new AssertTagNameBehavior("div"));
+        add(new BootstrapResourcesBehavior());
+        add(newButtonList("buttons"));
+    }
+
+    protected void addBaseButton(final String markupId) {
+        add(baseButton = createButton(markupId));
+    }
+
+    protected Component createButton(final String markupId) {
+        WebMarkupContainer baseButton = new WebMarkupContainer(markupId);
         baseButton.setOutputMarkupId(true);
 
         Label label = new Label("label", getDefaultModel());
         label.setRenderBodyOnly(true);
 
         baseButton.add(label);
-        add(baseButton);
-
-        add(new CssClassNameAppender("btn-group"));
-        add(new AssertTagNameBehavior("div"));
-        add(new BootstrapResourcesBehavior());
-        add(newButtonList("buttons"));
+        return baseButton;
     }
 
     @Override
@@ -80,6 +88,15 @@ public class DropDownButton extends AbstractLink {
         super.onInitialize();
 
         updateButtonBehavior(buttonType, buttonSize);
+
+        if (dropUp) {
+            add(new CssClassNameAppender("dropup"));
+        }
+    }
+
+    public DropDownButton setDropUp(boolean dropUp) {
+        this.dropUp = dropUp;
+        return this;
     }
 
     protected void updateButtonBehavior(ButtonType buttonType, ButtonSize buttonSize) {
