@@ -7,13 +7,16 @@ import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameProvider
 import org.apache.wicket.Component;
 
 /**
- * TODO: document
+ * Combine sets of <div class="btn-group"> into a <div class="btn-toolbar"> for more complex components.
  *
  * @author miha
  * @version 1.0
  */
 public final class ToolbarBehavior extends BootstrapBaseBehavior {
 
+    /**
+     * Make a set of buttons appear vertically or horizontally stacked.
+     */
     public enum Orientation implements CssClassNameProvider {
         Horizontal, Vertical;
 
@@ -30,10 +33,18 @@ public final class ToolbarBehavior extends BootstrapBaseBehavior {
 
     private final Orientation orientation;
 
+    /**
+     * Construct.
+     */
     public ToolbarBehavior() {
         this(Orientation.Horizontal);
     }
 
+    /**
+     * Construct.
+     *
+     * @param orientation Make a set of buttons appear vertically stacked rather than horizontally if set to {@link Orientation#Vertical}.
+     */
     public ToolbarBehavior(Orientation orientation) {
         this.orientation = orientation;
     }
