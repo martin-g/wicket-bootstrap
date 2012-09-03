@@ -5,8 +5,6 @@ import org.apache.wicket.Application;
 import org.apache.wicket.markup.head.HeaderItem;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.request.resource.JavaScriptResourceReference;
-import org.apache.wicket.request.resource.ResourceReference;
-import org.apache.wicket.resource.JQueryResourceReference;
 
 import java.util.List;
 
@@ -22,8 +20,20 @@ public class BootstrapJavaScriptReference extends JavaScriptResourceReference {
     /**
      * Singleton instance of this reference
      */
-    public static final ResourceReference INSTANCE = new BootstrapJavaScriptReference();
+    private static final BootstrapJavaScriptReference INSTANCE = new BootstrapJavaScriptReference();
 
+
+	/**
+	 * Normally you should not use this method, but use
+	 * {@link IBootstrapSettings#getJsResourceReference()} to prevent version conflicts.
+	 * 
+	 * @return the single instance of the resource reference
+	 */
+	public static BootstrapJavaScriptReference get() {
+		return INSTANCE;
+	}
+    
+    
     /**
      * Private constructor.
      */
@@ -33,7 +43,7 @@ public class BootstrapJavaScriptReference extends JavaScriptResourceReference {
 
     @Override
     public Iterable<? extends HeaderItem> getDependencies() {
-        List<HeaderItem> dependencies = Lists.newArrayList(super.getDependencies());
+        final List<HeaderItem> dependencies = Lists.newArrayList(super.getDependencies());
         dependencies.add(JavaScriptHeaderItem.forReference(Application.get().getJavaScriptLibrarySettings().getJQueryReference()));
 
         return dependencies;
