@@ -1,6 +1,5 @@
 package de.agilecoders.wicket.markup.html.bootstrap.components;
 
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapJavascriptBehavior;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.WicketRuntimeException;
@@ -11,6 +10,8 @@ import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.util.time.Duration;
 
+import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapJavascriptBehavior;
+
 /**
  * TODO: document
  *
@@ -20,9 +21,10 @@ import org.apache.wicket.util.time.Duration;
 public class TooltipBehavior extends BootstrapJavascriptBehavior {
 
     private boolean animate = false;
-    private Placement placement = Placement.Bottom;
+    private Placement placement = Placement.Top;
     private Trigger trigger = Trigger.Hover;
-    private Duration delay = Duration.milliseconds(100);
+    private Duration delay = Duration.NONE;
+    private boolean html = true;
 
     private final IModel<String> label;
 
@@ -40,34 +42,46 @@ public class TooltipBehavior extends BootstrapJavascriptBehavior {
 
     protected void addAttributes(final Component component) {
         //rel="tooltip" title="first tooltip"
-        component.add(new AttributeModifier("rel", "tooltip"));
-        component.add(new AttributeModifier("title", label.getObject()));
+        component.add(AttributeModifier.replace("rel", "tooltip"));
+        if (label != null) {
+        	component.add(AttributeModifier.replace("title", label.getObject()));
+        }
     }
 
     @Override
     public void renderHead(Component component, IHeaderResponse headerResponse) {
         super.renderHead(component, headerResponse);
 
-        headerResponse.render(OnDomReadyHeaderItem.forScript("$('#" + component.getMarkupId() + "').tooltip(" + buildScript() + ")"));
+        headerResponse.render(OnDomReadyHeaderItem.forScript("$('#" + component.getMarkupId() + "')." + buildScript()));
     }
 
     protected JSONObject createJsonObject() throws JSONException {
         JSONObject json = new JSONObject();
 
-        json.put("placement", placement.name().toLowerCase());
-        json.put("delay", delay.getMilliseconds());
-        json.put("trigger", trigger.name().toLowerCase());
+        if (!html) { // default true, so only add if not default
+        	json.put("html", html);
+        }
 
-        if (animate) {
+        if (placement != null) {
+        	json.put("placement", placement.name().toLowerCase());
+        }
+        if (delay != null) {
+        	json.put("delay", delay.getMilliseconds());
+        }
+        if (trigger != null) {
+        	json.put("trigger", trigger.name().toLowerCase());
+        }
+
+        if (!animate) { // default true, so only add if not default
             json.put("animation", animate);
         }
 
         return json;
     }
 
-    private String buildScript() {
+    protected String buildScript() {
         try {
-            return createJsonObject().toString();
+            return "tooltip(" + createJsonObject().toString() + ")";
         } catch (JSONException e) {
             throw new WicketRuntimeException(e);
         }
@@ -109,8 +123,13 @@ public class TooltipBehavior extends BootstrapJavascriptBehavior {
         return this;
     }
 
+    public TooltipBehavior html(boolean html) {
+        this.html = html;
+        return this;
+    }
+
     public enum Trigger {
-        Hover, Focus, Manual
+        Click, Hover, Focus, Manual
     }
 
     public enum Placement {
