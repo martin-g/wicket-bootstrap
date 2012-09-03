@@ -21,10 +21,17 @@ public interface IBootstrapSettings {
     ResourceReference getResponsiveCssResourceReference();
 
     /**
-     * @return the base twitter bootstrap javascript resource reference
+     * @return the base twitter bootstrap JavaScript resource reference
      */
     ResourceReference getJsResourceReference();
 
+	/**
+	 * @param reference
+	 *            a reference to the base twitter bootstrap JavaScript library.
+	 *            Defaults to the embedded bootstrap.js
+	 */
+    void setJsResourceReference(ResourceReference reference);
+    
     /**
      * @return the jquery++ resource reference
      */
