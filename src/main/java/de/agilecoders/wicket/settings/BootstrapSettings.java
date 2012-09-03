@@ -15,7 +15,9 @@ import org.apache.wicket.request.resource.ResourceReference;
  */
 public class BootstrapSettings implements IBootstrapSettings {
 
-    private boolean useResponsiveCss = true;
+	private ResourceReference bootstrapJavaScriptReference = BootstrapJavaScriptReference.get();
+	
+	private boolean useResponsiveCss = true;
     private ThemeProvider themeProvider = new BootswatchThemeProvider();
     private ActiveThemeProvider activeThemeProvider = new SessionThemeProvider();
     private boolean useModernizr = false;
@@ -41,7 +43,12 @@ public class BootstrapSettings implements IBootstrapSettings {
 
     @Override
     public ResourceReference getJsResourceReference() {
-        return BootstrapJavaScriptReference.INSTANCE;
+        return bootstrapJavaScriptReference;
+    }
+    
+    @Override
+    public void setJsResourceReference(final ResourceReference bootstrapJavaScriptReference) {
+    	this.bootstrapJavaScriptReference = bootstrapJavaScriptReference;
     }
 
     @Override

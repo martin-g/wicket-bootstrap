@@ -29,6 +29,10 @@ public final class Bootstrap {
         return app.getMetaData(BOOTSTRAP_SETTINGS_METADATA_KEY);
     }
 
+    public static IBootstrapSettings getSettings() {
+        return getSettings(Application.get());
+    }
+
     public static void renderHead(Component component, IHeaderResponse response) {
         new BootstrapResourcesBehavior().renderHead(getSettings(component.getApplication()), response);
     }

@@ -1,13 +1,15 @@
 package de.agilecoders.wicket.markup.html.bootstrap.block.prettyprint;
 
-import com.google.common.collect.Lists;
-import de.agilecoders.wicket.markup.html.references.BootstrapJavaScriptReference;
+import java.util.List;
+
 import org.apache.wicket.markup.head.HeaderItem;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.request.resource.JavaScriptResourceReference;
 import org.apache.wicket.request.resource.ResourceReference;
 
-import java.util.List;
+import com.google.common.collect.Lists;
+
+import de.agilecoders.wicket.Bootstrap;
 
 /**
  * TODO: document
@@ -35,7 +37,7 @@ public class PrettyJavaScriptReference extends JavaScriptResourceReference {
     @Override
     public Iterable<? extends HeaderItem> getDependencies() {
         List<HeaderItem> dependencies = Lists.newArrayList(super.getDependencies());
-        dependencies.add(JavaScriptHeaderItem.forReference(BootstrapJavaScriptReference.INSTANCE));
+        dependencies.add(JavaScriptHeaderItem.forReference(Bootstrap.getSettings().getJsResourceReference()));
 
         return dependencies;
     }
