@@ -100,6 +100,19 @@ public class Modal extends Panel {
         headerLabel.setDefaultModel(label);
         return this;
     }
+    
+    /**
+     * Sets the header label text and whether model strings should be escaped.
+     *
+     * @param label The header label
+     * @param escapeMarkup True is model strings should be escaped
+     * @return This
+     */
+    public Modal header(IModel<String> label, boolean escapeMarkup) {
+        headerLabel.setDefaultModel(label);
+        headerLabel.setEscapeModelStrings(escapeMarkup);
+        return this;
+    }
 
     /**
      * Sets whether the footer and any children are visible.
@@ -193,8 +206,6 @@ public class Modal extends Panel {
             // layout problems.
             headerLabel.setDefaultModelObject("&nbsp;");
             headerLabel.setEscapeModelStrings(false);
-        } else {
-            headerLabel.setEscapeModelStrings(true);
         }
 
         footer.setVisible(buttons.size() > 0);
