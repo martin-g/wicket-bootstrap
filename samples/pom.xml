@@ -19,7 +19,7 @@
         <wicket.configuration>DEVELOPMENT</wicket.configuration>
 
         <wicketstuff.version>6.0.0-beta3</wicketstuff.version>
-        <bootstrap.version>${project.version}</bootstrap.version>
+        <bootstrap.version>0.6.0-SNAPSHOT</bootstrap.version>
     </properties>
 
     <dependencies>
