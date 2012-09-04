@@ -17,7 +17,8 @@ public enum ButtonType {
     Info("btn-info"), // Used as an alternate to the default styles
     Success("btn-success"), // Indicates a successful or positive action
     Warning("btn-warning"), // Indicates caution should be taken with this action
-    Danger("btn-danger"); // Indicates a dangerous or potentially negative action
+    Danger("btn-danger"), // Indicates a dangerous or potentially negative action
+    Link("btn-link"); // Deemphasize a button by making it look like a link while maintaining button behavior
 
     private final String cssClassName;
 
