@@ -9,6 +9,8 @@
 
 # project files
 *.iml
+.idea
+*/.idea
 
 # Packages #
 ############

@@ -4,6 +4,7 @@ import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import de.agilecoders.wicket.markup.html.themes.bootstrap.BootstrapCssReference;
+import de.agilecoders.wicket.markup.html.themes.wicket.WicketTheme;
 import org.apache.wicket.WicketRuntimeException;
 
 import java.util.List;
@@ -25,6 +26,7 @@ public class DefaultThemeProvider implements ThemeProvider {
      */
     public DefaultThemeProvider() {
         addDefaultTheme(new Theme("bootstrap", BootstrapCssReference.INSTANCE));
+        add(new WicketTheme());
     }
 
     public DefaultThemeProvider add(Theme... themes) {

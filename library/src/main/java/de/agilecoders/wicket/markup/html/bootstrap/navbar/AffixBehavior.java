@@ -1,6 +1,5 @@
 package de.agilecoders.wicket.markup.html.bootstrap.navbar;
 
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.AssertTagNameBehavior;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.Behavior;
@@ -58,7 +57,6 @@ public class AffixBehavior extends Behavior {
 
         component.add(new AttributeModifier("data-offset-top", offset));
         component.add(new AttributeModifier("data-spy", "affix"));
-        component.add(new AssertTagNameBehavior("div"));
     }
 
     @Override

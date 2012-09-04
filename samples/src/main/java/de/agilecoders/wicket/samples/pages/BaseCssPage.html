@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>BaseCssPage</title>
+</head>
+<body>
+<wicket:extend>
+<div class="container">
+<div class="row">
+<div class="span3 bs-docs-sidebar">
+    <ul class="nav nav-list bs-docs-sidenav" wicket:id="navigation">
+        <li><a href="#typography"><i class="icon-chevron-right"></i> Typography</a></li>
+        <li><a href="#code"><i class="icon-chevron-right"></i> Code</a></li>
+        <li><a href="#tables"><i class="icon-chevron-right"></i> Tables</a></li>
+    </ul>
+</div>
+
+<div class="span9">
+
+<section id="typography">
+<div class="page-header">
+    <h1>Typography</h1>
+</div>
+
+<h2 id="headings">Headings</h2>
+
+<p>All HTML headings, <code>&lt;h1&gt;</code> through <code>&lt;h6&gt;</code> are available.</p>
+
+<div class="bs-docs-example">
+    <h1>h1. Heading 1</h1>
+
+    <h2>h2. Heading 2</h2>
+
+    <h3>h3. Heading 3</h3>
+    <h4>h4. Heading 4</h4>
+    <h5>h5. Heading 5</h5>
+    <h6>h6. Heading 6</h6>
+</div>
+
+<h2 id="body-copy">Body copy</h2>
+
+<p>Bootstrap's global default <code>font-size</code> is <strong>14px</strong>, with a <code>line-height</code> of <strong>20px</strong>. This is applied to the <code>&lt;body&gt;</code> and all paragraphs. In addition, <code>&lt;p&gt;</code> (paragraphs) receive a bottom margin of half their line-height (9px by default).</p>
+
+<div class="bs-docs-example">
+    <p>Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.</p>
+
+    <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.</p>
+
+    <p>Maecenas sed diam eget risus varius blandit sit amet non magna. Donec id elit non mi porta gravida at eget metus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
+</div>
+<pre class="prettyprint">&lt;p&gt;...&lt;/p&gt;</pre>
+
+<h3>Lead body copy</h3>
+
+<p>Make a paragraph stand out by adding <code>.lead</code>.</p>
+
+<div class="bs-docs-example">
+    <p class="lead">Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus.</p>
+</div>
+<pre class="prettyprint">&lt;p class="lead"&gt;...&lt;/p&gt;</pre>
+
+<h3>Built with Less</h3>
+
+<p>The typographic scale is based on two LESS variables in <strong>variables.less</strong>: <code>@baseFontSize</code> and <code>@baseLineHeight</code>. The first is the base font-size used throughout and the second is the base line-height. We use those variables and some simple math to create the margins, paddings, and line-heights of all our type and more. Customize them and Bootstrap adapts.</p>
+
+
+<hr class="bs-docs-separator">
+
+
+<h2 id="emphasis">Emphasis</h2>
+
+<p>Make use of HTML's default emphasis tags with lightweight styles.</p>
+
+<h3><code>&lt;small&gt;</code></h3>
+
+<p>For de-emphasizing inline or blocks of text,
+    <small>use the small tag.</small>
+</p>
+<div class="bs-docs-example">
+    <p>
+        <small>This line of text is meant to be treated as fine print.</small>
+    </p>
+</div>
+<pre class="prettyprint">
+&lt;p&gt;
+  &lt;small&gt;This line of text is meant to be treated as fine print.&lt;/small&gt;
+&lt;/p&gt;
+</pre>
+
+<h3><code>&lt;strong&gt;</code></h3>
+
+<p>For emphasizing a snippet of text with <strong>important</strong></p>
+
+<div class="bs-docs-example">
+    <p>The following snippet of text is <strong>rendered as bold text</strong>.</p>
+</div>
+<pre class="prettyprint">&lt;strong&gt;rendered as bold text&lt;/strong&gt;</pre>
+
+<h3><code>&lt;em&gt;</code></h3>
+
+<p>For emphasizing a snippet of text with <em>stress</em></p>
+
+<div class="bs-docs-example">
+    <p>The following snippet of text is <em>rendered as italicized text</em>.</p>
+</div>
+<pre class="prettyprint">&lt;em&gt;rendered as italicized text&lt;/em&gt;</pre>
+
+<p><span class="label label-info">Heads up!</span> Feel free to use <code>&lt;b&gt;</code> and <code>&lt;i&gt;</code> in HTML5. <code>&lt;b&gt;</code> is meant to highlight words or phrases without conveying additional importance while <code>&lt;i&gt;</code> is mostly for voice, technical terms, etc.</p>
+
+
+<hr class="bs-docs-separator">
+
+
+<h2 id="abbreviations">Abbreviations</h2>
+
+<p>Stylized implemenation of HTML's <code>&lt;abbr&gt;</code> element for abbreviations and acronyms to show the expanded version on hover. Abbreviations with a <code>title</code> attribute have a light dotted bottom border and a help cursor on hover, providing additional context on hover.</p>
+
+<h3><code>&lt;abbr&gt;</code></h3>
+
+<p>For expanded text on long hover of an abbreviation, include the <code>title</code> attribute.</p>
+
+<div class="bs-docs-example">
+    <p>An abbreviation of the word attribute is <abbr title="attribute">attr</abbr>.</p>
+</div>
+<pre class="prettyprint">&lt;abbr title="attribute"&gt;attr&lt;/abbr&gt;</pre>
+
+<h3><code>&lt;abbr class="initialism"&gt;</code></h3>
+
+<p>Add <code>.initialism</code> to an abbreviation for a slightly smaller font-size.</p>
+
+<div class="bs-docs-example">
+    <p><abbr title="HyperText Markup Language" class="initialism">HTML</abbr> is the best thing since sliced bread.</p>
+</div>
+<pre class="prettyprint">&lt;abbr title="attribute" class="initialism"&gt;attr&lt;/abbr&gt;</pre>
+
+
+<hr class="bs-docs-separator">
+
+
+<h2 id="addresses">Addresses</h2>
+
+<p>Present contact information for the nearest ancestor or the entire body of work.</p>
+
+<h3><code>&lt;address&gt;</code></h3>
+
+<p>Preserve formatting by ending all lines with <code>&lt;br&gt;</code>.</p>
+
+<div class="bs-docs-example">
+    <address>
+        <strong>Twitter, Inc.</strong><br>
+        795 Folsom Ave, Suite 600<br>
+        San Francisco, CA 94107<br>
+        <abbr title="Phone">P:</abbr> (123) 456-7890
+    </address>
+    <address>
+        <strong>Full Name</strong><br>
+        <a href="mailto:#">first.last@gmail.com</a>
+    </address>
+</div>
+<pre class="prettyprint linenums">
+&lt;address&gt;
+  &lt;strong&gt;Twitter, Inc.&lt;/strong&gt;&lt;br&gt;
+  795 Folsom Ave, Suite 600&lt;br&gt;
+  San Francisco, CA 94107&lt;br&gt;
+  &lt;abbr title="Phone"&gt;P:&lt;/abbr&gt; (123) 456-7890
+&lt;/address&gt;
+
+&lt;address&gt;
+  &lt;strong&gt;Full Name&lt;/strong&gt;&lt;br&gt;
+  &lt;a href="mailto:#"&gt;first.last@gmail.com&lt;/a&gt;
+&lt;/address&gt;
+</pre>
+
+
+<hr class="bs-docs-separator">
+
+
+<h2 id="blockquotes">Blockquotes</h2>
+
+<p>For quoting blocks of content from another source within your document.</p>
+
+<h3>Default blockqoute</h3>
+
+<p>Wrap <code>&lt;blockquote&gt;</code> around any <abbr title="HyperText Markup Language">HTML</abbr> as the quote. For straight quotes we recommend a <code>&lt;p&gt;</code>.</p>
+
+<div class="bs-docs-example">
+    <blockquote>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+    </blockquote>
+</div>
+<pre class="prettyprint linenums">
+&lt;blockquote&gt;
+  &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.&lt;/p&gt;
+&lt;/blockquote&gt;
+</pre>
+
+<h3>Blockquote options</h3>
+
+<p>Style and content changes for simple variations on a standard blockquote.</p>
+
+<h4>Naming a source</h4>
+
+<p>Add <code>&lt;small&gt;</code> tag for identifying the source. Wrap the name of the source work in <code>&lt;cite&gt;</code>.</p>
+
+<div class="bs-docs-example">
+    <blockquote>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+        <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
+    </blockquote>
+</div>
+<pre class="prettyprint linenums">
+&lt;blockquote&gt;
+  &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.&lt;/p&gt;
+  &lt;small&gt;Someone famous &lt;cite title="Source Title"&gt;Source Title&lt;/cite&gt;&lt;/small&gt;
+&lt;/blockquote&gt;
+</pre>
+
+<h4>Alternate displays</h4>
+
+<p>Use <code>.pull-right</code> for a floated, right-aligned blockquote.</p>
+
+<div class="bs-docs-example" style="overflow: hidden;">
+    <blockquote class="pull-right">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+        <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
+    </blockquote>
+</div>
+<pre class="prettyprint linenums">
+&lt;blockquote class="pull-right"&gt;
+  ...
+&lt;/blockquote&gt;
+</pre>
+
+
+<hr class="bs-docs-separator">
+
+
+<!-- Lists -->
+<h2 id="lists">Lists</h2>
+
+<h3>Unordered</h3>
+
+<p>A list of items in which the order does <em>not</em> explicitly matter.</p>
+
+<div class="bs-docs-example">
+    <ul>
+        <li>Lorem ipsum dolor sit amet</li>
+        <li>Consectetur adipiscing elit</li>
+        <li>Integer molestie lorem at massa</li>
+        <li>Facilisis in pretium nisl aliquet</li>
+        <li>Nulla volutpat aliquam velit
+            <ul>
+                <li>Phasellus iaculis neque</li>
+                <li>Purus sodales ultricies</li>
+                <li>Vestibulum laoreet porttitor sem</li>
+                <li>Ac tristique libero volutpat at</li>
+            </ul>
+        </li>
+        <li>Faucibus porta lacus fringilla vel</li>
+        <li>Aenean sit amet erat nunc</li>
+        <li>Eget porttitor lorem</li>
+    </ul>
+</div>
+<pre class="prettyprint linenums">
+&lt;ul&gt;
+  &lt;li&gt;...&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+
+<h3>Ordered</h3>
+
+<p>A list of items in which the order <em>does</em> explicitly matter.</p>
+
+<div class="bs-docs-example">
+    <ol>
+        <li>Lorem ipsum dolor sit amet</li>
+        <li>Consectetur adipiscing elit</li>
+        <li>Integer molestie lorem at massa</li>
+        <li>Facilisis in pretium nisl aliquet</li>
+        <li>Nulla volutpat aliquam velit</li>
+        <li>Faucibus porta lacus fringilla vel</li>
+        <li>Aenean sit amet erat nunc</li>
+        <li>Eget porttitor lorem</li>
+    </ol>
+</div>
+<pre class="prettyprint linenums">
+&lt;ol&gt;
+  &lt;li&gt;...&lt;/li&gt;
+&lt;/ol&gt;
+</pre>
+
+<h3>Unstyled</h3>
+
+<p>A list of items with no <code>list-style</code> or additional left padding.</p>
+
+<div class="bs-docs-example">
+    <ul class="unstyled">
+        <li>Lorem ipsum dolor sit amet</li>
+        <li>Consectetur adipiscing elit</li>
+        <li>Integer molestie lorem at massa</li>
+        <li>Facilisis in pretium nisl aliquet</li>
+        <li>Nulla volutpat aliquam velit
+            <ul>
+                <li>Phasellus iaculis neque</li>
+                <li>Purus sodales ultricies</li>
+                <li>Vestibulum laoreet porttitor sem</li>
+                <li>Ac tristique libero volutpat at</li>
+            </ul>
+        </li>
+        <li>Faucibus porta lacus fringilla vel</li>
+        <li>Aenean sit amet erat nunc</li>
+        <li>Eget porttitor lorem</li>
+    </ul>
+</div>
+<pre class="prettyprint linenums">
+&lt;ul class="unstyled"&gt;
+  &lt;li&gt;...&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+
+<h3>Description</h3>
+
+<p>A list of terms with their associated descriptions.</p>
+
+<div class="bs-docs-example">
+    <dl>
+        <dt>Description lists</dt>
+        <dd>A description list is perfect for defining terms.</dd>
+        <dt>Euismod</dt>
+        <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
+        <dd>Donec id elit non mi porta gravida at eget metus.</dd>
+        <dt>Malesuada porta</dt>
+        <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
+    </dl>
+</div>
+<pre class="prettyprint linenums">
+&lt;dl&gt;
+  &lt;dt&gt;...&lt;/dt&gt;
+  &lt;dd&gt;...&lt;/dd&gt;
+&lt;/dl&gt;
+</pre>
+
+<h4>Horizontal description</h4>
+
+<p>Make terms and descriptions in <code>&lt;dl&gt;</code> line up side-by-side.</p>
+
+<div class="bs-docs-example">
+    <dl class="dl-horizontal">
+        <dt>Description lists</dt>
+        <dd>A description list is perfect for defining terms.</dd>
+        <dt>Euismod</dt>
+        <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
+        <dd>Donec id elit non mi porta gravida at eget metus.</dd>
+        <dt>Malesuada porta</dt>
+        <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
+        <dt>Felis euismod semper eget lacinia</dt>
+        <dd>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</dd>
+    </dl>
+</div>
+<pre class="prettyprint linenums">
+&lt;dl class="dl-horizontal"&gt;
+  &lt;dt&gt;...&lt;/dt&gt;
+  &lt;dd&gt;...&lt;/dd&gt;
+&lt;/dl&gt;
+</pre>
+<p>
+    <span class="label label-info">Heads up!</span>
+    Horizontal description lists will truncate terms that are too long to fit in the left column fix <code>text-overflow</code>. In narrower viewports, they will change to the default stacked layout.
+</p>
+</section>
+<!-- Code
+================================================== -->
+<section id="code">
+    <div class="page-header">
+        <h1>Code</h1>
+    </div>
+
+    <h2>Inline</h2>
+    <p>Wrap inline snippets of code with <code>&lt;code&gt;</code>.</p>
+    <div class="bs-docs-example">
+        For example, <code>&lt;section&gt;</code> should be wrapped as inline.
+    </div>
+<pre class="prettyprint linenums">
+For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inline.
+</pre>
+
+    <h2>Basic block</h2>
+    <p>Use <code>&lt;pre&gt;</code> for multiple lines of code. Be sure to escape any angle brackets in the code for proper rendering.</p>
+    <div class="bs-docs-example">
+        <pre>&lt;p&gt;Sample text here...&lt;/p&gt;</pre>
+    </div>
+<pre class="prettyprint linenums" style="margin-bottom: 9px;">
+&lt;pre&gt;
+  &amp;lt;p&amp;gt;Sample text here...&amp;lt;/p&amp;gt;
+&lt;/pre&gt;
+</pre>
+    <p><span class="label label-info">Heads up!</span> Be sure to keep code within <code>&lt;pre&gt;</code> tags as close to the left as possible; it will render all tabs.</p>
+    <p>You may optionally add the <code>.pre-scrollable</code> class which will set a max-height of 350px and provide a y-axis scrollbar.</p>
+</section>
+
+<!-- Tables
+================================================== -->
+<section id="tables">
+<div class="page-header">
+    <h1>Tables</h1>
+</div>
+
+<h2>Default styles</h2>
+<p>For basic styling&mdash;light padding and only horizontal dividers&mdash;add the base class <code>.table</code> to any <code>&lt;table&gt;</code>.</p>
+<div class="bs-docs-example">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Username</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Larry</td>
+                <td>the Bird</td>
+                <td>@twitter</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<pre class="prettyprint linenums">
+&lt;table class="table"&gt;
+  …
+&lt;/table&gt;
+</pre>
+
+
+<hr class="bs-docs-separator">
+
+
+<h2>Optional classes</h2>
+<p>Add any of the follow classes to the <code>.table</code> base class.</p>
+
+<h3><code>.table-striped</code></h3>
+<p>Adds zebra-striping to any table row within the <code>&lt;tbody&gt;</code> via the <code>:nth-child</code> CSS selector (not available in IE7-IE8).</p>
+<div class="bs-docs-example">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Username</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Larry</td>
+                <td>the Bird</td>
+                <td>@twitter</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<pre class="prettyprint linenums" style="margin-bottom: 18px;">
+&lt;table class="table table-striped"&gt;
+  …
+&lt;/table&gt;
+</pre>
+
+<h3><code>.table-bordered</code></h3>
+<p>Add borders and rounded corners to the table.</p>
+<div class="bs-docs-example">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Username</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td rowspan="2">1</td>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+            </tr>
+            <tr>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@TwBootstrap</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td colspan="2">Larry the Bird</td>
+                <td>@twitter</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<pre class="prettyprint linenums">
+&lt;table class="table table-bordered"&gt;
+  …
+&lt;/table&gt;
+</pre>
+
+<h3><code>.table-hover</code></h3>
+<p>Enable a hover state on table rows within a <code>&lt;tbody&gt;</code>.</p>
+<div class="bs-docs-example">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Username</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td colspan="2">Larry the Bird</td>
+                <td>@twitter</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<pre class="prettyprint linenums" style="margin-bottom: 18px;">
+&lt;table class="table table-hover"&gt;
+  …
+&lt;/table&gt;
+</pre>
+
+<h3><code>.table-condensed</code></h3>
+<p>Makes tables more compact by cutting cell padding in half.</p>
+<div class="bs-docs-example">
+    <table class="table table-condensed">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Username</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td colspan="2">Larry the Bird</td>
+                <td>@twitter</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<pre class="prettyprint linenums" style="margin-bottom: 18px;">
+&lt;table class="table table-condensed"&gt;
+  …
+&lt;/table&gt;
+</pre>
+
+
+<hr class="bs-docs-separator">
+
+
+<h2>Optional row classes</h2>
+<p>Use contextual classes to color table rows.</p>
+<table class="table table-bordered table-striped">
+    <colgroup>
+        <col class="span1"/>
+        <col class="span7"/>
+    </colgroup>
+    <thead>
+        <tr>
+            <th>Class</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <code>.success</code>
+            </td>
+            <td>Indicates a successful or positive action.</td>
+        </tr>
+        <tr>
+            <td>
+                <code>.error</code>
+            </td>
+            <td>Indicates a dangerous or potentially negative action.</td>
+        </tr>
+        <tr>
+            <td>
+                <code>.info</code>
+            </td>
+            <td>Used as an alternative to the default styles.</td>
+        </tr>
+    </tbody>
+</table>
+<div class="bs-docs-example">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Product</th>
+                <th>Payment Taken</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="success">
+                <td>1</td>
+                <td>TB - Monthly</td>
+                <td>01/04/2012</td>
+                <td>Approved</td>
+            </tr>
+            <tr class="error">
+                <td>2</td>
+                <td>TB - Monthly</td>
+                <td>02/04/2012</td>
+                <td>Declined</td>
+            </tr>
+            <tr class="info">
+                <td>3</td>
+                <td>TB - Monthly</td>
+                <td>03/04/2012</td>
+                <td>Pending</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<pre class="prettyprint linenums">
+...
+  &lt;tr class="success"&gt;
+    &lt;td&gt;1&lt;/td&gt;
+    &lt;td&gt;TB - Monthly&lt;/td&gt;
+    &lt;td&gt;01/04/2012&lt;/td&gt;
+    &lt;td&gt;Approved&lt;/td&gt;
+  &lt;/tr&gt;
+...
+</pre>
+
+
+<hr class="bs-docs-separator">
+
+
+<h2>Supported table markup</h2>
+<p>List of supported table HTML elements and how they should be used.</p>
+<table class="table table-bordered table-striped">
+    <colgroup>
+        <col class="span1"/>
+        <col class="span7"/>
+    </colgroup>
+    <thead>
+        <tr>
+            <th>Tag</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <code>&lt;table&gt;</code>
+            </td>
+            <td>
+                Wrapping element for displaying data in a tabular format
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <code>&lt;thead&gt;</code>
+            </td>
+            <td>
+                Container element for table header rows (<code>&lt;tr&gt;</code>) to label table columns
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <code>&lt;tbody&gt;</code>
+            </td>
+            <td>
+                Container element for table rows (<code>&lt;tr&gt;</code>) in the body of the table
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <code>&lt;tr&gt;</code>
+            </td>
+            <td>
+                Container element for a set of table cells (<code>&lt;td&gt;</code> or <code>&lt;th&gt;</code>) that appears on a single row
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <code>&lt;td&gt;</code>
+            </td>
+            <td>
+                Default table cell
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <code>&lt;th&gt;</code>
+            </td>
+            <td>
+                Special table cell for column (or row, depending on scope and placement) labels<br>
+                Must be used within a <code>&lt;thead&gt;</code>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <code>&lt;caption&gt;</code>
+            </td>
+            <td>
+                Description or summary of what the table holds, especially useful for screen readers
+            </td>
+        </tr>
+    </tbody>
+</table>
+<pre class="prettyprint linenums">
+&lt;table&gt;
+  &lt;caption&gt;...&lt;/caption&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;...&lt;/th&gt;
+      &lt;th&gt;...&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;...&lt;/td&gt;
+      &lt;td&gt;...&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+</pre>
+
+</section>
+
+</div>
+
+</div>
+</div>
+</wicket:extend>
+</body>
+</html>

@@ -8,10 +8,10 @@
     </parent>
 
     <groupId>de.agilecoders.wicket</groupId>
-    <artifactId>bootstrap</artifactId>
+    <artifactId>bootstrap-parent</artifactId>
     <version>0.6.0-SNAPSHOT</version>
-    <packaging>jar</packaging>
-    <name>bootstrap</name>
+    <packaging>pom</packaging>
+    <name>bootstrap-parent</name>
     <description>wicket with twitter bootstrap integration</description>
     <url>https://github.com/l0rdn1kk0n/wicket-bootstrap</url>
 
@@ -24,6 +24,11 @@
     <prerequisites>
         <maven>${mvn.version}</maven>
     </prerequisites>
+
+    <modules>
+         <module>samples</module>
+         <module>library</module>
+    </modules>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
