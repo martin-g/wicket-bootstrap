@@ -69,7 +69,7 @@ public class WicketApplication extends WebApplication {
 
         configureBootstrap();
 
-        new AnnotatedMountScanner().scanPackage("de.agilecoders.wicket.demo").mount(this);
+        new AnnotatedMountScanner().scanPackage("de.agilecoders.wicket.samples.pages").mount(this);
     }
 
     private void configureBootstrap() {
