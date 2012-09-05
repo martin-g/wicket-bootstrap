@@ -74,11 +74,11 @@ public class WicketApplication extends WebApplication {
 
     private void configureBootstrap() {
         BootstrapSettings settings = new BootstrapSettings();
-        settings.minify(true); // use minimized version of all bootstrap references
-        settings.useJqueryPP(true);
-        settings.useModernizr(true);
-        settings.useResponsiveCss(true);
-        settings.getBootstrapLessCompilerSettings().setUseLessCompiler(true);
+        settings.minify(true) // use minimized version of all bootstrap references
+            .useJqueryPP(true)
+            .useModernizr(true)
+            .useResponsiveCss(true)
+            .getBootstrapLessCompilerSettings().setUseLessCompiler(true);
 
         Bootstrap.install(this, settings);
     }

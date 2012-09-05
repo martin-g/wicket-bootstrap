@@ -38,8 +38,9 @@ public class CeruleanCssReferenceTest extends WicketApplicationTest {
             throw new RuntimeException(e);
         }
 
-        getBootstrapSettings().getBootstrapLessCompilerSettings().setCacheStrategy(IBootstrapLessCompilerSettings.CacheStrategy.Never);
-        getBootstrapSettings().getBootstrapLessCompilerSettings().setUseLessCompiler(true);
+        getBootstrapSettings().getBootstrapLessCompilerSettings()
+            .setCacheStrategy(IBootstrapLessCompilerSettings.CacheStrategy.Never)
+            .setUseLessCompiler(true);
     }
 
     @Test
