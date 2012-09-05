@@ -1,13 +1,15 @@
 package de.agilecoders.wicket.settings;
 
+import java.util.List;
+
+import org.apache.wicket.WicketRuntimeException;
+
 import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-import de.agilecoders.wicket.markup.html.themes.bootstrap.BootstrapCssReference;
-import de.agilecoders.wicket.markup.html.themes.wicket.WicketTheme;
-import org.apache.wicket.WicketRuntimeException;
 
-import java.util.List;
+import de.agilecoders.wicket.markup.html.themes.bootstrap.BootstrapTheme;
+import de.agilecoders.wicket.markup.html.themes.wicket.WicketTheme;
 
 /**
  * A default {@link ThemeProvider} implementation that only contains
@@ -25,7 +27,7 @@ public class DefaultThemeProvider implements ThemeProvider {
      * Construct.
      */
     public DefaultThemeProvider() {
-        addDefaultTheme(new Theme("bootstrap", BootstrapCssReference.INSTANCE));
+        addDefaultTheme(new BootstrapTheme());
         add(new WicketTheme());
     }
 
