@@ -18,6 +18,7 @@
 
         <wicketstuff.version>6.0.0-beta3</wicketstuff.version>
         <jetty.version>7.6.5.v20120716</jetty.version>
+        <logback.version>1.0.7</logback.version>
     </properties>
 
     <dependencies>
@@ -38,6 +39,12 @@
         <dependency>
             <groupId>de.agilecoders.wicket</groupId>
             <artifactId>bootstrap</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback.version}</version>
         </dependency>
 
         <dependency>
