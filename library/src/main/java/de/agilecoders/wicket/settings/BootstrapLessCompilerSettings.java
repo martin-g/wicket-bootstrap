@@ -22,8 +22,9 @@ public class BootstrapLessCompilerSettings implements IBootstrapLessCompilerSett
     private boolean storeChanges = false;
 
     @Override
-    public void setUseLessCompiler(boolean value) {
+    public BootstrapLessCompilerSettings setUseLessCompiler(boolean value) {
         useLessCompiler = value;
+        return this;
     }
 
     @Override
@@ -32,12 +33,13 @@ public class BootstrapLessCompilerSettings implements IBootstrapLessCompilerSett
     }
 
     @Override
-    public void setCharset(Charset charset) {
+    public BootstrapLessCompilerSettings setCharset(Charset charset) {
         this.charset = charset;
 
         if (lessOptions != null) {
             lessOptions.setCharset(charset.name());
         }
+        return this;
     }
 
     @Override
@@ -46,8 +48,9 @@ public class BootstrapLessCompilerSettings implements IBootstrapLessCompilerSett
     }
 
     @Override
-    public void setLessCompiler(IBootstrapLessCompiler lessCompiler) {
+    public BootstrapLessCompilerSettings setLessCompiler(IBootstrapLessCompiler lessCompiler) {
         this.lessCompiler = lessCompiler;
+        return this;
     }
 
     @Override
@@ -56,8 +59,9 @@ public class BootstrapLessCompilerSettings implements IBootstrapLessCompilerSett
     }
 
     @Override
-    public void setLessOptions(LessOptions lessOptions) {
+    public BootstrapLessCompilerSettings setLessOptions(LessOptions lessOptions) {
         this.lessOptions = lessOptions;
+        return this;
     }
 
     @Override
@@ -71,13 +75,15 @@ public class BootstrapLessCompilerSettings implements IBootstrapLessCompilerSett
     }
 
     @Override
-    public void setCacheStrategy(CacheStrategy strategy) {
+    public BootstrapLessCompilerSettings setCacheStrategy(CacheStrategy strategy) {
         cacheStrategy = strategy;
+        return this;
     }
 
     @Override
-    public void storeChanges(boolean value) {
+    public BootstrapLessCompilerSettings storeChanges(boolean value) {
         this.storeChanges = value;
+        return this;
     }
 
     @Override

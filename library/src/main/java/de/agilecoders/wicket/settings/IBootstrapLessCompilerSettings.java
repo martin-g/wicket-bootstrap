@@ -22,7 +22,7 @@ public interface IBootstrapLessCompilerSettings {
      *
      * @param value true, if less compiler should be used
      */
-    void setUseLessCompiler(boolean value);
+    IBootstrapLessCompilerSettings setUseLessCompiler(boolean value);
 
     /**
      * @return true, if less compiler should be used
@@ -35,7 +35,7 @@ public interface IBootstrapLessCompilerSettings {
      *
      * @param charset the charset to use.
      */
-    void setCharset(Charset charset);
+    IBootstrapLessCompilerSettings setCharset(Charset charset);
 
     /**
      * @return the charset to use.
@@ -47,7 +47,7 @@ public interface IBootstrapLessCompilerSettings {
      *
      * @param lessCompiler The less compiler to use
      */
-    void setLessCompiler(IBootstrapLessCompiler lessCompiler);
+    IBootstrapLessCompilerSettings setLessCompiler(IBootstrapLessCompiler lessCompiler);
 
     /**
      * @return The less compiler to use
@@ -59,7 +59,7 @@ public interface IBootstrapLessCompilerSettings {
      *
      * @param lessOptions the less compiler options
      */
-    void setLessOptions(LessOptions lessOptions);
+    IBootstrapLessCompilerSettings setLessOptions(LessOptions lessOptions);
 
     /**
      * @return the less compiler options
@@ -76,14 +76,14 @@ public interface IBootstrapLessCompilerSettings {
      *
      * @param strategy the cache strategy
      */
-    void setCacheStrategy(CacheStrategy strategy);
+    IBootstrapLessCompilerSettings setCacheStrategy(CacheStrategy strategy);
 
     /**
      * whether to store all less file changes to the css file or not
      *
      * @param value true, if file should stored.
      */
-    void storeChanges(boolean value);
+    IBootstrapLessCompilerSettings storeChanges(boolean value);
 
     /**
      * @return true, if less file changes should stored in css file.
