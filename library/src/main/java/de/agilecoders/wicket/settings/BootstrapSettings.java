@@ -47,8 +47,9 @@ public class BootstrapSettings implements IBootstrapSettings {
     }
     
     @Override
-    public void setJsResourceReference(final ResourceReference bootstrapJavaScriptReference) {
+    public BootstrapSettings setJsResourceReference(final ResourceReference bootstrapJavaScriptReference) {
     	this.bootstrapJavaScriptReference = bootstrapJavaScriptReference;
+        return this;
     }
 
     @Override
@@ -62,8 +63,9 @@ public class BootstrapSettings implements IBootstrapSettings {
     }
 
     @Override
-    public void useJqueryPP(boolean useJqueryPP) {
+    public BootstrapSettings useJqueryPP(boolean useJqueryPP) {
         this.useJqueryPP = useJqueryPP;
+        return this;
     }
 
     @Override
@@ -72,8 +74,9 @@ public class BootstrapSettings implements IBootstrapSettings {
     }
 
     @Override
-    public final void minify(final boolean minify) {
+    public final BootstrapSettings minify(final boolean minify) {
         Application.get().getResourceSettings().setUseMinifiedResources(minify);
+        return this;
     }
 
     @Override
@@ -82,8 +85,9 @@ public class BootstrapSettings implements IBootstrapSettings {
     }
 
     @Override
-    public void useModernizr(boolean useModernizr) {
+    public BootstrapSettings useModernizr(boolean useModernizr) {
         this.useModernizr = useModernizr;
+        return this;
     }
 
     @Override
@@ -92,8 +96,9 @@ public class BootstrapSettings implements IBootstrapSettings {
     }
 
     @Override
-    public final void useResponsiveCss(final boolean useResponsiveCss) {
+    public final BootstrapSettings useResponsiveCss(final boolean useResponsiveCss) {
         this.useResponsiveCss = useResponsiveCss;
+        return this;
     }
 
     @Override
@@ -102,8 +107,9 @@ public class BootstrapSettings implements IBootstrapSettings {
     }
 
     @Override
-    public void setActiveThemeProvider(ActiveThemeProvider activeThemeProvider) {
+    public BootstrapSettings setActiveThemeProvider(ActiveThemeProvider activeThemeProvider) {
         this.activeThemeProvider = activeThemeProvider;
+        return this;
     }
 
     @Override
@@ -112,8 +118,9 @@ public class BootstrapSettings implements IBootstrapSettings {
     }
 
     @Override
-    public void setThemeProvider(ThemeProvider themeProvider) {
+    public BootstrapSettings setThemeProvider(ThemeProvider themeProvider) {
         this.themeProvider = themeProvider;
+        return this;
     }
 
     @Override
