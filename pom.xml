@@ -26,8 +26,8 @@
     </prerequisites>
 
     <modules>
-         <module>samples</module>
          <module>library</module>
+        <module>samples</module>
     </modules>
 
     <properties>
@@ -48,6 +48,12 @@
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>de.agilecoders.wicket</groupId>
+                <artifactId>bootstrap</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
             <dependency>
                 <groupId>com.google.guava</groupId>
                 <artifactId>guava</artifactId>
