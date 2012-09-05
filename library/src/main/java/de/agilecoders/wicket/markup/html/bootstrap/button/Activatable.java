@@ -3,16 +3,16 @@ package de.agilecoders.wicket.markup.html.bootstrap.button;
 import org.apache.wicket.Component;
 
 /**
- * An interface used by Navbar to decide whether a component is the currently active one
+ * An interface that allows the implementations to decide whether they are the active item
+ * in a collection of items (like buttons, links, pills, ...)
  */
 public interface Activatable {
 
     /**
-     * Decides whether the current instance ({@code this}) is the active button
-     * in the Navbar.
+     * Decides whether the current instance ({@code this}) is the active item.
      *
-     * @param button the current instance as a Component
-     * @return {@code true} if the button is the current active one
+     * @param item the current instance as a Component
+     * @return {@code true} if the item is the current active one
      */
-    boolean isActive(Component button);
+    boolean isActive(Component item);
 }
