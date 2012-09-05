@@ -1,16 +1,14 @@
 package de.agilecoders.wicket.less;
 
-import de.agilecoders.wicket.WicketApplicationTest;
-import de.agilecoders.wicket.markup.html.themes.cerulean.CeruleanCssReference;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.is;
+
 import org.apache.wicket.resource.JQueryResourceReference;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.io.File;
-
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.matchers.JUnitMatchers.containsString;
+import de.agilecoders.wicket.WicketApplicationTest;
+import de.agilecoders.wicket.markup.html.themes.bootswatch.BootswatchCssReference;
 
 /**
  * TODO: document
@@ -29,9 +27,9 @@ public class ResourceLocatorTest extends WicketApplicationTest {
 
     @Test
     public void findFile() {
-        Resource file = locator.findResource(CeruleanCssReference.class, "less/cerulean.less");
+        Resource file = locator.findResource(BootswatchCssReference.class, "less/cerulean/bootswatch.less");
 
-        Assert.assertThat(file.getName(), is(equalTo("cerulean.less")));
+        Assert.assertThat(file.getName(), is(equalTo("bootswatch.less")));
         Assert.assertTrue(file.exists());
     }
 

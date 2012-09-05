@@ -27,8 +27,8 @@ public class BootstrapCssReference extends LessResourceReference {
         super(BootstrapCssReference.class, "css/bootstrap.css");
     }
 
-    protected BootstrapCssReference(Class clazz, String name) {
-        super(clazz, name);
+    protected BootstrapCssReference(Class<?> scope, String name) {
+        super(scope, name);
     }
 
     @Override
