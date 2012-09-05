@@ -1,12 +1,13 @@
 package de.agilecoders.wicket.settings;
 
-import de.agilecoders.wicket.markup.html.references.BootstrapJavaScriptReference;
-import de.agilecoders.wicket.markup.html.references.BootstrapResponsiveCssReference;
-import de.agilecoders.wicket.markup.html.references.JqueryPPJavaScriptReference;
-import de.agilecoders.wicket.markup.html.themes.bootstrap.BootstrapCssReference;
 import org.apache.wicket.Application;
 import org.apache.wicket.request.resource.CssResourceReference;
 import org.apache.wicket.request.resource.ResourceReference;
+
+import de.agilecoders.wicket.markup.html.references.BootstrapJavaScriptReference;
+import de.agilecoders.wicket.markup.html.references.JqueryPPJavaScriptReference;
+import de.agilecoders.wicket.markup.html.themes.bootstrap.BootstrapCssReference;
+import de.agilecoders.wicket.markup.html.themes.bootstrap.BootstrapResponsiveCssReference;
 
 /**
  * @author miha

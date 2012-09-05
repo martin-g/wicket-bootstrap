@@ -2,6 +2,7 @@ package de.agilecoders.wicket.markup.html.themes.cerulean;
 
 import de.agilecoders.wicket.WicketApplicationTest;
 import de.agilecoders.wicket.markup.html.themes.bootstrap.BootstrapCssReference;
+import de.agilecoders.wicket.markup.html.themes.bootswatch.BootswatchCssReference;
 import de.agilecoders.wicket.settings.IBootstrapLessCompilerSettings;
 import org.apache.wicket.util.io.IOUtils;
 import org.apache.wicket.util.resource.ResourceStreamNotFoundException;
@@ -30,7 +31,7 @@ public class CeruleanCssReferenceTest extends WicketApplicationTest {
     @Override
     protected void onBefore() {
         try {
-            cssContent = IOUtils.toString(CeruleanCssReference.INSTANCE.getResource().getResourceStream().getInputStream());
+            cssContent = IOUtils.toString(BootswatchCssReference.CERULEAN.getResource().getResourceStream().getInputStream());
         } catch (IOException e) {
             throw new RuntimeException(e);
         } catch (ResourceStreamNotFoundException e) {
@@ -44,7 +45,7 @@ public class CeruleanCssReferenceTest extends WicketApplicationTest {
 
     @Test
     public void lessFileWasGeneratedWithoutError() {
-        BootstrapCssReference ref = CeruleanCssReference.INSTANCE;
+        BootstrapCssReference ref = BootswatchCssReference.CERULEAN;
 
         tester().startResourceReference(ref);
         tester().assertNoErrorMessage();
@@ -52,7 +53,7 @@ public class CeruleanCssReferenceTest extends WicketApplicationTest {
 
     @Test
     public void lessFileWasGeneratedWithCorrectResource() {
-        BootstrapCssReference ref = spy(CeruleanCssReference.INSTANCE);
+        BootstrapCssReference ref = spy(BootswatchCssReference.CERULEAN);
 
         tester().startResourceReference(ref);
         verify(ref, times(1)).getResource();
@@ -61,7 +62,7 @@ public class CeruleanCssReferenceTest extends WicketApplicationTest {
     @Test
     @Ignore // update bootstrap css file
     public void lessFileWasGeneratedWithCorrectContent() {
-        BootstrapCssReference ref = CeruleanCssReference.INSTANCE;
+        BootstrapCssReference ref = BootswatchCssReference.CERULEAN;
 
         tester().startResourceReference(ref);
         Assert.assertThat(cssContent, is(equalTo(tester().getLastResponseAsString())));
