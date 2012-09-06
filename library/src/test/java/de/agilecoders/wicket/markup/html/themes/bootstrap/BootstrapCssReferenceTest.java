@@ -37,8 +37,9 @@ public class BootstrapCssReferenceTest extends WicketApplicationTest {
     @Override
     protected IBootstrapSettings createBootstrapSettings() {
         IBootstrapSettings settings = super.createBootstrapSettings();
-        settings.getBootstrapLessCompilerSettings().setUseLessCompiler(true);
-        settings.getBootstrapLessCompilerSettings().setCacheStrategy(IBootstrapLessCompilerSettings.CacheStrategy.Never);
+        settings.getBootstrapLessCompilerSettings()
+            .setUseLessCompiler(true)
+            .setCacheStrategy(IBootstrapLessCompilerSettings.CacheStrategy.Never);
         return settings;
     }
 

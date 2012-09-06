@@ -1,12 +1,13 @@
 package de.agilecoders.wicket.markup.html.bootstrap.navigation;
 
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
+import de.agilecoders.wicket.markup.html.bootstrap.table.TableBehavior;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
-import org.apache.wicket.request.resource.JavaScriptResourceReference;
 import org.apache.wicket.request.resource.ResourceReference;
+import org.apache.wicket.resource.JQueryPluginResourceReference;
 
 /**
  * TODO: document
@@ -16,7 +17,8 @@ import org.apache.wicket.request.resource.ResourceReference;
  * @version 1.0
  */
 public class InfiniteScrollingBehavior extends BootstrapBaseBehavior {
-    private static final ResourceReference JS = new JavaScriptResourceReference(InfiniteScrollingBehavior.class, "js/jquery.infinitescroll.js");
+    // TODO: move the .js files next to this behavior. Now they are with TableBehavior
+    private static final ResourceReference JS = new JQueryPluginResourceReference(TableBehavior.class, "js/jquery.infinitescroll.js");
 
     private String navSelector;
     private String nextSelector;
