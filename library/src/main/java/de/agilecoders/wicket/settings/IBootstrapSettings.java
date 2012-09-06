@@ -30,7 +30,7 @@ public interface IBootstrapSettings {
 	 *            a reference to the base twitter bootstrap JavaScript library.
 	 *            Defaults to the embedded bootstrap.js
 	 */
-    void setJsResourceReference(ResourceReference reference);
+    IBootstrapSettings setJsResourceReference(ResourceReference reference);
     
     /**
      * @return the jquery++ resource reference
@@ -45,7 +45,7 @@ public interface IBootstrapSettings {
     /**
      * @param useJqueryPP true, if modernizr should be loaded
      */
-    void useJqueryPP(final boolean useJqueryPP);
+    IBootstrapSettings useJqueryPP(final boolean useJqueryPP);
 
     /**
      * @return true if minification is active
@@ -55,7 +55,7 @@ public interface IBootstrapSettings {
     /**
      * @param minify true, if all references should be loaded minified
      */
-    void minify(final boolean minify);
+    IBootstrapSettings minify(final boolean minify);
 
     /**
      * @return true, if modernizr should be loaded
@@ -65,7 +65,7 @@ public interface IBootstrapSettings {
     /**
      * @param useModernizr true, if modernizr js library will be included
      */
-    void useModernizr(final boolean useModernizr);
+    IBootstrapSettings useModernizr(final boolean useModernizr);
 
     /**
      * @return true, if responsive css will be included
@@ -75,14 +75,14 @@ public interface IBootstrapSettings {
     /**
      * @param useResponsiveCss set to true if responsive css should be included
      */
-    void useResponsiveCss(final boolean useResponsiveCss);
+    IBootstrapSettings useResponsiveCss(final boolean useResponsiveCss);
 
     /**
      * The {@link ActiveThemeProvider} provides access to the active theme
      *
      * @param themeProvider The {@link ActiveThemeProvider} instance
      */
-    void setActiveThemeProvider(ActiveThemeProvider themeProvider);
+    IBootstrapSettings setActiveThemeProvider(ActiveThemeProvider themeProvider);
 
     /**
      * @return The {@link ActiveThemeProvider} instance
@@ -99,7 +99,7 @@ public interface IBootstrapSettings {
      *
      * @param themeProvider The {@link ThemeProvider} instance
      */
-    void setThemeProvider(ThemeProvider themeProvider);
+    IBootstrapSettings setThemeProvider(ThemeProvider themeProvider);
 
     /**
      * @return the {@link IBootstrapLessCompilerSettings} implementation

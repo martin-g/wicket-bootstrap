@@ -13,6 +13,7 @@ import java.io.InputStream;
 
 /**
  * TODO: document
+ * TODO: Can this reuse Wicket's PackageResourceStream ?!
  *
  * @author miha
  * @version 1.0

@@ -67,7 +67,7 @@ public class HtmlTag extends TransparentWebMarkupContainer {
         }
 
         if (locale != null) {
-            add(new AttributeModifier("lang", toAttributeValue(locale)));
+            add(new AttributeModifier("lang", toAttributeValue(locale())));
         }
 
         add(new CssClassNameAppender(createBrowserShortcut(clientProperties)));

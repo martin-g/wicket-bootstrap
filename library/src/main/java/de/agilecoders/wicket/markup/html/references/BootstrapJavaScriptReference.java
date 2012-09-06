@@ -25,7 +25,7 @@ public class BootstrapJavaScriptReference extends JavaScriptResourceReference {
 
 	/**
 	 * Normally you should not use this method, but use
-	 * {@link IBootstrapSettings#getJsResourceReference()} to prevent version conflicts.
+	 * {@link de.agilecoders.wicket.settings.IBootstrapSettings#getJsResourceReference()} to prevent version conflicts.
 	 * 
 	 * @return the single instance of the resource reference
 	 */
