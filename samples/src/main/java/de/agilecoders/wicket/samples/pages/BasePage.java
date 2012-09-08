@@ -12,6 +12,7 @@ import de.agilecoders.wicket.markup.html.bootstrap.html.MetaTag;
 import de.agilecoders.wicket.markup.html.bootstrap.html.OptimizedMobileViewportMetaTag;
 import de.agilecoders.wicket.markup.html.bootstrap.image.Icon;
 import de.agilecoders.wicket.markup.html.bootstrap.image.IconType;
+import de.agilecoders.wicket.markup.html.bootstrap.navbar.AffixBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.navbar.Navbar;
 import de.agilecoders.wicket.markup.html.bootstrap.navbar.NavbarButton;
 import de.agilecoders.wicket.markup.html.bootstrap.navbar.NavbarDropDownButton;
@@ -20,10 +21,12 @@ import de.agilecoders.wicket.samples.assets.base.FixBootstrapStylesCssResourceRe
 import de.agilecoders.wicket.samples.components.site.Footer;
 import de.agilecoders.wicket.settings.IBootstrapSettings;
 import de.agilecoders.wicket.settings.ITheme;
+import org.apache.wicket.Component;
 import org.apache.wicket.Page;
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.html.GenericWebPage;
+import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
@@ -92,6 +95,7 @@ abstract class BasePage<T> extends GenericWebPage<T> {
         add(new MetaTag("author", Model.of("author"), Model.of("Michael Haitz <michael.haitz@agile-coders.de>")));
 
         add(newNavbar("navbar"));
+        add(newNavigation("navigation"));
         add(new Footer("footer"));
 
         add(new BootstrapBaseBehavior());
@@ -168,4 +172,27 @@ abstract class BasePage<T> extends GenericWebPage<T> {
 
         response.render(CssHeaderItem.forReference(FixBootstrapStylesCssResourceReference.INSTANCE));
     }
+
+    protected boolean hasNavigation() {
+        return false;
+    }
+
+    /**
+     * creates a new navigation component.
+     *
+     * @param markupId The component's markup id
+     * @return a new navigation component.
+     */
+    private Component newNavigation(String markupId) {
+        WebMarkupContainer navigation = new WebMarkupContainer(markupId);
+        navigation.add(new AffixBehavior("{\n"
+                                         + "      offset: {\n"
+                                         + "        top: function () { return $window.width() <= 980 ? 450 : 390 }\n"
+                                         + "      , bottom: 270\n"
+                                         + "}}"));
+        navigation.setVisible(hasNavigation());
+
+        return navigation;
+    }
+
 }

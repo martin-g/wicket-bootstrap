@@ -3,6 +3,8 @@ package de.agilecoders.wicket.samples;
 import de.agilecoders.wicket.Bootstrap;
 import de.agilecoders.wicket.samples.pages.HomePage;
 import de.agilecoders.wicket.settings.BootstrapSettings;
+import de.agilecoders.wicket.settings.BootswatchThemeProvider;
+import de.agilecoders.wicket.settings.ThemeProvider;
 import org.apache.wicket.Application;
 import org.apache.wicket.Page;
 import org.apache.wicket.RuntimeConfigurationType;
@@ -79,6 +81,11 @@ public class WicketApplication extends WebApplication {
             .useModernizr(true)
             .useResponsiveCss(true)
             .getBootstrapLessCompilerSettings().setUseLessCompiler(true);
+
+        ThemeProvider themeProvider = new BootswatchThemeProvider() {{
+                defaultTheme("wicket");
+        }};
+        settings.setThemeProvider(themeProvider);
 
         Bootstrap.install(this, settings);
     }

@@ -19,8 +19,7 @@ public class Icon extends WebMarkupContainer {
     public Icon(final String componentId, final IconType type) {
         super(componentId);
 
-        iconBehavior = new IconBehavior(type);
-        add(iconBehavior);
+        add(iconBehavior = new IconBehavior(type));
     }
 
     public Icon(final IconType type) {

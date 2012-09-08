@@ -28,6 +28,7 @@ public class IconBehavior extends AssertTagNameBehavior {
 
         this.type = type;
         this.value = Model.of("");
+        this.invert = invert;
     }
 
     /**

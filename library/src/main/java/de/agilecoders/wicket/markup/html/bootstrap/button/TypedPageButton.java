@@ -56,7 +56,7 @@ public class TypedPageButton<T> extends BookmarkablePageLink<T> implements Boots
     public <T extends Page> TypedPageButton(final String componentId, final Class<T> pageClass, final PageParameters parameters, final ButtonType buttonType) {
         super(componentId, pageClass, parameters);
 
-        buttonBehavior = new ButtonBehavior(buttonType, ButtonSize.Medium);
+        add(buttonBehavior = new ButtonBehavior(buttonType, ButtonSize.Medium));
 
         this.icon = new Icon("icon", IconType.NULL);
 
@@ -110,7 +110,7 @@ public class TypedPageButton<T> extends BookmarkablePageLink<T> implements Boots
      * @return reference to the current instance
      */
     public TypedPageButton<T> setIcon(Icon icon) {
-        this.icon = icon.invert();
+        this.icon = icon;
 
         return this;
     }

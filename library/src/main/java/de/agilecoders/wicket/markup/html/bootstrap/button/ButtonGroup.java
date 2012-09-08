@@ -22,19 +22,31 @@ import java.util.List;
  */
 public class ButtonGroup extends Panel {
 
-    public static String getButtonMarkupId() {
-        return "button";
+    private final List<AbstractLink> buttonList;
+
+    /**
+     * Construct.
+     *
+     * @param markupId The markup id.
+     */
+    public ButtonGroup(final String markupId) {
+        this(markupId, Orientation.Horizontal);
     }
 
-    private List<AbstractLink> buttonList;
-
-    public ButtonGroup(final String markupId) {
+    /**
+     * Construct.
+     *
+     * @param markupId    The markup id.
+     * @param orientation Make a set of buttons appear vertically stacked rather than horizontally if set to {@link Orientation#Vertical}.
+     */
+    public ButtonGroup(final String markupId, Orientation orientation) {
         super(markupId);
 
         buttonList = Lists.newArrayList();
 
         add(new BootstrapBaseBehavior());
         add(new CssClassNameAppender("btn-group"));
+        add(orientation.newCssClassNameAppender());
         add(newButtonList("buttons"));
     }
 
@@ -43,7 +55,7 @@ public class ButtonGroup extends Panel {
     }
 
     public ButtonGroup addButtons(AbstractLink... buttons) {
-        List<? extends AbstractLink> buttonsList = Iterables.forEach(buttons, new AssertValidButtonPredicate(getButtonMarkupId()));
+        List<? extends AbstractLink> buttonsList = Iterables.forEach(buttons, new AssertValidButtonPredicate(ButtonList.getButtonMarkupId()));
 
         buttonList.addAll(buttonsList);
         return this;
