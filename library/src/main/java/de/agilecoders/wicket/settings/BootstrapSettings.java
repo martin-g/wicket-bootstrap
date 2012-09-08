@@ -1,13 +1,12 @@
 package de.agilecoders.wicket.settings;
 
-import org.apache.wicket.Application;
-import org.apache.wicket.request.resource.CssResourceReference;
-import org.apache.wicket.request.resource.ResourceReference;
-
 import de.agilecoders.wicket.markup.html.references.BootstrapJavaScriptReference;
 import de.agilecoders.wicket.markup.html.references.JqueryPPJavaScriptReference;
 import de.agilecoders.wicket.markup.html.themes.bootstrap.BootstrapCssReference;
 import de.agilecoders.wicket.markup.html.themes.bootstrap.BootstrapResponsiveCssReference;
+import org.apache.wicket.Application;
+import org.apache.wicket.request.resource.CssResourceReference;
+import org.apache.wicket.request.resource.ResourceReference;
 
 /**
  * @author miha
@@ -16,9 +15,9 @@ import de.agilecoders.wicket.markup.html.themes.bootstrap.BootstrapResponsiveCss
  */
 public class BootstrapSettings implements IBootstrapSettings {
 
-	private ResourceReference bootstrapJavaScriptReference = BootstrapJavaScriptReference.get();
-	
-	private boolean useResponsiveCss = true;
+    private ResourceReference bootstrapJavaScriptReference = BootstrapJavaScriptReference.get();
+
+    private boolean useResponsiveCss = true;
     private ThemeProvider themeProvider = new BootswatchThemeProvider();
     private ActiveThemeProvider activeThemeProvider = new SessionThemeProvider();
     private boolean useModernizr = false;
@@ -46,10 +45,10 @@ public class BootstrapSettings implements IBootstrapSettings {
     public ResourceReference getJsResourceReference() {
         return bootstrapJavaScriptReference;
     }
-    
+
     @Override
     public BootstrapSettings setJsResourceReference(final ResourceReference bootstrapJavaScriptReference) {
-    	this.bootstrapJavaScriptReference = bootstrapJavaScriptReference;
+        this.bootstrapJavaScriptReference = bootstrapJavaScriptReference;
         return this;
     }
 

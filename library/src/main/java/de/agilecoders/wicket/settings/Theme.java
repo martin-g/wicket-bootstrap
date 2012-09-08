@@ -26,14 +26,12 @@ public class Theme implements ITheme {
         this.resourceReferences = Lists.newArrayList(resourceReferences);
     }
 
+    @Override
     public String name() {
         return name;
     }
 
-    /**
-     *
-     * @param response
-     */
+    @Override
     public void renderHead(IHeaderResponse response) {
         for (ResourceReference resourceReference : resourceReferences) {
             if (resourceReference instanceof CssResourceReference) {
