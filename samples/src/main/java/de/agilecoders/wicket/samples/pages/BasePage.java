@@ -185,11 +185,7 @@ abstract class BasePage<T> extends GenericWebPage<T> {
      */
     private Component newNavigation(String markupId) {
         WebMarkupContainer navigation = new WebMarkupContainer(markupId);
-        navigation.add(new AffixBehavior("{\n"
-                                         + "      offset: {\n"
-                                         + "        top: function () { return $window.width() <= 980 ? 450 : 390 }\n"
-                                         + "      , bottom: 270\n"
-                                         + "}}"));
+        navigation.add(new AffixBehavior("200"));
         navigation.setVisible(hasNavigation());
 
         return navigation;

@@ -63,6 +63,6 @@ public class AffixBehavior extends Behavior {
     public void renderHead(Component component, IHeaderResponse response) {
         super.renderHead(component, response);
 
-        response.render(OnDomReadyHeaderItem.forScript("$('#" + component.getMarkupId() + "').affix();"));
+        response.render(OnDomReadyHeaderItem.forScript("$('#" + component.getMarkupId() + "').affix({ offset : " + offset.getObject() + " });"));
     }
 }

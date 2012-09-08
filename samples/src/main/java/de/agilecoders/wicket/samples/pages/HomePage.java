@@ -24,7 +24,7 @@ public class HomePage extends BasePage {
         super(parameters);
 
         String version = getProperties().getProperty("bootstrap.fix.version");
-        Label downloadButton = new Label("download-link", Model.of("<i class=\"icon-download\"></i> Download <small>(" + version + ")</small>"));
+        Label downloadButton = new Label("download-link", Model.of("Download <small>(" + version + ")</small>"));
         downloadButton.setEscapeModelStrings(false);
         downloadButton.add(new AttributeModifier("href", Model.of(getProperties().getProperty("bootstrap.downloadUrl"))));
 
