@@ -15,7 +15,7 @@ public interface ActiveThemeProvider {
      *
      * @return the current active theme
      */
-    Theme getActiveTheme();
+    ITheme getActiveTheme();
 
     /**
      * sets the active theme by its name.
@@ -29,5 +29,5 @@ public interface ActiveThemeProvider {
      *
      * @param theme the theme to set
      */
-    void setActiveTheme(Theme theme);
+    void setActiveTheme(ITheme theme);
 }

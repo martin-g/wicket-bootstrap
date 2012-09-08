@@ -19,7 +19,7 @@ import de.agilecoders.wicket.samples.WicketApplication;
 import de.agilecoders.wicket.samples.assets.base.FixBootstrapStylesCssResourceReference;
 import de.agilecoders.wicket.samples.components.site.Footer;
 import de.agilecoders.wicket.settings.IBootstrapSettings;
-import de.agilecoders.wicket.settings.Theme;
+import de.agilecoders.wicket.settings.ITheme;
 import org.apache.wicket.Page;
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
@@ -127,9 +127,9 @@ abstract class BasePage<T> extends GenericWebPage<T> {
                 .addButton(new MenuHeader(Model.of("Themes")));
 
         IBootstrapSettings settings = Bootstrap.getSettings(getApplication());
-        List<Theme> themes = settings.getThemeProvider().available();
+        List<ITheme> themes = settings.getThemeProvider().available();
 
-        for (Theme theme : themes) {
+        for (ITheme theme : themes) {
             PageParameters params = new PageParameters();
             params.set("theme", theme.name());
 

@@ -16,15 +16,15 @@ public interface ThemeProvider {
      * @param name The name of the theme
      * @return the theme according to given name
      */
-    Theme byName(final String name);
+    ITheme byName(final String name);
 
     /**
      * @return a list of all available themes
      */
-    List<Theme> available();
+    List<ITheme> available();
 
     /**
      * @return the default theme
      */
-    Theme defaultTheme();
+    ITheme defaultTheme();
 }

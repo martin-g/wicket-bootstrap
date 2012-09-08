@@ -2,7 +2,7 @@ package de.agilecoders.wicket.markup.html.bootstrap.behavior;
 
 import de.agilecoders.wicket.Bootstrap;
 import de.agilecoders.wicket.settings.IBootstrapSettings;
-import de.agilecoders.wicket.settings.Theme;
+import de.agilecoders.wicket.settings.ITheme;
 import org.apache.wicket.Component;
 import org.apache.wicket.WicketRuntimeException;
 import org.apache.wicket.behavior.Behavior;
@@ -11,8 +11,8 @@ import org.apache.wicket.markup.head.IHeaderResponse;
 
 /**
  * The {@code BootstrapBaseBehavior} renders the current active
- * {@link Theme} which includes the {@link de.agilecoders.wicket.markup.html.references.BootstrapCssReference}
- * and the {@link de.agilecoders.wicket.markup.html.references.BootstrapResponsiveCssReference}
+ * {@link ITheme} which includes the {@link de.agilecoders.wicket.markup.html.themes.bootstrap.BootstrapCssReference}
+ * and the {@link de.agilecoders.wicket.markup.html.themes.bootstrap.BootstrapResponsiveCssReference}
  * if enabled to the response.
  *
  * @author miha
@@ -47,15 +47,15 @@ public class BootstrapBaseBehavior extends Behavior {
     }
 
     /**
-     * Render the current active {@link Theme} which includes all {@link org.apache.wicket.request.resource.ResourceReference} objects
-     * and the {@link de.agilecoders.wicket.markup.html.references.BootstrapResponsiveCssReference}
+     * Render the current active {@link ITheme} which includes all {@link org.apache.wicket.request.resource.ResourceReference} objects
+     * and the {@link de.agilecoders.wicket.markup.html.themes.bootstrap.BootstrapResponsiveCssReference}
      * if enabled to the response. Also it allows all subclasses to get the {@link IBootstrapSettings} by overriding this method.
      *
      * @param settings       the bound {@link IBootstrapSettings}
      * @param headerResponse the current {@link IHeaderResponse}
      */
     public void renderHead(IBootstrapSettings settings, IHeaderResponse headerResponse) {
-        Theme theme = settings.getActiveThemeProvider().getActiveTheme();
+        ITheme theme = settings.getActiveThemeProvider().getActiveTheme();
         theme.renderHead(headerResponse);
 
         if (settings.useResponsiveCss()) {

@@ -1,15 +1,13 @@
 package de.agilecoders.wicket.settings;
 
-import java.util.List;
-
-import org.apache.wicket.WicketRuntimeException;
-
 import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-
 import de.agilecoders.wicket.markup.html.themes.bootstrap.BootstrapTheme;
 import de.agilecoders.wicket.markup.html.themes.wicket.WicketTheme;
+import org.apache.wicket.WicketRuntimeException;
+
+import java.util.List;
 
 /**
  * A default {@link ThemeProvider} implementation that only contains
@@ -20,8 +18,8 @@ import de.agilecoders.wicket.markup.html.themes.wicket.WicketTheme;
  */
 public class DefaultThemeProvider implements ThemeProvider {
 
-    private final List<Theme> themes = Lists.newArrayList();
-    private Theme defaultTheme;
+    private final List<ITheme> themes = Lists.newArrayList();
+    private ITheme defaultTheme;
 
     /**
      * Construct.
@@ -31,24 +29,30 @@ public class DefaultThemeProvider implements ThemeProvider {
         add(new WicketTheme());
     }
 
-    public DefaultThemeProvider add(Theme... themes) {
+    /**
+     * adds an array of new themes.
+     *
+     * @param themes The new themes
+     * @return This instance
+     */
+    public DefaultThemeProvider add(ITheme... themes) {
         assertNoDuplicateNames(themes);
 
         this.themes.addAll(Lists.newArrayList(themes));
         return this;
     }
 
-    private void assertNoDuplicateNames(Theme... themes) {
+    private void assertNoDuplicateNames(ITheme... themes) {
         if (themes == null) {
             throw new WicketRuntimeException("list of themes is null");
         }
 
-        for (Theme newTheme : themes) {
+        for (ITheme newTheme : themes) {
             if (newTheme == null) {
                 throw new WicketRuntimeException("theme is null");
             }
 
-            for (Theme existingTheme : this.themes) {
+            for (ITheme existingTheme : this.themes) {
                 if (existingTheme.equals(newTheme)) {
                     throw new WicketRuntimeException("duplicated theme entry: " + newTheme.name());
                 }
@@ -60,17 +64,35 @@ public class DefaultThemeProvider implements ThemeProvider {
         }
     }
 
-    public DefaultThemeProvider addDefaultTheme(Theme theme) {
+    /**
+     * adds a new theme and sets it as default theme.
+     *
+     * @param theme The new default theme
+     * @return This instance
+     */
+    public DefaultThemeProvider addDefaultTheme(ITheme theme) {
         add(theme);
         return defaultTheme(theme);
     }
 
-    public DefaultThemeProvider defaultTheme(Theme theme) {
+    /**
+     * sets the default theme.
+     *
+     * @param theme The new default theme
+     * @return This instance
+     */
+    public DefaultThemeProvider defaultTheme(ITheme theme) {
         return defaultTheme(theme.name());
     }
 
+    /**
+     * sets the default theme.
+     *
+     * @param themeName The new default theme
+     * @return This instance
+     */
     public DefaultThemeProvider defaultTheme(String themeName) {
-        Theme newDefaultTheme = byName(themeName);
+        ITheme newDefaultTheme = byName(themeName);
 
         if (defaultTheme != newDefaultTheme) {
             defaultTheme = newDefaultTheme;
@@ -80,9 +102,9 @@ public class DefaultThemeProvider implements ThemeProvider {
     }
 
     @Override
-    public Theme byName(String name) {
+    public ITheme byName(String name) {
         if (!Strings.isNullOrEmpty(name)) {
-            for (Theme theme : themes) {
+            for (ITheme theme : themes) {
                 if (name.equalsIgnoreCase(theme.name())) {
                     return theme;
                 }
@@ -93,12 +115,12 @@ public class DefaultThemeProvider implements ThemeProvider {
     }
 
     @Override
-    public List<Theme> available() {
+    public List<ITheme> available() {
         return ImmutableList.copyOf(themes);
     }
 
     @Override
-    public Theme defaultTheme() {
+    public ITheme defaultTheme() {
         return defaultTheme;
     }
 }

@@ -1,7 +1,6 @@
 package de.agilecoders.wicket.settings;
 
 import com.google.common.collect.Lists;
-import de.agilecoders.wicket.less.LessResourceReference;
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
@@ -17,7 +16,7 @@ import java.util.List;
  * @author miha
  * @version 1.0
  */
-public class Theme {
+public class Theme implements ITheme {
 
     private String name;
     private List<ResourceReference> resourceReferences;
@@ -31,6 +30,10 @@ public class Theme {
         return name;
     }
 
+    /**
+     *
+     * @param response
+     */
     public void renderHead(IHeaderResponse response) {
         for (ResourceReference resourceReference : resourceReferences) {
             if (resourceReference instanceof CssResourceReference) {

@@ -20,14 +20,14 @@ public class SessionThemeProvider implements ActiveThemeProvider {
      */
     private ThemeProvider themeProvider() {
         if (Application.exists()) {
-            return Bootstrap.getSettings(Application.get()).getThemeProvider();
+            return Bootstrap.getSettings().getThemeProvider();
         } else {
             throw new WicketRuntimeException("no application assigned to current thread");
         }
     }
 
     @Override
-    public Theme getActiveTheme() {
+    public ITheme getActiveTheme() {
         String style = Session.get().getStyle();
 
         if (Strings.isNullOrEmpty(style)) {
@@ -43,7 +43,7 @@ public class SessionThemeProvider implements ActiveThemeProvider {
     }
 
     @Override
-    public void setActiveTheme(Theme theme) {
+    public void setActiveTheme(ITheme theme) {
         assertBoundSession();
 
         if (theme != null) {
