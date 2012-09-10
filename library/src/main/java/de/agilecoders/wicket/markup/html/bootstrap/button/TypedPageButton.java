@@ -24,7 +24,7 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
  * @author miha
  * @version 1.0
  */
-public class TypedPageButton<T> extends BookmarkablePageLink<T> implements BootstrapButton<TypedPageButton>, Activatable {
+public class TypedPageButton<T> extends BookmarkablePageLink<T> implements BootstrapButton<TypedPageButton<T>>, Activatable {
 
     private final Label label;
 
@@ -40,7 +40,7 @@ public class TypedPageButton<T> extends BookmarkablePageLink<T> implements Boots
      * @param buttonType  The type of the button, e.g. Success, Warn, Default, Menu...
      * @param <T>         type of the page class
      */
-    public <T extends Page> TypedPageButton(final String componentId, final Class<T> pageClass, final ButtonType buttonType) {
+    public <C extends Page> TypedPageButton(final String componentId, final Class<C> pageClass, final ButtonType buttonType) {
         this(componentId, pageClass, new PageParameters(), buttonType);
     }
 
@@ -53,7 +53,7 @@ public class TypedPageButton<T> extends BookmarkablePageLink<T> implements Boots
      * @param buttonType  The type of the button, e.g. Success, Warn, Default, Menu...
      * @param <T>         type of the page class
      */
-    public <T extends Page> TypedPageButton(final String componentId, final Class<T> pageClass, final PageParameters parameters, final ButtonType buttonType) {
+    public <C extends Page> TypedPageButton(final String componentId, final Class<C> pageClass, final PageParameters parameters, final ButtonType buttonType) {
         super(componentId, pageClass, parameters);
 
         add(buttonBehavior = new ButtonBehavior(buttonType, ButtonSize.Medium));
@@ -78,14 +78,14 @@ public class TypedPageButton<T> extends BookmarkablePageLink<T> implements Boots
      * @param buttonSize the size of the button
      * @return reference to the current instance
      */
-    public TypedPageButton setSize(ButtonSize buttonSize) {
+    public TypedPageButton<T> setSize(ButtonSize buttonSize) {
         this.buttonBehavior.withSize(buttonSize);
 
         return this;
     }
 
     @Override
-    public TypedPageButton setType(ButtonType buttonType) {
+    public TypedPageButton<T> setType(ButtonType buttonType) {
         this.buttonBehavior.withType(buttonType);
 
         return this;
@@ -97,7 +97,7 @@ public class TypedPageButton<T> extends BookmarkablePageLink<T> implements Boots
      * @param label the new button label
      * @return reference to the current instance
      */
-    public TypedPageButton<T> setLabel(IModel<String> label) {
+    public TypedPageButton<T> setLabel(IModel<?> label) {
         this.label.setDefaultModel(label);
 
         return this;

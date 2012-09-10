@@ -1,10 +1,10 @@
 package de.agilecoders.wicket.markup.html.bootstrap.form;
 
-import com.google.common.collect.Lists;
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.AssertTagNameBehavior;
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
-import de.agilecoders.wicket.util.Components;
+import java.io.Serializable;
+import java.util.List;
+
 import org.apache.wicket.AttributeModifier;
+import org.apache.wicket.feedback.FeedbackMessage;
 import org.apache.wicket.feedback.FeedbackMessages;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.border.Border;
@@ -14,8 +14,11 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.util.iterator.ComponentHierarchyIterator;
 
-import java.io.Serializable;
-import java.util.List;
+import com.google.common.collect.Lists;
+
+import de.agilecoders.wicket.markup.html.bootstrap.behavior.AssertTagNameBehavior;
+import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
+import de.agilecoders.wicket.util.Components;
 
 /**
  * TODO: document
@@ -28,8 +31,7 @@ public class ControlGroup extends Border implements IFormModelUpdateListener {
     private final Label label;
     private final Label help;
     private final Label error;
-    private CssClassNameAppender stateClassNameAppender;
-    private Model<String> stateClassName;
+    private final Model<String> stateClassName;
 
     /**
      * Construct.
@@ -37,7 +39,7 @@ public class ControlGroup extends Border implements IFormModelUpdateListener {
      * @param id    the wicket component id
      * @param label the label
      */
-    public ControlGroup(String id, IModel<String> label) {
+    public ControlGroup(final String id, final IModel<String> label) {
         this(id, label, Model.of(""));
     }
 
@@ -46,7 +48,7 @@ public class ControlGroup extends Border implements IFormModelUpdateListener {
      *
      * @param id the wicket component id
      */
-    public ControlGroup(String id, IModel<String> label, IModel<String> help) {
+    public ControlGroup(final String id, final IModel<String> label, final IModel<String> help) {
         super(id, Model.of(""));
 
         this.label = new Label("label", label);
@@ -61,12 +63,12 @@ public class ControlGroup extends Border implements IFormModelUpdateListener {
         addToBorder(this.label, this.help, this.error);
     }
 
-    public ControlGroup label(IModel<String> label) {
+    public ControlGroup label(final IModel<String> label) {
         this.label.setDefaultModel(label);
         return this;
     }
 
-    public ControlGroup help(IModel<String> help) {
+    public ControlGroup help(final IModel<String> help) {
         this.help.setDefaultModel(help);
         return this;
     }
@@ -75,8 +77,8 @@ public class ControlGroup extends Border implements IFormModelUpdateListener {
     protected void onInitialize() {
         super.onInitialize();
 
-        List<FormComponent<?>> formComponents = findFormComponents();
-        for (FormComponent fc : formComponents) {
+        final List<FormComponent<?>> formComponents = findFormComponents();
+        for (final FormComponent<?> fc : formComponents) {
             fc.setOutputMarkupId(true);
             label.add(new AttributeModifier("for", fc.getMarkupId()));
         }
@@ -87,25 +89,21 @@ public class ControlGroup extends Border implements IFormModelUpdateListener {
         super.onConfigure();
         Components.show(help, label, error);
 
-        List<FormComponent<?>> formComponents = findFormComponents();
-        for (FormComponent fc : formComponents) {
-            FeedbackMessages messages = fc.getFeedbackMessages();
+        stateClassName.setObject("");
+        error.setDefaultModelObject("");
+
+        final List<FormComponent<?>> formComponents = findFormComponents();
+        for (final FormComponent<?> fc : formComponents) {
+        	final FeedbackMessages messages = fc.getFeedbackMessages();
             if (!messages.isEmpty()) {
-                stateClassName.setObject(toClassName(messages.first().getLevelAsString()));
+                final FeedbackMessage worstMessage = getWorstMessage(messages);
+                worstMessage.markRendered();
 
-                error.setDefaultModelObject(messages.first().getMessage());
-                messages.first().markRendered();
+                stateClassName.setObject(toClassName(worstMessage));
+                error.setDefaultModelObject(worstMessage.getMessage());
 
-                break;
-            } else {
-                stateClassName.setObject("");
-                error.setDefaultModelObject("");
+                break; // render worst message of first found child component with feedback message
             }
-        }
-
-        if (formComponents.isEmpty()) {
-            stateClassName.setObject("");
-            error.setDefaultModelObject("");
         }
 
         Components.hideIfModelIsEmpty(help);
@@ -114,39 +112,70 @@ public class ControlGroup extends Border implements IFormModelUpdateListener {
     }
 
     private List<FormComponent<?>> findFormComponents() {
-        ComponentHierarchyIterator it = getBodyContainer().visitChildren();
+        final ComponentHierarchyIterator it = getBodyContainer().visitChildren(FormComponent.class);
 
-        List<FormComponent<?>> components = Lists.newArrayList();
+        final List<FormComponent<?>> components = Lists.newArrayList();
         while (it.hasNext()) {
-            Object next = it.next();
-            if (next instanceof FormComponent) {
-                components.add((FormComponent) next);
-            }
+        	components.add((FormComponent<?>) it.next());
         }
 
         return components;
     }
 
-    private String toClassName(final String level) {
-        final String className;
-
-        if (level.equalsIgnoreCase("ERROR") || level.equalsIgnoreCase("FATAL")) {
-            className = "error";
-        } else if (level.equalsIgnoreCase("WARNING")) {
-            className = "warning";
-        } else if (level.equalsIgnoreCase("SUCCESS")) {
-            className = "success";
-        } else {
-            className = "";
-        }
-
-        return className;
+    private FeedbackMessage getWorstMessage(final FeedbackMessages messages) {
+    	FeedbackMessage ret;
+    	ret = messages.first(FeedbackMessage.FATAL);
+    	if (ret != null) {
+    		return ret;
+    	}
+    	ret = messages.first(FeedbackMessage.ERROR);
+    	if (ret != null) {
+    		return ret;
+    	}
+    	ret = messages.first(FeedbackMessage.WARNING);
+    	if (ret != null) {
+    		return ret;
+    	}
+    	ret = messages.first(FeedbackMessage.SUCCESS);
+    	if (ret != null) {
+    		return ret;
+    	}
+    	ret = messages.first(FeedbackMessage.INFO);
+    	if (ret != null) {
+    		return ret;
+    	}
+    	ret = messages.first(FeedbackMessage.DEBUG);
+    	if (ret != null) {
+    		return ret;
+    	}
+    	ret = messages.first(FeedbackMessage.UNDEFINED);
+    	if (ret != null) {
+    		return ret;
+    	}
+    	return messages.first();
     }
 
+    
+    private String toClassName(final FeedbackMessage message) {
+    	if (message.isLevel(FeedbackMessage.ERROR)) {
+    		return "error";
+    	}
+    	if (message.isLevel(FeedbackMessage.WARNING)) {
+    		return "warning";
+    	}
+    	if (message.isLevel(FeedbackMessage.SUCCESS)) {
+    		return "success";
+    	}
+    	if (message.isLevel(FeedbackMessage.INFO)) {
+    		return "info";
+    	}
+    	return "";
+    }
+    
     @Override
     public void updateModel() {
-        List<FormComponent<?>> formComponents = findFormComponents();
-        for (FormComponent<?> formComponent : formComponents) {
+        final List<FormComponent<?>> formComponents = findFormComponents();
+        for (final FormComponent<?> formComponent : formComponents) {
             formComponent.updateModel();
         }
     }

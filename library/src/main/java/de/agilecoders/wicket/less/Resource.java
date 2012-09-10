@@ -20,7 +20,7 @@ import java.io.InputStream;
  */
 public class Resource {
 
-    private final Class scope;
+    private final Class<?> scope;
     private final String path;
     private final Time lastModified;
 
@@ -30,7 +30,7 @@ public class Resource {
      * @param scope The scope class to detect the resource
      * @param path  absolute path to resource
      */
-    public Resource(final Class scope, final String path) {
+    public Resource(final Class<?> scope, final String path) {
         this.scope = scope;
         this.path = path;
 
