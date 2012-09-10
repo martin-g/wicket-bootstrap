@@ -1,16 +1,14 @@
 package de.agilecoders.wicket;
 
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapResourcesBehavior;
-import de.agilecoders.wicket.settings.IBootstrapSettings;
 import org.apache.wicket.Application;
 import org.apache.wicket.Component;
 import org.apache.wicket.MetaDataKey;
 import org.apache.wicket.markup.head.IHeaderResponse;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
+import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapResourcesBehavior;
+import de.agilecoders.wicket.settings.IBootstrapSettings;
 
 public final class Bootstrap {
-    private static final Logger LOG = LoggerFactory.getLogger(Bootstrap.class);
 
     /**
      * The {@link MetaDataKey} used to retrieve the {@link IBootstrapSettings} from the Wicket {@link Appendable}.

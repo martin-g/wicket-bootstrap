@@ -21,7 +21,7 @@ public class CssClassNameBorder<T extends CssClassNameProvider> extends Border {
         super(id, model);
     }
 
-    public CssClassNameBorder withCssClassNameProvider(T provider) {
+    public CssClassNameBorder<T> withCssClassNameProvider(T provider) {
         this.provider = provider;
 
         return this;

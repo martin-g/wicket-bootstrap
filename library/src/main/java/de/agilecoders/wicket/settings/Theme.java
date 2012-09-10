@@ -1,6 +1,7 @@
 package de.agilecoders.wicket.settings;
 
-import com.google.common.collect.Lists;
+import java.util.List;
+
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
@@ -8,7 +9,7 @@ import org.apache.wicket.request.resource.CssResourceReference;
 import org.apache.wicket.request.resource.JavaScriptResourceReference;
 import org.apache.wicket.request.resource.ResourceReference;
 
-import java.util.List;
+import com.google.common.collect.Lists;
 
 /**
  * TODO: document
