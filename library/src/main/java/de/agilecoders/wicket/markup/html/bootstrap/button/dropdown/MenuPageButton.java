@@ -20,36 +20,36 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
  * @author miha
  * @version 1.0
  */
-public class MenuPageButton<T extends Page> extends BookmarkablePageLink<T> implements Activatable {
+public class MenuPageButton<T> extends BookmarkablePageLink<T> implements Activatable {
     private Icon icon;
     private Label label;
 
-    public <T extends Page> MenuPageButton(Class<T> pageClass) {
+    public <C extends Page> MenuPageButton(Class<C> pageClass) {
         this(pageClass, new PageParameters());
     }
 
-    public <T extends Page> MenuPageButton(Class<T> pageClass, PageParameters parameters, IModel<String> label) {
+    public <C extends Page> MenuPageButton(Class<C> pageClass, PageParameters parameters, IModel<?> label) {
         this(pageClass, parameters);
 
         setLabel(label);
     }
 
-    public <T extends Page> MenuPageButton(Class<T> pageClass, IModel<String> label) {
+    public <C extends Page> MenuPageButton(Class<C> pageClass, IModel<String> label) {
         this(pageClass, new PageParameters());
 
         setLabel(label);
     }
 
-    public <T extends org.apache.wicket.Page> MenuPageButton(Class<T> pageClass, PageParameters parameters) {
+    public <C extends Page> MenuPageButton(Class<C> pageClass, PageParameters parameters) {
         super(ButtonList.getButtonMarkupId(), pageClass, parameters);
 
         this.icon = new Icon("icon", IconType.NULL);
 
-        this.label = new Label("label", new Model<String>(""));
+        this.label = new Label("label", Model.of(""));
         this.label.setRenderBodyOnly(true);
     }
 
-    public MenuPageButton<T> setLabel(IModel<String> label) {
+    public MenuPageButton<T> setLabel(IModel<?> label) {
         this.label.setDefaultModel(label);
 
         return this;

@@ -113,7 +113,7 @@ public class NavbarTest extends WicketApplicationTest {
     @Test
     public void buttonWithIconIsAddedToLeftNavigation() {
         Navbar navbar = new Navbar("id");
-        navbar.addButton(Navbar.ButtonPosition.LEFT, new NavbarButton<Page>(Page.class, Model.of("Link Name")).setIcon(new Icon("icon", IconType.AlignCenter)));
+        navbar.addButton(Navbar.ButtonPosition.LEFT, new NavbarButton<Page>(Page.class, Model.of("Link Name")).setIcon(new Icon("icon", IconType.AlignCenter).invert()));
 
         tester().startComponentInPage(navbar);
 

@@ -16,7 +16,7 @@ public class ResourceLocator {
      * @param path  The path of resource to locate
      * @return the found resource
      */
-    public Resource findResource(Class clazz, String path) {
+    public Resource findResource(Class<?> clazz, String path) {
         if (clazz != null && path != null) {
             final String className = "/" + toPath(clazz.getPackage().getName()) + "/" + path;
 
