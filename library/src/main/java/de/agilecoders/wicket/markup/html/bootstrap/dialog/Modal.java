@@ -100,11 +100,11 @@ public class Modal extends Panel {
         headerLabel.setDefaultModel(label);
         return this;
     }
-    
+
     /**
      * Sets the header label text and whether model strings should be escaped.
      *
-     * @param label The header label
+     * @param label        The header label
      * @param escapeMarkup True is model strings should be escaped
      * @return This
      */
@@ -148,23 +148,24 @@ public class Modal extends Panel {
     }
 
     public Modal appendCloseDialogJavaScript(AjaxRequestTarget target) {
-        target.appendJavaScript(createScript("hide"));
+        target.appendJavaScript(createActionScript(getMarkupId(true), "hide"));
         return this;
     }
 
     public Modal appendShowDialogJavaScript(AjaxRequestTarget target) {
-        target.appendJavaScript(createScript("show"));
+        target.appendJavaScript(createActionScript(getMarkupId(true), "show"));
         return this;
     }
 
     /**
      * creates an action script to open/close the dialog on client side.
      *
-     * @param action Possible values: show/hide
+     * @param markupId The component's markup id
+     * @param action   Possible values: show/hide
      * @return new script.
      */
-    private String createScript(final String action) {
-        return "$('#" + getMarkupId() + "').modal('" + action + "');";
+    protected String createActionScript(final String markupId, final String action) {
+        return "$('#" + markupId + "').modal('" + action + "');";
     }
 
     public Modal addOpenerAttributesTo(Component component) {
@@ -222,8 +223,32 @@ public class Modal extends Panel {
     public void renderHead(IHeaderResponse response) {
         super.renderHead(response);
 
-        response.render(OnDomReadyHeaderItem.forScript("$('#" + getMarkupId(true) + "').modal({keyboard:" + keyboard +
-                                                       ", show:" + show + "});"));
+        response.render(OnDomReadyHeaderItem.forScript(createInitializerScript(getMarkupId(true))));
+    }
+
+    /**
+     * creates the initializer script of the modal dialog.
+     *
+     * @param markupId The component's markup id
+     * @return initializer script
+     */
+    protected String createInitializerScript(final String markupId) {
+        return "$('#" + markupId + "').modal({keyboard:" + useKeyboard() +
+               ", show:" + showImmediately() + "})";
+    }
+
+    /**
+     * @return true, if keyboard usage is activated
+     */
+    protected final boolean useKeyboard() {
+        return keyboard;
+    }
+
+    /**
+     * @return true, if modal dialog should be shown after initialization
+     */
+    protected final boolean showImmediately() {
+        return show;
     }
 
     /**
