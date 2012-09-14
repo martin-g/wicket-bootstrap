@@ -120,9 +120,9 @@ abstract class BasePage<T> extends GenericWebPage<T> {
         navbar.addButton(Navbar.ButtonPosition.LEFT,
                          new NavbarButton<HomePage>(HomePage.class, Model.of("Overview")).setIcon(new Icon("icon", IconType.Home)),
                          new NavbarButton<BaseCssPage>(BaseCssPage.class, Model.of("Base CSS")),
-                         new NavbarButton<ComponentsPage>(ComponentsPage.class, Model.of("Components"))//,
-                         //new NavbarButton<HomePage>(Scaffolding.class, Model.of("Scaffolding")),
-                         //new NavbarButton<HomePage>(Javascript.class, Model.of("Javascript"))
+                         new NavbarButton<ComponentsPage>(ComponentsPage.class, Model.of("Components")),
+                         new NavbarButton<HomePage>(Scaffolding.class, Model.of("Scaffolding")),
+                         new NavbarButton<HomePage>(Javascript.class, Model.of("Javascript"))
         );
 
         DropDownButton dropdown = new NavbarDropDownButton("button", Model.of("More..."))
