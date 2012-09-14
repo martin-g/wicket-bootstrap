@@ -9,7 +9,6 @@ import de.agilecoders.wicket.util.Components;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.ComponentTag;
 
-import javax.annotation.Nullable;
 import java.util.List;
 
 /**
@@ -20,8 +19,7 @@ import java.util.List;
  */
 public class TableBehavior extends BootstrapBaseBehavior {
 
-    private
-    enum Type implements CssClassNameProvider {
+    private enum Type implements CssClassNameProvider {
         Basic, Bordered, Zebra, Condensed;
 
         @Override
@@ -67,7 +65,7 @@ public class TableBehavior extends BootstrapBaseBehavior {
     private List<String> createCssClassNames() {
         return Lists.transform(types, new Function<Type, String>() {
             @Override
-            public String apply(@Nullable Type input) {
+            public String apply(Type input) {
                 return input != null ? input.cssClassName() : "";
             }
         });

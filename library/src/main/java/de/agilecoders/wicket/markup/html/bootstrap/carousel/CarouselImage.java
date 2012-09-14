@@ -1,8 +1,7 @@
 package de.agilecoders.wicket.markup.html.bootstrap.carousel;
 
 import com.google.common.base.Optional;
-
-import javax.annotation.concurrent.Immutable;
+import org.apache.http.annotation.Immutable;
 
 /**
  * TODO: document

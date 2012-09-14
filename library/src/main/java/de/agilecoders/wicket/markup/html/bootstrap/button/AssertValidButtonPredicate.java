@@ -6,8 +6,6 @@ import org.apache.wicket.markup.html.link.AbstractLink;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.annotation.Nullable;
-
 /**
  * TODO: document
  *
@@ -24,7 +22,7 @@ public class AssertValidButtonPredicate implements Predicate<AbstractLink> {
     }
 
     @Override
-    public boolean apply(@Nullable AbstractLink button) {
+    public boolean apply(AbstractLink button) {
         if (button == null) {
             throw new IllegalArgumentException("invalid button object");
         }
