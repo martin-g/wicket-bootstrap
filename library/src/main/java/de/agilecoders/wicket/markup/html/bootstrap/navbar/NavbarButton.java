@@ -26,7 +26,7 @@ public class NavbarButton<T> extends TypedPageButton<T> {
      * @param label       The component's label
      * @param <T>         type of the page class
      */
-    public <T extends Page> NavbarButton(final Class<T> pageClass, final PageParameters parameters, final IModel<String> label) {
+    public <C extends Page> NavbarButton(final Class<C> pageClass, final PageParameters parameters, final IModel<?> label) {
         super(COMPONENT_ID, pageClass, parameters, ButtonType.Menu);
 
         setLabel(label);
@@ -39,7 +39,7 @@ public class NavbarButton<T> extends TypedPageButton<T> {
      * @param label       The component's label
      * @param <T>         type of the page class
      */
-    public <T extends Page> NavbarButton(final Class<T> pageClass, final IModel<String> label) {
+    public <C extends Page> NavbarButton(final Class<C> pageClass, final IModel<?> label) {
         this(pageClass, new PageParameters(), label);
     }
 

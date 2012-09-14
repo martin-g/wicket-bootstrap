@@ -1,14 +1,14 @@
 package de.agilecoders.wicket.markup.html.references;
 
-import com.google.common.collect.Lists;
+import java.util.List;
+
 import org.apache.wicket.Application;
 import org.apache.wicket.markup.head.HeaderItem;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.request.resource.JavaScriptResourceReference;
 import org.apache.wicket.request.resource.ResourceReference;
-import org.apache.wicket.resource.JQueryResourceReference;
 
-import java.util.List;
+import com.google.common.collect.Lists;
 
 /**
  * TODO: document
