@@ -5,6 +5,7 @@ import org.apache.wicket.Application;
 import org.apache.wicket.markup.head.HeaderItem;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.request.resource.JavaScriptResourceReference;
+import org.apache.wicket.request.resource.ResourceReference;
 
 import java.util.List;
 
@@ -14,31 +15,19 @@ import java.util.List;
  * @author miha
  * @version 1.0
  */
-public class BootstrapJavaScriptReference extends JavaScriptResourceReference {
+public class BootstrapDatepickerJsReference extends JavaScriptResourceReference {
     private static final long serialVersionUID = 1L;
 
     /**
      * Singleton instance of this reference
      */
-    private static final BootstrapJavaScriptReference INSTANCE = new BootstrapJavaScriptReference();
-
-
-    /**
-     * Normally you should not use this method, but use
-     * {@link de.agilecoders.wicket.settings.IBootstrapSettings#getJsResourceReference()} to prevent version conflicts.
-     *
-     * @return the single instance of the resource reference
-     */
-    public static BootstrapJavaScriptReference get() {
-        return INSTANCE;
-    }
-
+    public static final ResourceReference INSTANCE = new BootstrapDatepickerJsReference();
 
     /**
      * Private constructor.
      */
-    private BootstrapJavaScriptReference() {
-        super(BootstrapJavaScriptReference.class, "js/bootstrap.js");
+    private BootstrapDatepickerJsReference() {
+        super(BootstrapDatepickerJsReference.class, "js/datepicker.js");
     }
 
     @Override

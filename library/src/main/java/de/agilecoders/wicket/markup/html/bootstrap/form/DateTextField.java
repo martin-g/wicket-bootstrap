@@ -1,9 +1,11 @@
 package de.agilecoders.wicket.markup.html.bootstrap.form;
 
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.AssertTagNameBehavior;
+import de.agilecoders.wicket.markup.html.references.BootstrapDatepickerJsReference;
 import de.agilecoders.wicket.markup.html.references.BootstrapDatepickerReference;
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
+import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.IModel;
@@ -54,6 +56,7 @@ public class DateTextField extends TextField<String> {
         super.renderHead(response);
 
         response.render(CssHeaderItem.forReference(BootstrapDatepickerReference.INSTANCE));
+        response.render(JavaScriptHeaderItem.forReference(BootstrapDatepickerJsReference.INSTANCE));
         response.render(OnDomReadyHeaderItem.forScript(createScript()));
     }
 
