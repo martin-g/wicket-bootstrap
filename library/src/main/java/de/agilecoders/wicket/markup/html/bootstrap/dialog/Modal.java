@@ -1,12 +1,11 @@
 package de.agilecoders.wicket.markup.html.bootstrap.dialog;
 
 import com.google.common.collect.Lists;
+import de.agilecoders.wicket.markup.html.bootstrap.behavior.AssertTagNameBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
-import de.agilecoders.wicket.util.Components;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
-import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
 import org.apache.wicket.markup.html.WebMarkupContainer;
@@ -40,18 +39,10 @@ public class Modal extends Panel {
     /**
      * Constructor.
      *
-     * @param id   The non-null id of this component
-     * @param body The component's body component
+     * @param markupId   The non-null id of this component
      */
-    public Modal(String id, Component body) {
-        super(id);
-
-        if (!"body".equals(body.getId())) {
-            throw new IllegalArgumentException("invalid body markup id. Must be 'body'.");
-        }
-
-        add(body);
-        commonInit();
+    public Modal(final String markupId) {
+        this(markupId, null);
     }
 
     /**
@@ -63,15 +54,6 @@ public class Modal extends Panel {
     public Modal(String id, IModel<String> model) {
         super(id, model);
 
-        add(new Label("body", model));
-
-        commonInit();
-    }
-
-    /**
-     * Common initializer. Initializes all children like footer and header.
-     */
-    private void commonInit() {
         setOutputMarkupId(true);
 
         footer = new WebMarkupContainer("footer");
@@ -87,6 +69,7 @@ public class Modal extends Panel {
         });
 
         add(header, footer);
+        add(new AssertTagNameBehavior("div"));
         add(new CssClassNameAppender("modal", "hide"));
     }
 
@@ -98,6 +81,7 @@ public class Modal extends Panel {
      */
     public Modal header(IModel<String> label) {
         headerLabel.setDefaultModel(label);
+        setHeaderVisible(true);
         return this;
     }
 
@@ -210,13 +194,6 @@ public class Modal extends Panel {
         }
 
         footer.setVisible(buttons.size() > 0);
-    }
-
-    @Override
-    protected void onComponentTag(ComponentTag tag) {
-        super.onComponentTag(tag);
-
-        Components.assertTag(this, tag, "div");
     }
 
     @Override

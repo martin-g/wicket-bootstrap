@@ -1,5 +1,8 @@
 package de.agilecoders.wicket.samples.pages;
 
+import de.agilecoders.wicket.markup.html.bootstrap.form.DateTextField;
+import de.agilecoders.wicket.samples.components.basecss.DatePickerModal;
+import org.apache.wicket.Component;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.wicketstuff.annotation.mount.MountPath;
 
@@ -20,6 +23,13 @@ public class BaseCssPage extends BasePage {
     public BaseCssPage(PageParameters parameters) {
         super(parameters);
 
+        add(new DateTextField("date"));
+
+        add(newModalDialog("modal"));
+    }
+
+    private Component newModalDialog(String markupId) {
+        return new DatePickerModal(markupId);
     }
 
     @Override
