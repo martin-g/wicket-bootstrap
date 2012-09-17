@@ -154,3 +154,7 @@
     width: 16px;
     height: 16px;
 }
+
+div.datepicker {
+    z-index: 2050;
+}
