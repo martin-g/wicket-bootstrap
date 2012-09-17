@@ -1,8 +1,10 @@
 package de.agilecoders.wicket.samples.pages;
 
 import de.agilecoders.wicket.markup.html.bootstrap.form.DateTextField;
+import de.agilecoders.wicket.markup.html.bootstrap.navigation.BootstrapPagingNavigator;
 import de.agilecoders.wicket.samples.components.basecss.DatePickerModal;
 import org.apache.wicket.Component;
+import org.apache.wicket.markup.html.navigation.paging.IPageable;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.wicketstuff.annotation.mount.MountPath;
 
@@ -26,6 +28,28 @@ public class BaseCssPage extends BasePage {
         add(new DateTextField("date"));
 
         add(newModalDialog("modal"));
+        add(newPagination("pagination"));
+    }
+
+    private Component newPagination(String markupId) {
+        IPageable pageable = new IPageable() {
+            @Override
+            public long getCurrentPage() {
+                return 1;
+            }
+
+            @Override
+            public void setCurrentPage(long page) {
+
+            }
+
+            @Override
+            public long getPageCount() {
+                return 5;
+            }
+        };
+
+        return new BootstrapPagingNavigator(markupId, pageable).setPosition(BootstrapPagingNavigator.Position.Centered);
     }
 
     private Component newModalDialog(String markupId) {

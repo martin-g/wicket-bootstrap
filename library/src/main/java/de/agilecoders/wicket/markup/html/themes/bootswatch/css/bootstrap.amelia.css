@@ -4093,6 +4093,7 @@ input[type="submit"].btn.btn-mini {
   background-color: #fff;
   cursor: default;
 }
+
 .modal-open .modal .dropdown-menu {
   z-index: 2050;
 }
