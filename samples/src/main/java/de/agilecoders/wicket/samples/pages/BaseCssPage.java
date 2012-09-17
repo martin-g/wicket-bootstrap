@@ -1,11 +1,15 @@
 package de.agilecoders.wicket.samples.pages;
 
+import com.google.common.collect.Lists;
 import de.agilecoders.wicket.markup.html.bootstrap.form.DateTextField;
 import de.agilecoders.wicket.markup.html.bootstrap.navigation.BootstrapPagingNavigator;
 import de.agilecoders.wicket.markup.html.bootstrap.navigation.Breadcrumb;
+import de.agilecoders.wicket.markup.html.bootstrap.tabs.BootstrapTabbedPanel;
 import de.agilecoders.wicket.samples.components.basecss.DatePickerModal;
 import org.apache.wicket.Component;
 import org.apache.wicket.extensions.breadcrumb.panel.BreadCrumbPanel;
+import org.apache.wicket.extensions.markup.html.tabs.AbstractTab;
+import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.navigation.paging.IPageable;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
@@ -34,6 +38,22 @@ public class BaseCssPage extends BasePage {
         add(newModalDialog("modal"));
         add(newPagination("pagination"));
         add(newBreadcrumb("breadcrumb"));
+        add(newTabs("tabs"));
+    }
+
+    private Component newTabs(String markupId) {
+        return new BootstrapTabbedPanel<AbstractTab>(markupId, Lists.<AbstractTab>newArrayList(
+                createTab("Home"), createTab("Second")
+        ));
+    }
+
+    private AbstractTab createTab(final String title) {
+        return new AbstractTab(Model.of(title)) {
+            @Override
+            public WebMarkupContainer getPanel(String panelId) {
+                return new WebMarkupContainer(panelId);
+            }
+        };
     }
 
     private Component newBreadcrumb(String markupId) {
