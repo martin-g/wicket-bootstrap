@@ -1,7 +1,6 @@
 package de.agilecoders.wicket.markup.html.bootstrap.carousel;
 
 import com.google.common.base.Optional;
-import org.apache.http.annotation.Immutable;
 
 /**
  * TODO: document
@@ -9,7 +8,6 @@ import org.apache.http.annotation.Immutable;
  * @author miha
  * @version 1.0
  */
-@Immutable
 public class CarouselImage {
 
     private final String header;
