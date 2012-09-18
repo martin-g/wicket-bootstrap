@@ -19,12 +19,23 @@ public class PageHeader extends Panel {
 
     private Label subtitle;
 
-    public PageHeader(String id) {
-        super(id);
+    /**
+     * Construct.
+     *
+     * @param markupId The markup id
+     */
+    public PageHeader(final String markupId) {
+        super(markupId);
     }
 
-    public PageHeader(String id, IModel<String> model) {
-        super(id, model);
+    /**
+     * Construct.
+     *
+     * @param markupId The markup id
+     * @param model    The label of the page header
+     */
+    public PageHeader(final String markupId, final IModel<String> model) {
+        super(markupId, model);
     }
 
     @Override
@@ -44,7 +55,13 @@ public class PageHeader extends Panel {
         Components.hideIfModelIsEmpty(subtitle);
     }
 
-    public PageHeader setSubtitle(IModel<String> subtitle) {
+    /**
+     * sets the subtitle model.
+     *
+     * @param subtitle The subtitle as model
+     * @return this component's instance
+     */
+    public PageHeader setSubtitle(final IModel<String> subtitle) {
         this.subtitle.setDefaultModel(subtitle);
         return this;
     }

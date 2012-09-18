@@ -4,7 +4,7 @@ import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameProvider;
 
 /**
- * TODO: document
+ * A LabelType defines the type of label which changes highlighted color.
  *
  * @author miha
  * @version 1.0
@@ -26,7 +26,7 @@ public enum LabelType implements CssClassNameProvider {
         return new CssClassNameAppender(cssClassName());
     }
 
-    public CssClassNameAppender newCssClassNameAppender(String prefix) {
+    public CssClassNameAppender newCssClassNameModifier(String prefix) {
         return new CssClassNameAppender(cssClassName(prefix));
     }
 }

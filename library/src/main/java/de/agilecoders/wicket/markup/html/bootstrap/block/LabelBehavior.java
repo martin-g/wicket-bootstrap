@@ -7,7 +7,7 @@ import org.apache.wicket.Component;
 import org.apache.wicket.markup.ComponentTag;
 
 /**
- * TODO: document
+ * A Label is a highlighted text with rounded corners.
  *
  * @author miha
  * @version 1.0

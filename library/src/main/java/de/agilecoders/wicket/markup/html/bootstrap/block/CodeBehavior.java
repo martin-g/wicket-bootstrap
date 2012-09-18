@@ -1,22 +1,29 @@
 package de.agilecoders.wicket.markup.html.bootstrap.block;
 
-import com.google.common.collect.Lists;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.AssertTagNameBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
+import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameProvider;
 import de.agilecoders.wicket.markup.html.references.BootstrapPrettifyCssReference;
 import de.agilecoders.wicket.markup.html.references.BootstrapPrettifyJavaScriptReference;
 import de.agilecoders.wicket.util.CssClassNames;
+import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
-import org.apache.wicket.markup.head.OnLoadHeaderItem;
+import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
 import org.apache.wicket.model.Model;
 
-import java.util.List;
-
 /**
- * TODO: document
+ * Wrap inline snippets of code with <code> and use <pre> for multiple
+ * lines of code. Angle brackets will be escaped in the code for proper rendering.
+ *
+ * Example markup:
+ * <pre>
+ *     &lt;pre&gt;
+ *         &lt;p&gt;Sample text here...&lt;/p&gt;
+ *    &lt;/pre&gt;
+ * </pre>
  *
  * @author miha
  * @version 1.0
@@ -26,15 +33,13 @@ public class CodeBehavior extends AssertTagNameBehavior {
     /**
      * enum that holds all possible languages
      */
-    public enum Language {
+    public enum Language implements CssClassNameProvider {
         DYNAMIC, BSH, C, CC, CPP, CS, CSH, CYC, CV, HTM, HTML,
         JAVA, JS, M, MXML, PERL, PL, PM, PY, RB, SH,
         XHTML, XML, XSL;
 
-        /**
-         * @return the css class name of the selected language.
-         */
-        private String cssClassName() {
+        @Override
+        public String cssClassName() {
             if (!DYNAMIC.equals(this)) {
                 return "lang-" + name().toLowerCase();
             }
@@ -42,6 +47,10 @@ public class CodeBehavior extends AssertTagNameBehavior {
             return "";
         }
 
+        @Override
+        public AttributeModifier newCssClassNameModifier() {
+            return new CssClassNameAppender(this);
+        }
     }
 
     private boolean lineNumbers = false;
@@ -65,7 +74,7 @@ public class CodeBehavior extends AssertTagNameBehavior {
         response.render(CssHeaderItem.forReference(BootstrapPrettifyCssReference.INSTANCE));
         response.render(JavaScriptHeaderItem.forReference(BootstrapPrettifyJavaScriptReference.INSTANCE));
 
-        response.render(OnLoadHeaderItem.forScript("window.prettyPrint && prettyPrint();"));
+        response.render(OnDomReadyHeaderItem.forScript("window.prettyPrint && prettyPrint();"));
     }
 
     @Override
@@ -82,22 +91,22 @@ public class CodeBehavior extends AssertTagNameBehavior {
     public void onConfigure(Component component) {
         super.onConfigure(component);
 
-        cssClassNameModel.setObject(CssClassNames.join(createCssClassNames()));
+        cssClassNameModel.setObject(createCssClassNames());
     }
 
     /**
-     * @return a list of css classnames
+     * @return a list of css class names
      */
-    private List<String> createCssClassNames() {
-        return Lists.newArrayList("prettyprint",
-                                  createLinenumsCssClass(),
-                                  language.cssClassName());
+    private String createCssClassNames() {
+        return CssClassNames.parse("prettyprint").add(
+                createLineNumbersCssClass(),
+                language.cssClassName()).asString();
     }
 
     /**
      * @return the css class name for the line number class
      */
-    private String createLinenumsCssClass() {
+    private String createLineNumbersCssClass() {
         if (hasLineNumbers()) {
             return "linenums" + (from > 0 ? ":" + from : "");
         }
@@ -141,7 +150,7 @@ public class CodeBehavior extends AssertTagNameBehavior {
      * @param language the language to use
      * @return this instance
      */
-    public CodeBehavior setLanguage(Language language) {
+    public CodeBehavior setLanguage(final Language language) {
         this.language = language;
 
         return this;
