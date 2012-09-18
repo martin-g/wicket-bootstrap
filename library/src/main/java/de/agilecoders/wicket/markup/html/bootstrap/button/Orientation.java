@@ -22,7 +22,7 @@ public enum Orientation implements CssClassNameProvider {
     }
 
     @Override
-    public CssClassNameAppender newCssClassNameAppender() {
+    public CssClassNameAppender newCssClassNameModifier() {
         return new CssClassNameAppender(this);
     }
 }

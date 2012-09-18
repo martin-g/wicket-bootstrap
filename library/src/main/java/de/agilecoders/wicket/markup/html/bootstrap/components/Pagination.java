@@ -28,7 +28,7 @@ public class Pagination extends Panel {
         }
 
         @Override
-        public CssClassNameAppender newCssClassNameAppender() {
+        public CssClassNameAppender newCssClassNameModifier() {
             return new CssClassNameAppender(this);
         }
     }
@@ -53,7 +53,7 @@ public class Pagination extends Panel {
     public Pagination(final String markupId, final Alignment alignment) {
         super(markupId);
 
-        add(alignment.newCssClassNameAppender());
+        add(alignment.newCssClassNameModifier());
         add(new BootstrapBaseBehavior());
         add(new CssClassNameAppender("pagination"));
         add(buttonList = newButtonList("buttons"));

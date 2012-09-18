@@ -1,11 +1,11 @@
 package de.agilecoders.wicket.markup.html.bootstrap.block;
 
-import com.google.common.base.Joiner;
 import com.google.common.collect.Lists;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.AssertTagNameBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
 import de.agilecoders.wicket.markup.html.references.BootstrapPrettifyCssReference;
 import de.agilecoders.wicket.markup.html.references.BootstrapPrettifyJavaScriptReference;
+import de.agilecoders.wicket.util.CssClassNames;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
@@ -82,7 +82,7 @@ public class CodeBehavior extends AssertTagNameBehavior {
     public void onConfigure(Component component) {
         super.onConfigure(component);
 
-        cssClassNameModel.setObject(Joiner.on(" ").join(createCssClassNames()));
+        cssClassNameModel.setObject(CssClassNames.join(createCssClassNames()));
     }
 
     /**
@@ -117,8 +117,8 @@ public class CodeBehavior extends AssertTagNameBehavior {
      *
      * @return this instance
      */
-    public CodeBehavior addLineNumbers() {
-        this.lineNumbers = true;
+    public CodeBehavior setShowLineNumbers(final boolean showLineNumbers) {
+        this.lineNumbers = showLineNumbers;
 
         return this;
     }
@@ -129,7 +129,7 @@ public class CodeBehavior extends AssertTagNameBehavior {
      * @param from which line the numbers will count
      * @return this instance
      */
-    public CodeBehavior from(final int from) {
+    public CodeBehavior setStartFromLine(final int from) {
         this.from = from;
 
         return this;
@@ -141,7 +141,7 @@ public class CodeBehavior extends AssertTagNameBehavior {
      * @param language the language to use
      * @return this instance
      */
-    public CodeBehavior language(Language language) {
+    public CodeBehavior setLanguage(Language language) {
         this.language = language;
 
         return this;

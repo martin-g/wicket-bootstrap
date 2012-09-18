@@ -1,8 +1,7 @@
 package de.agilecoders.wicket.markup.html.bootstrap.behavior;
 
-import com.google.common.base.Joiner;
-import com.google.common.base.Splitter;
 import com.google.common.collect.Lists;
+import de.agilecoders.wicket.util.CssClassNames;
 import org.apache.wicket.behavior.AttributeAppender;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
@@ -37,21 +36,9 @@ import java.util.List;
 public class CssClassNameAppender extends AttributeAppender {
 
     /**
-     * Separator between the current value and the concatenated value.
-     */
-    protected static final String SEPARATOR = " ";
-
-    /**
      * The name of the html class attribute name.
      */
     protected static final String ATTRIBUTE_NAME = "class";
-
-    /**
-     * @return separator between the current value and the concatenated value.
-     */
-    public static String separator() {
-        return SEPARATOR;
-    }
 
     /**
      * Creates an AttributeModifier that appends the appendModel's value to the current value of the
@@ -60,7 +47,7 @@ public class CssClassNameAppender extends AttributeAppender {
      * @param appendModel the model supplying a single value to append
      */
     public CssClassNameAppender(IModel<String> appendModel) {
-        super(ATTRIBUTE_NAME, appendModel, SEPARATOR);
+        super(ATTRIBUTE_NAME, appendModel, " ");
     }
 
     /**
@@ -80,7 +67,7 @@ public class CssClassNameAppender extends AttributeAppender {
      * @param appendValueList a list of values to append
      */
     public CssClassNameAppender(List<String> appendValueList) {
-        this(Model.of(Joiner.on(SEPARATOR).skipNulls().join(appendValueList)));
+        this(Model.of(CssClassNames.join(appendValueList)));
     }
 
     /**
@@ -102,18 +89,6 @@ public class CssClassNameAppender extends AttributeAppender {
             return currentValue != null ? currentValue : null;
         }
 
-        List<String> values = Lists.newArrayList(Splitter.on(separator()).trimResults().split(currentValue));
-        List<String> appendValues = Lists.newArrayList(Splitter.on(separator()).trimResults().split(appendValue));
-
-        StringBuilder sb = new StringBuilder(currentValue);
-
-        for (String append : appendValues) {
-            if (!values.contains(append) && append != null && !"".equals(append)) {
-                sb.append(separator());
-                sb.append(append);
-            }
-        }
-
-        return sb.toString().trim();
+        return CssClassNames.parse(currentValue).add(CssClassNames.parse(appendValue)).asString();
     }
 }

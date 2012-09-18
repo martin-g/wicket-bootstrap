@@ -27,7 +27,7 @@ public enum SpanType implements CssClassNameProvider {
     }
 
     @Override
-    public CssClassNameAppender newCssClassNameAppender() {
+    public CssClassNameAppender newCssClassNameModifier() {
         return new CssClassNameAppender(cssClassName());
     }
 }

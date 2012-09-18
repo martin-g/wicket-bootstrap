@@ -29,7 +29,7 @@ public class BootstrapPagingNavigator extends PagingNavigator {
         }
 
         @Override
-        public CssClassNameAppender newCssClassNameAppender() {
+        public CssClassNameAppender newCssClassNameModifier() {
             return new CssClassNameAppender(this);
         }
 

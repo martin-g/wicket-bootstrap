@@ -36,7 +36,7 @@ public class CssClassNameBorder<T extends CssClassNameProvider> extends Border {
         super.onConfigure();
 
         if(provider != null) {
-            add(provider.newCssClassNameAppender());
+            add(provider.newCssClassNameModifier());
         }
     }
 }

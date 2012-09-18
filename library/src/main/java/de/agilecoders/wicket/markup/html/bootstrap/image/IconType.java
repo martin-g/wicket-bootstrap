@@ -91,7 +91,7 @@ public class IconType implements CssClassNameProvider, Serializable {
     }
 
     @Override
-    public CssClassNameAppender newCssClassNameAppender() {
+    public CssClassNameAppender newCssClassNameModifier() {
         return new CssClassNameAppender(cssClassName());
     }
 }

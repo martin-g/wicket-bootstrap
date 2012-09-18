@@ -11,7 +11,7 @@ import org.junit.Test;
 import static junit.framework.Assert.assertEquals;
 
 /**
- * TODO: document
+ * Tests the {@link CssClassNameAppender}.
  *
  * @author miha
  * @version 1.0
@@ -37,7 +37,7 @@ public class CssClassNameAppenderTest extends WicketApplicationTest {
             }
 
             @Override
-            public CssClassNameAppender newCssClassNameAppender() {
+            public CssClassNameAppender newCssClassNameModifier() {
                 return null;
             }
         }));

@@ -4,7 +4,8 @@ import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.model.IModel;
 
 /**
- * TODO: document
+ * Wrap inline snippets of code with <code> and use <pre> for multiple
+ * lines of code. Angle brackets will be escaped in the code for proper rendering.
  *
  * @author miha
  * @version 1.0
@@ -47,10 +48,20 @@ public class Code extends WebMarkupContainer {
      *
      * @return this instance
      */
-    public Code addLineNumbers() {
-        codeBehavior.addLineNumbers();
+    public Code setShowLineNumbers(final boolean showLineNumbers) {
+        codeBehavior.setShowLineNumbers(showLineNumbers);
 
         return this;
+    }
+
+    /**
+     * adds line numbers on the left side of code block.
+     *
+     * @return this instance
+     */
+    @Deprecated
+    public Code addLineNumbers() {
+        return setShowLineNumbers(true);
     }
 
     /**
@@ -59,8 +70,8 @@ public class Code extends WebMarkupContainer {
      * @param from which line the numbers will count
      * @return this instance
      */
-    public Code from(final int from) {
-        codeBehavior.from(from);
+    public Code setStartFromLine(final int from) {
+        codeBehavior.setStartFromLine(from);
 
         return this;
     }
@@ -71,8 +82,8 @@ public class Code extends WebMarkupContainer {
      * @param language the language to use
      * @return this instance
      */
-    public Code language(CodeBehavior.Language language) {
-        codeBehavior.language(language);
+    public Code setLanguage(CodeBehavior.Language language) {
+        codeBehavior.setLanguage(language);
 
         return this;
     }

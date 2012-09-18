@@ -46,7 +46,7 @@ public class ButtonGroup extends Panel {
 
         add(new BootstrapBaseBehavior());
         add(new CssClassNameAppender("btn-group"));
-        add(orientation.newCssClassNameAppender());
+        add(orientation.newCssClassNameModifier());
         add(newButtonList("buttons"));
     }
 

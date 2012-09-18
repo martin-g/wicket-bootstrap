@@ -1,7 +1,7 @@
 package de.agilecoders.wicket.markup.html.bootstrap.block;
 
 /**
- * TODO: document
+ * A Badge is a highlighted label with rounded corners.
  *
  * @author miha
  * @version 1.0
