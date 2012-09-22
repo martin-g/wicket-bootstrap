@@ -2,6 +2,8 @@ package de.agilecoders.wicket.samples.pages;
 
 import de.agilecoders.wicket.Bootstrap;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
+import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonBehavior;
+import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonType;
 import de.agilecoders.wicket.markup.html.bootstrap.button.dropdown.DropDownButton;
 import de.agilecoders.wicket.markup.html.bootstrap.button.dropdown.MenuDivider;
 import de.agilecoders.wicket.markup.html.bootstrap.button.dropdown.MenuHeader;
@@ -23,6 +25,8 @@ import de.agilecoders.wicket.settings.IBootstrapSettings;
 import de.agilecoders.wicket.settings.ITheme;
 import org.apache.wicket.Component;
 import org.apache.wicket.Page;
+import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.html.GenericWebPage;
@@ -128,6 +132,20 @@ abstract class BasePage<T> extends GenericWebPage<T> {
         DropDownButton dropdown = new NavbarDropDownButton("button", Model.of("More..."))
                 .addButton(new MenuPageButton<HomePage>(HomePage.class, Model.of("Overview")).setIcon(new Icon(IconType.Home)))
                 .addButton(new MenuDivider())
+                .addButton(new AjaxLink<String>("button", Model.of("AjaxLink")) {
+                    @Override
+                    protected void onInitialize() {
+                        super.onInitialize();
+
+                        setBody(getDefaultModel());
+                        add(new ButtonBehavior(ButtonType.Menu));
+                    }
+
+                    @Override
+                    public void onClick(AjaxRequestTarget target) {
+                        target.appendJavaScript("alert('clicked');");
+                    }
+                })
                 .addButton(new MenuHeader(Model.of("Themes")));
 
         IBootstrapSettings settings = Bootstrap.getSettings(getApplication());
