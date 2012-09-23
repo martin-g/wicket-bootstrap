@@ -26,7 +26,7 @@ public class ImageBehavior extends BootstrapBaseBehavior {
         }
 
         @Override
-        public CssClassNameAppender newCssClassNameAppender() {
+        public CssClassNameAppender newCssClassNameModifier() {
             return new CssClassNameAppender(cssClassName());
         }
 
@@ -47,7 +47,7 @@ public class ImageBehavior extends BootstrapBaseBehavior {
     public void bind(Component component) {
         super.bind(component);
 
-        component.add(borderType.newCssClassNameAppender());
+        component.add(borderType.newCssClassNameModifier());
         component.add(new AssertTagNameBehavior("img"));
     }
 }

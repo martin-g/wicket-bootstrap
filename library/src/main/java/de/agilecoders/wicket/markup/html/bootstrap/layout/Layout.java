@@ -25,7 +25,7 @@ public enum Layout implements CssClassNameProvider {
     }
 
     @Override
-    public CssClassNameAppender newCssClassNameAppender() {
+    public CssClassNameAppender newCssClassNameModifier() {
         return new CssClassNameAppender(cssClassName());
     }
 }

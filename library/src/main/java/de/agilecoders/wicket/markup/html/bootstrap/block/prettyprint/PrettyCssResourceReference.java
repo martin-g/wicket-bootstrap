@@ -4,7 +4,7 @@ import org.apache.wicket.request.resource.CssResourceReference;
 import org.apache.wicket.request.resource.ResourceReference;
 
 /**
- * TODO: document
+ * Adds the prettify css resource to the document's head.
  *
  * @author miha
  * @version 1.0

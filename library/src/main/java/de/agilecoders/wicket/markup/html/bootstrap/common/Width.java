@@ -25,7 +25,7 @@ public enum Width implements CssClassNameProvider {
     SPAN12;
 
     public void addTo(Component component) {
-        component.add(newCssClassNameAppender());
+        component.add(newCssClassNameModifier());
     }
     
     @Override
@@ -34,7 +34,7 @@ public enum Width implements CssClassNameProvider {
     }
 
     @Override
-    public CssClassNameAppender newCssClassNameAppender() {
+    public CssClassNameAppender newCssClassNameModifier() {
         return new CssClassNameAppender(this);
     }
 }

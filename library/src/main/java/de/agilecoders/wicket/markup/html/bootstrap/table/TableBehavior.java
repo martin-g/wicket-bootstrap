@@ -28,7 +28,7 @@ public class TableBehavior extends BootstrapBaseBehavior {
         }
 
         @Override
-        public CssClassNameAppender newCssClassNameAppender() {
+        public CssClassNameAppender newCssClassNameModifier() {
             return new CssClassNameAppender(cssClassName());
         }
     }

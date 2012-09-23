@@ -1,5 +1,7 @@
 package de.agilecoders.wicket.markup.html.bootstrap.behavior;
 
+import org.apache.wicket.AttributeModifier;
+
 /**
  * The {@code CssClassNameProvider} provides an interface to abstract
  * the styling of a component and the rendering of the class attribute.
@@ -13,7 +15,7 @@ package de.agilecoders.wicket.markup.html.bootstrap.behavior;
  *             return name().toLowerCase();
  *         }
  *
- *         public CssClassNameAppender newCssClassNameAppender() {
+ *         public CssClassNameAppender newCssClassNameModifier() {
  *             return new CssClassNameAppender(cssClassName());
  *         }
  *     }
@@ -22,7 +24,7 @@ package de.agilecoders.wicket.markup.html.bootstrap.behavior;
  *         public MyColoredComponent(String id, Color color) {
  *             super(id);
  *
- *             add(color.newCssClassNameAppender());
+ *             add(color.newCssClassNameModifier());
  *         }
  *     }
  * </pre>
@@ -38,12 +40,9 @@ public interface CssClassNameProvider {
     String cssClassName();
 
     /**
-     * TODO: refactor this interface to be more abstract and not depending on a
-     *       specific implementation. (Could be a special Behavior)
-     *
-     * @return a {@link CssClassNameAppender} which contains the class name
-     *         from {@link de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameProvider#cssClassName()}
+     * @return a {@link AttributeModifier} which contains the class name
+     *         from {@link CssClassNameProvider#cssClassName()}
      */
-    CssClassNameAppender newCssClassNameAppender();
+    AttributeModifier newCssClassNameModifier();
 
 }

@@ -15,25 +15,32 @@ import org.apache.wicket.model.Model;
  */
 public class ButtonBehavior extends BootstrapBaseBehavior {
 
-    private IModel<ButtonType> buttonType;
-    private IModel<ButtonSize> buttonSize;
-    private IModel<Boolean> block;
+    private final IModel<ButtonType> buttonType;
+    private final IModel<ButtonSize> buttonSize;
+    private final IModel<Boolean> block;
+
+    /**
+     * Construct.
+     */
+    public ButtonBehavior() {
+        this(ButtonType.Default, ButtonSize.Medium);
+    }
 
     public ButtonBehavior(final ButtonSize buttonSize) {
         this(ButtonType.Default, buttonSize);
-    }
-
-    public ButtonBehavior() {
-        this(ButtonType.Default, ButtonSize.Medium);
     }
 
     public ButtonBehavior(final ButtonType buttonType) {
         this(buttonType, ButtonSize.Medium);
     }
 
-    public ButtonBehavior(ButtonType buttonType, ButtonSize buttonSize) {
-        this.buttonType = Model.of(buttonType);
-        this.buttonSize = Model.of(buttonSize);
+    public ButtonBehavior(final ButtonType buttonType, final ButtonSize buttonSize) {
+        this(Model.of(buttonType), Model.of(buttonSize));
+    }
+
+    public ButtonBehavior(final IModel<ButtonType> buttonType, final IModel<ButtonSize> buttonSize) {
+        this.buttonType = buttonType;
+        this.buttonSize = buttonSize;
         this.block = Model.of(false);
     }
 

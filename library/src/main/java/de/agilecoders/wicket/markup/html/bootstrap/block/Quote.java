@@ -23,20 +23,20 @@ public class Quote extends WebMarkupContainer {
     /**
      * Constructor.
      *
-     * @param componentId The non-null id of a new component
+     * @param markupId The non-null id of a new component
      */
-    public Quote(final String componentId) {
-        this(componentId, null);
+    public Quote(final String markupId) {
+        this(markupId, null);
     }
 
     /**
      * Constructor.
      *
-     * @param componentId The non-null id of a new component
+     * @param markupId The non-null id of a new component
      * @param model       the component's model
      */
-    public Quote(final String componentId, final IModel<?> model) {
-        super(componentId, model);
+    public Quote(final String markupId, final IModel<?> model) {
+        super(markupId, model);
 
         quoteBehavior = new QuoteBehavior();
         add(quoteBehavior);

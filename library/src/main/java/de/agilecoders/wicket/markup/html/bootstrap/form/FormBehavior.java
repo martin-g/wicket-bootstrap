@@ -30,6 +30,6 @@ public class FormBehavior extends BootstrapBaseBehavior {
     public void onConfigure(Component component) {
         super.onConfigure(component);
 
-        component.add(type.newCssClassNameAppender());
+        component.add(type.newCssClassNameModifier());
     }
 }

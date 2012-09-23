@@ -35,7 +35,7 @@ public class ProgressBar extends Panel {
             return equals(DEFAULT) ? "" : "progress-" + name().toLowerCase();
         }
 
-        public CssClassNameAppender newCssClassNameAppender() {
+        public CssClassNameAppender newCssClassNameModifier() {
             return new CssClassNameAppender(cssClassName());
         }
     }

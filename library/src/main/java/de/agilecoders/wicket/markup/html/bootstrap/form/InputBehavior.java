@@ -23,7 +23,7 @@ public class InputBehavior extends BootstrapBaseBehavior {
         }
 
         @Override
-        public CssClassNameAppender newCssClassNameAppender() {
+        public CssClassNameAppender newCssClassNameModifier() {
             return new CssClassNameAppender(cssClassName());
         }
 
@@ -61,6 +61,6 @@ public class InputBehavior extends BootstrapBaseBehavior {
     public void onConfigure(Component component) {
         super.onConfigure(component);
 
-        component.add(size.newCssClassNameAppender());
+        component.add(size.newCssClassNameModifier());
     }
 }

@@ -18,8 +18,6 @@ import org.apache.wicket.model.IModel;
  */
 public abstract class Hero extends WebMarkupContainer {
 
-    private final HeroBehavior heroBehavior;
-
     /**
      * Constructor.
      *
@@ -38,8 +36,7 @@ public abstract class Hero extends WebMarkupContainer {
     public Hero(final String componentId, final IModel<?> model) {
         super(componentId, model);
 
-        heroBehavior = new HeroBehavior();
-        add(heroBehavior);
+        add(new HeroBehavior());
     }
 
 }

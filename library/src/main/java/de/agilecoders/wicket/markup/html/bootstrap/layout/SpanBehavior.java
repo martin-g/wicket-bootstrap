@@ -49,11 +49,11 @@ public class SpanBehavior extends BootstrapBaseBehavior {
         super.onConfigure(component);
 
         if (type != null) {
-            component.add(type().newCssClassNameAppender());
+            component.add(type().newCssClassNameModifier());
         }
 
         if (offset != null) {
-            component.add(offset().newCssClassNameAppender());
+            component.add(offset().newCssClassNameModifier());
         }
     }
 }

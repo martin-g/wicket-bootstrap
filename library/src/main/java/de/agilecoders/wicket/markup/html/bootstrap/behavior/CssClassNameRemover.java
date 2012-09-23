@@ -16,9 +16,8 @@
  */
 package de.agilecoders.wicket.markup.html.bootstrap.behavior;
 
-import com.google.common.base.Joiner;
-import com.google.common.base.Splitter;
 import com.google.common.collect.Lists;
+import de.agilecoders.wicket.util.CssClassNames;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.util.string.Strings;
@@ -57,7 +56,7 @@ public class CssClassNameRemover extends CssClassNameAppender {
      * @param removeValueList a list of values to append
      */
     public CssClassNameRemover(List<String> removeValueList) {
-        this(Model.of(Joiner.on(SEPARATOR).skipNulls().join(removeValueList)));
+        this(Model.of(CssClassNames.join(removeValueList)));
     }
 
     /**
@@ -79,13 +78,6 @@ public class CssClassNameRemover extends CssClassNameAppender {
             return currentValue != null ? currentValue : null;
         }
 
-        List<String> values = Lists.newArrayList(Splitter.on(separator()).split(currentValue));
-        List<String> removeValues = Lists.newArrayList(Splitter.on(separator()).split(removeValue));
-
-        for (String remove : removeValues) {
-            values.remove(remove);
-        }
-
-        return Joiner.on(separator()).join(values);
+        return CssClassNames.parse(currentValue).remove(CssClassNames.parse(removeValue)).asString();
     }
 }

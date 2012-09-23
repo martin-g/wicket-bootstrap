@@ -3,6 +3,7 @@ package de.agilecoders.wicket.markup.html.bootstrap.image;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.AssertTagNameBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
 import org.apache.wicket.Component;
+import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
 /**
@@ -13,9 +14,9 @@ import org.apache.wicket.model.Model;
  */
 public class IconBehavior extends AssertTagNameBehavior {
 
-    private final IconType type;
+    private final IModel<IconType> type;
+    private final IModel<String> value;
     private boolean invert = false;
-    private final Model<String> value;
 
     /**
      * Construct.
@@ -24,6 +25,16 @@ public class IconBehavior extends AssertTagNameBehavior {
      * @param invert whether to invert the icon or not
      */
     public IconBehavior(final IconType type, final boolean invert) {
+        this(Model.of(type), invert);
+    }
+
+    /**
+     * Construct.
+     *
+     * @param type   The type of the icon, e.g. Search, Home, User,...
+     * @param invert whether to invert the icon or not
+     */
+    public IconBehavior(final IModel<IconType> type, final boolean invert) {
         super("i");
 
         this.type = type;
@@ -37,7 +48,7 @@ public class IconBehavior extends AssertTagNameBehavior {
      * @param type The type of the icon, e.g. Search, Home, User,...
      */
     public IconBehavior(final IconType type) {
-        this(type, false);
+        this(Model.of(type), false);
     }
 
     @Override
@@ -51,14 +62,21 @@ public class IconBehavior extends AssertTagNameBehavior {
     public void onConfigure(Component component) {
         super.onConfigure(component);
 
-        if (type != null && !type.equals(IconType.NULL)) {
-            final String invertPostfix = isInverted() ? "icon-white" : "";
+        if (hasIconType()) {
+            final String invertPostfix = isInverted() ? " icon-white" : "";
 
-            value.setObject(type.cssClassName() + " " + invertPostfix);
+            value.setObject(type.getObject().cssClassName() + invertPostfix);
         } else {
             value.setObject("");
             component.setVisible(false);
         }
+    }
+
+    /**
+     * @return true, if an {@link IconType} is set
+     */
+    private boolean hasIconType() {
+        return type != null && type.getObject() != null && !type.getObject().equals(IconType.NULL);
     }
 
     /**
@@ -83,6 +101,6 @@ public class IconBehavior extends AssertTagNameBehavior {
      * @return the current icon type
      */
     public IconType type() {
-        return type;
+        return type.getObject();
     }
 }

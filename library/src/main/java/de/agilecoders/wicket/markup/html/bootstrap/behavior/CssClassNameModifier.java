@@ -1,7 +1,7 @@
 package de.agilecoders.wicket.markup.html.bootstrap.behavior;
 
-import com.google.common.base.Joiner;
 import com.google.common.collect.Lists;
+import de.agilecoders.wicket.util.CssClassNames;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
@@ -34,11 +34,6 @@ import java.util.List;
 public class CssClassNameModifier extends AttributeModifier {
 
     /**
-     * Separator between the current value and the concatenated value.
-     */
-    private static final String SEPARATOR = " ";
-
-    /**
      * The name of the html class attribute name.
      */
     private static final String ATTRIBUTE_NAME = "class";
@@ -68,7 +63,7 @@ public class CssClassNameModifier extends AttributeModifier {
      * @param appendValueList a list of values to append
      */
     public CssClassNameModifier(List<String> appendValueList) {
-        this(Model.of(Joiner.on(SEPARATOR).skipNulls().join(appendValueList)));
+        this(Model.of(CssClassNames.join(appendValueList)));
     }
 
     /**
