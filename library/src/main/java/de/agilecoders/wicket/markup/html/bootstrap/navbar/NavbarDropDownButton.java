@@ -27,7 +27,7 @@ public class NavbarDropDownButton extends DropDownButton {
     }
 
     @Override
-    protected void updateButtonBehavior(ButtonType buttonType, ButtonSize buttonSize) {
-        // do nothing...
+    protected void addButtonBehavior(final IModel<ButtonType> buttonType, final IModel<ButtonSize> buttonSize) {
+        // do nothing, because navbar dropdown button inherits its styles from navbar.
     }
 }

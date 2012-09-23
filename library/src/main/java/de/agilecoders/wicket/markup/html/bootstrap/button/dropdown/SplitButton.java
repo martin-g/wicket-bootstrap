@@ -3,8 +3,11 @@ package de.agilecoders.wicket.markup.html.bootstrap.button.dropdown;
 import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonSize;
 import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonType;
+import de.agilecoders.wicket.markup.html.bootstrap.image.IconType;
+import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.link.AbstractLink;
+import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
 /**
@@ -32,12 +35,12 @@ public class SplitButton extends DropDownButton {
     }
 
     @Override
-    protected void addBaseButton(String markupId) {
-        // do nothing
+    protected Component createButton(String markupId, IModel<String> labelModel, IModel<IconType> iconTypeModel) {
+        return super.createButton(markupId, labelModel, iconTypeModel).setVisible(false);
     }
 
     @Override
-    protected void updateButtonBehavior(ButtonType buttonType, ButtonSize buttonSize) {
+    protected void addButtonBehavior(final IModel<ButtonType> buttonType, final IModel<ButtonSize> buttonSize) {
         baseButton.add(new ButtonBehavior(buttonType, buttonSize));
         caret.add(new ButtonBehavior(buttonType, buttonSize));
     }
