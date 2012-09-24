@@ -5,6 +5,7 @@ import de.agilecoders.wicket.markup.html.bootstrap.behavior.AssertTagNameBehavio
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
+import org.apache.wicket.ajax.AjaxEventBehavior;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
@@ -35,11 +36,13 @@ public class Modal extends Panel {
     private Label headerLabel;
     private List<Component> buttons = Lists.newArrayList();
     private WebMarkupContainer footer;
+    private final IModel<Boolean> useCloseHandler = Model.of(false);
+    private AjaxEventBehavior closeBehavior;
 
     /**
      * Constructor.
      *
-     * @param markupId   The non-null id of this component
+     * @param markupId The non-null id of this component
      */
     public Modal(final String markupId) {
         this(markupId, null);
@@ -74,6 +77,13 @@ public class Modal extends Panel {
     }
 
     /**
+     * hook to react on modal close event. The {@link }
+     *
+     * @param target The current {@link AjaxRequestTarget}
+     */
+    protected void onClose(final AjaxRequestTarget target) {}
+
+    /**
      * Sets the header label text.
      *
      * @param label The header label
@@ -92,7 +102,7 @@ public class Modal extends Panel {
      * @param escapeMarkup True is model strings should be escaped
      * @return This
      */
-    public Modal header(IModel<String> label, boolean escapeMarkup) {
+    public Modal header(final IModel<String> label, final boolean escapeMarkup) {
         headerLabel.setDefaultModel(label);
         headerLabel.setEscapeModelStrings(escapeMarkup);
         return this;
@@ -104,7 +114,7 @@ public class Modal extends Panel {
      * @param visible True if footer and any children should be visible
      * @return This
      */
-    public Modal setFooterVisible(boolean visible) {
+    public Modal setFooterVisible(final boolean visible) {
         footer.setVisible(visible);
         return this;
     }
@@ -115,8 +125,19 @@ public class Modal extends Panel {
      * @param visible True if header and any children should be visible
      * @return This
      */
-    public Modal setHeaderVisible(boolean visible) {
+    public Modal setHeaderVisible(final boolean visible) {
         header.setVisible(visible);
+        return this;
+    }
+
+    /**
+     * Sets whether the close handler is used or not. Default is false.
+     *
+     * @param useCloseHandler True if close handler should be used
+     * @return This
+     */
+    public final Modal setUseCloseHandler(final boolean useCloseHandler) {
+        this.useCloseHandler.setObject(useCloseHandler);
         return this;
     }
 
@@ -131,12 +152,12 @@ public class Modal extends Panel {
         return this;
     }
 
-    public Modal appendCloseDialogJavaScript(AjaxRequestTarget target) {
+    public Modal appendCloseDialogJavaScript(final AjaxRequestTarget target) {
         target.appendJavaScript(createActionScript(getMarkupId(true), "hide"));
         return this;
     }
 
-    public Modal appendShowDialogJavaScript(AjaxRequestTarget target) {
+    public Modal appendShowDialogJavaScript(final AjaxRequestTarget target) {
         target.appendJavaScript(createActionScript(getMarkupId(true), "show"));
         return this;
     }
@@ -152,13 +173,13 @@ public class Modal extends Panel {
         return "$('#" + markupId + "').modal('" + action + "');";
     }
 
-    public Modal addOpenerAttributesTo(Component component) {
+    public Modal addOpenerAttributesTo(final Component component) {
         component.add(new AttributeModifier("data-toggle", "modal"));
         component.add(new AttributeModifier("href", "#" + getMarkupId(true)));
         return this;
     }
 
-    public Modal addCloseButton(IModel<String> label) {
+    public Modal addCloseButton(final IModel<String> label) {
         ModalCloseButton button = new ModalCloseButton(label);
         button.setAnchor(this);
 
@@ -169,13 +190,42 @@ public class Modal extends Panel {
         return addCloseButton(Model.of("Close"));
     }
 
-    public Modal addButton(Component button) {
+    public Modal addButton(final Component button) {
         if (!"button".equals(button.getId())) {
             throw new IllegalArgumentException("invalid body markup id. Must be 'body'.");
         }
 
         buttons.add(button);
         return this;
+    }
+
+    @Override
+    protected void onInitialize() {
+        super.onInitialize();
+
+        if (useCloseHandler.getObject()) {
+            add(closeBehavior = new AjaxEventBehavior("hidden") {
+                @Override
+                protected void onEvent(final AjaxRequestTarget target) {
+                    handleCloseEvent(target);
+                }
+            });
+        }
+    }
+
+    /**
+     * handles the close event.
+     *
+     * @param target The current {@link AjaxRequestTarget}
+     */
+    private void handleCloseEvent(final AjaxRequestTarget target) {
+        if (isVisible()) {
+            setVisible(false);
+            onClose(target);
+
+            appendCloseDialogJavaScript(target);
+            target.add(this);
+        }
     }
 
     @Override
@@ -210,8 +260,16 @@ public class Modal extends Panel {
      * @return initializer script
      */
     protected String createInitializerScript(final String markupId) {
-        return "$('#" + markupId + "').modal({keyboard:" + useKeyboard() +
-               ", show:" + showImmediately() + "})";
+        final String script = "$('#" + markupId + "').modal({keyboard:" + useKeyboard() +
+                              ", show:" + showImmediately() + "})";
+
+        if (useCloseHandler.getObject()) {
+            return script + ";$('#" + markupId + "').on('hidden', function () { "
+                   + "  Wicket.Ajax.ajax({'u':'" + closeBehavior.getCallbackUrl() + "','c':'" + markupId + "'});"
+                   + "})";
+        }
+
+        return script;
     }
 
     /**

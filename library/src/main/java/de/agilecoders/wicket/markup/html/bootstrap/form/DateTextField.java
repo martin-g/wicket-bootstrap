@@ -7,30 +7,59 @@ import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
-import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.Model;
+
+import java.util.Date;
 
 /**
- * TODO: document
+ * A TextField that is mapped to a <code>java.util.Date</code> object.
+ * <p/>
+ * If no date pattern is explicitly specified, the default <code>DateFormat.SHORT</code> pattern for
+ * the current locale will be used.
  *
  * @author miha
  * @version 1.0
  */
-public class DateTextField extends TextField<String> {
+public class DateTextField extends org.apache.wicket.extensions.markup.html.form.DateTextField {
 
+    /**
+     * holds all week days in a specific sort order.
+     */
     public enum Day {
         Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday
     }
 
-    private Day day = Day.Sunday;
-    private String dateFormat = "mm/dd/yyyy";
+    private final IModel<Day> day = Model.of(Day.Sunday);
 
-    public DateTextField(String id) {
-        super(id);
+    /**
+     * Construct.
+     *
+     * @param markupId The id of the text field
+     */
+    public DateTextField(final String markupId) {
+        super(markupId);
     }
 
-    public DateTextField(String id, IModel<String> model) {
-        super(id, model);
+    /**
+     * Construct.
+     *
+     * @param markupId The id of the text field
+     * @param model    The date model
+     */
+    public DateTextField(final String markupId, final IModel<Date> model) {
+        super(markupId, model);
+    }
+
+    /**
+     * Construct.
+     *
+     * @param markupId   The id of the text field
+     * @param model      The date model
+     * @param dateFormat The format of the date
+     */
+    public DateTextField(final String markupId, final IModel<Date> model, final String dateFormat) {
+        super(markupId, model, dateFormat);
     }
 
     @Override
@@ -41,13 +70,15 @@ public class DateTextField extends TextField<String> {
         add(new AssertTagNameBehavior("input"));
     }
 
-    public DateTextField weekStart(final Day day) {
-        this.day = day;
-        return this;
-    }
+    /**
+     * sets the week start day
+     *
+     * @param day The day to start the week
+     * @return this component's instance
+     */
+    public DateTextField setWeekStart(final Day day) {
+        this.day.setObject(day);
 
-    public DateTextField dateFormat(final String dateFormat) {
-        this.dateFormat = dateFormat;
         return this;
     }
 
@@ -60,10 +91,22 @@ public class DateTextField extends TextField<String> {
         response.render(OnDomReadyHeaderItem.forScript(createScript()));
     }
 
+    /**
+     * creates the initializer script.
+     *
+     * @return initializer script
+     */
     protected CharSequence createScript() {
         return "$('#" + getMarkupId() + "').datepicker({"
-               + "    weekStart: " + day.ordinal() + ","
-               + "    format: '" + dateFormat + "'"
+               + "    weekStart: " + getWeekStart() + ","
+               + "    format: '" + getTextFormat() + "'"
                + "})";
+    }
+
+    /**
+     * @return the week start as int.
+     */
+    private int getWeekStart() {
+        return day.getObject() != null ? day.getObject().ordinal() : Day.Sunday.ordinal();
     }
 }
