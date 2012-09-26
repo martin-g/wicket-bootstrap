@@ -144,7 +144,7 @@
             var d = new Date(this.viewDate),
             year = d.getFullYear(),
             month = d.getMonth(),
-            currentDate = this.date.valueOf();
+            currentDate = this.date;
             this.picker.find('.datepicker-days th:eq(1)')
             .text(DPGlobal.dates.months[month]+' '+year);
             var prevMonth = new Date(year, month-1, 28,0,0,0,0),
@@ -166,7 +166,7 @@
                 } else if (prevMonth.getMonth() > month) {
                     clsName += ' new';
                 }
-                if (prevMonth.valueOf() == currentDate) {
+                if (prevMonth.getDate() == currentDate.getDate() && prevMonth.getMonth() == currentDate.getMonth()) {
                     clsName += ' active';
                 }
                 html.push('<td class="day'+clsName+'">'+prevMonth.getDate() + '</td>');
@@ -328,7 +328,7 @@
         },
         parseDate: function(date, format) {
             var parts = date.split(format.separator),
-            date = new Date(1970, 1, 1, 0, 0, 0),
+            date = new Date(),
             val;
             if (parts.length == format.parts.length) {
                 for (var i=0, cnt = format.parts.length; i < cnt; i++) {
