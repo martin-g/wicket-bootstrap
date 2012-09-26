@@ -39,3 +39,9 @@ Icon?
 Thumbs.db
 
 target
+
+# eclipse generated files #
+###########################
+.project
+.classpath
+.settings
