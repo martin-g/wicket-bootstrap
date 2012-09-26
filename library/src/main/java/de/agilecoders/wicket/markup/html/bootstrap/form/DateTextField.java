@@ -24,6 +24,11 @@ import java.util.Date;
 public class DateTextField extends org.apache.wicket.extensions.markup.html.form.DateTextField {
 
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 3499287675713818823L;
+
+	/**
      * holds all week days in a specific sort order.
      */
     public enum Day {
@@ -40,6 +45,17 @@ public class DateTextField extends org.apache.wicket.extensions.markup.html.form
     public DateTextField(final String markupId) {
         super(markupId);
     }
+    
+    /**
+     * Construct.
+     * 
+     * @param markupId    The id of the text field
+     * @param datePattern The format of the date
+     */
+	public DateTextField(final String markupId, final String datePattern)
+	{
+		super(markupId, datePattern);
+	}
 
     /**
      * Construct.
@@ -97,10 +113,13 @@ public class DateTextField extends org.apache.wicket.extensions.markup.html.form
      * @return initializer script
      */
     protected CharSequence createScript() {
+		// set the input element's value to the chosen date upon datepicker's
+		// 'changeDate' event
         return "$('#" + getMarkupId() + "').datepicker({"
                + "    weekStart: " + getWeekStart() + ","
-               + "    format: '" + getTextFormat() + "'"
-               + "})";
+               + "    format: '" + getTextFormat().toLowerCase() + "'"
+               + "}).on('changeDate', function(ev)  { $('#" + getMarkupId() 
+               + "').value == ev.date; });";
     }
 
     /**
