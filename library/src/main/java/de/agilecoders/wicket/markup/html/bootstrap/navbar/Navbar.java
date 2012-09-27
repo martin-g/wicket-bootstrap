@@ -1,21 +1,26 @@
 package de.agilecoders.wicket.markup.html.bootstrap.navbar;
 
-import com.google.common.collect.Lists;
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
-import de.agilecoders.wicket.markup.html.bootstrap.button.Activatable;
-import de.agilecoders.wicket.util.Behaviors;
+import java.util.List;
+
 import org.apache.wicket.Component;
 import org.apache.wicket.Page;
 import org.apache.wicket.markup.html.TransparentWebMarkupContainer;
 import org.apache.wicket.markup.html.WebMarkupContainer;
+import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.image.Image;
 import org.apache.wicket.markup.html.link.BookmarkablePageLink;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
+import org.apache.wicket.request.resource.ResourceReference;
 
-import java.util.List;
+import com.google.common.collect.Lists;
+
+import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
+import de.agilecoders.wicket.markup.html.bootstrap.button.Activatable;
+import de.agilecoders.wicket.util.Behaviors;
 
 /**
  * TODO: document
@@ -62,6 +67,8 @@ public class Navbar extends Panel {
     private CssClassNameAppender activeStateAppender;
 
     private final BookmarkablePageLink<Page> brandNameLink;
+    private final Label brandLabel;
+    private final Image brandImage;
     private final Component navRightList;
     private final Component navLeftList;
 
@@ -91,6 +98,10 @@ public class Navbar extends Panel {
 
         container = newContainer("container");
         brandNameLink = newBrandNameLink("brandName");
+        brandLabel = newBrandLabel("brandLabel");
+        brandNameLink.add(brandLabel);
+        brandImage = newBrandImage("brandImage");
+        brandNameLink.add(brandImage);
         navLeftList = newNavigation("navLeftList", buttonLeftList);
         navRightList = newNavigation("navRightList", buttonRightList);
 
@@ -141,7 +152,49 @@ public class Navbar extends Panel {
      * @return a new brand name page link instance
      */
     protected BookmarkablePageLink<Page> newBrandNameLink(String componentId) {
-        return new BookmarkablePageLink<Page>(componentId, getHomePage());
+        return new BookmarkablePageLink<Page>(componentId, getHomePage()) {
+        	
+			private static final long serialVersionUID = 1L;
+
+			@Override
+        	public boolean isVisible() {
+				return brandLabel.isVisible() || brandImage.isVisible();
+        	}
+        };
+    }
+    
+    /**
+     * 
+     * @param componentId
+     * @return
+     */
+    protected Label newBrandLabel(String componentId) {
+    	return new Label(componentId) {
+
+    		private static final long serialVersionUID = 1L;
+
+			@Override
+    		public boolean isVisible() {
+    			return getDefaultModel() != null;
+    		}
+    	};
+    }
+    
+    /**
+     * 
+     * @param componentId
+     * @return
+     */
+    protected Image newBrandImage(String componentId) {
+    	return new Image(componentId, Model.of("")) {
+
+    		private static final long serialVersionUID = 1L;
+
+			@Override
+        	public boolean isVisible() {
+        		return getImageResourceReference() != null;
+        	}
+        };
     }
 
     /**
@@ -169,7 +222,6 @@ public class Navbar extends Panel {
             positionModel.setObject("");
         }
 
-        brandNameLink.setVisible(brandNameLink.getBody() != null);
         navLeftList.setVisible(buttonLeftList.size() > 0);
         navRightList.setVisible(buttonRightList.size() > 0);
     }
@@ -223,9 +275,20 @@ public class Navbar extends Panel {
      * @return the component's current instance
      */
     public Navbar brandName(IModel<String> brandName) {
-        this.brandNameLink.setBody(brandName);
+    	brandLabel.setDefaultModel(brandName);
 
         return this;
+    }
+    
+    /**
+     * 
+     * @param imageResourceReference
+     * @return
+     */
+    public Navbar brandImage(ResourceReference imageResourceReference) {
+    	brandImage.setImageResourceReference(imageResourceReference);
+    	
+    	return this;
     }
 
     /**
