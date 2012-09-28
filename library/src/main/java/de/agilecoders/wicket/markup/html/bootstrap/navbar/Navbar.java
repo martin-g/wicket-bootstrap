@@ -2,6 +2,7 @@ package de.agilecoders.wicket.markup.html.bootstrap.navbar;
 
 import java.util.List;
 
+import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.Page;
 import org.apache.wicket.markup.html.TransparentWebMarkupContainer;
@@ -281,15 +282,22 @@ public class Navbar extends Panel {
     }
     
     /**
+     * sets an image in the brand button
      * 
-     * @param imageResourceReference
+     * @param imageResourceReference required
+     * @param imageAltAttrModel		 optional, but should be provided
      * @return
      */
-    public Navbar brandImage(ResourceReference imageResourceReference) {
-    	brandImage.setImageResourceReference(imageResourceReference);
-    	
-    	return this;
-    }
+	public Navbar brandImage(ResourceReference imageResourceReference,
+			IModel<String> imageAltAttrModel) {
+		brandImage.setImageResourceReference(imageResourceReference);
+
+		if (imageAltAttrModel != null) {
+			brandImage.add(new AttributeModifier("alt", imageAltAttrModel));
+		}
+
+		return this;
+	}
 
     /**
      * inverts the navbar backgorund color
