@@ -38,7 +38,7 @@ public class NavbarTest extends WicketApplicationTest {
         navbar.brandName(Model.of("Brand Name"));
 
         tester().startComponentInPage(navbar);
-        TagTester tagTester = tester().getTagByWicketId("brandName");
+        TagTester tagTester = tester().getTagByWicketId("brandLabel");
 
         Assert.assertThat(tagTester.getValue(), is(equalTo("Brand Name")));
     }
