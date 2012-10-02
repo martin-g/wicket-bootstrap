@@ -20,7 +20,6 @@
         <connection>scm:git:git@github.com:l0rdn1kk0n/wicket-bootstrap.git</connection>
         <developerConnection>scm:git:git@github.com:l0rdn1kk0n/wicket-bootstrap.git</developerConnection>
     </scm>
-
     <prerequisites>
         <maven>${mvn.version}</maven>
     </prerequisites>
