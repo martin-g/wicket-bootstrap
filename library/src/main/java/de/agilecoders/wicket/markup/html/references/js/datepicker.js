@@ -104,12 +104,29 @@
             }
         },
 
-        place: function(){
-            var offset = this.component ? this.component.offset() : this.element.offset();
+        place: function() {
+        	var elem = this.component ? this.component : this.element;
+        	// if contained in modal window set position fixed
+        	var fixed = elem.parents('.modal').length > 0;
+        	var scrollTop = fixed ? $(document).scrollTop() : 0; 
+        	var scrollLeft = fixed ? $(document).scrollLeft() : 0;
+        	
+            var offset = elem.offset();
             this.picker.css({
-                top: offset.top + this.height,
-                left: offset.left
+                top: offset.top + this.height - scrollTop,
+                left: offset.left - scrollLeft
             });
+            if (fixed) {
+				this.picker.css({
+					position : 'fixed',
+					'z-index': 2050
+				});
+			} else {
+				this.picker.css({
+					position: '',
+					'z-index': 1029
+				});
+			}
         },
 
         update: function(){
