@@ -39,7 +39,7 @@ public class Code extends WebMarkupContainer {
     /**
      * @return true, if line numbers will be rendered
      */
-    public boolean hasLineNumbers() {
+    public final boolean hasLineNumbers() {
         return codeBehavior.hasLineNumbers();
     }
 
@@ -48,20 +48,10 @@ public class Code extends WebMarkupContainer {
      *
      * @return this instance
      */
-    public Code setShowLineNumbers(final boolean showLineNumbers) {
+    public final Code setShowLineNumbers(final boolean showLineNumbers) {
         codeBehavior.setShowLineNumbers(showLineNumbers);
 
         return this;
-    }
-
-    /**
-     * adds line numbers on the left side of code block.
-     *
-     * @return this instance
-     */
-    @Deprecated
-    public Code addLineNumbers() {
-        return setShowLineNumbers(true);
     }
 
     /**
@@ -70,7 +60,7 @@ public class Code extends WebMarkupContainer {
      * @param from which line the numbers will count
      * @return this instance
      */
-    public Code setStartFromLine(final int from) {
+    public final Code setStartFromLine(final int from) {
         codeBehavior.setStartFromLine(from);
 
         return this;
@@ -82,7 +72,7 @@ public class Code extends WebMarkupContainer {
      * @param language the language to use
      * @return this instance
      */
-    public Code setLanguage(CodeBehavior.Language language) {
+    public final Code setLanguage(CodeBehavior.Language language) {
         codeBehavior.setLanguage(language);
 
         return this;

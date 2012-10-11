@@ -22,7 +22,7 @@ public final class Components {
         assertTag(component, tag, Sets.newHashSet(tagNames));
     }
 
-    public static void assertTag(Component component, ComponentTag tag, Set<String> tagNames) {
+    public static void assertTag(Component component, ComponentTag tag, Set<? extends String> tagNames) {
         boolean found = false;
         for (String tagName : tagNames) {
             if (tag.getName().equalsIgnoreCase(tagName)) {
@@ -36,7 +36,7 @@ public final class Components {
         }
     }
 
-    private static MarkupException createMarkupException(Component component, ComponentTag tag, Set<String> tagNames) {
+    private static MarkupException createMarkupException(Component component, ComponentTag tag, Set<? extends String> tagNames) {
         String msg = String.format("Component [%s] (path = [%s]) must be applied to a tag of type [%s], not: %s",
                                    component.getId(), component.getPath(), Joiner.on(',').join(tagNames), tag.toUserDebugString());
 

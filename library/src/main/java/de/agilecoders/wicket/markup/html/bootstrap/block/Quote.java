@@ -47,8 +47,19 @@ public class Quote extends WebMarkupContainer {
      *
      * @return the component's current instance
      */
-    public Quote pullRight() {
+    public final Quote pullRight() {
         quoteBehavior.pullRight();
+
+        return this;
+    }
+
+    /**
+     * sets the floating of the quote to "left".
+     *
+     * @return this component's instance
+     */
+    public final Quote pullLeft() {
+        quoteBehavior.pullLeft();
 
         return this;
     }

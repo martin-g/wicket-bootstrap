@@ -1,8 +1,8 @@
 package de.agilecoders.wicket.markup.html.bootstrap.block;
 
+import de.agilecoders.wicket.markup.html.bootstrap.behavior.AssertTagNameBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.AssertTagNameBehavior;
 import org.apache.wicket.Component;
 
 /**
@@ -20,15 +20,31 @@ import org.apache.wicket.Component;
  */
 public class HeroBehavior extends AssertTagNameBehavior {
 
+    private final CssClassNameAppender cssClassNameAppender;
+
+    /**
+     * Construct.
+     */
     public HeroBehavior() {
         super("div");
+
+        cssClassNameAppender = new CssClassNameAppender("hero-unit");
     }
 
     @Override
-    public void onConfigure(Component component) {
-        super.onConfigure(component);
+    public void bind(final Component component) {
+        super.bind(component);
 
-        component.add(new CssClassNameAppender("hero-unit"));
-        component.add(new BootstrapBaseBehavior());
+        BootstrapBaseBehavior.addTo(component);
+        component.add(cssClassNameAppender);
     }
+
+    @Override
+    public void unbind(final Component component) {
+        super.unbind(component);
+
+        BootstrapBaseBehavior.removeFrom(component);
+        component.remove(cssClassNameAppender);
+    }
+
 }

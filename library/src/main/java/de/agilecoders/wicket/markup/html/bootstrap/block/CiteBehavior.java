@@ -21,9 +21,16 @@ public class CiteBehavior extends AssertTagNameBehavior {
     }
 
     @Override
-    public void bind(Component component) {
+    public void bind(final Component component) {
         super.bind(component);
 
-        component.add(new BootstrapBaseBehavior());
+        BootstrapBaseBehavior.addTo(component);
+    }
+
+    @Override
+    public void unbind(final Component component) {
+        super.unbind(component);
+
+        BootstrapBaseBehavior.removeFrom(component);
     }
 }

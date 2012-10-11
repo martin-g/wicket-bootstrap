@@ -1,5 +1,6 @@
 package de.agilecoders.wicket.markup.html.bootstrap.behavior;
 
+import com.google.common.base.Preconditions;
 import de.agilecoders.wicket.Bootstrap;
 import de.agilecoders.wicket.settings.IBootstrapSettings;
 import de.agilecoders.wicket.settings.ITheme;
@@ -19,6 +20,30 @@ import org.apache.wicket.markup.head.IHeaderResponse;
  * @version 1.0
  */
 public class BootstrapBaseBehavior extends Behavior {
+
+    private static final BootstrapBaseBehavior INSTANCE = new BootstrapBaseBehavior();
+
+    /**
+     * removes the {@link BootstrapBaseBehavior} from given {@link Component}
+     *
+     * @param component The component to remove the behavior from.
+     */
+    public static void removeFrom(final Component component) {
+        Preconditions.checkNotNull(component);
+
+        component.remove(INSTANCE);
+    }
+
+    /**
+     * adds the {@link BootstrapBaseBehavior} from given {@link Component}
+     *
+     * @param component The component to add the behavior to.
+     */
+    public static void addTo(final Component component) {
+        Preconditions.checkNotNull(component);
+
+        component.add(INSTANCE);
+    }
 
     /**
      * returns the {@link IBootstrapSettings} implementation like {@link de.agilecoders.wicket.settings.BootstrapSettings}

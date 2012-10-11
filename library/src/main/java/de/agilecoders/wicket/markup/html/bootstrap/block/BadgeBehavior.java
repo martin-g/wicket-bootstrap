@@ -12,4 +12,5 @@ public class BadgeBehavior extends LabelBehavior {
     protected String className() {
         return "badge";
     }
+
 }
