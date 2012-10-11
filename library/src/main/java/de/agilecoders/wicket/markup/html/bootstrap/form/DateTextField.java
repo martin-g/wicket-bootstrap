@@ -118,8 +118,7 @@ public class DateTextField extends org.apache.wicket.extensions.markup.html.form
         return "$('#" + getMarkupId() + "').datepicker({"
                + "    weekStart: " + getWeekStart() + ","
                + "    format: '" + getTextFormat().toLowerCase() + "'"
-               + "}).on('changeDate', function(ev)  { $('#" + getMarkupId() 
-               + "').value == ev.date; });";
+               + "});";
     }
 
     /**
