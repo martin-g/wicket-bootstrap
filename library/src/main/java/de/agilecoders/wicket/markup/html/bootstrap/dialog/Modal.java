@@ -259,17 +259,36 @@ public class Modal extends Panel {
      * @param markupId The component's markup id
      * @return initializer script
      */
-    protected String createInitializerScript(final String markupId) {
-        final String script = "$('#" + markupId + "').modal({keyboard:" + useKeyboard() +
-                              ", show:" + showImmediately() + "})";
-
-        if (useCloseHandler.getObject()) {
+    private String createInitializerScript(final String markupId) {
+        return addCloseHandlerScript(markupId, createBasicInitializerScript(markupId));
+    }
+    
+    /**
+     * creates the basic initialization script of the modal dialog.
+     * Override this to pass in your custom initialization, add event handlers, etc.
+     * @see createInitializerScript
+     * 
+     * @param markupId
+     * @return
+     */
+    protected String createBasicInitializerScript(final String markupId) {
+        return "$('#" + markupId + "').modal({keyboard:" + useKeyboard() + ", show:" + showImmediately() + "})";
+    }
+    
+    /**
+     * adds close handler to initializer script, if use of close handler has been defined.
+     * 
+     * @param markupId
+     * @param script
+     * @return
+     */
+    private String addCloseHandlerScript(final String markupId, final String script) {
+    	if (useCloseHandler.getObject()) {
             return script + ";$('#" + markupId + "').on('hidden', function () { "
                    + "  Wicket.Ajax.ajax({'u':'" + closeBehavior.getCallbackUrl() + "','c':'" + markupId + "'});"
                    + "})";
         }
-
-        return script;
+    	return script;
     }
 
     /**
