@@ -123,7 +123,7 @@
 				});
 			} else {
 				this.picker.css({
-					position: '',
+					position: 'absolute',
 					'z-index': 1029
 				});
 			}
