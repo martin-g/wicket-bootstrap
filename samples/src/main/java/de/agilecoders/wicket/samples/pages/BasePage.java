@@ -1,22 +1,5 @@
 package de.agilecoders.wicket.samples.pages;
 
-import java.util.List;
-import java.util.Properties;
-
-import org.apache.wicket.Component;
-import org.apache.wicket.Page;
-import org.apache.wicket.ajax.AjaxRequestTarget;
-import org.apache.wicket.ajax.markup.html.AjaxLink;
-import org.apache.wicket.markup.head.CssHeaderItem;
-import org.apache.wicket.markup.head.IHeaderResponse;
-import org.apache.wicket.markup.html.GenericWebPage;
-import org.apache.wicket.markup.html.WebMarkupContainer;
-import org.apache.wicket.model.IModel;
-import org.apache.wicket.model.Model;
-import org.apache.wicket.request.mapper.parameter.PageParameters;
-import org.apache.wicket.request.resource.PackageResourceReference;
-import org.apache.wicket.util.string.StringValue;
-
 import de.agilecoders.wicket.Bootstrap;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonBehavior;
@@ -25,6 +8,7 @@ import de.agilecoders.wicket.markup.html.bootstrap.button.dropdown.DropDownButto
 import de.agilecoders.wicket.markup.html.bootstrap.button.dropdown.MenuDivider;
 import de.agilecoders.wicket.markup.html.bootstrap.button.dropdown.MenuHeader;
 import de.agilecoders.wicket.markup.html.bootstrap.button.dropdown.MenuPageButton;
+import de.agilecoders.wicket.markup.html.bootstrap.button.dropdown.NavbarAjaxLink;
 import de.agilecoders.wicket.markup.html.bootstrap.html.ChromeFrameMetaTag;
 import de.agilecoders.wicket.markup.html.bootstrap.html.HtmlTag;
 import de.agilecoders.wicket.markup.html.bootstrap.html.MetaTag;
@@ -40,6 +24,22 @@ import de.agilecoders.wicket.samples.assets.base.FixBootstrapStylesCssResourceRe
 import de.agilecoders.wicket.samples.components.site.Footer;
 import de.agilecoders.wicket.settings.IBootstrapSettings;
 import de.agilecoders.wicket.settings.ITheme;
+import org.apache.wicket.Component;
+import org.apache.wicket.Page;
+import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.ajax.markup.html.AjaxLink;
+import org.apache.wicket.markup.head.CssHeaderItem;
+import org.apache.wicket.markup.head.IHeaderResponse;
+import org.apache.wicket.markup.html.GenericWebPage;
+import org.apache.wicket.markup.html.WebMarkupContainer;
+import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.Model;
+import org.apache.wicket.request.mapper.parameter.PageParameters;
+import org.apache.wicket.request.resource.PackageResourceReference;
+import org.apache.wicket.util.string.StringValue;
+
+import java.util.List;
+import java.util.Properties;
 
 /**
  * Base wicket-bootstrap {@link org.apache.wicket.Page}
@@ -142,6 +142,20 @@ abstract class BasePage<T> extends GenericWebPage<T> {
 
                         setBody(getDefaultModel());
                         add(new ButtonBehavior(ButtonType.Menu));
+                    }
+
+                    @Override
+                    public void onClick(AjaxRequestTarget target) {
+                        target.appendJavaScript("alert('clicked');");
+                    }
+                })
+                .addButton(new NavbarAjaxLink<String>(new Model<String>("NavbarAjaxLink")) {
+
+                    @Override
+                    protected void onInitialize() {
+                        super.onInitialize();
+
+                        setIconType(IconType.Heart);
                     }
 
                     @Override
