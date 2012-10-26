@@ -4,6 +4,8 @@ import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapBaseBehavio
 import de.agilecoders.wicket.util.Components;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.ComponentTag;
+import org.apache.wicket.markup.html.form.Button;
+import org.apache.wicket.markup.html.link.AbstractLink;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
@@ -84,6 +86,23 @@ public class ButtonBehavior extends BootstrapBaseBehavior {
     @Override
     public void onComponentTag(Component component, ComponentTag tag) {
         super.onComponentTag(component, tag);
+
+        // HACK issue #79: wicket changes tag name if component wasn't enabled
+        if (!component.isEnabled()) {
+            if (component instanceof AbstractLink) {
+                tag.setName("a");
+            } else if (component instanceof Button) {
+                tag.setName("button");
+            } else {
+                if (tag.getAttribute("value") != null) {
+                    tag.setName("input");
+                } else {
+                    tag.setName("button");
+                }
+            }
+
+            tag.put("disabled", "disabled");
+        }
 
         Components.assertTag(component, tag, "a", "button", "input");
     }
