@@ -2,6 +2,7 @@ package de.agilecoders.wicket.markup.html.bootstrap.image;
 
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.AssertTagNameBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
+import de.agilecoders.wicket.markup.html.bootstrap.button.Invertible;
 import org.apache.wicket.Component;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
@@ -12,7 +13,7 @@ import org.apache.wicket.model.Model;
  * @author miha
  * @version 1.0
  */
-public class IconBehavior extends AssertTagNameBehavior {
+public class IconBehavior extends AssertTagNameBehavior implements Invertible {
 
     private final IModel<IconType> type;
     private final IModel<String> value;
@@ -102,5 +103,10 @@ public class IconBehavior extends AssertTagNameBehavior {
      */
     public IconType type() {
         return type.getObject();
+    }
+
+    @Override
+    public void setInverted(boolean inverted) {
+        this.invert = inverted;
     }
 }

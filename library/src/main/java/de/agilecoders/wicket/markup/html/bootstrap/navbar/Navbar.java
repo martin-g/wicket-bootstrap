@@ -1,7 +1,9 @@
 package de.agilecoders.wicket.markup.html.bootstrap.navbar;
 
-import java.util.List;
-
+import com.google.common.collect.Lists;
+import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
+import de.agilecoders.wicket.markup.html.bootstrap.button.Activatable;
+import de.agilecoders.wicket.util.Behaviors;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.Page;
@@ -17,11 +19,7 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.resource.ResourceReference;
 
-import com.google.common.collect.Lists;
-
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
-import de.agilecoders.wicket.markup.html.bootstrap.button.Activatable;
-import de.agilecoders.wicket.util.Behaviors;
+import java.util.List;
 
 /**
  * TODO: document
@@ -62,10 +60,10 @@ public class Navbar extends Panel {
 
     private final WebMarkupContainer container;
 
-    private IModel<String> positionModel;
-    private IModel<String> containerModel;
-    private IModel<String> invertModel;
-    private CssClassNameAppender activeStateAppender;
+    private final IModel<String> positionModel;
+    private final IModel<String> containerModel;
+    private final IModel<String> invertModel;
+    private final CssClassNameAppender activeStateAppender;
 
     private final BookmarkablePageLink<Page> brandNameLink;
     private final Label brandLabel;
@@ -154,47 +152,45 @@ public class Navbar extends Panel {
      */
     protected BookmarkablePageLink<Page> newBrandNameLink(String componentId) {
         return new BookmarkablePageLink<Page>(componentId, getHomePage()) {
-        	
-			private static final long serialVersionUID = 1L;
 
-			@Override
-        	public boolean isVisible() {
-				return brandLabel.isVisible() || brandImage.isVisible();
-        	}
+            private static final long serialVersionUID = 1L;
+
+            @Override
+            public boolean isVisible() {
+                return brandLabel.isVisible() || brandImage.isVisible();
+            }
         };
     }
-    
+
     /**
-     * 
      * @param componentId
      * @return
      */
     protected Label newBrandLabel(String componentId) {
-    	return new Label(componentId) {
+        return new Label(componentId) {
 
-    		private static final long serialVersionUID = 1L;
+            private static final long serialVersionUID = 1L;
 
-			@Override
-    		public boolean isVisible() {
-    			return getDefaultModel() != null;
-    		}
-    	};
+            @Override
+            public boolean isVisible() {
+                return getDefaultModel() != null;
+            }
+        };
     }
-    
+
     /**
-     * 
      * @param componentId
      * @return
      */
     protected Image newBrandImage(String componentId) {
-    	return new Image(componentId, Model.of("")) {
+        return new Image(componentId, Model.of("")) {
 
-    		private static final long serialVersionUID = 1L;
+            private static final long serialVersionUID = 1L;
 
-			@Override
-        	public boolean isVisible() {
-        		return getImageResourceReference() != null;
-        	}
+            @Override
+            public boolean isVisible() {
+                return getImageResourceReference() != null;
+            }
         };
     }
 
@@ -276,28 +272,28 @@ public class Navbar extends Panel {
      * @return the component's current instance
      */
     public Navbar brandName(IModel<String> brandName) {
-    	brandLabel.setDefaultModel(brandName);
+        brandLabel.setDefaultModel(brandName);
 
         return this;
     }
-    
+
     /**
      * sets an image in the brand button
-     * 
+     *
      * @param imageResourceReference required
-     * @param imageAltAttrModel		 optional, but should be provided
+     * @param imageAltAttrModel      optional, but should be provided
      * @return
      */
-	public Navbar brandImage(ResourceReference imageResourceReference,
-			IModel<String> imageAltAttrModel) {
-		brandImage.setImageResourceReference(imageResourceReference);
+    public Navbar brandImage(ResourceReference imageResourceReference,
+                             IModel<String> imageAltAttrModel) {
+        brandImage.setImageResourceReference(imageResourceReference);
 
-		if (imageAltAttrModel != null) {
-			brandImage.add(new AttributeModifier("alt", imageAltAttrModel));
-		}
+        if (imageAltAttrModel != null) {
+            brandImage.add(new AttributeModifier("alt", imageAltAttrModel));
+        }
 
-		return this;
-	}
+        return this;
+    }
 
     /**
      * inverts the navbar backgorund color

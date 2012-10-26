@@ -21,10 +21,10 @@ public class NavbarButton<T> extends TypedPageButton<T> {
     /**
      * Constructor.
      *
-     * @param pageClass   The class of page to link to
-     * @param parameters  The parameters to pass to the new page when the link is clicked
-     * @param label       The component's label
-     * @param <T>         type of the page class
+     * @param pageClass  The class of page to link to
+     * @param parameters The parameters to pass to the new page when the link is clicked
+     * @param label      The component's label
+     * @param <C>        type of the page class
      */
     public <C extends Page> NavbarButton(final Class<C> pageClass, final PageParameters parameters, final IModel<?> label) {
         super(COMPONENT_ID, pageClass, parameters, ButtonType.Menu);
@@ -35,9 +35,9 @@ public class NavbarButton<T> extends TypedPageButton<T> {
     /**
      * Constructor.
      *
-     * @param pageClass   The class of page to link to
-     * @param label       The component's label
-     * @param <T>         type of the page class
+     * @param pageClass The class of page to link to
+     * @param label     The component's label
+     * @param <C>       type of the page class
      */
     public <C extends Page> NavbarButton(final Class<C> pageClass, final IModel<?> label) {
         this(pageClass, new PageParameters(), label);

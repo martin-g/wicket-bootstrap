@@ -46,7 +46,6 @@
         <servlet-api.version>3.0.1</servlet-api.version>
         <rhino.version>1.7R4</rhino.version>
         <doxia.version>1.0</doxia.version>
-        <commons-vfs.version>20050307052300</commons-vfs.version>
         <lesscss-engine.version>1.3.0</lesscss-engine.version>
     </properties>
 
@@ -92,12 +91,6 @@
                 <groupId>com.asual.lesscss</groupId>
                 <artifactId>lesscss-engine</artifactId>
                 <version>${lesscss-engine.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>commons-vfs</groupId>
-                <artifactId>commons-vfs</artifactId>
-                <version>${commons-vfs.version}</version>
             </dependency>
 
             <dependency>
@@ -177,22 +170,12 @@
 
         <dependency>
             <groupId>org.apache.wicket</groupId>
-            <artifactId>wicket-bootstrap</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.wicket</groupId>
             <artifactId>wicket-util</artifactId>
         </dependency>
 
         <dependency>
             <groupId>com.asual.lesscss</groupId>
             <artifactId>lesscss-engine</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>commons-vfs</groupId>
-            <artifactId>commons-vfs</artifactId>
         </dependency>
 
         <!-- LOGGING DEPENDENCIES - LOG4J -->

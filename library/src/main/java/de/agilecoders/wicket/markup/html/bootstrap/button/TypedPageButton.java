@@ -38,7 +38,7 @@ public class TypedPageButton<T> extends BookmarkablePageLink<T> implements Boots
      * @param componentId The non-null id of this component
      * @param pageClass   The class of page to link to
      * @param buttonType  The type of the button, e.g. Success, Warn, Default, Menu...
-     * @param <T>         type of the page class
+     * @param <C>         type of the page class
      */
     public <C extends Page> TypedPageButton(final String componentId, final Class<C> pageClass, final ButtonType buttonType) {
         this(componentId, pageClass, new PageParameters(), buttonType);
@@ -51,7 +51,7 @@ public class TypedPageButton<T> extends BookmarkablePageLink<T> implements Boots
      * @param pageClass   The class of page to link to
      * @param parameters  The parameters to pass to the new page when the link is clicked
      * @param buttonType  The type of the button, e.g. Success, Warn, Default, Menu...
-     * @param <T>         type of the page class
+     * @param <C>         type of the page class
      */
     public <C extends Page> TypedPageButton(final String componentId, final Class<C> pageClass, final PageParameters parameters, final ButtonType buttonType) {
         super(componentId, pageClass, parameters);
