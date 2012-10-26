@@ -10,6 +10,7 @@ import org.apache.wicket.Component;
 import org.apache.wicket.extensions.breadcrumb.panel.BreadCrumbPanel;
 import org.apache.wicket.extensions.markup.html.tabs.AbstractTab;
 import org.apache.wicket.markup.html.WebMarkupContainer;
+import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.navigation.paging.IPageable;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
@@ -25,6 +26,8 @@ import org.wicketstuff.annotation.mount.MountPath;
 @MountPath(value = "/basecss", alt = "/css")
 public class BaseCssPage extends BasePage {
 
+    private final DatePickerModal modal;
+
     /**
      * Construct.
      *
@@ -35,7 +38,12 @@ public class BaseCssPage extends BasePage {
 
         add(new DateTextField("date"));
 
-        add(newModalDialog("modal"));
+        add(modal = newModalDialog("modal"));
+        Button button = new Button("open-modal");
+        modal.addOpenerAttributesTo(button);
+        add(button);
+
+
         add(newPagination("pagination"));
         add(newBreadcrumb("breadcrumb"));
         add(newTabs("tabs"));
@@ -88,7 +96,7 @@ public class BaseCssPage extends BasePage {
         return new BootstrapPagingNavigator(markupId, pageable).setPosition(BootstrapPagingNavigator.Position.Centered);
     }
 
-    private Component newModalDialog(String markupId) {
+    private DatePickerModal newModalDialog(String markupId) {
         return new DatePickerModal(markupId);
     }
 

@@ -29,15 +29,15 @@ import java.util.List;
  */
 public class Modal extends Panel {
 
-    private WebMarkupContainer header;
-    private boolean show = false;
-    private boolean fadein = true;
-    private boolean keyboard = true;
-    private Label headerLabel;
-    private List<Component> buttons = Lists.newArrayList();
-    private WebMarkupContainer footer;
+    private final WebMarkupContainer header;
+    private final IModel<Boolean> show = Model.of(false);
+    private final IModel<Boolean> fadein = Model.of(true);
+    private final IModel<Boolean> keyboard = Model.of(true);
+    private final Label headerLabel;
+    private final List<Component> buttons = Lists.newArrayList();
+    private final WebMarkupContainer footer;
     private final IModel<Boolean> useCloseHandler = Model.of(false);
-    private AjaxEventBehavior closeBehavior;
+    private final AjaxEventBehavior closeBehavior;
 
     /**
      * Constructor.
@@ -70,6 +70,13 @@ public class Modal extends Panel {
                 item.add(item.getModelObject());
             }
         });
+
+        closeBehavior = new AjaxEventBehavior("hidden") {
+            @Override
+            protected void onEvent(final AjaxRequestTarget target) {
+                handleCloseEvent(target);
+            }
+        };
 
         add(header, footer);
         add(new AssertTagNameBehavior("div"));
@@ -148,7 +155,7 @@ public class Modal extends Panel {
      * @return This
      */
     public Modal show(boolean show) {
-        this.show = show;
+        this.show.setObject(show);
         return this;
     }
 
@@ -179,6 +186,12 @@ public class Modal extends Panel {
         return this;
     }
 
+    /**
+     * adds a close button with specific label
+     *
+     * @param label The label of close button
+     * @return this instance
+     */
     public Modal addCloseButton(final IModel<String> label) {
         ModalCloseButton button = new ModalCloseButton(label);
         button.setAnchor(this);
@@ -186,10 +199,21 @@ public class Modal extends Panel {
         return addButton(button);
     }
 
+    /**
+     * adds a close button with default label ("Close")
+     *
+     * @return this instance
+     */
     public Modal addCloseButton() {
         return addCloseButton(Model.of("Close"));
     }
 
+    /**
+     * adds a button to footer section.
+     *
+     * @param button Button to add to footer
+     * @return this instance.
+     */
     public Modal addButton(final Component button) {
         if (!"button".equals(button.getId())) {
             throw new IllegalArgumentException("invalid body markup id. Must be 'body'.");
@@ -204,12 +228,7 @@ public class Modal extends Panel {
         super.onInitialize();
 
         if (useCloseHandler.getObject()) {
-            add(closeBehavior = new AjaxEventBehavior("hidden") {
-                @Override
-                protected void onEvent(final AjaxRequestTarget target) {
-                    handleCloseEvent(target);
-                }
-            });
+            add(closeBehavior);
         }
     }
 
@@ -220,11 +239,9 @@ public class Modal extends Panel {
      */
     private void handleCloseEvent(final AjaxRequestTarget target) {
         if (isVisible()) {
-            setVisible(false);
             onClose(target);
 
             appendCloseDialogJavaScript(target);
-            target.add(this);
         }
     }
 
@@ -232,7 +249,7 @@ public class Modal extends Panel {
     protected void onConfigure() {
         super.onConfigure();
 
-        if (fadein) {
+        if (useFadein()) {
             add(new CssClassNameAppender("fade"));
         }
 
@@ -262,47 +279,55 @@ public class Modal extends Panel {
     private String createInitializerScript(final String markupId) {
         return addCloseHandlerScript(markupId, createBasicInitializerScript(markupId));
     }
-    
+
     /**
      * creates the basic initialization script of the modal dialog.
      * Override this to pass in your custom initialization, add event handlers, etc.
-     * @see createInitializerScript
-     * 
-     * @param markupId
-     * @return
+     *
+     * @param markupId markup id
+     * @return initializer script
+     * @see #createInitializerScript
      */
     protected String createBasicInitializerScript(final String markupId) {
         return "$('#" + markupId + "').modal({keyboard:" + useKeyboard() + ", show:" + showImmediately() + "})";
     }
-    
+
     /**
      * adds close handler to initializer script, if use of close handler has been defined.
-     * 
-     * @param markupId
-     * @param script
-     * @return
+     *
+     * @param markupId markup id
+     * @param script   base script to prepend
+     * @return close handler script
      */
     private String addCloseHandlerScript(final String markupId, final String script) {
-    	if (useCloseHandler.getObject()) {
+        if (useCloseHandler.getObject()) {
             return script + ";$('#" + markupId + "').on('hidden', function () { "
                    + "  Wicket.Ajax.ajax({'u':'" + closeBehavior.getCallbackUrl() + "','c':'" + markupId + "'});"
                    + "})";
         }
-    	return script;
+
+        return script;
+    }
+
+    /**
+     * @return true, if fade in animation is activated
+     */
+    protected final boolean useFadein() {
+        return fadein.getObject();
     }
 
     /**
      * @return true, if keyboard usage is activated
      */
     protected final boolean useKeyboard() {
-        return keyboard;
+        return keyboard.getObject();
     }
 
     /**
      * @return true, if modal dialog should be shown after initialization
      */
     protected final boolean showImmediately() {
-        return show;
+        return show.getObject();
     }
 
     /**
@@ -311,8 +336,8 @@ public class Modal extends Panel {
      * @param fadein true, if dialog should be animated
      * @return This
      */
-    public Modal fadein(boolean fadein) {
-        this.fadein = fadein;
+    public final Modal setFadeIn(boolean fadein) {
+        this.fadein.setObject(fadein);
         return this;
     }
 
@@ -322,8 +347,8 @@ public class Modal extends Panel {
      * @param keyboard true, if keyboard interaction is enabled
      * @return This
      */
-    public Modal keyboard(boolean keyboard) {
-        this.keyboard = keyboard;
+    public final Modal setUseKeyboard(boolean keyboard) {
+        this.keyboard.setObject(keyboard);
         return this;
     }
 }

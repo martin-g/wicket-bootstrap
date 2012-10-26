@@ -2,7 +2,6 @@ package de.agilecoders.wicket.samples.components.basecss;
 
 import de.agilecoders.wicket.markup.html.bootstrap.dialog.Modal;
 import de.agilecoders.wicket.markup.html.bootstrap.form.DateTextField;
-import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.model.Model;
 
 import java.util.Date;
@@ -14,11 +13,11 @@ import java.util.Date;
  * @version 1.0
  */
 public class DatePickerModal extends Modal {
-    private final DateTextField dateTextField;
 
     public DatePickerModal(final String markupId) {
         super(markupId);
 
+        DateTextField dateTextField;
         add(dateTextField = new DateTextField("date", Model.of(new Date(System.currentTimeMillis())), "MM/dd/yyyy"));
 
         show(true);
@@ -28,10 +27,4 @@ public class DatePickerModal extends Modal {
         setUseCloseHandler(true);
     }
 
-    @Override
-    protected void onClose(AjaxRequestTarget target) {
-        super.onClose(target);
-
-        target.appendJavaScript("$('#" + dateTextField.getMarkupId() + "').hide();");
-    }
 }
