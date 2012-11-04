@@ -6,9 +6,9 @@ Wicket-Bootstrap is based on Twitter's toolkit (bootstrap) and the Apache Wicket
 Components
 ----------
 
-* Twitter Bootstrap (2.1.1): http://twitter.github.com/bootstrap
+* Twitter Bootstrap (2.2.1): http://twitter.github.com/bootstrap
 * Apache Wicket (6.2.0): http://wicket.apache.org/
-* Bootswatch (2.1.1): http://bootswatch.com/
+* Bootswatch: http://bootswatch.com/
 * DatePicker: http://www.eyecon.ro/bootstrap-datepicker/
 
 Usage

@@ -325,40 +325,50 @@ div.subnav {
 }
 
 .breadcrumb {
+	
 	background-color: transparent;
 	background-image: none;
 	border-width: 0;
 	.box-shadow(none);
 	font-size: 14px;
 
-	li > a {
-		color: @blue;
+	li {
 		text-shadow: none;
 	}
 
-	li.active {
+	li > a {
+		color: @blue;
 		text-shadow: none;
 	}
 }
 
 .pagination {
+
 	ul {
 		.box-shadow(none);
 	}
 
-	a {
+	ul > li > a,
+	ul > li > span {
 		border: 0;
 		font-size: 14px;
 	}
 
-	a:hover, .active a {
+	ul > li > a:hover {
 		background-color: @blue;
 		color: @white;
 	}
 
-	.disabled span,
-	.disabled a,
-	.disabled a:hover {
+	ul > .active > a,
+	ul > .active > span {
+		background-color: @blue;
+		color: @white;	
+	}
+
+	ul > .disabled > a,
+	ul > .disabled > a:hover,
+	ul > .disabled > span,
+	ul > .disabled > span:hover {
 		background-color: rgba(0, 0, 0, 0.2);
 	}
 }

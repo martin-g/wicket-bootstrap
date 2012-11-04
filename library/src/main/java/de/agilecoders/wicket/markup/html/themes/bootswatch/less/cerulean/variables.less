@@ -1,9 +1,7 @@
-//
 // Variables
 // Swatch: Cerulean
 // Version: 2.1.1
 // --------------------------------------------------
-
 
 // GLOBAL VALUES
 // --------------------------------------------------
@@ -22,7 +20,7 @@
 
 // Accent colors
 // -------------------------
-@blue:                  #3E78B3;
+@blue:                  #2FA4E7;
 @blueDark:              #033C73;
 @green:                 #73A839;
 @red:                   #C71C22;
@@ -40,7 +38,7 @@
 
 // Links
 // -------------------------
-@linkColor:             #2FA4E7;
+@linkColor:             @blue;
 @linkColorHover:        darken(@linkColor, 15%);
 
 
@@ -59,14 +57,12 @@
 @headingsFontWeight:    bold;    // instead of browser default, bold
 @headingsColor:         #317EAC; // empty to use BS default, @textColor
 
-
 // Tables
 // -------------------------
 @tableBackground:                   transparent; // overall background-color
 @tableBackgroundAccent:             #f9f9f9; // for striping
 @tableBackgroundHover:              #f5f5f5; // for hover
 @tableBorder:                       #ddd; // table and cell border
-
 
 // Buttons
 // -------------------------
@@ -89,7 +85,7 @@
 @btnDangerBackground:               @red;
 @btnDangerBackgroundHighlight:      #bd362f;
 
-@btnInverseBackground:              @yellow;
+@btnInverseBackground:              @blueDark;
 @btnInverseBackgroundHighlight:     @grayDarker;
 
 
@@ -109,12 +105,11 @@
 @dropdownDividerBottom:         @white;
 
 @dropdownLinkColor:             @grayDark;
-
 @dropdownLinkColorHover:        @white;
-@dropdownLinkBackgroundHover:   @dropdownLinkBackgroundActive;
-
 @dropdownLinkColorActive:       @dropdownLinkColor;
+
 @dropdownLinkBackgroundActive:  @linkColor;
+@dropdownLinkBackgroundHover:   @dropdownLinkBackgroundActive;
 
 
 
@@ -149,6 +144,11 @@
 @hrBorder:                @grayLighter;
 
 
+// Horizontal forms & lists
+// -------------------------
+@horizontalComponentOffset:       180px;
+
+
 // Wells
 // -------------------------
 @wellBackground:                  #f5f5f5;
@@ -159,35 +159,35 @@
 @navbarCollapseWidth:             979px;
 
 @navbarHeight:                    50px;
-@navbarBackground:                @linkColor;
-@navbarBackgroundHighlight:       lighten(@linkColor, 8%);
-@navbarBorder:                    darken(@navbarBackground, 12%);
+@navbarBackgroundHighlight:       lighten(@navbarBackground, 8%);
+@navbarBackground:                @blue;
+@navbarBorder:                    darken(@navbarBackground, 8%);
 
 @navbarText:                      @grayLighter;
 @navbarLinkColor:                 @white;
 @navbarLinkColorHover:            @white;
 @navbarLinkColorActive:           @navbarLinkColorHover;
-@navbarLinkBackgroundHover:       rgba(0,0,0,.2);
-@navbarLinkBackgroundActive:      rgba(0,0,0,.2);
+@navbarLinkBackgroundHover:       darken(@navbarBackground, 12%);
+@navbarLinkBackgroundActive:      darken(@navbarBackground, 12%);
 
 @navbarBrandColor:                @navbarLinkColor;
 
 // Inverted navbar
-@navbarInverseBackground:                #eee;
+@navbarInverseBackground:                @blueDark;
 @navbarInverseBackgroundHighlight:       lighten(@navbarInverseBackground, 5%);
-@navbarInverseBorder:                    rgba(0, 0, 0, 0.1);
+@navbarInverseBorder:                    darken(@navbarInverseBackground, 3%);
 
-@navbarInverseText:                      @textColor;
-@navbarInverseLinkColor:                 @textColor;
-@navbarInverseLinkColorHover:            @textColor;
-@navbarInverseLinkColorActive:           @textColor;
-@navbarInverseLinkBackgroundHover:       rgba(0,0,0,.05);
-@navbarInverseLinkBackgroundActive:      rgba(0,0,0,.05);
+@navbarInverseText:                      @white;
+@navbarInverseLinkColor:                 @white;
+@navbarInverseLinkColorHover:            @white;
+@navbarInverseLinkColorActive:           @white;
+@navbarInverseLinkBackgroundHover:       darken(@navbarInverseBackground, 6%);
+@navbarInverseLinkBackgroundActive:      darken(@navbarInverseBackground, 6%);
 
-@navbarInverseSearchBackground:          lighten(@navbarInverseBackground, 25%);
+@navbarInverseSearchBackground:          @white;
 @navbarInverseSearchBackgroundFocus:     @white;
 @navbarInverseSearchBorder:              @navbarInverseBackground;
-@navbarInverseSearchPlaceholderColor:    #ccc;
+@navbarInverseSearchPlaceholderColor:    @grayLight;
 
 @navbarInverseBrandColor:                @navbarInverseLinkColor;
 
