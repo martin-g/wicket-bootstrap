@@ -1,6 +1,5 @@
 package de.agilecoders.wicket.markup.html.references;
 
-import de.agilecoders.wicket.markup.html.themes.bootstrap.BootstrapCssReference;
 import org.apache.wicket.request.resource.CssResourceReference;
 import org.apache.wicket.request.resource.ResourceReference;
 
@@ -22,7 +21,7 @@ public class BootstrapPrettifyCssReference extends CssResourceReference {
      * Private constructor.
      */
     private BootstrapPrettifyCssReference() {
-        super(BootstrapCssReference.class, "css/prettify.css");
+        super(BootstrapPrettifyCssReference.class, "css/prettify.css");
     }
 
 }
