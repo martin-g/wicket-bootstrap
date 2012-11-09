@@ -1,7 +1,6 @@
 package de.agilecoders.wicket.samples.pages;
 
 import com.google.common.collect.Lists;
-import de.agilecoders.wicket.markup.html.bootstrap.form.DateTextField;
 import de.agilecoders.wicket.markup.html.bootstrap.navigation.BootstrapPagingNavigator;
 import de.agilecoders.wicket.markup.html.bootstrap.navigation.Breadcrumb;
 import de.agilecoders.wicket.markup.html.bootstrap.tabs.BootstrapTabbedPanel;
@@ -10,7 +9,6 @@ import org.apache.wicket.Component;
 import org.apache.wicket.extensions.breadcrumb.panel.BreadCrumbPanel;
 import org.apache.wicket.extensions.markup.html.tabs.AbstractTab;
 import org.apache.wicket.markup.html.WebMarkupContainer;
-import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.navigation.paging.IPageable;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
@@ -26,7 +24,7 @@ import org.wicketstuff.annotation.mount.MountPath;
 @MountPath(value = "/basecss", alt = "/css")
 public class BaseCssPage extends BasePage {
 
-    private final DatePickerModal modal;
+    //private final DatePickerModal modal;
 
     /**
      * Construct.
@@ -35,7 +33,7 @@ public class BaseCssPage extends BasePage {
      */
     public BaseCssPage(PageParameters parameters) {
         super(parameters);
-
+/*
         add(new DateTextField("date"));
 
         add(modal = newModalDialog("modal"));
@@ -43,10 +41,9 @@ public class BaseCssPage extends BasePage {
         modal.addOpenerAttributesTo(button);
         add(button);
 
-
         add(newPagination("pagination"));
         add(newBreadcrumb("breadcrumb"));
-        add(newTabs("tabs"));
+        add(newTabs("tabs"));              */
     }
 
     private Component newTabs(String markupId) {

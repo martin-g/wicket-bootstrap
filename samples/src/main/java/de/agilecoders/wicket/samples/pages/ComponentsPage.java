@@ -1,7 +1,5 @@
 package de.agilecoders.wicket.samples.pages;
 
-import de.agilecoders.wicket.samples.components.basecss.ButtonGroups;
-import de.agilecoders.wicket.samples.components.basecss.Dropdowns;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.wicketstuff.annotation.mount.MountPath;
 
@@ -21,9 +19,6 @@ public class ComponentsPage extends BasePage {
      */
     public ComponentsPage(PageParameters parameters) {
         super(parameters);
-
-        add(new Dropdowns("dropdowns"));
-        add(new ButtonGroups("buttonGroups"));
     }
 
     @Override

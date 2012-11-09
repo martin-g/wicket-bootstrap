@@ -1,6 +1,7 @@
 package de.agilecoders.wicket.samples;
 
 import de.agilecoders.wicket.Bootstrap;
+import de.agilecoders.wicket.markup.html.themes.metro.MetroTheme;
 import de.agilecoders.wicket.samples.pages.HomePage;
 import de.agilecoders.wicket.settings.BootstrapSettings;
 import de.agilecoders.wicket.settings.BootswatchThemeProvider;
@@ -11,6 +12,8 @@ import org.apache.wicket.RuntimeConfigurationType;
 import org.apache.wicket.markup.html.IPackageResourceGuard;
 import org.apache.wicket.markup.html.SecurePackageResourceGuard;
 import org.apache.wicket.protocol.http.WebApplication;
+import org.apache.wicket.request.resource.caching.NoOpResourceCachingStrategy;
+import org.apache.wicket.util.time.Duration;
 import org.wicketstuff.annotation.scan.AnnotatedMountScanner;
 
 import java.io.IOException;
@@ -60,6 +63,9 @@ public class WicketApplication extends WebApplication {
         // won't match anymore.
         getMarkupSettings().setStripWicketTags(true);
 
+        // deactivate ajax debug mode
+        getDebugSettings().setAjaxDebugModeEnabled(false);
+
         // Allow fonts.
         IPackageResourceGuard packageResourceGuard = getResourceSettings().getPackageResourceGuard();
         if (packageResourceGuard instanceof SecurePackageResourceGuard) {
@@ -69,6 +75,10 @@ public class WicketApplication extends WebApplication {
             guard.addPattern("+*.svg");
         }
 
+        getResourceSettings().setDefaultCacheDuration(Duration.milliseconds(0));
+        getResourceSettings().setResourcePollFrequency(Duration.seconds(2));
+        getResourceSettings().setCachingStrategy(NoOpResourceCachingStrategy.INSTANCE);
+
         configureBootstrap();
 
         new AnnotatedMountScanner().scanPackage("de.agilecoders.wicket.samples.pages").mount(this);
@@ -77,13 +87,14 @@ public class WicketApplication extends WebApplication {
     private void configureBootstrap() {
         BootstrapSettings settings = new BootstrapSettings();
         settings.minify(true) // use minimized version of all bootstrap references
-            .useJqueryPP(true)
-            .useModernizr(true)
-            .useResponsiveCss(true)
-            .getBootstrapLessCompilerSettings().setUseLessCompiler(true);
+                .useJqueryPP(true)
+                .useModernizr(true)
+                .useResponsiveCss(true)
+                .getBootstrapLessCompilerSettings().setUseLessCompiler(true);
 
         ThemeProvider themeProvider = new BootswatchThemeProvider() {{
-                defaultTheme("wicket");
+            add(new MetroTheme());
+            defaultTheme("wicket");
         }};
         settings.setThemeProvider(themeProvider);
 
