@@ -5,12 +5,12 @@
     <parent>
         <groupId>de.agilecoders.wicket</groupId>
         <artifactId>bootstrap-parent</artifactId>
-        <version>0.6.6</version>
+        <version>0.6.7-SNAPSHOT</version>
     </parent>
 
     <groupId>de.agilecoders.wicket</groupId>
     <artifactId>bootstrap</artifactId>
-    <version>0.6.6</version>
+    <version>0.6.7-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     
