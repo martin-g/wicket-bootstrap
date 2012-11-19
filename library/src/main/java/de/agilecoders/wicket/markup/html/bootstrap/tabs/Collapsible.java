@@ -71,7 +71,7 @@ public class Collapsible extends Panel {
      * @param activeTab mandatory parameter
      */
     public Collapsible(final String markupId, final List<ITab> tabs, final IModel<Integer> activeTab) {
-        super(markupId);
+        super(markupId, activeTab);
 
         this.tabs = tabs;
         this.activeTab = activeTab;
