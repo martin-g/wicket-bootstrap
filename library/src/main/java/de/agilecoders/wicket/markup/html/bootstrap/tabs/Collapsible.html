@@ -1,0 +1,19 @@
+<html xmlns:wicket="http://wicket.apache.org">
+    <head>
+        <title>Collapsable</title>
+    </head>
+    <body>
+        <wicket:panel>
+            <div class="accordion-group" wicket:id="tabs">
+                <div class="accordion-heading">
+                    <a wicket:id="title" class="accordion-toggle" data-toggle="collapse">Title</a>
+                </div>
+                <div wicket:id="body" class="accordion-body collapse">
+                    <div class="accordion-inner">
+                        <div wicket:id="content">Content</div>
+                    </div>
+                </div>
+            </div>
+        </wicket:panel>
+    </body>
+</html>
