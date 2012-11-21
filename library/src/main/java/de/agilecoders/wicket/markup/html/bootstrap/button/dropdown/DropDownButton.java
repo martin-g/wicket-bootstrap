@@ -1,6 +1,5 @@
 package de.agilecoders.wicket.markup.html.bootstrap.button.dropdown;
 
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.AssertTagNameBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapResourcesBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
 import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonBehavior;
@@ -10,6 +9,7 @@ import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonType;
 import de.agilecoders.wicket.markup.html.bootstrap.image.Icon;
 import de.agilecoders.wicket.markup.html.bootstrap.image.IconType;
 import org.apache.wicket.Component;
+import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
 import org.apache.wicket.markup.html.WebMarkupContainer;
@@ -59,7 +59,6 @@ public class DropDownButton extends AbstractLink {
 
         add(baseButton = createButton("btn", model, iconTypeModel));
         add(new CssClassNameAppender("btn-group"));
-        add(new AssertTagNameBehavior("div"));
         add(new BootstrapResourcesBehavior());
         add(buttonListView = newButtonList("buttons"));
 
@@ -178,5 +177,14 @@ public class DropDownButton extends AbstractLink {
     @Override
     protected IMarkupSourcingStrategy newMarkupSourcingStrategy() {
         return new PanelMarkupSourcingStrategy(false);
+    }
+
+    @Override
+    protected void onComponentTag(ComponentTag tag) {
+        if (!"div".equalsIgnoreCase(tag.getName())) {
+            tag.setName("div");
+        }
+
+        super.onComponentTag(tag);
     }
 }

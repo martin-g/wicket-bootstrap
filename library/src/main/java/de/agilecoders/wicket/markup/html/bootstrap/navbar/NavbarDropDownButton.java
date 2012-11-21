@@ -14,8 +14,8 @@ import org.apache.wicket.model.IModel;
  */
 public class NavbarDropDownButton extends DropDownButton {
 
-    public NavbarDropDownButton(String id, IModel<String> model) {
-        super(id, model);
+    public NavbarDropDownButton(IModel<String> model) {
+        super(Navbar.COMPONENT_ID, model);
     }
 
     @Override
@@ -30,4 +30,5 @@ public class NavbarDropDownButton extends DropDownButton {
     protected void addButtonBehavior(final IModel<ButtonType> buttonType, final IModel<ButtonSize> buttonSize) {
         // do nothing, because navbar dropdown button inherits its styles from navbar.
     }
+
 }

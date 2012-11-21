@@ -40,7 +40,7 @@ public class TypedPageButton<T> extends BookmarkablePageLink<T> implements Boots
      * @param buttonType  The type of the button, e.g. Success, Warn, Default, Menu...
      * @param <T>         type of the page class
      */
-    public <C extends Page> TypedPageButton(final String componentId, final Class<C> pageClass, final ButtonType buttonType) {
+    public <T extends Page> TypedPageButton(final String componentId, final Class<T> pageClass, final ButtonType buttonType) {
         this(componentId, pageClass, new PageParameters(), buttonType);
     }
 
@@ -53,7 +53,7 @@ public class TypedPageButton<T> extends BookmarkablePageLink<T> implements Boots
      * @param buttonType  The type of the button, e.g. Success, Warn, Default, Menu...
      * @param <T>         type of the page class
      */
-    public <C extends Page> TypedPageButton(final String componentId, final Class<C> pageClass, final PageParameters parameters, final ButtonType buttonType) {
+    public <T extends Page> TypedPageButton(final String componentId, final Class<T> pageClass, final PageParameters parameters, final ButtonType buttonType) {
         super(componentId, pageClass, parameters);
 
         add(buttonBehavior = new ButtonBehavior(buttonType, ButtonSize.Medium));
@@ -113,6 +113,13 @@ public class TypedPageButton<T> extends BookmarkablePageLink<T> implements Boots
         this.icon = icon;
 
         return this;
+    }
+
+    /**
+     * @return current button behavior
+     */
+    protected final ButtonBehavior getButtonBehavior() {
+        return buttonBehavior;
     }
 
     /**

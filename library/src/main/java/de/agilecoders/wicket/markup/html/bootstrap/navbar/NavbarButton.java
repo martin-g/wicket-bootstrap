@@ -4,6 +4,7 @@ import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonType;
 import de.agilecoders.wicket.markup.html.bootstrap.button.TypedPageButton;
 import de.agilecoders.wicket.markup.html.bootstrap.image.Icon;
 import org.apache.wicket.Page;
+import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 
@@ -16,18 +17,17 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
  * @version 1.0
  */
 public class NavbarButton<T> extends TypedPageButton<T> {
-    private static final String COMPONENT_ID = "button";
 
     /**
      * Constructor.
      *
-     * @param pageClass   The class of page to link to
-     * @param parameters  The parameters to pass to the new page when the link is clicked
-     * @param label       The component's label
-     * @param <T>         type of the page class
+     * @param pageClass  The class of page to link to
+     * @param parameters The parameters to pass to the new page when the link is clicked
+     * @param label      The component's label
+     * @param <T>        type of the page class
      */
-    public <C extends Page> NavbarButton(final Class<C> pageClass, final PageParameters parameters, final IModel<?> label) {
-        super(COMPONENT_ID, pageClass, parameters, ButtonType.Menu);
+    public <T extends Page> NavbarButton(final Class<T> pageClass, final PageParameters parameters, final IModel<?> label) {
+        super(Navbar.COMPONENT_ID, pageClass, parameters, ButtonType.Menu);
 
         setLabel(label);
     }
@@ -35,11 +35,11 @@ public class NavbarButton<T> extends TypedPageButton<T> {
     /**
      * Constructor.
      *
-     * @param pageClass   The class of page to link to
-     * @param label       The component's label
-     * @param <T>         type of the page class
+     * @param pageClass The class of page to link to
+     * @param label     The component's label
+     * @param <T>       type of the page class
      */
-    public <C extends Page> NavbarButton(final Class<C> pageClass, final IModel<?> label) {
+    public <T extends Page> NavbarButton(final Class<T> pageClass, final IModel<?> label) {
         this(pageClass, new PageParameters(), label);
     }
 
@@ -51,5 +51,15 @@ public class NavbarButton<T> extends TypedPageButton<T> {
         super.setIcon(icon);
 
         return this;
+    }
+
+
+    @Override
+    protected void onComponentTag(ComponentTag tag) {
+        if (!"a".equalsIgnoreCase(tag.getName()) && !"button".equalsIgnoreCase(tag.getName())) {
+            tag.setName("a");
+        }
+
+        super.onComponentTag(tag);
     }
 }

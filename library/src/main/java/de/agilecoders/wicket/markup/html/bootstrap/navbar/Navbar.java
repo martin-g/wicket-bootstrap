@@ -1,7 +1,15 @@
 package de.agilecoders.wicket.markup.html.bootstrap.navbar;
 
-import java.util.List;
-
+import com.google.common.base.Function;
+import com.google.common.base.Preconditions;
+import com.google.common.base.Predicate;
+import com.google.common.base.Strings;
+import com.google.common.collect.Lists;
+import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
+import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameProvider;
+import de.agilecoders.wicket.markup.html.bootstrap.button.Activatable;
+import de.agilecoders.wicket.util.Behaviors;
+import de.agilecoders.wicket.util.Models;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.Page;
@@ -13,15 +21,17 @@ import org.apache.wicket.markup.html.link.BookmarkablePageLink;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.markup.html.panel.Panel;
+import org.apache.wicket.model.AbstractReadOnlyModel;
 import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.LoadableDetachableModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.resource.ResourceReference;
 
-import com.google.common.collect.Lists;
+import java.util.List;
 
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
-import de.agilecoders.wicket.markup.html.bootstrap.button.Activatable;
-import de.agilecoders.wicket.util.Behaviors;
+import static com.google.common.collect.Iterables.filter;
+import static com.google.common.collect.Iterables.transform;
+import static com.google.common.collect.Lists.newArrayList;
 
 /**
  * TODO: document
@@ -33,51 +43,76 @@ import de.agilecoders.wicket.util.Behaviors;
  */
 public class Navbar extends Panel {
 
+    static final String COMPONENT_ID = "component";
+
     /**
      * indicates the position of the navigation bar itself
      */
-    public static enum Position {
+    public static enum Position implements CssClassNameProvider {
         /**
          * fixate at the top of the screen
          */
-        TOP,
+        TOP("navbar-fixed-top"),
+
+        /**
+         * Create a full-width navbar that scrolls away with the page
+         */
+        STATIC_TOP("navbar-static-top"),
 
         /**
          * fixate at the bottom of the screen
          */
-        BOTTOM,
+        BOTTOM("navbar-fixed-bottom"),
 
         /**
          * do not fixate the position
          */
-        NONE
+        DEFAULT("");
+
+        private final String className;
+
+        /**
+         * Construct.
+         *
+         * @param className css class name of this position enum
+         */
+        private Position(final String className) {
+            this.className = className;
+        }
+
+        @Override
+        public String cssClassName() {
+            return className;
+        }
+
+        @Override
+        public AttributeModifier newCssClassNameModifier() {
+            return new CssClassNameAppender(this);
+        }
     }
 
     /**
      * indicates the position of a button inside the navigation bar.
      */
-    public static enum ButtonPosition {
+    public static enum ComponentPosition {
         LEFT, RIGHT
     }
 
-    private final WebMarkupContainer container;
+    private static final NavbarComponentToComponentFunction NAVBAR_COMPONENT_TO_COMPONENT_FUNCTION = new NavbarComponentToComponentFunction(COMPONENT_ID);
+    private static final PositionFilter POSITION_FILTER_LEFT = new PositionFilter(ComponentPosition.LEFT);
+    private static final PositionFilter POSITION_FILTER_RIGHT = new PositionFilter(ComponentPosition.RIGHT);
 
-    private IModel<String> positionModel;
     private IModel<String> containerModel;
     private IModel<String> invertModel;
     private CssClassNameAppender activeStateAppender;
 
-    private final BookmarkablePageLink<Page> brandNameLink;
     private final Label brandLabel;
     private final Image brandImage;
-    private final Component navRightList;
-    private final Component navLeftList;
 
-    private Position position = Position.NONE;
-    private boolean fluid = false;
+    private final IModel<Position> position = Model.of(Position.DEFAULT);
+    private final IModel<Boolean> fluid = Model.of(false);
 
-    private final List<Component> buttonLeftList = Lists.newArrayList();
-    private final List<Component> buttonRightList = Lists.newArrayList();
+    private final List<INavbarComponent> components = Lists.newArrayList();
 
     /**
      * Construct.
@@ -97,26 +132,50 @@ public class Navbar extends Panel {
     public Navbar(final String componentId, final IModel<?> model) {
         super(componentId, model);
 
-        container = newContainer("container");
-        brandNameLink = newBrandNameLink("brandName");
+        final WebMarkupContainer container = newContainer("container");
+
+        BookmarkablePageLink<Page> brandNameLink = newBrandNameLink("brandName");
         brandLabel = newBrandLabel("brandLabel");
         brandNameLink.add(brandLabel);
         brandImage = newBrandImage("brandImage");
         brandNameLink.add(brandImage);
-        navLeftList = newNavigation("navLeftList", buttonLeftList);
-        navRightList = newNavigation("navRightList", buttonRightList);
+
+        Component leftAlignedComponentListView = newNavigation("navLeftList", newPositionDependedComponentModel(components, POSITION_FILTER_LEFT));
+        Component rightAlignedComponentListView = newNavigation("navRightList", newPositionDependedComponentModel(components, POSITION_FILTER_RIGHT));
 
         activeStateAppender = new CssClassNameAppender("active");
 
-        positionModel = Model.of("");
         containerModel = Model.of("");
         invertModel = Model.of("");
 
         add(new CssClassNameAppender("navbar"));
         add(new CssClassNameAppender(invertModel));
-        add(new CssClassNameAppender(positionModel));
+        add(new CssClassNameAppender(new AbstractReadOnlyModel<String>() {
+            @Override
+            public String getObject() {
+                return position.getObject().cssClassName();
+            }
+        }));
+
         container.add(new CssClassNameAppender(containerModel));
-        add(container, brandNameLink, navLeftList, navRightList);
+
+        add(container, brandNameLink, leftAlignedComponentListView, rightAlignedComponentListView);
+    }
+
+    /**
+     * creates a component model which holds only the components with a specific position.
+     *
+     * @param components   to filter
+     * @param withPosition position a component must have
+     * @return new model
+     */
+    private IModel<List<Component>> newPositionDependedComponentModel(final List<INavbarComponent> components, final PositionFilter withPosition) {
+        return new LoadableDetachableModel<List<Component>>() {
+            @Override
+            public List<Component> load() {
+                return newArrayList(transform(filter(components, withPosition), NAVBAR_COMPONENT_TO_COMPONENT_FUNCTION));
+            }
+        };
     }
 
     /**
@@ -126,22 +185,29 @@ public class Navbar extends Panel {
      * @param listModel   The component's model
      * @return a new navigation list view instance
      */
-    protected Component newNavigation(final String componentId, final List<Component> listModel) {
+    protected Component newNavigation(String componentId, IModel<List<Component>> listModel) {
         return new ListView<Component>(componentId, listModel) {
             @Override
             protected void populateItem(ListItem<Component> components) {
-                Component button = components.getModelObject();
-                components.add(button);
+                Component component = components.getModelObject();
+                components.add(component);
 
                 Behaviors.remove(components, activeStateAppender);
 
-                if (button instanceof Activatable) {
-                    Activatable activatable = (Activatable) button;
+                if (component instanceof Activatable) {
+                    Activatable activatable = (Activatable) component;
 
-                    if (activatable.isActive(button)) {
+                    if (activatable.isActive(component)) {
                         components.add(activeStateAppender);
                     }
                 }
+            }
+
+            @Override
+            protected void onConfigure() {
+                super.onConfigure();
+
+                setVisibilityAllowed(getList().size() > 0);
             }
         };
     }
@@ -154,47 +220,45 @@ public class Navbar extends Panel {
      */
     protected BookmarkablePageLink<Page> newBrandNameLink(String componentId) {
         return new BookmarkablePageLink<Page>(componentId, getHomePage()) {
-        	
-			private static final long serialVersionUID = 1L;
 
-			@Override
-        	public boolean isVisible() {
-				return brandLabel.isVisible() || brandImage.isVisible();
-        	}
+            private static final long serialVersionUID = 1L;
+
+            @Override
+            public boolean isVisible() {
+                return brandLabel.isVisible() || brandImage.isVisible();
+            }
         };
     }
-    
+
     /**
-     * 
-     * @param componentId
-     * @return
+     * @param markupId The components markup id
+     * @return a new brand name label.
      */
-    protected Label newBrandLabel(String componentId) {
-    	return new Label(componentId) {
+    protected Label newBrandLabel(String markupId) {
+        return new Label(markupId) {
 
-    		private static final long serialVersionUID = 1L;
+            private static final long serialVersionUID = 1L;
 
-			@Override
-    		public boolean isVisible() {
-    			return getDefaultModel() != null;
-    		}
-    	};
+            @Override
+            public boolean isVisible() {
+                return getDefaultModel() != null;
+            }
+        };
     }
-    
+
     /**
-     * 
-     * @param componentId
-     * @return
+     * @param markupId The components markup id
+     * @return a new {@link Image}
      */
-    protected Image newBrandImage(String componentId) {
-    	return new Image(componentId, Model.of("")) {
+    protected Image newBrandImage(String markupId) {
+        return new Image(markupId, Model.of("")) {
 
-    		private static final long serialVersionUID = 1L;
+            private static final long serialVersionUID = 1L;
 
-			@Override
-        	public boolean isVisible() {
-        		return getImageResourceReference() != null;
-        	}
+            @Override
+            public boolean isVisible() {
+                return getImageResourceReference() != null;
+            }
         };
     }
 
@@ -214,46 +278,40 @@ public class Navbar extends Panel {
         super.onConfigure();
 
         containerModel.setObject(isFluid() ? "container-fluid" : "container");
-
-        if (Position.TOP == getPosition()) {
-            positionModel.setObject("navbar-fixed-top");
-        } else if (Position.BOTTOM == getPosition()) {
-            positionModel.setObject("navbar-fixed-bottom");
-        } else {
-            positionModel.setObject("");
-        }
-
-        navLeftList.setVisible(buttonLeftList.size() > 0);
-        navRightList.setVisible(buttonRightList.size() > 0);
     }
 
     /**
      * @return true, if the navigation is fixed on the top of the screen.
      */
     public Position getPosition() {
-        return position;
+        return position.getObject();
     }
 
     /**
      * @return true, if the navigation is rendered for a fluid page layout.
      */
     public boolean isFluid() {
-        return fluid;
+        return fluid.getObject();
     }
 
     /**
-     * adds a button to the given position inside the navbar
+     * adds a component to the given position inside the navbar
      *
-     * @param position The position of the button (left, right)
-     * @param buttons  the buttons to add
-     * @return this component
+     * @param components the components to add
+     * @return this component instance for chaining
      */
-    public final Navbar addButton(ButtonPosition position, Component... buttons) {
-        if (ButtonPosition.LEFT.equals(position)) {
-            buttonLeftList.addAll(Lists.newArrayList(buttons));
-        } else if (ButtonPosition.RIGHT.equals(position)) {
-            buttonRightList.addAll(Lists.newArrayList(buttons));
-        }
+    public final Navbar addComponents(final INavbarComponent... components) {
+        return addComponents(newArrayList(components));
+    }
+
+    /**
+     * adds a component to the given position inside the navbar
+     *
+     * @param components the components to add
+     * @return this component instance for chaining
+     */
+    public final Navbar addComponents(final List<INavbarComponent> components) {
+        this.components.addAll(components);
 
         return this;
     }
@@ -275,29 +333,28 @@ public class Navbar extends Panel {
      * @param brandName the brand name label
      * @return the component's current instance
      */
-    public Navbar brandName(IModel<String> brandName) {
-    	brandLabel.setDefaultModel(brandName);
+    public Navbar brandName(final IModel<String> brandName) {
+        brandLabel.setDefaultModel(brandName);
 
         return this;
     }
-    
+
     /**
      * sets an image in the brand button
-     * 
+     *
      * @param imageResourceReference required
-     * @param imageAltAttrModel		 optional, but should be provided
+     * @param imageAltAttrModel      optional, but should be provided
      * @return
      */
-	public Navbar brandImage(ResourceReference imageResourceReference,
-			IModel<String> imageAltAttrModel) {
-		brandImage.setImageResourceReference(imageResourceReference);
+    public Navbar setBrandImage(final ResourceReference imageResourceReference, final IModel<String> imageAltAttrModel) {
+        brandImage.setImageResourceReference(imageResourceReference);
 
-		if (imageAltAttrModel != null) {
-			brandImage.add(new AttributeModifier("alt", imageAltAttrModel));
-		}
+        if (!Models.isNullOrEmpty(imageAltAttrModel)) {
+            brandImage.add(new AttributeModifier("alt", imageAltAttrModel));
+        }
 
-		return this;
-	}
+        return this;
+    }
 
     /**
      * inverts the navbar backgorund color
@@ -305,7 +362,7 @@ public class Navbar extends Panel {
      * @param invert whether to invert the color or not
      * @return the component's current instance
      */
-    public Navbar invert(boolean invert) {
+    public Navbar invert(final boolean invert) {
         this.invertModel.setObject(invert ? "navbar-inverse" : "");
 
         return this;
@@ -317,7 +374,7 @@ public class Navbar extends Panel {
      * @return the component's current instance.
      */
     public Navbar fluid() {
-        this.fluid = true;
+        this.fluid.setObject(true);
 
         return this;
     }
@@ -327,10 +384,58 @@ public class Navbar extends Panel {
      *
      * @return the component's current instance.
      */
-    public Navbar setPosition(Position position) {
-        this.position = position;
+    public Navbar setPosition(final Position position) {
+        this.position.setObject(position);
 
         return this;
     }
 
+
+    /**
+     * TODO
+     */
+    private static final class PositionFilter implements Predicate<INavbarComponent> {
+
+        private final ComponentPosition position;
+
+        /**
+         * Construct.
+         *
+         * @param position which filtered component must match
+         */
+        private PositionFilter(final ComponentPosition position) {
+            Preconditions.checkNotNull(position);
+
+            this.position = position;
+        }
+
+        @Override
+        public boolean apply(final INavbarComponent navbarComponent) {
+            return navbarComponent != null && position.equals(navbarComponent.getPosition());
+        }
+    }
+
+    /**
+     * TODO
+     */
+    private static final class NavbarComponentToComponentFunction implements Function<INavbarComponent, Component> {
+
+        private final String markupId;
+
+        /**
+         * Construct.
+         *
+         * @param markupId The markup id to use for each new component
+         */
+        private NavbarComponentToComponentFunction(final String markupId) {
+            Preconditions.checkArgument(!Strings.isNullOrEmpty(markupId));
+
+            this.markupId = markupId;
+        }
+
+        @Override
+        public Component apply(final INavbarComponent navbarComponent) {
+            return navbarComponent.create(markupId);
+        }
+    }
 }

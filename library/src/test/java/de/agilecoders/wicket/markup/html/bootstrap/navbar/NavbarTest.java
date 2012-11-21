@@ -3,6 +3,7 @@ package de.agilecoders.wicket.markup.html.bootstrap.navbar;
 import de.agilecoders.wicket.WicketApplicationTest;
 import de.agilecoders.wicket.markup.html.bootstrap.image.Icon;
 import de.agilecoders.wicket.markup.html.bootstrap.image.IconType;
+import org.apache.wicket.Component;
 import org.apache.wicket.Page;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.util.tester.TagTester;
@@ -100,24 +101,44 @@ public class NavbarTest extends WicketApplicationTest {
     @Test
     public void buttonIsAddedToLeftNavigation() {
         Navbar navbar = new Navbar("id");
-        navbar.addButton(Navbar.ButtonPosition.LEFT, new NavbarButton<Page>(Page.class, Model.of("Link Name")));
+        navbar.addComponents(new INavbarComponent() {
+            @Override
+            public Component create(String markupId) {
+                return new NavbarButton<Page>(Page.class, Model.of("Link Name"));
+            }
+
+            @Override
+            public Navbar.ComponentPosition getPosition() {
+                return Navbar.ComponentPosition.LEFT;
+            }
+        });
 
         tester().startComponentInPage(navbar);
         TagTester tagTester = tester().getTagByWicketId("navLeftList");
 
         Assert.assertThat(tagTester.hasChildTag("a"), is(equalTo(true)));
-        Assert.assertThat(tester().getTagByWicketId("button").hasAttribute("href"), is(equalTo(true)));
-        Assert.assertThat(tester().getTagByWicketId("button").getValue(), containsString("Link Name"));
+        Assert.assertThat(tester().getTagByWicketId(Navbar.COMPONENT_ID).hasAttribute("href"), is(equalTo(true)));
+        Assert.assertThat(tester().getTagByWicketId(Navbar.COMPONENT_ID).getValue(), containsString("Link Name"));
     }
 
     @Test
     public void buttonWithIconIsAddedToLeftNavigation() {
         Navbar navbar = new Navbar("id");
-        navbar.addButton(Navbar.ButtonPosition.LEFT, new NavbarButton<Page>(Page.class, Model.of("Link Name")).setIcon(new Icon("icon", IconType.AlignCenter).invert()));
+        navbar.addComponents(new INavbarComponent() {
+            @Override
+            public Component create(String markupId) {
+                return new NavbarButton<Page>(Page.class, Model.of("Link Name")).setIcon(new Icon("icon", IconType.AlignCenter).invert());
+            }
+
+            @Override
+            public Navbar.ComponentPosition getPosition() {
+                return Navbar.ComponentPosition.LEFT;
+            }
+        });
 
         tester().startComponentInPage(navbar);
 
-        Assert.assertThat(tester().getTagByWicketId("button").hasChildTag("i"), is(equalTo(true)));
+        Assert.assertThat(tester().getTagByWicketId(Navbar.COMPONENT_ID).hasChildTag("i"), is(equalTo(true)));
         Assert.assertThat(tester().getTagByWicketId("icon").getAttribute("class"), containsString("icon-align-center"));
         Assert.assertThat(tester().getTagByWicketId("icon").getAttribute("class"), containsString("icon-white"));
     }
