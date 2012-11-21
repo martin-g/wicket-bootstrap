@@ -1,8 +1,11 @@
 package de.agilecoders.wicket.samples.pages;
 
+import de.agilecoders.wicket.markup.html.bootstrap.navbar.AbstractNavbarComponent;
 import de.agilecoders.wicket.markup.html.bootstrap.navbar.ImmutableNavbarComponent;
 import de.agilecoders.wicket.markup.html.bootstrap.navbar.Navbar;
 import de.agilecoders.wicket.markup.html.bootstrap.navbar.NavbarAjaxLink;
+import de.agilecoders.wicket.samples.components.issues.CustomNavbarForm;
+import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.event.Broadcast;
 import org.apache.wicket.event.IEvent;
@@ -28,8 +31,17 @@ public class IssuesPage extends BasePage {
     public IssuesPage(PageParameters parameters) {
         super(parameters);
 
+        // issue #80
         add(new ParentNavbar("navbar-parent"),
             new SubNavbar("navbar-child"));
+
+        // issue #-1
+        add(new Navbar("navbar-form").addComponents(new AbstractNavbarComponent(Navbar.ComponentPosition.LEFT) {
+            @Override
+            public Component create(String markupId) {
+                return new CustomNavbarForm(markupId);
+            }
+        }));
     }
 
     @Override
