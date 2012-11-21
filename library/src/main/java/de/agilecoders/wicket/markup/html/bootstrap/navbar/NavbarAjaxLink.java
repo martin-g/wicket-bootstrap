@@ -1,8 +1,9 @@
-package de.agilecoders.wicket.markup.html.bootstrap.button.dropdown;
+package de.agilecoders.wicket.markup.html.bootstrap.navbar;
 
 import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonList;
 import de.agilecoders.wicket.markup.html.bootstrap.image.Icon;
 import de.agilecoders.wicket.markup.html.bootstrap.image.IconType;
+import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.panel.IMarkupSourcingStrategy;
 import org.apache.wicket.markup.html.panel.PanelMarkupSourcingStrategy;
@@ -36,7 +37,7 @@ public abstract class NavbarAjaxLink<T> extends org.apache.wicket.ajax.markup.ht
      * @param label Label of link
      */
     public NavbarAjaxLink(final IModel<String> label) {
-        this(ButtonList.getButtonMarkupId(), label);
+        this(Navbar.COMPONENT_ID, label);
     }
 
     /**
@@ -85,6 +86,15 @@ public abstract class NavbarAjaxLink<T> extends org.apache.wicket.ajax.markup.ht
     @Override
     protected IMarkupSourcingStrategy newMarkupSourcingStrategy() {
         return new PanelMarkupSourcingStrategy(true);
+    }
+
+    @Override
+    protected void onComponentTag(ComponentTag tag) {
+        if (!"a".equalsIgnoreCase(tag.getName()) && !"button".equalsIgnoreCase(tag.getName())) {
+            tag.setName("a");
+        }
+
+        super.onComponentTag(tag);
     }
 
     @Override

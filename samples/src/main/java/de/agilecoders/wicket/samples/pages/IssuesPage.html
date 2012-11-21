@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+    <head>
+        <meta charset="utf-8"/>
+        <title>ComponentsPage</title>
+    </head>
+    <body>
+        <wicket:extend>
+            <header class="jumbotron subhead" id="overview">
+                <div class="container">
+                    <h1>Issues from github</h1>
+
+                    <p class="lead">A samples page that shows solutions for some github issues.</p>
+                </div>
+            </header>
+
+
+            <div class="container">
+
+                <div class="row">
+                    <div class="span3 bs-docs-sidebar">
+                        <ul wicket:id="navigation" class="nav nav-list bs-docs-sidenav">
+                            <li><a href="#issue80"><i class="icon-chevron-right"></i> Sync two navbars</a></li>
+                        </ul>
+                    </div>
+                    <div class="span9">
+
+                        <section id="issue80">
+                            <div class="page-header">
+                                <h1>Sync two navbars</h1>
+                            </div>
+
+                            <h2>Example</h2>
+
+                            <p>see <a href="https://github.com/l0rdn1kk0n/wicket-bootstrap/issues/80">issue #80</a>.</p>
+
+                            <div class="bs-docs-example">
+                                <div wicket:id="navbar-parent"></div>
+                                <div wicket:id="navbar-child"></div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </wicket:extend>
+    </body>
+</html>

@@ -156,6 +156,7 @@ abstract class BasePage<T> extends GenericWebPage<T> {
     private Component newAddonsDropDownButton() {
         return new NavbarDropDownButton(Model.of("Addons"))
                 .addButton(new MenuPageButton<DatePickerPage>(DatePickerPage.class, Model.of("DatePicker")).setIcon(new Icon(IconType.Time)))
+                .addButton(new MenuPageButton<IssuesPage>(IssuesPage.class, Model.of("Github Issues")).setIcon(new Icon(IconType.BarCode)))
                 .setIcon(IconType.ThLarge);
     }
 
