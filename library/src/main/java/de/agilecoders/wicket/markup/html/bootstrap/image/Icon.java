@@ -1,5 +1,6 @@
 package de.agilecoders.wicket.markup.html.bootstrap.image;
 
+import de.agilecoders.wicket.markup.html.bootstrap.common.Invertible;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
@@ -10,7 +11,7 @@ import org.apache.wicket.model.Model;
  * @author miha
  * @version 1.0
  */
-public class Icon extends WebMarkupContainer {
+public class Icon extends WebMarkupContainer implements Invertible {
 
     private final IconBehavior iconBehavior;
 
@@ -41,6 +42,15 @@ public class Icon extends WebMarkupContainer {
      */
     public boolean isInverted() {
         return iconBehavior.isInverted();
+    }
+
+    /**
+     * marks the icon as inverted or not.
+     *
+     * @return the component's current instance
+     */
+    public void setInverted(final boolean value) {
+        iconBehavior.setInverted(value);
     }
 
     /**

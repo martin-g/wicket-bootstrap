@@ -1,5 +1,6 @@
 package de.agilecoders.wicket.markup.html.bootstrap.button;
 
+import de.agilecoders.wicket.markup.html.bootstrap.common.Invertible;
 import de.agilecoders.wicket.markup.html.bootstrap.image.Icon;
 import de.agilecoders.wicket.markup.html.bootstrap.image.IconType;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
@@ -8,12 +9,12 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
 /**
- * TODO: document
+ * Default {@link AjaxButton} which is styled by bootstrap
  *
  * @author miha
  * @version 1.0
  */
-public abstract class TypedAjaxButton extends AjaxButton implements BootstrapButton<TypedAjaxButton> {
+public abstract class TypedAjaxButton extends AjaxButton implements BootstrapButton<TypedAjaxButton>, Invertible {
 
     private Icon icon;
     private ButtonBehavior buttonBehavior;
@@ -63,4 +64,7 @@ public abstract class TypedAjaxButton extends AjaxButton implements BootstrapBut
         return this;
     }
 
+    public void setInverted(final boolean inverted) {
+        icon.setInverted(inverted);
+    }
 }

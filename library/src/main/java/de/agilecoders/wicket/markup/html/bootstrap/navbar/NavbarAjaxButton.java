@@ -10,7 +10,7 @@ import org.apache.wicket.model.Model;
  * @author miha
  * @version 1.0
  */
-public abstract class NavbarAjaxButton extends TypedAjaxButton {
+public abstract class NavbarAjaxButton extends TypedAjaxButton  {
 
     /**
      * Construct.
@@ -39,4 +39,6 @@ public abstract class NavbarAjaxButton extends TypedAjaxButton {
 
         super.onComponentTag(tag);
     }
+
+
 }

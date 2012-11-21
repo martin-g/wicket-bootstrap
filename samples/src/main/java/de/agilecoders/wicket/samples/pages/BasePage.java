@@ -117,12 +117,9 @@ abstract class BasePage<T> extends GenericWebPage<T> {
         Navbar navbar = new Navbar(markupId);
 
         navbar.setPosition(Navbar.Position.TOP);
-        // show brand name and logo
-        navbar.brandName(Model.of("Wicket Bootstrap"));
-        //navbar.setBrandImage(new PackageResourceReference(BasePage.class, "logo.png"), Model.of("Wicket logo"));
 
-        // show dark navbar
-        navbar.invert(false);
+        // show brand name
+        navbar.brandName(Model.of("Wicket Bootstrap"));
 
         navbar.addComponents(NavbarComponents.transform(Navbar.ComponentPosition.LEFT,
                                                         new NavbarButton<HomePage>(HomePage.class, Model.of("Overview")).setIcon(new Icon(IconType.Home)),

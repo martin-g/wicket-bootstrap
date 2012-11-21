@@ -8,6 +8,7 @@ import com.google.common.collect.Lists;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameProvider;
 import de.agilecoders.wicket.markup.html.bootstrap.button.Activatable;
+import de.agilecoders.wicket.markup.html.bootstrap.common.Invertible;
 import de.agilecoders.wicket.util.Behaviors;
 import de.agilecoders.wicket.util.Models;
 import org.apache.wicket.AttributeModifier;
@@ -200,6 +201,10 @@ public class Navbar extends Panel {
                     if (activatable.isActive(component)) {
                         components.add(activeStateAppender);
                     }
+                }
+
+                if (component instanceof Invertible) {
+                    ((Invertible)component).setInverted(!Models.isNullOrEmpty(invertModel));
                 }
             }
 

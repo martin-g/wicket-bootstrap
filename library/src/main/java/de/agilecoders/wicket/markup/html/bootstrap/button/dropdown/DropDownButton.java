@@ -6,6 +6,7 @@ import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonList;
 import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonSize;
 import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonType;
+import de.agilecoders.wicket.markup.html.bootstrap.common.Invertible;
 import de.agilecoders.wicket.markup.html.bootstrap.image.Icon;
 import de.agilecoders.wicket.markup.html.bootstrap.image.IconType;
 import org.apache.wicket.Component;
@@ -26,7 +27,7 @@ import org.apache.wicket.model.Model;
  * @author miha
  * @version 1.0
  */
-public class DropDownButton extends AbstractLink {
+public class DropDownButton extends AbstractLink implements Invertible {
 
     private final IModel<ButtonSize> buttonSize = Model.of(ButtonSize.Medium);
     private final IModel<ButtonType> buttonType = Model.of(ButtonType.Menu);
@@ -34,6 +35,7 @@ public class DropDownButton extends AbstractLink {
     private final ButtonList buttonListView;
     private final IModel<IconType> iconTypeModel;
     private final Component baseButton;
+    private Icon icon;
 
     /**
      * Construct.
@@ -89,7 +91,7 @@ public class DropDownButton extends AbstractLink {
 
         baseButton.setOutputMarkupId(true);
         baseButton.add(createButtonLabel("label", labelModel));
-        baseButton.add(createButtonIcon("icon", iconTypeModel));
+        baseButton.add(icon = createButtonIcon("icon", iconTypeModel));
 
         return baseButton;
     }
@@ -115,8 +117,8 @@ public class DropDownButton extends AbstractLink {
      * @param iconTypeModel The icon type as model
      * @return new icon component
      */
-    protected Component createButtonIcon(final String markupId, final IModel<IconType> iconTypeModel) {
-        return new Icon(markupId, iconTypeModel).invert();
+    protected Icon createButtonIcon(final String markupId, final IModel<IconType> iconTypeModel) {
+        return new Icon(markupId, iconTypeModel);
     }
 
     @Override
@@ -186,5 +188,10 @@ public class DropDownButton extends AbstractLink {
         }
 
         super.onComponentTag(tag);
+    }
+
+    @Override
+    public void setInverted(boolean inverted) {
+        icon.setInverted(inverted);
     }
 }

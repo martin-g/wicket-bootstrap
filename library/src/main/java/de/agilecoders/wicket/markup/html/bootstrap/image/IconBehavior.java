@@ -2,6 +2,7 @@ package de.agilecoders.wicket.markup.html.bootstrap.image;
 
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.AssertTagNameBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
+import de.agilecoders.wicket.markup.html.bootstrap.common.Invertible;
 import org.apache.wicket.Component;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
@@ -12,11 +13,11 @@ import org.apache.wicket.model.Model;
  * @author miha
  * @version 1.0
  */
-public class IconBehavior extends AssertTagNameBehavior {
+public class IconBehavior extends AssertTagNameBehavior implements Invertible {
 
     private final IModel<IconType> type;
     private final IModel<String> value;
-    private boolean invert = false;
+    private final IModel<Boolean> invert;
 
     /**
      * Construct.
@@ -39,7 +40,7 @@ public class IconBehavior extends AssertTagNameBehavior {
 
         this.type = type;
         this.value = Model.of("");
-        this.invert = invert;
+        this.invert = Model.of(invert);
     }
 
     /**
@@ -83,7 +84,7 @@ public class IconBehavior extends AssertTagNameBehavior {
      * @return true, if the icon color is inverted
      */
     public boolean isInverted() {
-        return this.invert;
+        return this.invert.getObject();
     }
 
     /**
@@ -92,7 +93,7 @@ public class IconBehavior extends AssertTagNameBehavior {
      * @return the component's current instance
      */
     public IconBehavior invert() {
-        this.invert = true;
+        setInverted(true);
 
         return this;
     }
@@ -102,5 +103,9 @@ public class IconBehavior extends AssertTagNameBehavior {
      */
     public IconType type() {
         return type.getObject();
+    }
+
+    public void setInverted(final boolean value) {
+        this.invert.setObject(value);
     }
 }
