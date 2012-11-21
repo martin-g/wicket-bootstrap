@@ -1,8 +1,11 @@
 package de.agilecoders.wicket.samples.pages;
 
 import de.agilecoders.wicket.markup.html.bootstrap.block.Code;
+import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonType;
+import de.agilecoders.wicket.markup.html.bootstrap.button.TypedButton;
 import de.agilecoders.wicket.markup.html.bootstrap.form.DateTextField;
 import de.agilecoders.wicket.markup.html.bootstrap.form.DateTextFieldConfig;
+import de.agilecoders.wicket.samples.components.basecss.DatePickerModal;
 import org.apache.wicket.Component;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
@@ -44,6 +47,15 @@ public class DatePickerPage extends BasePage {
                                                     + "\t\t\t.autoClose(true)\n"
                                                     + "\t\t\t.withLanguage(\"es\")\n"
                                                     + "\t\t\t.showTodayButton(true);")).setShowLineNumbers(true));
+
+        DatePickerModal modal = new DatePickerModal("modal");
+        modal.show(false);
+        modal.setUseKeyboard(true);
+        TypedButton modalButton = new TypedButton("modal-opener", ButtonType.Default);
+        modalButton.setLabel(Model.of("Open Modal Dialog"));
+        modal.addOpenerAttributesTo(modalButton);
+
+        add(modal, modalButton);
     }
 
     private Component newDatePicker(String markupId, DateTextFieldConfig dateTextFieldConfig) {

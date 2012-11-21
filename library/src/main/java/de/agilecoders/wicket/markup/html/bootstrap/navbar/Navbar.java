@@ -27,6 +27,7 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.LoadableDetachableModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.resource.ResourceReference;
+import org.apache.wicket.util.io.IClusterable;
 
 import java.util.List;
 
@@ -397,9 +398,10 @@ public class Navbar extends Panel {
 
 
     /**
-     * TODO
+     * A {@link Predicate} that filters out all {@link INavbarComponent}s that don't
+     * match the given {@link ComponentPosition}.
      */
-    private static final class PositionFilter implements Predicate<INavbarComponent> {
+    private static final class PositionFilter implements Predicate<INavbarComponent>, IClusterable {
 
         private final ComponentPosition position;
 
@@ -421,9 +423,9 @@ public class Navbar extends Panel {
     }
 
     /**
-     * TODO
+     * A {@link Function} that maps a {@link INavbarComponent} to a {@link Component}
      */
-    private static final class NavbarComponentToComponentFunction implements Function<INavbarComponent, Component> {
+    private static final class NavbarComponentToComponentFunction implements Function<INavbarComponent, Component>, IClusterable {
 
         private final String markupId;
 
