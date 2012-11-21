@@ -140,6 +140,5 @@ public class NavbarTest extends WicketApplicationTest {
 
         Assert.assertThat(tester().getTagByWicketId(Navbar.COMPONENT_ID).hasChildTag("i"), is(equalTo(true)));
         Assert.assertThat(tester().getTagByWicketId("icon").getAttribute("class"), containsString("icon-align-center"));
-        Assert.assertThat(tester().getTagByWicketId("icon").getAttribute("class"), containsString("icon-white"));
     }
 }
