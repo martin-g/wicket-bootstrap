@@ -4,7 +4,7 @@ import org.apache.wicket.request.resource.CssResourceReference;
 import org.apache.wicket.request.resource.ResourceReference;
 
 /**
- * TODO: document
+ * DatePicker css resource reference
  *
  * @author miha
  * @version 1.0

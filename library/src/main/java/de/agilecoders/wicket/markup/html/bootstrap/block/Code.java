@@ -1,7 +1,8 @@
 package de.agilecoders.wicket.markup.html.bootstrap.block;
 
-import org.apache.wicket.markup.html.WebMarkupContainer;
+import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.Model;
 
 /**
  * Wrap inline snippets of code with <code> and use <pre> for multiple
@@ -10,7 +11,7 @@ import org.apache.wicket.model.IModel;
  * @author miha
  * @version 1.0
  */
-public class Code extends WebMarkupContainer {
+public class Code extends Label {
 
     private final CodeBehavior codeBehavior;
 
@@ -20,7 +21,7 @@ public class Code extends WebMarkupContainer {
      * @param componentId The non-null id of a new component
      */
     public Code(final String componentId) {
-        this(componentId, null);
+        this(componentId, new Model<String>(""));
     }
 
     /**

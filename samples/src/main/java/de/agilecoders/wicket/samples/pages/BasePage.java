@@ -2,13 +2,11 @@ package de.agilecoders.wicket.samples.pages;
 
 import de.agilecoders.wicket.Bootstrap;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
-import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonBehavior;
-import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonType;
+import de.agilecoders.wicket.markup.html.bootstrap.block.Code;
 import de.agilecoders.wicket.markup.html.bootstrap.button.dropdown.DropDownButton;
 import de.agilecoders.wicket.markup.html.bootstrap.button.dropdown.MenuDivider;
 import de.agilecoders.wicket.markup.html.bootstrap.button.dropdown.MenuHeader;
 import de.agilecoders.wicket.markup.html.bootstrap.button.dropdown.MenuPageButton;
-import de.agilecoders.wicket.markup.html.bootstrap.button.dropdown.NavbarAjaxLink;
 import de.agilecoders.wicket.markup.html.bootstrap.html.ChromeFrameMetaTag;
 import de.agilecoders.wicket.markup.html.bootstrap.html.HtmlTag;
 import de.agilecoders.wicket.markup.html.bootstrap.html.MetaTag;
@@ -16,8 +14,10 @@ import de.agilecoders.wicket.markup.html.bootstrap.html.OptimizedMobileViewportM
 import de.agilecoders.wicket.markup.html.bootstrap.image.Icon;
 import de.agilecoders.wicket.markup.html.bootstrap.image.IconType;
 import de.agilecoders.wicket.markup.html.bootstrap.navbar.AffixBehavior;
+import de.agilecoders.wicket.markup.html.bootstrap.navbar.ImmutableNavbarComponent;
 import de.agilecoders.wicket.markup.html.bootstrap.navbar.Navbar;
 import de.agilecoders.wicket.markup.html.bootstrap.navbar.NavbarButton;
+import de.agilecoders.wicket.markup.html.bootstrap.navbar.NavbarComponents;
 import de.agilecoders.wicket.markup.html.bootstrap.navbar.NavbarDropDownButton;
 import de.agilecoders.wicket.samples.WicketApplication;
 import de.agilecoders.wicket.samples.assets.base.ApplicationJavaScript;
@@ -27,8 +27,6 @@ import de.agilecoders.wicket.settings.IBootstrapSettings;
 import de.agilecoders.wicket.settings.ITheme;
 import org.apache.wicket.Component;
 import org.apache.wicket.Page;
-import org.apache.wicket.ajax.AjaxRequestTarget;
-import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
@@ -37,7 +35,6 @@ import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
-import org.apache.wicket.request.resource.PackageResourceReference;
 import org.apache.wicket.util.string.StringValue;
 
 import java.util.List;
@@ -107,6 +104,7 @@ abstract class BasePage<T> extends GenericWebPage<T> {
         add(new Footer("footer"));
 
         add(new BootstrapBaseBehavior());
+        add(new Code("code-internal"));
     }
 
     /**
@@ -121,50 +119,23 @@ abstract class BasePage<T> extends GenericWebPage<T> {
         navbar.setPosition(Navbar.Position.TOP);
         // show brand name and logo
         navbar.brandName(Model.of("Wicket Bootstrap"));
-        navbar.brandImage(new PackageResourceReference(BasePage.class, "logo.png"), Model.of("Wicket logo"));
+        //navbar.setBrandImage(new PackageResourceReference(BasePage.class, "logo.png"), Model.of("Wicket logo"));
 
         // show dark navbar
         navbar.invert(false);
 
-        navbar.addButton(Navbar.ButtonPosition.LEFT,
-                         new NavbarButton<HomePage>(HomePage.class, Model.of("Overview")).setIcon(new Icon(IconType.Home)),
-                         new NavbarButton<BaseCssPage>(BaseCssPage.class, Model.of("Base CSS")),
-                         new NavbarButton<ComponentsPage>(ComponentsPage.class, Model.of("Components")),
-                         new NavbarButton<HomePage>(Scaffolding.class, Model.of("Scaffolding")),
-                         new NavbarButton<HomePage>(Javascript.class, Model.of("Javascript"))
+        navbar.addComponents(NavbarComponents.transform(Navbar.ComponentPosition.LEFT,
+                                                        new NavbarButton<HomePage>(HomePage.class, Model.of("Overview")).setIcon(new Icon(IconType.Home)),
+                                                        new NavbarButton<BaseCssPage>(BaseCssPage.class, Model.of("Base CSS")),
+                                                        new NavbarButton<ComponentsPage>(ComponentsPage.class, Model.of("Components")),
+                                                        new NavbarButton<HomePage>(Scaffolding.class, Model.of("Scaffolding")),
+                                                        new NavbarButton<HomePage>(Javascript.class, Model.of("Javascript")),
+                                                        newAddonsDropDownButton())
         );
 
-        DropDownButton dropdown = new NavbarDropDownButton("button", Model.of("More..."))
+        DropDownButton dropdown = new NavbarDropDownButton(Model.of("More..."))
                 .addButton(new MenuPageButton<HomePage>(HomePage.class, Model.of("Overview")).setIcon(new Icon(IconType.Home)))
                 .addButton(new MenuDivider())
-                .addButton(new AjaxLink<String>("button", Model.of("AjaxLink")) {
-                    @Override
-                    protected void onInitialize() {
-                        super.onInitialize();
-
-                        setBody(getDefaultModel());
-                        add(new ButtonBehavior(ButtonType.Menu));
-                    }
-
-                    @Override
-                    public void onClick(AjaxRequestTarget target) {
-                        target.appendJavaScript("alert('clicked');");
-                    }
-                })
-                .addButton(new NavbarAjaxLink<String>(new Model<String>("NavbarAjaxLink")) {
-
-                    @Override
-                    protected void onInitialize() {
-                        super.onInitialize();
-
-                        setIconType(IconType.Heart);
-                    }
-
-                    @Override
-                    public void onClick(AjaxRequestTarget target) {
-                        target.appendJavaScript("alert('clicked');");
-                    }
-                })
                 .addButton(new MenuHeader(Model.of("Themes"))).setIcon(IconType.AlignJustify);
 
         IBootstrapSettings settings = Bootstrap.getSettings(getApplication());
@@ -177,9 +148,18 @@ abstract class BasePage<T> extends GenericWebPage<T> {
             dropdown.addButton(new MenuPageButton<Page>(getPageClass(), params, Model.of(theme.name())));
         }
 
-        navbar.addButton(Navbar.ButtonPosition.RIGHT, dropdown);
+        navbar.addComponents(new ImmutableNavbarComponent(dropdown, Navbar.ComponentPosition.RIGHT));
 
         return navbar;
+    }
+
+    /**
+     * @return new dropdown button for all addons
+     */
+    private Component newAddonsDropDownButton() {
+        return new NavbarDropDownButton(Model.of("Addons"))
+                .addButton(new MenuPageButton<DatePickerPage>(DatePickerPage.class, Model.of("DatePicker")).setIcon(new Icon(IconType.Time)))
+                .setIcon(IconType.ThLarge);
     }
 
     /**

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+    <head>
+        <meta charset="utf-8"/>
+        <title>ComponentsPage</title>
+    </head>
+    <body>
+        <wicket:extend>
+            <header class="jumbotron subhead" id="overview">
+                <div class="container">
+                    <h1>DatePicker</h1>
+
+                    <p class="lead">A datepicker for @twitter bootstrap forked from Stefan Petre's (of eyecon.ro), improvements by <a href="https://github.com/eternicode/bootstrap-datepicker">@eternicode</a></p>
+                </div>
+            </header>
+
+
+            <div class="container">
+
+                <div class="row">
+                    <div class="span3 bs-docs-sidebar">
+                        <ul wicket:id="navigation" class="nav nav-list bs-docs-sidenav">
+                            <li><a href="#datepicker"><i class="icon-chevron-right"></i> DatePicker</a></li>
+                            <li><a href="#datepicker-birthday"><i class="icon-chevron-right"></i> BirthdayPicker</a></li>
+                            <li><a href="#datepicker-language"><i class="icon-chevron-right"></i> DatePicker (i18n)</a></li>
+                        </ul>
+                    </div>
+                    <div class="span9">
+
+                        <section id="datepicker">
+                            <div class="page-header">
+                                <h1>DatePicker</h1>
+                            </div>
+
+                            <h2>Example</h2>
+
+                            <p>DOC.</p>
+
+                            <div class="bs-docs-example">
+                                <form><input wicket:id="default"></form>
+                            </div>
+                            <pre wicket:id="default-html-code"></pre>
+                            <pre wicket:id="default-java-code"></pre>
+                        </section>
+
+                        <section id="datepicker-birthday">
+                            <div class="page-header">
+                                <h1>BirthdayPicker</h1>
+                            </div>
+
+                            <h2>Example</h2>
+
+                            <p>DOC.</p>
+
+                            <div class="bs-docs-example">
+                                <form><input wicket:id="birthday"></form>
+                            </div>
+                            <pre wicket:id="birthday-html-code"></pre>
+                            <pre wicket:id="birthday-java-code"></pre>
+                        </section>
+
+                        <section id="datepicker-language">
+                            <div class="page-header">
+                                <h1>DatePicker (i18n)</h1>
+                            </div>
+
+                            <h2>Example</h2>
+
+                            <p>DOC.</p>
+
+                            <div class="bs-docs-example">
+                                <form><input wicket:id="language"></form>
+                            </div>
+                            <pre wicket:id="language-html-code"></pre>
+                            <pre wicket:id="language-java-code"></pre>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </wicket:extend>
+    </body>
+</html>

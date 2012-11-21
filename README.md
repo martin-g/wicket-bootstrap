@@ -7,9 +7,9 @@ Components
 ----------
 
 * Twitter Bootstrap (2.2.1): http://twitter.github.com/bootstrap
-* Apache Wicket (6.2.0): http://wicket.apache.org/
-* Bootswatch: http://bootswatch.com/
-* DatePicker: http://www.eyecon.ro/bootstrap-datepicker/
+* Apache Wicket (6.3.0): http://wicket.apache.org/
+* Bootswatch (2.2.1): http://bootswatch.com/
+* DatePicker: https://github.com/eternicode/bootstrap-datepicker
 
 Usage
 -----

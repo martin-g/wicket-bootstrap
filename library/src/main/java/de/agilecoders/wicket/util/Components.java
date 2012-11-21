@@ -6,7 +6,6 @@ import com.google.common.collect.Sets;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.MarkupException;
-import org.apache.wicket.model.IModel;
 
 import java.util.Set;
 
@@ -48,10 +47,6 @@ public final class Components {
                                   Strings.isNullOrEmpty(component.getDefaultModelObjectAsString()))) {
             component.setVisible(false);
         }
-    }
-
-    public static boolean isModelEmpty(IModel<String> model) {
-        return model == null || Strings.isNullOrEmpty(model.getObject());
     }
 
     public static void show(Component... components) {
