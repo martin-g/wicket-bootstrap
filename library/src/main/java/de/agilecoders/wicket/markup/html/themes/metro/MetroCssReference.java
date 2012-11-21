@@ -3,7 +3,7 @@ package de.agilecoders.wicket.markup.html.themes.metro;
 import de.agilecoders.wicket.markup.html.themes.bootstrap.BootstrapCssReference;
 
 /**
- * TODO: document
+ * A windows 8 inspired theme
  *
  * @author miha
  * @version 1.0

@@ -126,7 +126,6 @@ abstract class BasePage<T> extends GenericWebPage<T> {
                                                         new NavbarButton<BaseCssPage>(BaseCssPage.class, Model.of("Base CSS")),
                                                         new NavbarButton<ComponentsPage>(ComponentsPage.class, Model.of("Components")),
                                                         new NavbarButton<HomePage>(Scaffolding.class, Model.of("Scaffolding")),
-                                                        new NavbarButton<HomePage>(Javascript.class, Model.of("Javascript")),
                                                         newAddonsDropDownButton())
         );
 
@@ -155,8 +154,9 @@ abstract class BasePage<T> extends GenericWebPage<T> {
      */
     private Component newAddonsDropDownButton() {
         return new NavbarDropDownButton(Model.of("Addons"))
+                .addButton(new MenuPageButton<HomePage>(Javascript.class, Model.of("Javascript")))
                 .addButton(new MenuPageButton<DatePickerPage>(DatePickerPage.class, Model.of("DatePicker")).setIcon(new Icon(IconType.Time)))
-                .addButton(new MenuPageButton<IssuesPage>(IssuesPage.class, Model.of("Github Issues")).setIcon(new Icon(IconType.BarCode)))
+                .addButton(new MenuPageButton<IssuesPage>(IssuesPage.class, Model.of("Github Issues")).setIcon(new Icon(IconType.Book)))
                 .setIcon(IconType.ThLarge);
     }
 
