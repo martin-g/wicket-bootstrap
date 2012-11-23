@@ -64,6 +64,12 @@ public abstract class TypedAjaxButton extends AjaxButton implements BootstrapBut
         return this;
     }
 
+    public TypedAjaxButton setType(ButtonType buttonType) {
+        this.buttonBehavior.withType(buttonType);
+
+        return this;
+    }
+
     public void setInverted(final boolean inverted) {
         icon.setInverted(inverted);
     }

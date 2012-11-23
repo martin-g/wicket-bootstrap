@@ -104,7 +104,7 @@ public class Collapsible extends Panel {
      * @return initializer script
      */
     protected CharSequence createInitializerScript(final String markupId) {
-        return "$('#+" + markupId + "').collapse();";
+        return "$('#" + markupId + "').collapse();";
     }
 
     /**

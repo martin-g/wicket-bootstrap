@@ -32,4 +32,10 @@ public abstract class TypedAjaxFallbackButton extends AjaxFallbackButton impleme
 
         return this;
     }
+
+    public TypedAjaxFallbackButton setType(ButtonType buttonType) {
+        this.buttonBehavior.withType(buttonType);
+
+        return this;
+    }
 }

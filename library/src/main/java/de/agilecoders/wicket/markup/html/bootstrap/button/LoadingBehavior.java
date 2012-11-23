@@ -8,6 +8,9 @@ import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.behavior.AttributeAppender;
 import org.apache.wicket.model.IModel;
 
+import static de.agilecoders.wicket.markup.html.bootstrap.button.ButtonJqueryFunction.button;
+import static de.agilecoders.wicket.util.JQuery.$;
+
 /**
  * A {@code LoadingBehavior} that deactivates a button and shows a
  * loading message.
@@ -34,7 +37,7 @@ public class LoadingBehavior extends BootstrapJavascriptBehavior {
         super.bind(component);
 
         component.setOutputMarkupId(true);
-        component.add(new AttributeAppender("onclick", "$('#" + component.getMarkupId() + "').button('loading');"));
+        component.add(new AttributeAppender("onclick", $(component).chain(button("loading")).get()));
 
         this.component = component;
     }
@@ -63,7 +66,7 @@ public class LoadingBehavior extends BootstrapJavascriptBehavior {
         Preconditions.checkNotNull(component);
         Preconditions.checkNotNull(ajaxRequestTarget);
 
-        ajaxRequestTarget.appendJavaScript("$('#" + component.getMarkupId() + "').button('reset');");
+        ajaxRequestTarget.appendJavaScript($(component).chain(button("reset")).get());
     }
 
     /**
