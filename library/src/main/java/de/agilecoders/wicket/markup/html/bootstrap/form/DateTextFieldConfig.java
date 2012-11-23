@@ -6,7 +6,7 @@ import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
-import java.util.Objects;
+import org.apache.wicket.util.lang.Objects;
 
 /**
  * Configuration holder for all {@link DateTextField} configurations.
@@ -112,7 +112,7 @@ public final class DateTextFieldConfig extends AbstractConfig {
 
         @Override
         public boolean isDefaultValue(final Object value) {
-            return Objects.equals(value, defaultValue);
+            return Objects.equal(value, defaultValue);
         }
 
         @Override
