@@ -2,11 +2,11 @@ package de.agilecoders.wicket.markup.html.bootstrap.form;
 
 import com.google.common.base.Preconditions;
 import de.agilecoders.wicket.markup.html.bootstrap.common.AbstractConfig;
+
+import org.apache.wicket.util.lang.Objects;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
-
-import java.util.Objects;
 
 /**
  * Configuration holder for all {@link DateTextField} configurations.
@@ -112,7 +112,7 @@ public final class DateTextFieldConfig extends AbstractConfig {
 
         @Override
         public boolean isDefaultValue(final Object value) {
-            return Objects.equals(value, defaultValue);
+            return Objects.equal(value, defaultValue);
         }
 
         @Override
