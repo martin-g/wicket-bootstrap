@@ -1,6 +1,6 @@
 package de.agilecoders.wicket.markup.html.bootstrap.navbar;
 
-import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonList;
+import de.agilecoders.wicket.markup.html.bootstrap.common.Invertible;
 import de.agilecoders.wicket.markup.html.bootstrap.image.Icon;
 import de.agilecoders.wicket.markup.html.bootstrap.image.IconType;
 import org.apache.wicket.markup.ComponentTag;
@@ -15,23 +15,22 @@ import org.apache.wicket.model.Model;
  * add an {@link Icon}.
  *
  * @author miha
- * @version 1.0
  */
-public abstract class NavbarAjaxLink<T> extends org.apache.wicket.ajax.markup.html.AjaxLink<T> {
+public abstract class NavbarAjaxLink<T> extends org.apache.wicket.ajax.markup.html.AjaxLink<T> implements Invertible {
     private final Icon icon;
     private final Label label;
     private final IModel<IconType> iconTypeModel;
 
     /**
-     * Construct. Navbar ajax link with default component id for buttons ("button") and
+     * Construct. Navbar ajax link with default component id for navbar components ("component") and
      * an empty label.
      */
     public NavbarAjaxLink() {
-        this(ButtonList.getButtonMarkupId(), Model.of(""));
+        this(Model.of(""));
     }
 
     /**
-     * Construct. Navbar ajax link with default component id for buttons ("button") and
+     * Construct. Navbar ajax link with default component id for navbar components ("component") and
      * a specific label.
      *
      * @param label Label of link
@@ -54,6 +53,8 @@ public abstract class NavbarAjaxLink<T> extends org.apache.wicket.ajax.markup.ht
 
         this.label = new Label("label", label);
         this.label.setRenderBodyOnly(true);
+
+        add(this.icon, this.label);
     }
 
     /**
@@ -80,6 +81,11 @@ public abstract class NavbarAjaxLink<T> extends org.apache.wicket.ajax.markup.ht
         return this;
     }
 
+    @Override
+    public void setInverted(boolean inverted) {
+        icon.setInverted(inverted);
+    }
+
     /**
      * {@inheritDoc}
      */
@@ -95,14 +101,6 @@ public abstract class NavbarAjaxLink<T> extends org.apache.wicket.ajax.markup.ht
         }
 
         super.onComponentTag(tag);
-    }
-
-    @Override
-    protected void onConfigure() {
-        super.onConfigure();
-
-        add(icon);
-        add(label);
     }
 
 }

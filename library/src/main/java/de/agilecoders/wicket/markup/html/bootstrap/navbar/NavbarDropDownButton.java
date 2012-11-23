@@ -14,7 +14,12 @@ import org.apache.wicket.model.IModel;
  */
 public class NavbarDropDownButton extends DropDownButton {
 
-    public NavbarDropDownButton(IModel<String> model) {
+    /**
+     * Construct.
+     *
+     * @param model the label of this dropdown button
+     */
+    public NavbarDropDownButton(final IModel<String> model) {
         super(Navbar.COMPONENT_ID, model);
     }
 
