@@ -4,6 +4,7 @@ import de.agilecoders.wicket.markup.html.bootstrap.behavior.AssertTagNameBehavio
 import de.agilecoders.wicket.markup.html.references.BootstrapDatepickerJsReference;
 import de.agilecoders.wicket.markup.html.references.BootstrapDatepickerLangJsReference;
 import de.agilecoders.wicket.markup.html.references.BootstrapDatepickerReference;
+import de.agilecoders.wicket.util.JQuery;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
@@ -12,6 +13,8 @@ import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
 import org.apache.wicket.model.IModel;
 
 import java.util.Date;
+
+import static de.agilecoders.wicket.util.JQuery.$;
 
 /**
  * A TextField that is mapped to a <code>java.util.Date</code> object.
@@ -24,6 +27,7 @@ import java.util.Date;
  */
 public class DateTextField extends org.apache.wicket.extensions.markup.html.form.DateTextField {
     private static final long serialVersionUID = 3499287675713818823L;
+    private static final JqueryDatePickerFunction JQUERY_DATEPICKER = new JqueryDatePickerFunction();
 
     private final DateTextFieldConfig config;
 
@@ -107,9 +111,8 @@ public class DateTextField extends org.apache.wicket.extensions.markup.html.form
 
         response.render(CssHeaderItem.forReference(BootstrapDatepickerReference.INSTANCE));
 
-        final String language = config.getLanguage();
-        if (!"en".equals(language)) {
-            response.render(JavaScriptHeaderItem.forReference(new BootstrapDatepickerLangJsReference(language)));
+        if (!config.isDefaultLanguageSet()) {
+            response.render(JavaScriptHeaderItem.forReference(new BootstrapDatepickerLangJsReference(config.getLanguage())));
         } else {
             response.render(JavaScriptHeaderItem.forReference(BootstrapDatepickerJsReference.INSTANCE));
         }
@@ -123,7 +126,40 @@ public class DateTextField extends org.apache.wicket.extensions.markup.html.form
      * @return initializer script
      */
     protected CharSequence createScript(final DateTextFieldConfig config) {
-        return "$('#" + getMarkupId(true) + "').datepicker(" + config.toJsonString() + ")";
+        return $(this).chain(JQUERY_DATEPICKER.withConfig(config)).get();
     }
 
+    /**
+     * represents the jquery datepicker function.
+     */
+    private static final class JqueryDatePickerFunction extends JQuery.AbstractFunction {
+
+        /**
+         * Construct.
+         */
+        public JqueryDatePickerFunction() {
+            super("datepicker");
+        }
+
+        /**
+         * Construct.
+         */
+        public JqueryDatePickerFunction(final DateTextFieldConfig config) {
+            super("datepicker");
+
+            if (!config.isEmpty()) {
+                addParameter(config.toJsonString());
+            }
+        }
+
+        /**
+         * adds a special configuration json map.
+         *
+         * @param config the configuration of this datepicker instance
+         * @return this instance for chaining
+         */
+        public JqueryDatePickerFunction withConfig(final DateTextFieldConfig config) {
+            return new JqueryDatePickerFunction(config);
+        }
+    }
 }
