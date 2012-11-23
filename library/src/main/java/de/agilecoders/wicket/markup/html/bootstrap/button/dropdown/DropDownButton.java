@@ -21,6 +21,9 @@ import org.apache.wicket.markup.html.panel.PanelMarkupSourcingStrategy;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
+import static de.agilecoders.wicket.markup.html.bootstrap.button.DropDownJqueryFunction.dropdown;
+import static de.agilecoders.wicket.util.JQuery.$;
+
 /**
  * Use any button to trigger a dropdown menu by placing it within a .btn-group and providing the proper menu markup.
  *
@@ -36,6 +39,7 @@ public class DropDownButton extends AbstractLink implements Invertible {
     private final IModel<IconType> iconTypeModel;
     private final Component baseButton;
     private Icon icon;
+    private final String script;
 
     /**
      * Construct.
@@ -58,6 +62,7 @@ public class DropDownButton extends AbstractLink implements Invertible {
         super(markupId, model);
 
         this.iconTypeModel = iconTypeModel;
+        this.script = createInitializerScript();
 
         add(baseButton = createButton("btn", model, iconTypeModel));
         add(new CssClassNameAppender("btn-group"));
@@ -65,6 +70,13 @@ public class DropDownButton extends AbstractLink implements Invertible {
         add(buttonListView = newButtonList("buttons"));
 
         addButtonBehavior(buttonType, buttonSize);
+    }
+
+    /**
+     * @return new initializer script
+     */
+    protected String createInitializerScript() {
+        return $(".dropdown-toggle").chain(dropdown()).get();
     }
 
     /**
@@ -125,7 +137,7 @@ public class DropDownButton extends AbstractLink implements Invertible {
     public void renderHead(IHeaderResponse response) {
         super.renderHead(response);
 
-        response.render(OnDomReadyHeaderItem.forScript("$('.dropdown-toggle').dropdown()"));
+        response.render(OnDomReadyHeaderItem.forScript(script));
     }
 
     @Override

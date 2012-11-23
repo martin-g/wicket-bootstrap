@@ -1,138 +1,114 @@
 package de.agilecoders.wicket.markup.html.bootstrap.components;
 
+import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapJavascriptBehavior;
+import de.agilecoders.wicket.util.JQuery;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
-import org.apache.wicket.WicketRuntimeException;
-import org.apache.wicket.ajax.json.JSONException;
-import org.apache.wicket.ajax.json.JSONObject;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
 import org.apache.wicket.model.IModel;
-import org.apache.wicket.util.time.Duration;
 
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapJavascriptBehavior;
+import static de.agilecoders.wicket.markup.html.bootstrap.components.TooltipBehavior.TooltipJqueryFunction.tooltip;
+import static de.agilecoders.wicket.util.JQuery.$;
 
 /**
- * TODO: document
+ * Tooltips are an updated version of Jquery.tipsy, which don't rely on images,
+ * use CSS3 for animations, and data-attributes for local title storage.
  *
  * @author miha
  * @version 1.0
  */
 public class TooltipBehavior extends BootstrapJavascriptBehavior {
 
-    private boolean animate = false;
-    private Placement placement = Placement.Top;
-    private Trigger trigger = Trigger.Hover;
-    private Duration delay = Duration.NONE;
-    private boolean html = true;
-
     private final IModel<String> label;
+    private final TooltipConfig config;
 
-    public TooltipBehavior(IModel<String> label) {
+    /**
+     * Construct.
+     *
+     * @param label The tooltip text
+     */
+    public TooltipBehavior(final IModel<String> label) {
+        this(label, new TooltipConfig());
+    }
+
+    /**
+     * Construct.
+     *
+     * @param label  The tooltip text
+     * @param config configuration of tooltip
+     */
+    public TooltipBehavior(final IModel<String> label, final TooltipConfig config) {
         this.label = label;
+        this.config = config;
     }
 
     @Override
-    public void bind(Component component) {
+    public void detach(Component component) {
+        super.detach(component);
+
+        label.detach();
+    }
+
+    @Override
+    public void bind(final Component component) {
         super.bind(component);
 
         component.setOutputMarkupId(true);
-        addAttributes(component);
+        component.add(AttributeModifier.replace("rel", createRelAttribute()));
+        component.add(AttributeModifier.replace("title", label));
     }
 
-    protected void addAttributes(final Component component) {
-        //rel="tooltip" title="first tooltip"
-        component.add(AttributeModifier.replace("rel", "tooltip"));
-        if (label != null) {
-        	component.add(AttributeModifier.replace("title", label.getObject()));
-        }
+    /**
+     * @return the value of the "rel" attribute
+     */
+    protected String createRelAttribute() {
+        return "tooltip";
     }
 
     @Override
-    public void renderHead(Component component, IHeaderResponse headerResponse) {
+    public void renderHead(final Component component, final IHeaderResponse headerResponse) {
         super.renderHead(component, headerResponse);
 
-        headerResponse.render(OnDomReadyHeaderItem.forScript("$('#" + component.getMarkupId() + "')." + buildScript()));
+        headerResponse.render(OnDomReadyHeaderItem.forScript(createInitializerScript(component, config)));
     }
 
-    protected JSONObject createJsonObject() throws JSONException {
-        JSONObject json = new JSONObject();
+    /**
+     * createss an initializer script
+     *
+     * @param component The component where this behavior is assigned to.
+     * @param config    The current configuration
+     * @return new initializer script
+     */
+    protected CharSequence createInitializerScript(final Component component, final TooltipConfig config) {
+        return $(component).chain(tooltip(config)).get();
+    }
 
-        if (!html) { // default true, so only add if not default
-        	json.put("html", html);
+    /**
+     * A simple tooltip jquery function representation in java.
+     */
+    public static final class TooltipJqueryFunction extends JQuery.AbstractFunction {
+
+        /**
+         * helper method.
+         *
+         * @param config tooltip configuration
+         */
+        public static TooltipJqueryFunction tooltip(final TooltipConfig config) {
+            return new TooltipJqueryFunction(config);
         }
 
-        if (placement != null) {
-        	json.put("placement", placement.name().toLowerCase());
+        /**
+         * Construct.
+         *
+         * @param config tooltip configuration
+         */
+        private TooltipJqueryFunction(final TooltipConfig config) {
+            super("tooltip");
+
+            if (!config.isEmpty()) {
+                addParameter(config.toJsonString());
+            }
         }
-        if (delay != null) {
-        	json.put("delay", delay.getMilliseconds());
-        }
-        if (trigger != null) {
-        	json.put("trigger", trigger.name().toLowerCase());
-        }
-
-        if (!animate) { // default true, so only add if not default
-            json.put("animation", animate);
-        }
-
-        return json;
-    }
-
-    protected String buildScript() {
-        try {
-            return "tooltip(" + createJsonObject().toString() + ")";
-        } catch (JSONException e) {
-            throw new WicketRuntimeException(e);
-        }
-    }
-
-    public boolean isAnimated() {
-        return animate;
-    }
-
-    public TooltipBehavior animate(boolean animate) {
-        this.animate = animate;
-        return this;
-    }
-
-    public Placement placement() {
-        return placement;
-    }
-
-    public TooltipBehavior placement(Placement placement) {
-        this.placement = placement;
-        return this;
-    }
-
-    public Trigger trigger() {
-        return trigger;
-    }
-
-    public TooltipBehavior trigger(Trigger trigger) {
-        this.trigger = trigger;
-        return this;
-    }
-
-    public Duration delay() {
-        return delay;
-    }
-
-    public TooltipBehavior delay(Duration delay) {
-        this.delay = delay;
-        return this;
-    }
-
-    public TooltipBehavior html(boolean html) {
-        this.html = html;
-        return this;
-    }
-
-    public enum Trigger {
-        Click, Hover, Focus, Manual
-    }
-
-    public enum Placement {
-        Top, Bottom, Left, Right
     }
 }

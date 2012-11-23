@@ -4,12 +4,16 @@ import com.google.common.collect.Lists;
 import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonType;
 import de.agilecoders.wicket.markup.html.bootstrap.button.LoadingBehavior;
+import de.agilecoders.wicket.markup.html.bootstrap.button.TypedAjaxLink;
+import de.agilecoders.wicket.markup.html.bootstrap.components.PopoverBehavior;
+import de.agilecoders.wicket.markup.html.bootstrap.components.TooltipBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.tabs.AjaxLazyLoadTextContentTab;
 import de.agilecoders.wicket.markup.html.bootstrap.tabs.Collapsible;
 import de.agilecoders.wicket.markup.html.bootstrap.tabs.TextContentTab;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.extensions.markup.html.tabs.ITab;
+import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.util.time.Duration;
@@ -39,6 +43,24 @@ public class Javascript extends BasePage {
                 new AjaxLazyLoadTextContentTab(Model.of("Title 4"), Model.of("Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS."))),
                                                   Model.of(2));
         add(collapsible);
+
+        add(new Label("tooltip-top", Model.of("Tooltip on top")).add(new TooltipBehavior(Model.of("Tooltip on top"))));
+
+        add(new TypedAjaxLink("popover", ButtonType.Danger) {
+
+            @Override
+            protected void onInitialize() {
+                super.onInitialize();
+
+                add(new PopoverBehavior(Model.of("A Title"),
+                                        Model.of("And here's some \"amazing\" content. It's very engaging. right?")));
+            }
+
+            @Override
+            public void onClick(AjaxRequestTarget target) {
+                // nothing to do.
+            }
+        });
 
         add(new AjaxLink("loading") {
 
