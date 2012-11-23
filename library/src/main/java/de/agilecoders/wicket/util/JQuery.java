@@ -111,7 +111,7 @@ public final class JQuery implements IClusterable {
          * @param function     The function as string.
          * @param functionBody the function body as string
          */
-        public JavaScriptFunction(final IFunction function, final String functionBody) {
+        public JavaScriptFunction(final JavaScriptInlineFunction function, final String functionBody) {
             Preconditions.checkNotNull(function);
 
             this.function = function.build() + "{" + nullToEmpty(functionBody) + "}";
@@ -147,6 +147,19 @@ public final class JQuery implements IClusterable {
          */
         public static String toString(JavaScriptFunction value) {
             return value != null ? value.toString() : null;
+        }
+    }
+
+    /**
+     * A javascript inline function.
+     */
+    public static class JavaScriptInlineFunction extends AbstractFunction {
+
+        /**
+         * Construct.
+         */
+        protected JavaScriptInlineFunction() {
+            super("function");
         }
     }
 
