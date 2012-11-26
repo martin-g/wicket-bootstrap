@@ -1,5 +1,20 @@
 package de.agilecoders.wicket.samples.pages;
 
+import java.util.List;
+import java.util.Properties;
+
+import org.apache.wicket.Component;
+import org.apache.wicket.Page;
+import org.apache.wicket.markup.head.CssHeaderItem;
+import org.apache.wicket.markup.head.IHeaderResponse;
+import org.apache.wicket.markup.head.JavaScriptHeaderItem;
+import org.apache.wicket.markup.html.GenericWebPage;
+import org.apache.wicket.markup.html.WebMarkupContainer;
+import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.Model;
+import org.apache.wicket.request.mapper.parameter.PageParameters;
+import org.apache.wicket.util.string.StringValue;
+
 import de.agilecoders.wicket.Bootstrap;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.block.Code;
@@ -25,20 +40,6 @@ import de.agilecoders.wicket.samples.assets.base.FixBootstrapStylesCssResourceRe
 import de.agilecoders.wicket.samples.components.site.Footer;
 import de.agilecoders.wicket.settings.IBootstrapSettings;
 import de.agilecoders.wicket.settings.ITheme;
-import org.apache.wicket.Component;
-import org.apache.wicket.Page;
-import org.apache.wicket.markup.head.CssHeaderItem;
-import org.apache.wicket.markup.head.IHeaderResponse;
-import org.apache.wicket.markup.head.JavaScriptHeaderItem;
-import org.apache.wicket.markup.html.GenericWebPage;
-import org.apache.wicket.markup.html.WebMarkupContainer;
-import org.apache.wicket.model.IModel;
-import org.apache.wicket.model.Model;
-import org.apache.wicket.request.mapper.parameter.PageParameters;
-import org.apache.wicket.util.string.StringValue;
-
-import java.util.List;
-import java.util.Properties;
 
 /**
  * Base wicket-bootstrap {@link org.apache.wicket.Page}
@@ -156,7 +157,6 @@ abstract class BasePage<T> extends GenericWebPage<T> {
         return new NavbarDropDownButton(Model.of("Addons"))
                 .addButton(new MenuPageButton<HomePage>(Javascript.class, Model.of("Javascript")))
                 .addButton(new MenuPageButton<DatePickerPage>(DatePickerPage.class, Model.of("DatePicker")).setIcon(new Icon(IconType.Time)))
-                .addButton(new MenuPageButton<DatePickerPropertyModelPage>(DatePickerPropertyModelPage.class, Model.of("DatePicker & PropertyModel")).setIcon(new Icon(IconType.Flag)))
                 .addButton(new MenuPageButton<IssuesPage>(IssuesPage.class, Model.of("Github Issues")).setIcon(new Icon(IconType.Book)))
                 .setIcon(IconType.ThLarge);
     }
