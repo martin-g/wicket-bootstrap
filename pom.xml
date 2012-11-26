@@ -307,6 +307,7 @@
                 <artifactId>maven-site-plugin</artifactId>
                 <version>3.1</version>
                 <configuration>
+                    <skipDeploy>true</skipDeploy>
                     <reportPlugins>
                         <plugin>
                             <groupId>org.apache.maven.plugins</groupId>
