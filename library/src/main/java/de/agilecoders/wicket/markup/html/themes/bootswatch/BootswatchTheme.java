@@ -22,6 +22,7 @@ public class BootswatchTheme extends Theme {
     public static final BootswatchTheme SPRUCE = new BootswatchTheme(BootswatchCssReference.SPRUCE);
     public static final BootswatchTheme SUPERHERO = new BootswatchTheme(BootswatchCssReference.SUPERHERO);
     public static final BootswatchTheme UNITED = new BootswatchTheme(BootswatchCssReference.UNITED);
+    public static final BootswatchTheme COSMO = new BootswatchTheme(BootswatchCssReference.COSMO);
 
     /**
      * Construct.

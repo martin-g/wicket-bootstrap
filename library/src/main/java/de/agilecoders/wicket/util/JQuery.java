@@ -145,6 +145,31 @@ public final class JQuery implements IClusterable {
     }
 
     /**
+     * java abstraction of jquery each function
+     */
+    public static final class EachJqueryFunction extends AbstractFunction {
+
+        /**
+         * creates a new {@link EachJqueryFunction} instance that holds a given inline function.
+         *
+         * @param function The inline function to execute for each element
+         * @return new {@link EachJqueryFunction} instance
+         */
+        public static EachJqueryFunction each(final JavaScriptInlineFunction function) {
+            return new EachJqueryFunction(function);
+        }
+
+        /**
+         * Construct.
+         */
+        protected EachJqueryFunction(final JavaScriptInlineFunction function) {
+            super("each");
+
+            addParameter(toParameterValue(function));
+        }
+    }
+
+    /**
      * A simple implementation of {@link IFunction} that allows you to chain
      * function parameters in a javascript safe way.
      */
@@ -223,7 +248,7 @@ public final class JQuery implements IClusterable {
          * @return value as string
          */
         protected final String toParameterValue(final JavaScriptInlineFunction value) {
-            return JavaScriptInlineFunction.toString(value);
+            return value != null ? value.build() : "null";
         }
 
         /**

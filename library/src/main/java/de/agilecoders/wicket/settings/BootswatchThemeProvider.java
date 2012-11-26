@@ -22,7 +22,7 @@ public class BootswatchThemeProvider extends DefaultThemeProvider {
             BootswatchTheme.READABLE, BootswatchTheme.SIMPLEX,
             BootswatchTheme.SLATE, BootswatchTheme.SPACELAB,
             BootswatchTheme.SPRUCE, BootswatchTheme.SUPERHERO,
-            BootswatchTheme.UNITED);
+            BootswatchTheme.UNITED, BootswatchTheme.COSMO);
     }
 
 }
