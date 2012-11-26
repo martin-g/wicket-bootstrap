@@ -1,12 +1,5 @@
 package de.agilecoders.wicket.markup.html.bootstrap.button;
 
-/**
- * TODO: document
- *
- * @author miha
- * @version 1.0
- */
-
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameProvider;
 

@@ -2,7 +2,6 @@ package de.agilecoders.wicket.util;
 
 import com.google.common.base.Function;
 import com.google.common.base.Joiner;
-import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
 import org.apache.wicket.Component;
 import org.apache.wicket.util.io.IClusterable;
@@ -100,53 +99,73 @@ public final class JQuery implements IClusterable {
     }
 
     /**
-     * simple class to represent a jquery function.
+     * simple class to represent a javascript function.
      */
-    public static final class JavaScriptFunction implements IClusterable {
-        private final String function;
+    public static final class JavaScriptInlineFunction extends AbstractFunction {
+        private final String functionBody;
 
         /**
          * Construct.
          *
-         * @param function     The function as string.
          * @param functionBody the function body as string
          */
-        public JavaScriptFunction(final IFunction function, final String functionBody) {
-            Preconditions.checkNotNull(function);
+        public JavaScriptInlineFunction(final String functionBody) {
+            super("function");
 
-            this.function = function.build() + "{" + nullToEmpty(functionBody) + "}";
+            this.functionBody = nullToEmpty(functionBody);
         }
 
-        /**
-         * Construct.
-         *
-         * @param function The function as string.
-         */
-        public JavaScriptFunction(final String function) {
-            this.function = "function(){" + nullToEmpty(function) + "}";
+        @Override
+        public String build() {
+            return super.build() + "{" + nullToEmpty(functionBody) + "}";
         }
 
         @Override
         public boolean equals(Object o) {
-            return (o instanceof JavaScriptFunction || o instanceof String) && function.equals(o);
+            return (o instanceof JavaScriptInlineFunction || o instanceof String) && functionBody.equals(o);
         }
 
         @Override
         public int hashCode() {
-            return function.hashCode();
+            return functionBody.hashCode();
         }
 
         @Override
         public String toString() {
-            return function;
+            return functionBody;
         }
 
         /**
          * @param value The value to stringify
          * @return string representation of given value
          */
-        public static String toString(JavaScriptFunction value) {
-            return value != null ? value.toString() : null;
+        public static String toString(final JavaScriptInlineFunction value) {
+            return value != null ? value.toString() : "null";
+        }
+    }
+
+    /**
+     * java abstraction of jquery each function
+     */
+    public static final class EachJqueryFunction extends AbstractFunction {
+
+        /**
+         * creates a new {@link EachJqueryFunction} instance that holds a given inline function.
+         *
+         * @param function The inline function to execute for each element
+         * @return new {@link EachJqueryFunction} instance
+         */
+        public static EachJqueryFunction each(final JavaScriptInlineFunction function) {
+            return new EachJqueryFunction(function);
+        }
+
+        /**
+         * Construct.
+         */
+        protected EachJqueryFunction(final JavaScriptInlineFunction function) {
+            super("each");
+
+            addParameter(toParameterValue(function));
         }
     }
 
@@ -213,8 +232,8 @@ public final class JQuery implements IClusterable {
                 return toParameterValue((Boolean) value);
             } else if (value instanceof Float) {
                 return toParameterValue((Float) value);
-            } else if (value instanceof JavaScriptFunction) {
-                return toParameterValue((JavaScriptFunction) value);
+            } else if (value instanceof JavaScriptInlineFunction) {
+                return toParameterValue((JavaScriptInlineFunction) value);
             } else if (value instanceof Duration) {
                 return String.valueOf(((Duration) value).getMilliseconds());
             }
@@ -228,8 +247,8 @@ public final class JQuery implements IClusterable {
          * @param value The value to transform
          * @return value as string
          */
-        protected final String toParameterValue(final JavaScriptFunction value) {
-            return value != null ? JavaScriptFunction.toString(value) : "null";
+        protected final String toParameterValue(final JavaScriptInlineFunction value) {
+            return value != null ? value.build() : "null";
         }
 
         /**

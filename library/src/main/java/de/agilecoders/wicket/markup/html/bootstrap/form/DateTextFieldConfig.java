@@ -2,6 +2,7 @@ package de.agilecoders.wicket.markup.html.bootstrap.form;
 
 import com.google.common.base.Preconditions;
 import de.agilecoders.wicket.markup.html.bootstrap.common.AbstractConfig;
+import de.agilecoders.wicket.util.Dates;
 import org.apache.wicket.util.lang.Objects;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
@@ -151,7 +152,7 @@ public final class DateTextFieldConfig extends AbstractConfig {
      * @return the date format as string
      */
     public String getFormat() {
-        return getString(Key.Format);
+        return Dates.toJavaDateFormat(getString(Key.Format));
     }
 
     /**
@@ -220,13 +221,13 @@ public final class DateTextFieldConfig extends AbstractConfig {
     }
 
     /**
-     * The date format, combination of d, dd, m, mm, M, MM, yy, yyyy.
+     * The date format (java style), combination of d, dd, m, mm, M, MM, yy, yyyy.
      *
-     * @param value The date format value
+     * @param value The date format value (java style)
      * @return this instance for chaining
      */
     public DateTextFieldConfig withFormat(final String value) {
-        put(Key.Format, value.toLowerCase());
+        put(Key.Format, Dates.toJavaScriptDateFormat(value));
         return this;
     }
 

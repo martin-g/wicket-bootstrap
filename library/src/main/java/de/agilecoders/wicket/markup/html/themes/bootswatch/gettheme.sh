@@ -11,7 +11,7 @@ downloadTheme() {
     wget "http://bootswatch.com/$theme/bootstrap.css" -O css/bootstrap.$theme.css
 }
 
-for theme in amelia cerulean cyborg journal readable simplex slate spacelab spruce superhero united
+for theme in amelia cerulean cyborg journal readable simplex slate spacelab spruce superhero united cosmo
 do
     downloadTheme $theme
 done

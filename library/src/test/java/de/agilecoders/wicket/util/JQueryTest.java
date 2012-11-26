@@ -24,7 +24,7 @@ public class JQueryTest {
 
     @Test
     public void jsFunctionIsAddedToJqueryCall() {
-        assertThat($(".selector ul li.classname").chain(new HelperFunction("setTimeout").addParam(new JQuery.JavaScriptFunction("alert('Hello');")).addParam(Duration.seconds(1))).get(),
+        assertThat($(".selector ul li.classname").chain(new HelperFunction("setTimeout").addParam(new JQuery.JavaScriptInlineFunction("alert('Hello');")).addParam(Duration.seconds(1))).get(),
                    is(equalTo("$('.selector ul li.classname').setTimeout(function(){alert('Hello');},1000);")));
     }
 
