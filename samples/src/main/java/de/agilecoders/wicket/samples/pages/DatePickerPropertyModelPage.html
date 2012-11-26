@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+    <head>
+        <meta charset="utf-8"/>
+        <title>DatePickerPropertyModelPage</title>
+    </head>
+    <body>
+        <wicket:extend>
+            <header class="jumbotron subhead" id="overview">
+                <div class="container">
+                    <h1>DatePickerPropertyModelPage</h1>
+
+                    <p class="lead">DateTextField does not correctly work with (Compound)PropertyModel...</p>
+                </div>
+            </header>
+
+
+            <div class="container">
+
+                <div class="row">
+                    <div class="span3 bs-docs-sidebar">
+                        <ul wicket:id="navigation" class="nav nav-list bs-docs-sidenav">
+                            <li><a href="#datepicker"><i class="icon-chevron-right"></i> DatePicker</a></li>
+                        </ul>
+                    </div>
+                    <div class="span9">
+
+                        <section id="datepicker">
+                            <div class="page-header">
+                                <h1>DatePicker</h1>
+                            </div>
+                            <div class="bs-docs-example">
+                                <form wicket:id="testform">
+                                	<input wicket:id="dueDate">
+                                	<br>
+                                	<input type="submit" value="Submit" wicket:id="submit">
+                                </form>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </wicket:extend>
+    </body>
+</html>
