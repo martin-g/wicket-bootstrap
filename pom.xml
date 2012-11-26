@@ -9,7 +9,7 @@
 
     <groupId>de.agilecoders.wicket</groupId>
     <artifactId>bootstrap-parent</artifactId>
-    <version>0.7.2</version>
+    <version>0.7.3-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>bootstrap-parent</name>
     <description>wicket with twitter bootstrap integration</description>
