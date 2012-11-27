@@ -8,7 +8,10 @@ import org.apache.wicket.model.Model;
 import org.apache.wicket.util.tester.TagTester;
 import org.junit.Test;
 
-import static junit.framework.Assert.assertEquals;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.is;
+
 
 /**
  * Tests the {@link CssClassNameAppender}.
@@ -80,6 +83,6 @@ public class CssClassNameAppenderTest extends WicketApplicationTest {
         tester().startComponentInPage(component);
         TagTester tester = tester().getTagByWicketId("id");
 
-        assertEquals(tester.getAttribute("class"), classNames);
+        assertThat(tester.getAttribute("class"), is(equalTo(classNames)));
     }
 }

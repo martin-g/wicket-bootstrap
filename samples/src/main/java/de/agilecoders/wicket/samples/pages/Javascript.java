@@ -5,11 +5,16 @@ import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonType;
 import de.agilecoders.wicket.markup.html.bootstrap.button.LoadingBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.button.TypedAjaxLink;
+import de.agilecoders.wicket.markup.html.bootstrap.button.dropdown.DropDownButton;
+import de.agilecoders.wicket.markup.html.bootstrap.button.dropdown.MenuPageButton;
 import de.agilecoders.wicket.markup.html.bootstrap.components.PopoverBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.components.TooltipBehavior;
+import de.agilecoders.wicket.markup.html.bootstrap.image.IconType;
+import de.agilecoders.wicket.markup.html.bootstrap.navbar.NavbarAjaxLink;
 import de.agilecoders.wicket.markup.html.bootstrap.tabs.AjaxLazyLoadTextContentTab;
 import de.agilecoders.wicket.markup.html.bootstrap.tabs.Collapsible;
 import de.agilecoders.wicket.markup.html.bootstrap.tabs.TextContentTab;
+import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.extensions.markup.html.tabs.ITab;
@@ -83,6 +88,26 @@ public class Javascript extends BasePage {
                 LoadingBehavior.reset(this, target);
             }
         });
+
+        // issue #89
+        add(newDropDown("dropdown"));
+    }
+
+    private Component newDropDown(String markupId) {
+        final DropDownButton button = new DropDownButton(markupId, Model.of("Dropdown (#89)"), Model.of(IconType.Bookmark));
+        button.addButtons(
+                new MenuPageButton<Javascript>(Javascript.class).setLabel(Model.of("Link")),
+                new NavbarAjaxLink<String>("button", Model.of("Ajax Link")) {
+                    @Override
+                    public void onClick(AjaxRequestTarget target) {
+                        button.appendToggleMenuScript(target);
+
+                        target.appendJavaScript("alert('clicked');");
+                    }
+                }
+        );
+
+        return button;
     }
 
     @Override

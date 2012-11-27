@@ -9,7 +9,9 @@ import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonType;
 import de.agilecoders.wicket.markup.html.bootstrap.common.Invertible;
 import de.agilecoders.wicket.markup.html.bootstrap.image.Icon;
 import de.agilecoders.wicket.markup.html.bootstrap.image.IconType;
+import de.agilecoders.wicket.util.Components;
 import org.apache.wicket.Component;
+import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
@@ -28,7 +30,6 @@ import static de.agilecoders.wicket.util.JQuery.$;
  * Use any button to trigger a dropdown menu by placing it within a .btn-group and providing the proper menu markup.
  *
  * @author miha
- * @version 1.0
  */
 public class DropDownButton extends AbstractLink implements Invertible {
 
@@ -38,8 +39,9 @@ public class DropDownButton extends AbstractLink implements Invertible {
     private final ButtonList buttonListView;
     private final IModel<IconType> iconTypeModel;
     private final Component baseButton;
-    private Icon icon;
     private final String script;
+
+    private Icon icon; // TODO: should be immutable
 
     /**
      * Construct.
@@ -65,9 +67,10 @@ public class DropDownButton extends AbstractLink implements Invertible {
         this.script = createInitializerScript();
 
         add(baseButton = createButton("btn", model, iconTypeModel));
-        add(new CssClassNameAppender("btn-group"));
-        add(new BootstrapResourcesBehavior());
         add(buttonListView = newButtonList("buttons"));
+
+        add(new BootstrapResourcesBehavior());
+        add(new CssClassNameAppender("dropdown"));
 
         addButtonBehavior(buttonType, buttonSize);
     }
@@ -76,7 +79,16 @@ public class DropDownButton extends AbstractLink implements Invertible {
      * @return new initializer script
      */
     protected String createInitializerScript() {
-        return $(".dropdown-toggle").chain(dropdown()).get();
+        return $(this, ".dropdown-toggle").chain(dropdown()).get();
+    }
+
+    /**
+     * appends a toggle menu script to a given {@link AjaxRequestTarget}.
+     *
+     * @param target the current target
+     */
+    public final void appendToggleMenuScript(final AjaxRequestTarget target) {
+        target.appendJavaScript($(this, ".dropdown-toggle").chain(dropdown("toggle")).get());
     }
 
     /**
@@ -85,7 +97,7 @@ public class DropDownButton extends AbstractLink implements Invertible {
      * @param iconType The {@link IconType} of the icon
      * @return this element instance
      */
-    public final DropDownButton setIcon(IconType iconType) {
+    public final DropDownButton setIcon(final IconType iconType) {
         iconTypeModel.setObject(iconType);
         return this;
     }
@@ -153,11 +165,11 @@ public class DropDownButton extends AbstractLink implements Invertible {
         baseButton.add(new ButtonBehavior(buttonType, buttonSize));
     }
 
-    public DropDownButton addButton(AbstractLink button) {
+    public DropDownButton addButton(final AbstractLink button) {
         return addButtons(button);
     }
 
-    public DropDownButton addButtons(AbstractLink... buttons) {
+    public DropDownButton addButtons(final AbstractLink... buttons) {
         buttonListView.addButtons(buttons);
 
         return this;
@@ -170,19 +182,19 @@ public class DropDownButton extends AbstractLink implements Invertible {
         return buttonList;
     }
 
-    public DropDownButton setDropUp(boolean dropUp) {
+    public DropDownButton setDropUp(final boolean dropUp) {
         this.dropUp.setObject(dropUp);
 
         return this;
     }
 
-    public DropDownButton setSize(ButtonSize buttonSize) {
+    public DropDownButton setSize(final ButtonSize buttonSize) {
         this.buttonSize.setObject(buttonSize);
 
         return this;
     }
 
-    public DropDownButton setType(ButtonType buttonType) {
+    public DropDownButton setType(final ButtonType buttonType) {
         this.buttonType.setObject(buttonType);
 
         return this;
@@ -194,8 +206,8 @@ public class DropDownButton extends AbstractLink implements Invertible {
     }
 
     @Override
-    protected void onComponentTag(ComponentTag tag) {
-        if (!"div".equalsIgnoreCase(tag.getName())) {
+    protected void onComponentTag(final ComponentTag tag) {
+        if (!Components.hasTagName(tag, "div", "li")) {
             tag.setName("div");
         }
 
@@ -203,7 +215,7 @@ public class DropDownButton extends AbstractLink implements Invertible {
     }
 
     @Override
-    public void setInverted(boolean inverted) {
+    public void setInverted(final boolean inverted) {
         icon.setInverted(inverted);
     }
 }
