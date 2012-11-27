@@ -10,45 +10,99 @@ import org.apache.wicket.markup.MarkupException;
 import java.util.Set;
 
 /**
- * TODO: document
+ * Helper class for components.
  *
  * @author miha
- * @version 1.0
  */
 public final class Components {
 
+    /**
+     * checks if given tag has one of given tag names.
+     *
+     * @param tag      The component tag
+     * @param tagNames the names that at least one must match
+     * @return true if given tag has one of given tag names.
+     */
+    public static boolean hasTagName(final ComponentTag tag, String... tagNames) {
+        return hasTagName(tag, Sets.newHashSet(tagNames));
+    }
+
+    /**
+     * checks if given tag has one of given tag names.
+     *
+     * @param tag      The component tag
+     * @param tagNames the names that at least one must match
+     * @return true if given tag has one of given tag names.
+     */
+    public static boolean hasTagName(final ComponentTag tag, Set<? extends String> tagNames) {
+        if (tagNames != null) {
+            for (String tagName : tagNames) {
+                if (tag.getName().equalsIgnoreCase(tagName)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    /**
+     * checks if given tag has one of given tag names else a {@link MarkupException} will be thrown.
+     *
+     * @param component The component
+     * @param tag       The component tag
+     * @param tagNames  the names that at least one must match
+     * @throws MarkupException if given tag has none of given tag names
+     */
     public static void assertTag(final Component component, final ComponentTag tag, final String... tagNames) {
         assertTag(component, tag, Sets.newHashSet(tagNames));
     }
 
+    /**
+     * checks if given tag has one of given tag names else a {@link MarkupException} will be thrown.
+     *
+     * @param component The component
+     * @param tag       The component tag
+     * @param tagNames  the names that at least one must match
+     * @throws MarkupException if given tag has none of given tag names
+     */
     public static void assertTag(Component component, ComponentTag tag, Set<? extends String> tagNames) {
-        boolean found = false;
-        for (String tagName : tagNames) {
-            if (tag.getName().equalsIgnoreCase(tagName)) {
-                found = true;
-                break;
-            }
-        }
-
-        if (!found) {
+        if (!hasTagName(tag, tagNames)) {
             throw createMarkupException(component, tag, tagNames);
         }
     }
 
-    private static MarkupException createMarkupException(Component component, ComponentTag tag, Set<? extends String> tagNames) {
+    /**
+     * Creates a new {@link MarkupException} instance with given values as message.
+     *
+     * @param component The component
+     * @param tag       The component tag
+     * @param tagNames  the names that at least one must match
+     * @return new {@link MarkupException}
+     */
+    private static MarkupException createMarkupException(final Component component, final ComponentTag tag, final Set<? extends String> tagNames) {
         String msg = String.format("Component [%s] (path = [%s]) must be applied to a tag of type [%s], not: %s",
                                    component.getId(), component.getPath(), Joiner.on(',').join(tagNames), tag.toUserDebugString());
 
         throw new MarkupException(component.getMarkup().getMarkupResourceStream(), msg);
     }
 
-    public static void hideIfModelIsEmpty(Component component) {
+    /**
+     * checks given component' default model, if it's empty or null the component will be hidden.
+     *
+     * @param component component to check
+     */
+    public static void hideIfModelIsEmpty(final Component component) {
         if (component != null && (component.getDefaultModel() == null || component.getDefaultModelObject() == null ||
                                   Strings.isNullOrEmpty(component.getDefaultModelObjectAsString()))) {
             component.setVisible(false);
         }
     }
 
+    /**
+     * sets all given components visible
+     *
+     * @param components The components to show
+     */
     public static void show(Component... components) {
         if (components != null) {
             for (Component component : components) {

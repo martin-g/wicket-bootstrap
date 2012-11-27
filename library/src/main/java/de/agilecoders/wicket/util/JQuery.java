@@ -18,6 +18,7 @@ import static com.google.common.base.Strings.nullToEmpty;
  */
 public final class JQuery implements IClusterable {
     private static final Joiner FUNCTION_JOINER = Joiner.on('.').skipNulls();
+    private static final Joiner SELECTOR_JOINER = Joiner.on(' ').skipNulls();
 
     /**
      * Function that maps an {@link IFunction} to its string representation.
@@ -47,6 +48,23 @@ public final class JQuery implements IClusterable {
      */
     public static JQuery $(final Component component) {
         return $("#" + component.getMarkupId(true));
+    }
+
+    /**
+     * helper method to allow a jquery like code style
+     *
+     * @param component          The markup id of given component is used as jquery selector
+     * @param additionalSelector an additional initial selector
+     * @return new Jquery instance
+     */
+    public static JQuery $(final Component component, final String... additionalSelector) {
+        final List<String> selector = Lists.newArrayList("#" + component.getMarkupId(true));
+
+        if (additionalSelector != null) {
+            selector.addAll(Lists.newArrayList(additionalSelector));
+        }
+
+        return $(SELECTOR_JOINER.join(selector));
     }
 
     private final String selector;

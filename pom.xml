@@ -9,7 +9,7 @@
 
     <groupId>de.agilecoders.wicket</groupId>
     <artifactId>bootstrap-parent</artifactId>
-    <version>0.6.8-SNAPSHOT</version>
+    <version>0.7.3-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>bootstrap-parent</name>
     <description>wicket with twitter bootstrap integration</description>
@@ -50,16 +50,16 @@
 
         <com.google.guava.version>13.0.1</com.google.guava.version>
         <javax.javaee-web-api.version>6.0</javax.javaee-web-api.version>
-        <junit.version>4.10</junit.version>
-        <mockito.version>1.9.5-rc1</mockito.version>
-        <slf4j.version>1.7.1</slf4j.version>
+        <junit.version>4.11</junit.version>
+        <mockito.version>1.9.5</mockito.version>
+        <slf4j.version>1.7.2</slf4j.version>
         <wicket.version>6.3.0</wicket.version>
         <versions-maven-plugin.version>1.3.1</versions-maven-plugin.version>
         <servlet-api.version>3.0.1</servlet-api.version>
         <rhino.version>1.7R4</rhino.version>
         <doxia.version>1.0</doxia.version>
         <lesscss-engine.version>1.3.0</lesscss-engine.version>
-        <org.codehaus.jackson.version>1.9.9</org.codehaus.jackson.version>
+        <org.codehaus.jackson.version>1.9.11</org.codehaus.jackson.version>
         <joda-time.version>2.1</joda-time.version>
         <hamcrest.version>1.3</hamcrest.version>
     </properties>
@@ -302,64 +302,6 @@
         </testResources>
 
         <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-site-plugin</artifactId>
-                <version>3.1</version>
-                <configuration>
-                    <reportPlugins>
-                        <plugin>
-                            <groupId>org.apache.maven.plugins</groupId>
-                            <artifactId>maven-project-info-reports-plugin</artifactId>
-                            <version>2.5.1</version>
-                            <scope>test</scope>
-                            <reportSets>
-                                <reportSet>
-                                    <reports>
-                                        <report>index</report>
-                                        <report>dependencies</report>
-                                        <report>issue-tracking</report>
-                                        <report>project-team</report>
-                                        <report>license</report>
-                                        <report>scm</report>
-                                    </reports>
-                                </reportSet>
-                            </reportSets>
-                        </plugin>
-                        <plugin>
-                            <groupId>org.apache.maven.plugins</groupId>
-                            <artifactId>maven-javadoc-plugin</artifactId>
-                            <version>2.8</version>
-                            <scope>test</scope>
-                        </plugin>
-                    </reportPlugins>
-                </configuration>
-                <executions>
-                    <execution>
-                        <phase>deploy</phase>
-                        <goals>
-                            <goal>site</goal>
-                            <goal>deploy</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>com.github.github</groupId>
-                <artifactId>site-maven-plugin</artifactId>
-                <version>0.5</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>site</goal>
-                        </goals>
-                        <phase>site</phase>
-                        <configuration>
-                            <message>update maven-site</message>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
