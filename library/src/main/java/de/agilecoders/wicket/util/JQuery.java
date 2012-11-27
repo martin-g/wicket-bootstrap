@@ -140,7 +140,13 @@ public final class JQuery implements IClusterable {
 
         @Override
         public boolean equals(Object o) {
-            return (o instanceof JavaScriptInlineFunction || o instanceof String) && functionBody.equals(o);
+            if (o instanceof JavaScriptInlineFunction) {
+                return functionBody.equals(((JavaScriptInlineFunction) o).functionBody);
+            } else if (o instanceof String) {
+                return functionBody.equals(o);
+            }
+
+            return false;
         }
 
         @Override

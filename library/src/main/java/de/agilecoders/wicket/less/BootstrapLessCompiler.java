@@ -1,4 +1,4 @@
-package de.agilecoders.wicket.util;
+package de.agilecoders.wicket.less;
 
 import com.asual.lesscss.LessEngine;
 import com.asual.lesscss.LessException;
@@ -6,8 +6,6 @@ import com.google.common.base.Joiner;
 import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
 import de.agilecoders.wicket.Bootstrap;
-import de.agilecoders.wicket.less.LessCompilable;
-import de.agilecoders.wicket.less.Resource;
 import de.agilecoders.wicket.settings.IBootstrapSettings;
 import org.apache.wicket.Application;
 import org.apache.wicket.WicketRuntimeException;

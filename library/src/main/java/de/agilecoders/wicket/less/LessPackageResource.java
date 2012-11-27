@@ -2,8 +2,6 @@ package de.agilecoders.wicket.less;
 
 import de.agilecoders.wicket.Bootstrap;
 import de.agilecoders.wicket.settings.IBootstrapLessCompilerSettings;
-import de.agilecoders.wicket.util.BootstrapLessCompiler;
-import de.agilecoders.wicket.util.IBootstrapLessCompiler;
 import org.apache.wicket.Application;
 import org.apache.wicket.WicketRuntimeException;
 import org.apache.wicket.request.resource.CssPackageResource;

@@ -6,6 +6,7 @@ import com.google.common.collect.Sets;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.MarkupException;
+import org.apache.wicket.util.lang.Args;
 
 import java.util.Set;
 
@@ -15,6 +16,13 @@ import java.util.Set;
  * @author miha
  */
 public final class Components {
+
+    /**
+     * Construct.
+     */
+    private Components() {
+        throw new UnsupportedOperationException();
+    }
 
     /**
      * checks if given tag has one of given tag names.
@@ -35,6 +43,8 @@ public final class Components {
      * @return true if given tag has one of given tag names.
      */
     public static boolean hasTagName(final ComponentTag tag, Set<? extends String> tagNames) {
+        Args.notNull(tag, "tag");
+
         if (tagNames != null) {
             for (String tagName : tagNames) {
                 if (tag.getName().equalsIgnoreCase(tagName)) {
@@ -66,6 +76,8 @@ public final class Components {
      * @throws MarkupException if given tag has none of given tag names
      */
     public static void assertTag(Component component, ComponentTag tag, Set<? extends String> tagNames) {
+        Args.notNull(component, "component");
+
         if (!hasTagName(tag, tagNames)) {
             throw createMarkupException(component, tag, tagNames);
         }

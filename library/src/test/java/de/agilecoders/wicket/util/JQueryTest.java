@@ -1,20 +1,50 @@
 package de.agilecoders.wicket.util;
 
+import de.agilecoders.wicket.test.TestCategory;
 import org.apache.wicket.util.time.Duration;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
 import static de.agilecoders.wicket.util.JQuery.$;
+import static de.agilecoders.wicket.util.JQuery.EachJqueryFunction.each;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.not;
 
 /**
  * Tests the {@link JQuery} class
  *
  * @author miha
- * @version 1.0
  */
+@Category(TestCategory.UnitTest.class)
 public class JQueryTest {
+
+    @Test
+    public void eachIsAddedToJqueryCall() {
+        assertThat($(".selector ul li.classname").chain(each(new JQuery.JavaScriptInlineFunction("alert('body');"))).get(),
+                   is(equalTo("$('.selector ul li.classname').each(function(){alert('body');});")));
+    }
+
+    @Test
+    public void twoDifferentInstancesWithSameBodyAreEqual() {
+        JQuery.JavaScriptInlineFunction funcA = new JQuery.JavaScriptInlineFunction("body");
+        JQuery.JavaScriptInlineFunction funcB = new JQuery.JavaScriptInlineFunction("bo" + "dy");
+
+        assertThat(funcA.equals(funcB), is(equalTo(true)));
+        assertThat(funcA.equals("body"), is(equalTo(true)));
+        assertThat(funcA.hashCode(), is(equalTo(funcB.hashCode())));
+    }
+
+    @Test
+    public void twoDifferentInstancesWithDifferentBodiesAreUnequal() {
+        JQuery.JavaScriptInlineFunction funcA = new JQuery.JavaScriptInlineFunction("body1");
+        JQuery.JavaScriptInlineFunction funcB = new JQuery.JavaScriptInlineFunction("body2");
+
+        assertThat(funcA.equals(funcB), is(equalTo(false)));
+        assertThat(funcA.equals("body2"), is(equalTo(false)));
+        assertThat(funcA.hashCode(), is(not(equalTo(funcB.hashCode()))));
+    }
 
     @Test
     public void selectorIsAddedToJqueryCall() {

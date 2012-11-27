@@ -7,10 +7,12 @@ import org.apache.wicket.model.IModel;
  * helper class for {@link org.apache.wicket.model.IModel} handling.
  *
  * @author miha
- * @version 1.0
  */
 public final class Models {
 
+    /**
+     * Construct.
+     */
     private Models() {
         throw new UnsupportedOperationException();
     }
