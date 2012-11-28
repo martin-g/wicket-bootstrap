@@ -17,16 +17,19 @@
 package de.agilecoders.wicket.markup.html.bootstrap.behavior;
 
 import de.agilecoders.wicket.WicketApplicationTest;
+import de.agilecoders.wicket.test.IntegrationTest;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.util.tester.TagTester;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
 import static junit.framework.Assert.assertEquals;
 
 /**
  * Tests for CssClassNameRemover
  */
+@Category(IntegrationTest.class)
 public class CssClassNameRemoverTest extends WicketApplicationTest {
 
     private Component component;

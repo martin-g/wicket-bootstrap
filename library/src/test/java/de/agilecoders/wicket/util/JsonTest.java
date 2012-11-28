@@ -1,9 +1,11 @@
 package de.agilecoders.wicket.util;
 
 import com.google.common.collect.Maps;
+import de.agilecoders.wicket.test.TestCategory;
 import org.codehaus.jackson.JsonNode;
 import org.codehaus.jackson.node.ObjectNode;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
 import java.util.Map;
 
@@ -17,6 +19,7 @@ import static org.hamcrest.Matchers.is;
  *
  * @author miha
  */
+@Category(TestCategory.UnitTest.class)
 public class JsonTest {
     private static final String JSON_STRING = "{\"\":null,\"1\":\"value2\",\"3\":true,\"double\":1.2,\"key\":\"value\"}";
     private static final String NONSTANDARD_JSON_STRING = "{\"\":null,'1':\"value2\",\"3\":true,double:1.2,\"key\":'value'}";

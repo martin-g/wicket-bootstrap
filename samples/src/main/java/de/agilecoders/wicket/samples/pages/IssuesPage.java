@@ -1,6 +1,8 @@
 package de.agilecoders.wicket.samples.pages;
 
 import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonBehavior;
+import de.agilecoders.wicket.markup.html.bootstrap.dialog.Modal;
+import de.agilecoders.wicket.markup.html.bootstrap.dialog.TextContentModal;
 import de.agilecoders.wicket.markup.html.bootstrap.form.DateTextField;
 import de.agilecoders.wicket.markup.html.bootstrap.navbar.AbstractNavbarComponent;
 import de.agilecoders.wicket.markup.html.bootstrap.navbar.ImmutableNavbarComponent;
@@ -12,6 +14,7 @@ import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.form.AjaxSubmitLink;
 import org.apache.wicket.event.Broadcast;
 import org.apache.wicket.event.IEvent;
+import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
@@ -54,6 +57,19 @@ public class IssuesPage extends BasePage {
                 return new CustomNavbarForm(markupId);
             }
         }));
+
+        // issue #90
+        Modal modal = newModalDialog("endless-modal");
+        Label button = new Label("open-endless-modal", "Open Modal Dialog");
+        modal.addOpenerAttributesTo(button);
+        add(modal, button);
+    }
+
+    private Modal newModalDialog(String markupId) {
+        final Modal modal = new TextContentModal(markupId, Model.of("Issue #90"));
+        modal.addCloseButton();
+
+        return modal;
     }
 
     private DateBean dateBean = new DateBean();

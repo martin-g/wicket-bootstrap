@@ -3,12 +3,14 @@ package de.agilecoders.wicket.markup.html.bootstrap.navbar;
 import de.agilecoders.wicket.WicketApplicationTest;
 import de.agilecoders.wicket.markup.html.bootstrap.image.Icon;
 import de.agilecoders.wicket.markup.html.bootstrap.image.IconType;
+import de.agilecoders.wicket.test.IntegrationTest;
 import org.apache.wicket.Component;
 import org.apache.wicket.Page;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.util.tester.TagTester;
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
 import java.util.List;
 
@@ -22,8 +24,8 @@ import static org.junit.matchers.JUnitMatchers.containsString;
  * @author miha
  * @version 1.0
  */
+@Category(IntegrationTest.class)
 public class NavbarTest extends WicketApplicationTest {
-
 
     @Test
     public void isInstantiableWithoutError() {

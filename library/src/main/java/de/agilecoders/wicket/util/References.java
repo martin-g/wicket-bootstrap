@@ -5,20 +5,27 @@ import de.agilecoders.wicket.Bootstrap;
 import org.apache.wicket.Application;
 
 /**
- * TODO: document
+ * Helper class for {@link org.apache.wicket.request.resource.ResourceReference} handling.
  *
  * @author miha
- * @version 1.0
  */
 public final class References {
 
-    private References() {}
+    /**
+     * Construct.
+     */
+    private References() {
+        throw new UnsupportedOperationException();
+    }
 
     /**
-     * TODOC
+     * adds a ".min" extension in front of original extension if minimization is active.
+     * If filename doesn't contain an extension no ".min" part will be added.
      *
-     * @param referenceUrl
-     * @return
+     * e.g. "file.js" will be "file.min.js"
+     *
+     * @param referenceUrl The file name
+     * @return file name containing ".min"
      */
     public static String appendMinificationIdentifier(final String referenceUrl) {
         if (!Strings.isNullOrEmpty(referenceUrl) && referenceUrl.contains(".") &&

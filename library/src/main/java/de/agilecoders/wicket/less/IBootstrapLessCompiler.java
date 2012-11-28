@@ -1,4 +1,4 @@
-package de.agilecoders.wicket.util;
+package de.agilecoders.wicket.less;
 
 import de.agilecoders.wicket.less.LessCompilable;
 import org.apache.wicket.util.time.Time;

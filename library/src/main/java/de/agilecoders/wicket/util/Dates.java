@@ -6,7 +6,6 @@ import static com.google.common.base.Strings.nullToEmpty;
  * Helper class for dates.
  *
  * @author miha
- * @version 1.0
  */
 public final class Dates {
 

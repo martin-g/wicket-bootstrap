@@ -1,16 +1,18 @@
 package de.agilecoders.wicket.markup.html.bootstrap.heading;
 
 import de.agilecoders.wicket.WicketApplicationTest;
+import de.agilecoders.wicket.test.IntegrationTest;
 import org.apache.wicket.markup.Markup;
 import org.apache.wicket.markup.MarkupException;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
 /**
  * Tests the {@code Heading} and {@code HeadingBehavior}
  *
  * @author miha
- * @version 1.0
  */
+@Category(IntegrationTest.class)
 public class HeadingTest extends WicketApplicationTest {
 
     @Test

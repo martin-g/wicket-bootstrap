@@ -2,11 +2,13 @@ package de.agilecoders.wicket.markup.html.bootstrap.behavior;
 
 import com.google.common.collect.Lists;
 import de.agilecoders.wicket.WicketApplicationTest;
+import de.agilecoders.wicket.test.IntegrationTest;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.util.tester.TagTester;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
@@ -19,6 +21,7 @@ import static org.hamcrest.Matchers.is;
  * @author miha
  * @version 1.0
  */
+@Category(IntegrationTest.class)
 public class CssClassNameAppenderTest extends WicketApplicationTest {
 
     private Component component;

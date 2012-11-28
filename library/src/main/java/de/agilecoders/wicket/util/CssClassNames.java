@@ -2,8 +2,10 @@ package de.agilecoders.wicket.util;
 
 import com.google.common.base.Joiner;
 import com.google.common.base.Splitter;
+import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -45,6 +47,15 @@ public final class CssClassNames {
     }
 
     /**
+     * returns a {@link Builder} to add/remove new values.
+     *
+     * @return new Builder.
+     */
+    public static Builder newBuilder() {
+        return new Builder("");
+    }
+
+    /**
      * parses the given value and returns a {@link Builder} to add/remove
      * new values.
      *
@@ -56,45 +67,100 @@ public final class CssClassNames {
     }
 
     /**
-     * Builder for css class names.
+     * Builder for css class names. All css class names will be hold in a
+     * {@link Set} of strings.
      */
     public static final class Builder {
         private final Set<String> classValues;
 
+        /**
+         * Construct.
+         *
+         * @param classValue the initial class name string
+         */
         private Builder(final CharSequence classValue) {
             classValues = split(classValue);
         }
 
+        /**
+         * removes all class names that are set on given builder
+         *
+         * @param builder The {@link Builder}
+         * @return this builder instance for chaining
+         */
         public Builder remove(final Builder builder) {
             return remove(builder.asSet());
         }
 
+        /**
+         * removes all class names that are given
+         *
+         * @param classNames The css class names to remove
+         * @return this builder instance for chaining
+         */
         public Builder remove(final String... classNames) {
             return remove(Sets.newHashSet(classNames));
         }
 
+        /**
+         * removes all given class names
+         *
+         * @param classNames The css class names to remove
+         * @return this builder instance for chaining
+         */
         public Builder remove(final Set<String> classNames) {
             classValues.removeAll(classNames);
             return this;
         }
 
+        /**
+         * adds all class names that are set on given builder
+         *
+         * @param builder The {@link Builder}
+         * @return this builder instance for chaining
+         */
         public Builder add(final Builder builder) {
             return add(builder.asSet());
         }
 
+        /**
+         * adds all given class names
+         *
+         * @param classNames The css class names to add
+         * @return this builder instance for chaining
+         */
         public Builder add(final String... classNames) {
             return add(Sets.newHashSet(classNames));
         }
 
+        /**
+         * adds all given class names
+         *
+         * @param classNames The css class names to add
+         * @return this builder instance for chaining
+         */
         public Builder add(final Set<String> classNames) {
             classValues.addAll(classNames);
             return this;
         }
 
+        /**
+         * @return all css class names as valid html attribute value
+         */
         public String asString() {
             return join(classValues);
         }
 
+        /**
+         * @return all css class names as list of strings
+         */
+        public List<String> asList() {
+            return Lists.newArrayList(classValues);
+        }
+
+        /**
+         * @return all css class names as set of strings
+         */
         public Set<String> asSet() {
             return Sets.newLinkedHashSet(classValues);
         }

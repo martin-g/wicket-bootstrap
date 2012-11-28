@@ -16,7 +16,7 @@ import static com.google.common.base.Strings.nullToEmpty;
 import static com.google.common.collect.Lists.newArrayList;
 
 /**
- * TODO: document
+ * Base integration test class
  *
  * @author miha
  * @version 1.0
