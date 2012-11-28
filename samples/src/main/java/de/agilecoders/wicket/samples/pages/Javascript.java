@@ -10,6 +10,8 @@ import de.agilecoders.wicket.markup.html.bootstrap.components.TooltipBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.tabs.AjaxLazyLoadTextContentTab;
 import de.agilecoders.wicket.markup.html.bootstrap.tabs.Collapsible;
 import de.agilecoders.wicket.markup.html.bootstrap.tabs.TextContentTab;
+import de.agilecoders.wicket.samples.panels.pagination.AjaxPaginationPanel;
+import de.agilecoders.wicket.samples.panels.pagination.PaginationPanel;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.extensions.markup.html.tabs.ITab;
@@ -83,7 +85,11 @@ public class Javascript extends BasePage {
                 LoadingBehavior.reset(this, target);
             }
         });
+
+        add(new PaginationPanel("pagingNavigator"));
+        add(new AjaxPaginationPanel("ajaxPagingNavigator"));
     }
+
 
     @Override
     protected boolean hasNavigation() {
