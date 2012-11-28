@@ -4,11 +4,13 @@ import de.agilecoders.wicket.WicketApplicationTest;
 import de.agilecoders.wicket.markup.html.themes.bootstrap.BootstrapCssReference;
 import de.agilecoders.wicket.markup.html.themes.bootswatch.BootswatchCssReference;
 import de.agilecoders.wicket.settings.IBootstrapLessCompilerSettings;
+import de.agilecoders.wicket.test.IntegrationTest;
 import org.apache.wicket.util.io.IOUtils;
 import org.apache.wicket.util.resource.ResourceStreamNotFoundException;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
 import java.io.IOException;
 
@@ -19,11 +21,13 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 /**
- * Tests the {@link CeruleanCssReference} class.
+ * Tests the {@link CeruleanCssReferenceTest} class.
  *
  * @author miha
  * @version 1.0
  */
+@Ignore
+@Category(IntegrationTest.class)
 public class CeruleanCssReferenceTest extends WicketApplicationTest {
 
     private String cssContent;
