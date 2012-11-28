@@ -30,6 +30,23 @@ public class CssClassNamesTest {
     }
 
     @Test
+    public void containsReturnsFalseForNonExistingClassName() {
+        CssClassNames.Builder builder = CssClassNames.parse("class1 class2 class3");
+
+        assertThat(builder.contains("class"), is(equalTo(false)));
+        assertThat(builder.contains("class10"), is(equalTo(false)));
+    }
+
+    @Test
+    public void containsReturnsTrueForExistingClassName() {
+        CssClassNames.Builder builder = CssClassNames.parse("class1 class2 class3");
+
+        assertThat(builder.contains("class1"), is(equalTo(true)));
+        assertThat(builder.contains("class2"), is(equalTo(true)));
+        assertThat(builder.contains("class3"), is(equalTo(true)));
+    }
+
+    @Test
     public void parseReturnsBuilderWithAllGivenClassNames() {
         CssClassNames.Builder builder = CssClassNames.parse("class1 class2 class3");
 

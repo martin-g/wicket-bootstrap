@@ -1,6 +1,5 @@
 package de.agilecoders.wicket.markup.html.bootstrap.behavior;
 
-import com.google.common.base.Preconditions;
 import de.agilecoders.wicket.Bootstrap;
 import de.agilecoders.wicket.settings.IBootstrapSettings;
 import de.agilecoders.wicket.settings.ITheme;
@@ -9,6 +8,7 @@ import org.apache.wicket.WicketRuntimeException;
 import org.apache.wicket.behavior.Behavior;
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
+import org.apache.wicket.util.lang.Args;
 
 /**
  * The {@code BootstrapBaseBehavior} renders the current active
@@ -17,7 +17,6 @@ import org.apache.wicket.markup.head.IHeaderResponse;
  * if enabled to the response.
  *
  * @author miha
- * @version 1.0
  */
 public class BootstrapBaseBehavior extends Behavior {
 
@@ -29,7 +28,7 @@ public class BootstrapBaseBehavior extends Behavior {
      * @param component The component to remove the behavior from.
      */
     public static void removeFrom(final Component component) {
-        Preconditions.checkNotNull(component);
+        Args.notNull(component, "component");
 
         component.remove(INSTANCE);
     }
@@ -40,7 +39,7 @@ public class BootstrapBaseBehavior extends Behavior {
      * @param component The component to add the behavior to.
      */
     public static void addTo(final Component component) {
-        Preconditions.checkNotNull(component);
+        Args.notNull(component, "component");
 
         component.add(INSTANCE);
     }

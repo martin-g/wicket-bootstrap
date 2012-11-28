@@ -28,51 +28,45 @@ import org.apache.wicket.markup.html.navigation.paging.IPageable;
  */
 public class BootstrapAjaxPagingNavigationBehavior extends AjaxPagingNavigationBehavior {
 
-	/**
-	 * The ajaxian link that should receive the event.
-	 */
-	private final IAjaxLink owner;
+    /**
+     * The ajaxian link that should receive the event.
+     */
+    private final IAjaxLink owner;
 
-	/**
-	 * Attaches the navigation behavior to the owner link and drives the pageable component. The
-	 * behavior is attached to the markup event.
-	 *
-	 * @param owner
-	 *            the owner ajax link
-	 * @param pageable
-	 *            the pageable to update
-	 * @param event
-	 *            the javascript event to bind to (e.g. onclick)
-	 */
-	public BootstrapAjaxPagingNavigationBehavior(IAjaxLink owner, IPageable pageable, String event)
-	{
-		super(owner, pageable, event);
-		this.owner = owner;
-	}
+    /**
+     * Attaches the navigation behavior to the owner link and drives the pageable component. The
+     * behavior is attached to the markup event.
+     *
+     * @param owner    the owner ajax link
+     * @param pageable the pageable to update
+     * @param event    the javascript event to bind to (e.g. onclick)
+     */
+    public BootstrapAjaxPagingNavigationBehavior(IAjaxLink owner, IPageable pageable, String event) {
+        super(owner, pageable, event);
+        this.owner = owner;
+    }
 
-	/**
-	 * The ajax event handler. This will execute the event, and update the following components,
-	 * when present: the navigator the owner link is part of, or when the link is a stand alone
-	 * component, the link itself. Also the pageable's parent markup container is updated, so its
-	 * contents can be replaced with the newly generated pageable.
-	 *
-	 * @see org.apache.wicket.ajax.AjaxEventBehavior#onEvent(org.apache.wicket.ajax.AjaxRequestTarget)
-	 */
-	@Override
-	protected void onEvent(AjaxRequestTarget target)
-	{
-		// handle the event
-		owner.onClick(target);
+    /**
+     * The ajax event handler. This will execute the event, and update the following components,
+     * when present: the navigator the owner link is part of, or when the link is a stand alone
+     * component, the link itself. Also the pageable's parent markup container is updated, so its
+     * contents can be replaced with the newly generated pageable.
+     *
+     * @see org.apache.wicket.ajax.AjaxEventBehavior#onEvent(org.apache.wicket.ajax.AjaxRequestTarget)
+     */
+    @Override
+    protected void onEvent(AjaxRequestTarget target) {
+        // handle the event
+        owner.onClick(target);
 
-		// find the PagingNavigator parent of this link
-		BootstrapAjaxPagingNavigator navigator = ((Component)owner).findParent(BootstrapAjaxPagingNavigator.class);
+        // find the PagingNavigator parent of this link
+        BootstrapAjaxPagingNavigator navigator = ((Component) owner).findParent(BootstrapAjaxPagingNavigator.class);
 
-		// if this is embedded inside a navigator
-		if (navigator != null)
-		{
-			// tell the PagingNavigator to update the IPageable
-			navigator.onAjaxEvent(target);
-		}
-	}
+        // if this is embedded inside a navigator
+        if (navigator != null) {
+            // tell the PagingNavigator to update the IPageable
+            navigator.onAjaxEvent(target);
+        }
+    }
 
 }

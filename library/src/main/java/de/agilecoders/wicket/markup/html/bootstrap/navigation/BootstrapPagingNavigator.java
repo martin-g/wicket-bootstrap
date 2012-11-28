@@ -16,10 +16,12 @@ import org.apache.wicket.model.Model;
  * PageableListViewNavigationWithMargin).
  *
  * @author miha
- * @version 1.0
  */
 public class BootstrapPagingNavigator extends PagingNavigator {
 
+    /**
+     * position of pagination component
+     */
     public enum Position implements CssClassNameProvider {
         Left, Centered, Right;
 
@@ -32,34 +34,47 @@ public class BootstrapPagingNavigator extends PagingNavigator {
         public CssClassNameAppender newCssClassNameModifier() {
             return new CssClassNameAppender(this);
         }
-
     }
 
-    private Model<String> positionModel;
+    private final Model<String> positionModel;
 
-    public BootstrapPagingNavigator(String id, IPageable pageable) {
-        super(id, pageable);
-
-        commonInit();
+    /**
+     * Construct.
+     *
+     * @param markupId The components markup id
+     * @param pageable The pageable component the page links are referring to.
+     */
+    public BootstrapPagingNavigator(final String markupId, final IPageable pageable) {
+        this(markupId, pageable, null);
     }
 
-    public BootstrapPagingNavigator(String id, IPageable pageable, IPagingLabelProvider labelProvider) {
-        super(id, pageable, labelProvider);
+    /**
+     * Construct.
+     *
+     * @param markupId      The components markup id
+     * @param pageable      The pageable component the page links are referring to.
+     * @param labelProvider The label provider for the link text.
+     */
+    public BootstrapPagingNavigator(final String markupId, final IPageable pageable, final IPagingLabelProvider labelProvider) {
+        super(markupId, pageable, labelProvider);
 
-        commonInit();
+        positionModel = Model.of(Position.Left.cssClassName());
+
+        BootstrapBaseBehavior.addTo(this);
+
+        add(new AssertTagNameBehavior("div"),
+            new CssClassNameAppender("pagination"),
+            new CssClassNameAppender(positionModel));
     }
 
+    /**
+     * sets the position of the pagination component
+     *
+     * @param position The position
+     * @return this instance for chaining
+     */
     public BootstrapPagingNavigator setPosition(Position position) {
         positionModel.setObject(position.cssClassName());
         return this;
-    }
-
-    private void commonInit() {
-        positionModel = Model.of("");
-
-        add(new AssertTagNameBehavior("div"),
-            new BootstrapBaseBehavior(),
-            new CssClassNameAppender("pagination"),
-            new CssClassNameAppender(positionModel));
     }
 }

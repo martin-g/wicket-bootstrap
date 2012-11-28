@@ -6,23 +6,29 @@ import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender
 import org.apache.wicket.extensions.breadcrumb.BreadCrumbBar;
 
 /**
- * TODO: document
+ * A component that renders bread crumbs like {@link BreadCrumbBar} that is
+ * styled with twitter-bootstrap.
  *
  * @author miha
- * @version 1.0
  */
 public class Breadcrumb extends BreadCrumbBar {
 
-    public Breadcrumb(String id) {
-        super(id);
+    /**
+     * Construct.
+     *
+     * @param markupId
+     */
+    public Breadcrumb(final String markupId) {
+        super(markupId);
     }
 
     @Override
     protected void onInitialize() {
         super.onInitialize();
 
-        add(new BootstrapBaseBehavior(),
-            new AssertTagNameBehavior("ul"),
+        BootstrapBaseBehavior.addTo(this);
+
+        add(new AssertTagNameBehavior("ul"),
             new CssClassNameAppender("breadcrumb"));
     }
 }
