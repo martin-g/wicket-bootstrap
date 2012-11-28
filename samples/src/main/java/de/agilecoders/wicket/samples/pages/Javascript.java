@@ -15,6 +15,8 @@ import de.agilecoders.wicket.markup.html.bootstrap.tabs.AjaxLazyLoadTextContentT
 import de.agilecoders.wicket.markup.html.bootstrap.tabs.Collapsible;
 import de.agilecoders.wicket.markup.html.bootstrap.tabs.TextContentTab;
 import org.apache.wicket.Component;
+import de.agilecoders.wicket.samples.panels.pagination.AjaxPaginationPanel;
+import de.agilecoders.wicket.samples.panels.pagination.PaginationPanel;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.extensions.markup.html.tabs.ITab;
@@ -91,6 +93,9 @@ public class Javascript extends BasePage {
 
         // issue #89
         add(newDropDown("dropdown"));
+
+        add(new PaginationPanel("pagingNavigator"));
+        add(new AjaxPaginationPanel("ajaxPagingNavigator"));
     }
 
     private Component newDropDown(String markupId) {
@@ -109,6 +114,7 @@ public class Javascript extends BasePage {
 
         return button;
     }
+
 
     @Override
     protected boolean hasNavigation() {
