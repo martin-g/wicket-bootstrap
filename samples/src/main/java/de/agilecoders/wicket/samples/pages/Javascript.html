@@ -38,6 +38,7 @@
         <li><a href="#carousel"><i class="icon-chevron-right"></i> Carousel</a></li>
         <li><a href="#typeahead"><i class="icon-chevron-right"></i> Typeahead</a></li>
         <li><a href="#affix"><i class="icon-chevron-right"></i> Affix</a></li>
+        <li><a href="#pagination"><i class="icon-chevron-right"></i> Pagination</a></li>
     </ul>
 </div>
 <div class="span9">
@@ -437,7 +438,7 @@ $('#myModal').on('hidden', function () {
                 </ul>
             </li>
             <li class="dropdown">
-                <a class="dropdown-toggle" id="drop5" role="button" data-toggle="dropdown" href="#">Dropdown 3 <b class="caret"></b></a>
+                <a class="dropdown-toggle" id="drop6" role="button" data-toggle="dropdown" href="#">Dropdown 3 <b class="caret"></b></a>
                 <ul id="menu3" class="dropdown-menu" role="menu" aria-labelledby="drop5">
                     <li><a tabindex="-1" href="#">Action</a></li>
                     <li><a tabindex="-1" href="#">Another action</a></li>
@@ -1769,6 +1770,61 @@ $('[data-spy="affix"]').each(function () {
     </table>
 </section>
 
+
+<!-- Pagination
+================================================== -->
+<section id="pagination">
+    <div class="page-header">
+        <h1>Pagination
+            <small>Two options for paging through content</small>
+        </h1>
+    </div>
+
+    <h2>Standard pagination</h2>
+
+    <p>A pagination component that uses normal (non-Ajax) links.</p>
+
+    <div class="bs-docs-example">
+        <div wicket:id="pagingNavigator"></div>
+    </div>
+<pre class="prettyprint linenums">
+&lt;div class="pagination"&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Prev&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;1&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;2&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;3&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;4&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Next&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;
+</pre>
+
+
+    <hr class="bs-docs-separator">
+
+
+    <h2>Ajax pagination</h2>
+
+    <p>A pagination component that uses Ajax links.</p>
+
+    <div class="bs-docs-example">
+        <div wicket:id="ajaxPagingNavigator"></div>
+    </div>
+<pre class="prettyprint linenums">
+&lt;div class="pagination"&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Prev&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;1&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;2&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;3&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;4&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Next&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;
+</pre>
+
+</section>
 
 </div>
 </div>

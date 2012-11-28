@@ -10,20 +10,27 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
 /**
- * TODO: document
+ * A simple close button for the {@link Modal} component.
  *
  * @author miha
- * @version 1.0
  */
 public class ModalCloseButton extends Link<String> {
 
-    private ButtonBehavior buttonBehavior;
+    private final ButtonBehavior buttonBehavior;
 
+    /**
+     * Construct.
+     */
     public ModalCloseButton() {
         this(Model.of("Close"));
     }
 
-    public ModalCloseButton(IModel<String> label) {
+    /**
+     * Construct.
+     *
+     * @param label The button label
+     */
+    public ModalCloseButton(final IModel<String> label) {
         super("button", label);
 
         setBody(getDefaultModel());
@@ -33,12 +40,24 @@ public class ModalCloseButton extends Link<String> {
         add(buttonBehavior);
     }
 
-    public ModalCloseButton type(ButtonType buttonType) {
+    /**
+     * sets the button type
+     *
+     * @param buttonType The button type to use
+     * @return this instance for chaining
+     */
+    public ModalCloseButton type(final ButtonType buttonType) {
         buttonBehavior.withType(buttonType);
         return this;
     }
 
-    public ModalCloseButton size(ButtonSize buttonSize) {
+    /**
+     * sets the button size
+     *
+     * @param buttonSize The button size
+     * @return this instance for chaining
+     */
+    public ModalCloseButton size(final ButtonSize buttonSize) {
         buttonBehavior.withSize(buttonSize);
         return this;
     }
@@ -53,11 +72,13 @@ public class ModalCloseButton extends Link<String> {
         super.onConfigure();
 
         if (getAnchor() == null) {
-            Component parent;
-            while ((parent = getParent()) != null) {
+            Component parent = getParent();
+            while (parent != null) {
                 if (parent instanceof Modal) {
                     setAnchor(parent);
                     break;
+                } else {
+                    parent = parent.getParent();
                 }
             }
         }

@@ -2,6 +2,7 @@ package de.agilecoders.wicket.samples.pages;
 
 import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.dialog.Modal;
+import de.agilecoders.wicket.markup.html.bootstrap.dialog.ModalCloseButton;
 import de.agilecoders.wicket.markup.html.bootstrap.dialog.TextContentModal;
 import de.agilecoders.wicket.markup.html.bootstrap.form.DateTextField;
 import de.agilecoders.wicket.markup.html.bootstrap.navbar.AbstractNavbarComponent;
@@ -59,7 +60,7 @@ public class IssuesPage extends BasePage {
         }));
 
         // issue #90
-        Modal modal = newModalDialog("endless-modal");
+        Modal modal = newModalDialog("endless-modal").setUseCloseHandler(true).setFadeIn(true).setUseKeyboard(true);
         Label button = new Label("open-endless-modal", "Open Modal Dialog");
         modal.addOpenerAttributesTo(button);
         add(modal, button);
@@ -67,7 +68,7 @@ public class IssuesPage extends BasePage {
 
     private Modal newModalDialog(String markupId) {
         final Modal modal = new TextContentModal(markupId, Model.of("Issue #90"));
-        modal.addCloseButton();
+        modal.addButton(new ModalCloseButton());
 
         return modal;
     }
