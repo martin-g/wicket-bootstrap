@@ -58,11 +58,11 @@ public class Modal extends Panel {
         super(id, model);
 
         setOutputMarkupId(true);
+        setOutputMarkupPlaceholderTag(true);
 
         footer = new WebMarkupContainer("footer");
         header = new WebMarkupContainer("header");
-        headerLabel = new Label("header-label", "");
-        header.add(headerLabel);
+        header.add(headerLabel = new Label("header-label", ""));
 
         footer.add(new ListView<Component>("buttons", buttons) {
             @Override
@@ -217,6 +217,10 @@ public class Modal extends Panel {
     public Modal addButton(final Component button) {
         if (!"button".equals(button.getId())) {
             throw new IllegalArgumentException("invalid body markup id. Must be 'body'.");
+        }
+
+        if (button instanceof ModalCloseButton) {
+           // ((ModalCloseButton) button).setAnchor(this);
         }
 
         buttons.add(button);
