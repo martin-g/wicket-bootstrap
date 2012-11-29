@@ -8,15 +8,17 @@ import de.agilecoders.wicket.markup.html.bootstrap.button.TypedAjaxLink;
 import de.agilecoders.wicket.markup.html.bootstrap.button.dropdown.DropDownButton;
 import de.agilecoders.wicket.markup.html.bootstrap.button.dropdown.MenuPageButton;
 import de.agilecoders.wicket.markup.html.bootstrap.components.PopoverBehavior;
+import de.agilecoders.wicket.markup.html.bootstrap.components.PopoverConfig;
 import de.agilecoders.wicket.markup.html.bootstrap.components.TooltipBehavior;
+import de.agilecoders.wicket.markup.html.bootstrap.components.TooltipConfig;
 import de.agilecoders.wicket.markup.html.bootstrap.image.IconType;
 import de.agilecoders.wicket.markup.html.bootstrap.navbar.NavbarAjaxLink;
 import de.agilecoders.wicket.markup.html.bootstrap.tabs.AjaxLazyLoadTextContentTab;
 import de.agilecoders.wicket.markup.html.bootstrap.tabs.Collapsible;
 import de.agilecoders.wicket.markup.html.bootstrap.tabs.TextContentTab;
-import org.apache.wicket.Component;
 import de.agilecoders.wicket.samples.panels.pagination.AjaxPaginationPanel;
 import de.agilecoders.wicket.samples.panels.pagination.PaginationPanel;
+import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.extensions.markup.html.tabs.ITab;
@@ -60,7 +62,8 @@ public class Javascript extends BasePage {
                 super.onInitialize();
 
                 add(new PopoverBehavior(Model.of("A Title"),
-                                        Model.of("And here's some \"amazing\" content. It's very engaging. right?")));
+                                        Model.of("And here's some \"amazing\" content. It's very engaging. right?"),
+                                        new PopoverConfig().withPlacement(TooltipConfig.Placement.bottom).withTrigger(TooltipConfig.Trigger.hover)));
             }
 
             @Override

@@ -1,6 +1,9 @@
 package de.agilecoders.wicket.samples.pages;
 
 import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonBehavior;
+import de.agilecoders.wicket.markup.html.bootstrap.components.PopoverBehavior;
+import de.agilecoders.wicket.markup.html.bootstrap.components.PopoverConfig;
+import de.agilecoders.wicket.markup.html.bootstrap.components.TooltipConfig;
 import de.agilecoders.wicket.markup.html.bootstrap.dialog.Modal;
 import de.agilecoders.wicket.markup.html.bootstrap.dialog.ModalCloseButton;
 import de.agilecoders.wicket.markup.html.bootstrap.dialog.TextContentModal;
@@ -64,6 +67,13 @@ public class IssuesPage extends BasePage {
         Label button = new Label("open-endless-modal", "Open Modal Dialog");
         modal.addOpenerAttributesTo(button);
         add(modal, button);
+
+        // issue #93
+        add(new Label("popover", "Popover (hover, top)").add(new PopoverBehavior(
+                Model.of("title"),
+                Model.of("content"),
+                new PopoverConfig().withTrigger(TooltipConfig.Trigger.hover).withPlacement(TooltipConfig.Placement.top)
+        )));
     }
 
     private Modal newModalDialog(String markupId) {

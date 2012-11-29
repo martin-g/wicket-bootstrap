@@ -1,5 +1,6 @@
 package de.agilecoders.wicket.markup.html.bootstrap.components;
 
+import de.agilecoders.wicket.markup.html.bootstrap.common.AbstractConfig;
 import de.agilecoders.wicket.util.JQuery;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
@@ -13,7 +14,6 @@ import static de.agilecoders.wicket.util.JQuery.$;
  * Hover over the button to trigger the popover.
  *
  * @author miha
- * @version 1.0
  */
 public class PopoverBehavior extends TooltipBehavior {
 
@@ -35,7 +35,7 @@ public class PopoverBehavior extends TooltipBehavior {
      * @param body  Body of the popover
      */
     public PopoverBehavior(final IModel<String> label, final IModel<String> body) {
-        this(label, body, new TooltipConfig().withPlacement(TooltipConfig.Placement.right).withTrigger(TooltipConfig.Trigger.click));
+        this(label, body, new PopoverConfig());
     }
 
     /**
@@ -45,7 +45,7 @@ public class PopoverBehavior extends TooltipBehavior {
      * @param body   Body of the popover
      * @param config The popover configuration
      */
-    public PopoverBehavior(final IModel<String> label, final IModel<String> body, final TooltipConfig config) {
+    public PopoverBehavior(final IModel<String> label, final IModel<String> body, final PopoverConfig config) {
         super(label, config);
 
         this.body = body;
@@ -71,7 +71,7 @@ public class PopoverBehavior extends TooltipBehavior {
     }
 
     @Override
-    protected CharSequence createInitializerScript(final Component component, final TooltipConfig config) {
+    protected CharSequence createInitializerScript(final Component component, final AbstractConfig config) {
         return $(component).chain(popover(config)).get();
     }
 
@@ -85,7 +85,7 @@ public class PopoverBehavior extends TooltipBehavior {
          *
          * @param config tooltip configuration
          */
-        public static PopoverJqueryFunction popover(final TooltipConfig config) {
+        public static PopoverJqueryFunction popover(final AbstractConfig config) {
             return new PopoverJqueryFunction(config);
         }
 
@@ -94,7 +94,7 @@ public class PopoverBehavior extends TooltipBehavior {
          *
          * @param config popover configuration
          */
-        private PopoverJqueryFunction(final TooltipConfig config) {
+        private PopoverJqueryFunction(final AbstractConfig config) {
             super("popover");
 
             if (!config.isEmpty()) {
