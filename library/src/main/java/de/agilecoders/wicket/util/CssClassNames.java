@@ -164,5 +164,15 @@ public final class CssClassNames {
         public Set<String> asSet() {
             return Sets.newLinkedHashSet(classValues);
         }
+
+        /**
+         * checks if given class name was added before
+         *
+         * @param className The class name to check
+         * @return true, if class name was set
+         */
+        public boolean contains(final String className) {
+            return classValues.contains(className);
+        }
     }
 }

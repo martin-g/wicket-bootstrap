@@ -93,9 +93,10 @@ public class Alert extends Panel {
 
         add(this.inlineHeader, this.blockHeader, this.message, this.closeButton);
 
-        add(new BootstrapBaseBehavior(),
-            new AssertTagNameBehavior("div"),
+        add(new AssertTagNameBehavior("div"),
             new CssClassNameAppender("alert"));
+
+        BootstrapBaseBehavior.addTo(this);
     }
 
     /**

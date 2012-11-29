@@ -1,11 +1,12 @@
 package de.agilecoders.wicket.markup.html.bootstrap.components;
 
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapJavascriptBehavior;
+import de.agilecoders.wicket.markup.html.bootstrap.common.AbstractConfig;
 import de.agilecoders.wicket.util.JQuery;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.head.IHeaderResponse;
-import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
+import org.apache.wicket.markup.head.OnLoadHeaderItem;
 import org.apache.wicket.model.IModel;
 
 import static de.agilecoders.wicket.markup.html.bootstrap.components.TooltipBehavior.TooltipJqueryFunction.tooltip;
@@ -16,7 +17,6 @@ import static de.agilecoders.wicket.util.JQuery.$;
  * use CSS3 for animations, and data-attributes for local title storage.
  *
  * @author miha
- * @version 1.0
  */
 public class TooltipBehavior extends BootstrapJavascriptBehavior {
 
@@ -70,7 +70,7 @@ public class TooltipBehavior extends BootstrapJavascriptBehavior {
     public void renderHead(final Component component, final IHeaderResponse headerResponse) {
         super.renderHead(component, headerResponse);
 
-        headerResponse.render(OnDomReadyHeaderItem.forScript(createInitializerScript(component, config)));
+        headerResponse.render(OnLoadHeaderItem.forScript(createInitializerScript(component, config)));
     }
 
     /**
@@ -80,7 +80,7 @@ public class TooltipBehavior extends BootstrapJavascriptBehavior {
      * @param config    The current configuration
      * @return new initializer script
      */
-    protected CharSequence createInitializerScript(final Component component, final TooltipConfig config) {
+    protected CharSequence createInitializerScript(final Component component, final AbstractConfig config) {
         return $(component).chain(tooltip(config)).get();
     }
 
@@ -94,7 +94,7 @@ public class TooltipBehavior extends BootstrapJavascriptBehavior {
          *
          * @param config tooltip configuration
          */
-        public static TooltipJqueryFunction tooltip(final TooltipConfig config) {
+        public static TooltipJqueryFunction tooltip(final AbstractConfig config) {
             return new TooltipJqueryFunction(config);
         }
 
@@ -103,7 +103,7 @@ public class TooltipBehavior extends BootstrapJavascriptBehavior {
          *
          * @param config tooltip configuration
          */
-        private TooltipJqueryFunction(final TooltipConfig config) {
+        private TooltipJqueryFunction(final AbstractConfig config) {
             super("tooltip");
 
             if (!config.isEmpty()) {

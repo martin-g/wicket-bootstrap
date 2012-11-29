@@ -12,7 +12,7 @@
         // Disable certain links in docs
         $('section [href^=#]').click(function (e) {
             e.preventDefault()
-        })
+        });
 
         // side bar
         $('.bs-docs-sidenav').affix({
@@ -22,17 +22,14 @@
                 },
                 bottom:270
             }
-        })
-
-        // make code pretty
-        //window.prettyPrint && prettyPrint()
+        });
 
         // add-ons
         $('.add-on :checkbox').on('click', function () {
             var $this = $(this),
             method = $this.attr('checked') ? 'addClass' : 'removeClass'
             $(this).parents('.add-on')[method]('active')
-        })
+        });
 
         // add tipsies to grid for scaffolding
         if ($('#gridSystem').length) {
@@ -41,7 +38,7 @@
                 title:function () {
                     return $(this).width() + 'px'
                 }
-            })
+            });
         }
 
         // tooltip demo
@@ -54,10 +51,11 @@
 
         // popover demo
         $("a[rel=popover]")
-        .popover()
         .click(function (e) {
             e.preventDefault()
-        })
+        });
+
+        $(".popover-default").popover();
 
         // button state demo
         $('#fat-btn')
@@ -70,7 +68,7 @@
         })
 
         // carousel demo
-        $('#myCarousel').carousel()
+        $('#myCarousel').carousel();
 
         // javascript build logic
         var inputsComponent = $("#components.download input"),

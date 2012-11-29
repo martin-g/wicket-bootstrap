@@ -44,10 +44,11 @@ public class ButtonGroup extends Panel {
 
         buttonList = Lists.newArrayList();
 
-        add(new BootstrapBaseBehavior());
         add(new CssClassNameAppender("btn-group"));
         add(orientation.newCssClassNameModifier());
         add(newButtonList("buttons"));
+
+        BootstrapBaseBehavior.addTo(this);
     }
 
     public ButtonGroup addButton(AbstractLink button) {

@@ -54,9 +54,10 @@ public class Pagination extends Panel {
         super(markupId);
 
         add(alignment.newCssClassNameModifier());
-        add(new BootstrapBaseBehavior());
         add(new CssClassNameAppender("pagination"));
         add(buttonList = newButtonList("buttons"));
+
+        BootstrapBaseBehavior.addTo(this);
     }
 
     public Pagination addButton(AbstractLink button) {
