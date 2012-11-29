@@ -55,6 +55,8 @@
             e.preventDefault()
         });
 
+        $(".popover-default").popover();
+
         // button state demo
         $('#fat-btn')
         .click(function () {
