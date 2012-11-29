@@ -20,13 +20,19 @@ Usage
 ## Maven
 wicket-bootstrap is [available](http://search.maven.org/#artifactdetails|de.agilecoders.wicket|bootstrap|0.7.3|jar) in Maven central repository.
 
-Pom.xml dependency:
+maven dependency:
 <pre><code>&lt;dependency&gt;
   &lt;groupId&gt;de.agilecoders.wicket&lt;/groupId&gt;
-  &lt;artifactId&gt;bootstrapj&lt;/artifactId&gt;
+  &lt;artifactId&gt;bootstrap&lt;/artifactId&gt;
   &lt;version&gt;0.7.3&lt;/version&gt;
 &lt;/dependency&gt;
 </code></pre>
+
+Twitter account
+---------------
+
+Keep up to date on announcements and more by following wicket-bootstrap on Twitter, [@l0rdn1kk0n](http://twitter.com/l0rdn1kk0n).
+
 
 Bug tracker
 -----------
