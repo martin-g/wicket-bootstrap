@@ -9,8 +9,9 @@ import org.apache.wicket.request.resource.CssResourceReference;
 import org.apache.wicket.request.resource.ResourceReference;
 
 /**
+ * Default {@link IBootstrapSettings} implementation
+ *
  * @author miha
- * @version 1.0
  * @see IBootstrapSettings
  */
 public class BootstrapSettings implements IBootstrapSettings {

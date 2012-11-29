@@ -7,7 +7,6 @@ import java.util.List;
  * Interface to identify all less compatible {@link org.apache.wicket.request.resource.ResourceReference} classes.
  *
  * @author miha
- * @version 1.0
  */
 public interface LessCompilable {
 

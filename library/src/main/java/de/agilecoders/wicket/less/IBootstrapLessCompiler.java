@@ -1,13 +1,11 @@
 package de.agilecoders.wicket.less;
 
-import de.agilecoders.wicket.less.LessCompilable;
 import org.apache.wicket.util.time.Time;
 
 /**
  * The {@code IBootstrapLessCompiler} interface.
  *
  * @author miha
- * @version 1.0
  */
 public interface IBootstrapLessCompiler {
 

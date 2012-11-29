@@ -1,7 +1,6 @@
 package de.agilecoders.wicket.settings;
 
-import java.util.List;
-
+import com.google.common.collect.Lists;
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
@@ -9,29 +8,40 @@ import org.apache.wicket.request.resource.CssResourceReference;
 import org.apache.wicket.request.resource.JavaScriptResourceReference;
 import org.apache.wicket.request.resource.ResourceReference;
 
-import com.google.common.collect.Lists;
+import java.util.List;
 
 /**
- * TODO: document
+ * Default {@link ITheme} implementation
  *
  * @author miha
- * @version 1.0
  */
 public class Theme implements ITheme {
 
-    private String name;
-    private List<ResourceReference> resourceReferences;
+    private final String name;
+    private final List<ResourceReference> resourceReferences;
 
+    /**
+     * Construct.
+     *
+     * @param name               Unique theme name
+     * @param resourceReferences All references that are necessary for this theme
+     */
     public Theme(final String name, final ResourceReference... resourceReferences) {
         this.name = name;
         this.resourceReferences = Lists.newArrayList(resourceReferences);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public String name() {
         return name;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void renderHead(IHeaderResponse response) {
         for (ResourceReference resourceReference : resourceReferences) {

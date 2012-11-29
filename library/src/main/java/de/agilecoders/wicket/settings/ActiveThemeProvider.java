@@ -4,7 +4,6 @@ package de.agilecoders.wicket.settings;
  * The {@code ActiveThemeProvider} interface
  *
  * @author miha
- * @version 1.0
  */
 public interface ActiveThemeProvider {
 

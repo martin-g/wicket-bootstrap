@@ -11,7 +11,6 @@ import java.util.List;
  * Language specific datepicker resource reference.
  *
  * @author miha
- * @version 1.0
  */
 public class BootstrapDatepickerLangJsReference extends JavaScriptResourceReference {
     private static final long serialVersionUID = 1L;

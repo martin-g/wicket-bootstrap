@@ -13,7 +13,6 @@ import java.util.List;
  * Bootstrap DatePicker javascript resource reference
  *
  * @author miha
- * @version 1.0
  */
 public class BootstrapDatepickerJsReference extends JavaScriptResourceReference {
     private static final long serialVersionUID = 1L;

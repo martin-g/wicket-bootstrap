@@ -11,6 +11,11 @@ Components
 * Bootswatch (2.2.1): http://bootswatch.com/
 * DatePicker: https://github.com/eternicode/bootstrap-datepicker
 
+Extensions
+----------
+
+* Html5 Video Player: http://html5-ninja.com/item/Bootstrap-video-player-jQuery-plugin
+
 Usage
 -----
 
@@ -18,13 +23,21 @@ Usage
 * how to use wicket-bootstrap? Read the documentation on https://github.com/l0rdn1kk0n/wicket-bootstrap/wiki.
 
 ## Maven
-wicket-bootstrap is [available](http://search.maven.org/#artifactdetails|de.agilecoders.wicket|bootstrap|0.7.3|jar) in Maven central repository.
+wicket-bootstrap is [available](http://search.maven.org/#artifactdetails|de.agilecoders.wicket|bootstrap|0.7.4|jar) in Maven central repository.
 
-maven dependency:
+core maven dependency:
 <pre><code>&lt;dependency&gt;
   &lt;groupId&gt;de.agilecoders.wicket&lt;/groupId&gt;
   &lt;artifactId&gt;bootstrap&lt;/artifactId&gt;
-  &lt;version&gt;0.7.3&lt;/version&gt;
+  &lt;version&gt;0.7.4&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+
+for all extensions:
+<pre><code>&lt;dependency&gt;
+  &lt;groupId&gt;de.agilecoders.wicket&lt;/groupId&gt;
+  &lt;artifactId&gt;bootstrap-extensions&lt;/artifactId&gt;
+  &lt;version&gt;0.7.4&lt;/version&gt;
 &lt;/dependency&gt;
 </code></pre>
 

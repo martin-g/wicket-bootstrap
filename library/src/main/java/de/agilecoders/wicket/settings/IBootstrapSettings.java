@@ -6,7 +6,6 @@ import org.apache.wicket.request.resource.ResourceReference;
  * Settings interface for bootstrap settings.
  *
  * @author miha
- * @version 1.0
  */
 public interface IBootstrapSettings {
 

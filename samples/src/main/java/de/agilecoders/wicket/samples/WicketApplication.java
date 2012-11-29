@@ -87,10 +87,10 @@ public class WicketApplication extends WebApplication {
     private void configureBootstrap() {
         BootstrapSettings settings = new BootstrapSettings();
         settings.minify(true) // use minimized version of all bootstrap references
-                .useJqueryPP(true)
-                .useModernizr(true)
+                //.useJqueryPP(true)
+                //.useModernizr(true)
                 .useResponsiveCss(true)
-                .getBootstrapLessCompilerSettings().setUseLessCompiler(true);
+                .getBootstrapLessCompilerSettings().setUseLessCompiler(false);
 
         ThemeProvider themeProvider = new BootswatchThemeProvider() {{
             add(new MetroTheme());

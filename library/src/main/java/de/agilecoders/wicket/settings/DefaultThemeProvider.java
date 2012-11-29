@@ -14,7 +14,6 @@ import java.util.List;
  * the {@link de.agilecoders.wicket.markup.html.themes.bootstrap.BootstrapTheme}.
  *
  * @author miha
- * @version 1.0
  */
 public class DefaultThemeProvider implements ThemeProvider {
 
@@ -42,6 +41,11 @@ public class DefaultThemeProvider implements ThemeProvider {
         return this;
     }
 
+    /**
+     * asserts that there are no name conflicts.
+     *
+     * @param themes The themes to check.
+     */
     private void assertNoDuplicateNames(ITheme... themes) {
         if (themes == null) {
             throw new WicketRuntimeException("list of themes is null");

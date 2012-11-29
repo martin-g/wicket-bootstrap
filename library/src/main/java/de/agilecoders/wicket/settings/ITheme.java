@@ -3,10 +3,9 @@ package de.agilecoders.wicket.settings;
 import org.apache.wicket.markup.head.IHeaderResponse;
 
 /**
- * TODO: document
+ * Interface that represents a special theme.
  *
  * @author miha
- * @version 1.0
  */
 public interface ITheme {
 

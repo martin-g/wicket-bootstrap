@@ -1,0 +1,100 @@
+
+/*
+ * Bootstrap video player
+ * A customizable HTML5 video player plugin for jQuery based on bootstrap UI
+ * version: 1.0
+ * Author: zied.hosni.mail@gmail.com
+ * 2012 © html5-ninja.com
+ * 2012-09-26
+ */
+.videoController {
+    background: #333;
+    height: 22px;
+    z-index: 100;
+    position: absolute;
+    left: 0;
+    bottom: 0
+}
+
+.videoController .volumeMedia li {
+    float: left;
+    height: 12px;
+    width: 3px;
+    background: #ccc;
+    margin: 0;
+    margin-right: 1px;
+    cursor: pointer
+}
+
+.videoController .volumeMedia li.on {
+    background: #fff
+}
+
+.videoController .progress {
+    position: relative;
+    border-radius: 0;
+    height: 5px;
+    margin-bottom: 0px
+}
+
+.videoController .progress .bar {
+    transition: width 0.1s ease 0s;
+    -moz-transition: width 0.1s ease 0s;
+    -webkit-transition: width 0.1s ease 0s;
+    -o-transition: width 0.1s ease 0s
+}
+
+.videoController .progress .bar.bufferBar {
+    position: absolute;
+    left: 0;
+    top: 0
+}
+
+.videoController .mute {
+    cursor: pointer
+}
+
+.videoController .fullscreen {
+    cursor: pointer
+}
+
+.videoController .playMedia {
+    float: left;
+    height: 14px;
+    line-height: normal;
+}
+
+.videoController .timer {
+    float: left;
+    font-weight: normal;
+    padding: 0;
+    margin: 0 4px;
+    line-height: 16px;
+    width: 50px;
+    font-size: 10px;
+    width: 68px;
+    color: #fff
+}
+
+.videoController .mute {
+    float: left
+}
+
+.videoController .volumeMedia {
+    float: left;
+    margin: 2px 0 0 0
+}
+
+.videoController .fullscreen {
+    float: right;
+    margin-right: 3px
+}
+
+.videoUiWrapper {
+    position: relative
+}
+
+.videoUiWrapper.thumbnail .videoController {
+    left: 4px;
+    bottom: 4px
+}

@@ -7,7 +7,6 @@ import org.apache.wicket.request.resource.ResourceReference;
  * DatePicker css resource reference
  *
  * @author miha
- * @version 1.0
  */
 public class BootstrapDatepickerReference extends CssResourceReference {
     private static final long serialVersionUID = 1L;

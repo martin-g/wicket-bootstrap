@@ -29,39 +29,56 @@ import java.util.regex.Pattern;
  * imports and compiles them to an optimized css stream.
  *
  * @author miha
- * @version 1.0
  */
 public class BootstrapLessCompiler implements IBootstrapLessCompiler {
     private static final Logger LOG = LoggerFactory.getLogger(BootstrapLessCompiler.class);
+
+    private static final Pattern IMPORT_PATTERN = Pattern.compile(".*@import\\s*\"(.*?)\".*");
 
     /**
      * Use http://en.wikipedia.org/wiki/Initialization_on_demand_holder_idiom
      * to load LessEngine if it is really needed
      */
     private static class LessEngineHolder {
-        private final static LessEngine instance = new LessEngine(Bootstrap.getSettings(Application.get()).getBootstrapLessCompilerSettings().getLessOptions());
+        private final static LessEngine instance = new LessEngine(Bootstrap.getSettings().getBootstrapLessCompilerSettings().getLessOptions());
     }
 
+    /**
+     * @return current less engine
+     */
     private static LessEngine getLessEngine() {
         return LessEngineHolder.instance;
     }
 
-    private static final Pattern IMPORT_PATTERN = Pattern.compile(".*@import\\s*\"(.*?)\".*");
-
+    /**
+     * @return current active application
+     */
     private Application app() {
         return Application.get();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public byte[] generate(LessCompilable lessCompilable) {
         return compile(newCombinedLessFile(lessCompilable));
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Time lastModifiedRecursive(LessCompilable lessCompilable) {
         return newCombinedLessFile(lessCompilable).lastModified();
     }
 
+    /**
+     * creates a new less file that contains all imports
+     *
+     * @param lessCompilable The less source
+     * @return new {@link CombinedLessResource} instance
+     */
     private CombinedLessResource newCombinedLessFile(LessCompilable lessCompilable) {
         CombinedLessResource lessResource = new CombinedLessResource();
 

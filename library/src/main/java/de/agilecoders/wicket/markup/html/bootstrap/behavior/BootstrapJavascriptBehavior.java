@@ -12,7 +12,6 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
  * the response.
  *
  * @author miha
- * @version 1.0
  */
 public class BootstrapJavascriptBehavior extends BootstrapBaseBehavior {
 

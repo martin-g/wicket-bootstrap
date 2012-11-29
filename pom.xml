@@ -37,6 +37,7 @@
 
     <modules>
         <module>library</module>
+        <module>extensions</module>
         <module>samples</module>
     </modules>
 
@@ -69,6 +70,12 @@
             <dependency>
                 <groupId>de.agilecoders.wicket</groupId>
                 <artifactId>bootstrap</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>de.agilecoders.wicket</groupId>
+                <artifactId>bootstrap-extensions</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
