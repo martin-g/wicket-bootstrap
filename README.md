@@ -17,6 +17,16 @@ Usage
 * you can see wicket-bootstrap in action: http://wb.agilecoders.de/demo
 * how to use wicket-bootstrap? Read the documentation on https://github.com/l0rdn1kk0n/wicket-bootstrap/wiki.
 
+## Maven
+wicket-bootstrap is [available](http://search.maven.org/#artifactdetails|de.agilecoders.wicket|bootstrap|0.7.3|jar) in Maven central repository.
+
+Pom.xml dependency:
+<pre><code>&lt;dependency&gt;
+  &lt;groupId&gt;de.agilecoders.wicket&lt;/groupId&gt;
+  &lt;artifactId&gt;bootstrapj&lt;/artifactId&gt;
+  &lt;version&gt;0.7.3&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
 
 Bug tracker
 -----------
