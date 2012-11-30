@@ -50,7 +50,6 @@ public class DatePickerPage extends BasePage {
 
         DatePickerModal modal = new DatePickerModal("modal");
         modal.show(false);
-        modal.setDraggable(true);
         modal.setUseKeyboard(true);
         TypedButton modalButton = new TypedButton("modal-opener", ButtonType.Default);
         modalButton.setLabel(Model.of("Open Modal Dialog"));

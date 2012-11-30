@@ -3,14 +3,11 @@ package de.agilecoders.wicket.markup.html.bootstrap.dialog;
 import com.google.common.collect.Lists;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.AssertTagNameBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
-import de.agilecoders.wicket.markup.html.references.DraggableJavaScriptReference;
-import de.agilecoders.wicket.util.JQuery;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxEventBehavior;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.markup.head.IHeaderResponse;
-import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
@@ -22,9 +19,6 @@ import org.apache.wicket.model.Model;
 import org.apache.wicket.util.string.Strings;
 
 import java.util.List;
-
-import static de.agilecoders.wicket.markup.html.bootstrap.dialog.Modal.DragJQueryFunction.applyDraggability;
-import static de.agilecoders.wicket.util.JQuery.$;
 
 /**
  * The {@code Modal} dialog is a simple component with header,
@@ -38,8 +32,6 @@ public class Modal extends Panel {
     private final IModel<Boolean> show = Model.of(false);
     private final IModel<Boolean> fadein = Model.of(true);
     private final IModel<Boolean> keyboard = Model.of(true);
-    private final IModel<Boolean> draggable = Model.of(false);
-    private final IModel<String> draggableClassName = Model.of("");
     private final Label headerLabel;
     private final List<Component> buttons = Lists.newArrayList();
     private final WebMarkupContainer footer;
@@ -88,7 +80,6 @@ public class Modal extends Panel {
         add(header, footer);
         add(new AssertTagNameBehavior("div"));
         add(new CssClassNameAppender("modal", "hide"));
-        add(new CssClassNameAppender(draggableClassName));
     }
 
     /**
@@ -131,17 +122,6 @@ public class Modal extends Panel {
      */
     public Modal setFooterVisible(final boolean visible) {
         footer.setVisible(visible);
-        return this;
-    }
-
-    /**
-     * Sets whether the modal dialog is draggable or not
-     *
-     * @param draggable mandatory parameter
-     * @return This instance for chaining
-     */
-    public Modal setDraggable(final boolean draggable) {
-        this.draggable.setObject(draggable);
         return this;
     }
 
@@ -276,8 +256,6 @@ public class Modal extends Panel {
             add(new CssClassNameAppender("fade"));
         }
 
-        draggableClassName.setObject(draggable.getObject() ? "draggable" : "");
-
         if (Strings.isEmpty(headerLabel.getDefaultModelObjectAsString())) {
             // there must be at least on character inside the header to prevent
             // layout problems.
@@ -293,11 +271,6 @@ public class Modal extends Panel {
         super.renderHead(response);
 
         response.render(OnDomReadyHeaderItem.forScript(createInitializerScript(getMarkupId(true))));
-
-        if (Boolean.TRUE.equals(draggable.getObject())) {
-            response.render(JavaScriptHeaderItem.forReference(DraggableJavaScriptReference.instance()));
-            response.render(OnDomReadyHeaderItem.forScript($(this).chain(applyDraggability()).get()));
-        }
     }
 
     /**
@@ -380,30 +353,6 @@ public class Modal extends Panel {
     public final Modal setUseKeyboard(boolean keyboard) {
         this.keyboard.setObject(keyboard);
         return this;
-    }
-
-    /**
-     * abstraction of jquery drag method.
-     * <p/>
-     * this plugin comes with {@link DraggableJavaScriptReference}
-     */
-    public static final class DragJQueryFunction extends JQuery.AbstractFunction {
-
-        /**
-         * helper method.
-         *
-         * @return new instance of {@link DragJQueryFunction}
-         */
-        public static DragJQueryFunction applyDraggability() {
-            return new DragJQueryFunction();
-        }
-
-        /**
-         * Construct.
-         */
-        private DragJQueryFunction() {
-            super("applyDraggability");
-        }
     }
 
 }

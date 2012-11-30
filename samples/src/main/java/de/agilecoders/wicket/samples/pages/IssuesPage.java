@@ -7,6 +7,8 @@ import de.agilecoders.wicket.markup.html.bootstrap.components.TooltipConfig;
 import de.agilecoders.wicket.markup.html.bootstrap.dialog.Modal;
 import de.agilecoders.wicket.markup.html.bootstrap.dialog.ModalCloseButton;
 import de.agilecoders.wicket.markup.html.bootstrap.dialog.TextContentModal;
+import de.agilecoders.wicket.markup.html.bootstrap.extensions.behavior.Draggable;
+import de.agilecoders.wicket.markup.html.bootstrap.extensions.behavior.DraggableConfig;
 import de.agilecoders.wicket.markup.html.bootstrap.form.DateTextField;
 import de.agilecoders.wicket.markup.html.bootstrap.navbar.AbstractNavbarComponent;
 import de.agilecoders.wicket.markup.html.bootstrap.navbar.ImmutableNavbarComponent;
@@ -74,6 +76,14 @@ public class IssuesPage extends BasePage {
                 Model.of("content"),
                 new PopoverConfig().withTrigger(TooltipConfig.Trigger.hover).withPlacement(TooltipConfig.Placement.top)
         )));
+
+        Modal draggableModal = new TextContentModal("draggable-modal", Model.of("Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."));
+        draggableModal.add(new Draggable(new DraggableConfig().withHandle(".modal-header").withCursor("move")));
+        draggableModal.setUseKeyboard(true).addCloseButton();
+        draggableModal.setFadeIn(false);
+        Label draggableButton = new Label("open-draggable", "Open Modal Dialog");
+        draggableModal.addOpenerAttributesTo(draggableButton);
+        add(draggableModal, draggableButton);
     }
 
     private Modal newModalDialog(String markupId) {
