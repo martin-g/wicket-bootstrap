@@ -1,5 +1,6 @@
 package de.agilecoders.wicket.markup.html.bootstrap.block;
 
+import de.agilecoders.wicket.Bootstrap;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.AssertTagNameBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
@@ -7,6 +8,7 @@ import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameProvider
 import de.agilecoders.wicket.markup.html.references.BootstrapPrettifyCssReference;
 import de.agilecoders.wicket.markup.html.references.BootstrapPrettifyJavaScriptReference;
 import de.agilecoders.wicket.util.CssClassNames;
+import de.agilecoders.wicket.util.References;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.head.CssHeaderItem;
@@ -91,7 +93,9 @@ public class CodeBehavior extends AssertTagNameBehavior {
         super.renderHead(component, response);
 
         response.render(CssHeaderItem.forReference(BootstrapPrettifyCssReference.INSTANCE));
-        response.render(JavaScriptHeaderItem.forReference(BootstrapPrettifyJavaScriptReference.INSTANCE));
+
+        References.renderWithFilter(Bootstrap.getSettings(), response, JavaScriptHeaderItem.forReference(BootstrapPrettifyJavaScriptReference.INSTANCE));
+
         response.render(OnDomReadyHeaderItem.forScript("window.prettyPrint && prettyPrint();"));
     }
 

@@ -30,6 +30,8 @@ import org.apache.wicket.Page;
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
+import org.apache.wicket.markup.head.filter.FilteredHeaderItem;
+import org.apache.wicket.markup.head.filter.HeaderResponseContainer;
 import org.apache.wicket.markup.html.GenericWebPage;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.model.IModel;
@@ -105,6 +107,8 @@ abstract class BasePage<T> extends GenericWebPage<T> {
 
         add(new BootstrapBaseBehavior());
         add(new Code("code-internal"));
+
+        add(new HeaderResponseContainer("footer-container", "footer-container"));
     }
 
     /**
@@ -187,7 +191,7 @@ abstract class BasePage<T> extends GenericWebPage<T> {
         super.renderHead(response);
 
         response.render(CssHeaderItem.forReference(FixBootstrapStylesCssResourceReference.INSTANCE));
-        response.render(JavaScriptHeaderItem.forReference(ApplicationJavaScript.INSTANCE));
+        response.render(new FilteredHeaderItem(JavaScriptHeaderItem.forReference(ApplicationJavaScript.INSTANCE), "footer-container"));
     }
 
     protected boolean hasNavigation() {

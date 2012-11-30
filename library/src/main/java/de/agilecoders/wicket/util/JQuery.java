@@ -119,7 +119,7 @@ public final class JQuery implements IClusterable {
     /**
      * simple class to represent a javascript function.
      */
-    public static final class JavaScriptInlineFunction extends AbstractFunction {
+    public static class JavaScriptInlineFunction extends AbstractFunction {
         private final String functionBody;
 
         /**
