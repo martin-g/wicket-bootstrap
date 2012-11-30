@@ -129,7 +129,7 @@ public class WicketApplication extends WebApplication {
 
         setHeaderResponseDecorator(new IHeaderResponseDecorator() {
             public IHeaderResponse decorate(final IHeaderResponse response) {
-                final String jsFooterBucket = "footer-container";
+                final String jsFooterBucket = Bootstrap.getSettings().getJsResourceFilterName();
                 final List<FilteringHeaderResponse.IHeaderResponseFilter> filters = new ArrayList<FilteringHeaderResponse.IHeaderResponseFilter>();
                 final AbstractHeaderResponseFilter jsAcceptingFilter = new AbstractHeaderResponseFilter(jsFooterBucket) {
                     public boolean accepts(HeaderItem item) {
