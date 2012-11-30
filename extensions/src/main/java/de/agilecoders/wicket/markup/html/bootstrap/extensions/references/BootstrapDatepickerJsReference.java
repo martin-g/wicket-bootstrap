@@ -1,4 +1,4 @@
-package de.agilecoders.wicket.markup.html.references;
+package de.agilecoders.wicket.markup.html.bootstrap.extensions.references;
 
 import com.google.common.collect.Lists;
 import org.apache.wicket.Application;

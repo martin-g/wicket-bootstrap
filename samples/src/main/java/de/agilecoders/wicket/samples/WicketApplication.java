@@ -1,6 +1,7 @@
 package de.agilecoders.wicket.samples;
 
 import de.agilecoders.wicket.Bootstrap;
+import de.agilecoders.wicket.markup.html.RenderJavaScriptToFooterHeaderResponseDecorator;
 import de.agilecoders.wicket.markup.html.references.BootstrapPrettifyCssReference;
 import de.agilecoders.wicket.markup.html.references.BootstrapPrettifyJavaScriptReference;
 import de.agilecoders.wicket.markup.html.references.ModernizrJavaScriptReference;
@@ -14,27 +15,19 @@ import de.agilecoders.wicket.settings.ThemeProvider;
 import org.apache.wicket.Application;
 import org.apache.wicket.Page;
 import org.apache.wicket.RuntimeConfigurationType;
-import org.apache.wicket.markup.head.HeaderItem;
-import org.apache.wicket.markup.head.IHeaderResponse;
-import org.apache.wicket.markup.head.JavaScriptHeaderItem;
-import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
-import org.apache.wicket.markup.head.OnLoadHeaderItem;
-import org.apache.wicket.markup.head.filter.AbstractHeaderResponseFilter;
-import org.apache.wicket.markup.head.filter.FilteringHeaderResponse;
-import org.apache.wicket.markup.head.filter.OppositeHeaderResponseFilter;
-import org.apache.wicket.markup.html.IHeaderResponseDecorator;
 import org.apache.wicket.markup.html.IPackageResourceGuard;
 import org.apache.wicket.markup.html.SecurePackageResourceGuard;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.request.resource.CssResourceReference;
 import org.apache.wicket.request.resource.JavaScriptResourceReference;
+import org.apache.wicket.request.resource.caching.FilenameWithVersionResourceCachingStrategy;
 import org.apache.wicket.request.resource.caching.NoOpResourceCachingStrategy;
+import org.apache.wicket.request.resource.caching.version.MessageDigestResourceVersion;
+import org.apache.wicket.serialize.java.DeflatedJavaSerializer;
 import org.apache.wicket.util.time.Duration;
 import org.wicketstuff.annotation.scan.AnnotatedMountScanner;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Properties;
 
 /**
@@ -93,9 +86,17 @@ public class WicketApplication extends WebApplication {
             guard.addPattern("+*.svg");
         }
 
-        getResourceSettings().setDefaultCacheDuration(Duration.milliseconds(0));
-        getResourceSettings().setResourcePollFrequency(Duration.seconds(2));
-        getResourceSettings().setCachingStrategy(NoOpResourceCachingStrategy.INSTANCE);
+        if (usesDevelopmentConfig()) {
+            getResourceSettings().setDefaultCacheDuration(Duration.milliseconds(0));
+            getResourceSettings().setCachingStrategy(NoOpResourceCachingStrategy.INSTANCE);
+        } else {
+            getResourceSettings().setDefaultCacheDuration(Duration.days(1000));
+            getResourceSettings().setCachingStrategy(new FilenameWithVersionResourceCachingStrategy(
+                    new MessageDigestResourceVersion()
+            ));
+        }
+
+        getFrameworkSettings().setSerializer(new DeflatedJavaSerializer(getApplicationKey()));
 
         configureBootstrap();
         configureResourceBundles();
@@ -127,25 +128,7 @@ public class WicketApplication extends WebApplication {
                                           FixBootstrapStylesCssResourceReference.INSTANCE
         );
 
-        setHeaderResponseDecorator(new IHeaderResponseDecorator() {
-            public IHeaderResponse decorate(final IHeaderResponse response) {
-                final String jsFooterBucket = Bootstrap.getSettings().getJsResourceFilterName();
-                final List<FilteringHeaderResponse.IHeaderResponseFilter> filters = new ArrayList<FilteringHeaderResponse.IHeaderResponseFilter>();
-                final AbstractHeaderResponseFilter jsAcceptingFilter = new AbstractHeaderResponseFilter(jsFooterBucket) {
-                    public boolean accepts(HeaderItem item) {
-                        return item instanceof JavaScriptHeaderItem ||
-                               item instanceof OnDomReadyHeaderItem ||
-                               item instanceof OnLoadHeaderItem;
-                    }
-                };
-
-                filters.add(jsAcceptingFilter);
-                OppositeHeaderResponseFilter nonJsFilter = new OppositeHeaderResponseFilter("headBucket", jsAcceptingFilter);
-                filters.add(nonJsFilter);
-
-                return new FilteringHeaderResponse(response, "headBucket", filters);
-            }
-        });
+        setHeaderResponseDecorator(new RenderJavaScriptToFooterHeaderResponseDecorator());
     }
 
     private void configureBootstrap() {

@@ -1,4 +1,4 @@
-package de.agilecoders.wicket.markup.html.references;
+package de.agilecoders.wicket.markup.html.bootstrap.extensions.references;
 
 import org.apache.wicket.request.resource.CssResourceReference;
 import org.apache.wicket.request.resource.ResourceReference;
