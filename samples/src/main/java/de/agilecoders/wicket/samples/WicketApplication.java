@@ -16,8 +16,10 @@ import org.apache.wicket.Page;
 import org.apache.wicket.RuntimeConfigurationType;
 import org.apache.wicket.markup.head.HeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
+import org.apache.wicket.markup.head.JavaScriptHeaderItem;
+import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
+import org.apache.wicket.markup.head.OnLoadHeaderItem;
 import org.apache.wicket.markup.head.filter.AbstractHeaderResponseFilter;
-import org.apache.wicket.markup.head.filter.FilteredHeaderItem;
 import org.apache.wicket.markup.head.filter.FilteringHeaderResponse;
 import org.apache.wicket.markup.head.filter.OppositeHeaderResponseFilter;
 import org.apache.wicket.markup.html.IHeaderResponseDecorator;
@@ -107,8 +109,8 @@ public class WicketApplication extends WebApplication {
     private void configureResourceBundles() {
         getResourceBundles().addJavaScriptBundle(WicketApplication.class, "core.js",
                                                  (JavaScriptResourceReference) getJavaScriptLibrarySettings().getJQueryReference(),
-                                                 (JavaScriptResourceReference) getJavaScriptLibrarySettings().getWicketAjaxReference(),
                                                  (JavaScriptResourceReference) getJavaScriptLibrarySettings().getWicketEventReference(),
+                                                 (JavaScriptResourceReference) getJavaScriptLibrarySettings().getWicketAjaxReference(),
                                                  (JavaScriptResourceReference) ModernizrJavaScriptReference.INSTANCE
         );
 
@@ -125,37 +127,23 @@ public class WicketApplication extends WebApplication {
                                           FixBootstrapStylesCssResourceReference.INSTANCE
         );
 
-        /*
-           * Resource filtering
-           */
         setHeaderResponseDecorator(new IHeaderResponseDecorator() {
-            @Override
-            public IHeaderResponse decorate(IHeaderResponse response) {
-                // the name of the bucket used to write to the <head>
-                final String headBucket = "footer-container";
-
-                List<FilteringHeaderResponse.IHeaderResponseFilter> filters = new ArrayList<FilteringHeaderResponse.IHeaderResponseFilter>();
-
-                // a filter that accepts only FilteredHeaderItems with name == headBucket
-                final AbstractHeaderResponseFilter bucketAcceptingFilter = new AbstractHeaderResponseFilter(headBucket) {
-                    @Override
+            public IHeaderResponse decorate(final IHeaderResponse response) {
+                final String jsFooterBucket = "footer-container";
+                final List<FilteringHeaderResponse.IHeaderResponseFilter> filters = new ArrayList<FilteringHeaderResponse.IHeaderResponseFilter>();
+                final AbstractHeaderResponseFilter jsAcceptingFilter = new AbstractHeaderResponseFilter(jsFooterBucket) {
                     public boolean accepts(HeaderItem item) {
-                        boolean accepts = false;
-                        if (item instanceof FilteredHeaderItem) {
-                            FilteredHeaderItem filteredHeaderItem = (FilteredHeaderItem) item;
-                            if (headBucket.equals(filteredHeaderItem.getFilterName())) {
-                                accepts = true;
-                            }
-                        }
-                        return accepts;
+                        return item instanceof JavaScriptHeaderItem ||
+                               item instanceof OnDomReadyHeaderItem ||
+                               item instanceof OnLoadHeaderItem;
                     }
                 };
-                filters.add(bucketAcceptingFilter);
 
-                // a filter that accepts everything that is not accepted by 'bucketAcceptingFilter'
-                filters.add(new OppositeHeaderResponseFilter(headBucket, bucketAcceptingFilter));
+                filters.add(jsAcceptingFilter);
+                OppositeHeaderResponseFilter nonJsFilter = new OppositeHeaderResponseFilter("headBucket", jsAcceptingFilter);
+                filters.add(nonJsFilter);
 
-                return new FilteringHeaderResponse(response, headBucket, filters);
+                return new FilteringHeaderResponse(response, "headBucket", filters);
             }
         });
     }
@@ -166,6 +154,7 @@ public class WicketApplication extends WebApplication {
                 .useJqueryPP(true)
                 .useModernizr(true)
                 .useResponsiveCss(true)
+                .setJsResourceFilterName("footer-container")
                 .getBootstrapLessCompilerSettings().setUseLessCompiler(false);
 
         ThemeProvider themeProvider = new BootswatchThemeProvider() {{

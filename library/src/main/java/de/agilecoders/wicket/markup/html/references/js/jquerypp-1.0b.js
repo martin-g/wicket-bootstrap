@@ -1,4 +1,4 @@
-(function() {
+;(function() {
 
     var event = jQuery.event,
 
