@@ -9,7 +9,7 @@ import de.agilecoders.wicket.markup.html.bootstrap.dialog.ModalCloseButton;
 import de.agilecoders.wicket.markup.html.bootstrap.dialog.TextContentModal;
 import de.agilecoders.wicket.markup.html.bootstrap.extensions.behavior.Draggable;
 import de.agilecoders.wicket.markup.html.bootstrap.extensions.behavior.DraggableConfig;
-import de.agilecoders.wicket.markup.html.bootstrap.form.DateTextField;
+import de.agilecoders.wicket.markup.html.bootstrap.extensions.form.DateTextField;
 import de.agilecoders.wicket.markup.html.bootstrap.navbar.AbstractNavbarComponent;
 import de.agilecoders.wicket.markup.html.bootstrap.navbar.ImmutableNavbarComponent;
 import de.agilecoders.wicket.markup.html.bootstrap.navbar.Navbar;

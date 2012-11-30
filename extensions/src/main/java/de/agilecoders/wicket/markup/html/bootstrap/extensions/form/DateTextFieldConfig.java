@@ -1,4 +1,4 @@
-package de.agilecoders.wicket.markup.html.bootstrap.form;
+package de.agilecoders.wicket.markup.html.bootstrap.extensions.form;
 
 import com.google.common.base.Preconditions;
 import de.agilecoders.wicket.markup.html.bootstrap.common.AbstractConfig;

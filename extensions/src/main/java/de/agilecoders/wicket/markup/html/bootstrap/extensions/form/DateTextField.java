@@ -1,9 +1,9 @@
-package de.agilecoders.wicket.markup.html.bootstrap.form;
+package de.agilecoders.wicket.markup.html.bootstrap.extensions.form;
 
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.AssertTagNameBehavior;
-import de.agilecoders.wicket.markup.html.references.BootstrapDatepickerJsReference;
-import de.agilecoders.wicket.markup.html.references.BootstrapDatepickerLangJsReference;
-import de.agilecoders.wicket.markup.html.references.BootstrapDatepickerReference;
+import de.agilecoders.wicket.markup.html.bootstrap.extensions.references.BootstrapDatepickerJsReference;
+import de.agilecoders.wicket.markup.html.bootstrap.extensions.references.BootstrapDatepickerLangJsReference;
+import de.agilecoders.wicket.markup.html.bootstrap.extensions.references.BootstrapDatepickerReference;
 import de.agilecoders.wicket.util.JQuery;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.markup.head.CssHeaderItem;
@@ -23,7 +23,6 @@ import static de.agilecoders.wicket.util.JQuery.$;
  * the current locale will be used.
  *
  * @author miha
- * @version 1.0
  */
 public class DateTextField extends org.apache.wicket.extensions.markup.html.form.DateTextField {
     private static final long serialVersionUID = 3499287675713818823L;
