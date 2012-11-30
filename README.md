@@ -9,11 +9,11 @@ Components
 * Twitter Bootstrap (2.2.1): http://twitter.github.com/bootstrap
 * Apache Wicket (6.3.0): http://wicket.apache.org/
 * Bootswatch (2.2.1): http://bootswatch.com/
-* DatePicker: https://github.com/eternicode/bootstrap-datepicker
 
 Extensions
 ----------
 
+* DatePicker: https://github.com/eternicode/bootstrap-datepicker
 * Html5 Video Player: http://html5-ninja.com/item/Bootstrap-video-player-jQuery-plugin
 * JQueryUI (1.9.2): http://api.jqueryui.com/
    * Draggable: http://api.jqueryui.com/draggable
