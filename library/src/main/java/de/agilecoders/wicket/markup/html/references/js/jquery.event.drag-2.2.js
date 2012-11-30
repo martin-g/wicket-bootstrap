@@ -416,7 +416,7 @@ $special.draginit = $special.dragstart = $special.dragend = drag;
             $(this.options.handle).css({cursor:'move'});
 
             //Call private function
-            updateElementNative(element, this.options);
+            updateElement(element, this.options);
         };
 
         this.init(element, options);
