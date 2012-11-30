@@ -20,7 +20,10 @@ import org.apache.wicket.markup.html.SecurePackageResourceGuard;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.request.resource.CssResourceReference;
 import org.apache.wicket.request.resource.JavaScriptResourceReference;
+import org.apache.wicket.request.resource.caching.FilenameWithVersionResourceCachingStrategy;
 import org.apache.wicket.request.resource.caching.NoOpResourceCachingStrategy;
+import org.apache.wicket.request.resource.caching.version.MessageDigestResourceVersion;
+import org.apache.wicket.serialize.java.DeflatedJavaSerializer;
 import org.apache.wicket.util.time.Duration;
 import org.wicketstuff.annotation.scan.AnnotatedMountScanner;
 
@@ -83,9 +86,17 @@ public class WicketApplication extends WebApplication {
             guard.addPattern("+*.svg");
         }
 
-        getResourceSettings().setDefaultCacheDuration(Duration.milliseconds(0));
-        getResourceSettings().setResourcePollFrequency(Duration.seconds(2));
-        getResourceSettings().setCachingStrategy(NoOpResourceCachingStrategy.INSTANCE);
+        if (usesDevelopmentConfig()) {
+            getResourceSettings().setDefaultCacheDuration(Duration.milliseconds(0));
+            getResourceSettings().setCachingStrategy(NoOpResourceCachingStrategy.INSTANCE);
+        } else {
+            getResourceSettings().setDefaultCacheDuration(Duration.days(1000));
+            getResourceSettings().setCachingStrategy(new FilenameWithVersionResourceCachingStrategy(
+                    new MessageDigestResourceVersion()
+            ));
+        }
+
+        getFrameworkSettings().setSerializer(new DeflatedJavaSerializer(getApplicationKey()));
 
         configureBootstrap();
         configureResourceBundles();
