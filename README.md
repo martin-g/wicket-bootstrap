@@ -44,7 +44,7 @@ for all extensions:
 Twitter account
 ---------------
 
-Keep up to date on announcements and more by following wicket-bootstrap on Twitter, [@l0rdn1kk0n](http://twitter.com/l0rdn1kk0n).
+Keep up to date on announcements and more by following [#WicketBootstrap](https://twitter.com/search?q=%23WicketBootstrap&src=typd) on Twitter, [@l0rdn1kk0n](http://twitter.com/l0rdn1kk0n).
 
 
 Bug tracker
