@@ -17,9 +17,6 @@ import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
-import org.apache.wicket.request.resource.CssResourceReference;
-import org.apache.wicket.request.resource.JavaScriptResourceReference;
-import org.apache.wicket.request.resource.ResourceReference;
 
 import java.util.List;
 
@@ -34,9 +31,6 @@ import static de.agilecoders.wicket.util.JQuery.$;
  * @author miha
  */
 public class Html5Player extends Panel {
-
-    private static final ResourceReference JS = new JavaScriptResourceReference(Html5Player.class, "Html5Player.js");
-    private static final ResourceReference CSS = new CssResourceReference(Html5Player.class, "Html5Player.css");
 
     private final IModel<Integer> width;
     private final IModel<Integer> height;
@@ -159,9 +153,9 @@ public class Html5Player extends Panel {
     public void renderHead(final IHeaderResponse response) {
         super.renderHead(response);
 
-        response.render(JavaScriptReferenceHeaderItem.forReference(getApplication().getJavaScriptLibrarySettings().getJQueryReference()));
-        response.render(JavaScriptReferenceHeaderItem.forReference(JS));
-        response.render(CssReferenceHeaderItem.forReference(CSS));
+        response.render(JavaScriptReferenceHeaderItem.forReference(Html5PlayerJavaScriptReference.instance()));
+        response.render(CssReferenceHeaderItem.forReference(Html5PlayerCssReference.instance()));
+
         response.render(OnDomReadyHeaderItem.forScript($(container).chain(videoUI(config)).get()));
     }
 

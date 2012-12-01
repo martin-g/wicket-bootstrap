@@ -1,7 +1,11 @@
 package de.agilecoders.wicket.samples;
 
 import de.agilecoders.wicket.Bootstrap;
+import de.agilecoders.wicket.javascript.GoogleClosureJavaScriptCompressor;
 import de.agilecoders.wicket.markup.html.RenderJavaScriptToFooterHeaderResponseDecorator;
+import de.agilecoders.wicket.markup.html.bootstrap.extensions.html5player.Html5PlayerCssReference;
+import de.agilecoders.wicket.markup.html.bootstrap.extensions.html5player.Html5PlayerJavaScriptReference;
+import de.agilecoders.wicket.markup.html.bootstrap.extensions.jqueryui.JQueryUIJavaScriptReference;
 import de.agilecoders.wicket.markup.html.references.BootstrapPrettifyCssReference;
 import de.agilecoders.wicket.markup.html.references.BootstrapPrettifyJavaScriptReference;
 import de.agilecoders.wicket.markup.html.references.ModernizrJavaScriptReference;
@@ -86,8 +90,8 @@ public class WicketApplication extends WebApplication {
             guard.addPattern("+*.svg");
         }
 
-        if (usesDevelopmentConfig()) {
-            getResourceSettings().setDefaultCacheDuration(Duration.milliseconds(0));
+        if (usesDevelopmentConfig() && false) {
+            getResourceSettings().setDefaultCacheDuration(Duration.NONE);
             getResourceSettings().setCachingStrategy(NoOpResourceCachingStrategy.INSTANCE);
         } else {
             getResourceSettings().setDefaultCacheDuration(Duration.days(1000));
@@ -108,6 +112,9 @@ public class WicketApplication extends WebApplication {
      * configure all resource bundles (css and js)
      */
     private void configureResourceBundles() {
+        getResourceSettings().setJavaScriptCompressor(new GoogleClosureJavaScriptCompressor());
+        setHeaderResponseDecorator(new RenderJavaScriptToFooterHeaderResponseDecorator());
+
         getResourceBundles().addJavaScriptBundle(WicketApplication.class, "core.js",
                                                  (JavaScriptResourceReference) getJavaScriptLibrarySettings().getJQueryReference(),
                                                  (JavaScriptResourceReference) getJavaScriptLibrarySettings().getWicketEventReference(),
@@ -122,13 +129,20 @@ public class WicketApplication extends WebApplication {
                                                  ApplicationJavaScript.INSTANCE
         );
 
+        getResourceBundles().addJavaScriptBundle(WicketApplication.class, "bootstrap-extensions.js",
+                                                 JQueryUIJavaScriptReference.instance(),
+                                                 Html5PlayerJavaScriptReference.instance()
+        );
+
+        getResourceBundles().addCssBundle(WicketApplication.class, "bootstrap-extensions.css",
+                                          Html5PlayerCssReference.instance()
+        );
+
         getResourceBundles().addCssBundle(WicketApplication.class, "application.css",
                                           (CssResourceReference) Bootstrap.getSettings().getResponsiveCssResourceReference(),
                                           (CssResourceReference) BootstrapPrettifyCssReference.INSTANCE,
                                           FixBootstrapStylesCssResourceReference.INSTANCE
         );
-
-        setHeaderResponseDecorator(new RenderJavaScriptToFooterHeaderResponseDecorator());
     }
 
     private void configureBootstrap() {

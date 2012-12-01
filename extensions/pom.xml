@@ -13,10 +13,20 @@
     <version>0.7.5-SNAPSHOT</version>
     <packaging>jar</packaging>
 
+    <properties>
+        <closure-compiler.version>r2180</closure-compiler.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>de.agilecoders.wicket</groupId>
             <artifactId>bootstrap</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.javascript</groupId>
+            <artifactId>closure-compiler</artifactId>
+            <version>${closure-compiler.version}</version>
         </dependency>
     </dependencies>
 
