@@ -44,10 +44,10 @@ public class ButtonGroups extends Panel {
         add(toolbar);
 
         ButtonGroup verticalButtonGroup = new ButtonGroup("verticalButtonGroup", Orientation.Vertical);
-        verticalButtonGroup.addButton(createIconButton(new Icon(IconType.AlignLeft)));
-        verticalButtonGroup.addButton(createIconButton(new Icon(IconType.AlignCenter)));
-        verticalButtonGroup.addButton(createIconButton(new Icon(IconType.AlignRight)));
-        verticalButtonGroup.addButton(createIconButton(new Icon(IconType.AlignJustify)));
+        verticalButtonGroup.addButton(createIconButton(new Icon(IconType.alignleft)));
+        verticalButtonGroup.addButton(createIconButton(new Icon(IconType.aligncenter)));
+        verticalButtonGroup.addButton(createIconButton(new Icon(IconType.alignright)));
+        verticalButtonGroup.addButton(createIconButton(new Icon(IconType.alignjustify)));
         add(verticalButtonGroup);
     }
 

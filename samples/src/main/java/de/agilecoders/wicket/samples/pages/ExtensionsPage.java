@@ -60,9 +60,9 @@ public class ExtensionsPage extends BasePage {
                                                    + "\t\t.setWidth(680).setHeight(360));")));
 
         final List<? extends AbstractLink> buttons = Lists.<AbstractLink>newArrayList(
-                new MenuBookmarkablePageLink<DatePickerPage>(DatePickerPage.class, Model.of("DatePicker")).setIconType(IconType.Time),
-                new MenuBookmarkablePageLink<IssuesPage>(IssuesPage.class, Model.of("Github Issues")).setIconType(IconType.Book),
-                new MenuBookmarkablePageLink<ExtensionsPage>(ExtensionsPage.class, Model.of("Extensions")).setIconType(IconType.QrCode)
+                new MenuBookmarkablePageLink<DatePickerPage>(DatePickerPage.class, Model.of("DatePicker")).setIconType(IconType.time),
+                new MenuBookmarkablePageLink<IssuesPage>(IssuesPage.class, Model.of("Github Issues")).setIconType(IconType.book),
+                new MenuBookmarkablePageLink<ExtensionsPage>(ExtensionsPage.class, Model.of("Extensions")).setIconType(IconType.qrcode)
         );
         final Component contextPanel = new TransparentWebMarkupContainer("context-panel");
         final ButtonListContextMenu contextMenu = new ButtonListContextMenu("contextmenu", Model.ofList(buttons));

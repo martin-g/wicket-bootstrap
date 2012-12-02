@@ -99,7 +99,7 @@ public class Javascript extends BasePage {
     }
 
     private Component newDropDown(String markupId) {
-        final DropDownButton button = new DropDownButton(markupId, Model.of("Dropdown (#89)"), Model.of(IconType.Bookmark));
+        final DropDownButton button = new DropDownButton(markupId, Model.of("Dropdown (#89)"), Model.of(IconType.bookmark));
         button.addButtons(
                 new MenuBookmarkablePageLink<Javascript>(Javascript.class).setLabel(Model.of("Link")),
                 new NavbarAjaxLink<String>("button", Model.of("Ajax Link")) {

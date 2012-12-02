@@ -128,7 +128,7 @@ public class NavbarTest extends WicketApplicationTest {
         navbar.addComponents(new INavbarComponent() {
             @Override
             public Component create(String markupId) {
-                return new NavbarButton<Page>(Page.class, Model.of("Link Name")).setIconType(IconType.AlignCenter);
+                return new NavbarButton<Page>(Page.class, Model.of("Link Name")).setIconType(IconType.aligncenter);
             }
 
             @Override
