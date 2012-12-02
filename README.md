@@ -17,6 +17,7 @@ Extensions
 * Html5 Video Player: http://html5-ninja.com/item/Bootstrap-video-player-jQuery-plugin
 * JQueryUI (1.9.2): http://api.jqueryui.com/
    * Draggable: http://api.jqueryui.com/draggable
+   * Resizable: http://api.jqueryui.com/resizable
 
 Usage
 -----
