@@ -1,5 +1,6 @@
 package de.agilecoders.wicket.samples;
 
+import com.google.javascript.jscomp.CompilationLevel;
 import de.agilecoders.wicket.Bootstrap;
 import de.agilecoders.wicket.javascript.GoogleClosureJavaScriptCompressor;
 import de.agilecoders.wicket.markup.html.RenderJavaScriptToFooterHeaderResponseDecorator;
@@ -90,7 +91,7 @@ public class WicketApplication extends WebApplication {
             guard.addPattern("+*.svg");
         }
 
-        if (usesDevelopmentConfig() && false) {
+        if (usesDevelopmentConfig()) {
             getResourceSettings().setDefaultCacheDuration(Duration.NONE);
             getResourceSettings().setCachingStrategy(NoOpResourceCachingStrategy.INSTANCE);
         } else {
@@ -98,6 +99,7 @@ public class WicketApplication extends WebApplication {
             getResourceSettings().setCachingStrategy(new FilenameWithVersionResourceCachingStrategy(
                     new MessageDigestResourceVersion()
             ));
+            getResourceSettings().setJavaScriptCompressor(new GoogleClosureJavaScriptCompressor(CompilationLevel.SIMPLE_OPTIMIZATIONS));
         }
 
         getFrameworkSettings().setSerializer(new DeflatedJavaSerializer(getApplicationKey()));
@@ -112,7 +114,6 @@ public class WicketApplication extends WebApplication {
      * configure all resource bundles (css and js)
      */
     private void configureResourceBundles() {
-        getResourceSettings().setJavaScriptCompressor(new GoogleClosureJavaScriptCompressor());
         setHeaderResponseDecorator(new RenderJavaScriptToFooterHeaderResponseDecorator());
 
         getResourceBundles().addJavaScriptBundle(WicketApplication.class, "core.js",

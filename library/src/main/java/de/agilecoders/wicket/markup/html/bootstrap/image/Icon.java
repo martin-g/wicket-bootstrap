@@ -64,6 +64,34 @@ public class Icon extends WebMarkupContainer implements Invertible {
         return this;
     }
 
+    /**
+     * sets a new icon type
+     *
+     * @return this instance for chaining
+     */
+    public final Icon setType(final IconType iconType) {
+        iconBehavior.setType(iconType);
+        return this;
+    }
+
+    /**
+     * @return true, if an {@link IconType} is set and it's not equal to IconType.Null
+     */
+    public final boolean hasIconType() {
+        return iconBehavior.hasIconType();
+    }
+
+    /**
+     * @return current icon type
+     */
+    public IconType getType() {
+        return iconBehavior.type();
+    }
+
+    /**
+     * @deprecated please use {@link #getType()} instead.
+     * @return current icon type
+     */
     public IconType type() {
         return iconBehavior.type();
     }

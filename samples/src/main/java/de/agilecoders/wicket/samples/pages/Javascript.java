@@ -6,7 +6,7 @@ import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonType;
 import de.agilecoders.wicket.markup.html.bootstrap.button.LoadingBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.button.TypedAjaxLink;
 import de.agilecoders.wicket.markup.html.bootstrap.button.dropdown.DropDownButton;
-import de.agilecoders.wicket.markup.html.bootstrap.button.dropdown.MenuPageButton;
+import de.agilecoders.wicket.markup.html.bootstrap.button.dropdown.MenuBookmarkablePageLink;
 import de.agilecoders.wicket.markup.html.bootstrap.components.PopoverBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.components.TooltipBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.image.IconType;
@@ -101,7 +101,7 @@ public class Javascript extends BasePage {
     private Component newDropDown(String markupId) {
         final DropDownButton button = new DropDownButton(markupId, Model.of("Dropdown (#89)"), Model.of(IconType.Bookmark));
         button.addButtons(
-                new MenuPageButton<Javascript>(Javascript.class).setLabel(Model.of("Link")),
+                new MenuBookmarkablePageLink<Javascript>(Javascript.class).setLabel(Model.of("Link")),
                 new NavbarAjaxLink<String>("button", Model.of("Ajax Link")) {
                     @Override
                     public void onClick(AjaxRequestTarget target) {

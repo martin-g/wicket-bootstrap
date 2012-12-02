@@ -6,7 +6,7 @@ import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonList;
 import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonType;
 import de.agilecoders.wicket.markup.html.bootstrap.button.Orientation;
 import de.agilecoders.wicket.markup.html.bootstrap.button.Toolbar;
-import de.agilecoders.wicket.markup.html.bootstrap.button.TypedPageButton;
+import de.agilecoders.wicket.markup.html.bootstrap.button.TypedBookmarkablePageLink;
 import de.agilecoders.wicket.markup.html.bootstrap.image.Icon;
 import de.agilecoders.wicket.markup.html.bootstrap.image.IconType;
 import de.agilecoders.wicket.samples.pages.ComponentsPage;
@@ -58,9 +58,9 @@ public class ButtonGroups extends Panel {
      * @return The new button instance
      */
     private AbstractLink createIconButton(Icon icon) {
-        TypedPageButton button = new TypedPageButton<ComponentsPage>(ButtonList.getButtonMarkupId(), ComponentsPage.class, ButtonType.Default);
+        TypedBookmarkablePageLink button = new TypedBookmarkablePageLink<ComponentsPage>(ButtonList.getButtonMarkupId(), ComponentsPage.class, ButtonType.Default);
         button.setLabel(Model.of(""));
-        button.setIcon(icon);
+        button.setIconType(icon.getType());
         return button;
     }
 

@@ -21,6 +21,8 @@
                     <div class="span3 bs-docs-sidebar">
                         <ul wicket:id="navigation" class="nav nav-list bs-docs-sidenav">
                             <li><a href="#video"><i class="icon-chevron-right"></i> Html5Video player</a></li>
+                            <li><a href="#contextmenu"><i class="icon-chevron-right"></i> ContextMenu</a></li>
+                            <li><a href="#issue97"><i class="icon-chevron-right"></i> Draggable/Resizable Behavior</a></li>
                         </ul>
                     </div>
                     <div class="span9">
@@ -47,6 +49,38 @@
                                 <div wicket:id="video-custom"></div>
                             </div>
                             <pre wicket:id="video-custom-code"></pre>
+                        </section>
+
+                        <section id="contextmenu" >
+                            <div class="page-header">
+                                <h1>ContextMenu</h1>
+                            </div>
+
+                            <h2>Example</h2>
+
+                            <h3>Default</h3>
+
+                            <p>A context menu extension of Twitter Bootstrap made for everyone's convenience.</p>
+
+                            <div class="bs-docs-example">
+                                <p wicket:id="context-panel">Just right click here...</p>
+                                <div wicket:id="contextmenu"></div>
+                            </div>
+                            <pre wicket:id="context-code"></pre>
+                        </section>
+
+                        <section id="issue97">
+                            <div class="page-header">
+                                <h1>Draggable/Resizable Behavior</h1>
+                            </div>
+
+                            <p>see <a href="https://github.com/l0rdn1kk0n/wicket-bootstrap/issues/97">issue #97</a>.</p>
+
+                            <div class="bs-docs-example">
+                                <a wicket:id="open-draggable">Open Modal</a>
+                                <div wicket:id="draggable-modal"></div>
+                            </div>
+                            <pre wicket:id="draggable-code"></pre>
                         </section>
 
                     </div>

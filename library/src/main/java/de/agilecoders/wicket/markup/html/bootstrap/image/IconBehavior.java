@@ -76,8 +76,8 @@ public class IconBehavior extends AssertTagNameBehavior implements Invertible {
     /**
      * @return true, if an {@link IconType} is set
      */
-    private boolean hasIconType() {
-        return type != null && type.getObject() != null && !type.getObject().equals(IconType.NULL);
+    public final boolean hasIconType() {
+        return type != null && type.getObject() != null && !IconType.NULL.equals(type.getObject());
     }
 
     /**
@@ -92,16 +92,26 @@ public class IconBehavior extends AssertTagNameBehavior implements Invertible {
      *
      * @return the component's current instance
      */
-    public IconBehavior invert() {
+    public final IconBehavior invert() {
         setInverted(true);
 
         return this;
     }
 
     /**
+     * sets a new icon type
+     *
+     * @return this instance for chaining
+     */
+    public final IconBehavior setType(final IconType iconType) {
+        type.setObject(iconType);
+        return this;
+    }
+
+    /**
      * @return the current icon type
      */
-    public IconType type() {
+    public final IconType type() {
         return type.getObject();
     }
 

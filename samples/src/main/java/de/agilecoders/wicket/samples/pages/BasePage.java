@@ -4,14 +4,13 @@ import de.agilecoders.wicket.Bootstrap;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.block.Code;
 import de.agilecoders.wicket.markup.html.bootstrap.button.dropdown.DropDownButton;
+import de.agilecoders.wicket.markup.html.bootstrap.button.dropdown.MenuBookmarkablePageLink;
 import de.agilecoders.wicket.markup.html.bootstrap.button.dropdown.MenuDivider;
 import de.agilecoders.wicket.markup.html.bootstrap.button.dropdown.MenuHeader;
-import de.agilecoders.wicket.markup.html.bootstrap.button.dropdown.MenuPageButton;
 import de.agilecoders.wicket.markup.html.bootstrap.html.ChromeFrameMetaTag;
 import de.agilecoders.wicket.markup.html.bootstrap.html.HtmlTag;
 import de.agilecoders.wicket.markup.html.bootstrap.html.MetaTag;
 import de.agilecoders.wicket.markup.html.bootstrap.html.OptimizedMobileViewportMetaTag;
-import de.agilecoders.wicket.markup.html.bootstrap.image.Icon;
 import de.agilecoders.wicket.markup.html.bootstrap.image.IconType;
 import de.agilecoders.wicket.markup.html.bootstrap.navbar.AffixBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.navbar.ImmutableNavbarComponent;
@@ -126,7 +125,7 @@ abstract class BasePage<T> extends GenericWebPage<T> {
         navbar.brandName(Model.of("Wicket Bootstrap"));
 
         navbar.addComponents(NavbarComponents.transform(Navbar.ComponentPosition.LEFT,
-                                                        new NavbarButton<HomePage>(HomePage.class, Model.of("Overview")).setIcon(new Icon(IconType.Home)),
+                                                        new NavbarButton<HomePage>(HomePage.class, Model.of("Overview")).setIconType(IconType.Home),
                                                         new NavbarButton<BaseCssPage>(BaseCssPage.class, Model.of("Base CSS")),
                                                         new NavbarButton<ComponentsPage>(ComponentsPage.class, Model.of("Components")),
                                                         new NavbarButton<HomePage>(Scaffolding.class, Model.of("Scaffolding")),
@@ -134,9 +133,9 @@ abstract class BasePage<T> extends GenericWebPage<T> {
         );
 
         DropDownButton dropdown = new NavbarDropDownButton(Model.of("More..."))
-                .addButton(new MenuPageButton<HomePage>(HomePage.class, Model.of("Overview")).setIcon(new Icon(IconType.Home)))
+                .addButton(new MenuBookmarkablePageLink<HomePage>(HomePage.class, Model.of("Overview")))
                 .addButton(new MenuDivider())
-                .addButton(new MenuHeader(Model.of("Themes"))).setIcon(IconType.AlignJustify);
+                .addButton(new MenuHeader(Model.of("Themes"))).setIconType(IconType.Book);
 
         IBootstrapSettings settings = Bootstrap.getSettings(getApplication());
         List<ITheme> themes = settings.getThemeProvider().available();
@@ -145,7 +144,7 @@ abstract class BasePage<T> extends GenericWebPage<T> {
             PageParameters params = new PageParameters();
             params.set("theme", theme.name());
 
-            dropdown.addButton(new MenuPageButton<Page>(getPageClass(), params, Model.of(theme.name())));
+            dropdown.addButton(new MenuBookmarkablePageLink<Page>(getPageClass(), params, Model.of(theme.name())));
         }
 
         navbar.addComponents(new ImmutableNavbarComponent(dropdown, Navbar.ComponentPosition.RIGHT));
@@ -158,11 +157,11 @@ abstract class BasePage<T> extends GenericWebPage<T> {
      */
     private Component newAddonsDropDownButton() {
         return new NavbarDropDownButton(Model.of("Addons"))
-                .addButton(new MenuPageButton<HomePage>(Javascript.class, Model.of("Javascript")))
-                .addButton(new MenuPageButton<DatePickerPage>(DatePickerPage.class, Model.of("DatePicker")).setIcon(new Icon(IconType.Time)))
-                .addButton(new MenuPageButton<IssuesPage>(IssuesPage.class, Model.of("Github Issues")).setIcon(new Icon(IconType.Book)))
-                .addButton(new MenuPageButton<ExtensionsPage>(ExtensionsPage.class, Model.of("Extensions")).setIcon(new Icon(IconType.QrCode)))
-                .setIcon(IconType.ThLarge);
+                .addButton(new MenuBookmarkablePageLink<HomePage>(Javascript.class, Model.of("Javascript")).setIconType(IconType.Refresh))
+                .addButton(new MenuBookmarkablePageLink<DatePickerPage>(DatePickerPage.class, Model.of("DatePicker")).setIconType(IconType.Time))
+                .addButton(new MenuBookmarkablePageLink<IssuesPage>(IssuesPage.class, Model.of("Github Issues")).setIconType(IconType.Book))
+                .addButton(new MenuBookmarkablePageLink<ExtensionsPage>(ExtensionsPage.class, Model.of("Extensions")).setIconType(IconType.AlignJustify))
+                .setIconType(IconType.ThLarge);
     }
 
     /**

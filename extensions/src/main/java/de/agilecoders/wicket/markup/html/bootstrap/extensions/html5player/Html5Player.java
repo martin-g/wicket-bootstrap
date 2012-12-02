@@ -1,9 +1,11 @@
 package de.agilecoders.wicket.markup.html.bootstrap.extensions.html5player;
 
+import de.agilecoders.wicket.Bootstrap;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.AssertTagNameBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
 import de.agilecoders.wicket.markup.html.bootstrap.common.AbstractConfig;
 import de.agilecoders.wicket.util.JQuery;
+import de.agilecoders.wicket.util.References;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.head.CssReferenceHeaderItem;
@@ -153,8 +155,9 @@ public class Html5Player extends Panel {
     public void renderHead(final IHeaderResponse response) {
         super.renderHead(response);
 
-        response.render(JavaScriptReferenceHeaderItem.forReference(Html5PlayerJavaScriptReference.instance()));
         response.render(CssReferenceHeaderItem.forReference(Html5PlayerCssReference.instance()));
+        References.renderWithFilter(Bootstrap.getSettings(), response,
+                                    JavaScriptReferenceHeaderItem.forReference(Html5PlayerJavaScriptReference.instance()));
 
         response.render(OnDomReadyHeaderItem.forScript($(container).chain(videoUI(config)).get()));
     }

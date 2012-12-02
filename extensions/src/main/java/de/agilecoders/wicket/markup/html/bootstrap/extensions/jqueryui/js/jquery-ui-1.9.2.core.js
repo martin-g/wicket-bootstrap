@@ -2650,7 +2650,7 @@ $.widget("ui.resizable", $.ui.mouse, {
 		maxWidth: null,
 		minHeight: 10,
 		minWidth: 10,
-		zIndex: 1000
+		zIndex: 1100
 	},
 	_create: function() {
 
@@ -2721,7 +2721,7 @@ $.widget("ui.resizable", $.ui.mouse, {
 
 				//TODO : What's going on here?
 				if ('se' == handle) {
-					axis.addClass('ui-icon ui-icon-gripsmall-diagonal-se');
+					axis.addClass('icon icon-resize-full'); // #TODO: wicket-bootstrap change
 				};
 
 				//Insert into internal handles object and append to element

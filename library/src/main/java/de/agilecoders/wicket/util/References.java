@@ -5,8 +5,10 @@ import de.agilecoders.wicket.Bootstrap;
 import de.agilecoders.wicket.settings.IBootstrapSettings;
 import org.apache.wicket.Application;
 import org.apache.wicket.markup.head.IHeaderResponse;
+import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.head.JavaScriptReferenceHeaderItem;
 import org.apache.wicket.markup.head.filter.FilteredHeaderItem;
+import org.apache.wicket.request.resource.ResourceReference;
 
 /**
  * Helper class for {@link org.apache.wicket.request.resource.ResourceReference} handling.
@@ -38,6 +40,26 @@ public final class References {
         }
 
         return Strings.nullToEmpty(referenceUrl);
+    }
+
+    /**
+     * renders a given header item with filter if present.
+     *
+     * @param response  The current header response
+     * @param reference The resource reference to render
+     */
+    public static void renderWithFilter(final IHeaderResponse response, final ResourceReference reference) {
+        renderWithFilter(response, JavaScriptHeaderItem.forReference(reference));
+    }
+
+    /**
+     * renders a given header item with filter if present.
+     *
+     * @param response   The current header response
+     * @param headerItem The header item to render
+     */
+    public static void renderWithFilter(final IHeaderResponse response, final JavaScriptReferenceHeaderItem headerItem) {
+        renderWithFilter(Bootstrap.getSettings(), response, headerItem);
     }
 
     /**

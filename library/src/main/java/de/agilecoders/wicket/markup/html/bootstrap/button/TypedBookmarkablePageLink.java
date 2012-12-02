@@ -5,6 +5,7 @@ import de.agilecoders.wicket.markup.html.bootstrap.image.Icon;
 import de.agilecoders.wicket.markup.html.bootstrap.image.IconType;
 import org.apache.wicket.Component;
 import org.apache.wicket.Page;
+import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.BookmarkablePageLink;
 import org.apache.wicket.markup.html.panel.IMarkupSourcingStrategy;
@@ -19,19 +20,17 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
  * <p/>
  * <code>
  * // creates a big red button
- * new TypedPageButton<Page>("componentId", Page.class, ButtonType.Danger).setSize(ButtonSize.Large);
+ * new TypedBookmarkablePageLink<Page>("componentId", Page.class, ButtonType.Danger).setSize(ButtonSize.Large);
  * </code>
  *
  * @author miha
- * @version 1.0
  */
-public class TypedPageButton<T> extends BookmarkablePageLink<T> implements BootstrapButton<TypedPageButton<T>>, Activatable, Invertible {
+public class TypedBookmarkablePageLink<T> extends BookmarkablePageLink<T> implements BootstrapButton<TypedBookmarkablePageLink<T>>, Activatable, Invertible {
 
     private final Label label;
-
-    // TODO: should be immutable
-    private Icon icon;
+    private final Icon icon;
     private final ButtonBehavior buttonBehavior;
+    private final Component splitter;
 
     /**
      * Constructor.
@@ -41,7 +40,7 @@ public class TypedPageButton<T> extends BookmarkablePageLink<T> implements Boots
      * @param buttonType  The type of the button, e.g. Success, Warn, Default, Menu...
      * @param <T>         type of the page class
      */
-    public <T extends Page> TypedPageButton(final String componentId, final Class<T> pageClass, final ButtonType buttonType) {
+    public <T extends Page> TypedBookmarkablePageLink(final String componentId, final Class<T> pageClass, final ButtonType buttonType) {
         this(componentId, pageClass, new PageParameters(), buttonType);
     }
 
@@ -54,15 +53,18 @@ public class TypedPageButton<T> extends BookmarkablePageLink<T> implements Boots
      * @param buttonType  The type of the button, e.g. Success, Warn, Default, Menu...
      * @param <T>         type of the page class
      */
-    public <T extends Page> TypedPageButton(final String componentId, final Class<T> pageClass, final PageParameters parameters, final ButtonType buttonType) {
+    public <T extends Page> TypedBookmarkablePageLink(final String componentId, final Class<T> pageClass, final PageParameters parameters, final ButtonType buttonType) {
         super(componentId, pageClass, parameters);
 
         add(buttonBehavior = new ButtonBehavior(buttonType, ButtonSize.Medium));
+        add(icon = new Icon("icon", IconType.NULL));
 
-        this.icon = new Icon("icon", IconType.NULL);
+        add(splitter = new WebMarkupContainer("splitter"));
+        this.splitter.setRenderBodyOnly(true).setEscapeModelStrings(false);
 
         this.label = new Label("label", new Model<String>(""));
         this.label.setRenderBodyOnly(true);
+        add(label);
     }
 
     /**
@@ -79,14 +81,14 @@ public class TypedPageButton<T> extends BookmarkablePageLink<T> implements Boots
      * @param buttonSize the size of the button
      * @return reference to the current instance
      */
-    public TypedPageButton<T> setSize(ButtonSize buttonSize) {
+    public TypedBookmarkablePageLink<T> setSize(ButtonSize buttonSize) {
         this.buttonBehavior.withSize(buttonSize);
 
         return this;
     }
 
     @Override
-    public TypedPageButton<T> setType(ButtonType buttonType) {
+    public TypedBookmarkablePageLink<T> setType(ButtonType buttonType) {
         this.buttonBehavior.withType(buttonType);
 
         return this;
@@ -98,7 +100,7 @@ public class TypedPageButton<T> extends BookmarkablePageLink<T> implements Boots
      * @param label the new button label
      * @return reference to the current instance
      */
-    public TypedPageButton<T> setLabel(IModel<?> label) {
+    public TypedBookmarkablePageLink<T> setLabel(IModel<?> label) {
         this.label.setDefaultModel(label);
 
         return this;
@@ -107,11 +109,11 @@ public class TypedPageButton<T> extends BookmarkablePageLink<T> implements Boots
     /**
      * sets the button's icon which will be rendered in front of the label.
      *
-     * @param icon the new button icon
+     * @param iconType the new button icon
      * @return reference to the current instance
      */
-    public TypedPageButton<T> setIcon(Icon icon) {
-        this.icon = icon;
+    public TypedBookmarkablePageLink<T> setIconType(final IconType iconType) {
+        this.icon.setType(iconType);
 
         return this;
     }
@@ -130,7 +132,7 @@ public class TypedPageButton<T> extends BookmarkablePageLink<T> implements Boots
     protected void onConfigure() {
         super.onConfigure();
 
-        add(icon, label);
+        splitter.setVisible(icon.hasIconType());
     }
 
     @Override

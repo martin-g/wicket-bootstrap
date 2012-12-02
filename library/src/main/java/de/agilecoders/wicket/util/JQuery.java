@@ -92,6 +92,17 @@ public final class JQuery implements IClusterable {
     }
 
     /**
+     * adds a chained function to this jquery instance
+     *
+     * @param functionName the function to add
+     * @return this instance for chaining
+     */
+    public JQuery chain(final String functionName) {
+        functions.add(new SimpleFunction(functionName));
+        return this;
+    }
+
+    /**
      * @return this jquery chain as string.
      */
     public String get() {
@@ -165,6 +176,20 @@ public final class JQuery implements IClusterable {
          */
         public static String toString(final JavaScriptInlineFunction value) {
             return value != null ? value.toString() : "null";
+        }
+    }
+
+    /**
+     * a simple function without params and body
+     */
+    public static final class SimpleFunction extends AbstractFunction {
+        /**
+         * Construct.
+         *
+         * @param functionName The function name of this {@link de.agilecoders.wicket.util.JQuery.IFunction} implementation
+         */
+        protected SimpleFunction(final String functionName) {
+            super(functionName);
         }
     }
 

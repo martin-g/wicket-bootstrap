@@ -1,8 +1,9 @@
 package de.agilecoders.wicket.markup.html.bootstrap.navbar;
 
 import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonType;
-import de.agilecoders.wicket.markup.html.bootstrap.button.TypedPageButton;
-import de.agilecoders.wicket.markup.html.bootstrap.image.Icon;
+import de.agilecoders.wicket.markup.html.bootstrap.button.TypedBookmarkablePageLink;
+import de.agilecoders.wicket.markup.html.bootstrap.image.IconType;
+import de.agilecoders.wicket.util.Components;
 import org.apache.wicket.Page;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.model.IModel;
@@ -14,9 +15,8 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
  *
  * @param <T> type of page class, if any
  * @author miha
- * @version 1.0
  */
-public class NavbarButton<T> extends TypedPageButton<T> {
+public class NavbarButton<T> extends TypedBookmarkablePageLink<T> {
 
     /**
      * Constructor.
@@ -47,8 +47,8 @@ public class NavbarButton<T> extends TypedPageButton<T> {
      * {@inheritDoc}
      */
     @Override
-    public NavbarButton<T> setIcon(Icon icon) {
-        super.setIcon(icon);
+    public NavbarButton<T> setIconType(IconType icon) {
+        super.setIconType(icon);
 
         return this;
     }
@@ -56,7 +56,7 @@ public class NavbarButton<T> extends TypedPageButton<T> {
 
     @Override
     protected void onComponentTag(ComponentTag tag) {
-        if (!"a".equalsIgnoreCase(tag.getName()) && !"button".equalsIgnoreCase(tag.getName())) {
+        if (!Components.hasTagName(tag, "a", "button", "input")) {
             tag.setName("a");
         }
 

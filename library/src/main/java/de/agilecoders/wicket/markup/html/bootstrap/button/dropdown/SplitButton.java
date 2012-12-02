@@ -4,7 +4,6 @@ import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonSize;
 import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonType;
 import de.agilecoders.wicket.markup.html.bootstrap.image.IconType;
-import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.link.AbstractLink;
 import org.apache.wicket.model.IModel;
@@ -14,7 +13,6 @@ import org.apache.wicket.model.Model;
  * Use any button to trigger a dropdown menu by placing it within a .btn-group and providing the proper menu markup.
  *
  * @author miha
- * @version 1.0
  */
 public class SplitButton extends DropDownButton {
 
@@ -35,8 +33,11 @@ public class SplitButton extends DropDownButton {
     }
 
     @Override
-    protected Component createButton(String markupId, IModel<String> labelModel, IModel<IconType> iconTypeModel) {
-        return super.createButton(markupId, labelModel, iconTypeModel).setVisible(false);
+    protected WebMarkupContainer createButton(String markupId, IModel<String> labelModel, IModel<IconType> iconTypeModel) {
+        final WebMarkupContainer container = super.createButton(markupId, labelModel, iconTypeModel);
+        container.setVisible(false);
+
+        return container;
     }
 
     @Override
