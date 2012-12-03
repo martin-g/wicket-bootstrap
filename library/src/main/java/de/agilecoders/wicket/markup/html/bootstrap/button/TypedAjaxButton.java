@@ -18,7 +18,7 @@ import org.apache.wicket.model.Model;
  *
  * @author miha
  */
-public abstract class TypedAjaxButton extends AjaxButton implements BootstrapButton<TypedAjaxButton>, Invertible {
+public abstract class TypedAjaxButton extends AjaxButton implements BootstrapButton<TypedAjaxButton>, Invertible<TypedAjaxButton> {
 
     private final Icon icon;
     private final Label label;
@@ -146,7 +146,8 @@ public abstract class TypedAjaxButton extends AjaxButton implements BootstrapBut
      *
      * @param inverted true, if inverted version should be used
      */
-    public void setInverted(final boolean inverted) {
+    public TypedAjaxButton setInverted(final boolean inverted) {
         icon.setInverted(inverted);
+        return this;
     }
 }

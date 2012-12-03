@@ -16,7 +16,7 @@ import org.apache.wicket.model.Model;
  *
  * @author miha
  */
-public abstract class NavbarAjaxLink<T> extends org.apache.wicket.ajax.markup.html.AjaxLink<T> implements Invertible {
+public abstract class NavbarAjaxLink<T> extends org.apache.wicket.ajax.markup.html.AjaxLink<T> implements Invertible<NavbarAjaxLink<T>> {
     private final Icon icon;
     private final Label label;
     private final IModel<IconType> iconTypeModel;
@@ -82,8 +82,9 @@ public abstract class NavbarAjaxLink<T> extends org.apache.wicket.ajax.markup.ht
     }
 
     @Override
-    public void setInverted(boolean inverted) {
+    public NavbarAjaxLink<T> setInverted(boolean inverted) {
         icon.setInverted(inverted);
+        return this;
     }
 
     /**

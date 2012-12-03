@@ -6,8 +6,8 @@ package de.agilecoders.wicket.markup.html.bootstrap.common;
  * @author miha
  * @version 1.0
  */
-public interface Invertible {
+public interface Invertible<T> {
 
-    void setInverted(final boolean inverted);
+    T setInverted(final boolean inverted);
 
 }

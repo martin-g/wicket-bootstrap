@@ -13,7 +13,7 @@ import org.apache.wicket.model.Model;
  * @author miha
  * @version 1.0
  */
-public class IconBehavior extends AssertTagNameBehavior implements Invertible {
+public class IconBehavior extends AssertTagNameBehavior implements Invertible<IconBehavior> {
 
     private final IModel<IconType> type;
     private final IModel<String> value;
@@ -115,7 +115,8 @@ public class IconBehavior extends AssertTagNameBehavior implements Invertible {
         return type.getObject();
     }
 
-    public void setInverted(final boolean value) {
+    public IconBehavior setInverted(final boolean value) {
         this.invert.setObject(value);
+        return this;
     }
 }
