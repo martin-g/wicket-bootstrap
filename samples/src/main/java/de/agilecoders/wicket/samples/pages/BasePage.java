@@ -4,14 +4,13 @@ import de.agilecoders.wicket.Bootstrap;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.block.Code;
 import de.agilecoders.wicket.markup.html.bootstrap.button.dropdown.DropDownButton;
+import de.agilecoders.wicket.markup.html.bootstrap.button.dropdown.MenuBookmarkablePageLink;
 import de.agilecoders.wicket.markup.html.bootstrap.button.dropdown.MenuDivider;
 import de.agilecoders.wicket.markup.html.bootstrap.button.dropdown.MenuHeader;
-import de.agilecoders.wicket.markup.html.bootstrap.button.dropdown.MenuPageButton;
 import de.agilecoders.wicket.markup.html.bootstrap.html.ChromeFrameMetaTag;
 import de.agilecoders.wicket.markup.html.bootstrap.html.HtmlTag;
 import de.agilecoders.wicket.markup.html.bootstrap.html.MetaTag;
 import de.agilecoders.wicket.markup.html.bootstrap.html.OptimizedMobileViewportMetaTag;
-import de.agilecoders.wicket.markup.html.bootstrap.image.Icon;
 import de.agilecoders.wicket.markup.html.bootstrap.image.IconType;
 import de.agilecoders.wicket.markup.html.bootstrap.navbar.AffixBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.navbar.ImmutableNavbarComponent;
@@ -30,6 +29,8 @@ import org.apache.wicket.Page;
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
+import org.apache.wicket.markup.head.filter.FilteredHeaderItem;
+import org.apache.wicket.markup.head.filter.HeaderResponseContainer;
 import org.apache.wicket.markup.html.GenericWebPage;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.model.IModel;
@@ -105,6 +106,8 @@ abstract class BasePage<T> extends GenericWebPage<T> {
 
         add(new BootstrapBaseBehavior());
         add(new Code("code-internal"));
+
+        add(new HeaderResponseContainer("footer-container", "footer-container"));
     }
 
     /**
@@ -122,7 +125,7 @@ abstract class BasePage<T> extends GenericWebPage<T> {
         navbar.brandName(Model.of("Wicket Bootstrap"));
 
         navbar.addComponents(NavbarComponents.transform(Navbar.ComponentPosition.LEFT,
-                                                        new NavbarButton<HomePage>(HomePage.class, Model.of("Overview")).setIcon(new Icon(IconType.Home)),
+                                                        new NavbarButton<HomePage>(HomePage.class, Model.of("Overview")).setIconType(IconType.home),
                                                         new NavbarButton<BaseCssPage>(BaseCssPage.class, Model.of("Base CSS")),
                                                         new NavbarButton<ComponentsPage>(ComponentsPage.class, Model.of("Components")),
                                                         new NavbarButton<HomePage>(Scaffolding.class, Model.of("Scaffolding")),
@@ -130,9 +133,9 @@ abstract class BasePage<T> extends GenericWebPage<T> {
         );
 
         DropDownButton dropdown = new NavbarDropDownButton(Model.of("More..."))
-                .addButton(new MenuPageButton<HomePage>(HomePage.class, Model.of("Overview")).setIcon(new Icon(IconType.Home)))
+                .addButton(new MenuBookmarkablePageLink<HomePage>(HomePage.class, Model.of("Overview")))
                 .addButton(new MenuDivider())
-                .addButton(new MenuHeader(Model.of("Themes"))).setIcon(IconType.AlignJustify);
+                .addButton(new MenuHeader(Model.of("Themes"))).setIconType(IconType.book);
 
         IBootstrapSettings settings = Bootstrap.getSettings(getApplication());
         List<ITheme> themes = settings.getThemeProvider().available();
@@ -141,7 +144,7 @@ abstract class BasePage<T> extends GenericWebPage<T> {
             PageParameters params = new PageParameters();
             params.set("theme", theme.name());
 
-            dropdown.addButton(new MenuPageButton<Page>(getPageClass(), params, Model.of(theme.name())));
+            dropdown.addButton(new MenuBookmarkablePageLink<Page>(getPageClass(), params, Model.of(theme.name())));
         }
 
         navbar.addComponents(new ImmutableNavbarComponent(dropdown, Navbar.ComponentPosition.RIGHT));
@@ -154,10 +157,11 @@ abstract class BasePage<T> extends GenericWebPage<T> {
      */
     private Component newAddonsDropDownButton() {
         return new NavbarDropDownButton(Model.of("Addons"))
-                .addButton(new MenuPageButton<HomePage>(Javascript.class, Model.of("Javascript")))
-                .addButton(new MenuPageButton<DatePickerPage>(DatePickerPage.class, Model.of("DatePicker")).setIcon(new Icon(IconType.Time)))
-                .addButton(new MenuPageButton<IssuesPage>(IssuesPage.class, Model.of("Github Issues")).setIcon(new Icon(IconType.Book)))
-                .setIcon(IconType.ThLarge);
+                .addButton(new MenuBookmarkablePageLink<HomePage>(Javascript.class, Model.of("Javascript")).setIconType(IconType.refresh))
+                .addButton(new MenuBookmarkablePageLink<DatePickerPage>(DatePickerPage.class, Model.of("DatePicker")).setIconType(IconType.time))
+                .addButton(new MenuBookmarkablePageLink<IssuesPage>(IssuesPage.class, Model.of("Github Issues")).setIconType(IconType.book))
+                .addButton(new MenuBookmarkablePageLink<ExtensionsPage>(ExtensionsPage.class, Model.of("Extensions")).setIconType(IconType.alignjustify))
+                .setIconType(IconType.thlarge);
     }
 
     /**
@@ -186,7 +190,7 @@ abstract class BasePage<T> extends GenericWebPage<T> {
         super.renderHead(response);
 
         response.render(CssHeaderItem.forReference(FixBootstrapStylesCssResourceReference.INSTANCE));
-        response.render(JavaScriptHeaderItem.forReference(ApplicationJavaScript.INSTANCE));
+        response.render(new FilteredHeaderItem(JavaScriptHeaderItem.forReference(ApplicationJavaScript.INSTANCE), "footer-container"));
     }
 
     protected boolean hasNavigation() {

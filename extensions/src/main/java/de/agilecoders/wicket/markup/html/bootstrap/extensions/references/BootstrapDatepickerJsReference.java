@@ -1,4 +1,4 @@
-package de.agilecoders.wicket.markup.html.references;
+package de.agilecoders.wicket.markup.html.bootstrap.extensions.references;
 
 import com.google.common.collect.Lists;
 import org.apache.wicket.Application;
@@ -13,7 +13,6 @@ import java.util.List;
  * Bootstrap DatePicker javascript resource reference
  *
  * @author miha
- * @version 1.0
  */
 public class BootstrapDatepickerJsReference extends JavaScriptResourceReference {
     private static final long serialVersionUID = 1L;

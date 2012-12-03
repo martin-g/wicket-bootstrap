@@ -1,7 +1,6 @@
 package de.agilecoders.wicket.markup.html.bootstrap.navbar;
 
 import de.agilecoders.wicket.WicketApplicationTest;
-import de.agilecoders.wicket.markup.html.bootstrap.image.Icon;
 import de.agilecoders.wicket.markup.html.bootstrap.image.IconType;
 import de.agilecoders.wicket.test.IntegrationTest;
 import org.apache.wicket.Component;
@@ -129,7 +128,7 @@ public class NavbarTest extends WicketApplicationTest {
         navbar.addComponents(new INavbarComponent() {
             @Override
             public Component create(String markupId) {
-                return new NavbarButton<Page>(Page.class, Model.of("Link Name")).setIcon(new Icon("icon", IconType.AlignCenter).invert());
+                return new NavbarButton<Page>(Page.class, Model.of("Link Name")).setIconType(IconType.aligncenter);
             }
 
             @Override

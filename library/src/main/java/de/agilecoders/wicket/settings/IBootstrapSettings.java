@@ -6,7 +6,6 @@ import org.apache.wicket.request.resource.ResourceReference;
  * Settings interface for bootstrap settings.
  *
  * @author miha
- * @version 1.0
  */
 public interface IBootstrapSettings {
 
@@ -42,6 +41,11 @@ public interface IBootstrapSettings {
     boolean useJqueryPP();
 
     /**
+     * @return javascript resource filter name
+     */
+    String getJsResourceFilterName();
+
+    /**
      * @param useJqueryPP true, if modernizr should be loaded
      */
     IBootstrapSettings useJqueryPP(final boolean useJqueryPP);
@@ -50,6 +54,13 @@ public interface IBootstrapSettings {
      * @return true if minification is active
      */
     boolean isMinified();
+
+    /**
+     * sets the filter name for all bootstrap js resource references
+     *
+     * @param name javascript resource filter name
+     */
+    IBootstrapSettings setJsResourceFilterName(final String name);
 
     /**
      * @param minify true, if all references should be loaded minified

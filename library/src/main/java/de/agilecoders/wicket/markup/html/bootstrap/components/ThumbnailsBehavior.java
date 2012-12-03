@@ -1,6 +1,5 @@
 package de.agilecoders.wicket.markup.html.bootstrap.components;
 
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.AssertTagNameBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
 import org.apache.wicket.Component;
@@ -19,6 +18,5 @@ public class ThumbnailsBehavior extends BootstrapBaseBehavior {
         super.bind(component);
 
         component.add(new CssClassNameAppender("thumbnails"));
-        component.add(new AssertTagNameBehavior("ul"));
     }
 }

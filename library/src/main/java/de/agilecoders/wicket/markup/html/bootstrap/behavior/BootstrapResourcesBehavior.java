@@ -9,15 +9,28 @@ import org.apache.wicket.markup.head.IHeaderResponse;
  * {@inheritDoc}
  *
  * @author miha
- * @version 1.0
  */
 public class BootstrapResourcesBehavior extends BootstrapJavascriptBehavior {
+
+    /**
+     * holder for singleton instance of {@link BootstrapResourcesBehavior}
+     */
+    private static final class Holder {
+        private static final BootstrapResourcesBehavior INSTANCE = new BootstrapResourcesBehavior();
+    }
+
+    /**
+     * @return default instance of {@link BootstrapResourcesBehavior}
+     */
+    public static BootstrapResourcesBehavior instance() {
+        return Holder.INSTANCE;
+    }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public void renderHead(IBootstrapSettings settings, IHeaderResponse headerResponse) {
+    public void renderHead(final IBootstrapSettings settings, final IHeaderResponse headerResponse) {
         super.renderHead(settings, headerResponse);
 
         // just includes all bootstrap resource references.

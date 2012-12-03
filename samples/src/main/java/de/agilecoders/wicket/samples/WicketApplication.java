@@ -1,7 +1,18 @@
 package de.agilecoders.wicket.samples;
 
+import com.google.javascript.jscomp.CompilationLevel;
 import de.agilecoders.wicket.Bootstrap;
+import de.agilecoders.wicket.javascript.GoogleClosureJavaScriptCompressor;
+import de.agilecoders.wicket.markup.html.RenderJavaScriptToFooterHeaderResponseDecorator;
+import de.agilecoders.wicket.markup.html.bootstrap.extensions.html5player.Html5PlayerCssReference;
+import de.agilecoders.wicket.markup.html.bootstrap.extensions.html5player.Html5PlayerJavaScriptReference;
+import de.agilecoders.wicket.markup.html.bootstrap.extensions.jqueryui.JQueryUIJavaScriptReference;
+import de.agilecoders.wicket.markup.html.references.BootstrapPrettifyCssReference;
+import de.agilecoders.wicket.markup.html.references.BootstrapPrettifyJavaScriptReference;
+import de.agilecoders.wicket.markup.html.references.ModernizrJavaScriptReference;
 import de.agilecoders.wicket.markup.html.themes.metro.MetroTheme;
+import de.agilecoders.wicket.samples.assets.base.ApplicationJavaScript;
+import de.agilecoders.wicket.samples.assets.base.FixBootstrapStylesCssResourceReference;
 import de.agilecoders.wicket.samples.pages.HomePage;
 import de.agilecoders.wicket.settings.BootstrapSettings;
 import de.agilecoders.wicket.settings.BootswatchThemeProvider;
@@ -12,7 +23,12 @@ import org.apache.wicket.RuntimeConfigurationType;
 import org.apache.wicket.markup.html.IPackageResourceGuard;
 import org.apache.wicket.markup.html.SecurePackageResourceGuard;
 import org.apache.wicket.protocol.http.WebApplication;
+import org.apache.wicket.request.resource.CssResourceReference;
+import org.apache.wicket.request.resource.JavaScriptResourceReference;
+import org.apache.wicket.request.resource.caching.FilenameWithVersionResourceCachingStrategy;
 import org.apache.wicket.request.resource.caching.NoOpResourceCachingStrategy;
+import org.apache.wicket.request.resource.caching.version.MessageDigestResourceVersion;
+import org.apache.wicket.serialize.java.DeflatedJavaSerializer;
 import org.apache.wicket.util.time.Duration;
 import org.wicketstuff.annotation.scan.AnnotatedMountScanner;
 
@@ -75,13 +91,59 @@ public class WicketApplication extends WebApplication {
             guard.addPattern("+*.svg");
         }
 
-        getResourceSettings().setDefaultCacheDuration(Duration.milliseconds(0));
-        getResourceSettings().setResourcePollFrequency(Duration.seconds(2));
-        getResourceSettings().setCachingStrategy(NoOpResourceCachingStrategy.INSTANCE);
+        if (usesDevelopmentConfig()) {
+            getResourceSettings().setDefaultCacheDuration(Duration.NONE);
+            getResourceSettings().setCachingStrategy(NoOpResourceCachingStrategy.INSTANCE);
+        } else {
+            getResourceSettings().setDefaultCacheDuration(Duration.days(1000));
+            getResourceSettings().setCachingStrategy(new FilenameWithVersionResourceCachingStrategy(
+                    new MessageDigestResourceVersion()
+            ));
+            getResourceSettings().setJavaScriptCompressor(new GoogleClosureJavaScriptCompressor(CompilationLevel.SIMPLE_OPTIMIZATIONS));
+        }
+
+        getFrameworkSettings().setSerializer(new DeflatedJavaSerializer(getApplicationKey()));
 
         configureBootstrap();
+        configureResourceBundles();
 
         new AnnotatedMountScanner().scanPackage("de.agilecoders.wicket.samples.pages").mount(this);
+    }
+
+    /**
+     * configure all resource bundles (css and js)
+     */
+    private void configureResourceBundles() {
+        setHeaderResponseDecorator(new RenderJavaScriptToFooterHeaderResponseDecorator());
+
+        getResourceBundles().addJavaScriptBundle(WicketApplication.class, "core.js",
+                                                 (JavaScriptResourceReference) getJavaScriptLibrarySettings().getJQueryReference(),
+                                                 (JavaScriptResourceReference) getJavaScriptLibrarySettings().getWicketEventReference(),
+                                                 (JavaScriptResourceReference) getJavaScriptLibrarySettings().getWicketAjaxReference(),
+                                                 (JavaScriptResourceReference) ModernizrJavaScriptReference.INSTANCE
+        );
+
+        getResourceBundles().addJavaScriptBundle(WicketApplication.class, "bootstrap.js",
+                                                 (JavaScriptResourceReference) Bootstrap.getSettings().getJsResourceReference(),
+                                                 (JavaScriptResourceReference) Bootstrap.getSettings().getJqueryPPResourceReference(),
+                                                 (JavaScriptResourceReference) BootstrapPrettifyJavaScriptReference.INSTANCE,
+                                                 ApplicationJavaScript.INSTANCE
+        );
+
+        getResourceBundles().addJavaScriptBundle(WicketApplication.class, "bootstrap-extensions.js",
+                                                 JQueryUIJavaScriptReference.instance(),
+                                                 Html5PlayerJavaScriptReference.instance()
+        );
+
+        getResourceBundles().addCssBundle(WicketApplication.class, "bootstrap-extensions.css",
+                                          Html5PlayerCssReference.instance()
+        );
+
+        getResourceBundles().addCssBundle(WicketApplication.class, "application.css",
+                                          (CssResourceReference) Bootstrap.getSettings().getResponsiveCssResourceReference(),
+                                          (CssResourceReference) BootstrapPrettifyCssReference.INSTANCE,
+                                          FixBootstrapStylesCssResourceReference.INSTANCE
+        );
     }
 
     private void configureBootstrap() {
@@ -90,7 +152,8 @@ public class WicketApplication extends WebApplication {
                 .useJqueryPP(true)
                 .useModernizr(true)
                 .useResponsiveCss(true)
-                .getBootstrapLessCompilerSettings().setUseLessCompiler(true);
+                .setJsResourceFilterName("footer-container")
+                .getBootstrapLessCompilerSettings().setUseLessCompiler(false);
 
         ThemeProvider themeProvider = new BootswatchThemeProvider() {{
             add(new MetroTheme());

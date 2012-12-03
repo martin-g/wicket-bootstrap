@@ -6,7 +6,7 @@ import de.agilecoders.wicket.util.JQuery;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.head.IHeaderResponse;
-import org.apache.wicket.markup.head.OnLoadHeaderItem;
+import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
 import org.apache.wicket.model.IModel;
 
 import static de.agilecoders.wicket.markup.html.bootstrap.components.TooltipBehavior.TooltipJqueryFunction.tooltip;
@@ -70,7 +70,7 @@ public class TooltipBehavior extends BootstrapJavascriptBehavior {
     public void renderHead(final Component component, final IHeaderResponse headerResponse) {
         super.renderHead(component, headerResponse);
 
-        headerResponse.render(OnLoadHeaderItem.forScript(createInitializerScript(component, config)));
+        headerResponse.render(OnDomReadyHeaderItem.forScript(createInitializerScript(component, config)));
     }
 
     /**

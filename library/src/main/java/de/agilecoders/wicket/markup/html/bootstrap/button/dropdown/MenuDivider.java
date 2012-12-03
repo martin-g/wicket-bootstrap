@@ -9,7 +9,6 @@ import org.apache.wicket.model.Model;
  * A simple divider for menu elements.
  *
  * @author miha
- * @version 1.0
  */
 public class MenuDivider extends AbstractLink {
 
@@ -21,7 +20,6 @@ public class MenuDivider extends AbstractLink {
 
         setBody(Model.of("&nbsp;"));
         setEscapeModelStrings(false);
-        setRenderBodyOnly(true);
     }
 
     @Override

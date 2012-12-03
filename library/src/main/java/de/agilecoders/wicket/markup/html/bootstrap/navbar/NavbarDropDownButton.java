@@ -10,7 +10,6 @@ import org.apache.wicket.model.IModel;
  * Special {@link DropDownButton} for a {@link Navbar}.
  *
  * @author miha
- * @version 1.0
  */
 public class NavbarDropDownButton extends DropDownButton {
 

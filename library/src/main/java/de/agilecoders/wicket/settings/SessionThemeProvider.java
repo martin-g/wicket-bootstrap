@@ -11,7 +11,6 @@ import org.apache.wicket.WicketRuntimeException;
  * in the user session as style.
  *
  * @author miha
- * @version 1.0
  */
 public class SessionThemeProvider implements ActiveThemeProvider {
 
@@ -26,6 +25,9 @@ public class SessionThemeProvider implements ActiveThemeProvider {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public ITheme getActiveTheme() {
         String style = Session.get().getStyle();
@@ -37,11 +39,17 @@ public class SessionThemeProvider implements ActiveThemeProvider {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void setActiveTheme(String themeName) {
         setActiveTheme(themeProvider().byName(themeName));
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void setActiveTheme(ITheme theme) {
         assertBoundSession();

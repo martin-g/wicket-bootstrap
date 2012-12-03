@@ -8,7 +8,7 @@ import de.agilecoders.wicket.less.IBootstrapLessCompiler;
 import java.nio.charset.Charset;
 
 /**
- * TODO: document
+ * Default {@link IBootstrapLessCompilerSettings} implementation
  *
  * @author miha
  * @version 1.0

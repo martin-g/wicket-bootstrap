@@ -1,13 +1,15 @@
 package de.agilecoders.wicket;
 
+import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapResourcesBehavior;
+import de.agilecoders.wicket.settings.IBootstrapSettings;
 import org.apache.wicket.Application;
 import org.apache.wicket.Component;
 import org.apache.wicket.MetaDataKey;
 import org.apache.wicket.markup.head.IHeaderResponse;
 
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapResourcesBehavior;
-import de.agilecoders.wicket.settings.IBootstrapSettings;
-
+/**
+ * Bootstrap core class
+ */
 public final class Bootstrap {
 
     /**
@@ -16,26 +18,58 @@ public final class Bootstrap {
     private static final MetaDataKey<IBootstrapSettings> BOOTSTRAP_SETTINGS_METADATA_KEY = new MetaDataKey<IBootstrapSettings>() {
     };
 
+    /**
+     * Construct.
+     */
     private Bootstrap() {
+        throw new UnsupportedOperationException();
     }
 
-    public static void install(Application app, IBootstrapSettings settings) {
+    /**
+     * Installs given settings for given application
+     *
+     * @param app      The current application
+     * @param settings The settings to use
+     */
+    public static void install(final Application app, final IBootstrapSettings settings) {
         app.setMetaData(BOOTSTRAP_SETTINGS_METADATA_KEY, settings);
     }
 
-    public static IBootstrapSettings getSettings(Application app) {
+    /**
+     * returns the {@link IBootstrapSettings} which are assigned to given application
+     *
+     * @param app The current application
+     * @return assigned {@link IBootstrapSettings}
+     */
+    public static IBootstrapSettings getSettings(final Application app) {
         return app.getMetaData(BOOTSTRAP_SETTINGS_METADATA_KEY);
     }
 
+    /**
+     * returns the {@link IBootstrapSettings} which are assigned to current application
+     *
+     * @return assigned {@link IBootstrapSettings}
+     */
     public static IBootstrapSettings getSettings() {
         return getSettings(Application.get());
     }
 
-    public static void renderHead(Component component, IHeaderResponse response) {
-        new BootstrapResourcesBehavior().renderHead(getSettings(component.getApplication()), response);
+    /**
+     * renders all core bootstrap resource references
+     *
+     * @param component current component
+     * @param response  The current {@link IHeaderResponse}
+     */
+    public static void renderHead(final Component component, final IHeaderResponse response) {
+        BootstrapResourcesBehavior.instance().renderHead(getSettings(component.getApplication()), response);
     }
 
-    public static void renderHead(IHeaderResponse response) {
-        new BootstrapResourcesBehavior().renderHead(getSettings(Application.get()), response);
+    /**
+     * renders all core bootstrap resource references
+     *
+     * @param response The current {@link IHeaderResponse}
+     */
+    public static void renderHead(final IHeaderResponse response) {
+        BootstrapResourcesBehavior.instance().renderHead(getSettings(Application.get()), response);
     }
 }

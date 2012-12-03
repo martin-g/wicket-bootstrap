@@ -36,7 +36,7 @@ public class ButtonList extends ListView<AbstractLink> {
      * @param id
      * @param list
      */
-    public ButtonList(String id, List<AbstractLink> list) {
+    public ButtonList(String id, List<? extends AbstractLink> list) {
         super(id, list);
 
         setOutputMarkupId(true);
@@ -48,7 +48,7 @@ public class ButtonList extends ListView<AbstractLink> {
      * @param id
      * @param model
      */
-    public ButtonList(String id, IModel<List<AbstractLink>> model) {
+    public ButtonList(String id, IModel<List<? extends AbstractLink>> model) {
         super(id, model);
 
         setOutputMarkupId(true);

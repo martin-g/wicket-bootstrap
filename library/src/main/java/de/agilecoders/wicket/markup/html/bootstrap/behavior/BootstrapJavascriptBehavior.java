@@ -1,8 +1,10 @@
 package de.agilecoders.wicket.markup.html.bootstrap.behavior;
 
 import de.agilecoders.wicket.settings.IBootstrapSettings;
+import de.agilecoders.wicket.util.References;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
+import org.apache.wicket.markup.head.JavaScriptReferenceHeaderItem;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 
 /**
@@ -12,7 +14,6 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
  * the response.
  *
  * @author miha
- * @version 1.0
  */
 public class BootstrapJavascriptBehavior extends BootstrapBaseBehavior {
 
@@ -28,10 +29,13 @@ public class BootstrapJavascriptBehavior extends BootstrapBaseBehavior {
     public void renderHead(IBootstrapSettings settings, IHeaderResponse headerResponse) {
         super.renderHead(settings, headerResponse);
 
-        headerResponse.render(JavaScriptHeaderItem.forReference(settings.getJsResourceReference(), new PageParameters(), "bootstrap-js", true));
+        final JavaScriptReferenceHeaderItem jsReference = JavaScriptHeaderItem.forReference(settings.getJsResourceReference(), new PageParameters(), "bootstrap-js", true);
+        References.renderWithFilter(settings, headerResponse, jsReference);
 
         if (settings.useJqueryPP()) {
-            headerResponse.render(JavaScriptHeaderItem.forReference(settings.getJqueryPPResourceReference(), new PageParameters(), "jquerypp-js", true));
+            JavaScriptReferenceHeaderItem jqueryPP = JavaScriptHeaderItem.forReference(settings.getJqueryPPResourceReference(), new PageParameters(), "jquerypp-js", true);
+
+            References.renderWithFilter(settings, headerResponse, jqueryPP);
         }
     }
 }

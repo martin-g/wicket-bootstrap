@@ -9,7 +9,6 @@ import java.nio.charset.Charset;
  * The {@link IBootstrapLessCompilerSettings} interface.
  *
  * @author miha
- * @version 1.0
  */
 public interface IBootstrapLessCompilerSettings {
 

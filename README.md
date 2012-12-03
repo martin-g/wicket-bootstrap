@@ -9,13 +9,45 @@ Components
 * Twitter Bootstrap (2.2.1): http://twitter.github.com/bootstrap
 * Apache Wicket (6.3.0): http://wicket.apache.org/
 * Bootswatch (2.2.1): http://bootswatch.com/
+
+Extensions
+----------
+
 * DatePicker: https://github.com/eternicode/bootstrap-datepicker
+* Html5 Video Player: http://html5-ninja.com/item/Bootstrap-video-player-jQuery-plugin
+* JQueryUI (1.9.2): http://api.jqueryui.com/
+   * Draggable: http://api.jqueryui.com/draggable
+   * Resizable: http://api.jqueryui.com/resizable
 
 Usage
 -----
 
 * you can see wicket-bootstrap in action: http://wb.agilecoders.de/demo
 * how to use wicket-bootstrap? Read the documentation on https://github.com/l0rdn1kk0n/wicket-bootstrap/wiki.
+
+## Maven
+wicket-bootstrap is [available](http://search.maven.org/#artifactdetails|de.agilecoders.wicket|bootstrap|0.7.4|jar) in Maven central repository.
+
+core maven dependency:
+<pre><code>&lt;dependency&gt;
+  &lt;groupId&gt;de.agilecoders.wicket&lt;/groupId&gt;
+  &lt;artifactId&gt;bootstrap&lt;/artifactId&gt;
+  &lt;version&gt;0.7.4&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+
+for all extensions:
+<pre><code>&lt;dependency&gt;
+  &lt;groupId&gt;de.agilecoders.wicket&lt;/groupId&gt;
+  &lt;artifactId&gt;bootstrap-extensions&lt;/artifactId&gt;
+  &lt;version&gt;0.7.4&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+
+Twitter account
+---------------
+
+Keep up to date on announcements and more by following [#WicketBootstrap](https://twitter.com/search?q=%23WicketBootstrap&src=typd) on Twitter, [@l0rdn1kk0n](http://twitter.com/l0rdn1kk0n).
 
 
 Bug tracker

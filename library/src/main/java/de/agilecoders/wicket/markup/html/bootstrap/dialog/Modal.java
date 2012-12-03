@@ -25,7 +25,6 @@ import java.util.List;
  * footer and body.
  *
  * @author miha
- * @version 1.0
  */
 public class Modal extends Panel {
 
@@ -220,7 +219,7 @@ public class Modal extends Panel {
         }
 
         if (button instanceof ModalCloseButton) {
-           // ((ModalCloseButton) button).setAnchor(this);
+            // ((ModalCloseButton) button).setAnchor(this);
         }
 
         buttons.add(button);
@@ -355,4 +354,5 @@ public class Modal extends Panel {
         this.keyboard.setObject(keyboard);
         return this;
     }
+
 }

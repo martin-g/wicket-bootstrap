@@ -9,8 +9,9 @@ import org.apache.wicket.request.resource.CssResourceReference;
 import org.apache.wicket.request.resource.ResourceReference;
 
 /**
+ * Default {@link IBootstrapSettings} implementation
+ *
  * @author miha
- * @version 1.0
  * @see IBootstrapSettings
  */
 public class BootstrapSettings implements IBootstrapSettings {
@@ -22,6 +23,7 @@ public class BootstrapSettings implements IBootstrapSettings {
     private ActiveThemeProvider activeThemeProvider = new SessionThemeProvider();
     private boolean useModernizr = false;
     private boolean useJqueryPP = false;
+    private String resourceFilterName = "";
     private IBootstrapLessCompilerSettings bootstrapLessCompilerSettings = new BootstrapLessCompilerSettings();
 
     /**
@@ -63,6 +65,11 @@ public class BootstrapSettings implements IBootstrapSettings {
     }
 
     @Override
+    public String getJsResourceFilterName() {
+        return resourceFilterName;
+    }
+
+    @Override
     public BootstrapSettings useJqueryPP(boolean useJqueryPP) {
         this.useJqueryPP = useJqueryPP;
         return this;
@@ -71,6 +78,12 @@ public class BootstrapSettings implements IBootstrapSettings {
     @Override
     public boolean isMinified() {
         return Application.get().getResourceSettings().getUseMinifiedResources();
+    }
+
+    @Override
+    public IBootstrapSettings setJsResourceFilterName(String name) {
+        resourceFilterName = name;
+        return this;
     }
 
     @Override

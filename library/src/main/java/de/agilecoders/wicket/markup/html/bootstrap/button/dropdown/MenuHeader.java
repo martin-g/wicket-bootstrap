@@ -1,21 +1,27 @@
 package de.agilecoders.wicket.markup.html.bootstrap.button.dropdown;
 
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
-import org.apache.wicket.Page;
+import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonList;
+import org.apache.wicket.markup.html.link.AbstractLink;
 import org.apache.wicket.model.IModel;
 
 /**
- * TODO: document
+ * A simple header for {@link DropDownButton} and {@link SplitButton} submenus.
  *
  * @author miha
- * @version 1.0
  */
-public class MenuHeader extends MenuPageButton<Page> {
-    public MenuHeader(IModel<String> label) {
-        super(Page.class);
+public class MenuHeader extends AbstractLink {
+
+    /**
+     * Construct.
+     *
+     * @param label Header label
+     */
+    public MenuHeader(final IModel<String> label) {
+        super(ButtonList.getButtonMarkupId());
 
         setRenderBodyOnly(true);
-        setLabel(label);
+        setBody(label);
     }
 
     @Override
