@@ -11,7 +11,7 @@ import org.apache.wicket.model.Model;
  * @author miha
  * @version 1.0
  */
-public class Icon extends WebMarkupContainer implements Invertible {
+public class Icon extends WebMarkupContainer implements Invertible<Icon> {
 
     private final IconBehavior iconBehavior;
 
@@ -49,8 +49,9 @@ public class Icon extends WebMarkupContainer implements Invertible {
      *
      * @return the component's current instance
      */
-    public void setInverted(final boolean value) {
+    public Icon setInverted(final boolean value) {
         iconBehavior.setInverted(value);
+        return this;
     }
 
     /**
