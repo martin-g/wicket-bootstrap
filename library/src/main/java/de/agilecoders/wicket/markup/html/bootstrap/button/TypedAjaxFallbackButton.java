@@ -18,7 +18,7 @@ import org.apache.wicket.model.Model;
  *
  * @author miha
  */
-public abstract class TypedAjaxFallbackButton extends AjaxFallbackButton implements BootstrapButton<TypedAjaxFallbackButton>, Invertible {
+public abstract class TypedAjaxFallbackButton extends AjaxFallbackButton implements BootstrapButton<TypedAjaxFallbackButton>, Invertible<TypedAjaxFallbackButton> {
 
     private final Icon icon;
     private final Label label;
@@ -125,7 +125,8 @@ public abstract class TypedAjaxFallbackButton extends AjaxFallbackButton impleme
      *
      * @param inverted true, if inverted version should be used
      */
-    public void setInverted(final boolean inverted) {
+    public TypedAjaxFallbackButton setInverted(final boolean inverted) {
         icon.setInverted(inverted);
+        return this;
     }
 }
