@@ -73,7 +73,8 @@ public class TypedButton extends Button implements BootstrapButton<TypedButton> 
      * @param label the new button label
      * @return reference to the current instance
      */
-    public TypedButton setLabel(IModel<?> label) {
+    @Override
+    public TypedButton setLabel(IModel<String> label) {
         this.label.setDefaultModel(label);
 
         return this;

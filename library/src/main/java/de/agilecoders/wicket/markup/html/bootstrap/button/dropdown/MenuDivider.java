@@ -20,7 +20,6 @@ public class MenuDivider extends AbstractLink {
 
         setBody(Model.of("&nbsp;"));
         setEscapeModelStrings(false);
-        setRenderBodyOnly(true);
     }
 
     @Override

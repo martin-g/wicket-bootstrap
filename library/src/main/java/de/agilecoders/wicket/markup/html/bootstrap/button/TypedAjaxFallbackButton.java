@@ -77,7 +77,8 @@ public abstract class TypedAjaxFallbackButton extends AjaxFallbackButton impleme
      * @param label the new button label
      * @return reference to the current instance
      */
-    public TypedAjaxFallbackButton setLabel(IModel<?> label) {
+    @Override
+    public TypedAjaxFallbackButton setLabel(IModel<String> label) {
         this.label.setDefaultModel(label);
 
         return this;

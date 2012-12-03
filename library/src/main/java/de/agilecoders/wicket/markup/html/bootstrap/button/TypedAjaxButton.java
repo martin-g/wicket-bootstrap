@@ -98,7 +98,8 @@ public abstract class TypedAjaxButton extends AjaxButton implements BootstrapBut
      * @param label the new button label
      * @return reference to the current instance
      */
-    public TypedAjaxButton setLabel(IModel<?> label) {
+    @Override
+    public TypedAjaxButton setLabel(IModel<String> label) {
         this.label.setDefaultModel(label);
 
         return this;
