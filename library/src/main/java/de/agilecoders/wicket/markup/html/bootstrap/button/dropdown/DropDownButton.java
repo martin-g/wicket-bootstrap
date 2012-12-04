@@ -2,6 +2,7 @@ package de.agilecoders.wicket.markup.html.bootstrap.button.dropdown;
 
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapResourcesBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
+import de.agilecoders.wicket.markup.html.bootstrap.button.Activatable;
 import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonList;
 import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonSize;
@@ -11,6 +12,7 @@ import de.agilecoders.wicket.markup.html.bootstrap.image.Icon;
 import de.agilecoders.wicket.markup.html.bootstrap.image.IconType;
 import de.agilecoders.wicket.util.Components;
 import org.apache.wicket.Component;
+import org.apache.wicket.Page;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.head.IHeaderResponse;
@@ -18,6 +20,7 @@ import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.AbstractLink;
+import org.apache.wicket.markup.html.link.BookmarkablePageLink;
 import org.apache.wicket.markup.html.panel.IMarkupSourcingStrategy;
 import org.apache.wicket.markup.html.panel.PanelMarkupSourcingStrategy;
 import org.apache.wicket.model.IModel;
@@ -31,7 +34,7 @@ import static de.agilecoders.wicket.util.JQuery.$;
  *
  * @author miha
  */
-public class DropDownButton extends AbstractLink implements Invertible {
+public class DropDownButton extends AbstractLink implements Invertible, Activatable {
 
     private final IModel<ButtonSize> buttonSize = Model.of(ButtonSize.Medium);
     private final IModel<ButtonType> buttonType = Model.of(ButtonType.Menu);
@@ -217,5 +220,21 @@ public class DropDownButton extends AbstractLink implements Invertible {
     @Override
     public void setInverted(final boolean inverted) {
         icon.setInverted(inverted);
+    }
+
+    @Override
+    public boolean isActive(Component item) {
+        final Class<? extends Page> pageClass = item.getPage().getPageClass();
+
+        for (AbstractLink link : buttonListView.getList()) {
+            if (link instanceof BookmarkablePageLink) {
+                if (((BookmarkablePageLink) link).getPageClass().equals(pageClass)) {
+                    return true;
+                }
+            } else if (link instanceof Activatable) {
+                return ((Activatable) link).isActive(item);
+            }
+        }
+        return false;
     }
 }
