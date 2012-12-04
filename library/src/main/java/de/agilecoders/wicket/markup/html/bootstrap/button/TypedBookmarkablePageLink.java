@@ -25,7 +25,7 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
  *
  * @author miha
  */
-public class TypedBookmarkablePageLink<T> extends BookmarkablePageLink<T> implements BootstrapButton<TypedBookmarkablePageLink<T>>, Activatable, Invertible {
+public class TypedBookmarkablePageLink<T> extends BookmarkablePageLink<T> implements BootstrapButton<TypedBookmarkablePageLink<T>>, Activatable, Invertible<TypedBookmarkablePageLink<T>> {
 
     private final Label label;
     private final Icon icon;
@@ -141,7 +141,8 @@ public class TypedBookmarkablePageLink<T> extends BookmarkablePageLink<T> implem
     }
 
     @Override
-    public void setInverted(boolean inverted) {
+    public TypedBookmarkablePageLink<T> setInverted(boolean inverted) {
         icon.setInverted(inverted);
+        return this;
     }
 }
