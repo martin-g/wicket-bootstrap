@@ -34,7 +34,7 @@ import static de.agilecoders.wicket.util.JQuery.$;
  *
  * @author miha
  */
-public class DropDownButton extends AbstractLink implements Invertible<DropDownButton>,Activatable  {
+public class DropDownButton extends AbstractLink implements Invertible<DropDownButton>, Activatable {
 
     private final IModel<ButtonSize> buttonSize = Model.of(ButtonSize.Medium);
     private final IModel<ButtonType> buttonType = Model.of(ButtonType.Menu);
@@ -43,8 +43,7 @@ public class DropDownButton extends AbstractLink implements Invertible<DropDownB
     private final IModel<IconType> iconTypeModel;
     private final WebMarkupContainer baseButton;
     private final String script;
-
-    private Icon icon; // TODO: should be immutable
+    private final Icon icon;
 
     /**
      * Construct.
@@ -71,6 +70,8 @@ public class DropDownButton extends AbstractLink implements Invertible<DropDownB
 
         add(baseButton = createButton("btn", model, iconTypeModel));
         add(buttonListView = newButtonList("buttons"));
+
+        baseButton.add(icon = createButtonIcon("icon", iconTypeModel));
 
         add(new BootstrapResourcesBehavior());
         add(new CssClassNameAppender("dropdown"));
@@ -118,7 +119,6 @@ public class DropDownButton extends AbstractLink implements Invertible<DropDownB
 
         baseButton.setOutputMarkupId(true);
         baseButton.add(createButtonLabel("label", labelModel));
-        baseButton.add(icon = createButtonIcon("icon", iconTypeModel));
 
         return baseButton;
     }
@@ -228,12 +228,12 @@ public class DropDownButton extends AbstractLink implements Invertible<DropDownB
         final Class<? extends Page> pageClass = item.getPage().getPageClass();
 
         for (AbstractLink link : buttonListView.getList()) {
-            if (link instanceof BookmarkablePageLink) {
+            if (link instanceof Activatable) {
+                return ((Activatable) link).isActive(item);
+            } else if (link instanceof BookmarkablePageLink) {
                 if (((BookmarkablePageLink) link).getPageClass().equals(pageClass)) {
                     return true;
                 }
-            } else if (link instanceof Activatable) {
-                return ((Activatable) link).isActive(item);
             }
         }
         return false;
