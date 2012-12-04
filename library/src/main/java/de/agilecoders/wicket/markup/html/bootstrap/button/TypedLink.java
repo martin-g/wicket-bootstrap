@@ -162,9 +162,12 @@ public abstract class TypedLink<T> extends Link<T> implements BootstrapButton<Ty
      * inverts the icon color
      *
      * @param inverted true, if inverted version should be used
+     * @return this instance for chaining
      */
-    public void setInverted(final boolean inverted) {
+    @Override
+    public TypedLink<T> setInverted(final boolean inverted) {
         icon.setInverted(inverted);
+        return this;
     }
 
 }
