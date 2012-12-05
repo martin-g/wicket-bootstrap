@@ -3,25 +3,31 @@ package de.agilecoders.wicket.markup.html.bootstrap.dialog;
 import com.google.common.base.Strings;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.AssertTagNameBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapJavascriptBehavior;
+import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapResourcesBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameProvider;
+import org.apache.wicket.Component;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.markup.html.panel.Panel;
+import org.apache.wicket.markup.html.panel.GenericPanel;
+import org.apache.wicket.model.AbstractReadOnlyModel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.util.time.Duration;
 
 /**
- * TODO: document
+ * A bootstrap styled panel for success, warning, and error messages
+ *
+ * usage:
+ * <pre>
+ *     add(new Alert("id", Model.of("message text")));
+ * </pre>
  *
  * @author miha
- * @version 1.0
  */
-public class Alert extends Panel {
+public class Alert extends GenericPanel<String> {
 
     /**
      * The {@code Type} enum defines all possible alert types.
@@ -53,13 +59,12 @@ public class Alert extends Panel {
 
     }
 
-    private WebMarkupContainer closeButton;
-    private Label message;
-    private Label blockHeader;
-    private Label inlineHeader;
-    private Type type;
+    private final WebMarkupContainer closeButton;
+    private final Component message;
+    private final Label blockHeader;
+    private final Label inlineHeader;
+    private final IModel<Type> type;
     private Duration duration;
-    private Model<String> typeModel;
     private boolean useInlineHeader = true;
 
     /**
@@ -82,14 +87,19 @@ public class Alert extends Panel {
     public Alert(String id, IModel<String> message, IModel<String> header) {
         super(id, message);
 
-        type = Type.Info;
+        type = Model.of(Type.Info);
 
         this.inlineHeader = new Label("inline", header);
         this.blockHeader = new Label("block", header);
-        this.message = new Label("message", getDefaultModel());
+        this.message = createMessage("message", getModel());
         this.closeButton = new WebMarkupContainer("close");
-        this.typeModel = Model.of(type.cssClassName());
-        add(new CssClassNameAppender(typeModel));
+
+        add(new CssClassNameAppender(new AbstractReadOnlyModel<String>() {
+            @Override
+            public String getObject() {
+                return type.getObject() != null ? type.getObject().cssClassName() : "";
+            }
+        }));
 
         add(this.inlineHeader, this.blockHeader, this.message, this.closeButton);
 
@@ -97,6 +107,17 @@ public class Alert extends Panel {
             new CssClassNameAppender("alert"));
 
         BootstrapBaseBehavior.addTo(this);
+    }
+
+    /**
+     * creates a new message component.
+     *
+     * @param markupId The component id
+     * @param message  The message as {@link IModel}
+     * @return new message component
+     */
+    protected Component createMessage(final String markupId, final IModel<String> message) {
+        return new Label(markupId, message);
     }
 
     /**
@@ -121,13 +142,39 @@ public class Alert extends Panel {
     }
 
     /**
+     * Sets the message.
+     *
+     * @param message The message.
+     * @return This instance for chaining.
+     */
+    public Alert withMessage(final IModel<String> message) {
+        setDefaultModel(message);
+
+        return this;
+    }
+
+    /**
+     * Sets the header message.
+     *
+     * @param header The header message.
+     * @return This instance for chaining.
+     */
+    public Alert withHeader(IModel<String> header) {
+        this.blockHeader.setDefaultModel(header);
+        this.inlineHeader.setDefaultModel(header);
+
+        return this;
+    }
+
+    /**
      * Sets the alert type.
      *
      * @param type to use.
      * @return This.
      */
     public Alert type(Type type) {
-        this.type = type;
+        this.type.setObject(type);
+
         return this;
     }
 
@@ -168,9 +215,7 @@ public class Alert extends Panel {
         this.message.setDefaultModel(getDefaultModel());
 
         if (closeButton.isVisible()) {
-            add(new BootstrapJavascriptBehavior());
+            add(BootstrapResourcesBehavior.instance());
         }
-
-        typeModel.setObject(type.cssClassName());
     }
 }

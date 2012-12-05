@@ -95,7 +95,7 @@ public class IssuesPage extends BasePage {
         add(new TypedLink<Page>("link-danger", Model.<Page>of(this), ButtonType.Danger) {
             @Override
             public void onClick() {
-                getSession().success(new NotificationMessage(Model.of("link 2 clicked"), Model.of("issue #102:"), true));
+                getSession().success(new NotificationMessage(Model.of("link 2 <u>clicked</u>"), Model.of("issue #102:"), true).escapeModelStrings(false));
                 setResponsePage(getModelObject());
             }
         }.setLabel(Model.of("Link 2")));

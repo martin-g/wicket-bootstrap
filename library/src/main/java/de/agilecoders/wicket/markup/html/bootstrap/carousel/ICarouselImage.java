@@ -1,13 +1,14 @@
 package de.agilecoders.wicket.markup.html.bootstrap.carousel;
 
 import com.google.common.base.Optional;
+import org.apache.wicket.util.io.IClusterable;
 
 /**
  * Represents a image for a {@link Carousel} component
  *
  * @author miha
  */
-public interface ICarouselImage {
+public interface ICarouselImage extends IClusterable {
 
     /**
      * @return the url to the image

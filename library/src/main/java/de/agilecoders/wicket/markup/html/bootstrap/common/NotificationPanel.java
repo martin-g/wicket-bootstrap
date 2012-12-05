@@ -1,39 +1,62 @@
 package de.agilecoders.wicket.markup.html.bootstrap.common;
 
-import de.agilecoders.wicket.markup.html.bootstrap.dialog.Alert;
 import org.apache.wicket.Component;
 import org.apache.wicket.feedback.FeedbackMessage;
 import org.apache.wicket.feedback.FeedbackMessagesModel;
 import org.apache.wicket.feedback.IFeedbackMessageFilter;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
-import org.apache.wicket.model.Model;
 import org.apache.wicket.util.time.Duration;
 
 /**
- * TODO: document
+ * A panel that displays {@link NotificationMessage}s or {@link FeedbackMessage}s
+ * in a list view. The maximum number of messages to show can be set with
+ * {@link #setMaxMessages(int)}.
  *
  * @author miha
- * @version 1.0
  */
 public class NotificationPanel extends FeedbackPanel {
 
     private Duration duration;
     private boolean showRenderedMessages = false;
 
+    /**
+     * Construct.
+     *
+     * @param id The component id
+     */
     public NotificationPanel(String id) {
         super(id);
     }
 
+    /**
+     * Construct.
+     *
+     * @param id     The component id
+     * @param filter the feedback message filter
+     */
     public NotificationPanel(String id, IFeedbackMessageFilter filter) {
         super(id, filter);
     }
 
-    public NotificationPanel showRenderedMessages(boolean showRenderedMessages) {
+    /**
+     * whether to show already rendered messages or not.
+     *
+     * @param showRenderedMessages true, if rendered messages should be shown
+     * @return this instance for chaining
+     */
+    public NotificationPanel showRenderedMessages(final boolean showRenderedMessages) {
         this.showRenderedMessages = showRenderedMessages;
         return this;
     }
 
-    public NotificationPanel hideAfter(Duration duration) {
+    /**
+     * The amount of time to delay before automatically close all feedback messages.
+     * If Duration.NONE or value is 0, messages will not automatically close.
+     *
+     * @param duration The amount of time as {@link Duration}
+     * @return this instance for chaining
+     */
+    public NotificationPanel hideAfter(final Duration duration) {
         this.duration = duration;
         return this;
     }
@@ -55,23 +78,12 @@ public class NotificationPanel extends FeedbackPanel {
     }
 
     @Override
-    protected String getCSSClass(FeedbackMessage message) {
+    protected String getCSSClass(final FeedbackMessage message) {
         return null;
     }
 
     @Override
-    protected Component newMessageDisplayComponent(String id, FeedbackMessage message) {
-        if (message.getMessage() instanceof NotificationMessage) {
-            NotificationMessage notificationMessage = (NotificationMessage) message.getMessage();
-
-            return new Alert(id, notificationMessage.message(), notificationMessage.header())
-                    .type(Alert.Type.from(message.getLevelAsString()))
-                    .hideAfter(notificationMessage.hideAfter() == null ? duration : notificationMessage.hideAfter())
-                    .useInlineHeader(notificationMessage.inlineHeader());
-        }
-
-        return new Alert(id, Model.of(message.getMessage().toString()))
-                .hideAfter(duration)
-                .type(Alert.Type.from(message.getLevelAsString()));
+    protected Component newMessageDisplayComponent(String markupId, FeedbackMessage message) {
+        return new NotificationAlert(markupId, message, duration);
     }
 }
