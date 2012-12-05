@@ -7,6 +7,7 @@ import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxEventBehavior;
 import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.behavior.AttributeAppender;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
 import org.apache.wicket.markup.html.WebMarkupContainer;
@@ -80,6 +81,8 @@ public class Modal extends Panel {
         add(header, footer);
         add(new AssertTagNameBehavior("div"));
         add(new CssClassNameAppender("modal", "hide"));
+
+        add(new AttributeAppender("tabindex", Model.of("-1")));
     }
 
     /**
