@@ -12,13 +12,15 @@
     <skin>
         <groupId>org.apache.maven.skins</groupId>
         <artifactId>maven-fluido-skin</artifactId>
-        <version>1.2.1</version>
+        <version>1.3.0</version>
     </skin>
 
     <custom>
         <fluidoSkin>
             <sideBarEnabled>true</sideBarEnabled>
+            <sourceLineNumbersEnabled>true</sourceLineNumbersEnabled>
             <googlePlusOne />
+            <googleSearch/>
         </fluidoSkin>
     </custom>
 
@@ -26,14 +28,37 @@
     <body>
         <links>
             <item name="Agile-Coders" href="http://agilecoders.de"/>
+            <item name="Demo" href="http://wb.agilecoders.de"/>
         </links>
 
-        <menu name="Regular Web Site">
-            <item name="APT Format" href="format.html"/>
-            <item name="Xdoc Example" href="xdoc.html"/>
-            <item name="FAQ" href="faq.html"/>
+        <menu name="wicket-bootstrap">
+            <item name="Getting Started"   href="./getting-started.html"/>
+            <item name="Release Notes" href="./github-report.html"/>
+            <item name="Demo" href="http://wb.agilecoders.de"/>
+            <!--<item name="Extractors"        href="./extractors.html"/>
+            <item name="Configuration"     href="./configuration.html"/>
+            <item name="REST Service"      href="./service.html"/>
+            <item name="Any23 Plugins"     href="./any23-plugins.html"/>
+            <item name="APIs Doc"          href="./apidocs/index.html"/>
+            <item name="Developers Guide"  href="./developers.html" collapse="true">
+              <item href="./build-src.html"                  name="Build from sources"/>
+              <item href="./dev-data-extraction.html"        name="Data Extraction"/>
+              <item href="./dev-data-conversion.html"        name="Data Conversion"/>
+              <item href="./dev-validation-fix.html"         name="Validation and Fixing"/>
+              <item href="./dev-xpath-extractor.html"        name="XPath Extractor"/>
+              <item href="./dev-microformat-extractors.html" name="Microformat Extractors"/>
+              <item href="./dev-microdata-extractor.html"    name="Microdata Extractor"/>
+              <item href="./dev-csv-extractor.html"          name="CSV Extractor"/>
+              <item href="./release-howto.html"              name="HowTo Release"/>
+            </item>-->
         </menu>
 
         <menu ref="reports"/>
+
+        <menu name="Regular Web Site">
+            <item name="Twitter-Bootstrap" href="http://twitter.github.com/bootstrap/"/>
+            <item name="Apache Wicket" href="http://wicket.apache.org/"/>
+        </menu>
+
     </body>
 </project>
