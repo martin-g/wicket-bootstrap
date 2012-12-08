@@ -49,7 +49,7 @@ import org.apache.wicket.model.IModel;
  *
  * @author miha
  */
-public abstract class TypedLink<T> extends Link<T> implements BootstrapButton<TypedLink>, Invertible {
+public abstract class TypedLink<T> extends Link<T> implements BootstrapButton<TypedLink<T>>, Invertible<TypedLink<T>> {
 
     private final Icon icon;
     private final Label label;
@@ -128,7 +128,7 @@ public abstract class TypedLink<T> extends Link<T> implements BootstrapButton<Ty
      * @param iconType the new button icon type
      * @return reference to the current instance
      */
-    public TypedLink setIconType(IconType iconType) {
+    public TypedLink<T> setIconType(IconType iconType) {
         icon.setType(iconType);
 
         return this;
@@ -140,7 +140,7 @@ public abstract class TypedLink<T> extends Link<T> implements BootstrapButton<Ty
      * @param buttonSize The button size
      * @return this instance for chaining
      */
-    public TypedLink setSize(ButtonSize buttonSize) {
+    public TypedLink<T> setSize(ButtonSize buttonSize) {
         buttonBehavior.withSize(buttonSize);
 
         return this;
@@ -152,7 +152,7 @@ public abstract class TypedLink<T> extends Link<T> implements BootstrapButton<Ty
      * @param buttonType The type of the button
      * @return this instance for chaining
      */
-    public TypedLink setType(ButtonType buttonType) {
+    public TypedLink<T> setType(ButtonType buttonType) {
         this.buttonBehavior.withType(buttonType);
 
         return this;
@@ -169,5 +169,4 @@ public abstract class TypedLink<T> extends Link<T> implements BootstrapButton<Ty
         icon.setInverted(inverted);
         return this;
     }
-
 }

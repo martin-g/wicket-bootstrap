@@ -24,6 +24,7 @@ Usage
 
 * you can see wicket-bootstrap in action: http://wb.agilecoders.de/demo
 * how to use wicket-bootstrap? Read the documentation on https://github.com/l0rdn1kk0n/wicket-bootstrap/wiki.
+* read more on my [blog](http://blog.agilecoders.de/).
 
 ## Maven
 wicket-bootstrap is [available](http://search.maven.org/#artifactdetails|de.agilecoders.wicket|bootstrap|0.7.4|jar) in Maven central repository.
@@ -32,7 +33,7 @@ core maven dependency:
 <pre><code>&lt;dependency&gt;
   &lt;groupId&gt;de.agilecoders.wicket&lt;/groupId&gt;
   &lt;artifactId&gt;bootstrap&lt;/artifactId&gt;
-  &lt;version&gt;0.7.4&lt;/version&gt;
+  &lt;version&gt;0.7.5&lt;/version&gt;
 &lt;/dependency&gt;
 </code></pre>
 
@@ -40,14 +41,14 @@ for all extensions:
 <pre><code>&lt;dependency&gt;
   &lt;groupId&gt;de.agilecoders.wicket&lt;/groupId&gt;
   &lt;artifactId&gt;bootstrap-extensions&lt;/artifactId&gt;
-  &lt;version&gt;0.7.4&lt;/version&gt;
+  &lt;version&gt;0.7.5&lt;/version&gt;
 &lt;/dependency&gt;
 </code></pre>
 
 Twitter account
 ---------------
 
-Keep up to date on announcements and more by following [#WicketBootstrap](https://twitter.com/search?q=%23WicketBootstrap&src=typd) on Twitter, [@l0rdn1kk0n](http://twitter.com/l0rdn1kk0n).
+Keep up to date on announcements and more by following me [@l0rdn1kk0n](http://twitter.com/l0rdn1kk0n) on Twitter or use the [#WicketBootstrap](https://twitter.com/search?q=%23WicketBootstrap&src=typd) hashtag.
 
 
 Bug tracker
