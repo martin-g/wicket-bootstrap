@@ -25,7 +25,7 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
  *
  * @author miha
  */
-public class TypedBookmarkablePageLink<T> extends BookmarkablePageLink<T> implements BootstrapButton<TypedBookmarkablePageLink<T>>, Activatable, Invertible<TypedBookmarkablePageLink<T>> {
+public class TypedBookmarkablePageLink<T> extends BookmarkablePageLink<T> implements BootstrapButton<TypedBookmarkablePageLink<T>>, Activatable {
 
     private final Label label;
     private final Icon icon;
