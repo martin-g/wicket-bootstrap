@@ -8,6 +8,12 @@ package de.agilecoders.wicket.markup.html.bootstrap.common;
  */
 public interface Invertible<T> {
 
+    /**
+     * inverts the icon color
+     *
+     * @param inverted true, if inverted version should be used
+     * @return this instance for chaining
+     */
     T setInverted(final boolean inverted);
 
 }

@@ -16,7 +16,7 @@ import org.apache.wicket.model.IModel;
  *
  * @author miha
  */
-public abstract class TypedAjaxLink<T> extends AjaxLink<T> implements BootstrapButton<TypedAjaxLink>, Invertible<TypedAjaxLink<T>> {
+public abstract class TypedAjaxLink<T> extends AjaxLink<T> implements BootstrapButton<TypedAjaxLink<T>> {
 
     private final Icon icon;
     private final Label label;
