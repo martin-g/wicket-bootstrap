@@ -188,7 +188,7 @@ public class IssuesPage extends BasePage {
         public SubNavbar(final String componentId) {
             super(componentId);
 
-            invert(true);
+            setInverted(true);
             setOutputMarkupId(true);
 
             addComponents(
@@ -238,7 +238,7 @@ public class IssuesPage extends BasePage {
         public ParentNavbar(final String componentId) {
             super(componentId);
 
-            invert(false);
+            setInverted(false);
             setOutputMarkupId(true);
 
             addComponents(
