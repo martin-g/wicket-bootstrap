@@ -105,4 +105,10 @@ public class TypedButton extends Button implements BootstrapButton<TypedButton> 
         return this;
     }
 
+    @Override
+    public TypedButton setInverted(boolean inverted) {
+        this.icon.setInverted(inverted);
+
+        return this;
+    }
 }

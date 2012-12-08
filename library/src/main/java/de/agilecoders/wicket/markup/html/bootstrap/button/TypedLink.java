@@ -49,7 +49,7 @@ import org.apache.wicket.model.IModel;
  *
  * @author miha
  */
-public abstract class TypedLink<T> extends Link<T> implements BootstrapButton<TypedLink<T>>, Invertible<TypedLink<T>> {
+public abstract class TypedLink<T> extends Link<T> implements BootstrapButton<TypedLink<T>> {
 
     private final Icon icon;
     private final Label label;

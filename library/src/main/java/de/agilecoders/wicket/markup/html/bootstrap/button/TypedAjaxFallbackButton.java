@@ -18,7 +18,7 @@ import org.apache.wicket.model.Model;
  *
  * @author miha
  */
-public abstract class TypedAjaxFallbackButton extends AjaxFallbackButton implements BootstrapButton<TypedAjaxFallbackButton>, Invertible<TypedAjaxFallbackButton> {
+public abstract class TypedAjaxFallbackButton extends AjaxFallbackButton implements BootstrapButton<TypedAjaxFallbackButton> {
 
     private final Icon icon;
     private final Label label;

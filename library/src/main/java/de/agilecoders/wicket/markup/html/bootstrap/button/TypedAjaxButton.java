@@ -18,7 +18,7 @@ import org.apache.wicket.model.Model;
  *
  * @author miha
  */
-public abstract class TypedAjaxButton extends AjaxButton implements BootstrapButton<TypedAjaxButton>, Invertible<TypedAjaxButton> {
+public abstract class TypedAjaxButton extends AjaxButton implements BootstrapButton<TypedAjaxButton> {
 
     private final Icon icon;
     private final Label label;
