@@ -150,6 +150,8 @@ public class WicketApplication extends WebApplication {
                 .useResponsiveCss(true)
                 .setJsResourceFilterName("footer-container");
 
+        settings.getBootstrapLessCompilerSettings().setUseLessCompiler(usesDevelopmentConfig());
+
         ThemeProvider themeProvider = new BootswatchThemeProvider() {{
             add(new MetroTheme());
             defaultTheme("wicket");

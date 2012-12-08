@@ -43,9 +43,7 @@ public class BootstrapSettings implements IBootstrapSettings {
         this();
 
         final boolean usesDeploymentConfig = application.usesDeploymentConfig();
-
         minify(usesDeploymentConfig);
-        getBootstrapLessCompilerSettings().setUseLessCompiler(!usesDeploymentConfig);
     }
 
     @Override
