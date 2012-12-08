@@ -45,11 +45,9 @@ public class NotificationAlert extends Alert {
 
         if (message.getMessage() instanceof INotificationMessage) {
             withNotificationMessage((INotificationMessage) message.getMessage());
-        } else if (message.getMessage() instanceof String) {
+        } else {
             withMessage(Model.of(String.valueOf(message.getMessage())));
             hideAfter(duration);
-        } else {
-            throw new IllegalArgumentException("invalid message given: " + message.getMessage());
         }
     }
 

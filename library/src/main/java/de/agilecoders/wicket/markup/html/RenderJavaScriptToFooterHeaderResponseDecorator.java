@@ -11,6 +11,7 @@ import org.apache.wicket.markup.head.filter.AbstractHeaderResponseFilter;
 import org.apache.wicket.markup.head.filter.FilteringHeaderResponse;
 import org.apache.wicket.markup.head.filter.OppositeHeaderResponseFilter;
 import org.apache.wicket.markup.html.IHeaderResponseDecorator;
+import org.apache.wicket.util.lang.Args;
 
 import java.util.List;
 
@@ -40,6 +41,8 @@ public class RenderJavaScriptToFooterHeaderResponseDecorator implements IHeaderR
      * @param filterName The name of the footer container
      */
     public RenderJavaScriptToFooterHeaderResponseDecorator(final String filterName) {
+        Args.notEmpty(filterName, "filterName");
+
         filters = Lists.newArrayList();
 
         final AbstractHeaderResponseFilter jsAcceptingFilter = new AbstractHeaderResponseFilter(filterName) {

@@ -1002,3 +1002,11 @@ form.bs-docs-example {
         float: none;
     }
 }
+
+.theme-wicket {
+    color: white !important;
+}
+
+.theme-spacelab .jumbotron h1, .theme-journal .jumbotron h1, .theme-cosmo .jumbotron h1, .theme-spruce .jumbotron h1 {
+    color: white;
+}

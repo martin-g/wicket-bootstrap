@@ -1,17 +1,11 @@
 package de.agilecoders.wicket.markup.html.themes.bootstrap;
 
-import java.util.List;
-
-import com.google.common.collect.Lists;
-
 import de.agilecoders.wicket.less.LessResourceReference;
-import de.agilecoders.wicket.less.Resource;
 
 /**
- * TODO: document
+ * Responsive css reference
  *
  * @author miha
- * @version 1.0
  */
 public class BootstrapResponsiveCssReference extends LessResourceReference {
     private static final long serialVersionUID = 1L;
@@ -25,19 +19,17 @@ public class BootstrapResponsiveCssReference extends LessResourceReference {
      * Private constructor.
      */
     private BootstrapResponsiveCssReference() {
-        super(BootstrapResponsiveCssReference.class, "css/bootstrap-responsive.css");
+        super(BootstrapResponsiveCssReference.class, "css/responsive.less.css");
     }
 
-    
-    protected BootstrapResponsiveCssReference(Class<?> scope, String name) {
+    /**
+     * Construct.
+     *
+     * @param scope The scope class
+     * @param name  The name of the resource
+     */
+    protected BootstrapResponsiveCssReference(final Class<?> scope, final String name) {
         super(scope, name);
-    }
-
-    @Override
-    public List<Resource> getLessResources() {
-        return Lists.newArrayList(
-                resourceLocator().findResource(BootstrapCssReference.class, "less/responsive.less")
-        );
     }
 
 }

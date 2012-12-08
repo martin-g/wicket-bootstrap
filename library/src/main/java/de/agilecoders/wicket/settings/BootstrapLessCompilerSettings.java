@@ -2,7 +2,7 @@ package de.agilecoders.wicket.settings;
 
 import com.asual.lesscss.LessOptions;
 import com.google.common.base.Charsets;
-import de.agilecoders.wicket.less.BootstrapLessCompiler;
+import de.agilecoders.wicket.less.LessJsLessCompiler;
 import de.agilecoders.wicket.less.IBootstrapLessCompiler;
 
 import java.nio.charset.Charset;
@@ -16,7 +16,7 @@ import java.nio.charset.Charset;
 public class BootstrapLessCompilerSettings implements IBootstrapLessCompilerSettings {
     private boolean useLessCompiler = false;
     private Charset charset = Charsets.UTF_8;
-    private IBootstrapLessCompiler lessCompiler = new BootstrapLessCompiler();
+    private IBootstrapLessCompiler lessCompiler = new LessJsLessCompiler();
     private LessOptions lessOptions = new LessOptions();
     private CacheStrategy cacheStrategy = CacheStrategy.Modified;
     private boolean storeChanges = false;

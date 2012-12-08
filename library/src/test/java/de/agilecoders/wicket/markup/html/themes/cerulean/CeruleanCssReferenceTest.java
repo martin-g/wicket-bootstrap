@@ -24,7 +24,6 @@ import static org.mockito.Mockito.verify;
  * Tests the {@link CeruleanCssReferenceTest} class.
  *
  * @author miha
- * @version 1.0
  */
 @Ignore
 @Category(IntegrationTest.class)
