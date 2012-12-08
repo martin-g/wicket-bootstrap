@@ -43,7 +43,7 @@ import static com.google.common.collect.Lists.newArrayList;
  * @author miha
  * @version 1.0
  */
-public class Navbar extends Panel {
+public class Navbar extends Panel implements Invertible<Navbar> {
 
     static final String COMPONENT_ID = "component";
 
@@ -368,7 +368,7 @@ public class Navbar extends Panel {
      * @param invert whether to invert the color or not
      * @return the component's current instance
      */
-    public Navbar invert(final boolean invert) {
+    public Navbar setInverted(final boolean invert) {
         this.invertModel.setObject(invert ? "navbar-inverse" : "");
 
         return this;
