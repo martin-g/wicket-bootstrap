@@ -1004,7 +1004,7 @@ form.bs-docs-example {
 }
 
 .theme-wicket {
-    color: white !important;
+    color: white;
 }
 
 .theme-spacelab .jumbotron h1, .theme-journal .jumbotron h1, .theme-cosmo .jumbotron h1, .theme-spruce .jumbotron h1 {
