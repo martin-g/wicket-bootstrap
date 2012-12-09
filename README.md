@@ -15,6 +15,7 @@ Extensions
 
 * DatePicker: https://github.com/eternicode/bootstrap-datepicker
 * Html5 Video Player: http://html5-ninja.com/item/Bootstrap-video-player-jQuery-plugin
+* Open-On-Hover for dropdown buttons: http://cameronspear.com/blog/twitter-bootstrap-dropdown-on-hover-plugin/
 * JQueryUI (1.9.2): http://api.jqueryui.com/
    * Draggable: http://api.jqueryui.com/draggable
    * Resizable: http://api.jqueryui.com/resizable

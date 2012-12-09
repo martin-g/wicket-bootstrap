@@ -1,30 +1,47 @@
 package de.agilecoders.wicket.javascript;
 
-import org.apache.wicket.WicketRuntimeException;
+import com.google.common.collect.Lists;
 import org.apache.wicket.css.ICssCompressor;
 
-import java.io.IOException;
-import java.io.StringWriter;
 import java.io.Writer;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class YuiCssCompressor implements ICssCompressor {
 
+    private static final String PRESERVE_COMMENT = "___YUICSSMIN_PRESERVE_CANDIDATE_COMMENT_";
+    private static final String PRESERVE_TOKEN = "___YUICSSMIN_PRESERVED_TOKEN_";
+    private static final String PSEUDEO_CLASS = "___YUICSSMIN_PSEUDOCLASSCOLON___";
+
+    private static final Pattern URL_PATTERN = Pattern.compile("url\\(\\s*([\"']?)data\\:");
+    private static final Pattern STRING_PATTERN = Pattern.compile("(\"([^\\\\\"]|\\\\.|\\\\)*\")|(\'([^\\\\\']|\\\\.|\\\\)*\')");
+    private static final Pattern BRACKETS_PATTERN = Pattern.compile("(^|\\})(([^\\{:])+:)+([^\\{]*\\{)");
+    private static final Pattern BORDER_PATTERN = Pattern.compile("(?i)(border|border-top|border-right|border-bottom|border-right|outline|background):none(;|})");
+    private static final Pattern RGB_PATTERN = Pattern.compile("rgb\\s*\\(\\s*([0-9,\\s]+)\\s*\\)");
+    private static final Pattern HEX_PATTERN = Pattern.compile("(\\=\\s*?[\"']?)?" + "#([0-9a-fA-F])([0-9a-fA-F])([0-9a-fA-F])([0-9a-fA-F])([0-9a-fA-F])([0-9a-fA-F])" + "(:?\\}|[^0-9a-fA-F{][^{]*?\\})");
+    private static final Pattern BROWSER_HACKS_PATTERN = Pattern.compile("(?i)(background-position|transform-origin|webkit-transform-origin|moz-transform-origin|o-transform-origin|ms-transform-origin):0(;|})");
+    ;
+
+    /**
+     * Construct.
+     */
     public YuiCssCompressor() {
     }
 
-    // Leave data urls alone to increase parse performance.
-    protected String extractDataUrls(String css, ArrayList preservedTokens) {
-
-        int maxIndex = css.length() - 1;
+    /**
+     * Leave data urls alone to increase parse performance.
+     *
+     * @param css             whole css content
+     * @param preservedTokens a list of all preserved tokens
+     * @return data url
+     */
+    private String extractDataUrls(final String css, final List<String> preservedTokens) {
+        final int maxIndex = css.length() - 1;
         int appendIndex = 0;
 
-        StringBuffer sb = new StringBuffer();
-
-        Pattern p = Pattern.compile("url\\(\\s*([\"']?)data\\:");
-        Matcher m = p.matcher(css);
+        StringBuilder buffer = new StringBuilder();
+        Matcher m = URL_PATTERN.matcher(css);
 
         /*
         * Since we need to account for non-base64 data urls, we need to handle
@@ -32,10 +49,8 @@ public class YuiCssCompressor implements ICssCompressor {
         * to determine whether or not we have matching string terminators and
         * handling sb appends directly, instead of using matcher.append* methods.
         */
-
         while (m.find()) {
-
-            int startIndex = m.start() + 4;  	// "url(".length()
+            int startIndex = m.start() + 4;      // "url(".length()
             String terminator = m.group(1);     // ', " or empty (not quoted)
 
             if (terminator.length() == 0) {
@@ -45,10 +60,10 @@ public class YuiCssCompressor implements ICssCompressor {
             boolean foundTerminator = false;
 
             int endIndex = m.end() - 1;
-            while(foundTerminator == false && endIndex+1 <= maxIndex) {
-                endIndex = css.indexOf(terminator, endIndex+1);
+            while (!foundTerminator && endIndex + 1 <= maxIndex) {
+                endIndex = css.indexOf(terminator, endIndex + 1);
 
-                if ((endIndex > 0) && (css.charAt(endIndex-1) != '\\')) {
+                if ((endIndex > 0) && (css.charAt(endIndex - 1) != '\\')) {
                     foundTerminator = true;
                     if (!")".equals(terminator)) {
                         endIndex = css.indexOf(")", endIndex);
@@ -57,43 +72,43 @@ public class YuiCssCompressor implements ICssCompressor {
             }
 
             // Enough searching, start moving stuff over to the buffer
-            sb.append(css.substring(appendIndex, m.start()));
+            buffer.append(css.substring(appendIndex, m.start()));
 
             if (foundTerminator) {
                 String token = css.substring(startIndex, endIndex);
                 token = token.replaceAll("\\s+", "");
                 preservedTokens.add(token);
 
-                String preserver = "url(___YUICSSMIN_PRESERVED_TOKEN_" + (preservedTokens.size() - 1) + "___)";
-                sb.append(preserver);
+                String preserver = "url(" + PRESERVE_TOKEN + (preservedTokens.size() - 1) + "___)";
+                buffer.append(preserver);
 
                 appendIndex = endIndex + 1;
             } else {
                 // No end terminator found, re-add the whole match. Should we throw/warn here?
-                sb.append(css.substring(m.start(), m.end()));
+                buffer.append(css.substring(m.start(), m.end()));
                 appendIndex = m.end();
             }
         }
 
-        sb.append(css.substring(appendIndex));
+        buffer.append(css.substring(appendIndex));
 
-        return sb.toString();
+        return buffer.toString();
     }
 
-    public void compress(String css, Writer out, int linebreakpos)
-            throws IOException {
-
-        Pattern p;
+    /**
+     * compress the given css content and write it to given {@link Writer}.
+     *
+     * @param css the original css content
+     * @param linebreakPosition max. line length
+     */
+    private String compress(String css, final int linebreakPosition) {
         Matcher m;
 
-        int startIndex = 0;
-        int endIndex = 0;
-        int i = 0;
-        int max = 0;
-        ArrayList preservedTokens = new ArrayList(0);
-        ArrayList comments = new ArrayList(0);
+        int startIndex = 0, endIndex, i, max;
+        List<String> preservedTokens = Lists.newArrayList();
+        List<String> comments = Lists.newArrayList();
         String token;
-        int totallen = css.length();
+        final int contentLength = css.length();
         String placeholder;
 
         css = this.extractDataUrls(css, preservedTokens);
@@ -104,20 +119,20 @@ public class YuiCssCompressor implements ICssCompressor {
         while ((startIndex = sb.indexOf("/*", startIndex)) >= 0) {
             endIndex = sb.indexOf("*/", startIndex + 2);
             if (endIndex < 0) {
-                endIndex = totallen;
+                endIndex = contentLength;
             }
 
             token = sb.substring(startIndex + 2, endIndex);
             comments.add(token);
-            sb.replace(startIndex + 2, endIndex, "___YUICSSMIN_PRESERVE_CANDIDATE_COMMENT_" + (comments.size() - 1) + "___");
+            sb.replace(startIndex + 2, endIndex, PRESERVE_COMMENT + (comments.size() - 1) + "___");
             startIndex += 2;
         }
         css = sb.toString();
 
         // preserve strings so their content doesn't get accidentally minified
         sb = new StringBuffer();
-        p = Pattern.compile("(\"([^\\\\\"]|\\\\.|\\\\)*\")|(\'([^\\\\\']|\\\\.|\\\\)*\')");
-        m = p.matcher(css);
+
+        m = STRING_PATTERN.matcher(css);
         while (m.find()) {
             token = m.group();
             char quote = token.charAt(0);
@@ -125,9 +140,9 @@ public class YuiCssCompressor implements ICssCompressor {
 
             // maybe the string contains a comment-like substring?
             // one, maybe more? put'em back then
-            if (token.indexOf("___YUICSSMIN_PRESERVE_CANDIDATE_COMMENT_") >= 0) {
+            if (token.contains(PRESERVE_COMMENT)) {
                 for (i = 0, max = comments.size(); i < max; i += 1) {
-                    token = token.replace("___YUICSSMIN_PRESERVE_CANDIDATE_COMMENT_" + i + "___", comments.get(i).toString());
+                    token = token.replace(PRESERVE_COMMENT + i + "___", comments.get(i));
                 }
             }
 
@@ -135,7 +150,7 @@ public class YuiCssCompressor implements ICssCompressor {
             token = token.replaceAll("(?i)progid:DXImageTransform.Microsoft.Alpha\\(Opacity=", "alpha(opacity=");
 
             preservedTokens.add(token);
-            String preserver = quote + "___YUICSSMIN_PRESERVED_TOKEN_" + (preservedTokens.size() - 1) + "___" + quote;
+            String preserver = quote + PRESERVE_TOKEN + (preservedTokens.size() - 1) + "___" + quote;
             m.appendReplacement(sb, preserver);
         }
         m.appendTail(sb);
@@ -145,14 +160,14 @@ public class YuiCssCompressor implements ICssCompressor {
         // strings are safe, now wrestle the comments
         for (i = 0, max = comments.size(); i < max; i += 1) {
 
-            token = comments.get(i).toString();
-            placeholder = "___YUICSSMIN_PRESERVE_CANDIDATE_COMMENT_" + i + "___";
+            token = comments.get(i);
+            placeholder = PRESERVE_COMMENT + i + "___";
 
             // ! in the first position of the comment means preserve
             // so push to the preserved tokens while stripping the !
             if (token.startsWith("!")) {
                 preservedTokens.add(token);
-                css = css.replace(placeholder,  "___YUICSSMIN_PRESERVED_TOKEN_" + (preservedTokens.size() - 1) + "___");
+                css = css.replace(placeholder, PRESERVE_TOKEN + (preservedTokens.size() - 1) + "___");
                 continue;
             }
 
@@ -160,10 +175,10 @@ public class YuiCssCompressor implements ICssCompressor {
             // shorten that to /*\*/ and the next one to /**/
             if (token.endsWith("\\")) {
                 preservedTokens.add("\\");
-                css = css.replace(placeholder,  "___YUICSSMIN_PRESERVED_TOKEN_" + (preservedTokens.size() - 1) + "___");
+                css = css.replace(placeholder, PRESERVE_TOKEN + (preservedTokens.size() - 1) + "___");
                 i = i + 1; // attn: advancing the loop
                 preservedTokens.add("");
-                css = css.replace("___YUICSSMIN_PRESERVE_CANDIDATE_COMMENT_" + i + "___",  "___YUICSSMIN_PRESERVED_TOKEN_" + (preservedTokens.size() - 1) + "___");
+                css = css.replace(PRESERVE_COMMENT + i + "___", PRESERVE_TOKEN + (preservedTokens.size() - 1) + "___");
                 continue;
             }
 
@@ -174,7 +189,7 @@ public class YuiCssCompressor implements ICssCompressor {
                 if (startIndex > 2) {
                     if (css.charAt(startIndex - 3) == '>') {
                         preservedTokens.add("");
-                        css = css.replace(placeholder,  "___YUICSSMIN_PRESERVED_TOKEN_" + (preservedTokens.size() - 1) + "___");
+                        css = css.replace(placeholder, PRESERVE_TOKEN + (preservedTokens.size() - 1) + "___");
                     }
                 }
             }
@@ -191,20 +206,20 @@ public class YuiCssCompressor implements ICssCompressor {
         // But, be careful not to turn "p :link {...}" into "p:link{...}"
         // Swap out any pseudo-class colons with the token, and then swap back.
         sb = new StringBuffer();
-        p = Pattern.compile("(^|\\})(([^\\{:])+:)+([^\\{]*\\{)");
-        m = p.matcher(css);
+        m = BRACKETS_PATTERN.matcher(css);
         while (m.find()) {
             String s = m.group();
-            s = s.replaceAll(":", "___YUICSSMIN_PSEUDOCLASSCOLON___");
-            s = s.replaceAll( "\\\\", "\\\\\\\\" ).replaceAll( "\\$", "\\\\\\$" );
+            s = s.replaceAll(":", PSEUDEO_CLASS);
+            s = s.replaceAll("\\\\", "\\\\\\\\").replaceAll("\\$", "\\\\\\$");
             m.appendReplacement(sb, s);
         }
         m.appendTail(sb);
+
         css = sb.toString();
         // Remove spaces before the things that should not have spaces before them.
         css = css.replaceAll("\\s+([!{};:>+\\(\\)\\],])", "$1");
         // bring back the colon
-        css = css.replaceAll("___YUICSSMIN_PSEUDOCLASSCOLON___", ":");
+        css = css.replaceAll(PSEUDEO_CLASS, ":");
 
         // retain space for special IE6 cases
         css = css.replaceAll(":first\\-(line|letter)(\\{|,)", ":first-$1 $2");
@@ -238,8 +253,7 @@ public class YuiCssCompressor implements ICssCompressor {
         // Replace background-position:0; with background-position:0 0;
         // same for transform-origin
         sb = new StringBuffer();
-        p = Pattern.compile("(?i)(background-position|transform-origin|webkit-transform-origin|moz-transform-origin|o-transform-origin|ms-transform-origin):0(;|})");
-        m = p.matcher(css);
+        m = BROWSER_HACKS_PATTERN.matcher(css);
         while (m.find()) {
             m.appendReplacement(sb, m.group(1).toLowerCase() + ":0 0" + m.group(2));
         }
@@ -251,12 +265,11 @@ public class YuiCssCompressor implements ICssCompressor {
 
         // Shorten colors from rgb(51,102,153) to #336699
         // This makes it more likely that it'll get further compressed in the next step.
-        p = Pattern.compile("rgb\\s*\\(\\s*([0-9,\\s]+)\\s*\\)");
-        m = p.matcher(css);
+        m = RGB_PATTERN.matcher(css);
         sb = new StringBuffer();
         while (m.find()) {
             String[] rgbcolors = m.group(1).split(",");
-            StringBuffer hexcolor = new StringBuffer("#");
+            StringBuilder hexcolor = new StringBuilder("#");
             for (i = 0; i < rgbcolors.length; i++) {
                 int val = Integer.parseInt(rgbcolors[i]);
                 if (val < 16) {
@@ -277,9 +290,7 @@ public class YuiCssCompressor implements ICssCompressor {
         // which makes the filter break in IE.
         // We also want to make sure we're only compressing #AABBCC patterns inside { }, not id selectors ( #FAABAC {} )
         // We also want to avoid compressing invalid values (e.g. #AABBCCD to #ABCD)
-        p = Pattern.compile("(\\=\\s*?[\"']?)?" + "#([0-9a-fA-F])([0-9a-fA-F])([0-9a-fA-F])([0-9a-fA-F])([0-9a-fA-F])([0-9a-fA-F])" + "(:?\\}|[^0-9a-fA-F{][^{]*?\\})");
-
-        m = p.matcher(css);
+        m = HEX_PATTERN.matcher(css);
         sb = new StringBuffer();
         int index = 0;
 
@@ -293,7 +304,7 @@ public class YuiCssCompressor implements ICssCompressor {
                 // Restore, as is. Compression will break filters
                 sb.append(m.group(1) + "#" + m.group(2) + m.group(3) + m.group(4) + m.group(5) + m.group(6) + m.group(7));
             } else {
-                if( m.group(2).equalsIgnoreCase(m.group(3)) &&
+                if (m.group(2).equalsIgnoreCase(m.group(3)) &&
                     m.group(4).equalsIgnoreCase(m.group(5)) &&
                     m.group(6).equalsIgnoreCase(m.group(7))) {
 
@@ -315,8 +326,7 @@ public class YuiCssCompressor implements ICssCompressor {
 
         // border: none -> border:0
         sb = new StringBuffer();
-        p = Pattern.compile("(?i)(border|border-top|border-right|border-bottom|border-right|outline|background):none(;|})");
-        m = p.matcher(css);
+        m = BORDER_PATTERN.matcher(css);
         while (m.find()) {
             m.appendReplacement(sb, m.group(1).toLowerCase() + ":0" + m.group(2));
         }
@@ -331,22 +341,22 @@ public class YuiCssCompressor implements ICssCompressor {
 
         // TODO: Should this be after we re-insert tokens. These could alter the break points. However then
         // we'd need to make sure we don't break in the middle of a string etc.
-        if (linebreakpos >= 0) {
+        if (linebreakPosition >= 0) {
             // Some source control tools don't like it when files containing lines longer
             // than, say 8000 characters, are checked in. The linebreak option is used in
             // that case to split long lines after a specific column.
             i = 0;
             int linestartpos = 0;
-            sb = new StringBuffer(css);
-            while (i < sb.length()) {
-                char c = sb.charAt(i++);
-                if (c == '}' && i - linestartpos > linebreakpos) {
-                    sb.insert(i, '\n');
+            StringBuilder linebreakBuilder = new StringBuilder(css);
+            while (i < linebreakBuilder.length()) {
+                char c = linebreakBuilder.charAt(i++);
+                if (c == '}' && i - linestartpos > linebreakPosition) {
+                    linebreakBuilder.insert(i, '\n');
                     linestartpos = i;
                 }
             }
 
-            css = sb.toString();
+            css = linebreakBuilder.toString();
         }
 
         // Replace multiple semi-colons in a row by a single one
@@ -354,28 +364,16 @@ public class YuiCssCompressor implements ICssCompressor {
         css = css.replaceAll(";;+", ";");
 
         // restore preserved comments and strings
-        for(i = 0, max = preservedTokens.size(); i < max; i++) {
-            css = css.replace("___YUICSSMIN_PRESERVED_TOKEN_" + i + "___", preservedTokens.get(i).toString());
+        for (i = 0, max = preservedTokens.size(); i < max; i++) {
+            css = css.replace(PRESERVE_TOKEN + i + "___", preservedTokens.get(i));
         }
 
         // Trim the final string (for any leading or trailing white spaces)
-        css = css.trim();
-
-        // Write the output...
-        out.write(css);
+        return css.trim();
     }
 
     @Override
     public String compress(String original) {
-        StringWriter out = new StringWriter();
-        try {
-            compress(original, out, 4000);
-            out.flush();
-            out.close();
-        } catch (IOException e) {
-            throw new WicketRuntimeException(e);
-        }
-
-        return out.getBuffer().toString();
+        return compress(original, 4000);
     }
 }

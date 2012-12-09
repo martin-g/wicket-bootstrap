@@ -23,6 +23,11 @@ public class NavbarDropDownButton extends DropDownButton {
     }
 
     @Override
+    protected void addAdditionalBehaviors() {
+        // nothing to do here
+    }
+
+    @Override
     protected void onInitialize() {
         super.onInitialize();
 

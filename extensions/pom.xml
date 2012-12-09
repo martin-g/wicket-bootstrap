@@ -15,6 +15,8 @@
 
     <properties>
         <closure-compiler.version>r2180</closure-compiler.version>
+        <contiperf.version>2.2.0</contiperf.version>
+        <logback.version>1.0.7</logback.version>
     </properties>
 
     <dependencies>
@@ -28,6 +30,21 @@
             <artifactId>closure-compiler</artifactId>
             <version>${closure-compiler.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.databene</groupId>
+            <artifactId>contiperf</artifactId>
+            <version>${contiperf.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback.version}</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
     <build>

@@ -8,6 +8,7 @@ import de.agilecoders.wicket.markup.html.bootstrap.button.dropdown.DropDownButto
 import de.agilecoders.wicket.markup.html.bootstrap.button.dropdown.MenuBookmarkablePageLink;
 import de.agilecoders.wicket.markup.html.bootstrap.button.dropdown.MenuDivider;
 import de.agilecoders.wicket.markup.html.bootstrap.button.dropdown.MenuHeader;
+import de.agilecoders.wicket.markup.html.bootstrap.extensions.button.DropDownAutoOpen;
 import de.agilecoders.wicket.markup.html.bootstrap.html.ChromeFrameMetaTag;
 import de.agilecoders.wicket.markup.html.bootstrap.html.HtmlTag;
 import de.agilecoders.wicket.markup.html.bootstrap.html.MetaTag;
@@ -151,6 +152,7 @@ abstract class BasePage<T> extends GenericWebPage<T> {
                 return false;
             }
         };
+        dropdown.add(new DropDownAutoOpen());
 
         dropdown.addButton(new MenuHeader(Model.of("all available themes:")))
                 .addButton(new MenuDivider()).setIconType(IconType.book);
@@ -179,7 +181,7 @@ abstract class BasePage<T> extends GenericWebPage<T> {
                 .addButton(new MenuBookmarkablePageLink<DatePickerPage>(DatePickerPage.class, Model.of("DatePicker")).setIconType(IconType.time))
                 .addButton(new MenuBookmarkablePageLink<IssuesPage>(IssuesPage.class, Model.of("Github Issues")).setIconType(IconType.book))
                 .addButton(new MenuBookmarkablePageLink<ExtensionsPage>(ExtensionsPage.class, Model.of("Extensions")).setIconType(IconType.alignjustify))
-                .setIconType(IconType.thlarge);
+                .setIconType(IconType.thlarge).add(new DropDownAutoOpen());
     }
 
     /**

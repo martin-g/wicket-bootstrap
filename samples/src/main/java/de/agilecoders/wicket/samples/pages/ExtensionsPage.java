@@ -2,12 +2,14 @@ package de.agilecoders.wicket.samples.pages;
 
 import com.google.common.collect.Lists;
 import de.agilecoders.wicket.markup.html.bootstrap.block.Code;
+import de.agilecoders.wicket.markup.html.bootstrap.button.dropdown.DropDownButton;
 import de.agilecoders.wicket.markup.html.bootstrap.button.dropdown.MenuBookmarkablePageLink;
 import de.agilecoders.wicket.markup.html.bootstrap.dialog.Modal;
 import de.agilecoders.wicket.markup.html.bootstrap.dialog.TextContentModal;
 import de.agilecoders.wicket.markup.html.bootstrap.extensions.behavior.Draggable;
 import de.agilecoders.wicket.markup.html.bootstrap.extensions.behavior.DraggableConfig;
 import de.agilecoders.wicket.markup.html.bootstrap.extensions.behavior.Resizable;
+import de.agilecoders.wicket.markup.html.bootstrap.extensions.button.DropDownAutoOpen;
 import de.agilecoders.wicket.markup.html.bootstrap.extensions.contextmenu.ButtonListContextMenu;
 import de.agilecoders.wicket.markup.html.bootstrap.extensions.html5player.Html5Player;
 import de.agilecoders.wicket.markup.html.bootstrap.extensions.html5player.Html5VideoConfig;
@@ -87,6 +89,16 @@ public class ExtensionsPage extends BasePage {
         Label draggableButton = new Label("open-draggable", "Open Modal Dialog");
         draggableModal.addOpenerAttributesTo(draggableButton);
         add(draggableModal, draggableButton, new Code("draggable-code", Model.of("")));
+
+        DropDownButton dropDownButton = new DropDownButton("dropdown", Model.of("open-on-hover"));
+        final List<? extends AbstractLink> buttons2 = Lists.<AbstractLink>newArrayList(
+                new MenuBookmarkablePageLink<DatePickerPage>(DatePickerPage.class, Model.of("DatePicker")).setIconType(IconType.time),
+                new MenuBookmarkablePageLink<IssuesPage>(IssuesPage.class, Model.of("Github Issues")).setIconType(IconType.book),
+                new MenuBookmarkablePageLink<ExtensionsPage>(ExtensionsPage.class, Model.of("Extensions")).setIconType(IconType.qrcode)
+        );
+        dropDownButton.addButtons(buttons2);
+        dropDownButton.add(new DropDownAutoOpen());
+        add(dropDownButton, new Code("dropdown-code", Model.of("dropDownButton.add(new DropDownAutoOpen());")));
     }
 
     @Override
