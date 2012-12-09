@@ -1,7 +1,8 @@
 WICKET COMPONENTS FOR TWITTER BOOTSTRAP
 =======================================
 
-Wicket-Bootstrap is based on Twitter's toolkit (bootstrap) and the Apache Wicket Framework.
+Wicket-Bootstrap is based on Twitter's toolkit (bootstrap) and the Apache Wicket Framework.<br>
+Current build status: [![Build Status](https://buildhive.cloudbees.com/job/l0rdn1kk0n/job/wicket-bootstrap/badge/icon)](https://buildhive.cloudbees.com/job/l0rdn1kk0n/job/wicket-bootstrap/)
 
 Components
 ----------
