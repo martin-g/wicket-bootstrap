@@ -6,6 +6,7 @@ import org.databene.contiperf.Required;
 import org.databene.contiperf.junit.ContiPerfRule;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 
@@ -35,6 +36,7 @@ public class YuiCssCompressorTest {
     @Test
     @PerfTest(threads = 2, duration = 10000, rampUp = 1000, warmUp = 5000)
     @Required(max = 600, average = 500)
+    @Ignore
     public void test1() throws Exception {
         assertNotNull(compressor.compress(content));
     }
