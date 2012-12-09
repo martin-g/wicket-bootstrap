@@ -15,7 +15,7 @@ Extensions
 
 * DatePicker: https://github.com/eternicode/bootstrap-datepicker
 * Html5 Video Player: http://html5-ninja.com/item/Bootstrap-video-player-jQuery-plugin
-* Open-On-Hover for dropdown buttons: http://cameronspear.com/blog/twitter-bootstrap-dropdown-on-hover-plugin/
+* Open-On-Hover for dropdown buttons: https://github.com/CWSpear/twitter-bootstrap-hover-dropdown
 * JQueryUI (1.9.2): http://api.jqueryui.com/
    * Draggable: http://api.jqueryui.com/draggable
    * Resizable: http://api.jqueryui.com/resizable
@@ -23,7 +23,7 @@ Extensions
 Usage
 -----
 
-* you can see wicket-bootstrap in action: http://wb.agilecoders.de/demo
+* you can see wicket-bootstrap in action: http://wb.agilecoders.de/
 * how to use wicket-bootstrap? Read the documentation on https://github.com/l0rdn1kk0n/wicket-bootstrap/wiki.
 * read more on my [blog](http://blog.agilecoders.de/).
 
