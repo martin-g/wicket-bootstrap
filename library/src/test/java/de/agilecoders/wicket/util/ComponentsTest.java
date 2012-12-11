@@ -10,15 +10,10 @@ import org.apache.wicket.markup.MarkupException;
 import org.apache.wicket.markup.MarkupResourceStream;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.parser.XmlTag;
-import org.apache.wicket.util.resource.AbstractResourceStream;
-import org.apache.wicket.util.resource.ResourceStreamNotFoundException;
+import org.apache.wicket.util.resource.StringResourceStream;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.mockito.Mockito;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.StringBufferInputStream;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
@@ -76,7 +71,7 @@ public class ComponentsTest extends WicketApplicationTest {
 
     @Test
     public void showMakesNothingWithNullValue() {
-        Components.show(null);
+        Components.show((Component[]) null);
     }
 
     @Test
@@ -109,19 +104,8 @@ public class ComponentsTest extends WicketApplicationTest {
         when(component.getPath()).thenReturn("path");
 
         IMarkupFragment markupFragment = mock(IMarkupFragment.class);
-        when(markupFragment.getMarkupResourceStream()).thenReturn(new MarkupResourceStream(new AbstractResourceStream() {
-            private InputStream inputStream = new StringBufferInputStream("markup");
-
-            @Override
-            public InputStream getInputStream() throws ResourceStreamNotFoundException {
-                return inputStream;
-            }
-
-            @Override
-            public void close() throws IOException {
-                inputStream.close();
-            }
-        }));
+        when(markupFragment.getMarkupResourceStream()).thenReturn(
+		        new MarkupResourceStream(new StringResourceStream("markup")));
         when(component.getMarkup()).thenReturn(markupFragment);
 
         return component;
