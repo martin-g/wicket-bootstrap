@@ -1,9 +1,12 @@
 package de.agilecoders.wicket.samples.pages;
 
+import java.util.List;
+
 import com.google.common.collect.Lists;
 import de.agilecoders.wicket.markup.html.bootstrap.block.Code;
 import de.agilecoders.wicket.markup.html.bootstrap.button.dropdown.DropDownButton;
 import de.agilecoders.wicket.markup.html.bootstrap.button.dropdown.MenuBookmarkablePageLink;
+import de.agilecoders.wicket.markup.html.bootstrap.components.TooltipConfig;
 import de.agilecoders.wicket.markup.html.bootstrap.dialog.Modal;
 import de.agilecoders.wicket.markup.html.bootstrap.dialog.TextContentModal;
 import de.agilecoders.wicket.markup.html.bootstrap.extensions.behavior.Draggable;
@@ -14,16 +17,18 @@ import de.agilecoders.wicket.markup.html.bootstrap.extensions.contextmenu.Button
 import de.agilecoders.wicket.markup.html.bootstrap.extensions.html5player.Html5Player;
 import de.agilecoders.wicket.markup.html.bootstrap.extensions.html5player.Html5VideoConfig;
 import de.agilecoders.wicket.markup.html.bootstrap.extensions.html5player.Video;
+import de.agilecoders.wicket.markup.html.bootstrap.extensions.tour.TourBehavior;
+import de.agilecoders.wicket.markup.html.bootstrap.extensions.tour.TourStep;
 import de.agilecoders.wicket.markup.html.bootstrap.image.IconType;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.TransparentWebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.AbstractLink;
+import org.apache.wicket.markup.repeater.RepeatingView;
 import org.apache.wicket.model.Model;
+import org.apache.wicket.model.ResourceModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.wicketstuff.annotation.mount.MountPath;
-
-import java.util.List;
 
 /**
  * The {@code ExtensionsPage}
@@ -99,6 +104,59 @@ public class ExtensionsPage extends BasePage {
         dropDownButton.addButtons(buttons2);
         dropDownButton.add(new DropDownAutoOpen());
         add(dropDownButton, new Code("dropdown-code", Model.of("dropDownButton.add(new DropDownAutoOpen());")));
+
+        addTour();
+    }
+
+    /**
+     * Demo for TourBehavior. Issue #116
+     */
+    private void addTour()
+    {
+        RepeatingView view = new RepeatingView("tourDemo");
+        add(view);
+
+        Label stepOne = new Label(view.newChildId(), "Step One");
+        view.add(stepOne);
+
+        Label stepTwo = new Label(view.newChildId(), "Step Two");
+        view.add(stepTwo);
+
+        Label stepThree = new Label(view.newChildId(), "Step Three");
+        view.add(stepThree);
+
+        TourBehavior tourBehavior = new TourBehavior() {
+            @Override
+            protected CharSequence createExtraConfig()
+            {
+                return "if ( tour.ended() ) {\n" +
+                        "    $('<div class=\"alert\">\\\n" +
+                        "      <button class=\"close\" data-dismiss=\"alert\">&times;</button>\\\n" +
+                        "      You ended the demo tour. <a href=\"\" class=\"restart\">Restart the demo tour.</a>\\\n" +
+                        "      </div>').prependTo(\".content\").alert();\n" +
+                        "  }\n" +
+                        "\n" +
+                        "  $(\".restart\").click(function (e) {\n" +
+                        "    e.preventDefault();\n" +
+                        "    tour.restart();\n" +
+                        "    $(this).parents(\".alert\").alert(\"close\");\n" +
+                        "  });";
+            }
+        };
+        tourBehavior.addStep(new TourStep()
+                .title(Model.of("Step One Title"))
+                .element(stepOne)
+                .content(Model.of("Some help <strong>content.Some help </strong>content.Some help content.Some help content.Some help content.")));
+        tourBehavior.addStep(new TourStep()
+                .title(new ResourceModel("tour.step.two"))
+                .element(stepTwo)
+                .placement(TooltipConfig.Placement.left));
+        tourBehavior.addStep(new TourStep()
+                .title(Model.of("Step Three Title"))
+                .element(stepThree)
+                .placement(TooltipConfig.Placement.left)
+                .content(Model.of("Step 3 content")));
+        view.add(tourBehavior);
     }
 
     @Override

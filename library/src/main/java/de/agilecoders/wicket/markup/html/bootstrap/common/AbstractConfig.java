@@ -1,10 +1,12 @@
 package de.agilecoders.wicket.markup.html.bootstrap.common;
 
-import com.google.common.collect.Maps;
-import de.agilecoders.wicket.util.Json;
-import org.apache.wicket.util.io.IClusterable;
-
 import java.util.Map;
+
+import com.google.common.collect.Maps;
+import de.agilecoders.wicket.util.ConfigModel;
+import de.agilecoders.wicket.util.Json;
+import org.apache.wicket.model.IModel;
+import org.apache.wicket.util.io.IClusterable;
 
 /**
  * Base configuration class.
@@ -82,6 +84,17 @@ public abstract class AbstractConfig implements IClusterable {
         final Object value = config.get(key.key());
 
         return String.valueOf(value != null ? value : key.getDefaultValue());
+    }
+
+    /**
+     * Wraps IModel&lt;String&gt; in ConfigModel to serialize it as
+     * simple String in the produced JSON.
+     *
+     * @param model The model to wrap.
+     * @return A model that uses special Json serializer
+     */
+    protected ConfigModel wrap(IModel<String> model) {
+        return new ConfigModel(model);
     }
 
     /**
