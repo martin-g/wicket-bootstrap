@@ -10,6 +10,7 @@ import org.apache.wicket.request.resource.CssResourceReference;
 import org.apache.wicket.util.file.IResourceFinder;
 import org.apache.wicket.util.io.IClusterable;
 import org.apache.wicket.util.lang.Bytes;
+import org.apache.wicket.util.resource.AbstractResourceStream;
 import org.apache.wicket.util.resource.IResourceStream;
 import org.apache.wicket.util.resource.ResourceStreamNotFoundException;
 import org.apache.wicket.util.time.Time;
@@ -236,7 +237,7 @@ public class LessResourceStreamLocator extends ResourceStreamLocator {
     /**
      * An {@link IResourceStream} implementation for less resources
      */
-    public static final class LessResourceStream implements IResourceStream {
+    public static final class LessResourceStream extends AbstractResourceStream {
         private final ICompiledResource compiledResource;
 
         /**
@@ -255,46 +256,17 @@ public class LessResourceStreamLocator extends ResourceStreamLocator {
 
         @Override
         public Bytes length() {
-            return compiledResource.length(); //Bytes.bytes(compiledResource.content().length);
+            return compiledResource.length();
         }
 
         @Override
         public InputStream getInputStream() throws ResourceStreamNotFoundException {
-            return compiledResource.getInputStream();// new ByteArrayInputStream(compiledResource.content());
+            return compiledResource.getInputStream();
         }
 
         @Override
         public void close() throws IOException {
-        }
-
-        @Override
-        public Locale getLocale() {
-            return null;
-        }
-
-        @Override
-        public void setLocale(Locale locale) {
-            // nothing to do here
-        }
-
-        @Override
-        public String getStyle() {
-            return null;
-        }
-
-        @Override
-        public void setStyle(String style) {
-            // nothing to do here
-        }
-
-        @Override
-        public String getVariation() {
-            return null;
-        }
-
-        @Override
-        public void setVariation(String variation) {
-            // nothing to do here
+            compiledResource.close();
         }
 
         @Override

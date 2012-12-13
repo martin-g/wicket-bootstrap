@@ -24,7 +24,9 @@ import org.apache.wicket.util.tester.TagTester;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
-import static junit.framework.Assert.assertEquals;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.is;
 
 /**
  * Tests for CssClassNameRemover
@@ -57,6 +59,6 @@ public class CssClassNameRemoverTest extends WicketApplicationTest {
         TagTester tester = tester().getTagByWicketId("id");
 
         // make sure the removed one is not here anymore
-        assertEquals("classX classY", tester.getAttribute("class"));
+        assertThat("classX classY", is(equalTo(tester.getAttribute("class"))));
     }
 }

@@ -3,6 +3,7 @@ package de.agilecoders.wicket.less;
 import org.apache.wicket.util.lang.Bytes;
 import org.apache.wicket.util.time.Time;
 
+import java.io.Closeable;
 import java.io.InputStream;
 
 /**
@@ -10,7 +11,7 @@ import java.io.InputStream;
  *
  * @author miha
  */
-public interface ICompiledResource {
+public interface ICompiledResource extends Closeable {
 
     /**
      * @return the last modification time (including all children)
