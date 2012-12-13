@@ -18,16 +18,23 @@ public class TourBehavior extends Behavior {
 
     private final List<TourStep> steps = new ArrayList<TourStep>();
 
-	/**
-	 * Adds a step to the tour
-	 *
-	 * @param step The tour step
-	 * @return {@code this} object, for chaining.
-	 */
+    /**
+     * Adds a step to the tour
+     *
+     * @param step The tour step
+     * @return {@code this} object, for chaining.
+     */
     public TourBehavior addStep(TourStep step) {
-	    Args.notNull(step, "step");
+        Args.notNull(step, "step");
         steps.add(step);
         return this;
+    }
+
+    /**
+     * @return The number of the steps in this tour
+     */
+    public final int size() {
+        return steps.size();
     }
 
     @Override
@@ -50,10 +57,10 @@ public class TourBehavior extends Behavior {
         }
     }
 
-	/**
-	 * Allows contributing more JavaScript related to the tour.
-	 * @return extra tour related JavaScript
-	 */
+    /**
+     * Allows contributing more JavaScript related to the tour.
+     * @return extra tour related JavaScript
+     */
     protected CharSequence createExtraConfig()
     {
         return "";
