@@ -115,8 +115,18 @@ public class IconBehavior extends AssertTagNameBehavior implements Invertible<Ic
         return type.getObject();
     }
 
+    @Override
     public IconBehavior setInverted(final boolean value) {
         this.invert.setObject(value);
         return this;
+    }
+
+    @Override
+    public void detach(Component component) {
+        super.detach(component);
+
+        invert.detach();
+        type.detach();
+        value.detach();
     }
 }

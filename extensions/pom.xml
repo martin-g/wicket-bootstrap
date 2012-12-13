@@ -17,9 +17,17 @@
         <closure-compiler.version>r2180</closure-compiler.version>
         <contiperf.version>2.2.0</contiperf.version>
         <logback.version>1.0.7</logback.version>
+        <less4j.version>0.0.5</less4j.version>
     </properties>
 
     <dependencies>
+
+        <dependency>
+            <groupId>com.github.sommeri</groupId>
+            <artifactId>less4j</artifactId>
+            <version>${less4j.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>de.agilecoders.wicket</groupId>
             <artifactId>bootstrap</artifactId>

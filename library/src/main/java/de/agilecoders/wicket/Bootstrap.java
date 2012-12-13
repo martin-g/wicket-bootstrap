@@ -59,6 +59,7 @@ public final class Bootstrap {
         if (packageResourceGuard instanceof SecurePackageResourceGuard) {
             SecurePackageResourceGuard guard = (SecurePackageResourceGuard) packageResourceGuard;
             guard.addPattern("+*.woff");
+            guard.addPattern("+*.eot");
             guard.addPattern("+*.svg");
             guard.addPattern("+*.ttf");
 
