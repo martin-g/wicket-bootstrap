@@ -2,15 +2,14 @@ package de.agilecoders.wicket.markup.html.bootstrap.image;
 
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameProvider;
-
-import java.io.Serializable;
+import org.apache.wicket.util.io.IClusterable;
 
 /**
  * References all available icons inside the icon sprite.
  *
  * @see {http://twitter.github.com/bootstrap/base-css.html#buttons}
  */
-public class IconType implements CssClassNameProvider, Serializable {
+public class IconType implements CssClassNameProvider, IClusterable {
 
     public static final IconType NULL = new IconType("null");
 

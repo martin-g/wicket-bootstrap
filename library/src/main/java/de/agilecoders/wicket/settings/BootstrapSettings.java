@@ -25,12 +25,25 @@ public class BootstrapSettings implements IBootstrapSettings {
     private boolean useJqueryPP = false;
     private String resourceFilterName = "";
     private IBootstrapLessCompilerSettings bootstrapLessCompilerSettings = new BootstrapLessCompilerSettings();
+    private boolean updateSecurityManger = true;
 
     /**
      * Constructor.
      */
     public BootstrapSettings() {
         // so far nothing to do here
+    }
+
+    /**
+     * Construct. Sets some configuration mode specific settings.
+     *
+     * @param application The current application instance
+     */
+    public BootstrapSettings(final Application application) {
+        this();
+
+        final boolean usesDeploymentConfig = application.usesDeploymentConfig();
+        minify(usesDeploymentConfig);
     }
 
     @Override
@@ -87,6 +100,12 @@ public class BootstrapSettings implements IBootstrapSettings {
     }
 
     @Override
+    public IBootstrapSettings setUpdateSecurityManger(boolean activate) {
+        updateSecurityManger = activate;
+        return this;
+    }
+
+    @Override
     public final BootstrapSettings minify(final boolean minify) {
         Application.get().getResourceSettings().setUseMinifiedResources(minify);
         return this;
@@ -101,6 +120,11 @@ public class BootstrapSettings implements IBootstrapSettings {
     public BootstrapSettings useModernizr(boolean useModernizr) {
         this.useModernizr = useModernizr;
         return this;
+    }
+
+    @Override
+    public boolean updateSecurityManger() {
+        return updateSecurityManger;
     }
 
     @Override

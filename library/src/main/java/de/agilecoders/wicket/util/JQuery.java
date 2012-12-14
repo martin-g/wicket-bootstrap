@@ -3,6 +3,7 @@ package de.agilecoders.wicket.util;
 import com.google.common.base.Function;
 import com.google.common.base.Joiner;
 import com.google.common.collect.Lists;
+import de.agilecoders.wicket.markup.html.bootstrap.common.AbstractConfig;
 import org.apache.wicket.Component;
 import org.apache.wicket.util.io.IClusterable;
 import org.apache.wicket.util.time.Duration;
@@ -117,6 +118,18 @@ public final class JQuery implements IClusterable {
     }
 
     /**
+     * adds a chained function to this jquery instance
+     *
+     * @param functionName the function to add
+     * @param config       the function configuration
+     * @return this instance for chaining
+     */
+    public JQuery chain(final String functionName, final AbstractConfig config) {
+        functions.add(new ConfigurableFunction(functionName, config));
+        return this;
+    }
+
+    /**
      * simple interface to represent a jquery function.
      */
     public static interface IFunction extends IClusterable {
@@ -190,6 +203,26 @@ public final class JQuery implements IClusterable {
          */
         protected SimpleFunction(final String functionName) {
             super(functionName);
+        }
+    }
+
+    /**
+     * a configurable function with one parameter (an {@link AbstractConfig}) and without body
+     */
+    public static final class ConfigurableFunction extends AbstractFunction {
+
+        /**
+         * Construct.
+         *
+         * @param functionName The function name of this {@link de.agilecoders.wicket.util.JQuery.IFunction} implementation
+         * @param config       the function configuration
+         */
+        protected ConfigurableFunction(final String functionName, final AbstractConfig config) {
+            super(functionName);
+
+            if (!config.isEmpty()) {
+                addParameter(config.toJsonString());
+            }
         }
     }
 

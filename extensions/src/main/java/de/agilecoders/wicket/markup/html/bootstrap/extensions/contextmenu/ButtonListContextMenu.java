@@ -1,7 +1,7 @@
 package de.agilecoders.wicket.markup.html.bootstrap.extensions.contextmenu;
 
+import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
 import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonList;
-import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.link.AbstractLink;
 import org.apache.wicket.model.IModel;
@@ -22,10 +22,12 @@ public class ButtonListContextMenu extends ContextMenu<List<? extends AbstractLi
      */
     public ButtonListContextMenu(final String markupId, final IModel<List<? extends AbstractLink>> model) {
         super(markupId, model);
+
+        add(new CssClassNameAppender("dropdown"));
     }
 
     @Override
     protected Component createContent(String markupId) {
-        return new ButtonList(markupId, getModel()).add(new AttributeModifier("role", "menu"));
+        return new ButtonList(markupId, getModel());
     }
 }

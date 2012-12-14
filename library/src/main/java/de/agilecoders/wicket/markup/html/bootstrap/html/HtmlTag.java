@@ -71,6 +71,7 @@ public class HtmlTag extends TransparentWebMarkupContainer {
         }
 
         add(new CssClassNameAppender(createBrowserShortcut(clientProperties)));
+        add(new CssClassNameAppender("theme-" + Bootstrap.getSettings().getActiveThemeProvider().getActiveTheme().name()));
     }
 
     private IModel<String> createBrowserShortcut(ClientProperties clientProperties) {

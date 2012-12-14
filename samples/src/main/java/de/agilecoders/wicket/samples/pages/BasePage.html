@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html wicket:id="html" xmlns:wicket="http://wicket.apache.org">
     <head>
+        <script wicket:id="newrelic" id="newrelic-rum" type="text/javascript"></script>
         <meta charset="utf-8">
         <title>Apache Wicket & Twitter Bootstrap</title>
         <meta wicket:id="viewport">
@@ -13,15 +14,12 @@
         <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
 
-        <!-- Le fav and touch icons -->
         <link rel="shortcut icon" href="/demo/ico/favicon.ico">
     </head>
 
     <body data-spy="scroll" data-target=".bs-docs-sidebar">
         <a name="top" style="display: none;"></a>
-        <div class="container">
-            <div wicket:id="navbar"></div>
-        </div>
+        <div class="container"><div wicket:id="navbar"></div></div>
 
         <wicket:child/>
         <wicket:panel wicket:id="footer"></wicket:panel>
@@ -47,6 +45,7 @@
             })();
 
         </script>
+        <script wicket:id="newrelic-footer" id="newrelic-rum-footer" type="text/javascript"></script>
 
     </body>
 </html>

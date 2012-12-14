@@ -5,12 +5,12 @@
     <parent>
         <groupId>de.agilecoders.wicket</groupId>
         <artifactId>bootstrap-parent</artifactId>
-        <version>0.7.5-SNAPSHOT</version>
+        <version>0.7.6-SNAPSHOT</version>
     </parent>
 
     <groupId>de.agilecoders.wicket</groupId>
     <artifactId>bootstrap-samples</artifactId>
-    <version>0.7.5-SNAPSHOT</version>
+    <version>0.7.6-SNAPSHOT</version>
     <packaging>war</packaging>
 
     <properties>
@@ -33,6 +33,12 @@
                     <artifactId>wicket</artifactId>
                 </exclusion>
             </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>newrelic.java-agent</groupId>
+            <artifactId>newrelic-api</artifactId>
+            <version>2.11.0</version>
         </dependency>
 
         <!-- WICKET-BOOTSTRAP -->
@@ -62,7 +68,7 @@
     </dependencies>
 
     <build>
-        <finalName>demo##${project.version}</finalName>
+        <finalName>demo</finalName>
         <resources>
             <resource>
                 <filtering>true</filtering>
@@ -132,6 +138,14 @@
             </plugin>
         </plugins>
     </build>
+
+    <repositories>
+        <repository>
+            <id>newrelic</id>
+            <name>newrelic</name>
+            <url>http://download.newrelic.com/</url>
+        </repository>
+    </repositories>
 
     <profiles>
         <profile>

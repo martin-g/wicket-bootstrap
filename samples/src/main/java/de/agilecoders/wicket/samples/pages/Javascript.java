@@ -7,6 +7,9 @@ import de.agilecoders.wicket.markup.html.bootstrap.button.LoadingBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.button.TypedAjaxLink;
 import de.agilecoders.wicket.markup.html.bootstrap.button.dropdown.DropDownButton;
 import de.agilecoders.wicket.markup.html.bootstrap.button.dropdown.MenuBookmarkablePageLink;
+import de.agilecoders.wicket.markup.html.bootstrap.carousel.Carousel;
+import de.agilecoders.wicket.markup.html.bootstrap.carousel.CarouselImage;
+import de.agilecoders.wicket.markup.html.bootstrap.carousel.ICarouselImage;
 import de.agilecoders.wicket.markup.html.bootstrap.components.PopoverBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.components.TooltipBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.image.IconType;
@@ -25,6 +28,8 @@ import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.util.time.Duration;
 import org.wicketstuff.annotation.mount.MountPath;
+
+import java.util.List;
 
 /**
  * The {@code BaseCssPage}
@@ -67,7 +72,7 @@ public class Javascript extends BasePage {
             public void onClick(AjaxRequestTarget target) {
                 // nothing to do.
             }
-        });
+        }.setLabel(Model.of("click here")));
 
         add(new AjaxLink("loading") {
 
@@ -96,6 +101,24 @@ public class Javascript extends BasePage {
 
         add(new PaginationPanel("pagingNavigator"));
         add(new AjaxPaginationPanel("ajaxPagingNavigator"));
+
+        add(newCarousel("carousel"));
+    }
+
+    /**
+     * creates a new carousel image
+     *
+     * @param markupId The component id
+     * @return new carousel component
+     */
+    private Component newCarousel(String markupId) {
+        final List<ICarouselImage> images = Lists.<ICarouselImage>newArrayList(
+                new CarouselImage("http://placehold.it/820x480", "Header 1", "Description 1"),
+                new CarouselImage("http://placehold.it/820x480", "Header 2"),
+                new CarouselImage("http://placehold.it/820x480")
+        );
+
+        return new Carousel(markupId, Model.<ICarouselImage>ofList(images));
     }
 
     private Component newDropDown(String markupId) {

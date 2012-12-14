@@ -1,16 +1,12 @@
 package de.agilecoders.wicket.markup.html.themes.bootswatch;
 
-import de.agilecoders.wicket.less.Resource;
 import de.agilecoders.wicket.markup.html.themes.bootstrap.BootstrapCssReference;
-
-import java.util.List;
 
 /**
  * A {@link org.apache.wicket.request.resource.CssResourceReference} for all bootswatch
  * themes. All themes can be collected by executing gettheme.sh.
  *
  * @author miha
- * @version 1.0
  */
 public class BootswatchCssReference extends BootstrapCssReference {
     private static final long serialVersionUID = 1L;
@@ -18,7 +14,7 @@ public class BootswatchCssReference extends BootstrapCssReference {
     private final String swatchName;
 
     /**
-     * Singleton instance of this reference
+     * Singleton instances of all bootswatch theme references
      */
     public static final BootswatchCssReference AMELIA = new BootswatchCssReference("amelia");
     public static final BootswatchCssReference CERULEAN = new BootswatchCssReference("cerulean");
@@ -37,20 +33,15 @@ public class BootswatchCssReference extends BootstrapCssReference {
      * Private constructor.
      */
     public BootswatchCssReference(final String swatchName) {
-        super(BootswatchCssReference.class, "css/bootstrap." + swatchName + ".css");
+        super(BootswatchCssReference.class, "css/bootstrap." + swatchName + ".less.css");
         this.swatchName = swatchName;
     }
 
+    /**
+     * @return bootswatch theme name of this reference
+     */
     public String getSwatchName() {
         return swatchName;
     }
 
-    @Override
-    public List<Resource> getLessResources() {
-        final List<Resource> resources = super.getLessResources();
-        resources.add(resourceLocator().findResource(BootswatchCssReference.class, "less/" + swatchName + "/variables.less"));
-        resources.add(resourceLocator().findResource(BootswatchCssReference.class, "less/" + swatchName + "/bootswatch.less"));
-        resources.add(resourceLocator().findResource(BootstrapCssReference.class, "less/utilities.less"));
-        return resources;
-    }
 }

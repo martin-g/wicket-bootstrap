@@ -34,7 +34,7 @@ public class MenuBookmarkablePageLink<T> extends TypedBookmarkablePageLink<T> {
      * @param label     button label
      * @param <T>       type of the page class
      */
-    public <T extends Page> MenuBookmarkablePageLink(final Class<T> pageClass, final IModel<?> label) {
+    public <T extends Page> MenuBookmarkablePageLink(final Class<T> pageClass, final IModel<String> label) {
         super(ButtonList.getButtonMarkupId(), pageClass, ButtonType.Menu);
 
         setLabel(label);
@@ -49,14 +49,14 @@ public class MenuBookmarkablePageLink<T> extends TypedBookmarkablePageLink<T> {
      * @param model      The label
      * @param <T>        type of the page class
      */
-    public <T extends Page> MenuBookmarkablePageLink(final Class<T> pageClass, final PageParameters parameters, IModel<?> model) {
+    public <T extends Page> MenuBookmarkablePageLink(final Class<T> pageClass, final PageParameters parameters, final IModel<String> model) {
         super(ButtonList.getButtonMarkupId(), pageClass, parameters, ButtonType.Menu);
 
         setLabel(model);
     }
 
     @Override
-    public boolean isActive(Component button) {
+    public boolean isActive(final Component button) {
         return getPageClass().equals(button.getPage().getClass());
     }
 }

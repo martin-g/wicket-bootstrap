@@ -17,12 +17,14 @@
 
             <div class="container">
 
-                <div class="row">
+                <div class="row-fluid">
                     <div class="span3 bs-docs-sidebar">
                         <ul wicket:id="navigation" class="nav nav-list bs-docs-sidenav">
                             <li><a href="#video"><i class="icon-chevron-right"></i> Html5Video player</a></li>
                             <li><a href="#contextmenu"><i class="icon-chevron-right"></i> ContextMenu</a></li>
                             <li><a href="#issue97"><i class="icon-chevron-right"></i> Draggable/Resizable Behavior</a></li>
+                            <li><a href="#issue112"><i class="icon-chevron-right"></i> open-on-hover Behavior</a></li>
+                            <li><a href="#issue116"><i class="icon-chevron-right"></i> Tour Behavior</a></li>
                         </ul>
                     </div>
                     <div class="span9">
@@ -63,7 +65,7 @@
                             <p>A context menu extension of Twitter Bootstrap made for everyone's convenience.</p>
 
                             <div class="bs-docs-example">
-                                <p wicket:id="context-panel">Just right click here...</p>
+                                <div wicket:id="context-panel">Just right click here...</div>
                                 <div wicket:id="contextmenu"></div>
                             </div>
                             <pre wicket:id="context-code"></pre>
@@ -81,6 +83,34 @@
                                 <div wicket:id="draggable-modal"></div>
                             </div>
                             <pre wicket:id="draggable-code"></pre>
+                        </section>
+
+                        <section id="issue112">
+                            <div class="page-header">
+                                <h1>open-on-hover Behavior</h1>
+                            </div>
+
+                            <p>see <a href="https://github.com/l0rdn1kk0n/wicket-bootstrap/issues/112">issue #112</a>.</p>
+
+                            <div class="bs-docs-example">
+                                <div wicket:id="dropdown"></div>
+                            </div>
+                            <pre wicket:id="dropdown-code"></pre>
+                        </section>
+
+                        <section id="issue116">
+                            <div class="page-header">
+                                <h1>Bootstrap Tour</h1>
+                            </div>
+
+                            <p>see <a href="https://github.com/l0rdn1kk0n/wicket-bootstrap/issues/116">issue #116</a>.</p>
+                            <p class="content"></p>
+
+                            <div class="bs-docs-example">
+                                <ul>
+                                    <li wicket:id="tourDemo"></li>
+                                </ul>
+                            </div>
                         </section>
 
                     </div>

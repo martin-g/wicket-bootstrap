@@ -1,6 +1,10 @@
 package de.agilecoders.wicket.samples.pages;
 
 import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonBehavior;
+import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonType;
+import de.agilecoders.wicket.markup.html.bootstrap.button.TypedLink;
+import de.agilecoders.wicket.markup.html.bootstrap.common.NotificationMessage;
+import de.agilecoders.wicket.markup.html.bootstrap.common.NotificationPanel;
 import de.agilecoders.wicket.markup.html.bootstrap.components.PopoverBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.components.PopoverConfig;
 import de.agilecoders.wicket.markup.html.bootstrap.components.TooltipConfig;
@@ -14,6 +18,7 @@ import de.agilecoders.wicket.markup.html.bootstrap.navbar.Navbar;
 import de.agilecoders.wicket.markup.html.bootstrap.navbar.NavbarAjaxLink;
 import de.agilecoders.wicket.samples.components.issues.CustomNavbarForm;
 import org.apache.wicket.Component;
+import org.apache.wicket.Page;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.form.AjaxSubmitLink;
 import org.apache.wicket.event.Broadcast;
@@ -25,6 +30,7 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
+import org.apache.wicket.util.time.Duration;
 import org.wicketstuff.annotation.mount.MountPath;
 
 import java.io.Serializable;
@@ -46,6 +52,9 @@ public class IssuesPage extends BasePage {
      */
     public IssuesPage(PageParameters parameters) {
         super(parameters);
+
+
+        add(new NotificationPanel("feedback").hideAfter(Duration.seconds(5)));
 
         // issue #80
         add(new ParentNavbar("navbar-parent"),
@@ -74,6 +83,22 @@ public class IssuesPage extends BasePage {
                 Model.of("content"),
                 new PopoverConfig().withTrigger(TooltipConfig.Trigger.hover).withPlacement(TooltipConfig.Placement.top)
         )));
+
+        // issue #102
+        add(new TypedLink<Page>("link", Model.<Page>of(this)) {
+            @Override
+            public void onClick() {
+                getSession().success(new NotificationMessage(Model.of("link 1 clicked"), Model.of("issue #102:"), true));
+                setResponsePage(getModelObject());
+            }
+        }.setLabel(Model.of("Link 1")));
+        add(new TypedLink<Page>("link-danger", Model.<Page>of(this), ButtonType.Danger) {
+            @Override
+            public void onClick() {
+                getSession().success(new NotificationMessage(Model.of("link 2 <u>clicked</u>"), Model.of("issue #102:"), true).escapeModelStrings(false));
+                setResponsePage(getModelObject());
+            }
+        }.setLabel(Model.of("Link 2")));
     }
 
     private Modal newModalDialog(String markupId) {
@@ -163,7 +188,7 @@ public class IssuesPage extends BasePage {
         public SubNavbar(final String componentId) {
             super(componentId);
 
-            invert(true);
+            setInverted(true);
             setOutputMarkupId(true);
 
             addComponents(
@@ -213,7 +238,7 @@ public class IssuesPage extends BasePage {
         public ParentNavbar(final String componentId) {
             super(componentId);
 
-            invert(false);
+            setInverted(false);
             setOutputMarkupId(true);
 
             addComponents(

@@ -2,14 +2,12 @@ package de.agilecoders.wicket.markup.html.bootstrap.heading;
 
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.model.IModel;
-import org.apache.wicket.model.Model;
 
 /**
- * TODO: document
- * TODO: add level?
+ * Simple replacement of {@link Label} which can be used for all
+ * h1 to h6-tags.
  *
  * @author miha
- * @version 1.0
  */
 public class Heading extends Label {
 
@@ -19,28 +17,39 @@ public class Heading extends Label {
      * @param componentId The non-null id of a new component
      */
     public Heading(final String componentId) {
-        this(componentId, Model.<String>of());
+        super(componentId);
+
+        commonInit();
     }
 
     /**
      * Constructor.
      *
      * @param componentId The non-null id of a new component
-     * @param label The label text
+     * @param label       The label text
      */
     public Heading(final String componentId, final String label) {
-        this(componentId, Model.of(label));
+        super(componentId, label);
+
+        commonInit();
     }
 
     /**
      * Constructor.
      *
      * @param componentId The non-null id of a new component
-     * @param model which holds the label text
+     * @param model       which holds the label text
      */
     public Heading(final String componentId, final IModel<String> model) {
         super(componentId, model);
 
+        commonInit();
+    }
+
+    /**
+     * adds the {@link HeadingBehavior} to this component
+     */
+    private void commonInit() {
         add(new HeadingBehavior());
     }
 }

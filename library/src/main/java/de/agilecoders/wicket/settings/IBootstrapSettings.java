@@ -27,6 +27,7 @@ public interface IBootstrapSettings {
     /**
      * @param reference a reference to the base twitter bootstrap JavaScript library.
      *                  Defaults to the embedded bootstrap.js
+     * @return same instance for chaining
      */
     IBootstrapSettings setJsResourceReference(ResourceReference reference);
 
@@ -47,6 +48,7 @@ public interface IBootstrapSettings {
 
     /**
      * @param useJqueryPP true, if modernizr should be loaded
+     * @return same instance for chaining
      */
     IBootstrapSettings useJqueryPP(final boolean useJqueryPP);
 
@@ -59,11 +61,22 @@ public interface IBootstrapSettings {
      * sets the filter name for all bootstrap js resource references
      *
      * @param name javascript resource filter name
+     * @return same instance for chaining
      */
     IBootstrapSettings setJsResourceFilterName(final String name);
 
     /**
+     * if true, all necessary exceptions will be added to security manager to allow
+     * fonts and less files. (default is true)
+     *
+     * @param activate true, if security manger should be updated while installing these settings
+     * @return same instance for chaining
+     */
+    IBootstrapSettings setUpdateSecurityManger(final boolean activate);
+
+    /**
      * @param minify true, if all references should be loaded minified
+     * @return same instance for chaining
      */
     IBootstrapSettings minify(final boolean minify);
 
@@ -74,8 +87,17 @@ public interface IBootstrapSettings {
 
     /**
      * @param useModernizr true, if modernizr js library will be included
+     * @return same instance for chaining
      */
     IBootstrapSettings useModernizr(final boolean useModernizr);
+
+    /**
+     * if true, all necessary exceptions will be added to security manager to allow
+     * fonts and less files. (default is true)
+     *
+     * @return true, if security manger should be updated while installing these settings
+     */
+    boolean updateSecurityManger();
 
     /**
      * @return true, if responsive css will be included
@@ -84,6 +106,7 @@ public interface IBootstrapSettings {
 
     /**
      * @param useResponsiveCss set to true if responsive css should be included
+     * @return same instance for chaining
      */
     IBootstrapSettings useResponsiveCss(final boolean useResponsiveCss);
 
@@ -91,6 +114,7 @@ public interface IBootstrapSettings {
      * The {@link ActiveThemeProvider} provides access to the active theme
      *
      * @param themeProvider The {@link ActiveThemeProvider} instance
+     * @return same instance for chaining
      */
     IBootstrapSettings setActiveThemeProvider(ActiveThemeProvider themeProvider);
 
@@ -108,6 +132,7 @@ public interface IBootstrapSettings {
      * The {@link ThemeProvider} instance provides access to all available themes.
      *
      * @param themeProvider The {@link ThemeProvider} instance
+     * @return same instance for chaining
      */
     IBootstrapSettings setThemeProvider(ThemeProvider themeProvider);
 

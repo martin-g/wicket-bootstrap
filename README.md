@@ -1,29 +1,34 @@
 WICKET COMPONENTS FOR TWITTER BOOTSTRAP
 =======================================
 
-Wicket-Bootstrap is based on Twitter's toolkit (bootstrap) and the Apache Wicket Framework.
+Wicket-Bootstrap is based on Twitter's toolkit (bootstrap) and the Apache Wicket Framework.<br>
+Current build status: [![Build Status](https://buildhive.cloudbees.com/job/l0rdn1kk0n/job/wicket-bootstrap/badge/icon)](https://buildhive.cloudbees.com/job/l0rdn1kk0n/job/wicket-bootstrap/)
 
 Components
 ----------
 
-* Twitter Bootstrap (2.2.1): http://twitter.github.com/bootstrap
+* Twitter Bootstrap (2.2.2): http://twitter.github.com/bootstrap
 * Apache Wicket (6.3.0): http://wicket.apache.org/
-* Bootswatch (2.2.1): http://bootswatch.com/
+* Bootswatch (2.2.2): http://bootswatch.com/
 
 Extensions
 ----------
 
 * DatePicker: https://github.com/eternicode/bootstrap-datepicker
 * Html5 Video Player: http://html5-ninja.com/item/Bootstrap-video-player-jQuery-plugin
+* Open-On-Hover for dropdown buttons: https://github.com/CWSpear/twitter-bootstrap-hover-dropdown
 * JQueryUI (1.9.2): http://api.jqueryui.com/
    * Draggable: http://api.jqueryui.com/draggable
    * Resizable: http://api.jqueryui.com/resizable
+* less4j (0.0.5): https://github.com/SomMeri/less4j
+* bootstrap-tour: http://sorich87.github.com/bootstrap-tour
 
 Usage
 -----
 
-* you can see wicket-bootstrap in action: http://wb.agilecoders.de/demo
+* you can see wicket-bootstrap in action: http://wb.agilecoders.de/
 * how to use wicket-bootstrap? Read the documentation on https://github.com/l0rdn1kk0n/wicket-bootstrap/wiki.
+* read more on my [blog](http://blog.agilecoders.de/).
 
 ## Maven
 wicket-bootstrap is [available](http://search.maven.org/#artifactdetails|de.agilecoders.wicket|bootstrap|0.7.4|jar) in Maven central repository.
@@ -32,7 +37,7 @@ core maven dependency:
 <pre><code>&lt;dependency&gt;
   &lt;groupId&gt;de.agilecoders.wicket&lt;/groupId&gt;
   &lt;artifactId&gt;bootstrap&lt;/artifactId&gt;
-  &lt;version&gt;0.7.4&lt;/version&gt;
+  &lt;version&gt;0.7.5&lt;/version&gt;
 &lt;/dependency&gt;
 </code></pre>
 
@@ -40,14 +45,14 @@ for all extensions:
 <pre><code>&lt;dependency&gt;
   &lt;groupId&gt;de.agilecoders.wicket&lt;/groupId&gt;
   &lt;artifactId&gt;bootstrap-extensions&lt;/artifactId&gt;
-  &lt;version&gt;0.7.4&lt;/version&gt;
+  &lt;version&gt;0.7.5&lt;/version&gt;
 &lt;/dependency&gt;
 </code></pre>
 
 Twitter account
 ---------------
 
-Keep up to date on announcements and more by following [#WicketBootstrap](https://twitter.com/search?q=%23WicketBootstrap&src=typd) on Twitter, [@l0rdn1kk0n](http://twitter.com/l0rdn1kk0n).
+Keep up to date on announcements and more by following me [@l0rdn1kk0n](http://twitter.com/l0rdn1kk0n) on Twitter or use the [#WicketBootstrap](https://twitter.com/search?q=%23WicketBootstrap&src=typd) hashtag.
 
 
 Bug tracker

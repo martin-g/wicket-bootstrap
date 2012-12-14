@@ -1,0 +1,37 @@
+@import "../../bootswatch/css/bootstrap.united.less";
+@import "variables.less";
+
+.jumbotron, .jumbotron:after {
+  color: @white !important;
+  background: @gray url("@{backgroundImage}") !important;
+}
+
+.masthead {
+  color: @white !important;
+}
+
+div.container section {
+  background-color: @white;
+  .border-radius(@baseBorderRadius);
+  padding: @paddingSmall;
+  margin-top: 30px;
+}
+
+.nav-tabs > .active > a, .nav-tabs > .active > a:hover {
+  color: @white;
+}
+
+@media (min-width: 1200px) {
+
+  .row.show-grid {
+    padding-left: 30px;
+    margin-left: 0;
+  }
+
+}
+
+@media (min-width: 979px) and (max-width: 1200px) {
+  .row-fluid .span9 {
+    width: 73%;
+  }
+}

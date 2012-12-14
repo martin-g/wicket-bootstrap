@@ -6,7 +6,6 @@ import de.agilecoders.wicket.settings.IBootstrapSettings;
 import org.apache.wicket.util.io.IOUtils;
 import org.apache.wicket.util.resource.ResourceStreamNotFoundException;
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -15,10 +14,9 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 
 /**
- * Tests the {@link BootstrapCssReference}.
+ * Tests the {@link BootstrapCssReference} class.
  *
  * @author miha
- * @version 1.0
  */
 public class BootstrapCssReferenceTest extends WicketApplicationTest {
     private String cssContent;
@@ -44,7 +42,6 @@ public class BootstrapCssReferenceTest extends WicketApplicationTest {
     }
 
     @Test
-    @Ignore // update bootstrap css file
     public void lessFileWasGeneratedWithoutError() {
         BootstrapCssReference ref = BootstrapCssReference.INSTANCE;
 
@@ -53,7 +50,6 @@ public class BootstrapCssReferenceTest extends WicketApplicationTest {
     }
 
     @Test
-    @Ignore // update bootstrap css file
     public void lessFileWasGeneratedWithCorrectContent() {
         BootstrapCssReference ref = BootstrapCssReference.INSTANCE;
 

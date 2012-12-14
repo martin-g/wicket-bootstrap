@@ -1,5 +1,6 @@
 package de.agilecoders.wicket.samples.pages;
 
+import com.newrelic.api.agent.NewRelic;
 import de.agilecoders.wicket.Bootstrap;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.block.Code;
@@ -7,6 +8,7 @@ import de.agilecoders.wicket.markup.html.bootstrap.button.dropdown.DropDownButto
 import de.agilecoders.wicket.markup.html.bootstrap.button.dropdown.MenuBookmarkablePageLink;
 import de.agilecoders.wicket.markup.html.bootstrap.button.dropdown.MenuDivider;
 import de.agilecoders.wicket.markup.html.bootstrap.button.dropdown.MenuHeader;
+import de.agilecoders.wicket.markup.html.bootstrap.extensions.button.DropDownAutoOpen;
 import de.agilecoders.wicket.markup.html.bootstrap.html.ChromeFrameMetaTag;
 import de.agilecoders.wicket.markup.html.bootstrap.html.HtmlTag;
 import de.agilecoders.wicket.markup.html.bootstrap.html.MetaTag;
@@ -24,6 +26,7 @@ import de.agilecoders.wicket.samples.assets.base.FixBootstrapStylesCssResourceRe
 import de.agilecoders.wicket.samples.components.site.Footer;
 import de.agilecoders.wicket.settings.IBootstrapSettings;
 import de.agilecoders.wicket.settings.ITheme;
+import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.Page;
 import org.apache.wicket.markup.head.CssHeaderItem;
@@ -33,6 +36,7 @@ import org.apache.wicket.markup.head.filter.FilteredHeaderItem;
 import org.apache.wicket.markup.head.filter.HeaderResponseContainer;
 import org.apache.wicket.markup.html.GenericWebPage;
 import org.apache.wicket.markup.html.WebMarkupContainer;
+import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
@@ -108,6 +112,16 @@ abstract class BasePage<T> extends GenericWebPage<T> {
         add(new Code("code-internal"));
 
         add(new HeaderResponseContainer("footer-container", "footer-container"));
+
+        // add new relic RUM scripts.
+        add(new Label("newrelic", Model.of(NewRelic.getBrowserTimingHeader()))
+                    .setEscapeModelStrings(false)
+                    .setRenderBodyOnly(true)
+                    .add(new AttributeModifier("id", "newrelic-rum-header")));
+        add(new Label("newrelic-footer", Model.of(NewRelic.getBrowserTimingFooter()))
+                    .setEscapeModelStrings(false)
+                    .setRenderBodyOnly(true)
+                    .add(new AttributeModifier("id", "newrelic-rum-footer")));
     }
 
     /**
@@ -132,10 +146,16 @@ abstract class BasePage<T> extends GenericWebPage<T> {
                                                         newAddonsDropDownButton())
         );
 
-        DropDownButton dropdown = new NavbarDropDownButton(Model.of("More..."))
-                .addButton(new MenuBookmarkablePageLink<HomePage>(HomePage.class, Model.of("Overview")))
-                .addButton(new MenuDivider())
-                .addButton(new MenuHeader(Model.of("Themes"))).setIconType(IconType.book);
+        DropDownButton dropdown = new NavbarDropDownButton(Model.of("Themes")) {
+            @Override
+            public boolean isActive(Component item) {
+                return false;
+            }
+        };
+        dropdown.add(new DropDownAutoOpen());
+
+        dropdown.addButton(new MenuHeader(Model.of("all available themes:")))
+                .addButton(new MenuDivider()).setIconType(IconType.book);
 
         IBootstrapSettings settings = Bootstrap.getSettings(getApplication());
         List<ITheme> themes = settings.getThemeProvider().available();
@@ -161,7 +181,7 @@ abstract class BasePage<T> extends GenericWebPage<T> {
                 .addButton(new MenuBookmarkablePageLink<DatePickerPage>(DatePickerPage.class, Model.of("DatePicker")).setIconType(IconType.time))
                 .addButton(new MenuBookmarkablePageLink<IssuesPage>(IssuesPage.class, Model.of("Github Issues")).setIconType(IconType.book))
                 .addButton(new MenuBookmarkablePageLink<ExtensionsPage>(ExtensionsPage.class, Model.of("Extensions")).setIconType(IconType.alignjustify))
-                .setIconType(IconType.thlarge);
+                .setIconType(IconType.thlarge).add(new DropDownAutoOpen());
     }
 
     /**

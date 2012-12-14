@@ -1002,3 +1002,15 @@ form.bs-docs-example {
         float: none;
     }
 }
+
+.theme-wicket {
+    color: white;
+}
+
+.theme-spacelab .jumbotron h1, .theme-journal .jumbotron h1, .theme-cosmo .jumbotron h1, .theme-spruce .jumbotron h1 {
+    color: white;
+}
+
+.theme-cyborg .bs-docs-example, .theme-superhero .bs-docs-example, .theme-amelia .bs-docs-example, .theme-superhero .bs-docs-sidebar a, .theme-amelia .bs-docs-sidebar a {
+    color: #222;
+}

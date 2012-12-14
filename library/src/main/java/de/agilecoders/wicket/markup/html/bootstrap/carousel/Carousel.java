@@ -1,11 +1,10 @@
 package de.agilecoders.wicket.markup.html.bootstrap.carousel;
 
+import de.agilecoders.wicket.markup.html.bootstrap.behavior.AssertTagNameBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapResourcesBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
-import de.agilecoders.wicket.util.Components;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
-import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
 import org.apache.wicket.markup.html.TransparentWebMarkupContainer;
@@ -20,36 +19,49 @@ import org.apache.wicket.util.time.Duration;
 import java.util.List;
 
 /**
- * TODO: document
+ * A generic plugin and component for cycling through images (with description and header text)
+ * like a carousel.
  *
  * @author miha
- * @version 1.0
  */
 public class Carousel extends Panel {
 
     private Duration interval = Duration.seconds(5);
-    private final IModel<List<CarouselImage>> model;
+    private final IModel<List<? extends ICarouselImage>> model;
 
-    public Carousel(String id, IModel<List<CarouselImage>> model) {
-        super(id, model);
+    /**
+     * Construct.
+     *
+     * @param markupId the component id
+     * @param model    the list of images
+     */
+    public Carousel(final String markupId, final IModel<List<? extends ICarouselImage>> model) {
+        super(markupId, model);
         this.model = model;
 
         setOutputMarkupId(true);
 
         add(new CssClassNameAppender("carousel", "slide"));
         add(new BootstrapResourcesBehavior());
+        add(new AssertTagNameBehavior("div"));
 
         add(newImageList("images"),
             newNavigationButton("prev"),
             newNavigationButton("next"));
     }
 
-    private Component newNavigationButton(String wicketId) {
-        Label button = new Label(wicketId);
+    /**
+     * creates a new navigation button
+     *
+     * @param markupId the component id
+     * @return new navigation button
+     */
+    private Component newNavigationButton(final String markupId) {
+        Label button = new Label(markupId);
         button.add(new AttributeModifier("href", "#" + getMarkupId(true)));
         button.setEscapeModelStrings(false);
 
-        if("prev".equals(wicketId)) {
+        if ("prev".equals(markupId)) {
             button.setDefaultModel(createPrevLabel());
         } else {
             button.setDefaultModel(createNextLabel());
@@ -58,22 +70,34 @@ public class Carousel extends Panel {
         return button;
     }
 
+    /**
+     * @return label of previous button
+     */
     protected IModel<String> createPrevLabel() {
         return Model.of("&lsaquo;");
     }
 
+    /**
+     * @return label of next button
+     */
     protected IModel<String> createNextLabel() {
         return Model.of("&rsaquo;");
     }
 
+    /**
+     * creates a new {@link ICarouselImage} list view
+     *
+     * @param wicketId The component id
+     * @return new list view.
+     */
     private Component newImageList(String wicketId) {
-        return new ListView<CarouselImage>(wicketId, model) {
+        return new ListView<ICarouselImage>(wicketId, model) {
 
             private boolean renderedActive = false;
 
             @Override
-            protected void populateItem(ListItem<CarouselImage> item) {
-                CarouselImage carouselImage = item.getModelObject();
+            protected void populateItem(ListItem<ICarouselImage> item) {
+                ICarouselImage carouselImage = item.getModelObject();
 
                 Label image = new Label("image");
                 image.add(new AttributeModifier("src", carouselImage.url()));
@@ -95,7 +119,7 @@ public class Carousel extends Panel {
                 TransparentWebMarkupContainer caption = new TransparentWebMarkupContainer("caption");
                 caption.setVisible(header.isVisible() || description.isVisible());
 
-                if(!renderedActive) {
+                if (!renderedActive) {
                     renderedActive = true;
                     item.add(new CssClassNameAppender("active"));
                 }
@@ -110,28 +134,27 @@ public class Carousel extends Panel {
         super.renderHead(response);
 
         response.render(OnDomReadyHeaderItem.forScript("$('#" + getMarkupId(true) + "').carousel({\n"
-                                                       + "  interval: "+ interval().getMilliseconds() +"\n"
+                                                       + "  interval: " + getInterval().getMilliseconds() + "\n"
                                                        + "})"));
     }
 
-    @Override
-    protected void onComponentTag(ComponentTag tag) {
-        super.onComponentTag(tag);
-
-        Components.assertTag(this, tag, "div");
-    }
-
-    public Duration interval() {
+    /**
+     * @return current interval as {@link Duration}
+     */
+    public final Duration getInterval() {
         return interval;
     }
 
-    public Carousel interval(Duration interval) {
+    /**
+     * The amount of time to delay between automatically cycling an item.
+     * If Duration.NONE or value is 0, carousel will not automatically cycle.
+     *
+     * @param interval The duration
+     * @return this instance for chaining
+     */
+    public final Carousel setInterval(final Duration interval) {
         this.interval = interval;
+
         return this;
     }
 }
-
-
-/*
-
-*/

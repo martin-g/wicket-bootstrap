@@ -26,7 +26,7 @@ public class NavbarButton<T> extends TypedBookmarkablePageLink<T> {
      * @param label      The component's label
      * @param <T>        type of the page class
      */
-    public <T extends Page> NavbarButton(final Class<T> pageClass, final PageParameters parameters, final IModel<?> label) {
+    public <T extends Page> NavbarButton(final Class<T> pageClass, final PageParameters parameters, final IModel<String> label) {
         super(Navbar.COMPONENT_ID, pageClass, parameters, ButtonType.Menu);
 
         setLabel(label);
@@ -39,7 +39,7 @@ public class NavbarButton<T> extends TypedBookmarkablePageLink<T> {
      * @param label     The component's label
      * @param <T>       type of the page class
      */
-    public <T extends Page> NavbarButton(final Class<T> pageClass, final IModel<?> label) {
+    public <T extends Page> NavbarButton(final Class<T> pageClass, final IModel<String> label) {
         this(pageClass, new PageParameters(), label);
     }
 
@@ -47,7 +47,7 @@ public class NavbarButton<T> extends TypedBookmarkablePageLink<T> {
      * {@inheritDoc}
      */
     @Override
-    public NavbarButton<T> setIconType(IconType icon) {
+    public NavbarButton<T> setIconType(final IconType icon) {
         super.setIconType(icon);
 
         return this;
@@ -55,7 +55,7 @@ public class NavbarButton<T> extends TypedBookmarkablePageLink<T> {
 
 
     @Override
-    protected void onComponentTag(ComponentTag tag) {
+    protected void onComponentTag(final ComponentTag tag) {
         if (!Components.hasTagName(tag, "a", "button", "input")) {
             tag.setName("a");
         }

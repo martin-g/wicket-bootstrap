@@ -19,6 +19,7 @@ import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
+import org.apache.wicket.util.io.IClusterable;
 
 import java.util.List;
 
@@ -165,7 +166,7 @@ public class Html5Player extends Panel {
     /**
      * Interface for all video resources.
      */
-    public static interface IVideo {
+    public static interface IVideo extends IClusterable {
 
         /**
          * @return the url to the video (relative or absolute)

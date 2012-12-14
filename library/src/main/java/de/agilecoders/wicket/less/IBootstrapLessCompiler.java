@@ -1,7 +1,5 @@
 package de.agilecoders.wicket.less;
 
-import org.apache.wicket.util.time.Time;
-
 /**
  * The {@code IBootstrapLessCompiler} interface.
  *
@@ -10,20 +8,11 @@ import org.apache.wicket.util.time.Time;
 public interface IBootstrapLessCompiler {
 
     /**
-     * generates a css file according to the given {@link LessCompilable}.
+     * generates a css file according to the given {@link ILessResource}.
      *
-     * @param lessCompilable The {@link LessCompilable}
-     * @return the generated css file as byte array.
+     * @param lessResource The {@link ILessResource}
+     * @return the generated css file as {@link ICompiledResource}.
      */
-    byte[] generate(LessCompilable lessCompilable);
-
-    /**
-     * returns the last modification time of all less files and their imports.
-     *
-     *
-     * @param lessCompilable The {@link de.agilecoders.wicket.less.LessCompilable}
-     * @return the last modification time
-     */
-    Time lastModifiedRecursive(LessCompilable lessCompilable);
+    ICompiledResource compile(ILessResource lessResource);
 
 }

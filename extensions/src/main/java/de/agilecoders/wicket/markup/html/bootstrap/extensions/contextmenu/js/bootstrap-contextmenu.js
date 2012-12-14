@@ -36,10 +36,10 @@
 
     var toggle = '[data-toggle=context]',
     ContextMenu = function(element) {
-        var $el = $(element).on('contextmenu.context.data-api', this.toggle);
-        var $target = $($el.attr('data-target'));
+        $(element).on('contextmenu.context.data-api', this.toggle);
+        var $target = $(".context-menu");
         $('html').on('click.context.data-api', function() {
-            $target.removeClass('open');
+            clearMenus();
         });
     };
 
@@ -54,19 +54,18 @@
             if ($this.is('.disabled, :disabled')) return;
 
             $menu = getMenu($this);
-            $menu.removeClass('open');
+            $menu.removeClass("open");
+
+            var position = getPosition(e, $this, $menu);
+            $menu.attr('style', '').css(position);
 
             $contextmenu = $this.find($this.attr('data-target'));
 
             if (!$contextmenu.length) {
-                $menu.attr('style', '')
-                .css(getPosition(e, $this, $menu))
-                .addClass('open');
+                $menu.addClass("open");
                 $this.append($menu);
             } else {
-                $menu.attr('style', '')
-                .css(getPosition(e, $this, $menu))
-                .toggleClass('open');
+                $menu.toggleClass("open");
             }
 
             return false;
@@ -91,29 +90,35 @@
     function getPosition(e, $this, $menu) {
         var mouseX = e.pageX,
         mouseY = e.pageY,
-        posX = e.pageX - $this[0].offsetLeft,
-        posY = e.pageY - $this[0].offsetTop,
+        offset = $($this[0]).offset(),
+        posX = e.pageX - offset.left,
+        posY = e.pageY - offset.top,
         contextX = $this.width(),
         contextY = $this.height(),
         boundsX = $(window).width(),
         boundsY = $(window).height(),
+        scrollTop = $(document).scrollTop(),
+        scrollLeft = $(document).scrollLeft(),
         menuWidth = $menu.find('.dropdown-menu').outerWidth(false),
         menuHeight = $menu.find('.dropdown-menu').outerHeight(false),
         tp = {
-            "position": "absolute"
+            "position": "absolute",
+            "zIndex": 1000,
+            "height":0,
+            "width":menuWidth
         }, Y, X;
 
-        if (mouseY + menuHeight > boundsY) {
+        if (mouseY - scrollTop + menuHeight > boundsY) {
             Y = {
                 "bottom": (contextY - posY) + menuHeight
             };
         } else {
             Y = {
-                "top": posY
+                "top": posY + menuHeight/2
             };
         }
 
-        if (mouseX + menuWidth > boundsX) {
+        if (mouseX - scrollLeft + menuWidth > boundsX) {
             X = {
                 "right": (contextX - posX) + menuWidth
             };

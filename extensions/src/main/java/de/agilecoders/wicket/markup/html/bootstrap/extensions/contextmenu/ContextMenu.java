@@ -1,13 +1,11 @@
 package de.agilecoders.wicket.markup.html.bootstrap.extensions.contextmenu;
 
 import com.google.common.base.Optional;
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.AssertTagNameBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapResourcesBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
 import de.agilecoders.wicket.util.References;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
-import org.apache.wicket.behavior.AttributeAppender;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
 import org.apache.wicket.markup.html.panel.GenericPanel;
@@ -46,8 +44,7 @@ public abstract class ContextMenu<T> extends GenericPanel<T> {
 
         BootstrapResourcesBehavior.addTo(this);
 
-        add(new AssertTagNameBehavior("div"),
-            new CssClassNameAppender("context-menu"));
+        add(new CssClassNameAppender("context-menu"));
 
         add(createContent("content"));
     }
@@ -88,7 +85,6 @@ public abstract class ContextMenu<T> extends GenericPanel<T> {
 
         component.setOutputMarkupId(true);
         component.add(new AttributeModifier("data-toggle", "context"));
-        component.add(new AttributeAppender("style", "position:relative;"));
         component.add(new AttributeModifier("data-target", "#" + getMarkupId(true)));
 
         return this;

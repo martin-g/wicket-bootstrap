@@ -16,7 +16,7 @@ import org.apache.wicket.model.IModel;
  *
  * @author miha
  */
-public abstract class TypedAjaxLink<T> extends AjaxLink<T> implements BootstrapButton<TypedAjaxLink>, Invertible {
+public abstract class TypedAjaxLink<T> extends AjaxLink<T> implements BootstrapButton<TypedAjaxLink<T>> {
 
     private final Icon icon;
     private final Label label;
@@ -85,25 +85,26 @@ public abstract class TypedAjaxLink<T> extends AjaxLink<T> implements BootstrapB
      * @param iconType the new button icon type
      * @return reference to the current instance
      */
-    public TypedAjaxLink setIconType(IconType iconType) {
+    public TypedAjaxLink<T> setIconType(IconType iconType) {
         icon.setType(iconType);
 
         return this;
     }
 
-    public TypedAjaxLink setSize(ButtonSize buttonSize) {
+    public TypedAjaxLink<T> setSize(ButtonSize buttonSize) {
         buttonBehavior.withSize(buttonSize);
 
         return this;
     }
 
-    public TypedAjaxLink setType(ButtonType buttonType) {
+    public TypedAjaxLink<T> setType(ButtonType buttonType) {
         this.buttonBehavior.withType(buttonType);
 
         return this;
     }
 
-    public void setInverted(final boolean inverted) {
+    public TypedAjaxLink<T> setInverted(final boolean inverted) {
         icon.setInverted(inverted);
+        return this;
     }
 }
