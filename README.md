@@ -21,6 +21,7 @@ Extensions
    * Draggable: http://api.jqueryui.com/draggable
    * Resizable: http://api.jqueryui.com/resizable
 * less4j (0.0.5): https://github.com/SomMeri/less4j
+* bootstrap-tour: http://sorich87.github.com/bootstrap-tour
 
 Usage
 -----
