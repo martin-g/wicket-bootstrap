@@ -36,7 +36,7 @@
         </dependency>
 
         <dependency>
-            <groupId>newrelic.java-agent</groupId>
+            <groupId>com.newrelic.agent.java</groupId>
             <artifactId>newrelic-api</artifactId>
             <version>2.11.0</version>
         </dependency>
