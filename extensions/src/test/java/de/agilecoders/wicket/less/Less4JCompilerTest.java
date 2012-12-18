@@ -2,6 +2,7 @@ package de.agilecoders.wicket.less;
 
 import com.github.sommeri.less4j.Less4jException;
 import com.google.common.base.Charsets;
+import org.apache.wicket.WicketRuntimeException;
 import org.apache.wicket.util.io.IOUtils;
 import org.apache.wicket.util.time.Time;
 import org.junit.Ignore;
@@ -9,11 +10,13 @@ import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
 
 import static com.google.common.base.Strings.nullToEmpty;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.is;
 
 /**
@@ -26,14 +29,46 @@ public class Less4JCompilerTest {
     private static final Less4JCompiler compiler = new Less4JCompiler();
 
     @Test
+    @Ignore("till strange mixin bug was resolved")
+    public void compileWicketLessWithoutErrors() {
+        final String content = compileLessFile("wicket.less");
+
+        assertThat(content.length(), greaterThan(100));
+    }
+
+    @Test
+    @Ignore("till strange mixin bug was resolved")
+    public void compileResponsiveLessWithoutErrors() throws IOException {
+        final String content = compileLessFile("responsive.less");
+
+        assertThat(content.length(), greaterThan(100));
+    }
+
+    @Test
     public void variablesAreReplaced() {
         assertThat(compile("@var:1; .rule { zoom: @var; }"), is(equalTo(".rule { zoom: 1;}")));
     }
 
     @Test
-    @Ignore("star prefix for properties is not allowed in current less4j version")
     public void starPrefixIsAllowed() {
-        assertThat(compile(".rule { *zoom: 1; }"), is(equalTo(".rule { zoom: 1;}")));
+        assertThat(compile(".rule { *zoom: 1; }"), is(equalTo(".rule { *zoom: 1;}")));
+    }
+
+    /**
+     * compiles a given less file
+     *
+     * @param fileName The file name (relative to this class)
+     * @return compiled content
+     */
+    private String compileLessFile(final String fileName) {
+        final String content;
+        try {
+            content = IOUtils.toString(Less4JCompilerTest.class.getResourceAsStream("responsive.less"));
+        } catch (IOException e) {
+            throw new WicketRuntimeException(e);
+        }
+
+        return compile(content);
     }
 
     /**
