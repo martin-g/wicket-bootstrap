@@ -1,7 +1,5 @@
 package de.agilecoders.wicket.samples.pages;
 
-import java.util.List;
-
 import com.google.common.collect.Lists;
 import de.agilecoders.wicket.markup.html.bootstrap.block.Code;
 import de.agilecoders.wicket.markup.html.bootstrap.button.dropdown.DropDownButton;
@@ -17,10 +15,15 @@ import de.agilecoders.wicket.markup.html.bootstrap.extensions.contextmenu.Button
 import de.agilecoders.wicket.markup.html.bootstrap.extensions.html5player.Html5Player;
 import de.agilecoders.wicket.markup.html.bootstrap.extensions.html5player.Html5VideoConfig;
 import de.agilecoders.wicket.markup.html.bootstrap.extensions.html5player.Video;
+import de.agilecoders.wicket.markup.html.bootstrap.extensions.icon.OpenWebIconType;
+import de.agilecoders.wicket.markup.html.bootstrap.extensions.icon.OpenWebIconsCssReference;
 import de.agilecoders.wicket.markup.html.bootstrap.extensions.tour.TourBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.extensions.tour.TourStep;
+import de.agilecoders.wicket.markup.html.bootstrap.image.Icon;
 import de.agilecoders.wicket.markup.html.bootstrap.image.IconType;
 import org.apache.wicket.Component;
+import org.apache.wicket.markup.head.IHeaderResponse;
+import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.html.TransparentWebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.AbstractLink;
@@ -29,6 +32,8 @@ import org.apache.wicket.model.Model;
 import org.apache.wicket.model.ResourceModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.wicketstuff.annotation.mount.MountPath;
+
+import java.util.List;
 
 /**
  * The {@code ExtensionsPage}
@@ -106,13 +111,20 @@ public class ExtensionsPage extends BasePage {
         add(dropDownButton, new Code("dropdown-code", Model.of("dropDownButton.add(new DropDownAutoOpen());")));
 
         addTour();
+        add(new Icon("html5", OpenWebIconType.html5), new Code("openwebicon-code", Model.of("response.render(JavaScriptHeaderItem.forReference(OpenWebIconsCssReference.instance()));\n\nadd(new Icon(\"html5\", OpenWebIconType.html5));")));
+    }
+
+    @Override
+    public void renderHead(IHeaderResponse response) {
+        super.renderHead(response);
+
+        response.render(JavaScriptHeaderItem.forReference(OpenWebIconsCssReference.instance()));
     }
 
     /**
      * Demo for TourBehavior. Issue #116
      */
-    private void addTour()
-    {
+    private void addTour() {
         RepeatingView view = new RepeatingView("tourDemo");
         add(view);
 
@@ -127,35 +139,34 @@ public class ExtensionsPage extends BasePage {
 
         TourBehavior tourBehavior = new TourBehavior() {
             @Override
-            protected CharSequence createExtraConfig()
-            {
+            protected CharSequence createExtraConfig() {
                 return "if ( tour.ended() ) {\n" +
-                        "    $('<div class=\"alert\">\\\n" +
-                        "      <button class=\"close\" data-dismiss=\"alert\">&times;</button>\\\n" +
-                        "      You ended the demo tour. <a href=\"\" class=\"restart\">Restart the demo tour.</a>\\\n" +
-                        "      </div>').prependTo(\".content\").alert();\n" +
-                        "  }\n" +
-                        "\n" +
-                        "  $(\".restart\").click(function (e) {\n" +
-                        "    e.preventDefault();\n" +
-                        "    tour.restart();\n" +
-                        "    $(this).parents(\".alert\").alert(\"close\");\n" +
-                        "  });";
+                       "    $('<div class=\"alert\">\\\n" +
+                       "      <button class=\"close\" data-dismiss=\"alert\">&times;</button>\\\n" +
+                       "      You ended the demo tour. <a href=\"\" class=\"restart\">Restart the demo tour.</a>\\\n" +
+                       "      </div>').prependTo(\".content\").alert();\n" +
+                       "  }\n" +
+                       "\n" +
+                       "  $(\".restart\").click(function (e) {\n" +
+                       "    e.preventDefault();\n" +
+                       "    tour.restart();\n" +
+                       "    $(this).parents(\".alert\").alert(\"close\");\n" +
+                       "  });";
             }
         };
         tourBehavior.addStep(new TourStep()
-                .title(Model.of("Step One Title"))
-                .element(stepOne)
-                .content(Model.of("Some help <strong>content.Some help </strong>content.Some help content.Some help content.Some help content.")));
+                                     .title(Model.of("Step One Title"))
+                                     .element(stepOne)
+                                     .content(Model.of("Some help <strong>content.Some help </strong>content.Some help content.Some help content.Some help content.")));
         tourBehavior.addStep(new TourStep()
-                .title(new ResourceModel("tour.step.two"))
-                .element(stepTwo)
-                .placement(TooltipConfig.Placement.left));
+                                     .title(new ResourceModel("tour.step.two"))
+                                     .element(stepTwo)
+                                     .placement(TooltipConfig.Placement.left));
         tourBehavior.addStep(new TourStep()
-                .title(Model.of("Step Three Title"))
-                .element(stepThree)
-                .placement(TooltipConfig.Placement.left)
-                .content(Model.of("Step 3 content")));
+                                     .title(Model.of("Step Three Title"))
+                                     .element(stepThree)
+                                     .placement(TooltipConfig.Placement.left)
+                                     .content(Model.of("Step 3 content")));
         view.add(tourBehavior);
     }
 
