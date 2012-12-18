@@ -111,6 +111,7 @@ public class ExtensionsPage extends BasePage {
         add(dropDownButton, new Code("dropdown-code", Model.of("dropDownButton.add(new DropDownAutoOpen());")));
 
         addTour();
+        add(new Icon("html5-colored", OpenWebIconType.html5_colored_large), new Icon("apml", OpenWebIconType.apml), new Icon("feed", OpenWebIconType.feed_colored_large));
         add(new Icon("html5", OpenWebIconType.html5), new Code("openwebicon-code", Model.of("response.render(JavaScriptHeaderItem.forReference(OpenWebIconsCssReference.instance()));\n\nadd(new Icon(\"html5\", OpenWebIconType.html5));")));
     }
 

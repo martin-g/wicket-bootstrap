@@ -64,6 +64,11 @@
             <version>${jetty.version}</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>com.google.javascript</groupId>
+            <artifactId>closure-compiler</artifactId>
+            <version>r2180</version>
+        </dependency>
 
     </dependencies>
 

@@ -1,8 +1,9 @@
 @font-face {
     font-family: 'OpenWeb Icons';
-    src: local('OpenWeb Icons'), url('../font/openwebicons.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
+    font-style: 'normal';
+    font-weight: 'normal';
+    src: url('http://weloveiconfonts.com/api/fonts/openwebicons/openwebicons.eot');
+    src: url('http://weloveiconfonts.com/api/fonts/openwebicons/openwebicons.eot?#iefix') format('eot'), url('http://weloveiconfonts.com/api/fonts/openwebicons/openwebicons.woff') format('woff'), url('http://weloveiconfonts.com/api/fonts/openwebicons/openwebicons.ttf') format('truetype'), url('http://weloveiconfonts.com/api/fonts/openwebicons/openwebicons.svg#openweb_iconsregular') format('svg');
 }
 
 [class^="icon-apml"]:before, [class*=" icon-apml"]:before,
@@ -60,7 +61,62 @@
     font-family: 'OpenWeb Icons';
     font-smoothing: antialiased;
     -webkit-font-smoothing: antialiased;
-    background-image: url("") !important;
+    background-image: none !important;
+}
+
+[class^="icon-apml"], [class*=" icon-apml"],
+[class^="icon-open-share"], [class^="icon-open-share-simple"],
+[class*=" icon-open-share"], [class*=" icon-open-share-simple"],
+[class^="icon-share"], [class*=" icon-share"],
+[class^="icon-share-simple"], [class*=" icon-share-simple"],
+[class^="icon-feed"], [class*=" icon-feed"],
+[class^="icon-ostatus"], [class*=" icon-ostatus"],
+[class^="icon-opml"], [class*=" icon-opml"],
+[class^="icon-activity"], [class*=" icon-activity"],
+[class^="icon-microformats"], [class*=" icon-microformats"],
+[class^="icon-geo"], [class*=" icon-geo"],
+[class^="icon-opensearch"], [class*=" icon-opensearch"],
+[class^="icon-oauth"], [class*=" icon-oauth"],
+[class^="icon-openid"], [class*=" icon-openid"],
+[class^="icon-rdf"], [class*=" icon-rdf"],
+[class^="icon-dataportability"], [class^=" icon-dataportability"],
+[class^="icon-federated"], [class^=" icon-federated"],
+[class^="icon-web-intents"], [class^=" icon-web-intents"],
+[class^="icon-xmpp"], [class^=" icon-xmpp"],
+[class^="icon-html5"], [class^=" icon-html5"],
+[class^="icon-html5-colored"], [class^=" icon-html5-colored"],
+[class^="icon-css3"], [class^=" icon-css3"],
+[class^="icon-connectivity"], [class^=" icon-connectivity"],
+[class^="icon-semantics"], [class^=" icon-semantics"],
+[class^="icon-epub"], [class^=" icon-epub"],
+[class^="icon-epub-colored"], [class^=" icon-epub-colored"],
+[class^="icon-qr"], [class^=" icon-qr"],
+[class^="icon-opengraph"], [class^=" icon-opengraph"],
+[class^="icon-opengraph"], [class^=" icon-opengraph"],
+[class^="icon-foaf"], [class^=" icon-foaf"],
+[class^="icon-info-card"], [class^=" icon-info-card"],
+[class^="icon-info-card-colored"], [class^=" icon-info-card-colored"],
+[class^="icon-browserid"], [class^=" icon-browserid"],
+[class^="icon-remote-storage"], [class^=" icon-remote-storage"],
+[class^="icon-remote-storage-colored"], [class^=" icon-remote-storage-colored"],
+[class^="icon-cc"], [class^=" icon-cc"],
+[class^="icon-cc-by"], [class^=" icon-cc-by"],
+[class^="icon-cc-nc"], [class^=" icon-cc-nc"],
+[class^="icon-cc-nc-eu"], [class^=" icon-cc-nc-eu"],
+[class^="icon-cc-nc-jp"], [class^=" icon-cc-nc-jp"],
+[class^="icon-cc-sa"], [class^=" icon-cc-sa"],
+[class^="icon-cc-nd"], [class^=" icon-cc-nd"],
+[class^="icon-cc-public"], [class^=" icon-cc-public"],
+[class^="icon-cc-zero"], [class^=" icon-cc-zero"],
+[class^="icon-cc-share"], [class^=" icon-cc-share"],
+[class^="icon-cc-remix"], [class^=" icon-cc-remix"],
+[class^="icon-open-web"], [class^=" icon-open-web"],
+[class^="icon-persona"], [class^=" icon-persona"],
+[class^="icon-odata"], [class^=" icon-odata"],
+[class^="icon-odata-colored"], [class^=" icon-odata-colored"],
+[class^="icon-markdown"], [class^=" icon-markdown"],
+[class^="icon-tosdr"], [class^=" icon-tosdr"] {
+    background-image: none !important;
 }
 
 .icon-apml:before {
@@ -328,4 +384,13 @@
 
 .icon-cc-remix:before {
     content: "\f08a";
+}
+
+i.large {
+    font-style: normal;
+    font-size: 35px;
+    line-height: 35px !important;
+    display: inline-block;
+    width: 35px;
+    height: 35px;
 }
