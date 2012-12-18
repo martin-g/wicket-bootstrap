@@ -16,9 +16,9 @@
     <properties>
         <wicket.configuration>DEVELOPMENT</wicket.configuration>
 
-        <wicketstuff.version>6.2.1</wicketstuff.version>
+        <wicketstuff.version>6.3.0</wicketstuff.version>
         <jetty.version>8.1.8.v20121106</jetty.version>
-        <logback.version>1.0.7</logback.version>
+        <logback.version>1.0.9</logback.version>
     </properties>
 
     <dependencies>
