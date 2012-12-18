@@ -91,7 +91,11 @@ public class TourStep extends AbstractConfig {
 
     public TourStep element(Component element) {
         element.setOutputMarkupId(true);
-        put(Key.Element, "#" + element.getMarkupId());
+        return element("#" + element.getMarkupId());
+    }
+
+    public TourStep element(String cssSelector) {
+        put(Key.Element, cssSelector);
         return this;
     }
 
