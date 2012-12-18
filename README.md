@@ -50,6 +50,16 @@ for all extensions:
 &lt;/dependency&gt;
 </code></pre>
 
+Installation
+------------
+Install bootstrap settings class:
+
+<pre><code>// best place to do this is in Application#init()
+Bootstrap.install(Application.get(), new BootstrapSettings());
+</code></pre>
+
+then you are able to use all wicket-bootstrap components.
+
 Twitter account
 ---------------
 
