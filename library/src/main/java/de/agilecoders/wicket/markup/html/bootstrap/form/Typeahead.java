@@ -3,6 +3,7 @@ package de.agilecoders.wicket.markup.html.bootstrap.form;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapResourcesBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.layout.SpanType;
 import org.apache.wicket.AttributeModifier;
+import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
 import org.apache.wicket.markup.html.form.TextField;
@@ -91,6 +92,13 @@ public class Typeahead<T> extends TextField<T> {
     public Typeahead<T> size(final InputBehavior.Size size) {
         this.inputBehavior.size(size);
         return this;
+    }
+
+    @Override
+    protected void onComponentTag(ComponentTag tag) {
+        tag.setName("input");
+
+        super.onComponentTag(tag);
     }
 
     @Override
