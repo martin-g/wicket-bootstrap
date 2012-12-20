@@ -12,7 +12,11 @@ import de.agilecoders.wicket.markup.html.bootstrap.carousel.CarouselImage;
 import de.agilecoders.wicket.markup.html.bootstrap.carousel.ICarouselImage;
 import de.agilecoders.wicket.markup.html.bootstrap.components.PopoverBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.components.TooltipBehavior;
+import de.agilecoders.wicket.markup.html.bootstrap.form.IDataSource;
+import de.agilecoders.wicket.markup.html.bootstrap.form.Typeahead;
+import de.agilecoders.wicket.markup.html.bootstrap.form.TypeaheadConfig;
 import de.agilecoders.wicket.markup.html.bootstrap.image.IconType;
+import de.agilecoders.wicket.markup.html.bootstrap.layout.SpanType;
 import de.agilecoders.wicket.markup.html.bootstrap.navbar.NavbarAjaxLink;
 import de.agilecoders.wicket.markup.html.bootstrap.tabs.AjaxLazyLoadTextContentTab;
 import de.agilecoders.wicket.markup.html.bootstrap.tabs.Collapsible;
@@ -103,6 +107,43 @@ public class Javascript extends BasePage {
         add(new AjaxPaginationPanel("ajaxPagingNavigator"));
 
         add(newCarousel("carousel"));
+
+        add(newTypeahead("typeahead"));
+    }
+
+    /**
+     * creates a new typeahead instance
+     *
+     * @param markupId The component id
+     * @return new typeahead instance
+     */
+    private Component newTypeahead(final String markupId) {
+        final IDataSource<String> dataSource = new IDataSource<String>() {
+            @Override
+            public List<String> load() {
+                return Lists.newArrayList(
+                        "Alabama","Alaska","Arizona","Arkansas",
+                        "California","Colorado","Connecticut",
+                        "Delaware","Florida","Georgia","Hawaii",
+                        "Idaho","Illinois","Indiana","Iowa","Kansas",
+                        "Kentucky","Louisiana","Maine","Maryland",
+                        "Massachusetts","Michigan","Minnesota",
+                        "Mississippi","Missouri","Montana","Nebraska",
+                        "Nevada","New Hampshire","New Jersey",
+                        "New Mexico","New York","North Dakota",
+                        "North Carolina","Ohio","Oklahoma","Oregon",
+                        "Pennsylvania","Rhode Island","South Carolina",
+                        "South Dakota","Tennessee","Texas","Utah",
+                        "Vermont","Virginia","Washington",
+                        "West Virginia","Wisconsin","Wyoming"
+                );
+            }
+        };
+
+        final Typeahead<String> typeahead = new Typeahead<String>(markupId, dataSource, new TypeaheadConfig().withNumberOfItems(4));
+        typeahead.size(SpanType.SPAN3);
+
+        return typeahead;
     }
 
     /**

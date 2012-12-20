@@ -5,6 +5,8 @@ import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameProvider;
 import de.agilecoders.wicket.markup.html.bootstrap.layout.SpanType;
 import org.apache.wicket.Component;
+import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.Model;
 
 /**
  * TODO: document
@@ -29,31 +31,31 @@ public class InputBehavior extends BootstrapBaseBehavior {
 
     }
 
-    private CssClassNameProvider size;
+    private final IModel<CssClassNameProvider> size;
 
     public InputBehavior() {
         this(Size.Medium);
     }
 
-    public InputBehavior(SpanType size) {
+    public InputBehavior(final SpanType size) {
         this((CssClassNameProvider)size);
     }
 
-    public InputBehavior(Size size) {
+    public InputBehavior(final Size size) {
         this((CssClassNameProvider)size);
     }
 
-    private InputBehavior(CssClassNameProvider size) {
-        this.size = size;
+    private InputBehavior(final CssClassNameProvider size) {
+        this.size = Model.of(size);
     }
 
-    public InputBehavior size(SpanType size) {
-        this.size = size;
+    public InputBehavior size(final SpanType size) {
+        this.size.setObject(size);
         return this;
     }
 
-    public InputBehavior size(Size size) {
-        this.size = size;
+    public InputBehavior size(final Size size) {
+        this.size.setObject(size);
         return this;
     }
 
@@ -61,6 +63,6 @@ public class InputBehavior extends BootstrapBaseBehavior {
     public void onConfigure(Component component) {
         super.onConfigure(component);
 
-        component.add(size.newCssClassNameModifier());
+        component.add(size.getObject().newCssClassNameModifier());
     }
 }

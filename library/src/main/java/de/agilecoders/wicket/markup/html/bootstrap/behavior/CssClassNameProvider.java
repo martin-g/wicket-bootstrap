@@ -1,6 +1,7 @@
 package de.agilecoders.wicket.markup.html.bootstrap.behavior;
 
 import org.apache.wicket.AttributeModifier;
+import org.apache.wicket.util.io.IClusterable;
 
 /**
  * The {@code CssClassNameProvider} provides an interface to abstract
@@ -32,7 +33,7 @@ import org.apache.wicket.AttributeModifier;
  * @author miha
  * @version 1.0
  */
-public interface CssClassNameProvider {
+public interface CssClassNameProvider extends IClusterable {
 
     /**
      * @return a css class name
