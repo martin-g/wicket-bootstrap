@@ -27,6 +27,7 @@ import org.junit.experimental.categories.Category;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertNull;
 
 /**
  * Tests for CssClassNameRemover
@@ -60,5 +61,23 @@ public class CssClassNameRemoverTest extends WicketApplicationTest {
 
         // make sure the removed one is not here anymore
         assertThat("classX classY", is(equalTo(tester.getAttribute("class"))));
+    }
+
+    /**
+     * Tests removing a value for tag that has no 'class' attribute at all.
+     */
+    @Test
+    public void removeNonExistingCssClasses() {
+        // the component has no CSS classes
+
+        // try to remove a class
+        component.add(new CssClassNameRemover("classZ"));
+
+        tester().startComponentInPage(component);
+        TagTester tester = tester().getTagByWicketId("id");
+
+        // make sure the removed one is not here at all
+        assertNull("The removed CSS class should not be set if the old value of 'class' is null",
+                tester.getAttribute("class"));
     }
 }
