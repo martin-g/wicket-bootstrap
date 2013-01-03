@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-import de.agilecoders.wicket.markup.html.bootstrap.extensions.references.BootstrapDatepickerJsReference;
 import de.agilecoders.wicket.markup.html.bootstrap.extensions.references.JQueryCookieJsReference;
+import de.agilecoders.wicket.markup.html.references.BootstrapJavaScriptReference;
 import org.apache.wicket.markup.head.HeaderItem;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.request.resource.JavaScriptResourceReference;
@@ -35,7 +35,7 @@ public class BootstrapTourJsReference extends JavaScriptResourceReference
             dependencies.add(dep);
         }
         dependencies.add(JavaScriptHeaderItem.forReference(JQueryCookieJsReference.INSTANCE));
-        dependencies.add(JavaScriptHeaderItem.forReference(BootstrapDatepickerJsReference.INSTANCE));
+        dependencies.add(JavaScriptHeaderItem.forReference(BootstrapJavaScriptReference.get()));
         return dependencies;
     }
 }

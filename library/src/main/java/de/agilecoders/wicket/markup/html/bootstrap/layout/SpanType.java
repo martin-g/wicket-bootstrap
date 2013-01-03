@@ -18,7 +18,7 @@ public enum SpanType implements CssClassNameProvider {
      * Constructor.
      */
     private SpanType() {
-        this.cssClassName = "span" + name().toLowerCase();
+        this.cssClassName = name().toLowerCase();
     }
 
     @Override

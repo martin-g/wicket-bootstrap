@@ -1,8 +1,7 @@
 package de.agilecoders.wicket.util;
 
-import java.io.IOException;
-
 import com.google.common.base.Strings;
+import de.agilecoders.wicket.markup.html.bootstrap.form.IDataSource;
 import org.codehaus.jackson.JsonGenerator;
 import org.codehaus.jackson.JsonNode;
 import org.codehaus.jackson.JsonParser;
@@ -13,6 +12,8 @@ import org.codehaus.jackson.map.SerializerProvider;
 import org.codehaus.jackson.map.module.SimpleModule;
 import org.codehaus.jackson.node.ObjectNode;
 import org.codehaus.jackson.type.JavaType;
+
+import java.io.IOException;
 
 /**
  * Helper functions to handle JsonNode values.
@@ -36,16 +37,20 @@ public final class Json {
         ObjectMapper mapper = new ObjectMapper();
         mapper.configure(JsonParser.Feature.ALLOW_SINGLE_QUOTES, true);
         mapper.configure(JsonParser.Feature.ALLOW_UNQUOTED_FIELD_NAMES, true);
-	    SimpleModule wbModule = new SimpleModule("wicket-bootstrap", new Version(1, 0, 0, null));
-	    wbModule.addSerializer(ConfigModel.class, new JsonSerializer<ConfigModel>()
-	    {
-		    @Override
-		    public void serialize(ConfigModel value, JsonGenerator jgen, SerializerProvider provider) throws IOException
-		    {
-				jgen.writeString(value.getObject());
-		    }
-	    });
-	    mapper.registerModule(wbModule);
+        SimpleModule wbModule = new SimpleModule("wicket-bootstrap", new Version(1, 0, 0, null));
+        wbModule.addSerializer(ConfigModel.class, new JsonSerializer<ConfigModel>() {
+            @Override
+            public void serialize(ConfigModel value, JsonGenerator jsonGenerator, SerializerProvider provider) throws IOException {
+                jsonGenerator.writeString(value.getObject());
+            }
+        });
+        wbModule.addSerializer(IDataSource.class, new JsonSerializer<IDataSource>() {
+            @Override
+            public void serialize(IDataSource value, JsonGenerator jsonGenerator, SerializerProvider provider) throws IOException {
+                jsonGenerator.writeObject(stringify(value.load()));
+            }
+        });
+        mapper.registerModule(wbModule);
 
         return mapper;
     }

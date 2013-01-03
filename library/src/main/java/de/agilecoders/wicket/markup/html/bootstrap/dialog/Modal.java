@@ -1,5 +1,7 @@
 package de.agilecoders.wicket.markup.html.bootstrap.dialog;
 
+import java.util.List;
+
 import com.google.common.collect.Lists;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.AssertTagNameBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
@@ -19,8 +21,6 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.util.string.Strings;
 
-import java.util.List;
-
 /**
  * The {@code Modal} dialog is a simple component with header,
  * footer and body.
@@ -28,6 +28,8 @@ import java.util.List;
  * @author miha
  */
 public class Modal extends Panel {
+
+    public static final String BUTTON_MARKUP_ID = "button";
 
     private final WebMarkupContainer header;
     private final IModel<Boolean> show = Model.of(false);
@@ -217,8 +219,9 @@ public class Modal extends Panel {
      * @return this instance.
      */
     public Modal addButton(final Component button) {
-        if (!"button".equals(button.getId())) {
-            throw new IllegalArgumentException("invalid body markup id. Must be 'body'.");
+        if (!BUTTON_MARKUP_ID.equals(button.getId())) {
+            throw new IllegalArgumentException(
+		            String.format("Invalid button markup id. Must be '%s'.", BUTTON_MARKUP_ID));
         }
 
         if (button instanceof ModalCloseButton) {

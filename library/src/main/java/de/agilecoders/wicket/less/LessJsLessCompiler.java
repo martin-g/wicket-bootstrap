@@ -5,15 +5,12 @@ import com.asual.lesscss.LessException;
 import com.google.common.base.Joiner;
 import com.google.common.base.Strings;
 import de.agilecoders.wicket.Bootstrap;
-import de.agilecoders.wicket.settings.IBootstrapSettings;
-import org.apache.wicket.Application;
 import org.apache.wicket.WicketRuntimeException;
 import org.apache.wicket.util.lang.Exceptions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.FileNotFoundException;
-import java.nio.charset.Charset;
 import java.util.List;
 
 /**
@@ -22,7 +19,7 @@ import java.util.List;
  *
  * @author miha
  */
-public class LessJsLessCompiler implements IBootstrapLessCompiler {
+public class LessJsLessCompiler extends AbstractLessCompiler {
     private static final Logger LOG = LoggerFactory.getLogger(LessJsLessCompiler.class);
 
     /**
@@ -30,7 +27,6 @@ public class LessJsLessCompiler implements IBootstrapLessCompiler {
      * to load LessEngine if it is really needed
      */
     private static class LessEngineHolder {
-
         private final static LessEngine instance = new LessEngine(Bootstrap.getSettings().getBootstrapLessCompilerSettings().getLessOptions());
     }
 
@@ -42,27 +38,11 @@ public class LessJsLessCompiler implements IBootstrapLessCompiler {
     }
 
     /**
-     * @return current active application
-     */
-    private static Application app() {
-        return Application.get();
-    }
-
-    private final LessContentCollector collector;
-
-    /**
-     * Construct.
-     */
-    public LessJsLessCompiler() {
-        collector = new LessContentCollector();
-    }
-
-    /**
      * {@inheritDoc}
      */
     @Override
     public ICompiledResource compile(final ILessResource lessResource) {
-        return compile(collector.collect(lessResource));
+        return compile(collect(lessResource));
     }
 
     /**
@@ -78,7 +58,7 @@ public class LessJsLessCompiler implements IBootstrapLessCompiler {
             protected byte[] compile(final ICombinedLessResource lessFile) {
                 final long start = System.currentTimeMillis();
                 try {
-                    return getLessEngine().compile(lessFile.asText()).getBytes(charset());
+                    return getLessEngine().compile(lessFile.asText()).getBytes(getCharset());
                 } catch (LessException e) {
                     return handleException(e);
                 } finally {
@@ -88,24 +68,8 @@ public class LessJsLessCompiler implements IBootstrapLessCompiler {
         };
     }
 
-    /**
-     * @return the charset to use for {@code LessJsLessCompiler}
-     */
-    protected final Charset charset() {
-        return settings().getBootstrapLessCompilerSettings().getCharset();
-    }
-
-    /**
-     * @return the settings to use for {@code LessJsLessCompiler}
-     */
-    protected final IBootstrapSettings settings() {
-        return Bootstrap.getSettings(app());
-    }
-
     @SuppressWarnings("ThrowableResultOfMethodCallIgnored")
     private byte[] handleException(LessException e) {
-        LOG.error("Less exception", e);
-
         String filename = e.getFilename();
         List<String> extractList = e.getExtract();
 

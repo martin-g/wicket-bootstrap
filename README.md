@@ -8,7 +8,7 @@ Components
 ----------
 
 * Twitter Bootstrap (2.2.2): http://twitter.github.com/bootstrap
-* Apache Wicket (6.3.0): http://wicket.apache.org/
+* Apache Wicket (6.4.0): http://wicket.apache.org/
 * Bootswatch (2.2.2): http://bootswatch.com/
 
 Extensions
@@ -22,6 +22,7 @@ Extensions
    * Resizable: http://api.jqueryui.com/resizable
 * less4j (0.0.5): https://github.com/SomMeri/less4j
 * bootstrap-tour: http://sorich87.github.com/bootstrap-tour
+* OpenWebIcons (2012-10-03): http://pfefferle.github.com/openwebicons/
 
 Usage
 -----
@@ -48,6 +49,16 @@ for all extensions:
   &lt;version&gt;0.7.5&lt;/version&gt;
 &lt;/dependency&gt;
 </code></pre>
+
+Installation
+------------
+Install bootstrap settings class:
+
+<pre><code>// best place to do this is in Application#init()
+Bootstrap.install(Application.get(), new BootstrapSettings());
+</code></pre>
+
+then you are able to use all wicket-bootstrap components.
 
 Twitter account
 ---------------

@@ -73,7 +73,7 @@ public class CssClassNameRemover extends CssClassNameAppender {
     protected String newValue(String currentValue, String removeValue) {
         // Short circuit when one of the values is empty: return the other value.
         if (Strings.isEmpty(currentValue)) {
-            return removeValue != null ? removeValue : null;
+            return null;
         } else if (Strings.isEmpty(removeValue)) {
             return currentValue != null ? currentValue : null;
         }

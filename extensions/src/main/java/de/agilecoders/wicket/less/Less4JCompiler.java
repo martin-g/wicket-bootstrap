@@ -3,16 +3,12 @@ package de.agilecoders.wicket.less;
 import com.github.sommeri.less4j.Less4jException;
 import com.github.sommeri.less4j.LessCompiler;
 import com.github.sommeri.less4j.core.ThreadUnsafeLessCompiler;
-import com.google.common.base.Charsets;
-import de.agilecoders.wicket.Bootstrap;
-import org.apache.wicket.Application;
 import org.apache.wicket.WicketRuntimeException;
 import org.apache.wicket.util.io.IClusterable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.annotation.concurrent.ThreadSafe;
-import java.nio.charset.Charset;
 
 /**
  * less4j implementation of {@link IBootstrapLessCompiler}.
@@ -20,37 +16,19 @@ import java.nio.charset.Charset;
  * CAUTION: less4j has no final release yet and there is still a lot of stuff to do. Please
  * use default less compiler if you don't know how to verify correct css output.
  *
+ * Issues:
+ *  > star prefix is not allowed for property keys: https://github.com/SomMeri/less4j/issues/55
+ *  > color functions: https://github.com/SomMeri/less4j/issues/16
+ *
  * @author miha
  */
 @ThreadSafe
-public class Less4JCompiler implements IBootstrapLessCompiler {
+public class Less4JCompiler extends AbstractLessCompiler {
     private static final Logger LOG = LoggerFactory.getLogger(Less4JCompiler.class);
-
-    private final LessContentCollector collector;
-
-    /**
-     * Construct.
-     */
-    public Less4JCompiler() {
-        collector = new LessContentCollector();
-    }
-
-    /**
-     * @return charset setting
-     */
-    private static Charset getCharset() {
-        if (Application.exists()) {
-            return Bootstrap.getSettings().getBootstrapLessCompilerSettings().getCharset();
-        } else {
-            LOG.error("no application assigned to current thread, return default charset: {}", Charsets.UTF_8);
-
-            return Charsets.UTF_8;
-        }
-    }
 
     @Override
     public ICompiledResource compile(ILessResource lessResource) {
-        ICombinedLessResource combinedLessResource = collector.collect(lessResource);
+        ICombinedLessResource combinedLessResource = collect(lessResource);
 
         return new AbstractCompiledResource(combinedLessResource) {
             @Override
@@ -61,9 +39,9 @@ public class Less4JCompiler implements IBootstrapLessCompiler {
                 try {
                     return compiler.compile(lessFile.asText()).getCss().getBytes(getCharset());
                 } catch (Less4jException e) {
-                    LOG.error("can't compile {} from less to css: {}", lessFile.getName(), new ErrorLogger(lessFile.getName(), e));
+                    LOG.error("can't compile {}: {}", lessFile.getName(), new ErrorLogger(lessFile.getName(), e));
 
-                    throw new WicketRuntimeException("can't compile less to css, see log for error messages", e);
+                    throw new WicketRuntimeException("can't compile " + lessFile.getName(), e);
                 } finally {
                     LOG.debug("duration of collect imports for {}: {} ms", lessFile.getName(), System.currentTimeMillis() - start);
                 }
@@ -82,7 +60,8 @@ public class Less4JCompiler implements IBootstrapLessCompiler {
         /**
          * Construct.
          *
-         * @param e cause exception
+         * @param name the base less file name
+         * @param e    cause exception
          */
         ErrorLogger(final String name, final Less4jException e) {
             this.name = name;

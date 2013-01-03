@@ -1,9 +1,11 @@
 package de.agilecoders.wicket.less;
 
+import org.apache.wicket.util.io.IOUtils;
 import org.apache.wicket.util.lang.Bytes;
 import org.apache.wicket.util.time.Time;
 
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 
 /**
@@ -15,7 +17,7 @@ public abstract class AbstractCompiledResource implements ICompiledResource {
 
     private final ICombinedLessResource lessFile;
 
-    private byte[] content;
+    private ByteArrayInputStream inputStream;
     private Bytes length;
 
     /**
@@ -32,19 +34,35 @@ public abstract class AbstractCompiledResource implements ICompiledResource {
         return lessFile.getLastModificationTime();
     }
 
+    /**
+     * compile {@link ICombinedLessResource} and store result internally.
+     */
+    private synchronized void initialize() {
+        if (length == null) {
+            final byte[] data = compile(lessFile);
+
+            inputStream = new ByteArrayInputStream(data);
+            length = Bytes.bytes(data.length);
+        }
+    }
+
     @Override
     public final Bytes length() {
+        initialize();
+
         return length;
     }
 
     @Override
     public final InputStream getInputStream() {
-        if (content == null) {
-            content = compile(lessFile);
-            length = Bytes.bytes(content.length);
-        }
+        initialize();
 
-        return new ByteArrayInputStream(content);
+        return inputStream;
+    }
+
+    @Override
+    public void close() throws IOException {
+        IOUtils.close(inputStream);
     }
 
     /**

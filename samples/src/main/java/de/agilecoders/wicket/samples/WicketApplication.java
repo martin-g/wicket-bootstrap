@@ -7,6 +7,7 @@ import de.agilecoders.wicket.javascript.YuiCssCompressor;
 import de.agilecoders.wicket.markup.html.RenderJavaScriptToFooterHeaderResponseDecorator;
 import de.agilecoders.wicket.markup.html.bootstrap.extensions.html5player.Html5PlayerCssReference;
 import de.agilecoders.wicket.markup.html.bootstrap.extensions.html5player.Html5PlayerJavaScriptReference;
+import de.agilecoders.wicket.markup.html.bootstrap.extensions.icon.OpenWebIconsCssReference;
 import de.agilecoders.wicket.markup.html.bootstrap.extensions.jqueryui.JQueryUIJavaScriptReference;
 import de.agilecoders.wicket.markup.html.references.BootstrapPrettifyCssReference;
 import de.agilecoders.wicket.markup.html.references.BootstrapPrettifyJavaScriptReference;
@@ -130,14 +131,22 @@ public class WicketApplication extends WebApplication {
         );
 
         getResourceBundles().addCssBundle(WicketApplication.class, "bootstrap-extensions.css",
-                                          Html5PlayerCssReference.instance()
+                                          Html5PlayerCssReference.instance(),
+                                          OpenWebIconsCssReference.instance()
         );
 
-        getResourceBundles().addCssBundle(WicketApplication.class, "application.css",
-                                          (CssResourceReference) Bootstrap.getSettings().getResponsiveCssResourceReference(),
-                                          (CssResourceReference) BootstrapPrettifyCssReference.INSTANCE,
-                                          FixBootstrapStylesCssResourceReference.INSTANCE
-        );
+        if (Bootstrap.getSettings().useResponsiveCss()) {
+            getResourceBundles().addCssBundle(WicketApplication.class, "application.css",
+                                              (CssResourceReference) Bootstrap.getSettings().getResponsiveCssResourceReference(),
+                                              (CssResourceReference) BootstrapPrettifyCssReference.INSTANCE,
+                                              FixBootstrapStylesCssResourceReference.INSTANCE
+            );
+        } else {
+            getResourceBundles().addCssBundle(WicketApplication.class, "application.css",
+                                              (CssResourceReference) BootstrapPrettifyCssReference.INSTANCE,
+                                              FixBootstrapStylesCssResourceReference.INSTANCE
+            );
+        }
     }
 
     /**
@@ -145,12 +154,14 @@ public class WicketApplication extends WebApplication {
      */
     private void configureBootstrap() {
         final BootstrapSettings settings = new BootstrapSettings(this);
-        settings.useJqueryPP(true)
-                .useModernizr(true)
+        settings.useJqueryPP(false)
+                .useModernizr(false)
                 .useResponsiveCss(true)
                 .setJsResourceFilterName("footer-container");
 
-        settings.getBootstrapLessCompilerSettings().setUseLessCompiler(usesDevelopmentConfig());
+        //reactivate if new less4j version is available:
+        //settings.getBootstrapLessCompilerSettings().setUseLessCompiler(usesDevelopmentConfig());
+        //settings.getBootstrapLessCompilerSettings().setLessCompiler(new Less4JCompiler());
 
         ThemeProvider themeProvider = new BootswatchThemeProvider() {{
             add(new MetroTheme());
