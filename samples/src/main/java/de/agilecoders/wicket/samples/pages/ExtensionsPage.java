@@ -1,6 +1,9 @@
 package de.agilecoders.wicket.samples.pages;
 
+import java.util.List;
+
 import com.google.common.collect.Lists;
+import de.agilecoders.wicket.javascript.jasny.FileUploadField;
 import de.agilecoders.wicket.markup.html.bootstrap.block.Code;
 import de.agilecoders.wicket.markup.html.bootstrap.button.dropdown.DropDownButton;
 import de.agilecoders.wicket.markup.html.bootstrap.button.dropdown.MenuBookmarkablePageLink;
@@ -32,8 +35,6 @@ import org.apache.wicket.model.Model;
 import org.apache.wicket.model.ResourceModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.wicketstuff.annotation.mount.MountPath;
-
-import java.util.List;
 
 /**
  * The {@code ExtensionsPage}
@@ -113,6 +114,8 @@ public class ExtensionsPage extends BasePage {
         addTour();
         add(new Icon("html5-colored", OpenWebIconType.html5_colored_large), new Icon("apml", OpenWebIconType.apml), new Icon("feed", OpenWebIconType.feed_colored_large));
         add(new Icon("html5", OpenWebIconType.html5), new Code("openwebicon-code", Model.of("response.render(JavaScriptHeaderItem.forReference(OpenWebIconsCssReference.instance()));\n\nadd(new Icon(\"html5\", OpenWebIconType.html5));")));
+
+        addJasnyFileUploadDemo();
     }
 
     @Override
@@ -120,6 +123,12 @@ public class ExtensionsPage extends BasePage {
         super.renderHead(response);
 
         response.render(JavaScriptHeaderItem.forReference(OpenWebIconsCssReference.instance()));
+    }
+
+
+    private void addJasnyFileUploadDemo() {
+        FileUploadField fileUpload = new FileUploadField("fileUpload");
+        add(fileUpload);
     }
 
     /**
