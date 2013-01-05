@@ -20,6 +20,8 @@ public interface ILessResource {
     /**
      * @return the last modified date (including all children)
      */
+    // TODO miha Sync the name of this method with
+    // de.agilecoders.wicket.less.ICombinedLessResource.getLastModificationTime()
     Time lastModified();
 
     /**
