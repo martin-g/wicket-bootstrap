@@ -1,12 +1,13 @@
 package de.agilecoders.wicket.less;
 
-import org.apache.wicket.util.io.IOUtils;
-import org.apache.wicket.util.lang.Bytes;
-import org.apache.wicket.util.time.Time;
-
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+
+import org.apache.wicket.util.io.IOUtils;
+import org.apache.wicket.util.lang.Args;
+import org.apache.wicket.util.lang.Bytes;
+import org.apache.wicket.util.time.Time;
 
 /**
  * Default implementation of {@link ICompiledResource}
@@ -26,7 +27,7 @@ public abstract class AbstractCompiledResource implements ICompiledResource {
      * @param lessFile the last modification time
      */
     public AbstractCompiledResource(final ICombinedLessResource lessFile) {
-        this.lessFile = lessFile;
+        this.lessFile = Args.notNull(lessFile, "lessFile");
     }
 
     @Override
