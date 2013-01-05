@@ -1,10 +1,14 @@
 package de.agilecoders.wicket.javascript.jasny;
 
+import com.google.common.base.Preconditions;
+import de.agilecoders.wicket.markup.html.bootstrap.common.AbstractConfig;
+import de.agilecoders.wicket.util.JQuery;
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.Behavior;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
+import org.apache.wicket.util.lang.Objects;
 import org.apache.wicket.util.string.Strings;
 
 /**
@@ -40,16 +44,15 @@ public abstract class InputMaskBehavior extends Behavior
 		if (!Strings.isEmpty(mask)) {
 			response.render(JavaScriptHeaderItem.forReference(JasnyJsReference.INSTANCE));
 
+			InputMaskConfig config = new InputMaskConfig();
+			config.withMask(mask);
 			String placeholder = getPlaceholder();
-			String placeholderOption = "";
-			// Set the placeholder only if it is non-empty and not the default ('_')
-			if (!(Strings.isEmpty(placeholder) || "_".equals(placeholder))) {
-				placeholderOption = String.format(", placeholder: '%s'", placeholder);
+			if (!Strings.isEmpty(placeholder)) {
+				config.withPlaceholder(placeholder);
 			}
 
-			response.render(OnDomReadyHeaderItem.forScript(
-					String.format("$('#%s').inputmask({mask: '%s'%s})",
-							component.getMarkupId(), mask, placeholderOption)));
+			response.render(OnDomReadyHeaderItem.forScript(JQuery.$(component).chain("inputmask", config).get()));
+
 		}
 	}
 
@@ -63,5 +66,61 @@ public abstract class InputMaskBehavior extends Behavior
 	 */
 	protected String getPlaceholder() {
 		return "_";
+	}
+
+	private static class InputMaskConfig extends AbstractConfig {
+
+		private InputMaskConfig withMask(String mask) {
+			put(Key.Mask, mask);
+			return this;
+		}
+
+		private InputMaskConfig withPlaceholder(String placeholder) {
+			put(Key.Placeholder, placeholder);
+			return this;
+		}
+
+		private enum Key implements IKey {
+			Mask("mask", String.class, null),
+
+			Placeholder("withPlaceholder", String.class, "_");
+
+			private final String key;
+			private final Class type;
+			private final Object defaultValue;
+
+			/**
+			 * Construct.
+			 *
+			 * @param key          string representation of this key
+			 * @param type         The object type
+			 * @param defaultValue The default value
+			 */
+			private Key(final String key, final Class type, final Object defaultValue) {
+				this.key = key;
+				this.type = type;
+				this.defaultValue = defaultValue;
+			}
+
+			@Override
+			public String key() {
+				return key;
+			}
+
+			@Override
+			public void assertCorrectType(final Object value) {
+				Preconditions.checkArgument(type.isInstance(value));
+			}
+
+			@Override
+			public boolean isDefaultValue(final Object value) {
+				return Objects.equal(value, defaultValue);
+			}
+
+			@Override
+			public Object getDefaultValue() {
+				return defaultValue;
+			}
+		}
 	}
 }
