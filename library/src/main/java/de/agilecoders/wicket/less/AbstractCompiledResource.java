@@ -1,13 +1,13 @@
 package de.agilecoders.wicket.less;
 
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-
 import org.apache.wicket.util.io.IOUtils;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.lang.Bytes;
 import org.apache.wicket.util.time.Time;
+
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * Default implementation of {@link ICompiledResource}
@@ -19,7 +19,7 @@ public abstract class AbstractCompiledResource implements ICompiledResource {
     private final ICombinedLessResource lessFile;
 
     private ByteArrayInputStream inputStream;
-    private Bytes length;
+    private Bytes length = null;
 
     /**
      * Construct.

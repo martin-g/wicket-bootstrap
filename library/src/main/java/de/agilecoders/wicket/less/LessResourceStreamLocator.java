@@ -63,16 +63,12 @@ public class LessResourceStreamLocator extends ResourceStreamLocator {
 
     @Override
     public IResourceStream locate(Class<?> clazz, String path) {
-        if (isActive(clazz, path)) {
-            return fromCacheOrLoadAndCompile(clazz, path);
-        } else {
-            return super.locate(clazz, path);
-        }
+        return super.locate(clazz, path);
     }
 
     @Override
     public IResourceStream locate(Class<?> clazz, String path, String style, String variation, Locale locale, String extension, boolean strict) {
-        if (isActive(clazz, path)) {
+        if (isActive(clazz, variation)) {
             return fromCacheOrLoadAndCompile(clazz, path);
         } else {
             return super.locate(clazz, path, style, variation, locale, extension, strict);
@@ -183,8 +179,8 @@ public class LessResourceStreamLocator extends ResourceStreamLocator {
     private LessResourceStream loadStream(final Class<?> clazz, final String path) {
         final long start = System.currentTimeMillis();
         try {
-            return new LessResourceStream(compile(clazz, path.replace(ILessResource.LESSCSSMIN_EXTENSION, ILessResource.LESS_EXTENSION)
-                    .replace(ILessResource.LESSCSS_EXTENSION, ILessResource.LESS_EXTENSION)));
+            return new LessResourceStream(compile(clazz, path.replace(ILessResource.CSSMIN_EXTENSION, ILessResource.LESS_EXTENSION)
+                    .replace(ILessResource.CSS_EXTENSION, ILessResource.LESS_EXTENSION)));
         } finally {
             LOG.debug("load stream {}: {}", path, System.currentTimeMillis() - start);
         }
@@ -193,20 +189,20 @@ public class LessResourceStreamLocator extends ResourceStreamLocator {
     /**
      * @return true if less compiler should be used.
      */
-    private static boolean isActive() {
-        return Application.exists() && Bootstrap.getSettings().getBootstrapLessCompilerSettings().useLessCompiler();
+    private static boolean useLessCompiler() {
+        return Bootstrap.getSettings().getBootstrapLessCompilerSettings().useLessCompiler();
     }
 
     /**
      * checks whether less compiler is active for this resource or not.
      *
      * @param clazz mandatory parameter
-     * @param path  mandatory parameter
+     * @param variation  mandatory parameter
      * @return true if less compiler should be used.
      */
-    private static boolean isActive(final Class<?> clazz, final String path) {
-        return isActive() && CssResourceReference.class.isAssignableFrom(clazz) &&
-               (path.endsWith(ILessResource.LESSCSS_EXTENSION) || path.endsWith(ILessResource.LESSCSSMIN_EXTENSION));
+    private static boolean isActive(final Class clazz, final String variation) {
+        return useLessCompiler() && CssResourceReference.class.isAssignableFrom(clazz) &&
+               LessResourceReference.VARIATION.equals(variation);
     }
 
     /**
@@ -231,7 +227,8 @@ public class LessResourceStreamLocator extends ResourceStreamLocator {
         if (Application.exists()) {
             return Bootstrap.getSettings().getBootstrapLessCompilerSettings().getLessCompiler();
         }
-        return null;
+
+        throw new IllegalArgumentException("there is no application assigned to current thread.");
     }
 
     /**
@@ -272,6 +269,11 @@ public class LessResourceStreamLocator extends ResourceStreamLocator {
         @Override
         public Time lastModifiedTime() {
             return compiledResource.getLastModificationTime();
+        }
+
+        @Override
+        public String getVariation() {
+            return LessResourceReference.VARIATION;
         }
     }
 }

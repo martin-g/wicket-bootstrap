@@ -19,7 +19,7 @@ public class WicketThemeCssResourceReference extends BootstrapCssReference {
      * Private constructor.
      */
     public WicketThemeCssResourceReference() {
-        super(WicketThemeCssResourceReference.class, "css/bootstrap.wicket.less.css");
+        super(WicketThemeCssResourceReference.class, "css/bootstrap.wicket.css");
     }
 
 }

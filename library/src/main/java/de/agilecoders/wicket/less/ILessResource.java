@@ -20,9 +20,7 @@ public interface ILessResource {
     /**
      * @return the last modified date (including all children)
      */
-    // TODO miha Sync the name of this method with
-    // de.agilecoders.wicket.less.ICombinedLessResource.getLastModificationTime()
-    Time lastModified();
+    Time getLastModificationTime();
 
     /**
      * @return the resource as text (including all children)
@@ -58,6 +56,6 @@ public interface ILessResource {
     File toFile();
 
     String LESS_EXTENSION = ".less";
-    String LESSCSS_EXTENSION = ".less.css";
-    String LESSCSSMIN_EXTENSION = ".less.min.css";
+    String CSS_EXTENSION = ".css";
+    String CSSMIN_EXTENSION = ".min.css";
 }
