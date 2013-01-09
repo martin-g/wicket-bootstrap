@@ -89,7 +89,7 @@ public final class Bootstrap {
             return getSettings(Application.get());
         }
 
-        throw new IllegalArgumentException("there is no active application assigned to this thread.");
+        throw new IllegalStateException("there is no active application assigned to this thread.");
     }
 
     /**

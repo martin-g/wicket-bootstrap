@@ -228,7 +228,7 @@ public class LessResourceStreamLocator extends ResourceStreamLocator {
             return Bootstrap.getSettings().getBootstrapLessCompilerSettings().getLessCompiler();
         }
 
-        throw new IllegalArgumentException("there is no application assigned to current thread.");
+        throw new IllegalStateException("there is no application assigned to current thread.");
     }
 
     /**
