@@ -118,6 +118,7 @@ public class LessResourceStreamLocator extends ResourceStreamLocator {
              * less resources during a single request.
              */
             if (THREAD_CACHE.get().contains(key) && cacheValue != null) {
+                LOG.debug("L1 cache hit: loading of {} from L1 cache took {} ms", path, System.currentTimeMillis() - startCache);
                 return cacheValue.original;
             } else {
                 THREAD_CACHE.get().add(key);
@@ -128,7 +129,7 @@ public class LessResourceStreamLocator extends ResourceStreamLocator {
             // check for outdated less resources, if all are up2date return cache value directly
             // without changing the cache.
             if (cacheValue != null && cacheValue.isUpToDate(lessResourceStream.lastModifiedTime())) {
-                LOG.debug("load cached {}: {}", path, System.currentTimeMillis() - startCache);
+                LOG.debug("L2 cache hit: loading of {} from L2 cache took {} ms", path, System.currentTimeMillis() - startCache);
 
                 return cacheValue.original;
             }
@@ -137,7 +138,7 @@ public class LessResourceStreamLocator extends ResourceStreamLocator {
             CACHE.put(key, new CacheValue(lessResourceStream));
         }
 
-        LOG.debug("load new {}: {}", path, System.currentTimeMillis() - startCache);
+        LOG.debug("cache miss: loading of {} took {} ms", path, System.currentTimeMillis() - startCache);
         return lessResourceStream;
     }
 
@@ -182,7 +183,7 @@ public class LessResourceStreamLocator extends ResourceStreamLocator {
             return new LessResourceStream(compile(clazz, path.replace(ILessResource.CSSMIN_EXTENSION, ILessResource.LESS_EXTENSION)
                     .replace(ILessResource.CSS_EXTENSION, ILessResource.LESS_EXTENSION)));
         } finally {
-            LOG.debug("load stream {}: {}", path, System.currentTimeMillis() - start);
+            LOG.debug("loading stream of {} took {} ms", path, System.currentTimeMillis() - start);
         }
     }
 
