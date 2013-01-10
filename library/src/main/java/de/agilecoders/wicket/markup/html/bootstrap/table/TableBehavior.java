@@ -24,7 +24,7 @@ public class TableBehavior extends BootstrapBaseBehavior {
 
         @Override
         public String cssClassName() {
-            return equals(Basic) ? "table" : name().toLowerCase();
+            return equals(Basic) ? "table" : "table-" + name().toLowerCase();
         }
 
         @Override

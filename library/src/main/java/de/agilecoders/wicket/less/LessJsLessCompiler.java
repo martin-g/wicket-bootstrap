@@ -62,7 +62,7 @@ public class LessJsLessCompiler extends AbstractLessCompiler {
                 } catch (LessException e) {
                     return handleException(e);
                 } finally {
-                    LOG.debug("duration of collect imports for {}: {} ms", lessFile.getName(), System.currentTimeMillis() - start);
+                    LOG.debug("duration of less compiler for {}: {} ms", lessFile.getName(), System.currentTimeMillis() - start);
                 }
             }
         };

@@ -33,7 +33,7 @@ public class BootswatchCssReference extends BootstrapCssReference {
      * Private constructor.
      */
     public BootswatchCssReference(final String swatchName) {
-        super(BootswatchCssReference.class, "css/bootstrap." + swatchName + ".less.css");
+        super(BootswatchCssReference.class, "css/bootstrap." + swatchName + ".css");
         this.swatchName = swatchName;
     }
 
