@@ -19,7 +19,7 @@ public class BootstrapResponsiveCssReference extends LessResourceReference {
      * Private constructor.
      */
     private BootstrapResponsiveCssReference() {
-        super(BootstrapResponsiveCssReference.class, "css/responsive.less.css");
+        super(BootstrapResponsiveCssReference.class, "css/responsive.css");
     }
 
     /**

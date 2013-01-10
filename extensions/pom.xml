@@ -17,7 +17,7 @@
         <closure-compiler.version>r2180</closure-compiler.version>
         <contiperf.version>2.2.0</contiperf.version>
         <logback.version>1.0.7</logback.version>
-        <less4j.version>0.0.6</less4j.version>
+        <less4j.version>0.0.9</less4j.version>
     </properties>
 
     <dependencies>

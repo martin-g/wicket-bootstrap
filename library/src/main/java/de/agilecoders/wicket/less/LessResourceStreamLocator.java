@@ -35,15 +35,15 @@ public class LessResourceStreamLocator extends ResourceStreamLocator {
     private static final Logger LOG = LoggerFactory.getLogger(LessResourceStreamLocator.class);
 
     /**
-     * thread lookup set that holds a list of all processed resource keys during this web request
+     * thread lookup set that holds a list of all processed resource keys during a web request
      */
-    private static final ThreadLocal<Set<String>> THREAD_CACHE = new ThreadLocal<Set<String>>() {
+    private final ThreadLocal<Set<String>> THREAD_CACHE = new ThreadLocal<Set<String>>() {
         @Override
         protected Set<String> initialValue() {
             return Sets.newHashSet();
         }
     };
-    private static final Cache<String, CacheValue> CACHE = CacheBuilder.newBuilder().maximumSize(100).recordStats().build();
+    private final Cache<String, CacheValue> CACHE = CacheBuilder.newBuilder().maximumSize(100).recordStats().build();
 
     /**
      * Constructor
@@ -63,16 +63,12 @@ public class LessResourceStreamLocator extends ResourceStreamLocator {
 
     @Override
     public IResourceStream locate(Class<?> clazz, String path) {
-        if (isActive(clazz, path)) {
-            return fromCacheOrLoadAndCompile(clazz, path);
-        } else {
-            return super.locate(clazz, path);
-        }
+        return super.locate(clazz, path);
     }
 
     @Override
     public IResourceStream locate(Class<?> clazz, String path, String style, String variation, Locale locale, String extension, boolean strict) {
-        if (isActive(clazz, path)) {
+        if (isActive(clazz, variation)) {
             return fromCacheOrLoadAndCompile(clazz, path);
         } else {
             return super.locate(clazz, path, style, variation, locale, extension, strict);
@@ -122,6 +118,7 @@ public class LessResourceStreamLocator extends ResourceStreamLocator {
              * less resources during a single request.
              */
             if (THREAD_CACHE.get().contains(key) && cacheValue != null) {
+                LOG.debug("L1 cache hit: loading of {} from L1 cache took {} ms", path, System.currentTimeMillis() - startCache);
                 return cacheValue.original;
             } else {
                 THREAD_CACHE.get().add(key);
@@ -132,7 +129,7 @@ public class LessResourceStreamLocator extends ResourceStreamLocator {
             // check for outdated less resources, if all are up2date return cache value directly
             // without changing the cache.
             if (cacheValue != null && cacheValue.isUpToDate(lessResourceStream.lastModifiedTime())) {
-                LOG.debug("load cached {}: {}", path, System.currentTimeMillis() - startCache);
+                LOG.debug("L2 cache hit: loading of {} from L2 cache took {} ms", path, System.currentTimeMillis() - startCache);
 
                 return cacheValue.original;
             }
@@ -141,7 +138,7 @@ public class LessResourceStreamLocator extends ResourceStreamLocator {
             CACHE.put(key, new CacheValue(lessResourceStream));
         }
 
-        LOG.debug("load new {}: {}", path, System.currentTimeMillis() - startCache);
+        LOG.debug("cache miss: loading of {} took {} ms", path, System.currentTimeMillis() - startCache);
         return lessResourceStream;
     }
 
@@ -183,30 +180,30 @@ public class LessResourceStreamLocator extends ResourceStreamLocator {
     private LessResourceStream loadStream(final Class<?> clazz, final String path) {
         final long start = System.currentTimeMillis();
         try {
-            return new LessResourceStream(compile(clazz, path.replace(ILessResource.LESSCSSMIN_EXTENSION, ILessResource.LESS_EXTENSION)
-                    .replace(ILessResource.LESSCSS_EXTENSION, ILessResource.LESS_EXTENSION)));
+            return new LessResourceStream(compile(clazz, path.replace(ILessResource.CSSMIN_EXTENSION, ILessResource.LESS_EXTENSION)
+                    .replace(ILessResource.CSS_EXTENSION, ILessResource.LESS_EXTENSION)));
         } finally {
-            LOG.debug("load stream {}: {}", path, System.currentTimeMillis() - start);
+            LOG.debug("loading stream of {} took {} ms", path, System.currentTimeMillis() - start);
         }
     }
 
     /**
      * @return true if less compiler should be used.
      */
-    private static boolean isActive() {
-        return Application.exists() && Bootstrap.getSettings().getBootstrapLessCompilerSettings().useLessCompiler();
+    private static boolean useLessCompiler() {
+        return Bootstrap.getSettings().getBootstrapLessCompilerSettings().useLessCompiler();
     }
 
     /**
      * checks whether less compiler is active for this resource or not.
      *
      * @param clazz mandatory parameter
-     * @param path  mandatory parameter
+     * @param variation  mandatory parameter
      * @return true if less compiler should be used.
      */
-    private static boolean isActive(final Class<?> clazz, final String path) {
-        return isActive() && CssResourceReference.class.isAssignableFrom(clazz) &&
-               (path.endsWith(ILessResource.LESSCSS_EXTENSION) || path.endsWith(ILessResource.LESSCSSMIN_EXTENSION));
+    private static boolean isActive(final Class clazz, final String variation) {
+        return useLessCompiler() && CssResourceReference.class.isAssignableFrom(clazz) &&
+               LessResourceReference.VARIATION.equals(variation);
     }
 
     /**
@@ -231,7 +228,8 @@ public class LessResourceStreamLocator extends ResourceStreamLocator {
         if (Application.exists()) {
             return Bootstrap.getSettings().getBootstrapLessCompilerSettings().getLessCompiler();
         }
-        return null;
+
+        throw new IllegalStateException("there is no application assigned to current thread.");
     }
 
     /**
@@ -272,6 +270,11 @@ public class LessResourceStreamLocator extends ResourceStreamLocator {
         @Override
         public Time lastModifiedTime() {
             return compiledResource.getLastModificationTime();
+        }
+
+        @Override
+        public String getVariation() {
+            return LessResourceReference.VARIATION;
         }
     }
 }

@@ -48,7 +48,7 @@ public class LessResource implements ILessResource {
     }
 
     @Override
-    public Time lastModified() {
+    public Time getLastModificationTime() {
         return lastModified;
     }
 

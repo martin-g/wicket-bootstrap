@@ -8,7 +8,7 @@
  * 2012-09-26
  */
 
-(function($) {
+;(function($) {
 
     $.fn.videoUI = function(options) {
 

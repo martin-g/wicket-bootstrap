@@ -19,7 +19,7 @@ public class BootstrapCssReference extends LessResourceReference {
      * Private constructor.
      */
     private BootstrapCssReference() {
-        super(BootstrapCssReference.class, "css/bootstrap.less.css");
+        super(BootstrapCssReference.class, "css/bootstrap.css");
     }
 
     /**
