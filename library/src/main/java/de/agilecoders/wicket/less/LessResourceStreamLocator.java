@@ -35,7 +35,7 @@ public class LessResourceStreamLocator extends ResourceStreamLocator {
     private static final Logger LOG = LoggerFactory.getLogger(LessResourceStreamLocator.class);
 
     /**
-     * thread lookup set that holds a list of all processed resource keys during this web request
+     * thread lookup set that holds a list of all processed resource keys during a web request
      */
     private static final ThreadLocal<Set<String>> THREAD_CACHE = new ThreadLocal<Set<String>>() {
         @Override
