@@ -58,6 +58,7 @@ public abstract class AbstractCompiledResource implements ICompiledResource {
 
     @Override
     public void close() throws IOException {
+        // nothing to close here because of {@link java.io.ByteArrayInputStream#close()}
     }
 
     /**
