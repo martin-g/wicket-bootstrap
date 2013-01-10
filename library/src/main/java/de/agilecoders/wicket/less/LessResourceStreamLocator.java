@@ -37,13 +37,13 @@ public class LessResourceStreamLocator extends ResourceStreamLocator {
     /**
      * thread lookup set that holds a list of all processed resource keys during a web request
      */
-    private static final ThreadLocal<Set<String>> THREAD_CACHE = new ThreadLocal<Set<String>>() {
+    private final ThreadLocal<Set<String>> THREAD_CACHE = new ThreadLocal<Set<String>>() {
         @Override
         protected Set<String> initialValue() {
             return Sets.newHashSet();
         }
     };
-    private static final Cache<String, CacheValue> CACHE = CacheBuilder.newBuilder().maximumSize(100).recordStats().build();
+    private final Cache<String, CacheValue> CACHE = CacheBuilder.newBuilder().maximumSize(100).recordStats().build();
 
     /**
      * Constructor
