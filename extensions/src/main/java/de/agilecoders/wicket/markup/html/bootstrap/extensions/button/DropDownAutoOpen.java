@@ -6,7 +6,6 @@ import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
-import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
 
 import static de.agilecoders.wicket.util.JQuery.$;
 
@@ -45,7 +44,7 @@ public class DropDownAutoOpen extends BootstrapBaseBehavior {
         super.renderHead(component, headerResponse);
 
         headerResponse.render(JavaScriptHeaderItem.forReference(DropdownAutoOpenJavaScriptReference.instance()));
-        headerResponse.render(OnDomReadyHeaderItem.forScript($(((DropDownButton)component).getBaseButton()).chain("dropdownHover", config).get()));
+        headerResponse.render($(((DropDownButton)component).getBaseButton()).chain("dropdownHover", config).asDomReadyScript());
     }
 
     @Override

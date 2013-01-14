@@ -3,7 +3,7 @@ package de.agilecoders.wicket.markup.html.bootstrap.navigation;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.AssertTagNameBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameProvider;
+import de.agilecoders.wicket.markup.html.bootstrap.behavior.ICssClassNameProvider;
 import org.apache.wicket.markup.html.navigation.paging.IPageable;
 import org.apache.wicket.markup.html.navigation.paging.IPagingLabelProvider;
 import org.apache.wicket.markup.html.navigation.paging.PagingNavigator;
@@ -22,7 +22,7 @@ public class BootstrapPagingNavigator extends PagingNavigator {
     /**
      * position of pagination component
      */
-    public enum Position implements CssClassNameProvider {
+    public enum Position implements ICssClassNameProvider {
         Left, Centered, Right;
 
         @Override

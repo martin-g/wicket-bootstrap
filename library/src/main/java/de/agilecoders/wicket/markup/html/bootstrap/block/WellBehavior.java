@@ -3,7 +3,7 @@ package de.agilecoders.wicket.markup.html.bootstrap.block;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.AssertTagNameBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameProvider;
+import de.agilecoders.wicket.markup.html.bootstrap.behavior.ICssClassNameProvider;
 import de.agilecoders.wicket.util.CssClassNames;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
@@ -23,7 +23,7 @@ public class WellBehavior extends AssertTagNameBehavior {
     /**
      * defines the size of a well
      */
-    public enum Size implements CssClassNameProvider {
+    public enum Size implements ICssClassNameProvider {
         Default, Small, Large;
 
         @Override

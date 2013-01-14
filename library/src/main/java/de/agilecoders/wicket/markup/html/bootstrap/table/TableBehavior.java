@@ -4,7 +4,7 @@ import com.google.common.base.Function;
 import com.google.common.collect.Lists;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameProvider;
+import de.agilecoders.wicket.markup.html.bootstrap.behavior.ICssClassNameProvider;
 import de.agilecoders.wicket.util.Components;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.ComponentTag;
@@ -19,7 +19,7 @@ import java.util.List;
  */
 public class TableBehavior extends BootstrapBaseBehavior {
 
-    private enum Type implements CssClassNameProvider {
+    private enum Type implements ICssClassNameProvider {
         Basic, Bordered, Zebra, Condensed;
 
         @Override

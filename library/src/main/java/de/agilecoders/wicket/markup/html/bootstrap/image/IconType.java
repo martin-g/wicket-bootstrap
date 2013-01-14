@@ -1,7 +1,7 @@
 package de.agilecoders.wicket.markup.html.bootstrap.image;
 
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameProvider;
+import de.agilecoders.wicket.markup.html.bootstrap.behavior.ICssClassNameProvider;
 import org.apache.wicket.util.io.IClusterable;
 
 /**
@@ -9,7 +9,7 @@ import org.apache.wicket.util.io.IClusterable;
  *
  * @see {http://twitter.github.com/bootstrap/base-css.html#buttons}
  */
-public class IconType implements CssClassNameProvider, IClusterable {
+public class IconType implements ICssClassNameProvider, IClusterable {
 
     public static final IconType NULL = new IconType("null");
 

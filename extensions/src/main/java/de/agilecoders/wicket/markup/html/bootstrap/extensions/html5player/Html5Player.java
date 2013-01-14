@@ -3,15 +3,12 @@ package de.agilecoders.wicket.markup.html.bootstrap.extensions.html5player;
 import de.agilecoders.wicket.Bootstrap;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.AssertTagNameBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
-import de.agilecoders.wicket.markup.html.bootstrap.common.AbstractConfig;
-import de.agilecoders.wicket.util.JQuery;
 import de.agilecoders.wicket.util.References;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.head.CssReferenceHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptReferenceHeaderItem;
-import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.list.ListItem;
@@ -23,7 +20,6 @@ import org.apache.wicket.util.io.IClusterable;
 
 import java.util.List;
 
-import static de.agilecoders.wicket.markup.html.bootstrap.extensions.html5player.Html5Player.Html5PlayerJqueryScript.videoUI;
 import static de.agilecoders.wicket.util.JQuery.$;
 
 /**
@@ -160,7 +156,7 @@ public class Html5Player extends Panel {
         References.renderWithFilter(Bootstrap.getSettings(), response,
                                     JavaScriptReferenceHeaderItem.forReference(Html5PlayerJavaScriptReference.instance()));
 
-        response.render(OnDomReadyHeaderItem.forScript($(container).chain(videoUI(config)).get()));
+        response.render($(container).chain("videoUI", config).asDomReadyScript());
     }
 
     /**
@@ -179,32 +175,4 @@ public class Html5Player extends Panel {
         String getMediaType();
     }
 
-    /**
-     * Abstraction of videoUI jquery method.
-     */
-    public static final class Html5PlayerJqueryScript extends JQuery.AbstractFunction {
-
-        /**
-         * helper method.
-         *
-         * @param config The javascript configuration
-         * @return new {@link Html5PlayerJqueryScript} instance
-         */
-        public static Html5PlayerJqueryScript videoUI(final AbstractConfig config) {
-            return new Html5PlayerJqueryScript(config);
-        }
-
-        /**
-         * Construct.
-         *
-         * @param config The javascript configuration
-         */
-        public Html5PlayerJqueryScript(final AbstractConfig config) {
-            super("videoUI");
-
-            if (!config.isEmpty()) {
-                addParameter(config.toJsonString());
-            }
-        }
-    }
 }

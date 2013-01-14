@@ -1,10 +1,11 @@
 package de.agilecoders.wicket.markup.html.bootstrap.carousel;
 
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.AssertTagNameBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapResourcesBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
+import de.agilecoders.wicket.util.Attributes;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
+import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
 import org.apache.wicket.markup.html.TransparentWebMarkupContainer;
@@ -41,13 +42,19 @@ public class Carousel extends Panel {
 
         setOutputMarkupId(true);
 
-        add(new CssClassNameAppender("carousel", "slide"));
         add(new BootstrapResourcesBehavior());
-        add(new AssertTagNameBehavior("div"));
 
         add(newImageList("images"),
             newNavigationButton("prev"),
             newNavigationButton("next"));
+    }
+
+    @Override
+    protected void onComponentTag(ComponentTag tag) {
+        super.onComponentTag(tag);
+
+        Attributes.addClass(tag, "carousel", "slide");
+        checkComponentTag(tag, "div");
     }
 
     /**
@@ -119,6 +126,7 @@ public class Carousel extends Panel {
                 TransparentWebMarkupContainer caption = new TransparentWebMarkupContainer("caption");
                 caption.setVisible(header.isVisible() || description.isVisible());
 
+                // REFACTOR: use better way to detect first element
                 if (!renderedActive) {
                     renderedActive = true;
                     item.add(new CssClassNameAppender("active"));

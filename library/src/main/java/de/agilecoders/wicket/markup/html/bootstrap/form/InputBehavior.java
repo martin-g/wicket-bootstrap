@@ -2,7 +2,7 @@ package de.agilecoders.wicket.markup.html.bootstrap.form;
 
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameProvider;
+import de.agilecoders.wicket.markup.html.bootstrap.behavior.ICssClassNameProvider;
 import de.agilecoders.wicket.markup.html.bootstrap.layout.SpanType;
 import org.apache.wicket.Component;
 import org.apache.wicket.model.IModel;
@@ -15,7 +15,7 @@ import org.apache.wicket.model.Model;
  */
 public class InputBehavior extends BootstrapBaseBehavior {
 
-    public enum Size implements CssClassNameProvider {
+    public enum Size implements ICssClassNameProvider {
         Mini, Small, Medium, Large, XLarge, XXLarge;
 
         @Override
@@ -30,21 +30,21 @@ public class InputBehavior extends BootstrapBaseBehavior {
 
     }
 
-    private final IModel<CssClassNameProvider> size;
+    private final IModel<ICssClassNameProvider> size;
 
     public InputBehavior() {
         this(Size.Medium);
     }
 
     public InputBehavior(final SpanType size) {
-        this((CssClassNameProvider)size);
+        this((ICssClassNameProvider)size);
     }
 
     public InputBehavior(final Size size) {
-        this((CssClassNameProvider)size);
+        this((ICssClassNameProvider)size);
     }
 
-    private InputBehavior(final CssClassNameProvider size) {
+    private InputBehavior(final ICssClassNameProvider size) {
         this.size = Model.of(size);
     }
 

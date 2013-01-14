@@ -6,7 +6,7 @@ import com.google.common.base.Predicate;
 import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameProvider;
+import de.agilecoders.wicket.markup.html.bootstrap.behavior.ICssClassNameProvider;
 import de.agilecoders.wicket.markup.html.bootstrap.button.Activatable;
 import de.agilecoders.wicket.markup.html.bootstrap.common.Invertible;
 import de.agilecoders.wicket.util.Behaviors;
@@ -50,7 +50,7 @@ public class Navbar extends Panel implements Invertible<Navbar> {
     /**
      * indicates the position of the navigation bar itself
      */
-    public static enum Position implements CssClassNameProvider {
+    public static enum Position implements ICssClassNameProvider {
         /**
          * fixate at the top of the screen
          */

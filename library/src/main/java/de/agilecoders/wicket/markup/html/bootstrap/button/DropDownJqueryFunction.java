@@ -7,7 +7,6 @@ import de.agilecoders.wicket.util.JQuery;
  * A jquery function abstraction for dropdowns.
  *
  * @author miha
- * @version 1.0
  */
 public class DropDownJqueryFunction extends JQuery.AbstractFunction {
 

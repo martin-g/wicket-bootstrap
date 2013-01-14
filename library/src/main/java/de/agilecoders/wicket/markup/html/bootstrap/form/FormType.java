@@ -1,12 +1,12 @@
 package de.agilecoders.wicket.markup.html.bootstrap.form;
 
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameProvider;
+import de.agilecoders.wicket.markup.html.bootstrap.behavior.ICssClassNameProvider;
 
 /**
  * TODO document
  */
-public enum FormType implements CssClassNameProvider {
+public enum FormType implements ICssClassNameProvider {
     Default(""), // Stacked, left-aligned labels on top of form controls
     Inline("form-inline"), // Left-aligned label and inline-block controls for compact style
     Search("form-search"), // Extra-rounded text input for a typical search aesthetic

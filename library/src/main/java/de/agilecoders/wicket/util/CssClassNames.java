@@ -81,7 +81,20 @@ public final class CssClassNames {
          * @param classValue the initial class name string
          */
         private Builder(final String classValue) {
-            classValues = split(nullToEmpty(classValue));
+            classValues = Sets.newHashSet();
+
+            addRaw(classValue);
+        }
+
+        /**
+         * adds an unparsed css class name string.
+         *
+         * @param rawCssString the raw css classes
+         * @return this instance for chaining
+         */
+        public Builder addRaw(final String rawCssString) {
+            add(split(nullToEmpty(rawCssString)));
+            return this;
         }
 
         /**

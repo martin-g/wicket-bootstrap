@@ -3,7 +3,7 @@ package de.agilecoders.wicket.markup.html.bootstrap.block;
 import de.agilecoders.wicket.Bootstrap;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameProvider;
+import de.agilecoders.wicket.markup.html.bootstrap.behavior.ICssClassNameProvider;
 import de.agilecoders.wicket.markup.html.references.BootstrapPrettifyCssReference;
 import de.agilecoders.wicket.markup.html.references.BootstrapPrettifyJavaScriptReference;
 import de.agilecoders.wicket.util.Components;
@@ -38,7 +38,7 @@ public class CodeBehavior extends Behavior {
     /**
      * enum that holds all possible languages
      */
-    public enum Language implements CssClassNameProvider {
+    public enum Language implements ICssClassNameProvider {
         DYNAMIC, BSH, C, CC, CPP, CS, CSH, CYC, CV, HTM, HTML,
         JAVA, JS, M, MXML, PERL, PL, PM, PY, RB, SH,
         XHTML, XML, XSL;

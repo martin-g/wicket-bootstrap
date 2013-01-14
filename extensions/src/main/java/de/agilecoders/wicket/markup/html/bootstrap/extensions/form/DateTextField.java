@@ -4,7 +4,6 @@ import de.agilecoders.wicket.markup.html.bootstrap.behavior.AssertTagNameBehavio
 import de.agilecoders.wicket.markup.html.bootstrap.extensions.references.BootstrapDatepickerJsReference;
 import de.agilecoders.wicket.markup.html.bootstrap.extensions.references.BootstrapDatepickerLangJsReference;
 import de.agilecoders.wicket.markup.html.bootstrap.extensions.references.BootstrapDatepickerReference;
-import de.agilecoders.wicket.util.JQuery;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
@@ -26,7 +25,6 @@ import static de.agilecoders.wicket.util.JQuery.$;
  */
 public class DateTextField extends org.apache.wicket.extensions.markup.html.form.DateTextField {
     private static final long serialVersionUID = 3499287675713818823L;
-    private static final JqueryDatePickerFunction JQUERY_DATEPICKER = new JqueryDatePickerFunction();
 
     private final DateTextFieldConfig config;
 
@@ -125,40 +123,7 @@ public class DateTextField extends org.apache.wicket.extensions.markup.html.form
      * @return initializer script
      */
     protected CharSequence createScript(final DateTextFieldConfig config) {
-        return $(this).chain(JQUERY_DATEPICKER.withConfig(config)).get();
+        return $(this).chain("datepicker", config).get();
     }
 
-    /**
-     * represents the jquery datepicker function.
-     */
-    private static final class JqueryDatePickerFunction extends JQuery.AbstractFunction {
-
-        /**
-         * Construct.
-         */
-        public JqueryDatePickerFunction() {
-            super("datepicker");
-        }
-
-        /**
-         * Construct.
-         */
-        public JqueryDatePickerFunction(final DateTextFieldConfig config) {
-            super("datepicker");
-
-            if (!config.isEmpty()) {
-                addParameter(config.toJsonString());
-            }
-        }
-
-        /**
-         * adds a special configuration json map.
-         *
-         * @param config the configuration of this datepicker instance
-         * @return this instance for chaining
-         */
-        public JqueryDatePickerFunction withConfig(final DateTextFieldConfig config) {
-            return new JqueryDatePickerFunction(config);
-        }
-    }
 }

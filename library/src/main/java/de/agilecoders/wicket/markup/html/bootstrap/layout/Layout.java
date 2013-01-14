@@ -1,7 +1,7 @@
 package de.agilecoders.wicket.markup.html.bootstrap.layout;
 
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameProvider;
+import de.agilecoders.wicket.markup.html.bootstrap.behavior.ICssClassNameProvider;
 
 /**
  * TODO: document
@@ -9,7 +9,7 @@ import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameProvider
  * @author miha
  * @version 1.0
  */
-public enum Layout implements CssClassNameProvider {
+public enum Layout implements ICssClassNameProvider {
     Fluid("container-fluid"),
     Fixed("container");
 

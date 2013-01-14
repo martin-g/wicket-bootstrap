@@ -1,7 +1,7 @@
 package de.agilecoders.wicket.markup.html.bootstrap.block;
 
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameProvider;
+import de.agilecoders.wicket.markup.html.bootstrap.behavior.ICssClassNameProvider;
 
 /**
  * A LabelType defines the type of label which changes highlighted color.
@@ -9,7 +9,7 @@ import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameProvider
  * @author miha
  * @version 1.0
  */
-public enum LabelType implements CssClassNameProvider {
+public enum LabelType implements ICssClassNameProvider {
     Default, Success, Warning, Important, Info, Inverse;
 
     @Override

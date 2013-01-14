@@ -5,7 +5,7 @@ import de.agilecoders.wicket.markup.html.bootstrap.behavior.AssertTagNameBehavio
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapResourcesBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameProvider;
+import de.agilecoders.wicket.markup.html.bootstrap.behavior.ICssClassNameProvider;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
@@ -32,7 +32,7 @@ public class Alert extends GenericPanel<String> {
     /**
      * The {@code Type} enum defines all possible alert types.
      */
-    public enum Type implements CssClassNameProvider {
+    public enum Type implements ICssClassNameProvider {
         Error, Success, Info, Warning;
 
         @Override

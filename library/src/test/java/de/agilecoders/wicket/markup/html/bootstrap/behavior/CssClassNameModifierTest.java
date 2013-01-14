@@ -36,7 +36,7 @@ public class CssClassNameModifierTest extends WicketApplicationTest {
 
     @Test
     public void classFromProviderIsAdded() {
-        component.add(new CssClassNameModifier(new CssClassNameProvider() {
+        component.add(new CssClassNameModifier(new ICssClassNameProvider() {
             @Override
             public String cssClassName() {
                 return "classX classY classZ";

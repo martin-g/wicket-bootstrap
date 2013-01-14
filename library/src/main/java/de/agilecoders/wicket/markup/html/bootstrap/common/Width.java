@@ -1,7 +1,7 @@
 package de.agilecoders.wicket.markup.html.bootstrap.common;
 
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameProvider;
+import de.agilecoders.wicket.markup.html.bootstrap.behavior.ICssClassNameProvider;
 import org.apache.wicket.Component;
 
 /**
@@ -10,7 +10,7 @@ import org.apache.wicket.Component;
  * @author miha
  * @version 1.0
  */
-public enum Width implements CssClassNameProvider {
+public enum Width implements ICssClassNameProvider {
     SPAN1,
     SPAN2,
     SPAN3,

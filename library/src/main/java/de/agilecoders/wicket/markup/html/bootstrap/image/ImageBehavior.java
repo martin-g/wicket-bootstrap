@@ -3,7 +3,7 @@ package de.agilecoders.wicket.markup.html.bootstrap.image;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.AssertTagNameBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameProvider;
+import de.agilecoders.wicket.markup.html.bootstrap.behavior.ICssClassNameProvider;
 import org.apache.wicket.Component;
 
 /**
@@ -17,7 +17,7 @@ public class ImageBehavior extends BootstrapBaseBehavior {
     /**
      * TODOC
      */
-    public enum Type implements CssClassNameProvider {
+    public enum Type implements ICssClassNameProvider {
         Rounded, Circle, Polaroid, Default;
 
         @Override

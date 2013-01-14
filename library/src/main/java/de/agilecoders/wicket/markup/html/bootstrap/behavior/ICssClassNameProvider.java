@@ -4,7 +4,7 @@ import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.util.io.IClusterable;
 
 /**
- * The {@code CssClassNameProvider} provides an interface to abstract
+ * The {@code ICssClassNameProvider} provides an interface to abstract
  * the styling of a component and the rendering of the class attribute.
  *
  * This interface can be used with a {@link Enum}:
@@ -31,9 +31,8 @@ import org.apache.wicket.util.io.IClusterable;
  * </pre>
  *
  * @author miha
- * @version 1.0
  */
-public interface CssClassNameProvider extends IClusterable {
+public interface ICssClassNameProvider extends IClusterable {
 
     /**
      * @return a css class name
@@ -42,7 +41,7 @@ public interface CssClassNameProvider extends IClusterable {
 
     /**
      * @return a {@link AttributeModifier} which contains the class name
-     *         from {@link CssClassNameProvider#cssClassName()}
+     *         from {@link ICssClassNameProvider#cssClassName()}
      */
     AttributeModifier newCssClassNameModifier();
 
