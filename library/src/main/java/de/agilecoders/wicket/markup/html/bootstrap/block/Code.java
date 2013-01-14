@@ -9,7 +9,6 @@ import org.apache.wicket.model.Model;
  * lines of code. Angle brackets will be escaped in the code for proper rendering.
  *
  * @author miha
- * @version 1.0
  */
 public class Code extends Label {
 

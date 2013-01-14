@@ -8,6 +8,8 @@ import com.google.common.collect.Sets;
 import java.util.List;
 import java.util.Set;
 
+import static com.google.common.base.Strings.nullToEmpty;
+
 /**
  * helper class for css class names
  *
@@ -62,7 +64,7 @@ public final class CssClassNames {
      * @param classValue The class attribute value
      * @return new Builder.
      */
-    public static Builder parse(final CharSequence classValue) {
+    public static Builder parse(final String classValue) {
         return new Builder(classValue);
     }
 
@@ -78,8 +80,8 @@ public final class CssClassNames {
          *
          * @param classValue the initial class name string
          */
-        private Builder(final CharSequence classValue) {
-            classValues = split(classValue);
+        private Builder(final String classValue) {
+            classValues = split(nullToEmpty(classValue));
         }
 
         /**

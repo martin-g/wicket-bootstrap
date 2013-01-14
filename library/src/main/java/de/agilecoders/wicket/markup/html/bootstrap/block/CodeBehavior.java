@@ -1,16 +1,18 @@
 package de.agilecoders.wicket.markup.html.bootstrap.block;
 
 import de.agilecoders.wicket.Bootstrap;
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.AssertTagNameBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameProvider;
 import de.agilecoders.wicket.markup.html.references.BootstrapPrettifyCssReference;
 import de.agilecoders.wicket.markup.html.references.BootstrapPrettifyJavaScriptReference;
+import de.agilecoders.wicket.util.Components;
 import de.agilecoders.wicket.util.CssClassNames;
 import de.agilecoders.wicket.util.References;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
+import org.apache.wicket.behavior.Behavior;
+import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
@@ -30,9 +32,8 @@ import org.apache.wicket.model.Model;
  * </pre>
  *
  * @author miha
- * @version 1.0
  */
-public class CodeBehavior extends AssertTagNameBehavior {
+public class CodeBehavior extends Behavior {
 
     /**
      * enum that holds all possible languages
@@ -68,7 +69,7 @@ public class CodeBehavior extends AssertTagNameBehavior {
      * Constructor.
      */
     public CodeBehavior() {
-        super("code", "pre");
+        super();
 
         lineNumbers = Model.of(false);
         cssClassNameModel = Model.of("");
@@ -170,6 +171,7 @@ public class CodeBehavior extends AssertTagNameBehavior {
      * @return this instance
      */
     public final CodeBehavior setStartFromLine(final int from) {
+        setShowLineNumbers(true);
         this.from.setObject(from);
 
         return this;
@@ -187,4 +189,10 @@ public class CodeBehavior extends AssertTagNameBehavior {
         return this;
     }
 
+    @Override
+    public void onComponentTag(Component component, ComponentTag tag) {
+        super.onComponentTag(component, tag);
+
+        Components.assertTag(component, tag, "code", "pre");
+    }
 }

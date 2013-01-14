@@ -13,6 +13,7 @@ import de.agilecoders.wicket.markup.html.references.BootstrapPrettifyCssReferenc
 import de.agilecoders.wicket.markup.html.references.BootstrapPrettifyJavaScriptReference;
 import de.agilecoders.wicket.markup.html.references.ModernizrJavaScriptReference;
 import de.agilecoders.wicket.markup.html.themes.metro.MetroTheme;
+import de.agilecoders.wicket.request.StaticResourceRewriteMapper;
 import de.agilecoders.wicket.samples.assets.base.ApplicationJavaScript;
 import de.agilecoders.wicket.samples.assets.base.FixBootstrapStylesCssResourceReference;
 import de.agilecoders.wicket.samples.pages.HomePage;
@@ -87,6 +88,7 @@ public class WicketApplication extends WebApplication {
         optimizeForWebPerformance();
 
         new AnnotatedMountScanner().scanPackage("de.agilecoders.wicket.samples.pages").mount(this);
+        StaticResourceRewriteMapper.withBaseUrl("http://miha-macbook.local:8090").install(this);
     }
 
     /**
