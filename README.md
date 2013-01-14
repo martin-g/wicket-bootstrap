@@ -38,7 +38,7 @@ core maven dependency:
 <pre><code>&lt;dependency&gt;
   &lt;groupId&gt;de.agilecoders.wicket&lt;/groupId&gt;
   &lt;artifactId&gt;bootstrap&lt;/artifactId&gt;
-  &lt;version&gt;0.7.5&lt;/version&gt;
+  &lt;version&gt;0.7.6&lt;/version&gt;
 &lt;/dependency&gt;
 </code></pre>
 
@@ -46,7 +46,7 @@ for all extensions:
 <pre><code>&lt;dependency&gt;
   &lt;groupId&gt;de.agilecoders.wicket&lt;/groupId&gt;
   &lt;artifactId&gt;bootstrap-extensions&lt;/artifactId&gt;
-  &lt;version&gt;0.7.5&lt;/version&gt;
+  &lt;version&gt;0.7.6&lt;/version&gt;
 &lt;/dependency&gt;
 </code></pre>
 
