@@ -1,13 +1,13 @@
 package de.agilecoders.wicket.markup.html.bootstrap.block;
 
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.AssertTagNameBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.ICssClassNameProvider;
+import de.agilecoders.wicket.util.Attributes;
+import de.agilecoders.wicket.util.Components;
 import de.agilecoders.wicket.util.CssClassNames;
-import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
-import org.apache.wicket.model.AbstractReadOnlyModel;
+import org.apache.wicket.behavior.Behavior;
+import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
@@ -16,9 +16,8 @@ import org.apache.wicket.model.Model;
  * Control padding and rounded corners with two optional modifier classes ({@link Size}).
  *
  * @author miha
- * @version 1.0
  */
-public class WellBehavior extends AssertTagNameBehavior {
+public class WellBehavior extends Behavior {
 
     /**
      * defines the size of a well
@@ -31,14 +30,9 @@ public class WellBehavior extends AssertTagNameBehavior {
             return equals(Default) ? "" : "well-" + name().toLowerCase();
         }
 
-        @Override
-        public AttributeModifier newCssClassNameModifier() {
-            return new CssClassNameAppender(this);
-        }
     }
 
     private final IModel<Size> size;
-    private final CssClassNameAppender cssClassNameAppender;
 
     /**
      * Construct.
@@ -64,15 +58,17 @@ public class WellBehavior extends AssertTagNameBehavior {
      * @param sizeModel The size of the well
      */
     public WellBehavior(IModel<Size> sizeModel) {
-        super("div", "span");
+        super();
 
         this.size = sizeModel;
-        this.cssClassNameAppender = new CssClassNameAppender(new AbstractReadOnlyModel<String>() {
-            @Override
-            public String getObject() {
-                return CssClassNames.parse("well").add(size.getObject().cssClassName()).asString();
-            }
-        });
+    }
+
+    @Override
+    public void onComponentTag(Component component, ComponentTag tag) {
+        super.onComponentTag(component, tag);
+
+        Attributes.addClass(tag, CssClassNames.parse("well").add(size.getObject().cssClassName()).asSet());
+        Components.assertTag(component, tag, "div", "span");
     }
 
     /**
@@ -106,7 +102,6 @@ public class WellBehavior extends AssertTagNameBehavior {
         super.bind(component);
 
         BootstrapBaseBehavior.addTo(component);
-        component.add(cssClassNameAppender);
     }
 
     @Override
@@ -114,6 +109,5 @@ public class WellBehavior extends AssertTagNameBehavior {
         super.unbind(component);
 
         BootstrapBaseBehavior.removeFrom(component);
-        component.remove(cssClassNameAppender);
     }
 }

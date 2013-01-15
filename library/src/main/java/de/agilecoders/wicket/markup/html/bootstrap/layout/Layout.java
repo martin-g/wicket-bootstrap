@@ -1,13 +1,11 @@
 package de.agilecoders.wicket.markup.html.bootstrap.layout;
 
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.ICssClassNameProvider;
 
 /**
- * TODO: document
+ * Defines all possible layout types.
  *
  * @author miha
- * @version 1.0
  */
 public enum Layout implements ICssClassNameProvider {
     Fluid("container-fluid"),
@@ -15,6 +13,11 @@ public enum Layout implements ICssClassNameProvider {
 
     private final String cssClassName;
 
+    /**
+     * Construct.
+     *
+     * @param cssClassName The css class name
+     */
     Layout(String cssClassName) {
         this.cssClassName = cssClassName;
     }
@@ -22,10 +25,5 @@ public enum Layout implements ICssClassNameProvider {
     @Override
     public String cssClassName() {
         return cssClassName;
-    }
-
-    @Override
-    public CssClassNameAppender newCssClassNameModifier() {
-        return new CssClassNameAppender(cssClassName());
     }
 }

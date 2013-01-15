@@ -1,6 +1,5 @@
 package de.agilecoders.wicket.markup.html.bootstrap.button;
 
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.ICssClassNameProvider;
 
 /**
@@ -14,8 +13,4 @@ public enum Orientation implements ICssClassNameProvider {
         return equals(Horizontal) ? "" : "btn-group-" + name().toLowerCase();
     }
 
-    @Override
-    public CssClassNameAppender newCssClassNameModifier() {
-        return new CssClassNameAppender(this);
-    }
 }

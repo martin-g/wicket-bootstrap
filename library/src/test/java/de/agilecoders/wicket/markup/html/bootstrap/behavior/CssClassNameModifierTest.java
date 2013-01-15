@@ -3,6 +3,7 @@ package de.agilecoders.wicket.markup.html.bootstrap.behavior;
 import com.google.common.collect.Lists;
 import de.agilecoders.wicket.WicketApplicationTest;
 import de.agilecoders.wicket.test.IntegrationTest;
+import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.model.Model;
@@ -41,12 +42,19 @@ public class CssClassNameModifierTest extends WicketApplicationTest {
             public String cssClassName() {
                 return "classX classY classZ";
             }
-
-            @Override
-            public CssClassNameAppender newCssClassNameModifier() {
-                return null;
-            }
         }));
+
+        startPageAndAssertClassNames("classX classY classZ");
+    }
+
+    @Test
+    public void classFromModifierIsAdded() {
+        component.add(new ICssClassNameModifier() {
+            @Override
+            public AttributeModifier newCssClassNameModifier() {
+                return new CssClassNameAppender("classX classY classZ");
+            }
+        }.newCssClassNameModifier());
 
         startPageAndAssertClassNames("classX classY classZ");
     }

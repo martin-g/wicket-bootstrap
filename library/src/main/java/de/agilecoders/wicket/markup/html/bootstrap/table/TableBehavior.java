@@ -27,10 +27,6 @@ public class TableBehavior extends BootstrapBaseBehavior {
             return equals(Basic) ? "table" : "table-" + name().toLowerCase();
         }
 
-        @Override
-        public CssClassNameAppender newCssClassNameModifier() {
-            return new CssClassNameAppender(cssClassName());
-        }
     }
 
     private List<Type> types = Lists.newArrayList(Type.Basic);

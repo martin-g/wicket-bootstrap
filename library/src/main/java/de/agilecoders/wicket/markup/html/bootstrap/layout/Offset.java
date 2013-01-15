@@ -1,6 +1,5 @@
 package de.agilecoders.wicket.markup.html.bootstrap.layout;
 
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.ICssClassNameProvider;
 
 /**
@@ -27,8 +26,4 @@ public enum Offset implements ICssClassNameProvider {
         return equals(OFFSET0) ? "" : cssClassName;
     }
 
-    @Override
-    public CssClassNameAppender newCssClassNameModifier() {
-        return new CssClassNameAppender(cssClassName());
-    }
 }

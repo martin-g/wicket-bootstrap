@@ -41,11 +41,6 @@ public class CssClassNameAppenderTest extends WicketApplicationTest {
             public String cssClassName() {
                 return "classX classY classZ";
             }
-
-            @Override
-            public CssClassNameAppender newCssClassNameModifier() {
-                return null;
-            }
         }));
 
         startPageAndAssertClassNames("classX classY classZ");

@@ -1,6 +1,5 @@
 package de.agilecoders.wicket.markup.html.bootstrap.layout;
 
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.ICssClassNameProvider;
 
 /**
@@ -26,8 +25,4 @@ public enum SpanType implements ICssClassNameProvider {
         return cssClassName;
     }
 
-    @Override
-    public CssClassNameAppender newCssClassNameModifier() {
-        return new CssClassNameAppender(cssClassName());
-    }
 }

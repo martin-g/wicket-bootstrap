@@ -89,6 +89,6 @@ public class CssClassNameAppender extends AttributeAppender {
             return currentValue != null ? currentValue : null;
         }
 
-        return CssClassNames.parse(currentValue).add(CssClassNames.parse(appendValue)).asString();
+        return CssClassNames.parse(currentValue).addRaw(appendValue).asString();
     }
 }

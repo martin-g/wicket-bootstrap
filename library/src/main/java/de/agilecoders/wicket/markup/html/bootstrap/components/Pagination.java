@@ -1,7 +1,6 @@
 package de.agilecoders.wicket.markup.html.bootstrap.components;
 
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.ICssClassNameProvider;
 import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonList;
 import de.agilecoders.wicket.util.Attributes;
@@ -31,10 +30,6 @@ public class Pagination extends Panel {
             return equals(Left) ? "" : "pagination-" + name().toLowerCase();
         }
 
-        @Override
-        public CssClassNameAppender newCssClassNameModifier() {
-            return new CssClassNameAppender(this);
-        }
     }
 
     private final ButtonList buttonList;

@@ -87,10 +87,6 @@ public class Navbar extends Panel implements Invertible<Navbar> {
             return className;
         }
 
-        @Override
-        public AttributeModifier newCssClassNameModifier() {
-            return new CssClassNameAppender(this);
-        }
     }
 
     /**

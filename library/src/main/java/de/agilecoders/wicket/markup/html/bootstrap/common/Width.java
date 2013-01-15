@@ -1,16 +1,16 @@
 package de.agilecoders.wicket.markup.html.bootstrap.common;
 
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
+import de.agilecoders.wicket.markup.html.bootstrap.behavior.ICssClassNameModifier;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.ICssClassNameProvider;
 import org.apache.wicket.Component;
 
 /**
- * TODO: document
+ * Defines all possible layout dimensions.
  *
  * @author miha
- * @version 1.0
  */
-public enum Width implements ICssClassNameProvider {
+public enum Width implements ICssClassNameProvider, ICssClassNameModifier {
     SPAN1,
     SPAN2,
     SPAN3,
@@ -24,7 +24,12 @@ public enum Width implements ICssClassNameProvider {
     SPAN11,
     SPAN12;
 
-    public void addTo(Component component) {
+    /**
+     * adds width css class name modifier to given component
+     *
+     * @param component to append the css class
+     */
+    public void addTo(final Component component) {
         component.add(newCssClassNameModifier());
     }
     

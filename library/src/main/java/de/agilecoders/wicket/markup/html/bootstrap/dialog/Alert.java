@@ -40,11 +40,6 @@ public class Alert extends GenericPanel<String> {
             return equals(Warning) ? "alert-block" : "alert-" + name().toLowerCase();
         }
 
-        @Override
-        public CssClassNameAppender newCssClassNameModifier() {
-            return new CssClassNameAppender(cssClassName());
-        }
-
         public static Type from(String level) {
             if (level.equalsIgnoreCase("ERROR") || level.equalsIgnoreCase("FATAL")) {
                 return Error;

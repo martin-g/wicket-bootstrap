@@ -9,7 +9,6 @@ import de.agilecoders.wicket.markup.html.references.BootstrapPrettifyJavaScriptR
 import de.agilecoders.wicket.util.Components;
 import de.agilecoders.wicket.util.CssClassNames;
 import de.agilecoders.wicket.util.References;
-import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.Behavior;
 import org.apache.wicket.markup.ComponentTag;
@@ -52,10 +51,6 @@ public class CodeBehavior extends Behavior {
             return "";
         }
 
-        @Override
-        public AttributeModifier newCssClassNameModifier() {
-            return new CssClassNameAppender(this);
-        }
     }
 
     private final IModel<Boolean> lineNumbers;

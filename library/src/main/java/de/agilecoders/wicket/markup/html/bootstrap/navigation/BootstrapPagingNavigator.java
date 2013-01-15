@@ -30,10 +30,6 @@ public class BootstrapPagingNavigator extends PagingNavigator {
             return equals(Left) ? "" : "pagination-" + name().toLowerCase();
         }
 
-        @Override
-        public CssClassNameAppender newCssClassNameModifier() {
-            return new CssClassNameAppender(this);
-        }
     }
 
     private final Model<String> positionModel;

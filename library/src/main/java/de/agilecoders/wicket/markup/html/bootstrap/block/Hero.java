@@ -14,7 +14,6 @@ import org.apache.wicket.model.IModel;
  * </pre>
  *
  * @author miha
- * @version 1.0
  */
 public abstract class Hero extends WebMarkupContainer {
 
