@@ -86,4 +86,5 @@ public class BootstrapBaseBehavior extends Behavior {
             headerResponse.render(CssHeaderItem.forReference(settings.getResponsiveCssResourceReference()));
         }
     }
+
 }

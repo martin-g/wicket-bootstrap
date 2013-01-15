@@ -79,7 +79,7 @@ public class CssClassNameAppenderTest extends WicketApplicationTest {
         component.add(new CssClassNameAppender("classX classY"));
         component.add(new CssClassNameAppender("classX classZ"));
 
-        startPageAndAssertClassNames("classX classY classZ");
+        startPageAndAssertClassNames("classY classX classZ");
     }
 
     private void startPageAndAssertClassNames(final String classNames) {
