@@ -69,8 +69,8 @@ public abstract class AbstractConfig implements IClusterable {
      *
      * @param key the key to remove
      */
-    protected final <T> void remove(final IKey<T> key) {
-        config.remove(key.key());
+    protected final <T> T remove(final IKey<T> key) {
+        return (T) config.remove(key.key());
     }
 
     /**
