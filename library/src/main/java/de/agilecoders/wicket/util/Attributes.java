@@ -1,6 +1,7 @@
 package de.agilecoders.wicket.util;
 
 import org.apache.wicket.markup.ComponentTag;
+import org.apache.wicket.util.string.Strings;
 
 /**
  * Helper class.
@@ -16,7 +17,11 @@ public final class Attributes {
      * @param classNames The class names to add
      */
     public static void addClass(final ComponentTag tag, final String... classNames) {
-        tag.put("class", CssClassNames.parse(tag.getAttribute("class")).add(classNames).asString());
+        final String classValue = CssClassNames.parse(tag.getAttribute("class")).add(classNames).asString();
+
+        if (!Strings.isEmpty(classValue)) {
+            tag.put("class", classValue);
+        }
     }
 
     /**

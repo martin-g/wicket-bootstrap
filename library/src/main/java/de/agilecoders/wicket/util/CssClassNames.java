@@ -4,6 +4,7 @@ import com.google.common.base.Joiner;
 import com.google.common.base.Splitter;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
+import org.apache.wicket.util.lang.Args;
 
 import java.util.List;
 import java.util.Set;
@@ -104,6 +105,8 @@ public final class CssClassNames {
          * @return this builder instance for chaining
          */
         public Builder remove(final Builder builder) {
+            Args.notNull(builder, "builder");
+
             return remove(builder.asSet());
         }
 
@@ -114,6 +117,8 @@ public final class CssClassNames {
          * @return this builder instance for chaining
          */
         public Builder remove(final String... classNames) {
+            Args.notNull(classNames, "classNames");
+
             return remove(Sets.newHashSet(classNames));
         }
 
@@ -124,6 +129,8 @@ public final class CssClassNames {
          * @return this builder instance for chaining
          */
         public Builder remove(final Set<String> classNames) {
+            Args.notNull(classNames, "classNames");
+
             classValues.removeAll(classNames);
             return this;
         }
@@ -135,6 +142,8 @@ public final class CssClassNames {
          * @return this builder instance for chaining
          */
         public Builder add(final Builder builder) {
+            Args.notNull(builder, "builder");
+
             return add(builder.asSet());
         }
 
@@ -145,6 +154,8 @@ public final class CssClassNames {
          * @return this builder instance for chaining
          */
         public Builder add(final String... classNames) {
+            Args.notNull(classNames, "classNames");
+
             return add(Sets.newHashSet(classNames));
         }
 
@@ -155,6 +166,8 @@ public final class CssClassNames {
          * @return this builder instance for chaining
          */
         public Builder add(final Set<String> classNames) {
+            Args.notNull(classNames, "classNames");
+
             classValues.addAll(classNames);
             return this;
         }

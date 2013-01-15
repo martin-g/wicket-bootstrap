@@ -4,6 +4,7 @@ import com.google.common.base.Splitter;
 import com.google.common.collect.Lists;
 import de.agilecoders.wicket.settings.BootstrapSettings;
 import de.agilecoders.wicket.settings.IBootstrapSettings;
+import de.agilecoders.wicket.test.Attributes;
 import de.agilecoders.wicket.util.CssClassNames;
 import org.apache.wicket.Component;
 import org.apache.wicket.Page;
@@ -122,6 +123,10 @@ public class WicketApplicationTest {
         tester().startComponentInPage(component);
 
         return tester().getTagByWicketId(id());
+    }
+
+    protected final void assertClassNamesPresent(final String... cssClassNames) {
+        Attributes.assertClassNamesPresent(tester().getTagByWicketId(id()), cssClassNames);
     }
 
 }
