@@ -55,12 +55,13 @@ public abstract class AbstractConfig implements IClusterable {
      * @param key   mandatory parameter
      * @param value mandatory parameter
      */
-    protected final <T> void put(final IKey<T> key, final T value) {
+    protected final <T> AbstractConfig put(final IKey<T> key, final T value) {
         if (!key.isDefaultValue(value)) {
             config.put(key.key(), value);
         } else {
             remove(key);
         }
+        return this;
     }
 
     /**
