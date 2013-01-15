@@ -23,7 +23,7 @@ public class Pagination extends Panel {
     /**
      * Add one of two optional classes to change the alignment of pagination links: .pagination-centered and .pagination-right.
      */
-    public enum Alignment implements ICssClassNameProvider {
+    public static enum Alignment implements ICssClassNameProvider {
         Centered, Right, Left;
 
         @Override
