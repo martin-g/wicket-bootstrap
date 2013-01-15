@@ -9,7 +9,6 @@ import org.apache.wicket.model.IModel;
  * This {@link CssClassNameAppender} adds all button styles.
  *
  * @author miha
- * @version 1.0
  */
 public class ButtonCssClassAppender extends CssClassNameAppender {
     private static final String DISABLED_CLASSNAME = "btn-disabled";
