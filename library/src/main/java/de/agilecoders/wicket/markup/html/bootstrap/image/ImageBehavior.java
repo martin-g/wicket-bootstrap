@@ -1,9 +1,9 @@
 package de.agilecoders.wicket.markup.html.bootstrap.image;
 
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.AssertTagNameBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.ICssClassNameProvider;
 import de.agilecoders.wicket.util.Attributes;
+import de.agilecoders.wicket.util.Components;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.ComponentTag;
 
@@ -42,13 +42,8 @@ public class ImageBehavior extends BootstrapBaseBehavior {
     public void onComponentTag(Component component, ComponentTag tag) {
         super.onComponentTag(component, tag);
 
+        Components.assertTag(component, tag, "img");
         Attributes.addClass(tag, borderType.cssClassName());
     }
 
-    @Override
-    public void bind(Component component) {
-        super.bind(component);
-
-        component.add(new AssertTagNameBehavior("img"));
-    }
 }
