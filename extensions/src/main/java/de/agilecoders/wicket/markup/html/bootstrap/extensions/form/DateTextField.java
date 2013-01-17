@@ -1,10 +1,10 @@
 package de.agilecoders.wicket.markup.html.bootstrap.extensions.form;
 
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.AssertTagNameBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.extensions.references.BootstrapDatepickerJsReference;
 import de.agilecoders.wicket.markup.html.bootstrap.extensions.references.BootstrapDatepickerLangJsReference;
 import de.agilecoders.wicket.markup.html.bootstrap.extensions.references.BootstrapDatepickerReference;
-import org.apache.wicket.AttributeModifier;
+import de.agilecoders.wicket.util.Attributes;
+import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
@@ -98,8 +98,14 @@ public class DateTextField extends org.apache.wicket.extensions.markup.html.form
         super.onInitialize();
 
         setOutputMarkupId(true);
-        add(new AssertTagNameBehavior("input"));
-        add(new AttributeModifier("type", "text"));
+    }
+
+    @Override
+    protected void onComponentTag(ComponentTag tag) {
+        super.onComponentTag(tag);
+
+        checkComponentTag(tag, "input");
+        Attributes.set(tag, "type", "text");
     }
 
     @Override

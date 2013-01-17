@@ -1,6 +1,5 @@
 package de.agilecoders.wicket.samples.components.base;
 
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.AssertTagNameBehavior;
 import org.apache.wicket.markup.html.panel.GenericPanel;
 import org.apache.wicket.model.IModel;
 
@@ -27,7 +26,5 @@ public class Section<T> extends GenericPanel<T> {
     private void internalInit() {
         setOutputMarkupId(true);
         setMarkupId(getId());
-
-        add(new AssertTagNameBehavior("section"));
     }
 }

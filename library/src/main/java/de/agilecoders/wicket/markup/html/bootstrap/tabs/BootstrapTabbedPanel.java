@@ -1,37 +1,52 @@
 package de.agilecoders.wicket.markup.html.bootstrap.tabs;
 
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.AssertTagNameBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
+import de.agilecoders.wicket.util.Attributes;
 import org.apache.wicket.extensions.markup.html.tabs.ITab;
 import org.apache.wicket.extensions.markup.html.tabs.TabbedPanel;
+import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.model.IModel;
 
 import java.util.List;
 
 /**
- * TODO: document
+ * Styled version of {@link TabbedPanel}.
  *
  * @author miha
- * @version 1.0
  */
 public class BootstrapTabbedPanel<T extends ITab> extends TabbedPanel<T> {
+
+    /**
+     * {@inheritDoc}
+     */
     public BootstrapTabbedPanel(String id, List<T> tabs) {
         super(id, tabs);
 
         commonInit();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public BootstrapTabbedPanel(String id, List<T> tabs, IModel<Integer> model) {
         super(id, tabs, model);
 
         commonInit();
     }
 
+    /**
+     * common initializer
+     */
     private void commonInit() {
-        add(new BootstrapBaseBehavior(),
-            new CssClassNameAppender("tabbable"),
-            new AssertTagNameBehavior("div"));
+        BootstrapBaseBehavior.addTo(this);
+    }
+
+    @Override
+    protected void onComponentTag(ComponentTag tag) {
+        super.onComponentTag(tag);
+
+        checkComponentTag(tag, "div");
+        Attributes.addClass(tag, "tabbable");
     }
 
     @Override

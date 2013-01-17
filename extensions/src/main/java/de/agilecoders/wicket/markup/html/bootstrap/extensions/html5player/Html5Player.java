@@ -1,11 +1,12 @@
 package de.agilecoders.wicket.markup.html.bootstrap.extensions.html5player;
 
 import de.agilecoders.wicket.Bootstrap;
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.AssertTagNameBehavior;
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
+import de.agilecoders.wicket.util.Attributes;
+import de.agilecoders.wicket.util.Components;
 import de.agilecoders.wicket.util.References;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
+import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.head.CssReferenceHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptReferenceHeaderItem;
@@ -65,11 +66,18 @@ public class Html5Player extends Panel {
         height = Model.of(215);
         errorMessage = Model.of("Your browser does not support the video tag.");
 
-        add(new CssClassNameAppender("videoUiWrapper", "thumbnail"));
-        add(new AssertTagNameBehavior("div", "span"));
         add(container = newVideoTag("video"));
         container.add(newVideoList("videos"));
         container.add(new Label("message", errorMessage).setRenderBodyOnly(true));
+    }
+
+
+    @Override
+    protected void onComponentTag(ComponentTag tag) {
+        super.onComponentTag(tag);
+
+        Components.assertTag(this, tag, "div", "span");
+        Attributes.addClass(tag, "videoUiWrapper", "thumbnail");
     }
 
     /**
@@ -138,11 +146,16 @@ public class Html5Player extends Panel {
      * @param markupId The component' id
      * @return new container
      */
-    private WebMarkupContainer newVideoTag(final String markupId) {
-        final WebMarkupContainer container = new WebMarkupContainer(markupId);
-        container.add(new AttributeModifier("width", width));
-        container.add(new AttributeModifier("height", height));
-        return container;
+    private WebMarkupContainer newVideoTag(String markupId) {
+        return new WebMarkupContainer(markupId) {
+            @Override
+            protected void onComponentTag(ComponentTag tag) {
+                super.onComponentTag(tag);
+
+                tag.put("width", width.getObject());
+                tag.put("height", height.getObject());
+            }
+        };
     }
 
     /**

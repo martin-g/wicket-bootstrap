@@ -1,6 +1,7 @@
 package de.agilecoders.wicket.markup.html.bootstrap.image;
 
 import de.agilecoders.wicket.markup.html.bootstrap.common.Invertible;
+import de.agilecoders.wicket.util.Attributes;
 import de.agilecoders.wicket.util.Components;
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.Behavior;
@@ -57,6 +58,7 @@ public class IconBehavior extends Behavior implements Invertible<IconBehavior> {
         super.onComponentTag(component, tag);
 
         Components.assertTag(component, tag, "i");
+        Attributes.addClass(tag, value.getObject());
     }
 
     @Override
