@@ -12,7 +12,7 @@ import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.LoadableDetachableModel;
-import org.apache.wicket.model.Model;
+import org.apache.wicket.util.lang.Args;
 
 import java.util.List;
 
@@ -24,7 +24,7 @@ import java.util.List;
 public class ButtonGroup extends Panel {
 
     private final List<AbstractLink> buttonList;
-    private final IModel<Orientation> orientation;
+    private final Orientation orientation;
 
     /**
      * Construct.
@@ -44,8 +44,10 @@ public class ButtonGroup extends Panel {
     public ButtonGroup(final String markupId, final Orientation orientation) {
         super(markupId);
 
+        Args.notNull(orientation, "orientation");
+
         this.buttonList = Lists.newArrayList();
-        this.orientation = Model.of(orientation);
+        this.orientation = orientation;
 
         add(newButtonList("buttons"));
 
@@ -56,7 +58,7 @@ public class ButtonGroup extends Panel {
     protected void onComponentTag(ComponentTag tag) {
         super.onComponentTag(tag);
 
-        Attributes.addClass(tag, orientation.getObject().cssClassName(), "btn-group");
+        Attributes.addClass(tag, orientation.cssClassName(), "btn-group");
     }
 
     @Override
@@ -64,7 +66,6 @@ public class ButtonGroup extends Panel {
         super.detachModels();
 
         this.buttonList.clear();
-        this.orientation.detach();
     }
 
     public ButtonGroup addButton(AbstractLink button) {
