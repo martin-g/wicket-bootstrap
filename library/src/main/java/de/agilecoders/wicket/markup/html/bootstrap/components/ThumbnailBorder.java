@@ -1,11 +1,11 @@
 package de.agilecoders.wicket.markup.html.bootstrap.components;
 
 import com.google.common.base.Strings;
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.AssertTagNameBehavior;
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
+import de.agilecoders.wicket.util.Attributes;
 import de.agilecoders.wicket.util.Components;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
+import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.border.Border;
 import org.apache.wicket.model.IModel;
@@ -20,7 +20,6 @@ import org.apache.wicket.model.Model;
  * or buttons into thumbnails.
  *
  * @author miha
- * @version 1.0
  */
 public class ThumbnailBorder extends Border {
 
@@ -45,29 +44,38 @@ public class ThumbnailBorder extends Border {
     public ThumbnailBorder(String id, IModel<String> model) {
         super(id, model);
 
-        add(new CssClassNameAppender("thumbnail"));
-        add(new AssertTagNameBehavior("div"));
-
         add(title = new Label("title", Model.of("")),
             image = new Label("image").add(new AttributeModifier("url", getDefaultModel())));
     }
 
-    public ThumbnailBorder setImageUrl(IModel<String> url) {
-        setDefaultModelObject(url.getObject());
-        return this;
+    @Override
+    protected void onComponentTag(ComponentTag tag) {
+        super.onComponentTag(tag);
+
+        checkComponentTag(tag, "div");
+        Attributes.addClass(tag, "thumbnail");
     }
 
-    public ThumbnailBorder setImageUrl(String url) {
-        return setImageUrl(Model.of(url));
-    }
-
+    /**
+     * sets the thumbnail title
+     *
+     * @param title new thumbnail title
+     * @return this instance for chaining
+     */
     public ThumbnailBorder setTitle(IModel<String> title) {
         this.title.setDefaultModel(title);
         return this;
     }
 
+    /**
+     * sets the thumbnail title
+     *
+     * @param title new thumbnail title
+     * @return this instance for chaining
+     */
     public ThumbnailBorder setTitle(String title) {
-        return setTitle(Model.of(title));
+        this.title.setDefaultModelObject(title);
+        return this;
     }
 
     @Override

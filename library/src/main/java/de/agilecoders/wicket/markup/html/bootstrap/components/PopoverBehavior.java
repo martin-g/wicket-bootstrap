@@ -1,12 +1,10 @@
 package de.agilecoders.wicket.markup.html.bootstrap.components;
 
 import de.agilecoders.wicket.markup.html.bootstrap.common.AbstractConfig;
-import de.agilecoders.wicket.util.JQuery;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.model.IModel;
 
-import static de.agilecoders.wicket.markup.html.bootstrap.components.PopoverBehavior.PopoverJqueryFunction.popover;
 import static de.agilecoders.wicket.util.JQuery.$;
 
 /**
@@ -72,35 +70,7 @@ public class PopoverBehavior extends TooltipBehavior {
 
     @Override
     protected CharSequence createInitializerScript(final Component component, final AbstractConfig config) {
-        return $(component).chain(popover(config)).get();
-    }
-
-    /**
-     * A simple popover jquery function representation in java.
-     */
-    public static final class PopoverJqueryFunction extends JQuery.AbstractFunction {
-
-        /**
-         * helper method.
-         *
-         * @param config tooltip configuration
-         */
-        public static PopoverJqueryFunction popover(final AbstractConfig config) {
-            return new PopoverJqueryFunction(config);
-        }
-
-        /**
-         * Construct.
-         *
-         * @param config popover configuration
-         */
-        private PopoverJqueryFunction(final AbstractConfig config) {
-            super("popover");
-
-            if (!config.isEmpty()) {
-                addParameter(config.toJsonString());
-            }
-        }
+        return $(component).chain("popover", config).get();
     }
 
 }

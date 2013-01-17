@@ -5,9 +5,7 @@ import de.agilecoders.wicket.util.JQuery;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.markup.head.IHeaderResponse;
-import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
 
-import static de.agilecoders.wicket.markup.html.bootstrap.navbar.ScrollSpyBehavior.ScrollspyJqueryFunction.scrollspy;
 import static de.agilecoders.wicket.util.JQuery.$;
 import static de.agilecoders.wicket.util.JQuery.EachJqueryFunction.each;
 
@@ -16,7 +14,6 @@ import static de.agilecoders.wicket.util.JQuery.EachJqueryFunction.each;
  * component according to the current scroll position.
  *
  * @author miha
- * @version 1.0
  */
 public class ScrollSpyBehavior extends BootstrapBaseBehavior {
 
@@ -41,26 +38,6 @@ public class ScrollSpyBehavior extends BootstrapBaseBehavior {
     public void renderHead(Component component, IHeaderResponse headerResponse) {
         super.renderHead(component, headerResponse);
 
-        headerResponse.render(OnDomReadyHeaderItem.forScript($(component).chain(scrollspy()).get()));
-    }
-
-    /**
-     * A jquery function abstraction for scrollspy.
-     */
-    public static final class ScrollspyJqueryFunction extends JQuery.AbstractFunction {
-
-        /**
-         * @return new {@link ScrollspyJqueryFunction} instance.
-         */
-        public static ScrollspyJqueryFunction scrollspy() {
-            return new ScrollspyJqueryFunction();
-        }
-
-        /**
-         * Construct.
-         */
-        protected ScrollspyJqueryFunction() {
-            super("scrollspy");
-        }
+        headerResponse.render($(component).chain("scrollspy").asDomReadyScript());
     }
 }

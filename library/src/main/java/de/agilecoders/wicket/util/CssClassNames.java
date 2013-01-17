@@ -4,9 +4,12 @@ import com.google.common.base.Joiner;
 import com.google.common.base.Splitter;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
+import org.apache.wicket.util.lang.Args;
 
 import java.util.List;
 import java.util.Set;
+
+import static com.google.common.base.Strings.nullToEmpty;
 
 /**
  * helper class for css class names
@@ -62,7 +65,7 @@ public final class CssClassNames {
      * @param classValue The class attribute value
      * @return new Builder.
      */
-    public static Builder parse(final CharSequence classValue) {
+    public static Builder parse(final String classValue) {
         return new Builder(classValue);
     }
 
@@ -78,8 +81,21 @@ public final class CssClassNames {
          *
          * @param classValue the initial class name string
          */
-        private Builder(final CharSequence classValue) {
-            classValues = split(classValue);
+        private Builder(final String classValue) {
+            classValues = Sets.newHashSet();
+
+            addRaw(classValue);
+        }
+
+        /**
+         * adds an unparsed css class name string.
+         *
+         * @param rawCssString the raw css classes
+         * @return this instance for chaining
+         */
+        public Builder addRaw(final String rawCssString) {
+            add(split(nullToEmpty(rawCssString)));
+            return this;
         }
 
         /**
@@ -89,6 +105,8 @@ public final class CssClassNames {
          * @return this builder instance for chaining
          */
         public Builder remove(final Builder builder) {
+            Args.notNull(builder, "builder");
+
             return remove(builder.asSet());
         }
 
@@ -99,6 +117,8 @@ public final class CssClassNames {
          * @return this builder instance for chaining
          */
         public Builder remove(final String... classNames) {
+            Args.notNull(classNames, "classNames");
+
             return remove(Sets.newHashSet(classNames));
         }
 
@@ -109,6 +129,8 @@ public final class CssClassNames {
          * @return this builder instance for chaining
          */
         public Builder remove(final Set<String> classNames) {
+            Args.notNull(classNames, "classNames");
+
             classValues.removeAll(classNames);
             return this;
         }
@@ -120,6 +142,8 @@ public final class CssClassNames {
          * @return this builder instance for chaining
          */
         public Builder add(final Builder builder) {
+            Args.notNull(builder, "builder");
+
             return add(builder.asSet());
         }
 
@@ -130,6 +154,8 @@ public final class CssClassNames {
          * @return this builder instance for chaining
          */
         public Builder add(final String... classNames) {
+            Args.notNull(classNames, "classNames");
+
             return add(Sets.newHashSet(classNames));
         }
 
@@ -140,6 +166,8 @@ public final class CssClassNames {
          * @return this builder instance for chaining
          */
         public Builder add(final Set<String> classNames) {
+            Args.notNull(classNames, "classNames");
+
             classValues.addAll(classNames);
             return this;
         }

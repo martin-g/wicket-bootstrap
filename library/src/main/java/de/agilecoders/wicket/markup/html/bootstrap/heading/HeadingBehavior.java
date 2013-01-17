@@ -1,8 +1,9 @@
 package de.agilecoders.wicket.markup.html.bootstrap.heading;
 
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.AssertTagNameBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
+import de.agilecoders.wicket.util.Components;
 import org.apache.wicket.Component;
+import org.apache.wicket.markup.ComponentTag;
 
 /**
  * Simple heading behavior that only asserts correct tag name and
@@ -13,9 +14,9 @@ import org.apache.wicket.Component;
 public class HeadingBehavior extends BootstrapBaseBehavior {
 
     @Override
-    public void bind(Component component) {
-        super.bind(component);
+    public void onComponentTag(Component component, ComponentTag tag) {
+        super.onComponentTag(component, tag);
 
-        component.add(new AssertTagNameBehavior("h1", "h2", "h3", "h4", "h5", "h6"));
+        Components.assertTag(component, tag, "h1", "h2", "h3", "h4", "h5", "h6");
     }
 }

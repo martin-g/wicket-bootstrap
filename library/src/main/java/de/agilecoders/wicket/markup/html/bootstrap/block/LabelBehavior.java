@@ -1,11 +1,11 @@
 package de.agilecoders.wicket.markup.html.bootstrap.block;
 
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.AssertTagNameBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
-import de.agilecoders.wicket.util.CssClassNames;
+import de.agilecoders.wicket.util.Attributes;
+import de.agilecoders.wicket.util.Components;
 import org.apache.wicket.Component;
-import org.apache.wicket.model.AbstractReadOnlyModel;
+import org.apache.wicket.behavior.Behavior;
+import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
@@ -13,11 +13,9 @@ import org.apache.wicket.model.Model;
  * A Label is a highlighted text with rounded corners.
  *
  * @author miha
- * @version 1.0
  */
-public class LabelBehavior extends AssertTagNameBehavior {
+public class LabelBehavior extends Behavior {
     private final IModel<LabelType> type;
-    private final CssClassNameAppender cssClassNameAppender;
 
     /**
      * Construct.
@@ -41,15 +39,17 @@ public class LabelBehavior extends AssertTagNameBehavior {
      * @param type The type of the label as model
      */
     public LabelBehavior(final IModel<LabelType> type) {
-        super("span");
+        super();
 
         this.type = type;
-        this.cssClassNameAppender = new CssClassNameAppender(new AbstractReadOnlyModel<String>() {
-            @Override
-            public String getObject() {
-                return CssClassNames.parse(className()).add(getType().cssClassName(className())).asString();
-            }
-        });
+    }
+
+    @Override
+    public void onComponentTag(final Component component, final ComponentTag tag) {
+        super.onComponentTag(component, tag);
+
+        Components.assertTag(component, tag, "span");
+        Attributes.addClass(tag, className(), getType().cssClassName(className()));
     }
 
     /**
@@ -83,7 +83,6 @@ public class LabelBehavior extends AssertTagNameBehavior {
         super.bind(component);
 
         BootstrapBaseBehavior.addTo(component);
-        component.add(cssClassNameAppender);
     }
 
     @Override
@@ -91,6 +90,5 @@ public class LabelBehavior extends AssertTagNameBehavior {
         super.unbind(component);
 
         BootstrapBaseBehavior.removeFrom(component);
-        component.remove(cssClassNameAppender);
     }
 }

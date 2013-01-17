@@ -1,9 +1,9 @@
 package de.agilecoders.wicket.markup.html.bootstrap.navigation;
 
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.AssertTagNameBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
+import de.agilecoders.wicket.util.Attributes;
 import org.apache.wicket.extensions.breadcrumb.BreadCrumbBar;
+import org.apache.wicket.markup.ComponentTag;
 
 /**
  * A component that renders bread crumbs like {@link BreadCrumbBar} that is
@@ -27,8 +27,13 @@ public class Breadcrumb extends BreadCrumbBar {
         super.onInitialize();
 
         BootstrapBaseBehavior.addTo(this);
+    }
 
-        add(new AssertTagNameBehavior("ul"),
-            new CssClassNameAppender("breadcrumb"));
+    @Override
+    protected void onComponentTag(ComponentTag tag) {
+        super.onComponentTag(tag);
+
+        checkComponentTag(tag, "ul");
+        Attributes.addClass(tag, "breadcrumb");
     }
 }

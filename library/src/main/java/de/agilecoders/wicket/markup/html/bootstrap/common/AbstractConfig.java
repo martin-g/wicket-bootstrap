@@ -1,12 +1,13 @@
 package de.agilecoders.wicket.markup.html.bootstrap.common;
 
-import java.util.Map;
-
 import com.google.common.collect.Maps;
 import de.agilecoders.wicket.util.ConfigModel;
 import de.agilecoders.wicket.util.Json;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.util.io.IClusterable;
+import org.apache.wicket.util.lang.Objects;
+
+import java.util.Map;
 
 /**
  * Base configuration class.
@@ -51,17 +52,16 @@ public abstract class AbstractConfig implements IClusterable {
      * code small and clean. Also the given value type will be asserted by
      * {@link IKey} implementation.
      *
-     * @param key mandatory parameter
+     * @param key   mandatory parameter
      * @param value mandatory parameter
      */
-    protected final void put(final IKey key, final Object value) {
-        key.assertCorrectType(value);
-
+    protected final <T> AbstractConfig put(final IKey<T> key, final T value) {
         if (!key.isDefaultValue(value)) {
             config.put(key.key(), value);
         } else {
             remove(key);
         }
+        return this;
     }
 
     /**
@@ -69,8 +69,8 @@ public abstract class AbstractConfig implements IClusterable {
      *
      * @param key the key to remove
      */
-    protected final void remove(final IKey key) {
-        config.remove(key.key());
+    protected final <T> T remove(final IKey<T> key) {
+        return (T) config.remove(key.key());
     }
 
     /**
@@ -80,7 +80,7 @@ public abstract class AbstractConfig implements IClusterable {
      * @param key The key to read.
      * @return the value as string.
      */
-    protected final String getString(final IKey key) {
+    protected final <T> String getString(final IKey<T> key) {
         final Object value = config.get(key.key());
 
         return String.valueOf(value != null ? value : key.getDefaultValue());
@@ -102,21 +102,12 @@ public abstract class AbstractConfig implements IClusterable {
      * functionality like assertion of value type and default value
      * handling.
      */
-    protected static interface IKey {
+    public static interface IKey<T> {
 
         /**
          * @return the key to use in {@link Map}
          */
-        String key();
-
-        /**
-         * asserts the type of given value. The implementation of this method
-         * should throw an exception if given value type doesn't match the
-         * configured one.
-         *
-         * @param value The value to check
-         */
-        void assertCorrectType(Object value);
+        public String key();
 
         /**
          * checks if given value is equal to default value
@@ -124,11 +115,56 @@ public abstract class AbstractConfig implements IClusterable {
          * @param value The value to check.
          * @return true, if given value is equal to default value
          */
-        boolean isDefaultValue(Object value);
+        public boolean isDefaultValue(T value);
 
         /**
          * @return the default value
          */
-        Object getDefaultValue();
+        public T getDefaultValue();
+    }
+
+    /**
+     * creates a new key.
+     *
+     * @param key          string representation of this key
+     * @param defaultValue The default value
+     */
+    protected static <T> IKey<T> newKey(final String key, final T defaultValue) {
+        return new Key<T>(key, defaultValue);
+    }
+
+    /**
+     * Default {@link IKey} implementation
+     */
+    private static final class Key<T> implements IKey<T> {
+        private final String key;
+        private final T defaultValue;
+
+        /**
+         * Construct.
+         *
+         * @param key          string representation of this key
+         * @param defaultValue The default value
+         */
+        private Key(final String key, final T defaultValue) {
+            this.key = key;
+            this.defaultValue = defaultValue;
+        }
+
+        @Override
+        public String key() {
+            return key;
+        }
+
+        @Override
+        public boolean isDefaultValue(final T value) {
+            return Objects.equal(value, defaultValue);
+        }
+
+        @Override
+        public T getDefaultValue() {
+            return defaultValue;
+        }
+
     }
 }

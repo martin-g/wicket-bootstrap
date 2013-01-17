@@ -36,7 +36,7 @@ import org.apache.wicket.util.string.Strings;
  * <p/>
  * When configuring the CDN host, the easiest setup is a reverse-proxy. For example, with
  * Amazon CloudFront, you would specify your Wicket app as the <em>custom origin</em>, and specify
- * the CloudFront host when constructing this SimpleCDN. It's that easy.
+ * the CloudFront host when constructing this StaticResourceRewriteMapper. It's that easy.
  * <pre class="example">
  * public class MyApplication extends WebApplication
  * {
@@ -124,7 +124,7 @@ public class StaticResourceRewriteMapper implements IRequestMapper {
     }
 
     /**
-     * Always return {@code 0}, since {@code SimpleCDN} does not play any part in handling requests
+     * Always return {@code 0}, since {@code StaticResourceRewriteMapper} does not play any part in handling requests
      * (they will be handled by Wicket's default mechanism).
      */
     @Override

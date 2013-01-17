@@ -1,15 +1,13 @@
 package de.agilecoders.wicket.markup.html.bootstrap.dialog;
 
-import java.util.List;
-
 import com.google.common.collect.Lists;
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.AssertTagNameBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
+import de.agilecoders.wicket.util.Attributes;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxEventBehavior;
 import org.apache.wicket.ajax.AjaxRequestTarget;
-import org.apache.wicket.behavior.AttributeAppender;
+import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
 import org.apache.wicket.markup.html.WebMarkupContainer;
@@ -20,6 +18,8 @@ import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.util.string.Strings;
+
+import java.util.List;
 
 /**
  * The {@code Modal} dialog is a simple component with header,
@@ -81,10 +81,15 @@ public class Modal extends Panel {
         };
 
         add(header, footer);
-        add(new AssertTagNameBehavior("div"));
-        add(new CssClassNameAppender("modal", "hide"));
+    }
 
-        add(new AttributeAppender("tabindex", Model.of("-1")));
+    @Override
+    protected void onComponentTag(ComponentTag tag) {
+        super.onComponentTag(tag);
+
+        checkComponentTag(tag, "div");
+        Attributes.addClass(tag, "modal", "hide");
+        Attributes.set(tag, "tabindex", "-1");
     }
 
     /**
@@ -221,7 +226,7 @@ public class Modal extends Panel {
     public Modal addButton(final Component button) {
         if (!BUTTON_MARKUP_ID.equals(button.getId())) {
             throw new IllegalArgumentException(
-		            String.format("Invalid button markup id. Must be '%s'.", BUTTON_MARKUP_ID));
+                    String.format("Invalid button markup id. Must be '%s'.", BUTTON_MARKUP_ID));
         }
 
         if (button instanceof ModalCloseButton) {

@@ -87,6 +87,7 @@ public class WicketApplication extends WebApplication {
         optimizeForWebPerformance();
 
         new AnnotatedMountScanner().scanPackage("de.agilecoders.wicket.samples.pages").mount(this);
+        //StaticResourceRewriteMapper.withBaseUrl("http://wb.agile-coders.de").install(this);
     }
 
     /**
