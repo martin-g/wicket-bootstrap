@@ -74,7 +74,7 @@ public class CssClassNamesTest {
         CssClassNames.Builder builder = CssClassNames.parse("class1 class2 class3");
         builder.add(CssClassNames.newBuilder().add("class4", "class5"));
 
-        assertThat(builder.asString(), is(equalTo("class1 class2 class3 class4 class5")));
+        assertThat(builder.asString(), is(equalTo("class4 class5 class1 class2 class3")));
     }
 
     @Test

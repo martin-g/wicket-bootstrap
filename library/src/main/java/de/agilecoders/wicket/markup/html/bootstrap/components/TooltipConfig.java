@@ -1,8 +1,6 @@
 package de.agilecoders.wicket.markup.html.bootstrap.components;
 
-import com.google.common.base.Preconditions;
 import de.agilecoders.wicket.markup.html.bootstrap.common.AbstractConfig;
-import org.apache.wicket.util.lang.Objects;
 import org.apache.wicket.util.time.Duration;
 
 /**
@@ -13,91 +11,49 @@ import org.apache.wicket.util.time.Duration;
 public class TooltipConfig extends AbstractConfig {
 
     /**
-     * Holds all tooltip configuration keys.
+     * apply a css fade transition to the tooltip
      */
-    private enum Key implements IKey {
-        /**
-         * apply a css fade transition to the tooltip
-         */
-        Animation("animation", Boolean.class, true),
+    private static final IKey<Boolean> Animation = newKey("animation", true);
 
-        /**
-         * how to position the tooltip - top | bottom | left | right
-         */
-        Placement("placement", String.class, "top"),
+    /**
+     * how to position the tooltip - top | bottom | left | right
+     */
+    private static final IKey<String> TooltipPlacement = newKey("placement", "top");
 
-        /**
-         * If a selector is provided, tooltip objects will be delegated to the specified targets.
-         */
-        Selector("selector", String.class, "false"),
+    /**
+     * If a selector is provided, tooltip objects will be delegated to the specified targets.
+     */
+    private static final IKey<String> Selector = newKey("selector", "false");
 
-        /**
-         * default content value if `data-content` attribute isn't present
-         */
-        Content("content", String.class, ""),
+    /**
+     * default content value if `data-content` attribute isn't present
+     */
+    private static final IKey<String> Content = newKey("content", "");
 
-        /**
-         * default title value if `title` tag isn't present
-         */
-        Title("title", String.class, ""),
+    /**
+     * default title value if `title` tag isn't present
+     */
+    private static final IKey<String> Title = newKey("title", "");
 
-        /**
-         * how tooltip is triggered - click | hover | focus | manual
-         */
-        Trigger("trigger", String.class, "hover"),
+    /**
+     * how tooltip is triggered - click | hover | focus | manual
+     */
+    private static final IKey<String> Trigger = newKey("trigger", "hover");
 
-        /**
-         * delay showing and hiding the tooltip (ms) - does not apply to manual trigger type
-         * <p/>
-         * Not implemented:
-         * If a number is supplied, delay is applied to both hide/show
-         * Object structure is: delay: { show: 500, hide: 100 }
-         */
-        Delay("delay", Integer.class, 0),
+    /**
+     * delay showing and hiding the tooltip (ms) - does not apply to manual trigger type
+     * <p/>
+     * Not implemented:
+     * If a number is supplied, delay is applied to both hide/show
+     * Object structure is: delay: { show: 500, hide: 100 }
+     */
+    private static final IKey<Long> Delay = newKey("delay", 0L);
 
-        /**
-         * Insert html into the tooltip. If false, jquery's text method
-         * will be used to insert content into the dom. Use text if you're worried about XSS attacks.
-         */
-        Html("html", Boolean.class, false);
-
-        private final String key;
-        private final Class type;
-        private final Object defaultValue;
-
-        /**
-         * Construct.
-         *
-         * @param key          string representation of this key
-         * @param type         The object type
-         * @param defaultValue The default value
-         */
-        private Key(final String key, final Class type, final Object defaultValue) {
-            this.key = key;
-            this.type = type;
-            this.defaultValue = defaultValue;
-        }
-
-        @Override
-        public String key() {
-            return key;
-        }
-
-        @Override
-        public void assertCorrectType(final Object value) {
-            Preconditions.checkArgument(type.isInstance(value));
-        }
-
-        @Override
-        public boolean isDefaultValue(final Object value) {
-            return Objects.equal(value, defaultValue);
-        }
-
-        @Override
-        public Object getDefaultValue() {
-            return defaultValue;
-        }
-    }
+    /**
+     * Insert html into the tooltip. If false, jquery's text method
+     * will be used to insert content into the dom. Use text if you're worried about XSS attacks.
+     */
+    private static final IKey<Boolean> Html = newKey("html", false);
 
     /**
      * holds all possible tooltip positions
@@ -139,18 +95,18 @@ public class TooltipConfig extends AbstractConfig {
      * @return this instance for chaining.
      */
     public TooltipConfig withAnimation(final boolean value) {
-        put(Key.Animation, value);
+        put(Animation, value);
         return this;
     }
 
     /**
-     *  how to position the tooltip - top | bottom | left | right
+     * how to position the tooltip - top | bottom | left | right
      *
      * @param value mandatory parameter
      * @return this instance for chaining.
      */
     public TooltipConfig withPlacement(final IPlacement value) {
-        put(Key.Placement, value.value());
+        put(TooltipPlacement, value.value());
         return this;
     }
 
@@ -161,7 +117,7 @@ public class TooltipConfig extends AbstractConfig {
      * @return this instance for chaining.
      */
     public TooltipConfig withSelector(final String value) {
-        put(Key.Selector, value);
+        put(Selector, value);
         return this;
     }
 
@@ -172,7 +128,7 @@ public class TooltipConfig extends AbstractConfig {
      * @return this instance for chaining.
      */
     public TooltipConfig withTitle(final String value) {
-        put(Key.Title, value);
+        put(Title, value);
         return this;
     }
 
@@ -183,7 +139,7 @@ public class TooltipConfig extends AbstractConfig {
      * @return this instance for chaining.
      */
     public TooltipConfig withContent(final String value) {
-        put(Key.Content, value);
+        put(Content, value);
         return this;
     }
 
@@ -194,7 +150,7 @@ public class TooltipConfig extends AbstractConfig {
      * @return this instance for chaining.
      */
     public TooltipConfig withTrigger(final Trigger value) {
-        put(Key.Trigger, value.name());
+        put(Trigger, value.name());
         return this;
     }
 
@@ -209,7 +165,7 @@ public class TooltipConfig extends AbstractConfig {
      * @return this instance for chaining.
      */
     public TooltipConfig withDelay(final Duration value) {
-        put(Key.Delay, value.getMilliseconds());
+        put(Delay, value.getMilliseconds());
         return this;
     }
 
@@ -221,7 +177,7 @@ public class TooltipConfig extends AbstractConfig {
      * @return this instance for chaining.
      */
     public TooltipConfig withHtml(final boolean value) {
-        put(Key.Html, value);
+        put(Html, value);
         return this;
     }
 

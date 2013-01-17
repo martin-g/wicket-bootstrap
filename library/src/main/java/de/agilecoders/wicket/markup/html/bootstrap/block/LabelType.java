@@ -1,15 +1,15 @@
 package de.agilecoders.wicket.markup.html.bootstrap.block;
 
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameProvider;
+import de.agilecoders.wicket.markup.html.bootstrap.behavior.ICssClassNameModifier;
+import de.agilecoders.wicket.markup.html.bootstrap.behavior.ICssClassNameProvider;
 
 /**
  * A LabelType defines the type of label which changes highlighted color.
  *
  * @author miha
- * @version 1.0
  */
-public enum LabelType implements CssClassNameProvider {
+public enum LabelType implements ICssClassNameProvider, ICssClassNameModifier {
     Default, Success, Warning, Important, Info, Inverse;
 
     @Override
@@ -17,7 +17,7 @@ public enum LabelType implements CssClassNameProvider {
         return equals(Default) ? "" : name().toLowerCase();
     }
 
-    public String cssClassName(String prefix) {
+    public String cssClassName(final String prefix) {
         return equals(Default) ? "" : prefix + "-" + name().toLowerCase();
     }
 
@@ -26,7 +26,7 @@ public enum LabelType implements CssClassNameProvider {
         return new CssClassNameAppender(cssClassName());
     }
 
-    public CssClassNameAppender newCssClassNameModifier(String prefix) {
+    public CssClassNameAppender newCssClassNameModifier(final String prefix) {
         return new CssClassNameAppender(cssClassName(prefix));
     }
 }

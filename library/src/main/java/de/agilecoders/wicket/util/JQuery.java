@@ -5,6 +5,7 @@ import com.google.common.base.Joiner;
 import com.google.common.collect.Lists;
 import de.agilecoders.wicket.markup.html.bootstrap.common.AbstractConfig;
 import org.apache.wicket.Component;
+import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
 import org.apache.wicket.util.io.IClusterable;
 import org.apache.wicket.util.time.Duration;
 
@@ -108,6 +109,13 @@ public final class JQuery implements IClusterable {
      */
     public String get() {
         return "$('" + selector + "')" + createFunctionString() + ";";
+    }
+
+    /**
+     * @return this jquery script as {@link OnDomReadyHeaderItem} instance
+     */
+    public final OnDomReadyHeaderItem asDomReadyScript() {
+        return OnDomReadyHeaderItem.forScript(get());
     }
 
     /**

@@ -71,7 +71,7 @@ public class CssClassNameModifier extends AttributeModifier {
      *
      * @param cssClassNameProvider a css class name provider
      */
-    public CssClassNameModifier(CssClassNameProvider cssClassNameProvider) {
+    public CssClassNameModifier(ICssClassNameProvider cssClassNameProvider) {
         this(Model.of(cssClassNameProvider.cssClassName()));
     }
 

@@ -1,9 +1,11 @@
 package de.agilecoders.wicket.markup.html.bootstrap.block;
 
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.AssertTagNameBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
+import de.agilecoders.wicket.util.Attributes;
+import de.agilecoders.wicket.util.Components;
 import org.apache.wicket.Component;
+import org.apache.wicket.behavior.Behavior;
+import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
@@ -18,21 +20,26 @@ import org.apache.wicket.model.Model;
  * </pre>
  *
  * @author miha
- * @version 1.0
  */
-public class QuoteBehavior extends AssertTagNameBehavior {
+public class QuoteBehavior extends Behavior {
 
     private final IModel<String> pullRight;
-    private final CssClassNameAppender cssClassNameAppender;
 
     /**
      * Construct.
      */
     public QuoteBehavior() {
-        super("blockquote");
+        super();
 
         this.pullRight = Model.of("");
-        this.cssClassNameAppender = new CssClassNameAppender(pullRight);
+    }
+
+    @Override
+    public void onComponentTag(Component component, ComponentTag tag) {
+        super.onComponentTag(component, tag);
+
+        Components.assertTag(component, tag, "blockquote");
+        Attributes.addClass(tag, pullRight.getObject());
     }
 
     /**
@@ -62,7 +69,6 @@ public class QuoteBehavior extends AssertTagNameBehavior {
         super.bind(component);
 
         BootstrapBaseBehavior.addTo(component);
-        component.add(cssClassNameAppender);
     }
 
     @Override
@@ -70,6 +76,5 @@ public class QuoteBehavior extends AssertTagNameBehavior {
         super.unbind(component);
 
         BootstrapBaseBehavior.removeFrom(component);
-        component.remove(cssClassNameAppender);
     }
 }

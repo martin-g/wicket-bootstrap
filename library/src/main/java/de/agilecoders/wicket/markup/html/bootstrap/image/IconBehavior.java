@@ -1,19 +1,20 @@
 package de.agilecoders.wicket.markup.html.bootstrap.image;
 
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.AssertTagNameBehavior;
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
 import de.agilecoders.wicket.markup.html.bootstrap.common.Invertible;
+import de.agilecoders.wicket.util.Attributes;
+import de.agilecoders.wicket.util.Components;
 import org.apache.wicket.Component;
+import org.apache.wicket.behavior.Behavior;
+import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
 /**
- * An Icon component displays a non localizable image resource.
+ * An Icon component displays a non localizable image (icon) resource.
  *
  * @author miha
- * @version 1.0
  */
-public class IconBehavior extends AssertTagNameBehavior implements Invertible<IconBehavior> {
+public class IconBehavior extends Behavior implements Invertible<IconBehavior> {
 
     private final IModel<IconType> type;
     private final IModel<String> value;
@@ -36,7 +37,7 @@ public class IconBehavior extends AssertTagNameBehavior implements Invertible<Ic
      * @param invert whether to invert the icon or not
      */
     public IconBehavior(final IModel<IconType> type, final boolean invert) {
-        super("i");
+        super();
 
         this.type = type;
         this.value = Model.of("");
@@ -53,10 +54,11 @@ public class IconBehavior extends AssertTagNameBehavior implements Invertible<Ic
     }
 
     @Override
-    public void bind(Component component) {
-        super.bind(component);
+    public void onComponentTag(Component component, ComponentTag tag) {
+        super.onComponentTag(component, tag);
 
-        component.add(new CssClassNameAppender(value));
+        Components.assertTag(component, tag, "i");
+        Attributes.addClass(tag, value.getObject());
     }
 
     @Override

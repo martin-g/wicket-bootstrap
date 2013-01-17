@@ -5,7 +5,6 @@ import de.agilecoders.wicket.markup.html.bootstrap.layout.SpanType;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.head.IHeaderResponse;
-import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.IModel;
 
@@ -105,7 +104,7 @@ public class Typeahead<T> extends TextField<T> {
     public void renderHead(final IHeaderResponse response) {
         super.renderHead(response);
 
-        response.render(OnDomReadyHeaderItem.forScript($(this).chain("typeahead", config).get()));
+        response.render($(this).chain("typeahead", config).asDomReadyScript());
     }
 
 }

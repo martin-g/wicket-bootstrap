@@ -10,10 +10,10 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
 /**
- * TODO: document
+ * Default button behavior that controls the size and type
+ * of a button.
  *
  * @author miha
- * @version 1.0
  */
 public class ButtonBehavior extends BootstrapBaseBehavior {
 
@@ -22,52 +22,101 @@ public class ButtonBehavior extends BootstrapBaseBehavior {
     private final IModel<Boolean> block;
 
     /**
-     * Construct.
+     * Construct. Uses {@link ButtonSize#Medium} and {@link ButtonType#Default}.
      */
     public ButtonBehavior() {
         this(ButtonType.Default, ButtonSize.Medium);
     }
 
+    /**
+     * Construct. Uses {@link ButtonType#Default}.
+     *
+     * @param buttonSize Size of button
+     */
     public ButtonBehavior(final ButtonSize buttonSize) {
         this(ButtonType.Default, buttonSize);
     }
 
+    /**
+     * Construct. Uses {@link ButtonSize#Medium}.
+     *
+     * @param buttonType Type of button
+     */
     public ButtonBehavior(final ButtonType buttonType) {
         this(buttonType, ButtonSize.Medium);
     }
 
+    /**
+     * Construct.
+     *
+     * @param buttonType Type of button
+     * @param buttonSize Size of button
+     */
     public ButtonBehavior(final ButtonType buttonType, final ButtonSize buttonSize) {
         this(Model.of(buttonType), Model.of(buttonSize));
     }
 
+    /**
+     * Construct.
+     *
+     * @param buttonType Type of button
+     * @param buttonSize Size of button
+     */
     public ButtonBehavior(final IModel<ButtonType> buttonType, final IModel<ButtonSize> buttonSize) {
         this.buttonType = buttonType;
         this.buttonSize = buttonSize;
         this.block = Model.of(false);
     }
 
+    /**
+     * @return true, if button should be rendered as block element
+     */
     public boolean isBlock() {
         return block.getObject();
     }
 
+    /**
+     * @return size of button
+     */
     public ButtonSize size() {
         return buttonSize.getObject();
     }
 
+    /**
+     * @return type of button
+     */
     public ButtonType type() {
         return buttonType.getObject();
     }
 
+    /**
+     * sets this button to be a block element or not
+     *
+     * @param block true, for block mode
+     * @return this instance for chaining
+     */
     public final ButtonBehavior block(Boolean block) {
         this.block.setObject(block);
         return this;
     }
 
+    /**
+     * sets the type of button
+     *
+     * @param buttonType type to use
+     * @return this instance for chaining
+     */
     public final ButtonBehavior withType(ButtonType buttonType) {
         this.buttonType.setObject(buttonType);
         return this;
     }
 
+    /**
+     * sets the size of button
+     *
+     * @param buttonSize size to use
+     * @return this instance for chaining
+     */
     public final ButtonBehavior withSize(ButtonSize buttonSize) {
         this.buttonSize.setObject(buttonSize);
         return this;

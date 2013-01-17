@@ -1,8 +1,6 @@
 package de.agilecoders.wicket.markup.html.bootstrap.form;
 
-import com.google.common.base.Preconditions;
 import de.agilecoders.wicket.markup.html.bootstrap.common.AbstractConfig;
-import org.apache.wicket.util.lang.Objects;
 
 /**
  * {@link Typeahead} configuration
@@ -12,62 +10,19 @@ import org.apache.wicket.util.lang.Objects;
 public class TypeaheadConfig extends AbstractConfig {
 
     /**
-     * configuration key definition
+     * The data source to query against.
      */
-    private enum Key implements IKey {
+    private static final IKey<IDataSource> Source = newKey("source", null);
 
-        /**
-         * The data source to query against.
-         */
-        Source("source", IDataSource.class, null),
+    /**
+     * The max number of items to display in the dropdown.
+     */
+    private static final IKey<Integer> Items = newKey("items", 8);
 
-        /**
-         * The max number of items to display in the dropdown.
-         */
-        Items("items", Integer.class, 8),
-
-        /**
-         * The minimum character length needed before triggering autocomplete suggestions
-         */
-        MinLength("minLength", Integer.class, 1);
-
-        private final String key;
-        private final Class type;
-        private final Object defaultValue;
-
-        /**
-         * Construct.
-         *
-         * @param key          string representation of this key
-         * @param type         The object type
-         * @param defaultValue The default value
-         */
-        private Key(final String key, final Class type, final Object defaultValue) {
-            this.key = key;
-            this.type = type;
-            this.defaultValue = defaultValue;
-        }
-
-        @Override
-        public String key() {
-            return key;
-        }
-
-        @Override
-        public void assertCorrectType(final Object value) {
-            Preconditions.checkArgument(type.isInstance(value));
-        }
-
-        @Override
-        public boolean isDefaultValue(final Object value) {
-            return Objects.equal(value, defaultValue);
-        }
-
-        @Override
-        public Object getDefaultValue() {
-            return defaultValue;
-        }
-    }
+    /**
+     * The minimum character length needed before triggering autocomplete suggestions
+     */
+    private static final IKey<Integer> MinLength = newKey("minLength", 1);
 
     /**
      * The max number of items to display in the dropdown.
@@ -76,7 +31,7 @@ public class TypeaheadConfig extends AbstractConfig {
      * @return this instance for chaining
      */
     public TypeaheadConfig withNumberOfItems(final int value) {
-        put(Key.Items, value);
+        put(Items, value);
         return this;
     }
 
@@ -87,7 +42,7 @@ public class TypeaheadConfig extends AbstractConfig {
      * @return this instance for chaining
      */
     public TypeaheadConfig withDataSource(final IDataSource<?> value) {
-        put(Key.Source, value);
+        put(Source, value);
         return this;
     }
 
@@ -98,7 +53,7 @@ public class TypeaheadConfig extends AbstractConfig {
      * @return this instance for chaining
      */
     public TypeaheadConfig withMinLength(final int value) {
-        put(Key.MinLength, value);
+        put(MinLength, value);
         return this;
     }
 }

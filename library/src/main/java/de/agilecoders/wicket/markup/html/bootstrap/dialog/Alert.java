@@ -1,18 +1,17 @@
 package de.agilecoders.wicket.markup.html.bootstrap.dialog;
 
 import com.google.common.base.Strings;
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.AssertTagNameBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapResourcesBehavior;
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameProvider;
+import de.agilecoders.wicket.markup.html.bootstrap.behavior.ICssClassNameProvider;
+import de.agilecoders.wicket.util.Attributes;
 import org.apache.wicket.Component;
+import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.panel.GenericPanel;
-import org.apache.wicket.model.AbstractReadOnlyModel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.util.time.Duration;
@@ -32,17 +31,12 @@ public class Alert extends GenericPanel<String> {
     /**
      * The {@code Type} enum defines all possible alert types.
      */
-    public enum Type implements CssClassNameProvider {
+    public enum Type implements ICssClassNameProvider {
         Error, Success, Info, Warning;
 
         @Override
         public String cssClassName() {
             return equals(Warning) ? "alert-block" : "alert-" + name().toLowerCase();
-        }
-
-        @Override
-        public CssClassNameAppender newCssClassNameModifier() {
-            return new CssClassNameAppender(cssClassName());
         }
 
         public static Type from(String level) {
@@ -94,19 +88,18 @@ public class Alert extends GenericPanel<String> {
         this.message = createMessage("message", getModel());
         this.closeButton = new WebMarkupContainer("close");
 
-        add(new CssClassNameAppender(new AbstractReadOnlyModel<String>() {
-            @Override
-            public String getObject() {
-                return type.getObject() != null ? type.getObject().cssClassName() : "";
-            }
-        }));
-
         add(this.inlineHeader, this.blockHeader, this.message, this.closeButton);
 
-        add(new AssertTagNameBehavior("div"),
-            new CssClassNameAppender("alert"));
-
         BootstrapBaseBehavior.addTo(this);
+    }
+
+    @Override
+    protected void onComponentTag(ComponentTag tag) {
+        super.onComponentTag(tag);
+
+        checkComponentTag(tag, "div");
+        Attributes.addClass(tag, "alert");
+        Attributes.addClass(tag, type.getObject());
     }
 
     /**

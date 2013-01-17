@@ -36,15 +36,10 @@ public class CssClassNameAppenderTest extends WicketApplicationTest {
 
     @Test
     public void classFromProviderIsAdded() {
-        component.add(new CssClassNameAppender(new CssClassNameProvider() {
+        component.add(new CssClassNameAppender(new ICssClassNameProvider() {
             @Override
             public String cssClassName() {
                 return "classX classY classZ";
-            }
-
-            @Override
-            public CssClassNameAppender newCssClassNameModifier() {
-                return null;
             }
         }));
 
@@ -79,7 +74,7 @@ public class CssClassNameAppenderTest extends WicketApplicationTest {
         component.add(new CssClassNameAppender("classX classY"));
         component.add(new CssClassNameAppender("classX classZ"));
 
-        startPageAndAssertClassNames("classX classY classZ");
+        startPageAndAssertClassNames("classY classX classZ");
     }
 
     private void startPageAndAssertClassNames(final String classNames) {
