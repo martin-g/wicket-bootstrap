@@ -138,8 +138,8 @@ public class LessContentCollector {
          * @param resource the recently added import
          */
         private void updateLastModified(ILessResource resource) {
-            if (lastModified.before(resource.lastModified())) {
-                lastModified = resource.lastModified();
+            if (lastModified.before(resource.getLastModificationTime())) {
+                lastModified = resource.getLastModificationTime();
             }
         }
 

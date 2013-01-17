@@ -1,6 +1,8 @@
 package de.agilecoders.wicket.samples.pages;
 
 import com.google.common.collect.Lists;
+import de.agilecoders.wicket.javascript.jasny.FileUploadField;
+import de.agilecoders.wicket.javascript.jasny.InputMaskBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.block.Code;
 import de.agilecoders.wicket.markup.html.bootstrap.button.dropdown.DropDownButton;
 import de.agilecoders.wicket.markup.html.bootstrap.button.dropdown.MenuBookmarkablePageLink;
@@ -22,10 +24,11 @@ import de.agilecoders.wicket.markup.html.bootstrap.extensions.tour.TourStep;
 import de.agilecoders.wicket.markup.html.bootstrap.image.Icon;
 import de.agilecoders.wicket.markup.html.bootstrap.image.IconType;
 import org.apache.wicket.Component;
+import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
-import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.html.TransparentWebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.link.AbstractLink;
 import org.apache.wicket.markup.repeater.RepeatingView;
 import org.apache.wicket.model.Model;
@@ -113,13 +116,35 @@ public class ExtensionsPage extends BasePage {
         addTour();
         add(new Icon("html5-colored", OpenWebIconType.html5_colored_large), new Icon("apml", OpenWebIconType.apml), new Icon("feed", OpenWebIconType.feed_colored_large));
         add(new Icon("html5", OpenWebIconType.html5), new Code("openwebicon-code", Model.of("response.render(JavaScriptHeaderItem.forReference(OpenWebIconsCssReference.instance()));\n\nadd(new Icon(\"html5\", OpenWebIconType.html5));")));
+
+        addJasnyFileUploadDemo();
+        addJasnyInputMaskDemo();
     }
 
     @Override
     public void renderHead(IHeaderResponse response) {
         super.renderHead(response);
 
-        response.render(JavaScriptHeaderItem.forReference(OpenWebIconsCssReference.instance()));
+        response.render(CssHeaderItem.forReference(OpenWebIconsCssReference.instance()));
+    }
+
+
+    private void addJasnyFileUploadDemo() {
+        FileUploadField fileUpload = new FileUploadField("fileUpload");
+        add(fileUpload);
+    }
+
+    private void addJasnyInputMaskDemo() {
+        TextField textField = new TextField("inputMask", Model.of("l0rdn1kk0n"));
+        InputMaskBehavior inputMask = new InputMaskBehavior() {
+            @Override
+            protected String getMask() {
+                // Allow entering l0rdn1kk0n
+                return "a9aaa9aa9a";
+            }
+        };
+        textField.add(inputMask);
+        add(textField);
     }
 
     /**

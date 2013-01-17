@@ -20,7 +20,7 @@ public interface ILessResource {
     /**
      * @return the last modified date (including all children)
      */
-    Time lastModified();
+    Time getLastModificationTime();
 
     /**
      * @return the resource as text (including all children)
@@ -55,7 +55,7 @@ public interface ILessResource {
      */
     File toFile();
 
-    static final String LESS_EXTENSION = ".less";
-    static final String LESSCSS_EXTENSION = ".less.css";
-    static final String LESSCSSMIN_EXTENSION = ".less.min.css";
+    String LESS_EXTENSION = ".less";
+    String CSS_EXTENSION = ".css";
+    String CSSMIN_EXTENSION = ".min.css";
 }

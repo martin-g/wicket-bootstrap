@@ -20,7 +20,7 @@ Extensions
 * JQueryUI (1.9.2): http://api.jqueryui.com/
    * Draggable: http://api.jqueryui.com/draggable
    * Resizable: http://api.jqueryui.com/resizable
-* less4j (0.0.5): https://github.com/SomMeri/less4j
+* less4j (0.0.9): https://github.com/SomMeri/less4j
 * bootstrap-tour: http://sorich87.github.com/bootstrap-tour
 * OpenWebIcons (2012-10-03): http://pfefferle.github.com/openwebicons/
 
@@ -38,7 +38,7 @@ core maven dependency:
 <pre><code>&lt;dependency&gt;
   &lt;groupId&gt;de.agilecoders.wicket&lt;/groupId&gt;
   &lt;artifactId&gt;bootstrap&lt;/artifactId&gt;
-  &lt;version&gt;0.7.5&lt;/version&gt;
+  &lt;version&gt;0.7.6&lt;/version&gt;
 &lt;/dependency&gt;
 </code></pre>
 
@@ -46,7 +46,7 @@ for all extensions:
 <pre><code>&lt;dependency&gt;
   &lt;groupId&gt;de.agilecoders.wicket&lt;/groupId&gt;
   &lt;artifactId&gt;bootstrap-extensions&lt;/artifactId&gt;
-  &lt;version&gt;0.7.5&lt;/version&gt;
+  &lt;version&gt;0.7.6&lt;/version&gt;
 &lt;/dependency&gt;
 </code></pre>
 

@@ -85,7 +85,11 @@ public final class Bootstrap {
      * @return assigned {@link IBootstrapSettings}
      */
     public static IBootstrapSettings getSettings() {
-        return getSettings(Application.get());
+        if (Application.exists()) {
+            return getSettings(Application.get());
+        }
+
+        throw new IllegalStateException("there is no active application assigned to this thread.");
     }
 
     /**

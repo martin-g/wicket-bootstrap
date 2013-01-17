@@ -5,19 +5,19 @@
     <parent>
         <groupId>de.agilecoders.wicket</groupId>
         <artifactId>bootstrap-parent</artifactId>
-        <version>0.7.6-SNAPSHOT</version>
+        <version>0.7.7-SNAPSHOT</version>
     </parent>
 
     <groupId>de.agilecoders.wicket</groupId>
     <artifactId>bootstrap-extensions</artifactId>
-    <version>0.7.6-SNAPSHOT</version>
+    <version>0.7.7-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <properties>
         <closure-compiler.version>r2180</closure-compiler.version>
         <contiperf.version>2.2.0</contiperf.version>
         <logback.version>1.0.7</logback.version>
-        <less4j.version>0.0.6</less4j.version>
+        <less4j.version>0.0.9</less4j.version>
     </properties>
 
     <dependencies>

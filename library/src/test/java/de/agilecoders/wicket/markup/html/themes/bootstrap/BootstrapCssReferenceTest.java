@@ -54,6 +54,6 @@ public class BootstrapCssReferenceTest extends WicketApplicationTest {
         BootstrapCssReference ref = BootstrapCssReference.INSTANCE;
 
         tester().startResourceReference(ref);
-        Assert.assertThat(cssContent, is(equalTo(tester().getLastResponseAsString())));
+        Assert.assertThat(tester().getLastResponseAsString(), is(equalTo(cssContent)));
     }
 }

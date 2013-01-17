@@ -86,7 +86,7 @@ public class Less4JCompilerTest {
             }
 
             @Override
-            public Time lastModified() {
+            public Time getLastModificationTime() {
                 return Time.now();
             }
 
