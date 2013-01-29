@@ -36,9 +36,9 @@
         </dependency>
 
         <dependency>
-            <groupId>newrelic.java-agent</groupId>
+            <groupId>com.newrelic.agent.java</groupId>
             <artifactId>newrelic-api</artifactId>
-            <version>2.11.0</version>
+            <version>2.13.0</version>
         </dependency>
 
         <!-- WICKET-BOOTSTRAP -->
@@ -143,14 +143,6 @@
             </plugin>
         </plugins>
     </build>
-
-    <repositories>
-        <repository>
-            <id>newrelic</id>
-            <name>newrelic</name>
-            <url>http://download.newrelic.com/</url>
-        </repository>
-    </repositories>
 
     <profiles>
         <profile>
