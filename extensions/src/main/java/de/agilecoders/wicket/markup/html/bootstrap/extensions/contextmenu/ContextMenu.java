@@ -7,7 +7,6 @@ import de.agilecoders.wicket.util.References;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.head.IHeaderResponse;
-import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
 import org.apache.wicket.markup.html.panel.GenericPanel;
 import org.apache.wicket.model.IModel;
 
@@ -56,7 +55,7 @@ public abstract class ContextMenu<T> extends GenericPanel<T> {
         if (isAssigned()) {
             References.renderWithFilter(response, ContextMenuJavaScriptReference.instance());
 
-            response.render(OnDomReadyHeaderItem.forScript($(assignedComponent.get()).chain("contextmenu").get()));
+            response.render($(assignedComponent.get()).chain("contextmenu").asDomReadyScript());
         }
     }
 

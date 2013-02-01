@@ -1,9 +1,10 @@
 package de.agilecoders.wicket.markup.html.bootstrap.components;
 
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameProvider;
+import de.agilecoders.wicket.markup.html.bootstrap.behavior.ICssClassNameProvider;
 import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonList;
+import de.agilecoders.wicket.util.Attributes;
+import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.html.link.AbstractLink;
 import org.apache.wicket.markup.html.panel.Panel;
 
@@ -16,10 +17,12 @@ import org.apache.wicket.markup.html.panel.Panel;
  */
 public class Pagination extends Panel {
 
+    private final Alignment alignment;
+
     /**
      * Add one of two optional classes to change the alignment of pagination links: .pagination-centered and .pagination-right.
      */
-    public enum Alignment implements CssClassNameProvider {
+    public static enum Alignment implements ICssClassNameProvider {
         Centered, Right, Left;
 
         @Override
@@ -27,13 +30,9 @@ public class Pagination extends Panel {
             return equals(Left) ? "" : "pagination-" + name().toLowerCase();
         }
 
-        @Override
-        public CssClassNameAppender newCssClassNameModifier() {
-            return new CssClassNameAppender(this);
-        }
     }
 
-    private ButtonList buttonList;
+    private final ButtonList buttonList;
 
     /**
      * Construct.
@@ -53,22 +52,36 @@ public class Pagination extends Panel {
     public Pagination(final String markupId, final Alignment alignment) {
         super(markupId);
 
-        add(alignment.newCssClassNameModifier());
-        add(new CssClassNameAppender("pagination"));
-        add(buttonList = newButtonList("buttons"));
+        this.alignment = alignment;
 
+        add(buttonList = newButtonList("buttons"));
         BootstrapBaseBehavior.addTo(this);
     }
 
-    public Pagination addButton(AbstractLink button) {
-        return addButtons(button);
+    @Override
+    protected void onComponentTag(ComponentTag tag) {
+        super.onComponentTag(tag);
+
+        Attributes.addClass(tag, "pagination", alignment.cssClassName());
     }
 
-    public Pagination addButtons(AbstractLink... buttons) {
+    /**
+     * adds a new set of buttons to the button list
+     *
+     * @param buttons The buttons to add
+     * @return this instance for chaining
+     */
+    public Pagination addButton(AbstractLink... buttons) {
         buttonList.addButtons(buttons);
         return this;
     }
 
+    /**
+     * creates a new button list instance
+     *
+     * @param markupId The component id
+     * @return new button list instance
+     */
     protected ButtonList newButtonList(final String markupId) {
         return new ButtonList(markupId);
     }

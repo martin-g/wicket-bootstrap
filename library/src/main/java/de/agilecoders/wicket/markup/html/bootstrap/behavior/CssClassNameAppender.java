@@ -76,7 +76,7 @@ public class CssClassNameAppender extends AttributeAppender {
      *
      * @param cssClassNameProvider a css class name provider
      */
-    public CssClassNameAppender(CssClassNameProvider cssClassNameProvider) {
+    public CssClassNameAppender(ICssClassNameProvider cssClassNameProvider) {
         this(Model.of(cssClassNameProvider.cssClassName()));
     }
 
@@ -89,6 +89,6 @@ public class CssClassNameAppender extends AttributeAppender {
             return currentValue != null ? currentValue : null;
         }
 
-        return CssClassNames.parse(currentValue).add(CssClassNames.parse(appendValue)).asString();
+        return CssClassNames.parse(currentValue).addRaw(appendValue).asString();
     }
 }

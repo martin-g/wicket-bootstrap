@@ -51,8 +51,10 @@ public class BootstrapBaseBehavior extends Behavior {
      * @param component the bound component
      * @return the bound {@link IBootstrapSettings}
      */
-    protected final IBootstrapSettings getBootstrapSettings(Component component) {
-        IBootstrapSettings settings = Bootstrap.getSettings(component.getApplication());
+    protected final IBootstrapSettings getBootstrapSettings(final Component component) {
+        Args.notNull(component, "component");
+
+        final IBootstrapSettings settings = Bootstrap.getSettings(component.getApplication());
         if (settings == null) {
             throw new WicketRuntimeException("No BootstrapSettings associated with this Application. Did you call Bootstrap.install()?");
         }
@@ -64,7 +66,7 @@ public class BootstrapBaseBehavior extends Behavior {
      * {@inheritDoc}
      */
     @Override
-    public void renderHead(Component component, IHeaderResponse headerResponse) {
+    public void renderHead(final Component component, final IHeaderResponse headerResponse) {
         IBootstrapSettings settings = getBootstrapSettings(component);
 
         renderHead(settings, headerResponse);
@@ -79,11 +81,12 @@ public class BootstrapBaseBehavior extends Behavior {
      * @param headerResponse the current {@link IHeaderResponse}
      */
     public void renderHead(IBootstrapSettings settings, IHeaderResponse headerResponse) {
-        ITheme theme = settings.getActiveThemeProvider().getActiveTheme();
+        final ITheme theme = settings.getActiveThemeProvider().getActiveTheme();
         theme.renderHead(headerResponse);
 
         if (settings.useResponsiveCss()) {
             headerResponse.render(CssHeaderItem.forReference(settings.getResponsiveCssResourceReference()));
         }
     }
+
 }

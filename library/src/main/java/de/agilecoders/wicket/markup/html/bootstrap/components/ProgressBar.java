@@ -3,7 +3,7 @@ package de.agilecoders.wicket.markup.html.bootstrap.components;
 import com.google.common.collect.Lists;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameModifier;
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameProvider;
+import de.agilecoders.wicket.markup.html.bootstrap.behavior.ICssClassNameProvider;
 import de.agilecoders.wicket.util.Components;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
@@ -28,7 +28,7 @@ public class ProgressBar extends Panel {
 
     private Component indicator;
 
-    public enum Type implements CssClassNameProvider {
+    public enum Type implements ICssClassNameProvider {
         DEFAULT, INFO, SUCCESS, WARNING, DANGER;
 
         public String cssClassName() {

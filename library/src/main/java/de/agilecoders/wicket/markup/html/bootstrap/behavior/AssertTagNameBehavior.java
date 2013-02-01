@@ -23,7 +23,7 @@ import java.util.Set;
  * </pre>
  *
  * @author miha
- * @version 1.0
+ * @deprecated please use {@link Components#assertTag(org.apache.wicket.Component, org.apache.wicket.markup.ComponentTag, java.util.Set)}
  */
 public class AssertTagNameBehavior extends Behavior {
 

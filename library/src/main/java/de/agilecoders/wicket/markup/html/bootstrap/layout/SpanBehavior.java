@@ -1,59 +1,56 @@
 package de.agilecoders.wicket.markup.html.bootstrap.layout;
 
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
+import de.agilecoders.wicket.util.Attributes;
 import org.apache.wicket.Component;
+import org.apache.wicket.markup.ComponentTag;
+import org.apache.wicket.util.lang.Args;
 
 /**
- * TODO: document
+ * Controls the width and offset of a layout element inside a container
  *
  * @author miha
- * @version 1.0
  */
 public class SpanBehavior extends BootstrapBaseBehavior {
 
-    private SpanType type;
-    private Offset offset;
+    private final SpanType type;
+    private final Offset offset;
 
+    /**
+     * Construct. Uses {@link Offset#OFFSET0} and {@link SpanType#SPAN12}.
+     */
     public SpanBehavior() {
-        this.type = SpanType.SPAN12;
-        this.offset = Offset.OFFSET0;
+        this(SpanType.SPAN12);
     }
 
-    public SpanBehavior(SpanType spanType, Offset offset) {
+    /**
+     * Construct. Uses {@link Offset#OFFSET0}.
+     *
+     * @param spanType span width of layout element
+     */
+    public SpanBehavior(final SpanType spanType) {
+        this(spanType, Offset.OFFSET0);
+    }
+
+    /**
+     * Construct.
+     *
+     * @param spanType span width of layout element
+     * @param offset offset of layout element
+     */
+    public SpanBehavior(final SpanType spanType, final Offset offset) {
+        Args.notNull(spanType, "spanType");
+        Args.notNull(offset, "offset");
+
         this.type = spanType;
         this.offset = offset;
     }
 
-    public SpanType type() {
-        return type;
-    }
-
-    public SpanBehavior type(SpanType type) {
-        this.type = type;
-
-        return this;
-    }
-
-    public Offset offset() {
-        return offset;
-    }
-
-    public SpanBehavior offset(Offset offset) {
-        this.offset = offset;
-
-        return this;
-    }
-
     @Override
-    public void onConfigure(Component component) {
-        super.onConfigure(component);
+    public void onComponentTag(final Component component, final ComponentTag tag) {
+        super.onComponentTag(component, tag);
 
-        if (type != null) {
-            component.add(type().newCssClassNameModifier());
-        }
-
-        if (offset != null) {
-            component.add(offset().newCssClassNameModifier());
-        }
+        Attributes.addClass(tag, type.cssClassName(), offset.cssClassName());
     }
+
 }

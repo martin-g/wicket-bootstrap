@@ -1,9 +1,9 @@
 package de.agilecoders.wicket.markup.html.bootstrap.navigation;
 
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.AssertTagNameBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameProvider;
+import de.agilecoders.wicket.markup.html.bootstrap.behavior.ICssClassNameProvider;
+import de.agilecoders.wicket.util.Attributes;
+import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.html.navigation.paging.IPageable;
 import org.apache.wicket.markup.html.navigation.paging.IPagingLabelProvider;
 import org.apache.wicket.markup.html.navigation.paging.PagingNavigator;
@@ -22,7 +22,7 @@ public class BootstrapPagingNavigator extends PagingNavigator {
     /**
      * position of pagination component
      */
-    public enum Position implements CssClassNameProvider {
+    public enum Position implements ICssClassNameProvider {
         Left, Centered, Right;
 
         @Override
@@ -30,10 +30,6 @@ public class BootstrapPagingNavigator extends PagingNavigator {
             return equals(Left) ? "" : "pagination-" + name().toLowerCase();
         }
 
-        @Override
-        public CssClassNameAppender newCssClassNameModifier() {
-            return new CssClassNameAppender(this);
-        }
     }
 
     private final Model<String> positionModel;
@@ -61,10 +57,14 @@ public class BootstrapPagingNavigator extends PagingNavigator {
         positionModel = Model.of(Position.Left.cssClassName());
 
         BootstrapBaseBehavior.addTo(this);
+    }
 
-        add(new AssertTagNameBehavior("div"),
-            new CssClassNameAppender("pagination"),
-            new CssClassNameAppender(positionModel));
+    @Override
+    protected void onComponentTag(ComponentTag tag) {
+        super.onComponentTag(tag);
+
+        checkComponentTag(tag, "div");
+        Attributes.addClass(tag, "pagination", positionModel.getObject());
     }
 
     /**

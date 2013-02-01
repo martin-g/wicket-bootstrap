@@ -1,22 +1,23 @@
 package de.agilecoders.wicket.markup.html.bootstrap.components;
 
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
+import de.agilecoders.wicket.util.Attributes;
 import org.apache.wicket.Component;
+import org.apache.wicket.markup.ComponentTag;
 
 /**
  * A simple {@link org.apache.wicket.behavior.Behavior} that adds the
  * thumbnails class to an {@code ul} element.
  *
  * @author miha
- * @version 1.0
  */
 public class ThumbnailsBehavior extends BootstrapBaseBehavior {
 
     @Override
-    public void bind(Component component) {
-        super.bind(component);
+    public void onComponentTag(final Component component, final ComponentTag tag) {
+        super.onComponentTag(component, tag);
 
-        component.add(new CssClassNameAppender("thumbnails"));
+        Attributes.addClass(tag, "thumbnails");
     }
+
 }

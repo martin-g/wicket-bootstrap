@@ -2,14 +2,12 @@ package de.agilecoders.wicket.markup.html.bootstrap.components;
 
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapJavascriptBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.common.AbstractConfig;
-import de.agilecoders.wicket.util.JQuery;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
 import org.apache.wicket.model.IModel;
 
-import static de.agilecoders.wicket.markup.html.bootstrap.components.TooltipBehavior.TooltipJqueryFunction.tooltip;
 import static de.agilecoders.wicket.util.JQuery.$;
 
 /**
@@ -81,34 +79,7 @@ public class TooltipBehavior extends BootstrapJavascriptBehavior {
      * @return new initializer script
      */
     protected CharSequence createInitializerScript(final Component component, final AbstractConfig config) {
-        return $(component).chain(tooltip(config)).get();
+        return $(component).chain("tooltip", config).get();
     }
 
-    /**
-     * A simple tooltip jquery function representation in java.
-     */
-    public static final class TooltipJqueryFunction extends JQuery.AbstractFunction {
-
-        /**
-         * helper method.
-         *
-         * @param config tooltip configuration
-         */
-        public static TooltipJqueryFunction tooltip(final AbstractConfig config) {
-            return new TooltipJqueryFunction(config);
-        }
-
-        /**
-         * Construct.
-         *
-         * @param config tooltip configuration
-         */
-        private TooltipJqueryFunction(final AbstractConfig config) {
-            super("tooltip");
-
-            if (!config.isEmpty()) {
-                addParameter(config.toJsonString());
-            }
-        }
-    }
 }

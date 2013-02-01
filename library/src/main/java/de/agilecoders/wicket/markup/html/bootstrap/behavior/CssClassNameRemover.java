@@ -65,7 +65,7 @@ public class CssClassNameRemover extends CssClassNameAppender {
      *
      * @param cssClassNameProvider a css class name provider
      */
-    public CssClassNameRemover(CssClassNameProvider cssClassNameProvider) {
+    public CssClassNameRemover(ICssClassNameProvider cssClassNameProvider) {
         this(Model.of(cssClassNameProvider.cssClassName()));
     }
 

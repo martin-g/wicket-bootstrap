@@ -6,7 +6,6 @@ import org.apache.wicket.markup.html.TransparentWebMarkupContainer;
  * A simple transparent code container.
  *
  * @author miha
- * @version 1.0
  */
 public class TransparentCodeContainer extends TransparentWebMarkupContainer {
 
