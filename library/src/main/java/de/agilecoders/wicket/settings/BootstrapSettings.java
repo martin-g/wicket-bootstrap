@@ -19,7 +19,7 @@ public class BootstrapSettings implements IBootstrapSettings {
     private ResourceReference bootstrapJavaScriptReference = BootstrapJavaScriptReference.get();
 
     private boolean useResponsiveCss = true;
-    private ThemeProvider themeProvider = new BootswatchThemeProvider();
+    private ThemeProvider themeProvider = new DefaultThemeProvider();
     private ActiveThemeProvider activeThemeProvider = new SessionThemeProvider();
     private boolean useModernizr = false;
     private boolean useJqueryPP = false;

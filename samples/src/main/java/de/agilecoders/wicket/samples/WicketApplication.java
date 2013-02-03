@@ -12,6 +12,7 @@ import de.agilecoders.wicket.markup.html.bootstrap.extensions.jqueryui.JQueryUIJ
 import de.agilecoders.wicket.markup.html.references.BootstrapPrettifyCssReference;
 import de.agilecoders.wicket.markup.html.references.BootstrapPrettifyJavaScriptReference;
 import de.agilecoders.wicket.markup.html.references.ModernizrJavaScriptReference;
+import de.agilecoders.wicket.markup.html.themes.google.GoogleTheme;
 import de.agilecoders.wicket.markup.html.themes.metro.MetroTheme;
 import de.agilecoders.wicket.samples.assets.base.ApplicationJavaScript;
 import de.agilecoders.wicket.samples.assets.base.FixBootstrapStylesCssResourceReference;
@@ -166,6 +167,7 @@ public class WicketApplication extends WebApplication {
 
         ThemeProvider themeProvider = new BootswatchThemeProvider() {{
             add(new MetroTheme());
+            add(new GoogleTheme());
             defaultTheme("wicket");
         }};
         settings.setThemeProvider(themeProvider);

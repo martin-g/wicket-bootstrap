@@ -38,6 +38,7 @@
     <modules>
         <module>library</module>
         <module>extensions</module>
+        <module>themes</module>
         <module>samples</module>
     </modules>
 
@@ -60,7 +61,7 @@
         <rhino.version>1.7R4</rhino.version>
         <doxia.version>1.0</doxia.version>
         <lesscss-engine.version>1.3.0</lesscss-engine.version>
-        <org.codehaus.jackson.version>1.9.11</org.codehaus.jackson.version>
+        <org.codehaus.jackson.version>1.9.12</org.codehaus.jackson.version>
         <joda-time.version>2.1</joda-time.version>
         <hamcrest.version>1.3</hamcrest.version>
     </properties>
@@ -70,6 +71,12 @@
             <dependency>
                 <groupId>de.agilecoders.wicket</groupId>
                 <artifactId>bootstrap</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>de.agilecoders.wicket</groupId>
+                <artifactId>bootstrap-themes</artifactId>
                 <version>${project.version}</version>
             </dependency>
 

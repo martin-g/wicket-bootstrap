@@ -7,7 +7,6 @@ import de.agilecoders.wicket.markup.html.themes.bootswatch.BootswatchTheme;
  * bootswatch themes.
  *
  * @author miha
- * @version 1.0
  */
 public class BootswatchThemeProvider extends DefaultThemeProvider {
 

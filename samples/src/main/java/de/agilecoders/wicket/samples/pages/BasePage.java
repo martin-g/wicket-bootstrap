@@ -22,6 +22,7 @@ import de.agilecoders.wicket.markup.html.bootstrap.navbar.NavbarComponents;
 import de.agilecoders.wicket.markup.html.bootstrap.navbar.NavbarDropDownButton;
 import de.agilecoders.wicket.samples.WicketApplication;
 import de.agilecoders.wicket.samples.assets.base.ApplicationJavaScript;
+import de.agilecoders.wicket.samples.assets.base.DocsCssResourceReference;
 import de.agilecoders.wicket.samples.assets.base.FixBootstrapStylesCssResourceReference;
 import de.agilecoders.wicket.samples.components.site.Footer;
 import de.agilecoders.wicket.settings.IBootstrapSettings;
@@ -198,6 +199,12 @@ abstract class BasePage<T> extends GenericWebPage<T> {
         }
     }
 
+    protected ITheme activeTheme() {
+        IBootstrapSettings settings = Bootstrap.getSettings(getApplication());
+
+        return settings.getActiveThemeProvider().getActiveTheme();
+    }
+
     @Override
     protected void onConfigure() {
         super.onConfigure();
@@ -211,6 +218,10 @@ abstract class BasePage<T> extends GenericWebPage<T> {
 
         response.render(CssHeaderItem.forReference(FixBootstrapStylesCssResourceReference.INSTANCE));
         response.render(new FilteredHeaderItem(JavaScriptHeaderItem.forReference(ApplicationJavaScript.INSTANCE), "footer-container"));
+
+        if ("google".equalsIgnoreCase(activeTheme().name())) {
+            response.render(CssHeaderItem.forReference(DocsCssResourceReference.GOOGLE));
+        }
     }
 
     protected boolean hasNavigation() {
