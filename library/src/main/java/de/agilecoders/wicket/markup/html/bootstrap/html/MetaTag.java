@@ -1,7 +1,7 @@
 package de.agilecoders.wicket.markup.html.bootstrap.html;
 
-import com.google.common.collect.Lists;
 import de.agilecoders.wicket.util.Components;
+import de.agilecoders.wicket.util.Generics2;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.html.WebMarkupContainer;
@@ -10,17 +10,16 @@ import org.apache.wicket.model.Model;
 
 import java.util.List;
 
-import static com.google.common.base.Strings.nullToEmpty;
+import static de.agilecoders.wicket.util.Strings2.nullToEmpty;
 
 /**
- * TODO: document
+ * A simple meta tag component.
  *
  * @author miha
- * @version 1.0
  */
 public class MetaTag extends WebMarkupContainer {
     // @see http://www.w3schools.com/tags/att_meta_http_equiv.asp
-    private static final List<String> HTTP_EQUIV_NAMES = Lists.newArrayList(
+    private static final List<String> HTTP_EQUIV_NAMES = Generics2.newArrayList(
             "content-type", "expires", "refresh", "pragma", "cache-control",
             "content-language", "set-cookie", "PICS-Label", "content-script-type",
             "content-style-type", "last-modified", "date", "location",

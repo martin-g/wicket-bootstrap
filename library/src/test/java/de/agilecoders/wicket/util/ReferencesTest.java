@@ -2,6 +2,7 @@ package de.agilecoders.wicket.util;
 
 import de.agilecoders.wicket.WicketApplicationTest;
 import de.agilecoders.wicket.test.IntegrationTest;
+import org.apache.wicket.Application;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
@@ -19,14 +20,14 @@ public class ReferencesTest extends WicketApplicationTest {
 
     @Test
     public void minificationIdentifierWasAppended() {
-        getBootstrapSettings().minify(true);
+        Application.get().getResourceSettings().setUseMinifiedResources(true);
 
         Assert.assertThat(References.appendMinificationIdentifier("file.ext"), is(equalTo("file.min.ext")));
     }
 
     @Test
     public void minificationIdentifierWasntAppended() {
-        getBootstrapSettings().minify(false);
+        Application.get().getResourceSettings().setUseMinifiedResources(false);
 
         Assert.assertThat(References.appendMinificationIdentifier("file.ext"), is(equalTo("file.ext")));
     }

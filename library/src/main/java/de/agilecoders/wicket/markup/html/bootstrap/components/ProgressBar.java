@@ -1,10 +1,10 @@
 package de.agilecoders.wicket.markup.html.bootstrap.components;
 
-import com.google.common.collect.Lists;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameModifier;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.ICssClassNameProvider;
 import de.agilecoders.wicket.util.Components;
+import de.agilecoders.wicket.util.Generics2;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.ComponentTag;
@@ -134,7 +134,7 @@ public class ProgressBar extends Panel {
     }
 
     private List<String> cssClassNames() {
-        List<String> classNames = Lists.newArrayList(
+        List<String> classNames = Generics2.newArrayList(
                 "progress",
                 type().cssClassName()
         );

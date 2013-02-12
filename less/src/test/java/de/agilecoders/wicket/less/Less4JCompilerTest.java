@@ -1,23 +1,20 @@
 package de.agilecoders.wicket.less;
 
 import com.github.sommeri.less4j.Less4jException;
-import com.google.common.base.Charsets;
 import org.apache.wicket.WicketRuntimeException;
 import org.apache.wicket.util.io.IOUtils;
 import org.apache.wicket.util.time.Time;
-import org.junit.Ignore;
+import org.hamcrest.MatcherAssert;
+import org.hamcrest.Matchers;
 import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.Charset;
 
-import static com.google.common.base.Strings.nullToEmpty;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.greaterThan;
-import static org.hamcrest.Matchers.is;
+import static de.agilecoders.wicket.util.Strings2.nullToEmpty;
 
 /**
  * Tests the {@link Less4JCompiler} class
@@ -29,30 +26,27 @@ public class Less4JCompilerTest {
     private static final Less4JCompiler compiler = new Less4JCompiler();
 
     @Test
-    @Ignore("till strange mixin bug was resolved")
     public void compileWicketLessWithoutErrors() {
         final String content = compileLessFile("wicket.less");
 
-        assertThat(content.length(), greaterThan(100));
+        MatcherAssert.assertThat(content.length(), Matchers.greaterThan(100));
     }
 
     @Test
-    @Ignore("till strange mixin bug was resolved")
     public void compileResponsiveLessWithoutErrors() throws IOException {
         final String content = compileLessFile("responsive.less");
 
-        assertThat(content.length(), greaterThan(100));
+        MatcherAssert.assertThat(content.length(), Matchers.greaterThan(100));
     }
 
     @Test
     public void variablesAreReplaced() {
-        assertThat(compile("@var:1; .rule { zoom: @var; }"), is(equalTo(".rule { zoom: 1;}")));
+        MatcherAssert.assertThat(compile("@var:1; .rule { zoom: @var; }"), Matchers.is(Matchers.equalTo(".rule { zoom: 1;}")));
     }
 
     @Test
-    @Ignore("till 0.0.7 was released")
     public void starPrefixIsAllowed() {
-        assertThat(compile(".rule { *zoom: 1; }"), is(equalTo(".rule { *zoom: 1;}")));
+        MatcherAssert.assertThat(compile(".rule { *zoom: 1; }"), Matchers.is(Matchers.equalTo(".rule { *zoom: 1;}")));
     }
 
     /**
@@ -102,7 +96,7 @@ public class Less4JCompilerTest {
 
             @Override
             public InputStream getInputStream() {
-                return new ByteArrayInputStream(content.getBytes(Charsets.UTF_8));
+                return new ByteArrayInputStream(content.getBytes(Charset.forName("UTF-8")));
             }
 
             @Override
@@ -130,7 +124,7 @@ public class Less4JCompilerTest {
      */
     private String compile(final String content) {
         try {
-            return removeLineBreaks(IOUtils.toString(compiler.compile(on(content)).getInputStream(), Charsets.UTF_8.toString()));
+            return removeLineBreaks(IOUtils.toString(compiler.compile(on(content)).getInputStream(), Charset.forName("UTF-8").toString()));
         } catch (Exception e) {
             if (e instanceof Less4jException) {
                 return new Less4JCompiler.ErrorLogger("test", (Less4jException) e).toString();

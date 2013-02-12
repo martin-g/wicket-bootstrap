@@ -16,8 +16,7 @@ public interface ICompiledResource extends Closeable {
     /**
      * @return the last modification time (including all children)
      */
-    // TODO miha Rename to getModificationTime() ?
-    Time getLastModificationTime();
+    Time getModificationTime();
 
     /**
      * @return compiled less content

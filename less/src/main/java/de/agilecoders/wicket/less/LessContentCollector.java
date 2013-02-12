@@ -1,6 +1,5 @@
 package de.agilecoders.wicket.less;
 
-import com.google.common.collect.Lists;
 import org.apache.wicket.util.io.IOUtils;
 import org.apache.wicket.util.time.Time;
 import org.slf4j.Logger;
@@ -9,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
 import java.util.concurrent.Future;
@@ -101,7 +101,7 @@ public class LessContentCollector {
      * Holder class for all less resources and their imports.
      */
     private static final class CombinedLessResource implements ICombinedLessResource {
-        private final List<String> cache = Lists.newArrayList();
+        private final List<String> cache = new ArrayList<String>();
         private final ILessResource resource;
         private final StringBuilder builder;
         private Time lastModified;
@@ -146,7 +146,7 @@ public class LessContentCollector {
         /**
          * @return last modification time
          */
-        public final Time getLastModificationTime() {
+        public final Time getModificationTime() {
             return lastModified;
         }
 

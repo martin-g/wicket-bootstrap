@@ -1,10 +1,10 @@
 package de.agilecoders.wicket.settings;
 
-import com.google.common.base.Strings;
 import de.agilecoders.wicket.Bootstrap;
 import org.apache.wicket.Application;
 import org.apache.wicket.Session;
 import org.apache.wicket.WicketRuntimeException;
+import org.apache.wicket.util.string.Strings;
 
 /**
  * An {@link ActiveThemeProvider} implementation that stores the active theme
@@ -32,7 +32,7 @@ public class SessionThemeProvider implements ActiveThemeProvider {
     public ITheme getActiveTheme() {
         String style = Session.get().getStyle();
 
-        if (Strings.isNullOrEmpty(style)) {
+        if (Strings.isEmpty(style)) {
             return themeProvider().defaultTheme();
         } else {
             return themeProvider().byName(style);

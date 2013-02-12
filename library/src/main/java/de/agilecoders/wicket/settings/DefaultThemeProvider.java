@@ -1,10 +1,9 @@
 package de.agilecoders.wicket.settings;
 
-import com.google.common.base.Strings;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
 import de.agilecoders.wicket.markup.html.themes.bootstrap.BootstrapTheme;
+import de.agilecoders.wicket.util.Generics2;
 import org.apache.wicket.WicketRuntimeException;
+import org.apache.wicket.util.string.Strings;
 
 import java.util.List;
 
@@ -16,7 +15,7 @@ import java.util.List;
  */
 public class DefaultThemeProvider implements ThemeProvider {
 
-    private final List<ITheme> themes = Lists.newArrayList();
+    private final List<ITheme> themes = Generics2.newArrayList();
     private ITheme defaultTheme;
 
     /**
@@ -32,10 +31,10 @@ public class DefaultThemeProvider implements ThemeProvider {
      * @param themes The new themes
      * @return This instance
      */
-    public DefaultThemeProvider add(ITheme... themes) {
+    public DefaultThemeProvider add(final ITheme... themes) {
         assertNoDuplicateNames(themes);
 
-        this.themes.addAll(Lists.newArrayList(themes));
+        this.themes.addAll(Generics2.newArrayList(themes));
         return this;
     }
 
@@ -44,7 +43,7 @@ public class DefaultThemeProvider implements ThemeProvider {
      *
      * @param themes The themes to check.
      */
-    private void assertNoDuplicateNames(ITheme... themes) {
+    private void assertNoDuplicateNames(final ITheme... themes) {
         if (themes == null) {
             throw new WicketRuntimeException("list of themes is null");
         }
@@ -72,7 +71,7 @@ public class DefaultThemeProvider implements ThemeProvider {
      * @param theme The new default theme
      * @return This instance
      */
-    public DefaultThemeProvider addDefaultTheme(ITheme theme) {
+    public DefaultThemeProvider addDefaultTheme(final ITheme theme) {
         add(theme);
         return defaultTheme(theme);
     }
@@ -83,7 +82,7 @@ public class DefaultThemeProvider implements ThemeProvider {
      * @param theme The new default theme
      * @return This instance
      */
-    public DefaultThemeProvider defaultTheme(ITheme theme) {
+    public DefaultThemeProvider defaultTheme(final ITheme theme) {
         return defaultTheme(theme.name());
     }
 
@@ -93,7 +92,7 @@ public class DefaultThemeProvider implements ThemeProvider {
      * @param themeName The new default theme
      * @return This instance
      */
-    public DefaultThemeProvider defaultTheme(String themeName) {
+    public DefaultThemeProvider defaultTheme(final String themeName) {
         ITheme newDefaultTheme = byName(themeName);
 
         if (defaultTheme != newDefaultTheme) {
@@ -105,7 +104,7 @@ public class DefaultThemeProvider implements ThemeProvider {
 
     @Override
     public ITheme byName(String name) {
-        if (!Strings.isNullOrEmpty(name)) {
+        if (!Strings.isEmpty(name)) {
             for (ITheme theme : themes) {
                 if (name.equalsIgnoreCase(theme.name())) {
                     return theme;
@@ -118,7 +117,7 @@ public class DefaultThemeProvider implements ThemeProvider {
 
     @Override
     public List<ITheme> available() {
-        return ImmutableList.copyOf(themes);
+        return Generics2.newArrayList(themes);
     }
 
     @Override

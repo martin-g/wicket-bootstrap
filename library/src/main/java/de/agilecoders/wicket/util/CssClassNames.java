@@ -1,26 +1,16 @@
 package de.agilecoders.wicket.util;
 
-import com.google.common.base.Joiner;
-import com.google.common.base.Splitter;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 import org.apache.wicket.util.lang.Args;
 
 import java.util.List;
 import java.util.Set;
 
-import static com.google.common.base.Strings.nullToEmpty;
-
 /**
  * helper class for css class names
  *
  * @author miha
- * @version 1.0
  */
 public final class CssClassNames {
-
-    private static final Splitter SPLITTER = Splitter.onPattern("\\s+").trimResults().omitEmptyStrings();
-    private static final Joiner JOINER = Joiner.on(' ').skipNulls();
 
     /**
      * Constructor.
@@ -36,7 +26,7 @@ public final class CssClassNames {
      * @return the joined class names.
      */
     public static String join(Iterable<String> classNames) {
-        return JOINER.join(classNames);
+        return Generics2.join(classNames, ' ');
     }
 
     /**
@@ -46,7 +36,7 @@ public final class CssClassNames {
      * @return a new set of css class names.
      */
     public static Set<String> split(final CharSequence classValue) {
-        return Sets.newLinkedHashSet(SPLITTER.split(classValue));
+        return Generics2.newLinkedHashSet(Generics2.split(classValue, "\\s+"));
     }
 
     /**
@@ -82,7 +72,7 @@ public final class CssClassNames {
          * @param classValue the initial class name string
          */
         private Builder(final String classValue) {
-            classValues = Sets.newHashSet();
+            classValues = Generics2.newHashSet();
 
             addRaw(classValue);
         }
@@ -94,7 +84,7 @@ public final class CssClassNames {
          * @return this instance for chaining
          */
         public Builder addRaw(final String rawCssString) {
-            add(split(nullToEmpty(rawCssString)));
+            add(split(Strings2.nullToEmpty(rawCssString)));
             return this;
         }
 
@@ -119,7 +109,7 @@ public final class CssClassNames {
         public Builder remove(final String... classNames) {
             Args.notNull(classNames, "classNames");
 
-            return remove(Sets.newHashSet(classNames));
+            return remove(Generics2.newHashSet(classNames));
         }
 
         /**
@@ -156,7 +146,7 @@ public final class CssClassNames {
         public Builder add(final String... classNames) {
             Args.notNull(classNames, "classNames");
 
-            return add(Sets.newHashSet(classNames));
+            return add(Generics2.newHashSet(classNames));
         }
 
         /**
@@ -183,14 +173,14 @@ public final class CssClassNames {
          * @return all css class names as list of strings
          */
         public List<String> asList() {
-            return Lists.newArrayList(classValues);
+            return Generics2.newArrayList(classValues);
         }
 
         /**
          * @return all css class names as set of strings
          */
         public Set<String> asSet() {
-            return Sets.newLinkedHashSet(classValues);
+            return Generics2.newLinkedHashSet(classValues);
         }
 
         /**

@@ -1,7 +1,7 @@
 package de.agilecoders.wicket.util;
 
-import com.google.common.base.Strings;
 import org.apache.wicket.model.IModel;
+import org.apache.wicket.util.string.Strings;
 
 /**
  * helper class for {@link org.apache.wicket.model.IModel} handling.
@@ -24,7 +24,7 @@ public final class Models {
      * @return true, if model is null or empty
      */
     public static boolean isNullOrEmpty(IModel<String> model) {
-        return model == null || Strings.isNullOrEmpty(model.getObject());
+        return model == null || Strings.isEmpty(model.getObject());
     }
 
 

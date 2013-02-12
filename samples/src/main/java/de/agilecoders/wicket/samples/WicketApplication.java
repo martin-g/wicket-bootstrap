@@ -2,8 +2,12 @@ package de.agilecoders.wicket.samples;
 
 import com.google.javascript.jscomp.CompilationLevel;
 import de.agilecoders.wicket.Bootstrap;
+import de.agilecoders.wicket.BootstrapLess;
 import de.agilecoders.wicket.javascript.GoogleClosureJavaScriptCompressor;
 import de.agilecoders.wicket.javascript.YuiCssCompressor;
+import de.agilecoders.wicket.less.BootstrapLessCompilerSettings;
+import de.agilecoders.wicket.less.IBootstrapLessCompilerSettings;
+import de.agilecoders.wicket.less.Less4JCompiler;
 import de.agilecoders.wicket.markup.html.RenderJavaScriptToFooterHeaderResponseDecorator;
 import de.agilecoders.wicket.markup.html.bootstrap.extensions.html5player.Html5PlayerCssReference;
 import de.agilecoders.wicket.markup.html.bootstrap.extensions.html5player.Html5PlayerJavaScriptReference;
@@ -14,6 +18,7 @@ import de.agilecoders.wicket.markup.html.references.BootstrapPrettifyJavaScriptR
 import de.agilecoders.wicket.markup.html.references.ModernizrJavaScriptReference;
 import de.agilecoders.wicket.markup.html.themes.google.GoogleTheme;
 import de.agilecoders.wicket.markup.html.themes.metro.MetroTheme;
+import de.agilecoders.wicket.markup.html.themes.wicket.WicketTheme;
 import de.agilecoders.wicket.samples.assets.base.ApplicationJavaScript;
 import de.agilecoders.wicket.samples.assets.base.FixBootstrapStylesCssResourceReference;
 import de.agilecoders.wicket.samples.pages.HomePage;
@@ -122,7 +127,6 @@ public class WicketApplication extends WebApplication {
 
         getResourceBundles().addJavaScriptBundle(WicketApplication.class, "bootstrap.js",
                                                  (JavaScriptResourceReference) Bootstrap.getSettings().getJsResourceReference(),
-                                                 (JavaScriptResourceReference) Bootstrap.getSettings().getJqueryPPResourceReference(),
                                                  (JavaScriptResourceReference) BootstrapPrettifyJavaScriptReference.INSTANCE,
                                                  ApplicationJavaScript.INSTANCE
         );
@@ -155,24 +159,23 @@ public class WicketApplication extends WebApplication {
      * configures wicket-bootstrap and installs the settings.
      */
     private void configureBootstrap() {
-        final BootstrapSettings settings = new BootstrapSettings(this);
-        settings.useJqueryPP(false)
-                .useModernizr(false)
-                .useResponsiveCss(true)
-                .setJsResourceFilterName("footer-container");
-
-        //reactivate if new less4j version is available:
-        //settings.getBootstrapLessCompilerSettings().setUseLessCompiler(usesDevelopmentConfig());
-        //settings.getBootstrapLessCompilerSettings().setLessCompiler(new Less4JCompiler());
-
-        ThemeProvider themeProvider = new BootswatchThemeProvider() {{
+        final ThemeProvider themeProvider = new BootswatchThemeProvider() {{
             add(new MetroTheme());
             add(new GoogleTheme());
+            add(new WicketTheme());
             defaultTheme("wicket");
         }};
-        settings.setThemeProvider(themeProvider);
 
+        final BootstrapSettings settings = new BootstrapSettings();
+        settings.useResponsiveCss(true)
+                .setJsResourceFilterName("footer-container")
+                .setThemeProvider(themeProvider);
         Bootstrap.install(this, settings);
+
+        final IBootstrapLessCompilerSettings lessCompilerSettings = new BootstrapLessCompilerSettings();
+        lessCompilerSettings.setUseLessCompiler(usesDevelopmentConfig())
+                            .setLessCompiler(new Less4JCompiler());
+        BootstrapLess.install(this, lessCompilerSettings);
     }
 
     /**

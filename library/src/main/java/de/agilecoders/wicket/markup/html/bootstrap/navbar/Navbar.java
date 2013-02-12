@@ -1,15 +1,11 @@
 package de.agilecoders.wicket.markup.html.bootstrap.navbar;
 
-import com.google.common.base.Function;
-import com.google.common.base.Preconditions;
-import com.google.common.base.Predicate;
-import com.google.common.base.Strings;
-import com.google.common.collect.Lists;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.ICssClassNameProvider;
 import de.agilecoders.wicket.markup.html.bootstrap.button.Activatable;
 import de.agilecoders.wicket.markup.html.bootstrap.common.Invertible;
 import de.agilecoders.wicket.util.Behaviors;
+import de.agilecoders.wicket.util.Generics2;
 import de.agilecoders.wicket.util.Models;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
@@ -28,12 +24,14 @@ import org.apache.wicket.model.LoadableDetachableModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.resource.ResourceReference;
 import org.apache.wicket.util.io.IClusterable;
+import org.apache.wicket.util.lang.Args;
+import org.apache.wicket.util.string.Strings;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import static com.google.common.collect.Iterables.filter;
-import static com.google.common.collect.Iterables.transform;
-import static com.google.common.collect.Lists.newArrayList;
+import static de.agilecoders.wicket.util.Generics2.filter;
+import static de.agilecoders.wicket.util.Generics2.transform;
 
 /**
  * TODO: document
@@ -41,7 +39,6 @@ import static com.google.common.collect.Lists.newArrayList;
  * <pre><div wicket:id="navbar" class="navbar"></div></pre>
  *
  * @author miha
- * @version 1.0
  */
 public class Navbar extends Panel implements Invertible<Navbar> {
 
@@ -110,7 +107,7 @@ public class Navbar extends Panel implements Invertible<Navbar> {
     private final IModel<Position> position = Model.of(Position.DEFAULT);
     private final IModel<Boolean> fluid = Model.of(false);
 
-    private final List<INavbarComponent> components = Lists.newArrayList();
+    private final List<INavbarComponent> components = new ArrayList<INavbarComponent>();
 
     /**
      * Construct.
@@ -171,7 +168,7 @@ public class Navbar extends Panel implements Invertible<Navbar> {
         return new LoadableDetachableModel<List<Component>>() {
             @Override
             public List<Component> load() {
-                return newArrayList(transform(filter(components, withPosition), NAVBAR_COMPONENT_TO_COMPONENT_FUNCTION));
+                return transform(filter(components, withPosition), NAVBAR_COMPONENT_TO_COMPONENT_FUNCTION);
             }
         };
     }
@@ -201,7 +198,7 @@ public class Navbar extends Panel implements Invertible<Navbar> {
                 }
 
                 if (component instanceof Invertible) {
-                    ((Invertible)component).setInverted(!Models.isNullOrEmpty(invertModel));
+                    ((Invertible) component).setInverted(!Models.isNullOrEmpty(invertModel));
                 }
             }
 
@@ -303,7 +300,7 @@ public class Navbar extends Panel implements Invertible<Navbar> {
      * @return this component instance for chaining
      */
     public final Navbar addComponents(final INavbarComponent... components) {
-        return addComponents(newArrayList(components));
+        return addComponents(Generics2.newArrayList(components));
     }
 
     /**
@@ -394,10 +391,10 @@ public class Navbar extends Panel implements Invertible<Navbar> {
 
 
     /**
-     * A {@link Predicate} that filters out all {@link INavbarComponent}s that don't
+     * A {@link Generics2.Predicate} that filters out all {@link INavbarComponent}s that don't
      * match the given {@link ComponentPosition}.
      */
-    private static final class PositionFilter implements Predicate<INavbarComponent>, IClusterable {
+    private static final class PositionFilter implements Generics2.Predicate<INavbarComponent>, IClusterable {
 
         private final ComponentPosition position;
 
@@ -407,7 +404,7 @@ public class Navbar extends Panel implements Invertible<Navbar> {
          * @param position which filtered component must match
          */
         private PositionFilter(final ComponentPosition position) {
-            Preconditions.checkNotNull(position);
+            Args.notNull(position, "position");
 
             this.position = position;
         }
@@ -419,9 +416,9 @@ public class Navbar extends Panel implements Invertible<Navbar> {
     }
 
     /**
-     * A {@link Function} that maps a {@link INavbarComponent} to a {@link Component}
+     * A {@link Generics2.Function} that maps a {@link INavbarComponent} to a {@link Component}
      */
-    private static final class NavbarComponentToComponentFunction implements Function<INavbarComponent, Component>, IClusterable {
+    private static final class NavbarComponentToComponentFunction implements Generics2.Function<INavbarComponent, Component>, IClusterable {
 
         private final String markupId;
 
@@ -431,7 +428,7 @@ public class Navbar extends Panel implements Invertible<Navbar> {
          * @param markupId The markup id to use for each new component
          */
         private NavbarComponentToComponentFunction(final String markupId) {
-            Preconditions.checkArgument(!Strings.isNullOrEmpty(markupId));
+            Args.isFalse(Strings.isEmpty(markupId), "markupId");
 
             this.markupId = markupId;
         }

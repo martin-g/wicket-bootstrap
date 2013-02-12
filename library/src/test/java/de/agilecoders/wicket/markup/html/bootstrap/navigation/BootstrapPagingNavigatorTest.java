@@ -1,9 +1,9 @@
 package de.agilecoders.wicket.markup.html.bootstrap.navigation;
 
-import com.google.common.collect.Lists;
 import de.agilecoders.wicket.WicketApplicationTest;
 import de.agilecoders.wicket.test.Attributes;
 import de.agilecoders.wicket.test.IntegrationTest;
+import de.agilecoders.wicket.util.Generics2;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.MarkupException;
 import org.apache.wicket.markup.html.basic.Label;
@@ -89,7 +89,7 @@ public class BootstrapPagingNavigatorTest extends WicketApplicationTest {
      * @return new {@link IPageable} instance
      */
     private IPageable createPageable() {
-        return new PageableListView<String>("pageable", Lists.newArrayList("item1", "item2", "item3", "item2"), 1) {
+        return new PageableListView<String>("pageable", Generics2.newArrayList("item1", "item2", "item3", "item2"), 1) {
             @Override
             protected void populateItem(ListItem<String> item) {
                 item.add(new Label("item", item.getModelObject()));

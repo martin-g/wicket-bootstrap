@@ -1,7 +1,5 @@
 package de.agilecoders.wicket.markup.html.bootstrap.carousel;
 
-import com.google.common.base.Optional;
-
 /**
  * Default implementation of {@link ICarouselImage}.
  *
@@ -51,12 +49,12 @@ public class CarouselImage implements ICarouselImage {
     }
 
     @Override
-    public Optional<String> description() {
-        return Optional.fromNullable(description);
+    public String description() {
+        return description;
     }
 
     @Override
-    public Optional<String> header() {
-        return Optional.fromNullable(header);
+    public String header() {
+        return header;
     }
 }

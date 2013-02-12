@@ -1,6 +1,5 @@
 package de.agilecoders.wicket.util;
 
-import com.google.common.collect.Sets;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.ICssClassNameProvider;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.util.lang.Args;
@@ -24,7 +23,7 @@ public final class Attributes {
     public static void addClass(final ComponentTag tag, final String... classNames) {
         Args.notNull(classNames, "classNames");
 
-        addClass(tag, Sets.newHashSet(classNames));
+        addClass(tag, Generics2.newHashSet(classNames));
     }
 
     /**

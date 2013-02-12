@@ -1,6 +1,5 @@
 package de.agilecoders.wicket.markup.html;
 
-import com.google.common.collect.Lists;
 import de.agilecoders.wicket.Bootstrap;
 import org.apache.wicket.markup.head.HeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
@@ -13,6 +12,7 @@ import org.apache.wicket.markup.head.filter.OppositeHeaderResponseFilter;
 import org.apache.wicket.markup.html.IHeaderResponseDecorator;
 import org.apache.wicket.util.lang.Args;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -43,7 +43,7 @@ public class RenderJavaScriptToFooterHeaderResponseDecorator implements IHeaderR
     public RenderJavaScriptToFooterHeaderResponseDecorator(final String filterName) {
         Args.notEmpty(filterName, "filterName");
 
-        filters = Lists.newArrayList();
+        filters = new ArrayList<FilteringHeaderResponse.IHeaderResponseFilter>();
 
         final AbstractHeaderResponseFilter jsAcceptingFilter = new AbstractHeaderResponseFilter(filterName) {
             public boolean accepts(HeaderItem item) {

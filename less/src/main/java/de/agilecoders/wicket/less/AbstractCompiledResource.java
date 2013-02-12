@@ -29,8 +29,8 @@ public abstract class AbstractCompiledResource implements ICompiledResource {
     }
 
     @Override
-    public final Time getLastModificationTime() {
-        return lessFile.getLastModificationTime();
+    public final Time getModificationTime() {
+        return lessFile.getModificationTime();
     }
 
     /**

@@ -1,12 +1,12 @@
 package de.agilecoders.wicket.markup.html.bootstrap.common;
 
-import com.google.common.collect.Maps;
 import de.agilecoders.wicket.util.ConfigModel;
 import de.agilecoders.wicket.util.Json;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.util.io.IClusterable;
 import org.apache.wicket.util.lang.Objects;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -22,7 +22,7 @@ public abstract class AbstractConfig implements IClusterable {
      * Construct.
      */
     protected AbstractConfig() {
-        config = Maps.newHashMap();
+        config = new HashMap<String, Object>();
     }
 
     /**
@@ -36,7 +36,7 @@ public abstract class AbstractConfig implements IClusterable {
      * @return a copy of all configurations
      */
     public final Map<String, Object> all() {
-        return Maps.newHashMap(config);
+        return new HashMap<String, Object>(config);
     }
 
     /**

@@ -1,13 +1,11 @@
 package de.agilecoders.wicket.markup.html.themes.bootstrap;
 
-import de.agilecoders.wicket.less.LessResourceReference;
-
 /**
  * Responsive css reference
  *
  * @author miha
  */
-public class BootstrapResponsiveCssReference extends LessResourceReference {
+public class BootstrapResponsiveCssReference extends BootstrapCssReference {
     private static final long serialVersionUID = 1L;
 
     /**

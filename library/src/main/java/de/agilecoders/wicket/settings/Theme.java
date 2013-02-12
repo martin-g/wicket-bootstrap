@@ -1,6 +1,6 @@
 package de.agilecoders.wicket.settings;
 
-import com.google.common.collect.Lists;
+import de.agilecoders.wicket.util.Generics2;
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
@@ -28,7 +28,7 @@ public class Theme implements ITheme {
      */
     public Theme(final String name, final ResourceReference... resourceReferences) {
         this.name = name;
-        this.resourceReferences = Lists.newArrayList(resourceReferences);
+        this.resourceReferences = Generics2.newArrayList(resourceReferences);
     }
 
     /**

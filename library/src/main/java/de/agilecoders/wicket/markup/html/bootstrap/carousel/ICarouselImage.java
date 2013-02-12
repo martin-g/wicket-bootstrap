@@ -1,6 +1,5 @@
 package de.agilecoders.wicket.markup.html.bootstrap.carousel;
 
-import com.google.common.base.Optional;
 import org.apache.wicket.util.io.IClusterable;
 
 /**
@@ -18,11 +17,11 @@ public interface ICarouselImage extends IClusterable {
     /**
      * @return the description of the image
      */
-    public Optional<String> description();
+    public String description();
 
     /**
      * @return header of description for image
      */
-    public Optional<String> header();
+    public String header();
 
 }

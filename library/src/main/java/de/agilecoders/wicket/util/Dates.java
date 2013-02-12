@@ -1,6 +1,6 @@
 package de.agilecoders.wicket.util;
 
-import static com.google.common.base.Strings.nullToEmpty;
+import static de.agilecoders.wicket.util.Strings2.nullToEmpty;
 
 /**
  * Helper class for dates.

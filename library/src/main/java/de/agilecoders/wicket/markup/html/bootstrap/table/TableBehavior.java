@@ -1,11 +1,10 @@
 package de.agilecoders.wicket.markup.html.bootstrap.table;
 
-import com.google.common.base.Function;
-import com.google.common.collect.Lists;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.ICssClassNameProvider;
 import de.agilecoders.wicket.util.Components;
+import de.agilecoders.wicket.util.Generics2;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.ComponentTag;
 
@@ -29,7 +28,7 @@ public class TableBehavior extends BootstrapBaseBehavior {
 
     }
 
-    private List<Type> types = Lists.newArrayList(Type.Basic);
+    private List<Type> types = Generics2.newArrayList(Type.Basic);
 
     public TableBehavior striped() {
         return addType(Type.Zebra);
@@ -59,7 +58,7 @@ public class TableBehavior extends BootstrapBaseBehavior {
     }
 
     private List<String> createCssClassNames() {
-        return Lists.transform(types, new Function<Type, String>() {
+        return Generics2.transform(types, new Generics2.Function<Type, String>() {
             @Override
             public String apply(Type input) {
                 return input != null ? input.cssClassName() : "";

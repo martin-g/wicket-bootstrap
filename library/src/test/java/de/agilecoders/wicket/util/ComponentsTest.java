@@ -1,6 +1,5 @@
 package de.agilecoders.wicket.util;
 
-import com.google.common.collect.Sets;
 import de.agilecoders.wicket.WicketApplicationTest;
 import de.agilecoders.wicket.test.TestCategory;
 import org.apache.wicket.Component;
@@ -81,12 +80,12 @@ public class ComponentsTest extends WicketApplicationTest {
 
     @Test
     public void assertTagDoesNothingIfTagIsOkWithSet() {
-        Components.assertTag(createComponentMock(), new ComponentTag("a", XmlTag.TagType.OPEN_CLOSE), Sets.newHashSet("a", "li"));
+        Components.assertTag(createComponentMock(), new ComponentTag("a", XmlTag.TagType.OPEN_CLOSE), Generics2.newHashSet("a", "li"));
     }
 
     @Test(expected = MarkupException.class)
     public void assertTagDoesThrowExceptionIfTagIsNotOkWithSet() {
-        Components.assertTag(createComponentMock(), new ComponentTag("div", XmlTag.TagType.OPEN_CLOSE), Sets.newHashSet("a", "li"));
+        Components.assertTag(createComponentMock(), new ComponentTag("div", XmlTag.TagType.OPEN_CLOSE), Generics2.newHashSet("a", "li"));
     }
 
     @Test(expected = MarkupException.class)

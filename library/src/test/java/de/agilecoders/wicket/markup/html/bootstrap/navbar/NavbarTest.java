@@ -21,7 +21,6 @@ import static org.hamcrest.CoreMatchers.is;
  * Tests the {@code Navbar de.agilecoders.wicket.markup.html.bootstrap.navbar.Navbar}.
  *
  * @author miha
- * @version 1.0
  */
 @Category(IntegrationTest.class)
 public class NavbarTest extends WicketApplicationTest {

@@ -1,9 +1,7 @@
 package de.agilecoders.wicket.markup.html.bootstrap.button;
 
-import com.google.common.collect.Lists;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
 import de.agilecoders.wicket.util.Attributes;
-import de.agilecoders.wicket.util.Iterables;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.html.link.AbstractLink;
@@ -14,6 +12,8 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.LoadableDetachableModel;
 import org.apache.wicket.util.lang.Args;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -46,7 +46,7 @@ public class ButtonGroup extends Panel {
 
         Args.notNull(orientation, "orientation");
 
-        this.buttonList = Lists.newArrayList();
+        this.buttonList = new ArrayList<AbstractLink>();
         this.orientation = orientation;
 
         add(newButtonList("buttons"));
@@ -73,9 +73,7 @@ public class ButtonGroup extends Panel {
     }
 
     public ButtonGroup addButtons(AbstractLink... buttons) {
-        List<? extends AbstractLink> buttonsList = Iterables.forEach(buttons, new AssertValidButtonPredicate(ButtonList.getButtonMarkupId()));
-
-        buttonList.addAll(buttonsList);
+        Collections.addAll(buttonList, buttons);
         return this;
     }
 

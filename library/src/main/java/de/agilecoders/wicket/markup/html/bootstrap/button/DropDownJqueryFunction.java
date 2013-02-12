@@ -1,7 +1,7 @@
 package de.agilecoders.wicket.markup.html.bootstrap.button;
 
-import com.google.common.base.Strings;
 import de.agilecoders.wicket.util.JQuery;
+import org.apache.wicket.util.string.Strings;
 
 /**
  * A jquery function abstraction for dropdowns.
@@ -34,7 +34,7 @@ public class DropDownJqueryFunction extends JQuery.AbstractFunction {
     public DropDownJqueryFunction(final String action) {
         super("dropdown");
 
-        if (!Strings.isNullOrEmpty(action)) {
+        if (!Strings.isEmpty(action)) {
             addParameter(toParameterValue(action));
         }
     }

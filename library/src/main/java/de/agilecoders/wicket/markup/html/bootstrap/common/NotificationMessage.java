@@ -1,8 +1,8 @@
 package de.agilecoders.wicket.markup.html.bootstrap.common;
 
-import com.google.common.base.Strings;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
+import org.apache.wicket.util.string.Strings;
 import org.apache.wicket.util.time.Duration;
 
 /**
@@ -99,7 +99,7 @@ public class NotificationMessage implements INotificationMessage {
 
     @Override
     public String toString() {
-        return Strings.isNullOrEmpty(header.getObject()) ? message.getObject()
-                                                         : header.getObject() + " " + message.getObject();
+        return Strings.isEmpty(header.getObject()) ? message.getObject()
+                                                   : header.getObject() + " " + message.getObject();
     }
 }

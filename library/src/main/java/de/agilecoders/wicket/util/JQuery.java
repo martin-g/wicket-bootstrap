@@ -1,8 +1,5 @@
 package de.agilecoders.wicket.util;
 
-import com.google.common.base.Function;
-import com.google.common.base.Joiner;
-import com.google.common.collect.Lists;
 import de.agilecoders.wicket.markup.html.bootstrap.common.AbstractConfig;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
@@ -11,7 +8,7 @@ import org.apache.wicket.util.time.Duration;
 
 import java.util.List;
 
-import static com.google.common.base.Strings.nullToEmpty;
+import static de.agilecoders.wicket.util.Strings2.nullToEmpty;
 
 /**
  * The Jquery class helps to keep all javascript jquery scripts type safe.
@@ -19,13 +16,11 @@ import static com.google.common.base.Strings.nullToEmpty;
  * @author miha
  */
 public final class JQuery implements IClusterable {
-    private static final Joiner FUNCTION_JOINER = Joiner.on('.').skipNulls();
-    private static final Joiner SELECTOR_JOINER = Joiner.on(' ').skipNulls();
 
     /**
      * Function that maps an {@link IFunction} to its string representation.
      */
-    private static final Function<IFunction, String> FUNCTION_TRANSFORMER = new Function<IFunction, String>() {
+    private static final Generics2.Function<IFunction, String> FUNCTION_TRANSFORMER = new Generics2.Function<IFunction, String>() {
         @Override
         public String apply(final IFunction function) {
             return function != null ? function.build() : null;
@@ -60,13 +55,13 @@ public final class JQuery implements IClusterable {
      * @return new Jquery instance
      */
     public static JQuery $(final Component component, final String... additionalSelector) {
-        final List<String> selector = Lists.newArrayList("#" + component.getMarkupId(true));
+        final List<String> selector = Generics2.newArrayList("#" + component.getMarkupId(true));
 
         if (additionalSelector != null) {
-            selector.addAll(Lists.newArrayList(additionalSelector));
+            selector.addAll(Generics2.newArrayList(additionalSelector));
         }
 
-        return $(SELECTOR_JOINER.join(selector));
+        return $(Generics2.join(selector, ' '));
     }
 
     private final String selector;
@@ -79,7 +74,7 @@ public final class JQuery implements IClusterable {
      */
     private JQuery(final String selector) {
         this.selector = selector;
-        this.functions = Lists.newArrayList();
+        this.functions = Generics2.newArrayList();
     }
 
     /**
@@ -119,10 +114,10 @@ public final class JQuery implements IClusterable {
     }
 
     /**
-     * @return all functions as joined (by {@link #FUNCTION_JOINER}) string.
+     * @return all functions as joined string.
      */
     private String createFunctionString() {
-        return functions.isEmpty() ? "" : "." + FUNCTION_JOINER.join(Lists.transform(functions, FUNCTION_TRANSFORMER));
+        return functions.isEmpty() ? "" : "." + Generics2.join(Generics2.transform(functions, FUNCTION_TRANSFORMER), '.');
     }
 
     /**
@@ -264,8 +259,6 @@ public final class JQuery implements IClusterable {
      * function parameters in a javascript safe way.
      */
     public static abstract class AbstractFunction implements IFunction {
-        private static final Joiner PARAMETER_JOINER = Joiner.on(',').skipNulls();
-
         private final String functionName;
         private final List<String> parameters;
 
@@ -276,7 +269,7 @@ public final class JQuery implements IClusterable {
          */
         protected AbstractFunction(final String functionName) {
             this.functionName = functionName;
-            this.parameters = Lists.newArrayList();
+            this.parameters = Generics2.newArrayList();
         }
 
         @Override
@@ -285,17 +278,17 @@ public final class JQuery implements IClusterable {
         }
 
         /**
-         * @return the parameter joiner instance
+         * @return the separator
          */
-        protected final Joiner getJoiner() {
-            return PARAMETER_JOINER;
+        protected final char getSeparator() {
+            return ',';
         }
 
         /**
          * @return a joined list of parameters as string
          */
         protected String buildParameters() {
-            return getJoiner().join(parameters);
+            return Generics2.join(parameters, getSeparator());
         }
 
         /**

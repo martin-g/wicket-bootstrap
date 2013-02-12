@@ -2,11 +2,11 @@ package de.agilecoders.wicket.less;
 
 import com.asual.lesscss.LessEngine;
 import com.asual.lesscss.LessException;
-import com.google.common.base.Joiner;
-import com.google.common.base.Strings;
-import de.agilecoders.wicket.Bootstrap;
+import com.asual.lesscss.LessOptions;
+import de.agilecoders.wicket.util.Generics2;
 import org.apache.wicket.WicketRuntimeException;
 import org.apache.wicket.util.lang.Exceptions;
+import org.apache.wicket.util.string.Strings;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,7 +27,7 @@ public class LessJsLessCompiler extends AbstractLessCompiler {
      * to load LessEngine if it is really needed
      */
     private static class LessEngineHolder {
-        private final static LessEngine instance = new LessEngine(Bootstrap.getSettings().getBootstrapLessCompilerSettings().getLessOptions());
+        private final static LessEngine instance = new LessEngine(new LessOptions());
     }
 
     /**
@@ -75,11 +75,11 @@ public class LessJsLessCompiler extends AbstractLessCompiler {
 
         String extract = null;
         if (extractList != null) {
-            extract = Joiner.on(",").join(extractList);
+            extract = Generics2.join(extractList, ',');
         }
 
         // Try to detect missing imports
-        if (Strings.isNullOrEmpty(extract)) {
+        if (Strings.isEmpty(extract)) {
             FileNotFoundException fileNotFoundException = Exceptions.findCause(e, FileNotFoundException.class);
 
             if (fileNotFoundException != null) {

@@ -1,9 +1,6 @@
 package de.agilecoders.wicket.less;
 
-import com.google.common.cache.Cache;
-import com.google.common.cache.CacheBuilder;
-import com.google.common.collect.Sets;
-import de.agilecoders.wicket.Bootstrap;
+import de.agilecoders.wicket.BootstrapLess;
 import org.apache.wicket.Application;
 import org.apache.wicket.core.util.resource.locator.ResourceStreamLocator;
 import org.apache.wicket.request.resource.CssResourceReference;
@@ -19,14 +16,17 @@ import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 
 /**
  * A stream locator that automatically compiles ".less" files. This {@link ResourceStreamLocator}
  * should only be used in development mode (this is the default configuration for
- * {@link de.agilecoders.wicket.settings.BootstrapSettings}), because it will check the modification
+ * {@link de.agilecoders.wicket.less.IBootstrapLessCompilerSettings}), because it will check the modification
  * time of each less file for each request once.
  *
  * @author miha
@@ -40,10 +40,10 @@ public class LessResourceStreamLocator extends ResourceStreamLocator {
     private final ThreadLocal<Set<String>> THREAD_CACHE = new ThreadLocal<Set<String>>() {
         @Override
         protected Set<String> initialValue() {
-            return Sets.newHashSet();
+            return new HashSet<String>();
         }
     };
-    private final Cache<String, CacheValue> CACHE = CacheBuilder.newBuilder().maximumSize(100).recordStats().build();
+    private final ConcurrentMap<String, CacheValue> CACHE = new ConcurrentHashMap<String, CacheValue>();
 
     /**
      * Constructor
@@ -109,9 +109,8 @@ public class LessResourceStreamLocator extends ResourceStreamLocator {
          * The L2 cache holds the compiled content as long as the application is active and data isn't out
          * dated.
          */
-        //noinspection SynchronizationOnLocalVariableOrMethodParameter
-        synchronized (clazz) {
-            final CacheValue cacheValue = CACHE.getIfPresent(key);
+        synchronized (key) {
+            final CacheValue cacheValue = CACHE.get(key);
 
             /**
              * This {@link THREAD_CACHE} is necessary to reduce look ups for outdated
@@ -191,7 +190,7 @@ public class LessResourceStreamLocator extends ResourceStreamLocator {
      * @return true if less compiler should be used.
      */
     private static boolean useLessCompiler() {
-        return Bootstrap.getSettings().getBootstrapLessCompilerSettings().useLessCompiler();
+        return BootstrapLess.getSettings().useLessCompiler();
     }
 
     /**
@@ -218,7 +217,7 @@ public class LessResourceStreamLocator extends ResourceStreamLocator {
     }
 
     /**
-     * Gets the {@link LessJsLessCompiler} to be used. By default returns the configured compiler on
+     * By default returns the configured compiler on
      * application level, but can be overridden by the user application to provide compiler
      * specific to the resource.
      *
@@ -226,7 +225,7 @@ public class LessResourceStreamLocator extends ResourceStreamLocator {
      */
     private static IBootstrapLessCompiler getCompiler() {
         if (Application.exists()) {
-            return Bootstrap.getSettings().getBootstrapLessCompilerSettings().getLessCompiler();
+            return BootstrapLess.getSettings().getLessCompiler();
         }
 
         throw new IllegalStateException("there is no application assigned to current thread.");
@@ -269,7 +268,7 @@ public class LessResourceStreamLocator extends ResourceStreamLocator {
 
         @Override
         public Time lastModifiedTime() {
-            return compiledResource.getLastModificationTime();
+            return compiledResource.getModificationTime();
         }
 
         @Override

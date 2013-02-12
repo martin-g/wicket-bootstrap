@@ -1,8 +1,8 @@
 package de.agilecoders.wicket.markup.html.bootstrap.behavior;
 
-import com.google.common.collect.Lists;
 import de.agilecoders.wicket.WicketApplicationTest;
 import de.agilecoders.wicket.test.IntegrationTest;
+import de.agilecoders.wicket.util.Generics2;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.WebMarkupContainer;
@@ -75,7 +75,7 @@ public class CssClassNameModifierTest extends WicketApplicationTest {
 
     @Test
     public void classFromListIsAdded() {
-        component.add(new CssClassNameModifier(Lists.newArrayList("classX", "classY", "classZ")));
+        component.add(new CssClassNameModifier(Generics2.newArrayList("classX", "classY", "classZ")));
 
         startPageAndAssertClassNames("classX classY classZ");
     }

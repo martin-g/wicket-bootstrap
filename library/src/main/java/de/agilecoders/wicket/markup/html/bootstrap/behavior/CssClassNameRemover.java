@@ -16,8 +16,8 @@
  */
 package de.agilecoders.wicket.markup.html.bootstrap.behavior;
 
-import com.google.common.collect.Lists;
 import de.agilecoders.wicket.util.CssClassNames;
+import de.agilecoders.wicket.util.Generics2;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.util.string.Strings;
@@ -46,7 +46,7 @@ public class CssClassNameRemover extends CssClassNameAppender {
      * @param removeValue one or more values to append
      */
     public CssClassNameRemover(String... removeValue) {
-        this(Lists.newArrayList(removeValue));
+        this(Generics2.newArrayList(removeValue));
     }
 
     /**

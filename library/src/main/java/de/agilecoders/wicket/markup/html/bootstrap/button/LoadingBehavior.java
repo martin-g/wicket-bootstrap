@@ -1,12 +1,11 @@
 package de.agilecoders.wicket.markup.html.bootstrap.button;
 
-import com.google.common.base.Preconditions;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapJavascriptBehavior;
-import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
-import org.apache.wicket.behavior.AttributeAppender;
+import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.model.IModel;
+import org.apache.wicket.util.lang.Args;
 
 import static de.agilecoders.wicket.markup.html.bootstrap.button.ButtonJqueryFunction.button;
 import static de.agilecoders.wicket.util.JQuery.$;
@@ -16,7 +15,6 @@ import static de.agilecoders.wicket.util.JQuery.$;
  * loading message.
  *
  * @author miha
- * @version 1.0
  */
 public class LoadingBehavior extends BootstrapJavascriptBehavior {
 
@@ -33,11 +31,18 @@ public class LoadingBehavior extends BootstrapJavascriptBehavior {
     }
 
     @Override
+    public void onComponentTag(Component component, ComponentTag tag) {
+        super.onComponentTag(component, tag);
+
+        tag.put("onclick", $(component).chain(button("loading")).get());
+        tag.put("data-loading-text", model.getObject());
+    }
+
+    @Override
     public void bind(Component component) {
         super.bind(component);
 
         component.setOutputMarkupId(true);
-        component.add(new AttributeAppender("onclick", $(component).chain(button("loading")).get()));
 
         this.component = component;
     }
@@ -63,8 +68,8 @@ public class LoadingBehavior extends BootstrapJavascriptBehavior {
      * @param ajaxRequestTarget The {@link AjaxRequestTarget}
      */
     public static void reset(Component component, AjaxRequestTarget ajaxRequestTarget) {
-        Preconditions.checkNotNull(component);
-        Preconditions.checkNotNull(ajaxRequestTarget);
+        Args.notNull(component, "component");
+        Args.notNull(ajaxRequestTarget, "ajaxRequestTarget");
 
         ajaxRequestTarget.appendJavaScript($(component).chain(button("reset")).get());
     }
@@ -80,10 +85,4 @@ public class LoadingBehavior extends BootstrapJavascriptBehavior {
         }
     }
 
-    @Override
-    public void onConfigure(Component component) {
-        super.onConfigure(component);
-
-        component.add(new AttributeModifier("data-loading-text", model));
-    }
 }

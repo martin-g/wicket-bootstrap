@@ -1,6 +1,5 @@
 package de.agilecoders.wicket.util;
 
-import com.google.common.base.Strings;
 import de.agilecoders.wicket.Bootstrap;
 import de.agilecoders.wicket.settings.IBootstrapSettings;
 import org.apache.wicket.Application;
@@ -9,6 +8,9 @@ import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.head.JavaScriptReferenceHeaderItem;
 import org.apache.wicket.markup.head.filter.FilteredHeaderItem;
 import org.apache.wicket.request.resource.ResourceReference;
+import org.apache.wicket.util.string.Strings;
+
+import static de.agilecoders.wicket.util.Strings2.nullToEmpty;
 
 /**
  * Helper class for {@link org.apache.wicket.request.resource.ResourceReference} handling.
@@ -34,12 +36,12 @@ public final class References {
      * @return file name containing ".min"
      */
     public static String appendMinificationIdentifier(final String referenceUrl) {
-        if (!Strings.isNullOrEmpty(referenceUrl) && referenceUrl.contains(".") &&
-            (Bootstrap.getSettings(Application.get()).isMinified())) {
+        if (!Strings.isEmpty(referenceUrl) && referenceUrl.contains(".") &&
+            (Application.get().getResourceSettings().getUseMinifiedResources())) {
             return referenceUrl.replaceFirst("\\.(?=[^.]*$)", ".min.");
         }
 
-        return Strings.nullToEmpty(referenceUrl);
+        return nullToEmpty(referenceUrl);
     }
 
     /**
@@ -72,7 +74,7 @@ public final class References {
     public static void renderWithFilter(final IBootstrapSettings settings, final IHeaderResponse response, final JavaScriptReferenceHeaderItem headerItem) {
         final String filterName = settings.getJsResourceFilterName();
 
-        if (Strings.isNullOrEmpty(filterName)) {
+        if (Strings.isEmpty(filterName)) {
             response.render(headerItem);
         } else {
             response.render(new FilteredHeaderItem(headerItem, filterName));

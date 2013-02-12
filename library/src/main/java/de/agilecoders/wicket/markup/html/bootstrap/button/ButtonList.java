@@ -1,12 +1,12 @@
 package de.agilecoders.wicket.markup.html.bootstrap.button;
 
-import com.google.common.collect.Lists;
-import de.agilecoders.wicket.util.Iterables;
 import org.apache.wicket.markup.html.link.AbstractLink;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.model.IModel;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -27,7 +27,7 @@ public class ButtonList extends ListView<AbstractLink> {
      * @param markupId
      */
     public ButtonList(String markupId) {
-        this(markupId, Lists.<AbstractLink>newArrayList());
+        this(markupId, new ArrayList<AbstractLink>());
     }
 
     /**
@@ -59,8 +59,7 @@ public class ButtonList extends ListView<AbstractLink> {
     }
 
     public ButtonList addButtons(AbstractLink... buttons) {
-        List<AbstractLink> buttonsList = Iterables.forEach(buttons, new AssertValidButtonPredicate(getButtonMarkupId()));
-        getModelObject().addAll(buttonsList);
+        Collections.addAll(getModelObject(), buttons);
 
         return this;
     }

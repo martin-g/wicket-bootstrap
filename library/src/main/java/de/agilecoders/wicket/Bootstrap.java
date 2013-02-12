@@ -1,12 +1,10 @@
 package de.agilecoders.wicket;
 
-import de.agilecoders.wicket.less.LessResourceStreamLocator;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapResourcesBehavior;
 import de.agilecoders.wicket.settings.IBootstrapSettings;
 import org.apache.wicket.Application;
 import org.apache.wicket.Component;
 import org.apache.wicket.MetaDataKey;
-import org.apache.wicket.core.util.resource.locator.caching.CachingResourceStreamLocator;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.html.IPackageResourceGuard;
 import org.apache.wicket.markup.html.SecurePackageResourceGuard;
@@ -38,12 +36,8 @@ public final class Bootstrap {
     public static void install(final Application app, final IBootstrapSettings settings) {
         app.setMetaData(BOOTSTRAP_SETTINGS_METADATA_KEY, settings);
 
-        if (settings.getBootstrapLessCompilerSettings().useLessCompiler()) {
-            app.getResourceSettings().setResourceStreamLocator(new CachingResourceStreamLocator(new LessResourceStreamLocator()));
-        }
-
         if (settings.updateSecurityManger()) {
-            updateSecurityManager(app, settings);
+            updateSecurityManager(app);
         }
     }
 
@@ -51,9 +45,9 @@ public final class Bootstrap {
      * updates the security manager to allow fonts and less files if necessary.
      *
      * @param app      The current application
-     * @param settings The settings to use
+     *
      */
-    private static void updateSecurityManager(final Application app, final IBootstrapSettings settings) {
+    private static void updateSecurityManager(final Application app) {
         final IPackageResourceGuard packageResourceGuard = app.getResourceSettings().getPackageResourceGuard();
 
         if (packageResourceGuard instanceof SecurePackageResourceGuard) {
@@ -62,10 +56,6 @@ public final class Bootstrap {
             guard.addPattern("+*.eot");
             guard.addPattern("+*.svg");
             guard.addPattern("+*.ttf");
-
-            if (settings.getBootstrapLessCompilerSettings().useLessCompiler()) {
-                guard.addPattern("+*.less");
-            }
         }
     }
 

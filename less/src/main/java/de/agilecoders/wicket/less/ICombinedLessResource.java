@@ -13,8 +13,7 @@ public interface ICombinedLessResource extends IClusterable {
     /**
      * @return last modification time
      */
-    // TODO miha Rename to getModificationTime() ?
-    Time getLastModificationTime();
+    Time getModificationTime();
 
     /**
      * @return this resource as text

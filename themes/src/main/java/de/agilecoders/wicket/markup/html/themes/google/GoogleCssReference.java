@@ -1,7 +1,7 @@
 package de.agilecoders.wicket.markup.html.themes.google;
 
-import com.google.common.collect.Lists;
 import de.agilecoders.wicket.markup.html.themes.bootstrap.BootstrapCssReference;
+import de.agilecoders.wicket.util.Generics2;
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.HeaderItem;
 
@@ -38,7 +38,7 @@ public class GoogleCssReference extends BootstrapCssReference {
 
     @Override
     public Iterable<? extends HeaderItem> getDependencies() {
-        final List<HeaderItem> dependencies = Lists.newArrayList(super.getDependencies());
+        final List<HeaderItem> dependencies = Generics2.newArrayList(super.getDependencies());
         dependencies.add(CssHeaderItem.forReference(BootstrapCssReference.INSTANCE));
 
         return dependencies;

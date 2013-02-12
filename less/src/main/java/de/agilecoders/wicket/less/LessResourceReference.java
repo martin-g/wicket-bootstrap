@@ -1,6 +1,6 @@
 package de.agilecoders.wicket.less;
 
-import de.agilecoders.wicket.Bootstrap;
+import de.agilecoders.wicket.BootstrapLess;
 import org.apache.wicket.request.resource.CssResourceReference;
 
 import java.util.Locale;
@@ -50,6 +50,6 @@ public abstract class LessResourceReference extends CssResourceReference {
      */
     @Override
     public final String getVariation() {
-        return Bootstrap.getSettings().getBootstrapLessCompilerSettings().useLessCompiler() ? VARIATION : null;
+        return BootstrapLess.getSettings().useLessCompiler() ? VARIATION : null;
     }
 }

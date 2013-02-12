@@ -1,12 +1,10 @@
 package de.agilecoders.wicket.util;
 
-import com.google.common.base.Joiner;
-import com.google.common.base.Strings;
-import com.google.common.collect.Sets;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.MarkupException;
 import org.apache.wicket.util.lang.Args;
+import org.apache.wicket.util.string.Strings;
 
 import java.util.Set;
 
@@ -32,7 +30,7 @@ public final class Components {
      * @return true if given tag has one of given tag names.
      */
     public static boolean hasTagName(final ComponentTag tag, String... tagNames) {
-        return hasTagName(tag, Sets.newHashSet(tagNames));
+        return hasTagName(tag, Generics2.newHashSet(tagNames));
     }
 
     /**
@@ -64,7 +62,7 @@ public final class Components {
      * @throws MarkupException if given tag has none of given tag names
      */
     public static void assertTag(final Component component, final ComponentTag tag, final String... tagNames) {
-        assertTag(component, tag, Sets.newHashSet(tagNames));
+        assertTag(component, tag, Generics2.newHashSet(tagNames));
     }
 
     /**
@@ -93,7 +91,7 @@ public final class Components {
      */
     private static MarkupException createMarkupException(final Component component, final ComponentTag tag, final Set<? extends String> tagNames) {
         String msg = String.format("Component [%s] (path = [%s]) must be applied to a tag of type [%s], not: %s",
-                                   component.getId(), component.getPath(), Joiner.on(',').join(tagNames), tag.toUserDebugString());
+                                   component.getId(), component.getPath(), Generics2.join(tagNames, ','), tag.toUserDebugString());
 
         throw new MarkupException(component.getMarkup().getMarkupResourceStream(), msg);
     }
@@ -105,7 +103,7 @@ public final class Components {
      */
     public static void hideIfModelIsEmpty(final Component component) {
         if (component != null && (component.getDefaultModel() == null || component.getDefaultModelObject() == null ||
-                                  Strings.isNullOrEmpty(component.getDefaultModelObjectAsString()))) {
+                                  Strings.isEmpty(component.getDefaultModelObjectAsString()))) {
             component.setVisible(false);
         }
     }

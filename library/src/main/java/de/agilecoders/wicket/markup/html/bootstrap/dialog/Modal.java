@@ -1,6 +1,5 @@
 package de.agilecoders.wicket.markup.html.bootstrap.dialog;
 
-import com.google.common.collect.Lists;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
 import de.agilecoders.wicket.util.Attributes;
 import org.apache.wicket.AttributeModifier;
@@ -19,6 +18,7 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.util.string.Strings;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -36,7 +36,7 @@ public class Modal extends Panel {
     private final IModel<Boolean> fadein = Model.of(true);
     private final IModel<Boolean> keyboard = Model.of(true);
     private final Label headerLabel;
-    private final List<Component> buttons = Lists.newArrayList();
+    private final List<Component> buttons = new ArrayList<Component>();
     private final WebMarkupContainer footer;
     private final IModel<Boolean> useCloseHandler = Model.of(false);
     private final AjaxEventBehavior closeBehavior;

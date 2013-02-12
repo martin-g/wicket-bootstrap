@@ -32,30 +32,9 @@ public interface IBootstrapSettings {
     IBootstrapSettings setJsResourceReference(ResourceReference reference);
 
     /**
-     * @return the jquery++ resource reference
-     */
-    ResourceReference getJqueryPPResourceReference();
-
-    /**
-     * @return true, if modernizr should be loaded
-     */
-    boolean useJqueryPP();
-
-    /**
      * @return javascript resource filter name
      */
     String getJsResourceFilterName();
-
-    /**
-     * @param useJqueryPP true, if modernizr should be loaded
-     * @return same instance for chaining
-     */
-    IBootstrapSettings useJqueryPP(final boolean useJqueryPP);
-
-    /**
-     * @return true if minification is active
-     */
-    boolean isMinified();
 
     /**
      * sets the filter name for all bootstrap js resource references
@@ -73,23 +52,6 @@ public interface IBootstrapSettings {
      * @return same instance for chaining
      */
     IBootstrapSettings setUpdateSecurityManger(final boolean activate);
-
-    /**
-     * @param minify true, if all references should be loaded minified
-     * @return same instance for chaining
-     */
-    IBootstrapSettings minify(final boolean minify);
-
-    /**
-     * @return true, if modernizr should be loaded
-     */
-    boolean useModernizr();
-
-    /**
-     * @param useModernizr true, if modernizr js library will be included
-     * @return same instance for chaining
-     */
-    IBootstrapSettings useModernizr(final boolean useModernizr);
 
     /**
      * if true, all necessary exceptions will be added to security manager to allow
@@ -135,9 +97,4 @@ public interface IBootstrapSettings {
      * @return same instance for chaining
      */
     IBootstrapSettings setThemeProvider(ThemeProvider themeProvider);
-
-    /**
-     * @return the {@link IBootstrapLessCompilerSettings} implementation
-     */
-    IBootstrapLessCompilerSettings getBootstrapLessCompilerSettings();
 }

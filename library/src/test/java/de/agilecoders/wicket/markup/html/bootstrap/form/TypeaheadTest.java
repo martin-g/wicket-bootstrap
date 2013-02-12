@@ -1,7 +1,7 @@
 package de.agilecoders.wicket.markup.html.bootstrap.form;
 
-import com.google.common.collect.Lists;
 import de.agilecoders.wicket.WicketApplicationTest;
+import de.agilecoders.wicket.util.Generics2;
 import org.junit.Test;
 
 import java.util.List;
@@ -18,7 +18,7 @@ public class TypeaheadTest extends WicketApplicationTest {
         tester().startComponentInPage(new Typeahead<String>("typeahead", new IDataSource<String>() {
             @Override
             public List<String> load() {
-                return Lists.newArrayList("a", "b");
+                return Generics2.newArrayList("a", "b");
             }
         }));
 

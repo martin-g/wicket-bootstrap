@@ -7,7 +7,6 @@ import org.apache.wicket.request.resource.ResourceReference;
  * Bootstrap theme.
  *
  * @author miha
- * @version 1.0
  */
 public class BootswatchTheme extends Theme {
 

@@ -1,6 +1,5 @@
 package de.agilecoders.wicket.markup.html.bootstrap.form;
 
-import com.google.common.base.Strings;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
 import org.apache.wicket.feedback.ContainerFeedbackMessageFilter;
 import org.apache.wicket.feedback.FeedbackMessage;
@@ -9,6 +8,7 @@ import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.border.Border;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
+import org.apache.wicket.util.string.Strings;
 
 import java.io.Serializable;
 import java.util.List;
@@ -76,8 +76,8 @@ public class ControlGroupBorder extends Border {
             feedback.setVisible(false);
         }
         
-        label.setVisible(!Strings.isNullOrEmpty(label.getDefaultModelObjectAsString()));
-        help.setVisible(!Strings.isNullOrEmpty(help.getDefaultModelObjectAsString()));
+        label.setVisible(!Strings.isEmpty(label.getDefaultModelObjectAsString()));
+        help.setVisible(!Strings.isEmpty(help.getDefaultModelObjectAsString()));
     }
 
     private List<FeedbackMessage> collectFeedbackMessages() {

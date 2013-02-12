@@ -1,6 +1,5 @@
 package de.agilecoders.wicket.markup.html.bootstrap.dialog;
 
-import com.google.common.base.Strings;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapResourcesBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.ICssClassNameProvider;
@@ -14,6 +13,7 @@ import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.panel.GenericPanel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
+import org.apache.wicket.util.string.Strings;
 import org.apache.wicket.util.time.Duration;
 
 /**
@@ -197,7 +197,7 @@ public class Alert extends GenericPanel<String> {
     protected void onConfigure() {
         super.onConfigure();
 
-        if (Strings.isNullOrEmpty(inlineHeader.getDefaultModelObjectAsString())) {
+        if (Strings.isEmpty(inlineHeader.getDefaultModelObjectAsString())) {
             this.inlineHeader.setVisible(false);
             this.blockHeader.setVisible(false);
         } else {

@@ -1,7 +1,6 @@
 package de.agilecoders.wicket.less;
 
-import de.agilecoders.wicket.Bootstrap;
-import org.apache.wicket.Application;
+import de.agilecoders.wicket.BootstrapLess;
 import org.apache.wicket.WicketRuntimeException;
 import org.apache.wicket.util.io.Connections;
 import org.apache.wicket.util.io.IOUtils;
@@ -59,8 +58,7 @@ public class LessResource implements ILessResource {
         try {
             stream = getInputStream();
 
-            return IOUtils.toString(stream,
-                                    Bootstrap.getSettings(Application.get()).getBootstrapLessCompilerSettings().getCharset().name());
+            return IOUtils.toString(stream, BootstrapLess.getSettings().getCharset().name());
         } catch (IOException e) {
             throw new WicketRuntimeException(e);
         } finally {

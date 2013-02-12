@@ -1,6 +1,5 @@
 package de.agilecoders.wicket.markup.html.bootstrap.components;
 
-import com.google.common.base.Strings;
 import de.agilecoders.wicket.util.Attributes;
 import de.agilecoders.wicket.util.Components;
 import org.apache.wicket.AttributeModifier;
@@ -10,6 +9,7 @@ import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.border.Border;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
+import org.apache.wicket.util.string.Strings;
 
 /**
  * Thumbnails are great for grids of photos or videos, image search results, retail
@@ -83,7 +83,7 @@ public class ThumbnailBorder extends Border {
         super.onConfigure();
 
         Components.hideIfModelIsEmpty(title);
-        image.setVisible(!Strings.isNullOrEmpty(getDefaultModelObjectAsString()));
+        image.setVisible(!Strings.isEmpty(getDefaultModelObjectAsString()));
     }
 }
 

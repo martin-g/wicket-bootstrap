@@ -1,9 +1,4 @@
-package de.agilecoders.wicket.settings;
-
-import com.asual.lesscss.LessOptions;
-import com.google.common.base.Charsets;
-import de.agilecoders.wicket.less.LessJsLessCompiler;
-import de.agilecoders.wicket.less.IBootstrapLessCompiler;
+package de.agilecoders.wicket.less;
 
 import java.nio.charset.Charset;
 
@@ -11,13 +6,11 @@ import java.nio.charset.Charset;
  * Default {@link IBootstrapLessCompilerSettings} implementation
  *
  * @author miha
- * @version 1.0
  */
 public class BootstrapLessCompilerSettings implements IBootstrapLessCompilerSettings {
     private boolean useLessCompiler = false;
-    private Charset charset = Charsets.UTF_8;
-    private IBootstrapLessCompiler lessCompiler = new LessJsLessCompiler();
-    private LessOptions lessOptions = new LessOptions();
+    private Charset charset = Charset.forName("UTF-8");
+    private IBootstrapLessCompiler lessCompiler = new NoOpLessCompiler();
     private CacheStrategy cacheStrategy = CacheStrategy.Modified;
     private boolean storeChanges = false;
 
@@ -35,10 +28,6 @@ public class BootstrapLessCompilerSettings implements IBootstrapLessCompilerSett
     @Override
     public BootstrapLessCompilerSettings setCharset(Charset charset) {
         this.charset = charset;
-
-        if (lessOptions != null) {
-            lessOptions.setCharset(charset.name());
-        }
         return this;
     }
 
@@ -56,17 +45,6 @@ public class BootstrapLessCompilerSettings implements IBootstrapLessCompilerSett
     @Override
     public IBootstrapLessCompiler getLessCompiler() {
         return lessCompiler;
-    }
-
-    @Override
-    public BootstrapLessCompilerSettings setLessOptions(LessOptions lessOptions) {
-        this.lessOptions = lessOptions;
-        return this;
-    }
-
-    @Override
-    public LessOptions getLessOptions() {
-        return lessOptions;
     }
 
     @Override

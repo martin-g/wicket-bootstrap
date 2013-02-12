@@ -31,11 +31,5 @@ public class BootstrapJavascriptBehavior extends BootstrapBaseBehavior {
 
         final JavaScriptReferenceHeaderItem jsReference = JavaScriptHeaderItem.forReference(settings.getJsResourceReference(), new PageParameters(), "bootstrap-js", true);
         References.renderWithFilter(settings, headerResponse, jsReference);
-
-        if (settings.useJqueryPP()) {
-            JavaScriptReferenceHeaderItem jqueryPP = JavaScriptHeaderItem.forReference(settings.getJqueryPPResourceReference(), new PageParameters(), "jquerypp-js", true);
-
-            References.renderWithFilter(settings, headerResponse, jqueryPP);
-        }
     }
 }

@@ -1,7 +1,7 @@
 package de.agilecoders.wicket.util;
 
-import com.google.common.base.Strings;
 import de.agilecoders.wicket.markup.html.bootstrap.form.IDataSource;
+import org.apache.wicket.util.string.Strings;
 import org.codehaus.jackson.JsonGenerator;
 import org.codehaus.jackson.JsonNode;
 import org.codehaus.jackson.JsonParser;
@@ -158,7 +158,7 @@ public final class Json {
      * @return true, if string is a valid json string
      */
     public static boolean isValid(final String json) {
-        if (Strings.isNullOrEmpty(json)) {
+        if (Strings.isEmpty(json)) {
             return false;
         }
 
@@ -177,7 +177,7 @@ public final class Json {
      * @throws ParseException to runtime if json string can't be parsed
      */
     public static JsonNode parse(final String jsonString) {
-        if (Strings.isNullOrEmpty(jsonString)) {
+        if (Strings.isEmpty(jsonString)) {
             return newObject();
         }
 

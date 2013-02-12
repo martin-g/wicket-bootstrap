@@ -1,12 +1,12 @@
 package de.agilecoders.wicket.util;
 
-import com.google.common.collect.Maps;
 import de.agilecoders.wicket.test.TestCategory;
 import org.codehaus.jackson.JsonNode;
 import org.codehaus.jackson.node.ObjectNode;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -150,7 +150,7 @@ public class JsonTest {
     }
 
     private Object createData() {
-        Map<Object, Object> data = Maps.newHashMap();
+        Map<Object, Object> data = new HashMap<Object, Object>();
         data.put("key", "value");
         data.put(1, "value2");
         data.put(3, true);

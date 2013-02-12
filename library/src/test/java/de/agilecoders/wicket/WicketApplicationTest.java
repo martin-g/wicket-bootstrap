@@ -1,11 +1,10 @@
 package de.agilecoders.wicket;
 
-import com.google.common.base.Splitter;
-import com.google.common.collect.Lists;
 import de.agilecoders.wicket.settings.BootstrapSettings;
 import de.agilecoders.wicket.settings.IBootstrapSettings;
 import de.agilecoders.wicket.test.Attributes;
 import de.agilecoders.wicket.util.CssClassNames;
+import de.agilecoders.wicket.util.Generics2;
 import org.apache.wicket.Component;
 import org.apache.wicket.Page;
 import org.apache.wicket.behavior.Behavior;
@@ -16,10 +15,11 @@ import org.apache.wicket.util.tester.TagTester;
 import org.apache.wicket.util.tester.WicketTester;
 import org.junit.Before;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import static com.google.common.base.Strings.nullToEmpty;
-import static com.google.common.collect.Lists.newArrayList;
+import static de.agilecoders.wicket.util.Generics2.newArrayList;
+import static de.agilecoders.wicket.util.Strings2.nullToEmpty;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
@@ -81,8 +81,8 @@ public class WicketApplicationTest {
     }
 
     protected List<String> extractClassNames(TagTester tagTester) {
-        return tagTester != null ? newArrayList(Splitter.on(' ').trimResults().split(nullToEmpty(tagTester.getAttribute("class"))))
-                                 : Lists.<String>newArrayList();
+        return tagTester != null ? newArrayList(Generics2.split(nullToEmpty(tagTester.getAttribute("class")), " "))
+                                 : new ArrayList<String>();
     }
 
     protected final String id() {

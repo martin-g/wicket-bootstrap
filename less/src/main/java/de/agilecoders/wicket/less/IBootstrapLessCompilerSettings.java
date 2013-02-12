@@ -1,7 +1,4 @@
-package de.agilecoders.wicket.settings;
-
-import com.asual.lesscss.LessOptions;
-import de.agilecoders.wicket.less.IBootstrapLessCompiler;
+package de.agilecoders.wicket.less;
 
 import java.nio.charset.Charset;
 
@@ -52,18 +49,6 @@ public interface IBootstrapLessCompilerSettings {
      * @return The less compiler to use
      */
     IBootstrapLessCompiler getLessCompiler();
-
-    /**
-     * sets the less compiler options
-     *
-     * @param lessOptions the less compiler options
-     */
-    IBootstrapLessCompilerSettings setLessOptions(LessOptions lessOptions);
-
-    /**
-     * @return the less compiler options
-     */
-    LessOptions getLessOptions();
 
     /**
      * @return the cache strategy

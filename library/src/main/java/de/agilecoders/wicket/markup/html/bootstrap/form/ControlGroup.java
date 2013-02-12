@@ -1,6 +1,5 @@
 package de.agilecoders.wicket.markup.html.bootstrap.form;
 
-import com.google.common.collect.Lists;
 import de.agilecoders.wicket.util.Attributes;
 import de.agilecoders.wicket.util.Components;
 import org.apache.wicket.AttributeModifier;
@@ -16,6 +15,7 @@ import org.apache.wicket.model.Model;
 import org.apache.wicket.util.iterator.ComponentHierarchyIterator;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -117,7 +117,7 @@ public class ControlGroup extends Border implements IFormModelUpdateListener {
     private List<FormComponent<?>> findFormComponents() {
         final ComponentHierarchyIterator it = getBodyContainer().visitChildren(FormComponent.class);
 
-        final List<FormComponent<?>> components = Lists.newArrayList();
+        final List<FormComponent<?>> components = new ArrayList<FormComponent<?>>();
         while (it.hasNext()) {
             components.add((FormComponent<?>) it.next());
         }

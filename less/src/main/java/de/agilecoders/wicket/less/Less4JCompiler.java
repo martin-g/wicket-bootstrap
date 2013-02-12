@@ -8,21 +8,14 @@ import org.apache.wicket.util.io.IClusterable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.annotation.concurrent.ThreadSafe;
-
 /**
  * less4j implementation of {@link IBootstrapLessCompiler}.
  * <p/>
  * CAUTION: less4j has no final release yet and there is still a lot of stuff to do. Please
- * use default less compiler if you don't know how to verify correct css output.
- *
- * Issues:
- *  > star prefix is not allowed for property keys: https://github.com/SomMeri/less4j/issues/55
- *  > color functions: https://github.com/SomMeri/less4j/issues/16
+ * use {@link LessJsLessCompiler} if you don't know how to verify correct css output.
  *
  * @author miha
  */
-@ThreadSafe
 public class Less4JCompiler extends AbstractLessCompiler {
     private static final Logger LOG = LoggerFactory.getLogger(Less4JCompiler.class);
 

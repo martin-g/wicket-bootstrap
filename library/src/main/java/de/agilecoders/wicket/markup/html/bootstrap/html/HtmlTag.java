@@ -1,29 +1,27 @@
 package de.agilecoders.wicket.markup.html.bootstrap.html;
 
 import de.agilecoders.wicket.Bootstrap;
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
 import de.agilecoders.wicket.markup.html.references.ModernizrJavaScriptReference;
-import de.agilecoders.wicket.util.Components;
-import org.apache.wicket.AttributeModifier;
+import de.agilecoders.wicket.util.CssClassNames;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.html.TransparentWebMarkupContainer;
-import org.apache.wicket.model.IModel;
-import org.apache.wicket.model.Model;
 import org.apache.wicket.protocol.http.ClientProperties;
 import org.apache.wicket.protocol.http.request.WebClientInfo;
 
+import java.util.HashSet;
 import java.util.Locale;
+import java.util.Set;
 
 /**
  * TODO: document
  *
  * @author miha
- * @version 1.0
  */
 public class HtmlTag extends TransparentWebMarkupContainer {
-    private Locale locale;
+    private final boolean useModrnizr;
+    private Locale locale; // TODO: make this field immutable
     private final ClientProperties clientProperties;
 
     /**
@@ -31,11 +29,21 @@ public class HtmlTag extends TransparentWebMarkupContainer {
      *
      * @param id
      */
-    public HtmlTag(String id) {
+    public HtmlTag(String id, final boolean useModrnizr) {
         super(id);
 
+        this.useModrnizr = useModrnizr;
         this.clientProperties = new WebClientInfo(getRequestCycle()).getProperties();
-        locale = Locale.ENGLISH;
+        this.locale = Locale.ENGLISH;
+    }
+
+    /**
+     * Construct.
+     *
+     * @param id the component id
+     */
+    public HtmlTag(final String id) {
+        this(id, false);
     }
 
     public Locale locale() {
@@ -47,58 +55,68 @@ public class HtmlTag extends TransparentWebMarkupContainer {
         return this;
     }
 
-    private Model<String> toAttributeValue(Locale locale) {
-        return Model.of(locale.toString().replace("_", "-").toLowerCase());
+    /**
+     * transforms a locale to an attribute value
+     *
+     * @param locale current locale
+     * @return locale as attribute
+     */
+    private String toAttributeValue(Locale locale) {
+        return locale.toString().replace("_", "-").toLowerCase();
     }
 
     @Override
     protected void onComponentTag(ComponentTag tag) {
         super.onComponentTag(tag);
 
-        Components.assertTag(this, tag, "html");
-    }
-
-    @Override
-    protected void onConfigure() {
-        super.onConfigure();
-
-        if (Bootstrap.getSettings(getApplication()).useModernizr()) {
-            add(new CssClassNameAppender("no-js"));
-        }
+        checkComponentTag(tag, "html");
 
         if (locale != null) {
-            add(new AttributeModifier("lang", toAttributeValue(locale())));
+            tag.put("lang", toAttributeValue(locale));
         }
 
-        add(new CssClassNameAppender(createBrowserShortcut(clientProperties)));
-        add(new CssClassNameAppender("theme-" + Bootstrap.getSettings().getActiveThemeProvider().getActiveTheme().name()));
+        final CssClassNames.Builder cssClassNames = CssClassNames.newBuilder();
+        if (useModrnizr) {
+            cssClassNames.add("no-js");
+        }
+
+        cssClassNames.add(createBrowserShortcut(clientProperties));
+        cssClassNames.add("theme-" + Bootstrap.getSettings().getActiveThemeProvider().getActiveTheme().name());
+
+        tag.put("class", cssClassNames.asString());
     }
 
-    private IModel<String> createBrowserShortcut(ClientProperties clientProperties) {
-        String shortcut = "";
+    /**
+     * creates a browser shortcuts to identify old IE versions.
+     *
+     * @param clientProperties current client properties
+     * @return a set of browser shortcuts
+     */
+    private Set<String> createBrowserShortcut(final ClientProperties clientProperties) {
+        Set<String> shortcut = new HashSet<String>();
 
         if (clientProperties.isBrowserInternetExplorer()) {
             if (clientProperties.getBrowserVersionMajor() < 9) {
-                shortcut += " lt-ie9";
+                shortcut.add("lt-ie9");
 
                 if (clientProperties.getBrowserVersionMajor() < 8) {
-                    shortcut += " lt-ie8";
+                    shortcut.add("lt-ie8");
 
                     if (clientProperties.getBrowserVersionMajor() < 7) {
-                        shortcut += " lt-ie7";
+                        shortcut.add("lt-ie7");
                     }
                 }
             }
         }
 
-        return Model.of(shortcut);
+        return shortcut;
     }
 
     @Override
     public void renderHead(IHeaderResponse response) {
         super.renderHead(response);
 
-        if (Bootstrap.getSettings(getApplication()).useModernizr()) {
+        if (useModrnizr) {
             response.render(JavaScriptHeaderItem.forReference(ModernizrJavaScriptReference.INSTANCE));
         }
     }

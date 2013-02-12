@@ -1,7 +1,7 @@
 package de.agilecoders.wicket.markup.html.bootstrap.behavior;
 
-import com.google.common.collect.Sets;
 import de.agilecoders.wicket.util.Components;
+import de.agilecoders.wicket.util.Generics2;
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.Behavior;
 import org.apache.wicket.markup.ComponentTag;
@@ -35,7 +35,7 @@ public class AssertTagNameBehavior extends Behavior {
      * @param tagNames a list of html tag names
      */
     public AssertTagNameBehavior(String... tagNames) {
-        this(Sets.newHashSet(tagNames));
+        this(Generics2.newHashSet(tagNames));
     }
 
     /**

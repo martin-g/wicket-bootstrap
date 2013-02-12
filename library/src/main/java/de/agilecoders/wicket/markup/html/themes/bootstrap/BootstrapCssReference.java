@@ -1,13 +1,13 @@
 package de.agilecoders.wicket.markup.html.themes.bootstrap;
 
-import de.agilecoders.wicket.less.LessResourceReference;
+import org.apache.wicket.request.resource.CssResourceReference;
 
 /**
  * The default bootstrap css.
  *
  * @author miha
  */
-public class BootstrapCssReference extends LessResourceReference {
+public class BootstrapCssReference extends CssResourceReference {
     private static final long serialVersionUID = 1L;
 
     /**

@@ -1,7 +1,6 @@
 package de.agilecoders.wicket.less;
 
-import com.google.common.base.Charsets;
-import de.agilecoders.wicket.Bootstrap;
+import de.agilecoders.wicket.BootstrapLess;
 import org.apache.wicket.Application;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,11 +39,11 @@ abstract class AbstractLessCompiler implements IBootstrapLessCompiler {
      */
     protected final Charset getCharset() {
         if (Application.exists()) {
-            return Bootstrap.getSettings().getBootstrapLessCompilerSettings().getCharset();
+            return BootstrapLess.getSettings().getCharset();
         } else {
-            LOG.warn("no application assigned to current thread, return default charset: {}", Charsets.UTF_8);
+            LOG.warn("no application assigned to current thread, return default charset: UTF-8");
 
-            return Charsets.UTF_8;
+            return Charset.forName("UTF-8");
         }
     }
 }

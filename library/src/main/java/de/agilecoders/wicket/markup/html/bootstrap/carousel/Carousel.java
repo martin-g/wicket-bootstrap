@@ -110,15 +110,15 @@ public class Carousel extends Panel {
                 image.add(new AttributeModifier("src", carouselImage.url()));
 
                 Label header = new Label("header");
-                if (carouselImage.header().isPresent()) {
-                    header.setDefaultModel(Model.of(carouselImage.header().get()));
+                if (carouselImage.header() != null) {
+                    header.setDefaultModel(Model.of(carouselImage.header()));
                 } else {
                     header.setVisible(false);
                 }
 
                 Label description = new Label("description");
-                if (carouselImage.description().isPresent()) {
-                    description.setDefaultModel(Model.of(carouselImage.description().get()));
+                if (carouselImage.description() != null) {
+                    description.setDefaultModel(Model.of(carouselImage.description()));
                 } else {
                     description.setVisible(false);
                 }
