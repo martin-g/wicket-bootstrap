@@ -1,13 +1,13 @@
 package de.agilecoders.wicket.markup.html.themes.bootstrap;
 
-import org.apache.wicket.request.resource.CssResourceReference;
+import de.agilecoders.wicket.webjars.request.resource.WebjarsCssResourceReference;
 
 /**
  * The default bootstrap css.
  *
  * @author miha
  */
-public class BootstrapCssReference extends CssResourceReference {
+public class BootstrapCssReference extends WebjarsCssResourceReference {
     private static final long serialVersionUID = 1L;
 
     /**
@@ -19,17 +19,7 @@ public class BootstrapCssReference extends CssResourceReference {
      * Private constructor.
      */
     private BootstrapCssReference() {
-        super(BootstrapCssReference.class, "css/bootstrap.css");
-    }
-
-    /**
-     * Construct.
-     *
-     * @param scope mandatory parameter
-     * @param name  mandatory parameter
-     */
-    protected BootstrapCssReference(Class<?> scope, String name) {
-        super(scope, name);
+        super("bootstrap/current/css/bootstrap.css");
     }
 
 }

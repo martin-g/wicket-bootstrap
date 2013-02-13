@@ -2,7 +2,7 @@
 @import "bootstrap.spacelab.variables.less";
 
 
-// Spacelab 2.2.2
+// Spacelab 2.3.0
 // Bootswatch
 // -----------------------------------------------------
 
@@ -10,7 +10,7 @@
 // TYPOGRAPHY
 // -----------------------------------------------------
 
-@import url('http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700');
+@import url('//fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700');
 
 // SCAFFOLDING
 // -----------------------------------------------------
@@ -153,6 +153,10 @@ div.subnav {
 		&:hover {
 			color: @linkColor;
 		}
+	}
+
+	&-fixed {
+		top: @navbarHeight + 1;
 	}
 }
 

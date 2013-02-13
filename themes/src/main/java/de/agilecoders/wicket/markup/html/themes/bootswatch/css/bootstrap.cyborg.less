@@ -2,7 +2,7 @@
 @import "bootstrap.cyborg.variables.less";
 
 
-// Cyborg 2.2.2
+// Cyborg 2.3.0
 // Bootswatch
 // -----------------------------------------------------
 
@@ -10,7 +10,7 @@
 // TYPOGRAPHY
 // -----------------------------------------------------
 
-@import url('https://fonts.googleapis.com/css?family=Droid+Sans:400,700');
+@import url('//fonts.googleapis.com/css?family=Droid+Sans:400,700');
 
 label, input, button, select, textarea,
 .navbar .search-query:-moz-placeholder,
@@ -169,15 +169,12 @@ hr {
 }
 
 div.subnav {
+
+	margin: 0 1px;
 	background-color: @grayDarker;
 	background-image: none;
 	border: none;
 	border-bottom: 1px solid @grayDark;
-
-
-	&.subnav-fixed {
-		top: @navbarHeight;
-	}
 
 	.nav > li > a,
 	.nav > li:first-child > a,
@@ -201,6 +198,14 @@ div.subnav {
 
 	.nav li.nav-header {
 		text-shadow: none;
+	}
+
+
+
+
+	&-fixed {
+		top: @navbarHeight;
+		margin: 0;
 	}
 }
 
@@ -399,17 +404,16 @@ input, textarea, select {
 	.border-radius(1px);
 }
 
-legend, label {
-	color: @textColor;
-	border-bottom: 0px solid #222;
-}
-
-input, textarea, select, .uneditable-input {
+select, textarea,
+input[type="text"], input[type="password"], input[type="datetime"],
+input[type="datetime-local"], input[type="date"], input[type="month"],
+input[type="time"], input[type="week"], input[type="number"],
+input[type="email"], input[type="url"], input[type="search"],
+input[type="tel"], input[type="color"], .uneditable-input {
 	color: @grayDark;
 }
 
 input[disabled], select[disabled], textarea[disabled], input[readonly], select[readonly], textarea[readonly], .uneditable-input {
-	background-color: #555;
 	border-color: #444;
 }
 
@@ -428,6 +432,11 @@ input[type="checkbox"]:focus,
 select:focus {
   .box-shadow(none); // override for file inputs
   .tab-focus();
+}
+
+legend, label {
+	color: @textColor;
+	border-bottom: 0px solid #222;
 }
 
 .form-actions {

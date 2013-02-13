@@ -1,6 +1,6 @@
 package de.agilecoders.wicket.markup.html.themes.bootswatch;
 
-import de.agilecoders.wicket.markup.html.themes.bootstrap.BootstrapCssReference;
+import org.apache.wicket.request.resource.CssResourceReference;
 
 /**
  * A {@link org.apache.wicket.request.resource.CssResourceReference} for all bootswatch
@@ -8,7 +8,7 @@ import de.agilecoders.wicket.markup.html.themes.bootstrap.BootstrapCssReference;
  *
  * @author miha
  */
-public class BootswatchCssReference extends BootstrapCssReference {
+public class BootswatchCssReference extends CssResourceReference {
     private static final long serialVersionUID = 1L;
 
     private final String swatchName;

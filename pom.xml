@@ -52,6 +52,9 @@
         <mvn.build.java.version>1.6</mvn.build.java.version>
         <mvn.version>3.0.0</mvn.version>
 
+        <wicket-webjars.version>0.2.0</wicket-webjars.version>
+        <bootstrap.version>2.3.0</bootstrap.version>
+
         <com.google.guava.version>13.0.1</com.google.guava.version>
         <javax.javaee-web-api.version>6.0</javax.javaee-web-api.version>
         <junit.version>4.11</junit.version>
@@ -70,6 +73,18 @@
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>de.agilecoders.wicket.webjars</groupId>
+                <artifactId>wicket-webjars</artifactId>
+                <version>${wicket-webjars.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.webjars</groupId>
+                <artifactId>bootstrap</artifactId>
+                <version>${bootstrap.version}</version>
+            </dependency>
+
             <dependency>
                 <groupId>de.agilecoders.wicket</groupId>
                 <artifactId>bootstrap</artifactId>

@@ -1,14 +1,13 @@
 package de.agilecoders.wicket.markup.html.themes.metro;
 
-import de.agilecoders.wicket.markup.html.themes.bootstrap.BootstrapCssReference;
+import org.apache.wicket.request.resource.CssResourceReference;
 
 /**
  * A windows 8 inspired theme
  *
  * @author miha
- * @version 1.0
  */
-public class MetroCssReference extends BootstrapCssReference {
+public class MetroCssReference extends CssResourceReference {
     private static final long serialVersionUID = 1L;
 
     /**

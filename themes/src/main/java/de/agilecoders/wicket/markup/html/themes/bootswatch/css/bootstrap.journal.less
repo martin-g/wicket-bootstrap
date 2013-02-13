@@ -2,7 +2,7 @@
 @import "bootstrap.journal.variables.less";
 
 
-// Journal 2.2.2
+// Journal 2.3.0
 // Bootswatch
 // -----------------------------------------------------
 
@@ -10,7 +10,7 @@
 // TYPOGRAPHY
 // -----------------------------------------------------
 
-@import url('https://fonts.googleapis.com/css?family=News+Cycle:400,700');
+@import url('//fonts.googleapis.com/css?family=News+Cycle:400,700');
 
 h1, h2, h3, h4, h5, h6 {
 
@@ -175,9 +175,9 @@ hr {
 
 div.subnav {
 
+	margin: 0 1px;
 	height: 54px;
-	background-color: @bodyBackground;
-	background-image: none;
+	background: @bodyBackground none;
 	.box-shadow(none);
 	border: 2px solid @grayLighter;
 	border-left: none;
@@ -185,7 +185,9 @@ div.subnav {
 	.border-radius(0);
 
 	&.subnav-fixed {
-		top: @navbarHeight;
+		top: @navbarHeight + 1;
+		margin: 0;
+		border-top: none;
 	}
 
 	.nav > li > a,

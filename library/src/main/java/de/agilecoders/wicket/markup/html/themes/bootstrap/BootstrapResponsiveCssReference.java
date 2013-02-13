@@ -1,11 +1,13 @@
 package de.agilecoders.wicket.markup.html.themes.bootstrap;
 
+import de.agilecoders.wicket.webjars.request.resource.WebjarsCssResourceReference;
+
 /**
  * Responsive css reference
  *
  * @author miha
  */
-public class BootstrapResponsiveCssReference extends BootstrapCssReference {
+public class BootstrapResponsiveCssReference extends WebjarsCssResourceReference {
     private static final long serialVersionUID = 1L;
 
     /**
@@ -17,17 +19,7 @@ public class BootstrapResponsiveCssReference extends BootstrapCssReference {
      * Private constructor.
      */
     private BootstrapResponsiveCssReference() {
-        super(BootstrapResponsiveCssReference.class, "css/responsive.css");
-    }
-
-    /**
-     * Construct.
-     *
-     * @param scope The scope class
-     * @param name  The name of the resource
-     */
-    protected BootstrapResponsiveCssReference(final Class<?> scope, final String name) {
-        super(scope, name);
+        super("bootstrap/current/css/bootstrap-responsive.css");
     }
 
 }

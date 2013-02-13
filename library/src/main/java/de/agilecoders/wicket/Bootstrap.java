@@ -2,6 +2,7 @@ package de.agilecoders.wicket;
 
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapResourcesBehavior;
 import de.agilecoders.wicket.settings.IBootstrapSettings;
+import de.agilecoders.wicket.webjars.util.WicketWebjars;
 import org.apache.wicket.Application;
 import org.apache.wicket.Component;
 import org.apache.wicket.MetaDataKey;
@@ -39,6 +40,8 @@ public final class Bootstrap {
         if (settings.updateSecurityManger()) {
             updateSecurityManager(app);
         }
+
+        WicketWebjars.install(app);
     }
 
     /**

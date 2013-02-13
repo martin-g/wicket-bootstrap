@@ -2,7 +2,7 @@
 @import "bootstrap.simplex.variables.less";
 
 
-// Simplex 2.2.2
+// Simplex 2.3.0
 // Bootswatch.less
 // -----------------------------------------------------
 
@@ -12,7 +12,7 @@
 // TYPOGRAPHY
 // -----------------------------------------------------
 
-@import url('https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,700');
+@import url('//fonts.googleapis.com/css?family=Josefin+Sans:300,400,700');
 
 // SCAFFOLDING
 // -----------------------------------------------------
@@ -141,6 +141,7 @@ div.subnav {
 	font-family: @headingsFontFamily;
 
 	&.subnav-fixed {
+		top: @navbarHeight + 1;
 		.box-shadow(inset 0 5px #fff~"," @boxShadow);
 	}
 

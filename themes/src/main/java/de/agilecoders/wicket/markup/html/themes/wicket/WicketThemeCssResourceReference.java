@@ -1,13 +1,13 @@
 package de.agilecoders.wicket.markup.html.themes.wicket;
 
-import de.agilecoders.wicket.markup.html.themes.bootstrap.BootstrapCssReference;
+import org.apache.wicket.request.resource.CssResourceReference;
 
 /**
  * Wicket theme css resource reference
  *
  * @author miha
  */
-public class WicketThemeCssResourceReference extends BootstrapCssReference {
+public class WicketThemeCssResourceReference extends CssResourceReference {
     private static final long serialVersionUID = 1L;
 
     /**

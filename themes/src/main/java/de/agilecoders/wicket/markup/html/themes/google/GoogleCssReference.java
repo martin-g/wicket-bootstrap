@@ -4,6 +4,7 @@ import de.agilecoders.wicket.markup.html.themes.bootstrap.BootstrapCssReference;
 import de.agilecoders.wicket.util.Generics2;
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.HeaderItem;
+import org.apache.wicket.request.resource.CssResourceReference;
 
 import java.util.List;
 
@@ -12,7 +13,7 @@ import java.util.List;
  *
  * @author miha
  */
-public class GoogleCssReference extends BootstrapCssReference {
+public class GoogleCssReference extends CssResourceReference {
     private static final long serialVersionUID = 1L;
 
     /**
