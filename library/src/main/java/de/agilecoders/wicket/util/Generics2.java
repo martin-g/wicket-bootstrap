@@ -1,11 +1,14 @@
 package de.agilecoders.wicket.util;
 
-import org.apache.wicket.util.lang.Args;
-import org.apache.wicket.util.string.Strings;
+import com.google.common.base.Function;
+import com.google.common.base.Joiner;
+import com.google.common.base.Predicate;
+import com.google.common.base.Splitter;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
@@ -13,7 +16,10 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * helper class to handle creation of collections
+ * helper class to handle creation/transformation/filtering of collections.
+ *
+ * This class is used to wrap guava. Future releases of bootstrap won't depend
+ * on guava anymore.
  *
  * @author miha
  */
@@ -28,12 +34,7 @@ public final class Generics2 {
      * @throws IllegalArgumentException if given array of elements is null
      */
     public static <T> ArrayList<T> newArrayList(T... elements) {
-        Args.notNull(elements, "elements");
-
-        final ArrayList<T> list = new ArrayList<T>(elements.length);
-        Collections.addAll(list, elements);
-
-        return list;
+        return Lists.newArrayList(elements);
     }
 
     /**
@@ -44,14 +45,7 @@ public final class Generics2 {
      * @return a new {@code ArrayList} containing those elements
      */
     public static <T> ArrayList<T> newArrayList(Iterator<? extends T> elements) {
-        Args.notNull(elements, "elements");
-
-        ArrayList<T> list = new ArrayList<T>();
-        while (elements.hasNext()) {
-            list.add(elements.next());
-        }
-
-        return list;
+        return Lists.newArrayList(elements);
     }
 
     /**
@@ -63,11 +57,7 @@ public final class Generics2 {
      * @throws IllegalArgumentException if given array of elements is null
      */
     public static <T> ArrayList<T> newArrayList(Iterable<? extends T> elements) {
-        Args.notNull(elements, "elements");
-
-        return (elements instanceof Collection)
-               ? new ArrayList<T>(cast(elements))
-               : newArrayList(elements.iterator());
+        return Lists.newArrayList(elements);
     }
 
     /**
@@ -78,34 +68,8 @@ public final class Generics2 {
      * @return new {@link LinkedHashSet} that contains all given elements
      * @throws IllegalArgumentException if given array of elements is null
      */
-    public static <T> Set<T> newLinkedHashSet(T... elements) {
-        if (elements != null) {
-            final Set<T> set = new LinkedHashSet<T>();
-            Collections.addAll(set, elements);
-
-            return set;
-        }
-
-        throw new IllegalArgumentException("'elements' is not allowed to be null.");
-    }
-
-    /**
-     * creates a new {@link LinkedHashSet} from given array of elements.
-     *
-     * @param elements the elements to add to new {@link LinkedHashSet}
-     * @param <T>      the type of all elements inside the set
-     * @return new {@link LinkedHashSet} that contains all given elements
-     * @throws IllegalArgumentException if given array of elements is null
-     */
-    public static <T> Set<T> newLinkedHashSet(Collection<? extends T> elements) {
-        if (elements != null) {
-            final Set<T> set = new LinkedHashSet<T>();
-            set.addAll(elements);
-
-            return set;
-        }
-
-        throw new IllegalArgumentException("'elements' is not allowed to be null.");
+    public static <T> Set<T> newLinkedHashSet(Iterable<? extends T> elements) {
+        return Sets.newLinkedHashSet(elements);
     }
 
     /**
@@ -117,43 +81,18 @@ public final class Generics2 {
      * @throws IllegalArgumentException if given array of elements is null
      */
     public static <T> Set<T> newHashSet(T... elements) {
-        if (elements != null) {
-            final Set<T> set = new HashSet<T>();
-            Collections.addAll(set, elements);
-
-            return set;
-        }
-
-        throw new IllegalArgumentException("'elements' is not allowed to be null.");
+        return Sets.newHashSet(elements);
     }
 
+    /**
+     * joins all given elements with a special separator
+     *
+     * @param elements elements to join
+     * @param separator separator to use
+     * @return elements as string
+     */
     public static String join(final Iterable<?> elements, final char separator) {
-        Args.notNull(elements, "elements");
-
-        final Iterator<?> iterator = elements.iterator();
-        if (!iterator.hasNext()) {
-            return "";
-        } else {
-            final StringBuilder joinedElements = new StringBuilder();
-
-            while (iterator.hasNext()) {
-                final CharSequence v = toString(iterator.next());
-
-                if (v != null) {
-                    if (joinedElements.length() > 0) {
-                        joinedElements.append(separator);
-                    }
-
-                    joinedElements.append(v);
-                }
-            }
-
-            return joinedElements.toString();
-        }
-    }
-
-    private static CharSequence toString(Object part) {
-        return part != null ? (part instanceof CharSequence) ? (CharSequence) part : part.toString() : null;
+        return Joiner.on(separator).skipNulls().join(elements);
     }
 
     /**
@@ -167,29 +106,36 @@ public final class Generics2 {
         return newArrayList(elements);
     }
 
+    /**
+     * Returns a list that applies {@code transformer} to each element of {@code
+     * elements}
+     */
     public static <P, R> List<R> transform(List<P> elements, Function<P, R> transformer) {
-        Args.notNull(elements, "elements");
-        Args.notNull(transformer, "transformer");
-
-        List<R> transformed = newArrayList();
-
-        for (P elem : elements) {
-            transformed.add(transformer.apply(elem));
-        }
-        return transformed;
+        return Lists.transform(elements, transformer);
     }
 
-    public static <T> List<T> filter(final Iterable<T> elements, final Predicate<T> filter) {
-        Args.notNull(elements, "elements");
-        Args.notNull(filter, "filter");
+    /**
+     * Returns a list that applies {@code transformer} to each element of {@code
+     * elements}
+     */
+    public static <P, R> Set<R> transform(Set<P> elements, Function<P, R> transformer) {
+        return Sets.newHashSet(transform(newArrayList(elements), transformer));
+    }
 
-        final List<T> filteredElements = new ArrayList<T>();
-        for(T elem:elements) {
-            if (filter.apply(elem)) {
-                filteredElements.add(elem);
-            }
-        }
-        return filteredElements;
+    /**
+     * Returns a list that applies {@code transformer} to each element of {@code
+     * elements}
+     */
+    public static <P, R> List<R> transform(P[] elements, Function<P, R> transformer) {
+        return Lists.transform(newArrayList(elements), transformer);
+    }
+
+    /**
+     * Returns the elements of {@code unfiltered} that satisfy given {@code filter}. The
+     * resulting iterable's iterator does not support {@code remove()}.
+     */
+    public static <T> List<T> filter(final Iterable<T> unfiltered, final Predicate<T> filter) {
+        return newArrayList(Iterables.filter(unfiltered, filter));
     }
 
     /**
@@ -199,50 +145,8 @@ public final class Generics2 {
      * @param separator the separator to use to split value
      * @return list of values
      */
-    public static List<String> split(CharSequence value, String separator) {
-        return filter(transform(String.valueOf(value).split(separator)), new Predicate<String>() {
-            @Override
-            public boolean apply(String input) {
-                return !Strings.isEmpty(input);
-            }
-        });
-    }
-
-    /**
-     * simple function interface.
-     *
-     * @param <P> the input parameter type
-     * @param <R> the return value type
-     */
-    public static interface Function<P, R> {
-
-        /**
-         * Returns the result of applying this function to {@code input}
-         *
-         * @param param the input parameter with type P
-         * @return value with type R
-         */
-        R apply(P param);
-
-    }
-
-    /**
-     * Determines a true or false value for a given input.
-     *
-     * @param <T> the input type
-     */
-    public interface Predicate<T> {
-        /**
-         * Returns the result of applying this predicate to {@code input}.
-         */
-        boolean apply(T input);
-    }
-
-    /**
-     * Used to avoid http://bugs.sun.com/view_bug.do?bug_id=6558557
-     */
-    private static <T> Collection<T> cast(Iterable<T> iterable) {
-        return (Collection<T>) iterable;
+    public static List<String> split(final CharSequence value, final String separator) {
+        return newArrayList(Splitter.on(separator).omitEmptyStrings().trimResults().split(value));
     }
 
     /**

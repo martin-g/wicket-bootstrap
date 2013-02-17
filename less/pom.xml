@@ -13,6 +13,7 @@
     <groupId>de.agilecoders.wicket</groupId>
     <artifactId>bootstrap-less</artifactId>
     <version>0.7.7-SNAPSHOT</version>
+    <name>less</name>
 
     <properties>
         <less4j.version>0.0.12</less4j.version>

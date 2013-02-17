@@ -15,14 +15,16 @@ public interface IBootstrapSettings {
     ResourceReference getCssResourceReference();
 
     /**
-     * @return the twitter bootstrap responsive css resource reference
-     */
-    ResourceReference getResponsiveCssResourceReference();
-
-    /**
      * @return the base twitter bootstrap JavaScript resource reference
      */
     ResourceReference getJsResourceReference();
+
+    /**
+     * @param reference a reference to the base twitter bootstrap css library.
+     *                  Defaults to the embedded bootstrap-responsive.css
+     * @return same instance for chaining
+     */
+    IBootstrapSettings setCssResourceReference(ResourceReference reference);
 
     /**
      * @param reference a reference to the base twitter bootstrap JavaScript library.
@@ -60,17 +62,6 @@ public interface IBootstrapSettings {
      * @return true, if security manger should be updated while installing these settings
      */
     boolean updateSecurityManger();
-
-    /**
-     * @return true, if responsive css will be included
-     */
-    boolean useResponsiveCss();
-
-    /**
-     * @param useResponsiveCss set to true if responsive css should be included
-     * @return same instance for chaining
-     */
-    IBootstrapSettings useResponsiveCss(final boolean useResponsiveCss);
 
     /**
      * The {@link ActiveThemeProvider} provides access to the active theme

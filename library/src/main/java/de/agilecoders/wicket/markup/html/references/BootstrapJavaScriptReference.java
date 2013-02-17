@@ -1,12 +1,10 @@
 package de.agilecoders.wicket.markup.html.references;
 
-import de.agilecoders.wicket.util.Generics2;
+import de.agilecoders.wicket.util.Dependencies;
+import de.agilecoders.wicket.webjars.request.resource.WebjarsJavaScriptResourceReference;
 import org.apache.wicket.Application;
 import org.apache.wicket.markup.head.HeaderItem;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
-import org.apache.wicket.request.resource.JavaScriptResourceReference;
-
-import java.util.List;
 
 /**
  * TODO: document
@@ -14,7 +12,7 @@ import java.util.List;
  * @author miha
  * @version 1.0
  */
-public class BootstrapJavaScriptReference extends JavaScriptResourceReference {
+public class BootstrapJavaScriptReference extends WebjarsJavaScriptResourceReference {
     private static final long serialVersionUID = 1L;
 
     /**
@@ -29,23 +27,20 @@ public class BootstrapJavaScriptReference extends JavaScriptResourceReference {
      *
      * @return the single instance of the resource reference
      */
-    public static BootstrapJavaScriptReference get() {
+    public static BootstrapJavaScriptReference instance() {
         return INSTANCE;
     }
-
 
     /**
      * Private constructor.
      */
     private BootstrapJavaScriptReference() {
-        super(BootstrapJavaScriptReference.class, "js/bootstrap.js");
+        super("/bootstrap/current/js/bootstrap.js");
     }
 
     @Override
     public Iterable<? extends HeaderItem> getDependencies() {
-        final List<HeaderItem> dependencies = Generics2.newArrayList(super.getDependencies());
-        dependencies.add(JavaScriptHeaderItem.forReference(Application.get().getJavaScriptLibrarySettings().getJQueryReference()));
-
-        return dependencies;
+        return Dependencies.combine(super.getDependencies(),
+                                    JavaScriptHeaderItem.forReference(Application.get().getJavaScriptLibrarySettings().getJQueryReference()));
     }
 }

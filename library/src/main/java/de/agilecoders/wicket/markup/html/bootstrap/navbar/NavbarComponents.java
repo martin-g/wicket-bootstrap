@@ -1,7 +1,9 @@
 package de.agilecoders.wicket.markup.html.bootstrap.navbar;
 
+import com.google.common.base.Function;
 import de.agilecoders.wicket.util.Generics2;
 import org.apache.wicket.Component;
+import org.apache.wicket.util.lang.Args;
 
 import java.util.List;
 
@@ -27,7 +29,10 @@ public final class NavbarComponents {
      * @return a mutable list of navbar components
      */
     public static List<INavbarComponent> transform(final Navbar.ComponentPosition position, final Component... components) {
-        return Generics2.transform(Generics2.newArrayList(components), new Generics2.Function<Component, INavbarComponent>() {
+        Args.notNull(components, "components");
+        Args.notNull(position, "position");
+        
+        return Generics2.transform(components, new Function<Component, INavbarComponent>() {
             @Override
             public INavbarComponent apply(Component component) {
                 return new ImmutableNavbarComponent(component, position);

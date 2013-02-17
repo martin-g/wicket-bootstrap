@@ -1,5 +1,7 @@
 package de.agilecoders.wicket.util;
 
+import com.google.common.base.Joiner;
+import com.google.common.base.Splitter;
 import org.apache.wicket.util.lang.Args;
 
 import java.util.List;
@@ -11,6 +13,8 @@ import java.util.Set;
  * @author miha
  */
 public final class CssClassNames {
+    private static final Splitter SPLITTER = Splitter.on(' ').trimResults().omitEmptyStrings();
+    private static final Joiner JOINER = Joiner.on(' ').skipNulls();
 
     /**
      * Constructor.
@@ -26,7 +30,7 @@ public final class CssClassNames {
      * @return the joined class names.
      */
     public static String join(Iterable<String> classNames) {
-        return Generics2.join(classNames, ' ');
+        return JOINER.join(classNames);
     }
 
     /**
@@ -36,7 +40,7 @@ public final class CssClassNames {
      * @return a new set of css class names.
      */
     public static Set<String> split(final CharSequence classValue) {
-        return Generics2.newLinkedHashSet(Generics2.split(classValue, "\\s+"));
+        return Generics2.newLinkedHashSet(SPLITTER.split(classValue));
     }
 
     /**

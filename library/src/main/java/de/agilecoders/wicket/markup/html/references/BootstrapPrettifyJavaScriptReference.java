@@ -1,19 +1,16 @@
 package de.agilecoders.wicket.markup.html.references;
 
 import de.agilecoders.wicket.Bootstrap;
-import de.agilecoders.wicket.util.Generics2;
+import de.agilecoders.wicket.util.Dependencies;
 import org.apache.wicket.markup.head.HeaderItem;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.request.resource.JavaScriptResourceReference;
 import org.apache.wicket.request.resource.ResourceReference;
 
-import java.util.List;
-
 /**
- * TODO: document
+ * represents the prettify js library
  *
  * @author miha
- * @version 1.0
  */
 public class BootstrapPrettifyJavaScriptReference extends JavaScriptResourceReference {
     private static final long serialVersionUID = 1L;
@@ -32,9 +29,7 @@ public class BootstrapPrettifyJavaScriptReference extends JavaScriptResourceRefe
 
     @Override
     public Iterable<? extends HeaderItem> getDependencies() {
-        List<HeaderItem> dependencies = Generics2.newArrayList(super.getDependencies());
-        dependencies.add(JavaScriptHeaderItem.forReference(Bootstrap.getSettings().getJsResourceReference()));
-
-        return dependencies;
+        return Dependencies.combine(super.getDependencies(),
+                                    JavaScriptHeaderItem.forReference(Bootstrap.getSettings().getJsResourceReference()));
     }
 }

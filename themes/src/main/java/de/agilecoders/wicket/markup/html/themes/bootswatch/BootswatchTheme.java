@@ -1,5 +1,6 @@
 package de.agilecoders.wicket.markup.html.themes.bootswatch;
 
+import de.agilecoders.wicket.markup.html.themes.bootstrap.BootstrapResponsiveCssReference;
 import de.agilecoders.wicket.settings.Theme;
 import org.apache.wicket.request.resource.ResourceReference;
 
@@ -34,7 +35,7 @@ public class BootswatchTheme extends Theme {
      * Construct.
      */
     public BootswatchTheme(final BootswatchCssReference reference) {
-        this(reference.getSwatchName(), reference);
+        this(reference.getSwatchName(), reference, BootstrapResponsiveCssReference.INSTANCE);
     }
 
 

@@ -1,21 +1,20 @@
 package de.agilecoders.wicket.markup.html.references;
 
 import de.agilecoders.wicket.util.Generics2;
+import de.agilecoders.wicket.webjars.request.resource.WebjarsJavaScriptResourceReference;
 import org.apache.wicket.Application;
 import org.apache.wicket.markup.head.HeaderItem;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
-import org.apache.wicket.request.resource.JavaScriptResourceReference;
 import org.apache.wicket.request.resource.ResourceReference;
 
 import java.util.List;
 
 /**
- * TODO: document
+ * represents a reference to the jquerypp javascript resource
  *
  * @author miha
- * @version 1.0
  */
-public class JqueryPPJavaScriptReference extends JavaScriptResourceReference {
+public class JqueryPPJavaScriptReference extends WebjarsJavaScriptResourceReference {
     private static final long serialVersionUID = 1L;
 
     /**
@@ -27,7 +26,7 @@ public class JqueryPPJavaScriptReference extends JavaScriptResourceReference {
      * Private constructor.
      */
     private JqueryPPJavaScriptReference() {
-        super(JqueryPPJavaScriptReference.class, "js/jquerypp-1.0b.js");
+        super("jquerypp/current/jquerypp.js");
     }
 
     @Override

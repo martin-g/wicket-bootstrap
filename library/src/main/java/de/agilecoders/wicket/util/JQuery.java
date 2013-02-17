@@ -1,5 +1,6 @@
 package de.agilecoders.wicket.util;
 
+import com.google.common.base.Function;
 import de.agilecoders.wicket.markup.html.bootstrap.common.AbstractConfig;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
@@ -20,7 +21,7 @@ public final class JQuery implements IClusterable {
     /**
      * Function that maps an {@link IFunction} to its string representation.
      */
-    private static final Generics2.Function<IFunction, String> FUNCTION_TRANSFORMER = new Generics2.Function<IFunction, String>() {
+    private static final Function<IFunction, String> FUNCTION_TRANSFORMER = new Function<IFunction, String>() {
         @Override
         public String apply(final IFunction function) {
             return function != null ? function.build() : null;

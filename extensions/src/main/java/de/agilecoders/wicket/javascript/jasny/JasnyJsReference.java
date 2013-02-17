@@ -1,13 +1,13 @@
 package de.agilecoders.wicket.javascript.jasny;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import de.agilecoders.wicket.markup.html.references.BootstrapJavaScriptReference;
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.HeaderItem;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.resource.JQueryPluginResourceReference;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A JavaScript reference that loads the JavaScript resources needed by
@@ -30,7 +30,7 @@ public class JasnyJsReference extends JQueryPluginResourceReference
             deps.add(dep);
         }
         deps.add(CssHeaderItem.forReference(JasnyCssReference.INSTANCE));
-        deps.add(JavaScriptHeaderItem.forReference(BootstrapJavaScriptReference.get()));
+        deps.add(JavaScriptHeaderItem.forReference(BootstrapJavaScriptReference.instance()));
         return deps;
     }
 }

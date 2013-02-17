@@ -141,18 +141,10 @@ public class WicketApplication extends WebApplication {
                                           OpenWebIconsCssReference.instance()
         );
 
-        if (Bootstrap.getSettings().useResponsiveCss()) {
-            getResourceBundles().addCssBundle(WicketApplication.class, "application.css",
-                                              (CssResourceReference) Bootstrap.getSettings().getResponsiveCssResourceReference(),
-                                              (CssResourceReference) BootstrapPrettifyCssReference.INSTANCE,
-                                              FixBootstrapStylesCssResourceReference.INSTANCE
-            );
-        } else {
-            getResourceBundles().addCssBundle(WicketApplication.class, "application.css",
-                                              (CssResourceReference) BootstrapPrettifyCssReference.INSTANCE,
-                                              FixBootstrapStylesCssResourceReference.INSTANCE
-            );
-        }
+        getResourceBundles().addCssBundle(WicketApplication.class, "application.css",
+                                          (CssResourceReference) BootstrapPrettifyCssReference.INSTANCE,
+                                          FixBootstrapStylesCssResourceReference.INSTANCE
+        );
     }
 
     /**
@@ -167,14 +159,13 @@ public class WicketApplication extends WebApplication {
         }};
 
         final BootstrapSettings settings = new BootstrapSettings();
-        settings.useResponsiveCss(true)
-                .setJsResourceFilterName("footer-container")
+        settings.setJsResourceFilterName("footer-container")
                 .setThemeProvider(themeProvider);
         Bootstrap.install(this, settings);
 
         final IBootstrapLessCompilerSettings lessCompilerSettings = new BootstrapLessCompilerSettings();
         lessCompilerSettings.setUseLessCompiler(usesDevelopmentConfig())
-                            .setLessCompiler(new Less4JCompiler());
+                .setLessCompiler(new Less4JCompiler());
         BootstrapLess.install(this, lessCompilerSettings);
     }
 

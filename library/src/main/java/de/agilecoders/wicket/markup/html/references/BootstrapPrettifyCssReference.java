@@ -7,7 +7,6 @@ import org.apache.wicket.request.resource.ResourceReference;
  * The {@link CssResourceReference} for the prettify component.
  *
  * @author miha
- * @version 1.0
  */
 public class BootstrapPrettifyCssReference extends CssResourceReference {
     private static final long serialVersionUID = 1L;

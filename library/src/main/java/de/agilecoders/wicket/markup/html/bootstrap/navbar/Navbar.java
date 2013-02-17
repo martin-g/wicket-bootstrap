@@ -1,5 +1,7 @@
 package de.agilecoders.wicket.markup.html.bootstrap.navbar;
 
+import com.google.common.base.Function;
+import com.google.common.base.Predicate;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.ICssClassNameProvider;
 import de.agilecoders.wicket.markup.html.bootstrap.button.Activatable;
@@ -391,10 +393,10 @@ public class Navbar extends Panel implements Invertible<Navbar> {
 
 
     /**
-     * A {@link Generics2.Predicate} that filters out all {@link INavbarComponent}s that don't
+     * A {@link Predicate} that filters out all {@link INavbarComponent}s that don't
      * match the given {@link ComponentPosition}.
      */
-    private static final class PositionFilter implements Generics2.Predicate<INavbarComponent>, IClusterable {
+    private static final class PositionFilter implements Predicate<INavbarComponent>, IClusterable {
 
         private final ComponentPosition position;
 
@@ -416,9 +418,9 @@ public class Navbar extends Panel implements Invertible<Navbar> {
     }
 
     /**
-     * A {@link Generics2.Function} that maps a {@link INavbarComponent} to a {@link Component}
+     * A {@link Function} that maps a {@link INavbarComponent} to a {@link Component}
      */
-    private static final class NavbarComponentToComponentFunction implements Generics2.Function<INavbarComponent, Component>, IClusterable {
+    private static final class NavbarComponentToComponentFunction implements Function<INavbarComponent, Component>, IClusterable {
 
         private final String markupId;
 

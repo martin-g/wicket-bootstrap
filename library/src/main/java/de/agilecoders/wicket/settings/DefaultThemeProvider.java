@@ -1,10 +1,12 @@
 package de.agilecoders.wicket.settings;
 
+import de.agilecoders.wicket.markup.html.themes.bootstrap.BootstrapResponsiveTheme;
 import de.agilecoders.wicket.markup.html.themes.bootstrap.BootstrapTheme;
 import de.agilecoders.wicket.util.Generics2;
 import org.apache.wicket.WicketRuntimeException;
 import org.apache.wicket.util.string.Strings;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -22,7 +24,8 @@ public class DefaultThemeProvider implements ThemeProvider {
      * Construct.
      */
     public DefaultThemeProvider() {
-        addDefaultTheme(new BootstrapTheme());
+        add(new BootstrapTheme());
+        addDefaultTheme(new BootstrapResponsiveTheme());
     }
 
     /**
@@ -117,7 +120,7 @@ public class DefaultThemeProvider implements ThemeProvider {
 
     @Override
     public List<ITheme> available() {
-        return Generics2.newArrayList(themes);
+        return new ArrayList<ITheme>(themes);
     }
 
     @Override

@@ -11,14 +11,24 @@ import org.apache.wicket.model.IModel;
  * behaves like a {@link org.apache.wicket.markup.html.panel.Panel}.
  *
  * @author miha
- * @version 1.0
  */
 public class NavbarForm<T> extends BootstrapForm<T> {
 
+    /**
+     * Construct.
+     *
+     * @param componentId the component id
+     */
     public NavbarForm(String componentId) {
         super(componentId);
     }
 
+    /**
+     * Construct.
+     *
+     * @param componentId the component id
+     * @param model the form model
+     */
     public NavbarForm(String componentId, IModel<T> model) {
         super(componentId, model);
     }

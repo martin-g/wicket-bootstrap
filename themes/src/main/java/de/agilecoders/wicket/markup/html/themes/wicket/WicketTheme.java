@@ -1,5 +1,6 @@
 package de.agilecoders.wicket.markup.html.themes.wicket;
 
+import de.agilecoders.wicket.markup.html.themes.bootstrap.BootstrapResponsiveCssReference;
 import de.agilecoders.wicket.settings.Theme;
 
 /**
@@ -14,6 +15,6 @@ public class WicketTheme extends Theme {
      * Construct.
      */
     public WicketTheme() {
-        super("wicket", WicketThemeCssResourceReference.INSTANCE);
+        super("wicket", WicketThemeCssResourceReference.INSTANCE, BootstrapResponsiveCssReference.INSTANCE);
     }
 }

@@ -1,5 +1,6 @@
 package de.agilecoders.wicket.markup.html.themes.metro;
 
+import de.agilecoders.wicket.markup.html.themes.bootstrap.BootstrapResponsiveCssReference;
 import de.agilecoders.wicket.settings.Theme;
 
 /**
@@ -14,7 +15,7 @@ public class MetroTheme extends Theme {
      * Construct.
      */
     public MetroTheme(final String name) {
-        super(name, MetroCssReference.instance());
+        super(name, MetroCssReference.instance(), BootstrapResponsiveCssReference.INSTANCE);
     }
 
     /**

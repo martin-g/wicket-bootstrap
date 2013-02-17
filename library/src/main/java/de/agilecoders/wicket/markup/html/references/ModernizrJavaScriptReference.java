@@ -1,17 +1,15 @@
 package de.agilecoders.wicket.markup.html.references;
 
-import org.apache.wicket.request.resource.JavaScriptResourceReference;
+import de.agilecoders.wicket.webjars.request.resource.WebjarsJavaScriptResourceReference;
 import org.apache.wicket.request.resource.ResourceReference;
 
 /**
- * TODO: document
+ * Represents the modernizr js library
  *
  * @author miha
- * @version 1.0
  */
-public class ModernizrJavaScriptReference extends JavaScriptResourceReference {
+public class ModernizrJavaScriptReference extends WebjarsJavaScriptResourceReference {
     private static final long serialVersionUID = 1L;
-    private static final String NAME = "js/modernizr-2.5.3.min.js";
 
     /**
      * Singleton instance of this reference
@@ -22,17 +20,7 @@ public class ModernizrJavaScriptReference extends JavaScriptResourceReference {
      * Private constructor.
      */
     private ModernizrJavaScriptReference() {
-        super(ModernizrJavaScriptReference.class, NAME);
-    }
-
-    @Override
-    protected String getMinifiedName() {
-        return NAME;
-    }
-
-    @Override
-    public String getName() {
-        return NAME;
+        super("/modernizr/current/modernizr.js");
     }
 
 }

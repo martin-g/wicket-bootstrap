@@ -6,7 +6,6 @@ import de.agilecoders.wicket.settings.ITheme;
 import org.apache.wicket.Component;
 import org.apache.wicket.WicketRuntimeException;
 import org.apache.wicket.behavior.Behavior;
-import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.util.lang.Args;
 
@@ -80,13 +79,10 @@ public class BootstrapBaseBehavior extends Behavior {
      * @param settings       the bound {@link IBootstrapSettings}
      * @param headerResponse the current {@link IHeaderResponse}
      */
-    public void renderHead(IBootstrapSettings settings, IHeaderResponse headerResponse) {
+    public void renderHead(final IBootstrapSettings settings, final IHeaderResponse headerResponse) {
         final ITheme theme = settings.getActiveThemeProvider().getActiveTheme();
-        theme.renderHead(headerResponse);
 
-        if (settings.useResponsiveCss()) {
-            headerResponse.render(CssHeaderItem.forReference(settings.getResponsiveCssResourceReference()));
-        }
+        theme.renderHead(headerResponse);
     }
 
 }

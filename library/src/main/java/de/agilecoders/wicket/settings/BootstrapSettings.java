@@ -1,9 +1,7 @@
 package de.agilecoders.wicket.settings;
 
 import de.agilecoders.wicket.markup.html.references.BootstrapJavaScriptReference;
-import de.agilecoders.wicket.markup.html.themes.bootstrap.BootstrapCssReference;
 import de.agilecoders.wicket.markup.html.themes.bootstrap.BootstrapResponsiveCssReference;
-import org.apache.wicket.request.resource.CssResourceReference;
 import org.apache.wicket.request.resource.ResourceReference;
 
 /**
@@ -14,9 +12,9 @@ import org.apache.wicket.request.resource.ResourceReference;
  */
 public class BootstrapSettings implements IBootstrapSettings {
 
-    private ResourceReference bootstrapJavaScriptReference = BootstrapJavaScriptReference.get();
+    private ResourceReference bootstrapJavaScriptReference = BootstrapJavaScriptReference.instance();
+    private ResourceReference bootstrapCssReference = BootstrapResponsiveCssReference.INSTANCE;
 
-    private boolean useResponsiveCss = true;
     private ThemeProvider themeProvider = new DefaultThemeProvider();
     private ActiveThemeProvider activeThemeProvider = new SessionThemeProvider();
     private String resourceFilterName = "";
@@ -31,12 +29,7 @@ public class BootstrapSettings implements IBootstrapSettings {
 
     @Override
     public ResourceReference getCssResourceReference() {
-        return BootstrapCssReference.INSTANCE;
-    }
-
-    @Override
-    public CssResourceReference getResponsiveCssResourceReference() {
-        return BootstrapResponsiveCssReference.INSTANCE;
+        return bootstrapCssReference;
     }
 
     @Override
@@ -45,14 +38,35 @@ public class BootstrapSettings implements IBootstrapSettings {
     }
 
     @Override
-    public BootstrapSettings setJsResourceReference(final ResourceReference bootstrapJavaScriptReference) {
-        this.bootstrapJavaScriptReference = bootstrapJavaScriptReference;
+    public String getJsResourceFilterName() {
+        return resourceFilterName;
+    }
+
+    @Override
+    public ActiveThemeProvider getActiveThemeProvider() {
+        return activeThemeProvider;
+    }
+
+    @Override
+    public ThemeProvider getThemeProvider() {
+        return themeProvider;
+    }
+
+    @Override
+    public boolean updateSecurityManger() {
+        return updateSecurityManger;
+    }
+
+    @Override
+    public IBootstrapSettings setCssResourceReference(ResourceReference reference) {
+        bootstrapCssReference = reference;
         return this;
     }
 
     @Override
-    public String getJsResourceFilterName() {
-        return resourceFilterName;
+    public BootstrapSettings setJsResourceReference(final ResourceReference bootstrapJavaScriptReference) {
+        this.bootstrapJavaScriptReference = bootstrapJavaScriptReference;
+        return this;
     }
 
     @Override
@@ -68,35 +82,9 @@ public class BootstrapSettings implements IBootstrapSettings {
     }
 
     @Override
-    public boolean updateSecurityManger() {
-        return updateSecurityManger;
-    }
-
-    @Override
-    public boolean useResponsiveCss() {
-        return useResponsiveCss;
-    }
-
-    @Override
-    public final BootstrapSettings useResponsiveCss(final boolean useResponsiveCss) {
-        this.useResponsiveCss = useResponsiveCss;
-        return this;
-    }
-
-    @Override
-    public ActiveThemeProvider getActiveThemeProvider() {
-        return activeThemeProvider;
-    }
-
-    @Override
     public BootstrapSettings setActiveThemeProvider(ActiveThemeProvider activeThemeProvider) {
         this.activeThemeProvider = activeThemeProvider;
         return this;
-    }
-
-    @Override
-    public ThemeProvider getThemeProvider() {
-        return themeProvider;
     }
 
     @Override
