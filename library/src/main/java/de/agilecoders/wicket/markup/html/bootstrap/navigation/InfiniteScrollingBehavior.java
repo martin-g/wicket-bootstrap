@@ -1,7 +1,6 @@
 package de.agilecoders.wicket.markup.html.bootstrap.navigation;
 
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
-import de.agilecoders.wicket.markup.html.bootstrap.table.TableBehavior;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
@@ -17,8 +16,9 @@ import org.apache.wicket.resource.JQueryPluginResourceReference;
  * @version 1.0
  */
 public class InfiniteScrollingBehavior extends BootstrapBaseBehavior {
+
     // TODO: move the .js files next to this behavior. Now they are with TableBehavior
-    private static final ResourceReference JS = new JQueryPluginResourceReference(TableBehavior.class, "js/jquery.infinitescroll.js");
+    private static final ResourceReference JS = new JQueryPluginResourceReference(InfiniteScrollingBehavior.class, "js/jquery.infinitescroll.js");
 
     private String navSelector;
     private String nextSelector;
@@ -37,11 +37,11 @@ public class InfiniteScrollingBehavior extends BootstrapBaseBehavior {
         CharSequence script = "$('#" + component.getMarkupId() + "').infinitescroll({"
                               + "  navSelector  : \"#" + navSelector + "\","    // selector for the paged navigation (it will be hidden)
                               + "  nextSelector : \"#" + nextSelector + "\","   // selector for the NEXT link (to page 2)
-                              + "  itemSelector : \"" + itemSelector + ","      // selector for all items you'll retrieve
+                              + "  itemSelector : \"" + itemSelector + "\","    // selector for all items you'll retrieve
                               + "  localMode    : true,"
                               + "  debug        : false,"                       // enable debug messaging ( to console.log )
                               + "  animate      : true,"                        // boolean, if the page will do an animated scroll when new content loads
-                              + "  errorCallback: function(){},"                // called when a requested page 404's or when there is no more content
+                              + "  errorCallback: function(){}"                 // called when a requested page 404's or when there is no more content
                               + "},function(arrayOfNewElems){});";              // optional callback when new content is successfully loaded in.
 
         if (!autoScroll) {
