@@ -8,7 +8,7 @@ Components
 ----------
 
 * Twitter Bootstrap (2.2.2): http://twitter.github.com/bootstrap
-* Apache Wicket (6.5.0): http://wicket.apache.org/
+* Apache Wicket (6.6.0): http://wicket.apache.org/
 * Bootswatch (2.2.2): http://bootswatch.com/
 
 Extensions
@@ -32,7 +32,7 @@ Usage
 * read more on my [blog](http://blog.agilecoders.de/).
 
 ## Maven
-wicket-bootstrap is [available](http://search.maven.org/#artifactdetails|de.agilecoders.wicket|bootstrap|0.7.4|jar) in Maven central repository.
+wicket-bootstrap is [available](http://search.maven.org/#artifactdetails|de.agilecoders.wicket|bootstrap|0.7.6|jar) in Maven central repository.
 
 core maven dependency:
 <pre><code>&lt;dependency&gt;
