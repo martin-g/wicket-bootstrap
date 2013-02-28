@@ -98,6 +98,11 @@ public class InfiniteScrollingBehavior extends Behavior {
         return this;
     }
 
+    public InfiniteScrollingBehavior setPathParse(String pathParseFunction) {
+        jsonData.put("pathParse", pathParseFunction);
+        return this;
+    }
+
     /*
   loadingImg   : "/img/loading.gif",
                  // loading image.
