@@ -17,7 +17,6 @@ import org.apache.wicket.resource.JQueryPluginResourceReference;
  */
 public class InfiniteScrollingBehavior extends BootstrapBaseBehavior {
 
-    // TODO: move the .js files next to this behavior. Now they are with TableBehavior
     private static final ResourceReference JS = new JQueryPluginResourceReference(InfiniteScrollingBehavior.class, "js/jquery.infinitescroll.js");
 
     private String navSelector;
