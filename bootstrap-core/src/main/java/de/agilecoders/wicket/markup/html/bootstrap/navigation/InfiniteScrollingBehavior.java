@@ -20,7 +20,6 @@ import java.util.Map;
  * @link http://www.infinite-scroll.com/
  */
 public class InfiniteScrollingBehavior extends Behavior {
-    // TODO: move the .js files next to this behavior. Now they are with TableBehavior
     private static final ResourceReference JS = new JQueryPluginResourceReference(InfiniteScrollingBehavior.class, "js/jquery.infinitescroll.js");
 
     private boolean autoScroll = true;
