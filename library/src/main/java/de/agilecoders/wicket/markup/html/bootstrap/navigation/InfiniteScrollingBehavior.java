@@ -22,9 +22,10 @@ public class InfiniteScrollingBehavior extends BootstrapBaseBehavior {
     private String navSelector;
     private String nextSelector;
     private String itemSelector;
+    private String pathParse;
     private boolean autoScroll = true;
 
-    @Override
+  @Override
     public void renderHead(Component component, IHeaderResponse headerResponse) {
         super.renderHead(component, headerResponse);
 
@@ -37,6 +38,7 @@ public class InfiniteScrollingBehavior extends BootstrapBaseBehavior {
                               + "  navSelector  : \"#" + navSelector + "\","    // selector for the paged navigation (it will be hidden)
                               + "  nextSelector : \"#" + nextSelector + "\","   // selector for the NEXT link (to page 2)
                               + "  itemSelector : \"" + itemSelector + "\","    // selector for all items you'll retrieve
+                              + "  pathParse    : " + pathParse + ","
                               + "  localMode    : true,"
                               + "  debug        : false,"                       // enable debug messaging ( to console.log )
                               + "  animate      : true,"                        // boolean, if the page will do an animated scroll when new content loads
@@ -81,6 +83,11 @@ public class InfiniteScrollingBehavior extends BootstrapBaseBehavior {
 
     public InfiniteScrollingBehavior useAutoScroll(boolean autoScroll) {
         this.autoScroll = autoScroll;
+        return this;
+    }
+
+    public InfiniteScrollingBehavior setPathParse(String pathParseFunction) {
+        this.pathParse = pathParseFunction;
         return this;
     }
 
