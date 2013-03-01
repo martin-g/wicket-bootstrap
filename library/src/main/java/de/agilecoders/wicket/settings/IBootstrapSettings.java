@@ -72,7 +72,7 @@ public interface IBootstrapSettings {
      * @param activate true, if security manger should be updated while installing these settings
      * @return same instance for chaining
      */
-    IBootstrapSettings setUpdateSecurityManger(final boolean activate);
+    IBootstrapSettings setUpdateSecurityManager(final boolean activate);
 
     /**
      * @param minify true, if all references should be loaded minified
@@ -97,7 +97,7 @@ public interface IBootstrapSettings {
      *
      * @return true, if security manger should be updated while installing these settings
      */
-    boolean updateSecurityManger();
+    boolean updateSecurityManager();
 
     /**
      * @return true, if responsive css will be included

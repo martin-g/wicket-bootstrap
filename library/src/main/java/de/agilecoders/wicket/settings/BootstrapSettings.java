@@ -25,7 +25,7 @@ public class BootstrapSettings implements IBootstrapSettings {
     private boolean useJqueryPP = false;
     private String resourceFilterName = "";
     private IBootstrapLessCompilerSettings bootstrapLessCompilerSettings = new BootstrapLessCompilerSettings();
-    private boolean updateSecurityManger = true;
+    private boolean updateSecurityManager = true;
 
     /**
      * Constructor.
@@ -100,8 +100,8 @@ public class BootstrapSettings implements IBootstrapSettings {
     }
 
     @Override
-    public IBootstrapSettings setUpdateSecurityManger(boolean activate) {
-        updateSecurityManger = activate;
+    public IBootstrapSettings setUpdateSecurityManager(boolean activate) {
+        updateSecurityManager = activate;
         return this;
     }
 
@@ -123,8 +123,8 @@ public class BootstrapSettings implements IBootstrapSettings {
     }
 
     @Override
-    public boolean updateSecurityManger() {
-        return updateSecurityManger;
+    public boolean updateSecurityManager() {
+        return updateSecurityManager;
     }
 
     @Override
