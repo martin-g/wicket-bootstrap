@@ -42,7 +42,7 @@ public final class Bootstrap {
             app.getResourceSettings().setResourceStreamLocator(new CachingResourceStreamLocator(new LessResourceStreamLocator()));
         }
 
-        if (settings.updateSecurityManger()) {
+        if (settings.updateSecurityManager()) {
             updateSecurityManager(app, settings);
         }
     }
