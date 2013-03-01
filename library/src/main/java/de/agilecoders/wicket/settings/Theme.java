@@ -1,13 +1,17 @@
 package de.agilecoders.wicket.settings;
 
 import com.google.common.collect.Lists;
+import org.apache.wicket.Application;
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
+import org.apache.wicket.request.Url;
 import org.apache.wicket.request.resource.CssResourceReference;
 import org.apache.wicket.request.resource.JavaScriptResourceReference;
 import org.apache.wicket.request.resource.ResourceReference;
+import org.apache.wicket.request.resource.UrlResourceReference;
 
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -44,6 +48,28 @@ public class Theme implements ITheme {
      */
     @Override
     public void renderHead(IHeaderResponse response) {
+        if (Application.exists() && Application.get().usesDeploymentConfig()) {
+            Iterable<String> cdnUrls = getCdnUrls();
+            if (cdnUrls != null && cdnUrls.iterator().hasNext()) {
+                for (String cdnUrl : cdnUrls) {
+                    response.render(CssHeaderItem.forReference(new UrlResourceReference(Url.parse(cdnUrl))));
+                }
+            }
+            else {
+                renderPackageReferences(response);
+            }
+        }
+        else {
+            renderPackageReferences(response);
+        }
+    }
+
+    @Override
+    public Iterable<String> getCdnUrls() {
+        return Collections.EMPTY_LIST;
+    }
+
+    private void renderPackageReferences(IHeaderResponse response) {
         for (ResourceReference resourceReference : resourceReferences) {
             if (resourceReference instanceof CssResourceReference) {
                 response.render(CssHeaderItem.forReference(resourceReference));

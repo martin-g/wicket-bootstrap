@@ -21,4 +21,9 @@ public interface ITheme {
      */
     void renderHead(IHeaderResponse response);
 
+    /**
+     * @return The urls to CDN CSS resources to use for this theme
+     */
+    Iterable<String> getCdnUrls();
+
 }

@@ -1,7 +1,10 @@
 package de.agilecoders.wicket.markup.html.themes.bootswatch;
 
+import de.agilecoders.wicket.settings.IBootstrapSettings;
 import de.agilecoders.wicket.settings.Theme;
 import org.apache.wicket.request.resource.ResourceReference;
+
+import java.util.Arrays;
 
 /**
  * Bootstrap theme.
@@ -10,6 +13,14 @@ import org.apache.wicket.request.resource.ResourceReference;
  * @version 1.0
  */
 public class BootswatchTheme extends Theme {
+
+    /**
+     * The placeholders are:
+     * - the version
+     * - the theme name
+     * Example: //netdna.bootstrapcdn.com/bootswatch/2.3.0/amelia/bootstrap.min.css
+     */
+    private static final String CDN_PATTERN = "//netdna.bootstrapcdn.com/bootswatch/%s/%s/bootstrap.min.css";
 
     public static final BootswatchTheme AMELIA = new BootswatchTheme(BootswatchCssReference.AMELIA);
     public static final BootswatchTheme CERULEAN = new BootswatchTheme(BootswatchCssReference.CERULEAN);
@@ -38,5 +49,9 @@ public class BootswatchTheme extends Theme {
         this(reference.getSwatchName(), reference);
     }
 
-
+    @Override
+    public Iterable<String> getCdnUrls() {
+        String cdnUrl = String.format(CDN_PATTERN, IBootstrapSettings.VERSION, name());
+        return Arrays.asList(cdnUrl);
+    }
 }

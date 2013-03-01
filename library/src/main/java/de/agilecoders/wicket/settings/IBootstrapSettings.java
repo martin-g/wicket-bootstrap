@@ -10,6 +10,11 @@ import org.apache.wicket.request.resource.ResourceReference;
 public interface IBootstrapSettings {
 
     /**
+     * The version of Bootstrap
+     */
+    String VERSION = "2.3.0";
+
+    /**
      * @return the base twitter bootstrap css resource reference
      */
     ResourceReference getCssResourceReference();
@@ -140,4 +145,5 @@ public interface IBootstrapSettings {
      * @return the {@link IBootstrapLessCompilerSettings} implementation
      */
     IBootstrapLessCompilerSettings getBootstrapLessCompilerSettings();
+
 }
