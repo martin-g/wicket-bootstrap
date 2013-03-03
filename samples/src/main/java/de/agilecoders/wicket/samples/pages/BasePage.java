@@ -1,10 +1,31 @@
 package de.agilecoders.wicket.samples.pages;
 
+import java.util.List;
+import java.util.Properties;
+
+import org.apache.wicket.AttributeModifier;
+import org.apache.wicket.Component;
+import org.apache.wicket.Page;
+import org.apache.wicket.markup.head.CssHeaderItem;
+import org.apache.wicket.markup.head.IHeaderResponse;
+import org.apache.wicket.markup.head.JavaScriptHeaderItem;
+import org.apache.wicket.markup.head.filter.FilteredHeaderItem;
+import org.apache.wicket.markup.head.filter.HeaderResponseContainer;
+import org.apache.wicket.markup.html.GenericWebPage;
+import org.apache.wicket.markup.html.WebMarkupContainer;
+import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.Model;
+import org.apache.wicket.request.mapper.parameter.PageParameters;
+import org.apache.wicket.util.string.StringValue;
+
 import com.newrelic.api.agent.NewRelic;
+
 import de.agilecoders.wicket.Bootstrap;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.block.Code;
 import de.agilecoders.wicket.markup.html.bootstrap.button.dropdown.DropDownButton;
+import de.agilecoders.wicket.markup.html.bootstrap.button.dropdown.DropDownSubMenu;
 import de.agilecoders.wicket.markup.html.bootstrap.button.dropdown.MenuBookmarkablePageLink;
 import de.agilecoders.wicket.markup.html.bootstrap.button.dropdown.MenuDivider;
 import de.agilecoders.wicket.markup.html.bootstrap.button.dropdown.MenuHeader;
@@ -26,24 +47,6 @@ import de.agilecoders.wicket.samples.assets.base.FixBootstrapStylesCssResourceRe
 import de.agilecoders.wicket.samples.components.site.Footer;
 import de.agilecoders.wicket.settings.IBootstrapSettings;
 import de.agilecoders.wicket.settings.ITheme;
-import org.apache.wicket.AttributeModifier;
-import org.apache.wicket.Component;
-import org.apache.wicket.Page;
-import org.apache.wicket.markup.head.CssHeaderItem;
-import org.apache.wicket.markup.head.IHeaderResponse;
-import org.apache.wicket.markup.head.JavaScriptHeaderItem;
-import org.apache.wicket.markup.head.filter.FilteredHeaderItem;
-import org.apache.wicket.markup.head.filter.HeaderResponseContainer;
-import org.apache.wicket.markup.html.GenericWebPage;
-import org.apache.wicket.markup.html.WebMarkupContainer;
-import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.model.IModel;
-import org.apache.wicket.model.Model;
-import org.apache.wicket.request.mapper.parameter.PageParameters;
-import org.apache.wicket.util.string.StringValue;
-
-import java.util.List;
-import java.util.Properties;
 
 /**
  * Base wicket-bootstrap {@link org.apache.wicket.Page}
@@ -143,7 +146,8 @@ abstract class BasePage<T> extends GenericWebPage<T> {
                                                         new NavbarButton<BaseCssPage>(BaseCssPage.class, Model.of("Base CSS")),
                                                         new NavbarButton<ComponentsPage>(ComponentsPage.class, Model.of("Components")),
                                                         new NavbarButton<HomePage>(Scaffolding.class, Model.of("Scaffolding")),
-                                                        newAddonsDropDownButton())
+                                                        newAddonsDropDownButton(),
+                                                        newNavbarDropDownWithSubMenu())
         );
 
         DropDownButton dropdown = new NavbarDropDownButton(Model.of("Themes")) {
@@ -182,6 +186,22 @@ abstract class BasePage<T> extends GenericWebPage<T> {
                 .addButton(new MenuBookmarkablePageLink<IssuesPage>(IssuesPage.class, Model.of("Github Issues")).setIconType(IconType.book))
                 .addButton(new MenuBookmarkablePageLink<ExtensionsPage>(ExtensionsPage.class, Model.of("Extensions")).setIconType(IconType.alignjustify))
                 .setIconType(IconType.thlarge).add(new DropDownAutoOpen());
+    }
+    
+    /**
+     * @return new {@link NavbarDropDownButton} with a sub-menu
+     */
+    private Component newNavbarDropDownWithSubMenu() {
+    	return new NavbarDropDownButton(Model.of("Sub-menu Example"))
+        .addButton(new MenuBookmarkablePageLink<ComponentsPage>(ComponentsPage.class, Model.of("Components")))
+        .addButton(new MenuBookmarkablePageLink<Scaffolding>(Scaffolding.class, Model.of("Scaffolding")))
+        .addButton(new MenuDivider())
+        .addButton(new DropDownSubMenu(Model.of("Addons Pages")).setIconType(IconType.thlarge)
+        	.addButton(new MenuBookmarkablePageLink<Javascript>(Javascript.class, Model.of("Javascript")).setIconType(IconType.refresh))
+        	.addButton(new MenuBookmarkablePageLink<DatePickerPage>(DatePickerPage.class, Model.of("DatePicker")).setIconType(IconType.time))
+            .addButton(new MenuBookmarkablePageLink<IssuesPage>(IssuesPage.class, Model.of("Github Issues")).setIconType(IconType.book))
+            .addButton(new MenuBookmarkablePageLink<ExtensionsPage>(ExtensionsPage.class, Model.of("Extensions")).setIconType(IconType.alignjustify)))
+        .setIconType(IconType.mapmarker).add(new DropDownAutoOpen());
     }
 
     /**
