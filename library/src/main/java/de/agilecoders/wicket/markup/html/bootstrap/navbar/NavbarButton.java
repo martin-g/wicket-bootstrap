@@ -1,7 +1,7 @@
 package de.agilecoders.wicket.markup.html.bootstrap.navbar;
 
-import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonType;
-import de.agilecoders.wicket.markup.html.bootstrap.button.TypedBookmarkablePageLink;
+import de.agilecoders.wicket.markup.html.bootstrap.button.BootstrapBookmarkablePageLink;
+import de.agilecoders.wicket.markup.html.bootstrap.button.Buttons;
 import de.agilecoders.wicket.markup.html.bootstrap.image.IconType;
 import de.agilecoders.wicket.util.Components;
 import org.apache.wicket.Page;
@@ -16,7 +16,7 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
  * @param <T> type of page class, if any
  * @author miha
  */
-public class NavbarButton<T> extends TypedBookmarkablePageLink<T> {
+public class NavbarButton<T> extends BootstrapBookmarkablePageLink<T> {
 
     /**
      * Constructor.
@@ -27,7 +27,7 @@ public class NavbarButton<T> extends TypedBookmarkablePageLink<T> {
      * @param <T>        type of the page class
      */
     public <T extends Page> NavbarButton(final Class<T> pageClass, final PageParameters parameters, final IModel<String> label) {
-        super(Navbar.COMPONENT_ID, pageClass, parameters, ButtonType.Menu);
+        super(Navbar.COMPONENT_ID, pageClass, parameters, Buttons.Type.Menu);
 
         setLabel(label);
     }

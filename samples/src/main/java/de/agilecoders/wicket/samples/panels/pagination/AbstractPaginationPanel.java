@@ -19,9 +19,9 @@ public abstract class AbstractPaginationPanel extends Panel {
     public AbstractPaginationPanel(String id) {
         super(id);
 
-        List<String> data = Arrays.asList("Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 6");
+        List<String> data = createData();
 
-        pageable = new PageableListView<String>("pageable", data, 2) {
+        pageable = new PageableListView<String>("pageable", data, pageSize()) {
             @Override
             protected void populateItem(ListItem<String> item) {
                 item.add(new Label("item", item.getModelObject()));
@@ -30,6 +30,14 @@ public abstract class AbstractPaginationPanel extends Panel {
         add(pageable);
 
         add(createPager("pager"));
+    }
+
+    protected List<String> createData() {
+        return Arrays.asList("Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 6");
+    }
+
+    protected int pageSize() {
+        return 2;
     }
 
     protected abstract Component createPager(String id);

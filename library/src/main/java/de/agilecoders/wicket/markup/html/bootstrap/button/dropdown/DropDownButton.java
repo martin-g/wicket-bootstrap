@@ -1,18 +1,16 @@
 package de.agilecoders.wicket.markup.html.bootstrap.button.dropdown;
 
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapResourcesBehavior;
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
 import de.agilecoders.wicket.markup.html.bootstrap.button.Activatable;
 import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonList;
-import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonSize;
-import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonType;
+import de.agilecoders.wicket.markup.html.bootstrap.button.Buttons;
 import de.agilecoders.wicket.markup.html.bootstrap.common.Invertible;
 import de.agilecoders.wicket.markup.html.bootstrap.image.Icon;
 import de.agilecoders.wicket.markup.html.bootstrap.image.IconType;
+import de.agilecoders.wicket.util.Attributes;
 import de.agilecoders.wicket.util.Components;
 import org.apache.wicket.Component;
-import org.apache.wicket.Page;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.behavior.Behavior;
 import org.apache.wicket.markup.ComponentTag;
@@ -21,7 +19,6 @@ import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.AbstractLink;
-import org.apache.wicket.markup.html.link.BookmarkablePageLink;
 import org.apache.wicket.markup.html.panel.IMarkupSourcingStrategy;
 import org.apache.wicket.markup.html.panel.PanelMarkupSourcingStrategy;
 import org.apache.wicket.model.IModel;
@@ -37,10 +34,10 @@ import static de.agilecoders.wicket.util.JQuery.$;
  *
  * @author miha
  */
-public class DropDownButton extends AbstractLink implements Invertible<DropDownButton>, Activatable {
+public abstract class DropDownButton extends AbstractLink implements Invertible<DropDownButton>, Activatable {
 
-    private final IModel<ButtonSize> buttonSize = Model.of(ButtonSize.Medium);
-    private final IModel<ButtonType> buttonType = Model.of(ButtonType.Default);
+    private final IModel<Buttons.Size> buttonSize = Model.of(Buttons.Size.Medium);
+    private final IModel<Buttons.Type> buttonType = Model.of(Buttons.Type.Default);
     private final IModel<Boolean> dropUp = Model.of(false);
     private final ButtonList buttonListView;
     private final IModel<IconType> iconTypeModel;
@@ -74,12 +71,28 @@ public class DropDownButton extends AbstractLink implements Invertible<DropDownB
         add(baseButton = createButton("btn", model, iconTypeModel));
         add(buttonListView = newButtonList("buttons"));
 
-        baseButton.add(icon = createButtonIcon("icon", iconTypeModel));
+        this.icon = createButtonIcon("icon", iconTypeModel);
 
-        add(new BootstrapResourcesBehavior());
-        add(new CssClassNameAppender("dropdown"));
+        BootstrapResourcesBehavior.addTo(this);
 
+        addIconToBaseButton(icon);
         addButtonBehavior(buttonType, buttonSize);
+    }
+
+    /**
+     * @return base css class name of button container element
+     */
+    protected String createCssClassName() {
+        return "dropdown";
+    }
+
+    /**
+     * adds an icon to the base button
+     *
+     * @param icon The icon to add
+     */
+    protected void addIconToBaseButton(final Icon icon) {
+        baseButton.add(icon);
     }
 
     /**
@@ -169,38 +182,26 @@ public class DropDownButton extends AbstractLink implements Invertible<DropDownB
         response.render(OnDomReadyHeaderItem.forScript(script));
     }
 
-    @Override
-    protected void onInitialize() {
-        super.onInitialize();
-
-        if (dropUp.getObject()) {
-            add(new CssClassNameAppender("dropup"));
-        }
-    }
-
-    protected void addButtonBehavior(final IModel<ButtonType> buttonType, final IModel<ButtonSize> buttonSize) {
+    protected void addButtonBehavior(final IModel<Buttons.Type> buttonType, final IModel<Buttons.Size> buttonSize) {
         baseButton.add(new ButtonBehavior(buttonType, buttonSize));
     }
 
-    public DropDownButton addButton(final AbstractLink button) {
-        return addButtons(button);
-    }
+    /**
+     * creates a list of sub menu buttons which will be shown if sub menu will be opened.
+     *
+     * @param buttonMarkupId the markup id that all sub menu buttons must be use.
+     * @return list of sub menu buttons
+     */
+    protected abstract List<AbstractLink> newSubMenuButtons(final String buttonMarkupId);
 
-    public DropDownButton addButtons(final AbstractLink... buttons) {
-        buttonListView.addButtons(buttons);
-
-        return this;
-    }
-
-    public DropDownButton addButtons(final List<? extends AbstractLink> buttons) {
-        for (AbstractLink link : buttons) {
-            buttonListView.addButton(link);
-        }
-        return this;
-    }
-
-    protected ButtonList newButtonList(final String markupId) {
-        final ButtonList buttonList = new ButtonList(markupId);
+    /**
+     * creates a new {@link ButtonList} that contains all buttons from {@link #newButtonList(String)}
+     *
+     * @param markupId the markup id of {@link ButtonList}
+     * @return new {@link ButtonList} instance
+     */
+    private ButtonList newButtonList(final String markupId) {
+        final ButtonList buttonList = new ButtonList(markupId, newSubMenuButtons(ButtonList.getButtonMarkupId()));
         buttonList.setRenderBodyOnly(true);
 
         return buttonList;
@@ -212,20 +213,20 @@ public class DropDownButton extends AbstractLink implements Invertible<DropDownB
         return this;
     }
 
-    public DropDownButton setSize(final ButtonSize buttonSize) {
-        this.buttonSize.setObject(buttonSize);
+    public DropDownButton setSize(final Buttons.Size size) {
+        this.buttonSize.setObject(size);
 
         return this;
     }
 
-    public DropDownButton setType(final ButtonType buttonType) {
-        this.buttonType.setObject(buttonType);
+    public DropDownButton setType(final Buttons.Type type) {
+        this.buttonType.setObject(type);
 
         return this;
     }
 
     @Override
-    protected IMarkupSourcingStrategy newMarkupSourcingStrategy() {
+    protected final IMarkupSourcingStrategy newMarkupSourcingStrategy() {
         return new PanelMarkupSourcingStrategy(false);
     }
 
@@ -236,6 +237,12 @@ public class DropDownButton extends AbstractLink implements Invertible<DropDownB
         }
 
         super.onComponentTag(tag);
+
+        if (dropUp.getObject()) {
+            Attributes.addClass(tag, "dropup");
+        }
+
+        Attributes.addClass(tag, createCssClassName());
     }
 
     @Override
@@ -245,24 +252,14 @@ public class DropDownButton extends AbstractLink implements Invertible<DropDownB
     }
 
     @Override
-    public boolean isActive(Component item) {
-        final Class<? extends Page> pageClass = item.getPage().getPageClass();
-
-        for (AbstractLink link : buttonListView.getList()) {
-            if (link instanceof Activatable) {
-                return ((Activatable) link).isActive(item);
-            } else if (link instanceof BookmarkablePageLink) {
-                if (((BookmarkablePageLink) link).getPageClass().equals(pageClass)) {
-                    return true;
-                }
-            }
-        }
-        return false;
+    public boolean isActive(final Component item) {
+        return buttonListView.hasActiveButton(item);
     }
 
     /**
      * @return the base button instance
      */
+    @Deprecated // will be removed with 0.8
     public final Component getBaseButton() {
         return baseButton;
     }

@@ -8,7 +8,7 @@ import org.apache.wicket.model.IModel;
  * @author miha
  * @version 1.0
  */
-public class DefaultButton extends TypedButton {
+public class DefaultButton extends BootstrapButton {
 
     /**
      * Constructor.
@@ -16,7 +16,7 @@ public class DefaultButton extends TypedButton {
      * @param componentId the wicket component id
      */
     public DefaultButton(final String componentId) {
-        super(componentId, ButtonType.Default);
+        super(componentId, Buttons.Type.Default);
     }
 
     /**
@@ -26,6 +26,6 @@ public class DefaultButton extends TypedButton {
      * @param model       the component's label as model
      */
     public DefaultButton(final String componentId, final IModel<String> model) {
-        super(componentId, model, ButtonType.Default);
+        super(componentId, model, Buttons.Type.Default);
     }
 }

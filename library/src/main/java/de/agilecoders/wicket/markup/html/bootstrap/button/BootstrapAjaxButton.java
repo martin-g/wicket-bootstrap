@@ -3,20 +3,21 @@ package de.agilecoders.wicket.markup.html.bootstrap.button;
 import de.agilecoders.wicket.markup.html.bootstrap.image.Icon;
 import de.agilecoders.wicket.markup.html.bootstrap.image.IconType;
 import org.apache.wicket.Component;
+import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.markup.html.form.Button;
+import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.panel.IMarkupSourcingStrategy;
 import org.apache.wicket.markup.html.panel.PanelMarkupSourcingStrategy;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
 /**
- * A bootstrap styled {@link Button}
+ * Default {@link AjaxButton} which is styled by twitter bootstrap
  *
  * @author miha
  */
-public class BootstrapButton extends Button implements IBootstrapButton<BootstrapButton> {
+public abstract class BootstrapAjaxButton extends AjaxButton implements IBootstrapButton<BootstrapAjaxButton> {
 
     private final Icon icon;
     private final Component label;
@@ -29,7 +30,7 @@ public class BootstrapButton extends Button implements IBootstrapButton<Bootstra
      * @param componentId The component id
      * @param type  The type of the button
      */
-    public BootstrapButton(final String componentId, final Buttons.Type type) {
+    public BootstrapAjaxButton(final String componentId, final Buttons.Type type) {
         this(componentId, new Model<String>(), type);
     }
 
@@ -37,11 +38,34 @@ public class BootstrapButton extends Button implements IBootstrapButton<Bootstra
      * Construct.
      *
      * @param componentId The component id
-     * @param model       The label model
-     * @param type  The type of the button
+     * @param model       The label
+     * @param type  The type of button
      */
-    public BootstrapButton(final String componentId, final IModel<String> model, final Buttons.Type type) {
-        super(componentId, model);
+    public BootstrapAjaxButton(final String componentId, final IModel<String> model, final Buttons.Type type) {
+        this(componentId, model, null, Buttons.Type.Default);
+    }
+
+    /**
+     * Construct.
+     *
+     * @param id         The component id
+     * @param form       The assigned form
+     * @param type The type of button
+     */
+    public BootstrapAjaxButton(String id, Form<?> form, Buttons.Type type) {
+        this(id, Model.<String>of(), form, type);
+    }
+
+    /**
+     * Construct.
+     *
+     * @param id         The component id
+     * @param model      The label
+     * @param form       The assigned form
+     * @param type The type of button
+     */
+    public BootstrapAjaxButton(String id, IModel<String> model, Form<?> form, Buttons.Type type) {
+        super(id, model, form);
 
         add(buttonBehavior = new ButtonBehavior(type, Buttons.Size.Medium));
 
@@ -84,19 +108,19 @@ public class BootstrapButton extends Button implements IBootstrapButton<Bootstra
                 .setEscapeModelStrings(false);
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected final IMarkupSourcingStrategy newMarkupSourcingStrategy() {
+        return new PanelMarkupSourcingStrategy(true);
+    }
+
     @Override
     protected void onConfigure() {
         super.onConfigure();
 
         splitter.setVisible(icon.hasIconType());
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected IMarkupSourcingStrategy newMarkupSourcingStrategy() {
-        return new PanelMarkupSourcingStrategy(true);
     }
 
     /**
@@ -106,41 +130,51 @@ public class BootstrapButton extends Button implements IBootstrapButton<Bootstra
      * @return reference to the current instance
      */
     @Override
-    public BootstrapButton setLabel(IModel<String> label) {
+    public BootstrapAjaxButton setLabel(IModel<String> label) {
         this.label.setDefaultModel(label);
-
         return this;
     }
 
     /**
      * sets the button's icon which will be rendered in front of the label.
      *
-     * @param iconType the new button icon
+     * @param iconType the new button icon type
      * @return reference to the current instance
      */
-    public BootstrapButton setIconType(final IconType iconType) {
-        this.icon.setType(iconType);
-
+    public BootstrapAjaxButton setIconType(IconType iconType) {
+        icon.setType(iconType);
         return this;
     }
 
-    public BootstrapButton setSize(Buttons.Size size) {
-        this.buttonBehavior.withSize(size);
-
+    /**
+     * sets the size of the button
+     *
+     * @param size The button size
+     * @return this instance for chaining
+     */
+    public BootstrapAjaxButton setSize(Buttons.Size size) {
+        buttonBehavior.withSize(size);
         return this;
     }
 
-    @Override
-    public BootstrapButton setType(Buttons.Type type) {
+    /**
+     * Sets the type of the button
+     *
+     * @param type The type of the button
+     * @return this instance for chaining
+     */
+    public BootstrapAjaxButton setType(Buttons.Type type) {
         this.buttonBehavior.withType(type);
-
         return this;
     }
 
-    @Override
-    public BootstrapButton setInverted(boolean inverted) {
-        this.icon.setInverted(inverted);
-
+    /**
+     * inverts the icon color
+     *
+     * @param inverted true, if inverted version should be used
+     */
+    public BootstrapAjaxButton setInverted(final boolean inverted) {
+        icon.setInverted(inverted);
         return this;
     }
 }

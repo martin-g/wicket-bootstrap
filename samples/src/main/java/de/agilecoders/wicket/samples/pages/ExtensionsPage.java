@@ -23,6 +23,7 @@ import de.agilecoders.wicket.markup.html.bootstrap.extensions.tour.TourBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.extensions.tour.TourStep;
 import de.agilecoders.wicket.markup.html.bootstrap.image.Icon;
 import de.agilecoders.wicket.markup.html.bootstrap.image.IconType;
+import de.agilecoders.wicket.samples.panels.pagination.InfinitePaginationPanel;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
@@ -103,13 +104,17 @@ public class ExtensionsPage extends BasePage {
         draggableModal.addOpenerAttributesTo(draggableButton);
         add(draggableModal, draggableButton, new Code("draggable-code", Model.of("")));
 
-        DropDownButton dropDownButton = new DropDownButton("dropdown", Model.of("open-on-hover"));
-        final List<? extends AbstractLink> buttons2 = Lists.<AbstractLink>newArrayList(
-                new MenuBookmarkablePageLink<DatePickerPage>(DatePickerPage.class, Model.of("DatePicker")).setIconType(IconType.time),
-                new MenuBookmarkablePageLink<IssuesPage>(IssuesPage.class, Model.of("Github Issues")).setIconType(IconType.book),
-                new MenuBookmarkablePageLink<ExtensionsPage>(ExtensionsPage.class, Model.of("Extensions")).setIconType(IconType.qrcode)
-        );
-        dropDownButton.addButtons(buttons2);
+        DropDownButton dropDownButton = new DropDownButton("dropdown", Model.of("open-on-hover")) {
+            @Override
+            protected List<AbstractLink> newSubMenuButtons(String buttonMarkupId) {
+                return Lists.<AbstractLink>newArrayList(
+                        new MenuBookmarkablePageLink<DatePickerPage>(DatePickerPage.class, Model.of("DatePicker")).setIconType(IconType.time),
+                        new MenuBookmarkablePageLink<IssuesPage>(IssuesPage.class, Model.of("Github Issues")).setIconType(IconType.book),
+                        new MenuBookmarkablePageLink<ExtensionsPage>(ExtensionsPage.class, Model.of("Extensions")).setIconType(IconType.qrcode)
+                );
+            }
+        };
+
         dropDownButton.add(new DropDownAutoOpen());
         add(dropDownButton, new Code("dropdown-code", Model.of("dropDownButton.add(new DropDownAutoOpen());")));
 
@@ -119,6 +124,8 @@ public class ExtensionsPage extends BasePage {
 
         addJasnyFileUploadDemo();
         addJasnyInputMaskDemo();
+
+        add(new InfinitePaginationPanel("infinite"));
     }
 
     @Override

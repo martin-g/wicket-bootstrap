@@ -1,7 +1,7 @@
 package de.agilecoders.wicket.samples.components.issues;
 
-import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonType;
-import de.agilecoders.wicket.markup.html.bootstrap.button.TypedButton;
+import de.agilecoders.wicket.markup.html.bootstrap.button.BootstrapButton;
+import de.agilecoders.wicket.markup.html.bootstrap.button.Buttons;
 import de.agilecoders.wicket.markup.html.bootstrap.navbar.NavbarForm;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.form.TextField;
@@ -21,7 +21,7 @@ public class CustomNavbarForm extends NavbarForm {
     }
 
     private Component newSubmitButton(String markupId) {
-        return new TypedButton(markupId, Model.of("Search"), ButtonType.Default);
+        return new BootstrapButton(markupId, Model.of("Search"), Buttons.Type.Default);
     }
 
     private Component newSearchField(String markupId) {

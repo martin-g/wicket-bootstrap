@@ -1,7 +1,7 @@
 package de.agilecoders.wicket.markup.html.bootstrap.navbar;
 
-import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonType;
-import de.agilecoders.wicket.markup.html.bootstrap.button.TypedAjaxButton;
+import de.agilecoders.wicket.markup.html.bootstrap.button.BootstrapAjaxButton;
+import de.agilecoders.wicket.markup.html.bootstrap.button.Buttons;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
@@ -10,25 +10,25 @@ import org.apache.wicket.model.Model;
  * @author miha
  * @version 1.0
  */
-public abstract class NavbarAjaxButton extends TypedAjaxButton  {
+public abstract class NavbarAjaxButton extends BootstrapAjaxButton {
 
     /**
      * Construct.
      *
-     * @param buttonType {@link ButtonType} of this button instance
+     * @param type {@link de.agilecoders.wicket.markup.html.bootstrap.button.Buttons.Type} of this button instance
      */
-    public NavbarAjaxButton(final ButtonType buttonType) {
-        this(new Model<String>(), buttonType);
+    public NavbarAjaxButton(final Buttons.Type type) {
+        this(new Model<String>(), type);
     }
 
     /**
      * Construct.
      *
      * @param model      label of this button
-     * @param buttonType {@link ButtonType} of this button instance
+     * @param type {@link de.agilecoders.wicket.markup.html.bootstrap.button.Buttons.Type} of this button instance
      */
-    public NavbarAjaxButton(final IModel<String> model, final ButtonType buttonType) {
-        super(Navbar.COMPONENT_ID, model, buttonType);
+    public NavbarAjaxButton(final IModel<String> model, final Buttons.Type type) {
+        super(Navbar.COMPONENT_ID, model, type);
     }
 
     @Override

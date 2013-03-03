@@ -1,11 +1,10 @@
 package de.agilecoders.wicket.markup.html.bootstrap.button;
 
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
+import de.agilecoders.wicket.markup.html.bootstrap.behavior.ICssClassNameProvider;
 import de.agilecoders.wicket.util.Components;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.ComponentTag;
-import org.apache.wicket.markup.html.form.Button;
-import org.apache.wicket.markup.html.link.AbstractLink;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
@@ -17,33 +16,43 @@ import org.apache.wicket.model.Model;
  */
 public class ButtonBehavior extends BootstrapBaseBehavior {
 
-    private final IModel<ButtonType> buttonType;
-    private final IModel<ButtonSize> buttonSize;
+    private final IModel<Buttons.Type> buttonType;
+    private final IModel<Buttons.Size> buttonSize;
     private final IModel<Boolean> block;
 
     /**
-     * Construct. Uses {@link ButtonSize#Medium} and {@link ButtonType#Default}.
+     * Construct. Uses {@link de.agilecoders.wicket.markup.html.bootstrap.button.Buttons.Size#Medium} and {@link de.agilecoders.wicket.markup.html.bootstrap.button.Buttons.Type#Default}.
      */
     public ButtonBehavior() {
-        this(ButtonType.Default, ButtonSize.Medium);
+        this(Buttons.Type.Default, Buttons.Size.Medium);
     }
 
     /**
-     * Construct. Uses {@link ButtonType#Default}.
+     * Construct. Uses {@link de.agilecoders.wicket.markup.html.bootstrap.button.Buttons.Type#Default}.
      *
-     * @param buttonSize Size of button
+     * @param size Size of button
      */
-    public ButtonBehavior(final ButtonSize buttonSize) {
-        this(ButtonType.Default, buttonSize);
+    public ButtonBehavior(final Buttons.Size size) {
+        this(Buttons.Type.Default, size);
     }
 
     /**
-     * Construct. Uses {@link ButtonSize#Medium}.
+     * Construct. Uses {@link de.agilecoders.wicket.markup.html.bootstrap.button.Buttons.Size#Medium}.
      *
-     * @param buttonType Type of button
+     * @param type Type of button
      */
-    public ButtonBehavior(final ButtonType buttonType) {
-        this(buttonType, ButtonSize.Medium);
+    public ButtonBehavior(final Buttons.Type type) {
+        this(type, Buttons.Size.Medium);
+    }
+
+    /**
+     * Construct.
+     *
+     * @param type Type of button
+     * @param size Size of button
+     */
+    public ButtonBehavior(final Buttons.Type type, final Buttons.Size size) {
+        this(Model.of(type), Model.of(size));
     }
 
     /**
@@ -52,41 +61,31 @@ public class ButtonBehavior extends BootstrapBaseBehavior {
      * @param buttonType Type of button
      * @param buttonSize Size of button
      */
-    public ButtonBehavior(final ButtonType buttonType, final ButtonSize buttonSize) {
-        this(Model.of(buttonType), Model.of(buttonSize));
-    }
-
-    /**
-     * Construct.
-     *
-     * @param buttonType Type of button
-     * @param buttonSize Size of button
-     */
-    public ButtonBehavior(final IModel<ButtonType> buttonType, final IModel<ButtonSize> buttonSize) {
+    public ButtonBehavior(final IModel<Buttons.Type> buttonType, final IModel<Buttons.Size> buttonSize) {
         this.buttonType = buttonType;
         this.buttonSize = buttonSize;
         this.block = Model.of(false);
     }
 
     /**
-     * @return true, if button should be rendered as block element
-     */
-    public boolean isBlock() {
-        return block.getObject();
-    }
-
-    /**
      * @return size of button
      */
-    public ButtonSize size() {
+    public Buttons.Size size() {
         return buttonSize.getObject();
     }
 
     /**
      * @return type of button
      */
-    public ButtonType type() {
+    public Buttons.Type type() {
         return buttonType.getObject();
+    }
+
+    /**
+     * @return whether this button is a block level element
+     */
+    public boolean block() {
+        return block.getObject();
     }
 
     /**
@@ -103,56 +102,42 @@ public class ButtonBehavior extends BootstrapBaseBehavior {
     /**
      * sets the type of button
      *
-     * @param buttonType type to use
+     * @param type type to use
      * @return this instance for chaining
      */
-    public final ButtonBehavior withType(ButtonType buttonType) {
-        this.buttonType.setObject(buttonType);
+    public final ButtonBehavior withType(Buttons.Type type) {
+        this.buttonType.setObject(type);
         return this;
     }
 
     /**
      * sets the size of button
      *
-     * @param buttonSize size to use
+     * @param size size to use
      * @return this instance for chaining
      */
-    public final ButtonBehavior withSize(ButtonSize buttonSize) {
-        this.buttonSize.setObject(buttonSize);
+    public final ButtonBehavior withSize(Buttons.Size size) {
+        this.buttonSize.setObject(size);
         return this;
-    }
-
-    @Override
-    public void onConfigure(Component component) {
-        super.onConfigure(component);
-
-        // a menu button has no css classes, inherits its styles from the menu
-        if (!ButtonType.Menu.equals(type())) {
-            component.add(new ButtonCssClassAppender(buttonType, buttonSize, block));
-        }
     }
 
     @Override
     public void onComponentTag(Component component, ComponentTag tag) {
         super.onComponentTag(component, tag);
 
-        // HACK issue #79: wicket changes tag name if component wasn't enabled
-        if (!component.isEnabled()) {
-            if (component instanceof AbstractLink) {
-                tag.setName("a");
-            } else if (component instanceof Button) {
-                tag.setName("button");
-            } else {
-                if (tag.getAttribute("value") != null) {
-                    tag.setName("input");
-                } else {
-                    tag.setName("button");
-                }
-            }
-
-            tag.put("disabled", "disabled");
-        }
-
         Components.assertTag(component, tag, "a", "button", "input");
+
+        // HACK issue #79: wicket changes tag name if component wasn't enabled
+        Buttons.fixDisabledState(component, tag);
+
+        // a menu button has no css classes, inherits its styles from the menu
+        if (!Buttons.Type.Menu.equals(type())) {
+            Buttons.onComponentTag(component, tag, buttonSize.getObject(), buttonType.getObject(), new ICssClassNameProvider() {
+                @Override
+                public String cssClassName() {
+                    return block() ? "btn-block" : "";
+                }
+            });
+        }
     }
 }

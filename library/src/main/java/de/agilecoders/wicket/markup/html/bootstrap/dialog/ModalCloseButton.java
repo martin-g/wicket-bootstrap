@@ -1,8 +1,7 @@
 package de.agilecoders.wicket.markup.html.bootstrap.dialog;
 
 import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonBehavior;
-import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonSize;
-import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonType;
+import de.agilecoders.wicket.markup.html.bootstrap.button.Buttons;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.link.Link;
@@ -34,7 +33,7 @@ public class ModalCloseButton extends Link<String> {
         super("button", label);
 
         setBody(getDefaultModel());
-        buttonBehavior = new ButtonBehavior(ButtonType.Default);
+        buttonBehavior = new ButtonBehavior(Buttons.Type.Default);
 
         add(new AttributeModifier("data-dismiss", "modal"));
         add(buttonBehavior);
@@ -43,22 +42,22 @@ public class ModalCloseButton extends Link<String> {
     /**
      * sets the button type
      *
-     * @param buttonType The button type to use
+     * @param type The button type to use
      * @return this instance for chaining
      */
-    public ModalCloseButton type(final ButtonType buttonType) {
-        buttonBehavior.withType(buttonType);
+    public ModalCloseButton type(final Buttons.Type type) {
+        buttonBehavior.withType(type);
         return this;
     }
 
     /**
      * sets the button size
      *
-     * @param buttonSize The button size
+     * @param size The button size
      * @return this instance for chaining
      */
-    public ModalCloseButton size(final ButtonSize buttonSize) {
-        buttonBehavior.withSize(buttonSize);
+    public ModalCloseButton size(final Buttons.Size size) {
+        buttonBehavior.withSize(size);
         return this;
     }
 

@@ -24,7 +24,7 @@ import java.util.List;
 public class ButtonGroup extends Panel {
 
     private final List<AbstractLink> buttonList;
-    private final Orientation orientation;
+    private final Buttons.Orientation orientation;
 
     /**
      * Construct.
@@ -32,16 +32,16 @@ public class ButtonGroup extends Panel {
      * @param markupId The markup id.
      */
     public ButtonGroup(final String markupId) {
-        this(markupId, Orientation.Horizontal);
+        this(markupId, Buttons.Orientation.Horizontal);
     }
 
     /**
      * Construct.
      *
      * @param markupId    The markup id.
-     * @param orientation Make a set of buttons appear vertically stacked rather than horizontally if set to {@link Orientation#Vertical}.
+     * @param orientation Make a set of buttons appear vertically stacked rather than horizontally if set to {@link de.agilecoders.wicket.markup.html.bootstrap.button.Buttons.Orientation#Vertical}.
      */
-    public ButtonGroup(final String markupId, final Orientation orientation) {
+    public ButtonGroup(final String markupId, final Buttons.Orientation orientation) {
         super(markupId);
 
         Args.notNull(orientation, "orientation");

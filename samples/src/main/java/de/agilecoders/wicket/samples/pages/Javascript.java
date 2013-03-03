@@ -1,10 +1,10 @@
 package de.agilecoders.wicket.samples.pages;
 
 import com.google.common.collect.Lists;
+import de.agilecoders.wicket.markup.html.bootstrap.button.BootstrapAjaxLink;
 import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonBehavior;
-import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonType;
+import de.agilecoders.wicket.markup.html.bootstrap.button.Buttons;
 import de.agilecoders.wicket.markup.html.bootstrap.button.LoadingBehavior;
-import de.agilecoders.wicket.markup.html.bootstrap.button.TypedAjaxLink;
 import de.agilecoders.wicket.markup.html.bootstrap.button.dropdown.DropDownButton;
 import de.agilecoders.wicket.markup.html.bootstrap.button.dropdown.MenuBookmarkablePageLink;
 import de.agilecoders.wicket.markup.html.bootstrap.carousel.Carousel;
@@ -28,11 +28,13 @@ import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.extensions.markup.html.tabs.ITab;
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.link.AbstractLink;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.util.time.Duration;
 import org.wicketstuff.annotation.mount.MountPath;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -62,7 +64,7 @@ public class Javascript extends BasePage {
 
         add(new Label("tooltip-top", Model.of("Tooltip on top")).add(new TooltipBehavior(Model.of("Tooltip on top"))));
 
-        add(new TypedAjaxLink("popover", ButtonType.Danger) {
+        add(new BootstrapAjaxLink("popover", Buttons.Type.Danger) {
 
             @Override
             protected void onInitialize() {
@@ -84,7 +86,7 @@ public class Javascript extends BasePage {
             protected void onInitialize() {
                 super.onInitialize();
 
-                add(new ButtonBehavior(ButtonType.Primary));
+                add(new ButtonBehavior(Buttons.Type.Primary));
                 add(new LoadingBehavior(Model.of("loading...")));
             }
 
@@ -163,20 +165,23 @@ public class Javascript extends BasePage {
     }
 
     private Component newDropDown(String markupId) {
-        final DropDownButton button = new DropDownButton(markupId, Model.of("Dropdown (#89)"), Model.of(IconType.bookmark));
-        button.addButtons(
-                new MenuBookmarkablePageLink<Javascript>(Javascript.class).setLabel(Model.of("Link")),
-                new NavbarAjaxLink<String>("button", Model.of("Ajax Link")) {
+        return new DropDownButton(markupId, Model.of("Dropdown (#89)"), Model.of(IconType.bookmark)) {
+            @Override
+            protected List<AbstractLink> newSubMenuButtons(String buttonMarkupId) {
+                List<AbstractLink> subMenu = new ArrayList<AbstractLink>();
+                subMenu.add(new MenuBookmarkablePageLink<Javascript>(Javascript.class).setLabel(Model.of("Link")));
+                subMenu.add(new NavbarAjaxLink<String>("button", Model.of("Ajax Link")) {
                     @Override
                     public void onClick(AjaxRequestTarget target) {
-                        button.appendToggleMenuScript(target);
+                        ((DropDownButton)getParent()).appendToggleMenuScript(target);
 
                         target.appendJavaScript("alert('clicked');");
                     }
-                }
-        );
+                });
 
-        return button;
+                return subMenu;
+            }
+        };
     }
 
 

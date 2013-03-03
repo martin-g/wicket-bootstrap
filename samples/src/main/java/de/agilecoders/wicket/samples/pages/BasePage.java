@@ -38,11 +38,13 @@ import org.apache.wicket.markup.head.filter.HeaderResponseContainer;
 import org.apache.wicket.markup.html.GenericWebPage;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.link.AbstractLink;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.util.string.StringValue;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
@@ -50,7 +52,6 @@ import java.util.Properties;
  * Base wicket-bootstrap {@link org.apache.wicket.Page}
  *
  * @author miha
- * @version 1.0
  */
 abstract class BasePage<T> extends GenericWebPage<T> {
 
@@ -152,21 +153,27 @@ abstract class BasePage<T> extends GenericWebPage<T> {
             public boolean isActive(Component item) {
                 return false;
             }
-        };
+
+            @Override
+            protected List<AbstractLink> newSubMenuButtons(final String buttonMarkupId) {
+                final List<AbstractLink> subMenu = new ArrayList<AbstractLink>();
+                subMenu.add(new MenuHeader(Model.of("all available themes:")));
+                subMenu.add(new MenuDivider());
+
+                final IBootstrapSettings settings = Bootstrap.getSettings(getApplication());
+                final List<ITheme> themes = settings.getThemeProvider().available();
+
+                for (final ITheme theme : themes) {
+                    PageParameters params = new PageParameters();
+                    params.set("theme", theme.name());
+
+                    subMenu.add(new MenuBookmarkablePageLink<Page>(getPageClass(), params, Model.of(theme.name())));
+                }
+
+                return subMenu;
+            }
+        }.setIconType(IconType.book);
         dropdown.add(new DropDownAutoOpen());
-
-        dropdown.addButton(new MenuHeader(Model.of("all available themes:")))
-                .addButton(new MenuDivider()).setIconType(IconType.book);
-
-        IBootstrapSettings settings = Bootstrap.getSettings(getApplication());
-        List<ITheme> themes = settings.getThemeProvider().available();
-
-        for (ITheme theme : themes) {
-            PageParameters params = new PageParameters();
-            params.set("theme", theme.name());
-
-            dropdown.addButton(new MenuBookmarkablePageLink<Page>(getPageClass(), params, Model.of(theme.name())));
-        }
 
         navbar.addComponents(new ImmutableNavbarComponent(dropdown, Navbar.ComponentPosition.RIGHT));
 
@@ -177,12 +184,19 @@ abstract class BasePage<T> extends GenericWebPage<T> {
      * @return new dropdown button for all addons
      */
     private Component newAddonsDropDownButton() {
-        return new NavbarDropDownButton(Model.of("Addons"))
-                .addButton(new MenuBookmarkablePageLink<HomePage>(Javascript.class, Model.of("Javascript")).setIconType(IconType.refresh))
-                .addButton(new MenuBookmarkablePageLink<DatePickerPage>(DatePickerPage.class, Model.of("DatePicker")).setIconType(IconType.time))
-                .addButton(new MenuBookmarkablePageLink<IssuesPage>(IssuesPage.class, Model.of("Github Issues")).setIconType(IconType.book))
-                .addButton(new MenuBookmarkablePageLink<ExtensionsPage>(ExtensionsPage.class, Model.of("Extensions")).setIconType(IconType.alignjustify))
-                .setIconType(IconType.thlarge).add(new DropDownAutoOpen());
+        return new NavbarDropDownButton(Model.of("Addons")) {
+            @Override
+            protected List<AbstractLink> newSubMenuButtons(String buttonMarkupId) {
+                final List<AbstractLink> subMenu = new ArrayList<AbstractLink>();
+
+                subMenu.add(new MenuBookmarkablePageLink<HomePage>(Javascript.class, Model.of("Javascript")).setIconType(IconType.refresh));
+                subMenu.add(new MenuBookmarkablePageLink<DatePickerPage>(DatePickerPage.class, Model.of("DatePicker")).setIconType(IconType.time));
+                subMenu.add(new MenuBookmarkablePageLink<IssuesPage>(IssuesPage.class, Model.of("Github Issues")).setIconType(IconType.book));
+                subMenu.add(new MenuBookmarkablePageLink<ExtensionsPage>(ExtensionsPage.class, Model.of("Extensions")).setIconType(IconType.alignjustify));
+
+                return subMenu;
+            }
+        }.setIconType(IconType.thlarge).add(new DropDownAutoOpen());
     }
 
     /**

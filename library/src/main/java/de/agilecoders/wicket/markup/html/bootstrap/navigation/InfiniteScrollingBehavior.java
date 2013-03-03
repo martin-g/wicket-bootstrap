@@ -2,28 +2,36 @@ package de.agilecoders.wicket.markup.html.bootstrap.navigation;
 
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.table.TableBehavior;
+import de.agilecoders.wicket.util.Json;
 import org.apache.wicket.Component;
+import org.apache.wicket.behavior.Behavior;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
 import org.apache.wicket.request.resource.ResourceReference;
 import org.apache.wicket.resource.JQueryPluginResourceReference;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * TODO: document
  *
- * @link http://www.infinite-scroll.com/
  * @author miha
- * @version 1.0
+ * @link http://www.infinite-scroll.com/
  */
-public class InfiniteScrollingBehavior extends BootstrapBaseBehavior {
+public class InfiniteScrollingBehavior extends Behavior {
     // TODO: move the .js files next to this behavior. Now they are with TableBehavior
     private static final ResourceReference JS = new JQueryPluginResourceReference(TableBehavior.class, "js/jquery.infinitescroll.js");
 
-    private String navSelector;
-    private String nextSelector;
-    private String itemSelector;
     private boolean autoScroll = true;
+    private final Map<String, Object> jsonData;
+
+    public InfiniteScrollingBehavior() {
+        jsonData = new HashMap<String, Object>();
+        jsonData.put("localMode", true);
+        jsonData.put("animate", true);
+    }
 
     @Override
     public void renderHead(Component component, IHeaderResponse headerResponse) {
@@ -34,19 +42,11 @@ public class InfiniteScrollingBehavior extends BootstrapBaseBehavior {
     }
 
     protected CharSequence createScript(Component component) {
-        CharSequence script = "$('#" + component.getMarkupId() + "').infinitescroll({"
-                              + "  navSelector  : \"#" + navSelector + "\","    // selector for the paged navigation (it will be hidden)
-                              + "  nextSelector : \"#" + nextSelector + "\","   // selector for the NEXT link (to page 2)
-                              + "  itemSelector : \"" + itemSelector + ","      // selector for all items you'll retrieve
-                              + "  localMode    : true,"
-                              + "  debug        : false,"                       // enable debug messaging ( to console.log )
-                              + "  animate      : true,"                        // boolean, if the page will do an animated scroll when new content loads
-                              + "  errorCallback: function(){},"                // called when a requested page 404's or when there is no more content
-                              + "},function(arrayOfNewElems){});";              // optional callback when new content is successfully loaded in.
-
+        CharSequence script = "$('#" + component.getMarkupId() + "').infinitescroll(" +
+                              Json.stringify(jsonData) + ",function(a){});";
         if (!autoScroll) {
             script = script + "$(window).unbind('.infscr');";
-            script = script + "$('a#next').click(function() {"
+            script = script + "$('" + jsonData.get("nextSelector") + "').click(function() {"
                      + "            $(document).trigger('retrieve.infscr');"
                      + "            return false;"
                      + "       });";
@@ -60,23 +60,37 @@ public class InfiniteScrollingBehavior extends BootstrapBaseBehavior {
         super.bind(component);
 
         component.setOutputMarkupId(true);
+        BootstrapBaseBehavior.addTo(component);
+    }
+
+    @Override
+    public void unbind(Component component) {
+        super.unbind(component);
+
+        BootstrapBaseBehavior.removeFrom(component);
     }
 
     public InfiniteScrollingBehavior setNextSelector(Component component) {
         component.setOutputMarkupId(true);
-        nextSelector = component.getMarkupId();
+
+        jsonData.put("nextSelector", "#" + component.getMarkupId(true));
+
         return this;
     }
 
     public InfiniteScrollingBehavior setNavSelector(Component component) {
         component.setOutputMarkupId(true);
-        navSelector = component.getMarkupId();
+
+        jsonData.put("navSelector", "#" + component.getMarkupId(true));
+
         return this;
     }
 
     public InfiniteScrollingBehavior setItemSelector(Component component, String selector) {
         component.setOutputMarkupId(true);
-        itemSelector = "#" + component.getMarkupId() + " " + selector;
+
+        jsonData.put("itemSelector", "#" + component.getMarkupId() + " " + selector);
+
         return this;
     }
 

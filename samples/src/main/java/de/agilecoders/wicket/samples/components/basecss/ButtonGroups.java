@@ -1,12 +1,11 @@
 package de.agilecoders.wicket.samples.components.basecss;
 
+import de.agilecoders.wicket.markup.html.bootstrap.button.BootstrapBookmarkablePageLink;
 import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonGroup;
 import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonList;
-import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonType;
-import de.agilecoders.wicket.markup.html.bootstrap.button.Orientation;
+import de.agilecoders.wicket.markup.html.bootstrap.button.Buttons;
 import de.agilecoders.wicket.markup.html.bootstrap.button.Toolbar;
-import de.agilecoders.wicket.markup.html.bootstrap.button.TypedBookmarkablePageLink;
 import de.agilecoders.wicket.markup.html.bootstrap.image.Icon;
 import de.agilecoders.wicket.markup.html.bootstrap.image.IconType;
 import de.agilecoders.wicket.samples.pages.ComponentsPage;
@@ -43,7 +42,7 @@ public class ButtonGroups extends Panel {
         toolbar.add(newButtonGroup("buttonGroup3", 1));
         add(toolbar);
 
-        ButtonGroup verticalButtonGroup = new ButtonGroup("verticalButtonGroup", Orientation.Vertical);
+        ButtonGroup verticalButtonGroup = new ButtonGroup("verticalButtonGroup", Buttons.Orientation.Vertical);
         verticalButtonGroup.addButton(createIconButton(new Icon(IconType.alignleft)));
         verticalButtonGroup.addButton(createIconButton(new Icon(IconType.aligncenter)));
         verticalButtonGroup.addButton(createIconButton(new Icon(IconType.alignright)));
@@ -58,7 +57,7 @@ public class ButtonGroups extends Panel {
      * @return The new button instance
      */
     private AbstractLink createIconButton(Icon icon) {
-        TypedBookmarkablePageLink button = new TypedBookmarkablePageLink<ComponentsPage>(ButtonList.getButtonMarkupId(), ComponentsPage.class, ButtonType.Default);
+        BootstrapBookmarkablePageLink button = new BootstrapBookmarkablePageLink<ComponentsPage>(ButtonList.getButtonMarkupId(), ComponentsPage.class, Buttons.Type.Default);
         button.setLabel(Model.of(""));
         button.setIconType(icon.getType());
         return button;

@@ -1,17 +1,18 @@
 package de.agilecoders.wicket.markup.html.bootstrap.navbar;
 
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
-import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonSize;
-import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonType;
+import de.agilecoders.wicket.markup.html.bootstrap.button.Buttons;
 import de.agilecoders.wicket.markup.html.bootstrap.button.dropdown.DropDownButton;
 import org.apache.wicket.model.IModel;
 
 /**
  * Special {@link DropDownButton} for a {@link Navbar}.
  *
+ *
+ *
  * @author miha
  */
-public class NavbarDropDownButton extends DropDownButton {
+public abstract class NavbarDropDownButton extends DropDownButton {
 
     /**
      * Construct.
@@ -27,11 +28,13 @@ public class NavbarDropDownButton extends DropDownButton {
         super.onInitialize();
 
         this.setRenderBodyOnly(true);
+
+        // add the dropdown css class name to the parent element not button element itself.
         this.getParent().add(new CssClassNameAppender("dropdown"));
     }
 
     @Override
-    protected void addButtonBehavior(final IModel<ButtonType> buttonType, final IModel<ButtonSize> buttonSize) {
+    protected final void addButtonBehavior(final IModel<Buttons.Type> buttonType, final IModel<Buttons.Size> buttonSize) {
         // do nothing, because navbar dropdown button inherits its styles from navbar.
     }
 

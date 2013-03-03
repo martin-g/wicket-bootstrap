@@ -1,7 +1,7 @@
 package de.agilecoders.wicket.samples.pages;
 
 import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonBehavior;
-import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonType;
+import de.agilecoders.wicket.markup.html.bootstrap.button.Buttons;
 import de.agilecoders.wicket.markup.html.bootstrap.button.TypedLink;
 import de.agilecoders.wicket.markup.html.bootstrap.common.NotificationMessage;
 import de.agilecoders.wicket.markup.html.bootstrap.common.NotificationPanel;
@@ -92,7 +92,7 @@ public class IssuesPage extends BasePage {
                 setResponsePage(getModelObject());
             }
         }.setLabel(Model.of("Link 1")));
-        add(new TypedLink<Page>("link-danger", Model.<Page>of(this), ButtonType.Danger) {
+        add(new TypedLink<Page>("link-danger", Model.<Page>of(this), Buttons.Type.Danger) {
             @Override
             public void onClick() {
                 getSession().success(new NotificationMessage(Model.of("link 2 <u>clicked</u>"), Model.of("issue #102:"), true).escapeModelStrings(false));

@@ -1,8 +1,8 @@
 package de.agilecoders.wicket.markup.html.bootstrap.button.dropdown;
 
 import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonList;
-import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonType;
-import de.agilecoders.wicket.markup.html.bootstrap.button.TypedBookmarkablePageLink;
+import de.agilecoders.wicket.markup.html.bootstrap.button.Buttons;
+import de.agilecoders.wicket.markup.html.bootstrap.button.BootstrapBookmarkablePageLink;
 import de.agilecoders.wicket.markup.html.bootstrap.image.IconType;
 import org.apache.wicket.Component;
 import org.apache.wicket.Page;
@@ -15,7 +15,7 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
  *
  * @author miha
  */
-public class MenuBookmarkablePageLink<T> extends TypedBookmarkablePageLink<T> {
+public class MenuBookmarkablePageLink<T> extends BootstrapBookmarkablePageLink<T>  {
 
     /**
      * Constructor.
@@ -24,7 +24,7 @@ public class MenuBookmarkablePageLink<T> extends TypedBookmarkablePageLink<T> {
      * @param <T>       type of the page class
      */
     public <T extends Page> MenuBookmarkablePageLink(final Class<T> pageClass) {
-        super(ButtonList.getButtonMarkupId(), pageClass, ButtonType.Menu);
+        super(ButtonList.getButtonMarkupId(), pageClass, Buttons.Type.Menu);
     }
 
     /**
@@ -35,7 +35,7 @@ public class MenuBookmarkablePageLink<T> extends TypedBookmarkablePageLink<T> {
      * @param <T>       type of the page class
      */
     public <T extends Page> MenuBookmarkablePageLink(final Class<T> pageClass, final IModel<String> label) {
-        super(ButtonList.getButtonMarkupId(), pageClass, ButtonType.Menu);
+        super(ButtonList.getButtonMarkupId(), pageClass, Buttons.Type.Menu);
 
         setLabel(label);
         setIconType(IconType.NULL);
@@ -50,7 +50,7 @@ public class MenuBookmarkablePageLink<T> extends TypedBookmarkablePageLink<T> {
      * @param <T>        type of the page class
      */
     public <T extends Page> MenuBookmarkablePageLink(final Class<T> pageClass, final PageParameters parameters, final IModel<String> model) {
-        super(ButtonList.getButtonMarkupId(), pageClass, parameters, ButtonType.Menu);
+        super(ButtonList.getButtonMarkupId(), pageClass, parameters, Buttons.Type.Menu);
 
         setLabel(model);
     }

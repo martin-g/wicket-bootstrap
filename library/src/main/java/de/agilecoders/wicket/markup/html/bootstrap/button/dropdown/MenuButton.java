@@ -1,8 +1,8 @@
 package de.agilecoders.wicket.markup.html.bootstrap.button.dropdown;
 
+import de.agilecoders.wicket.markup.html.bootstrap.button.BootstrapButton;
 import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonList;
-import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonType;
-import de.agilecoders.wicket.markup.html.bootstrap.button.TypedButton;
+import de.agilecoders.wicket.markup.html.bootstrap.button.Buttons;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.model.IModel;
 
@@ -11,13 +11,13 @@ import org.apache.wicket.model.IModel;
  *
  * @author miha
  */
-public class MenuButton extends TypedButton {
+public class MenuButton extends BootstrapButton {
 
     /**
      * Construct.
      */
     public MenuButton() {
-        super(ButtonList.getButtonMarkupId(), ButtonType.Menu);
+        super(ButtonList.getButtonMarkupId(), Buttons.Type.Menu);
     }
 
     /**
@@ -26,6 +26,6 @@ public class MenuButton extends TypedButton {
      * @param model The label
      */
     public MenuButton(final IModel<String> model) {
-        super(ButtonList.getButtonMarkupId(), model, ButtonType.Menu);
+        super(ButtonList.getButtonMarkupId(), model, Buttons.Type.Menu);
     }
 }
