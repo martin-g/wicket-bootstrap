@@ -53,7 +53,7 @@ public interface IBootstrapSettings {
      * @param activate true, if security manger should be updated while installing these settings
      * @return same instance for chaining
      */
-    IBootstrapSettings setUpdateSecurityManger(final boolean activate);
+    IBootstrapSettings setUpdateSecurityManager(final boolean activate);
 
     /**
      * if true, all necessary exceptions will be added to security manager to allow
@@ -61,7 +61,7 @@ public interface IBootstrapSettings {
      *
      * @return true, if security manger should be updated while installing these settings
      */
-    boolean updateSecurityManger();
+    boolean updateSecurityManager();
 
     /**
      * The {@link ActiveThemeProvider} provides access to the active theme

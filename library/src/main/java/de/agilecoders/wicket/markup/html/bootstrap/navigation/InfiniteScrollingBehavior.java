@@ -1,7 +1,6 @@
 package de.agilecoders.wicket.markup.html.bootstrap.navigation;
 
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
-import de.agilecoders.wicket.markup.html.bootstrap.table.TableBehavior;
 import de.agilecoders.wicket.util.Json;
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.Behavior;
@@ -22,7 +21,7 @@ import java.util.Map;
  */
 public class InfiniteScrollingBehavior extends Behavior {
     // TODO: move the .js files next to this behavior. Now they are with TableBehavior
-    private static final ResourceReference JS = new JQueryPluginResourceReference(TableBehavior.class, "js/jquery.infinitescroll.js");
+    private static final ResourceReference JS = new JQueryPluginResourceReference(InfiniteScrollingBehavior.class, "js/jquery.infinitescroll.js");
 
     private boolean autoScroll = true;
     private final Map<String, Object> jsonData;

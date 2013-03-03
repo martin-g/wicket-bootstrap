@@ -19,7 +19,7 @@ import java.util.Set;
 public class TableBehavior extends BootstrapBaseBehavior {
 
     private enum Type implements ICssClassNameProvider {
-        Basic, Bordered, Zebra, Condensed;
+        Basic, Bordered, Striped, Condensed, Hover;
 
         @Override
         public String cssClassName() {
@@ -31,7 +31,7 @@ public class TableBehavior extends BootstrapBaseBehavior {
     private Set<Type> types = Generics2.newHashSet(Type.Basic);
 
     public TableBehavior striped() {
-        return addType(Type.Zebra);
+        return addType(Type.Striped);
     }
 
     public TableBehavior condensed() {
@@ -42,6 +42,10 @@ public class TableBehavior extends BootstrapBaseBehavior {
         return addType(Type.Bordered);
     }
 
+    public TableBehavior hover() {
+        return addType(Type.Hover);
+    }
+    
     private TableBehavior addType(Type type) {
         if (!types.contains(type)) {
             types.add(type);
