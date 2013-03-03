@@ -8,16 +8,15 @@ import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.html.link.AbstractLink;
 import org.apache.wicket.markup.html.panel.Panel;
 
+import java.util.List;
+
 /**
  * Simple pagination inspired by Rdio, great for apps and search results.
  * The large block is hard to miss, easily scalable, and provides large click areas.
  *
  * @author miha
- * @version 1.0
  */
-public class Pagination extends Panel {
-
-    private final Alignment alignment;
+public abstract class Pagination extends Panel {
 
     /**
      * Add one of two optional classes to change the alignment of pagination links: .pagination-centered and .pagination-right.
@@ -29,10 +28,9 @@ public class Pagination extends Panel {
         public String cssClassName() {
             return equals(Left) ? "" : "pagination-" + name().toLowerCase();
         }
-
     }
 
-    private final ButtonList buttonList;
+    private final Alignment alignment;
 
     /**
      * Construct.
@@ -54,7 +52,7 @@ public class Pagination extends Panel {
 
         this.alignment = alignment;
 
-        add(buttonList = newButtonList("buttons"));
+        add(newButtonList("buttons"));
         BootstrapBaseBehavior.addTo(this);
     }
 
@@ -66,24 +64,21 @@ public class Pagination extends Panel {
     }
 
     /**
-     * adds a new set of buttons to the button list
-     *
-     * @param buttons The buttons to add
-     * @return this instance for chaining
-     */
-    public Pagination addButton(AbstractLink... buttons) {
-        buttonList.addButtons(buttons);
-        return this;
-    }
-
-    /**
      * creates a new button list instance
      *
      * @param markupId The component id
      * @return new button list instance
      */
     protected ButtonList newButtonList(final String markupId) {
-        return new ButtonList(markupId);
+        return new ButtonList(markupId, newPaginationButtons(ButtonList.getButtonMarkupId()));
     }
+
+    /**
+     * creates a list of pagination buttons
+     *
+     * @param buttonMarkupId the markup id that must be used by all buttons
+     * @return a list of buttons
+     */
+    protected abstract List<AbstractLink> newPaginationButtons(String buttonMarkupId);
 
 }

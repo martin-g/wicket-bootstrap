@@ -18,7 +18,7 @@ public class BootstrapSettings implements IBootstrapSettings {
     private ThemeProvider themeProvider = new DefaultThemeProvider();
     private ActiveThemeProvider activeThemeProvider = new SessionThemeProvider();
     private String resourceFilterName = "";
-    private boolean updateSecurityManger = true;
+    private boolean updateSecurityManager = true;
 
     /**
      * Constructor.
@@ -53,8 +53,8 @@ public class BootstrapSettings implements IBootstrapSettings {
     }
 
     @Override
-    public boolean updateSecurityManger() {
-        return updateSecurityManger;
+    public boolean updateSecurityManager() {
+        return updateSecurityManager;
     }
 
     @Override
@@ -76,8 +76,8 @@ public class BootstrapSettings implements IBootstrapSettings {
     }
 
     @Override
-    public IBootstrapSettings setUpdateSecurityManger(boolean activate) {
-        updateSecurityManger = activate;
+    public IBootstrapSettings setUpdateSecurityManager(boolean activate) {
+        updateSecurityManager = activate;
         return this;
     }
 

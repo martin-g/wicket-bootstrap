@@ -37,7 +37,7 @@ public final class Bootstrap {
     public static void install(final Application app, final IBootstrapSettings settings) {
         app.setMetaData(BOOTSTRAP_SETTINGS_METADATA_KEY, settings);
 
-        if (settings.updateSecurityManger()) {
+        if (settings.updateSecurityManager()) {
             updateSecurityManager(app);
         }
 
@@ -47,8 +47,7 @@ public final class Bootstrap {
     /**
      * updates the security manager to allow fonts and less files if necessary.
      *
-     * @param app      The current application
-     *
+     * @param app The current application
      */
     private static void updateSecurityManager(final Application app) {
         final IPackageResourceGuard packageResourceGuard = app.getResourceSettings().getPackageResourceGuard();
