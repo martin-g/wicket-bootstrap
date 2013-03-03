@@ -146,7 +146,8 @@ abstract class BasePage<T> extends GenericWebPage<T> {
                                                         new NavbarButton<BaseCssPage>(BaseCssPage.class, Model.of("Base CSS")),
                                                         new NavbarButton<ComponentsPage>(ComponentsPage.class, Model.of("Components")),
                                                         new NavbarButton<HomePage>(Scaffolding.class, Model.of("Scaffolding")),
-                                                        newAddonsDropDownButton())
+                                                        newAddonsDropDownButton(),
+                                                        newNavbarDropDownWithSubMenu())
         );
 
         DropDownButton dropdown = new NavbarDropDownButton(Model.of("Themes")) {
@@ -184,10 +185,23 @@ abstract class BasePage<T> extends GenericWebPage<T> {
                 .addButton(new MenuBookmarkablePageLink<DatePickerPage>(DatePickerPage.class, Model.of("DatePicker")).setIconType(IconType.time))
                 .addButton(new MenuBookmarkablePageLink<IssuesPage>(IssuesPage.class, Model.of("Github Issues")).setIconType(IconType.book))
                 .addButton(new MenuBookmarkablePageLink<ExtensionsPage>(ExtensionsPage.class, Model.of("Extensions")).setIconType(IconType.alignjustify))
-                .addButton(new DropDownSubMenu(Model.of("Sub-Menu Example"))
-                	.addButton(new MenuBookmarkablePageLink<HomePage>(Javascript.class, Model.of("Javascript")).setIconType(IconType.refresh))
-                	.addButton(new MenuBookmarkablePageLink<DatePickerPage>(DatePickerPage.class, Model.of("DatePicker")).setIconType(IconType.time)))
                 .setIconType(IconType.thlarge).add(new DropDownAutoOpen());
+    }
+    
+    /**
+     * @return new {@link NavbarDropDownButton} with a sub-menu
+     */
+    private Component newNavbarDropDownWithSubMenu() {
+    	return new NavbarDropDownButton(Model.of("Sub-menu Example"))
+        .addButton(new MenuBookmarkablePageLink<ComponentsPage>(ComponentsPage.class, Model.of("Components")))
+        .addButton(new MenuBookmarkablePageLink<Scaffolding>(Scaffolding.class, Model.of("Scaffolding")))
+        .addButton(new MenuDivider())
+        .addButton(new DropDownSubMenu(Model.of("Addons Pages")).setIconType(IconType.thlarge)
+        	.addButton(new MenuBookmarkablePageLink<Javascript>(Javascript.class, Model.of("Javascript")).setIconType(IconType.refresh))
+        	.addButton(new MenuBookmarkablePageLink<DatePickerPage>(DatePickerPage.class, Model.of("DatePicker")).setIconType(IconType.time))
+            .addButton(new MenuBookmarkablePageLink<IssuesPage>(IssuesPage.class, Model.of("Github Issues")).setIconType(IconType.book))
+            .addButton(new MenuBookmarkablePageLink<ExtensionsPage>(ExtensionsPage.class, Model.of("Extensions")).setIconType(IconType.alignjustify)))
+        .setIconType(IconType.mapmarker).add(new DropDownAutoOpen());
     }
 
     /**
