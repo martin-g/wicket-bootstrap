@@ -45,7 +45,7 @@ public class DropDownButton extends AbstractLink implements Invertible<DropDownB
     private final IModel<Boolean> dropUp = Model.of(false);
     private final ButtonList buttonListView;
     private final IModel<IconType> iconTypeModel;
-    protected final WebMarkupContainer baseButton;
+    private final WebMarkupContainer baseButton;
     private final String script;
     private final Icon icon;
 
@@ -84,6 +84,7 @@ public class DropDownButton extends AbstractLink implements Invertible<DropDownB
     }
     
     /**
+     * Creates {@link CssClassNameAppender} that adds proper CSS class "dropdown" to {@link DropDownButton}.
      * 
      * @return
      */

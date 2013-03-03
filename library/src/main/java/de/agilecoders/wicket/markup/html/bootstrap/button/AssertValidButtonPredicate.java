@@ -4,6 +4,8 @@ import com.google.common.base.Predicate;
 
 import de.agilecoders.wicket.markup.html.bootstrap.button.dropdown.DropDownSubMenu;
 import de.agilecoders.wicket.util.Behaviors;
+import de.agilecoders.wicket.util.Components;
+
 import org.apache.wicket.markup.html.link.AbstractLink;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,8 +35,13 @@ public class AssertValidButtonPredicate implements Predicate<AbstractLink> {
             throw new IllegalArgumentException("button id must be equal to '" + buttonMarkupId + "'");
         }
 
-        // TODO: probably a very bad hack...
-        if (!Behaviors.contains(button, ButtonBehavior.class) && !(button instanceof DropDownSubMenu)) {
+        if (!Behaviors.contains(button, ButtonBehavior.class) 
+        		/*
+        		 * workaround to avoid that ButtonBehavior is added to DropDownSubMenu, 
+        		 * which would cause ButtonBehavior's Components.assertTag(component, tag, "a", "button", "input"); to fail
+        		 * because DropDownSubMenu has to be a <li>.
+        		 */
+        		&& !(button instanceof DropDownSubMenu)) {
             LOG.debug("button {}#{} has no ButtonBehavior. This will lead to an invalid style! ", button.getPath(), button.getId());
 
             button.add(new ButtonBehavior(ButtonType.Menu, ButtonSize.Medium));

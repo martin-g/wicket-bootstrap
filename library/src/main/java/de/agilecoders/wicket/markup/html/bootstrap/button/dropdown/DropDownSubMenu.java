@@ -11,11 +11,15 @@ import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonList;
 import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonSize;
 import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonType;
 import de.agilecoders.wicket.markup.html.bootstrap.image.IconType;
+import de.agilecoders.wicket.markup.html.bootstrap.navbar.NavbarDropDownButton;
 import de.agilecoders.wicket.util.Components;
 
 /**
+ * A Sub-Menu to be used in {@link DropDownButton} or {@link NavbarDropDownButton}.
+ * Just add it to the {@link DropDownButton} like a regular button with {@link DropDownButton#addButton(org.apache.wicket.markup.html.link.AbstractLink)}, etc.
+ * You can add menu entries/buttons to this {@link DropDownSubMenu} just like you would add them to {@link DropDownButton}. 
+ * 
  * @author heapifyman
- *
  */
 public class DropDownSubMenu extends DropDownButton {
 
@@ -25,8 +29,9 @@ public class DropDownSubMenu extends DropDownButton {
 	private static final long serialVersionUID = 2233352448742071270L;
 
 	/**
+	 * Construct.
 	 * 
-	 * @param model
+	 * @param model			The label of the sub menu
 	 */
 	public DropDownSubMenu(final IModel<String> model) {
         super(ButtonList.getButtonMarkupId(), model);
@@ -43,9 +48,11 @@ public class DropDownSubMenu extends DropDownButton {
     }
     
     /**
+     * Creates {@link CssClassNameAppender} that adds proper CSS class "dropdown-submenu" to {@link DropDownSubMenu}.
      * 
-     * @return
+     * @see de.agilecoders.wicket.markup.html.bootstrap.button.dropdown.DropDownButton#newDropDownCSS()
      */
+    @Override
     protected CssClassNameAppender newDropDownCSS() {
     	return new CssClassNameAppender("dropdown-submenu");
     }
@@ -56,6 +63,7 @@ public class DropDownSubMenu extends DropDownButton {
      */
     @Override
     protected void onComponentTag(final ComponentTag tag) {
+    	// ensure that dropdown's sub-menu is of type <li>
         if (!Components.hasTagName(tag, "li")) {
             tag.setName("li");
         }
