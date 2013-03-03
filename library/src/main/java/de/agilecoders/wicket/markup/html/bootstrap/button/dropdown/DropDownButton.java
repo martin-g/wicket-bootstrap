@@ -1,16 +1,10 @@
 package de.agilecoders.wicket.markup.html.bootstrap.button.dropdown;
 
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapResourcesBehavior;
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
-import de.agilecoders.wicket.markup.html.bootstrap.button.Activatable;
-import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonBehavior;
-import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonList;
-import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonSize;
-import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonType;
-import de.agilecoders.wicket.markup.html.bootstrap.common.Invertible;
-import de.agilecoders.wicket.markup.html.bootstrap.image.Icon;
-import de.agilecoders.wicket.markup.html.bootstrap.image.IconType;
-import de.agilecoders.wicket.util.Components;
+import static de.agilecoders.wicket.markup.html.bootstrap.button.DropDownJqueryFunction.dropdown;
+import static de.agilecoders.wicket.util.JQuery.$;
+
+import java.util.List;
+
 import org.apache.wicket.Component;
 import org.apache.wicket.Page;
 import org.apache.wicket.ajax.AjaxRequestTarget;
@@ -27,10 +21,17 @@ import org.apache.wicket.markup.html.panel.PanelMarkupSourcingStrategy;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
-import java.util.List;
-
-import static de.agilecoders.wicket.markup.html.bootstrap.button.DropDownJqueryFunction.dropdown;
-import static de.agilecoders.wicket.util.JQuery.$;
+import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapResourcesBehavior;
+import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
+import de.agilecoders.wicket.markup.html.bootstrap.button.Activatable;
+import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonBehavior;
+import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonList;
+import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonSize;
+import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonType;
+import de.agilecoders.wicket.markup.html.bootstrap.common.Invertible;
+import de.agilecoders.wicket.markup.html.bootstrap.image.Icon;
+import de.agilecoders.wicket.markup.html.bootstrap.image.IconType;
+import de.agilecoders.wicket.util.Components;
 
 /**
  * Use any button to trigger a dropdown menu by placing it within a .btn-group and providing the proper menu markup.
@@ -44,7 +45,7 @@ public class DropDownButton extends AbstractLink implements Invertible<DropDownB
     private final IModel<Boolean> dropUp = Model.of(false);
     private final ButtonList buttonListView;
     private final IModel<IconType> iconTypeModel;
-    private final WebMarkupContainer baseButton;
+    protected final WebMarkupContainer baseButton;
     private final String script;
     private final Icon icon;
 
@@ -77,9 +78,17 @@ public class DropDownButton extends AbstractLink implements Invertible<DropDownB
         baseButton.add(icon = createButtonIcon("icon", iconTypeModel));
 
         add(new BootstrapResourcesBehavior());
-        add(new CssClassNameAppender("dropdown"));
+        add(newDropDownCSS());
 
         addButtonBehavior(buttonType, buttonSize);
+    }
+    
+    /**
+     * 
+     * @return
+     */
+    protected CssClassNameAppender newDropDownCSS() {
+    	return new CssClassNameAppender("dropdown");
     }
 
     /**
