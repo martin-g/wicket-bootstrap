@@ -4,27 +4,32 @@ import org.apache.wicket.markup.html.panel.GenericPanel;
 import org.apache.wicket.model.IModel;
 
 /**
- * TODO: document
+ * Base Section class
  *
  * @author miha
- * @version 1.0
  */
 public class Section<T> extends GenericPanel<T> {
 
+    /**
+     * Construct.
+     *
+     * @param id component id
+     */
     public Section(String id) {
-        super(id);
-
-        internalInit();
+        this(id, null);
     }
 
+    /**
+     * Construct.
+     *
+     * @param id    component id
+     * @param model the data model
+     */
     public Section(String id, IModel<T> model) {
         super(id, model);
 
-        internalInit();
-    }
-
-    private void internalInit() {
         setOutputMarkupId(true);
         setMarkupId(getId());
     }
+
 }

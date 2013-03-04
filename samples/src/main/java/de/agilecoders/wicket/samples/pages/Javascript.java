@@ -161,7 +161,7 @@ public class Javascript extends BasePage {
                 new CarouselImage("http://placehold.it/820x480")
         );
 
-        return new Carousel(markupId, Model.<ICarouselImage>ofList(images));
+        return new Carousel(markupId, images);
     }
 
     private Component newDropDown(String markupId) {

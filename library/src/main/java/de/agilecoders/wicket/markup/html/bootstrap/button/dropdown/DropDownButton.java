@@ -66,12 +66,12 @@ public abstract class DropDownButton extends AbstractLink implements Invertible<
         super(markupId, model);
 
         this.iconTypeModel = iconTypeModel;
-        this.script = createInitializerScript();
+        this.script = newInitializerScript();
 
-        add(baseButton = createButton("btn", model, iconTypeModel));
+        add(baseButton = newButton("btn", model, iconTypeModel));
         add(buttonListView = newButtonList("buttons"));
 
-        this.icon = createButtonIcon("icon", iconTypeModel);
+        this.icon = newButtonIcon("icon", iconTypeModel);
 
         BootstrapResourcesBehavior.addTo(this);
 
@@ -109,7 +109,7 @@ public abstract class DropDownButton extends AbstractLink implements Invertible<
     /**
      * @return new initializer script
      */
-    protected String createInitializerScript() {
+    protected String newInitializerScript() {
         return $(this, ".dropdown-toggle").chain(dropdown()).get();
     }
 
@@ -141,11 +141,11 @@ public abstract class DropDownButton extends AbstractLink implements Invertible<
      * @param iconTypeModel The icon type as model
      * @return a new button component
      */
-    protected WebMarkupContainer createButton(final String markupId, final IModel<String> labelModel, final IModel<IconType> iconTypeModel) {
+    protected WebMarkupContainer newButton(final String markupId, final IModel<String> labelModel, final IModel<IconType> iconTypeModel) {
         final WebMarkupContainer baseButton = new WebMarkupContainer(markupId);
 
         baseButton.setOutputMarkupId(true);
-        baseButton.add(createButtonLabel("label", labelModel));
+        baseButton.add(newButtonLabel("label", labelModel));
 
         return baseButton;
     }
@@ -157,7 +157,7 @@ public abstract class DropDownButton extends AbstractLink implements Invertible<
      * @param labelModel The label text as model
      * @return new label component
      */
-    protected Component createButtonLabel(final String markupId, final IModel<?> labelModel) {
+    protected Component newButtonLabel(final String markupId, final IModel<?> labelModel) {
         final Label label = new Label(markupId, labelModel);
         label.setRenderBodyOnly(true);
 
@@ -171,7 +171,7 @@ public abstract class DropDownButton extends AbstractLink implements Invertible<
      * @param iconTypeModel The icon type as model
      * @return new icon component
      */
-    protected Icon createButtonIcon(final String markupId, final IModel<IconType> iconTypeModel) {
+    protected Icon newButtonIcon(final String markupId, final IModel<IconType> iconTypeModel) {
         return new Icon(markupId, iconTypeModel);
     }
 
@@ -182,6 +182,12 @@ public abstract class DropDownButton extends AbstractLink implements Invertible<
         response.render(OnDomReadyHeaderItem.forScript(script));
     }
 
+    /**
+     * adds the button behavior to the base button of this dropdown component
+     *
+     * @param buttonType mandatory parameter
+     * @param buttonSize mandatory parameter
+     */
     protected void addButtonBehavior(final IModel<Buttons.Type> buttonType, final IModel<Buttons.Size> buttonSize) {
         baseButton.add(new ButtonBehavior(buttonType, buttonSize));
     }
@@ -207,18 +213,36 @@ public abstract class DropDownButton extends AbstractLink implements Invertible<
         return buttonList;
     }
 
+    /**
+     * whether to use default dropdown behavior (default value is false which means default behavior)
+     * or to open the dropdown menu at the top of dropdown button, also the button icon will be rotated.
+     *
+     * @param dropUp true, to use a 180deg rotated button and open menu on top
+     * @return this instance for chaining
+     */
     public DropDownButton setDropUp(final boolean dropUp) {
         this.dropUp.setObject(dropUp);
-
         return this;
     }
 
+    /**
+     * sets the size of the button
+     *
+     * @param size mandatory parameter
+     * @return this instance for chaining
+     */
     public DropDownButton setSize(final Buttons.Size size) {
         this.buttonSize.setObject(size);
 
         return this;
     }
 
+    /**
+     * sets the type of the button
+     *
+     * @param type mandatory parameter
+     * @return this instance for chaining
+     */
     public DropDownButton setType(final Buttons.Type type) {
         this.buttonType.setObject(type);
 
@@ -259,7 +283,7 @@ public abstract class DropDownButton extends AbstractLink implements Invertible<
     /**
      * @return the base button instance
      */
-    @Deprecated // will be removed with 0.8
+    @Deprecated // will be removed with 1.0
     public final Component getBaseButton() {
         return baseButton;
     }

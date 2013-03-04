@@ -5,6 +5,7 @@ import de.agilecoders.wicket.markup.html.bootstrap.button.Buttons;
 import de.agilecoders.wicket.markup.html.bootstrap.button.dropdown.MenuBookmarkablePageLink;
 import de.agilecoders.wicket.markup.html.bootstrap.button.dropdown.SplitButton;
 import de.agilecoders.wicket.markup.html.bootstrap.image.IconType;
+import de.agilecoders.wicket.samples.components.basecss.ButtonGroups;
 import org.apache.wicket.Component;
 import org.apache.wicket.Page;
 import org.apache.wicket.ajax.AjaxRequestTarget;
@@ -34,6 +35,7 @@ public class ComponentsPage extends BasePage {
         super(parameters);
 
         add(newSplitButton("splitbutton"));
+        add(new ButtonGroups("buttonGroups"));
     }
 
     /**

@@ -29,7 +29,6 @@ public class WellBehavior extends Behavior {
         public String cssClassName() {
             return equals(Default) ? "" : "well-" + name().toLowerCase();
         }
-
     }
 
     private final IModel<Size> size;

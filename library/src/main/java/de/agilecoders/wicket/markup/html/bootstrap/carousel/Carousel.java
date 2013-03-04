@@ -34,6 +34,16 @@ public class Carousel extends Panel {
      * Construct.
      *
      * @param markupId the component id
+     * @param images   the list of images
+     */
+    public Carousel(final String markupId, final List<? extends ICarouselImage> images) {
+        this(markupId, Model.<ICarouselImage>ofList(images));
+    }
+
+    /**
+     * Construct.
+     *
+     * @param markupId the component id
      * @param model    the list of images
      */
     public Carousel(final String markupId, final IModel<List<? extends ICarouselImage>> model) {
@@ -42,7 +52,7 @@ public class Carousel extends Panel {
 
         setOutputMarkupId(true);
 
-        add(new BootstrapResourcesBehavior());
+        BootstrapResourcesBehavior.addTo(this);
 
         add(newImageList("images"),
             newNavigationButton("prev"),
@@ -53,8 +63,8 @@ public class Carousel extends Panel {
     protected void onComponentTag(ComponentTag tag) {
         super.onComponentTag(tag);
 
-        Attributes.addClass(tag, "carousel", "slide");
         checkComponentTag(tag, "div");
+        Attributes.addClass(tag, "carousel", "slide");
     }
 
     /**
@@ -64,7 +74,7 @@ public class Carousel extends Panel {
      * @return new navigation button
      */
     private Component newNavigationButton(final String markupId) {
-        Label button = new Label(markupId);
+        final Label button = new Label(markupId);
         button.add(new AttributeModifier("href", "#" + getMarkupId(true)));
         button.setEscapeModelStrings(false);
 
@@ -104,37 +114,75 @@ public class Carousel extends Panel {
 
             @Override
             protected void populateItem(ListItem<ICarouselImage> item) {
-                ICarouselImage carouselImage = item.getModelObject();
+                final ICarouselImage carouselImage = item.getModelObject();
 
-                Label image = new Label("image");
-                image.add(new AttributeModifier("src", carouselImage.url()));
+                final Component image = newImage("image", carouselImage);
+                final Component header = newHeader("header", carouselImage);
+                final Component description = newDescription("description", carouselImage);
 
-                Label header = new Label("header");
-                if (carouselImage.header() != null) {
-                    header.setDefaultModel(Model.of(carouselImage.header()));
-                } else {
-                    header.setVisible(false);
-                }
-
-                Label description = new Label("description");
-                if (carouselImage.description() != null) {
-                    description.setDefaultModel(Model.of(carouselImage.description()));
-                } else {
-                    description.setVisible(false);
-                }
-
-                TransparentWebMarkupContainer caption = new TransparentWebMarkupContainer("caption");
+                final TransparentWebMarkupContainer caption = new TransparentWebMarkupContainer("caption");
                 caption.setVisible(header.isVisible() || description.isVisible());
 
                 // REFACTOR: use better way to detect first element
                 if (!renderedActive) {
                     renderedActive = true;
+
                     item.add(new CssClassNameAppender("active"));
                 }
 
                 item.add(image, header, description, caption);
             }
         };
+    }
+
+    /**
+     * creates a new image element
+     *
+     * @param markupId the markup id of the header
+     * @param image    the current image for this header
+     * @return new image component
+     */
+    protected Component newImage(final String markupId, final ICarouselImage image) {
+        final Label img = new Label(markupId);
+        img.add(new AttributeModifier("src", image.url()));
+
+        return img;
+    }
+
+    /**
+     * creates a new image description element
+     *
+     * @param markupId the markup id of the header
+     * @param image    the current image for this header
+     * @return new description component
+     */
+    protected Component newDescription(final String markupId, final ICarouselImage image) {
+        Label description = new Label(markupId);
+        if (image.description() != null) {
+            description.setDefaultModel(Model.of(image.description()));
+        } else {
+            description.setVisible(false);
+        }
+
+        return description;
+    }
+
+    /**
+     * creates a new image header element
+     *
+     * @param markupId the markup id of the header
+     * @param image    the current image for this header
+     * @return new header component
+     */
+    protected Component newHeader(final String markupId, final ICarouselImage image) {
+        final Label header = new Label(markupId);
+        if (image.header() != null) {
+            header.setDefaultModel(Model.of(image.header()));
+        } else {
+            header.setVisible(false);
+        }
+
+        return header;
     }
 
     @Override

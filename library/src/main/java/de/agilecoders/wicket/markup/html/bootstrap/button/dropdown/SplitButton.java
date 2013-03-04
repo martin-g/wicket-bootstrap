@@ -64,7 +64,7 @@ public abstract class SplitButton extends DropDownButton {
     protected abstract AbstractLink newBaseButton(final String markupId, final IModel<String> labelModel, final IModel<IconType> iconTypeModel);
 
     @Override
-    protected final WebMarkupContainer createButton(String markupId, IModel<String> labelModel, IModel<IconType> iconTypeModel) {
+    protected final WebMarkupContainer newButton(String markupId, IModel<String> labelModel, IModel<IconType> iconTypeModel) {
         Args.isTrue(btn == null, "btn was already set before.");
 
         btn = newBaseButton("button", labelModel, iconTypeModel);

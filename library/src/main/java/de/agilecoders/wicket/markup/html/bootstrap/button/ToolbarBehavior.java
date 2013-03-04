@@ -4,6 +4,7 @@ import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapBaseBehavio
 import de.agilecoders.wicket.util.Attributes;
 import de.agilecoders.wicket.util.Components;
 import org.apache.wicket.Component;
+import org.apache.wicket.behavior.Behavior;
 import org.apache.wicket.markup.ComponentTag;
 
 /**
@@ -11,13 +12,27 @@ import org.apache.wicket.markup.ComponentTag;
  *
  * @author miha
  */
-public final class ToolbarBehavior extends BootstrapBaseBehavior {
+public final class ToolbarBehavior extends Behavior {
 
     @Override
-    public void onComponentTag(Component component, ComponentTag tag) {
+    public void onComponentTag(final Component component, final ComponentTag tag) {
         super.onComponentTag(component, tag);
 
         Components.assertTag(component, tag, "div");
         Attributes.addClass(tag, "btn-toolbar");
+    }
+
+    @Override
+    public void unbind(Component component) {
+        super.unbind(component);
+
+        BootstrapBaseBehavior.addTo(component);
+    }
+
+    @Override
+    public void bind(Component component) {
+        super.bind(component);
+
+        BootstrapBaseBehavior.removeFrom(component);
     }
 }
