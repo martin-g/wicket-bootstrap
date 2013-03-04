@@ -9,10 +9,14 @@ import de.agilecoders.wicket.markup.html.bootstrap.button.Toolbar;
 import de.agilecoders.wicket.markup.html.bootstrap.image.Icon;
 import de.agilecoders.wicket.markup.html.bootstrap.image.IconType;
 import de.agilecoders.wicket.samples.pages.ComponentsPage;
+import de.agilecoders.wicket.util.Generics2;
 import org.apache.wicket.markup.html.link.AbstractLink;
 import org.apache.wicket.markup.html.link.BookmarkablePageLink;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.Model;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Panel that shows the usage of button groups.
@@ -30,10 +34,12 @@ public class ButtonGroups extends Panel {
     public ButtonGroups(final String markupId) {
         super(markupId);
 
-        ButtonGroup buttonGroup = new ButtonGroup("buttonGroup");
-        buttonGroup.addButtons(createButton("Left"));
-        buttonGroup.addButtons(createButton("Center"));
-        buttonGroup.addButtons(createButton("Right"));
+        ButtonGroup buttonGroup = new ButtonGroup("buttonGroup") {
+            @Override
+            protected List<AbstractLink> newButtons(String buttonMarkupId) {
+                return Generics2.newArrayList(createButton("Left"), createButton("Center"), createButton("Right"));
+            }
+        };
         add(buttonGroup);
 
         Toolbar toolbar = new Toolbar("toolbar");
@@ -42,11 +48,16 @@ public class ButtonGroups extends Panel {
         toolbar.add(newButtonGroup("buttonGroup3", 1));
         add(toolbar);
 
-        ButtonGroup verticalButtonGroup = new ButtonGroup("verticalButtonGroup", Buttons.Orientation.Vertical);
-        verticalButtonGroup.addButton(createIconButton(new Icon(IconType.alignleft)));
-        verticalButtonGroup.addButton(createIconButton(new Icon(IconType.aligncenter)));
-        verticalButtonGroup.addButton(createIconButton(new Icon(IconType.alignright)));
-        verticalButtonGroup.addButton(createIconButton(new Icon(IconType.alignjustify)));
+        ButtonGroup verticalButtonGroup = new ButtonGroup("verticalButtonGroup", Buttons.Orientation.Vertical) {
+            @Override
+            protected List<AbstractLink> newButtons(String buttonMarkupId) {
+                return Generics2.newArrayList(
+                        createIconButton(new Icon(IconType.alignleft)),
+                        createIconButton(new Icon(IconType.aligncenter)),
+                        createIconButton(new Icon(IconType.alignright)),
+                        createIconButton(new Icon(IconType.alignjustify)));
+            }
+        };
         add(verticalButtonGroup);
     }
 
@@ -67,17 +78,22 @@ public class ButtonGroups extends Panel {
      * creates a new button group with given number of buttons.
      *
      * @param markupId The markup id.
-     * @param buttons  The number of buttons
+     * @param noOfButtons  The number of buttons
      * @return new button group
      */
-    private ButtonGroup newButtonGroup(final String markupId, final int buttons) {
-        ButtonGroup buttonGroup = new ButtonGroup(markupId);
+    private ButtonGroup newButtonGroup(final String markupId, final int noOfButtons) {
+        return new ButtonGroup(markupId) {
+            @Override
+            protected List<AbstractLink> newButtons(String buttonMarkupId) {
+                final List<AbstractLink> buttons = new ArrayList<AbstractLink>();
 
-        for (int i = 0; i < buttons; ++i) {
-            buttonGroup.addButtons(createButton(String.valueOf(i + 1)));
-        }
+                for (int i = 0; i < noOfButtons; ++i) {
+                    buttons.add(createButton(String.valueOf(i + 1)));
+                }
 
-        return buttonGroup;
+                return buttons;
+            }
+        };
     }
 
     /**

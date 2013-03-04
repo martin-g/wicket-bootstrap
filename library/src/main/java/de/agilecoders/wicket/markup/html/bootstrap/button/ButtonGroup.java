@@ -2,18 +2,11 @@ package de.agilecoders.wicket.markup.html.bootstrap.button;
 
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
 import de.agilecoders.wicket.util.Attributes;
-import org.apache.wicket.Component;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.html.link.AbstractLink;
-import org.apache.wicket.markup.html.list.ListItem;
-import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.markup.html.panel.Panel;
-import org.apache.wicket.model.IModel;
-import org.apache.wicket.model.LoadableDetachableModel;
 import org.apache.wicket.util.lang.Args;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -21,9 +14,8 @@ import java.util.List;
  *
  * @author miha
  */
-public class ButtonGroup extends Panel {
+public abstract class ButtonGroup extends Panel {
 
-    private final List<AbstractLink> buttonList;
     private final Buttons.Orientation orientation;
 
     /**
@@ -46,11 +38,9 @@ public class ButtonGroup extends Panel {
 
         Args.notNull(orientation, "orientation");
 
-        this.buttonList = new ArrayList<AbstractLink>();
         this.orientation = orientation;
 
         add(newButtonList("buttons"));
-
         BootstrapBaseBehavior.addTo(this);
     }
 
@@ -61,41 +51,25 @@ public class ButtonGroup extends Panel {
         Attributes.addClass(tag, orientation.cssClassName(), "btn-group");
     }
 
-    @Override
-    public void detachModels() {
-        super.detachModels();
+    /**
+     * creates a new {@link ButtonList} that contains all buttons from {@link #newButtons(String)}
+     *
+     * @param markupId the markup id of {@link ButtonList}
+     * @return new {@link ButtonList} instance
+     */
+    protected ButtonList newButtonList(final String markupId) {
+        final ButtonList buttonList = new ButtonList(markupId, newButtons(ButtonList.getButtonMarkupId()));
+        buttonList.setRenderBodyOnly(true);
 
-        this.buttonList.clear();
+        return buttonList;
     }
 
-    public ButtonGroup addButton(AbstractLink button) {
-        return addButtons(button);
-    }
-
-    public ButtonGroup addButtons(AbstractLink... buttons) {
-        Collections.addAll(buttonList, buttons);
-        return this;
-    }
-
-    protected Component newButtonList(final String markupId) {
-        return new ListView<AbstractLink>(markupId, newButtonListModel()) {
-            @Override
-            protected void populateItem(ListItem<AbstractLink> item) {
-                AbstractLink link = item.getModelObject();
-
-                item.add(link);
-            }
-        }.setRenderBodyOnly(true)
-                .setOutputMarkupId(true);
-    }
-
-    protected IModel<List<? extends AbstractLink>> newButtonListModel() {
-        return new LoadableDetachableModel<List<? extends AbstractLink>>() {
-            @Override
-            protected List<? extends AbstractLink> load() {
-                return buttonList;
-            }
-        };
-    }
+    /**
+     * creates a list of sub menu buttons which will be shown as group.
+     *
+     * @param buttonMarkupId the markup id that all buttons must be use.
+     * @return list of buttons
+     */
+    protected abstract List<AbstractLink> newButtons(final String buttonMarkupId);
 
 }

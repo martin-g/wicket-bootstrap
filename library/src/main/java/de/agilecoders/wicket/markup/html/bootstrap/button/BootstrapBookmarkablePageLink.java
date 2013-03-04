@@ -112,14 +112,14 @@ public class BootstrapBookmarkablePageLink<T> extends BookmarkablePageLink<T> im
      * @return reference to the current instance
      */
     public BootstrapBookmarkablePageLink<T> setSize(Buttons.Size size) {
-        this.buttonBehavior.withSize(size);
+        this.buttonBehavior.setSize(size);
 
         return this;
     }
 
     @Override
     public BootstrapBookmarkablePageLink<T> setType(Buttons.Type type) {
-        this.buttonBehavior.withType(type);
+        this.buttonBehavior.setType(type);
 
         return this;
     }

@@ -102,7 +102,7 @@ public abstract class BootstrapAjaxFallbackButton extends AjaxFallbackButton imp
      * @return this instance for chaining
      */
     public BootstrapAjaxFallbackButton setSize(Buttons.Size size) {
-        buttonBehavior.withSize(size);
+        buttonBehavior.setSize(size);
 
         return this;
     }
@@ -114,7 +114,7 @@ public abstract class BootstrapAjaxFallbackButton extends AjaxFallbackButton imp
      * @return this instance for chaining
      */
     public BootstrapAjaxFallbackButton setType(Buttons.Type type) {
-        this.buttonBehavior.withType(type);
+        this.buttonBehavior.setType(type);
 
         return this;
     }

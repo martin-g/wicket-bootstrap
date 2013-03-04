@@ -4,19 +4,29 @@ import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.model.IModel;
 
 /**
- * TODO: document
+ * Combine sets of <div class="btn-group"> into a <div class="btn-toolbar"> for more complex components.
  *
  * @author miha
- * @version 1.0
  */
 public class Toolbar extends WebMarkupContainer {
 
-    public Toolbar(String id) {
-        this(id, null);
+    /**
+     * Construct.
+     *
+     * @param markupId the component' id
+     */
+    public Toolbar(final String markupId) {
+        this(markupId, null);
     }
 
-    public Toolbar(String id, IModel<?> model) {
-        super(id, model);
+    /**
+     * Construct.
+     *
+     * @param markupId the component' id
+     * @param model    the data model
+     */
+    public Toolbar(final String markupId, final IModel<?> model) {
+        super(markupId, model);
 
         add(new ToolbarBehavior());
     }

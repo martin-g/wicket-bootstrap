@@ -2,6 +2,8 @@ package de.agilecoders.wicket.util;
 
 import com.google.common.base.Joiner;
 import com.google.common.base.Splitter;
+import de.agilecoders.wicket.markup.html.bootstrap.behavior.ICssClassNameProvider;
+import org.apache.wicket.model.IModel;
 import org.apache.wicket.util.lang.Args;
 
 import java.util.List;
@@ -15,6 +17,23 @@ import java.util.Set;
 public final class CssClassNames {
     private static final Splitter SPLITTER = Splitter.on(' ').trimResults().omitEmptyStrings();
     private static final Joiner JOINER = Joiner.on(' ').skipNulls();
+
+    /**
+     * creates a new {@link ICssClassNameProvider} from a given model.
+     *
+     * @param model the model to use for class name provider
+     * @return new {@link ICssClassNameProvider} implementation
+     */
+    public static ICssClassNameProvider newProvider(final IModel<String> model) {
+        Args.notNull(model, "model");
+
+        return new ICssClassNameProvider() {
+            @Override
+            public String cssClassName() {
+                return model.getObject();
+            }
+        };
+    }
 
     /**
      * Constructor.

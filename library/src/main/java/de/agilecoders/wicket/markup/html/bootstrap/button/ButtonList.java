@@ -7,6 +7,7 @@ import org.apache.wicket.markup.html.link.BookmarkablePageLink;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.model.IModel;
+import org.apache.wicket.util.lang.Args;
 
 import java.util.List;
 
@@ -27,11 +28,11 @@ public class ButtonList extends ListView<AbstractLink> {
     /**
      * Construct.
      *
-     * @param id   the component' id
-     * @param list list of all buttons inside this button list
+     * @param markupId the component' id
+     * @param list     list of all buttons inside this button list
      */
-    public ButtonList(final String id, final List<? extends AbstractLink> list) {
-        super(id, list);
+    public ButtonList(final String markupId, final List<? extends AbstractLink> list) {
+        super(markupId, list);
 
         setOutputMarkupId(true);
     }
@@ -73,6 +74,10 @@ public class ButtonList extends ListView<AbstractLink> {
 
     @Override
     protected void populateItem(ListItem<AbstractLink> item) {
-        item.add(item.getModelObject());
+        final AbstractLink link = item.getModelObject();
+
+        Args.isTrue(getButtonMarkupId().equals(link.getId()), "component id is invalid, please use ButtonList.getButtonMarkupId()");
+
+        item.add(link);
     }
 }

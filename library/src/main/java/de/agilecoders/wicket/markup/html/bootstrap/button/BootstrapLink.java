@@ -3,21 +3,53 @@ package de.agilecoders.wicket.markup.html.bootstrap.button;
 import de.agilecoders.wicket.markup.html.bootstrap.image.Icon;
 import de.agilecoders.wicket.markup.html.bootstrap.image.IconType;
 import org.apache.wicket.Component;
-import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.markup.html.form.Form;
+import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.panel.IMarkupSourcingStrategy;
 import org.apache.wicket.markup.html.panel.PanelMarkupSourcingStrategy;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
 /**
- * Default {@link AjaxButton} which is styled by twitter bootstrap
+ * Default {@link Link} which is styled by bootstrap.
+ * <p/>
+ * <p>
+ * You can use a link like:
+ * <p/>
+ * <pre>
+ * add(new BootstrapLink(&quot;myLink&quot;)
+ * {
+ *     public void onClick()
+ *     {
+ *         // do something here...
+ *     }
+ * );
+ * </pre>
+ * <p/>
+ * and in your HTML file:
+ * <p/>
+ * <pre>
+ *  &lt;a href=&quot;#&quot; wicket:id=&quot;myLink&quot;&gt;click here&lt;/a&gt;
+ * </pre>
+ * <p/>
+ * </p>
+ * The following snippet shows how to pass a parameter from the Page creating the Page to the Page
+ * responded by the Link.
+ * <p/>
+ * <pre>
+ * add(new BootstrapLink&lt;MyObject&gt;(&quot;link&quot;, listItem.getModel(), Type.Primary )
+ * {
+ *     public void onClick()
+ *     {
+ *         MyObject obj = getModelObject();
+ *         setResponsePage(new MyPage(obj));
+ *     }
+ * </pre>
  *
  * @author miha
  */
-public abstract class BootstrapAjaxButton extends AjaxButton implements IBootstrapButton<BootstrapAjaxButton> {
+public abstract class BootstrapLink<T> extends Link<T> implements IBootstrapButton<BootstrapLink<T>> {
 
     private final Icon icon;
     private final Component label;
@@ -27,45 +59,32 @@ public abstract class BootstrapAjaxButton extends AjaxButton implements IBootstr
     /**
      * Construct.
      *
-     * @param componentId The component id
-     * @param type  The type of the button
+     * @param id    the components id
+     * @param model mandatory parameter
      */
-    public BootstrapAjaxButton(final String componentId, final Buttons.Type type) {
-        this(componentId, new Model<String>(), type);
+    public BootstrapLink(final String id, final IModel<T> model) {
+        this(id, model, Buttons.Type.Link);
     }
 
     /**
      * Construct.
      *
-     * @param componentId The component id
-     * @param model       The label
-     * @param type  The type of button
+     * @param id         the components id
+     * @param type the type of the button
      */
-    public BootstrapAjaxButton(final String componentId, final IModel<String> model, final Buttons.Type type) {
-        this(componentId, model, null, Buttons.Type.Default);
-    }
-
-    /**
-     * Construct.
-     *
-     * @param id         The component id
-     * @param form       The assigned form
-     * @param type The type of button
-     */
-    public BootstrapAjaxButton(String id, Form<?> form, Buttons.Type type) {
-        this(id, Model.<String>of(), form, type);
+    public BootstrapLink(final String id, final Buttons.Type type) {
+        this(id, null, type);
     }
 
     /**
      * Construct.
      *
      * @param id         The component id
-     * @param model      The label
-     * @param form       The assigned form
-     * @param type The type of button
+     * @param model      mandatory parameter
+     * @param type the type of the button
      */
-    public BootstrapAjaxButton(String id, IModel<String> model, Form<?> form, Buttons.Type type) {
-        super(id, model, form);
+    public BootstrapLink(final String id, final IModel<T> model, final Buttons.Type type) {
+        super(id, model);
 
         add(buttonBehavior = new ButtonBehavior(type, Buttons.Size.Medium));
 
@@ -129,8 +148,7 @@ public abstract class BootstrapAjaxButton extends AjaxButton implements IBootstr
      * @param label the new button label
      * @return reference to the current instance
      */
-    @Override
-    public BootstrapAjaxButton setLabel(IModel<String> label) {
+    public BootstrapLink<T> setLabel(IModel<?> label) {
         this.label.setDefaultModel(label);
         return this;
     }
@@ -141,7 +159,7 @@ public abstract class BootstrapAjaxButton extends AjaxButton implements IBootstr
      * @param iconType the new button icon type
      * @return reference to the current instance
      */
-    public BootstrapAjaxButton setIconType(IconType iconType) {
+    public BootstrapLink<T> setIconType(IconType iconType) {
         icon.setType(iconType);
         return this;
     }
@@ -152,7 +170,7 @@ public abstract class BootstrapAjaxButton extends AjaxButton implements IBootstr
      * @param size The button size
      * @return this instance for chaining
      */
-    public BootstrapAjaxButton setSize(Buttons.Size size) {
+    public BootstrapLink<T> setSize(Buttons.Size size) {
         buttonBehavior.setSize(size);
         return this;
     }
@@ -163,7 +181,7 @@ public abstract class BootstrapAjaxButton extends AjaxButton implements IBootstr
      * @param type The type of the button
      * @return this instance for chaining
      */
-    public BootstrapAjaxButton setType(Buttons.Type type) {
+    public BootstrapLink<T> setType(Buttons.Type type) {
         this.buttonBehavior.setType(type);
         return this;
     }
@@ -172,8 +190,10 @@ public abstract class BootstrapAjaxButton extends AjaxButton implements IBootstr
      * inverts the icon color
      *
      * @param inverted true, if inverted version should be used
+     * @return this instance for chaining
      */
-    public BootstrapAjaxButton setInverted(final boolean inverted) {
+    @Override
+    public BootstrapLink<T> setInverted(final boolean inverted) {
         icon.setInverted(inverted);
         return this;
     }

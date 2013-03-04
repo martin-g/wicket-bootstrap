@@ -125,14 +125,14 @@ public class BootstrapButton extends Button implements IBootstrapButton<Bootstra
     }
 
     public BootstrapButton setSize(Buttons.Size size) {
-        this.buttonBehavior.withSize(size);
+        this.buttonBehavior.setSize(size);
 
         return this;
     }
 
     @Override
     public BootstrapButton setType(Buttons.Type type) {
-        this.buttonBehavior.withType(type);
+        this.buttonBehavior.setType(type);
 
         return this;
     }

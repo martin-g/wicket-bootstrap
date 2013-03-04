@@ -1,8 +1,10 @@
 package de.agilecoders.wicket.markup.html.bootstrap.button;
 
+import com.google.common.base.Strings;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.ICssClassNameProvider;
 import de.agilecoders.wicket.util.Components;
+import de.agilecoders.wicket.util.CssClassNames;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.model.IModel;
@@ -18,7 +20,8 @@ public class ButtonBehavior extends BootstrapBaseBehavior {
 
     private final IModel<Buttons.Type> buttonType;
     private final IModel<Buttons.Size> buttonSize;
-    private final IModel<Boolean> block;
+    private final IModel<String> block;
+    private final ICssClassNameProvider blockProvider;
 
     /**
      * Construct. Uses {@link de.agilecoders.wicket.markup.html.bootstrap.button.Buttons.Size#Medium} and {@link de.agilecoders.wicket.markup.html.bootstrap.button.Buttons.Type#Default}.
@@ -64,28 +67,29 @@ public class ButtonBehavior extends BootstrapBaseBehavior {
     public ButtonBehavior(final IModel<Buttons.Type> buttonType, final IModel<Buttons.Size> buttonSize) {
         this.buttonType = buttonType;
         this.buttonSize = buttonSize;
-        this.block = Model.of(false);
+        this.block = Model.of("");
+        this.blockProvider = CssClassNames.newProvider(block);
     }
 
     /**
      * @return size of button
      */
-    public Buttons.Size size() {
+    public Buttons.Size getSize() {
         return buttonSize.getObject();
     }
 
     /**
      * @return type of button
      */
-    public Buttons.Type type() {
+    public Buttons.Type getType() {
         return buttonType.getObject();
     }
 
     /**
      * @return whether this button is a block level element
      */
-    public boolean block() {
-        return block.getObject();
+    public boolean isBlock() {
+        return !Strings.isNullOrEmpty(block.getObject());
     }
 
     /**
@@ -94,8 +98,8 @@ public class ButtonBehavior extends BootstrapBaseBehavior {
      * @param block true, for block mode
      * @return this instance for chaining
      */
-    public final ButtonBehavior block(Boolean block) {
-        this.block.setObject(block);
+    public final ButtonBehavior setBlock(final boolean block) {
+        this.block.setObject(block ? "btn-block" : "");
         return this;
     }
 
@@ -105,7 +109,7 @@ public class ButtonBehavior extends BootstrapBaseBehavior {
      * @param type type to use
      * @return this instance for chaining
      */
-    public final ButtonBehavior withType(Buttons.Type type) {
+    public final ButtonBehavior setType(final Buttons.Type type) {
         this.buttonType.setObject(type);
         return this;
     }
@@ -116,7 +120,7 @@ public class ButtonBehavior extends BootstrapBaseBehavior {
      * @param size size to use
      * @return this instance for chaining
      */
-    public final ButtonBehavior withSize(Buttons.Size size) {
+    public final ButtonBehavior setSize(final Buttons.Size size) {
         this.buttonSize.setObject(size);
         return this;
     }
@@ -131,13 +135,11 @@ public class ButtonBehavior extends BootstrapBaseBehavior {
         Buttons.fixDisabledState(component, tag);
 
         // a menu button has no css classes, inherits its styles from the menu
-        if (!Buttons.Type.Menu.equals(type())) {
-            Buttons.onComponentTag(component, tag, buttonSize.getObject(), buttonType.getObject(), new ICssClassNameProvider() {
-                @Override
-                public String cssClassName() {
-                    return block() ? "btn-block" : "";
-                }
-            });
+        if (!Buttons.Type.Menu.equals(getType())) {
+            Buttons.onComponentTag(component, tag,
+                                   buttonSize.getObject(),
+                                   buttonType.getObject(),
+                                   blockProvider);
         }
     }
 }

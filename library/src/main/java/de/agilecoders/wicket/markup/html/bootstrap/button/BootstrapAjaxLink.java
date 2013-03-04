@@ -91,13 +91,13 @@ public abstract class BootstrapAjaxLink<T> extends AjaxLink<T> implements IBoots
     }
 
     public BootstrapAjaxLink<T> setSize(Buttons.Size size) {
-        buttonBehavior.withSize(size);
+        buttonBehavior.setSize(size);
 
         return this;
     }
 
     public BootstrapAjaxLink<T> setType(Buttons.Type type) {
-        this.buttonBehavior.withType(type);
+        this.buttonBehavior.setType(type);
 
         return this;
     }

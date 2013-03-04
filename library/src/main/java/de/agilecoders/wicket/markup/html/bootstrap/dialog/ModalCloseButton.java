@@ -46,7 +46,7 @@ public class ModalCloseButton extends Link<String> {
      * @return this instance for chaining
      */
     public ModalCloseButton type(final Buttons.Type type) {
-        buttonBehavior.withType(type);
+        buttonBehavior.setType(type);
         return this;
     }
 
@@ -57,7 +57,7 @@ public class ModalCloseButton extends Link<String> {
      * @return this instance for chaining
      */
     public ModalCloseButton size(final Buttons.Size size) {
-        buttonBehavior.withSize(size);
+        buttonBehavior.setSize(size);
         return this;
     }
 

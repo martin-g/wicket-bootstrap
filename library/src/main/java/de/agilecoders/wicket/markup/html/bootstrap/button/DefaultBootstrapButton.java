@@ -3,19 +3,19 @@ package de.agilecoders.wicket.markup.html.bootstrap.button;
 import org.apache.wicket.model.IModel;
 
 /**
- * TODO: document
+ * A default {@link BootstrapButton} which uses all default styles
+ * of twitter bootstrap (mostly grey)
  *
  * @author miha
- * @version 1.0
  */
-public class DefaultButton extends BootstrapButton {
+public class DefaultBootstrapButton extends BootstrapButton {
 
     /**
      * Constructor.
      *
      * @param componentId the wicket component id
      */
-    public DefaultButton(final String componentId) {
+    public DefaultBootstrapButton(final String componentId) {
         super(componentId, Buttons.Type.Default);
     }
 
@@ -25,7 +25,7 @@ public class DefaultButton extends BootstrapButton {
      * @param componentId the wicket component id
      * @param model       the component's label as model
      */
-    public DefaultButton(final String componentId, final IModel<String> model) {
+    public DefaultBootstrapButton(final String componentId, final IModel<String> model) {
         super(componentId, model, Buttons.Type.Default);
     }
 }

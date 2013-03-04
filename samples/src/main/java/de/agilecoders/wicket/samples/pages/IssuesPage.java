@@ -1,8 +1,8 @@
 package de.agilecoders.wicket.samples.pages;
 
+import de.agilecoders.wicket.markup.html.bootstrap.button.BootstrapLink;
 import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.button.Buttons;
-import de.agilecoders.wicket.markup.html.bootstrap.button.TypedLink;
 import de.agilecoders.wicket.markup.html.bootstrap.common.NotificationMessage;
 import de.agilecoders.wicket.markup.html.bootstrap.common.NotificationPanel;
 import de.agilecoders.wicket.markup.html.bootstrap.components.PopoverBehavior;
@@ -85,14 +85,14 @@ public class IssuesPage extends BasePage {
         )));
 
         // issue #102
-        add(new TypedLink<Page>("link", Model.<Page>of(this)) {
+        add(new BootstrapLink<Page>("link", Model.<Page>of(this)) {
             @Override
             public void onClick() {
                 getSession().success(new NotificationMessage(Model.of("link 1 clicked"), Model.of("issue #102:"), true));
                 setResponsePage(getModelObject());
             }
         }.setLabel(Model.of("Link 1")));
-        add(new TypedLink<Page>("link-danger", Model.<Page>of(this), Buttons.Type.Danger) {
+        add(new BootstrapLink<Page>("link-danger", Model.<Page>of(this), Buttons.Type.Danger) {
             @Override
             public void onClick() {
                 getSession().success(new NotificationMessage(Model.of("link 2 <u>clicked</u>"), Model.of("issue #102:"), true).escapeModelStrings(false));

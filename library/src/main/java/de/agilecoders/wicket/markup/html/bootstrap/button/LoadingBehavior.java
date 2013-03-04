@@ -67,7 +67,7 @@ public class LoadingBehavior extends BootstrapJavascriptBehavior {
      * @param component         The button component
      * @param ajaxRequestTarget The {@link AjaxRequestTarget}
      */
-    public static void reset(Component component, AjaxRequestTarget ajaxRequestTarget) {
+    public static void reset(final Component component, final AjaxRequestTarget ajaxRequestTarget) {
         Args.notNull(component, "component");
         Args.notNull(ajaxRequestTarget, "ajaxRequestTarget");
 
@@ -79,7 +79,7 @@ public class LoadingBehavior extends BootstrapJavascriptBehavior {
      *
      * @param ajaxRequestTarget The {@link AjaxRequestTarget}
      */
-    public void reset(AjaxRequestTarget ajaxRequestTarget) {
+    public void reset(final AjaxRequestTarget ajaxRequestTarget) {
         if (component != null) {
             reset(component, ajaxRequestTarget);
         }
