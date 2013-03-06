@@ -26,6 +26,7 @@ public class BootstrapSettings implements IBootstrapSettings {
     private String resourceFilterName = "";
     private IBootstrapLessCompilerSettings bootstrapLessCompilerSettings = new BootstrapLessCompilerSettings();
     private boolean updateSecurityManager = true;
+    private boolean useCdnResources = false;
 
     /**
      * Constructor.
@@ -163,5 +164,16 @@ public class BootstrapSettings implements IBootstrapSettings {
     @Override
     public IBootstrapLessCompilerSettings getBootstrapLessCompilerSettings() {
         return bootstrapLessCompilerSettings;
+    }
+
+    @Override
+    public boolean useCdnResources() {
+        return useCdnResources;
+    }
+
+    @Override
+    public IBootstrapSettings useCdnResources(boolean useCdnResources) {
+        this.useCdnResources = useCdnResources;
+        return this;
     }
 }

@@ -146,4 +146,14 @@ public interface IBootstrapSettings {
      */
     IBootstrapLessCompilerSettings getBootstrapLessCompilerSettings();
 
+    /**
+     * @return true, if the resources for the themes should be loaded from a CDN network
+     */
+    boolean useCdnResources();
+
+    /**
+     * @param useCdnResources a flag indicating whether the resources for the themes should be loaded from a CDN network
+     * @return this instance
+     */
+    IBootstrapSettings useCdnResources(boolean useCdnResources);
 }

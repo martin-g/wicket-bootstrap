@@ -1,6 +1,7 @@
 package de.agilecoders.wicket.settings;
 
 import com.google.common.collect.Lists;
+import de.agilecoders.wicket.Bootstrap;
 import org.apache.wicket.Application;
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
@@ -48,7 +49,7 @@ public class Theme implements ITheme {
      */
     @Override
     public void renderHead(IHeaderResponse response) {
-        if (Application.exists() && Application.get().usesDeploymentConfig()) {
+        if (useCdnResources()) {
             Iterable<String> cdnUrls = getCdnUrls();
             if (cdnUrls != null && cdnUrls.iterator().hasNext()) {
                 for (String cdnUrl : cdnUrls) {
@@ -62,6 +63,17 @@ public class Theme implements ITheme {
         else {
             renderPackageReferences(response);
         }
+    }
+
+    private boolean useCdnResources() {
+        boolean result = false;
+
+        if (Application.exists()) {
+            IBootstrapSettings settings = Bootstrap.getSettings(Application.get());
+            result = settings.useCdnResources();
+        }
+
+        return result;
     }
 
     @Override
