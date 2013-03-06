@@ -22,6 +22,7 @@ public class InfiniteScrollingBehavior extends BootstrapBaseBehavior {
     private String navSelector;
     private String nextSelector;
     private String itemSelector;
+    private String contentSelector;
     private String pathParse;
     private boolean autoScroll = true;
 
@@ -38,6 +39,7 @@ public class InfiniteScrollingBehavior extends BootstrapBaseBehavior {
                               + "  navSelector  : \"#" + navSelector + "\","    // selector for the paged navigation (it will be hidden)
                               + "  nextSelector : \"#" + nextSelector + "\","   // selector for the NEXT link (to page 2)
                               + "  itemSelector : \"" + itemSelector + "\","    // selector for all items you'll retrieve
+                              + "  contentSelector : \"#" + contentSelector + "\","    // selector for all items you'll retrieve
                               + "  pathParse    : " + pathParse + ","
                               + "  localMode    : true,"
                               + "  debug        : false,"                       // enable debug messaging ( to console.log )
@@ -78,6 +80,12 @@ public class InfiniteScrollingBehavior extends BootstrapBaseBehavior {
     public InfiniteScrollingBehavior setItemSelector(Component component, String selector) {
         component.setOutputMarkupId(true);
         itemSelector = "#" + component.getMarkupId() + " " + selector;
+        return this;
+    }
+
+    public InfiniteScrollingBehavior setContentSelector(Component component) {
+        component.setOutputMarkupId(true);
+        contentSelector = component.getMarkupId();
         return this;
     }
 
