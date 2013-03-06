@@ -10,6 +10,7 @@ import org.apache.wicket.core.util.resource.locator.caching.CachingResourceStrea
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.html.IPackageResourceGuard;
 import org.apache.wicket.markup.html.SecurePackageResourceGuard;
+import org.apache.wicket.settings.IMarkupSettings;
 
 /**
  * Bootstrap core class
@@ -45,6 +46,15 @@ public final class Bootstrap {
         if (settings.updateSecurityManager()) {
             updateSecurityManager(app, settings);
         }
+
+        configureMarkupSettings(app);
+    }
+
+    private static void configureMarkupSettings(Application application) {
+        IMarkupSettings markupSettings = application.getMarkupSettings();
+
+        // wicket markup leads to ui problems because css selectors doesn't match.
+        markupSettings.setStripWicketTags(true);
     }
 
     /**
