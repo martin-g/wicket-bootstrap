@@ -154,7 +154,8 @@ public class WicketApplication extends WebApplication {
         settings.useJqueryPP(false)
                 .useModernizr(false)
                 .useResponsiveCss(true)
-                .setJsResourceFilterName("footer-container");
+                .setJsResourceFilterName("footer-container")
+                .useCdnResources(true);
 
         //reactivate if new less4j version is available:
         //settings.getBootstrapLessCompilerSettings().setUseLessCompiler(usesDevelopmentConfig());

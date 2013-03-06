@@ -69,7 +69,7 @@ public class Theme implements ITheme {
         boolean result = false;
 
         if (Application.exists()) {
-            IBootstrapSettings settings = Bootstrap.getSettings(Application.get());
+            IBootstrapSettings settings = Bootstrap.getSettings();
             result = settings.useCdnResources();
         }
 
