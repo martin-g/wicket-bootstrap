@@ -44,6 +44,8 @@ public class WicketApplicationTest {
                 super.init();
 
                 Bootstrap.install(this, WicketApplicationTest.this.createBootstrapSettings());
+
+                getMarkupSettings().setStripWicketTags(false);
             }
 
             @Override

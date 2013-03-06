@@ -9,6 +9,7 @@ import org.apache.wicket.MetaDataKey;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.html.IPackageResourceGuard;
 import org.apache.wicket.markup.html.SecurePackageResourceGuard;
+import org.apache.wicket.settings.IMarkupSettings;
 
 /**
  * Bootstrap core class
@@ -41,9 +42,23 @@ public final class Bootstrap {
             updateSecurityManager(app);
         }
 
+        configureMarkupSettings(app);
+        
         WicketWebjars.install(app);
     }
 
+    /**
+     * configure wicket markup settings
+     * 
+     * @param application current application
+     */
+    private static void configureMarkupSettings(Application application) {
+        IMarkupSettings markupSettings = application.getMarkupSettings();
+
+        // wicket markup leads to ui problems because css selectors doesn't match.
+        markupSettings.setStripWicketTags(true);
+    }
+    
     /**
      * updates the security manager to allow fonts and less files if necessary.
      *

@@ -1,9 +1,10 @@
 package de.agilecoders.wicket.markup.html.bootstrap.navbar;
 
+import org.apache.wicket.model.IModel;
+
 import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
 import de.agilecoders.wicket.markup.html.bootstrap.button.Buttons;
 import de.agilecoders.wicket.markup.html.bootstrap.button.dropdown.DropDownButton;
-import org.apache.wicket.model.IModel;
 
 /**
  * Special {@link DropDownButton} for a {@link Navbar}.

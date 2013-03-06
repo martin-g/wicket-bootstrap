@@ -80,10 +80,6 @@ public class WicketApplication extends WebApplication {
     public void init() {
         super.init();
 
-        // wicket markup leads to strange ui problems because css selectors
-        // won't match anymore.
-        getMarkupSettings().setStripWicketTags(true);
-
         // deactivate ajax debug mode
         getDebugSettings().setAjaxDebugModeEnabled(false);
 
