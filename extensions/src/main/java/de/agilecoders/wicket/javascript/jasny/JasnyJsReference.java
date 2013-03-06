@@ -30,7 +30,7 @@ public class JasnyJsReference extends JQueryPluginResourceReference
             deps.add(dep);
         }
         deps.add(CssHeaderItem.forReference(JasnyCssReference.INSTANCE));
-        deps.add(JavaScriptHeaderItem.forReference(BootstrapJavaScriptReference.instance()));
+        deps.add(JavaScriptHeaderItem.forReference(BootstrapJavaScriptReference.get()));
         return deps;
     }
 }

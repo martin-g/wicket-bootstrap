@@ -32,7 +32,7 @@ public class BootstrapTourJsReference extends JavaScriptResourceReference {
             dependencies.add(dep);
         }
         dependencies.add(JavaScriptHeaderItem.forReference(JQueryCookieJsReference.INSTANCE));
-        dependencies.add(JavaScriptHeaderItem.forReference(BootstrapJavaScriptReference.instance()));
+        dependencies.add(JavaScriptHeaderItem.forReference(BootstrapJavaScriptReference.get()));
         return dependencies;
     }
 }

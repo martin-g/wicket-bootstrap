@@ -9,7 +9,7 @@
     </parent>
 
     <groupId>de.agilecoders.wicket</groupId>
-    <artifactId>bootstrap</artifactId>
+    <artifactId>bootstrap-core</artifactId>
     <version>0.7.7-SNAPSHOT</version>
     <packaging>jar</packaging>
 
@@ -17,10 +17,6 @@
         <system>github</system>
         <url>https://github.com/l0rdn1kk0n/wicket-bootstrap/issues</url>
     </issueManagement>
-
-    <properties>
-        <modernizr.version>2.6.2-1</modernizr.version>
-    </properties>
 
     <dependencies>
 

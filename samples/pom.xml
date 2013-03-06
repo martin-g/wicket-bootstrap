@@ -15,11 +15,6 @@
 
     <properties>
         <wicket.configuration>DEVELOPMENT</wicket.configuration>
-
-        <wicketstuff.version>6.5.0</wicketstuff.version>
-        <jetty.version>8.1.8.v20121106</jetty.version>
-        <logback.version>1.0.9</logback.version>
-        <newrelic.version>2.13.0</newrelic.version>
     </properties>
 
     <dependencies>
@@ -40,19 +35,16 @@
         <dependency>
             <groupId>org.apache.wicket</groupId>
             <artifactId>wicket-core</artifactId>
-            <version>${wicket.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.apache.wicket</groupId>
             <artifactId>wicket-extensions</artifactId>
-            <version>${wicket.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.apache.wicket</groupId>
             <artifactId>wicket-request</artifactId>
-            <version>${wicket.version}</version>
         </dependency>
 
         <dependency>
@@ -70,26 +62,22 @@
         <!-- WICKET-BOOTSTRAP -->
         <dependency>
             <groupId>de.agilecoders.wicket</groupId>
-            <artifactId>bootstrap</artifactId>
-            <version>0.7.7-SNAPSHOT</version>
+            <artifactId>bootstrap-core</artifactId>
         </dependency>
 
         <dependency>
             <groupId>de.agilecoders.wicket</groupId>
             <artifactId>bootstrap-extensions</artifactId>
-            <version>0.7.7-SNAPSHOT</version>
         </dependency>
 
         <dependency>
             <groupId>de.agilecoders.wicket</groupId>
             <artifactId>bootstrap-less</artifactId>
-            <version>0.7.7-SNAPSHOT</version>
         </dependency>
 
         <dependency>
             <groupId>de.agilecoders.wicket</groupId>
             <artifactId>bootstrap-themes</artifactId>
-            <version>0.7.7-SNAPSHOT</version>
         </dependency>
 
         <dependency>
@@ -107,7 +95,7 @@
         <dependency>
             <groupId>com.google.javascript</groupId>
             <artifactId>closure-compiler</artifactId>
-            <version>r2180</version>
+            <version>${google-closure.version}</version>
         </dependency>
 
     </dependencies>
