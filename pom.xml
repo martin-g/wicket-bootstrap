@@ -37,11 +37,11 @@
     </prerequisites>
 
     <modules>
-        <module>core</module>
-        <module>extensions</module>
-        <module>themes</module>
-        <module>less</module>
-        <module>samples</module>
+        <module>bootstrap-core</module>
+        <module>bootstrap-extensions</module>
+        <module>bootstrap-themes</module>
+        <module>bootstrap-less</module>
+        <module>bootstrap-samples</module>
     </modules>
 
     <properties>
@@ -66,16 +66,20 @@
         <rhino.version>1.7R4</rhino.version>
         <doxia.version>1.0</doxia.version>
         <lesscss-engine.version>1.3.3</lesscss-engine.version>
-        <less4j.version>0.0.14</less4j.version>
+        <less4j.version>1.0.0</less4j.version>
         <org.codehaus.jackson.version>1.9.12</org.codehaus.jackson.version>
         <joda-time.version>2.1</joda-time.version>
         <hamcrest.version>1.3</hamcrest.version>
         <modernizr.version>2.6.2-1</modernizr.version>
         <wicketstuff.version>6.5.0</wicketstuff.version>
-        <jetty.version>8.1.8.v20121106</jetty.version>
+        <jetty.version>8.1.9.v20130131</jetty.version>
         <logback.version>1.0.9</logback.version>
-        <newrelic.version>2.13.0</newrelic.version>
+        <newrelic.version>2.15.0</newrelic.version>
         <google-closure.version>r2180</google-closure.version>
+        <closure-compiler.version>r2180</closure-compiler.version>
+        <contiperf.version>2.2.0</contiperf.version>
+        <logback.version>1.0.9</logback.version>
+        <jquerypp.version>1.0b2</jquerypp.version>
     </properties>
 
     <dependencyManagement>
