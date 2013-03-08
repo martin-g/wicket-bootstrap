@@ -30,6 +30,7 @@ public class InfiniteScrollingBehavior extends Behavior {
         jsonData = new HashMap<String, Object>();
         jsonData.put("localMode", true);
         jsonData.put("animate", true);
+        jsonData.put("debug", true);
     }
 
     @Override

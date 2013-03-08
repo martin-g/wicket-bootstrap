@@ -2,7 +2,13 @@ package de.agilecoders.wicket.samples.panels.pagination;
 
 import de.agilecoders.wicket.markup.html.bootstrap.navigation.BootstrapPagingNavigator;
 import de.agilecoders.wicket.markup.html.bootstrap.navigation.InfiniteScrollingBehavior;
+import de.agilecoders.wicket.markup.html.bootstrap.navigation.ajax.BootstrapAjaxPagingNavigator;
+import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
+import org.apache.wicket.ajax.markup.html.navigation.paging.AjaxPagingNavigationBehavior;
+import org.apache.wicket.behavior.Behavior;
+import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.model.Model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,27 +20,55 @@ public class InfinitePaginationPanel extends AbstractPaginationPanel {
 
     private final InfiniteScrollingBehavior scrollingBehavior;
     private BootstrapPagingNavigator pager;
+    private final Model<String> callbackUrl;
+    private final Component nextLink;
 
-    public InfinitePaginationPanel(String id) {
-        super(id);
+    /**
+     * Construct.
+     *
+     * @param markupId component id
+     */
+    public InfinitePaginationPanel(final String markupId) {
+        super(markupId);
 
         setOutputMarkupId(true);
-        add(scrollingBehavior = new InfiniteScrollingBehavior());
 
+        callbackUrl = new Model<String>();
+
+        add(nextLink = new Label("next-page").add(new AttributeModifier("href", callbackUrl)));
+        add(scrollingBehavior = newInfiniteScrollingBehavior(pager, nextLink));
+    }
+
+    /**
+     * @return new infinite scrolling behavior
+     */
+    protected InfiniteScrollingBehavior newInfiniteScrollingBehavior(final Component pager, final Component nextLink) {
+        final InfiniteScrollingBehavior scrollingBehavior = new InfiniteScrollingBehavior();
         scrollingBehavior.setNavSelector(pager);
         scrollingBehavior.setItemSelector(this, ".item");
+        scrollingBehavior.setNextSelector(nextLink);
+
+        return scrollingBehavior;
     }
 
     @Override
     protected void onConfigure() {
         super.onConfigure();
 
-        scrollingBehavior.setNextSelector(pager.get("next"));
+        pager.add(new AttributeModifier("style", "display:none;"));
+
+        for (Behavior behavior : pager.get("next").getBehaviors()) {
+             if (behavior instanceof AjaxPagingNavigationBehavior) {
+                 callbackUrl.setObject(((AjaxPagingNavigationBehavior) behavior).getCallbackUrl().toString());
+                 break;
+             }
+        }
     }
 
     @Override
     protected Component createPager(String id) {
-        pager = new BootstrapPagingNavigator(id, pageable);
+        pager = new BootstrapAjaxPagingNavigator(id, pageable);
+
         return pager;
     }
 

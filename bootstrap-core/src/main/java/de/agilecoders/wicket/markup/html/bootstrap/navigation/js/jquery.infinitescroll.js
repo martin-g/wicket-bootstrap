@@ -281,6 +281,10 @@
         path = path.match(/^(.*?)2(.*?$)/).slice(1);
 
       }
+      else if (path.indexOf("pager-next") > -1) {
+        var nextPath = path;
+        return function () { return nextPath; }
+      }
       else {
 
         // page= is used in drupal too but second page is page=1 not page=2:
@@ -357,17 +361,41 @@
           var children = box.children();
           // if it didn't return anything
           if (children.length === 0) {
-            return this._error('end');
-          }
+              var com = data != null ? data.getElementsByTagName("component") : null;
 
-          // use a documentFragment because it works when content is going into a table or UL
-          frag = document.createDocumentFragment();
-          while (box[0].firstChild) {
-            frag.appendChild(box[0].firstChild);
+              if (!com || !com[0] || com[0].nodeName !== "component") {
+                  return this._error('end');
+              } else {
+                  var text = $(com[0]).text();
+
+                  // if the text was escaped, unascape it
+                  // (escaping is done when the component body contains a CDATA section)
+                  var encoding = com[0].getAttribute("encoding");
+                  if (encoding) {
+                      text = Wicket.Head.Contributor.decode(encoding, text);
+                  }
+
+                  if (!text) {
+                      return this._error("can't load data");
+                  } else {
+                      frag = text;
+                  }
+              }
           }
 
           this._debug('contentSelector', $(opts.contentSelector)[0]);
-          $(opts.contentSelector)[0].appendChild(frag);
+
+          if (!frag) {
+              // use a documentFragment because it works when content is going into a table or UL
+              frag = document.createDocumentFragment();
+              while (box[0].firstChild) {
+                frag.appendChild(box[0].firstChild);
+              }
+              $(opts.contentSelector)[0].appendChild(frag);
+          } else {
+              $(opts.contentSelector).append(frag);
+          }
+
           // previously, we would pass in the new DOM element as context for the callback
           // however we're now using a documentfragment, which doesn't have parents or children,
           // so the context is the contentContainer guy, and we pass in an array
@@ -537,6 +565,7 @@
 
     beginAjax: function infscr_ajax(opts) {
       var instance = this,
+          headers,
           path = opts.path,
           box, desturl, method, condition;
 
@@ -560,12 +589,28 @@
         method += '+callback';
       }
 
+      headers = {
+          "Wicket-Ajax": "true",
+          "Wicket-Ajax-BaseURL": Wicket.Ajax.baseUrl || '.'
+      };
+
+      desturl = desturl + "&_=" + (new Date().getTime());
+
       switch (method) {
         case 'html+callback':
           instance._debug('Using HTML via .load() method');
-          box.load(desturl + ' ' + opts.itemSelector, undefined, function infscr_ajax_callback(responseText) {
-            instance._loadcallback(box, responseText, desturl);
+          $.ajax({
+            url: desturl,
+            headers: headers,
+            success: function infscr_ajax_callback(responseText) {
+                instance._loadcallback(box, responseText, desturl);
+            }
           });
+
+
+          //box.load(desturl + ' ' + opts.itemSelector, undefined, function infscr_ajax_callback(responseText) {
+          //  instance._loadcallback(box, responseText, desturl);
+          //});
 
           break;
 
@@ -575,6 +620,7 @@
                    // params
                    url: desturl,
                    dataType: opts.dataType,
+                   headers: headers,
                    complete: function infscr_ajax_callback(jqXHR, textStatus) {
                      condition = (typeof (jqXHR.isResolved) !== 'undefined') ? (jqXHR.isResolved()) : (textStatus === "success" || textStatus === "notmodified");
                      if (condition) {
@@ -593,6 +639,7 @@
                    dataType: 'json',
                    type: 'GET',
                    url: desturl,
+                   headers: headers,
                    success: function (data, textStatus, jqXHR) {
                      condition = (typeof (jqXHR.isResolved) !== 'undefined') ? (jqXHR.isResolved()) : (textStatus === "success" || textStatus === "notmodified");
                      if (opts.appendCallback) {
