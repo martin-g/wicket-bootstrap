@@ -12,15 +12,10 @@
     </parent>
 
     <groupId>de.agilecoders.wicket</groupId>
-    <artifactId>bootstrap-less</artifactId>
+    <artifactId>wicket-bootstrap-less</artifactId>
     <name>bootstrap-less</name>
 
     <dependencies>
-        <dependency>
-            <groupId>org.apache.wicket</groupId>
-            <artifactId>wicket-core</artifactId>
-        </dependency>
-
         <dependency>
             <groupId>com.github.sommeri</groupId>
             <artifactId>less4j</artifactId>
@@ -35,7 +30,7 @@
 
         <dependency>
             <groupId>de.agilecoders.wicket</groupId>
-            <artifactId>bootstrap-core</artifactId>
+            <artifactId>wicket-bootstrap-core</artifactId>
         </dependency>
 
         <!-- Test dependencies -->

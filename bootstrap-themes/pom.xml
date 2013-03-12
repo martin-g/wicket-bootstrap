@@ -12,7 +12,7 @@
     </parent>
 
     <groupId>de.agilecoders.wicket</groupId>
-    <artifactId>bootstrap-themes</artifactId>
+    <artifactId>wicket-bootstrap-themes</artifactId>
     <packaging>jar</packaging>
     <name>bootstrap-themes</name>
 
@@ -22,14 +22,7 @@
     <dependencies>
         <dependency>
             <groupId>de.agilecoders.wicket</groupId>
-            <artifactId>bootstrap</artifactId>
-            <version>0.7.7-SNAPSHOT</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.wicket</groupId>
-            <artifactId>wicket-core</artifactId>
-            <version>${wicket.version}</version>
+            <artifactId>wicket-bootstrap-core</artifactId>
         </dependency>
     </dependencies>
 </project>

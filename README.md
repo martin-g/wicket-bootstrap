@@ -32,45 +32,45 @@ Usage
 * read more on my [blog](http://blog.agilecoders.de/).
 
 ## Maven
-wicket-bootstrap is [available](http://search.maven.org/#artifactdetails|de.agilecoders.wicket|bootstrap|0.7.6|jar) in Maven central repository.
+wicket-bootstrap is [available](http://search.maven.org/#artifactdetails|de.agilecoders.wicket|bootstrap|0.8.0|jar) in Maven central repository.
 
 core maven dependency:
 <pre><code>&lt;dependency&gt;
   &lt;groupId&gt;de.agilecoders.wicket&lt;/groupId&gt;
-  &lt;artifactId&gt;bootstrap-core&lt;/artifactId&gt;
-  &lt;version&gt;0.7.6&lt;/version&gt;
+  &lt;artifactId&gt;wicket-bootstrap-core&lt;/artifactId&gt;
+  &lt;version&gt;0.8.0&lt;/version&gt;
 &lt;/dependency&gt;
 </code></pre>
 
 for all extensions:
 <pre><code>&lt;dependency&gt;
   &lt;groupId&gt;de.agilecoders.wicket&lt;/groupId&gt;
-  &lt;artifactId&gt;bootstrap-extensions&lt;/artifactId&gt;
-  &lt;version&gt;0.7.6&lt;/version&gt;
+  &lt;artifactId&gt;wicket-bootstrap-extensions&lt;/artifactId&gt;
+  &lt;version&gt;0.8.0&lt;/version&gt;
 &lt;/dependency&gt;
 </code></pre>
 
 for all themes:
 <pre><code>&lt;dependency&gt;
   &lt;groupId&gt;de.agilecoders.wicket&lt;/groupId&gt;
-  &lt;artifactId&gt;bootstrap-themes&lt;/artifactId&gt;
-  &lt;version&gt;0.7.6&lt;/version&gt;
+  &lt;artifactId&gt;wicket-bootstrap-themes&lt;/artifactId&gt;
+  &lt;version&gt;0.8.0&lt;/version&gt;
 &lt;/dependency&gt;
 </code></pre>
 
 if you want to use a less compiler:
 <pre><code>&lt;dependency&gt;
   &lt;groupId&gt;de.agilecoders.wicket&lt;/groupId&gt;
-  &lt;artifactId&gt;bootstrap-less&lt;/artifactId&gt;
-  &lt;version&gt;0.7.6&lt;/version&gt;
+  &lt;artifactId&gt;wicket-bootstrap-less&lt;/artifactId&gt;
+  &lt;version&gt;0.8.0&lt;/version&gt;
 &lt;/dependency&gt;
 </code></pre>
 
 all samples can be used with this dependency:
 <pre><code>&lt;dependency&gt;
   &lt;groupId&gt;de.agilecoders.wicket&lt;/groupId&gt;
-  &lt;artifactId&gt;bootstrap-themes&lt;/artifactId&gt;
-  &lt;version&gt;0.7.6&lt;/version&gt;
+  &lt;artifactId&gt;wicket-bootstrap-samples&lt;/artifactId&gt;
+  &lt;version&gt;0.8.0&lt;/version&gt;
 &lt;/dependency&gt;
 </code></pre>
 

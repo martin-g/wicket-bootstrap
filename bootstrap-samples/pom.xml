@@ -10,7 +10,7 @@
     </parent>
 
     <groupId>de.agilecoders.wicket</groupId>
-    <artifactId>bootstrap-samples</artifactId>
+    <artifactId>wicket-bootstrap-samples</artifactId>
     <packaging>war</packaging>
     <name>bootstrap-samples</name>
 
@@ -32,27 +32,6 @@
             </exclusions>
         </dependency>
 
-        <!--  WICKET DEPENDENCIES -->
-        <dependency>
-            <groupId>org.apache.wicket</groupId>
-            <artifactId>wicket-core</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.wicket</groupId>
-            <artifactId>wicket-extensions</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.wicket</groupId>
-            <artifactId>wicket-request</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.wicket</groupId>
-            <artifactId>wicket-util</artifactId>
-        </dependency>
-
         <dependency>
             <groupId>com.newrelic.agent.java</groupId>
             <artifactId>newrelic-api</artifactId>
@@ -62,22 +41,22 @@
         <!-- WICKET-BOOTSTRAP -->
         <dependency>
             <groupId>de.agilecoders.wicket</groupId>
-            <artifactId>bootstrap-core</artifactId>
+            <artifactId>wicket-bootstrap-core</artifactId>
         </dependency>
 
         <dependency>
             <groupId>de.agilecoders.wicket</groupId>
-            <artifactId>bootstrap-extensions</artifactId>
+            <artifactId>wicket-bootstrap-extensions</artifactId>
         </dependency>
 
         <dependency>
             <groupId>de.agilecoders.wicket</groupId>
-            <artifactId>bootstrap-less</artifactId>
+            <artifactId>wicket-bootstrap-less</artifactId>
         </dependency>
 
         <dependency>
             <groupId>de.agilecoders.wicket</groupId>
-            <artifactId>bootstrap-themes</artifactId>
+            <artifactId>wicket-bootstrap-themes</artifactId>
         </dependency>
 
         <dependency>

@@ -76,7 +76,6 @@
         <logback.version>1.0.9</logback.version>
         <newrelic.version>2.15.0</newrelic.version>
         <google-closure.version>r2180</google-closure.version>
-        <closure-compiler.version>r2180</closure-compiler.version>
         <contiperf.version>2.2.0</contiperf.version>
         <logback.version>1.0.9</logback.version>
         <jquerypp.version>1.0b2</jquerypp.version>
@@ -98,25 +97,25 @@
 
             <dependency>
                 <groupId>de.agilecoders.wicket</groupId>
-                <artifactId>bootstrap-core</artifactId>
+                <artifactId>wicket-bootstrap-core</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>de.agilecoders.wicket</groupId>
-                <artifactId>bootstrap-themes</artifactId>
+                <artifactId>wicket-bootstrap-themes</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>de.agilecoders.wicket</groupId>
-                <artifactId>bootstrap-less</artifactId>
+                <artifactId>wicket-bootstrap-less</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>de.agilecoders.wicket</groupId>
-                <artifactId>bootstrap-extensions</artifactId>
+                <artifactId>wicket-bootstrap-extensions</artifactId>
                 <version>${project.version}</version>
             </dependency>
 

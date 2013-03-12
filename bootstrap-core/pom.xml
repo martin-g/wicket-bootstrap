@@ -10,7 +10,7 @@
     </parent>
 
     <groupId>de.agilecoders.wicket</groupId>
-    <artifactId>bootstrap-core</artifactId>
+    <artifactId>wicket-bootstrap-core</artifactId>
     <packaging>jar</packaging>
     <name>bootstrap-core</name>
 

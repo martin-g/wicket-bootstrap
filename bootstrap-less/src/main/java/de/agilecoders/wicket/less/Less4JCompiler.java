@@ -10,9 +10,6 @@ import org.slf4j.LoggerFactory;
 
 /**
  * less4j implementation of {@link IBootstrapLessCompiler}.
- * <p/>
- * CAUTION: less4j has no final release yet and there is still a lot of stuff to do. Please
- * use {@link LessJsLessCompiler} if you don't know how to verify correct css output.
  *
  * @author miha
  */

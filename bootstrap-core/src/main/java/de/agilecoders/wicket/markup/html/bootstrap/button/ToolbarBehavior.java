@@ -26,13 +26,13 @@ public final class ToolbarBehavior extends Behavior {
     public void unbind(Component component) {
         super.unbind(component);
 
-        BootstrapBaseBehavior.addTo(component);
+        BootstrapBaseBehavior.removeFrom(component);
     }
 
     @Override
     public void bind(Component component) {
         super.bind(component);
 
-        BootstrapBaseBehavior.removeFrom(component);
+        BootstrapBaseBehavior.addTo(component);
     }
 }

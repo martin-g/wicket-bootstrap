@@ -10,30 +10,20 @@
     </parent>
 
     <groupId>de.agilecoders.wicket</groupId>
-    <artifactId>bootstrap-extensions</artifactId>
+    <artifactId>wicket-bootstrap-extensions</artifactId>
     <packaging>jar</packaging>
     <name>bootstrap-extensions</name>
 
     <dependencies>
         <dependency>
             <groupId>de.agilecoders.wicket</groupId>
-            <artifactId>bootstrap-core</artifactId>
+            <artifactId>wicket-bootstrap-core</artifactId>
         </dependency>
 
         <!--  WICKET DEPENDENCIES -->
         <dependency>
             <groupId>org.apache.wicket</groupId>
-            <artifactId>wicket-core</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.wicket</groupId>
             <artifactId>wicket-extensions</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.wicket</groupId>
-            <artifactId>wicket-request</artifactId>
         </dependency>
 
         <dependency>
@@ -44,7 +34,7 @@
         <dependency>
             <groupId>com.google.javascript</groupId>
             <artifactId>closure-compiler</artifactId>
-            <version>${closure-compiler.version}</version>
+            <version>${google-closure.version}</version>
         </dependency>
 
         <dependency>

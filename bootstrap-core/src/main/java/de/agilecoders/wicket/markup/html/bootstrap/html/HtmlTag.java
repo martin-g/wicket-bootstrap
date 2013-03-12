@@ -15,44 +15,94 @@ import java.util.Locale;
 import java.util.Set;
 
 /**
- * TODO: document
+ * A {@link HtmlTag} is a {@link TransparentWebMarkupContainer} that adds some attributes
+ * to the pages html tag. It will add a "lang" attribute, which value is provided by
+ * given {@code locale}, in a short form: {@code Locale.ENGLISH = "en-en"}. Also it
+ * will add a "class" attribute that contains special css marker like active theme, browser
+ * identifier and a "no-js" flag which is used by modernizr to detect whether javascript is
+ * available or not.
+ *
+ * <h3>Usage:</h3>
+ *
+ * <pre lang="java">
+ *      class MyPage extends Page {
+ *          public MyPage(PageParameters params) {
+ *              // with chrome browser and bootstrap theme
+ *              add(new HtmlTag("html-tag")); // <html lang="en-en" class="chrome22 bootstrap"
+ *              // or with modernizr and different locale
+ *              add(new HtmlTag("html-tag", Locale.GERMAN, true)); // <html lang="de-de" class="chrome22 bootstrap no-js"
+ *              // or with an IE7
+ *              add(new HtmlTag("html-tag", Locale.GERMAN, true)); // <html lang="de-de" class="ie7 lt-ie8 lt-ie9 bootstrap no-js"
+ *          }
+ *      }
+ * </pre>
+ * <pre lang="html">
+ *      <!DOCTYPE html>
+ *          <html wicket:id="html-tag">
+ *              <head>
+ *                  [...]
+ *              </head>
+ * </pre>
  *
  * @author miha
  */
 public class HtmlTag extends TransparentWebMarkupContainer {
-    private final boolean useModrnizr;
-    private Locale locale; // TODO: make this field immutable
+    private final boolean useModernizr;
+    private final Locale locale;
     private final ClientProperties clientProperties;
 
     /**
      * Construct.
      *
-     * @param id
+     * @param markupId     The component' markup id
+     * @param locale       locale to use for "lang" attribute
+     * @param useModernizr whether to use modernizr or not
      */
-    public HtmlTag(String id, final boolean useModrnizr) {
-        super(id);
+    public HtmlTag(final String markupId, final Locale locale, final boolean useModernizr) {
+        super(markupId);
 
-        this.useModrnizr = useModrnizr;
-        this.clientProperties = new WebClientInfo(getRequestCycle()).getProperties();
-        this.locale = Locale.ENGLISH;
+        this.locale = locale;
+        this.useModernizr = useModernizr;
+        this.clientProperties = newWebClientInfo();
     }
 
     /**
      * Construct.
+     * Uses {@link Locale#ENGLISH} as default locale
      *
-     * @param id the component id
+     * @param markupId     the component id
+     * @param useModernizr whether to use modernizr or not
      */
-    public HtmlTag(final String id) {
-        this(id, false);
+    public HtmlTag(final String markupId, final boolean useModernizr) {
+        this(markupId, Locale.ENGLISH, useModernizr);
     }
 
-    public Locale locale() {
-        return locale;
+    /**
+     * Construct.
+     * Doesn't add modernizr support.
+     *
+     * @param markupId the component id
+     * @param locale   locale to use for "lang" attribute
+     */
+    public HtmlTag(final String markupId, final Locale locale) {
+        this(markupId, locale, false);
     }
 
-    public HtmlTag locale(Locale locale) {
-        this.locale = locale;
-        return this;
+    /**
+     * Construct.
+     * Uses {@link Locale#ENGLISH} as default locale and doesn't add modernizr support.
+     *
+     * @param markupId the component id
+     */
+    public HtmlTag(final String markupId) {
+        this(markupId, Locale.ENGLISH, false);
+    }
+
+    /**
+     * @return new {@link WebClientInfo} instance
+     */
+    protected ClientProperties newWebClientInfo() {
+        return new WebClientInfo(getRequestCycle()).getProperties();
     }
 
     /**
@@ -61,12 +111,12 @@ public class HtmlTag extends TransparentWebMarkupContainer {
      * @param locale current locale
      * @return locale as attribute
      */
-    private String toAttributeValue(Locale locale) {
+    private String toAttributeValue(final Locale locale) {
         return locale.toString().replace("_", "-").toLowerCase();
     }
 
     @Override
-    protected void onComponentTag(ComponentTag tag) {
+    protected void onComponentTag(final ComponentTag tag) {
         super.onComponentTag(tag);
 
         checkComponentTag(tag, "html");
@@ -76,7 +126,7 @@ public class HtmlTag extends TransparentWebMarkupContainer {
         }
 
         final CssClassNames.Builder cssClassNames = CssClassNames.newBuilder();
-        if (useModrnizr) {
+        if (useModernizr) {
             cssClassNames.add("no-js");
         }
 
@@ -113,10 +163,10 @@ public class HtmlTag extends TransparentWebMarkupContainer {
     }
 
     @Override
-    public void renderHead(IHeaderResponse response) {
+    public void renderHead(final IHeaderResponse response) {
         super.renderHead(response);
 
-        if (useModrnizr) {
+        if (useModernizr) {
             response.render(JavaScriptHeaderItem.forReference(ModernizrJavaScriptReference.INSTANCE));
         }
     }
