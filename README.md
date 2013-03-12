@@ -24,9 +24,11 @@ Extensions
 * bootstrap-tour: http://sorich87.github.com/bootstrap-tour
 * OpenWebIcons (2012-10-03): http://pfefferle.github.com/openwebicons/
 
-Usage
------
+How to get help and news
+------------------------
 
+* Keep up to date on announcements and more by following me [@l0rdn1kk0n](http://twitter.com/l0rdn1kk0n) on Twitter or use the [#WicketBootstrap](https://twitter.com/search?q=%23WicketBootstrap&src=typd) hashtag
+* use the [google group](https://groups.google.com/d/forum/wicket-bootstrap) (wicket-bootstrap (at) googlegroups.com)
 * you can see wicket-bootstrap in action: http://wb.agilecoders.de/
 * how to use wicket-bootstrap? Read the documentation on https://github.com/l0rdn1kk0n/wicket-bootstrap/wiki.
 * read more on my [blog](http://blog.agilecoders.de/).
@@ -83,12 +85,6 @@ Bootstrap.install(Application.get(), new BootstrapSettings());
 </code></pre>
 
 then you are able to use all wicket-bootstrap components.
-
-Twitter account
----------------
-
-Keep up to date on announcements and more by following me [@l0rdn1kk0n](http://twitter.com/l0rdn1kk0n) on Twitter or use the [#WicketBootstrap](https://twitter.com/search?q=%23WicketBootstrap&src=typd) hashtag.
-
 
 Bug tracker
 -----------
