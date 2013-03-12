@@ -32,7 +32,7 @@ Usage
 * read more on my [blog](http://blog.agilecoders.de/).
 
 ## Maven
-wicket-bootstrap is [available](http://search.maven.org/#artifactdetails|de.agilecoders.wicket|bootstrap|0.8.0|jar) in Maven central repository.
+wicket-bootstrap is [available](http://search.maven.org/#artifactdetails|de.agilecoders.wicket|wicket-bootstrap-core|0.8.0|jar) in Maven central repository.
 
 core maven dependency:
 <pre><code>&lt;dependency&gt;
