@@ -19,7 +19,7 @@ public class BootstrapCssReference extends WebjarsCssResourceReference {
      * Private constructor.
      */
     private BootstrapCssReference() {
-        super("bootstrap/current/css/bootstrap.css");
+        super("/bootstrap/current/css/bootstrap.css");
     }
 
 }

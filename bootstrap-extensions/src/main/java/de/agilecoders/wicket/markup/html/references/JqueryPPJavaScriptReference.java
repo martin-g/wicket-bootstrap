@@ -1,13 +1,11 @@
 package de.agilecoders.wicket.markup.html.references;
 
-import de.agilecoders.wicket.util.Generics2;
+import de.agilecoders.wicket.util.Dependencies;
 import de.agilecoders.wicket.webjars.request.resource.WebjarsJavaScriptResourceReference;
 import org.apache.wicket.Application;
 import org.apache.wicket.markup.head.HeaderItem;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.request.resource.ResourceReference;
-
-import java.util.List;
 
 /**
  * represents a reference to the jquerypp javascript resource
@@ -26,14 +24,12 @@ public class JqueryPPJavaScriptReference extends WebjarsJavaScriptResourceRefere
      * Private constructor.
      */
     private JqueryPPJavaScriptReference() {
-        super("jquerypp/current/jquerypp.js");
+        super("/jquerypp/current/jquerypp.js");
     }
 
     @Override
     public Iterable<? extends HeaderItem> getDependencies() {
-        List<HeaderItem> dependencies = Generics2.newArrayList(super.getDependencies());
-        dependencies.add(JavaScriptHeaderItem.forReference(Application.get().getJavaScriptLibrarySettings().getJQueryReference()));
-
-        return dependencies;
+        return Dependencies.combine(super.getDependencies(),
+                                    JavaScriptHeaderItem.forReference(Application.get().getJavaScriptLibrarySettings().getJQueryReference()));
     }
 }

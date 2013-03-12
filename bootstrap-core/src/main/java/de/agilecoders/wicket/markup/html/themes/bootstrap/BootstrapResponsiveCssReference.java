@@ -19,6 +19,6 @@ public class BootstrapResponsiveCssReference extends WebjarsCssResourceReference
      * Private constructor.
      */
     private BootstrapResponsiveCssReference() {
-        super("bootstrap/current/css/bootstrap-responsive.css");
+        super("/bootstrap/current/css/bootstrap-responsive.css");
     }
 }
