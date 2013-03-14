@@ -2,6 +2,8 @@ package de.agilecoders.wicket.markup.html.bootstrap.button;
 
 import de.agilecoders.wicket.markup.html.bootstrap.image.Icon;
 import de.agilecoders.wicket.markup.html.bootstrap.image.IconType;
+
+import org.apache.commons.lang.StringUtils;
 import org.apache.wicket.Component;
 import org.apache.wicket.Page;
 import org.apache.wicket.markup.html.WebMarkupContainer;
@@ -161,7 +163,7 @@ public class BootstrapBookmarkablePageLink<T> extends BookmarkablePageLink<T> im
     protected void onConfigure() {
         super.onConfigure();
 
-        splitter.setVisible(icon.hasIconType());
+        splitter.setVisible(icon.hasIconType() && StringUtils.isNotEmpty(label.getDefaultModelObjectAsString()));
     }
 
     @Override
