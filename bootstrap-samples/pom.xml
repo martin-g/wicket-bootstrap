@@ -11,6 +11,7 @@
 
     <groupId>de.agilecoders.wicket</groupId>
     <artifactId>wicket-bootstrap-samples</artifactId>
+    <version>0.8.1-SNAPSHOT</version>
     <packaging>war</packaging>
     <name>bootstrap-samples</name>
 
@@ -42,21 +43,25 @@
         <dependency>
             <groupId>de.agilecoders.wicket</groupId>
             <artifactId>wicket-bootstrap-core</artifactId>
+            <version>${project.version}</version>
         </dependency>
 
         <dependency>
             <groupId>de.agilecoders.wicket</groupId>
             <artifactId>wicket-bootstrap-extensions</artifactId>
+            <version>${project.version}</version>
         </dependency>
 
         <dependency>
             <groupId>de.agilecoders.wicket</groupId>
             <artifactId>wicket-bootstrap-less</artifactId>
+            <version>${project.version}</version>
         </dependency>
 
         <dependency>
             <groupId>de.agilecoders.wicket</groupId>
             <artifactId>wicket-bootstrap-themes</artifactId>
+            <version>${project.version}</version>
         </dependency>
 
         <dependency>

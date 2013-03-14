@@ -21,15 +21,6 @@ public class PopoverBehavior extends TooltipBehavior {
      * Construct.
      *
      * @param label Title of the popover
-     */
-    public PopoverBehavior(final IModel<String> label) {
-        this(label, null);
-    }
-
-    /**
-     * Construct.
-     *
-     * @param label Title of the popover
      * @param body  Body of the popover
      */
     public PopoverBehavior(final IModel<String> label, final IModel<String> body) {
@@ -53,19 +44,28 @@ public class PopoverBehavior extends TooltipBehavior {
     public void bind(Component component) {
         super.bind(component);
 
-        component.add(AttributeModifier.replace("data-content", body));
+        component.add(AttributeModifier.replace("data-content", newContent()));
     }
 
     @Override
     public void detach(Component component) {
         super.detach(component);
 
-        body.detach();
+        if (body != null) {
+            body.detach();
+        }
     }
 
     @Override
     protected String createRelAttribute() {
         return "popover";
+    }
+
+    /**
+     * @return the popover content
+     */
+    protected IModel<String> newContent() {
+        return body;
     }
 
     @Override

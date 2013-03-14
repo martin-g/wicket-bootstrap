@@ -11,6 +11,7 @@
 
     <groupId>de.agilecoders.wicket</groupId>
     <artifactId>wicket-bootstrap-themes</artifactId>
+    <version>0.8.1-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>bootstrap-themes</name>
 
