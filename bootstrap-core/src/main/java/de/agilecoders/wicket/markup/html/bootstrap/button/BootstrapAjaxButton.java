@@ -71,7 +71,7 @@ public abstract class BootstrapAjaxButton extends AjaxButton implements IBootstr
 
         add(icon = newIcon("icon"));
         add(splitter = newSplitter("splitter"));
-        add(label = newLabel("label"));
+        add(label = newLabel("label", model));
     }
 
     /**
@@ -90,8 +90,8 @@ public abstract class BootstrapAjaxButton extends AjaxButton implements IBootstr
      * @param markupId the component id of the label
      * @return new label component
      */
-    protected Component newLabel(final String markupId) {
-        return new Label(markupId, new Model<String>(""))
+    protected Component newLabel(final String markupId, IModel<String> model) {
+        return new Label(markupId, model)
                 .setRenderBodyOnly(true);
     }
 
