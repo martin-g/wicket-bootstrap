@@ -2,6 +2,8 @@ package de.agilecoders.wicket.markup.html.bootstrap.button;
 
 import de.agilecoders.wicket.markup.html.bootstrap.image.Icon;
 import de.agilecoders.wicket.markup.html.bootstrap.image.IconType;
+
+import org.apache.commons.lang.StringUtils;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.markup.html.form.AjaxFallbackButton;
 import org.apache.wicket.markup.html.WebMarkupContainer;
@@ -67,7 +69,7 @@ public abstract class BootstrapAjaxFallbackButton extends AjaxFallbackButton imp
     protected void onConfigure() {
         super.onConfigure();
 
-        splitter.setVisible(icon.hasIconType());
+        splitter.setVisible(icon.hasIconType() && StringUtils.isNotEmpty(getModelObject()));
     }
 
     /**
