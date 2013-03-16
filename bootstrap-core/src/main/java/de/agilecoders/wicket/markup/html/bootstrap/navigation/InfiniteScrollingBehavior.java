@@ -22,10 +22,6 @@ import java.util.Map;
 public class InfiniteScrollingBehavior extends Behavior {
     private static final ResourceReference JS = new JQueryPluginResourceReference(InfiniteScrollingBehavior.class, "js/jquery.infinitescroll.js");
 
-    private String navSelector;
-    private String nextSelector;
-    private String itemSelector;
-    private String pathParse;
     private boolean autoScroll = true;
     private final Map<String, Object> jsonData;
 
@@ -33,7 +29,7 @@ public class InfiniteScrollingBehavior extends Behavior {
         jsonData = new HashMap<String, Object>();
         jsonData.put("localMode", true);
         jsonData.put("animate", true);
-        jsonData.put("debug", true);
+        jsonData.put("debug", false);
     }
 
     @Override
@@ -108,8 +104,13 @@ public class InfiniteScrollingBehavior extends Behavior {
         return this;
     }
 
-    public InfiniteScrollingBehavior setPathParse(String pathParseFunction) {
-        jsonData.put("pathParse", pathParseFunction);
+    public InfiniteScrollingBehavior animate(boolean animate) {
+        jsonData.put("animate", animate);
+        return this;
+    }
+
+    public InfiniteScrollingBehavior debug(boolean debug) {
+        jsonData.put("debug", debug);
         return this;
     }
 
