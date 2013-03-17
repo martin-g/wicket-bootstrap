@@ -2,26 +2,21 @@ package de.agilecoders.wicket.markup.html.bootstrap.components;
 
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
-import org.apache.wicket.core.util.string.ComponentRenderer;
 import org.apache.wicket.model.IModel;
-import org.apache.wicket.model.Model;
-
-import static org.apache.commons.lang.StringEscapeUtils.escapeJava;
-import static org.apache.commons.lang.StringUtils.chomp;
 
 /**
  * A rich popover implementation that uses a component as body.
  *
  * @author miha
  */
-public abstract class RichPopoverBehavior extends PopoverBehavior {
+abstract class RichPopoverBehavior extends PopoverBehavior {
 
     /**
      * Construct.
      *
      * @param label popover title
      */
-    public RichPopoverBehavior(final IModel<String> label) {
+    private RichPopoverBehavior(final IModel<String> label) {
         this(label, new PopoverConfig());
     }
 
@@ -31,7 +26,7 @@ public abstract class RichPopoverBehavior extends PopoverBehavior {
      * @param label  popover title
      * @param config popover configuration
      */
-    public RichPopoverBehavior(final IModel<String> label, final PopoverConfig config) {
+    private RichPopoverBehavior(final IModel<String> label, final PopoverConfig config) {
         super(label, null, config);
 
         config.withHtml(true);
@@ -46,9 +41,11 @@ public abstract class RichPopoverBehavior extends PopoverBehavior {
 
     @Override
     protected final IModel<String> newContent() {
-        final String content = String.valueOf(ComponentRenderer.renderComponent(newBodyComponent(ComponentRenderer.COMP_ID)));
+        // activate after wicket 6.7.0 was released
+        //final String content = String.valueOf(ComponentRenderer.renderComponent(newBodyComponent(ComponentRenderer.COMP_ID)));
 
-        return Model.of(escapeJava(chomp(content)));
+        //return Model.of(escapeJava(chomp(content)));
+        throw new UnsupportedOperationException("this component is not active");
     }
 
     /**
