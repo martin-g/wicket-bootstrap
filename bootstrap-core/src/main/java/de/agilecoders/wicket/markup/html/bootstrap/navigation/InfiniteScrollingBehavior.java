@@ -20,7 +20,6 @@ import java.util.Map;
  * @link http://www.infinite-scroll.com/
  */
 public class InfiniteScrollingBehavior extends Behavior {
-    // TODO: move the .js files next to this behavior. Now they are with TableBehavior
     private static final ResourceReference JS = new JQueryPluginResourceReference(InfiniteScrollingBehavior.class, "js/jquery.infinitescroll.js");
 
     private boolean autoScroll = true;
@@ -30,7 +29,7 @@ public class InfiniteScrollingBehavior extends Behavior {
         jsonData = new HashMap<String, Object>();
         jsonData.put("localMode", true);
         jsonData.put("animate", true);
-        jsonData.put("debug", true);
+        jsonData.put("debug", false);
     }
 
     @Override
@@ -94,8 +93,24 @@ public class InfiniteScrollingBehavior extends Behavior {
         return this;
     }
 
+    public InfiniteScrollingBehavior setContentSelector(Component component) {
+        component.setOutputMarkupId(true);
+        jsonData.put("contentSelector", "#" + component.getMarkupId(true));
+        return this;
+    }
+
     public InfiniteScrollingBehavior useAutoScroll(boolean autoScroll) {
         this.autoScroll = autoScroll;
+        return this;
+    }
+
+    public InfiniteScrollingBehavior animate(boolean animate) {
+        jsonData.put("animate", animate);
+        return this;
+    }
+
+    public InfiniteScrollingBehavior debug(boolean debug) {
+        jsonData.put("debug", debug);
         return this;
     }
 
