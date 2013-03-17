@@ -7,7 +7,6 @@ import de.agilecoders.wicket.markup.html.bootstrap.common.NotificationMessage;
 import de.agilecoders.wicket.markup.html.bootstrap.common.NotificationPanel;
 import de.agilecoders.wicket.markup.html.bootstrap.components.PopoverBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.components.PopoverConfig;
-import de.agilecoders.wicket.markup.html.bootstrap.components.RichPopoverBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.components.TooltipConfig;
 import de.agilecoders.wicket.markup.html.bootstrap.dialog.Modal;
 import de.agilecoders.wicket.markup.html.bootstrap.dialog.ModalCloseButton;
@@ -85,7 +84,7 @@ public class IssuesPage extends BasePage {
                 new PopoverConfig().withHoverTrigger().withPlacement(TooltipConfig.Placement.top)
         )));
 
-        add(new Label("richpopover", "Popover (hover, top)").add(new RichPopoverBehavior(
+        add(new Label("richpopover", "Popover (hover, top)")/*.add(new RichPopoverBehavior(
                 Model.of("title"),
                 new PopoverConfig().withHoverTrigger().withPlacement(TooltipConfig.Placement.top)
         ) {
@@ -97,7 +96,7 @@ public class IssuesPage extends BasePage {
 
                 return label;
             }
-        }));
+        })*/);
 
         // issue #102
         add(new BootstrapLink<Page>("link", Model.<Page>of(this)) {
