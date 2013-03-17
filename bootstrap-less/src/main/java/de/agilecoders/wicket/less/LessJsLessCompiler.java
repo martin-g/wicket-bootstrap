@@ -3,7 +3,6 @@ package de.agilecoders.wicket.less;
 import com.asual.lesscss.LessEngine;
 import com.asual.lesscss.LessException;
 import com.asual.lesscss.LessOptions;
-import de.agilecoders.wicket.util.Generics2;
 import org.apache.wicket.WicketRuntimeException;
 import org.apache.wicket.util.lang.Exceptions;
 import org.apache.wicket.util.string.Strings;
@@ -75,7 +74,7 @@ public class LessJsLessCompiler extends AbstractLessCompiler {
 
         String extract = null;
         if (extractList != null) {
-            extract = Generics2.join(extractList, ',');
+            extract = Strings.join(",", extractList);
         }
 
         // Try to detect missing imports

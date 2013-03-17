@@ -14,8 +14,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.Charset;
 
-import static de.agilecoders.wicket.util.Strings2.nullToEmpty;
-
 /**
  * Tests the {@link Less4JCompiler} class
  *
@@ -140,8 +138,11 @@ public class Less4JCompilerTest {
      * @param value The value to clean
      * @return cleaned value
      */
-    private String removeLineBreaks(String value) {
-        return nullToEmpty(value).replaceAll("\n", "").replaceAll("  ", " ");
+    private static String removeLineBreaks(String value) {
+        if (value == null) {
+            return "";
+        }
+        return value.replaceAll("\n", "").replaceAll("  ", " ");
     }
 
 }

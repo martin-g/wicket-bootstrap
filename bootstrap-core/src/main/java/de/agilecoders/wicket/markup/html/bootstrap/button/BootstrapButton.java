@@ -2,6 +2,8 @@ package de.agilecoders.wicket.markup.html.bootstrap.button;
 
 import de.agilecoders.wicket.markup.html.bootstrap.image.Icon;
 import de.agilecoders.wicket.markup.html.bootstrap.image.IconType;
+
+import org.apache.commons.lang.StringUtils;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
@@ -47,7 +49,7 @@ public class BootstrapButton extends Button implements IBootstrapButton<Bootstra
 
         add(icon = newIcon("icon"));
         add(splitter = newSplitter("splitter"));
-        add(label = newLabel("label"));
+        add(label = newLabel("label", model));
     }
 
     /**
@@ -66,8 +68,8 @@ public class BootstrapButton extends Button implements IBootstrapButton<Bootstra
      * @param markupId the component id of the label
      * @return new label component
      */
-    protected Component newLabel(final String markupId) {
-        return new Label(markupId, new Model<String>(""))
+    protected Component newLabel(final String markupId, IModel<String> model) {
+        return new Label(markupId, model)
                 .setRenderBodyOnly(true);
     }
 
@@ -88,7 +90,7 @@ public class BootstrapButton extends Button implements IBootstrapButton<Bootstra
     protected void onConfigure() {
         super.onConfigure();
 
-        splitter.setVisible(icon.hasIconType());
+        splitter.setVisible(icon.hasIconType() && StringUtils.isNotEmpty(getModelObject()));
     }
 
     /**
