@@ -29,7 +29,6 @@ public class InfiniteScrollingBehavior extends Behavior {
         jsonData = new HashMap<String, Object>();
         jsonData.put("localMode", true);
         jsonData.put("animate", true);
-        jsonData.put("debug", false);
     }
 
     @Override
@@ -115,6 +114,7 @@ public class InfiniteScrollingBehavior extends Behavior {
     }
 
     /*
+    TODO:
   loadingImg   : "/img/loading.gif",
                  // loading image.
                  // default: "http://www.infinite-scroll.com/loading.gif"
