@@ -95,7 +95,7 @@ public class LessResourceStreamLocator extends ResourceStreamLocator {
      */
     private IResourceStream fromCacheOrLoadAndCompile(final Class<?> clazz, final String path) {
         final long startCache = System.currentTimeMillis();
-        final String key = createKey(clazz, path);
+        final String key = createKey(clazz, path).intern();
         final LessResourceStream lessResourceStream;
 
         /**
