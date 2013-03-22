@@ -56,7 +56,7 @@ public class Less4JCompilerTest {
     private String compileLessFile(final String fileName) {
         final String content;
         try {
-            content = IOUtils.toString(Less4JCompilerTest.class.getResourceAsStream("responsive.less"));
+            content = IOUtils.toString(Less4JCompilerTest.class.getResourceAsStream(fileName));
         } catch (IOException e) {
             throw new WicketRuntimeException(e);
         }
