@@ -65,8 +65,8 @@ public class Less4JCompiler extends AbstractLessCompiler {
             for (LessCompiler.Problem error : e.getErrors()) {
                 builder.append("  > [").append(error.getType()).append("] ")
                         .append(error.getMessage())
-                        .append(" in line ").append(error.getLine())
-                        .append(":").append(error.getCharacter()).append("\n");
+                        .append(" at line ").append(error.getLine())
+                        .append(':').append(error.getCharacter()).append('\n');
             }
 
             return builder.toString();
