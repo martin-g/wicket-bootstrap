@@ -1,27 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+	<modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <groupId>de.agilecoders.wicket</groupId>
-        <artifactId>bootstrap-parent</artifactId>
-        <version>0.8.2-SNAPSHOT</version>
-        <relativePath>../pom.xml</relativePath>
-    </parent>
+	<parent>
+		<groupId>de.agilecoders.wicket</groupId>
+		<artifactId>bootstrap-parent</artifactId>
+		<version>0.8.2-SNAPSHOT</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
 
-    <groupId>de.agilecoders.wicket</groupId>
-    <artifactId>wicket-bootstrap-themes</artifactId>
-    <version>0.8.2-SNAPSHOT</version>
-    <packaging>jar</packaging>
-    <name>bootstrap-themes</name>
+	<groupId>de.agilecoders.wicket</groupId>
+	<artifactId>wicket-bootstrap-themes</artifactId>
+	<version>0.8.2-SNAPSHOT</version>
+	<packaging>bundle</packaging>
+	<name>bootstrap-themes</name>
 
-    <properties>
-    </properties>
+	<properties>
+	</properties>
 
-    <dependencies>
-        <dependency>
-            <groupId>de.agilecoders.wicket</groupId>
-            <artifactId>wicket-bootstrap-core</artifactId>
-        </dependency>
-    </dependencies>
+	<dependencies>
+		<dependency>
+			<groupId>de.agilecoders.wicket</groupId>
+			<artifactId>wicket-bootstrap-core</artifactId>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<!-- BD - Allows for jar to be built with an OSGi compatiable manifest -->
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<version>${maven-bundle-plugin.version}</version>
+				<extensions>true</extensions>
+				<configuration>
+					<instructions>
+						<Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
+						<Bundle-Version>${project.version}</Bundle-Version>
+					</instructions>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>

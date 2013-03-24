@@ -1,30 +1,8 @@
 package de.agilecoders.wicket.samples;
 
-import com.google.javascript.jscomp.CompilationLevel;
-import de.agilecoders.wicket.Bootstrap;
-import de.agilecoders.wicket.BootstrapLess;
-import de.agilecoders.wicket.javascript.GoogleClosureJavaScriptCompressor;
-import de.agilecoders.wicket.javascript.YuiCssCompressor;
-import de.agilecoders.wicket.less.BootstrapLessCompilerSettings;
-import de.agilecoders.wicket.less.IBootstrapLessCompilerSettings;
-import de.agilecoders.wicket.less.Less4JCompiler;
-import de.agilecoders.wicket.markup.html.RenderJavaScriptToFooterHeaderResponseDecorator;
-import de.agilecoders.wicket.markup.html.bootstrap.extensions.html5player.Html5PlayerCssReference;
-import de.agilecoders.wicket.markup.html.bootstrap.extensions.html5player.Html5PlayerJavaScriptReference;
-import de.agilecoders.wicket.markup.html.bootstrap.extensions.icon.OpenWebIconsCssReference;
-import de.agilecoders.wicket.markup.html.bootstrap.extensions.jqueryui.JQueryUIJavaScriptReference;
-import de.agilecoders.wicket.markup.html.references.BootstrapPrettifyCssReference;
-import de.agilecoders.wicket.markup.html.references.BootstrapPrettifyJavaScriptReference;
-import de.agilecoders.wicket.markup.html.references.ModernizrJavaScriptReference;
-import de.agilecoders.wicket.markup.html.themes.google.GoogleTheme;
-import de.agilecoders.wicket.markup.html.themes.metro.MetroTheme;
-import de.agilecoders.wicket.markup.html.themes.wicket.WicketTheme;
-import de.agilecoders.wicket.samples.assets.base.ApplicationJavaScript;
-import de.agilecoders.wicket.samples.assets.base.FixBootstrapStylesCssResourceReference;
-import de.agilecoders.wicket.samples.pages.HomePage;
-import de.agilecoders.wicket.settings.BootstrapSettings;
-import de.agilecoders.wicket.settings.BootswatchThemeProvider;
-import de.agilecoders.wicket.settings.ThemeProvider;
+import java.io.IOException;
+import java.util.Properties;
+
 import org.apache.wicket.Application;
 import org.apache.wicket.Page;
 import org.apache.wicket.RuntimeConfigurationType;
@@ -37,8 +15,32 @@ import org.apache.wicket.request.resource.caching.version.MessageDigestResourceV
 import org.apache.wicket.serialize.java.DeflatedJavaSerializer;
 import org.wicketstuff.annotation.scan.AnnotatedMountScanner;
 
-import java.io.IOException;
-import java.util.Properties;
+import com.google.javascript.jscomp.CompilationLevel;
+
+import de.agilecoders.wicket.core.Bootstrap;
+import de.agilecoders.wicket.core.markup.html.RenderJavaScriptToFooterHeaderResponseDecorator;
+import de.agilecoders.wicket.core.markup.html.references.BootstrapPrettifyCssReference;
+import de.agilecoders.wicket.core.markup.html.references.BootstrapPrettifyJavaScriptReference;
+import de.agilecoders.wicket.core.markup.html.references.ModernizrJavaScriptReference;
+import de.agilecoders.wicket.core.settings.BootstrapSettings;
+import de.agilecoders.wicket.core.settings.ThemeProvider;
+import de.agilecoders.wicket.extensions.javascript.GoogleClosureJavaScriptCompressor;
+import de.agilecoders.wicket.extensions.javascript.YuiCssCompressor;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.html5player.Html5PlayerCssReference;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.html5player.Html5PlayerJavaScriptReference;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.OpenWebIconsCssReference;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.jqueryui.JQueryUIJavaScriptReference;
+import de.agilecoders.wicket.less.BootstrapLess;
+import de.agilecoders.wicket.less.less.BootstrapLessCompilerSettings;
+import de.agilecoders.wicket.less.less.IBootstrapLessCompilerSettings;
+import de.agilecoders.wicket.less.less.Less4JCompiler;
+import de.agilecoders.wicket.samples.assets.base.ApplicationJavaScript;
+import de.agilecoders.wicket.samples.assets.base.FixBootstrapStylesCssResourceReference;
+import de.agilecoders.wicket.samples.pages.HomePage;
+import de.agilecoders.wicket.themes.markup.html.google.GoogleTheme;
+import de.agilecoders.wicket.themes.markup.html.metro.MetroTheme;
+import de.agilecoders.wicket.themes.markup.html.wicket.WicketTheme;
+import de.agilecoders.wicket.themes.settings.BootswatchThemeProvider;
 
 /**
  * Demo Application instance.
@@ -88,7 +90,7 @@ public class WicketApplication extends WebApplication {
 
         optimizeForWebPerformance();
 
-        new AnnotatedMountScanner().scanPackage("de.agilecoders.wicket.samples.pages").mount(this);
+        new AnnotatedMountScanner().scanPackage("de.agilecoders.wicket.core.samples.pages").mount(this);
         //StaticResourceRewriteMapper.withBaseUrl("http://wb.agile-coders.de").install(this);
     }
 
