@@ -1,0 +1,18 @@
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+	xmlns:wicket="http://www.ops4j.org/schema/wicket" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.ops4j.org/schema/wicket wicket.xsd 
+	http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd">
+
+
+	<service interface="org.ops4j.pax.wicket.api.WebApplicationFactory">
+		<service-properties>
+			<entry key="pax.wicket.applicationname" value="bootstrap" />
+			<entry key="pax.wicket.mountpoint" value="bootstrap" />
+		</service-properties>
+		<bean class="org.ops4j.pax.wicket.util.SimpleWebApplicationFactory">
+			<property name="wicketApplication"
+				value="de.agilecoders.wicket.samples.WicketApplication" />
+		</bean>
+	</service>
+
+</blueprint>
