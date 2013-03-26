@@ -4,7 +4,7 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
 /**
- * Default implementation of {@link de.agilecoders.wicket.core.markup.html.bootstrap.extensions.html5player.Html5Player.IVideo}
+ * Default implementation of {@link de.agilecoders.wicket.extensions.markup.html.bootstrap.html5player.Html5Player.IVideo}
  *
  * @author miha
  */
