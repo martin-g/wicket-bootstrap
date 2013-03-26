@@ -18,13 +18,14 @@ import de.agilecoders.wicket.less.BootstrapLess;
 import de.agilecoders.wicket.less.BootstrapLessCompilerSettings;
 import de.agilecoders.wicket.less.IBootstrapLessCompilerSettings;
 import de.agilecoders.wicket.less.Less4JCompiler;
-import de.agilecoders.wicket.markup.html.themes.google.GoogleTheme;
-import de.agilecoders.wicket.markup.html.themes.metro.MetroTheme;
-import de.agilecoders.wicket.markup.html.themes.wicket.WicketTheme;
 import de.agilecoders.wicket.samples.assets.base.ApplicationJavaScript;
 import de.agilecoders.wicket.samples.assets.base.FixBootstrapStylesCssResourceReference;
 import de.agilecoders.wicket.samples.pages.HomePage;
-import de.agilecoders.wicket.settings.BootswatchThemeProvider;
+import de.agilecoders.wicket.themes.markup.html.google.GoogleTheme;
+import de.agilecoders.wicket.themes.markup.html.metro.MetroTheme;
+import de.agilecoders.wicket.themes.markup.html.wicket.WicketTheme;
+import de.agilecoders.wicket.themes.settings.BootswatchThemeProvider;
+
 import org.apache.wicket.Application;
 import org.apache.wicket.Page;
 import org.apache.wicket.RuntimeConfigurationType;
