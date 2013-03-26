@@ -1,6 +1,5 @@
 package de.agilecoders.wicket.less;
 
-import de.agilecoders.wicket.BootstrapLess;
 import org.apache.wicket.Application;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

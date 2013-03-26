@@ -1,7 +1,6 @@
 package de.agilecoders.wicket.samples;
 
 import com.google.javascript.jscomp.CompilationLevel;
-import de.agilecoders.wicket.BootstrapLess;
 import de.agilecoders.wicket.core.Bootstrap;
 import de.agilecoders.wicket.core.markup.html.RenderJavaScriptToFooterHeaderResponseDecorator;
 import de.agilecoders.wicket.core.markup.html.references.BootstrapPrettifyCssReference;
@@ -15,6 +14,7 @@ import de.agilecoders.wicket.extensions.markup.html.bootstrap.html5player.Html5P
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.html5player.Html5PlayerJavaScriptReference;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.OpenWebIconsCssReference;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.jqueryui.JQueryUIJavaScriptReference;
+import de.agilecoders.wicket.less.BootstrapLess;
 import de.agilecoders.wicket.less.BootstrapLessCompilerSettings;
 import de.agilecoders.wicket.less.IBootstrapLessCompilerSettings;
 import de.agilecoders.wicket.less.Less4JCompiler;

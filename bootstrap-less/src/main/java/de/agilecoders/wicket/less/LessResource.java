@@ -1,6 +1,5 @@
 package de.agilecoders.wicket.less;
 
-import de.agilecoders.wicket.BootstrapLess;
 import org.apache.wicket.WicketRuntimeException;
 import org.apache.wicket.util.io.Connections;
 import org.apache.wicket.util.io.IOUtils;
