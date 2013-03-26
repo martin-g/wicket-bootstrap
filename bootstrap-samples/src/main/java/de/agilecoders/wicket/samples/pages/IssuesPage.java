@@ -15,7 +15,7 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.AbstractNavbarCom
 import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.ImmutableNavbarComponent;
 import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.Navbar;
 import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.NavbarAjaxLink;
-import de.agilecoders.wicket.markup.html.bootstrap.extensions.form.DateTextField;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.DateTextField;
 import de.agilecoders.wicket.samples.components.issues.CustomNavbarForm;
 import org.apache.wicket.Component;
 import org.apache.wicket.Page;

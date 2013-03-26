@@ -10,6 +10,8 @@ import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 
+import de.agilecoders.wicket.extensions.javascript.YuiCssCompressor;
+
 import java.io.IOException;
 
 import static org.junit.Assert.assertNotNull;
