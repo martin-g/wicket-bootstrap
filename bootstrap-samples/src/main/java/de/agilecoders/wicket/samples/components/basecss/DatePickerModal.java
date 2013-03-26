@@ -1,6 +1,6 @@
 package de.agilecoders.wicket.samples.components.basecss;
 
-import de.agilecoders.wicket.markup.html.bootstrap.dialog.Modal;
+import de.agilecoders.wicket.core.markup.html.bootstrap.dialog.Modal;
 import de.agilecoders.wicket.markup.html.bootstrap.extensions.form.DateTextField;
 import org.apache.wicket.model.Model;
 

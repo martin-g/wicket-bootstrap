@@ -1,7 +1,7 @@
 package de.agilecoders.wicket.markup.html.themes.google;
 
-import de.agilecoders.wicket.markup.html.themes.bootstrap.BootstrapResponsiveCssReference;
-import de.agilecoders.wicket.settings.Theme;
+import de.agilecoders.wicket.core.markup.html.themes.bootstrap.BootstrapResponsiveCssReference;
+import de.agilecoders.wicket.core.settings.Theme;
 
 /**
  * Google theme.

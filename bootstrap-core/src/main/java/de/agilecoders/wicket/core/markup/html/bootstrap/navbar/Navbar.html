@@ -1,0 +1,36 @@
+<html xmlns:wicket="http://wicket.apache.org">
+    <head>
+        <title>Navbar</title>
+    </head>
+    <body>
+        <wicket:panel>
+            <div class="navbar-inner">
+                <div wicket:id="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+
+                    <a wicket:id="brandName" class="brand" href="#">
+                        <img wicket:id="brandImage">
+                        <span wicket:id="brandLabel"></span>
+                    </a>
+
+                    <div id="nav-collapse" class="nav-collapse collapse">
+                        <ul wicket:enclosure="navLeftList" class="nav">
+                            <li wicket:id="navLeftList">
+                                <div wicket:id="component">[[CONTENT]]</div>
+                            </li>
+                        </ul>
+                        <ul wicket:enclosure="navRightList" class="nav pull-right">
+                            <li wicket:id="navRightList">
+                                <div wicket:id="component">[[CONTENT]]</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </wicket:panel>
+    </body>
+</html>

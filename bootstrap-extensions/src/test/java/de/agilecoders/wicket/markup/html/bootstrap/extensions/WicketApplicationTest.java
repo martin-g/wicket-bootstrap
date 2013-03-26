@@ -2,9 +2,11 @@ package de.agilecoders.wicket.markup.html.bootstrap.extensions;
 
 import com.google.common.base.Splitter;
 import com.google.common.collect.Lists;
-import de.agilecoders.wicket.Bootstrap;
-import de.agilecoders.wicket.settings.BootstrapSettings;
-import de.agilecoders.wicket.settings.IBootstrapSettings;
+
+import de.agilecoders.wicket.core.Bootstrap;
+import de.agilecoders.wicket.core.settings.BootstrapSettings;
+import de.agilecoders.wicket.core.settings.IBootstrapSettings;
+
 import org.apache.wicket.Page;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.util.tester.TagTester;

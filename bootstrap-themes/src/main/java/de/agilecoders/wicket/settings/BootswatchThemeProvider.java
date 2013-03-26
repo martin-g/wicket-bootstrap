@@ -1,5 +1,6 @@
 package de.agilecoders.wicket.settings;
 
+import de.agilecoders.wicket.core.settings.DefaultThemeProvider;
 import de.agilecoders.wicket.markup.html.themes.bootswatch.BootswatchTheme;
 
 /**

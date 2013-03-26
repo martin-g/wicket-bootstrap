@@ -1,7 +1,8 @@
 package de.agilecoders.wicket.markup.html.bootstrap.extensions.contextmenu;
 
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
-import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonList;
+import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.CssClassNameAppender;
+import de.agilecoders.wicket.core.markup.html.bootstrap.button.ButtonList;
+
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.link.AbstractLink;
 import org.apache.wicket.model.IModel;

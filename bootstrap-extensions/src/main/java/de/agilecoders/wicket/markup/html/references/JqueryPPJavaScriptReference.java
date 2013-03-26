@@ -1,6 +1,6 @@
 package de.agilecoders.wicket.markup.html.references;
 
-import de.agilecoders.wicket.util.Dependencies;
+import de.agilecoders.wicket.core.util.Dependencies;
 import de.agilecoders.wicket.webjars.request.resource.WebjarsJavaScriptResourceReference;
 import org.apache.wicket.Application;
 import org.apache.wicket.markup.head.HeaderItem;

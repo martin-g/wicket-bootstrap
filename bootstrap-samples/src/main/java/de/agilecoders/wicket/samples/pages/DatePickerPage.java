@@ -1,8 +1,8 @@
 package de.agilecoders.wicket.samples.pages;
 
-import de.agilecoders.wicket.markup.html.bootstrap.block.Code;
-import de.agilecoders.wicket.markup.html.bootstrap.button.BootstrapButton;
-import de.agilecoders.wicket.markup.html.bootstrap.button.Buttons;
+import de.agilecoders.wicket.core.markup.html.bootstrap.block.Code;
+import de.agilecoders.wicket.core.markup.html.bootstrap.button.BootstrapButton;
+import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons;
 import de.agilecoders.wicket.markup.html.bootstrap.extensions.form.DateTextField;
 import de.agilecoders.wicket.markup.html.bootstrap.extensions.form.DateTextFieldConfig;
 import de.agilecoders.wicket.samples.components.basecss.DatePickerModal;

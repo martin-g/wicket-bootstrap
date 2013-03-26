@@ -1,6 +1,6 @@
 package de.agilecoders.wicket.markup.html.bootstrap.extensions.html5player;
 
-import de.agilecoders.wicket.markup.html.bootstrap.common.AbstractConfig;
+import de.agilecoders.wicket.core.markup.html.bootstrap.common.AbstractConfig;
 
 /**
  * {@link Html5Player} configuration

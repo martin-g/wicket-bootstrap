@@ -1,9 +1,9 @@
 package de.agilecoders.wicket.markup.html.bootstrap.extensions.form;
 
+import de.agilecoders.wicket.core.util.Attributes;
 import de.agilecoders.wicket.markup.html.bootstrap.extensions.references.BootstrapDatepickerJsReference;
 import de.agilecoders.wicket.markup.html.bootstrap.extensions.references.BootstrapDatepickerLangJsReference;
 import de.agilecoders.wicket.markup.html.bootstrap.extensions.references.BootstrapDatepickerReference;
-import de.agilecoders.wicket.util.Attributes;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
@@ -13,7 +13,7 @@ import org.apache.wicket.model.IModel;
 
 import java.util.Date;
 
-import static de.agilecoders.wicket.util.JQuery.$;
+import static de.agilecoders.wicket.core.util.JQuery.$;
 
 /**
  * A TextField that is mapped to a <code>java.util.Date</code> object.

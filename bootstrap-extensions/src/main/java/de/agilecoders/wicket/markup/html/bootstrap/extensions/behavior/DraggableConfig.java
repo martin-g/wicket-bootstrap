@@ -1,9 +1,9 @@
 package de.agilecoders.wicket.markup.html.bootstrap.extensions.behavior;
 
-import de.agilecoders.wicket.markup.html.bootstrap.common.AbstractConfig;
+import de.agilecoders.wicket.core.markup.html.bootstrap.common.AbstractConfig;
 
 /**
- * {@link de.agilecoders.wicket.markup.html.bootstrap.components.PopoverBehavior} configuration
+ * {@link de.agilecoders.wicket.core.markup.html.bootstrap.components.PopoverBehavior} configuration
  *
  * @author miha
  */

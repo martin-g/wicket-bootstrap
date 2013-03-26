@@ -1,6 +1,7 @@
 package de.agilecoders.wicket.markup.html.bootstrap.extensions.button;
 
-import de.agilecoders.wicket.markup.html.bootstrap.common.AbstractConfig;
+import de.agilecoders.wicket.core.markup.html.bootstrap.common.AbstractConfig;
+
 import org.apache.wicket.util.time.Duration;
 
 /**

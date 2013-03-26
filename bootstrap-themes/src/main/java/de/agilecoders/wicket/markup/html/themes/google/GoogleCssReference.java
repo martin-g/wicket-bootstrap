@@ -1,7 +1,8 @@
 package de.agilecoders.wicket.markup.html.themes.google;
 
-import de.agilecoders.wicket.markup.html.themes.bootstrap.BootstrapCssReference;
-import de.agilecoders.wicket.util.Generics2;
+import de.agilecoders.wicket.core.markup.html.themes.bootstrap.BootstrapCssReference;
+import de.agilecoders.wicket.core.util.Generics2;
+
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.HeaderItem;
 import org.apache.wicket.request.resource.CssResourceReference;

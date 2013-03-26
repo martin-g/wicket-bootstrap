@@ -1,6 +1,7 @@
 package de.agilecoders.wicket.javascript.jasny;
 
-import de.agilecoders.wicket.markup.html.references.BootstrapJavaScriptReference;
+import de.agilecoders.wicket.core.markup.html.references.BootstrapJavaScriptReference;
+
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.HeaderItem;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;

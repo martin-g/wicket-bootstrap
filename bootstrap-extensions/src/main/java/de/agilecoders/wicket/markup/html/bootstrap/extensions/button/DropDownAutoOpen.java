@@ -1,16 +1,17 @@
 package de.agilecoders.wicket.markup.html.bootstrap.extensions.button;
 
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
-import de.agilecoders.wicket.markup.html.bootstrap.button.dropdown.DropDownButton;
+import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
+import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.DropDownButton;
+
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 
-import static de.agilecoders.wicket.util.JQuery.$;
+import static de.agilecoders.wicket.core.util.JQuery.$;
 
 /**
- * The {@link DropDownAutoOpen} behavior opens a {@link de.agilecoders.wicket.markup.html.bootstrap.button.dropdown.DropDownButton}
+ * The {@link DropDownAutoOpen} behavior opens a {@link de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.DropDownButton}
  * when it is hovered.
  *
  * @author miha

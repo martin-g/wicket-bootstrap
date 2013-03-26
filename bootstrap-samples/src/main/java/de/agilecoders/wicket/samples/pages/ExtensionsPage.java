@@ -1,14 +1,17 @@
 package de.agilecoders.wicket.samples.pages;
 
 import com.google.common.collect.Lists;
+
+import de.agilecoders.wicket.core.markup.html.bootstrap.block.Code;
+import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.DropDownButton;
+import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.MenuBookmarkablePageLink;
+import de.agilecoders.wicket.core.markup.html.bootstrap.components.TooltipConfig;
+import de.agilecoders.wicket.core.markup.html.bootstrap.dialog.Modal;
+import de.agilecoders.wicket.core.markup.html.bootstrap.dialog.TextContentModal;
+import de.agilecoders.wicket.core.markup.html.bootstrap.image.Icon;
+import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
 import de.agilecoders.wicket.javascript.jasny.FileUploadField;
 import de.agilecoders.wicket.javascript.jasny.InputMaskBehavior;
-import de.agilecoders.wicket.markup.html.bootstrap.block.Code;
-import de.agilecoders.wicket.markup.html.bootstrap.button.dropdown.DropDownButton;
-import de.agilecoders.wicket.markup.html.bootstrap.button.dropdown.MenuBookmarkablePageLink;
-import de.agilecoders.wicket.markup.html.bootstrap.components.TooltipConfig;
-import de.agilecoders.wicket.markup.html.bootstrap.dialog.Modal;
-import de.agilecoders.wicket.markup.html.bootstrap.dialog.TextContentModal;
 import de.agilecoders.wicket.markup.html.bootstrap.extensions.behavior.Draggable;
 import de.agilecoders.wicket.markup.html.bootstrap.extensions.behavior.DraggableConfig;
 import de.agilecoders.wicket.markup.html.bootstrap.extensions.behavior.Resizable;
@@ -21,8 +24,6 @@ import de.agilecoders.wicket.markup.html.bootstrap.extensions.icon.OpenWebIconTy
 import de.agilecoders.wicket.markup.html.bootstrap.extensions.icon.OpenWebIconsCssReference;
 import de.agilecoders.wicket.markup.html.bootstrap.extensions.tour.TourBehavior;
 import de.agilecoders.wicket.markup.html.bootstrap.extensions.tour.TourStep;
-import de.agilecoders.wicket.markup.html.bootstrap.image.Icon;
-import de.agilecoders.wicket.markup.html.bootstrap.image.IconType;
 import de.agilecoders.wicket.samples.panels.pagination.InfinitePaginationPanel;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.head.CssHeaderItem;

@@ -1,16 +1,18 @@
 package de.agilecoders.wicket.markup.html.bootstrap.extensions.contextmenu;
 
 import com.google.common.base.Optional;
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.BootstrapResourcesBehavior;
-import de.agilecoders.wicket.markup.html.bootstrap.behavior.CssClassNameAppender;
-import de.agilecoders.wicket.util.References;
+
+import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapResourcesBehavior;
+import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.CssClassNameAppender;
+import de.agilecoders.wicket.core.util.References;
+
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.html.panel.GenericPanel;
 import org.apache.wicket.model.IModel;
 
-import static de.agilecoders.wicket.util.JQuery.$;
+import static de.agilecoders.wicket.core.util.JQuery.$;
 
 /**
  * A bootstrap styled context menu.

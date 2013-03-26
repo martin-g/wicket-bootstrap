@@ -1,8 +1,9 @@
 package de.agilecoders.wicket.samples.components.issues;
 
-import de.agilecoders.wicket.markup.html.bootstrap.button.BootstrapButton;
-import de.agilecoders.wicket.markup.html.bootstrap.button.Buttons;
-import de.agilecoders.wicket.markup.html.bootstrap.navbar.NavbarForm;
+import de.agilecoders.wicket.core.markup.html.bootstrap.button.BootstrapButton;
+import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons;
+import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.NavbarForm;
+
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.Model;

@@ -1,6 +1,6 @@
 package de.agilecoders.wicket.markup.html.bootstrap.extensions.icon;
 
-import de.agilecoders.wicket.markup.html.bootstrap.image.IconType;
+import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
 
 /**
  * The OpenWeb Icons are a set of icons to show the support for the Open Web!

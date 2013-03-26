@@ -1,7 +1,9 @@
 package de.agilecoders.wicket.samples.assets.base;
 
 import com.google.common.collect.Lists;
-import de.agilecoders.wicket.markup.html.references.BootstrapJavaScriptReference;
+
+import de.agilecoders.wicket.core.markup.html.references.BootstrapJavaScriptReference;
+
 import org.apache.wicket.Application;
 import org.apache.wicket.markup.head.HeaderItem;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;

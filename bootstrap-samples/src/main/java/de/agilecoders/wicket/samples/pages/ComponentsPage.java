@@ -1,14 +1,14 @@
 package de.agilecoders.wicket.samples.pages;
 
-import de.agilecoders.wicket.markup.html.bootstrap.button.BootstrapAjaxLink;
-import de.agilecoders.wicket.markup.html.bootstrap.button.Buttons;
-import de.agilecoders.wicket.markup.html.bootstrap.button.dropdown.DropDownButton;
-import de.agilecoders.wicket.markup.html.bootstrap.button.dropdown.DropDownSubMenu;
-import de.agilecoders.wicket.markup.html.bootstrap.button.dropdown.MenuBookmarkablePageLink;
-import de.agilecoders.wicket.markup.html.bootstrap.button.dropdown.MenuDivider;
-import de.agilecoders.wicket.markup.html.bootstrap.button.dropdown.SplitButton;
+import de.agilecoders.wicket.core.markup.html.bootstrap.button.BootstrapAjaxLink;
+import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons;
+import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.DropDownButton;
+import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.DropDownSubMenu;
+import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.MenuBookmarkablePageLink;
+import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.MenuDivider;
+import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.SplitButton;
+import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
 import de.agilecoders.wicket.markup.html.bootstrap.extensions.button.DropDownAutoOpen;
-import de.agilecoders.wicket.markup.html.bootstrap.image.IconType;
 import de.agilecoders.wicket.samples.components.basecss.ButtonGroups;
 import org.apache.wicket.Component;
 import org.apache.wicket.Page;
