@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration>
+<configuration>
+    <appender name="appender-console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <charset>UTF-8</charset>
+            <pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>DEBUG</level>
+        </filter>
+    </appender>
+
+    <appender name="appender-file" class="ch.qos.logback.core.FileAppender">
+        <file>wicket-bootstrap.log</file>
+        <append>true</append>
+        <encoder>
+            <pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="de.agilecoders" level="DEBUG"/>
+
+    <logger name="ch" level="WARN"/>
+
+    <logger name="com" level="WARN"/>
+
+    <logger name="eu" level="WARN"/>
+
+    <logger name="net" level="WARN"/>
+
+    <logger name="org" level="WARN"/>
+
+    <root level="info">
+        <appender-ref ref="appender-file"/>
+        <appender-ref ref="appender-console"/>
+    </root>
+</configuration>

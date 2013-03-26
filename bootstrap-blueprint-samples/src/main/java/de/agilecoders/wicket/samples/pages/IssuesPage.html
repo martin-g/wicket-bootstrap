@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+    <head>
+        <meta charset="utf-8"/>
+        <title>ComponentsPage</title>
+    </head>
+    <body>
+        <wicket:extend>
+            <header class="jumbotron subhead" id="overview">
+                <div class="container">
+                    <h1>Issues from github</h1>
+
+                    <p class="lead">A samples page that shows solutions for some github issues.</p>
+                </div>
+            </header>
+
+
+            <div class="container">
+
+                <div class="row-fluid">
+                    <div class="span3 bs-docs-sidebar">
+                        <ul wicket:id="navigation" class="nav nav-list bs-docs-sidenav">
+                            <li><a href="#issue80"><i class="icon-chevron-right"></i> Sync two navbars</a></li>
+                            <li><a href="#issue-1"><i class="icon-chevron-right"></i> Form in navbar</a></li>
+                            <li><a href="#issue88"><i class="icon-chevron-right"></i> DatePicker with PropertyModel</a></li>
+                            <li><a href="#issue90"><i class="icon-chevron-right"></i> Endless loop when closing Modal</a></li>
+                            <li><a href="#issue93"><i class="icon-chevron-right"></i> Configure popover component</a></li>
+                            <li><a href="#issue102"><i class="icon-chevron-right"></i> TypedLink</a></li>
+                        </ul>
+                    </div>
+                    <div class="span9">
+                        <div wicket:id="feedback"></div>
+
+                        <section id="issue80">
+                            <div class="page-header">
+                                <h1>Sync two navbars</h1>
+                            </div>
+
+                            <h2>Example</h2>
+
+                            <p>see <a href="https://github.com/l0rdn1kk0n/wicket-bootstrap/issues/80">issue #80</a>.</p>
+
+                            <div class="bs-docs-example">
+                                <div wicket:id="navbar-parent"></div>
+                                <div wicket:id="navbar-child"></div>
+                            </div>
+                        </section>
+                        <section id="issue-1">
+                            <div class="page-header">
+                                <h1>Form in navbar</h1>
+                            </div>
+
+                            <h2>Example</h2>
+
+                            <p style="display:none">see <a href="https://github.com/l0rdn1kk0n/wicket-bootstrap/issues/80">issue #80</a>.</p>
+
+                            <div class="bs-docs-example">
+                                <div wicket:id="navbar-form"></div>
+                            </div>
+                        </section>
+                        <section id="issue88">
+                            <div class="page-header">
+                                <h1>DatePicker with PropertyModel</h1>
+                            </div>
+
+                            <p>see <a href="https://github.com/l0rdn1kk0n/wicket-bootstrap/issues/88">issue #88</a>.</p>
+
+                            <div class="bs-docs-example">
+                                <form wicket:id="datepicker-form">
+                                    <input wicket:id="dueDate">
+                                    <br>
+                                    <input type="submit" value="Submit" wicket:id="submit">
+                                </form>
+                            </div>
+                        </section>
+                        <section id="issue90">
+                            <div class="page-header">
+                                <h1>Endless loop when closing Modal</h1>
+                            </div>
+
+                            <p>see <a href="https://github.com/l0rdn1kk0n/wicket-bootstrap/issues/90">issue #90</a>.</p>
+
+                            <div class="bs-docs-example">
+                                <div wicket:id="endless-modal"></div>
+                                <a wicket:id="open-endless-modal">Open Modal Dialog</a>
+                            </div>
+                        </section>
+                        <section id="issue93">
+                            <div class="page-header">
+                                <h1>Configure popover component</h1>
+                            </div>
+
+                            <p>see <a href="https://github.com/l0rdn1kk0n/wicket-bootstrap/issues/93">issue #93</a>.</p>
+
+                            <div class="bs-docs-example">
+                                <a wicket:id="popover">Popover (hover, top)</a>
+                                <a wicket:id="richpopover">RichPopover (hover, top)</a>
+                            </div>
+                        </section>
+                        <section id="issue102">
+                            <div class="page-header">
+                                <h1>TypedLink</h1>
+                            </div>
+
+                            <p>see <a href="https://github.com/l0rdn1kk0n/wicket-bootstrap/issues/102">issue #102</a>.</p>
+
+                            <div class="bs-docs-example">
+                                <a wicket:id="link">[[LABEL]]</a>
+                                <a wicket:id="link-danger">[[LABEL]]</a>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </wicket:extend>
+    </body>
+</html>

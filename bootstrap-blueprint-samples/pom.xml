@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>de.agilecoders.wicket</groupId>
+		<artifactId>bootstrap-parent</artifactId>
+		<version>0.8.2-SNAPSHOT</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+
+	<groupId>de.agilecoders.wicket</groupId>
+	<artifactId>wicket-bootstrap-blueprint-samples</artifactId>
+	<version>0.8.2-SNAPSHOT</version>
+	<packaging>bundle</packaging>
+	<name>bootstrap-blueprint-samples</name>
+
+	<properties>
+		<wicket.configuration>DEVELOPMENT</wicket.configuration>
+	</properties>
+
+	<dependencies>
+		<!-- WICKETSTUFF -->
+		<dependency>
+			<groupId>org.wicketstuff</groupId>
+			<artifactId>wicketstuff-annotation</artifactId>
+			<version>${wicketstuff.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.apache.wicket</groupId>
+					<artifactId>wicket</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>com.newrelic.agent.java</groupId>
+			<artifactId>newrelic-api</artifactId>
+			<version>${newrelic.version}</version>
+		</dependency>
+
+		<!-- WICKET-BOOTSTRAP -->
+		<dependency>
+			<groupId>de.agilecoders.wicket</groupId>
+			<artifactId>wicket-bootstrap-core</artifactId>
+			<version>${project.version}</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>wicket-webjars</artifactId>
+					<groupId>de.agilecoders.wicket.core.webjars</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>de.agilecoders.wicket</groupId>
+			<artifactId>wicket-bootstrap-extensions</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>de.agilecoders.wicket</groupId>
+			<artifactId>wicket-bootstrap-less</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>de.agilecoders.wicket</groupId>
+			<artifactId>wicket-bootstrap-themes</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>${logback.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.eclipse.jetty.aggregate</groupId>
+			<artifactId>jetty-all-server</artifactId>
+			<version>${jetty.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.google.javascript</groupId>
+			<artifactId>closure-compiler</artifactId>
+			<version>${google-closure.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>de.agilecoders.wicket.webjars</groupId>
+			<artifactId>wicket-webjars</artifactId>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<finalName>demo</finalName>
+		<resources>
+			<resource>
+				<filtering>true</filtering>
+				<directory>src/main/resources</directory>
+			</resource>
+			<resource>
+				<filtering>false</filtering>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**</include>
+				</includes>
+				<excludes>
+					<exclude>**/*.java</exclude>
+				</excludes>
+			</resource>
+		</resources>
+		<testResources>
+			<testResource>
+				<filtering>false</filtering>
+				<directory>src/test/resources</directory>
+			</testResource>
+			<testResource>
+				<filtering>false</filtering>
+				<directory>src/test/java</directory>
+				<includes>
+					<include>**</include>
+				</includes>
+				<excludes>
+					<exclude>**/*.java</exclude>
+				</excludes>
+			</testResource>
+		</testResources>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.5.1</version>
+				<inherited>true</inherited>
+				<configuration>
+					<source>${mvn.build.java.version}</source>
+					<target>${mvn.build.java.version}</target>
+					<encoding>${project.build.sourceEncoding}</encoding>
+					<optimize>true</optimize>
+					<showWarnings>true</showWarnings>
+					<showDeprecation>true</showDeprecation>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.mortbay.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<version>${jetty.version}</version>
+				<configuration>
+					<connectors>
+						<connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
+							<port>8080</port>
+							<maxIdleTime>3600000</maxIdleTime>
+						</connector>
+						<connector implementation="org.eclipse.jetty.server.ssl.SslSocketConnector">
+							<port>8443</port>
+							<maxIdleTime>3600000</maxIdleTime>
+							<keystore>${project.build.directory}/test-classes/keystore</keystore>
+							<password>wicket</password>
+							<keyPassword>wicket</keyPassword>
+						</connector>
+					</connectors>
+				</configuration>
+			</plugin>
+
+			<!-- BD - Allows for jar to be built with an OSGi compatiable manifest -->
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<version>${maven-bundle-plugin.version}</version>
+				<extensions>true</extensions>
+				<configuration>
+					<instructions>
+						<Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
+						<Bundle-Version>${project.version}</Bundle-Version>
+						<Import-Package>
+							org.apache.wicket.core.request.mapper,
+							org.ops4j.pax.wicket.util.proxy,
+							org.ops4j.pax.wicket.util,
+							net.sf.cglib.proxy;version="[2,3)",
+							net.sf.cglib.core;version="[2,3)",
+							net.sf.cglib.reflect;version="[2,3)",
+							javax.servlet;version="2.5.0",
+							javax.servlet.http;version="2.5.0",
+							org.osgi.framework,
+							org.slf4j,
+							org.apache.wicket,
+							org.apache.wicket.ajax,
+							org.apache.wicket.ajax.attributes,
+							org.apache.wicket.ajax.json,
+							org.apache.wicket.behavior,
+							org.apache.wicket.event,
+							org.apache.wicket.markup.head,
+							org.apache.wicket.markup.html,
+							org.apache.wicket.markup.html.basic,
+							org.apache.wicket.markup.html.link,
+							org.apache.wicket.markup.html.panel,
+							org.apache.wicket.model,
+							org.apache.wicket.page,
+							org.apache.wicket.protocol.http,
+							org.apache.wicket.request,
+							org.apache.wicket.request.cycle,
+							org.apache.wicket.request.http,
+							org.apache.wicket.request.mapper,
+							org.apache.wicket.request.mapper.parameter,
+							org.apache.wicket.request.resource,
+							org.apache.wicket.resource,
+							org.apache.wicket.session,
+							org.apache.wicket.settings,
+							org.apache.wicket.util,
+							org.apache.wicket.util.file,
+							org.apache.wicket.util.string,
+							org.apache.wicket.util.time,
+							org.apache.wicket.util.string.interpolator,
+							org.apache.wicket.util.template,
+							org.apache.wicket.util.lang,
+							de.agilecoders.wicket.less,
+							*
+						</Import-Package>
+					</instructions>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<profiles>
+		<profile>
+			<id>deployment</id>
+			<properties>
+				<wicket.configuration>DEPLOYMENT</wicket.configuration>
+			</properties>
+		</profile>
+	</profiles>
+</project>
