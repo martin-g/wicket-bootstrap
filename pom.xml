@@ -42,6 +42,7 @@
         <module>bootstrap-themes</module>
         <module>bootstrap-less</module>
         <module>bootstrap-samples</module>
+        <module>bootstrap-blueprint-samples</module>
     </modules>
 
     <repositories>
