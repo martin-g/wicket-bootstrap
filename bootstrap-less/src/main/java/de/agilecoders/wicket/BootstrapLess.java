@@ -1,6 +1,7 @@
 package de.agilecoders.wicket;
 
 import de.agilecoders.wicket.less.IBootstrapLessCompilerSettings;
+import de.agilecoders.wicket.less.LessCacheManager;
 import de.agilecoders.wicket.less.LessResourceStreamLocator;
 import org.apache.wicket.Application;
 import org.apache.wicket.MetaDataKey;
@@ -38,6 +39,9 @@ public final class BootstrapLess {
         if (settings.useLessCompiler()) {
             app.getResourceSettings().setResourceStreamLocator(new CachingResourceStreamLocator(new LessResourceStreamLocator()));
         }
+
+        LessCacheManager cacheManager = new LessCacheManager();
+        cacheManager.install(app);
 
         IPackageResourceGuard resourceGuard = app.getResourceSettings().getPackageResourceGuard();
         if (resourceGuard instanceof SecurePackageResourceGuard) {

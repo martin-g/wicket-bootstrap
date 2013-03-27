@@ -5,8 +5,8 @@ import org.apache.wicket.request.resource.CssResourceReference;
 import java.util.Locale;
 
 /**
- * Static resource reference for css resources. The resources are filtered (stripped comments and
- * whitespace) if there is registered compressor.
+ * A resource reference for Less resources.
+ * The resources are filtered (stripped comments and whitespace) if there is registered compressor.
  *
  * @author miha
  * @see org.apache.wicket.settings.IResourceSettings#getCssCompressor()
