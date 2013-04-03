@@ -35,7 +35,6 @@ public class LessResource implements ILessResource {
         this.path = path;
 
         try {
-            // TODO mgrigorov Why context CL and not scope.getResource(path) ?
             this.lastModified = Connections.getLastModified(Thread.currentThread().getContextClassLoader().getResource(path));
         } catch (IOException e) {
             throw new WicketRuntimeException(e);

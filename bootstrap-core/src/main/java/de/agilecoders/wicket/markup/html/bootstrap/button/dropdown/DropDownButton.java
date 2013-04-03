@@ -40,7 +40,6 @@ public abstract class DropDownButton extends AbstractLink implements Invertible<
     private final IModel<Buttons.Type> buttonType = Model.of(Buttons.Type.Default);
     private final IModel<Boolean> dropUp = Model.of(false);
     private final ButtonList buttonListView;
-    private final IModel<IconType> iconTypeModel;
     private final WebMarkupContainer baseButton;
     private final String script;
     private final Icon icon;
@@ -65,7 +64,6 @@ public abstract class DropDownButton extends AbstractLink implements Invertible<
     public DropDownButton(final String markupId, final IModel<String> model, final IModel<IconType> iconTypeModel) {
         super(markupId, model);
 
-        this.iconTypeModel = iconTypeModel;
         this.script = newInitializerScript();
 
         add(baseButton = newButton("btn", model, iconTypeModel));
@@ -129,7 +127,7 @@ public abstract class DropDownButton extends AbstractLink implements Invertible<
      * @return this element instance
      */
     public final DropDownButton setIconType(final IconType iconType) {
-        iconTypeModel.setObject(iconType);
+        icon.setType(iconType);
         return this;
     }
 

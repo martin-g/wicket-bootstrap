@@ -3,6 +3,7 @@ package de.agilecoders.wicket.less;
 import org.apache.wicket.util.time.Time;
 
 import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
 
 /**
@@ -35,7 +36,7 @@ public interface ILessResource {
     /**
      * @return the content stream of this resource
      */
-    InputStream getInputStream();
+    InputStream getInputStream() throws IOException;
 
     /**
      * creates a path relative to current that points to a new resource
