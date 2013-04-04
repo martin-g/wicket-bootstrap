@@ -47,6 +47,9 @@ public class InfinitePaginationPanel extends AbstractPaginationPanel {
         scrollingBehavior.setNavSelector(pager);
         scrollingBehavior.setItemSelector(this, ".item");
         scrollingBehavior.setNextSelector(nextLink);
+        scrollingBehavior.loadingMsgText("loading...");
+        scrollingBehavior.loadingImg("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABHNCSVQICAgIfAhkiAAAAA1JREFUCJlj+P///38ACfsD/QjR6B4AAAAASUVORK5CYII=");
+        scrollingBehavior.loadingFinishedMsg("completed!");
 
         return scrollingBehavior;
     }

@@ -113,25 +113,37 @@ public class InfiniteScrollingBehavior extends Behavior {
         return this;
     }
 
+    public InfiniteScrollingBehavior loadingFinishedMsg(String finishedMsg) {
+        getLoadingData().put("finishedMsg", finishedMsg);
+        return this;
+    }
+
+    public InfiniteScrollingBehavior loadingMsgText(String msgText) {
+        getLoadingData().put("msgText", msgText);
+        return this;
+    }
+
+    public InfiniteScrollingBehavior loadingImg(String img) {
+        getLoadingData().put("img", img);
+        return this;
+    }
+
+    private Map<String, Object> getLoadingData() {
+        Map<String, Object> loading = (Map<String, Object>) jsonData.get("loading");
+        if (loading == null) {
+            loading = new HashMap<String, Object>();
+            jsonData.put("loading", loading);
+        }
+        return loading;
+    }
+
     /*
     TODO:
-  loadingImg   : "/img/loading.gif",
-                 // loading image.
-                 // default: "http://www.infinite-scroll.com/loading.gif"
-
-  loadingText  : "Loading new posts...",
-                 // text accompanying loading image
-                 // default: "<em>Loading the next set of posts...</em>"
-
   extraScrollPx: 50,
                  // number of additonal pixels that the page will scroll
                  // (in addition to the height of the loading div)
                  // animate must be true for this to matter
                  // default: 150
-
-  donetext     : "I think we've hit the end, Jim" ,
-                 // text displayed when all items have been retrieved
-                 // default: "<em>Congratulations, you've reached the end of the internet.</em>"
 
   bufferPx     : 40,
                  // increase this number if you want infscroll to fire quicker
