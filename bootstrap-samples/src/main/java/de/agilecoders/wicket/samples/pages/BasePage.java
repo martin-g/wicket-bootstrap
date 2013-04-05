@@ -167,7 +167,7 @@ abstract class BasePage<T> extends GenericWebPage<T> {
 
                 return subMenu;
             }
-        }.setIconType(IconType.thlarge).add(new DropDownAutoOpen());
+        }.setIconType(IconType.thlarge).setInverted(true).add(new DropDownAutoOpen());
     }
 
     /**
