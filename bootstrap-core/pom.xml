@@ -152,7 +152,7 @@
                     </dependency>
                 </dependencies>
                 <configuration>
-                    <groups>de.agilecoders.wicket.test.IntegrationTest</groups>
+                    <groups>de.agilecoders.wicket.core.test.IntegrationTest</groups>
                 </configuration>
                 <executions>
                     <execution>

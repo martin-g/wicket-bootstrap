@@ -1,6 +1,22 @@
 package de.agilecoders.wicket.samples;
 
+import java.io.IOException;
+import java.util.Properties;
+
+import org.apache.wicket.Application;
+import org.apache.wicket.Page;
+import org.apache.wicket.RuntimeConfigurationType;
+import org.apache.wicket.WicketRuntimeException;
+import org.apache.wicket.protocol.http.WebApplication;
+import org.apache.wicket.request.resource.CssResourceReference;
+import org.apache.wicket.request.resource.JavaScriptResourceReference;
+import org.apache.wicket.request.resource.caching.FilenameWithVersionResourceCachingStrategy;
+import org.apache.wicket.request.resource.caching.version.MessageDigestResourceVersion;
+import org.apache.wicket.serialize.java.DeflatedJavaSerializer;
+import org.wicketstuff.annotation.scan.AnnotatedMountScanner;
+
 import com.google.javascript.jscomp.CompilationLevel;
+
 import de.agilecoders.wicket.core.Bootstrap;
 import de.agilecoders.wicket.core.markup.html.RenderJavaScriptToFooterHeaderResponseDecorator;
 import de.agilecoders.wicket.core.markup.html.references.BootstrapPrettifyCssReference;
@@ -25,21 +41,6 @@ import de.agilecoders.wicket.themes.markup.html.google.GoogleTheme;
 import de.agilecoders.wicket.themes.markup.html.metro.MetroTheme;
 import de.agilecoders.wicket.themes.markup.html.wicket.WicketTheme;
 import de.agilecoders.wicket.themes.settings.BootswatchThemeProvider;
-
-import org.apache.wicket.Application;
-import org.apache.wicket.Page;
-import org.apache.wicket.RuntimeConfigurationType;
-import org.apache.wicket.WicketRuntimeException;
-import org.apache.wicket.protocol.http.WebApplication;
-import org.apache.wicket.request.resource.CssResourceReference;
-import org.apache.wicket.request.resource.JavaScriptResourceReference;
-import org.apache.wicket.request.resource.caching.FilenameWithVersionResourceCachingStrategy;
-import org.apache.wicket.request.resource.caching.version.MessageDigestResourceVersion;
-import org.apache.wicket.serialize.java.DeflatedJavaSerializer;
-import org.wicketstuff.annotation.scan.AnnotatedMountScanner;
-
-import java.io.IOException;
-import java.util.Properties;
 
 /**
  * Demo Application instance.
