@@ -1,78 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-<<<<<<< HEAD
-	<modelVersion>4.0.0</modelVersion>
-
-	<parent>
-		<groupId>de.agilecoders.wicket</groupId>
-		<artifactId>bootstrap-parent</artifactId>
-		<version>0.8.2-SNAPSHOT</version>
-		<relativePath>../pom.xml</relativePath>
-	</parent>
-
-	<groupId>de.agilecoders.wicket</groupId>
-	<artifactId>wicket-bootstrap-less</artifactId>
-	<version>0.8.2-SNAPSHOT</version>
-	<packaging>bundle</packaging>
-	<name>bootstrap-less</name>
-
-	<dependencies>
-		<dependency>
-			<groupId>com.github.sommeri</groupId>
-			<artifactId>less4j</artifactId>
-			<version>${less4j.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>com.asual.lesscss</groupId>
-			<artifactId>lesscss-engine</artifactId>
-			<version>${lesscss-engine.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.apache.wicket</groupId>
-			<artifactId>wicket-core</artifactId>
-		</dependency>
-
-		<!-- Test dependencies -->
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit-dep</artifactId>
-			<scope>test</scope>
-		</dependency>
-
-		<!-- HAMCREST DEPENDENCIES -->
-		<dependency>
-			<groupId>org.hamcrest</groupId>
-			<artifactId>hamcrest-core</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.hamcrest</groupId>
-			<artifactId>hamcrest-library</artifactId>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
-
-	<build>
-		<plugins>
-			<!-- BD - Allows for jar to be built with an OSGi compatiable manifest -->
-			<plugin>
-				<groupId>org.apache.felix</groupId>
-				<artifactId>maven-bundle-plugin</artifactId>
-				<version>${maven-bundle-plugin.version}</version>
-				<extensions>true</extensions>
-				<configuration>
-					<instructions>
-						<Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
-						<Bundle-Version>${project.version}</Bundle-Version>
-					</instructions>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
-=======
-    <modelVersion>4.0.0</modelVersion>
+<modelVersion>4.0.0</modelVersion>
 
     <parent>
         <groupId>de.agilecoders.wicket</groupId>
@@ -141,6 +69,20 @@
                 </excludes>
             </testResource>
         </testResources>
-    </build>
->>>>>>> 7b7904945bf891c04f5053f26f7f2b1f0976e735
+		<plugins>
+			<!-- BD - Allows for jar to be built with an OSGi compatiable manifest -->
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<version>${maven-bundle-plugin.version}</version>
+				<extensions>true</extensions>
+				<configuration>
+					<instructions>
+						<Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
+						<Bundle-Version>${project.version}</Bundle-Version>
+					</instructions>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>
