@@ -1,6 +1,5 @@
 package de.agilecoders.wicket.less;
 
-import de.agilecoders.wicket.BootstrapLess;
 import org.apache.wicket.request.resource.CssResourceReference;
 
 import java.util.Locale;

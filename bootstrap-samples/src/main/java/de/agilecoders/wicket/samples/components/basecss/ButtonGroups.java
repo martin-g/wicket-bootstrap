@@ -1,16 +1,16 @@
 package de.agilecoders.wicket.samples.components.basecss;
 
-import de.agilecoders.wicket.markup.html.bootstrap.button.BootstrapBookmarkablePageLink;
-import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonBehavior;
-import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonGroup;
-import de.agilecoders.wicket.markup.html.bootstrap.button.ButtonList;
-import de.agilecoders.wicket.markup.html.bootstrap.button.Buttons;
-import de.agilecoders.wicket.markup.html.bootstrap.button.Toolbar;
-import de.agilecoders.wicket.markup.html.bootstrap.image.Icon;
-import de.agilecoders.wicket.markup.html.bootstrap.image.IconType;
+import de.agilecoders.wicket.core.markup.html.bootstrap.button.BootstrapBookmarkablePageLink;
+import de.agilecoders.wicket.core.markup.html.bootstrap.button.ButtonBehavior;
+import de.agilecoders.wicket.core.markup.html.bootstrap.button.ButtonGroup;
+import de.agilecoders.wicket.core.markup.html.bootstrap.button.ButtonList;
+import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons;
+import de.agilecoders.wicket.core.markup.html.bootstrap.button.Toolbar;
+import de.agilecoders.wicket.core.markup.html.bootstrap.image.Icon;
+import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
+import de.agilecoders.wicket.core.util.Generics2;
 import de.agilecoders.wicket.samples.components.base.Section;
 import de.agilecoders.wicket.samples.pages.ComponentsPage;
-import de.agilecoders.wicket.util.Generics2;
 import org.apache.wicket.markup.html.link.AbstractLink;
 import org.apache.wicket.markup.html.link.BookmarkablePageLink;
 import org.apache.wicket.model.Model;
