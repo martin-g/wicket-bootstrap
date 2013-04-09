@@ -1,0 +1,15 @@
+<html xmlns:wicket="http://wicket.apache.org">
+    <head>
+        <title>BootstrapTabbedPanel</title>
+    </head>
+    <body>
+        <wicket:panel>
+            <wicket:fragment wicket:id="tabs-container">
+                <ul class="nav nav-tabs">
+                    <li wicket:id="tabs"><a href="#" wicket:id="link"><span wicket:id="title">[[tab title]]</span></a></li>
+                </ul>
+            </wicket:fragment>
+            <div wicket:id="panel" class="tab-content"><!-- no panel --></div>
+        </wicket:panel>
+    </body>
+</html>

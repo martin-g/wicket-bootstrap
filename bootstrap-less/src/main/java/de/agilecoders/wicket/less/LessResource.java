@@ -1,16 +1,21 @@
 package de.agilecoders.wicket.less;
 
-import de.agilecoders.wicket.BootstrapLess;
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.nio.charset.Charset;
+
+import org.apache.wicket.Application;
 import org.apache.wicket.WicketRuntimeException;
 import org.apache.wicket.util.io.Connections;
 import org.apache.wicket.util.io.IOUtils;
 import org.apache.wicket.util.time.Time;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
 
 /**
  * Represents a less resource.
@@ -33,13 +38,37 @@ public class LessResource implements ILessResource {
     public LessResource(final Class<?> scope, final String path) {
         this.scope = scope;
         this.path = path;
+        this.lastModified = detectLastModificationTime();
+    }
 
+    /**
+     * @return last modification time of representing resource, if resource can't be found
+     *         {@link Time#START_OF_UNIX_TIME} will be used.
+     */
+    private Time detectLastModificationTime() {
+        Time modified;
         try {
-            // TODO mgrigorov Why context CL and not scope.getResource(path) ?
-            this.lastModified = Connections.getLastModified(Thread.currentThread().getContextClassLoader().getResource(path));
+            modified = Connections.getLastModified(getUrl());
         } catch (IOException e) {
-            throw new WicketRuntimeException(e);
+            LOG.warn("can't detect last modification time: {}", path, e);
+
+            modified = Time.START_OF_UNIX_TIME;
+        } catch (RuntimeException e) {
+            LOG.warn("can't detect last modification time: {}", path, e);
+
+            modified = Time.START_OF_UNIX_TIME;
         }
+
+        return modified;
+    }
+
+    /**
+     * @return {@link URL} instance to given resource
+     */
+    private URL getUrl() {
+        final URL url = ClasspathResourceScope.class.equals(scope) ? null : scope.getResource(path);
+
+        return url != null ? url : Thread.currentThread().getContextClassLoader().getResource(path);
     }
 
     @Override
@@ -59,11 +88,22 @@ public class LessResource implements ILessResource {
         try {
             stream = getInputStream();
 
-            return IOUtils.toString(stream, BootstrapLess.getSettings().getCharset().name());
+            return IOUtils.toString(stream, charset());
         } catch (IOException e) {
             throw new WicketRuntimeException(e);
         } finally {
             IOUtils.closeQuietly(stream);
+        }
+    }
+
+    /**
+     * @return resource charset (charset is used from LessSettings)
+     */
+    private String charset() {
+        if (Application.exists()) {
+            return BootstrapLess.getSettings().getCharset().name();
+        } else {
+            return Charset.defaultCharset().name();
         }
     }
 
@@ -73,8 +113,8 @@ public class LessResource implements ILessResource {
     }
 
     @Override
-    public InputStream getInputStream() {
-        return Thread.currentThread().getContextClassLoader().getResourceAsStream(path);
+    public InputStream getInputStream() throws IOException {
+        return new BufferedInputStream(getUrl().openStream());
     }
 
     @Override
@@ -98,27 +138,29 @@ public class LessResource implements ILessResource {
      * @return highest folder name
      */
     private String findParentName(String base, String path) {
-        final int index = Math.max(base.lastIndexOf('/'), 0);
+        final int index = base.lastIndexOf('/');
 
-        return normalize(base.substring(0, index + 1) + path);
+        if (index >= 0) {
+            return normalize(base.substring(0, index + 1) + path);
+        } else {
+            return path;
+        }
     }
 
     /**
      * normalizes a given path
+     * <p/>
+     * TODO miha: replace this code with java7 Path class
      *
-     * @param path The path to normalize
+     * @param uri The path to normalize
      * @return normalized path
      */
-    private String normalize(String path) {
-        while (path.contains("../")) {
-            int index = path.indexOf("../");
-            String start = findParentName(path.substring(0, index - 1), "");
-            String end = path.substring(index + 3);
-
-            path = start + end;
+    private String normalize(String uri) {
+        try {
+            return new URI(uri).normalize().getPath();
+        } catch (URISyntaxException e) {
+            throw new WicketRuntimeException(e);
         }
-
-        return path;
     }
 
     @Override
@@ -130,6 +172,6 @@ public class LessResource implements ILessResource {
 
     @Override
     public File toFile() {
-        return new File(scope.getResource(getPath()).toString());
+        return new File(getUrl().toString());
     }
 }

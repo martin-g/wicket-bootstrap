@@ -1,8 +1,9 @@
 package de.agilecoders.wicket.samples.panels.pagination;
 
-import de.agilecoders.wicket.markup.html.bootstrap.navigation.BootstrapPagingNavigator;
-import de.agilecoders.wicket.markup.html.bootstrap.navigation.InfiniteScrollingBehavior;
-import de.agilecoders.wicket.markup.html.bootstrap.navigation.ajax.BootstrapAjaxPagingNavigator;
+import de.agilecoders.wicket.core.markup.html.bootstrap.navigation.BootstrapPagingNavigator;
+import de.agilecoders.wicket.core.markup.html.bootstrap.navigation.InfiniteScrollingBehavior;
+import de.agilecoders.wicket.core.markup.html.bootstrap.navigation.ajax.BootstrapAjaxPagingNavigator;
+
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.markup.html.navigation.paging.AjaxPagingNavigationBehavior;
@@ -14,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * A demo panel for {@link de.agilecoders.wicket.markup.html.bootstrap.navigation.BootstrapPagingNavigator}
+ * A demo panel for {@link de.agilecoders.wicket.core.markup.html.bootstrap.navigation.BootstrapPagingNavigator}
  */
 public class InfinitePaginationPanel extends AbstractPaginationPanel {
 
@@ -47,6 +48,9 @@ public class InfinitePaginationPanel extends AbstractPaginationPanel {
         scrollingBehavior.setNavSelector(pager);
         scrollingBehavior.setItemSelector(this, ".item");
         scrollingBehavior.setNextSelector(nextLink);
+        scrollingBehavior.loadingMsgText("loading...");
+        scrollingBehavior.loadingImg("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABHNCSVQICAgIfAhkiAAAAA1JREFUCJlj+P///38ACfsD/QjR6B4AAAAASUVORK5CYII=");
+        scrollingBehavior.loadingFinishedMsg("completed!");
 
         return scrollingBehavior;
     }

@@ -1,6 +1,7 @@
 package de.agilecoders.wicket.samples.panels.pagination;
 
-import de.agilecoders.wicket.markup.html.bootstrap.navigation.ajax.BootstrapAjaxPagingNavigator;
+import de.agilecoders.wicket.core.markup.html.bootstrap.navigation.ajax.BootstrapAjaxPagingNavigator;
+
 import org.apache.wicket.Component;
 
 /**
