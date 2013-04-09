@@ -42,6 +42,15 @@ public class TourStep extends AbstractConfig {
      */
     private static final IKey<IModel> Content = newKey("content", (IModel) Model.of(""));
 
+    /**
+     * The step's content
+     */
+    private static final IKey<Boolean> Backdrop = newKey("backdrop", Boolean.FALSE);
+
+    public TourStep backdrop(boolean backdrop) {
+        put(Backdrop, backdrop);
+        return this;
+    }
 
     public TourStep path(String path) {
         put(Path, path);
