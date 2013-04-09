@@ -15,9 +15,6 @@ import de.agilecoders.wicket.extensions.markup.html.bootstrap.html5player.Html5P
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.OpenWebIconsCssReference;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.jqueryui.JQueryUIJavaScriptReference;
 import de.agilecoders.wicket.less.BootstrapLess;
-import de.agilecoders.wicket.less.BootstrapLessCompilerSettings;
-import de.agilecoders.wicket.less.IBootstrapLessCompilerSettings;
-import de.agilecoders.wicket.less.Less4JCompiler;
 import de.agilecoders.wicket.samples.assets.base.ApplicationJavaScript;
 import de.agilecoders.wicket.samples.assets.base.FixBootstrapStylesCssResourceReference;
 import de.agilecoders.wicket.samples.pages.HomePage;
@@ -159,10 +156,7 @@ public class WicketApplication extends WebApplication {
                 .setThemeProvider(themeProvider);
         Bootstrap.install(this, settings);
 
-        final IBootstrapLessCompilerSettings lessCompilerSettings = new BootstrapLessCompilerSettings();
-        lessCompilerSettings.setUseLessCompiler(usesDevelopmentConfig())
-                .setLessCompiler(new Less4JCompiler());
-        BootstrapLess.install(this, lessCompilerSettings);
+        BootstrapLess.install(this);
     }
 
     /**
