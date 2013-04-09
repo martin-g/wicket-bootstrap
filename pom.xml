@@ -42,6 +42,7 @@
         <module>bootstrap-themes</module>
         <module>bootstrap-less</module>
         <module>bootstrap-samples</module>
+        <module>bootstrap-common-tests</module>
     </modules>
 
     <repositories>
@@ -153,6 +154,19 @@
                 <groupId>de.agilecoders.wicket</groupId>
                 <artifactId>wicket-bootstrap-extensions</artifactId>
                 <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>de.agilecoders.wicket</groupId>
+                <artifactId>wicket-bootstrap-samples</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>de.agilecoders.wicket</groupId>
+                <artifactId>wicket-bootstrap-common-tests</artifactId>
+                <version>${project.version}</version>
+                <scope>test</scope>
             </dependency>
 
             <dependency>
