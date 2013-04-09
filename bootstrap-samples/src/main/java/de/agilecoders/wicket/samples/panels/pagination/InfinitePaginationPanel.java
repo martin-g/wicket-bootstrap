@@ -1,8 +1,9 @@
 package de.agilecoders.wicket.samples.panels.pagination;
 
-import de.agilecoders.wicket.markup.html.bootstrap.navigation.BootstrapPagingNavigator;
-import de.agilecoders.wicket.markup.html.bootstrap.navigation.InfiniteScrollingBehavior;
-import de.agilecoders.wicket.markup.html.bootstrap.navigation.ajax.BootstrapAjaxPagingNavigator;
+import de.agilecoders.wicket.core.markup.html.bootstrap.navigation.BootstrapPagingNavigator;
+import de.agilecoders.wicket.core.markup.html.bootstrap.navigation.InfiniteScrollingBehavior;
+import de.agilecoders.wicket.core.markup.html.bootstrap.navigation.ajax.BootstrapAjaxPagingNavigator;
+
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.markup.html.navigation.paging.AjaxPagingNavigationBehavior;
@@ -14,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * A demo panel for {@link de.agilecoders.wicket.markup.html.bootstrap.navigation.BootstrapPagingNavigator}
+ * A demo panel for {@link de.agilecoders.wicket.core.markup.html.bootstrap.navigation.BootstrapPagingNavigator}
  */
 public class InfinitePaginationPanel extends AbstractPaginationPanel {
 

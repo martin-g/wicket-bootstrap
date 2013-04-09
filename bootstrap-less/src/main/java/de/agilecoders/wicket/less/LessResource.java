@@ -1,14 +1,5 @@
 package de.agilecoders.wicket.less;
 
-import de.agilecoders.wicket.BootstrapLess;
-import org.apache.wicket.Application;
-import org.apache.wicket.WicketRuntimeException;
-import org.apache.wicket.util.io.Connections;
-import org.apache.wicket.util.io.IOUtils;
-import org.apache.wicket.util.time.Time;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.IOException;
@@ -17,6 +8,14 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.charset.Charset;
+
+import org.apache.wicket.Application;
+import org.apache.wicket.WicketRuntimeException;
+import org.apache.wicket.util.io.Connections;
+import org.apache.wicket.util.io.IOUtils;
+import org.apache.wicket.util.time.Time;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Represents a less resource.

@@ -1,6 +1,5 @@
 package de.agilecoders.wicket.less;
 
-import de.agilecoders.wicket.BootstrapLess;
 import org.apache.wicket.Application;
 import org.apache.wicket.core.util.resource.locator.ResourceStreamLocator;
 import org.apache.wicket.request.resource.CssResourceReference;
