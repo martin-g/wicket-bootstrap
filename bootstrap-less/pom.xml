@@ -23,12 +23,6 @@
 		</dependency>
 
 		<dependency>
-			<groupId>com.asual.lesscss</groupId>
-			<artifactId>lesscss-engine</artifactId>
-			<version>${lesscss-engine.version}</version>
-		</dependency>
-
-		<dependency>
 			<groupId>org.apache.wicket</groupId>
 			<artifactId>wicket-core</artifactId>
 		</dependency>
@@ -37,6 +31,12 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<scope>test</scope>
 		</dependency>
 
 		<!-- HAMCREST DEPENDENCIES -->
