@@ -85,14 +85,7 @@
         <!--  JUNIT DEPENDENCY FOR TESTING -->
         <dependency>
             <groupId>junit</groupId>
-            <artifactId>junit-dep</artifactId>
-            <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.hamcrest</groupId>
-                    <artifactId>hamcrest-core</artifactId>
-                </exclusion>
-            </exclusions>
+            <artifactId>junit</artifactId>
         </dependency>
 
         <!-- HAMCREST DEPENDENCIES -->

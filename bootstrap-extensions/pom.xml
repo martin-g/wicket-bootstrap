@@ -60,9 +60,7 @@
         <!-- Test dependencies -->
         <dependency>
             <groupId>junit</groupId>
-            <artifactId>junit-dep</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
+            <artifactId>junit</artifactId>
         </dependency>
 
         <!-- HAMCREST DEPENDENCIES -->

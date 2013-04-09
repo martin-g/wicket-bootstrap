@@ -36,8 +36,7 @@
 		<!-- Test dependencies -->
 		<dependency>
 			<groupId>junit</groupId>
-			<artifactId>junit-dep</artifactId>
-			<scope>test</scope>
+			<artifactId>junit</artifactId>
 		</dependency>
 
 		<!-- HAMCREST DEPENDENCIES -->
