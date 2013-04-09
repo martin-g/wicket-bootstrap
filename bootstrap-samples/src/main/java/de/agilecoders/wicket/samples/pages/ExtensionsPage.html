@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+    <head>
+        <meta charset="utf-8"/>
+        <title>ComponentsPage</title>
+    </head>
+    <body>
+        <wicket:extend>
+            <header class="jumbotron subhead" id="overview">
+                <div class="container">
+                    <h1>Bootstrap Extensions</h1>
+
+                    <p class="lead">Some third party modules for twitter bootstrap and apache wicket.</p>
+                </div>
+            </header>
+
+
+            <div class="container">
+
+                <div class="row-fluid">
+                    <div class="span3 bs-docs-sidebar">
+                        <ul wicket:id="navigation" class="nav nav-list bs-docs-sidenav">
+                            <li><a href="#video"><i class="icon-chevron-right"></i> Html5Video player</a></li>
+                            <li><a href="#contextmenu"><i class="icon-chevron-right"></i> ContextMenu</a></li>
+                            <li><a href="#issue97"><i class="icon-chevron-right"></i> Draggable/Resizable Behavior</a></li>
+                            <li><a href="#issue112"><i class="icon-chevron-right"></i> open-on-hover Behavior</a></li>
+                            <li><a href="#openwebicon"><i class="icon-chevron-right"></i> OpenWebIcon</a></li>
+                            <li><a href="#issue116"><i class="icon-chevron-right"></i> Tour Behavior</a></li>
+                            <li><a href="#issue130-1"><i class="icon-chevron-right"></i> Jasny FileUpload</a></li>
+                            <li><a href="#issue130-2"><i class="icon-chevron-right"></i> Jasny InputMask</a></li>
+                            <li><a href="#infinite"><i class="icon-chevron-right"></i> Infinite-Scroll</a></li>
+                        </ul>
+                    </div>
+                    <div class="span9">
+
+                        <section id="video">
+                            <div class="page-header">
+                                <h1>Html5Video player</h1>
+                            </div>
+
+                            <h2>Example</h2>
+
+                            <h3>Default</h3>
+
+                            <p>A customizable HTML5 video player plugin for jQuery based on bootstrap UI.</p>
+
+                            <div class="bs-docs-example">
+                                <span wicket:id="video"></span>
+                            </div>
+                            <pre wicket:id="video-code"></pre>
+
+                            <h3>Customized</h3>
+
+                            <div class="bs-docs-example">
+                                <div wicket:id="video-custom"></div>
+                            </div>
+                            <pre wicket:id="video-custom-code"></pre>
+                        </section>
+
+                        <section id="contextmenu" >
+                            <div class="page-header">
+                                <h1>ContextMenu</h1>
+                            </div>
+
+                            <h2>Example</h2>
+
+                            <h3>Default</h3>
+
+                            <p>A context menu extension of Twitter Bootstrap made for everyone's convenience.</p>
+
+                            <div class="bs-docs-example">
+                                <div wicket:id="context-panel">Just right click here...</div>
+                                <div wicket:id="contextmenu"></div>
+                            </div>
+                            <pre wicket:id="context-code"></pre>
+                        </section>
+
+                        <section id="issue97">
+                            <div class="page-header">
+                                <h1>Draggable/Resizable Behavior</h1>
+                            </div>
+
+                            <p>see <a href="https://github.com/l0rdn1kk0n/wicket-bootstrap/issues/97">issue #97</a>.</p>
+
+                            <div class="bs-docs-example">
+                                <a wicket:id="open-draggable">Open Modal</a>
+                                <div wicket:id="draggable-modal"></div>
+                            </div>
+                            <pre wicket:id="draggable-code"></pre>
+                        </section>
+
+                        <section id="issue112">
+                            <div class="page-header">
+                                <h1>open-on-hover Behavior</h1>
+                            </div>
+
+                            <p>see <a href="https://github.com/l0rdn1kk0n/wicket-bootstrap/issues/112">issue #112</a>.</p>
+
+                            <div class="bs-docs-example">
+                                <div wicket:id="dropdown"></div>
+                            </div>
+                            <pre wicket:id="dropdown-code"></pre>
+                        </section>
+
+                        <section id="openwebicon">
+                            <div class="page-header">
+                                <h1>OpenWebIcon</h1>
+                            </div>
+
+                            <p>see <a href="https://github.com/l0rdn1kk0n/wicket-bootstrap/issues/112">issue #112</a>.</p>
+                            <p>all available icons are documented <a href="http://pfefferle.github.com/openwebicons/">here</a>.</p>
+
+                            <div class="bs-docs-example">
+                                <i wicket:id="html5"></i>
+                                <i wicket:id="html5-colored"></i>
+                                <i wicket:id="apml"></i>
+                                <i wicket:id="feed"></i>
+                            </div>
+                            <pre wicket:id="openwebicon-code"></pre>
+                        </section>
+
+                        <section id="issue116">
+                            <div class="page-header">
+                                <h1>Bootstrap Tour</h1>
+                            </div>
+
+                            <p>see <a href="https://github.com/l0rdn1kk0n/wicket-bootstrap/issues/116">issue #116</a>.</p>
+                            <p class="content"></p>
+
+                            <div class="bs-docs-example">
+                                <ul>
+                                    <li wicket:id="tourDemo"></li>
+                                </ul>
+                            </div>
+                        </section>
+
+                        <section id="issue130-1">
+                            <div class="page-header">
+                                <h1>Jasny FileUpload</h1>
+                            </div>
+
+                            <p>A better looking File Upload input field by <a target="_blank" href="http://jasny.github.com/bootstrap/javascript.html#fileupload">Jasny Bootstrap extensions</a>. See issue #<a href="https://github.com/l0rdn1kk0n/wicket-bootstrap/issues/130">130</a>.</p>
+
+                            <div class="bs-docs-example">
+                                <div class="fileupload fileupload-new" data-provides="fileupload">
+                                    <div class="input-append">
+                                        <div class="uneditable-input span3"><i class="icon-file fileupload-exists"></i> <span class="fileupload-preview"></span></div><span class="btn btn-file"><span class="fileupload-new">Select file</span><span class="fileupload-exists">Change</span><input type="file" wicket:id="fileUpload" /></span><a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Remove</a>
+                                    </div>
+                                </div>
+                                <div>
+                                    In your java code just use <code>de.agilecoders.wicket.javascript.jasny.FileUploadField</code> instead of Wicket's <code>org.apache.wicket.markup.html.form.upload.FileUploadField</code>.<br/>For HTML markup use any of the recommended snippets at <a target="_blank" href="http://jasny.github.com/bootstrap/javascript.html#fileupload">Jasny FileUpload</a>.
+                                </div>
+                            </div>
+                        </section>
+
+                        <section id="issue130-2">
+                            <div class="page-header">
+                                <h1>Jasny InputMask</h1>
+                            </div>
+
+                            <p>An input mask by <a target="_blank" href="http://jasny.github.com/bootstrap/javascript.html#inputmask">Jasny Bootstrap extensions</a>. See issue #<a href="https://github.com/l0rdn1kk0n/wicket-bootstrap/issues/130">130</a>.</p>
+
+                            <div class="bs-docs-example">
+                                <input type="text" wicket:id="inputMask" />
+                            </div>
+                        </section>
+
+                        <section id="infinite">
+                            <div class="page-header">
+                                <h1>infinite-scroll</h1>
+                            </div>
+
+                            <p>Infinite scroll has been called autopagerize, unpaginate, endless pages. But essentially it is pre-fetching content from a subsequent page and adding it directly to the user’s current page.</p>
+                            <div class="bs-docs-example">
+                                <div wicket:id="infinite"></div>
+                            </div>
+                        </section>
+
+                    </div>
+                </div>
+            </div>
+        </wicket:extend>
+    </body>
+</html>

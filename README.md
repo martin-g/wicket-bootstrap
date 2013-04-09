@@ -2,14 +2,14 @@ WICKET COMPONENTS FOR TWITTER BOOTSTRAP
 =======================================
 
 Wicket-Bootstrap is based on Twitter's toolkit (bootstrap) and the Apache Wicket Framework.<br>
-Current build status: [![Build Status](https://buildhive.cloudbees.com/job/l0rdn1kk0n/job/wicket-bootstrap/badge/icon)](https://buildhive.cloudbees.com/job/l0rdn1kk0n/job/wicket-bootstrap/)
+Current build status: [![Build Status](https://buildhive.cloudbees.com/job/l0rdn1kk0n/job/wicket-bootstrap/badge/icon)](https://buildhive.cloudbees.com/job/l0rdn1kk0n/job/wicket-bootstrap/) [![Build Status](https://travis-ci.org/l0rdn1kk0n/wicket-bootstrap.png?branch=master)](https://travis-ci.org/l0rdn1kk0n/wicket-bootstrap)
 
 Components
 ----------
 
-* Twitter Bootstrap (2.2.2): http://twitter.github.com/bootstrap
+* Twitter Bootstrap (2.3.1): http://twitter.github.com/bootstrap
 * Apache Wicket (6.6.0): http://wicket.apache.org/
-* Bootswatch (2.2.2): http://bootswatch.com/
+* Bootswatch (2.3.0): http://bootswatch.com/
 
 Extensions
 ----------
@@ -20,33 +20,59 @@ Extensions
 * JQueryUI (1.9.2): http://api.jqueryui.com/
    * Draggable: http://api.jqueryui.com/draggable
    * Resizable: http://api.jqueryui.com/resizable
-* less4j (0.0.9): https://github.com/SomMeri/less4j
+* less4j (1.0.0): https://github.com/SomMeri/less4j
 * bootstrap-tour: http://sorich87.github.com/bootstrap-tour
 * OpenWebIcons (2012-10-03): http://pfefferle.github.com/openwebicons/
 
-Usage
------
+How to get help and news
+------------------------
 
+* Keep up to date on announcements and more by following me [@l0rdn1kk0n](http://twitter.com/l0rdn1kk0n) on Twitter or use the [#WicketBootstrap](https://twitter.com/search?q=%23WicketBootstrap&src=typd) hashtag
+* use the [google group](https://groups.google.com/d/forum/wicket-bootstrap) (wicket-bootstrap (at) googlegroups.com)
 * you can see wicket-bootstrap in action: http://wb.agilecoders.de/
 * how to use wicket-bootstrap? Read the documentation on https://github.com/l0rdn1kk0n/wicket-bootstrap/wiki.
 * read more on my [blog](http://blog.agilecoders.de/).
 
 ## Maven
-wicket-bootstrap is [available](http://search.maven.org/#artifactdetails|de.agilecoders.wicket|bootstrap|0.7.6|jar) in Maven central repository.
+wicket-bootstrap is [available](http://search.maven.org/#artifactdetails|de.agilecoders.wicket|wicket-bootstrap-core|0.8.1|jar) in Maven central repository.
 
 core maven dependency:
 <pre><code>&lt;dependency&gt;
   &lt;groupId&gt;de.agilecoders.wicket&lt;/groupId&gt;
-  &lt;artifactId&gt;bootstrap&lt;/artifactId&gt;
-  &lt;version&gt;0.7.6&lt;/version&gt;
+  &lt;artifactId&gt;wicket-bootstrap-core&lt;/artifactId&gt;
+  &lt;version&gt;0.8.1&lt;/version&gt;
 &lt;/dependency&gt;
 </code></pre>
 
 for all extensions:
 <pre><code>&lt;dependency&gt;
   &lt;groupId&gt;de.agilecoders.wicket&lt;/groupId&gt;
-  &lt;artifactId&gt;bootstrap-extensions&lt;/artifactId&gt;
-  &lt;version&gt;0.7.6&lt;/version&gt;
+  &lt;artifactId&gt;wicket-bootstrap-extensions&lt;/artifactId&gt;
+  &lt;version&gt;0.8.1&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+
+for all themes:
+<pre><code>&lt;dependency&gt;
+  &lt;groupId&gt;de.agilecoders.wicket&lt;/groupId&gt;
+  &lt;artifactId&gt;wicket-bootstrap-themes&lt;/artifactId&gt;
+  &lt;version&gt;0.8.1&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+
+if you want to use a less compiler:
+<pre><code>&lt;dependency&gt;
+  &lt;groupId&gt;de.agilecoders.wicket&lt;/groupId&gt;
+  &lt;artifactId&gt;wicket-bootstrap-less&lt;/artifactId&gt;
+  &lt;version&gt;0.8.1&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+
+all samples can be used with this dependency:
+<pre><code>&lt;dependency&gt;
+  &lt;groupId&gt;de.agilecoders.wicket&lt;/groupId&gt;
+  &lt;artifactId&gt;wicket-bootstrap-samples&lt;/artifactId&gt;
+  &lt;version&gt;0.8.1&lt;/version&gt;
 &lt;/dependency&gt;
 </code></pre>
 
@@ -59,12 +85,6 @@ Bootstrap.install(Application.get(), new BootstrapSettings());
 </code></pre>
 
 then you are able to use all wicket-bootstrap components.
-
-Twitter account
----------------
-
-Keep up to date on announcements and more by following me [@l0rdn1kk0n](http://twitter.com/l0rdn1kk0n) on Twitter or use the [#WicketBootstrap](https://twitter.com/search?q=%23WicketBootstrap&src=typd) hashtag.
-
 
 Bug tracker
 -----------
