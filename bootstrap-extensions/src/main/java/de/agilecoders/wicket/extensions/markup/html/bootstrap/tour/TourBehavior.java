@@ -1,14 +1,14 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.tour;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.Behavior;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
 import org.apache.wicket.util.lang.Args;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A behavior that contributes the resources needed for
