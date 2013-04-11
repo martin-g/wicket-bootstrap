@@ -195,7 +195,8 @@ public class ExtensionsPage extends BasePage {
         tourBehavior.addStep(new TourStep()
                                      .title(new ResourceModel("tour.step.two"))
                                      .element(stepTwo)
-                                     .placement(TooltipConfig.Placement.left));
+                                     .placement(TooltipConfig.Placement.left)
+                                     .backdrop(true));
         tourBehavior.addStep(new TourStep()
                                      .title(Model.of("Step Three Title"))
                                      .element(stepThree)

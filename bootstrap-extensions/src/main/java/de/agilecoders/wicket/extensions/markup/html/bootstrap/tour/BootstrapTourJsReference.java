@@ -2,7 +2,7 @@ package de.agilecoders.wicket.extensions.markup.html.bootstrap.tour;
 
 import de.agilecoders.wicket.core.markup.html.references.BootstrapJavaScriptReference;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.references.JQueryCookieJsReference;
-
+import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.HeaderItem;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.request.resource.JavaScriptResourceReference;
@@ -32,6 +32,7 @@ public class BootstrapTourJsReference extends JavaScriptResourceReference {
         for (HeaderItem dep : super.getDependencies()) {
             dependencies.add(dep);
         }
+        dependencies.add(CssHeaderItem.forReference(BootstrapTourCssReference.INSTANCE));
         dependencies.add(JavaScriptHeaderItem.forReference(JQueryCookieJsReference.INSTANCE));
         dependencies.add(JavaScriptHeaderItem.forReference(BootstrapJavaScriptReference.instance()));
         return dependencies;
