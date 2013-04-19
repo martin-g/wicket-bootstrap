@@ -25,8 +25,6 @@ public class BootstrapSettings implements IBootstrapSettings {
     private boolean useCdnResources = false;
     private String version = VERSION;
 
-    private static final String JS_CDN_PATTERN = "//netdna.bootstrapcdn.com/twitter-bootstrap/%s/js/bootstrap.min.js";
-
     /**
      * Constructor.
      */
