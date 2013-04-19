@@ -2,7 +2,6 @@ package de.agilecoders.wicket.core.markup.html.bootstrap.button;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.Icon;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
-
 import org.apache.commons.lang.StringUtils;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
@@ -15,7 +14,7 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
 /**
- * Default {@link AjaxButton} which is styled by twitter bootstrap
+ * Default {@link AjaxButton} which is styled by twitter bootstrap.
  *
  * @author miha
  */
@@ -30,7 +29,7 @@ public abstract class BootstrapAjaxButton extends AjaxButton implements IBootstr
      * Construct.
      *
      * @param componentId The component id
-     * @param type  The type of the button
+     * @param type        The type of the button
      */
     public BootstrapAjaxButton(final String componentId, final Buttons.Type type) {
         this(componentId, new Model<String>(), type);
@@ -41,17 +40,17 @@ public abstract class BootstrapAjaxButton extends AjaxButton implements IBootstr
      *
      * @param componentId The component id
      * @param model       The label
-     * @param type  The type of button
+     * @param type        The type of button
      */
     public BootstrapAjaxButton(final String componentId, final IModel<String> model, final Buttons.Type type) {
-        this(componentId, model, null, Buttons.Type.Default);
+        this(componentId, model, null, type);
     }
 
     /**
      * Construct.
      *
-     * @param id         The component id
-     * @param form       The assigned form
+     * @param id   The component id
+     * @param form The assigned form
      * @param type The type of button
      */
     public BootstrapAjaxButton(String id, Form<?> form, Buttons.Type type) {
@@ -61,10 +60,10 @@ public abstract class BootstrapAjaxButton extends AjaxButton implements IBootstr
     /**
      * Construct.
      *
-     * @param id         The component id
-     * @param model      The label
-     * @param form       The assigned form
-     * @param type The type of button
+     * @param id    The component id
+     * @param model The label
+     * @param form  The assigned form
+     * @param type  The type of button
      */
     public BootstrapAjaxButton(String id, IModel<String> model, Form<?> form, Buttons.Type type) {
         super(id, model, form);

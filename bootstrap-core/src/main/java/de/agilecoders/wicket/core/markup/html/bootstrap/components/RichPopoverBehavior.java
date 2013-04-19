@@ -2,7 +2,12 @@ package de.agilecoders.wicket.core.markup.html.bootstrap.components;
 
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
+import org.apache.wicket.core.util.string.ComponentRenderer;
 import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.LoadableDetachableModel;
+
+import static org.apache.commons.lang.StringEscapeUtils.escapeJava;
+import static org.apache.commons.lang.StringUtils.chomp;
 
 /**
  * A rich popover implementation that uses a component as body.
@@ -41,11 +46,14 @@ abstract class RichPopoverBehavior extends PopoverBehavior {
 
     @Override
     protected final IModel<String> newContent() {
-        // activate after wicket 6.7.0 was released
-        //final String content = String.valueOf(ComponentRenderer.renderComponent(newBodyComponent(ComponentRenderer.COMP_ID)));
+        return new LoadableDetachableModel<String>() {
+            @Override
+            protected String load() {
+                final String content = String.valueOf(ComponentRenderer.renderComponent(newBodyComponent(ComponentRenderer.COMP_ID)));
 
-        //return Model.of(escapeJava(chomp(content)));
-        throw new UnsupportedOperationException("this component is not active");
+                return escapeJava(chomp(content));
+            }
+        };
     }
 
     /**
