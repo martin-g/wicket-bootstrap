@@ -90,4 +90,16 @@ public class Theme implements ITheme {
             }
         }
     }
+
+    /**
+     * @return The configured version of Twitter Bootstrap
+     */
+    protected String getVersion() {
+        String version = IBootstrapSettings.VERSION;
+        if (Application.exists()) {
+            version = Bootstrap.getSettings().getVersion();
+        }
+
+        return version;
+    }
 }

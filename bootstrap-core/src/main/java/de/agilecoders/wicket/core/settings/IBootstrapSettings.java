@@ -15,6 +15,17 @@ public interface IBootstrapSettings {
     String VERSION = "2.3.0";
 
     /**
+     * @param version The version of Twitter Bootstrap. CDN resources use it to construct their urls
+     * @return same instance for chaining
+     */
+    IBootstrapSettings setVersion(String version);
+
+    /**
+     * @return The version of Twitter Bootstrap. CDN resources use it to construct their urls
+     */
+    String getVersion();
+
+    /**
      * @return the base twitter bootstrap css resource reference
      */
     ResourceReference getCssResourceReference();

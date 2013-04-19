@@ -21,12 +21,24 @@ public class BootstrapSettings implements IBootstrapSettings {
     private String resourceFilterName = "";
     private boolean updateSecurityManager = true;
     private boolean useCdnResources = false;
+    private String version = VERSION;
 
     /**
      * Constructor.
      */
     public BootstrapSettings() {
         // so far nothing to do here
+    }
+
+    @Override
+    public IBootstrapSettings setVersion(String version) {
+        this.version = version;
+        return this;
+    }
+
+    @Override
+    public String getVersion() {
+        return version;
     }
 
     @Override

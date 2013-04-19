@@ -1,7 +1,6 @@
 package de.agilecoders.wicket.themes.markup.html.bootswatch;
 
 import de.agilecoders.wicket.core.markup.html.themes.bootstrap.BootstrapResponsiveCssReference;
-import de.agilecoders.wicket.core.settings.IBootstrapSettings;
 import de.agilecoders.wicket.core.settings.Theme;
 import org.apache.wicket.request.resource.ResourceReference;
 
@@ -51,7 +50,7 @@ public class BootswatchTheme extends Theme {
 
     @Override
     public Iterable<String> getCdnUrls() {
-        String cdnUrl = String.format(CDN_PATTERN, IBootstrapSettings.VERSION, name());
+        String cdnUrl = String.format(CDN_PATTERN, getVersion(), name());
         return Arrays.asList(cdnUrl);
     }
 }

@@ -1,6 +1,5 @@
 package de.agilecoders.wicket.core.markup.html.themes.bootstrap;
 
-import de.agilecoders.wicket.core.settings.IBootstrapSettings;
 import de.agilecoders.wicket.core.settings.Theme;
 
 import java.util.Arrays;
@@ -23,7 +22,7 @@ public class BootstrapTheme extends Theme {
 
     @Override
     public Iterable<String> getCdnUrls() {
-        String cdnUrl = String.format(CDN_PATTERN, IBootstrapSettings.VERSION);
+        String cdnUrl = String.format(CDN_PATTERN, getVersion());
         return Arrays.asList(cdnUrl);
     }
 }
