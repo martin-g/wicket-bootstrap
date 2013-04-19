@@ -12,7 +12,7 @@ public interface IBootstrapSettings {
     /**
      * The version of Bootstrap
      */
-    String VERSION = "2.3.0";
+    String VERSION = "2.3.1";
 
     /**
      * @param version The version of Twitter Bootstrap. CDN resources use it to construct their urls

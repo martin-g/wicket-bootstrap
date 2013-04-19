@@ -3,7 +3,9 @@ package de.agilecoders.wicket.core.settings;
 import de.agilecoders.wicket.core.markup.html.references.BootstrapJavaScriptReference;
 import de.agilecoders.wicket.core.markup.html.themes.bootstrap.BootstrapResponsiveCssReference;
 
+import org.apache.wicket.request.Url;
 import org.apache.wicket.request.resource.ResourceReference;
+import org.apache.wicket.request.resource.UrlResourceReference;
 
 /**
  * Default {@link IBootstrapSettings} implementation
@@ -22,6 +24,8 @@ public class BootstrapSettings implements IBootstrapSettings {
     private boolean updateSecurityManager = true;
     private boolean useCdnResources = false;
     private String version = VERSION;
+
+    private static final String JS_CDN_PATTERN = "//netdna.bootstrapcdn.com/twitter-bootstrap/%s/js/bootstrap.min.js";
 
     /**
      * Constructor.
@@ -48,7 +52,14 @@ public class BootstrapSettings implements IBootstrapSettings {
 
     @Override
     public ResourceReference getJsResourceReference() {
-        return bootstrapJavaScriptReference;
+        ResourceReference jsReference;
+        if (useCdnResources()) {
+            String cdnUrl = String.format(JS_CDN_PATTERN, getVersion());
+            jsReference = new UrlResourceReference(Url.parse(cdnUrl));
+        } else {
+            jsReference = bootstrapJavaScriptReference;
+        }
+        return jsReference;
     }
 
     @Override
