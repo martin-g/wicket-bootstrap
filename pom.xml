@@ -105,6 +105,12 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
+                <groupId>de.agilecoders.maven</groupId>
+                <artifactId>maven-parent-config</artifactId>
+                <version>0.1.2</version>
+            </dependency>
+
+            <dependency>
                 <groupId>de.agilecoders.wicket.webjars</groupId>
                 <artifactId>wicket-webjars</artifactId>
                 <version>${wicket-webjars.version}</version>
