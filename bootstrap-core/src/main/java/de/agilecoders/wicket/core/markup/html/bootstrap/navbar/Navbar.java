@@ -2,18 +2,18 @@ package de.agilecoders.wicket.core.markup.html.bootstrap.navbar;
 
 import com.google.common.base.Function;
 import com.google.common.base.Predicate;
-
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.CssClassNameAppender;
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNameProvider;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.Activatable;
 import de.agilecoders.wicket.core.markup.html.bootstrap.common.Invertible;
+import de.agilecoders.wicket.core.util.Attributes;
 import de.agilecoders.wicket.core.util.Behaviors;
 import de.agilecoders.wicket.core.util.Generics2;
 import de.agilecoders.wicket.core.util.Models;
-
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.Page;
+import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.html.TransparentWebMarkupContainer;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
@@ -22,7 +22,6 @@ import org.apache.wicket.markup.html.link.BookmarkablePageLink;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.markup.html.panel.Panel;
-import org.apache.wicket.model.AbstractReadOnlyModel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.LoadableDetachableModel;
 import org.apache.wicket.model.Model;
@@ -147,18 +146,16 @@ public class Navbar extends Panel implements Invertible<Navbar> {
         containerModel = Model.of("");
         invertModel = Model.of("");
 
-        add(new CssClassNameAppender("navbar"));
-        add(new CssClassNameAppender(invertModel));
-        add(new CssClassNameAppender(new AbstractReadOnlyModel<String>() {
-            @Override
-            public String getObject() {
-                return position.getObject().cssClassName();
-            }
-        }));
-
         container.add(new CssClassNameAppender(containerModel));
 
         add(container, brandNameLink, leftAlignedComponentListView, rightAlignedComponentListView);
+    }
+
+    @Override
+    protected void onComponentTag(ComponentTag tag) {
+        super.onComponentTag(tag);
+
+        Attributes.addClass(tag, "navbar", invertModel.getObject(), position.getObject().cssClassName());
     }
 
     /**
@@ -203,6 +200,10 @@ public class Navbar extends Panel implements Invertible<Navbar> {
 
                 if (component instanceof Invertible) {
                     ((Invertible) component).setInverted(!Models.isNullOrEmpty(invertModel));
+                }
+
+                if (component instanceof NavbarDropDownButton) {
+                    System.out.println(component.getId());
                 }
             }
 
