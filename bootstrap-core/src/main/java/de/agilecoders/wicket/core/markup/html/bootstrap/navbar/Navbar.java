@@ -201,10 +201,6 @@ public class Navbar extends Panel implements Invertible<Navbar> {
                 if (component instanceof Invertible) {
                     ((Invertible) component).setInverted(!Models.isNullOrEmpty(invertModel));
                 }
-
-                if (component instanceof NavbarDropDownButton) {
-                    System.out.println(component.getId());
-                }
             }
 
             @Override
@@ -384,7 +380,7 @@ public class Navbar extends Panel implements Invertible<Navbar> {
     }
 
     /**
-     * Sets the prefered position of the navigation bar on the screen.
+     * Sets the preferred position of the navigation bar on the screen.
      *
      * @return the component's current instance.
      */
