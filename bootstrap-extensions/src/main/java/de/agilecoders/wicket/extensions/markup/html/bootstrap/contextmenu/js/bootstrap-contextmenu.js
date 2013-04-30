@@ -1,7 +1,7 @@
 
 /*!
  * Bootstrap Context Menu
- * Version: 1.0
+ * Version: 2.0
  * A small variation of the dropdown plugin by @sydcanem
  * https://github.com/sydcanem/bootstrap-contextmenu
  *
@@ -36,12 +36,14 @@
 
     var toggle = '[data-toggle=context]',
     ContextMenu = function(element) {
-        $(element).on('contextmenu.context.data-api', this.toggle);
-        var $target = $(".context-menu");
-        $('html').on('click.context.data-api', function() {
-            clearMenus();
+        var $el = $(element).on('contextmenu.context.data-api', this.toggle);
+        var $target = $($el.attr('data-target'));
+        $('html').on('click.context.data-api', function(e) {
+            if (!e.ctrlKey) {
+                $target.removeClass('open');
+            }
         });
-    };
+    }
 
     ContextMenu.prototype = {
 
@@ -49,37 +51,33 @@
         toggle: function(e) {
 
             var $this = $(this),
-            $menu, $contextmenu;
+            $menu, $contextmenu, evt;
 
             if ($this.is('.disabled, :disabled')) return;
 
+            evt = $.Event('context');
+            $this.trigger(evt);
+
             $menu = getMenu($this);
-            $menu.removeClass("open");
+            $menu.removeClass('open');
 
-            var position = getPosition(e, $this, $menu);
-            $menu.attr('style', '').css(position);
-
-            $contextmenu = $this.find($this.attr('data-target'));
-
-            if (!$contextmenu.length) {
-                $menu.addClass("open");
-                $this.append($menu);
-            } else {
-                $menu.toggleClass("open");
-            }
+            var tp = getPosition(e, $menu);
+            $menu.attr('style', '')
+            .css(tp)
+            .toggleClass('open');
 
             return false;
         }
 
-    };
+    }
 
     function getMenu($this) {
         var selector = $this.attr('data-target'),
         $menu;
 
         if (!selector) {
-            selector = $this.attr('href');
-            selector = selector && selector.replace(/.*(?=#[^\s]*$)/, ''); //strip for ie7
+            selector = $this.attr('href')
+            selector = selector && selector.replace(/.*(?=#[^\s]*$)/, '') //strip for ie7
         }
 
         $menu = $(selector);
@@ -87,52 +85,47 @@
         return $menu;
     }
 
-    function getPosition(e, $this, $menu) {
-        var mouseX = e.pageX,
-        mouseY = e.pageY,
-        offset = $($this[0]).offset(),
-        posX = e.pageX - offset.left,
-        posY = e.pageY - offset.top,
-        contextX = $this.width(),
-        contextY = $this.height(),
+    function getPosition(e, $menu) {
+        var mouseX = e.clientX,
+        mouseY = e.clientY,
         boundsX = $(window).width(),
         boundsY = $(window).height(),
-        scrollTop = $(document).scrollTop(),
-        scrollLeft = $(document).scrollLeft(),
-        menuWidth = $menu.find('.dropdown-menu').outerWidth(false),
-        menuHeight = $menu.find('.dropdown-menu').outerHeight(false),
+        menuWidth = $menu.find('.dropdown-menu').outerWidth(),
+        menuHeight = $menu.find('.dropdown-menu').outerHeight(),
         tp = {
-            "position": "absolute",
-            "zIndex": 1000,
-            "height":0,
-            "width":menuWidth
+            "position": "fixed"
         }, Y, X;
 
-        if (mouseY - scrollTop + menuHeight > boundsY) {
+        if (mouseY + menuHeight > boundsY) {
             Y = {
-                "bottom": (contextY - posY) + menuHeight
+                "top": mouseY - menuHeight
             };
         } else {
             Y = {
-                "top": posY + menuHeight/2
+                "top": mouseY
             };
         }
 
-        if (mouseX - scrollLeft + menuWidth > boundsX) {
+        if (mouseX + menuWidth > boundsX) {
             X = {
-                "right": (contextX - posX) + menuWidth
+                "left": mouseX - menuWidth
             };
         } else {
             X = {
-                "left": posX
+                "left": mouseX
             };
         }
 
         return $.extend(tp, Y, X);
     }
 
-    function clearMenus() {
-        getMenu($(toggle)).removeClass('open');
+    function clearMenus(e) {
+        if (!e.ctrlKey) {
+            $(toggle).each(function() {
+                getMenu($(this))
+                .removeClass('open');
+            });
+        }
     }
 
     /* CONTEXT MENU PLUGIN DEFINITION
@@ -145,7 +138,7 @@
             if (!data) $this.data('context', (data = new ContextMenu(this)));
             if (typeof option == 'string') data[option].call($this);
         });
-    };
+    }
 
     $.fn.contextmenu.Constructor = ContextMenu;
 
@@ -153,8 +146,10 @@
      * =================================== */
 
     $(function() {
-        $('html').on('click.context.data-api', clearMenus);
-        $('body').on('contextmenu.context.data-api', toggle, ContextMenu.prototype.toggle);
+        $('html')
+        .on('click.context.data-api', clearMenus)
+        $('body')
+        .on('contextmenu.context.data-api', toggle, ContextMenu.prototype.toggle);
     });
 
-}(jQuery));
+}(window.jQuery)); 
