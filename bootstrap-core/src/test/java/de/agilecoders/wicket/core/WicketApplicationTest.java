@@ -1,6 +1,5 @@
 package de.agilecoders.wicket.core;
 
-import de.agilecoders.wicket.core.Bootstrap;
 import de.agilecoders.wicket.core.settings.BootstrapSettings;
 import de.agilecoders.wicket.core.settings.IBootstrapSettings;
 import de.agilecoders.wicket.core.test.Attributes;
@@ -38,7 +37,14 @@ public class WicketApplicationTest {
 
     @Before
     public final void before() {
-        application = new WebApplication() {
+        application = newWebApplication();
+
+        tester = new WicketTester(application);
+        onBefore();
+    }
+
+    protected WebApplication newWebApplication() {
+        return new WebApplication() {
 
             @Override
             protected void init() {
@@ -55,9 +61,6 @@ public class WicketApplicationTest {
             }
 
         };
-
-        tester = new WicketTester(application);
-        onBefore();
     }
 
     protected void onBefore() {

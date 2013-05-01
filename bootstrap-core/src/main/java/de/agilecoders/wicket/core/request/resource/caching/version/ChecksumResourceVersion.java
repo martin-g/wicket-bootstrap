@@ -36,7 +36,7 @@ public abstract class ChecksumResourceVersion extends MessageDigestResourceVersi
             final String charset = Application.get().getMarkupSettings().getDefaultMarkupEncoding();
 
             if (!Strings.isNullOrEmpty(charset)) {
-                Charset.forName(charset);
+                return Charset.forName(charset);
             }
         }
 
