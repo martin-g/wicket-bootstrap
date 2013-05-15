@@ -7,7 +7,6 @@ import org.apache.wicket.ajax.AjaxRequestHandler;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.AjaxRequestTarget.IJavaScriptResponse;
 import org.apache.wicket.ajax.AjaxRequestTarget.IListener;
-import org.apache.wicket.behavior.AttributeAppender;
 import org.apache.wicket.event.IEvent;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.head.CssHeaderItem;
@@ -15,19 +14,20 @@ import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.IModel;
-import org.apache.wicket.model.Model;
 import org.apache.wicket.request.resource.CssResourceReference;
 import org.apache.wicket.request.resource.JavaScriptResourceReference;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import de.agilecoders.wicket.core.util.Attributes;
+
 /**
  * Bootstrap ColorPicker from http://www.eyecon.ro/bootstrap-colorpicker/
  * @author ceefour
  */
-@SuppressWarnings("serial")
 public class ColorPickerTextField extends TextField<String> {
 
+	private static final long serialVersionUID = 1L;
 	private static JavaScriptResourceReference colorpickerJs = new JavaScriptResourceReference(
 			ColorPickerTextField.class, "js/colorpicker.js");
 	private static CssResourceReference colorpickerCss = new CssResourceReference(
@@ -57,7 +57,6 @@ public class ColorPickerTextField extends TextField<String> {
 	protected void onInitialize() {
 		super.onInitialize();
 		setOutputMarkupId(true);
-		add(new AttributeAppender("class", new Model<String>("bootstrap-colorpicker"), " "));
 	}
 
 	@Override
@@ -77,6 +76,7 @@ public class ColorPickerTextField extends TextField<String> {
 	@Override
 	protected void onComponentTag(ComponentTag tag) {
 		super.onComponentTag(tag);
+		Attributes.addClass(tag, "bootstrap-colorpicker");
 	}
 	
 	private static final Logger log = LoggerFactory
