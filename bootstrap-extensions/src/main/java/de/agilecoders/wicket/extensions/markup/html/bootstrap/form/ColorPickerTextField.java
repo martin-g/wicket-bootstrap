@@ -14,8 +14,6 @@ import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.IModel;
-import org.apache.wicket.request.resource.CssResourceReference;
-import org.apache.wicket.request.resource.JavaScriptResourceReference;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -28,10 +26,6 @@ import de.agilecoders.wicket.core.util.Attributes;
 public class ColorPickerTextField extends TextField<String> {
 
 	private static final long serialVersionUID = 1L;
-	private static JavaScriptResourceReference colorpickerJs = new JavaScriptResourceReference(
-			ColorPickerTextField.class, "js/colorpicker.js");
-	private static CssResourceReference colorpickerCss = new CssResourceReference(
-			ColorPickerTextField.class, "css/colorpicker.css");
 	/**
 	 * bootstrap-colorpicker won't enhance if the textfield was not enabled,
 	 * so we must wait until the first time the textfield is enabled.
@@ -62,8 +56,8 @@ public class ColorPickerTextField extends TextField<String> {
 	@Override
 	public void renderHead(IHeaderResponse response) {
 		super.renderHead(response);
-		response.render(CssHeaderItem.forReference(colorpickerCss));
-		response.render(JavaScriptHeaderItem.forReference(colorpickerJs));
+		response.render(CssHeaderItem.forReference(ColorPickerTextFieldCssReference.instance()));
+		response.render(JavaScriptHeaderItem.forReference(ColorPickerTextFieldJavaScriptReference.instance()));
 		if (isEnabledInHierarchy()) {
 			response.render(JavaScriptHeaderItem.forScript("$(document).ready(function() {" +
 					"$('#" + getMarkupId() + "').colorpicker();" +
