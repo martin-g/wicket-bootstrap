@@ -146,12 +146,12 @@ public class ColorPickerTextField extends TextField<String> {
      * @return initializer script
      */
     protected String createScript(final ColorPickerConfig config) {
-        JQuery script;
+        JQuery script = $(this);
+
         if (config.isComponent()) {
-            script = $(this).closest(".color").chain("colorpicker", config);
-        } else {
-            script = $(this).chain("colorpicker", config);
+            script.closest(".color");
         }
+        script.chain("colorpicker", config);
 
         if (config.isAjaxUpdate()) {
 
