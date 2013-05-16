@@ -1,7 +1,6 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.form;
 
-import java.util.Map;
-
+import de.agilecoders.wicket.core.util.Attributes;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestHandler;
 import org.apache.wicket.ajax.AjaxRequestTarget;
@@ -12,12 +11,11 @@ import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
+import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.IModel;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
-import de.agilecoders.wicket.core.util.Attributes;
+import java.util.Map;
 
 /**
  * Bootstrap ColorPicker from http://www.eyecon.ro/bootstrap-colorpicker/
@@ -26,6 +24,7 @@ import de.agilecoders.wicket.core.util.Attributes;
 public class ColorPickerTextField extends TextField<String> {
 
 	private static final long serialVersionUID = 1L;
+
 	/**
 	 * bootstrap-colorpicker won't enhance if the textfield was not enabled,
 	 * so we must wait until the first time the textfield is enabled.
@@ -36,7 +35,7 @@ public class ColorPickerTextField extends TextField<String> {
 	 * @param id
 	 */
 	public ColorPickerTextField(String id) {
-		super(id, String.class);
+		this(id, null);
 	}
 
 	/**
@@ -45,24 +44,19 @@ public class ColorPickerTextField extends TextField<String> {
 	 */
 	public ColorPickerTextField(String id, IModel<String> model) {
 		super(id, model, String.class);
-	}
-	
-	@Override
-	protected void onInitialize() {
-		super.onInitialize();
-		setOutputMarkupId(true);
+
+        setOutputMarkupId(true);
 	}
 
 	@Override
 	public void renderHead(IHeaderResponse response) {
 		super.renderHead(response);
+
 		response.render(CssHeaderItem.forReference(ColorPickerTextFieldCssReference.instance()));
 		response.render(JavaScriptHeaderItem.forReference(ColorPickerTextFieldJavaScriptReference.instance()));
 		if (isEnabledInHierarchy()) {
-			response.render(JavaScriptHeaderItem.forScript("$(document).ready(function() {" +
-					"$('#" + getMarkupId() + "').colorpicker();" +
-				"});",
-				"bootstrap-colorpicker"));
+			response.render(OnDomReadyHeaderItem.forScript(
+                    String.format("$('#%s').colorpicker();});", getMarkupId())));
 //			wasEnhanced = true; // not working if initially disabled
 		}
 	}
@@ -72,9 +66,7 @@ public class ColorPickerTextField extends TextField<String> {
 		super.onComponentTag(tag);
 		Attributes.addClass(tag, "bootstrap-colorpicker");
 	}
-	
-	private static final Logger log = LoggerFactory
-			.getLogger(ColorPickerTextField.class);
+
 	@Override
 	public void onEvent(IEvent<?> event) {
 		super.onEvent(event);
@@ -82,13 +74,11 @@ public class ColorPickerTextField extends TextField<String> {
 			final AjaxRequestHandler target = (AjaxRequestHandler) event.getPayload();
 			target.addListener(new IListener() {
 				@Override
-				public void onBeforeRespond(Map<String, Component> map,
-						AjaxRequestTarget target) {
+				public void onBeforeRespond(Map<String, Component> map, AjaxRequestTarget target) {
 				}
 				
 				@Override
-				public void onAfterRespond(Map<String, Component> map,
-						IJavaScriptResponse response) {
+				public void onAfterRespond(Map<String, Component> map, IJavaScriptResponse response) {
 					if (isEnabledInHierarchy() && !wasEnhanced) {
 						response.addJavaScript("$('#" + getMarkupId() + "').colorpicker();");
 						wasEnhanced = true;
