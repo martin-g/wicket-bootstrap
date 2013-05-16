@@ -3,8 +3,8 @@ package de.agilecoders.wicket.core.markup.html.bootstrap.common;
 import org.apache.wicket.Component;
 import org.apache.wicket.feedback.FeedbackMessage;
 import org.apache.wicket.feedback.FeedbackMessagesModel;
+import org.apache.wicket.feedback.FencedFeedbackPanel;
 import org.apache.wicket.feedback.IFeedbackMessageFilter;
-import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.util.time.Duration;
 
 /**
@@ -14,7 +14,7 @@ import org.apache.wicket.util.time.Duration;
  *
  * @author miha
  */
-public class NotificationPanel extends FeedbackPanel {
+public class NotificationPanel extends FencedFeedbackPanel {
 
     private Duration duration;
     private boolean showRenderedMessages = false;
@@ -25,7 +25,17 @@ public class NotificationPanel extends FeedbackPanel {
      * @param id The component id
      */
     public NotificationPanel(String id) {
-        super(id);
+        this(id, (Component) null);
+    }
+
+    /**
+     * Construct.
+     *
+     * @param id The component id
+     * @param fence  The component used as fence
+     */
+    public NotificationPanel(String id, Component fence) {
+        this(id, fence, null);
     }
 
     /**
@@ -35,7 +45,18 @@ public class NotificationPanel extends FeedbackPanel {
      * @param filter the feedback message filter
      */
     public NotificationPanel(String id, IFeedbackMessageFilter filter) {
-        super(id, filter);
+        this(id, null, filter);
+    }
+
+    /**
+     * Construct.
+     *
+     * @param id     The component id
+     * @param fence  The component used as fence
+     * @param filter the feedback message filter
+     */
+    public NotificationPanel(String id, Component fence, IFeedbackMessageFilter filter) {
+        super(id, fence, filter);
     }
 
     /**
