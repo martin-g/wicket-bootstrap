@@ -26,6 +26,7 @@
                             <li><a href="#issue90"><i class="icon-chevron-right"></i> Endless loop when closing Modal</a></li>
                             <li><a href="#issue93"><i class="icon-chevron-right"></i> Configure popover component</a></li>
                             <li><a href="#issue102"><i class="icon-chevron-right"></i> TypedLink</a></li>
+                            <li><a href="#issue175"><i class="icon-chevron-right"></i> Color Picker</a></li>
                         </ul>
                     </div>
                     <div class="span9">
@@ -107,6 +108,25 @@
                             <div class="bs-docs-example">
                                 <a wicket:id="link">[[LABEL]]</a>
                                 <a wicket:id="link-danger">[[LABEL]]</a>
+                            </div>
+                        </section>
+                        <section id="issue175">
+                            <div class="page-header">
+                                <h1>ColorPicker</h1>
+                            </div>
+
+                            <p>see <a href="https://github.com/l0rdn1kk0n/wicket-bootstrap/issues/175">issue #175</a>.</p>
+
+                            <div class="bs-docs-example">
+                                <div wicket:id="colorPickerFeedback"></div>
+                                <form wicket:id="colorpicker-form">
+                                    <div class="input-append color" data-color="rgb(255, 255, 255)" data-color-format="rgb">
+                                        <input wicket:id="colorPicker" type="text" class="span2" value="" >
+                                        <span class="add-on"><i style="background-color: rgb(255, 255, 255)"></i></span>
+                                    </div>
+                                    <br>
+                                    <input type="submit" value="Submit" wicket:id="submit">
+                                </form>
                             </div>
                         </section>
                     </div>

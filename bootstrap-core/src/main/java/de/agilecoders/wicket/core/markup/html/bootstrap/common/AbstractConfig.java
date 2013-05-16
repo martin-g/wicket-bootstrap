@@ -88,6 +88,19 @@ public abstract class AbstractConfig implements IClusterable {
     }
 
     /**
+     * returns the value for the given key. If no value is set, the
+     * default value will be returned.
+     *
+     * @param key The key to read.
+     * @return the value.
+     */
+    protected final <T> T get(final IKey<T> key) {
+        T value = (T) config.get(key);
+
+        return value != null ? value : key.getDefaultValue();
+    }
+
+    /**
      * Wraps IModel&lt;String&gt; in ConfigModel to serialize it as
      * simple String in the produced JSON.
      *

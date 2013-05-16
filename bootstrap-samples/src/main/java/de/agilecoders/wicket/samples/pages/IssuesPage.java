@@ -15,6 +15,8 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.AbstractNavbarCom
 import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.ImmutableNavbarComponent;
 import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.Navbar;
 import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.NavbarAjaxLink;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.ColorPickerConfig;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.ColorPickerTextField;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.DateTextField;
 import de.agilecoders.wicket.samples.components.issues.CustomNavbarForm;
 import org.apache.wicket.Component;
@@ -25,6 +27,7 @@ import org.apache.wicket.event.Broadcast;
 import org.apache.wicket.event.IEvent;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Form;
+import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
@@ -113,6 +116,8 @@ public class IssuesPage extends BasePage {
                 setResponsePage(getModelObject());
             }
         }.setLabel(Model.of("Link 2")));
+
+        add(createColorPickerForm("colorpicker-form"));
     }
 
     private Modal newModalDialog(String markupId) {
@@ -152,6 +157,55 @@ public class IssuesPage extends BasePage {
             protected void onSubmit(AjaxRequestTarget target, Form<?> form) {
                 System.out.print(dateBean);
                 target.appendJavaScript("alert('DateBean.dueDate is: " + dateBean.getDueDate() + "');");
+            }
+        });
+
+        return form;
+    }
+
+    /**
+     * creates a form that contains a colorpicker.
+     *
+     * @param markupId The components markup id
+     * @return new form
+     */
+    public Form createColorPickerForm(final String markupId) {
+
+        final FeedbackPanel colorPickerFeedback = new FeedbackPanel("colorPickerFeedback");
+        colorPickerFeedback.setOutputMarkupId(true);
+        add(colorPickerFeedback);
+
+        Form<Void> form = new Form<Void>(markupId);
+        add(form);
+
+        ColorPickerConfig config = new ColorPickerConfig();
+        config.setComponent(true);
+        config.setAjaxUpdate(true);
+        final ColorPickerTextField colorPicker = new ColorPickerTextField("colorPicker", Model.of(""), config) {
+            @Override
+            protected void onChange(AjaxRequestTarget target, String color) {
+                super.onChange(target, color);
+
+                success("Selected color is: " + color);
+                target.add(colorPickerFeedback);
+            }
+        };
+        form.add(colorPicker);
+
+        form.add(new AjaxSubmitLink("submit", form) {
+            private static final long serialVersionUID = -2647897814406807218L;
+
+            @Override
+            protected void onInitialize() {
+                super.onInitialize();
+
+                add(new ButtonBehavior());
+            }
+
+            @Override
+            protected void onSubmit(AjaxRequestTarget target, Form<?> form) {
+                success("Selected color is: " + colorPicker.getModelObject());
+                target.add(colorPickerFeedback);
             }
         });
 

@@ -5,6 +5,7 @@ import com.google.common.base.Function;
 import de.agilecoders.wicket.core.markup.html.bootstrap.common.AbstractConfig;
 
 import org.apache.wicket.Component;
+import org.apache.wicket.core.util.string.JavaScriptUtils;
 import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
 import org.apache.wicket.util.io.IClusterable;
 import org.apache.wicket.util.time.Duration;
@@ -165,7 +166,7 @@ public final class JQuery implements IClusterable {
 
         @Override
         public String build() {
-            return super.build() + "{" + nullToEmpty(functionBody) + "}";
+            return super.build() + "{" + functionBody + "}";
         }
 
         @Override
@@ -254,6 +255,58 @@ public final class JQuery implements IClusterable {
             super("each");
 
             addParameter(toParameterValue(function));
+        }
+    }
+
+    /**
+     * java abstraction of jquery closest function
+     */
+    public static final class ClosestJqueryFunction extends AbstractFunction {
+
+        /**
+         * creates a new {@link ClosestJqueryFunction} instance
+         *
+         * @param selector The CSS selector to use the closest parent
+         * @return new {@link ClosestJqueryFunction} instance
+         */
+        public static ClosestJqueryFunction closest(final String selector) {
+            return new ClosestJqueryFunction(selector);
+        }
+
+        /**
+         * Construct.
+         */
+        protected ClosestJqueryFunction(final String selector) {
+            super("closest");
+
+            addParameter("'" + JavaScriptUtils.escapeQuotes(selector) + "'");
+        }
+    }
+
+    /**
+     * java abstraction of JQuery <em>on</em> function
+     */
+    public static final class OnJqueryFunction extends AbstractFunction {
+
+        /**
+         * creates a new {@link OnJqueryFunction} instance
+         *
+         * @param selector The CSS selector to use the closest parent
+         * @return new {@link OnJqueryFunction} instance
+         */
+        public static OnJqueryFunction on(final String selector, JavaScriptInlineFunction handler) {
+            return new OnJqueryFunction(selector, handler);
+        }
+
+        /**
+         * Construct.
+         */
+        protected OnJqueryFunction(final String selector, final JavaScriptInlineFunction handler) {
+            super("on");
+
+            addParameter("'" + JavaScriptUtils.escapeQuotes(selector) + "'");
+            handler.addParameter("evt");
+            addParameter(toParameterValue(handler));
         }
     }
 
