@@ -18,19 +18,15 @@ import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.request.IRequestParameters;
-import org.apache.wicket.util.string.*;
+import org.apache.wicket.util.string.StringValue;
 
 import java.util.List;
 import java.util.Map;
 
 import static de.agilecoders.wicket.core.util.JQuery.$;
-import static de.agilecoders.wicket.core.util.JQuery.ClosestJqueryFunction.closest;
-import static de.agilecoders.wicket.core.util.JQuery.OnJqueryFunction.on;
 
 /**
  * Bootstrap ColorPicker from http://www.eyecon.ro/bootstrap-colorpicker/
- *
- * @author ceefour
  */
 public class ColorPickerTextField extends TextField<String> {
 
@@ -152,7 +148,7 @@ public class ColorPickerTextField extends TextField<String> {
     protected String createScript(final ColorPickerConfig config) {
         JQuery script;
         if (config.isComponent()) {
-            script = $(this).chain(closest(".color")).chain("colorpicker", config);
+            script = $(this).closest(".color").chain("colorpicker", config);
         } else {
             script = $(this).chain("colorpicker", config);
         }
@@ -164,9 +160,9 @@ public class ColorPickerTextField extends TextField<String> {
             String toColor = config.getFormat().to();
 
             CharSequence attrs = colorChangeAjaxBehavior.getAttrs();
-            script.chain(on("changeColor", new JQuery.JavaScriptInlineFunction(
-                    String.format("var color = evt.color.%s; console.log(color);var call = new Wicket.Ajax.Call(); call.doAjax(%s)",
-                                  toColor, attrs))));
+            script.on("changeColor", new JQuery.JavaScriptInlineFunction(
+                    String.format("var color = evt.color.%s; new Wicket.Ajax.Call().ajax(%s)",
+                                  toColor, attrs)));
         }
 
         return script.get();
@@ -188,7 +184,6 @@ public class ColorPickerTextField extends TextField<String> {
         @Override
         protected void respond(AjaxRequestTarget target) {
             IRequestParameters requestParameters = getComponent().getRequest().getRequestParameters();
-            System.err.println("params: " + requestParameters);
             StringValue color = requestParameters.getParameterValue("color");
 
             onChange(target, color.toString());
