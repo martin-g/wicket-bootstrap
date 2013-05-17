@@ -5,8 +5,10 @@ import com.google.common.base.Function;
 import de.agilecoders.wicket.core.markup.html.bootstrap.common.AbstractConfig;
 
 import org.apache.wicket.Component;
+import org.apache.wicket.core.util.string.JavaScriptUtils;
 import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
 import org.apache.wicket.util.io.IClusterable;
+import org.apache.wicket.util.string.Strings;
 import org.apache.wicket.util.time.Duration;
 
 import java.util.List;
@@ -65,6 +67,18 @@ public final class JQuery implements IClusterable {
         }
 
         return $(Generics2.join(selector, ' '));
+    }
+
+    public JQuery on(String events, JavaScriptInlineFunction handler) {
+        return chain(OnJqueryFunction.on(events, handler));
+    }
+
+    public JQuery on(String events, String selector, JavaScriptInlineFunction handler) {
+        return chain(OnJqueryFunction.on(events, selector, handler));
+    }
+
+    public JQuery closest(String selector) {
+        return chain(ClosestJqueryFunction.closest(selector));
     }
 
     private final String selector;
@@ -165,7 +179,7 @@ public final class JQuery implements IClusterable {
 
         @Override
         public String build() {
-            return super.build() + "{" + nullToEmpty(functionBody) + "}";
+            return super.build() + "{" + functionBody + "}";
         }
 
         @Override
@@ -254,6 +268,74 @@ public final class JQuery implements IClusterable {
             super("each");
 
             addParameter(toParameterValue(function));
+        }
+    }
+
+    /**
+     * java abstraction of jquery closest function
+     */
+    public static final class ClosestJqueryFunction extends AbstractFunction {
+
+        /**
+         * creates a new {@link ClosestJqueryFunction} instance
+         *
+         * @param selector The CSS selector to use the closest parent
+         * @return new {@link ClosestJqueryFunction} instance
+         */
+        public static ClosestJqueryFunction closest(final String selector) {
+            return new ClosestJqueryFunction(selector);
+        }
+
+        /**
+         * Construct.
+         */
+        protected ClosestJqueryFunction(final String selector) {
+            super("closest");
+
+            addParameter("'" + JavaScriptUtils.escapeQuotes(selector) + "'");
+        }
+    }
+
+    /**
+     * java abstraction of JQuery <em>on</em> function
+     */
+    public static final class OnJqueryFunction extends AbstractFunction {
+
+        /**
+         * creates a new {@link OnJqueryFunction} instance
+         *
+         * @param events The CSS selector for event delegation
+         * @return new {@link OnJqueryFunction} instance
+         */
+        public static OnJqueryFunction on(final String events, JavaScriptInlineFunction handler) {
+            return new OnJqueryFunction(events, null, handler);
+        }
+
+        /**
+         * creates a new {@link OnJqueryFunction} instance
+         *
+         * @param selector The CSS selector for event delegation
+         * @return new {@link OnJqueryFunction} instance
+         */
+        public static OnJqueryFunction on(final String events, final String selector, JavaScriptInlineFunction handler) {
+            return new OnJqueryFunction(events, selector, handler);
+        }
+
+        /**
+         * Construct.
+         */
+        // TODO Add support for 'data' parameter
+        protected OnJqueryFunction(final String events, final String selector, final JavaScriptInlineFunction handler) {
+            super("on");
+
+            addParameter("'" + events + "'");
+
+            if (!Strings.isEmpty(selector)) {
+                addParameter("'" + JavaScriptUtils.escapeQuotes(selector) + "'");
+            }
+
+            handler.addParameter("evt");
+            addParameter(toParameterValue(handler));
         }
     }
 
