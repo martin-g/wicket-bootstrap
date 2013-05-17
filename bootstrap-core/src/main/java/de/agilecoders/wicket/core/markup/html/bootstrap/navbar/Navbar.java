@@ -45,7 +45,7 @@ import static de.agilecoders.wicket.core.util.Generics2.transform;
  */
 public class Navbar extends Panel implements Invertible<Navbar> {
 
-    static final String COMPONENT_ID = "component";
+    public static final String COMPONENT_ID = "component";
 
     /**
      * indicates the position of the navigation bar itself
