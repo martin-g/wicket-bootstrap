@@ -9,18 +9,20 @@ import org.apache.wicket.util.io.IOUtils;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.Charset;
+import java.util.regex.Pattern;
 import java.util.zip.Checksum;
 
 /**
  * computes the checksum of a {@link org.apache.wicket.request.resource.caching.IStaticCacheableResource} using
  * a special {@link Checksum} implementation and uses it as a version string.
- *
+ * <p/>
  * Using a {@link Checksum} is faster than using a {@link java.security.MessageDigest} but it has
  * a higher collision rate.
  *
  * @author miha
  */
 public abstract class ChecksumResourceVersion extends MessageDigestResourceVersion {
+    private static final Pattern NON_PRINTABLE = Pattern.compile("[\\x00\\x08\\x0B\\x0C\\x0E-\\x1F]");
 
     /**
      * @return a new {@link Checksum} instance
@@ -74,6 +76,16 @@ public abstract class ChecksumResourceVersion extends MessageDigestResourceVersi
             IOUtils.close(inputStream);
         }
 
-        return Long.toHexString(checksum.getValue()).getBytes(charset());
+        return stripNonVisibleChars(Long.toHexString(checksum.getValue())).getBytes(charset());
+    }
+
+    /**
+     * strips all non-printable characters from given hex checksum
+     *
+     * @param checksum the checksum to clean up
+     * @return checksum without non-printable characters
+     */
+    private String stripNonVisibleChars(String checksum) {
+        return NON_PRINTABLE.matcher(checksum).replaceAll("");
     }
 }
