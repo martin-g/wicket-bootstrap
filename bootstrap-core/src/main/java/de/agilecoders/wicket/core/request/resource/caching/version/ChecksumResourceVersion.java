@@ -88,45 +88,4 @@ public abstract class ChecksumResourceVersion extends MessageDigestResourceVersi
     private String stripNonVisibleChars(String checksum) {
         return NON_PRINTABLE.matcher(checksum).replaceAll("");
     }
-
-    public byte[] computeDebugDigest(InputStream inputStream) throws IOException {
-        final Checksum checksum = newChecksumBuilder();
-        final byte[] bytes = new byte[bufferSize()];
-        int len;
-
-        try {
-            while ((len = inputStream.read(bytes)) >= 0) {
-                checksum.update(bytes, 0, len);
-            }
-        } catch (RuntimeException e) {
-            checksum.reset();
-
-            throw e;
-        } finally {
-            IOUtils.close(inputStream);
-        }
-
-        long value = checksum.getValue();
-        String hex = Long.toHexString(value);
-        String hexWithoutNonPrintable = stripNonVisibleChars(hex);
-        byte[] byteArray = hexWithoutNonPrintable.getBytes(charset());
-
-        System.out.println("=======================");
-        System.out.println(value);
-        System.out.println(hex);
-        System.out.println(hexWithoutNonPrintable);
-        System.out.println(byteArray);
-        System.out.println(charset());
-        System.out.println("-----------------------");
-        for (byte b : byteArray) {
-            System.out.print(b);
-            System.out.print(" = ");
-            System.out.print(Byte.toString(b));
-            System.out.println("");
-        }
-        System.out.println("=======================");
-
-
-        return byteArray;
-    }
 }

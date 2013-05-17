@@ -1,5 +1,6 @@
 package de.agilecoders.wicket.core;
 
+import com.google.common.base.Charsets;
 import de.agilecoders.wicket.core.settings.BootstrapSettings;
 import de.agilecoders.wicket.core.settings.IBootstrapSettings;
 import de.agilecoders.wicket.core.test.Attributes;
@@ -13,6 +14,7 @@ import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.tester.TagTester;
 import org.apache.wicket.util.tester.WicketTester;
+import org.junit.After;
 import org.junit.Before;
 
 import java.util.ArrayList;
@@ -43,6 +45,11 @@ public class WicketApplicationTest {
         onBefore();
     }
 
+    @After
+    public final void tearDown() throws Exception {
+        tester.destroy();
+    }
+
     protected WebApplication newWebApplication() {
         return new WebApplication() {
 
@@ -53,6 +60,7 @@ public class WicketApplicationTest {
                 Bootstrap.install(this, WicketApplicationTest.this.createBootstrapSettings());
 
                 getMarkupSettings().setStripWicketTags(false);
+                getMarkupSettings().setDefaultMarkupEncoding(Charsets.UTF_8.name());
             }
 
             @Override

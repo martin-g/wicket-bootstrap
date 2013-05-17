@@ -26,11 +26,11 @@ public class CRC32ResourceVersionTest extends ChecksumResourceVersionTest {
     @Parameterized.Parameters
     public static Collection<Object[]> data() {
         Object[][] data = new Object[][] {
-                { new AbstractMap.SimpleEntry<String, String>("a", "620062") },
-                { new AbstractMap.SimpleEntry<String, String>("a1", "f50093") },
-                { new AbstractMap.SimpleEntry<String, String>("a1b", "1ea00f5") },
-                { new AbstractMap.SimpleEntry<String, String>("a1bX", "337014d") },
-                { new AbstractMap.SimpleEntry<String, String>("a1bXl", "4f001b9") }
+                { new AbstractMap.SimpleEntry<String, String>("a", "e8b7be43") },
+                { new AbstractMap.SimpleEntry<String, String>("a1", "6ce14823") },
+                { new AbstractMap.SimpleEntry<String, String>("a1b", "d3b57fc3") },
+                { new AbstractMap.SimpleEntry<String, String>("a1bX", "b50c103e") },
+                { new AbstractMap.SimpleEntry<String, String>("a1bXl", "57d2d345") }
         };
         return Arrays.asList(data);
     }
