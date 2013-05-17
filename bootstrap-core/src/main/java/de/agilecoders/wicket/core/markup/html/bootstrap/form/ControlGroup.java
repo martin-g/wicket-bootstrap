@@ -14,6 +14,7 @@ import org.apache.wicket.markup.html.form.IFormModelUpdateListener;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.util.iterator.ComponentHierarchyIterator;
+import org.apache.wicket.util.string.Strings;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -31,6 +32,16 @@ public class ControlGroup extends Border implements IFormModelUpdateListener {
     private final Label help;
     private final Label error;
     private final Model<String> stateClassName;
+    
+    /**
+     * Construct.
+     *
+     * @param id    the wicket component id
+     * @param label the label
+     */
+    public ControlGroup(final String id) {
+    	this(id, Model.of(""), Model.of(""));
+    }
 
     /**
      * Construct.
@@ -82,10 +93,17 @@ public class ControlGroup extends Border implements IFormModelUpdateListener {
         super.onInitialize();
 
         final List<FormComponent<?>> formComponents = findFormComponents();
+        int size = formComponents.size();
         for (final FormComponent<?> fc : formComponents) {
             fc.setOutputMarkupId(true);
-            label.add(new AttributeModifier("for", fc.getMarkupId()));
         }
+        if (size > 0) {
+			FormComponent<?> formComponent = formComponents.get(size-1);
+			label.add(new AttributeModifier("for", formComponent.getMarkupId()));
+			if (formComponent.getLabel() != null && Strings.isEmpty(formComponent.getLabel().getObject()) == false) {
+				label(formComponent.getLabel());
+			}
+		}
     }
 
     @Override
