@@ -40,4 +40,5 @@ public class ChecksumResourceVersionWTest extends WicketApplicationTest {
 
         assertThat(new Adler32ResourceVersion().charset(), is(equalTo(Charsets.UTF_8)));
     }
+
 }
