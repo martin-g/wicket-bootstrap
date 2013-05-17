@@ -16,6 +16,18 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class ChecksumResourceVersionWTest extends WicketApplicationTest {
 
     @Test
+    public void bufferSizeIsEditable() {
+        ChecksumResourceVersion version = new Adler32ResourceVersion() {
+            @Override
+            protected int bufferSize() {
+                return 2048;
+            }
+        };
+
+        assertThat(version.bufferSize(), is(equalTo(2048)));
+    }
+
+    @Test
     public void defaultMarkupEncodingIsUsed() {
         application().getMarkupSettings().setDefaultMarkupEncoding(Charsets.UTF_16.name());
 

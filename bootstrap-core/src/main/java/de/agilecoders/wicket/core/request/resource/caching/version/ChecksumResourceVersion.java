@@ -8,7 +8,6 @@ import org.apache.wicket.util.io.IOUtils;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigInteger;
 import java.nio.charset.Charset;
 import java.util.zip.Checksum;
 
@@ -69,13 +68,12 @@ public abstract class ChecksumResourceVersion extends MessageDigestResourceVersi
             }
         } catch (RuntimeException e) {
             checksum.reset();
-            IOUtils.close(inputStream);
 
             throw e;
+        } finally {
+            IOUtils.close(inputStream);
         }
 
-        final String hash = new BigInteger(Long.toString(checksum.getValue())).toString(16);
-
-        return hash.getBytes(charset());
+        return Long.toHexString(checksum.getValue()).getBytes(charset());
     }
 }
