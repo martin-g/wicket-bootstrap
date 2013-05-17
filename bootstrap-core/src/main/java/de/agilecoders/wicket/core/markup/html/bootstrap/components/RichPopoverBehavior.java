@@ -1,10 +1,8 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.components;
 
-import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.core.util.string.ComponentRenderer;
 import org.apache.wicket.model.IModel;
-import org.apache.wicket.model.LoadableDetachableModel;
 
 import static org.apache.commons.lang.StringEscapeUtils.escapeJava;
 import static org.apache.commons.lang.StringUtils.chomp;
@@ -14,7 +12,7 @@ import static org.apache.commons.lang.StringUtils.chomp;
  *
  * @author miha
  */
-abstract class RichPopoverBehavior extends PopoverBehavior {
+public abstract class RichPopoverBehavior extends PopoverBehavior {
 
     /**
      * Construct.
@@ -38,22 +36,10 @@ abstract class RichPopoverBehavior extends PopoverBehavior {
     }
 
     @Override
-    public void bind(Component component) {
-        super.bind(component);
+    protected final String newContent() {
+        final String content = String.valueOf(ComponentRenderer.renderComponent(newBodyComponent(ComponentRenderer.COMP_ID)));
 
-        component.add(new AttributeModifier("data-content", newContent()));
-    }
-
-    @Override
-    protected final IModel<String> newContent() {
-        return new LoadableDetachableModel<String>() {
-            @Override
-            protected String load() {
-                final String content = String.valueOf(ComponentRenderer.renderComponent(newBodyComponent(ComponentRenderer.COMP_ID)));
-
-                return escapeJava(chomp(content));
-            }
-        };
+        return escapeJava(chomp(content));
     }
 
     /**

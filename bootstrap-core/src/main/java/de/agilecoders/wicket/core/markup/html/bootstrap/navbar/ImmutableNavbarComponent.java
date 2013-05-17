@@ -30,7 +30,7 @@ public class ImmutableNavbarComponent extends AbstractNavbarComponent {
     public ImmutableNavbarComponent(Component component, Navbar.ComponentPosition position) {
         super(position);
 
-        Args.isTrue(Navbar.COMPONENT_ID.equals(component.getId()), "componentId must equal " + Navbar.COMPONENT_ID);
+        Args.isTrue(Navbar.componentId().equals(component.getId()), "componentId must equal " + Navbar.componentId());
 
         this.component = component;
     }

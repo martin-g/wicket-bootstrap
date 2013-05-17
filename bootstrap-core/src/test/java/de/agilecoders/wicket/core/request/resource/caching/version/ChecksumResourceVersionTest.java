@@ -22,7 +22,11 @@ abstract class ChecksumResourceVersionTest {
         final ChecksumResourceVersion version = newChecksumResourceVersion();
 
         try {
-            assertThat(new String(version.computeDigest(new ByteArrayInputStream(input.getBytes(Charsets.UTF_8)))), is(equalTo(expected)));
+            final byte[] versionAsByteArray = version.computeDigest(new ByteArrayInputStream(input.getBytes(Charsets.UTF_8)));
+
+            assertThat("checksum(" + input + "): " + expected + "; is: " + new String(versionAsByteArray),
+                       versionAsByteArray,
+                       is(equalTo(expected.getBytes(Charsets.UTF_8))));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

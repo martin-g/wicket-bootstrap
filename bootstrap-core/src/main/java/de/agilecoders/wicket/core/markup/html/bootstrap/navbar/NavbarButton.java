@@ -28,7 +28,7 @@ public class NavbarButton<T> extends BootstrapBookmarkablePageLink<T> {
      * @param <T>        type of the page class
      */
     public <T extends Page> NavbarButton(final Class<T> pageClass, final PageParameters parameters, final IModel<String> label) {
-        super(Navbar.COMPONENT_ID, pageClass, parameters, Buttons.Type.Menu);
+        super(Navbar.componentId(), pageClass, parameters, Buttons.Type.Menu);
 
         setLabel(label);
     }

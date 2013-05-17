@@ -2,9 +2,8 @@ package de.agilecoders.wicket.core.markup.html.bootstrap.components;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapJavascriptBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.common.AbstractConfig;
-
-import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
+import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
 import org.apache.wicket.model.IModel;
@@ -50,12 +49,18 @@ public class TooltipBehavior extends BootstrapJavascriptBehavior {
     }
 
     @Override
+    public void onComponentTag(Component component, ComponentTag tag) {
+        super.onComponentTag(component, tag);
+
+        tag.put("rel", createRelAttribute());
+        tag.put("title", label.getObject());
+    }
+
+    @Override
     public void bind(final Component component) {
         super.bind(component);
 
         component.setOutputMarkupId(true);
-        component.add(AttributeModifier.replace("rel", createRelAttribute()));
-        component.add(AttributeModifier.replace("title", label));
     }
 
     /**
@@ -73,7 +78,7 @@ public class TooltipBehavior extends BootstrapJavascriptBehavior {
     }
 
     /**
-     * createss an initializer script
+     * creates an initializer script
      *
      * @param component The component where this behavior is assigned to.
      * @param config    The current configuration

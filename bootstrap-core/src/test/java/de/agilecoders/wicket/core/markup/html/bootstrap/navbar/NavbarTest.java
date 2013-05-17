@@ -2,11 +2,7 @@ package de.agilecoders.wicket.core.markup.html.bootstrap.navbar;
 
 import de.agilecoders.wicket.core.WicketApplicationTest;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
-import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.INavbarComponent;
-import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.Navbar;
-import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.NavbarButton;
 import de.agilecoders.wicket.core.test.IntegrationTest;
-
 import org.apache.wicket.Component;
 import org.apache.wicket.Page;
 import org.apache.wicket.model.Model;
@@ -121,8 +117,8 @@ public class NavbarTest extends WicketApplicationTest {
         TagTester tagTester = tester().getTagByWicketId("navLeftList");
 
         Assert.assertThat(tagTester.hasChildTag("a"), is(equalTo(true)));
-        Assert.assertThat(tester().getTagByWicketId(Navbar.COMPONENT_ID).hasAttribute("href"), is(equalTo(true)));
-        Assert.assertThat(tester().getTagByWicketId(Navbar.COMPONENT_ID).getValue(), containsString("Link Name"));
+        Assert.assertThat(tester().getTagByWicketId(Navbar.componentId()).hasAttribute("href"), is(equalTo(true)));
+        Assert.assertThat(tester().getTagByWicketId(Navbar.componentId()).getValue(), containsString("Link Name"));
     }
 
     @Test
@@ -142,7 +138,7 @@ public class NavbarTest extends WicketApplicationTest {
 
         tester().startComponentInPage(navbar);
 
-        Assert.assertThat(tester().getTagByWicketId(Navbar.COMPONENT_ID).hasChildTag("i"), is(equalTo(true)));
+        Assert.assertThat(tester().getTagByWicketId(Navbar.componentId()).hasChildTag("i"), is(equalTo(true)));
         Assert.assertThat(tester().getTagByWicketId("icon").getAttribute("class"), containsString("icon-align-center"));
     }
 }

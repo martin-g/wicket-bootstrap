@@ -37,7 +37,8 @@ import static de.agilecoders.wicket.core.util.Generics2.filter;
 import static de.agilecoders.wicket.core.util.Generics2.transform;
 
 /**
- * TODO: document
+ * A {@link Navbar} is a navigation component that holds a list of elements,
+ * mostly Links/MenuButtons/Dropdowns.
  * <p/>
  * <pre><div wicket:id="navbar" class="navbar"></div></pre>
  *
@@ -45,7 +46,14 @@ import static de.agilecoders.wicket.core.util.Generics2.transform;
  */
 public class Navbar extends Panel implements Invertible<Navbar> {
 
-    static final String COMPONENT_ID = "component";
+    private static final String COMPONENT_ID = "component";
+
+    /**
+     * @return the component id that is used for all navbar components.
+     */
+    public static String componentId() {
+        return COMPONENT_ID;
+    }
 
     /**
      * indicates the position of the navigation bar itself
@@ -96,7 +104,7 @@ public class Navbar extends Panel implements Invertible<Navbar> {
         LEFT, RIGHT
     }
 
-    private static final NavbarComponentToComponentFunction NAVBAR_COMPONENT_TO_COMPONENT_FUNCTION = new NavbarComponentToComponentFunction(COMPONENT_ID);
+    private static final NavbarComponentToComponentFunction NAVBAR_COMPONENT_TO_COMPONENT_FUNCTION = new NavbarComponentToComponentFunction(componentId());
     private static final PositionFilter POSITION_FILTER_LEFT = new PositionFilter(ComponentPosition.LEFT);
     private static final PositionFilter POSITION_FILTER_RIGHT = new PositionFilter(ComponentPosition.RIGHT);
 

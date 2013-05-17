@@ -37,7 +37,7 @@ public abstract class NavbarAjaxLink<T> extends org.apache.wicket.ajax.markup.ht
      * @param label Label of link
      */
     public NavbarAjaxLink(final IModel<String> label) {
-        this(Navbar.COMPONENT_ID, label);
+        this(Navbar.componentId(), label);
     }
 
     /**

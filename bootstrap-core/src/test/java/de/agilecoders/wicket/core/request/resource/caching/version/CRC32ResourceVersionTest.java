@@ -13,9 +13,9 @@ public class CRC32ResourceVersionTest extends ChecksumResourceVersionTest {
     public void checkChecksum() {
         check("a", "e8b7be43");
         check("a1", "6ce14823");
-        check("a1$", "4c0a9b66");
-        check("a1$-", "33407d0e");
-        check("a1$-&", "e784070a");
+        check("a1b", "d3b57fc3");
+        check("a1bX", "b50c103e");
+        check("a1bXl", "57d2d345");
     }
 
     @Override

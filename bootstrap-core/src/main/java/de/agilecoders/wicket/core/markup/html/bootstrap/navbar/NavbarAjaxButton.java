@@ -29,7 +29,7 @@ public abstract class NavbarAjaxButton extends BootstrapAjaxButton {
      * @param type {@link de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons.Type} of this button instance
      */
     public NavbarAjaxButton(final IModel<String> model, final Buttons.Type type) {
-        super(Navbar.COMPONENT_ID, model, type);
+        super(Navbar.componentId(), model, type);
     }
 
     @Override

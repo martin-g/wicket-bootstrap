@@ -13,9 +13,9 @@ public class Adler32ResourceVersionTest extends ChecksumResourceVersionTest {
     public void checkChecksum() {
         check("a", "620062");
         check("a1", "f50093");
-        check("a1$", "1ac00b7");
-        check("a1$-", "29000e4");
-        check("a1$-&", "39a010a");
+        check("a1b", "1ea00f5");
+        check("a1bX", "337014d");
+        check("a1bXl", "4f001b9");
     }
 
     @Override

@@ -18,7 +18,7 @@ public abstract class NavbarDropDownButton extends DropDownButton {
      * @param model the label of this dropdown button
      */
     public NavbarDropDownButton(final IModel<String> model) {
-        super(Navbar.COMPONENT_ID, model);
+        super(Navbar.componentId(), model);
     }
 
     @Override
