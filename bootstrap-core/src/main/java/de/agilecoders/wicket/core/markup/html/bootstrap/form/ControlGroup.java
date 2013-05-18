@@ -7,6 +7,9 @@ import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.feedback.FeedbackMessage;
 import org.apache.wicket.feedback.FeedbackMessages;
 import org.apache.wicket.markup.ComponentTag;
+import org.apache.wicket.markup.html.WebComponent;
+import org.apache.wicket.markup.html.WebMarkupContainer;
+import org.apache.wicket.markup.html.basic.EnclosureContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.border.Border;
 import org.apache.wicket.markup.html.form.FormComponent;
@@ -29,6 +32,7 @@ import java.util.List;
 public class ControlGroup extends Border implements IFormModelUpdateListener {
 
     private final Label label;
+    private final Label requiredSign;
     private final Label help;
     private final Label error;
     private final Model<String> stateClassName;
@@ -64,10 +68,17 @@ public class ControlGroup extends Border implements IFormModelUpdateListener {
         this.label = new Label("label", label);
         this.help = new Label("help", help);
         this.error = new Label("error", Model.<Serializable>of(""));
-
+        this.requiredSign = new Label("required",Model.<Serializable>of("*"));
+        
+        EnclosureContainer labelEnclosure;
+		add(labelEnclosure = new EnclosureContainer("label-enclosure", this.label));
+		labelEnclosure.add(this.label);
+        labelEnclosure.add(this.requiredSign);
+        this.label.setRenderBodyOnly(true);
+        
         stateClassName = Model.of("");
 
-        addToBorder(this.label, this.help, this.error);
+        addToBorder(labelEnclosure, this.help, this.error);
     }
 
     @Override
@@ -97,12 +108,14 @@ public class ControlGroup extends Border implements IFormModelUpdateListener {
         for (final FormComponent<?> fc : formComponents) {
             fc.setOutputMarkupId(true);
         }
+        
         if (size > 0) {
 			FormComponent<?> formComponent = formComponents.get(size-1);
 			label.add(new AttributeModifier("for", formComponent.getMarkupId()));
 			if (formComponent.getLabel() != null && Strings.isEmpty(formComponent.getLabel().getObject()) == false) {
 				label(formComponent.getLabel());
 			}
+			requiredSign.setVisibilityAllowed(formComponent.isRequired());
 		}
     }
 
