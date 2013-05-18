@@ -4,7 +4,9 @@
     </head>
     <body>
         <wicket:border>
-            <label wicket:id="label" class="control-label">Text input</label>
+        	<div wicket:id="label-enclosure">
+	        	<label class="control-label"><span wicket:id="label">Text input</span><span class="required" wicket:id="required">*</span></label>
+        	</div>
 
             <div class="controls">
                 <wicket:body/>
