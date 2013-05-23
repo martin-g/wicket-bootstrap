@@ -1,7 +1,7 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.form;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.CssClassNameAppender;
-
+import org.apache.wicket.Component;
 import org.apache.wicket.feedback.ContainerFeedbackMessageFilter;
 import org.apache.wicket.feedback.FeedbackMessage;
 import org.apache.wicket.feedback.IFeedbackMessageFilter;
@@ -15,42 +15,93 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * TODO: document
+ * A {@link ControlGroupBorder} is a special collection of components that
+ * contains a form field, a label, a help message (optional) and a container
+ * for feedback messages.
  *
  * @author miha
- * @version 1.0
+ * @deprecated please use {@link ControlGroup} instead
  */
+@Deprecated
 public class ControlGroupBorder extends Border {
-    private Label feedback;
-    private Label label;
-    private Label help;
+    private final Component feedback;
+    private final Component label;
+    private final Component help;
 
-    public ControlGroupBorder(String id) {
-        super(id);
-
-        commonInit();
+    /**
+     * Construct. This constructor uses an empty label.
+     *
+     * @param id the wicket component id
+     */
+    public ControlGroupBorder(final String id) {
+        this(id, new Model<String>());
     }
 
-    public ControlGroupBorder(String id, IModel<?> model) {
+    /**
+     * Construct.
+     *
+     * @param id    the wicket component id
+     * @param model the control group label
+     */
+    public ControlGroupBorder(String id, IModel<String> model) {
         super(id, model);
 
-        commonInit();
+        addToBorder(feedback = newFeedbackMessageContainer("feedback"),
+                    label = newLabel("label"),
+                    help = newHelpLabel("help"));
     }
 
-    private void commonInit() {
-        feedback = new Label("feedback", new Model<String>());
-        label = new Label("label", new Model<String>());
-        help = new Label("help", new Model<String>());
-
-        addToBorder(feedback, label, help);
+    /**
+     * creates a new label
+     *
+     * @param id the component id
+     * @return new label
+     */
+    protected Component newLabel(final String id) {
+        return new Label(id, getDefaultModel());
     }
-    
+
+    /**
+     * creates a new container for a feedback message
+     *
+     * @param id the component id
+     * @return new feedback message container
+     */
+    protected Component newFeedbackMessageContainer(final String id) {
+        return new Label(id, new Model<String>());
+    }
+
+    /**
+     * creates a new help label that contains a help message for the form field. This field
+     * will be set to invisible if there is no content.
+     *
+     * @param id the component id
+     * @return new help label
+     */
+    protected Component newHelpLabel(final String id) {
+        return new Label(id, new Model<String>());
+    }
+
+    /**
+     * updates the label, if given model contains null or an empty
+     * string, the label will be set to invisible.
+     *
+     * @param labelModel the label as model
+     * @return this instance for chaining
+     */
     public ControlGroupBorder label(IModel<String> labelModel) {
         label.setDefaultModel(labelModel);
-        
+
         return this;
     }
 
+    /**
+     * updates the help message, if given model contains null or an empty
+     * string, the label will be set to invisible.
+     *
+     * @param helpModel the help label as model
+     * @return this instance for chaining
+     */
     public ControlGroupBorder help(IModel<String> helpModel) {
         help.setDefaultModel(helpModel);
 
@@ -76,11 +127,14 @@ public class ControlGroupBorder extends Border {
         } else {
             feedback.setVisible(false);
         }
-        
+
         label.setVisible(!Strings.isEmpty(label.getDefaultModelObjectAsString()));
         help.setVisible(!Strings.isEmpty(help.getDefaultModelObjectAsString()));
     }
 
+    /**
+     * @return all feedback messages that passes the {@link #newMessagesFilter()}
+     */
     private List<FeedbackMessage> collectFeedbackMessages() {
         return getSession().getFeedbackMessages().messages(newMessagesFilter());
     }
