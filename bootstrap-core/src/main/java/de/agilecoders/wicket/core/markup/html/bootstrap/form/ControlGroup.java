@@ -255,6 +255,7 @@ public class ControlGroup extends Border implements IFormModelUpdateListener {
             }
 
             switch (message.getLevel()) {
+                case FeedbackMessage.FATAL:
                 case FeedbackMessage.ERROR: return "error";
                 case FeedbackMessage.WARNING: return "warning";
                 case FeedbackMessage.SUCCESS: return "success";
