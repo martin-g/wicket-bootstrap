@@ -102,8 +102,7 @@ public final class Components {
      * @param component component to check
      */
     public static void hideIfModelIsEmpty(final Component component) {
-        if (component != null && (component.getDefaultModel() == null || component.getDefaultModelObject() == null ||
-                                  Strings.isEmpty(component.getDefaultModelObjectAsString()))) {
+        if (component != null && Strings.isEmpty(component.getDefaultModelObjectAsString())) {
             component.setVisible(false);
         }
     }
