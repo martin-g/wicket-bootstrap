@@ -1,6 +1,7 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapResourcesBehavior;
+import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.PullRightBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.Activatable;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.ButtonBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.ButtonList;
@@ -10,7 +11,6 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.image.Icon;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
 import de.agilecoders.wicket.core.util.Attributes;
 import de.agilecoders.wicket.core.util.Components;
-
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.behavior.Behavior;
@@ -27,8 +27,8 @@ import org.apache.wicket.model.Model;
 
 import java.util.List;
 
-import static de.agilecoders.wicket.core.markup.html.bootstrap.button.DropDownJqueryFunction.dropdown;
-import static de.agilecoders.wicket.core.util.JQuery.$;
+import static de.agilecoders.wicket.core.markup.html.bootstrap.button.DropDownJqueryFunction.*;
+import static de.agilecoders.wicket.core.util.JQuery.*;
 
 /**
  * Use any button to trigger a dropdown menu by placing it within a .btn-group and providing the proper menu markup.
@@ -44,6 +44,7 @@ public abstract class DropDownButton extends AbstractLink implements Invertible<
     private final WebMarkupContainer baseButton;
     private final String script;
     private final Icon icon;
+    private final IModel<Boolean> pullRight = Model.of(false);
 
     /**
      * Construct.
@@ -68,7 +69,10 @@ public abstract class DropDownButton extends AbstractLink implements Invertible<
         this.script = newInitializerScript();
 
         add(baseButton = newButton("btn", model, iconTypeModel));
-        add(buttonListView = newButtonList("buttons"));
+        WebMarkupContainer dropdownMenu = new WebMarkupContainer("dropdown-menu");
+        dropdownMenu.add(new PullRightBehavior(pullRight));
+        add(dropdownMenu);
+        dropdownMenu.add(buttonListView = newButtonList("buttons"));
 
         this.icon = newButtonIcon("icon", iconTypeModel);
 
@@ -248,6 +252,16 @@ public abstract class DropDownButton extends AbstractLink implements Invertible<
         return this;
     }
 
+    /**
+     * sets the dropdown menu align to the right of the button
+     * @param pullRight
+     * @return
+     */
+    public DropDownButton setPullRight(final Boolean pullRight){
+        this.pullRight.setObject(pullRight);
+        return this;
+    }
+
     @Override
     protected final IMarkupSourcingStrategy newMarkupSourcingStrategy() {
         return new PanelMarkupSourcingStrategy(false);
@@ -286,4 +300,6 @@ public abstract class DropDownButton extends AbstractLink implements Invertible<
     public final Component getBaseButton() {
         return baseButton;
     }
+
+
 }
