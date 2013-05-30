@@ -6,8 +6,9 @@ import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.model.IModel;
 
 /**
- * User: bcousin
- * add boostrap class for alignment
+ * Alignment behavior to position components
+ *
+ * @author bcousin
  */
 public class AlignmentBehavior extends BootstrapBaseBehavior {
     public enum Alignment {
