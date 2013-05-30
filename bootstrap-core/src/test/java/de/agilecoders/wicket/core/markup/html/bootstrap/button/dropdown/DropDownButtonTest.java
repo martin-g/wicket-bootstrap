@@ -19,7 +19,7 @@ import java.util.List;
  */
 public class DropDownButtonTest extends WicketApplicationTest {
     @Test
-    public void pullLeftDropDownButton() {
+    public void normalAlignmentDropDownButton() {
         tester().startComponentInPage(newDropDownButton());
         final TagTester tag = tester().getTagByWicketId("dropdown-menu");
 
@@ -27,7 +27,7 @@ public class DropDownButtonTest extends WicketApplicationTest {
     }
 
     @Test
-    public void pullRightDropDownButton() {
+    public void rightAlignmentDropDownButton() {
         tester().startComponentInPage(newDropDownButton().setAlignment(AlignmentBehavior.Alignment.RIGHT));
         final TagTester tag = tester().getTagByWicketId("dropdown-menu");
 
@@ -35,7 +35,15 @@ public class DropDownButtonTest extends WicketApplicationTest {
     }
 
     @Test
-    public void pullRightSplitButton() {
+    public void leftAlignmentDropDownButton() {
+        tester().startComponentInPage(newDropDownButton().setAlignment(AlignmentBehavior.Alignment.LEFT));
+        final TagTester tag = tester().getTagByWicketId("dropdown-menu");
+
+        assertCssClass(tag, "dropdown-menu", "pull-left");
+    }
+
+    @Test
+    public void rightAlignmentSplitButton() {
         tester().startComponentInPage(newSplitButton().setAlignment(AlignmentBehavior.Alignment.RIGHT));
         final TagTester tag = tester().getTagByWicketId("dropdown-menu");
 

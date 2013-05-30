@@ -30,6 +30,12 @@ public class AlignmentBehavior extends BootstrapBaseBehavior {
     @Override
     public void onComponentTag(final Component component, final ComponentTag tag) {
         super.onComponentTag(component, tag);
-        Attributes.addClass(tag, alignement.getObject().className);
+        Attributes.removeClass(tag, Alignment.RIGHT.className, Alignment.LEFT.className);
+        switch (alignement.getObject()) {
+            case RIGHT:
+            case LEFT:
+                Attributes.addClass(tag, alignement.getObject().className);
+                Attributes.addClass(tag, alignement.getObject().className);
+        }
     }
 }
