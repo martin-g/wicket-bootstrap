@@ -1,14 +1,14 @@
 package de.agilecoders.wicket.core.util;
 
 import de.agilecoders.wicket.core.WicketApplicationTest;
-import de.agilecoders.wicket.core.util.Attributes;
-
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.html.WebMarkupContainer;
+import org.apache.wicket.markup.parser.XmlTag;
 import org.junit.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.nullValue;
 
@@ -43,6 +43,16 @@ public class AttributesTest extends WicketApplicationTest {
     @Test(expected = IllegalArgumentException.class)
     public void nullClassNameThrowsException() {
         startComponentInPage(createComponentWithCssClassNames(null));
+    }
+
+    @Test
+    public void removeClass() {
+        ComponentTag tag = new ComponentTag("span", XmlTag.TagType.OPEN_CLOSE);
+        tag.put("class", "class1 pull-right class2");
+
+        Attributes.removeClass(tag, "pull-right");
+
+        assertThat(tag.getAttribute("class"), is(equalTo("class1 class2")));
     }
 
     /**
