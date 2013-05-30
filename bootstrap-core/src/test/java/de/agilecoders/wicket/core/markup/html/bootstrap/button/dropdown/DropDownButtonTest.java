@@ -28,7 +28,7 @@ public class DropDownButtonTest extends WicketApplicationTest {
 
     @Test
     public void pullRightDropDownButton() {
-        tester().startComponentInPage(newDropDownButton().setAlignment(AlignmentBehavior.Alignement.PULLRIGHT));
+        tester().startComponentInPage(newDropDownButton().setAlignment(AlignmentBehavior.Alignement.RIGHT));
         final TagTester tag = tester().getTagByWicketId("dropdown-menu");
 
         assertCssClass(tag, "dropdown-menu", "pull-right");
@@ -36,7 +36,7 @@ public class DropDownButtonTest extends WicketApplicationTest {
 
     @Test
     public void pullRightSplitButton() {
-        tester().startComponentInPage(newSplitButton().setAlignment(AlignmentBehavior.Alignement.PULLRIGHT));
+        tester().startComponentInPage(newSplitButton().setAlignment(AlignmentBehavior.Alignement.RIGHT));
         final TagTester tag = tester().getTagByWicketId("dropdown-menu");
 
         assertCssClass(tag, "dropdown-menu", "pull-right");

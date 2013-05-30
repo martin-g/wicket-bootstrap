@@ -11,8 +11,8 @@ import org.apache.wicket.model.IModel;
  */
 public class AlignmentBehavior extends BootstrapBaseBehavior {
     public enum Alignement {
-        PULLRIGHT("pull-right"),
-        PULLLEFT("pull-left"),
+        RIGHT("pull-right"),
+        LEFT("pull-left"),
         NONE("");
         private String className;
 
