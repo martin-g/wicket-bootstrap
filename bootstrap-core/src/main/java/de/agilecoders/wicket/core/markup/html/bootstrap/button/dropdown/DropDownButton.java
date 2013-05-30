@@ -1,7 +1,7 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown;
 
+import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.AlignmentBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapResourcesBehavior;
-import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.PullRightBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.Activatable;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.ButtonBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.ButtonList;
@@ -44,7 +44,7 @@ public abstract class DropDownButton extends AbstractLink implements Invertible<
     private final WebMarkupContainer baseButton;
     private final String script;
     private final Icon icon;
-    private final IModel<Boolean> pullRight = Model.of(false);
+    private final IModel<AlignmentBehavior.Alignement> alignment = Model.of(AlignmentBehavior.Alignement.NONE);
 
     /**
      * Construct.
@@ -70,7 +70,7 @@ public abstract class DropDownButton extends AbstractLink implements Invertible<
 
         add(baseButton = newButton("btn", model, iconTypeModel));
         WebMarkupContainer dropdownMenu = new WebMarkupContainer("dropdown-menu");
-        dropdownMenu.add(new PullRightBehavior(pullRight));
+        dropdownMenu.add(new AlignmentBehavior(alignment));
         add(dropdownMenu);
         dropdownMenu.add(buttonListView = newButtonList("buttons"));
 
@@ -253,12 +253,12 @@ public abstract class DropDownButton extends AbstractLink implements Invertible<
     }
 
     /**
-     * sets the dropdown menu align to the right of the button
-     * @param pullRight
+     * sets the dropdown menu alignment
+     * @param alignment
      * @return
      */
-    public DropDownButton setPullRight(final Boolean pullRight){
-        this.pullRight.setObject(pullRight);
+    public DropDownButton setAlignment(final AlignmentBehavior.Alignement alignment){
+        this.alignment.setObject(alignment);
         return this;
     }
 

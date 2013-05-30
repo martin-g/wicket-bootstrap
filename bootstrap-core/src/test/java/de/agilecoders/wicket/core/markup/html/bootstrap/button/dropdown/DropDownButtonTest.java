@@ -1,6 +1,7 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown;
 
 import de.agilecoders.wicket.core.WicketApplicationTest;
+import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.AlignmentBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.BootstrapLink;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
@@ -27,7 +28,7 @@ public class DropDownButtonTest extends WicketApplicationTest {
 
     @Test
     public void pullRightDropDownButton() {
-        tester().startComponentInPage(newDropDownButton().setPullRight(true));
+        tester().startComponentInPage(newDropDownButton().setAlignment(AlignmentBehavior.Alignement.PULLRIGHT));
         final TagTester tag = tester().getTagByWicketId("dropdown-menu");
 
         assertCssClass(tag, "dropdown-menu", "pull-right");
@@ -35,7 +36,7 @@ public class DropDownButtonTest extends WicketApplicationTest {
 
     @Test
     public void pullRightSplitButton() {
-        tester().startComponentInPage(newSplitButton().setPullRight(true));
+        tester().startComponentInPage(newSplitButton().setAlignment(AlignmentBehavior.Alignement.PULLRIGHT));
         final TagTester tag = tester().getTagByWicketId("dropdown-menu");
 
         assertCssClass(tag, "dropdown-menu", "pull-right");
