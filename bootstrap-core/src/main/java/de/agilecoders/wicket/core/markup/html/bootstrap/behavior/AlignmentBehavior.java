@@ -10,20 +10,20 @@ import org.apache.wicket.model.IModel;
  * add boostrap class for alignment
  */
 public class AlignmentBehavior extends BootstrapBaseBehavior {
-    public enum Alignement {
+    public enum Alignment {
         RIGHT("pull-right"),
         LEFT("pull-left"),
         NONE("");
         private String className;
 
-        Alignement(final String className) {
+        Alignment(final String className) {
             this.className = className;
         }
     }
 
-    private IModel<Alignement> alignement;
+    private IModel<Alignment> alignement;
 
-    public AlignmentBehavior(final IModel<Alignement> alignment) {
+    public AlignmentBehavior(final IModel<Alignment> alignment) {
         this.alignement = alignment;
     }
 

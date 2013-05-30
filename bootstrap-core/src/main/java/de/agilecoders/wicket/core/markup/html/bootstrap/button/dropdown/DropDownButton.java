@@ -44,7 +44,7 @@ public abstract class DropDownButton extends AbstractLink implements Invertible<
     private final WebMarkupContainer baseButton;
     private final String script;
     private final Icon icon;
-    private final IModel<AlignmentBehavior.Alignement> alignment = Model.of(AlignmentBehavior.Alignement.NONE);
+    private final IModel<AlignmentBehavior.Alignment> alignment = Model.of(AlignmentBehavior.Alignment.NONE);
 
     /**
      * Construct.
@@ -257,7 +257,7 @@ public abstract class DropDownButton extends AbstractLink implements Invertible<
      * @param alignment
      * @return
      */
-    public DropDownButton setAlignment(final AlignmentBehavior.Alignement alignment){
+    public DropDownButton setAlignment(final AlignmentBehavior.Alignment alignment){
         this.alignment.setObject(alignment);
         return this;
     }
