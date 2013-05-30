@@ -54,6 +54,44 @@ public final class Attributes {
     }
 
     /**
+     * removes a css class name from a given tag
+     *
+     * @param tag        The tag
+     * @param classNames The class names to remove
+     */
+    public static void removeClass(final ComponentTag tag, final Set<String> classNames) {
+        Args.notNull(classNames, "classNames");
+
+        final String classValue = CssClassNames.parse(tag.getAttribute("class")).remove(classNames).asString();
+
+        set(tag, "class", classValue);
+    }
+
+    /**
+     * removes a css class name from a given tag
+     *
+     * @param tag        The tag
+     * @param classNames The class names to remove
+     */
+    public static void removeClass(final ComponentTag tag, final String... classNames) {
+        Args.notNull(classNames, "classNames");
+
+        removeClass(tag, Generics2.newHashSet(classNames));
+    }
+
+    /**
+     * removes a css class name from a given tag
+     *
+     * @param tag      The tag
+     * @param provider Provider that provides a class name to remove
+     */
+    public static void removeClass(final ComponentTag tag, final ICssClassNameProvider provider) {
+        if (provider != null) {
+            removeClass(tag, provider.cssClassName());
+        }
+    }
+
+    /**
      * private constructor.
      */
     private Attributes() {
