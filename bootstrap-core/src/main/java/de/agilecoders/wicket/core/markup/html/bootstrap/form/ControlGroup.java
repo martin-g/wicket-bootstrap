@@ -33,7 +33,6 @@ public class ControlGroup extends Border implements IFormModelUpdateListener {
     private final Component help;
     private final Component feedback;
     private final Model<String> stateClassName;
-    private final Function<FeedbackMessage, String> feedbackMessageToCssClassName;
 
 
     /**
@@ -66,7 +65,6 @@ public class ControlGroup extends Border implements IFormModelUpdateListener {
         this.label = newLabel("label", label);
         this.help = newHelpLabel("help", help);
         this.feedback = newFeedbackMessageContainer("error");
-        this.feedbackMessageToCssClassName = newFeedbackMessageToCssClassNameTransformer();
 
         stateClassName = Model.of("");
 
@@ -230,7 +228,7 @@ public class ControlGroup extends Border implements IFormModelUpdateListener {
      * @return the css class name representation of given message
      */
     private String toClassName(final FeedbackMessage message) {
-         return feedbackMessageToCssClassName.apply(message);
+         return newFeedbackMessageToCssClassNameTransformer().apply(message);
     }
 
     @Override
