@@ -1,29 +1,35 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.layout;
 
 import de.agilecoders.wicket.core.WicketApplicationTest;
-import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.util.tester.TagTester;
 import org.junit.Test;
 
 /**
- *
+ * Tests the {@link ContainerBehavior}
  */
 public class ContainerBehaviorTest extends WicketApplicationTest {
 
     @Test
-    public void setCssClass() {
-        String componentId = "id";
-        WebMarkupContainer component = new WebMarkupContainer(componentId);
-        ContainerBehavior behavior = new ContainerBehavior(Layout.Fixed);
-        component.add(behavior);
+    public void defaultLayoutIsFixed() {
+        startBehaviorInPage(new ContainerBehavior());
 
-        tester().startComponentInPage(component);
-        TagTester tagTester = tester().getTagByWicketId(componentId);
+        TagTester tagTester = tester().getTagByWicketId(id());
         assertCssClass(tagTester, "container");
+    }
 
-        behavior.layout(Layout.Fluid);
-        tester().startComponentInPage(component);
-        tagTester = tester().getTagByWicketId(componentId);
+    @Test
+    public void layoutFixedIsSet() {
+        startBehaviorInPage(new ContainerBehavior(Layout.Fixed));
+
+        TagTester tagTester = tester().getTagByWicketId(id());
+        assertCssClass(tagTester, "container");
+    }
+
+    @Test
+    public void layoutFluidIsSet() {
+        startBehaviorInPage(new ContainerBehavior(Layout.Fluid));
+
+        TagTester tagTester = tester().getTagByWicketId(id());
         assertCssClass(tagTester, "container-fluid");
     }
 }

@@ -30,7 +30,6 @@ import static org.hamcrest.Matchers.is;
  * Base integration test class
  *
  * @author miha
- * @version 1.0
  */
 public class WicketApplicationTest {
 

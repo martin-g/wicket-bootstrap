@@ -6,21 +6,35 @@ import org.apache.wicket.Component;
 import org.apache.wicket.markup.ComponentTag;
 
 /**
- * TODO: document
+ * This behavior adds special layout css classes to the component tag.
  *
  * @author miha
- * @version 1.0
  */
 public class ContainerBehavior extends BootstrapBaseBehavior {
 
-    private Layout layout;
+    private final Layout layout;
 
+    /**
+     * Construct using {@link Layout#Fixed} as default.
+     */
     public ContainerBehavior() {
         this.layout = Layout.Fixed;
     }
 
+    /**
+     * Construct using given layout.
+     *
+     * @param layout the container layout
+     */
     public ContainerBehavior(Layout layout) {
         this.layout = layout;
+    }
+
+    /**
+     * @return container layout
+     */
+    public Layout layout() {
+        return layout;
     }
 
     @Override
@@ -28,14 +42,5 @@ public class ContainerBehavior extends BootstrapBaseBehavior {
         super.onComponentTag(component, tag);
 
         Attributes.addClass(tag, layout.cssClassName());
-    }
-
-    public ContainerBehavior layout(Layout layout) {
-        this.layout = layout;
-        return this;
-    }
-
-    public Layout layout() {
-        return layout;
     }
 }

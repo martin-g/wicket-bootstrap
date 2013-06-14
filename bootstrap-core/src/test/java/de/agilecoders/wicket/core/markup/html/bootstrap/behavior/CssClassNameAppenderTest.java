@@ -1,8 +1,6 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.behavior;
 
 import de.agilecoders.wicket.core.WicketApplicationTest;
-import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.CssClassNameAppender;
-import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNameProvider;
 import de.agilecoders.wicket.core.test.IntegrationTest;
 import de.agilecoders.wicket.core.util.Generics2;
 import org.apache.wicket.Component;
@@ -21,7 +19,6 @@ import static org.hamcrest.Matchers.is;
  * Tests the {@link CssClassNameAppender}.
  *
  * @author miha
- * @version 1.0
  */
 @Category(IntegrationTest.class)
 public class CssClassNameAppenderTest extends WicketApplicationTest {
