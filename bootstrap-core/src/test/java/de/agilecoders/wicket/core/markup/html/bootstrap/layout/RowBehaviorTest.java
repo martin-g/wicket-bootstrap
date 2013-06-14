@@ -9,28 +9,28 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 /**
- * Tests the {@link ContainerBehavior}
+ * Tests the {@link de.agilecoders.wicket.core.markup.html.bootstrap.layout.ContainerBehavior}
  */
-public class ContainerBehaviorTest extends WicketApplicationTest {
+public class RowBehaviorTest extends WicketApplicationTest {
 
     @Test
     public void defaultLayoutIsFixed() {
-        assertThat(new ContainerBehavior().layout(), is(equalTo(Layout.Fixed)));
+        assertThat(new RowBehavior().layout(), is(equalTo(Layout.Fixed)));
     }
 
     @Test
     public void layoutFixedIsSet() {
-        startBehaviorInPage(new ContainerBehavior(Layout.Fixed));
+        startBehaviorInPage(new RowBehavior(Layout.Fixed));
 
         TagTester tagTester = tester().getTagByWicketId(id());
-        assertCssClass(tagTester, "container");
+        assertCssClass(tagTester, "row");
     }
 
     @Test
     public void layoutFluidIsSet() {
-        startBehaviorInPage(new ContainerBehavior(Layout.Fluid));
+        startBehaviorInPage(new RowBehavior(Layout.Fluid));
 
         TagTester tagTester = tester().getTagByWicketId(id());
-        assertCssClass(tagTester, "container-fluid");
+        assertCssClass(tagTester, "row-fluid");
     }
 }

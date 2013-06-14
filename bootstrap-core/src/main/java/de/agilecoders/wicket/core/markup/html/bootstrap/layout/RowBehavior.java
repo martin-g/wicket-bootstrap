@@ -1,45 +1,45 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.layout;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
-import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.CssClassNameAppender;
-
+import de.agilecoders.wicket.core.util.Attributes;
 import org.apache.wicket.Component;
+import org.apache.wicket.markup.ComponentTag;
 
 /**
- * TODO: document
+ * The {@link RowBehavior} adds the "row" css class to the
+ * component tag according to given layout.
  *
  * @author miha
- * @version 1.0
  */
 public class RowBehavior extends BootstrapBaseBehavior {
 
-    private Layout layout;
+    private final Layout layout;
 
+    /**
+     * Construct using {@link Layout#Fixed} as default layout
+     */
     public RowBehavior() {
         this.layout = Layout.Fixed;
     }
 
+    /**
+     * Construct using given layout
+     */
     public RowBehavior(Layout layout) {
         this.layout = layout;
     }
 
-    public RowBehavior layout(Layout layout) {
-        this.layout = layout;
-        return this;
-    }
-
+    /**
+     * @return the row layout that is used.
+     */
     public Layout layout() {
         return layout;
     }
 
     @Override
-    public void onConfigure(Component component) {
-        super.onConfigure(component);
+    public void onComponentTag(Component component, ComponentTag tag) {
+        super.onComponentTag(component, tag);
 
-        if (Layout.Fixed.equals(layout())) {
-            component.add(new CssClassNameAppender("row"));
-        } else {
-            component.add(new CssClassNameAppender("row-fluid"));
-        }
+        Attributes.addClass(tag, Layout.Fixed.equals(layout()) ? "row" : "row-fluid");
     }
 }

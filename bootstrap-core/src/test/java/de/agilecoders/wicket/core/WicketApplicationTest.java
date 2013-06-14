@@ -118,8 +118,21 @@ public class WicketApplicationTest {
         Args.notNull(tag, "tag");
         Args.notNull(cssClassNames, "cssClassNames");
 
+        final CssClassNames.Builder cssClasses = CssClassNames.parse(tag.getAttribute("class"));
+
         for (String cssClassName : cssClassNames) {
-            assertThat(CssClassNames.parse(tag.getAttribute("class")).contains(cssClassName), is(equalTo(true)));
+            assertThat("contains css class name: " + cssClassName + "; current: " + cssClasses.asString(), cssClasses.contains(cssClassName), is(equalTo(true)));
+        }
+    }
+
+    protected final void assertNotContainsCssClass(TagTester tag, String... cssClassNames) {
+        Args.notNull(tag, "tag");
+        Args.notNull(cssClassNames, "cssClassNames");
+
+        final CssClassNames.Builder cssClasses = CssClassNames.parse(tag.getAttribute("class"));
+
+        for (String cssClassName : cssClassNames) {
+            assertThat("not contains css class name: " + cssClassName + "; current: " + cssClasses.asString(), cssClasses.contains(cssClassName), is(equalTo(false)));
         }
     }
 
