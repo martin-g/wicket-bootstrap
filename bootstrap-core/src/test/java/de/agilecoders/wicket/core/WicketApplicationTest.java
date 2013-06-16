@@ -9,6 +9,7 @@ import de.agilecoders.wicket.core.util.Generics2;
 import org.apache.wicket.Component;
 import org.apache.wicket.Page;
 import org.apache.wicket.behavior.Behavior;
+import org.apache.wicket.markup.Markup;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.util.lang.Args;
@@ -138,6 +139,12 @@ public class WicketApplicationTest {
 
     protected TagTester startComponentInPage(final Component component) {
         tester().startComponentInPage(component);
+
+        return tester().getTagByWicketId(id());
+    }
+
+    protected TagTester startComponentInPage(final Component component, final String markup) {
+        tester().startComponentInPage(component, Markup.of(markup));
 
         return tester().getTagByWicketId(id());
     }
