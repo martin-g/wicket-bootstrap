@@ -61,6 +61,8 @@ public class WicketApplicationTest {
 
                 getMarkupSettings().setStripWicketTags(false);
                 getMarkupSettings().setDefaultMarkupEncoding(Charsets.UTF_8.name());
+
+                WicketApplicationTest.this.init(this);
             }
 
             @Override
@@ -70,6 +72,8 @@ public class WicketApplicationTest {
 
         };
     }
+
+    protected void init(WebApplication app) {}
 
     protected void onBefore() {
     }

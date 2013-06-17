@@ -3,8 +3,9 @@ package de.agilecoders.wicket.core.markup.html.bootstrap.navbar;
 import de.agilecoders.wicket.core.markup.html.bootstrap.common.Invertible;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.Icon;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
-
+import org.apache.wicket.Component;
 import org.apache.wicket.markup.ComponentTag;
+import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.panel.IMarkupSourcingStrategy;
 import org.apache.wicket.markup.html.panel.PanelMarkupSourcingStrategy;
@@ -20,7 +21,7 @@ import org.apache.wicket.model.Model;
 public abstract class NavbarAjaxLink<T> extends org.apache.wicket.ajax.markup.html.AjaxLink<T> implements Invertible<NavbarAjaxLink<T>> {
     private final Icon icon;
     private final Label label;
-    private final IModel<IconType> iconTypeModel;
+    private final Component splitter;
 
     /**
      * Construct. Navbar ajax link with default component id for navbar components ("component") and
@@ -49,21 +50,22 @@ public abstract class NavbarAjaxLink<T> extends org.apache.wicket.ajax.markup.ht
     public NavbarAjaxLink(final String markupId, IModel<String> label) {
         super(markupId);
 
-        this.iconTypeModel = Model.of(IconType.NULL);
-        this.icon = new Icon("icon", iconTypeModel);
+        this.icon = new Icon("icon", IconType.NULL);
 
         this.label = new Label("label", label);
         this.label.setRenderBodyOnly(true);
 
-        add(this.icon, this.label);
+        add(this.icon, this.label, this.splitter = new WebMarkupContainer("splitter"));
     }
 
     /**
      * setter for link label
      *
+     * @deprecated please use constructor instead
      * @param label label as model
      * @return this instance
      */
+    @Deprecated
     public NavbarAjaxLink<T> setLabel(IModel<String> label) {
         this.label.setDefaultModel(label);
 
@@ -77,7 +79,7 @@ public abstract class NavbarAjaxLink<T> extends org.apache.wicket.ajax.markup.ht
      * @return this instance
      */
     public NavbarAjaxLink<T> setIconType(final IconType iconType) {
-        this.iconTypeModel.setObject(iconType);
+        this.icon.setType(iconType);
 
         return this;
     }
@@ -86,6 +88,13 @@ public abstract class NavbarAjaxLink<T> extends org.apache.wicket.ajax.markup.ht
     public NavbarAjaxLink<T> setInverted(boolean inverted) {
         icon.setInverted(inverted);
         return this;
+    }
+
+    @Override
+    protected void onConfigure() {
+        super.onConfigure();
+
+        splitter.setVisible(!IconType.NULL.equals(icon.getType()));
     }
 
     /**
