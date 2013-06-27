@@ -9,7 +9,6 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <groupId>de.agilecoders.wicket</groupId>
     <artifactId>wicket-bootstrap-extensions</artifactId>
     <version>0.8.4-SNAPSHOT</version>
     <packaging>bundle</packaging>
@@ -67,21 +66,15 @@
         <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest-core</artifactId>
-            <version>${hamcrest.version}</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest-library</artifactId>
-            <version>${hamcrest.version}</version>
-            <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
-            <version>${servlet-api.version}</version>
-            <scope>provided</scope>
         </dependency>
 
     </dependencies>
