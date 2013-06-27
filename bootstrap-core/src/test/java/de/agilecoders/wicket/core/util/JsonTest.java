@@ -1,10 +1,8 @@
 package de.agilecoders.wicket.core.util;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import de.agilecoders.wicket.core.test.TestCategory;
-import de.agilecoders.wicket.core.util.JQuery;
-import de.agilecoders.wicket.core.util.Json;
-import org.codehaus.jackson.JsonNode;
-import org.codehaus.jackson.node.ObjectNode;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 

@@ -1,18 +1,17 @@
 package de.agilecoders.wicket.core.util;
 
+import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.core.Version;
+import com.fasterxml.jackson.databind.JavaType;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.JsonSerializer;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializerProvider;
+import com.fasterxml.jackson.databind.module.SimpleModule;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import de.agilecoders.wicket.core.markup.html.bootstrap.form.IDataSource;
-
 import org.apache.wicket.util.string.Strings;
-import org.codehaus.jackson.JsonGenerator;
-import org.codehaus.jackson.JsonNode;
-import org.codehaus.jackson.JsonParser;
-import org.codehaus.jackson.Version;
-import org.codehaus.jackson.map.JsonSerializer;
-import org.codehaus.jackson.map.ObjectMapper;
-import org.codehaus.jackson.map.SerializerProvider;
-import org.codehaus.jackson.map.module.SimpleModule;
-import org.codehaus.jackson.node.ObjectNode;
-import org.codehaus.jackson.type.JavaType;
 
 import java.io.IOException;
 
@@ -38,7 +37,8 @@ public final class Json {
         ObjectMapper mapper = new ObjectMapper();
         mapper.configure(JsonParser.Feature.ALLOW_SINGLE_QUOTES, true);
         mapper.configure(JsonParser.Feature.ALLOW_UNQUOTED_FIELD_NAMES, true);
-        SimpleModule wbModule = new SimpleModule("wicket-bootstrap", new Version(1, 0, 0, null));
+        SimpleModule wbModule = new SimpleModule("wicket-bootstrap",
+                new Version(1, 0, 0, null, "de.agilecoders.wicket", "wicket-bootstrap-core"));
         wbModule.addSerializer(ConfigModel.class, new JsonSerializer<ConfigModel>() {
             @Override
             public void serialize(ConfigModel value, JsonGenerator jsonGenerator, SerializerProvider provider) throws IOException {
@@ -103,7 +103,7 @@ public final class Json {
      */
     public static <T> T fromJson(final String json, final JavaType type) {
         try {
-            return createObjectMapper().readValue(parse(json), type);
+            return createObjectMapper().readValue(json, type);
         } catch (Exception e) {
             throw new ParseException(e);
         }

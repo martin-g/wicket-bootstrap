@@ -84,7 +84,7 @@
         <doxia.version>1.0</doxia.version>
         <lesscss-engine.version>1.3.3</lesscss-engine.version>
         <less4j.version>1.0.3</less4j.version>
-        <org.codehaus.jackson.version>1.9.12</org.codehaus.jackson.version>
+        <com.fasterxml.jackson.version>2.2.2</com.fasterxml.jackson.version>
         <joda-time.version>2.2</joda-time.version>
         <hamcrest.version>1.3</hamcrest.version>
         <modernizr.version>2.6.2-1</modernizr.version>
@@ -206,9 +206,9 @@
             </dependency>
 
             <dependency>
-                <groupId>org.codehaus.jackson</groupId>
-                <artifactId>jackson-mapper-asl</artifactId>
-                <version>${org.codehaus.jackson.version}</version>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-core</artifactId>
+                <version>${com.fasterxml.jackson.version}</version>
             </dependency>
 
             <dependency>
