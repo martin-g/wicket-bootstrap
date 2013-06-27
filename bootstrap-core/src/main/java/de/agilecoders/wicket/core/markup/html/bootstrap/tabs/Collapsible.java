@@ -2,7 +2,7 @@ package de.agilecoders.wicket.core.markup.html.bootstrap.tabs;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapResourcesBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.CssClassNameAppender;
-
+import de.agilecoders.wicket.core.util.Attributes;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.extensions.markup.html.tabs.ITab;
@@ -47,9 +47,15 @@ import java.util.List;
  * </pre>
  *
  * @author miha
- * @version 1.0
  */
 public class Collapsible extends Panel {
+
+    /**
+     * whether a tab is active or not
+     */
+    public enum State {
+        Active, Inactive
+    }
 
     private final List<ITab> tabs;
     private final IModel<Integer> activeTab;
@@ -67,7 +73,7 @@ public class Collapsible extends Panel {
     /**
      * Construct.
      *
-     * @param markupId        mandatory parameter
+     * @param markupId  mandatory parameter
      * @param tabs      mandatory parameter
      * @param activeTab mandatory parameter
      */
@@ -80,8 +86,8 @@ public class Collapsible extends Panel {
         setOutputMarkupId(true);
 
         add(newTabList("tabs", tabs));
-        add(new BootstrapResourcesBehavior(),
-            new CssClassNameAppender("accordion"));
+
+        BootstrapResourcesBehavior.addTo(this);
     }
 
     @Override
@@ -89,6 +95,8 @@ public class Collapsible extends Panel {
         super.onComponentTag(tag);
 
         checkComponentTag(tag, "div");
+
+        Attributes.addClass(tag, "accordion");
     }
 
     @Override
@@ -122,9 +130,10 @@ public class Collapsible extends Panel {
             protected void populateItem(final LoopItem loopItem) {
                 final String parentMarkupId = Collapsible.this.getMarkupId(true);
                 final ITab tab = Collapsible.this.tabs.get(loopItem.getIndex());
+                final State state = activeTab.getObject().equals(loopItem.getIndex()) ? State.Active : State.Inactive;
 
-                final Component container = newContainer("body", tab, activeTab.getObject().equals(loopItem.getIndex()));
-                final Component title = newTitle("title", tab);
+                final Component container = newContainer("body", tab, state);
+                final Component title = newTitle("title", tab, state);
 
                 title.add(new AttributeModifier("data-parent", "#" + parentMarkupId));
                 title.add(new AttributeModifier("href", "#" + container.getMarkupId(true)));
@@ -147,15 +156,15 @@ public class Collapsible extends Panel {
      *
      * @param markupId The markup id of the content container
      * @param tab      the current {@link ITab} implementation to render
-     * @param active   whether this tab is active or not
+     * @param state    the current tab state
      * @return new container.
      */
-    protected Component newContainer(final String markupId, final ITab tab, final boolean active) {
+    protected Component newContainer(final String markupId, final ITab tab, final State state) {
         final WebMarkupContainer container = new WebMarkupContainer(markupId);
         container.setOutputMarkupId(true);
         container.add(tab.getPanel("content"));
 
-        if (active) {
+        if (State.Active.equals(state)) {
             container.add(getActiveCssClassNameAppender());
         }
 
@@ -167,9 +176,10 @@ public class Collapsible extends Panel {
      *
      * @param markupId The markup id of the content container
      * @param tab      the current {@link ITab} implementation to render
+     * @param state    the current tab state
      * @return new title label
      */
-    protected Component newTitle(final String markupId, final ITab tab) {
+    protected Component newTitle(final String markupId, final ITab tab, final State state) {
         return new Label(markupId, tab.getTitle());
     }
 }

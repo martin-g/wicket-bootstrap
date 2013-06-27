@@ -103,6 +103,9 @@ public class WicketApplicationTest {
                                  : new ArrayList<String>();
     }
 
+    /**
+     * @return default id that is used for main component
+     */
     protected final String id() {
         return "id";
     }
@@ -153,6 +156,12 @@ public class WicketApplicationTest {
         return tester().getTagByWicketId(id());
     }
 
+    /**
+     * creates a new component with given behavior and runs it on a test page.
+     *
+     * @param behavior the behavior to execute
+     * @return tag that contains behavior
+     */
     protected TagTester startBehaviorInPage(final Behavior behavior) {
         Component component = new WebMarkupContainer(id());
         component.add(behavior);
@@ -162,6 +171,27 @@ public class WicketApplicationTest {
         return tester().getTagByWicketId(id());
     }
 
+    /**
+     * creates a new component with given behavior and runs it on a test page.
+     *
+     * @param behavior the behavior to execute
+     * @param markup   the markup to use for main component
+     * @return tag that contains behavior
+     */
+    protected TagTester startBehaviorInPage(final Behavior behavior, final String markup) {
+        Component component = new WebMarkupContainer(id());
+        component.add(behavior);
+
+        tester().startComponentInPage(component, Markup.of(markup));
+
+        return tester().getTagByWicketId(id());
+    }
+
+    /**
+     * asserts a special css class name on main component
+     *
+     * @param cssClassNames the css class names that must be present.
+     */
     protected final void assertClassNamesPresent(final String... cssClassNames) {
         Attributes.assertClassNamesPresent(tester().getTagByWicketId(id()), cssClassNames);
     }

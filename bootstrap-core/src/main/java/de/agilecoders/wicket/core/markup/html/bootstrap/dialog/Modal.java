@@ -1,5 +1,6 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.dialog;
 
+import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapResourcesBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.CssClassNameAppender;
 import de.agilecoders.wicket.core.util.Attributes;
 
@@ -82,6 +83,8 @@ public class Modal extends Panel {
         };
 
         add(header, footer);
+
+        BootstrapResourcesBehavior.addTo(this);
     }
 
     @Override

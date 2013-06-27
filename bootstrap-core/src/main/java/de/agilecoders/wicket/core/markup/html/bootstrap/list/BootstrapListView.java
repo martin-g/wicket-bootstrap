@@ -6,40 +6,67 @@ import org.apache.wicket.model.IModel;
 import java.util.List;
 
 /**
- * TODO: document
+ * A special list view that is styled by twitter bootstrap.
  *
  * @author miha
- * @version 1.0
  */
 public abstract class BootstrapListView<T> extends ListView<T> {
 
     private ListBehavior listBehavior;
 
-    public BootstrapListView(String id) {
+    /**
+     * Construct.
+     *
+     * @param id the markup id
+     */
+    public BootstrapListView(final String id) {
         super(id);
-
-        commonInit();
     }
 
-    public BootstrapListView(String id, IModel<? extends List<? extends T>> iModel) {
-        super(id, iModel);
-
-        commonInit();
+    /**
+     * Construct.
+     *
+     * @param id    the markup id
+     * @param model the list model
+     */
+    public BootstrapListView(String id, IModel<? extends List<? extends T>> model) {
+        super(id, model);
     }
 
-    public BootstrapListView(String id, List<? extends T> ts) {
-        super(id, ts);
-
-        commonInit();
+    /**
+     * Construct.
+     *
+     * @param id       the markup id
+     * @param listData the list data
+     */
+    public BootstrapListView(String id, List<? extends T> listData) {
+        super(id, listData);
     }
 
-    private void commonInit() {
-        listBehavior = new ListBehavior();
-        add(listBehavior);
+    @Override
+    protected void onInitialize() {
+        super.onInitialize();
+
+        add(listBehavior = new ListBehavior());
     }
 
+    /**
+     * whether to us styles or not for ul tags.
+     *
+     * @return this instance for chaining
+     */
     public BootstrapListView<T> unstyled() {
         listBehavior.unstyled();
+        return this;
+    }
+
+    /**
+     * sets a special css class so that this list will be rendered horizontally.
+     *
+     * @return this instance for chaining.
+     */
+    public BootstrapListView<T> horizontal() {
+        listBehavior.horizontal();
         return this;
     }
 }

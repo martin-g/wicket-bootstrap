@@ -1,15 +1,18 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.html;
 
-import org.apache.wicket.model.Model;
-
 /**
- * TODO: document
+ * A special {@link MetaTag} that adds a TODO
  *
  * @author miha
- * @version 1.0
  */
 public class OptimizedMobileViewportMetaTag extends MetaTag {
-    public OptimizedMobileViewportMetaTag(String id) {
-        super(id, Model.of("viewport"), Model.of("width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no"));
+
+    /**
+     * Construct.
+     *
+     * @param id the markup id
+     */
+    public OptimizedMobileViewportMetaTag(final String id) {
+        super(id, "viewport", "width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no");
     }
 }

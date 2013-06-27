@@ -2,6 +2,7 @@ package de.agilecoders.wicket.core.markup.html.bootstrap.navbar;
 
 import com.google.common.base.Function;
 import com.google.common.base.Predicate;
+import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapResourcesBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.CssClassNameAppender;
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNameProvider;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.Activatable;
@@ -137,6 +138,8 @@ public class Navbar extends Panel implements Invertible<Navbar> {
      */
     public Navbar(final String componentId, final IModel<?> model) {
         super(componentId, model);
+
+        BootstrapResourcesBehavior.addTo(this);
 
         final WebMarkupContainer container = newContainer("container");
 
