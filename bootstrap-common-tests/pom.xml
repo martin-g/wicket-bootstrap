@@ -16,60 +16,58 @@
    limitations under the License.
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>de.agilecoders.wicket</groupId>
-		<artifactId>bootstrap-parent</artifactId>
-		<version>0.8.4-SNAPSHOT</version>
-		<relativePath>../pom.xml</relativePath>
-	</parent>
-	<groupId>de.agilecoders.wicket</groupId>
-	<artifactId>wicket-bootstrap-common-tests</artifactId>
-	<packaging>jar</packaging>
-	<name>bootstrap-common-tests</name>
-	<description>Tests for all Bootstrap Wicket modules</description>
-	<dependencies>
-		<dependency>
-			<groupId>de.agilecoders.wicket</groupId>
-			<artifactId>wicket-bootstrap-core</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>de.agilecoders.wicket</groupId>
-			<artifactId>wicket-bootstrap-extensions</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>de.agilecoders.wicket</groupId>
-			<artifactId>wicket-bootstrap-less</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>de.agilecoders.wicket</groupId>
-			<artifactId>wicket-bootstrap-samples</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>de.agilecoders.wicket</groupId>
-			<artifactId>wicket-bootstrap-themes</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-		</dependency>
-	</dependencies>
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-deploy-plugin</artifactId>
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>de.agilecoders.wicket</groupId>
+        <artifactId>bootstrap-parent</artifactId>
+        <version>0.8.4-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <artifactId>wicket-bootstrap-common-tests</artifactId>
+    <packaging>jar</packaging>
+    <name>bootstrap-common-tests</name>
+
+    <description>Tests for all Bootstrap Wicket modules</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>de.agilecoders.wicket</groupId>
+            <artifactId>wicket-bootstrap-core</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>de.agilecoders.wicket</groupId>
+            <artifactId>wicket-bootstrap-extensions</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>de.agilecoders.wicket</groupId>
+            <artifactId>wicket-bootstrap-less</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>de.agilecoders.wicket</groupId>
+            <artifactId>wicket-bootstrap-themes</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
                 <version>2.7</version>
-				<configuration>
-					<!-- Just tests. No need to deploy them -->
-					<skip>true</skip>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
+                <configuration>
+                    <!-- Just tests. No need to deploy them -->
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
