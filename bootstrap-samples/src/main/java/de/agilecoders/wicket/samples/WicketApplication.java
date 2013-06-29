@@ -87,7 +87,7 @@ public class WicketApplication extends WebApplication {
         getDebugSettings().setAjaxDebugModeEnabled(false);
 
         configureBootstrap();
-        //configureResourceBundles();
+        configureResourceBundles();
 
         optimizeForWebPerformance();
 
@@ -106,7 +106,7 @@ public class WicketApplication extends WebApplication {
     private void optimizeForWebPerformance() {
         if (usesDeploymentConfig()) {
             getResourceSettings().setCachingStrategy(new FilenameWithVersionResourceCachingStrategy(
-                    "-",
+                    "-v-",
                     new CachingResourceVersion(new Adler32ResourceVersion())
             ));
 

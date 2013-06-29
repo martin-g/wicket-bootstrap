@@ -30,7 +30,6 @@ import java.util.List;
  * </pre>
  *
  * @author miha
- * @version 1.0
  */
 public class CssClassNameModifier extends AttributeModifier {
 

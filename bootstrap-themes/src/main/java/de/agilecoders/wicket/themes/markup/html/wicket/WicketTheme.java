@@ -7,7 +7,6 @@ import de.agilecoders.wicket.core.settings.Theme;
  * Wicket theme.
  *
  * @author miha
- * @version 1.0
  */
 public class WicketTheme extends Theme {
 
