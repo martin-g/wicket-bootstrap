@@ -29,7 +29,7 @@ public class NavbarTest extends WicketApplicationTest {
     public void isInstantiableWithoutError() {
         Navbar navbar = new Navbar("id");
 
-        tester().startComponent(navbar);
+        tester().startComponentInPage(navbar);
         tester().assertNoErrorMessage();
     }
 

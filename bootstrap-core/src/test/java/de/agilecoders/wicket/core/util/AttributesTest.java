@@ -42,7 +42,7 @@ public class AttributesTest extends WicketApplicationTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void nullClassNameThrowsException() {
-        startComponentInPage(createComponentWithCssClassNames(null));
+        startComponentInPage(createComponentWithCssClassNames((String[]) null));
     }
 
     @Test

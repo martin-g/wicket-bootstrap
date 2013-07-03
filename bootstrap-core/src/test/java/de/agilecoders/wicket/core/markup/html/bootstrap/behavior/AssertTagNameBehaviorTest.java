@@ -1,7 +1,6 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.behavior;
 
 import de.agilecoders.wicket.core.WicketApplicationTest;
-import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.AssertTagNameBehavior;
 import de.agilecoders.wicket.core.test.IntegrationTest;
 
 import org.apache.wicket.Component;

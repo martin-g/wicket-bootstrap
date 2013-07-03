@@ -2,6 +2,7 @@ package de.agilecoders.wicket.core.markup.html.bootstrap.html;
 
 import de.agilecoders.wicket.core.WicketApplicationTest;
 import org.apache.wicket.WicketRuntimeException;
+import org.apache.wicket.model.Model;
 import org.apache.wicket.util.tester.TagTester;
 import org.junit.Test;
 
@@ -19,12 +20,12 @@ public class MetaTagTest extends WicketApplicationTest {
 
     @Test(expected = WicketRuntimeException.class)
     public void tagNameIsAsserted() throws Exception {
-        startComponentInPage(new MetaTag(id(), "name"));
+        startComponentInPage(new MetaTag(id(), Model.of("name"), Model.of("")));
     }
 
     @Test
     public void nameIsRendered() throws Exception {
-        TagTester tag = startComponentInPage(new MetaTag(id(), "name-of-meta-tag"), MARKUP);
+        TagTester tag = startComponentInPage(new MetaTag(id(), Model.of("name-of-meta-tag"), Model.of("")), MARKUP);
 
         assertThat(tag.getAttribute("name"), is(equalTo("name-of-meta-tag")));
     }

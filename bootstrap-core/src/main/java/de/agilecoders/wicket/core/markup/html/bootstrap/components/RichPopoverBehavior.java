@@ -37,7 +37,7 @@ public abstract class RichPopoverBehavior extends PopoverBehavior {
 
     @Override
     protected final String newContent() {
-        final String content = String.valueOf(ComponentRenderer.renderComponent(newBodyComponent(ComponentRenderer.COMP_ID)));
+        final String content = String.valueOf(ComponentRenderer.renderComponent(newBodyComponent("compId")));
 
         return escapeJava(chomp(content));
     }
