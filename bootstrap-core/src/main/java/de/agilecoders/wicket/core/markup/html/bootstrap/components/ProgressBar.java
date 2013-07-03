@@ -3,9 +3,7 @@ package de.agilecoders.wicket.core.markup.html.bootstrap.components;
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.CssClassNameAppender;
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.CssClassNameModifier;
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNameProvider;
-import de.agilecoders.wicket.core.util.Components;
 import de.agilecoders.wicket.core.util.Generics2;
-
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.ComponentTag;
@@ -13,6 +11,8 @@ import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
@@ -20,9 +20,10 @@ import java.util.List;
  * TODO: document
  *
  * @author miha
- * @version 1.0
  */
 public class ProgressBar extends Panel {
+    private static final Logger LOG = LoggerFactory.getLogger(ProgressBar.class);
+
     private static final int MIN = 0;
     private static final int MAX = 100;
 
@@ -151,11 +152,14 @@ public class ProgressBar extends Panel {
         return classNames;
     }
 
-
     @Override
     protected void onComponentTag(ComponentTag tag) {
         super.onComponentTag(tag);
 
-        Components.assertTag(this, tag, "div");
+        if (!"div".equalsIgnoreCase(tag.getName())) {
+            LOG.warn("you've added a progress bar component to a non 'div' tag: {}", tag.getName());
+
+            tag.setName("div");
+        }
     }
 }

@@ -19,7 +19,7 @@ public abstract class RichPopoverBehavior extends PopoverBehavior {
      *
      * @param label popover title
      */
-    private RichPopoverBehavior(final IModel<String> label) {
+    public RichPopoverBehavior(final IModel<String> label) {
         this(label, new PopoverConfig());
     }
 
@@ -29,7 +29,7 @@ public abstract class RichPopoverBehavior extends PopoverBehavior {
      * @param label  popover title
      * @param config popover configuration
      */
-    private RichPopoverBehavior(final IModel<String> label, final PopoverConfig config) {
+    public RichPopoverBehavior(final IModel<String> label, final PopoverConfig config) {
         super(label, null, config);
 
         config.withHtml(true);
