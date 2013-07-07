@@ -8,6 +8,7 @@ import de.agilecoders.wicket.core.util.Components;
 import org.apache.wicket.Page;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 
 /**
@@ -43,6 +44,20 @@ public class NavbarButton<T> extends BootstrapBookmarkablePageLink<T> {
     public <T extends Page> NavbarButton(final Class<T> pageClass, final IModel<String> label) {
         this(pageClass, new PageParameters(), label);
     }
+    
+    /**
+     * Constructor.
+     * 
+     * @param pageClass
+     *            The class of page to link to
+     * @param <T>
+     *            type of the page class
+     */
+    public <T extends Page> NavbarButton(final Class<T> pageClass, IconType iconType) {
+        this(pageClass, new PageParameters(), Model.of(""));
+
+        setIconType(iconType);
+    }
 
     /**
      * {@inheritDoc}
@@ -53,7 +68,6 @@ public class NavbarButton<T> extends BootstrapBookmarkablePageLink<T> {
 
         return this;
     }
-
 
     @Override
     protected void onComponentTag(final ComponentTag tag) {
