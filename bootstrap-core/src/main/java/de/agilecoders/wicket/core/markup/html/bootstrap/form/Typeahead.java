@@ -1,15 +1,17 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.form;
 
-import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapResourcesBehavior;
-import de.agilecoders.wicket.core.markup.html.bootstrap.layout.SpanType;
+import static de.agilecoders.wicket.core.util.JQuery.$;
 
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.head.IHeaderResponse;
+import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.IModel;
 
-import static de.agilecoders.wicket.core.util.JQuery.$;
+import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapResourcesBehavior;
+import de.agilecoders.wicket.core.markup.html.bootstrap.layout.SpanType;
+import de.agilecoders.wicket.core.markup.html.references.BootstrapJavaScriptReference;
 
 /**
  * A basic, easily extended plugin for quickly creating elegant typeaheads with any {@link TextField}.
@@ -95,7 +97,7 @@ public class Typeahead<T> extends TextField<T> {
     }
 
     @Override
-    protected void onComponentTag(ComponentTag tag) {
+    protected void onComponentTag(final ComponentTag tag) {
         tag.setName("input");
 
         super.onComponentTag(tag);
@@ -104,7 +106,7 @@ public class Typeahead<T> extends TextField<T> {
     @Override
     public void renderHead(final IHeaderResponse response) {
         super.renderHead(response);
-
+        response.render(JavaScriptHeaderItem.forReference(BootstrapJavaScriptReference.instance()));
         response.render($(this).chain("typeahead", config).asDomReadyScript());
     }
 
