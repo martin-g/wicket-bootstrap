@@ -36,7 +36,7 @@ public class InputBehavior extends BootstrapBaseBehavior {
      * Construct. Uses {@link Size#Medium} as default size.
      */
     public InputBehavior() {
-        this((ICssClassNameProvider)null);
+	size = null;
     }
 
     /**
