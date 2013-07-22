@@ -1,14 +1,14 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.form;
 
-import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
-import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNameProvider;
-import de.agilecoders.wicket.core.markup.html.bootstrap.layout.SpanType;
-import de.agilecoders.wicket.core.util.Attributes;
-
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
+
+import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
+import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNameProvider;
+import de.agilecoders.wicket.core.markup.html.bootstrap.layout.SpanType;
+import de.agilecoders.wicket.core.util.Attributes;
 
 /**
  * An {@link InputBehavior} controls the size of an input tag.
@@ -36,7 +36,7 @@ public class InputBehavior extends BootstrapBaseBehavior {
      * Construct. Uses {@link Size#Medium} as default size.
      */
     public InputBehavior() {
-        this(Size.Medium);
+        this((ICssClassNameProvider)null);
     }
 
     /**
@@ -89,10 +89,11 @@ public class InputBehavior extends BootstrapBaseBehavior {
     }
 
     @Override
-    public void onComponentTag(Component component, ComponentTag tag) {
+    public void onComponentTag(final Component component, final ComponentTag tag) {
         super.onComponentTag(component, tag);
-
-        Attributes.addClass(tag, size.getObject().cssClassName());
+        if (size != null) {
+            Attributes.addClass(tag, size.getObject().cssClassName());
+        }
     }
 
 }
