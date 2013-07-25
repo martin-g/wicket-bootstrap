@@ -8,7 +8,7 @@ Components
 ----------
 
 * Twitter Bootstrap (2.3.2): http://twitter.github.com/bootstrap
-* Apache Wicket (6.9.0): http://wicket.apache.org/
+* Apache Wicket (6.9.1): http://wicket.apache.org/
 * Bootswatch (2.3.0): http://bootswatch.com/
 
 Extensions
@@ -85,6 +85,13 @@ Bootstrap.install(Application.get(), new BootstrapSettings());
 </code></pre>
 
 then you are able to use all wicket-bootstrap components.
+
+Authors
+-------
+
+[![Ohloh profile for Michael Haitz](https://www.ohloh.net/accounts/235496/widgets/account_detailed.gif)](https://www.ohloh.net/accounts/235496?ref=Detailed) 
+
+[![Ohloh profile for Martin Grigorov](https://www.ohloh.net/accounts/138913/widgets/account_detailed.gif)](https://www.ohloh.net/accounts/138913?ref=Detailed) 
 
 Bug tracker
 -----------
