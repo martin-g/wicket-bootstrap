@@ -12,7 +12,7 @@ public interface IBootstrapSettings {
     /**
      * The version of Bootstrap
      */
-    String VERSION = "2.3.1";
+    String VERSION = "2.3.2";
 
     /**
      * The url to the JavaScript resource at a CDN network
@@ -23,7 +23,7 @@ public interface IBootstrapSettings {
      * @param version The version of Twitter Bootstrap. CDN resources use it to construct their urls
      * @return same instance for chaining
      */
-    IBootstrapSettings setVersion(String version);
+    IBootstrapSettings setVersion(final String version);
 
     /**
      * @return The version of Twitter Bootstrap. CDN resources use it to construct their urls
@@ -45,14 +45,14 @@ public interface IBootstrapSettings {
      *                  Defaults to the embedded bootstrap-responsive.css
      * @return same instance for chaining
      */
-    IBootstrapSettings setCssResourceReference(ResourceReference reference);
+    IBootstrapSettings setCssResourceReference(final ResourceReference reference);
 
     /**
      * @param reference a reference to the base twitter bootstrap JavaScript library.
      *                  Defaults to the embedded bootstrap.js
      * @return same instance for chaining
      */
-    IBootstrapSettings setJsResourceReference(ResourceReference reference);
+    IBootstrapSettings setJsResourceReference(final ResourceReference reference);
 
     /**
      * @return javascript resource filter name
@@ -90,7 +90,7 @@ public interface IBootstrapSettings {
      * @param themeProvider The {@link ActiveThemeProvider} instance
      * @return same instance for chaining
      */
-    IBootstrapSettings setActiveThemeProvider(ActiveThemeProvider themeProvider);
+    IBootstrapSettings setActiveThemeProvider(final ActiveThemeProvider themeProvider);
 
     /**
      * @return The {@link ActiveThemeProvider} instance
@@ -108,7 +108,7 @@ public interface IBootstrapSettings {
      * @param themeProvider The {@link ThemeProvider} instance
      * @return same instance for chaining
      */
-    IBootstrapSettings setThemeProvider(ThemeProvider themeProvider);
+    IBootstrapSettings setThemeProvider(final ThemeProvider themeProvider);
 
     /**
      * @return true, if the resources for the themes should be loaded from a CDN network
@@ -119,5 +119,5 @@ public interface IBootstrapSettings {
      * @param useCdnResources a flag indicating whether the resources for the themes should be loaded from a CDN network
      * @return this instance
      */
-    IBootstrapSettings useCdnResources(boolean useCdnResources);
+    IBootstrapSettings useCdnResources(final boolean useCdnResources);
 }
