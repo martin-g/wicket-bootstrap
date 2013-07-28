@@ -12,7 +12,7 @@ public interface IBootstrapSettings {
     /**
      * The version of Bootstrap
      */
-    String VERSION = "2.3.1";
+    String VERSION = "2.3.2";
 
     /**
      * The url to the JavaScript resource at a CDN network
@@ -65,7 +65,7 @@ public interface IBootstrapSettings {
      * @param name javascript resource filter name
      * @return same instance for chaining
      */
-    IBootstrapSettings setJsResourceFilterName(final String name);
+    IBootstrapSettings setJsResourceFilterName(String name);
 
     /**
      * if true, all necessary exceptions will be added to security manager to allow
@@ -74,7 +74,7 @@ public interface IBootstrapSettings {
      * @param activate true, if security manger should be updated while installing these settings
      * @return same instance for chaining
      */
-    IBootstrapSettings setUpdateSecurityManager(final boolean activate);
+    IBootstrapSettings setUpdateSecurityManager(boolean activate);
 
     /**
      * if true, all necessary exceptions will be added to security manager to allow
