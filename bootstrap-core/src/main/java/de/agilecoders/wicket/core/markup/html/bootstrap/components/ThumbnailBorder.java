@@ -2,7 +2,6 @@ package de.agilecoders.wicket.core.markup.html.bootstrap.components;
 
 import de.agilecoders.wicket.core.util.Attributes;
 import de.agilecoders.wicket.core.util.Components;
-
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.ComponentTag;
@@ -54,7 +53,7 @@ public class ThumbnailBorder extends Border {
         super.onComponentTag(tag);
 
         checkComponentTag(tag, "div");
-        Attributes.addClass(tag, "thumbnail");
+        Attributes.addClass(tag, "img-thumbnail");
     }
 
     /**

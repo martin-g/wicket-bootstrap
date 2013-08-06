@@ -1,14 +1,13 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.form;
 
-import org.apache.wicket.Component;
-import org.apache.wicket.markup.ComponentTag;
-import org.apache.wicket.model.IModel;
-import org.apache.wicket.model.Model;
-
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNameProvider;
 import de.agilecoders.wicket.core.markup.html.bootstrap.layout.SpanType;
 import de.agilecoders.wicket.core.util.Attributes;
+import org.apache.wicket.Component;
+import org.apache.wicket.markup.ComponentTag;
+import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.Model;
 
 /**
  * An {@link InputBehavior} controls the size of an input tag.
@@ -36,7 +35,7 @@ public class InputBehavior extends BootstrapBaseBehavior {
      * Construct. Uses {@link Size#Medium} as default size.
      */
     public InputBehavior() {
-	size = null;
+        size = null;
     }
 
     /**
@@ -45,7 +44,7 @@ public class InputBehavior extends BootstrapBaseBehavior {
      * @param size size of input tag.
      */
     public InputBehavior(final SpanType size) {
-        this((ICssClassNameProvider)size);
+        this((ICssClassNameProvider) size);
     }
 
     /**
@@ -54,7 +53,7 @@ public class InputBehavior extends BootstrapBaseBehavior {
      * @param size size of input tag.
      */
     public InputBehavior(final Size size) {
-        this((ICssClassNameProvider)size);
+        this((ICssClassNameProvider) size);
     }
 
     /**

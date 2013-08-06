@@ -23,7 +23,7 @@ public enum Offset implements ICssClassNameProvider {
 
     @Override
     public String cssClassName() {
-        return equals(OFFSET0) ? "" : cssClassName;
+        return equals(OFFSET0) ? "" : "col-" + cssClassName;
     }
 
 }

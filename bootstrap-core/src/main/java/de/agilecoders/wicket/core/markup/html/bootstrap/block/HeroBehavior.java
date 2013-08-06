@@ -3,7 +3,6 @@ package de.agilecoders.wicket.core.markup.html.bootstrap.block;
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
 import de.agilecoders.wicket.core.util.Attributes;
 import de.agilecoders.wicket.core.util.Components;
-
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.Behavior;
 import org.apache.wicket.markup.ComponentTag;
@@ -27,7 +26,7 @@ public class HeroBehavior extends Behavior {
     public void onComponentTag(Component component, ComponentTag tag) {
         super.onComponentTag(component, tag);
 
-        Attributes.addClass(tag, "hero-unit");
+        Attributes.addClass(tag, "jumbotron");
         Components.assertTag(component, tag, "div");
     }
 

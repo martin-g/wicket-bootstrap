@@ -12,35 +12,10 @@ import org.apache.wicket.markup.ComponentTag;
  */
 public class ContainerBehavior extends BootstrapBaseBehavior {
 
-    private final Layout layout;
-
-    /**
-     * Construct using {@link Layout#Fixed} as default.
-     */
-    public ContainerBehavior() {
-        this.layout = Layout.Fixed;
-    }
-
-    /**
-     * Construct using given layout.
-     *
-     * @param layout the container layout
-     */
-    public ContainerBehavior(Layout layout) {
-        this.layout = layout;
-    }
-
-    /**
-     * @return container layout
-     */
-    public Layout layout() {
-        return layout;
-    }
-
     @Override
     public void onComponentTag(Component component, ComponentTag tag) {
         super.onComponentTag(component, tag);
 
-        Attributes.addClass(tag, layout.cssClassName());
+        Attributes.addClass(tag, "container");
     }
 }

@@ -3,7 +3,6 @@ package de.agilecoders.wicket.core.markup.html.bootstrap.button;
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNameProvider;
 import de.agilecoders.wicket.core.util.Attributes;
 import de.agilecoders.wicket.core.util.CssClassNames;
-
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.html.form.Button;
@@ -22,7 +21,7 @@ public final class Buttons {
      * HACK issue #79: wicket changes tag name if component wasn't enabled
      *
      * @param component the component to fix
-     * @param tag the component tag
+     * @param tag       the component tag
      */
     public static void fixDisabledState(Component component, ComponentTag tag) {
         if (!component.isEnabled()) {
@@ -46,9 +45,9 @@ public final class Buttons {
      * defines all possible sizes of a button element.
      */
     public static enum Size implements ICssClassNameProvider {
-        Mini("btn-mini"),
+        Mini("btn-small"),
         Small("btn-small"),
-        Medium(""),
+        Medium("btn-default"),
         Large("btn-large");
 
         private final String cssClassName;
@@ -119,8 +118,8 @@ public final class Buttons {
     /**
      * helper method that adds all necessary css styles to given component tag.
      *
-     * @param component the component to which given tag belongs, needed because of enabled state
-     * @param tag the component tag
+     * @param component          the component to which given tag belongs, needed because of enabled state
+     * @param tag                the component tag
      * @param classNameProviders all css class names to add
      */
     public static void onComponentTag(final Component component, final ComponentTag tag, final ICssClassNameProvider... classNameProviders) {

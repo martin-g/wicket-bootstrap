@@ -2,7 +2,6 @@ package de.agilecoders.wicket.core.markup.html.bootstrap.layout;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
 import de.agilecoders.wicket.core.util.Attributes;
-
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.util.lang.Args;
@@ -18,10 +17,10 @@ public class SpanBehavior extends BootstrapBaseBehavior {
     private final Offset offset;
 
     /**
-     * Construct. Uses {@link Offset#OFFSET0} and {@link SpanType#SPAN12}.
+     * Construct. Uses {@link Offset#OFFSET0} and {@link LargeScreenSpanType#SPAN12}.
      */
     public SpanBehavior() {
-        this(SpanType.SPAN12);
+        this(LargeScreenSpanType.SPAN12);
     }
 
     /**
@@ -37,7 +36,7 @@ public class SpanBehavior extends BootstrapBaseBehavior {
      * Construct.
      *
      * @param spanType span width of layout element
-     * @param offset offset of layout element
+     * @param offset   offset of layout element
      */
     public SpanBehavior(final SpanType spanType, final Offset offset) {
         Args.notNull(spanType, "spanType");

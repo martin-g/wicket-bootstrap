@@ -109,7 +109,6 @@ public class Navbar extends Panel implements Invertible<Navbar> {
     private static final PositionFilter POSITION_FILTER_LEFT = new PositionFilter(ComponentPosition.LEFT);
     private static final PositionFilter POSITION_FILTER_RIGHT = new PositionFilter(ComponentPosition.RIGHT);
 
-    private IModel<String> containerModel;
     private IModel<String> invertModel;
     private CssClassNameAppender activeStateAppender;
 
@@ -153,11 +152,7 @@ public class Navbar extends Panel implements Invertible<Navbar> {
         Component rightAlignedComponentListView = newNavigation("navRightList", newPositionDependedComponentModel(components, POSITION_FILTER_RIGHT));
 
         activeStateAppender = new CssClassNameAppender("active");
-
-        containerModel = Model.of("");
         invertModel = Model.of("");
-
-        container.add(new CssClassNameAppender(containerModel));
 
         add(container, brandNameLink, leftAlignedComponentListView, rightAlignedComponentListView);
     }
@@ -279,16 +274,6 @@ public class Navbar extends Panel implements Invertible<Navbar> {
      */
     protected Class<? extends Page> getHomePage() {
         return getApplication().getHomePage();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void onConfigure() {
-        super.onConfigure();
-
-        containerModel.setObject(isFluid() ? "container-fluid" : "container");
     }
 
     /**

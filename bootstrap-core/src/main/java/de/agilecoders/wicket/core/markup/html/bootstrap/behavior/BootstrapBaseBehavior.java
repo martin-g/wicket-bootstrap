@@ -3,7 +3,6 @@ package de.agilecoders.wicket.core.markup.html.bootstrap.behavior;
 import de.agilecoders.wicket.core.Bootstrap;
 import de.agilecoders.wicket.core.settings.IBootstrapSettings;
 import de.agilecoders.wicket.core.settings.ITheme;
-
 import org.apache.wicket.Component;
 import org.apache.wicket.WicketRuntimeException;
 import org.apache.wicket.behavior.Behavior;
@@ -74,7 +73,6 @@ public class BootstrapBaseBehavior extends Behavior {
 
     /**
      * Render the current active {@link ITheme} which includes all {@link org.apache.wicket.request.resource.ResourceReference} objects
-     * and the {@link de.agilecoders.wicket.core.markup.html.themes.bootstrap.BootstrapResponsiveCssReference}
      * if enabled to the response. Also it allows all subclasses to get the {@link IBootstrapSettings} by overriding this method.
      *
      * @param settings       the bound {@link IBootstrapSettings}

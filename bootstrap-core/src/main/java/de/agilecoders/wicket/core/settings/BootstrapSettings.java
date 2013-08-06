@@ -1,8 +1,7 @@
 package de.agilecoders.wicket.core.settings;
 
 import de.agilecoders.wicket.core.markup.html.references.BootstrapJavaScriptReference;
-import de.agilecoders.wicket.core.markup.html.themes.bootstrap.BootstrapResponsiveCssReference;
-
+import de.agilecoders.wicket.core.markup.html.themes.bootstrap.BootstrapCssReference;
 import org.apache.wicket.request.Url;
 import org.apache.wicket.request.resource.ResourceReference;
 import org.apache.wicket.request.resource.UrlResourceReference;
@@ -16,7 +15,7 @@ import org.apache.wicket.request.resource.UrlResourceReference;
 public class BootstrapSettings implements IBootstrapSettings {
 
     private ResourceReference bootstrapJavaScriptReference = BootstrapJavaScriptReference.instance();
-    private ResourceReference bootstrapCssReference = BootstrapResponsiveCssReference.INSTANCE;
+    private ResourceReference bootstrapCssReference = BootstrapCssReference.instance();
 
     private ThemeProvider themeProvider = new DefaultThemeProvider();
     private ActiveThemeProvider activeThemeProvider = new SessionThemeProvider();

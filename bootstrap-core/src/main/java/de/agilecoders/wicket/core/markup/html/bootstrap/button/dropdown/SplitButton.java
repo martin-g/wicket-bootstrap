@@ -4,7 +4,6 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.button.ButtonBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.Icon;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
-
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.link.AbstractLink;
 import org.apache.wicket.model.IModel;
@@ -57,8 +56,8 @@ public abstract class SplitButton extends DropDownButton {
     /**
      * creates a new base button
      *
-     * @param markupId the base button markup id
-     * @param labelModel the label of the base button
+     * @param markupId      the base button markup id
+     * @param labelModel    the label of the base button
      * @param iconTypeModel the type of the icon
      * @return new base button
      */
@@ -69,6 +68,7 @@ public abstract class SplitButton extends DropDownButton {
         Args.isTrue(btn == null, "btn was already set before.");
 
         btn = newBaseButton("button", labelModel, iconTypeModel);
+        btn.setOutputMarkupId(true);
 
         caret = newCaret("caret");
         add(caret);

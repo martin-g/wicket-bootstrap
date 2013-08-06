@@ -17,7 +17,7 @@ public class BootstrapTheme extends Theme {
      * Construct.
      */
     public BootstrapTheme() {
-        super("bootstrap", BootstrapCssReference.INSTANCE);
+        super("bootstrap", BootstrapCssReference.instance());
     }
 
     @Override

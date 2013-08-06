@@ -1,12 +1,9 @@
-
 /* Add additional stylesheets below
 -------------------------------------------------- */
 /*
   Bootstrap's documentation styles
   Special styles for presenting Bootstrap's documentation and examples
 */
-
-
 
 /* Body and structure
 -------------------------------------------------- */
@@ -21,8 +18,6 @@ h3 code {
     font-size: 14px;
     font-weight: normal;
 }
-
-
 
 /* Tweak navbar brand link to be super sleek
 -------------------------------------------------- */
@@ -39,16 +34,16 @@ body > .navbar .brand {
     float: right;
     font-weight: bold;
     color: #000;
-    text-shadow: 0 1px 0 rgba(255,255,255,.1), 0 0 30px rgba(255,255,255,.125);
+    text-shadow: 0 1px 0 rgba(255, 255, 255, .1), 0 0 30px rgba(255, 255, 255, .125);
     -webkit-transition: all .2s linear;
     -moz-transition: all .2s linear;
     transition: all .2s linear;
 }
+
 body > .navbar .brand:hover {
     text-decoration: none;
-    text-shadow: 0 1px 0 rgba(255,255,255,.1), 0 0 30px rgba(255,255,255,.4);
+    text-shadow: 0 1px 0 rgba(255, 255, 255, .1), 0 0 30px rgba(255, 255, 255, .4);
 }
-
 
 /* Sections
 -------------------------------------------------- */
@@ -57,10 +52,12 @@ body > .navbar .brand:hover {
 section {
     padding-top: 30px;
 }
+
 section > .page-header,
 section > .lead {
     color: #5a5a5a;
 }
+
 section > ul li {
     margin-bottom: 5px;
 }
@@ -74,14 +71,12 @@ section > ul li {
 hr.soften {
     height: 1px;
     margin: 70px 0;
-    background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.1), rgba(0,0,0,0));
-    background-image:    -moz-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.1), rgba(0,0,0,0));
-    background-image:     -ms-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.1), rgba(0,0,0,0));
-    background-image:      -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.1), rgba(0,0,0,0));
+    background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0), rgba(0, 0, 0, .1), rgba(0, 0, 0, 0));
+    background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0), rgba(0, 0, 0, .1), rgba(0, 0, 0, 0));
+    background-image: -ms-linear-gradient(left, rgba(0, 0, 0, 0), rgba(0, 0, 0, .1), rgba(0, 0, 0, 0));
+    background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0), rgba(0, 0, 0, .1), rgba(0, 0, 0, 0));
     border: 0;
 }
-
-
 
 /* Jumbotrons
 -------------------------------------------------- */
@@ -93,25 +88,27 @@ hr.soften {
     padding: 40px 0;
     color: #fff;
     text-align: center;
-    text-shadow: 0 1px 3px rgba(0,0,0,.4), 0 0 30px rgba(0,0,0,.075);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, .4), 0 0 30px rgba(0, 0, 0, .075);
     background: #020031; /* Old browsers */
-    background: -moz-linear-gradient(45deg,  #050f06 0%, #51a351 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,#050f06), color-stop(100%,#51a351)); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(45deg,  #050f06 0%,#51a351 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(45deg,  #050f06 0%,#51a351 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(45deg,  #050f06 0%,#51a351 100%); /* IE10+ */
-    background: linear-gradient(45deg,  #050f06 0%,#51a351 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#020031', endColorstr='#6d3353',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-    -webkit-box-shadow: inset 0 3px 7px rgba(0,0,0,.2), inset 0 -3px 7px rgba(0,0,0,.2);
-    -moz-box-shadow: inset 0 3px 7px rgba(0,0,0,.2), inset 0 -3px 7px rgba(0,0,0,.2);
-    box-shadow: inset 0 3px 7px rgba(0,0,0,.2), inset 0 -3px 7px rgba(0,0,0,.2);
+    background: -moz-linear-gradient(45deg, #050f06 0%, #51a351 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left bottom, right top, color-stop(0%, #050f06), color-stop(100%, #51a351)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(45deg, #050f06 0%, #51a351 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(45deg, #050f06 0%, #51a351 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(45deg, #050f06 0%, #51a351 100%); /* IE10+ */
+    background: linear-gradient(45deg, #050f06 0%, #51a351 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#020031', endColorstr='#6d3353', GradientType=1); /* IE6-9 fallback on horizontal gradient */
+    -webkit-box-shadow: inset 0 3px 7px rgba(0, 0, 0, .2), inset 0 -3px 7px rgba(0, 0, 0, .2);
+    -moz-box-shadow: inset 0 3px 7px rgba(0, 0, 0, .2), inset 0 -3px 7px rgba(0, 0, 0, .2);
+    box-shadow: inset 0 3px 7px rgba(0, 0, 0, .2), inset 0 -3px 7px rgba(0, 0, 0, .2);
 }
+
 .jumbotron h1 {
     font-size: 80px;
     font-weight: bold;
     letter-spacing: -1px;
     line-height: 1;
 }
+
 .jumbotron p {
     font-size: 24px;
     font-weight: 300;
@@ -122,14 +119,15 @@ hr.soften {
 /* Link styles (used on .masthead-links as well) */
 .jumbotron a {
     color: #fff;
-    color: rgba(255,255,255,.5);
+    color: rgba(255, 255, 255, .5);
     -webkit-transition: all .2s ease-in-out;
     -moz-transition: all .2s ease-in-out;
     transition: all .2s ease-in-out;
 }
+
 .jumbotron a:hover {
     color: #fff;
-    text-shadow: 0 0 10px rgba(255,255,255,.25);
+    text-shadow: 0 0 10px rgba(255, 255, 255, .25);
 }
 
 /* Download button */
@@ -141,24 +139,25 @@ hr.soften {
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
     border-radius: 2px;
-    -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 5px rgba(0,0,0,.25);
-    -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 5px rgba(0,0,0,.25);
-    box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 5px rgba(0,0,0,.25);
+    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1), 0 1px 5px rgba(0, 0, 0, .25);
+    -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1), 0 1px 5px rgba(0, 0, 0, .25);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1), 0 1px 5px rgba(0, 0, 0, .25);
     -webkit-transition: none;
     -moz-transition: none;
     transition: none;
 }
+
 .masthead .btn:hover {
-    -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 5px rgba(0,0,0,.25);
-    -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 5px rgba(0,0,0,.25);
-    box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 5px rgba(0,0,0,.25);
-}
-.masthead .btn:active {
-    -webkit-box-shadow: inset 0 2px 4px rgba(0,0,0,.1), 0 1px 0 rgba(255,255,255,.1);
-    -moz-box-shadow: inset 0 2px 4px rgba(0,0,0,.1), 0 1px 0 rgba(255,255,255,.1);
-    box-shadow: inset 0 2px 4px rgba(0,0,0,.1), 0 1px 0 rgba(255,255,255,.1);
+    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1), 0 1px 5px rgba(0, 0, 0, .25);
+    -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1), 0 1px 5px rgba(0, 0, 0, .25);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1), 0 1px 5px rgba(0, 0, 0, .25);
 }
 
+.masthead .btn:active {
+    -webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, .1), 0 1px 0 rgba(255, 255, 255, .1);
+    -moz-box-shadow: inset 0 2px 4px rgba(0, 0, 0, .1), 0 1px 0 rgba(255, 255, 255, .1);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, .1), 0 1px 0 rgba(255, 255, 255, .1);
+}
 
 /* Pattern overlay
 ------------------------- */
@@ -166,6 +165,7 @@ hr.soften {
     position: relative;
     z-index: 2;
 }
+
 .jumbotron:after {
     content: '';
     display: block;
@@ -177,10 +177,8 @@ hr.soften {
     background: url(../img/bs-docs-masthead-pattern.png) repeat center center;
     opacity: .8;
 }
-@media
-only screen and (-webkit-min-device-pixel-ratio: 2),
-only screen and (   min--moz-device-pixel-ratio: 2),
-only screen and (     -o-min-device-pixel-ratio: 2/1) {
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (   min--moz-device-pixel-ratio: 2), only screen and (     -o-min-device-pixel-ratio: 2/1) {
 
     .jumbotron:after {
         background-size: 150px 150px;
@@ -195,11 +193,13 @@ only screen and (     -o-min-device-pixel-ratio: 2/1) {
     margin-bottom: 0;
     color: #fff;
 }
+
 .masthead h1 {
     font-size: 80px;
     line-height: 1;
     letter-spacing: -2px;
 }
+
 .masthead p {
     font-size: 40px;
     font-weight: 200;
@@ -211,10 +211,11 @@ only screen and (     -o-min-device-pixel-ratio: 2/1) {
     margin: 0;
     list-style: none;
 }
+
 .masthead-links li {
     display: inline;
     padding: 0 10px;
-    color: rgba(255,255,255,.25);
+    color: rgba(255, 255, 255, .25);
 }
 
 /* Social proof buttons from GitHub & Twitter */
@@ -233,6 +234,7 @@ only screen and (     -o-min-device-pixel-ratio: 2/1) {
     padding-left: 0;
     list-style: none;
 }
+
 .bs-docs-social-buttons li {
     display: inline-block;
     padding: 5px 8px;
@@ -247,17 +249,18 @@ only screen and (     -o-min-device-pixel-ratio: 2/1) {
     text-align: left;
     border-bottom: 1px solid #ddd;
 }
+
 .subhead h1 {
     font-size: 60px;
 }
+
 .subhead p {
     margin-bottom: 20px;
 }
+
 .subhead .navbar {
     display: none;
 }
-
-
 
 /* Marketing section of Overview
 -------------------------------------------------- */
@@ -266,6 +269,7 @@ only screen and (     -o-min-device-pixel-ratio: 2/1) {
     text-align: center;
     color: #5a5a5a;
 }
+
 .marketing h1 {
     margin: 60px 0 10px;
     font-size: 60px;
@@ -273,14 +277,17 @@ only screen and (     -o-min-device-pixel-ratio: 2/1) {
     line-height: 1;
     letter-spacing: -1px;
 }
+
 .marketing h2 {
     font-weight: 200;
     margin-bottom: 5px;
 }
+
 .marketing p {
     font-size: 16px;
     line-height: 1.5;
 }
+
 .marketing .marketing-byline {
     margin-bottom: 40px;
     font-size: 20px;
@@ -288,13 +295,12 @@ only screen and (     -o-min-device-pixel-ratio: 2/1) {
     line-height: 1.25;
     color: #999;
 }
+
 .marketing-img {
     display: block;
     margin: 0 auto 30px;
     max-height: 145px;
 }
-
-
 
 /* Footer
 -------------------------------------------------- */
@@ -306,22 +312,24 @@ only screen and (     -o-min-device-pixel-ratio: 2/1) {
     border-top: 1px solid #e5e5e5;
     background-color: #f5f5f5;
 }
+
 .footer p {
     margin-bottom: 0;
     color: #777;
 }
+
 .footer-links {
     margin: 10px 0;
 }
+
 .footer-links li {
     display: inline;
     padding: 0 2px;
 }
+
 .footer-links li:first-child {
     padding-left: 0;
 }
-
-
 
 /* Special grid styles
 -------------------------------------------------- */
@@ -330,6 +338,7 @@ only screen and (     -o-min-device-pixel-ratio: 2/1) {
     margin-top: 10px;
     margin-bottom: 20px;
 }
+
 .show-grid [class*="span"] {
     background-color: #eee;
     text-align: center;
@@ -339,24 +348,27 @@ only screen and (     -o-min-device-pixel-ratio: 2/1) {
     min-height: 40px;
     line-height: 40px;
 }
+
 .show-grid:hover [class*="span"] {
     background: #ddd;
 }
+
 .show-grid .show-grid {
     margin-top: 0;
     margin-bottom: 0;
 }
+
 .show-grid .show-grid [class*="span"] {
     margin-top: 5px;
 }
+
 .show-grid [class*="span"] [class*="span"] {
     background-color: #ccc;
 }
+
 .show-grid [class*="span"] [class*="span"] [class*="span"] {
     background-color: #999;
 }
-
-
 
 /* Mini layout previews
 -------------------------------------------------- */
@@ -365,44 +377,49 @@ only screen and (     -o-min-device-pixel-ratio: 2/1) {
     -webkit-border-radius: 6px;
     -moz-border-radius: 6px;
     border-radius: 6px;
-    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.075);
-    -moz-box-shadow: 0 1px 2px rgba(0,0,0,.075);
-    box-shadow: 0 1px 2px rgba(0,0,0,.075);
+    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .075);
+    -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, .075);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .075);
 }
+
 .mini-layout,
 .mini-layout .mini-layout-body,
 .mini-layout.fluid .mini-layout-sidebar {
     height: 300px;
 }
+
 .mini-layout {
     margin-bottom: 20px;
     padding: 9px;
 }
+
 .mini-layout div {
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
 }
+
 .mini-layout .mini-layout-body {
     background-color: #dceaf4;
     margin: 0 auto;
     width: 70%;
 }
+
 .mini-layout.fluid .mini-layout-sidebar,
 .mini-layout.fluid .mini-layout-header,
 .mini-layout.fluid .mini-layout-body {
     float: left;
 }
+
 .mini-layout.fluid .mini-layout-sidebar {
     background-color: #bbd8e9;
     width: 20%;
 }
+
 .mini-layout.fluid .mini-layout-body {
     width: 77.5%;
     margin-left: 2.5%;
 }
-
-
 
 /* Download page
 -------------------------------------------------- */
@@ -410,6 +427,7 @@ only screen and (     -o-min-device-pixel-ratio: 2/1) {
 .download .page-header {
     margin-top: 36px;
 }
+
 .page-header .toggle-all {
     margin-top: 5px;
 }
@@ -418,6 +436,7 @@ only screen and (     -o-min-device-pixel-ratio: 2/1) {
 .download h3 {
     margin-bottom: 5px;
 }
+
 .download-builder input + h3,
 .download-builder .checkbox + h3 {
     margin-top: 9px;
@@ -430,6 +449,7 @@ only screen and (     -o-min-device-pixel-ratio: 2/1) {
     font-size: 12px;
     color: #d14;
 }
+
 .download-builder input[type=text]:focus {
     background-color: #fff;
 }
@@ -446,10 +466,12 @@ only screen and (     -o-min-device-pixel-ratio: 2/1) {
     border-radius: 3px;
     cursor: pointer;
 }
+
 .download .checkbox:hover {
     color: #333;
     background-color: #f5f5f5;
 }
+
 .download .checkbox small {
     font-size: 12px;
     color: #777;
@@ -464,6 +486,7 @@ only screen and (     -o-min-device-pixel-ratio: 2/1) {
 .download-btn {
     margin: 36px 0 108px;
 }
+
 #download p,
 #download h4 {
     max-width: 50%;
@@ -471,12 +494,15 @@ only screen and (     -o-min-device-pixel-ratio: 2/1) {
     color: #999;
     text-align: center;
 }
+
 #download h4 {
     margin-bottom: 0;
 }
+
 #download p {
     margin-bottom: 18px;
 }
+
 .download-btn .btn {
     display: block;
     width: auto;
@@ -489,8 +515,6 @@ only screen and (     -o-min-device-pixel-ratio: 2/1) {
     -moz-border-radius: 6px;
     border-radius: 6px;
 }
-
-
 
 /* Misc
 -------------------------------------------------- */
@@ -507,6 +531,7 @@ h2 + .row {
 .example-sites {
     xmargin-left: 20px;
 }
+
 .example-sites img {
     max-width: 100%;
     margin: 0 auto;
@@ -518,13 +543,12 @@ h2 + .row {
     position: relative;
 }
 
-
 /* Fake the :focus state to demo it */
 .focused {
-    border-color: rgba(82,168,236,.8);
-    -webkit-box-shadow: inset 0 1px 3px rgba(0,0,0,.1), 0 0 8px rgba(82,168,236,.6);
-    -moz-box-shadow: inset 0 1px 3px rgba(0,0,0,.1), 0 0 8px rgba(82,168,236,.6);
-    box-shadow: inset 0 1px 3px rgba(0,0,0,.1), 0 0 8px rgba(82,168,236,.6);
+    border-color: rgba(82, 168, 236, .8);
+    -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, .1), 0 0 8px rgba(82, 168, 236, .6);
+    -moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, .1), 0 0 8px rgba(82, 168, 236, .6);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, .1), 0 0 8px rgba(82, 168, 236, .6);
     outline: 0;
 }
 
@@ -541,13 +565,15 @@ h2 + .row {
     margin-left: 0;
     list-style: none;
 }
+
 .the-icons li {
     float: left;
     width: 25%;
     line-height: 25px;
 }
+
 .the-icons i:hover {
-    background-color: rgba(255,0,0,.25);
+    background-color: rgba(255, 0, 0, .25);
 }
 
 /* Example page
@@ -556,12 +582,11 @@ h2 + .row {
     font-size: 13px;
     line-height: 18px;
 }
+
 .bootstrap-examples .thumbnail {
     margin-bottom: 9px;
     background-color: #fff;
 }
-
-
 
 /* Bootstrap code examples
 -------------------------------------------------- */
@@ -612,7 +637,7 @@ h2 + .row {
 .bs-docs-example .progress,
 .bs-docs-example .well,
 .bs-docs-example .alert,
-.bs-docs-example .hero-unit,
+.bs-docs-example .jumbotron,
 .bs-docs-example .pagination,
 .bs-docs-example .navbar,
 .bs-docs-example > .nav,
@@ -716,8 +741,6 @@ form.bs-docs-example {
     *width: 180px;
 }
 
-
-
 /* Responsive docs
 -------------------------------------------------- */
 
@@ -794,8 +817,6 @@ form.bs-docs-example {
     border: 1px solid #d6e9c6;
 }
 
-
-
 /* Sidenav for Docs
 -------------------------------------------------- */
 
@@ -808,7 +829,7 @@ form.bs-docs-example {
 
 .bs-docs-sidenav > li > a {
     display: block;
-    width: 190px \9;
+    width: 190px  \9;
     margin: 0 0 -1px;
     padding: 8px 14px !important;
     border: 1px solid #e5e5e5;
@@ -818,8 +839,9 @@ form.bs-docs-example {
     position: relative;
     z-index: 2;
     padding: 9px 15px;
-    text-shadow: 0 1px 0 rgba(0,0,0,.15);
+    text-shadow: 0 1px 0 rgba(0, 0, 0, .15);
 }
+
 /* Chevrons */
 .bs-docs-sidenav .icon-chevron-right {
     float: right;
@@ -851,9 +873,6 @@ form.bs-docs-example {
     bottom: 270px;
 }
 
-
-
-
 /* Responsive
 -------------------------------------------------- */
 
@@ -869,7 +888,7 @@ form.bs-docs-example {
     }
 
     .bs-docs-sidenav > li > a {
-        width: 230px \9;
+        width: 230px  \9;
         /* Override the previous IE8-9 hack */
     }
 }
@@ -907,11 +926,13 @@ form.bs-docs-example {
     body {
         padding-top: 0;
     }
+
     /* Widen masthead and social buttons to fill body padding */
     .jumbotron {
         margin-top: -20px;
         /* Offset bottom margin on .navbar */
     }
+
     /* Adjust sidenav width */
     .bs-docs-sidenav {
         width: 166px;

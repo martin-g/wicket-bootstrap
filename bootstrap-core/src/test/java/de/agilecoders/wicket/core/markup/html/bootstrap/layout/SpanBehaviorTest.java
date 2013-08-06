@@ -22,7 +22,7 @@ public class SpanBehaviorTest extends WicketApplicationTest {
 
     @Test
     public void offset0DoesntNeedAClassName() {
-        startBehaviorInPage(new SpanBehavior(SpanType.SPAN1, Offset.OFFSET0));
+        startBehaviorInPage(new SpanBehavior(LargeScreenSpanType.SPAN1, Offset.OFFSET0));
 
         TagTester tagTester = tester().getTagByWicketId(id());
         assertNotContainsCssClass(tagTester, "offset0");
@@ -30,8 +30,8 @@ public class SpanBehaviorTest extends WicketApplicationTest {
 
     @Test
     public void spanWidthCanBeChanged() {
-        for (int i=1; i<=12; i++) {
-            startBehaviorInPage(new SpanBehavior(SpanType.valueOf("SPAN" + i)));
+        for (int i = 1; i <= 12; i++) {
+            startBehaviorInPage(new SpanBehavior(LargeScreenSpanType.valueOf("SPAN" + i)));
 
             TagTester tagTester = tester().getTagByWicketId(id());
             assertCssClass(tagTester, "span" + i);
@@ -40,8 +40,8 @@ public class SpanBehaviorTest extends WicketApplicationTest {
 
     @Test
     public void offsetCanBeChanged() {
-        for (int i=1; i<=12; i++) {
-            startBehaviorInPage(new SpanBehavior(SpanType.SPAN1, Offset.valueOf("OFFSET" + i)));
+        for (int i = 1; i <= 12; i++) {
+            startBehaviorInPage(new SpanBehavior(LargeScreenSpanType.SPAN1, Offset.valueOf("OFFSET" + i)));
 
             TagTester tagTester = tester().getTagByWicketId(id());
             assertCssClass(tagTester, "offset" + i);

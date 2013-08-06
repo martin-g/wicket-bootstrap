@@ -83,7 +83,7 @@ public class NavbarTest extends WicketApplicationTest {
         TagTester tagTester = tester().getTagByWicketId("container");
 
         Assert.assertThat(navbar.isFluid(), is(equalTo(true)));
-        Assert.assertThat(tagTester.getAttribute("class"), is(equalTo(("container-fluid"))));
+        Assert.assertThat(tagTester.getAttribute("class"), is(equalTo(("container"))));
     }
 
     @Test

@@ -42,7 +42,7 @@ public interface IBootstrapSettings {
 
     /**
      * @param reference a reference to the base twitter bootstrap css library.
-     *                  Defaults to the embedded bootstrap-responsive.css
+     *                  Defaults to the embedded bootstrap.css
      * @return same instance for chaining
      */
     IBootstrapSettings setCssResourceReference(ResourceReference reference);

@@ -13,7 +13,17 @@ public class BootstrapCssReference extends WebjarsCssResourceReference {
     /**
      * Singleton instance of this reference
      */
-    public static final BootstrapCssReference INSTANCE = new BootstrapCssReference();
+    private static final BootstrapCssReference INSTANCE = new BootstrapCssReference();
+
+    /**
+     * Normally you should not use this method, but use
+     * {@link de.agilecoders.wicket.core.settings.IBootstrapSettings#getCssResourceReference()} ()} to prevent version conflicts.
+     *
+     * @return the single instance of the resource reference
+     */
+    public static BootstrapCssReference instance() {
+        return INSTANCE;
+    }
 
     /**
      * Private constructor.

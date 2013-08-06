@@ -17,8 +17,8 @@
 
             <div class="container">
 
-                <div class="row-fluid">
-                    <div class="span3 bs-docs-sidebar">
+                <div class="row">
+                    <div class="col-lg-3 bs-docs-sidebar">
                         <ul wicket:id="navigation" class="nav nav-list bs-docs-sidenav">
                             <li><a href="#video"><i class="icon-chevron-right"></i> Html5Video player</a></li>
                             <li><a href="#contextmenu"><i class="icon-chevron-right"></i> ContextMenu</a></li>
@@ -31,7 +31,7 @@
                             <li><a href="#infinite"><i class="icon-chevron-right"></i> Infinite-Scroll</a></li>
                         </ul>
                     </div>
-                    <div class="span9">
+                    <div class="col-lg-9">
 
                         <section id="video">
                             <div class="page-header">
@@ -57,7 +57,7 @@
                             <pre wicket:id="video-custom-code"></pre>
                         </section>
 
-                        <section id="contextmenu" >
+                        <section id="contextmenu">
                             <div class="page-header">
                                 <h1>ContextMenu</h1>
                             </div>
@@ -84,6 +84,7 @@
 
                             <div class="bs-docs-example">
                                 <a wicket:id="open-draggable">Open Modal</a>
+
                                 <div wicket:id="draggable-modal"></div>
                             </div>
                             <pre wicket:id="draggable-code"></pre>
@@ -108,6 +109,7 @@
                             </div>
 
                             <p>see <a href="https://github.com/l0rdn1kk0n/wicket-bootstrap/issues/112">issue #112</a>.</p>
+
                             <p>all available icons are documented <a href="http://pfefferle.github.com/openwebicons/">here</a>.</p>
 
                             <div class="bs-docs-example">
@@ -125,6 +127,7 @@
                             </div>
 
                             <p>see <a href="https://github.com/l0rdn1kk0n/wicket-bootstrap/issues/116">issue #116</a>.</p>
+
                             <p class="content"></p>
 
                             <div class="bs-docs-example">
@@ -144,7 +147,8 @@
                             <div class="bs-docs-example">
                                 <div class="fileupload fileupload-new" data-provides="fileupload">
                                     <div class="input-append">
-                                        <div class="uneditable-input span3"><i class="icon-file fileupload-exists"></i> <span class="fileupload-preview"></span></div><span class="btn btn-file"><span class="fileupload-new">Select file</span><span class="fileupload-exists">Change</span><input type="file" wicket:id="fileUpload" /></span><a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Remove</a>
+                                        <div class="uneditable-input col-lg-3"><i class="icon-file fileupload-exists"></i> <span class="fileupload-preview"></span></div>
+                                        <span class="btn btn-file"><span class="fileupload-new">Select file</span><span class="fileupload-exists">Change</span><input type="file" wicket:id="fileUpload"/></span><a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Remove</a>
                                     </div>
                                 </div>
                                 <div>
@@ -161,7 +165,7 @@
                             <p>An input mask by <a target="_blank" href="http://jasny.github.com/bootstrap/javascript.html#inputmask">Jasny Bootstrap extensions</a>. See issue #<a href="https://github.com/l0rdn1kk0n/wicket-bootstrap/issues/130">130</a>.</p>
 
                             <div class="bs-docs-example">
-                                <input type="text" wicket:id="inputMask" />
+                                <input type="text" wicket:id="inputMask"/>
                             </div>
                         </section>
 
@@ -171,6 +175,7 @@
                             </div>
 
                             <p>Infinite scroll has been called autopagerize, unpaginate, endless pages. But essentially it is pre-fetching content from a subsequent page and adding it directly to the user’s current page.</p>
+
                             <div class="bs-docs-example">
                                 <div style="height:400px;overflow-x: auto;max-height: 400px;">
                                     <div wicket:id="infinite"></div>

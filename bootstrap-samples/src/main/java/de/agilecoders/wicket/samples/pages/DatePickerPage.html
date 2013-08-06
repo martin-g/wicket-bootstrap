@@ -17,8 +17,8 @@
 
             <div class="container">
 
-                <div class="row-fluid">
-                    <div class="span3 bs-docs-sidebar">
+                <div class="row">
+                    <div class="col-lg-3 bs-docs-sidebar">
                         <ul wicket:id="navigation" class="nav nav-list bs-docs-sidenav">
                             <li><a href="#datepicker"><i class="icon-chevron-right"></i> DatePicker</a></li>
                             <li><a href="#datepicker-birthday"><i class="icon-chevron-right"></i> BirthdayPicker</a></li>
@@ -26,7 +26,7 @@
                             <li><a href="#datepicker-modal"><i class="icon-chevron-right"></i> DatePicker (modal)</a></li>
                         </ul>
                     </div>
-                    <div class="span9">
+                    <div class="col-lg-9">
 
                         <section id="datepicker">
                             <div class="page-header">
@@ -86,7 +86,9 @@
                             <p>DOC.</p>
 
                             <div class="bs-docs-example">
-                                <a wicket:id="modal-opener">Open Dialog</a><div wicket:id="modal"></div>
+                                <a wicket:id="modal-opener">Open Dialog</a>
+
+                                <div wicket:id="modal"></div>
                             </div>
                         </section>
                     </div>

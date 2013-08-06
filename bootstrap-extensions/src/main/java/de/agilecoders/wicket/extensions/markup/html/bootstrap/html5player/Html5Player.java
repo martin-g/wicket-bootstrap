@@ -4,7 +4,6 @@ import de.agilecoders.wicket.core.Bootstrap;
 import de.agilecoders.wicket.core.util.Attributes;
 import de.agilecoders.wicket.core.util.Components;
 import de.agilecoders.wicket.core.util.References;
-
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.ComponentTag;
@@ -78,7 +77,7 @@ public class Html5Player extends Panel {
         super.onComponentTag(tag);
 
         Components.assertTag(this, tag, "div", "span");
-        Attributes.addClass(tag, "videoUiWrapper", "thumbnail");
+        Attributes.addClass(tag, "videoUiWrapper", "img-thumbnail");
     }
 
     /**
