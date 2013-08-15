@@ -45,10 +45,10 @@ public final class Buttons {
      * defines all possible sizes of a button element.
      */
     public static enum Size implements ICssClassNameProvider {
-        Mini("btn-small"),
-        Small("btn-small"),
+        Mini("btn-xs"),
+        Small("btn-sm"),
         Medium("btn-default"),
-        Large("btn-large");
+        Large("btn-lg");
 
         private final String cssClassName;
 

@@ -2664,7 +2664,7 @@ button.close {
     box-shadow: none;
 }
 
-.btn-large {
+.btn-lg {
     padding: 9px 14px;
     font-size: 16px;
     line-height: normal;
@@ -2673,21 +2673,21 @@ button.close {
     border-radius: 5px;
 }
 
-.btn-large [class^="icon-"] {
+.btn-lg [class^="icon-"] {
     margin-top: 2px;
 }
 
-.btn-small {
+.btn-sm {
     padding: 3px 9px;
     font-size: 12px;
     line-height: 18px;
 }
 
-.btn-small [class^="icon-"] {
+.btn-sm [class^="icon-"] {
     margin-top: 0;
 }
 
-.btn-mini {
+.btn-xs {
     padding: 2px 6px;
     font-size: 11px;
     line-height: 16px;
@@ -2888,17 +2888,17 @@ button.btn::-moz-focus-inner, input[type="submit"].btn::-moz-focus-inner {
     border: 0;
 }
 
-button.btn.btn-large, input[type="submit"].btn.btn-large {
+button.btn.btn-lg, input[type="submit"].btn.btn-lg {
     *padding-top: 7px;
     *padding-bottom: 7px;
 }
 
-button.btn.btn-small, input[type="submit"].btn.btn-small {
+button.btn.btn-sm, input[type="submit"].btn.btn-sm {
     *padding-top: 3px;
     *padding-bottom: 3px;
 }
 
-button.btn.btn-mini, input[type="submit"].btn.btn-mini {
+button.btn.btn-xs, input[type="submit"].btn.btn-xs {
     *padding-top: 1px;
     *padding-bottom: 1px;
 }
@@ -2972,15 +2972,15 @@ button.btn.btn-mini, input[type="submit"].btn.btn-mini {
     font-size: 14px;
 }
 
-.btn-group>.btn-mini {
+.btn-group>.btn-xs {
     font-size: 11px;
 }
 
-.btn-group>.btn-small {
+.btn-group>.btn-sm {
     font-size: 12px;
 }
 
-.btn-group>.btn-large {
+.btn-group>.btn-lg {
     font-size: 16px;
 }
 
@@ -3040,19 +3040,19 @@ button.btn.btn-mini, input[type="submit"].btn.btn-mini {
     *padding-bottom: 5px;
 }
 
-.btn-group>.btn-mini+.dropdown-toggle {
+.btn-group>.btn-xs+.dropdown-toggle {
     padding-left: 5px;
     padding-right: 5px;
     *padding-top: 2px;
     *padding-bottom: 2px;
 }
 
-.btn-group>.btn-small+.dropdown-toggle {
+.btn-group>.btn-sm+.dropdown-toggle {
     *padding-top: 5px;
     *padding-bottom: 4px;
 }
 
-.btn-group>.btn-large+.dropdown-toggle {
+.btn-group>.btn-lg+.dropdown-toggle {
     padding-left: 12px;
     padding-right: 12px;
     *padding-top: 7px;
@@ -3099,17 +3099,17 @@ button.btn.btn-mini, input[type="submit"].btn.btn-mini {
     margin-left: 0;
 }
 
-.btn-mini .caret, .btn-small .caret, .btn-large .caret {
+.btn-xs .caret, .btn-sm .caret, .btn-lg .caret {
     margin-top: 6px;
 }
 
-.btn-large .caret {
+.btn-lg .caret {
     border-left-width: 5px;
     border-right-width: 5px;
     border-top-width: 5px;
 }
 
-.dropup .btn-large .caret {
+.dropup .btn-lg .caret {
     border-bottom: 5px solid #000000;
     border-top: 0;
 }
@@ -3151,13 +3151,13 @@ button.btn.btn-mini, input[type="submit"].btn.btn-mini {
     border-radius: 0 0 4px 4px;
 }
 
-.btn-group-vertical .btn-large:first-child {
+.btn-group-vertical .btn-lg:first-child {
     -webkit-border-radius: 6px 6px 0 0;
     -moz-border-radius: 6px 6px 0 0;
     border-radius: 6px 6px 0 0;
 }
 
-.btn-group-vertical .btn-large:last-child {
+.btn-group-vertical .btn-lg:last-child {
     -webkit-border-radius: 0 0 6px 6px;
     -moz-border-radius: 0 0 6px 6px;
     border-radius: 0 0 6px 6px;
@@ -4704,7 +4704,7 @@ a.label:hover, a.badge:hover {
     top: -1px;
 }
 
-.btn-mini .label, .btn-mini .badge {
+.btn-xs .label, .btn-xs .badge {
     top: 0;
 }
 
