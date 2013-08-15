@@ -1,7 +1,7 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.layout;
 
 /**
- * References all available spans.
+ * Span types for tablets.
  */
 public enum SmallSpanType implements SpanType {
 
