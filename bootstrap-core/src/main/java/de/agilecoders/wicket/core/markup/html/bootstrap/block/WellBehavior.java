@@ -24,11 +24,17 @@ public class WellBehavior extends Behavior {
      * defines the size of a well
      */
     public enum Size implements ICssClassNameProvider {
-        Default, Small, Large;
+        Default(""), Small("-sm"), Large("-lg");
+
+        private final String cssName;
+
+        private Size(String cssName) {
+            this.cssName = cssName;
+        }
 
         @Override
         public String cssClassName() {
-            return equals(Default) ? "" : "well-" + name().toLowerCase();
+            return equals(Default) ? "" : "well" + cssName;
         }
     }
 
