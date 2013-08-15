@@ -237,7 +237,7 @@ public class Navbar extends Panel implements Invertible<Navbar> {
     }
 
     /**
-     * @param markupId The components markup id
+     * @param markupId The component's markup id
      * @return a new brand name label.
      */
     protected Label newBrandLabel(String markupId) {
@@ -253,7 +253,7 @@ public class Navbar extends Panel implements Invertible<Navbar> {
     }
 
     /**
-     * @param markupId The components markup id
+     * @param markupId The component's markup id
      * @return a new {@link Image}
      */
     protected Image newBrandImage(String markupId) {
