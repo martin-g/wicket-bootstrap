@@ -164,7 +164,7 @@ public class WicketApplication extends WebApplication {
             add(new MetroTheme());
             add(new GoogleTheme());
             add(new WicketTheme());
-            defaultTheme("wicket");
+            defaultTheme("bootstrap");
         }};
 
         final BootstrapSettings settings = new BootstrapSettings();
