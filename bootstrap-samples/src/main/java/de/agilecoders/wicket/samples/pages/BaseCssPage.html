@@ -934,21 +934,25 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 <p>Add <code>.form-inline</code> for left-aligned labels and inline-block controls for a compact layout.</p>
 
 <form class="bs-docs-example form-inline">
-    <input type="text" class="input-small" placeholder="Email">
-    <input type="password" class="input-small" placeholder="Password">
-    <label class="checkbox">
-        <input type="checkbox"> Remember me
-    </label>
-    <button type="submit" class="btn">Sign in</button>
+    <div class="form-group">
+        <input type="text" class="input-small" placeholder="Email">
+        <input type="password" class="input-small" placeholder="Password">
+        <label class="checkbox">
+            <input type="checkbox"> Remember me
+        </label>
+        <button type="submit" class="btn">Sign in</button>
+    </div>
 </form>
 <pre class="prettyprint linenums">
 &lt;form class="form-inline"&gt;
-  &lt;input type="text" class="input-small" placeholder="Email"&gt;
-  &lt;input type="password" class="input-small" placeholder="Password"&gt;
-  &lt;label class="checkbox"&gt;
-    &lt;input type="checkbox"&gt; Remember me
-  &lt;/label&gt;
-  &lt;button type="submit" class="btn"&gt;Sign in&lt;/button&gt;
+  &lt;div class="form-group"&gt;
+      &lt;input type="text" class="input-small" placeholder="Email"&gt;
+      &lt;input type="password" class="input-small" placeholder="Password"&gt;
+      &lt;label class="checkbox"&gt;
+        &lt;input type="checkbox"&gt; Remember me
+      &lt;/label&gt;
+      &lt;button type="submit" class="btn"&gt;Sign in&lt;/button&gt;
+  &lt/div&gt;
 &lt;/form&gt;
 </pre>
 
@@ -1025,7 +1029,9 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 <p>Requires the use of a specified <code>type</code> at all times.</p>
 
 <form class="bs-docs-example form-inline">
-    <input type="text" placeholder="Text input">
+    <div class="form-group">
+        <input type="text" placeholder="Text input">
+    </div>
 </form>
 <pre class="prettyprint linenums">
 &lt;input type="text" placeholder="Text input"&gt;
@@ -1036,7 +1042,9 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 <p>Form control which supports multiple lines of text. Change <code>rows</code> attribute as necessary.</p>
 
 <form class="bs-docs-example form-inline">
-    <textarea rows="3"></textarea>
+    <div class="form-group">
+        <textarea rows="3"></textarea>
+    </div>
 </form>
 <pre class="prettyprint linenums">
 &lt;textarea rows="3"&gt;&lt;/textarea&gt;
@@ -1188,7 +1196,7 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 <p>Use both classes and two instances of <code>.add-on</code> to prepend and append an input.</p>
 
 <form class="bs-docs-example form-inline">
-    <div class="input-prepend input-append">
+    <div class="input-prepend input-append form-group">
         <span class="add-on">$</span>
         <input class="col-lg-2" id="appendedPrependedInput" type="text">
         <span class="add-on">.00</span>
@@ -1536,7 +1544,9 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 <h4>Inline help</h4>
 
 <form class="bs-docs-example form-inline">
-    <input type="text"> <span class="help-inline">Inline help text</span>
+    <div class="form-group">
+        <input type="text"/> <span class="help-inline">Inline help text</span>
+    </div>
 </form>
 <pre class="prettyprint linenums">
 &lt;input type="text"&gt;&lt;span class="help-inline"&gt;Inline help text&lt;/span&gt;
@@ -1545,8 +1555,10 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 <h4>Block help</h4>
 
 <form class="bs-docs-example form-inline">
-    <input type="text">
-    <span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>
+    <div class="form-group">
+        <input type="text"/>
+        <span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>
+    </div>
 </form>
 <pre class="prettyprint linenums">
 &lt;input type="text"&gt;&lt;span class="help-block"&gt;A longer block of help text that breaks onto a new line and may extend beyond one line.&lt;/span&gt;
@@ -1576,7 +1588,9 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 <p>Add the <code>disabled</code> attribute on an input to prevent user input and trigger a slightly different look.</p>
 
 <form class="bs-docs-example form-inline">
-    <input class="input-xlarge" id="disabledInput" type="text" placeholder="Disabled input here..." disabled>
+    <div class="form-group">
+        <input class="input-xlarge" id="disabledInput" type="text" placeholder="Disabled input here..." disabled/>
+    </div>
 </form>
 <pre class="prettyprint linenums">
 &lt;input class="input-xlarge" id="disabledInput" type="text" placeholder="Disabled input here..." disabled&gt;
