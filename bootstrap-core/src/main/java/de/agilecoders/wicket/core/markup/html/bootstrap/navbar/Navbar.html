@@ -5,18 +5,20 @@
     <body>
         <wicket:panel>
             <div wicket:id="container" class="container">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
 
-                <a wicket:id="brandName" class="navbar-brand" href="#">
-                    <img wicket:id="brandImage"/>
-                    <span wicket:id="brandLabel"></span>
-                </a>
+                    <a wicket:id="brandName" class="navbar-brand" href="#">
+                        <img wicket:id="brandImage"/>
+                        <span wicket:id="brandLabel"></span>
+                    </a>
+                </div>
 
-                <div id="nav-collapse" class="nav-collapse collapse">
+                <div id="nav-collapse" class="navbar-collapse collapse">
                     <ul wicket:enclosure="navLeftList" class="nav navbar-nav">
                         <li wicket:id="navLeftList">
                             <div wicket:id="component">[[CONTENT]]</div>

@@ -162,6 +162,8 @@ public class Navbar extends Panel implements Invertible<Navbar> {
         super.onComponentTag(tag);
 
         Attributes.addClass(tag, "navbar", invertModel.getObject(), position.getObject().cssClassName());
+
+        Attributes.set(tag, "role", "navigation");
     }
 
     /**
