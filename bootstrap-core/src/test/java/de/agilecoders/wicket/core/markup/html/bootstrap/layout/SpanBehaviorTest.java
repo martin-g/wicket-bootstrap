@@ -1,6 +1,7 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.layout;
 
 import de.agilecoders.wicket.core.WicketApplicationTest;
+import de.agilecoders.wicket.core.markup.html.bootstrap.layout.offset.ExtraSmallOffsetType;
 import org.apache.wicket.util.tester.TagTester;
 import org.junit.Test;
 
@@ -22,7 +23,7 @@ public class SpanBehaviorTest extends WicketApplicationTest {
 
     @Test
     public void offset0DoesntNeedAClassName() {
-        startBehaviorInPage(new SpanBehavior(LargeScreenSpanType.SPAN1, Offset.OFFSET0));
+        startBehaviorInPage(new SpanBehavior(LargeScreenSpanType.SPAN1, ExtraSmallOffsetType.OFFSET0));
 
         TagTester tagTester = tester().getTagByWicketId(id());
         assertNotContainsCssClass(tagTester, "offset0");
@@ -41,10 +42,10 @@ public class SpanBehaviorTest extends WicketApplicationTest {
     @Test
     public void offsetCanBeChanged() {
         for (int i = 1; i <= 12; i++) {
-            startBehaviorInPage(new SpanBehavior(LargeScreenSpanType.SPAN1, Offset.valueOf("OFFSET" + i)));
+            startBehaviorInPage(new SpanBehavior(LargeScreenSpanType.SPAN1, ExtraSmallOffsetType.valueOf("OFFSET" + i)));
 
             TagTester tagTester = tester().getTagByWicketId(id());
-            assertCssClass(tagTester, "offset" + i);
+            assertCssClass(tagTester, "col-xs-offset-" + i);
         }
     }
 }
