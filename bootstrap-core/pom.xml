@@ -194,20 +194,6 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.5.1</version>
-                <configuration>
-                    <source>${mvn.build.java.version}</source>
-                    <target>${mvn.build.java.version}</target>
-                    <compilerVersion>${mvn.build.java.version}</compilerVersion>
-                    <encoding>${project.build.sourceEncoding}</encoding>
-                    <showDeprecation>true</showDeprecation>
-                    <showWarnings>true</showWarnings>
-                    <optimize>true</optimize>
-                </configuration>
-            </plugin>
             <!--
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
