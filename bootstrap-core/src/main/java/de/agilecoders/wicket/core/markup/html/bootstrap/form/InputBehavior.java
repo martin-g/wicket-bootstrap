@@ -20,11 +20,17 @@ public class InputBehavior extends BootstrapBaseBehavior {
      * Holder class for all possible input element sizes
      */
     public enum Size implements ICssClassNameProvider {
-        Mini, Small, Medium, Large, XLarge, XXLarge;
+        Mini("xs"), Small("sm"), Medium("md"), Large("lg"), XLarge("xlg"), XXLarge("xxlg");
+
+        private final String cssName;
+
+        private Size(String cssName) {
+            this.cssName = cssName;
+        }
 
         @Override
         public String cssClassName() {
-            return "input-" + name().toLowerCase();
+            return "input-" + cssName;
         }
 
     }
