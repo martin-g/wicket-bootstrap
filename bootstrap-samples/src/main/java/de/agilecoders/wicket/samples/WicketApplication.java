@@ -26,6 +26,7 @@ import de.agilecoders.wicket.themes.markup.html.wicket.WicketTheme;
 import de.agilecoders.wicket.themes.settings.BootswatchThemeProvider;
 import org.apache.wicket.Application;
 import org.apache.wicket.Page;
+import org.apache.wicket.ResourceBundles;
 import org.apache.wicket.RuntimeConfigurationType;
 import org.apache.wicket.WicketRuntimeException;
 import org.apache.wicket.protocol.http.WebApplication;
@@ -125,32 +126,33 @@ public class WicketApplication extends WebApplication {
      * configure all resource bundles (css and js)
      */
     private void configureResourceBundles() {
-        getResourceBundles().addJavaScriptBundle(WicketApplication.class, "core.js",
-                                                 (JavaScriptResourceReference) getJavaScriptLibrarySettings().getJQueryReference(),
-                                                 (JavaScriptResourceReference) getJavaScriptLibrarySettings().getWicketEventReference(),
-                                                 (JavaScriptResourceReference) getJavaScriptLibrarySettings().getWicketAjaxReference(),
-                                                 (JavaScriptResourceReference) ModernizrJavaScriptReference.INSTANCE
+        ResourceBundles bundles = getResourceBundles();
+        bundles.addJavaScriptBundle(WicketApplication.class, "core.js",
+                                    (JavaScriptResourceReference) getJavaScriptLibrarySettings().getJQueryReference(),
+                                    (JavaScriptResourceReference) getJavaScriptLibrarySettings().getWicketEventReference(),
+                                    (JavaScriptResourceReference) getJavaScriptLibrarySettings().getWicketAjaxReference(),
+                                    (JavaScriptResourceReference) ModernizrJavaScriptReference.INSTANCE
         );
 
-        getResourceBundles().addJavaScriptBundle(WicketApplication.class, "bootstrap.js",
-                                                 (JavaScriptResourceReference) Bootstrap.getSettings().getJsResourceReference(),
-                                                 (JavaScriptResourceReference) BootstrapPrettifyJavaScriptReference.INSTANCE,
-                                                 ApplicationJavaScript.INSTANCE
+        bundles.addJavaScriptBundle(WicketApplication.class, "bootstrap.js",
+                                    (JavaScriptResourceReference) Bootstrap.getSettings().getJsResourceReference(),
+                                    (JavaScriptResourceReference) BootstrapPrettifyJavaScriptReference.INSTANCE,
+                                    ApplicationJavaScript.INSTANCE
         );
 
-        getResourceBundles().addJavaScriptBundle(WicketApplication.class, "bootstrap-extensions.js",
-                                                 JQueryUIJavaScriptReference.instance(),
-                                                 Html5PlayerJavaScriptReference.instance()
+        bundles.addJavaScriptBundle(WicketApplication.class, "bootstrap-extensions.js",
+                                    JQueryUIJavaScriptReference.instance(),
+                                    Html5PlayerJavaScriptReference.instance()
         );
 
-        getResourceBundles().addCssBundle(WicketApplication.class, "bootstrap-extensions.css",
-                                          Html5PlayerCssReference.instance(),
-                                          OpenWebIconsCssReference.instance()
+        bundles.addCssBundle(WicketApplication.class, "bootstrap-extensions.css",
+                             Html5PlayerCssReference.instance(),
+                             OpenWebIconsCssReference.instance()
         );
 
-        getResourceBundles().addCssBundle(WicketApplication.class, "application.css",
-                                          (CssResourceReference) BootstrapPrettifyCssReference.INSTANCE,
-                                          FixBootstrapStylesCssResourceReference.INSTANCE
+        bundles.addCssBundle(WicketApplication.class, "application.css",
+                             (CssResourceReference) BootstrapPrettifyCssReference.INSTANCE,
+                             FixBootstrapStylesCssResourceReference.INSTANCE
         );
     }
 
