@@ -16,7 +16,7 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.form.IDataSource;
 import de.agilecoders.wicket.core.markup.html.bootstrap.form.Typeahead;
 import de.agilecoders.wicket.core.markup.html.bootstrap.form.TypeaheadConfig;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
-import de.agilecoders.wicket.core.markup.html.bootstrap.layout.LargeScreenSpanType;
+import de.agilecoders.wicket.core.markup.html.bootstrap.layout.col.LargeScreenSpanType;
 import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.NavbarAjaxLink;
 import de.agilecoders.wicket.core.markup.html.bootstrap.tabs.AjaxLazyLoadTextContentTab;
 import de.agilecoders.wicket.core.markup.html.bootstrap.tabs.Collapsible;

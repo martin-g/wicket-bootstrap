@@ -1,4 +1,4 @@
-package de.agilecoders.wicket.core.markup.html.bootstrap.layout;
+package de.agilecoders.wicket.core.markup.html.bootstrap.layout.col;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNameProvider;
 

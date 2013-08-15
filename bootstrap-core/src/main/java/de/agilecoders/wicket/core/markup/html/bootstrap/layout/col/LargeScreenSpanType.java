@@ -1,4 +1,4 @@
-package de.agilecoders.wicket.core.markup.html.bootstrap.layout;
+package de.agilecoders.wicket.core.markup.html.bootstrap.layout.col;
 
 /**
  * Span types for large desktops.

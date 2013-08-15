@@ -1,7 +1,7 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.form;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapResourcesBehavior;
-import de.agilecoders.wicket.core.markup.html.bootstrap.layout.SpanType;
+import de.agilecoders.wicket.core.markup.html.bootstrap.layout.col.SpanType;
 import de.agilecoders.wicket.core.markup.html.references.BootstrapJavaScriptReference;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.markup.ComponentTag;

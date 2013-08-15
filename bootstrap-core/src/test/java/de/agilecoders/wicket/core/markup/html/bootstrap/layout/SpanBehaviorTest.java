@@ -1,6 +1,7 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.layout;
 
 import de.agilecoders.wicket.core.WicketApplicationTest;
+import de.agilecoders.wicket.core.markup.html.bootstrap.layout.col.LargeScreenSpanType;
 import de.agilecoders.wicket.core.markup.html.bootstrap.layout.offset.ExtraSmallOffsetType;
 import org.apache.wicket.util.tester.TagTester;
 import org.junit.Test;

@@ -1,9 +1,9 @@
-package de.agilecoders.wicket.core.markup.html.bootstrap.layout;
+package de.agilecoders.wicket.core.markup.html.bootstrap.layout.col;
 
 /**
- * Span types for tablets.
+ * Span types for (non-large) desktops.
  */
-public enum SmallSpanType implements SpanType {
+public enum MediumSpanType implements SpanType {
 
     SPAN1, SPAN2, SPAN3, SPAN4,
     SPAN5, SPAN6, SPAN7, SPAN8,
@@ -14,8 +14,8 @@ public enum SmallSpanType implements SpanType {
     /**
      * Constructor.
      */
-    private SmallSpanType() {
-        this.cssClassName = "col-sm-" + name().toLowerCase().replace("span", "");
+    private MediumSpanType() {
+        this.cssClassName = "col-md-" + name().toLowerCase().replace("span", "");
     }
 
     @Override

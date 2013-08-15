@@ -1,6 +1,8 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.layout;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
+import de.agilecoders.wicket.core.markup.html.bootstrap.layout.col.LargeScreenSpanType;
+import de.agilecoders.wicket.core.markup.html.bootstrap.layout.col.SpanType;
 import de.agilecoders.wicket.core.markup.html.bootstrap.layout.offset.ExtraLargeOffsetType;
 import de.agilecoders.wicket.core.markup.html.bootstrap.layout.offset.OffsetType;
 import de.agilecoders.wicket.core.util.Attributes;
@@ -19,7 +21,7 @@ public class SpanBehavior extends BootstrapBaseBehavior {
     private final OffsetType offsetType;
 
     /**
-     * Construct. Uses {@link de.agilecoders.wicket.core.markup.html.bootstrap.layout.offset.ExtraLargeOffsetType#OFFSET0} and {@link LargeScreenSpanType#SPAN12}.
+     * Construct. Uses {@link de.agilecoders.wicket.core.markup.html.bootstrap.layout.offset.ExtraLargeOffsetType#OFFSET0} and {@link de.agilecoders.wicket.core.markup.html.bootstrap.layout.col.LargeScreenSpanType#SPAN12}.
      */
     public SpanBehavior() {
         this(LargeScreenSpanType.SPAN12);
