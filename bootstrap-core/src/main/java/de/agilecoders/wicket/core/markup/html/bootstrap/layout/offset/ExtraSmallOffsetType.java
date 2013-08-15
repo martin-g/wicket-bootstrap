@@ -1,11 +1,9 @@
-package de.agilecoders.wicket.core.markup.html.bootstrap.layout;
-
-import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNameProvider;
+package de.agilecoders.wicket.core.markup.html.bootstrap.layout.offset;
 
 /**
- * References all available offsets.
+ * Offsets for phones.
  */
-public enum Offset implements ICssClassNameProvider {
+public enum ExtraSmallOffsetType implements OffsetType {
 
     OFFSET0,
     OFFSET1, OFFSET2, OFFSET3, OFFSET4,
@@ -17,13 +15,13 @@ public enum Offset implements ICssClassNameProvider {
     /**
      * Constructor.
      */
-    private Offset() {
+    private ExtraSmallOffsetType() {
         this.cssClassName = name().toLowerCase();
     }
 
     @Override
     public String cssClassName() {
-        return equals(OFFSET0) ? "" : "col-" + cssClassName;
+        return equals(OFFSET0) ? "" : "col-xs-offset-" + cssClassName.replace("offset", "");
     }
 
 }
