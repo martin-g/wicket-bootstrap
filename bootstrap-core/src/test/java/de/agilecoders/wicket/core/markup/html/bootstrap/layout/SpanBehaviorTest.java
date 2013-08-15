@@ -16,7 +16,7 @@ public class SpanBehaviorTest extends WicketApplicationTest {
         startBehaviorInPage(new SpanBehavior());
 
         TagTester tagTester = tester().getTagByWicketId(id());
-        assertCssClass(tagTester, "span12");
+        assertCssClass(tagTester, "col-lg-12");
         assertNotContainsCssClass(tagTester, "offset0");
     }
 
@@ -34,7 +34,7 @@ public class SpanBehaviorTest extends WicketApplicationTest {
             startBehaviorInPage(new SpanBehavior(LargeScreenSpanType.valueOf("SPAN" + i)));
 
             TagTester tagTester = tester().getTagByWicketId(id());
-            assertCssClass(tagTester, "span" + i);
+            assertCssClass(tagTester, "col-lg-" + i);
         }
     }
 
