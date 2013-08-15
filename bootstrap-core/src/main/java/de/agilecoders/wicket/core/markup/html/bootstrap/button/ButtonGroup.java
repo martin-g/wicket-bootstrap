@@ -17,7 +17,19 @@ import java.util.List;
  */
 public abstract class ButtonGroup extends Panel {
 
+    public static enum Size {
+        ExtraSmall("xs"), Small("sm"), Default(""), Large("lg");
+
+        private final String cssName;
+
+        private Size(String cssName) {
+            this.cssName = cssName;
+        }
+    }
+
     private final Buttons.Orientation orientation;
+
+    private final Size size;
 
     /**
      * Construct.
@@ -25,7 +37,7 @@ public abstract class ButtonGroup extends Panel {
      * @param markupId The markup id.
      */
     public ButtonGroup(final String markupId) {
-        this(markupId, Buttons.Orientation.Horizontal);
+        this(markupId, Buttons.Orientation.Horizontal, Size.Default);
     }
 
     /**
@@ -35,11 +47,16 @@ public abstract class ButtonGroup extends Panel {
      * @param orientation Make a set of buttons appear vertically stacked rather than horizontally if set to {@link de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons.Orientation#Vertical}.
      */
     public ButtonGroup(final String markupId, final Buttons.Orientation orientation) {
+        this(markupId, orientation, Size.Default);
+    }
+
+    public ButtonGroup(final String markupId, final Buttons.Orientation orientation, Size size) {
         super(markupId);
 
         Args.notNull(orientation, "orientation");
 
         this.orientation = orientation;
+        this.size = size;
 
         add(newButtonList("buttons"));
         BootstrapBaseBehavior.addTo(this);
@@ -50,6 +67,10 @@ public abstract class ButtonGroup extends Panel {
         super.onComponentTag(tag);
 
         Attributes.addClass(tag, orientation.cssClassName(), "btn-group");
+
+        if (!Size.Default.equals(size)) {
+            Attributes.addClass(tag, "btn-group-" + size.cssName);
+        }
     }
 
     /**
