@@ -23,7 +23,7 @@ public class TableBehavior extends BootstrapBaseBehavior {
     /**
      * all possible table styles.
      */
-    private enum Type implements ICssClassNameProvider {
+    private static enum Type implements ICssClassNameProvider {
         Basic, Bordered, Striped, Condensed, Hover;
 
         @Override
