@@ -14,11 +14,11 @@ public enum LabelType implements ICssClassNameProvider, ICssClassNameModifier {
 
     @Override
     public String cssClassName() {
-        return equals(Default) ? "" : name().toLowerCase();
+        return name().toLowerCase();
     }
 
     public String cssClassName(final String prefix) {
-        return equals(Default) ? "" : prefix + "-" + name().toLowerCase();
+        return prefix + "-" + name().toLowerCase();
     }
 
     @Override
