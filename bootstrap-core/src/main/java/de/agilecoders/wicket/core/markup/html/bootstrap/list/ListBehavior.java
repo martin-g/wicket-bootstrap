@@ -43,6 +43,7 @@ public class ListBehavior extends BootstrapBaseBehavior {
 
     private boolean unstyled = false;
     private boolean horizontal;
+    private boolean inline;
     private final Type type;
 
     /**
@@ -75,6 +76,17 @@ public class ListBehavior extends BootstrapBaseBehavior {
     }
 
     /**
+     * sets a special css class so that this list will be rendered inline.
+     *
+     * @return this instance for chaining.
+     */
+    public ListBehavior inline() {
+        inline = true;
+
+        return this;
+    }
+
+    /**
      * whether to us styles or not for ul tags.
      *
      * @return this instance for chaining
@@ -97,6 +109,10 @@ public class ListBehavior extends BootstrapBaseBehavior {
 
         if (unstyled && Type.UL.equals(type)) {
             Attributes.addClass(tag, "list-unstyled");
+        }
+
+        if (inline && Type.UL.equals(type)) {
+            Attributes.addClass(tag, "list-inline");
         }
 
         if (horizontal && Type.DL.equals(type)) {
