@@ -96,7 +96,7 @@ public class ListBehavior extends BootstrapBaseBehavior {
         Components.assertTag(component, tag, "ul", "ol", "dl");
 
         if (unstyled && Type.UL.equals(type)) {
-            Attributes.addClass(tag, "unstyled");
+            Attributes.addClass(tag, "list-unstyled");
         }
 
         if (horizontal && Type.DL.equals(type)) {

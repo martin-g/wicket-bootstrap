@@ -47,7 +47,7 @@ public class ListBehaviorTest extends WicketApplicationTest {
     public void unstyledUnorderedList() {
         startBehaviorInPage(ListBehavior.unordered().unstyled());
 
-        assertClassNamesPresent("unstyled");
+        assertClassNamesPresent("list-unstyled");
     }
 
 }

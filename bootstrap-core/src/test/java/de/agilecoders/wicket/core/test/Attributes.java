@@ -1,7 +1,5 @@
 package de.agilecoders.wicket.core.test;
 
-import de.agilecoders.wicket.core.util.CssClassNames;
-
 import org.apache.wicket.util.tester.TagTester;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -22,10 +20,10 @@ public final class Attributes {
      * @param classNames The class names that must be present
      */
     public static void assertClassNamesPresent(final TagTester tester, final String... classNames) {
-        CssClassNames.Builder builder = CssClassNames.newBuilder().add(classNames);
+        String markup = tester.getMarkup();
 
         for (String className : classNames) {
-            assertThat(builder.contains(className), is(equalTo(true)));
+            assertThat(markup.contains(className), is(equalTo(true)));
         }
     }
 
