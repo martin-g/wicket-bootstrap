@@ -37,7 +37,7 @@ public class Alert extends GenericPanel<String> {
 
         @Override
         public String cssClassName() {
-            return equals(Warning) ? "alert-block" : "alert-" + name().toLowerCase();
+            return "alert-" + name().toLowerCase();
         }
 
         public static Type from(String level) {
