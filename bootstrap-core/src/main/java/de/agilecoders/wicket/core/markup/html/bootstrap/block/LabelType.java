@@ -10,7 +10,7 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNamePr
  * @author miha
  */
 public enum LabelType implements ICssClassNameProvider, ICssClassNameModifier {
-    Default, Success, Warning, Important, Info, Inverse;
+    Default, Primary, Success, Warning, Info, Danger;
 
     @Override
     public String cssClassName() {
