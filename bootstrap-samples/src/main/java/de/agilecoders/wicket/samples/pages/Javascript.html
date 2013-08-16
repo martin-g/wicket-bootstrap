@@ -1295,7 +1295,7 @@ $('#my-alert').bind('closed', function () {
 
     <h3>About</h3>
 
-    <p>Get base styles and flexible support for collapsible components like accordions and navigation.</p>
+    <p>Get base styles and flexible support for collapsible components like collapsible panels and navigation.</p>
 
     <p class="muted"><strong>*</strong> Requires the Transitions plugin to be included.</p>
 
@@ -1307,27 +1307,27 @@ $('#my-alert').bind('closed', function () {
         <div wicket:id="accordion42"></div>
     </div>
 <pre class="prettyprint linenums">
-&lt;div class="accordion" id="accordion2"&gt;
-  &lt;div class="accordion-group"&gt;
-    &lt;div class="accordion-heading"&gt;
+&lt;div class="panel-group in" id="accordion2"&gt;
+  &lt;div class="panel"&gt;
+    &lt;div class="panel-heading"&gt;
       &lt;a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne"&gt;
         Collapsible Group Item #1
       &lt;/a&gt;
     &lt;/div&gt;
-    &lt;div id="collapseOne" class="accordion-body collapse in"&gt;
-      &lt;div class="accordion-inner"&gt;
+    &lt;div id="collapseOne" class="panel-collapse collapse"&gt;
+      &lt;div class="panel-body"&gt;
         Anim pariatur cliche...
       &lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
-  &lt;div class="accordion-group"&gt;
-    &lt;div class="accordion-heading"&gt;
+  &lt;div class="panel"&gt;
+    &lt;div class="panel-heading"&gt;
       &lt;a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo"&gt;
         Collapsible Group Item #2
       &lt;/a&gt;
     &lt;/div&gt;
-    &lt;div id="collapseTwo" class="accordion-body collapse"&gt;
-      &lt;div class="accordion-inner"&gt;
+    &lt;div id="collapseTwo" class="panel-collapse collapse"&gt;
+      &lt;div class="panel-body"&gt;
         Anim pariatur cliche...
       &lt;/div&gt;
     &lt;/div&gt;

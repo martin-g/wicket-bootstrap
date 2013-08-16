@@ -96,7 +96,7 @@ public class Collapsible extends Panel {
 
         checkComponentTag(tag, "div");
 
-        Attributes.addClass(tag, "accordion");
+        Attributes.addClass(tag, "panel-group");
     }
 
     @Override

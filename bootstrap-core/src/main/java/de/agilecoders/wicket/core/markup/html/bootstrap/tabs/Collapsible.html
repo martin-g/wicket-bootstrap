@@ -4,12 +4,14 @@
     </head>
     <body>
         <wicket:panel>
-            <div class="accordion-group" wicket:id="tabs">
-                <div class="accordion-heading">
-                    <a wicket:id="title" class="accordion-toggle" data-toggle="collapse">Title</a>
+            <div class="panel" wicket:id="tabs">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        <a wicket:id="title" class="accordion-toggle" data-toggle="collapse">Title</a>
+                    </h3>
                 </div>
-                <div wicket:id="body" class="accordion-body collapse">
-                    <div class="accordion-inner">
+                <div wicket:id="body" class="panel-collapse collapse in">
+                    <div class="panel-body">
                         <div wicket:id="content">Content</div>
                     </div>
                 </div>
