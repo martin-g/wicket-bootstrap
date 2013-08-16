@@ -12,7 +12,6 @@ import org.apache.wicket.util.lang.Args;
 /**
  * The {@code BootstrapBaseBehavior} renders the current active
  * {@link ITheme} which includes the {@link de.agilecoders.wicket.core.markup.html.themes.bootstrap.BootstrapCssReference}
- * and the {@link de.agilecoders.wicket.core.markup.html.themes.bootstrap.BootstrapResponsiveCssReference}
  * if enabled to the response.
  *
  * @author miha
