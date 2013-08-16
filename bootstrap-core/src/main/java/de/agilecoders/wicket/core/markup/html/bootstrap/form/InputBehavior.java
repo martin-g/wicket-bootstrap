@@ -35,7 +35,7 @@ public class InputBehavior extends BootstrapBaseBehavior {
 
     }
 
-    private final IModel<ICssClassNameProvider> size;
+    private IModel<ICssClassNameProvider> size;
 
     /**
      * Construct. Uses {@link Size#Medium} as default size.
@@ -78,7 +78,7 @@ public class InputBehavior extends BootstrapBaseBehavior {
      * @return this instance for chaining
      */
     public InputBehavior size(final SpanType size) {
-        this.size.setObject(size);
+        this.size = Model.<ICssClassNameProvider>of(size);
         return this;
     }
 
@@ -96,6 +96,7 @@ public class InputBehavior extends BootstrapBaseBehavior {
     @Override
     public void onComponentTag(final Component component, final ComponentTag tag) {
         super.onComponentTag(component, tag);
+
         if (size != null) {
             Attributes.addClass(tag, size.getObject().cssClassName());
         }
