@@ -19,7 +19,7 @@
 
 <div class="row">
 <div class="col-lg-3 bs-docs-sidebar">
-    <ul wicket:id="navigation" class="nav nav-list bs-docs-sidenav">
+    <ul wicket:id="navigation" class="nav list-group bs-docs-sidenav">
         <li><a href="#dropdowns"><i class="icon-chevron-right"></i> Dropdowns</a></li>
         <li><a href="#buttonGroups"><i class="icon-chevron-right"></i> Button groups</a></li>
         <li><a href="#buttonDropdowns"><i class="icon-chevron-right"></i> Button dropdowns</a></li>
@@ -1446,29 +1446,25 @@
 <p>Simple pagination inspired by Rdio, great for apps and search results. The large block is hard to miss, easily scalable, and provides large click areas.</p>
 
 <div class="bs-docs-example">
-    <div class="pagination">
-        <ul>
-            <li><a href="#">&laquo;</a></li>
-            <li><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
-            <li><a href="#">&raquo;</a></li>
-        </ul>
-    </div>
+    <ul class="pagination">
+        <li><a href="#">&laquo;</a></li>
+        <li><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li><a href="#">&raquo;</a></li>
+    </ul>
 </div>
 <pre class="prettyprint linenums">
-&lt;div class="pagination"&gt;
-  &lt;ul&gt;
-    &lt;li&gt;&lt;a href="#"&gt;Prev&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href="#"&gt;1&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href="#"&gt;2&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href="#"&gt;3&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href="#"&gt;4&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href="#"&gt;Next&lt;/a&gt;&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/div&gt;
+&lt;ul class="pagination"&gt;
+&lt;li&gt;&lt;a href="#"&gt;Prev&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#"&gt;1&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#"&gt;2&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#"&gt;3&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#"&gt;4&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#"&gt;Next&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </pre>
 
 
@@ -1482,45 +1478,39 @@
 <p>Links are customizable for different circumstances. Use <code>.disabled</code> for unclickable links and <code>.active</code> to indicate the current page.</p>
 
 <div class="bs-docs-example">
-    <div class="pagination pagination-centered">
-        <ul>
-            <li class="disabled"><a href="#">&laquo;</a></li>
-            <li class="active"><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
-            <li><a href="#">&raquo;</a></li>
-        </ul>
-    </div>
+    <ul class="pagination">
+        <li class="disabled"><a href="#">&laquo;</a></li>
+        <li class="active"><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li><a href="#">&raquo;</a></li>
+    </ul>
 </div>
 <pre class="prettyprint linenums">
-&lt;div class="pagination"&gt;
-  &lt;ul&gt;
-    &lt;li class="disabled"&gt;&lt;a href="#"&gt;Prev&lt;/a&gt;&lt;/li&gt;
-    &lt;li class="active"&gt;&lt;a href="#"&gt;1&lt;/a&gt;&lt;/li&gt;
-    ...
-  &lt;/ul&gt;
-&lt;/div&gt;
+&lt;ul class="pagination"&gt;
+  &lt;li class="disabled"&gt;&lt;a href="#"&gt;Prev&lt;/a&gt;&lt;/li&gt;
+  &lt;li class="active"&gt;&lt;a href="#"&gt;1&lt;/a&gt;&lt;/li&gt;
+  ...
+&lt;/ul&gt;
 </pre>
 <p>You can optionally swap out active or disabled anchors for spans to remove click functionality while retaining intended styles.</p>
 <pre class="prettyprint linenums">
-&lt;div class="pagination"&gt;
-  &lt;ul&gt;
-    &lt;li class="disabled"&gt;&lt;span&gt;Prev&lt;/span&gt;&lt;/li&gt;
-    &lt;li class="active"&gt;&lt;span&gt;1&lt;/span&gt;&lt;/li&gt;
-    ...
-  &lt;/ul&gt;
-&lt;/div&gt;
+&lt;ul class="pagination"&gt;
+  &lt;li class="disabled"&gt;&lt;span&gt;Prev&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="active"&gt;&lt;span&gt;1&lt;/span&gt;&lt;/li&gt;
+  ...
+&lt;/ul&gt;
 </pre>
 
 <h3>Sizes</h3>
 
-<p>Fancy larger or smaller pagination? Add <code>.pagination-lg</code>, <code>.pagination-sm</code>, or <code>.pagination-mini</code> for additional sizes.</p>
+<p>Fancy larger or smaller pagination? Add <code>.pagination-lg</code> or <code>.pagination-sm</code> for additional sizes.</p>
 
 <div class="bs-docs-example">
-    <div class="pagination pagination-lg">
-        <ul>
+    <div>
+        <ul class="pagination pagination-lg">
             <li><a href="#">&laquo;</a></li>
             <li><a href="#">1</a></li>
             <li><a href="#">2</a></li>
@@ -1530,8 +1520,8 @@
             <li><a href="#">&raquo;</a></li>
         </ul>
     </div>
-    <div class="pagination">
-        <ul>
+    <div >
+        <ul class="pagination">
             <li><a href="#">&laquo;</a></li>
             <li><a href="#">1</a></li>
             <li><a href="#">2</a></li>
@@ -1541,19 +1531,8 @@
             <li><a href="#">&raquo;</a></li>
         </ul>
     </div>
-    <div class="pagination pagination-sm">
-        <ul>
-            <li><a href="#">&laquo;</a></li>
-            <li><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
-            <li><a href="#">&raquo;</a></li>
-        </ul>
-    </div>
-    <div class="pagination pagination-mini">
-        <ul>
+    <div>
+        <ul class="pagination pagination-sm">
             <li><a href="#">&laquo;</a></li>
             <li><a href="#">1</a></li>
             <li><a href="#">2</a></li>
@@ -1565,66 +1544,20 @@
     </div>
 </div>
 <pre class="prettyprint linenums">
-&lt;div class="pagination pagination-lg"&gt;
-  &lt;ul&gt;
+&lt;div&gt;
+  &lt;ul class="pagination pagination-lg"&gt;
     ...
   &lt;/ul&gt;
 &lt;/div&gt;
-&lt;div class="pagination"&gt;
-  &lt;ul&gt;
+&lt;div&gt;
+  &lt;ul class="pagination"&gt;
     ...
   &lt;/ul&gt;
 &lt;/div&gt;
-&lt;div class="pagination pagination-sm"&gt;
-  &lt;ul&gt;
+&lt;div&gt;
+  &lt;ul class="pagination pagination-sm"&gt;
     ...
   &lt;/ul&gt;
-&lt;/div&gt;
-&lt;div class="pagination pagination-mini"&gt;
-  &lt;ul&gt;
-    ...
-  &lt;/ul&gt;
-&lt;/div&gt;
-</pre>
-
-<h3>Alignment</h3>
-
-<p>Add one of two optional classes to change the alignment of pagination links: <code>.pagination-centered</code> and <code>.pagination-right</code>.</p>
-
-<div class="bs-docs-example">
-    <div class="pagination pagination-centered">
-        <ul>
-            <li><a href="#">&laquo;</a></li>
-            <li><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
-            <li><a href="#">&raquo;</a></li>
-        </ul>
-    </div>
-</div>
-<pre class="prettyprint linenums">
-&lt;div class="pagination pagination-centered"&gt;
-  ...
-&lt;/div&gt;
-</pre>
-<div class="bs-docs-example">
-    <div class="pagination pagination-right">
-        <ul>
-            <li><a href="#">&laquo;</a></li>
-            <li><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
-            <li><a href="#">&raquo;</a></li>
-        </ul>
-    </div>
-</div>
-<pre class="prettyprint linenums">
-&lt;div class="pagination pagination-right"&gt;
-  ...
 &lt;/div&gt;
 </pre>
 

@@ -1,7 +1,6 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.navigation;
 
 import de.agilecoders.wicket.core.WicketApplicationTest;
-import de.agilecoders.wicket.core.markup.html.bootstrap.navigation.BootstrapPagingNavigator;
 import de.agilecoders.wicket.core.test.Attributes;
 import de.agilecoders.wicket.core.test.IntegrationTest;
 import de.agilecoders.wicket.core.util.Generics2;
@@ -31,31 +30,13 @@ public class BootstrapPagingNavigatorTest extends WicketApplicationTest {
     }
 
     @Test
-    public void correctClassNameIsSetForPositionLeft() {
+    public void correctClassName() {
         BootstrapPagingNavigator navigator = createDefault();
-        navigator.setPosition(BootstrapPagingNavigator.Position.Left);
         tester().startComponentInPage(navigator);
 
         Attributes.assertSingleClassNamePresent(tester().getTagByWicketId("pagination"), "pagination");
     }
 
-    @Test
-    public void correctClassNameIsSetForPositionRight() {
-        BootstrapPagingNavigator navigator = createDefault();
-        navigator.setPosition(BootstrapPagingNavigator.Position.Right);
-        tester().startComponentInPage(navigator);
-
-        Attributes.assertClassNamesPresent(tester().getTagByWicketId("pagination"), "pagination", "pagination-right");
-    }
-
-    @Test
-    public void correctClassNameIsSetForPositionCenter() {
-        BootstrapPagingNavigator navigator = createDefault();
-        navigator.setPosition(BootstrapPagingNavigator.Position.Centered);
-        tester().startComponentInPage(navigator);
-
-        Attributes.assertClassNamesPresent(tester().getTagByWicketId("pagination"), "pagination", "pagination-centered");
-    }
 
     @Test(expected = MarkupException.class)
     public void correctTagNameIsAsserted() {

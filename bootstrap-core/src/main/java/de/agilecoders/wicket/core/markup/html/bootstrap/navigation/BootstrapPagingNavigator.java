@@ -1,5 +1,7 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.navigation;
 
+import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
+import de.agilecoders.wicket.core.util.Attributes;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.html.list.LoopItem;
@@ -7,11 +9,6 @@ import org.apache.wicket.markup.html.navigation.paging.IPageable;
 import org.apache.wicket.markup.html.navigation.paging.IPagingLabelProvider;
 import org.apache.wicket.markup.html.navigation.paging.PagingNavigation;
 import org.apache.wicket.markup.html.navigation.paging.PagingNavigator;
-import org.apache.wicket.model.Model;
-
-import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
-import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNameProvider;
-import de.agilecoders.wicket.core.util.Attributes;
 
 /**
  * A Wicket panel component to draw and maintain a complete page navigator, meant to be easily added
@@ -23,20 +20,21 @@ import de.agilecoders.wicket.core.util.Attributes;
  */
 public class BootstrapPagingNavigator extends PagingNavigator {
 
-    /**
-     * position of pagination component
-     */
-    public enum Position implements ICssClassNameProvider {
-        Left, Centered, Right;
+    public static enum Size {
+        Small("sm"), Default(""), Large("lg");
 
-        @Override
-        public String cssClassName() {
-            return equals(Left) ? "" : "pagination-" + name().toLowerCase();
+        private final String size;
+
+        private Size(String size) {
+            this.size = size;
         }
 
+        public String cssClass() {
+            return equals(Default) ? "" : "pagination-" + size;
+        }
     }
 
-    private final Model<String> positionModel;
+    private Size size;
 
     /**
      * Construct.
@@ -58,8 +56,6 @@ public class BootstrapPagingNavigator extends PagingNavigator {
     public BootstrapPagingNavigator(final String markupId, final IPageable pageable, final IPagingLabelProvider labelProvider) {
         super(markupId, pageable, labelProvider);
 
-        positionModel = Model.of(Position.Left.cssClassName());
-
         BootstrapBaseBehavior.addTo(this);
     }
 
@@ -67,8 +63,13 @@ public class BootstrapPagingNavigator extends PagingNavigator {
     protected void onComponentTag(final ComponentTag tag) {
         super.onComponentTag(tag);
 
-        checkComponentTag(tag, "div");
-        Attributes.addClass(tag, "pagination", positionModel.getObject());
+        checkComponentTag(tag, "ul");
+
+        Attributes.addClass(tag, "pagination");
+
+        if (size != null && !size.equals(Size.Default)) {
+            Attributes.addClass(tag, size.cssClass());
+        }
     }
 
     /**
@@ -85,25 +86,25 @@ public class BootstrapPagingNavigator extends PagingNavigator {
     
     @Override
     protected PagingNavigation newNavigation(final String id, final IPageable pageable, final IPagingLabelProvider labelProvider) {
-	return new PagingNavigation(id, pageable, labelProvider) {
-	    @Override
-	    protected void populateItem(final LoopItem loopItem) {
-		super.populateItem(loopItem);
-		if ((getStartIndex() + loopItem.getIndex()) == pageable.getCurrentPage()) {
-		    loopItem.add(AttributeModifier.append("class", "active"));
-		}
-	    };
-	};
+        return new PagingNavigation(id, pageable, labelProvider) {
+            @Override
+            protected void populateItem(final LoopItem loopItem) {
+                super.populateItem(loopItem);
+                if ((getStartIndex() + loopItem.getIndex()) == pageable.getCurrentPage()) {
+                    loopItem.add(AttributeModifier.append("class", "active"));
+                }
+            }
+        };
     }
-    
+
     /**
-     * sets the position of the pagination component
+     * Sets the size of the pager - small, default or large
      *
-     * @param position The position
-     * @return this instance for chaining
+     * @param size The new size for the pager.
+     * @return {@code this} instance, for chaining
      */
-    public BootstrapPagingNavigator setPosition(final Position position) {
-        positionModel.setObject(position.cssClassName());
+    public BootstrapPagingNavigator setSize(Size size) {
+        this.size = Size.Default.equals(size) ? null : size;
         return this;
     }
 }

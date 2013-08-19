@@ -91,7 +91,7 @@ public class BaseCssPage extends BasePage {
             }
         };
 
-        return new BootstrapPagingNavigator(markupId, pageable).setPosition(BootstrapPagingNavigator.Position.Centered);
+        return new BootstrapPagingNavigator(markupId, pageable)/*.setPosition(BootstrapPagingNavigator.Position.Centered)*/;
     }
 
     private DatePickerModal newModalDialog(String markupId) {
