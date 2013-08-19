@@ -165,7 +165,7 @@ public class IconType implements ICssClassNameProvider, ICssClassNameModifier {
 
     @Override
     public String cssClassName() {
-        return "icon-" + cssClassName;
+        return "glyphicon glyphicon-" + cssClassName;
     }
 
     @Override

@@ -2,8 +2,6 @@ package de.agilecoders.wicket.core.markup.html.themes.bootstrap;
 
 import de.agilecoders.wicket.core.settings.Theme;
 
-import java.util.Arrays;
-
 /**
  * Bootstrap theme.
  *
@@ -11,7 +9,7 @@ import java.util.Arrays;
  */
 public class BootstrapTheme extends Theme {
 
-    private static final String CDN_PATTERN = "//netdna.bootstrapcdn.com/twitter-bootstrap/%s/css/bootstrap-combined.min.css";
+//    private static final String CDN_PATTERN = "//netdna.bootstrapcdn.com/twitter-bootstrap/%s/css/bootstrap-combined.min.css";
 
     /**
      * Construct.
@@ -19,10 +17,10 @@ public class BootstrapTheme extends Theme {
     public BootstrapTheme() {
         super("bootstrap", BootstrapCssReference.instance());
     }
-
-    @Override
-    public Iterable<String> getCdnUrls() {
-        String cdnUrl = String.format(CDN_PATTERN, getVersion());
-        return Arrays.asList(cdnUrl);
-    }
+//
+//    @Override
+//    public Iterable<String> getCdnUrls() {
+//        String cdnUrl = String.format(CDN_PATTERN, getVersion());
+//        return Arrays.asList(cdnUrl);
+//    }
 }

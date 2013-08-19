@@ -1,4 +1,4 @@
-package de.agilecoders.wicket.themes.markup.html.google;
+package de.agilecoders.wicket.themes.markup.html.bootstrap;
 
 import de.agilecoders.wicket.core.Bootstrap;
 import de.agilecoders.wicket.core.util.Generics2;
@@ -13,13 +13,13 @@ import java.util.List;
  *
  * @author miha
  */
-public class GoogleCssReference extends CssResourceReference {
+public class Bootstrap3ThemeCssReference extends CssResourceReference {
     private static final long serialVersionUID = 1L;
 
     /**
-     * @return singleton instance of {@link GoogleCssReference}
+     * @return singleton instance of {@link Bootstrap3ThemeCssReference}
      */
-    public static GoogleCssReference instance() {
+    public static Bootstrap3ThemeCssReference instance() {
         return Holder.INSTANCE;
     }
 
@@ -27,14 +27,14 @@ public class GoogleCssReference extends CssResourceReference {
      * Singleton instance of this reference
      */
     private static final class Holder {
-        private static final GoogleCssReference INSTANCE = new GoogleCssReference();
+        private static final Bootstrap3ThemeCssReference INSTANCE = new Bootstrap3ThemeCssReference();
     }
 
     /**
      * Private constructor.
      */
-    private GoogleCssReference() {
-        super(GoogleCssReference.class, "css/google-bootstrap.css");
+    private Bootstrap3ThemeCssReference() {
+        super(Bootstrap3ThemeCssReference.class, "css/bootstrap-theme.css");
     }
 
     @Override
