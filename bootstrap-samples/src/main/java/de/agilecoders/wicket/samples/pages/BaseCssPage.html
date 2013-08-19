@@ -885,9 +885,11 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
         <label>Label name</label>
         <input type="text" placeholder="Type something...">
         <span class="help-block">Example block-level help text here.</span>
-        <label class="checkbox">
-            <input type="checkbox"> Check me out
-        </label>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox"> Check me out
+            </label>
+        </div>
         <button type="submit" class="btn">Submit</button>
     </fieldset>
 </form>
@@ -898,9 +900,11 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
     &lt;label&gt;Label name&lt;/label&gt;
     &lt;input type="text" placeholder="Type something..."&gt;
     &lt;span class="help-block"&gt;Example block-level help text here.&lt;/span&gt;
-    &lt;label class="checkbox"&gt;
-      &lt;input type="checkbox"&gt; Check me out
-    &lt;/label&gt;
+    &lt;div class="checkbox"&gt;
+      &lt;label&gt;
+        &lt;input type="checkbox"&gt; Check me out
+      &lt;/label&gt;
+    &lt;/div&gt;
     &lt;button type="submit" class="btn"&gt;Submit&lt;/button&gt;
   &lt;/fieldset&gt;
 &lt;/form&gt;
@@ -922,9 +926,11 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
     <div class="form-group">
         <input type="text" class="input-small" placeholder="Email">
         <input type="password" class="input-small" placeholder="Password">
-        <label class="checkbox">
-            <input type="checkbox"> Remember me
-        </label>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox"> Remember me
+            </label>
+        </div>
         <button type="submit" class="btn">Sign in</button>
     </div>
 </form>
@@ -933,9 +939,11 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
   &lt;div class="form-group"&gt;
       &lt;input type="text" class="input-small" placeholder="Email"&gt;
       &lt;input type="password" class="input-small" placeholder="Password"&gt;
-      &lt;label class="checkbox"&gt;
-        &lt;input type="checkbox"&gt; Remember me
-      &lt;/label&gt;
+      &lt;div class="checkbox"&gt;
+          &lt;label&gt;
+            &lt;input type="checkbox"&gt; Remember me
+          &lt;/label&gt;
+      &lt;/div&gt;
       &lt;button type="submit" class="btn"&gt;Sign in&lt;/button&gt;
   &lt/div&gt;
 &lt;/form&gt;
@@ -967,9 +975,11 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
     </div>
     <div class="control-group">
         <div class="controls">
-            <label class="checkbox">
-                <input type="checkbox"> Remember me
-            </label>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox"> Remember me
+                </label>
+            </div>
             <button type="submit" class="btn">Sign in</button>
         </div>
     </div>
@@ -990,9 +1000,11 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
   &lt;/div&gt;
   &lt;div class="control-group"&gt;
     &lt;div class="controls"&gt;
-      &lt;label class="checkbox"&gt;
-        &lt;input type="checkbox"&gt; Remember me
-      &lt;/label&gt;
+      &lt;div class="checkbox"&gt;
+          &lt;label&gt;
+            &lt;input type="checkbox"&gt; Remember me
+          &lt;/label&gt;
+      &lt;/div&gt;
       &lt;button type="submit" class="btn"&gt;Sign in&lt;/button&gt;
     &lt;/div&gt;
   &lt;/div&gt;
@@ -1076,26 +1088,38 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 <p>Add the <code>.inline</code> class to a series of checkboxes or radios for controls appear on the same line.</p>
 
 <form class="bs-docs-example">
-    <label class="checkbox inline">
-        <input type="checkbox" id="inlineCheckbox1" value="option1"> 1
-    </label>
-    <label class="checkbox inline">
-        <input type="checkbox" id="inlineCheckbox2" value="option2"> 2
-    </label>
-    <label class="checkbox inline">
-        <input type="checkbox" id="inlineCheckbox3" value="option3"> 3
-    </label>
+    <div class="checkbox">
+        <label class="inline">
+            <input type="checkbox" id="inlineCheckbox1" value="option1"> 1
+        </label>
+    </div>
+    <div class="checkbox">
+        <label class="inline">
+            <input type="checkbox" id="inlineCheckbox2" value="option2"> 2
+        </label>
+    </div>
+    <div class="checkbox">
+        <label class="inline">
+            <input type="checkbox" id="inlineCheckbox3" value="option3"> 3
+        </label>
+    </div>
 </form>
 <pre class="prettyprint linenums">
-&lt;label class="checkbox inline"&gt;
-  &lt;input type="checkbox" id="inlineCheckbox1" value="option1"&gt; 1
-&lt;/label&gt;
-&lt;label class="checkbox inline"&gt;
-  &lt;input type="checkbox" id="inlineCheckbox2" value="option2"&gt; 2
-&lt;/label&gt;
-&lt;label class="checkbox inline"&gt;
-  &lt;input type="checkbox" id="inlineCheckbox3" value="option3"&gt; 3
-&lt;/label&gt;
+&lt;div class="checkbox"&gtl;
+    &lt;label class="inline"&gt;
+      &lt;input type="checkbox" id="inlineCheckbox1" value="option1"&gt; 1
+    &lt;/label&gt;
+&lt;/div&gtl;
+&lt;div class="checkbox"&gtl;
+    &lt;label class="inline"&gt;
+      &lt;input type="checkbox" id="inlineCheckbox2" value="option2"&gt; 2
+    &lt;/label&gt;
+&lt;/div&gtl;
+&lt;div class="checkbox"&gtl;
+    &lt;label class="inline"&gt;
+      &lt;input type="checkbox" id="inlineCheckbox3" value="option3"&gt; 3
+    &lt;/label&gt;
+&lt;/div&gtl;
 </pre>
 
 <h3>Selects</h3>
