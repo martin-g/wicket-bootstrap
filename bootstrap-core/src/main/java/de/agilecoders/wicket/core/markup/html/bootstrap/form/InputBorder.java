@@ -4,7 +4,9 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.CssClassNameApp
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.Icon;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
 
+import de.agilecoders.wicket.core.util.Attributes;
 import org.apache.wicket.Component;
+import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.border.Border;
 import org.apache.wicket.model.IModel;
@@ -16,10 +18,19 @@ import org.apache.wicket.model.IModel;
  * @version 1.0
  */
 abstract public class InputBorder extends Border {
+
+    public static enum Type {
+        Addon("addon"), Button("btn");
+
+        private final String type;
+
+        private Type(String type) {
+            this.type = type;
+        }
+    }
+
     private InputBorder(String id) {
         super(id);
-
-        add(newCssClassNameAppender());
     }
 
     public InputBorder(String id, IconType iconType) {
@@ -42,15 +53,24 @@ abstract public class InputBorder extends Border {
 
 
     protected final void addComponent(Component component) {
-        if (!id().equals(component.getId())) {
-            throw new IllegalArgumentException("invalid markup id. Must be " + id() + "instead of " + component.getId());
-        }
-
-        component.add(new CssClassNameAppender("add-on"));
+        String inputGroupType = "input-group-" + getInputGroupType().type;
+        component.add(new CssClassNameAppender(inputGroupType));
         add(component);
     }
 
     protected abstract String id();
 
-    protected abstract CssClassNameAppender newCssClassNameAppender();
+    /**
+     * @return The type of the input-group
+     */
+    protected Type getInputGroupType() {
+        return Type.Addon;
+    }
+
+    @Override
+    protected void onComponentTag(ComponentTag tag) {
+        super.onComponentTag(tag);
+
+        Attributes.addClass(tag, "input-group");
+    }
 }

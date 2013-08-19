@@ -1,8 +1,6 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.form;
 
-import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.CssClassNameAppender;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
-
 import org.apache.wicket.Component;
 import org.apache.wicket.model.IModel;
 
@@ -31,8 +29,4 @@ public class InputPrependBorder extends InputBorder {
         return "prepend";
     }
 
-    @Override
-    protected CssClassNameAppender newCssClassNameAppender() {
-        return new CssClassNameAppender("input-prepend");
-    }
 }
