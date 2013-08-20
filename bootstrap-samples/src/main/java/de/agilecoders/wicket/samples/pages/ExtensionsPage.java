@@ -191,17 +191,18 @@ public class ExtensionsPage extends BasePage {
         tourBehavior.addStep(new TourStep()
                                      .title(Model.of("Step One Title"))
                                      .element(stepOne)
-                                     .content(Model.of("Some help <strong>content.Some help </strong>content.Some help content.Some help content.Some help content.")));
+                                     .content(Model.of("Some longer help content <strong> for step <span style='color: red'>1</span>.")));
         tourBehavior.addStep(new TourStep()
                                      .title(new ResourceModel("tour.step.two"))
                                      .element(stepTwo)
                                      .placement(TooltipConfig.Placement.left)
+                                     .content(Model.of("Some longer help content <strong> for step <span style='color: red'>2</span>."))
                                      .backdrop(true));
         tourBehavior.addStep(new TourStep()
                                      .title(Model.of("Step Three Title"))
                                      .element(stepThree)
                                      .placement(TooltipConfig.Placement.left)
-                                     .content(Model.of("Step 3 content")));
+                                     .content(Model.of("Some longer help content <strong> for step <span style='color: red'>3</span>.")));
         view.add(tourBehavior);
     }
 
