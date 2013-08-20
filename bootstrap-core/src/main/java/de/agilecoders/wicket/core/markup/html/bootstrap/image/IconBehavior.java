@@ -58,7 +58,7 @@ public class IconBehavior extends Behavior implements Invertible<IconBehavior> {
     public void onComponentTag(Component component, ComponentTag tag) {
         super.onComponentTag(component, tag);
 
-        Components.assertTag(component, tag, "i");
+        Components.assertTag(component, tag, "i", "span");
         Attributes.addClass(tag, value.getObject());
     }
 
