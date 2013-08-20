@@ -219,7 +219,7 @@
 <div class="bs-docs-example">
     <div class="btn-toolbar" style="margin: 0;">
         <div class="btn-group">
-            <button class="btn dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>
+            <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>
             <ul class="dropdown-menu">
                 <li><a href="#">Action</a></li>
                 <li><a href="#">Another action</a></li>
@@ -300,7 +300,7 @@
 </div>
 <pre class="prettyprint linenums">
 &lt;div class="btn-group"&gt;
-  &lt;a class="btn dropdown-toggle" data-toggle="dropdown" href="#"&gt;
+  &lt;a class="btn btn-default dropdown-toggle" data-toggle="dropdown" href="#"&gt;
     Action
     &lt;span class="caret"&gt;&lt;/span&gt;
   &lt;/a&gt;
@@ -464,8 +464,8 @@
 <div class="bs-docs-example">
     <div class="btn-toolbar">
         <div class="btn-group">
-            <button class="btn btn-lg">Large action</button>
-            <button class="btn btn-lg dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+            <button class="btn btn-default btn-lg">Large action</button>
+            <button class="btn btn-default btn-lg dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
             <ul class="dropdown-menu">
                 <li><a href="#">Action</a></li>
                 <li><a href="#">Another action</a></li>
@@ -479,8 +479,8 @@
     <!-- /btn-toolbar -->
     <div class="btn-toolbar">
         <div class="btn-group">
-            <button class="btn btn-sm">Small action</button>
-            <button class="btn btn-sm dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+            <button class="btn btn-default btn-sm">Small action</button>
+            <button class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
             <ul class="dropdown-menu">
                 <li><a href="#">Action</a></li>
                 <li><a href="#">Another action</a></li>
@@ -494,8 +494,8 @@
     <!-- /btn-toolbar -->
     <div class="btn-toolbar">
         <div class="btn-group">
-            <button class="btn btn-xs">Mini action</button>
-            <button class="btn btn-xs dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+            <button class="btn btn-default btn-xs">Mini action</button>
+            <button class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
             <ul class="dropdown-menu">
                 <li><a href="#">Action</a></li>
                 <li><a href="#">Another action</a></li>
@@ -510,8 +510,8 @@
 </div>
 <pre class="prettyprint linenums">
 &lt;div class="btn-group"&gt;
-  &lt;button class="btn btn-xs"&gt;Action&lt;/button&gt;
-  &lt;button class="btn btn-xs dropdown-toggle" data-toggle="dropdown"&gt;
+  &lt;button class="btn btn-default btn-xs"&gt;Action&lt;/button&gt;
+  &lt;button class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown"&gt;
     &lt;span class="caret"&gt;&lt;/span&gt;
   &lt;/button&gt;
   &lt;ul class="dropdown-menu"&gt;
@@ -527,20 +527,20 @@
 <div class="bs-docs-example">
     <div class="btn-toolbar" style="margin: 0;">
         <div class="btn-group dropup">
-            <button class="btn">Dropup</button>
-            <button class="btn dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
-            <ul class="dropdown-menu">
+            <button class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+            <ul class="dropdown-menu" role="menu">
                 <li><a href="#">Action</a></li>
                 <li><a href="#">Another action</a></li>
                 <li><a href="#">Something else here</a></li>
                 <li class="divider"></li>
                 <li><a href="#">Separated link</a></li>
             </ul>
+            <button class="btn btn-default">Dropup</button>
         </div>
         <!-- /btn-group -->
         <div class="btn-group dropup">
-            <button class="btn primary">Right dropup</button>
-            <button class="btn primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+            <button class="btn btn-default primary">Right dropup</button>
+            <button class="btn btn-default primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
             <ul class="dropdown-menu pull-right">
                 <li><a href="#">Action</a></li>
                 <li><a href="#">Another action</a></li>
@@ -554,11 +554,11 @@
 </div>
 <pre class="prettyprint linenums">
 &lt;div class="btn-group dropup"&gt;
-  &lt;button class="btn"&gt;Dropup&lt;/button&gt;
-  &lt;button class="btn dropdown-toggle" data-toggle="dropdown"&gt;
+  &lt;button class="btn btn-default"&gt;Dropup&lt;/button&gt;
+  &lt;button class="btn btn-default dropdown-toggle" data-toggle="dropdown"&gt;
     &lt;span class="caret"&gt;&lt;/span&gt;
   &lt;/button&gt;
-  &lt;ul class="dropdown-menu"&gt;
+  &lt;ul class="dropdown-menu" role="menu"&gt;
     &lt;!-- dropdown menu links --&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
@@ -627,7 +627,7 @@
 
 <div class="bs-docs-example">
     <ul class="nav nav-pills">
-        <li><a href="#">Clickable link</a></li>
+        <li class="active"><a href="#">Clickable link</a></li>
         <li><a href="#">Clickable link</a></li>
         <li class="disabled"><a href="#">Disabled link</a></li>
     </ul>
@@ -1229,7 +1229,7 @@
                 </button>
                 <a class="navbar-brand" href="#">Title</a>
 
-                <div class="nav-collapse collapse navbar-responsive-collapse">
+                <div class="navbar-collapse collapse navbar-responsive-collapse">
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="#">Home</a></li>
                         <li><a href="#">Link</a></li>
@@ -1264,7 +1264,7 @@
                         </li>
                     </ul>
                 </div>
-                <!-- /.nav-collapse -->
+                <!-- /.navbar-collapse -->
             </div>
         </div>
         <!-- /navbar-header -->
@@ -1277,7 +1277,7 @@
     &lt;div class="container"&gt;
 
       &lt;!-- .navbar-toggle is used as the toggle for collapsed navbar content --&gt;
-      &lt;a class="btn navbar-toggle" data-toggle="collapse" data-target=".nav-collapse"&gt;
+      &lt;a class="btn navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"&gt;
         &lt;span class="icon-bar"&gt;&lt;/span&gt;
         &lt;span class="icon-bar"&gt;&lt;/span&gt;
         &lt;span class="icon-bar"&gt;&lt;/span&gt;
@@ -1287,7 +1287,7 @@
       &lt;a class="navbar-brand" href="#"&gt;Project name&lt;/a&gt;
 
       &lt;!-- Everything you want hidden at 940px or less, place within here --&gt;
-      &lt;div class="nav-collapse collapse"&gt;
+      &lt;div class="navbar-collapse collapse"&gt;
         &lt;!-- .nav, .navbar-search, .navbar-form, etc --&gt;
       &lt;/div&gt;
 
@@ -1318,7 +1318,7 @@
                 </a>
                 <a class="navbar-brand" href="#">Title</a>
 
-                <div class="nav-collapse collapse navbar-inverse-collapse">
+                <div class="navbar-collapse collapse navbar-inverse-collapse">
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="#">Home</a></li>
                         <li><a href="#">Link</a></li>
@@ -1353,7 +1353,7 @@
                         </li>
                     </ul>
                 </div>
-                <!-- /.nav-collapse -->
+                <!-- /.navbar-collapse -->
             </div>
         </div>
         <!-- /navbar-header -->
