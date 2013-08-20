@@ -23,8 +23,8 @@ import org.apache.wicket.util.string.Strings;
  */
 public class ThumbnailBorder extends Border {
 
-    private Component title;
-    private Component image;
+    private final Component title;
+    private final Component image;
 
     /**
      * Construct.
