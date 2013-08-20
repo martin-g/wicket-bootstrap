@@ -3,7 +3,6 @@ package de.agilecoders.wicket.samples.pages;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.BootstrapAjaxLink;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.DropDownButton;
-import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.DropDownSubMenu;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.MenuBookmarkablePageLink;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.MenuDivider;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.SplitButton;
@@ -95,29 +94,6 @@ public class ComponentsPage extends BasePage {
                 links.add(new MenuBookmarkablePageLink<IssuesPage>(IssuesPage.class, Model.of("Github Issues")).setIconType(IconType.book));
                 links.add(new MenuBookmarkablePageLink<ExtensionsPage>(ExtensionsPage.class, Model.of("Extensions")).setIconType(IconType.alignjustify));
                 links.add(new MenuDivider());
-                links.add(new DropDownSubMenu(Model.of("Sub-Menu Level 1")) {
-                    @Override
-                    protected List<AbstractLink> newSubMenuButtons(String buttonMarkupId) {
-                        List<AbstractLink> links = new ArrayList<AbstractLink>();
-
-                        links.add(new MenuBookmarkablePageLink<HomePage>(Javascript.class, Model.of("Javascript")).setIconType(IconType.refresh));
-                        links.add(new MenuBookmarkablePageLink<DatePickerPage>(DatePickerPage.class, Model.of("DatePicker")).setIconType(IconType.time));
-                        links.add(new MenuDivider());
-                        links.add(new DropDownSubMenu(Model.of("Sub-Menu Level 2")) {
-                            @Override
-                            protected List<AbstractLink> newSubMenuButtons(String buttonMarkupId) {
-                                List<AbstractLink> links = new ArrayList<AbstractLink>();
-
-                                links.add(new MenuBookmarkablePageLink<HomePage>(Javascript.class, Model.of("Javascript")).setIconType(IconType.refresh));
-                                links.add(new MenuBookmarkablePageLink<DatePickerPage>(DatePickerPage.class, Model.of("DatePicker")).setIconType(IconType.time));
-
-                                return links;
-                            }
-                        });
-
-                        return links;
-                    }
-                }.setIconType(IconType.arrowright));
 
                 return links;
             }
