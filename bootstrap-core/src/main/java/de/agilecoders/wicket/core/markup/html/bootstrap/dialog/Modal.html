@@ -4,17 +4,19 @@
     </head>
     <body>
         <wicket:panel>
-            <div wicket:id="header" class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h3 wicket:id="header-label">Modal header</h3>
-            </div>
-            <div class="modal-body">
-                <wicket:child/>
-            </div>
-            <div class="modal-footer" wicket:id="footer">
-                <wicket:fragment wicket:id="buttons">
-                    <a wicket:id="button"></a>
-                </wicket:fragment>
+            <div class="modal-content">
+                <div wicket:id="header" class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h3 wicket:id="header-label" class="modal-title">Modal header</h3>
+                </div>
+                <div class="modal-body">
+                    <wicket:child/>
+                </div>
+                <div class="modal-footer" wicket:id="footer">
+                    <wicket:fragment wicket:id="buttons">
+                        <button type="button" wicket:id="button"></button>
+                    </wicket:fragment>
+                </div>
             </div>
         </wicket:panel>
     </body>

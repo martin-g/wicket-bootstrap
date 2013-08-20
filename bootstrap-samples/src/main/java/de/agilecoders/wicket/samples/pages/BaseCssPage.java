@@ -1,11 +1,9 @@
 package de.agilecoders.wicket.samples.pages;
 
 import com.google.common.collect.Lists;
-
 import de.agilecoders.wicket.core.markup.html.bootstrap.navigation.BootstrapPagingNavigator;
 import de.agilecoders.wicket.core.markup.html.bootstrap.navigation.Breadcrumb;
 import de.agilecoders.wicket.core.markup.html.bootstrap.tabs.BootstrapTabbedPanel;
-import de.agilecoders.wicket.samples.components.basecss.DatePickerModal;
 import org.apache.wicket.Component;
 import org.apache.wicket.extensions.breadcrumb.panel.BreadCrumbPanel;
 import org.apache.wicket.extensions.markup.html.tabs.AbstractTab;
@@ -92,10 +90,6 @@ public class BaseCssPage extends BasePage {
         };
 
         return new BootstrapPagingNavigator(markupId, pageable)/*.setPosition(BootstrapPagingNavigator.Position.Centered)*/;
-    }
-
-    private DatePickerModal newModalDialog(String markupId) {
-        return new DatePickerModal(markupId);
     }
 
     @Override

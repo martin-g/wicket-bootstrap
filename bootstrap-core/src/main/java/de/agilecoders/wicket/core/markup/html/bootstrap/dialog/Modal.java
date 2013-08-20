@@ -67,6 +67,7 @@ public class Modal extends Panel {
         footer = new WebMarkupContainer("footer");
         header = new WebMarkupContainer("header");
         header.add(headerLabel = new Label("header-label", ""));
+        headerLabel.setOutputMarkupId(true);
 
         footer.add(new ListView<Component>("buttons", buttons) {
             @Override
@@ -92,8 +93,13 @@ public class Modal extends Panel {
         super.onComponentTag(tag);
 
         checkComponentTag(tag, "div");
-        Attributes.addClass(tag, "modal", "hide");
+        Attributes.addClass(tag, "modal");
         Attributes.set(tag, "tabindex", "-1");
+
+        // ARIA
+        Attributes.set(tag, "role", "dialog");
+        Attributes.set(tag, "aria-labelledby", headerLabel.getMarkupId());
+        Attributes.set(tag, "aria-hidden", "true");
     }
 
     /**
