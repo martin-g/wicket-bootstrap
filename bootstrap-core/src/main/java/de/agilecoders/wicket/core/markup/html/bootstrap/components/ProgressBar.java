@@ -3,8 +3,8 @@ package de.agilecoders.wicket.core.markup.html.bootstrap.components;
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.CssClassNameAppender;
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.CssClassNameModifier;
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNameProvider;
+import de.agilecoders.wicket.core.util.Attributes;
 import de.agilecoders.wicket.core.util.Generics2;
-import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.html.WebMarkupContainer;
@@ -47,18 +47,12 @@ public class ProgressBar extends Panel {
     private boolean striped = false;
 
     public ProgressBar(String id) {
-        super(id, Model.of(MIN));
-
-        commonInit();
+        this(id, Model.of(MIN));
     }
 
     public ProgressBar(String id, IModel<Integer> model) {
         super(id, model);
 
-        commonInit();
-    }
-
-    private void commonInit() {
         indicator = newIndicator("indicator");
 
         add(indicator);
@@ -102,10 +96,14 @@ public class ProgressBar extends Panel {
     private Component newIndicator(final String markupId) {
         return new WebMarkupContainer(markupId) {
             @Override
-            protected void onConfigure() {
-                super.onConfigure();
+            protected void onComponentTag(ComponentTag tag) {
+                super.onComponentTag(tag);
 
-                add(new AttributeModifier("style", createStyleValue()));
+                if (!Type.DEFAULT.equals(type)) {
+                    Attributes.addClass(tag, type().cssClassName());
+                }
+
+                tag.put("style", createStyleValue().getObject());
             }
         };
     }
@@ -136,10 +134,7 @@ public class ProgressBar extends Panel {
     }
 
     private List<String> cssClassNames() {
-        List<String> classNames = Generics2.newArrayList(
-                "progress",
-                type().cssClassName()
-        );
+        List<String> classNames = Generics2.newArrayList("progress");
 
         if (active()) {
             classNames.add("active");
