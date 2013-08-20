@@ -96,7 +96,7 @@
         <contiperf.version>2.2.0</contiperf.version>
         <logback.version>1.0.9</logback.version>
         <jquerypp.version>1.0.1</jquerypp.version>
-        <jquery.version>2.0.2</jquery.version>
+        <jquery.version>2.0.3</jquery.version>
         <maven-bundle-plugin.version>2.3.7</maven-bundle-plugin.version>
     </properties>
 
