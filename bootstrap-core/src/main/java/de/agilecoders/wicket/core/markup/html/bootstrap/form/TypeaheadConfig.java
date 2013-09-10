@@ -1,6 +1,8 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.form;
 
-import de.agilecoders.wicket.core.markup.html.bootstrap.common.AbstractConfig;
+
+import de.agilecoders.wicket.jquery.AbstractConfig;
+import de.agilecoders.wicket.jquery.IDataSource;
 
 /**
  * {@link Typeahead} configuration

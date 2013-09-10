@@ -1,7 +1,9 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.form;
 
-import static de.agilecoders.wicket.core.util.JQuery.$;
-
+import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapResourcesBehavior;
+import de.agilecoders.wicket.core.markup.html.bootstrap.layout.SpanType;
+import de.agilecoders.wicket.core.markup.html.references.BootstrapJavaScriptReference;
+import de.agilecoders.wicket.jquery.IDataSource;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.head.IHeaderResponse;
@@ -9,9 +11,7 @@ import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.IModel;
 
-import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapResourcesBehavior;
-import de.agilecoders.wicket.core.markup.html.bootstrap.layout.SpanType;
-import de.agilecoders.wicket.core.markup.html.references.BootstrapJavaScriptReference;
+import static de.agilecoders.wicket.jquery.JQuery.$;
 
 /**
  * A basic, easily extended plugin for quickly creating elegant typeaheads with any {@link TextField}.

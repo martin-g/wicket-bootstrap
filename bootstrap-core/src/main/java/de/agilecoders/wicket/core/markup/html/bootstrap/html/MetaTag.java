@@ -1,7 +1,7 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.html;
 
 import de.agilecoders.wicket.core.util.Components;
-import de.agilecoders.wicket.core.util.Generics2;
+import de.agilecoders.wicket.jquery.Generics2;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.model.IModel;
@@ -9,7 +9,7 @@ import org.apache.wicket.model.Model;
 
 import java.util.List;
 
-import static de.agilecoders.wicket.core.util.Strings2.nullToEmpty;
+import static de.agilecoders.wicket.jquery.Strings2.nullToEmpty;
 
 /**
  * A simple meta tag component.

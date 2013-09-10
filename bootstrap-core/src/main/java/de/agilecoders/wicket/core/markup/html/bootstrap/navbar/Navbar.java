@@ -9,8 +9,8 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.button.Activatable;
 import de.agilecoders.wicket.core.markup.html.bootstrap.common.Invertible;
 import de.agilecoders.wicket.core.util.Attributes;
 import de.agilecoders.wicket.core.util.Behaviors;
-import de.agilecoders.wicket.core.util.Generics2;
 import de.agilecoders.wicket.core.util.Models;
+import de.agilecoders.wicket.jquery.Generics2;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.Page;
@@ -34,8 +34,8 @@ import org.apache.wicket.util.string.Strings;
 import java.util.ArrayList;
 import java.util.List;
 
-import static de.agilecoders.wicket.core.util.Generics2.filter;
-import static de.agilecoders.wicket.core.util.Generics2.transform;
+import static de.agilecoders.wicket.jquery.Generics2.filter;
+import static de.agilecoders.wicket.jquery.Generics2.transform;
 
 /**
  * A {@link Navbar} is a navigation component that holds a list of elements,

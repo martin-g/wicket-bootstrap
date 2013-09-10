@@ -28,7 +28,7 @@ import org.apache.wicket.model.Model;
 import java.util.List;
 
 import static de.agilecoders.wicket.core.markup.html.bootstrap.button.DropDownJqueryFunction.*;
-import static de.agilecoders.wicket.core.util.JQuery.*;
+import static de.agilecoders.wicket.jquery.JQuery.*;
 
 /**
  * Use any button to trigger a dropdown menu by placing it within a .btn-group and providing the proper menu markup.

@@ -13,7 +13,7 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.carousel.CarouselImage;
 import de.agilecoders.wicket.core.markup.html.bootstrap.carousel.ICarouselImage;
 import de.agilecoders.wicket.core.markup.html.bootstrap.components.PopoverBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.components.TooltipBehavior;
-import de.agilecoders.wicket.core.markup.html.bootstrap.form.IDataSource;
+import de.agilecoders.wicket.jquery.IDataSource;
 import de.agilecoders.wicket.core.markup.html.bootstrap.form.Typeahead;
 import de.agilecoders.wicket.core.markup.html.bootstrap.form.TypeaheadConfig;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;

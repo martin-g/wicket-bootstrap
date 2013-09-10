@@ -1,7 +1,7 @@
 package de.agilecoders.wicket.core.util;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNameProvider;
-
+import de.agilecoders.wicket.jquery.Generics2;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.string.Strings;

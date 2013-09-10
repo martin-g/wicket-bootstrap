@@ -1,10 +1,9 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.navigation;
 
 import de.agilecoders.wicket.core.WicketApplicationTest;
-import de.agilecoders.wicket.core.markup.html.bootstrap.navigation.BootstrapPagingNavigator;
 import de.agilecoders.wicket.core.test.Attributes;
 import de.agilecoders.wicket.core.test.IntegrationTest;
-import de.agilecoders.wicket.core.util.Generics2;
+import de.agilecoders.wicket.jquery.Generics2;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.MarkupException;
 import org.apache.wicket.markup.html.basic.Label;

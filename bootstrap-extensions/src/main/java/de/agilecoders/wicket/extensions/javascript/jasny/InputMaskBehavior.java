@@ -1,14 +1,13 @@
 package de.agilecoders.wicket.extensions.javascript.jasny;
 
-import de.agilecoders.wicket.core.markup.html.bootstrap.common.AbstractConfig;
-
+import de.agilecoders.wicket.jquery.AbstractConfig;
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.Behavior;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.util.string.Strings;
 
-import static de.agilecoders.wicket.core.util.JQuery.$;
+import static de.agilecoders.wicket.jquery.JQuery.$;
 
 /**
  * A behavior that applies a mask on an &lt;input&gt; field by using

@@ -2,8 +2,7 @@ package de.agilecoders.wicket.core.util;
 
 import de.agilecoders.wicket.core.WicketApplicationTest;
 import de.agilecoders.wicket.core.test.TestCategory;
-import de.agilecoders.wicket.core.util.Components;
-import de.agilecoders.wicket.core.util.Generics2;
+import de.agilecoders.wicket.jquery.Generics2;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.IMarkupFragment;
