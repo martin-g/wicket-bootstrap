@@ -1,6 +1,6 @@
 package de.agilecoders.wicket.extensions.javascript.jasny;
 
-import de.agilecoders.wicket.jquery.AbstractConfig;
+import de.agilecoders.wicket.core.markup.html.bootstrap.common.AbstractConfig;
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.Behavior;
 import org.apache.wicket.markup.head.IHeaderResponse;

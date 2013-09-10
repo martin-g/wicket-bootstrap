@@ -23,9 +23,8 @@
     <dependencies>
 
         <dependency>
-            <groupId>wicket-jquery-selectors</groupId>
-            <artifactId>wicket-jquery-selectors</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <groupId>de.agilecoders.wicket</groupId>
+            <artifactId>jquery-selectors</artifactId>
         </dependency>
 
         <dependency>

@@ -1,6 +1,6 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.form;
 
-import de.agilecoders.wicket.jquery.AbstractConfig;
+import de.agilecoders.wicket.core.markup.html.bootstrap.common.AbstractConfig;
 import de.agilecoders.wicket.core.util.Dates;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
