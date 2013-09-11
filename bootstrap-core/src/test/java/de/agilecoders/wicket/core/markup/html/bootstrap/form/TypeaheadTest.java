@@ -1,10 +1,8 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.form;
 
 import de.agilecoders.wicket.core.WicketApplicationTest;
-import de.agilecoders.wicket.core.markup.html.bootstrap.form.IDataSource;
-import de.agilecoders.wicket.core.markup.html.bootstrap.form.Typeahead;
-import de.agilecoders.wicket.core.util.Generics2;
-
+import de.agilecoders.wicket.jquery.util.Generics2;
+import de.agilecoders.wicket.jquery.IDataSource;
 import org.junit.Test;
 
 import java.util.List;

@@ -2,8 +2,7 @@ package de.agilecoders.wicket.core.settings;
 
 import de.agilecoders.wicket.core.markup.html.themes.bootstrap.BootstrapResponsiveTheme;
 import de.agilecoders.wicket.core.markup.html.themes.bootstrap.BootstrapTheme;
-import de.agilecoders.wicket.core.util.Generics2;
-
+import de.agilecoders.wicket.jquery.util.Generics2;
 import org.apache.wicket.WicketRuntimeException;
 import org.apache.wicket.util.string.Strings;
 

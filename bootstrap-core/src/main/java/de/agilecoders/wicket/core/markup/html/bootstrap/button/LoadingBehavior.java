@@ -9,7 +9,7 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.util.lang.Args;
 
 import static de.agilecoders.wicket.core.markup.html.bootstrap.button.ButtonJqueryFunction.button;
-import static de.agilecoders.wicket.core.util.JQuery.$;
+import static de.agilecoders.wicket.jquery.JQuery.$;
 
 /**
  * A {@code LoadingBehavior} that deactivates a button and shows a

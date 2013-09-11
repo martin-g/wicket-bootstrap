@@ -15,6 +15,12 @@
     <name>bootstrap-extensions</name>
 
     <dependencies>
+
+        <dependency>
+            <groupId>wicket-jquery-selectors</groupId>
+            <artifactId>wicket-jquery-selectors</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>de.agilecoders.wicket</groupId>
             <artifactId>wicket-bootstrap-core</artifactId>

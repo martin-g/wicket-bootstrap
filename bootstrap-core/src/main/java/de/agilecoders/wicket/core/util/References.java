@@ -11,7 +11,7 @@ import org.apache.wicket.markup.head.filter.FilteredHeaderItem;
 import org.apache.wicket.request.resource.ResourceReference;
 import org.apache.wicket.util.string.Strings;
 
-import static de.agilecoders.wicket.core.util.Strings2.nullToEmpty;
+import static de.agilecoders.wicket.jquery.util.Strings2.nullToEmpty;
 
 /**
  * Helper class for {@link org.apache.wicket.request.resource.ResourceReference} handling.

@@ -98,10 +98,18 @@
         <jquerypp.version>1.0.1</jquerypp.version>
         <jquery.version>2.0.3</jquery.version>
         <maven-bundle-plugin.version>2.3.7</maven-bundle-plugin.version>
+        <jquery-selectors.version>0.0.1-SNAPSHOT</jquery-selectors.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
+
+            <dependency>
+                <groupId>de.agilecoders.wicket</groupId>
+                <artifactId>jquery-selectors</artifactId>
+                <version>${jquery-selectors.version}</version>
+            </dependency>
+
             <dependency>
                 <groupId>de.agilecoders.wicket.webjars</groupId>
                 <artifactId>wicket-webjars</artifactId>

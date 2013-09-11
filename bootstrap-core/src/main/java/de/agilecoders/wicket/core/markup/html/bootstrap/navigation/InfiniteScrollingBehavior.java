@@ -1,7 +1,7 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.navigation;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
-import de.agilecoders.wicket.core.util.Json;
+import de.agilecoders.wicket.jquery.util.Json;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.Behavior;

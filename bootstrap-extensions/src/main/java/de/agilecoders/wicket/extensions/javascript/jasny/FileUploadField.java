@@ -1,11 +1,11 @@
 package de.agilecoders.wicket.extensions.javascript.jasny;
 
-import java.util.List;
-
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.html.form.upload.FileUpload;
 import org.apache.wicket.model.IModel;
+
+import java.util.List;
 
 /**
  * An extension of Wicket's default FileUploadField that contributes
