@@ -1,6 +1,6 @@
 package de.agilecoders.wicket.core.util;
 
-import de.agilecoders.wicket.jquery.Generics2;
+import de.agilecoders.wicket.jquery.util.Generics2;
 import org.apache.wicket.markup.head.HeaderItem;
 import org.apache.wicket.util.lang.Args;
 

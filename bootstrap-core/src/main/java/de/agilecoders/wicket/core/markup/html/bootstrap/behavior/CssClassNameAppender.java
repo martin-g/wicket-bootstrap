@@ -1,7 +1,7 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.behavior;
 
 import de.agilecoders.wicket.core.util.CssClassNames;
-import de.agilecoders.wicket.jquery.Generics2;
+import de.agilecoders.wicket.jquery.util.Generics2;
 import org.apache.wicket.behavior.AttributeAppender;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;

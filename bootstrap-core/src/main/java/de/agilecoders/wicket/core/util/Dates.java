@@ -1,6 +1,6 @@
 package de.agilecoders.wicket.core.util;
 
-import static de.agilecoders.wicket.jquery.Strings2.nullToEmpty;
+import static de.agilecoders.wicket.jquery.util.Strings2.nullToEmpty;
 
 /**
  * Helper class for dates.

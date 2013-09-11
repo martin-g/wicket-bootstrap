@@ -1,7 +1,7 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.form;
 
 import de.agilecoders.wicket.core.WicketApplicationTest;
-import de.agilecoders.wicket.jquery.Generics2;
+import de.agilecoders.wicket.jquery.util.Generics2;
 import de.agilecoders.wicket.jquery.IDataSource;
 import org.junit.Test;
 
