@@ -13,6 +13,10 @@
     <name>bootstrap-less</name>
     <packaging>bundle</packaging>
 
+    <properties>
+        <antlr.version>3.4</antlr.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>com.github.sommeri</groupId>
