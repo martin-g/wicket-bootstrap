@@ -8,7 +8,7 @@ Components
 ----------
 
 * Twitter Bootstrap (2.3.2): http://twitter.github.com/bootstrap
-* Apache Wicket (6.9.1): http://wicket.apache.org/
+* Apache Wicket (6.10.0): http://wicket.apache.org/
 * Bootswatch (2.3.0): http://bootswatch.com/
 
 Extensions
