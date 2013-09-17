@@ -4,7 +4,7 @@ import org.apache.wicket.Component;
 import org.apache.wicket.core.util.string.ComponentRenderer;
 import org.apache.wicket.model.IModel;
 
-import static org.apache.commons.lang.StringEscapeUtils.escapeJava;
+import static de.agilecoders.wicket.core.util.Strings2.nullToEmpty;
 import static org.apache.commons.lang.StringUtils.chomp;
 
 /**
@@ -39,7 +39,17 @@ public abstract class RichPopoverBehavior extends PopoverBehavior {
     protected final String newContent() {
         final String content = String.valueOf(ComponentRenderer.renderComponent(newBodyComponent("compId")));
 
-        return escapeJava(chomp(content));
+        return cleanContent(content);
+    }
+
+    /**
+     * cleans the final markup
+     *
+     * @param content the markup to clean up
+     * @return cleaned markup.
+     */
+    protected String cleanContent(final String content) {
+        return chomp(nullToEmpty(content)).replaceAll("\"", "\\\"");
     }
 
     /**
