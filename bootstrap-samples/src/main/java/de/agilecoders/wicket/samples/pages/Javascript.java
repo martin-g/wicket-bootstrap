@@ -1,7 +1,6 @@
 package de.agilecoders.wicket.samples.pages;
 
 import com.google.common.collect.Lists;
-
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.BootstrapAjaxLink;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.ButtonBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons;
@@ -125,25 +124,25 @@ public class Javascript extends BasePage {
             @Override
             public List<String> load() {
                 return Lists.newArrayList(
-                        "Alabama","Alaska","Arizona","Arkansas",
-                        "California","Colorado","Connecticut",
-                        "Delaware","Florida","Georgia","Hawaii",
-                        "Idaho","Illinois","Indiana","Iowa","Kansas",
-                        "Kentucky","Louisiana","Maine","Maryland",
-                        "Massachusetts","Michigan","Minnesota",
-                        "Mississippi","Missouri","Montana","Nebraska",
-                        "Nevada","New Hampshire","New Jersey",
-                        "New Mexico","New York","North Dakota",
-                        "North Carolina","Ohio","Oklahoma","Oregon",
-                        "Pennsylvania","Rhode Island","South Carolina",
-                        "South Dakota","Tennessee","Texas","Utah",
-                        "Vermont","Virginia","Washington",
-                        "West Virginia","Wisconsin","Wyoming"
+                        "Alabama", "Alaska", "Arizona", "Arkansas",
+                        "California", "Colorado", "Connecticut",
+                        "Delaware", "Florida", "Georgia", "Hawaii",
+                        "Idaho", "Illinois", "Indiana", "Iowa", "Kansas",
+                        "Kentucky", "Louisiana", "Maine", "Maryland",
+                        "Massachusetts", "Michigan", "Minnesota",
+                        "Mississippi", "Missouri", "Montana", "Nebraska",
+                        "Nevada", "New Hampshire", "New Jersey",
+                        "New Mexico", "New York", "North Dakota",
+                        "North Carolina", "Ohio", "Oklahoma", "Oregon",
+                        "Pennsylvania", "Rhode Island", "South Carolina",
+                        "South Dakota", "Tennessee", "Texas", "Utah",
+                        "Vermont", "Virginia", "Washington",
+                        "West Virginia", "Wisconsin", "Wyoming"
                 );
             }
         };
 
-        final Typeahead<String> typeahead = new Typeahead<String>(markupId, dataSource, new TypeaheadConfig().withNumberOfItems(4));
+        final Typeahead<String> typeahead = new Typeahead<>(markupId, dataSource, new TypeaheadConfig().withNumberOfItems(4));
         typeahead.size(SpanType.SPAN3);
 
         return typeahead;
@@ -174,7 +173,7 @@ public class Javascript extends BasePage {
                 subMenu.add(new NavbarAjaxLink<String>("button", Model.of("Ajax Link")) {
                     @Override
                     public void onClick(AjaxRequestTarget target) {
-                        ((DropDownButton)getParent()).appendToggleMenuScript(target);
+                        ((DropDownButton) getParent()).appendToggleMenuScript(target);
 
                         target.appendJavaScript("alert('clicked');");
                     }

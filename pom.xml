@@ -4,7 +4,7 @@
     <parent>
         <groupId>de.agilecoders.maven</groupId>
         <artifactId>maven-parent-pom</artifactId>
-        <version>0.1.1</version>
+        <version>0.3.0</version>
     </parent>
 
     <groupId>de.agilecoders.wicket</groupId>
@@ -19,22 +19,13 @@
     <scm>
         <url>git@github.com:l0rdn1kk0n/wicket-bootstrap.git</url>
         <connection>scm:git:git@github.com:l0rdn1kk0n/wicket-bootstrap.git</connection>
-        <developerConnection>scm:git:git@github.com:l0rdn1kk0n/wicket-bootstrap.git</developerConnection>
+        <developerConnection>scm:git:ssh://git@github.com/:l0rdn1kk0n/wicket-bootstrap.git</developerConnection>
     </scm>
 
     <issueManagement>
         <system>github</system>
         <url>https://github.com/l0rdn1kk0n/wicket-bootstrap/issues</url>
     </issueManagement>
-
-    <organization>
-        <name>agilecoders.de</name>
-        <url>http://agilecoders.de</url>
-    </organization>
-
-    <prerequisites>
-        <maven>${mvn.version}</maven>
-    </prerequisites>
 
     <modules>
         <module>bootstrap-core</module>
@@ -45,54 +36,28 @@
         <module>bootstrap-common-tests</module>
     </modules>
 
-    <repositories>
-        <repository>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-            <id>apache.snapshots</id>
-            <name>Apache Snapshot Repository</name>
-            <url>https://repository.apache.org/content/groups/snapshots</url>
-            <layout>default</layout>
-        </repository>
-    </repositories>
-
     <properties>
         <github.global.server>github</github.global.server>
 
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>${project.build.sourceEncoding}</project.reporting.outputEncoding>
-        <mvn.build.java.version>1.6</mvn.build.java.version>
-        <maven.java.source>${mvn.build.java.version}</maven.java.source>
-        <maven.java.target>${mvn.build.java.version}</maven.java.target>
-        <mvn.version>3.0.3</mvn.version>
-
-        <wicket-webjars.version>0.2.0</wicket-webjars.version>
         <bootstrap.version>2.3.2</bootstrap.version>
-        <wicket.version>6.9.0</wicket.version>
+        <config.version>0.3.0</config.version>
 
-        <com.google.guava.version>14.0.1</com.google.guava.version>
+        <enforcer.disable>true</enforcer.disable>
+        <pmd.disable>true</pmd.disable>
+        <jacoco.disable>true</jacoco.disable>
+        <checkstyle.disable>true</checkstyle.disable>
+        <findbugs.disable>true</findbugs.disable>
+
+        <!-- TODO -->
         <javax.javaee-web-api.version>6.0</javax.javaee-web-api.version>
-        <junit.version>4.11</junit.version>
-        <mockito.version>1.9.5</mockito.version>
-        <!-- <slf4j.version>1.7.2</slf4j.version> TODO: why we can't update? -->
-        <slf4j.version>1.6.4</slf4j.version>
         <versions-maven-plugin.version>1.3.1</versions-maven-plugin.version>
-        <servlet-api.version>3.0.1</servlet-api.version>
         <rhino.version>1.7R4</rhino.version>
         <doxia.version>1.0</doxia.version>
         <lesscss-engine.version>1.3.3</lesscss-engine.version>
         <less4j.version>1.0.4</less4j.version>
         <com.fasterxml.jackson.version>2.2.2</com.fasterxml.jackson.version>
-        <joda-time.version>2.2</joda-time.version>
-        <hamcrest.version>1.3</hamcrest.version>
         <modernizr.version>2.6.2-1</modernizr.version>
-        <wicketstuff.version>6.8.0</wicketstuff.version>
         <jetty.version>8.1.11.v20130520</jetty.version>
-        <logback.version>1.0.13</logback.version>
         <newrelic.version>2.19.1</newrelic.version>
         <google-closure.version>v20130603</google-closure.version>
         <contiperf.version>2.2.0</contiperf.version>
@@ -107,13 +72,7 @@
             <dependency>
                 <groupId>de.agilecoders.maven</groupId>
                 <artifactId>maven-parent-config</artifactId>
-                <version>0.1.2</version>
-            </dependency>
-
-            <dependency>
-                <groupId>de.agilecoders.wicket.webjars</groupId>
-                <artifactId>wicket-webjars</artifactId>
-                <version>${wicket-webjars.version}</version>
+                <version>${config.version}</version>
             </dependency>
 
             <dependency>
@@ -178,42 +137,6 @@
             </dependency>
 
             <dependency>
-                <groupId>org.apache.wicket</groupId>
-                <artifactId>wicket-core</artifactId>
-                <version>${wicket.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.apache.wicket</groupId>
-                <artifactId>wicket-request</artifactId>
-                <version>${wicket.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.apache.wicket</groupId>
-                <artifactId>wicket-extensions</artifactId>
-                <version>${wicket.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.apache.wicket</groupId>
-                <artifactId>wicket-util</artifactId>
-                <version>${wicket.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.google.guava</groupId>
-                <artifactId>guava</artifactId>
-                <version>${com.google.guava.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>joda-time</groupId>
-                <artifactId>joda-time</artifactId>
-                <version>${joda-time.version}</version>
-            </dependency>
-
-            <dependency>
                 <groupId>com.fasterxml.jackson.core</groupId>
                 <artifactId>jackson-core</artifactId>
                 <version>${com.fasterxml.jackson.version}</version>
@@ -223,34 +146,6 @@
                 <groupId>javax</groupId>
                 <artifactId>javaee-web-api</artifactId>
                 <version>${javax.javaee-web-api.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.slf4j</groupId>
-                <artifactId>slf4j-api</artifactId>
-                <version>${slf4j.version}</version>
-            </dependency>
-
-            <!-- Test dependencies -->
-            <dependency>
-                <groupId>junit</groupId>
-                <artifactId>junit</artifactId>
-                <version>${junit.version}</version>
-                <scope>test</scope>
-            </dependency>
-
-            <!-- HAMCREST DEPENDENCIES -->
-            <dependency>
-                <groupId>org.hamcrest</groupId>
-                <artifactId>hamcrest-core</artifactId>
-                <version>${hamcrest.version}</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.hamcrest</groupId>
-                <artifactId>hamcrest-library</artifactId>
-                <version>${hamcrest.version}</version>
-                <scope>test</scope>
             </dependency>
 
             <dependency>
@@ -264,53 +159,16 @@
                 <artifactId>doxia-module-markdown</artifactId>
                 <version>${doxia.version}</version>
             </dependency>
-
-            <dependency>
-                <groupId>org.mockito</groupId>
-                <artifactId>mockito-core</artifactId>
-                <version>${mockito.version}</version>
-                <scope>test</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>javax.servlet</groupId>
-                <artifactId>javax.servlet-api</artifactId>
-                <version>${servlet-api.version}</version>
-                <scope>provided</scope>
-            </dependency>
-
         </dependencies>
     </dependencyManagement>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-source-plugin</artifactId>
-                <version>2.2</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>jar</goal>
-                            <goal>test-jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>2.4</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>test-jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
+    <dependencies>
+        <dependency>
+            <groupId>de.agilecoders.maven</groupId>
+            <artifactId>maven-parent-config</artifactId>
+            <version>${config.version}</version>
+        </dependency>
+    </dependencies>
 
     <profiles>
         <profile>
@@ -344,6 +202,15 @@
             <organization>agilecoders.de</organization>
             <roles>
                 <role>Owner</role>
+                <role>Comitter</role>
+            </roles>
+        </developer>
+        <developer>
+            <id>mgrigorov</id>
+            <name>Martin Grigorov</name>
+            <email>mgrigorov@apache.org</email>
+            <organization>Apache</organization>
+            <roles>
                 <role>Comitter</role>
             </roles>
         </developer>

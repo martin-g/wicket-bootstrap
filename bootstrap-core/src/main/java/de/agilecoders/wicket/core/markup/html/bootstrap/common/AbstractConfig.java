@@ -2,7 +2,6 @@ package de.agilecoders.wicket.core.markup.html.bootstrap.common;
 
 import de.agilecoders.wicket.core.util.ConfigModel;
 import de.agilecoders.wicket.core.util.Json;
-
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.util.io.IClusterable;
 import org.apache.wicket.util.lang.Objects;
@@ -70,6 +69,7 @@ public abstract class AbstractConfig implements IClusterable {
      *
      * @param key the key to remove
      */
+    @SuppressWarnings("unchecked")
     protected final <T> T remove(final IKey<T> key) {
         return (T) config.remove(key.key());
     }
@@ -94,6 +94,7 @@ public abstract class AbstractConfig implements IClusterable {
      * @param key The key to read.
      * @return the value.
      */
+    @SuppressWarnings("unchecked")
     protected final <T> T get(final IKey<T> key) {
         T value = (T) config.get(key);
 

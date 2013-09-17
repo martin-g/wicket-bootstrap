@@ -14,13 +14,12 @@ import de.agilecoders.wicket.extensions.javascript.YuiCssCompressor;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.html5player.Html5PlayerCssReference;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.html5player.Html5PlayerJavaScriptReference;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.OpenWebIconsCssReference;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.jqueryui.JQueryUIJavaScriptReference;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.jqueryui.JQueryUICoreJavaScriptReference;
 import de.agilecoders.wicket.extensions.request.StaticResourceRewriteMapper;
 import de.agilecoders.wicket.less.BootstrapLess;
 import de.agilecoders.wicket.samples.assets.base.ApplicationJavaScript;
 import de.agilecoders.wicket.samples.assets.base.FixBootstrapStylesCssResourceReference;
 import de.agilecoders.wicket.samples.pages.HomePage;
-import de.agilecoders.wicket.themes.markup.html.bootstrap3.Bootstrap3Theme;
 import de.agilecoders.wicket.themes.markup.html.google.GoogleTheme;
 import de.agilecoders.wicket.themes.markup.html.metro.MetroTheme;
 import de.agilecoders.wicket.themes.markup.html.wicket.WicketTheme;
@@ -140,7 +139,7 @@ public class WicketApplication extends WebApplication {
         );
 
         getResourceBundles().addJavaScriptBundle(WicketApplication.class, "bootstrap-extensions.js",
-                                                 JQueryUIJavaScriptReference.instance(),
+                                                 JQueryUICoreJavaScriptReference.instance(),
                                                  Html5PlayerJavaScriptReference.instance()
         );
 
@@ -163,7 +162,6 @@ public class WicketApplication extends WebApplication {
             add(new MetroTheme());
             add(new GoogleTheme());
             add(new WicketTheme());
-            add(new Bootstrap3Theme());
             defaultTheme("wicket");
         }};
 
