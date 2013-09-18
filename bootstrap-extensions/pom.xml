@@ -5,12 +5,12 @@
     <parent>
         <groupId>de.agilecoders.wicket</groupId>
         <artifactId>bootstrap-parent</artifactId>
-        <version>0.8.5-SNAPSHOT</version>
+        <version>0.9.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
     <artifactId>wicket-bootstrap-extensions</artifactId>
-    <version>0.8.5-SNAPSHOT</version>
+    <version>0.9.0-SNAPSHOT</version>
     <packaging>bundle</packaging>
     <name>bootstrap-extensions</name>
 
