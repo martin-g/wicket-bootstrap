@@ -12,12 +12,12 @@ public interface IBootstrapSettings {
     /**
      * The version of Bootstrap
      */
-    String VERSION = "3.0.0-rc.2";
+    String VERSION = "3.0.0";
 
     /**
      * The url to the JavaScript resource at a CDN network
      */
-    String JS_CDN_PATTERN = "//netdna.bootstrapcdn.com/twitter-bootstrap/%s/js/bootstrap.min.js";
+    String JS_CDN_PATTERN = "//netdna.bootstrapcdn.com/bootstrap/%s/js/bootstrap.min.js";
 
     /**
      * @param version The version of Twitter Bootstrap. CDN resources use it to construct their urls
