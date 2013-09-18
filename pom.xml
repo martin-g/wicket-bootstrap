@@ -72,7 +72,7 @@
 
         <wicket-webjars.version>0.2.0</wicket-webjars.version>
         <bootstrap.version>3.0.0</bootstrap.version>
-        <wicket.version>6.9.1</wicket.version>
+        <wicket.version>6.10.0</wicket.version>
 
         <com.google.guava.version>14.0.1</com.google.guava.version>
         <javax.javaee-web-api.version>6.0</javax.javaee-web-api.version>
