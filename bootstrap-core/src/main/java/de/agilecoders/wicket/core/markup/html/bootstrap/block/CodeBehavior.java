@@ -93,7 +93,11 @@ public class CodeBehavior extends Behavior {
 
         References.renderWithFilter(Bootstrap.getSettings(), response, JavaScriptHeaderItem.forReference(BootstrapPrettifyJavaScriptReference.INSTANCE));
 
-        response.render(OnDomReadyHeaderItem.forScript("window.prettyPrint && prettyPrint();"));
+        response.render(OnDomReadyHeaderItem.forScript(createInitializerScript(component.getMarkupId(true))));
+    }
+
+    private CharSequence createInitializerScript(String markupId) {
+        return "$('#" + markupId + "').html(prettyPrintOne($('#" + markupId + "').html().replace(/\\r\\n|\\r|\\n/g,'<br>'), '', $('#" + markupId + "').attr('class')));";
     }
 
     @Override
