@@ -31,6 +31,11 @@ public interface IBootstrapSettings {
     String getVersion();
 
     /**
+     * @return True, if bootstrap resources should be added to each page automatically
+     */
+    boolean autoAppendResources();
+
+    /**
      * @return the base twitter bootstrap css resource reference
      */
     ResourceReference getCssResourceReference();
@@ -58,6 +63,14 @@ public interface IBootstrapSettings {
      * @return javascript resource filter name
      */
     String getJsResourceFilterName();
+
+    /**
+     * set value to true, if bootstrap resources should be added to each page automatically
+     *
+     * @param value true, if bootstrap resources should be added to each page automatically
+     * @return same instance for chaining
+     */
+    IBootstrapSettings setAutoAppendResources(boolean value);
 
     /**
      * sets the filter name for all bootstrap js resource references

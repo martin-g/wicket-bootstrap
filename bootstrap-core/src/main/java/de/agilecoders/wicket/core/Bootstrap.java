@@ -1,6 +1,7 @@
 package de.agilecoders.wicket.core;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapResourcesBehavior;
+import de.agilecoders.wicket.core.settings.BootstrapResourceAppender;
 import de.agilecoders.wicket.core.settings.IBootstrapSettings;
 import de.agilecoders.wicket.webjars.util.WicketWebjars;
 import org.apache.wicket.Application;
@@ -42,14 +43,18 @@ public final class Bootstrap {
             updateSecurityManager(app);
         }
 
+        if (settings.autoAppendResources()) {
+            app.getComponentInstantiationListeners().add(new BootstrapResourceAppender());
+        }
+
         configureMarkupSettings(app);
-        
+
         WicketWebjars.install(app);
     }
 
     /**
      * configure wicket markup settings
-     * 
+     *
      * @param application current application
      */
     private static void configureMarkupSettings(Application application) {
@@ -58,7 +63,7 @@ public final class Bootstrap {
         // wicket markup leads to ui problems because css selectors doesn't match.
         markupSettings.setStripWicketTags(true);
     }
-    
+
     /**
      * updates the security manager to allow fonts and less files if necessary.
      *
