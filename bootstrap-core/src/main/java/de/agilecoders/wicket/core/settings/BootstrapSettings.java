@@ -21,6 +21,7 @@ public class BootstrapSettings implements IBootstrapSettings {
     private ActiveThemeProvider activeThemeProvider = new SessionThemeProvider();
     private String resourceFilterName = "";
     private boolean updateSecurityManager = true;
+    private boolean autoAppendResources = true;
     private boolean useCdnResources = false;
     private String version = VERSION;
 
@@ -43,6 +44,11 @@ public class BootstrapSettings implements IBootstrapSettings {
     }
 
     @Override
+    public boolean autoAppendResources() {
+        return autoAppendResources;
+    }
+
+    @Override
     public ResourceReference getCssResourceReference() {
         return bootstrapCssReference;
     }
@@ -62,6 +68,12 @@ public class BootstrapSettings implements IBootstrapSettings {
     @Override
     public String getJsResourceFilterName() {
         return resourceFilterName;
+    }
+
+    @Override
+    public IBootstrapSettings setAutoAppendResources(boolean value) {
+        this.autoAppendResources = value;
+        return this;
     }
 
     @Override
