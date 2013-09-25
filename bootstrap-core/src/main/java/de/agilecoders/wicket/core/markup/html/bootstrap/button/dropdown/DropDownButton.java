@@ -27,8 +27,8 @@ import org.apache.wicket.model.Model;
 
 import java.util.List;
 
-import static de.agilecoders.wicket.core.markup.html.bootstrap.button.DropDownJqueryFunction.*;
-import static de.agilecoders.wicket.core.util.JQuery.*;
+import static de.agilecoders.wicket.core.markup.html.bootstrap.button.DropDownJqueryFunction.dropdown;
+import static de.agilecoders.wicket.core.util.JQuery.$;
 
 /**
  * Use any button to trigger a dropdown menu by placing it within a .btn-group and providing the proper menu markup.
@@ -254,10 +254,11 @@ public abstract class DropDownButton extends AbstractLink implements Invertible<
 
     /**
      * sets the dropdown menu alignment
+     *
      * @param alignment
      * @return
      */
-    public DropDownButton setAlignment(final AlignmentBehavior.Alignment alignment){
+    public DropDownButton setAlignment(final AlignmentBehavior.Alignment alignment) {
         this.alignment.setObject(alignment);
         return this;
     }
@@ -292,14 +293,5 @@ public abstract class DropDownButton extends AbstractLink implements Invertible<
     public boolean isActive(final Component item) {
         return buttonListView.hasActiveButton(item);
     }
-
-    /**
-     * @return the base button instance
-     */
-    @Deprecated // will be removed with 1.0
-    public final Component getBaseButton() {
-        return baseButton;
-    }
-
 
 }

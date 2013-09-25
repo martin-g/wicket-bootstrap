@@ -1,13 +1,12 @@
 package de.agilecoders.wicket.core.util;
 
 import com.google.common.base.Function;
-
 import de.agilecoders.wicket.core.markup.html.bootstrap.common.AbstractConfig;
-
 import org.apache.wicket.Component;
 import org.apache.wicket.core.util.string.JavaScriptUtils;
 import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
 import org.apache.wicket.util.io.IClusterable;
+import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.string.Strings;
 import org.apache.wicket.util.time.Duration;
 
@@ -49,7 +48,7 @@ public final class JQuery implements IClusterable {
      * @return new Jquery instance
      */
     public static JQuery $(final Component component) {
-        return $("#" + component.getMarkupId(true));
+        return $("#" + Args.notNull(component, "component").getMarkupId(true));
     }
 
     /**

@@ -2,7 +2,6 @@ package de.agilecoders.wicket.extensions.markup.html.bootstrap.button;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.DropDownButton;
-
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.head.IHeaderResponse;
@@ -45,7 +44,7 @@ public class DropDownAutoOpen extends BootstrapBaseBehavior {
         super.renderHead(component, headerResponse);
 
         headerResponse.render(JavaScriptHeaderItem.forReference(DropdownAutoOpenJavaScriptReference.instance()));
-        headerResponse.render($(((DropDownButton)component).getBaseButton()).chain("dropdownHover", config).asDomReadyScript());
+        headerResponse.render($(component.get("btn")).chain("dropdownHover", config).asDomReadyScript());
     }
 
     @Override
@@ -56,7 +55,7 @@ public class DropDownAutoOpen extends BootstrapBaseBehavior {
             throw new IllegalArgumentException("behavior can't be added to any other component than DropDownButton; got " + component.getClass().getName());
         }
 
-        ((DropDownButton)component).addToButton(behavior);
+        ((DropDownButton) component).addToButton(behavior);
     }
 
     @Override

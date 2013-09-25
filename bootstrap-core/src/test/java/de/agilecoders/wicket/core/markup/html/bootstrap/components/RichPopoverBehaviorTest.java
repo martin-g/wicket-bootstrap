@@ -7,8 +7,11 @@ import org.apache.wicket.model.Model;
 import org.apache.wicket.util.tester.TagTester;
 import org.junit.Test;
 
+import static org.hamcrest.CoreMatchers.containsString;
+import static org.hamcrest.CoreMatchers.endsWith;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.startsWith;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 /**
@@ -28,7 +31,7 @@ public class RichPopoverBehaviorTest extends WicketApplicationTest {
         });
 
         TagTester tag = tester().getTagByWicketId(id());
-        assertThat(tag.getAttribute("data-content"), is(equalTo("<wicket:container wicket:id=\\\"compId\\\">content</wicket:container>")));
+        assertThat(tag.getAttribute("data-content"), is(equalTo("<wicket:container wicket:id=\"compId\">content</wicket:container>")));
     }
 
     @Test
@@ -41,6 +44,8 @@ public class RichPopoverBehaviorTest extends WicketApplicationTest {
         });
 
         TagTester tag = tester().getTagByWicketId(id());
-        assertThat(tag.getAttribute("data-content"), is(equalTo("<wicket:div wicket:id=\\\"compId\\\" class=\\\"progress\\\"><wicket:panel>\\n            <div wicket:id=\\\"indicator\\\" class=\\\"progress-bar\\\" style=\\\"width: 50%\\\"></div>\\n        </wicket:panel></wicket:div>")));
+        assertThat(tag.getAttribute("data-content"), startsWith("<wicket:div wicket:id=\"compId\" class=\"progress \"><wicket:panel>"));
+        assertThat(tag.getAttribute("data-content"), endsWith("</wicket:panel></wicket:div>"));
+        assertThat(tag.getAttribute("data-content"), containsString("<div wicket:id=\"indicator\" class=\"bar\" style=\"width: 50%\"></div>"));
     }
 }

@@ -7,7 +7,6 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.MenuBook
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.MenuDivider;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.SplitButton;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.button.DropDownAutoOpen;
 import de.agilecoders.wicket.samples.components.basecss.ButtonGroups;
 import org.apache.wicket.Component;
 import org.apache.wicket.Page;
@@ -97,6 +96,6 @@ public class ComponentsPage extends BasePage {
 
                 return links;
             }
-        }.setIconType(IconType.thlarge).add(new DropDownAutoOpen());
+        }.setIconType(IconType.thlarge);
     }
 }

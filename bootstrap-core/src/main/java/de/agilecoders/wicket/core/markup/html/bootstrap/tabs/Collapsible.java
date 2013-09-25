@@ -7,8 +7,6 @@ import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.extensions.markup.html.tabs.ITab;
 import org.apache.wicket.markup.ComponentTag;
-import org.apache.wicket.markup.head.IHeaderResponse;
-import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.list.Loop;
@@ -97,23 +95,6 @@ public class Collapsible extends Panel {
         checkComponentTag(tag, "div");
 
         Attributes.addClass(tag, "panel-group");
-    }
-
-    @Override
-    public void renderHead(final IHeaderResponse response) {
-        super.renderHead(response);
-
-        response.render(OnDomReadyHeaderItem.forScript(createInitializerScript(getMarkupId(true))));
-    }
-
-    /**
-     * creates an initializer script for this {@link Collapsible} instance.
-     *
-     * @param markupId The markup id of this {@link Collapsible} instance
-     * @return initializer script
-     */
-    protected CharSequence createInitializerScript(final String markupId) {
-        return "$('#" + markupId + "').collapse();";
     }
 
     /**

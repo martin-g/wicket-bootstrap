@@ -1,10 +1,10 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.jqueryui;
 
 import com.google.common.collect.Lists;
+import de.agilecoders.wicket.webjars.request.resource.WebjarsJavaScriptResourceReference;
 import org.apache.wicket.Application;
 import org.apache.wicket.markup.head.HeaderItem;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
-import org.apache.wicket.request.resource.JavaScriptResourceReference;
 
 import java.util.List;
 
@@ -13,28 +13,26 @@ import java.util.List;
  *
  * @author miha
  */
-public class JQueryUIJavaScriptReference extends JavaScriptResourceReference {
+public class JQueryUICoreJavaScriptReference extends WebjarsJavaScriptResourceReference {
     private static final long serialVersionUID = 1L;
 
     /**
      * Singleton instance of this reference
      */
-    private static final JQueryUIJavaScriptReference INSTANCE = new JQueryUIJavaScriptReference();
-
+    private static final JQueryUICoreJavaScriptReference INSTANCE = new JQueryUICoreJavaScriptReference();
 
     /**
      * @return the single instance of the resource reference
      */
-    public static JQueryUIJavaScriptReference instance() {
+    public static JQueryUICoreJavaScriptReference instance() {
         return INSTANCE;
     }
-
 
     /**
      * Private constructor.
      */
-    private JQueryUIJavaScriptReference() {
-        super(JQueryUIJavaScriptReference.class, "js/jquery-ui-1.9.2.core.js");
+    private JQueryUICoreJavaScriptReference() {
+        super("jquery-ui/current/ui/minified/jquery.ui.core.min.js");
     }
 
     @Override
@@ -43,5 +41,12 @@ public class JQueryUIJavaScriptReference extends JavaScriptResourceReference {
         dependencies.add(JavaScriptHeaderItem.forReference(Application.get().getJavaScriptLibrarySettings().getJQueryReference()));
 
         return dependencies;
+    }
+
+    /**
+     * @return this resource reference singleton instance as header item
+     */
+    public static HeaderItem asHeaderItem() {
+        return JavaScriptHeaderItem.forReference(instance());
     }
 }

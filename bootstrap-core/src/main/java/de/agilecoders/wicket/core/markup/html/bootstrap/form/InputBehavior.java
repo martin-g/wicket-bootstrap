@@ -41,7 +41,7 @@ public class InputBehavior extends BootstrapBaseBehavior {
      * Construct. Uses {@link Size#Medium} as default size.
      */
     public InputBehavior() {
-        size = null;
+        this((Size) null);
     }
 
     /**
@@ -97,7 +97,7 @@ public class InputBehavior extends BootstrapBaseBehavior {
     public void onComponentTag(final Component component, final ComponentTag tag) {
         super.onComponentTag(component, tag);
 
-        if (size != null) {
+        if (size != null && size.getObject() != null) {
             Attributes.addClass(tag, size.getObject().cssClassName());
         }
     }
