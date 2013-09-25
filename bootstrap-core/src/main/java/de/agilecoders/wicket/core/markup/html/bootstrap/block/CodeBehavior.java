@@ -9,7 +9,6 @@ import de.agilecoders.wicket.core.markup.html.references.BootstrapPrettifyJavaSc
 import de.agilecoders.wicket.core.util.Components;
 import de.agilecoders.wicket.core.util.CssClassNames;
 import de.agilecoders.wicket.core.util.References;
-
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.Behavior;
 import org.apache.wicket.markup.ComponentTag;

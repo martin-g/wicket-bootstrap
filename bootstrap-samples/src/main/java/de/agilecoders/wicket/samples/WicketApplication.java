@@ -164,17 +164,10 @@ public class WicketApplication extends WebApplication {
         final ThemeProvider themeProvider = new BootswatchThemeProvider() {{
             add(new MetroTheme());
             add(new GoogleTheme());
-            add(new WicketTheme());
-            add(new Bootstrap3Theme());
-            defaultTheme("wicket");
+            addDefaultTheme(new WicketTheme());
         }};
 
         final IBootstrapSettings settings = new BootstrapSettings();
-
-        //temporary use local copies of Bootstrap3 until 3.0.0 is released officially
-        settings.setCssResourceReference(new CssResourceReference(WicketApplication.class, "res/css/bootstrap.css"));
-        settings.setJsResourceReference(new JavaScriptResourceReference(WicketApplication.class, "res/js/bootstrap.js"));
-
         settings.setJsResourceFilterName("footer-container")
                 .setThemeProvider(themeProvider);
         Bootstrap.install(this, settings);

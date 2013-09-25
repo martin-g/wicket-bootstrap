@@ -62,7 +62,7 @@ public class BootstrapPagingNavigatorTest extends WicketApplicationTest {
      * @return a new default {@link BootstrapPagingNavigator} with a "div" tag
      */
     private BootstrapPagingNavigator createDefault() {
-        return createWithTagName("div");
+        return createWithTagName("ul");
     }
 
     /**
