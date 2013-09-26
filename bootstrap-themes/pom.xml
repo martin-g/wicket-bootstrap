@@ -10,7 +10,6 @@
     </parent>
 
     <artifactId>wicket-bootstrap-themes</artifactId>
-    <version>0.8.5-SNAPSHOT</version>
     <packaging>bundle</packaging>
     <name>bootstrap-themes</name>
 

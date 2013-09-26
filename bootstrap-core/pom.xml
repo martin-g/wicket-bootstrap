@@ -10,7 +10,6 @@
     </parent>
 
     <artifactId>wicket-bootstrap-core</artifactId>
-    <version>0.8.5-SNAPSHOT</version>
     <packaging>bundle</packaging>
     <name>bootstrap-core</name>
 
