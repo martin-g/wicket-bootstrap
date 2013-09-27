@@ -17,9 +17,11 @@
         <link rel="shortcut icon" href="/demo/ico/favicon.ico">
     </head>
 
-    <body data-spy="scroll" data-target=".bs-docs-sidebar">
+    <body>
         <a name="top" style="display: none;"></a>
-        <div class="container"><div wicket:id="navbar"></div></div>
+        <a class="sr-only" href="#content">Skip navigation</a>
+
+        <header wicket:id="navbar" class="bs-docs-nav"></header>
 
         <wicket:child/>
         <wicket:panel wicket:id="footer"></wicket:panel>

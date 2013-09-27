@@ -4,21 +4,22 @@
     </head>
     <body>
         <wicket:panel>
-            <div wicket:id="container" class="container">
+            <div class="container" wicket:id="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                        <span class="sr-only" wicket:id="toggleNavigationLabel">[[CONTENT]]</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-
                     <a wicket:id="brandName" class="navbar-brand" href="#">
                         <img wicket:id="brandImage"/>
                         <span wicket:id="brandLabel"></span>
                     </a>
                 </div>
 
-                <div class="navbar-collapse collapse">
+                <div class="collapse navbar-collapse navbar-ex1-collapse" role="navigation" wicket:id="collapse">
                     <ul wicket:enclosure="navLeftList" class="nav navbar-nav">
                         <li wicket:id="navLeftList">
                             <div wicket:id="component">[[CONTENT]]</div>

@@ -16,7 +16,6 @@ import org.apache.wicket.Component;
 import org.apache.wicket.Page;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.html.TransparentWebMarkupContainer;
-import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.image.Image;
 import org.apache.wicket.markup.html.link.BookmarkablePageLink;
@@ -140,13 +139,12 @@ public class Navbar extends Panel implements Invertible<Navbar> {
 
         BootstrapResourcesBehavior.addTo(this);
 
-        final WebMarkupContainer container = newContainer("container");
+        final TransparentWebMarkupContainer container = newContainer("container");
+        final TransparentWebMarkupContainer collapse = newCollapseContainer("collapse");
 
-        BookmarkablePageLink<Page> brandNameLink = newBrandNameLink("brandName");
-        brandLabel = newBrandLabel("brandLabel");
-        brandNameLink.add(brandLabel);
-        brandImage = newBrandImage("brandImage");
-        brandNameLink.add(brandImage);
+        final BookmarkablePageLink<Page> brandNameLink = newBrandNameLink("brandName");
+        brandNameLink.add(brandLabel = newBrandLabel("brandLabel"));
+        brandNameLink.add(brandImage = newBrandImage("brandImage"));
 
         Component leftAlignedComponentListView = newNavigation("navLeftList", newPositionDependedComponentModel(components, POSITION_FILTER_LEFT));
         Component rightAlignedComponentListView = newNavigation("navRightList", newPositionDependedComponentModel(components, POSITION_FILTER_RIGHT));
@@ -154,16 +152,18 @@ public class Navbar extends Panel implements Invertible<Navbar> {
         activeStateAppender = new CssClassNameAppender("active");
         invertModel = Model.of("");
 
-        add(container, brandNameLink, leftAlignedComponentListView, rightAlignedComponentListView);
+        add(container, collapse,
+            newToggleNavigationLabel("toggleNavigationLabel"),
+            brandNameLink, leftAlignedComponentListView, rightAlignedComponentListView);
     }
 
     @Override
     protected void onComponentTag(ComponentTag tag) {
         super.onComponentTag(tag);
 
-        Attributes.addClass(tag, "navbar", invertModel.getObject(), position.getObject().cssClassName());
+        Attributes.addClass(tag, "navbar", "navbar-default", invertModel.getObject(), position.getObject().cssClassName());
 
-        Attributes.set(tag, "role", "navigation");
+        Attributes.set(tag, "role", "banner");
     }
 
     /**
@@ -315,13 +315,34 @@ public class Navbar extends Panel implements Invertible<Navbar> {
     }
 
     /**
+     * creates a new button label
+     *
+     * @param componentId the wicket component id
+     * @return new label instance
+     */
+    protected Label newToggleNavigationLabel(final String componentId) {
+        return new Label(componentId, "Toggle Navigation");
+    }
+
+    /**
      * creates a new transparent inner container which is used to append some
      * css classes.
      *
      * @param componentId The non-null id of a new navigation component
      * @return a new inner container of the navigation bar.
      */
-    private TransparentWebMarkupContainer newContainer(String componentId) {
+    protected TransparentWebMarkupContainer newContainer(String componentId) {
+        return new TransparentWebMarkupContainer(componentId);
+    }
+
+    /**
+     * creates a new transparent inner container which is used to append some
+     * css classes.
+     *
+     * @param componentId The non-null id of a new navigation component
+     * @return a new inner container of the navigation bar.
+     */
+    protected TransparentWebMarkupContainer newCollapseContainer(String componentId) {
         return new TransparentWebMarkupContainer(componentId);
     }
 
@@ -342,7 +363,7 @@ public class Navbar extends Panel implements Invertible<Navbar> {
      *
      * @param imageResourceReference required
      * @param imageAltAttrModel      optional, but should be provided
-     * @return
+     * @return this instance for chaining
      */
     public Navbar setBrandImage(final ResourceReference imageResourceReference, final IModel<String> imageAltAttrModel) {
         brandImage.setImageResourceReference(imageResourceReference);

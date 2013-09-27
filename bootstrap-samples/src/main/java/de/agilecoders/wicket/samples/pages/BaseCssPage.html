@@ -6,32 +6,42 @@
 </head>
 <body>
 <wicket:extend>
-<header class="jumbotron subhead" id="overview">
+<!-- Docs page layout -->
+<div class="bs-header" id="content">
     <div class="container">
-        <h1>Base CSS</h1>
+        <h1>CSS</h1>
 
-        <p class="lead">Fundamental HTML elements styled and enhanced with extensible classes.</p>
+        <p>Global CSS settings, fundamental HTML elements styled and enhanced with extensible classes, and an advanced grid system.</p>
     </div>
-</header>
-
-
-<div class="container">
-
-<!-- Docs nav
-================================================== -->
-<div class="row">
-<div class="col-lg-3 bs-docs-sidebar">
-    <ul wicket:id="navigation" class="nav bs-docs-sidenav">
-        <li><a href="#typography"><span class="glyphicon glyphicon-chevron-right"></span> Typography</a></li>
-        <li><a href="#code"><span class="glyphicon glyphicon-chevron-right"></span> Code</a></li>
-        <li><a href="#tables"><span class="glyphicon glyphicon-chevron-right"></span> Tables</a></li>
-        <li><a href="#forms"><span class="glyphicon glyphicon-chevron-right"></span> Forms</a></li>
-        <li><a href="#buttons"><span class="glyphicon glyphicon-chevron-right"></span> Buttons</a></li>
-        <li><a href="#images"><span class="glyphicon glyphicon-chevron-right"></span> Images</a></li>
-        <li><a href="#icons"><span class="glyphicon glyphicon-chevron-right"></span> Icons by Glyphicons</a></li>
-    </ul>
 </div>
-<div class="col-lg-9">
+
+<!-- Callout for the old docs link -->
+<div class="bs-old-docs">
+    <div class="container">
+        <strong>
+            <a href="../2.3.2/">Looking for Bootstrap 2.3.2 docs?</a>
+        </strong>
+        We've moved it to a new home while we push forward with Bootstrap 3. <a href="http://blog.getbootstrap.com/">Read the blog</a> for details.
+    </div>
+</div>
+
+
+<div class="container bs-docs-container">
+<div class="row">
+<div class="col-md-3">
+    <div class="bs-sidebar hidden-print" role="complementary">
+        <ul wicket:id="navigation" class="nav bs-sidenav">
+            <li><a href="#typography">Typography</a></li>
+            <li><a href="#code">Code</a></li>
+            <li><a href="#tables">Tables</a></li>
+            <li><a href="#forms">Forms</a></li>
+            <li><a href="#buttons">Buttons</a></li>
+            <li><a href="#images">Images</a></li>
+            <li><a href="#icons">Icons by Glyphicons</a></li>
+        </ul>
+    </div>
+</div>
+<div class="col-md-9">
 
 
 <!-- Typography
@@ -885,6 +895,7 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
         <label>Label name</label>
         <input type="text" placeholder="Type something...">
         <span class="help-block">Example block-level help text here.</span>
+
         <div class="checkbox">
             <label>
                 <input type="checkbox"> Check me out
@@ -926,6 +937,7 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
     <div class="form-group">
         <input type="text" class="input-small" placeholder="Email">
         <input type="password" class="input-small" placeholder="Password">
+
         <div class="checkbox">
             <label>
                 <input type="checkbox"> Remember me
@@ -1110,12 +1122,12 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
       &lt;input type="checkbox" id="inlineCheckbox1" value="option1"&gt; 1
     &lt;/label&gt;
 &lt;/div&gtl;
-&lt;div class="checkbox"&gtl;
+    &lt;div class="checkbox"&gtl;
     &lt;label class="inline"&gt;
       &lt;input type="checkbox" id="inlineCheckbox2" value="option2"&gt; 2
     &lt;/label&gt;
 &lt;/div&gtl;
-&lt;div class="checkbox"&gtl;
+    &lt;div class="checkbox"&gtl;
     &lt;label class="inline"&gt;
       &lt;input type="checkbox" id="inlineCheckbox3" value="option3"&gt; 3
     &lt;/label&gt;
@@ -1425,18 +1437,18 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 </form>
 <pre class="prettyprint linenums"><xmp>
 
-<input class="form-control input-sm" type="text" placeholder=".input-small">
-<input class="form-control" type="text" placeholder="default">
-<input class="form-control input-lg" type="text" placeholder=".input-large">
-<select class="form-control input-xs">
-    <option>.input-sm</option>
-</select>
-<select class="form-control">
-    <option>Default</option>
-</select>
-<select class="form-control input-lg">
-    <option>.input-lg</option>
-</select>
+    <input class="form-control input-sm" type="text" placeholder=".input-small">
+    <input class="form-control" type="text" placeholder="default">
+    <input class="form-control input-lg" type="text" placeholder=".input-large">
+    <select class="form-control input-xs">
+        <option>.input-sm</option>
+    </select>
+    <select class="form-control">
+        <option>Default</option>
+    </select>
+    <select class="form-control input-lg">
+        <option>.input-lg</option>
+    </select>
 
 </xmp></pre>
 
@@ -1922,7 +1934,7 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
     <li><i class="icon-step-forward"></i> icon-step-forward</li>
     <li><i class="icon-eject"></i> icon-eject</li>
     <li><i class="icon-chevron-left"></i> icon-chevron-left</li>
-    <li><span class="glyphicon glyphicon-chevron-right"></span> icon-chevron-right</li>
+    <li><i class="icon-chevron-right"></i> icon-chevron-right</li>
     <li><i class="icon-plus-sign"></i> icon-plus-sign</li>
     <li><i class="icon-minus-sign"></i> icon-minus-sign</li>
     <li><i class="icon-remove-sign"></i> icon-remove-sign</li>

@@ -3,6 +3,7 @@ package de.agilecoders.wicket.samples.pages;
 import com.newrelic.api.agent.NewRelic;
 import de.agilecoders.wicket.core.Bootstrap;
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
+import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.CssClassNameAppender;
 import de.agilecoders.wicket.core.markup.html.bootstrap.block.Code;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.DropDownButton;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.MenuBookmarkablePageLink;
@@ -35,6 +36,7 @@ import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.head.filter.FilteredHeaderItem;
 import org.apache.wicket.markup.head.filter.HeaderResponseContainer;
 import org.apache.wicket.markup.html.GenericWebPage;
+import org.apache.wicket.markup.html.TransparentWebMarkupContainer;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.AbstractLink;
@@ -102,9 +104,17 @@ abstract class BasePage<T> extends GenericWebPage<T> {
      * @return a new {@link Navbar} instance
      */
     protected Navbar newNavbar(String markupId) {
-        Navbar navbar = new Navbar(markupId);
+        Navbar navbar = new Navbar(markupId) {
+            @Override
+            protected TransparentWebMarkupContainer newCollapseContainer(String componentId) {
+                TransparentWebMarkupContainer container = super.newCollapseContainer(componentId);
+                container.add(new CssClassNameAppender("bs-navbar-collapse"));
+                return container;
+            }
+        };
 
         navbar.setPosition(Navbar.Position.TOP);
+        navbar.setInverted(true);
 
         // show brand name
         navbar.brandName(Model.of("Wicket Bootstrap"));
