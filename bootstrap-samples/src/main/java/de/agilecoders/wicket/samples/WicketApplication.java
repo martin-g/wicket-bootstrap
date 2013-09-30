@@ -162,9 +162,10 @@ public class WicketApplication extends WebApplication {
      */
     private void configureBootstrap() {
         final ThemeProvider themeProvider = new BootswatchThemeProvider() {{
+            add(new WicketTheme());
             add(new MetroTheme());
             add(new GoogleTheme());
-            addDefaultTheme(new WicketTheme());
+            defaultTheme("bootstrap");
         }};
 
         final IBootstrapSettings settings = new BootstrapSettings();

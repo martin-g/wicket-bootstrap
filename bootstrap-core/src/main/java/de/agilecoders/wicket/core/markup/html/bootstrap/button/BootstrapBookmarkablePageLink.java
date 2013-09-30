@@ -2,8 +2,6 @@ package de.agilecoders.wicket.core.markup.html.bootstrap.button;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.Icon;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
-
-import org.apache.commons.lang.StringUtils;
 import org.apache.wicket.Component;
 import org.apache.wicket.Page;
 import org.apache.wicket.markup.html.WebMarkupContainer;
@@ -15,6 +13,7 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.util.lang.Args;
+import org.apache.wicket.util.string.Strings;
 
 /**
  * Renders a stable button link which can be cached in a web browser and used at a later time. The button
@@ -163,7 +162,7 @@ public class BootstrapBookmarkablePageLink<T> extends BookmarkablePageLink<T> im
     protected void onConfigure() {
         super.onConfigure();
 
-        splitter.setVisible(icon.hasIconType() && StringUtils.isNotEmpty(label.getDefaultModelObjectAsString()));
+        splitter.setVisible(icon.hasIconType() && !Strings.isEmpty(label.getDefaultModelObjectAsString()));
     }
 
     @Override

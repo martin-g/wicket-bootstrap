@@ -2,8 +2,7 @@ package de.agilecoders.wicket.core.markup.html.bootstrap.button;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.Icon;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
-
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
@@ -29,7 +28,7 @@ public class BootstrapButton extends Button implements IBootstrapButton<Bootstra
      * Construct.
      *
      * @param componentId The component id
-     * @param type  The type of the button
+     * @param type        The type of the button
      */
     public BootstrapButton(final String componentId, final Buttons.Type type) {
         this(componentId, new Model<String>(), type);
@@ -40,7 +39,7 @@ public class BootstrapButton extends Button implements IBootstrapButton<Bootstra
      *
      * @param componentId The component id
      * @param model       The label model
-     * @param type  The type of the button
+     * @param type        The type of the button
      */
     public BootstrapButton(final String componentId, final IModel<String> model, final Buttons.Type type) {
         super(componentId, model);
