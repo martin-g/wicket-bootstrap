@@ -1,4 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Ubuntu);
+.media-object {display: block; padding-left: 10px; padding-right: 10px;}
 article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{display:block;}
 section { background-color:#FFF; -webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px;padding: 10px; padding-top: 2px; margin-top: 30px;}
 audio,canvas,video{display:inline-block;*display:inline;*zoom:1;}
