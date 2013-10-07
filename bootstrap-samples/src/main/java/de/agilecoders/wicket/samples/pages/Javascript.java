@@ -142,7 +142,7 @@ public class Javascript extends BasePage {
             }
         };
 
-        final Typeahead<String> typeahead = new Typeahead<>(markupId, dataSource, new TypeaheadConfig().withNumberOfItems(4));
+        final Typeahead<String> typeahead = new Typeahead<String>(markupId, dataSource, new TypeaheadConfig().withNumberOfItems(4));
         typeahead.size(SpanType.SPAN3);
 
         return typeahead;
