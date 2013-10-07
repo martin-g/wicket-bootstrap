@@ -2,8 +2,8 @@
     font-family: 'OpenWeb Icons';
     font-style: 'normal';
     font-weight: 'normal';
-    src: url('http://weloveiconfonts.com/api/fonts/openwebicons/openwebicons.eot');
-    src: url('http://weloveiconfonts.com/api/fonts/openwebicons/openwebicons.eot?#iefix') format('eot'), url('http://weloveiconfonts.com/api/fonts/openwebicons/openwebicons.woff') format('woff'), url('http://weloveiconfonts.com/api/fonts/openwebicons/openwebicons.ttf') format('truetype'), url('http://weloveiconfonts.com/api/fonts/openwebicons/openwebicons.svg#openweb_iconsregular') format('svg');
+    src: url('../font/openwebicons.eot');
+    src: url('../font/openwebicons.eot?#iefix') format('eot'), url('../font/openwebicons.woff') format('woff'), url('../font/openwebicons.ttf') format('truetype'), url('../font/openwebicons.svg#openweb_iconsregular') format('svg');
 }
 
 [class^="icon-apml"]:before, [class*=" icon-apml"]:before,
