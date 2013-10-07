@@ -5,7 +5,7 @@ import org.apache.wicket.core.util.string.ComponentRenderer;
 import org.apache.wicket.model.IModel;
 
 import static de.agilecoders.wicket.core.util.Strings2.nullToEmpty;
-import static org.apache.commons.lang.StringUtils.chomp;
+import static org.apache.commons.lang3.StringUtils.chomp;
 
 /**
  * A rich popover implementation that uses a component as body.

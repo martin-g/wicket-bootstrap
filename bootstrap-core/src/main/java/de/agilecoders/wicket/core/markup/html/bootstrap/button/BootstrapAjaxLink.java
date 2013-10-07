@@ -2,8 +2,7 @@ package de.agilecoders.wicket.core.markup.html.bootstrap.button;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.Icon;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
-
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.markup.html.WebMarkupContainer;
@@ -27,8 +26,8 @@ public abstract class BootstrapAjaxLink<T> extends AjaxLink<T> implements IBoots
     /**
      * Construct.
      *
-     * @param id the components id
-     * @param type  the type of the button
+     * @param id   the components id
+     * @param type the type of the button
      */
     public BootstrapAjaxLink(final String id, final Buttons.Type type) {
         this(id, null, type);
@@ -37,9 +36,9 @@ public abstract class BootstrapAjaxLink<T> extends AjaxLink<T> implements IBoots
     /**
      * Construct.
      *
-     * @param id         The component id
-     * @param model      mandatory parameter
-     * @param type the type of the button
+     * @param id    The component id
+     * @param model mandatory parameter
+     * @param type  the type of the button
      */
     public BootstrapAjaxLink(String id, IModel<T> model, Buttons.Type type) {
         super(id, model);

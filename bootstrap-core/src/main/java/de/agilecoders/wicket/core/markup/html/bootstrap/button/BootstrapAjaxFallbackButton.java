@@ -2,8 +2,7 @@ package de.agilecoders.wicket.core.markup.html.bootstrap.button;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.Icon;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
-
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.markup.html.form.AjaxFallbackButton;
 import org.apache.wicket.markup.html.WebMarkupContainer;
@@ -29,8 +28,8 @@ public abstract class BootstrapAjaxFallbackButton extends AjaxFallbackButton imp
     /**
      * Construct.
      *
-     * @param id         the components id
-     * @param form       The assigned form
+     * @param id   the components id
+     * @param form The assigned form
      * @param type the button type
      */
     public BootstrapAjaxFallbackButton(String id, Form<?> form, Buttons.Type type) {
@@ -40,10 +39,10 @@ public abstract class BootstrapAjaxFallbackButton extends AjaxFallbackButton imp
     /**
      * Construct.
      *
-     * @param id         the components id
-     * @param model      The label
-     * @param form       The assigned form
-     * @param type the button type
+     * @param id    the components id
+     * @param model The label
+     * @param form  The assigned form
+     * @param type  the button type
      */
     public BootstrapAjaxFallbackButton(String id, IModel<String> model, Form<?> form, Buttons.Type type) {
         super(id, model, form);

@@ -4,7 +4,7 @@
     <parent>
         <groupId>de.agilecoders.maven</groupId>
         <artifactId>maven-parent-pom</artifactId>
-        <version>0.3.0</version>
+        <version>0.3.3</version>
     </parent>
 
     <groupId>de.agilecoders.wicket</groupId>
@@ -37,10 +37,11 @@
     </modules>
 
     <properties>
+        <java.version>1.6</java.version>
         <github.global.server>github</github.global.server>
 
         <bootstrap.version>2.3.2</bootstrap.version>
-        <config.version>0.3.0</config.version>
+        <config.version>0.3.3</config.version>
 
         <enforcer.disable>true</enforcer.disable>
         <pmd.disable>true</pmd.disable>
@@ -50,7 +51,6 @@
 
         <!-- TODO -->
         <javax.javaee-web-api.version>6.0</javax.javaee-web-api.version>
-        <versions-maven-plugin.version>1.3.1</versions-maven-plugin.version>
         <rhino.version>1.7R4</rhino.version>
         <doxia.version>1.0</doxia.version>
         <lesscss-engine.version>1.3.3</lesscss-engine.version>
@@ -167,6 +167,11 @@
             <groupId>de.agilecoders.maven</groupId>
             <artifactId>maven-parent-config</artifactId>
             <version>${config.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.1</version>
         </dependency>
     </dependencies>
 
