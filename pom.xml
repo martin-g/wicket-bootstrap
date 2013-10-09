@@ -4,7 +4,7 @@
     <parent>
         <groupId>de.agilecoders.maven</groupId>
         <artifactId>maven-parent-pom</artifactId>
-        <version>0.3.0</version>
+        <version>0.3.3</version>
     </parent>
 
     <groupId>de.agilecoders.wicket</groupId>
@@ -40,8 +40,8 @@
         <github.global.server>github</github.global.server>
 
         <bootstrap.version>3.0.0</bootstrap.version>
-        <config.version>0.3.0</config.version>
-        <wicket-webjars.version>0.3.0</wicket-webjars.version>
+        <config.version>0.3.3</config.version>
+        <wicket-webjars.version>0.3.1</wicket-webjars.version>
 
         <enforcer.disable>true</enforcer.disable>
         <pmd.disable>true</pmd.disable>
