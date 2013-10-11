@@ -40,7 +40,7 @@ public class ComponentsPage extends BasePage {
         add(new ButtonGroups("buttonGroups"));
 
         // add example for dropdown button with sub-menu
-        add(newDropDownSubMenuExample());
+//        add(newDropDownSubMenuExample());
     }
 
     /**
