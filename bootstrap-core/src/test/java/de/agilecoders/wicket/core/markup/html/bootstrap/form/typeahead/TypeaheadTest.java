@@ -1,6 +1,7 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.form.typeahead;
 
 import de.agilecoders.wicket.core.WicketApplicationTest;
+import org.apache.wicket.markup.Markup;
 import org.junit.Test;
 
 /**
@@ -12,7 +13,8 @@ public class TypeaheadTest extends WicketApplicationTest {
 
     @Test
     public void componentCanBeRendered() {
-        tester().startComponentInPage(new Typeahead<String>("typeahead", new Dataset("test")));
+        tester().startComponentInPage(new Typeahead<String>("typeahead", new Dataset("test")),
+            Markup.of("<html><head></head><body><input type='text' wicket:id='typeahead'/></body></html>"));
 
         tester().assertNoErrorMessage();
     }
