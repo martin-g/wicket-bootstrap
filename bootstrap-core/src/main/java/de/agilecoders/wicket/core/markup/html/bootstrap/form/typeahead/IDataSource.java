@@ -1,11 +1,11 @@
-package de.agilecoders.wicket.core.markup.html.bootstrap.form;
+package de.agilecoders.wicket.core.markup.html.bootstrap.form.typeahead;
 
 import org.apache.wicket.util.io.IClusterable;
 
 import java.util.List;
 
 /**
- * Simple data source for e.g. {@link Typeahead}
+ * Simple data source for e.g. {@link de.agilecoders.wicket.core.markup.html.bootstrap.form.typeahead.js.Typeahead}
  *
  * @author miha
  */

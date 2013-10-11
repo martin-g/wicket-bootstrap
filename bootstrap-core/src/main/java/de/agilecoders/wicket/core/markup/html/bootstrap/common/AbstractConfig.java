@@ -32,6 +32,11 @@ public abstract class AbstractConfig implements IClusterable {
         return Json.stringify(config);
     }
 
+    @Override
+    public String toString() {
+        return toJsonString();
+    }
+
     /**
      * @return a copy of all configurations
      */

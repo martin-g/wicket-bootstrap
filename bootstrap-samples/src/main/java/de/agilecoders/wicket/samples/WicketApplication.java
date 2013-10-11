@@ -25,6 +25,7 @@ import de.agilecoders.wicket.themes.markup.html.google.GoogleTheme;
 import de.agilecoders.wicket.themes.markup.html.metro.MetroTheme;
 import de.agilecoders.wicket.themes.markup.html.wicket.WicketTheme;
 import de.agilecoders.wicket.themes.settings.BootswatchThemeProvider;
+import net.ftlines.wicketsource.WicketSource;
 import org.apache.wicket.Application;
 import org.apache.wicket.Page;
 import org.apache.wicket.ResourceBundles;
@@ -99,6 +100,8 @@ public class WicketApplication extends WebApplication {
 
             StaticResourceRewriteMapper.withBaseUrl(cdn).install(this);
         }
+
+        WicketSource.configure(this);
     }
 
     /**

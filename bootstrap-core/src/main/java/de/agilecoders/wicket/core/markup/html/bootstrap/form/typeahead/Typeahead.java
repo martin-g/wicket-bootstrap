@@ -1,14 +1,16 @@
-package de.agilecoders.wicket.core.markup.html.bootstrap.form;
+package de.agilecoders.wicket.core.markup.html.bootstrap.form.typeahead;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapResourcesBehavior;
+import de.agilecoders.wicket.core.markup.html.bootstrap.form.InputBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.layout.col.SpanType;
-import de.agilecoders.wicket.core.markup.html.references.BootstrapJavaScriptReference;
-import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.IModel;
+import org.apache.wicket.util.lang.Args;
+
+import java.util.Collections;
 
 import static de.agilecoders.wicket.core.util.JQuery.$;
 
@@ -19,28 +21,19 @@ import static de.agilecoders.wicket.core.util.JQuery.$;
  */
 public class Typeahead<T> extends TextField<T> {
 
-    private final TypeaheadConfig config;
+    protected final Dataset config;
     private final InputBehavior inputBehavior;
 
-    /**
-     * Construct.
-     *
-     * @param markupId   The component's id
-     * @param dataSource The data source for all available options
-     */
-    public Typeahead(final String markupId, final IDataSource<T> dataSource) {
-        this(markupId, null, dataSource, new TypeaheadConfig());
-    }
+    private TypeaheadBehavior<T> remoteBehavior;
 
     /**
      * Construct.
      *
      * @param markupId   The component's id
-     * @param dataSource The data source for all available options
      * @param config     The typeahead configuration
      */
-    public Typeahead(final String markupId, final IDataSource<T> dataSource, final TypeaheadConfig config) {
-        this(markupId, null, dataSource, config);
+    public Typeahead(final String markupId, final Dataset config) {
+        this(markupId, null, config);
     }
 
     /**
@@ -48,27 +41,15 @@ public class Typeahead<T> extends TextField<T> {
      *
      * @param markupId   The component's id
      * @param model      The textfield value
-     * @param dataSource The data source for all available options
-     */
-    public Typeahead(final String markupId, final IModel<T> model, final IDataSource<T> dataSource) {
-        this(markupId, model, dataSource, new TypeaheadConfig());
-    }
-
-    /**
-     * Construct.
-     *
-     * @param markupId   The component's id
-     * @param model      The textfield value
-     * @param dataSource The data source for all available options
      * @param config     The typeahead configuration
      */
-    public Typeahead(final String markupId, final IModel<T> model, final IDataSource<T> dataSource, final TypeaheadConfig config) {
+    public Typeahead(final String markupId, final IModel<T> model, final Dataset config) {
         super(markupId, model);
 
-        this.config = config.withDataSource(dataSource);
+        this.config = Args.notNull(config, "config");
 
         add(inputBehavior = new InputBehavior());
-        add(new AttributeModifier("data-provide", "typeahead"));
+//        add(new AttributeModifier("data-provide", "typeahead"));
 
         BootstrapResourcesBehavior.addTo(this);
     }
@@ -95,9 +76,37 @@ public class Typeahead<T> extends TextField<T> {
         return this;
     }
 
+    /**
+     * sets the size of textfield
+     *
+     * @param remote a flag indicating whether the Typeahead uses remote data source
+     * @return this instance for chaining
+     */
+    public Typeahead<T> remote(final boolean remote) {
+        if (remote && remoteBehavior == null) {
+            remoteBehavior = new TypeaheadBehavior<T>() {
+                @Override
+                protected Iterable<T> getChoices(String input) {
+                    return Typeahead.this.getChoices(input);
+                }
+            };
+            add(remoteBehavior);
+
+        } else if (!remote && remoteBehavior != null) {
+            remove(remoteBehavior);
+            remoteBehavior = null;
+        }
+
+        return this;
+    }
+
+    protected Iterable<T> getChoices(String input) {
+        return Collections.emptyList();
+    }
+
     @Override
     protected void onComponentTag(final ComponentTag tag) {
-        tag.setName("input");
+        checkComponentTag(tag, "input");
 
         super.onComponentTag(tag);
     }
@@ -105,8 +114,16 @@ public class Typeahead<T> extends TextField<T> {
     @Override
     public void renderHead(final IHeaderResponse response) {
         super.renderHead(response);
-        response.render(JavaScriptHeaderItem.forReference(BootstrapJavaScriptReference.instance()));
+
+        if (remoteBehavior != null) {
+            Remote remoteConfig = config.getRemote();
+            if (remoteConfig == null) {
+                remoteConfig = new Remote();
+                config.withRemote(remoteConfig);
+            }
+            remoteConfig.withUrl(remoteBehavior.getCallbackUrl());
+        }
+        response.render(JavaScriptHeaderItem.forReference(TypeaheadJsReference.instance()));
         response.render($(this).chain("typeahead", config).asDomReadyScript());
     }
-
 }

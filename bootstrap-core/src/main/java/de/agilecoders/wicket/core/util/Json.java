@@ -10,7 +10,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import de.agilecoders.wicket.core.markup.html.bootstrap.form.IDataSource;
+import de.agilecoders.wicket.core.markup.html.bootstrap.common.AbstractConfig;
+import de.agilecoders.wicket.core.markup.html.bootstrap.form.typeahead.IDataSource;
 import org.apache.wicket.util.string.Strings;
 
 import java.io.IOException;
@@ -49,6 +50,12 @@ public final class Json {
             @Override
             public void serialize(IDataSource value, JsonGenerator jsonGenerator, SerializerProvider provider) throws IOException {
                 jsonGenerator.writeObject(stringify(value.load()));
+            }
+        });
+        wbModule.addSerializer(AbstractConfig.class, new JsonSerializer<AbstractConfig>() {
+            @Override
+            public void serialize(AbstractConfig value, JsonGenerator jsonGenerator, SerializerProvider provider) throws IOException {
+                jsonGenerator.writeObject(value.toJsonString());
             }
         });
         mapper.registerModule(wbModule);
