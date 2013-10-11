@@ -20,6 +20,7 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.NavbarAjaxLink;
 import de.agilecoders.wicket.core.markup.html.bootstrap.tabs.AjaxLazyLoadTextContentTab;
 import de.agilecoders.wicket.core.markup.html.bootstrap.tabs.Collapsible;
 import de.agilecoders.wicket.core.markup.html.bootstrap.tabs.TextContentTab;
+import de.agilecoders.wicket.core.util.Json;
 import de.agilecoders.wicket.samples.panels.pagination.AjaxPaginationPanel;
 import de.agilecoders.wicket.samples.panels.pagination.PaginationPanel;
 import org.apache.wicket.Component;
@@ -141,7 +142,10 @@ public class Javascript extends BasePage {
                 );
 
         Dataset dataset = new Dataset("demo");
-//        dataset.withTemplate("<p><strong>{{value}}</strong></p>");
+//        dataset.withTemplate("<p>--<strong>{{value}}</strong>--</p>");
+//        dataset.withEngine(new Json.RawValue("Hogan"));
+        dataset.withHeader("<strong>Header</strong>");
+        dataset.withFooter("<em>Footer</em>");
         final Typeahead<String> typeahead = new Typeahead<String>(markupId, dataset) {
             @Override
             protected Iterable<String> getChoices(String input) {

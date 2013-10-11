@@ -1,6 +1,7 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.form.typeahead;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.common.AbstractConfig;
+import de.agilecoders.wicket.core.util.Json;
 import org.apache.wicket.util.lang.Args;
 
 /**
@@ -15,6 +16,12 @@ public class Dataset extends AbstractConfig {
     private static final IKey<Integer> Limit = newKey("limit", 5);
 
     private static final IKey<String> Template = newKey("template", null);
+
+    private static final IKey<String> Header = newKey("header", null);
+
+    private static final IKey<String> Footer = newKey("footer", null);
+
+    private static final IKey<Json.RawValue> Engine = newKey("engine", null);
 
     private static final IKey<Remote> Remote = newKey("remote", null);
 
@@ -70,6 +77,44 @@ public class Dataset extends AbstractConfig {
         return this;
     }
 
+    /**
+     * The engine used to render suggestions. Can be a string or a precompiled engine.
+     * If not provided, suggestions will render as their value contained in a <p> element (i.e. <p>value</p>).
+     *
+     * Example: #withEngine(new Json.RawValue("Hogan"))
+     *
+     * @param engine mandatory parameter
+     * @return this instance for chaining
+     */
+    public Dataset withEngine(final Json.RawValue engine) {
+        Args.notNull(engine, "engine");
+        put(Engine, engine);
+        return this;
+    }
+
+    /**
+     * The header rendered before suggestions in the dropdown menu. Can be either a DOM element or HTML.
+     *
+     * @param header mandatory parameter
+     * @return this instance for chaining
+     */
+    public Dataset withHeader(final String header) {
+        Args.notEmpty(header, "header");
+        put(Header, header);
+        return this;
+    }
+
+    /**
+     * The footer rendered before suggestions in the dropdown menu. Can be either a DOM element or HTML.
+     *
+     * @param footer mandatory parameter
+     * @return this instance for chaining
+     */
+    public Dataset withFooter(final String footer) {
+        Args.notEmpty(footer, "footer");
+        put(Footer, footer);
+        return this;
+    }
     /**
      * Can be a URL to fetch suggestions from when the data provided by local and prefetch is insufficient or,
      * if more configurability is needed, a <a href="https://github.com/twitter/typeahead.js#remote">remote options object</a>.
