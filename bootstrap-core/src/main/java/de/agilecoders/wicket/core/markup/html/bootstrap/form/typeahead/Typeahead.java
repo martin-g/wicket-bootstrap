@@ -21,7 +21,7 @@ import static de.agilecoders.wicket.core.util.JQuery.$;
  */
 public class Typeahead<T> extends TextField<T> {
 
-    protected final Dataset config;
+    private final Dataset config;
     private final InputBehavior inputBehavior;
 
     private TypeaheadBehavior<T> remoteBehavior;
@@ -49,7 +49,6 @@ public class Typeahead<T> extends TextField<T> {
         this.config = Args.notNull(config, "config");
 
         add(inputBehavior = new InputBehavior());
-//        add(new AttributeModifier("data-provide", "typeahead"));
 
         BootstrapResourcesBehavior.addTo(this);
     }
@@ -84,12 +83,7 @@ public class Typeahead<T> extends TextField<T> {
      */
     public Typeahead<T> remote(final boolean remote) {
         if (remote && remoteBehavior == null) {
-            remoteBehavior = new TypeaheadBehavior<T>() {
-                @Override
-                protected Iterable<T> getChoices(String input) {
-                    return Typeahead.this.getChoices(input);
-                }
-            };
+            remoteBehavior = createTypeaheadBehavior();
             add(remoteBehavior);
 
         } else if (!remote && remoteBehavior != null) {
@@ -100,6 +94,22 @@ public class Typeahead<T> extends TextField<T> {
         return this;
     }
 
+    protected TypeaheadBehavior<T> createTypeaheadBehavior() {
+        return new TypeaheadBehavior<T>() {
+            @Override
+            protected Iterable<T> getChoices(String input) {
+                return Typeahead.this.getChoices(input);
+            }
+        };
+    }
+
+    /**
+     * Returns an iterable with all choices that match the
+     * provided input.
+     *
+     * @param input The input to match against to.
+     * @return All matching choices.
+     */
     protected Iterable<T> getChoices(String input) {
         return Collections.emptyList();
     }

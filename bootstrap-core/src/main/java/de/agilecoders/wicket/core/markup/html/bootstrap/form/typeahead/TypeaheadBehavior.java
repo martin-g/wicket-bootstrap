@@ -10,14 +10,13 @@ import org.apache.wicket.util.string.StringValue;
 /**
  * The behavior that returns JSON response for the autocomplete widget.
  */
-abstract class TypeaheadBehavior<T> extends AbstractAjaxBehavior
+public abstract class TypeaheadBehavior<T> extends AbstractAjaxBehavior
 {
-    public final void onRequest()
-    {
+    public void onRequest() {
+
         RequestCycle requestCycle = getComponent().getRequestCycle();
         Request request = requestCycle.getRequest();
         IRequestParameters parameters = request.getRequestParameters();
-        System.err.println("params: " + parameters.getParameterNames());
         StringValue input = parameters.getParameterValue("term");
 
         final Iterable<T> choices = getChoices(input.toString(""));
@@ -34,8 +33,7 @@ abstract class TypeaheadBehavior<T> extends AbstractAjaxBehavior
      *            the choices for the term
      * @return JSON array with all choices
      */
-    protected String createJson(final Iterable<T> choices)
-    {
+    protected String createJson(final Iterable<T> choices) {
 
         StringBuilder json = new StringBuilder();
         json.append('[');

@@ -25,6 +25,8 @@ public class Dataset extends AbstractConfig {
 
     private static final IKey<Remote> Remote = newKey("remote", null);
 
+    private static final IKey<Prefetch> Prefetch = newKey("prefetch", null);
+
     public Dataset(String name) {
         withName(name);
     }
@@ -115,6 +117,7 @@ public class Dataset extends AbstractConfig {
         put(Footer, footer);
         return this;
     }
+
     /**
      * Can be a URL to fetch suggestions from when the data provided by local and prefetch is insufficient or,
      * if more configurability is needed, a <a href="https://github.com/twitter/typeahead.js#remote">remote options object</a>.
@@ -125,6 +128,20 @@ public class Dataset extends AbstractConfig {
     public Dataset withRemote(final Remote remote) {
         Args.notNull(remote, "remote");
         put(Remote, remote);
+        return this;
+    }
+
+    /**
+     * Prefetched data is fetched and processed on initialization. If the browser supports
+     * localStorage, the processed data will be cached there to prevent additional
+     * network requests on subsequent page loads.
+     *
+     * @param prefetch Prefetched data is fetched and processed on initialization.
+     * @return this instance for chaining
+     */
+    public Dataset withPrefetch(final Prefetch prefetch) {
+        Args.notNull(prefetch, "prefetch");
+        put(Prefetch, prefetch);
         return this;
     }
 
