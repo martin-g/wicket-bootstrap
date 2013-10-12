@@ -27,7 +27,7 @@ import java.util.List;
  *
  * @author miha
  */
-public class ControlGroup extends Border implements IFormModelUpdateListener {
+public class FormGroup extends Border implements IFormModelUpdateListener {
 
     private final Component label;
     private final Component help;
@@ -40,7 +40,7 @@ public class ControlGroup extends Border implements IFormModelUpdateListener {
      *
      * @param id the wicket component id
      */
-    public ControlGroup(final String id) {
+    public FormGroup(final String id) {
         this(id, Model.of(""), Model.of(""));
     }
 
@@ -50,7 +50,7 @@ public class ControlGroup extends Border implements IFormModelUpdateListener {
      * @param id    the wicket component id
      * @param label the label
      */
-    public ControlGroup(final String id, final IModel<String> label) {
+    public FormGroup(final String id, final IModel<String> label) {
         this(id, label, Model.of(""));
     }
 
@@ -59,7 +59,7 @@ public class ControlGroup extends Border implements IFormModelUpdateListener {
      *
      * @param id the wicket component id
      */
-    public ControlGroup(final String id, final IModel<String> label, final IModel<String> help) {
+    public FormGroup(final String id, final IModel<String> label, final IModel<String> help) {
         super(id, Model.of(""));
 
         this.label = newLabel("label", label);
@@ -116,7 +116,7 @@ public class ControlGroup extends Border implements IFormModelUpdateListener {
         super.onComponentTag(tag);
 
         checkComponentTag(tag, "div");
-        Attributes.addClass(tag, "control-group", stateClassName.getObject());
+        Attributes.addClass(tag, "form-group", stateClassName.getObject());
     }
 
     @Override
@@ -182,7 +182,7 @@ public class ControlGroup extends Border implements IFormModelUpdateListener {
     }
 
     /**
-     * @return all form components that are assigned to this {@link ControlGroup}
+     * @return all form components that are assigned to this {@link FormGroup}
      */
     private List<FormComponent<?>> findFormComponents() {
         final ComponentHierarchyIterator it = getBodyContainer().visitChildren(FormComponent.class);
