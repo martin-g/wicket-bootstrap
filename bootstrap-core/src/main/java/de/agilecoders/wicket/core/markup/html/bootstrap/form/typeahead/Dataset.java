@@ -4,6 +4,8 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.common.AbstractConfig;
 import de.agilecoders.wicket.core.util.Json;
 import org.apache.wicket.util.lang.Args;
 
+import java.util.List;
+
 /**
  *
  */
@@ -26,6 +28,8 @@ public class Dataset extends AbstractConfig {
     private static final IKey<Remote> Remote = newKey("remote", null);
 
     private static final IKey<Prefetch> Prefetch = newKey("prefetch", null);
+
+    private static final IKey<List> Local = newKey("local", null);
 
     public Dataset(String name) {
         withName(name);
@@ -142,6 +146,18 @@ public class Dataset extends AbstractConfig {
     public Dataset withPrefetch(final Prefetch prefetch) {
         Args.notNull(prefetch, "prefetch");
         put(Prefetch, prefetch);
+        return this;
+    }
+
+    /**
+     * A static list of <a href="https://github.com/twitter/typeahead.js#datum">datums</a>.
+     *
+     * @param local A static list of <a href="https://github.com/twitter/typeahead.js#datum">datums</a>..
+     * @return this instance for chaining
+     */
+    public <T> Dataset withLocal(final List<T> local) {
+        Args.notEmpty(local, "local");
+        put(Local, local);
         return this;
     }
 

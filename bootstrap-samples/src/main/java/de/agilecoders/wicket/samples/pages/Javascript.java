@@ -151,7 +151,7 @@ public class Javascript extends BasePage {
             protected Iterable<String> getChoices(String input) {
                 List<String> choices = Lists.newArrayList();
                 for (String item : dataSource) {
-                    if (Strings.isEmpty(input) || item.toLowerCase().contains(input.toLowerCase())) {
+                    if (Strings.isEmpty(input) || item.toLowerCase().startsWith(input.toLowerCase())) {
                         choices.add(item);
                     }
                 }
@@ -166,7 +166,8 @@ public class Javascript extends BasePage {
             }
         };
         typeahead.size(LargeScreenSpanType.SPAN3);
-        typeahead.remote(true);
+//        typeahead.remote(true);
+        dataset.withLocal(dataSource);
 
         return typeahead;
     }
