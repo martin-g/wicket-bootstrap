@@ -20,7 +20,6 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.NavbarAjaxLink;
 import de.agilecoders.wicket.core.markup.html.bootstrap.tabs.AjaxLazyLoadTextContentTab;
 import de.agilecoders.wicket.core.markup.html.bootstrap.tabs.Collapsible;
 import de.agilecoders.wicket.core.markup.html.bootstrap.tabs.TextContentTab;
-import de.agilecoders.wicket.core.util.Json;
 import de.agilecoders.wicket.samples.panels.pagination.AjaxPaginationPanel;
 import de.agilecoders.wicket.samples.panels.pagination.PaginationPanel;
 import org.apache.wicket.Component;
@@ -114,7 +113,8 @@ public class Javascript extends BasePage {
 
         add(newCarousel("carousel"));
 
-        add(newTypeahead("typeahead"));
+        add(newLocalTypeahead("localTypeahead"));
+        add(newRemoteTypeahead("remoteTypeahead"));
     }
 
     /**
@@ -123,30 +123,47 @@ public class Javascript extends BasePage {
      * @param markupId The component id
      * @return new typeahead instance
      */
-    private Component newTypeahead(final String markupId) {
+    private Typeahead<String> newLocalTypeahead(final String markupId) {
+        final List<String> dataSource = Lists.newArrayList("abc", "def", "ghi");
+
+        Dataset dataset = new Dataset("demoLocal");
+        dataset.withLocal(dataSource);
+        final Typeahead<String> typeahead = new Typeahead<String>(markupId, dataset);
+
+        return typeahead;
+    }
+
+
+    /**
+     * creates a new typeahead instance
+     *
+     * @param id The component id
+     * @return new typeahead instance
+     */
+    private Component newRemoteTypeahead(final String id) {
         final List<String> dataSource = Lists.newArrayList(
-                        "Alabama", "Alaska", "Arizona", "Arkansas",
-                        "California", "Colorado", "Connecticut",
-                        "Delaware", "Florida", "Georgia", "Hawaii",
-                        "Idaho", "Illinois", "Indiana", "Iowa", "Kansas",
-                        "Kentucky", "Louisiana", "Maine", "Maryland",
-                        "Massachusetts", "Michigan", "Minnesota",
-                        "Mississippi", "Missouri", "Montana", "Nebraska",
-                        "Nevada", "New Hampshire", "New Jersey",
-                        "New Mexico", "New York", "North Dakota",
-                        "North Carolina", "Ohio", "Oklahoma", "Oregon",
-                        "Pennsylvania", "Rhode Island", "South Carolina",
-                        "South Dakota", "Tennessee", "Texas", "Utah",
-                        "Vermont", "Virginia", "Washington",
-                        "West Virginia", "Wisconsin", "Wyoming"
-                );
+                "Alabama", "Alaska", "Arizona", "Arkansas",
+                "California", "Colorado", "Connecticut",
+                "Delaware", "Florida", "Georgia", "Hawaii",
+                "Idaho", "Illinois", "Indiana", "Iowa", "Kansas",
+                "Kentucky", "Louisiana", "Maine", "Maryland",
+                "Massachusetts", "Michigan", "Minnesota",
+                "Mississippi", "Missouri", "Montana", "Nebraska",
+                "Nevada", "New Hampshire", "New Jersey",
+                "New Mexico", "New York", "North Dakota",
+                "North Carolina", "Ohio", "Oklahoma", "Oregon",
+                "Pennsylvania", "Rhode Island", "South Carolina",
+                "South Dakota", "Tennessee", "Texas", "Utah",
+                "Vermont", "Virginia", "Washington",
+                "West Virginia", "Wisconsin", "Wyoming"
+        );
 
         Dataset dataset = new Dataset("demo");
-//        dataset.withTemplate("<p>--<strong>{{value}}</strong>--</p>");
-//        dataset.withEngine(new Json.RawValue("Hogan"));
+        //        dataset.withTemplate("<p>--<strong>{{value}}</strong>--</p>");
+        //        dataset.withEngine(new Json.RawValue("Hogan"));
         dataset.withHeader("<strong>Header</strong>");
         dataset.withFooter("<em>Footer</em>");
-        final Typeahead<String> typeahead = new Typeahead<String>(markupId, dataset) {
+        final Typeahead<String> typeahead = new Typeahead<String>(id, dataset) {
             @Override
             protected Iterable<String> getChoices(String input) {
                 List<String> choices = Lists.newArrayList();
@@ -165,9 +182,7 @@ public class Javascript extends BasePage {
                 response.render(CssHeaderItem.forReference(new CssResourceReference(Javascript.class, "css/typeahead-demo.css")));
             }
         };
-        typeahead.size(LargeScreenSpanType.SPAN3);
-//        typeahead.remote(true);
-        dataset.withLocal(dataSource);
+        typeahead.remote(true);
 
         return typeahead;
     }
