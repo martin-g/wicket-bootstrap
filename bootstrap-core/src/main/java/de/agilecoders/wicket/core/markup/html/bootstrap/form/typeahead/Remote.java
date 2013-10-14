@@ -18,22 +18,23 @@ public class Remote extends AbstractConfig {
         DEBOUNCE
     }
 
-    private static final IKey<CharSequence> Url = newKey("url", null);
+    protected static final IKey<CharSequence> Url = newKey("url", null);
 
-    private static final IKey<String> Wildcard = newKey("wildcard", "%QUERY");
+    protected static final IKey<String> Wildcard = newKey("wildcard", "%QUERY");
 
-    private static final IKey<String> RateLimit = newKey("rateLimitFn", "debounce");
+    protected static final IKey<String> RateLimit = newKey("rateLimitFn", "debounce");
 
-    private static final IKey<Json.RawValue> Filter = newKey("filter", null);
+    protected static final IKey<Json.RawValue> Filter = newKey("filter", null);
 
-    private static final IKey<Json.RawValue> BeforeSend = newKey("beforeSend", null);
+    protected static final IKey<Json.RawValue> BeforeSend = newKey("beforeSend", null);
 
-    private static final IKey<Integer> MaxParallelRequests = newKey("maxParallelRequests", 6);
+    protected static final IKey<Integer> MaxParallelRequests = newKey("maxParallelRequests", 6);
 
-    private static final IKey<Json.RawValue> Replace = newKey("replace", null);
+    protected static final IKey<Json.RawValue> Replace = newKey("replace", null);
 
     /**
      * A URL to make requests to when when the data provided by local and prefetch is insufficient.
+     * This setting is always set by Typeahead component.
      *
      * @param url mandatory parameter
      * @return this instance for chaining

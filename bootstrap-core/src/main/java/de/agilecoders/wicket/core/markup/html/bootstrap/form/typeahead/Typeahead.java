@@ -15,19 +15,27 @@ import java.util.Collections;
 import static de.agilecoders.wicket.core.util.JQuery.$;
 
 /**
- * A basic, easily extended plugin for quickly creating elegant typeaheads with any {@link TextField}.
- *
- * @author miha
+ * An integration with <a href="https://github.com/twitter/typeahead.js">Twitter Typeahead</a> plugin.
  */
 public class Typeahead<T> extends TextField<T> {
 
+    /**
+     * The configuration for the JavaScript plugin.
+     */
     private final Dataset config;
+
+    /**
+     * A behavior that can be used to set the size of the input field.
+     */
     private final InputBehavior inputBehavior;
 
+    /**
+     * A behavior that provides the callback functionality.
+     */
     private TypeaheadBehavior<T> remoteBehavior;
 
     /**
-     * Construct.
+     * Constructor.
      *
      * @param markupId   The component's id
      * @param config     The typeahead configuration
@@ -37,7 +45,7 @@ public class Typeahead<T> extends TextField<T> {
     }
 
     /**
-     * Construct.
+     * Constructor.
      *
      * @param markupId   The component's id
      * @param model      The textfield value
@@ -76,7 +84,7 @@ public class Typeahead<T> extends TextField<T> {
     }
 
     /**
-     * sets the size of textfield
+     * Disables/Enables the remote functionality for this component
      *
      * @param remote a flag indicating whether the Typeahead uses remote data source
      * @return this instance for chaining

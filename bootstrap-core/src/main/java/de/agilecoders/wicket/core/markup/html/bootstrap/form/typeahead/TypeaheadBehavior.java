@@ -8,7 +8,7 @@ import org.apache.wicket.request.handler.TextRequestHandler;
 import org.apache.wicket.util.string.StringValue;
 
 /**
- * The behavior that returns JSON response for the autocomplete widget.
+ * The behavior that returns JSON response for the typeahead widget.
  */
 public abstract class TypeaheadBehavior<T> extends AbstractAjaxBehavior
 {
