@@ -1933,24 +1933,24 @@ input[type="checkbox"][readonly] {
 // --------------------------
 
 // Warning
-.control-group.warning {
+.form-group.warning {
   .formFieldState(@warningText, @warningText, @warningBackground);
 }
 // Error
-.control-group.error {
+.form-group.error {
   .formFieldState(@errorText, @errorText, @errorBackground);
 }
 // Success
-.control-group.success {
+.form-group.success {
   .formFieldState(@successText, @successText, @successBackground);
 }
 // Success
-.control-group.info {
+.form-group.info {
   .formFieldState(@infoText, @infoText, @infoBackground);
 }
 
 // HTML5 invalid states
-// Shares styles with the .control-group.error above
+// Shares styles with the .form-group.error above
 input:focus:invalid,
 textarea:focus:invalid,
 select:focus:invalid {
@@ -2212,12 +2212,12 @@ input.search-query {
 
 
 // Margin to space out fieldsets
-.control-group {
+.form-group {
   margin-bottom: @baseLineHeight / 2;
 }
 
 // Legend collapses margin, so next element is responsible for spacing
-legend + .control-group {
+legend + .form-group {
   margin-top: @baseLineHeight;
   -webkit-margin-top-collapse: separate;
 }
@@ -2227,7 +2227,7 @@ legend + .control-group {
 
 .form-horizontal {
 // Increase spacing between groups
-  .control-group {
+  .form-group {
     margin-bottom: @baseLineHeight;
     .clearfix();
   }
@@ -2250,7 +2250,7 @@ legend + .control-group {
       *padding-left: @horizontalComponentOffset;
     }
   }
-// Remove bottom margin on block level help text since that's accounted for on .control-group
+// Remove bottom margin on block level help text since that's accounted for on .form-group
   .help-block {
     margin-bottom: 0;
   }

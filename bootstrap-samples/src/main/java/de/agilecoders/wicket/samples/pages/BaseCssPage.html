@@ -893,7 +893,7 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
     <fieldset>
         <legend>Legend</legend>
         <label>Label name</label>
-        <input type="text" placeholder="Type something...">
+        <input type="text" class="form-control" placeholder="Type something...">
         <span class="help-block">Example block-level help text here.</span>
 
         <div class="checkbox">
@@ -909,7 +909,7 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
   &lt;fieldset&gt;
     &lt;legend&gt;Legend&lt;/legend&gt;
     &lt;label&gt;Label name&lt;/label&gt;
-    &lt;input type="text" placeholder="Type something..."&gt;
+    &lt;input type="text" class="form-control" placeholder="Type something..."&gt;
     &lt;span class="help-block"&gt;Example block-level help text here.&lt;/span&gt;
     &lt;div class="checkbox"&gt;
       &lt;label&gt;
@@ -935,8 +935,8 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 
 <form class="bs-docs-example form-inline">
     <div class="form-group">
-        <input type="text" class="input-small" placeholder="Email">
-        <input type="password" class="input-small" placeholder="Password">
+        <input type="text" class="form-control input-sm" placeholder="Email">
+        <input type="password" class="form-control input-sm" placeholder="Password">
 
         <div class="checkbox">
             <label>
@@ -949,8 +949,8 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 <pre class="prettyprint linenums">
 &lt;form class="form-inline"&gt;
   &lt;div class="form-group"&gt;
-      &lt;input type="text" class="input-small" placeholder="Email"&gt;
-      &lt;input type="password" class="input-small" placeholder="Password"&gt;
+      &lt;input type="text" class="form-control input-sm" placeholder="Email"&gt;
+      &lt;input type="password" class="form-control input-sm" placeholder="Password"&gt;
       &lt;div class="checkbox"&gt;
           &lt;label&gt;
             &lt;input type="checkbox"&gt; Remember me
@@ -966,26 +966,26 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 <p>Right align labels and float them to the left to make them appear on the same line as controls. Requires the most markup changes from a default form:</p>
 <ul>
     <li>Add <code>.form-horizontal</code> to the form</li>
-    <li>Wrap labels and controls in <code>.control-group</code></li>
+    <li>Wrap labels and controls in <code>.form-group</code></li>
     <li>Add <code>.control-label</code> to the label</li>
     <li>Wrap any associated controls in <code>.controls</code> for proper alignment</li>
 </ul>
 <form class="bs-docs-example form-horizontal">
-    <div class="control-group">
+    <div class="form-group">
         <label class="control-label" for="inputEmail">Email</label>
 
         <div class="controls">
-            <input type="text" id="inputEmail" placeholder="Email">
+            <input type="text" class="form-control" id="inputEmail" placeholder="Email">
         </div>
     </div>
-    <div class="control-group">
+    <div class="form-group">
         <label class="control-label" for="inputPassword">Password</label>
 
         <div class="controls">
-            <input type="password" id="inputPassword" placeholder="Password">
+            <input type="password" class="form-control"  id="inputPassword" placeholder="Password">
         </div>
     </div>
-    <div class="control-group">
+    <div class="form-group">
         <div class="controls">
             <div class="checkbox">
                 <label>
@@ -998,19 +998,19 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 </form>
 <pre class="prettyprint linenums">
 &lt;form class="form-horizontal"&gt;
-  &lt;div class="control-group"&gt;
+  &lt;div class="form-group"&gt;
     &lt;label class="control-label" for="inputEmail"&gt;Email&lt;/label&gt;
     &lt;div class="controls"&gt;
-      &lt;input type="text" id="inputEmail" placeholder="Email"&gt;
+      &lt;input type="text" class="form-control" id="inputEmail" placeholder="Email"&gt;
     &lt;/div&gt;
   &lt;/div&gt;
-  &lt;div class="control-group"&gt;
+  &lt;div class="form-group"&gt;
     &lt;label class="control-label" for="inputPassword"&gt;Password&lt;/label&gt;
     &lt;div class="controls"&gt;
-      &lt;input type="password" id="inputPassword" placeholder="Password"&gt;
+      &lt;input type="password" class="form-control" id="inputPassword" placeholder="Password"&gt;
     &lt;/div&gt;
   &lt;/div&gt;
-  &lt;div class="control-group"&gt;
+  &lt;div class="form-group"&gt;
     &lt;div class="controls"&gt;
       &lt;div class="checkbox"&gt;
           &lt;label&gt;
@@ -1039,11 +1039,11 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 
 <form class="bs-docs-example form-inline">
     <div class="form-group">
-        <input type="text" placeholder="Text input">
+        <input type="text" class="form-control" placeholder="Text input">
     </div>
 </form>
 <pre class="prettyprint linenums">
-&lt;input type="text" placeholder="Text input"&gt;
+&lt;input type="text" class="form-control" placeholder="Text input"&gt;
 </pre>
 
 <h3>Textarea</h3>
@@ -1052,11 +1052,11 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 
 <form class="bs-docs-example form-inline">
     <div class="form-group">
-        <textarea rows="3"></textarea>
+        <textarea class="form-control" rows="3"></textarea>
     </div>
 </form>
 <pre class="prettyprint linenums">
-&lt;textarea rows="3"&gt;&lt;/textarea&gt;
+&lt;textarea class="form-control" rows="3"&gt;&lt;/textarea&gt;
 </pre>
 
 <h3>Checkboxes and radios</h3>
@@ -1139,7 +1139,7 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 <p>Use the default option or specify a <code>multiple="multiple"</code> to show multiple options at once.</p>
 
 <form class="bs-docs-example">
-    <select>
+    <select class="form-control" >
         <option>1</option>
         <option>2</option>
         <option>3</option>
@@ -1147,7 +1147,7 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
         <option>5</option>
     </select>
     <br>
-    <select multiple="multiple">
+    <select multiple="multiple" class="form-control" >
         <option>1</option>
         <option>2</option>
         <option>3</option>
@@ -1410,11 +1410,11 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 
 <form class="bs-docs-example" style="padding-bottom: 15px;">
     <div class="controls">
-        <input class="input-block-level" type="text" placeholder=".input-block-level">
+        <input class="form-control input-block-level" type="text" placeholder=".input-block-level">
     </div>
 </form>
 <pre class="prettyprint linenums">
-&lt;input class="input-block-level" type="text" placeholder=".input-block-level"&gt;
+&lt;input class="form-control input-block-level" type="text" placeholder=".input-block-level"&gt;
 </pre>
 
 <h4>Relative sizing</h4>
@@ -1458,24 +1458,24 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 
 <form class="bs-docs-example" style="padding-bottom: 15px;">
     <div class="controls docs-input-sizes">
-        <input class="col-lg-1" type="text" placeholder=".col-lg-1">
-        <input class="col-lg-2" type="text" placeholder=".col-lg-2">
-        <input class="col-lg-3" type="text" placeholder=".col-lg-3">
-        <select class="col-lg-1">
+        <input class="form-control col-lg-1" type="text" placeholder=".col-lg-1">
+        <input class="form-control col-lg-2" type="text" placeholder=".col-lg-2">
+        <input class="form-control col-lg-3" type="text" placeholder=".col-lg-3">
+        <select class="form-control col-lg-1">
             <option>1</option>
             <option>2</option>
             <option>3</option>
             <option>4</option>
             <option>5</option>
         </select>
-        <select class="col-lg-2">
+        <select class="form-control col-lg-2">
             <option>1</option>
             <option>2</option>
             <option>3</option>
             <option>4</option>
             <option>5</option>
         </select>
-        <select class="col-lg-3">
+        <select class="form-control col-lg-3">
             <option>1</option>
             <option>2</option>
             <option>3</option>
@@ -1485,16 +1485,16 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
     </div>
 </form>
 <pre class="prettyprint linenums">
-&lt;input class="col-lg-1" type="text" placeholder=".col-lg-1"&gt;
-&lt;input class="col-lg-2" type="text" placeholder=".col-lg-2"&gt;
-&lt;input class="col-lg-3" type="text" placeholder=".col-lg-3"&gt;
-&lt;select class="col-lg-1"&gt;
+&lt;input class="form-control col-lg-1" type="text" placeholder=".col-lg-1"&gt;
+&lt;input class="form-control col-lg-2" type="text" placeholder=".col-lg-2"&gt;
+&lt;input class="form-control col-lg-3" type="text" placeholder=".col-lg-3"&gt;
+&lt;select class="form-control col-lg-1"&gt;
   ...
 &lt;/select&gt;
-&lt;select class="col-lg-2"&gt;
+&lt;select class="form-control col-lg-2"&gt;
   ...
 &lt;/select&gt;
-&lt;select class="col-lg-3"&gt;
+&lt;select class="form-control col-lg-3"&gt;
   ...
 &lt;/select&gt;
 </pre>
@@ -1506,23 +1506,23 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 
 <form class="bs-docs-example form-inline">
     <div class="form-group">
-        <input type="text"/> <span class="help-inline">Inline help text</span>
+        <input type="text" class="form-control" /> <span class="help-inline">Inline help text</span>
     </div>
 </form>
 <pre class="prettyprint linenums">
-&lt;input type="text"&gt;&lt;span class="help-inline"&gt;Inline help text&lt;/span&gt;
+&lt;input type="text" class="form-control" &gt;&lt;span class="help-inline"&gt;Inline help text&lt;/span&gt;
 </pre>
 
 <h4>Block help</h4>
 
 <form class="bs-docs-example form-inline">
     <div class="form-group">
-        <input type="text"/>
+        <input type="text" class="form-control" />
         <span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>
     </div>
 </form>
 <pre class="prettyprint linenums">
-&lt;input type="text"&gt;&lt;span class="help-block"&gt;A longer block of help text that breaks onto a new line and may extend beyond one line.&lt;/span&gt;
+&lt;input type="text" class="form-control" &gt;&lt;span class="help-block"&gt;A longer block of help text that breaks onto a new line and may extend beyond one line.&lt;/span&gt;
 </pre>
 
 
@@ -1538,10 +1538,10 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 <p>We remove the default <code>outline</code> styles on some form controls and apply a <code>box-shadow</code> in its place for <code>:focus</code>.</p>
 
 <form class="bs-docs-example form-inline">
-    <input class="input-xlarge focused" id="focusedInput" type="text" value="This is focused...">
+    <input class="form-control input-lg focused" id="focusedInput" type="text" value="This is focused...">
 </form>
 <pre class="prettyprint linenums">
-&lt;input class="input-xlarge" id="focusedInput" type="text" value="This is focused..."&gt;
+&lt;input class="form-control input-lg" id="focusedInput" type="text" value="This is focused..."&gt;
 </pre>
 
 <h3>Disabled inputs</h3>
@@ -1550,70 +1550,62 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 
 <form class="bs-docs-example form-inline">
     <div class="form-group">
-        <input class="input-xlarge" id="disabledInput" type="text" placeholder="Disabled input here..." disabled/>
+        <input class="form-control input-lg" id="disabledInput" type="text" placeholder="Disabled input here..." disabled/>
     </div>
 </form>
 <pre class="prettyprint linenums">
-&lt;input class="input-xlarge" id="disabledInput" type="text" placeholder="Disabled input here..." disabled&gt;
+&lt;input class="form-control input-lg" id="disabledInput" type="text" placeholder="Disabled input here..." disabled&gt;
 </pre>
 
 <h3>Validation states</h3>
 
-<p>Bootstrap includes validation styles for error, warning, info, and success messages. To use, add the appropriate class to the surrounding <code>.control-group</code>.</p>
+<p>Bootstrap includes validation styles for error, warning, info, and success messages. To use, add the appropriate class to the surrounding <code>.form-group</code>.</p>
 
 <form class="bs-docs-example form-horizontal">
-    <div class="control-group warning">
+    <div class="form-group has-warning">
         <label class="control-label" for="inputWarning">Input with warning</label>
 
         <div class="controls">
-            <input type="text" id="inputWarning">
+            <input type="text" class="form-control" id="inputWarning">
             <span class="help-inline">Something may have gone wrong</span>
         </div>
     </div>
-    <div class="control-group error">
+    <div class="form-group has-error">
         <label class="control-label" for="inputError">Input with error</label>
 
         <div class="controls">
-            <input type="text" id="inputError">
+            <input type="text" class="form-control" id="inputError">
             <span class="help-inline">Please correct the error</span>
         </div>
     </div>
-    <div class="control-group info">
-        <label class="control-label" for="inputInfo">Input with info</label>
-
-        <div class="controls">
-            <input type="text" id="inputInfo">
-            <span class="help-inline">Username is taken</span>
-        </div>
-    </div>
-    <div class="control-group success">
+    <div class="form-group has-success">
         <label class="control-label" for="inputSuccess">Input with success</label>
 
         <div class="controls">
-            <input type="text" id="inputSuccess">
+            <input type="text" class="form-control" id="inputSuccess">
             <span class="help-inline">Woohoo!</span>
         </div>
     </div>
 </form>
 <pre class="prettyprint linenums">
-&lt;div class="control-group warning"&gt;
+&lt;div class="form-group has-warning"&gt;
   &lt;label class="control-label" for="inputWarning"&gt;Input with warning&lt;/label&gt;
   &lt;div class="controls"&gt;
-    &lt;input type="text" id="inputWarning"&gt;
+    &lt;input type="text" class="form-control" id="inputWarning"&gt;
     &lt;span class="help-inline"&gt;Something may have gone wrong&lt;/span&gt;
   &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="control-group error"&gt;
+&lt;div class="form-group has-error"&gt;
   &lt;label class="control-label" for="inputError"&gt;Input with error&lt;/label&gt;
   &lt;div class="controls"&gt;
-    &lt;input type="text" id="inputError"&gt;
+    &lt;input type="text" class="form-control" id="inputError"&gt;
     &lt;span class="help-inline"&gt;Please correct the error&lt;/span&gt;
   &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="control-group success"&gt;
+&lt;div class="form-group has-success"&gt;
   &lt;label class="control-label" for="inputSuccess"&gt;Input with success&lt;/label&gt;
   &lt;div class="controls"&gt;
-    &lt;input type="text" id="inputSuccess"&gt;
+    &lt;input type="text" class="form-control" id="inputSuccess"&gt;
     &lt;span class="help-inline"&gt;Woohoo!&lt;/span&gt;
   &lt;/div&gt;
 &lt;/div&gt;
@@ -2119,7 +2111,7 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 <h4>Form fields</h4>
 
 <form class="bs-docs-example form-horizontal">
-    <div class="control-group">
+    <div class="form-group">
         <label class="control-label" for="inputIcon">Email address</label>
 
         <div class="controls">
@@ -2130,7 +2122,7 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
     </div>
 </form>
 <pre class="prettyprint linenums">
-&lt;div class="control-group"&gt;
+&lt;div class="form-group"&gt;
   &lt;label class="control-label" for="inputIcon"&gt;Email address&lt;/label&gt;
   &lt;div class="controls"&gt;
     &lt;div class="input-group"&gt;

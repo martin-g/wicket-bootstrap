@@ -20,7 +20,7 @@ import java.util.List;
  * for feedback messages.
  *
  * @author miha
- * @deprecated please use {@link ControlGroup} instead
+ * @deprecated please use {@link FormGroup} instead
  */
 @Deprecated
 public class ControlGroupBorder extends Border {
