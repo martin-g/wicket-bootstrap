@@ -37,6 +37,12 @@
         </dependency>
 
         <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>typeaheadjs</artifactId>
+            <version>0.9.3</version>
+        </dependency>
+
+        <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
             <version>${com.fasterxml.jackson.version}</version>
