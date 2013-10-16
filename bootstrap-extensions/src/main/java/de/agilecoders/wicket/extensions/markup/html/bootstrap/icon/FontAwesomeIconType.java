@@ -384,4 +384,9 @@ public class FontAwesomeIconType extends IconType {
     FontAwesomeIconType(final String... cssClassName) {
         super(Strings.join(" ", cssClassName));
     }
+
+    @Override
+    public String cssClassName() {
+        return "icon icon-" + cssClassName;
+    }
 }
