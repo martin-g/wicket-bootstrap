@@ -1,4 +1,4 @@
-package de.agilecoders.wicket.core.markup.html.bootstrap.form.typeahead;
+package de.agilecoders.wicket.extensions.markup.html.bootstrap.form.typeahead;
 
 import org.apache.wicket.behavior.AbstractAjaxBehavior;
 import org.apache.wicket.request.IRequestParameters;

@@ -12,7 +12,6 @@ import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fasterxml.jackson.databind.ser.std.RawSerializer;
 import de.agilecoders.wicket.core.markup.html.bootstrap.common.AbstractConfig;
-import de.agilecoders.wicket.core.markup.html.bootstrap.form.typeahead.IDataSource;
 import org.apache.wicket.util.io.IClusterable;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.string.Strings;
@@ -47,12 +46,6 @@ public final class Json {
             @Override
             public void serialize(ConfigModel value, JsonGenerator jsonGenerator, SerializerProvider provider) throws IOException {
                 jsonGenerator.writeString(value.getObject());
-            }
-        });
-        wbModule.addSerializer(IDataSource.class, new JsonSerializer<IDataSource>() {
-            @Override
-            public void serialize(IDataSource value, JsonGenerator jsonGenerator, SerializerProvider provider) throws IOException {
-                jsonGenerator.writeObject(stringify(value.load()));
             }
         });
         wbModule.addSerializer(AbstractConfig.class, new JsonSerializer<AbstractConfig>() {

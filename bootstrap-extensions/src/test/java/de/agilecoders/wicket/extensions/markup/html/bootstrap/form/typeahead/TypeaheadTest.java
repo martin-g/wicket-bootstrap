@@ -1,6 +1,6 @@
-package de.agilecoders.wicket.core.markup.html.bootstrap.form.typeahead;
+package de.agilecoders.wicket.extensions.markup.html.bootstrap.form.typeahead;
 
-import de.agilecoders.wicket.core.WicketApplicationTest;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.WicketApplicationTest;
 import org.apache.wicket.markup.Markup;
 import org.junit.Test;
 

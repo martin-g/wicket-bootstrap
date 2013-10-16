@@ -1,4 +1,4 @@
-package de.agilecoders.wicket.core.markup.html.bootstrap.form.typeahead;
+package de.agilecoders.wicket.extensions.markup.html.bootstrap.form.typeahead;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.common.AbstractConfig;
 import de.agilecoders.wicket.core.util.Json;
