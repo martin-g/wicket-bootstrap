@@ -3,7 +3,6 @@ package de.agilecoders.wicket.core.markup.html.bootstrap.image;
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.CssClassNameAppender;
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNameModifier;
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNameProvider;
-import org.apache.wicket.util.lang.Args;
 
 /**
  * References all available icons inside the icon sprite.
@@ -153,7 +152,7 @@ public class IconType implements ICssClassNameProvider, ICssClassNameModifier {
     public static final IconType briefcase = new IconType("briefcase");
     public static final IconType fullscreen = new IconType("fullscreen");
 
-    protected final String cssClassName;
+    private final String cssClassName;
 
     /**
      * Constructor.
@@ -161,7 +160,6 @@ public class IconType implements ICssClassNameProvider, ICssClassNameModifier {
      * @param cssClassName The css class name of the icon reference
      */
     public IconType(String cssClassName) {
-        Args.notEmpty(cssClassName, "cssClassName");
         this.cssClassName = cssClassName.toLowerCase();
     }
 
