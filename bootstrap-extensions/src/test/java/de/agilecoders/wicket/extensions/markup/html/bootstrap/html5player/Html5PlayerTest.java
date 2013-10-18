@@ -1,11 +1,7 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.html5player;
 
 import com.google.common.collect.Lists;
-
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.WicketApplicationTest;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.html5player.Html5Player;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.html5player.Video;
-
 import org.apache.wicket.model.Model;
 import org.junit.Test;
 

@@ -32,6 +32,11 @@ public abstract class AbstractConfig implements IClusterable {
         return Json.stringify(config);
     }
 
+    @Override
+    public String toString() {
+        return toJsonString();
+    }
+
     /**
      * @return a copy of all configurations
      */
@@ -96,7 +101,7 @@ public abstract class AbstractConfig implements IClusterable {
      */
     @SuppressWarnings("unchecked")
     protected final <T> T get(final IKey<T> key) {
-        T value = (T) config.get(key);
+        T value = (T) config.get(key.key());
 
         return value != null ? value : key.getDefaultValue();
     }

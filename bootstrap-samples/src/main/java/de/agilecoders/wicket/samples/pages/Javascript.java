@@ -12,11 +12,9 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.carousel.CarouselImage;
 import de.agilecoders.wicket.core.markup.html.bootstrap.carousel.ICarouselImage;
 import de.agilecoders.wicket.core.markup.html.bootstrap.components.PopoverBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.components.TooltipBehavior;
-import de.agilecoders.wicket.core.markup.html.bootstrap.form.IDataSource;
-import de.agilecoders.wicket.core.markup.html.bootstrap.form.Typeahead;
-import de.agilecoders.wicket.core.markup.html.bootstrap.form.TypeaheadConfig;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.typeahead.Dataset;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.typeahead.Typeahead;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
-import de.agilecoders.wicket.core.markup.html.bootstrap.layout.col.LargeScreenSpanType;
 import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.NavbarAjaxLink;
 import de.agilecoders.wicket.core.markup.html.bootstrap.tabs.AjaxLazyLoadTextContentTab;
 import de.agilecoders.wicket.core.markup.html.bootstrap.tabs.Collapsible;
@@ -27,10 +25,14 @@ import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.extensions.markup.html.tabs.ITab;
+import org.apache.wicket.markup.head.CssHeaderItem;
+import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.AbstractLink;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
+import org.apache.wicket.request.resource.CssResourceReference;
+import org.apache.wicket.util.string.Strings;
 import org.apache.wicket.util.time.Duration;
 import org.wicketstuff.annotation.mount.MountPath;
 
@@ -110,7 +112,8 @@ public class Javascript extends BasePage {
 
         add(newCarousel("carousel"));
 
-        add(newTypeahead("typeahead"));
+        add(newLocalTypeahead("localTypeahead"));
+        add(newRemoteTypeahead("remoteTypeahead"));
     }
 
     /**
@@ -119,31 +122,66 @@ public class Javascript extends BasePage {
      * @param markupId The component id
      * @return new typeahead instance
      */
-    private Component newTypeahead(final String markupId) {
-        final IDataSource<String> dataSource = new IDataSource<String>() {
+    private Typeahead<String> newLocalTypeahead(final String markupId) {
+        final List<String> dataSource = Lists.newArrayList("abc", "def", "ghi");
+
+        Dataset dataset = new Dataset("demoLocal");
+        dataset.withLocal(dataSource);
+        final Typeahead<String> typeahead = new Typeahead<String>(markupId, dataset);
+
+        return typeahead;
+    }
+
+
+    /**
+     * creates a new typeahead instance
+     *
+     * @param id The component id
+     * @return new typeahead instance
+     */
+    private Component newRemoteTypeahead(final String id) {
+        final List<String> dataSource = Lists.newArrayList(
+                "Alabama", "Alaska", "Arizona", "Arkansas",
+                "California", "Colorado", "Connecticut",
+                "Delaware", "Florida", "Georgia", "Hawaii",
+                "Idaho", "Illinois", "Indiana", "Iowa", "Kansas",
+                "Kentucky", "Louisiana", "Maine", "Maryland",
+                "Massachusetts", "Michigan", "Minnesota",
+                "Mississippi", "Missouri", "Montana", "Nebraska",
+                "Nevada", "New Hampshire", "New Jersey",
+                "New Mexico", "New York", "North Dakota",
+                "North Carolina", "Ohio", "Oklahoma", "Oregon",
+                "Pennsylvania", "Rhode Island", "South Carolina",
+                "South Dakota", "Tennessee", "Texas", "Utah",
+                "Vermont", "Virginia", "Washington",
+                "West Virginia", "Wisconsin", "Wyoming"
+        );
+
+        Dataset dataset = new Dataset("demo");
+        //        dataset.withTemplate("<p>--<strong>{{value}}</strong>--</p>");
+        //        dataset.withEngine(new Json.RawValue("Hogan"));
+        dataset.withHeader("<strong>Header</strong>");
+        dataset.withFooter("<em>Footer</em>");
+        final Typeahead<String> typeahead = new Typeahead<String>(id, dataset) {
             @Override
-            public List<String> load() {
-                return Lists.newArrayList(
-                        "Alabama", "Alaska", "Arizona", "Arkansas",
-                        "California", "Colorado", "Connecticut",
-                        "Delaware", "Florida", "Georgia", "Hawaii",
-                        "Idaho", "Illinois", "Indiana", "Iowa", "Kansas",
-                        "Kentucky", "Louisiana", "Maine", "Maryland",
-                        "Massachusetts", "Michigan", "Minnesota",
-                        "Mississippi", "Missouri", "Montana", "Nebraska",
-                        "Nevada", "New Hampshire", "New Jersey",
-                        "New Mexico", "New York", "North Dakota",
-                        "North Carolina", "Ohio", "Oklahoma", "Oregon",
-                        "Pennsylvania", "Rhode Island", "South Carolina",
-                        "South Dakota", "Tennessee", "Texas", "Utah",
-                        "Vermont", "Virginia", "Washington",
-                        "West Virginia", "Wisconsin", "Wyoming"
-                );
+            protected Iterable<String> getChoices(String input) {
+                List<String> choices = Lists.newArrayList();
+                for (String item : dataSource) {
+                    if (Strings.isEmpty(input) || item.toLowerCase().startsWith(input.toLowerCase())) {
+                        choices.add(item);
+                    }
+                }
+                return choices;
+            }
+
+            @Override
+            public void renderHead(IHeaderResponse response) {
+                super.renderHead(response);
+
+                response.render(CssHeaderItem.forReference(new CssResourceReference(Javascript.class, "css/typeahead-demo.css")));
             }
         };
-
-        final Typeahead<String> typeahead = new Typeahead<String>(markupId, dataSource, new TypeaheadConfig().withNumberOfItems(4));
-        typeahead.size(LargeScreenSpanType.SPAN3);
+        typeahead.remote(true);
 
         return typeahead;
     }
