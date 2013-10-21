@@ -50,7 +50,6 @@ public class TourBehavior extends Behavior {
             for (TourStep step : steps) {
                 js.append("tour.addStep(").append(step.toJsonString()).append(");");
             }
-            js.append("tour.start();");
             js.append(createExtraConfig());
             js.append("})()");
             response.render(OnDomReadyHeaderItem.forScript(js));
@@ -58,11 +57,11 @@ public class TourBehavior extends Behavior {
     }
 
     /**
-     * Allows contributing more JavaScript related to the tour.
+     * Allows contributing more JavaScript related to the tour. By default starts the tour.
      * @return extra tour related JavaScript
      */
     protected CharSequence createExtraConfig()
     {
-        return "";
+        return "tour.start();";
     }
 }
