@@ -37,6 +37,7 @@
     </modules>
 
     <properties>
+        <!--<mvn.build.java.version>1.6</mvn.build.java.version>-->
         <github.global.server>github</github.global.server>
 
         <bootstrap.version>3.0.0</bootstrap.version>

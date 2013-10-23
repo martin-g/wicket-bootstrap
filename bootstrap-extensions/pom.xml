@@ -16,6 +16,7 @@
 
     <properties>
         <jqueryui.version>1.10.2-1</jqueryui.version>
+        <typeaheadjs.version>0.9.3</typeaheadjs.version>
     </properties>
 
     <dependencies>
@@ -55,6 +56,12 @@
             <groupId>org.webjars</groupId>
             <artifactId>jquery-ui</artifactId>
             <version>${jqueryui.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>typeaheadjs</artifactId>
+            <version>${typeaheadjs.version}</version>
         </dependency>
 
         <dependency>
