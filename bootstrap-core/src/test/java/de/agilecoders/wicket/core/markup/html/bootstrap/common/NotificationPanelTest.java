@@ -72,7 +72,7 @@ public class NotificationPanelTest  extends WicketApplicationTest{
         startComponentInPage(panel);
         TagTester t = tester().getTagByWicketId("message");
 
-        assertCssClass(t, "alert", "alert-error");
+        assertCssClass(t, "alert", "alert-danger");
     }
 
     @Test

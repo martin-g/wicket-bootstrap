@@ -33,7 +33,7 @@ public class Alert extends GenericPanel<String> {
      * The {@code Type} enum defines all possible alert types.
      */
     public enum Type implements ICssClassNameProvider {
-        Error, Success, Info, Warning;
+        Danger, Success, Info, Warning;
 
         @Override
         public String cssClassName() {
@@ -42,7 +42,7 @@ public class Alert extends GenericPanel<String> {
 
         public static Type from(String level) {
             if (level.equalsIgnoreCase("ERROR") || level.equalsIgnoreCase("FATAL")) {
-                return Error;
+                return Danger;
             } else if (level.equalsIgnoreCase("WARNING")) {
                 return Warning;
             } else if (level.equalsIgnoreCase("SUCCESS")) {
