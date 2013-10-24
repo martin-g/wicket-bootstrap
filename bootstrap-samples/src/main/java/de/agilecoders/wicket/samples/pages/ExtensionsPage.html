@@ -145,11 +145,48 @@
                             <p>A better looking File Upload input field by <a target="_blank" href="http://jasny.github.com/bootstrap/javascript.html#fileupload">Jasny Bootstrap extensions</a>. See issue #<a href="https://github.com/l0rdn1kk0n/wicket-bootstrap/issues/130">130</a>.</p>
 
                             <div class="bs-docs-example">
+                                <h4>Demo 1</h4>
                                 <div class="fileupload fileupload-new" data-provides="fileupload">
                                     <div class="input-group">
                                         <div class="form-control uneditable-input span3"><i class="glyphicon glyphicon-file fileupload-exists"></i> <span class="fileupload-preview"></span></div>
                                         <span class="input-group-addon btn btn-default btn-file"><span class="fileupload-new">Select file</span><span class="fileupload-exists">Change</span><input type="file" wicket:id="fileUpload"/></span>
                                         <a href="#" class="input-group-addon btn btn-default fileupload-exists" data-dismiss="fileupload">Remove</a>
+                                    </div>
+                                </div>
+
+                                <br/>
+                                <h4>Demo 2</h4>
+                                <div class="fileupload fileupload-new" data-provides="fileupload">
+                                    <span class="btn btn-default btn-file"><span class="fileupload-new">Select file</span><span class="fileupload-exists">Change</span><input type="file"></span>
+                                    <span class="fileupload-preview"></span>
+                                    <a href="#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none">&times;</a>
+                                </div>
+
+                                <br/>
+                                <div class="alert alert-warning">
+                                    <p>Image preview only works in IE10+, FF3.6+, Safari6.0+, Chrome6.0+ and Opera11.1+. In older browsers the filename is shown instead.</p>
+                                </div>
+
+                                <h4>Demo 3 - Image upload</h4>
+                                <p>When uploading an image, it's possible to show a thumbnail instead of the filename.</p>
+                                <div class="fileupload fileupload-new" data-provides="fileupload">
+                                    <div class="fileupload-preview thumbnail" style="width: 200px; height: 150px;"></div>
+                                    <div>
+                                        <span class="btn btn-default btn-file"><span class="fileupload-new">Select image</span><span class="fileupload-exists">Change</span><input type="file"></span>
+                                        <a href="#" class="btn btn-default fileupload-exists" data-dismiss="fileupload">Remove</a>
+                                    </div>
+                                </div>
+
+                                <br/>
+                                <h4>Demo 3 - Image upload 2</h4>
+                                <div class="fileupload fileupload-new" data-provides="fileupload">
+                                    <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
+                                        <img alt="Apache Wicket" src="http://wicket.apache.org/guide/img/apache-wicket.png">
+                                    </div>
+                                    <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
+                                    <div>
+                                        <span class="btn btn-default btn-file"><span class="fileupload-new">Select image</span><span class="fileupload-exists">Change</span><input type="file"></span>
+                                        <a href="#" class="btn btn-default fileupload-exists" data-dismiss="fileupload">Remove</a>
                                     </div>
                                 </div>
 
