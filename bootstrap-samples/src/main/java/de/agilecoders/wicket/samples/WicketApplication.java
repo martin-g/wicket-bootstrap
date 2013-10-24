@@ -16,6 +16,10 @@ import de.agilecoders.wicket.extensions.markup.html.bootstrap.html5player.Html5P
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.html5player.Html5PlayerJavaScriptReference;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.OpenWebIconsCssReference;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.jqueryui.JQueryUICoreJavaScriptReference;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.jqueryui.JQueryUIDraggableJavaScriptReference;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.jqueryui.JQueryUIMouseJavaScriptReference;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.jqueryui.JQueryUIResizableJavaScriptReference;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.jqueryui.JQueryUIWidgetJavaScriptReference;
 import de.agilecoders.wicket.extensions.request.StaticResourceRewriteMapper;
 import de.agilecoders.wicket.less.BootstrapLess;
 import de.agilecoders.wicket.samples.assets.base.ApplicationJavaScript;
@@ -25,6 +29,7 @@ import de.agilecoders.wicket.themes.markup.html.google.GoogleTheme;
 import de.agilecoders.wicket.themes.markup.html.metro.MetroTheme;
 import de.agilecoders.wicket.themes.markup.html.wicket.WicketTheme;
 import de.agilecoders.wicket.themes.settings.BootswatchThemeProvider;
+import de.agilecoders.wicket.webjars.request.resource.WebjarsJavaScriptResourceReference;
 import net.ftlines.wicketsource.WicketSource;
 import org.apache.wicket.Application;
 import org.apache.wicket.Page;
@@ -146,6 +151,10 @@ public class WicketApplication extends WebApplication {
 
         getResourceBundles().addJavaScriptBundle(WicketApplication.class, "bootstrap-extensions.js",
                                                  JQueryUICoreJavaScriptReference.instance(),
+                                                 JQueryUIWidgetJavaScriptReference.instance(),
+                                                 JQueryUIMouseJavaScriptReference.instance(),
+                                                 JQueryUIDraggableJavaScriptReference.instance(),
+                                                 JQueryUIResizableJavaScriptReference.instance(),
                                                  Html5PlayerJavaScriptReference.instance()
         );
 
