@@ -9,36 +9,34 @@ import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import java.util.List;
 
 /**
- * core jquery ui package (core, widget, mouse, position, draggable, resizeable)
- *
- * @author miha
+ * JavaScript resource reference for jqueryui.widget.js
  */
-public class JQueryUICoreJavaScriptReference extends WebjarsJavaScriptResourceReference {
+public class JQueryUIWidgetJavaScriptReference extends WebjarsJavaScriptResourceReference {
     private static final long serialVersionUID = 1L;
 
     /**
      * Singleton instance of this reference
      */
-    private static final JQueryUICoreJavaScriptReference INSTANCE = new JQueryUICoreJavaScriptReference();
+    private static final JQueryUIWidgetJavaScriptReference INSTANCE = new JQueryUIWidgetJavaScriptReference();
 
     /**
      * @return the single instance of the resource reference
      */
-    public static JQueryUICoreJavaScriptReference instance() {
+    public static JQueryUIWidgetJavaScriptReference instance() {
         return INSTANCE;
     }
 
     /**
      * Private constructor.
      */
-    private JQueryUICoreJavaScriptReference() {
-        super("jquery-ui/current/ui/minified/jquery.ui.core.min.js");
+    private JQueryUIWidgetJavaScriptReference() {
+        super("jquery-ui/current/ui/minified/jquery.ui.widget.min.js");
     }
 
     @Override
     public Iterable<? extends HeaderItem> getDependencies() {
         final List<HeaderItem> dependencies = Lists.newArrayList(super.getDependencies());
-        dependencies.add(JavaScriptHeaderItem.forReference(Application.get().getJavaScriptLibrarySettings().getJQueryReference()));
+        dependencies.add(JQueryUICoreJavaScriptReference.asHeaderItem());
 
         return dependencies;
     }

@@ -1,7 +1,8 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.behavior;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.jqueryui.JQueryUICoreJavaScriptReference;
+import de.agilecoders.wicket.core.util.References;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.jqueryui.JQueryUIDraggableJavaScriptReference;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.head.IHeaderResponse;
 
@@ -36,7 +37,7 @@ public class Draggable extends BootstrapBaseBehavior {
     public void renderHead(Component component, IHeaderResponse headerResponse) {
         super.renderHead(component, headerResponse);
 
-        headerResponse.render(JQueryUICoreJavaScriptReference.asHeaderItem());
+        References.renderWithFilter(headerResponse, JQueryUIDraggableJavaScriptReference.instance());
         headerResponse.render($(component).chain("draggable", config).asDomReadyScript());
     }
 

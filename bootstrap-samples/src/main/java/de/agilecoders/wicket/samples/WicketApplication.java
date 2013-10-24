@@ -15,6 +15,10 @@ import de.agilecoders.wicket.extensions.markup.html.bootstrap.html5player.Html5P
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.html5player.Html5PlayerJavaScriptReference;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.OpenWebIconsCssReference;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.jqueryui.JQueryUICoreJavaScriptReference;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.jqueryui.JQueryUIDraggableJavaScriptReference;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.jqueryui.JQueryUIMouseJavaScriptReference;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.jqueryui.JQueryUIResizableJavaScriptReference;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.jqueryui.JQueryUIWidgetJavaScriptReference;
 import de.agilecoders.wicket.extensions.request.StaticResourceRewriteMapper;
 import de.agilecoders.wicket.less.BootstrapLess;
 import de.agilecoders.wicket.samples.assets.base.ApplicationJavaScript;
@@ -140,6 +144,10 @@ public class WicketApplication extends WebApplication {
 
         getResourceBundles().addJavaScriptBundle(WicketApplication.class, "bootstrap-extensions.js",
                                                  JQueryUICoreJavaScriptReference.instance(),
+                                                 JQueryUIWidgetJavaScriptReference.instance(),
+                                                 JQueryUIMouseJavaScriptReference.instance(),
+                                                 JQueryUIDraggableJavaScriptReference.instance(),
+                                                 JQueryUIResizableJavaScriptReference.instance(),
                                                  Html5PlayerJavaScriptReference.instance()
         );
 
