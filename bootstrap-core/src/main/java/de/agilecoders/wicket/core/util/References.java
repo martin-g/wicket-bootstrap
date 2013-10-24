@@ -2,14 +2,16 @@ package de.agilecoders.wicket.core.util;
 
 import de.agilecoders.wicket.core.Bootstrap;
 import de.agilecoders.wicket.core.settings.IBootstrapSettings;
-
 import org.apache.wicket.Application;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.head.JavaScriptReferenceHeaderItem;
 import org.apache.wicket.markup.head.filter.FilteredHeaderItem;
-import org.apache.wicket.request.resource.ResourceReference;
+import org.apache.wicket.request.resource.JavaScriptResourceReference;
 import org.apache.wicket.util.string.Strings;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static de.agilecoders.wicket.core.util.Strings2.nullToEmpty;
 
@@ -48,37 +50,45 @@ public final class References {
     /**
      * renders a given header item with filter if present.
      *
-     * @param response  The current header response
-     * @param reference The resource reference to render
+     * @param response   The current header response
+     * @param references The resource references to render
      */
-    public static void renderWithFilter(final IHeaderResponse response, final ResourceReference reference) {
-        renderWithFilter(response, JavaScriptHeaderItem.forReference(reference));
+    public static void renderWithFilter(final IHeaderResponse response, final JavaScriptResourceReference... references) {
+        List<JavaScriptReferenceHeaderItem> headerItems = new ArrayList<JavaScriptReferenceHeaderItem>();
+        for (JavaScriptResourceReference reference : references) {
+            headerItems.add(JavaScriptHeaderItem.forReference(reference));
+        }
+        renderWithFilter(response, headerItems.toArray(new JavaScriptReferenceHeaderItem[headerItems.size()]));
     }
 
     /**
      * renders a given header item with filter if present.
      *
-     * @param response   The current header response
-     * @param headerItem The header item to render
+     * @param response    The current header response
+     * @param headerItems The header items to render
      */
-    public static void renderWithFilter(final IHeaderResponse response, final JavaScriptReferenceHeaderItem headerItem) {
-        renderWithFilter(Bootstrap.getSettings(), response, headerItem);
+    public static void renderWithFilter(final IHeaderResponse response, final JavaScriptReferenceHeaderItem... headerItems) {
+        renderWithFilter(Bootstrap.getSettings(), response, headerItems);
     }
 
     /**
      * renders a given header item with filter if present.
      *
-     * @param settings   The bootstrap settings
-     * @param response   The current header response
-     * @param headerItem The header item to render
+     * @param settings    The bootstrap settings
+     * @param response    The current header response
+     * @param headerItems The header items to render
      */
-    public static void renderWithFilter(final IBootstrapSettings settings, final IHeaderResponse response, final JavaScriptReferenceHeaderItem headerItem) {
+    public static void renderWithFilter(final IBootstrapSettings settings, final IHeaderResponse response, final JavaScriptReferenceHeaderItem... headerItems) {
         final String filterName = settings.getJsResourceFilterName();
 
         if (Strings.isEmpty(filterName)) {
-            response.render(headerItem);
+            for (JavaScriptReferenceHeaderItem headerItem : headerItems) {
+                response.render(headerItem);
+            }
         } else {
-            response.render(new FilteredHeaderItem(headerItem, filterName));
+            for (JavaScriptReferenceHeaderItem headerItem : headerItems) {
+                response.render(new FilteredHeaderItem(headerItem, filterName));
+            }
         }
     }
 
