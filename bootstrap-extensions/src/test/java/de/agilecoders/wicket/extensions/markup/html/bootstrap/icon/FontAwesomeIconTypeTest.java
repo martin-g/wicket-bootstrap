@@ -8,8 +8,8 @@ import org.junit.Test;
  */
 public class FontAwesomeIconTypeTest extends Assert {
 
-    @Test
-    public void cssClassName() {
-        assertEquals("FontAwesome should use 'icon icon-NAME", "icon icon-adjust", FontAwesomeIconType.adjust.cssClassName());
-    }
+	@Test
+	public void cssClassName() {
+		assertEquals("FontAwesome should use 'fa fa-NAME", "fa fa-adjust", FontAwesomeIconType.adjust.cssClassName());
+	}
 }
