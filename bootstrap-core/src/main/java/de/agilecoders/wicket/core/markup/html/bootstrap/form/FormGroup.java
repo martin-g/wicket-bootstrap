@@ -242,25 +242,25 @@ public class FormGroup extends Border implements IFormModelUpdateListener {
         }
     }
 
-	/**
-	 * Transforms a {@link FeedbackMessage} to a css class name.
-	 */
-	public static class FeedbackMessageToCssClassNameTransformer implements Function<FeedbackMessage, String> {
+    /**
+     * Transforms a {@link FeedbackMessage} to a css class name.
+     */
+    public static class FeedbackMessageToCssClassNameTransformer implements Function<FeedbackMessage, String> {
 
-		@Override
-		public String apply(final FeedbackMessage message) {
+        @Override
+        public String apply(final FeedbackMessage message) {
 
-			if (message == null) {
-				return "";
-			}
+            if (message == null) {
+                return "";
+            }
 
-			switch (message.getLevel()) {
-				case FeedbackMessage.FATAL :
-				case FeedbackMessage.ERROR : return "has-error";
-				case FeedbackMessage.WARNING : return "has-warning";
-				case FeedbackMessage.SUCCESS : return "has-success";
-				default : return "";
-			}
-		}
-	}
+            switch (message.getLevel()) {
+                case FeedbackMessage.FATAL :
+                case FeedbackMessage.ERROR : return "has-error";
+                case FeedbackMessage.WARNING : return "has-warning";
+                case FeedbackMessage.SUCCESS : return "has-success";
+                default : return "";
+            }
+        }
+    }
 }

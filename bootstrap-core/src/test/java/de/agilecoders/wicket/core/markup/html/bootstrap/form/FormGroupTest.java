@@ -19,110 +19,110 @@ import de.agilecoders.wicket.core.test.IntegrationTest;
 @Category(IntegrationTest.class)
 public class FormGroupTest extends WicketApplicationTest {
 
-	@Test
-	public void isInstantiableWithoutError() {
+    @Test
+    public void isInstantiableWithoutError() {
 
-		FormGroup group = new FormGroup("id");
+        FormGroup group = new FormGroup("id");
 
-		tester().startComponentInPage(group, Markup.of("<div wicket:id='id'>Group</div>"));
-		tester().assertNoErrorMessage();
-	}
+        tester().startComponentInPage(group, Markup.of("<div wicket:id='id'>Group</div>"));
+        tester().assertNoErrorMessage();
+    }
 
-	@Test(expected = MarkupException.class)
-	public void tagNameIsAsserted() {
+    @Test(expected = MarkupException.class)
+    public void tagNameIsAsserted() {
 
-		FormGroup group = new FormGroup("id");
+        FormGroup group = new FormGroup("id");
 
-		tester().startComponentInPage(group, Markup.of("<span wicket:id='id'>Group</span>"));
-	}
+        tester().startComponentInPage(group, Markup.of("<span wicket:id='id'>Group</span>"));
+    }
 
-	@Test
-	public void formGroupWithInput() {
+    @Test
+    public void formGroupWithInput() {
 
-		FormGroup group = new FormGroup("id");
-		TextField<String> input = new TextField<String>("value");
-		group.add(input);
+        FormGroup group = new FormGroup("id");
+        TextField<String> input = new TextField<String>("value");
+        group.add(input);
 
-		tester().startComponentInPage(group,
-				Markup.of("<div wicket:id='id'><input type='text' wicket:id='value'/></div>"));
-		tester().assertNoErrorMessage();
-	}
+        tester().startComponentInPage(group,
+                Markup.of("<div wicket:id='id'><input type='text' wicket:id='value'/></div>"));
+        tester().assertNoErrorMessage();
+    }
 
-	@Test
-	public void formGroupSubmit() {
+    @Test
+    public void formGroupSubmit() {
 
-		Model<FormData> model = Model.of(new FormData());
-		model.getObject();
+        Model<FormData> model = Model.of(new FormData());
+        model.getObject();
 
-		Form<FormData> form = new Form<FormData>("form", new CompoundPropertyModel<FormData>(model));
+        Form<FormData> form = new Form<FormData>("form", new CompoundPropertyModel<FormData>(model));
 
-		FormGroup group = new FormGroup("id");
-		form.add(group);
+        FormGroup group = new FormGroup("id");
+        form.add(group);
 
-		TextField<String> input = new TextField<String>("value");
-		input.setRequired(true);
-		group.add(input);
+        TextField<String> input = new TextField<String>("value");
+        input.setRequired(true);
+        group.add(input);
 
-		tester().startComponentInPage(
-				form,
-				Markup.of("<form wicket:id='form'><div wicket:id='id'><input type='text' wicket:id='value'/></div></form>"));
-		FormTester formTester = tester().newFormTester("form", false);
-		formTester.setValue(input, "Hello World!");
+        tester().startComponentInPage(
+                form,
+                Markup.of("<form wicket:id='form'><div wicket:id='id'><input type='text' wicket:id='value'/></div></form>"));
+        FormTester formTester = tester().newFormTester("form", false);
+        formTester.setValue(input, "Hello World!");
 
-		formTester.submit();
+        formTester.submit();
 
-		tester().assertNoErrorMessage();
-		tester().assertNoInfoMessage();
-	}
+        tester().assertNoErrorMessage();
+        tester().assertNoInfoMessage();
+    }
 
-	@Test
-	public void formGroupSubmitValidation() {
+    @Test
+    public void formGroupSubmitValidation() {
 
-		tester().getSession().setLocale(Locale.ENGLISH); // for the validation message
+        tester().getSession().setLocale(Locale.ENGLISH); // for the validation message
 
-		Model<FormData> model = Model.of(new FormData());
-		model.getObject();
+        Model<FormData> model = Model.of(new FormData());
+        model.getObject();
 
-		Form<FormData> form = new Form<FormData>("form", new CompoundPropertyModel<FormData>(model));
+        Form<FormData> form = new Form<FormData>("form", new CompoundPropertyModel<FormData>(model));
 
-		FormGroup group = new FormGroup("id");
-		form.add(group);
+        FormGroup group = new FormGroup("id");
+        form.add(group);
 
-		TextField<String> input = new TextField<String>("value");
-		input.setRequired(true);
-		group.add(input);
+        TextField<String> input = new TextField<String>("value");
+        input.setRequired(true);
+        group.add(input);
 
-		tester().startComponentInPage(
-				form,
-				Markup.of("<form wicket:id='form'><div wicket:id='id'><input type='text' wicket:id='value'/></div></form>"));
-		FormTester formTester = tester().newFormTester("form", false);
+        tester().startComponentInPage(
+                form,
+                Markup.of("<form wicket:id='form'><div wicket:id='id'><input type='text' wicket:id='value'/></div></form>"));
+        FormTester formTester = tester().newFormTester("form", false);
 
-		formTester.submit();
+        formTester.submit();
 
-		tester().assertLabel("form:id:error", "&#039;value&#039; is required.");
-		tester().assertContains("class=\".*has-error.*\""); //assert error CSS class is present
-	}
+        tester().assertLabel("form:id:error", "&#039;value&#039; is required.");
+        tester().assertContains("class=\".*has-error.*\""); //assert error CSS class is present
+    }
 
-	private class FormData implements Serializable {
+    private class FormData implements Serializable {
 
-		private static final long	serialVersionUID	= 1L;
+        private static final long	serialVersionUID	= 1L;
 
-		private String				value;
+        private String				value;
 
-		/**
-		 * @return Returns the value.
-		 */
-		public String getValue() {
+        /**
+         * @return Returns the value.
+         */
+        public String getValue() {
 
-			return value;
-		}
+            return value;
+        }
 
-		/**
-		 * @param value The value to set.
-		 */
-		public void setValue(String value) {
+        /**
+         * @param value The value to set.
+         */
+        public void setValue(String value) {
 
-			this.value = value;
-		}
-	}
+            this.value = value;
+        }
+    }
 }
