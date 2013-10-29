@@ -163,7 +163,10 @@ abstract class BasePage<T> extends GenericWebPage<T> {
      */
     private Component newAddonsDropDownButton() {
         return new NavbarDropDownButton(Model.of("Addons")) {
-            @Override
+            /** serialVersionUID. */
+            private static final long serialVersionUID = 1L;
+
+			@Override
             protected List<AbstractLink> newSubMenuButtons(String buttonMarkupId) {
                 final List<AbstractLink> subMenu = new ArrayList<AbstractLink>();
 
@@ -171,6 +174,7 @@ abstract class BasePage<T> extends GenericWebPage<T> {
                 subMenu.add(new MenuBookmarkablePageLink<DatePickerPage>(DatePickerPage.class, Model.of("DatePicker")).setIconType(IconType.time));
                 subMenu.add(new MenuBookmarkablePageLink<IssuesPage>(IssuesPage.class, Model.of("Github Issues")).setIconType(IconType.book));
                 subMenu.add(new MenuBookmarkablePageLink<ExtensionsPage>(ExtensionsPage.class, Model.of("Extensions")).setIconType(IconType.alignjustify));
+                subMenu.add(new MenuBookmarkablePageLink<FontAwesomePage>(FontAwesomePage.class, Model.of("Font Awesome")).setIconType(IconType.font));
 
                 return subMenu;
             }
@@ -235,3 +239,4 @@ abstract class BasePage<T> extends GenericWebPage<T> {
     }
 
 }
+
