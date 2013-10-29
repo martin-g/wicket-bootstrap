@@ -254,10 +254,10 @@ public class FormGroup extends Border implements IFormModelUpdateListener {
 
             switch (message.getLevel()) {
                 case FeedbackMessage.FATAL:
-                case FeedbackMessage.ERROR: return "error";
-                case FeedbackMessage.WARNING: return "warning";
-                case FeedbackMessage.SUCCESS: return "success";
-                case FeedbackMessage.INFO: return "info";
+                case FeedbackMessage.ERROR: return "has-error";
+                case FeedbackMessage.WARNING: return "has-warning";
+                case FeedbackMessage.SUCCESS: return "has-success";
+                case FeedbackMessage.INFO: return "has-success";	//no more info level in bootstrap3!
                 default: return "";
             }
         }
