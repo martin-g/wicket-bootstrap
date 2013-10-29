@@ -121,28 +121,28 @@ public class FontAwesomeIconTypeBuilder {
 
         // add spin class?
         if (spin) {
-            styles.add("icon-spin");
+            styles.add("fa-spin");
         }
 
         // add rotation class?
         if (rotation != null) {
-            styles.add("icon-" + underscoresToDashes(rotation.name()));
+            styles.add("fa-" + underscoresToDashes(rotation.name()));
         }
 
         // add size class
         if (size != null) {
             switch (size) {
                 case two:
-                    styles.add("icon-2x");
+                    styles.add("fa-2x");
                     break;
                 case three:
-                    styles.add("icon-3x");
+                    styles.add("fa-3x");
                     break;
                 case four:
-                    styles.add("icon-4x");
+                    styles.add("fa-4x");
                     break;
                 case large:
-                    styles.add("icon-large");
+                    styles.add("fa-large");
                     break;
             }
         }
@@ -183,6 +183,6 @@ public class FontAwesomeIconTypeBuilder {
      * @return the string with the underscores replace with dashes
      */
     private String underscoresToDashes(final String string) {
-        return string.replaceAll("_", "-");
+        return string.replace('_', '-');
     }
 }

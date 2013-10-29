@@ -255,11 +255,12 @@ public class FormGroup extends Border implements IFormModelUpdateListener {
             }
 
             switch (message.getLevel()) {
-                case FeedbackMessage.FATAL :
-                case FeedbackMessage.ERROR : return "has-error";
-                case FeedbackMessage.WARNING : return "has-warning";
-                case FeedbackMessage.SUCCESS : return "has-success";
-                default : return "";
+                case FeedbackMessage.FATAL:
+                case FeedbackMessage.ERROR: return "has-error";
+                case FeedbackMessage.WARNING: return "has-warning";
+                case FeedbackMessage.INFO:
+                case FeedbackMessage.SUCCESS: return "has-success";
+                default: return "";
             }
         }
     }

@@ -130,7 +130,8 @@ public class OpenWebIconType extends IconType {
     public static final OpenWebIconType microformats_colored_large = new OpenWebIconType("microformats-colored large");
     public static final OpenWebIconType feed_colored_large = new OpenWebIconType("feed-colored large");
     public static final OpenWebIconType ostatus_colored_large = new OpenWebIconType("ostatus-colored large");
-    public static final OpenWebIconType remotestorage_colored_large = new OpenWebIconType("remote-storage-colored large");
+    public static final OpenWebIconType remotestorage_colored_large = new OpenWebIconType(
+            "remote-storage-colored large");
     public static final OpenWebIconType odata_colored_large = new OpenWebIconType("odata-colored large");
     public static final OpenWebIconType activity_colored_large = new OpenWebIconType("activity-colored large");
     public static final OpenWebIconType opml_colored_large = new OpenWebIconType("opml-colored large");
@@ -143,8 +144,12 @@ public class OpenWebIconType extends IconType {
      *
      * @param cssClassName The css class name of the icon reference
      */
-    private OpenWebIconType(String cssClassName) {
+    private OpenWebIconType(final String cssClassName) {
         super(cssClassName);
     }
 
+    @Override
+    public String cssClassName() {
+        return "icon-" + cssClassName;
+    }
 }
