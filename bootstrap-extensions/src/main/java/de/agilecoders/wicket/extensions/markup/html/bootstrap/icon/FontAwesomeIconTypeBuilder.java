@@ -75,7 +75,7 @@ public class FontAwesomeIconTypeBuilder {
 	 * Sizes on an icon.
 	 */
 	public static enum Size {
-		four, large, three, two;
+		four, large, three, two, five;
 	}
 
 	/**
@@ -140,6 +140,9 @@ public class FontAwesomeIconTypeBuilder {
 					break;
 				case four:
 					styles.add("fa-4x");
+					break;
+				case five:
+					styles.add("fa-5x");
 					break;
 				case large:
 					styles.add("fa-large");
