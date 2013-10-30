@@ -131,10 +131,10 @@ public class ButtonBehavior extends BootstrapBaseBehavior {
     public void onComponentTag(Component component, ComponentTag tag) {
         super.onComponentTag(component, tag);
 
-        Components.assertTag(component, tag, "a", "button", "input");
-
         // HACK issue #79: wicket changes tag name if component wasn't enabled
         Buttons.fixDisabledState(component, tag);
+
+        Components.assertTag(component, tag, "a", "button", "input");
 
         // a menu button has no css classes, inherits its styles from the menu
         if (!Buttons.Type.Menu.equals(getType())) {
