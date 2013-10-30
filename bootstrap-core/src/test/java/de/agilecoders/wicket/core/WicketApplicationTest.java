@@ -16,6 +16,7 @@ import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.tester.TagTester;
 import org.apache.wicket.util.tester.WicketTester;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 
 import java.util.ArrayList;
@@ -23,7 +24,6 @@ import java.util.List;
 
 import static de.agilecoders.wicket.core.util.Generics2.newArrayList;
 import static de.agilecoders.wicket.core.util.Strings2.nullToEmpty;
-import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 
@@ -32,7 +32,7 @@ import static org.hamcrest.Matchers.is;
  *
  * @author miha
  */
-public class WicketApplicationTest {
+public class WicketApplicationTest extends Assert {
 
     private WebApplication application;
     private WicketTester tester;
@@ -110,19 +110,21 @@ public class WicketApplicationTest {
         return "id";
     }
 
-    protected final void assertCssClass(final Behavior behavior, final String... cssClassNames) {
+    protected final TagTester assertCssClass(final Behavior behavior, final String... cssClassNames) {
         TagTester tag = startBehaviorInPage(behavior);
 
         assertCssClass(tag, cssClassNames);
+        return tag;
     }
 
-    protected final void assertCssClass(final Component component, final String... cssClassNames) {
+    protected final TagTester assertCssClass(final Component component, final String... cssClassNames) {
         TagTester tag = startComponentInPage(component);
 
         assertCssClass(tag, cssClassNames);
+        return tag;
     }
 
-    protected final void assertCssClass(TagTester tag, String... cssClassNames) {
+    protected final TagTester assertCssClass(TagTester tag, String... cssClassNames) {
         Args.notNull(tag, "tag");
         Args.notNull(cssClassNames, "cssClassNames");
 
@@ -131,9 +133,10 @@ public class WicketApplicationTest {
         for (String cssClassName : cssClassNames) {
             assertThat("contains css class name: " + cssClassName + "; current: " + cssClasses.asString(), cssClasses.contains(cssClassName), is(equalTo(true)));
         }
+        return tag;
     }
 
-    protected final void assertNotContainsCssClass(TagTester tag, String... cssClassNames) {
+    protected final TagTester assertNotContainsCssClass(TagTester tag, String... cssClassNames) {
         Args.notNull(tag, "tag");
         Args.notNull(cssClassNames, "cssClassNames");
 
@@ -142,6 +145,7 @@ public class WicketApplicationTest {
         for (String cssClassName : cssClassNames) {
             assertThat("not contains css class name: " + cssClassName + "; current: " + cssClasses.asString(), cssClasses.contains(cssClassName), is(equalTo(false)));
         }
+        return tag;
     }
 
     protected TagTester startComponentInPage(final Component component) {
