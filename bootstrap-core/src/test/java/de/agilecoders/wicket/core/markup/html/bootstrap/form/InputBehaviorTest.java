@@ -79,7 +79,7 @@ public class InputBehaviorTest extends WicketApplicationTest {
         private InputBehavior inputBehavior = new InputBehavior();
 
         private InputBehaviorPage() {
-            TextField<String> textField = new TextField<>("id", Model.of("data"));
+            TextField<String> textField = new TextField<String>("id", Model.of("data"));
             add(textField);
             textField.setMarkupId("input");
             textField.add(inputBehavior);
