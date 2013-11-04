@@ -33,8 +33,15 @@ public class InputBehavior extends BootstrapBaseBehavior {
 
     }
 
+    /**
+     * Specifies the height of the input field
+     */
     private ICssClassNameProvider heightSize;
 
+    /**
+     * Specifies the width of the input field by
+     * surrounding it with a &lt;div class="col-xx-yy"&gt;
+     */
     private SpanType columnSize;
 
     /**
