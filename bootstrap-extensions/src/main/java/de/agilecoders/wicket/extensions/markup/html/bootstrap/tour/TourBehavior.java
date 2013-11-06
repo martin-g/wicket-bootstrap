@@ -37,6 +37,13 @@ public class TourBehavior extends Behavior {
         return steps.size();
     }
 
+    /**
+     * @return the steps
+     */
+    public List<TourStep> getSteps() {
+        return this.steps;
+    }
+
     @Override
     public void renderHead(Component component, IHeaderResponse response) {
         super.renderHead(component, response);
@@ -45,8 +52,7 @@ public class TourBehavior extends Behavior {
             response.render(JavaScriptHeaderItem.forReference(BootstrapTourJsReference.INSTANCE));
 
             StringBuilder js = new StringBuilder();
-
-            js.append("(function() { var tour = new Tour();");
+            js.append("(function() { var tour = new Tour(").append(getTourOptions().toJsonString()).append(");");
             for (TourStep step : steps) {
                 js.append("tour.addStep(").append(step.toJsonString()).append(");");
             }
@@ -60,8 +66,15 @@ public class TourBehavior extends Behavior {
      * Allows contributing more JavaScript related to the tour. By default starts the tour.
      * @return extra tour related JavaScript
      */
-    protected CharSequence createExtraConfig()
-    {
+    protected CharSequence createExtraConfig() {
         return "tour.start();";
+    }
+
+    /**
+     * Overwrite this method to modify the default tour behavior
+     * @return the tour options
+     */
+    protected TourOptions getTourOptions() {
+        return new TourOptions();
     }
 }
