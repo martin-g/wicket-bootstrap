@@ -142,6 +142,7 @@ public class FontAwesomeIconType extends IconType {
 	public static final FontAwesomeIconType file_alt = on(FontAwsomeGraphic.file_alt).build();
 	public static final FontAwesomeIconType file_text = on(FontAwsomeGraphic.file_text).build();
 	public static final FontAwesomeIconType file_text_alt = on(FontAwsomeGraphic.file_text_alt).build();
+    public static final FontAwesomeIconType files_o = on(FontAwsomeGraphic.files_o).build();
 	public static final FontAwesomeIconType film = on(FontAwsomeGraphic.film).build();
 	public static final FontAwesomeIconType filter = on(FontAwsomeGraphic.filter).build();
 	public static final FontAwesomeIconType fire = on(FontAwsomeGraphic.fire).build();

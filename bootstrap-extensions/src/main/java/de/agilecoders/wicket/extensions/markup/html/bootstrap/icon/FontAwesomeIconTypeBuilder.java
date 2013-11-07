@@ -40,7 +40,7 @@ public class FontAwesomeIconTypeBuilder {
         ellipsis_horizontal, ellipsis_vertical, envelope, envelope_alt, eraser, eur, exchange, exclamation,
         exclamation_sign, expand, expand_alt, external_link, external_link_sign, eye_close, eye_open, facebook,
         facebook_sign, facetime_video, fast_backward, fast_forward, female, fighter_jet, file, file_alt, file_text,
-        file_text_alt, film, filter, fire, fire_extinguisher, flag, flag_alt, flag_checkered, flickr, folder_close,
+        file_text_alt, files_o, film, filter, fire, fire_extinguisher, flag, flag_alt, flag_checkered, flickr, folder_close,
         folder_close_alt, folder_open, folder_open_alt, font, food, forward, foursquare, frown, fullscreen, gamepad,
         gbp, gift, github, github_alt, github_sign, gittip, glass, globe, google_plus, google_plus_sign, group, h_sign,
         hand_down, hand_left, hand_right, hand_up, hdd, headphones, heart, heart_empty, home, hospital, html5, inbox,
