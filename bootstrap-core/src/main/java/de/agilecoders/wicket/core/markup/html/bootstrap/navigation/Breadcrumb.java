@@ -37,4 +37,15 @@ public class Breadcrumb extends BreadCrumbBar {
         checkComponentTag(tag, "ul");
         Attributes.addClass(tag, "breadcrumb");
     }
+    
+	/**
+	 * Overrides the method in the super class to remove the default / separator since twitter-bootstrap adds the separators via CSS.
+	 * 
+	 * @see org.apache.wicket.extensions.breadcrumb.BreadCrumbBar#getSeparatorMarkup()
+	 */
+	@Override
+	protected String getSeparatorMarkup() {
+
+		return "";
+	}
 }
