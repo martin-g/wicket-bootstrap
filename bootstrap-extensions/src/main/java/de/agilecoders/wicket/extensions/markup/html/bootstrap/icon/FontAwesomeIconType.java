@@ -292,8 +292,8 @@ public class FontAwesomeIconType extends IconType {
 	public static final FontAwesomeIconType shopping_cart = on(FontAwsomeGraphic.shopping_cart).build();
 	public static final FontAwesomeIconType sign_blank = on(FontAwsomeGraphic.sign_blank).build();
 	public static final FontAwesomeIconType signal = on(FontAwsomeGraphic.signal).build();
-	public static final FontAwesomeIconType signin = on(FontAwsomeGraphic.signin).build();
-	public static final FontAwesomeIconType signout = on(FontAwsomeGraphic.signout).build();
+	public static final FontAwesomeIconType signin = on(FontAwsomeGraphic.sign_in).build();
+	public static final FontAwesomeIconType signout = on(FontAwsomeGraphic.sign_out).build();
 	public static final FontAwesomeIconType sitemap = on(FontAwsomeGraphic.sitemap).build();
 	public static final FontAwesomeIconType skype = on(FontAwsomeGraphic.skype).build();
 	public static final FontAwesomeIconType smile = on(FontAwsomeGraphic.smile).build();

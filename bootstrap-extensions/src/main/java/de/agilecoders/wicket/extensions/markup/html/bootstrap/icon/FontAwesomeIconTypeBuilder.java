@@ -53,7 +53,7 @@ public class FontAwesomeIconTypeBuilder {
         plus_sign, plus_sign_alt, print, pushpin, puzzle_piece, qrcode, question, question_sign, quote_left,
         quote_right, random, refresh, remove, remove_circle, remove_sign, renren, reorder, repeat, reply, reply_all,
         resize_full, resize_horizontal, resize_small, resize_vertical, retweet, road, rocket, rss, rss_sign, save,
-        screenshot, search, share, share_alt, share_sign, shield, shopping_cart, sign_blank, signal, signin, signout,
+        screenshot, search, share, share_alt, share_sign, shield, shopping_cart, sign_blank, signal, sign_in, sign_out,
         sitemap, skype, smile, sort, sort_by_alphabet, sort_by_alphabet_alt, sort_by_attributes,
         sort_by_attributes_alt, sort_by_order, sort_by_order_alt, sort_down, sort_up, spinner, stackexchange, star,
         star_empty, star_half, star_half_empty, step_backward, step_forward, stethoscope, stop, strikethrough,
