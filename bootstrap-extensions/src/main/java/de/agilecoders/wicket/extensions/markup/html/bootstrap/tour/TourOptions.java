@@ -1,6 +1,7 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.tour;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.common.AbstractConfig;
+import de.agilecoders.wicket.core.util.Json.RawValue;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
@@ -24,10 +25,9 @@ public class TourOptions extends AbstractConfig {
     private static final IKey<Boolean> Keyboard = newKey("keyboard", Boolean.TRUE);
 
     /**
-     * FIXME the actually value should not be quoted ("window.localStorage")
      * The storage system you want to use. could be the objects window.localStorage, window.sessionStorage of your own object.
      */
-    private static final IKey<IModel> Storage = newKey("storage", (IModel) Model.of("window.localStorage"));
+    private static final IKey<RawValue> Storage = newKey("storage", new RawValue("window.localStorage"));
 
     /**
      * Set this option to true to have some useful informations printed in the console.
@@ -114,8 +114,8 @@ public class TourOptions extends AbstractConfig {
      * @param value mandatory parameter
      * @return this instance for chaining.
      */
-    public TourOptions withStorage(IModel<String> value) {
-        put(Storage, wrap(value));
+    public TourOptions withStorage(String value) {
+        put(Storage, new RawValue("window.localStorage"));
         return this;
     }
 
