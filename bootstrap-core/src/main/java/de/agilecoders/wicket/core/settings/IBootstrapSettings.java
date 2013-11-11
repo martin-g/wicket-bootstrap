@@ -12,7 +12,7 @@ public interface IBootstrapSettings {
     /**
      * The version of Bootstrap
      */
-    String VERSION = "3.0.1";
+    String VERSION = "3.0.2";
 
     /**
      * The url to the JavaScript resource at a CDN network
