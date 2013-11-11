@@ -26,6 +26,6 @@ public class ColorPickerTextFieldJavaScriptReference extends JavaScriptResourceR
      * Private constructor.
      */
     private ColorPickerTextFieldJavaScriptReference() {
-        super(ColorPickerTextFieldJavaScriptReference.class, "js/colorpicker.js");
+        super(ColorPickerTextFieldJavaScriptReference.class, "js/bootstrap-colorpicker.js");
     }
 }

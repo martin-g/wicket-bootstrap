@@ -26,7 +26,7 @@ import java.util.Map;
 import static de.agilecoders.wicket.core.util.JQuery.$;
 
 /**
- * Bootstrap ColorPicker from http://www.eyecon.ro/bootstrap-colorpicker/
+ * Bootstrap ColorPicker from http://mjaalnir.github.io/bootstrap-colorpicker/
  */
 public class ColorPickerTextField extends TextField<String> {
 
@@ -149,7 +149,7 @@ public class ColorPickerTextField extends TextField<String> {
         JQuery script = $(this);
 
         if (config.isComponent()) {
-            script.closest(".color");
+            script.closest(".colorpicker-component");
         }
         script.chain("colorpicker", config);
 

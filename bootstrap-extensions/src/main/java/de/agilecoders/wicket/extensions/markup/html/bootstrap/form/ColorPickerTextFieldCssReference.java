@@ -26,6 +26,6 @@ public class ColorPickerTextFieldCssReference extends CssResourceReference {
      * Private constructor.
      */
     private ColorPickerTextFieldCssReference() {
-        super(ColorPickerTextFieldCssReference.class, "css/colorpicker.css");
+        super(ColorPickerTextFieldCssReference.class, "css/bootstrap-colorpicker.css");
     }
 }
