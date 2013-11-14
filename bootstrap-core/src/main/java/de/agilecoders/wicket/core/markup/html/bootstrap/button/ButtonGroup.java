@@ -17,9 +17,9 @@ import java.util.List;
  */
 public abstract class ButtonGroup extends Panel {
     /** serialVersionUID. */
-    private static final long serialVersionUID = 5660816346819576627L;
+    private static final long serialVersionUID = 1L;
 
-	public static enum Size {
+    public static enum Size {
         ExtraSmall("xs"), Small("sm"), Default(""), Large("lg");
 
         private final String cssName;
@@ -63,12 +63,12 @@ public abstract class ButtonGroup extends Panel {
         BootstrapBaseBehavior.addTo(this);
     }
     
-	/**
-	 * @see org.apache.wicket.Component#onInitialize()
-	 */
+    /**
+     * @see org.apache.wicket.Component#onInitialize()
+     */
     @Override
     protected void onInitialize() {
-	    super.onInitialize();
+        super.onInitialize();
         add(newButtonList("buttons"));
     }
 
