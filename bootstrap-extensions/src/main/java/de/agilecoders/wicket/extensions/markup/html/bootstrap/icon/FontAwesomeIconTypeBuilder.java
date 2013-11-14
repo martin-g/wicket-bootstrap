@@ -10,22 +10,22 @@ import java.util.List;
  * <ul>
  * <li>
  * To rotate an icon 90° :
- * <code>	FontAwesomeIconTypeBuilder.on(FontAwsomeGraphic.key).rotate(Rotation.rotate_90).build()</code></li>
+ * <code>	FontAwesomeIconTypeBuilder.on(FontAwesomeGraphic.key).rotate(Rotation.rotate_90).build()</code></li>
  * <li>
- * To spin an icon : <code>	FontAwesomeIconTypeBuilder.on(FontAwsomeGraphic.key).spin().build()</code></li>
+ * To spin an icon : <code>	FontAwesomeIconTypeBuilder.on(FontAwesomeGraphic.key).spin().build()</code></li>
  * <li>To resize an icon 4 times :
- * <code>	FontAwesomeIconTypeBuilder.on(FontAwsomeGraphic.key).size(Size.four).build()</code></li>
+ * <code>	FontAwesomeIconTypeBuilder.on(FontAwesomeGraphic.key).size(Size.four).build()</code></li>
  * <li>
  * All together :
- * <code>FontAwesomeIconTypeBuilder.on(FontAwsomeGraphic.key).size(Size.four).spin().rotate(Rotation.rotate_90).build()</code>
+ * <code>FontAwesomeIconTypeBuilder.on(FontAwesomeGraphic.key).size(Size.four).spin().rotate(Rotation.rotate_90).build()</code>
  * </li>
  * </ul>
  */
 public class FontAwesomeIconTypeBuilder {
 	/**
-	 * All the icons available in fontawsome.
+	 * All the icons available in fontawesome.
 	 */
-	public static enum FontAwsomeGraphic {
+	public static enum FontAwesomeGraphic {
 		adjust, adn, align_center, align_justify, align_left, align_right, ambulance, anchor, android,
 		angle_double_down, angle_double_left, angle_double_right, angle_double_up, angle_down, angle_left, angle_right,
 		angle_up, apple, archive, arrow_circle_down, arrow_circle_left, arrow_circle_o_left, arrow_circle_o_right,
@@ -83,17 +83,17 @@ public class FontAwesomeIconTypeBuilder {
 	}
 
 	/**
-	 * @param fontAwsomeGraphic icon to use in the builder
+	 * @param fontAwesomeGraphic icon to use in the builder
 	 * @return a builder for this icon
 	 */
-	public static FontAwesomeIconTypeBuilder on(final FontAwsomeGraphic fontAwsomeGraphic) {
-		return new FontAwesomeIconTypeBuilder(fontAwsomeGraphic);
+	public static FontAwesomeIconTypeBuilder on(final FontAwesomeGraphic fontAwesomeGraphic) {
+		return new FontAwesomeIconTypeBuilder(fontAwesomeGraphic);
 	}
 
 	/**
 	 * Icon used in the builder.
 	 */
-	private final FontAwsomeGraphic fontAwsomeGraphic;
+	private final FontAwesomeGraphic fontAwesomeGraphic;
 	/**
 	 * rotation to apply to the icon (default none).
 	 */
@@ -108,10 +108,10 @@ public class FontAwesomeIconTypeBuilder {
 	private boolean spin;
 
 	/**
-	 * @param fontAwsomeGraphic icon to use in the builder
+	 * @param fontAwesomeGraphic icon to use in the builder
 	 */
-	private FontAwesomeIconTypeBuilder(final FontAwsomeGraphic fontAwsomeGraphic) {
-		this.fontAwsomeGraphic = fontAwsomeGraphic;
+	private FontAwesomeIconTypeBuilder(final FontAwesomeGraphic fontAwesomeGraphic) {
+		this.fontAwesomeGraphic = fontAwesomeGraphic;
 	}
 
 	/**
@@ -121,7 +121,7 @@ public class FontAwesomeIconTypeBuilder {
 		final List<String> styles = new ArrayList<String>();
 
 		// replace all underscore to dashes
-		styles.add(underscoresToDashes(fontAwsomeGraphic.name()));
+		styles.add(underscoresToDashes(fontAwesomeGraphic.name()));
 
 		// add spin class?
 		if (spin) {
