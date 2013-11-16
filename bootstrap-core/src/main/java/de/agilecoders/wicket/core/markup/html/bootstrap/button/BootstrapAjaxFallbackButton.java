@@ -48,7 +48,7 @@ public abstract class BootstrapAjaxFallbackButton extends AjaxFallbackButton imp
         super(id, model, form);
 
         add(buttonBehavior = new ButtonBehavior(type, Buttons.Size.Medium));
-        add(icon = new Icon("icon", IconType.NULL).invert());
+        add(icon = new Icon("icon", (IconType) null).invert());
         add(splitter = new WebMarkupContainer("splitter"));
 
         this.label = new Label("label", model);

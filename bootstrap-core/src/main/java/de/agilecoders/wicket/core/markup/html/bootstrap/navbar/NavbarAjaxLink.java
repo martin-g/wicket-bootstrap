@@ -50,7 +50,7 @@ public abstract class NavbarAjaxLink<T> extends org.apache.wicket.ajax.markup.ht
     public NavbarAjaxLink(final String markupId, IModel<String> label) {
         super(markupId);
 
-        this.icon = new Icon("icon", IconType.NULL);
+        this.icon = new Icon("icon", (IconType) null);
 
         this.label = new Label("label", label);
         this.label.setRenderBodyOnly(true);
@@ -94,7 +94,7 @@ public abstract class NavbarAjaxLink<T> extends org.apache.wicket.ajax.markup.ht
     protected void onConfigure() {
         super.onConfigure();
 
-        splitter.setVisible(!IconType.NULL.equals(icon.getType()));
+        splitter.setVisible(icon.getType() != null);
     }
 
     /**

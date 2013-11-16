@@ -1,8 +1,13 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.navbar;
 
+import static org.hamcrest.CoreMatchers.containsString;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.is;
+
 import de.agilecoders.wicket.core.WicketApplicationTest;
-import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
+import de.agilecoders.wicket.core.markup.html.bootstrap.image.GlyphIconType;
 import de.agilecoders.wicket.core.test.IntegrationTest;
+
 import org.apache.wicket.Component;
 import org.apache.wicket.Page;
 import org.apache.wicket.model.Model;
@@ -12,10 +17,6 @@ import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
 import java.util.List;
-
-import static org.hamcrest.CoreMatchers.containsString;
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.CoreMatchers.is;
 
 /**
  * Tests the {@code Navbar de.agilecoders.wicket.core.markup.html.bootstrap.navbar.Navbar}.
@@ -127,7 +128,7 @@ public class NavbarTest extends WicketApplicationTest {
         navbar.addComponents(new INavbarComponent() {
             @Override
             public Component create(String markupId) {
-                return new NavbarButton<Page>(Page.class, Model.of("Link Name")).setIconType(IconType.aligncenter);
+                return new NavbarButton<Page>(Page.class, Model.of("Link Name")).setIconType(GlyphIconType.aligncenter);
             }
 
             @Override

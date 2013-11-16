@@ -39,7 +39,6 @@ public class MenuBookmarkablePageLink<T> extends BootstrapBookmarkablePageLink<T
         super(ButtonList.getButtonMarkupId(), pageClass, Buttons.Type.Menu);
 
         setLabel(label);
-        setIconType(IconType.NULL);
     }
 
     /**

@@ -82,7 +82,7 @@ public abstract class BootstrapAjaxButton extends AjaxButton implements IBootstr
      * @return new icon component
      */
     protected Icon newIcon(final String markupId) {
-        return new Icon(markupId, IconType.NULL).invert();
+        return new Icon(markupId, (IconType) null).invert();
     }
 
     /**

@@ -80,7 +80,7 @@ public class IconBehavior extends Behavior implements Invertible<IconBehavior> {
      * @return true, if an {@link IconType} is set
      */
     public final boolean hasIconType() {
-        return type != null && type.getObject() != null && !IconType.NULL.equals(type.getObject());
+        return type != null && type.getObject() != null;
     }
 
     /**

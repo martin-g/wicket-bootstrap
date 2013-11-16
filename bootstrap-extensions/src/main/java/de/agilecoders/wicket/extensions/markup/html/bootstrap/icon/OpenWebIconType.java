@@ -150,6 +150,6 @@ public class OpenWebIconType extends IconType {
 
     @Override
     public String cssClassName() {
-        return "icon-" + cssClassName;
+        return "icon-" + getCssClassName();
     }
 }
