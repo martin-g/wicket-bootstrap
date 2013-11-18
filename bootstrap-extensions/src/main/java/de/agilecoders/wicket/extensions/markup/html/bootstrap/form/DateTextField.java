@@ -14,7 +14,7 @@ import org.apache.wicket.model.IModel;
 
 import java.util.Date;
 
-import static de.agilecoders.wicket.core.util.JQuery.$;
+import static de.agilecoders.wicket.jquery.JQuery.$;
 
 /**
  * A TextField that is mapped to a <code>java.util.Date</code> object.

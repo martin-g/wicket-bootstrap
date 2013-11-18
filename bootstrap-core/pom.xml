@@ -21,6 +21,11 @@
     <dependencies>
 
         <dependency>
+            <groupId>de.agilecoders.wicket</groupId>
+            <artifactId>jquery-selectors</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>de.agilecoders.wicket.webjars</groupId>
             <artifactId>wicket-webjars</artifactId>
         </dependency>
