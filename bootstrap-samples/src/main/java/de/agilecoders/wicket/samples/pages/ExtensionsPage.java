@@ -1,20 +1,17 @@
 package de.agilecoders.wicket.samples.pages;
 
 import com.google.common.collect.Lists;
-
 import de.agilecoders.wicket.core.markup.html.bootstrap.block.Code;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.DropDownButton;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.MenuBookmarkablePageLink;
 import de.agilecoders.wicket.core.markup.html.bootstrap.components.TooltipConfig;
+import de.agilecoders.wicket.core.markup.html.bootstrap.components.UpdatableProgressBar;
 import de.agilecoders.wicket.core.markup.html.bootstrap.dialog.Modal;
 import de.agilecoders.wicket.core.markup.html.bootstrap.dialog.TextContentModal;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.Icon;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
 import de.agilecoders.wicket.extensions.javascript.jasny.FileUploadField;
 import de.agilecoders.wicket.extensions.javascript.jasny.InputMaskBehavior;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.behavior.Draggable;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.behavior.DraggableConfig;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.behavior.Resizable;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.button.DropDownAutoOpen;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.contextmenu.ButtonListContextMenu;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.html5player.Html5Player;
@@ -26,18 +23,25 @@ import de.agilecoders.wicket.extensions.markup.html.bootstrap.tour.TourBehavior;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.tour.TourStep;
 import de.agilecoders.wicket.samples.panels.pagination.InfinitePaginationPanel;
 import org.apache.wicket.Component;
+import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.html.TransparentWebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.link.AbstractLink;
 import org.apache.wicket.markup.repeater.RepeatingView;
+import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.model.ResourceModel;
+import org.apache.wicket.protocol.http.servlet.MultipartServletWebRequestImpl;
+import org.apache.wicket.protocol.http.servlet.UploadInfo;
+import org.apache.wicket.request.IRequestParameters;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.wicketstuff.annotation.mount.MountPath;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -138,8 +142,29 @@ public class ExtensionsPage extends BasePage {
 
 
     private void addJasnyFileUploadDemo() {
+        Form fileUploadForm = new Form("fileUploadForm");
+        add(fileUploadForm);
+        fileUploadForm.setMultiPart(true);
         FileUploadField fileUpload = new FileUploadField("fileUpload");
-        add(fileUpload);
+        fileUploadForm.add(fileUpload);
+
+        fileUploadForm.add(new UpdatableProgressBar("progressBar") {
+            @Override
+            protected IModel<Integer> newValue() {
+                final String upload = String.valueOf(getPageId());
+
+                final HttpServletRequest req = (HttpServletRequest) getRequest().getContainerRequest();
+                UploadInfo info = MultipartServletWebRequestImpl.getUploadInfo(req, upload);
+                long percents = 0L;
+                if (info != null) {
+                    long totalBytes = info.getTotalBytes();
+                    long bytesUploaded = info.getBytesUploaded();
+                    percents = totalBytes / bytesUploaded;
+                }
+                return Model.of((int) percents);
+            }
+        });
+        fileUploadForm.add(new AjaxButton("submit") {});
     }
 
     private void addJasnyInputMaskDemo() {

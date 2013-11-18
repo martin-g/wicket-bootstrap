@@ -29,7 +29,6 @@ import de.agilecoders.wicket.themes.markup.html.google.GoogleTheme;
 import de.agilecoders.wicket.themes.markup.html.metro.MetroTheme;
 import de.agilecoders.wicket.themes.markup.html.wicket.WicketTheme;
 import de.agilecoders.wicket.themes.settings.BootswatchThemeProvider;
-import de.agilecoders.wicket.webjars.request.resource.WebjarsJavaScriptResourceReference;
 import net.ftlines.wicketsource.WicketSource;
 import org.apache.wicket.Application;
 import org.apache.wicket.Page;
@@ -89,6 +88,8 @@ public class WicketApplication extends WebApplication {
     @Override
     public void init() {
         super.init();
+
+        getApplicationSettings().setUploadProgressUpdatesEnabled(true);
 
         // deactivate ajax debug mode
         getDebugSettings().setAjaxDebugModeEnabled(false);
