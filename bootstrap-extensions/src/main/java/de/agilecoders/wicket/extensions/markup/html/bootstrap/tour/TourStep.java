@@ -1,8 +1,8 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.tour;
 
-import de.agilecoders.wicket.core.markup.html.bootstrap.common.AbstractConfig;
 import de.agilecoders.wicket.core.markup.html.bootstrap.components.TooltipConfig;
 
+import de.agilecoders.wicket.jquery.AbstractConfig;
 import org.apache.wicket.Component;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;

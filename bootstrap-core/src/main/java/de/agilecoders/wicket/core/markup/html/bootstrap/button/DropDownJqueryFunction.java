@@ -1,6 +1,6 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.button;
 
-import de.agilecoders.wicket.core.util.JQuery;
+import de.agilecoders.wicket.jquery.JQuery;
 
 import org.apache.wicket.util.string.Strings;
 

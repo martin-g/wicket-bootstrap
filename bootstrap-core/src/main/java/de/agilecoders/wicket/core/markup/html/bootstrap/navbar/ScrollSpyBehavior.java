@@ -1,14 +1,14 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.navbar;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
-import de.agilecoders.wicket.core.util.JQuery;
+import de.agilecoders.wicket.jquery.JQuery;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.markup.head.IHeaderResponse;
 
-import static de.agilecoders.wicket.core.util.JQuery.$;
-import static de.agilecoders.wicket.core.util.JQuery.EachJqueryFunction.each;
+import static de.agilecoders.wicket.jquery.JQuery.$;
+import static de.agilecoders.wicket.jquery.JQuery.EachJqueryFunction.each;
 
 /**
  * A {@link ScrollSpyBehavior} updates the active state of a assigned

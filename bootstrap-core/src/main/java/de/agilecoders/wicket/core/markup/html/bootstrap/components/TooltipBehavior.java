@@ -1,14 +1,14 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.components;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapJavascriptBehavior;
-import de.agilecoders.wicket.core.markup.html.bootstrap.common.AbstractConfig;
+import de.agilecoders.wicket.jquery.AbstractConfig;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
 import org.apache.wicket.model.IModel;
 
-import static de.agilecoders.wicket.core.util.JQuery.$;
+import static de.agilecoders.wicket.jquery.JQuery.$;
 
 /**
  * Tooltips are an updated version of Jquery.tipsy, which don't rely on images,

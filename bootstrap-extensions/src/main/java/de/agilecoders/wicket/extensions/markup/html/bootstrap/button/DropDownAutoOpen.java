@@ -7,7 +7,7 @@ import org.apache.wicket.Component;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 
-import static de.agilecoders.wicket.core.util.JQuery.$;
+import static de.agilecoders.wicket.jquery.JQuery.$;
 
 /**
  * The {@link DropDownAutoOpen} behavior opens a {@link de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.DropDownButton}

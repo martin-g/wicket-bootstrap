@@ -47,7 +47,7 @@ public final class Buttons {
     public static enum Size implements ICssClassNameProvider {
         Mini("btn-xs"),
         Small("btn-sm"),
-        Medium("btn-default"),
+        Medium(""), // default button size doesn't need any css class
         Large("btn-lg");
 
         private final String cssClassName;

@@ -5,7 +5,7 @@ import de.agilecoders.wicket.core.settings.BootstrapSettings;
 import de.agilecoders.wicket.core.settings.IBootstrapSettings;
 import de.agilecoders.wicket.core.test.Attributes;
 import de.agilecoders.wicket.core.util.CssClassNames;
-import de.agilecoders.wicket.core.util.Generics2;
+import de.agilecoders.wicket.jquery.util.Generics2;
 import org.apache.wicket.Component;
 import org.apache.wicket.Page;
 import org.apache.wicket.behavior.Behavior;
@@ -22,8 +22,8 @@ import org.junit.Before;
 import java.util.ArrayList;
 import java.util.List;
 
-import static de.agilecoders.wicket.core.util.Generics2.newArrayList;
-import static de.agilecoders.wicket.core.util.Strings2.nullToEmpty;
+import static de.agilecoders.wicket.jquery.util.Generics2.newArrayList;
+import static de.agilecoders.wicket.jquery.util.Strings2.nullToEmpty;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 
