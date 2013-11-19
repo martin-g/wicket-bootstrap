@@ -67,14 +67,14 @@ public class FontAwesomeIconTypeBuilder {
         toggle_right, toggle_up, trash_o, trello, trophy, truck, tumblr, tumblr_square, turkish_lira, twitter,
         twitter_square, umbrella, underline, undo, unlink, unlock, unlock_alt, unsorted, upload, usd, user, user_md,
         users, vimeo_square, video_camera, vk, volume_down, volume_off, volume_up, warning, weelchair, weibo, windows,
-        wrench, xing, xing_square, youtube, youtube_play, youtube_square, won;
+        wrench, xing, xing_square, youtube, youtube_play, youtube_square, won
     }
 
     /**
      * Rotation that can be done on an icon.
      */
     public static enum Rotation {
-        flip_horizontal, flip_vertical, normal, rotate_180, rotate_270, rotate_90;
+        flip_horizontal, flip_vertical, normal, rotate_180, rotate_270, rotate_90
     }
 
     /**
@@ -151,7 +151,7 @@ public class FontAwesomeIconTypeBuilder {
                     styles.add("fa-5x");
                     break;
                 case large:
-                    styles.add("fa-large");
+                    styles.add("fa-lg");
                     break;
             }
         }
@@ -160,7 +160,7 @@ public class FontAwesomeIconTypeBuilder {
     }
 
     /**
-     * @param rotation rotation to apply to ther icon
+     * @param rotation rotation to apply to the icon
      * @return the builder
      */
     public FontAwesomeIconTypeBuilder rotate(final Rotation rotation) {
