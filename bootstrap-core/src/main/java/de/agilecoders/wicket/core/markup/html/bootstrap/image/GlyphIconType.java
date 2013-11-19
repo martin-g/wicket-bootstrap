@@ -4,7 +4,7 @@ package de.agilecoders.wicket.core.markup.html.bootstrap.image;
 /**
  * References all available icons inside the icon sprite.
  *
- * @see {http://twitter.github.com/bootstrap/base-css.html#buttons}
+ * @see {http://getbootstrap.com/components/#glyphicons}
  */
 public class GlyphIconType extends IconType {
 

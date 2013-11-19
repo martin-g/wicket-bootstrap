@@ -8,8 +8,6 @@ import org.apache.wicket.util.lang.Args;
 
 /**
  * References all available icons inside the icon sprite.
- *
- * @see {http://twitter.github.com/bootstrap/base-css.html#buttons}
  */
 public abstract class IconType implements ICssClassNameProvider, ICssClassNameModifier {
     /** CSS classname. */
