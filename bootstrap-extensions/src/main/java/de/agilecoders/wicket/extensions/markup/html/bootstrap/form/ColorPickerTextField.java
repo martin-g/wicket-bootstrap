@@ -1,7 +1,7 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.form;
 
 import de.agilecoders.wicket.core.util.Attributes;
-import de.agilecoders.wicket.core.util.JQuery;
+import de.agilecoders.wicket.jquery.JQuery;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AbstractDefaultAjaxBehavior;
 import org.apache.wicket.ajax.AjaxRequestHandler;
@@ -23,7 +23,7 @@ import org.apache.wicket.util.string.StringValue;
 import java.util.List;
 import java.util.Map;
 
-import static de.agilecoders.wicket.core.util.JQuery.$;
+import static de.agilecoders.wicket.jquery.JQuery.$;
 
 /**
  * Bootstrap ColorPicker from http://mjaalnir.github.io/bootstrap-colorpicker/

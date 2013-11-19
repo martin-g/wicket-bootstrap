@@ -5,6 +5,8 @@ import com.google.common.base.Splitter;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNameProvider;
 
+import de.agilecoders.wicket.jquery.util.Generics2;
+import de.agilecoders.wicket.jquery.util.Strings2;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.util.lang.Args;
 

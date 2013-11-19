@@ -21,7 +21,7 @@ import org.apache.wicket.util.io.IClusterable;
 
 import java.util.List;
 
-import static de.agilecoders.wicket.core.util.JQuery.$;
+import static de.agilecoders.wicket.jquery.JQuery.$;
 
 /**
  * A customizable HTML5 video player plugin for jQuery based on bootstrap UI

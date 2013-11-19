@@ -12,7 +12,7 @@ import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.html.panel.GenericPanel;
 import org.apache.wicket.model.IModel;
 
-import static de.agilecoders.wicket.core.util.JQuery.$;
+import static de.agilecoders.wicket.jquery.JQuery.$;
 
 /**
  * A bootstrap styled context menu.

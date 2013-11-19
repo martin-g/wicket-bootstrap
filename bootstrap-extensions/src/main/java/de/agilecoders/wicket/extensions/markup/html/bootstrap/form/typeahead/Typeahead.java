@@ -12,7 +12,7 @@ import org.apache.wicket.util.lang.Args;
 
 import java.util.Collections;
 
-import static de.agilecoders.wicket.core.util.JQuery.$;
+import static de.agilecoders.wicket.jquery.JQuery.$;
 
 /**
  * An integration with <a href="https://github.com/twitter/typeahead.js">Twitter Typeahead</a> plugin.

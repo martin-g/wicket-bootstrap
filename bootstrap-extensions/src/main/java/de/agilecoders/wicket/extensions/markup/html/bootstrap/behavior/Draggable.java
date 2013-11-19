@@ -6,7 +6,7 @@ import de.agilecoders.wicket.extensions.markup.html.bootstrap.jqueryui.JQueryUID
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.head.IHeaderResponse;
 
-import static de.agilecoders.wicket.core.util.JQuery.$;
+import static de.agilecoders.wicket.jquery.JQuery.$;
 
 /**
  * Makes an assigned component draggable.

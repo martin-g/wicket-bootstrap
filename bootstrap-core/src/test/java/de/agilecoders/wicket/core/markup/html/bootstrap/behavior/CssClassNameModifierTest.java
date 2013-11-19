@@ -1,12 +1,8 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.behavior;
 
 import de.agilecoders.wicket.core.WicketApplicationTest;
-import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.CssClassNameAppender;
-import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.CssClassNameModifier;
-import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNameModifier;
-import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNameProvider;
 import de.agilecoders.wicket.core.test.IntegrationTest;
-import de.agilecoders.wicket.core.util.Generics2;
+import de.agilecoders.wicket.jquery.util.Generics2;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.WebMarkupContainer;
@@ -15,7 +11,6 @@ import org.apache.wicket.util.tester.TagTester;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
-import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 

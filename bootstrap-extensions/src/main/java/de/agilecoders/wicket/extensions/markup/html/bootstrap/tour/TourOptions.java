@@ -1,7 +1,7 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.tour;
 
-import de.agilecoders.wicket.core.markup.html.bootstrap.common.AbstractConfig;
-import de.agilecoders.wicket.core.util.Json.RawValue;
+import de.agilecoders.wicket.jquery.AbstractConfig;
+import de.agilecoders.wicket.jquery.util.Json;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
@@ -27,7 +27,7 @@ public class TourOptions extends AbstractConfig {
     /**
      * The storage system you want to use. could be the objects window.localStorage, window.sessionStorage of your own object.
      */
-    private static final IKey<RawValue> Storage = newKey("storage", new RawValue("window.localStorage"));
+    private static final IKey<Json.RawValue> Storage = newKey("storage", new Json.RawValue("window.localStorage"));
 
     /**
      * Set this option to true to have some useful informations printed in the console.
@@ -115,7 +115,7 @@ public class TourOptions extends AbstractConfig {
      * @return this instance for chaining.
      */
     public TourOptions withStorage(String value) {
-        put(Storage, new RawValue("window.localStorage"));
+        put(Storage, new Json.RawValue("window.localStorage"));
         return this;
     }
 
