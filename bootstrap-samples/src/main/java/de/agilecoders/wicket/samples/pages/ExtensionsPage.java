@@ -145,7 +145,7 @@ public class ExtensionsPage extends BasePage {
         fileUploadForm.add(fileUpload);
 
         ProgressBar progressBar = new ProgressBar("progressBar", fileUploadForm, fileUpload, Model.of(0));
-        progressBar.striped(true).active(true);
+        progressBar.striped(true).active(true).type(ProgressBar.Type.INFO);
         fileUploadForm.add(progressBar);
         fileUploadForm.add(new AjaxButton("submit") {});
     }
