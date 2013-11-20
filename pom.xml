@@ -37,7 +37,6 @@
     </modules>
 
     <properties>
-        <wicket.version>6.13.0-SNAPSHOT</wicket.version>
         <github.global.server>github</github.global.server>
 
         <bootstrap.version>3.0.2</bootstrap.version>
