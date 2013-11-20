@@ -18,16 +18,15 @@ public class BootswatchCssReference extends CssResourceReference {
      */
     public static final BootswatchCssReference AMELIA = new BootswatchCssReference("amelia");
     public static final BootswatchCssReference CERULEAN = new BootswatchCssReference("cerulean");
+    public static final BootswatchCssReference COSMO = new BootswatchCssReference("cosmo");
     public static final BootswatchCssReference CYBORG = new BootswatchCssReference("cyborg");
+    public static final BootswatchCssReference FLATLY = new BootswatchCssReference("flatly");
     public static final BootswatchCssReference JOURNAL = new BootswatchCssReference("journal");
     public static final BootswatchCssReference READABLE = new BootswatchCssReference("readable");
     public static final BootswatchCssReference SIMPLEX = new BootswatchCssReference("simplex");
     public static final BootswatchCssReference SLATE = new BootswatchCssReference("slate");
     public static final BootswatchCssReference SPACELAB = new BootswatchCssReference("spacelab");
-    public static final BootswatchCssReference SPRUCE = new BootswatchCssReference("spruce");
-    public static final BootswatchCssReference SUPERHERO = new BootswatchCssReference("superhero");
     public static final BootswatchCssReference UNITED = new BootswatchCssReference("united");
-    public static final BootswatchCssReference COSMO = new BootswatchCssReference("cosmo");
 
     /**
      * Private constructor.
