@@ -458,6 +458,6 @@ public class FontAwesomeIconType extends IconType {
 
     @Override
     public String cssClassName() {
-        return "fa fa-" + cssClassName;
+        return "fa fa-" + getCssClassName();
     }
 }

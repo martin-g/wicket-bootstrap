@@ -71,7 +71,7 @@ public class BootstrapBookmarkablePageLink<T> extends BookmarkablePageLink<T> im
      * @return new icon component
      */
     protected Icon newIcon(final String markupId) {
-        return new Icon(markupId, IconType.NULL);
+        return new Icon(markupId, (IconType) null);
     }
 
     /**

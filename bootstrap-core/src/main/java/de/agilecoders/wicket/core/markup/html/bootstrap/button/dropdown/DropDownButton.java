@@ -53,7 +53,7 @@ public abstract class DropDownButton extends AbstractLink implements Invertible<
      * @param model The label of the main button
      */
     public DropDownButton(final String id, final IModel<String> model) {
-        this(id, model, Model.of(IconType.NULL));
+        this(id, model, Model.of((IconType) null));
     }
 
     /**

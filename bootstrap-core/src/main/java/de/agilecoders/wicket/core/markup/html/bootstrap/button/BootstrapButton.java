@@ -58,7 +58,7 @@ public class BootstrapButton extends Button implements IBootstrapButton<Bootstra
      * @return new icon component
      */
     protected Icon newIcon(final String markupId) {
-        return new Icon(markupId, IconType.NULL).invert();
+        return new Icon(markupId, (IconType) null).invert();
     }
 
     /**

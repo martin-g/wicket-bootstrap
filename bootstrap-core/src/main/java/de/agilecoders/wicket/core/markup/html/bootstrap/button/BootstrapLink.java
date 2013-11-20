@@ -101,7 +101,7 @@ public abstract class BootstrapLink<T> extends Link<T> implements IBootstrapButt
      * @return new icon component
      */
     protected Icon newIcon(final String markupId) {
-        return new Icon(markupId, IconType.NULL).invert();
+        return new Icon(markupId, (IconType) null).invert();
     }
 
     /**
