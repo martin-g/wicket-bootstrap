@@ -6,8 +6,8 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.button.ButtonGroup;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.ButtonList;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.Toolbar;
+import de.agilecoders.wicket.core.markup.html.bootstrap.image.GlyphIconType;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.Icon;
-import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
 import de.agilecoders.wicket.jquery.util.Generics2;
 import de.agilecoders.wicket.samples.components.base.Section;
 import de.agilecoders.wicket.samples.pages.ComponentsPage;
@@ -51,10 +51,10 @@ public class ButtonGroups extends Section {
             @Override
             protected List<AbstractLink> newButtons(String buttonMarkupId) {
                 return Generics2.newArrayList(
-                        createIconButton(new Icon(IconType.alignleft)),
-                        createIconButton(new Icon(IconType.aligncenter)),
-                        createIconButton(new Icon(IconType.alignright)),
-                        createIconButton(new Icon(IconType.alignjustify)));
+                        createIconButton(new Icon(GlyphIconType.alignleft)),
+                        createIconButton(new Icon(GlyphIconType.aligncenter)),
+                        createIconButton(new Icon(GlyphIconType.alignright)),
+                        createIconButton(new Icon(GlyphIconType.alignjustify)));
             }
         };
         add(verticalButtonGroup);

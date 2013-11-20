@@ -12,6 +12,7 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.carousel.CarouselImage;
 import de.agilecoders.wicket.core.markup.html.bootstrap.carousel.ICarouselImage;
 import de.agilecoders.wicket.core.markup.html.bootstrap.components.PopoverBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.components.TooltipBehavior;
+import de.agilecoders.wicket.core.markup.html.bootstrap.image.GlyphIconType;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.typeahead.Dataset;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.typeahead.Typeahead;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
@@ -203,7 +204,7 @@ public class Javascript extends BasePage {
     }
 
     private Component newDropDown(String markupId) {
-        return new DropDownButton(markupId, Model.of("Dropdown (#89)"), Model.of(IconType.bookmark)) {
+        return new DropDownButton(markupId, Model.of("Dropdown (#89)"), Model.<IconType>of(GlyphIconType.bookmark)) {
             @Override
             protected List<AbstractLink> newSubMenuButtons(String buttonMarkupId) {
                 List<AbstractLink> subMenu = new ArrayList<AbstractLink>();
