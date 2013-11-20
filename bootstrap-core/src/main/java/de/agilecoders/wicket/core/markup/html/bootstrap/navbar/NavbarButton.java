@@ -26,9 +26,9 @@ public class NavbarButton<T> extends BootstrapBookmarkablePageLink<T> {
      * @param pageClass  The class of page to link to
      * @param parameters The parameters to pass to the new page when the link is clicked
      * @param label      The component's label
-     * @param <T>        type of the page class
+     * @param <P>        type of the page class
      */
-    public <T extends Page> NavbarButton(final Class<T> pageClass, final PageParameters parameters, final IModel<String> label) {
+    public <P extends Page> NavbarButton(final Class<P> pageClass, final PageParameters parameters, final IModel<String> label) {
         super(Navbar.componentId(), pageClass, parameters, Buttons.Type.Menu);
 
         setLabel(label);
@@ -39,9 +39,9 @@ public class NavbarButton<T> extends BootstrapBookmarkablePageLink<T> {
      *
      * @param pageClass The class of page to link to
      * @param label     The component's label
-     * @param <T>       type of the page class
+     * @param <P>       type of the page class
      */
-    public <T extends Page> NavbarButton(final Class<T> pageClass, final IModel<String> label) {
+    public <P extends Page> NavbarButton(final Class<P> pageClass, final IModel<String> label) {
         this(pageClass, new PageParameters(), label);
     }
     
@@ -50,10 +50,10 @@ public class NavbarButton<T> extends BootstrapBookmarkablePageLink<T> {
      * 
      * @param pageClass
      *            The class of page to link to
-     * @param <T>
+     * @param <P>
      *            type of the page class
      */
-    public <T extends Page> NavbarButton(final Class<T> pageClass, IconType iconType) {
+    public <P extends Page> NavbarButton(final Class<P> pageClass, IconType iconType) {
         this(pageClass, new PageParameters(), Model.of(""));
 
         setIconType(iconType);

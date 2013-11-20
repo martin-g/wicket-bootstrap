@@ -73,9 +73,9 @@ public class ExtensionsPage extends BasePage {
                                                    + "\t\t.setWidth(680).setHeight(360));")));
 
         final List<? extends AbstractLink> buttons = Lists.<AbstractLink>newArrayList(
-                new MenuBookmarkablePageLink<DatePickerPage>(DatePickerPage.class, Model.of("DatePicker")).setIconType(GlyphIconType.time),
-                new MenuBookmarkablePageLink<IssuesPage>(IssuesPage.class, Model.of("Github Issues")).setIconType(GlyphIconType.book),
-                new MenuBookmarkablePageLink<ExtensionsPage>(ExtensionsPage.class, Model.of("Extensions")).setIconType(GlyphIconType.qrcode)
+                new MenuBookmarkablePageLink(DatePickerPage.class, Model.of("DatePicker")).setIconType(GlyphIconType.time),
+                new MenuBookmarkablePageLink(IssuesPage.class, Model.of("Github Issues")).setIconType(GlyphIconType.book),
+                new MenuBookmarkablePageLink(ExtensionsPage.class, Model.of("Extensions")).setIconType(GlyphIconType.qrcode)
         );
         final Component contextPanel = new TransparentWebMarkupContainer("context-panel");
         final ButtonListContextMenu contextMenu = new ButtonListContextMenu("contextmenu", Model.ofList(buttons));
@@ -105,9 +105,9 @@ public class ExtensionsPage extends BasePage {
             @Override
             protected List<AbstractLink> newSubMenuButtons(String buttonMarkupId) {
                 return Lists.<AbstractLink>newArrayList(
-                        new MenuBookmarkablePageLink<DatePickerPage>(DatePickerPage.class, Model.of("DatePicker")).setIconType(GlyphIconType.time),
-                        new MenuBookmarkablePageLink<IssuesPage>(IssuesPage.class, Model.of("Github Issues")).setIconType(GlyphIconType.book),
-                        new MenuBookmarkablePageLink<ExtensionsPage>(ExtensionsPage.class, Model.of("Extensions")).setIconType(GlyphIconType.qrcode)
+                        new MenuBookmarkablePageLink(DatePickerPage.class, Model.of("DatePicker")).setIconType(GlyphIconType.time),
+                        new MenuBookmarkablePageLink(IssuesPage.class, Model.of("Github Issues")).setIconType(GlyphIconType.book),
+                        new MenuBookmarkablePageLink(ExtensionsPage.class, Model.of("Extensions")).setIconType(GlyphIconType.qrcode)
                 );
             }
         };

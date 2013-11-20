@@ -10,7 +10,6 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.image.GlyphIconType;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
 import de.agilecoders.wicket.samples.components.basecss.ButtonGroups;
 import org.apache.wicket.Component;
-import org.apache.wicket.Page;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.markup.html.link.AbstractLink;
 import org.apache.wicket.model.IModel;
@@ -65,9 +64,9 @@ public class ComponentsPage extends BasePage {
             @Override
             protected List<AbstractLink> newSubMenuButtons(String buttonMarkupId) {
                 final List<AbstractLink> subMenu = new ArrayList<AbstractLink>();
-                subMenu.add(new MenuBookmarkablePageLink<Page>(ComponentsPage.class, Model.of("Link 1")));
-                subMenu.add(new MenuBookmarkablePageLink<Page>(ComponentsPage.class, Model.of("Link 2")));
-                subMenu.add(new MenuBookmarkablePageLink<Page>(ComponentsPage.class, Model.of("Link 3")));
+                subMenu.add(new MenuBookmarkablePageLink(ComponentsPage.class, Model.of("Link 1")));
+                subMenu.add(new MenuBookmarkablePageLink(ComponentsPage.class, Model.of("Link 2")));
+                subMenu.add(new MenuBookmarkablePageLink(ComponentsPage.class, Model.of("Link 3")));
 
                 return subMenu;
             }
@@ -89,10 +88,10 @@ public class ComponentsPage extends BasePage {
             protected List<AbstractLink> newSubMenuButtons(String buttonMarkupId) {
                 List<AbstractLink> links = new ArrayList<AbstractLink>();
 
-                links.add(new MenuBookmarkablePageLink<HomePage>(Javascript.class, Model.of("Javascript")).setIconType(GlyphIconType.refresh));
-                links.add(new MenuBookmarkablePageLink<DatePickerPage>(DatePickerPage.class, Model.of("DatePicker")).setIconType(GlyphIconType.time));
-                links.add(new MenuBookmarkablePageLink<IssuesPage>(IssuesPage.class, Model.of("Github Issues")).setIconType(GlyphIconType.book));
-                links.add(new MenuBookmarkablePageLink<ExtensionsPage>(ExtensionsPage.class, Model.of("Extensions")).setIconType(GlyphIconType.alignjustify));
+                links.add(new MenuBookmarkablePageLink(Javascript.class, Model.of("Javascript")).setIconType(GlyphIconType.refresh));
+                links.add(new MenuBookmarkablePageLink(DatePickerPage.class, Model.of("DatePicker")).setIconType(GlyphIconType.time));
+                links.add(new MenuBookmarkablePageLink(IssuesPage.class, Model.of("Github Issues")).setIconType(GlyphIconType.book));
+                links.add(new MenuBookmarkablePageLink(ExtensionsPage.class, Model.of("Extensions")).setIconType(GlyphIconType.alignjustify));
                 links.add(new MenuDivider());
 
                 return links;

@@ -105,7 +105,7 @@ public class NavbarTest extends WicketApplicationTest {
         navbar.addComponents(new INavbarComponent() {
             @Override
             public Component create(String markupId) {
-                return new NavbarButton<Page>(Page.class, Model.of("Link Name"));
+                return new NavbarButton(Page.class, Model.of("Link Name"));
             }
 
             @Override
@@ -128,7 +128,7 @@ public class NavbarTest extends WicketApplicationTest {
         navbar.addComponents(new INavbarComponent() {
             @Override
             public Component create(String markupId) {
-                return new NavbarButton<Page>(Page.class, Model.of("Link Name")).setIconType(GlyphIconType.aligncenter);
+                return new NavbarButton(Page.class, Model.of("Link Name")).setIconType(GlyphIconType.aligncenter);
             }
 
             @Override

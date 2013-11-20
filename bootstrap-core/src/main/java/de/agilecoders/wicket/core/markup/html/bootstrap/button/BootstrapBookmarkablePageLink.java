@@ -24,6 +24,7 @@ import org.apache.wicket.util.string.Strings;
  * new BootstrapBookmarkablePageLink<Page>("componentId", Page.class, Type.Danger).setSize(Size.Large);
  * </code>
  *
+ * @param <T>  The type of the model object for this link
  * @author miha
  */
 public class BootstrapBookmarkablePageLink<T> extends BookmarkablePageLink<T> implements IBootstrapButton<BootstrapBookmarkablePageLink<T>>, Activatable {
@@ -39,9 +40,9 @@ public class BootstrapBookmarkablePageLink<T> extends BookmarkablePageLink<T> im
      * @param componentId The non-null id of this component
      * @param pageClass   The class of page to link to
      * @param type        The type of the button, e.g. Success, Warn, Default, Menu...
-     * @param <T>         type of the page class
+     * @param <P>         type of the page class
      */
-    public <T extends Page> BootstrapBookmarkablePageLink(final String componentId, final Class<T> pageClass, final Buttons.Type type) {
+    public <P extends Page> BootstrapBookmarkablePageLink(final String componentId, final Class<P> pageClass, final Buttons.Type type) {
         this(componentId, pageClass, new PageParameters(), type);
     }
 
@@ -52,9 +53,9 @@ public class BootstrapBookmarkablePageLink<T> extends BookmarkablePageLink<T> im
      * @param pageClass   The class of page to link to
      * @param parameters  The parameters to pass to the new page when the link is clicked
      * @param type        The type of the button, e.g. Success, Warn, Default, Menu...
-     * @param <T>         type of the page class
+     * @param <P>         type of the page class
      */
-    public <T extends Page> BootstrapBookmarkablePageLink(final String componentId, final Class<T> pageClass, final PageParameters parameters, final Buttons.Type type) {
+    public <P extends Page> BootstrapBookmarkablePageLink(final String componentId, final Class<P> pageClass, final PageParameters parameters, final Buttons.Type type) {
         super(componentId, pageClass, parameters);
 
         add(buttonBehavior = new ButtonBehavior(type, Buttons.Size.Medium));

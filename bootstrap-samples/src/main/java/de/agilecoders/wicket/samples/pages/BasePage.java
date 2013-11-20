@@ -29,7 +29,6 @@ import de.agilecoders.wicket.samples.assets.base.FixBootstrapStylesCssResourceRe
 import de.agilecoders.wicket.samples.components.site.Footer;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
-import org.apache.wicket.Page;
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
@@ -120,10 +119,10 @@ abstract class BasePage<T> extends GenericWebPage<T> {
         navbar.brandName(Model.of("Wicket Bootstrap"));
 
         navbar.addComponents(NavbarComponents.transform(Navbar.ComponentPosition.LEFT,
-                                                        new NavbarButton<HomePage>(HomePage.class, Model.of("Overview")).setIconType(GlyphIconType.home),
-                                                        new NavbarButton<BaseCssPage>(BaseCssPage.class, Model.of("Base CSS")),
-                                                        new NavbarButton<ComponentsPage>(ComponentsPage.class, Model.of("Components")),
-                                                        new NavbarButton<HomePage>(Scaffolding.class, Model.of("Scaffolding")),
+                                                        new NavbarButton(HomePage.class, Model.of("Overview")).setIconType(GlyphIconType.home),
+                                                        new NavbarButton(BaseCssPage.class, Model.of("Base CSS")),
+                                                        new NavbarButton(ComponentsPage.class, Model.of("Components")),
+                                                        new NavbarButton(Scaffolding.class, Model.of("Scaffolding")),
                                                         newAddonsDropDownButton())
         );
 
@@ -146,7 +145,7 @@ abstract class BasePage<T> extends GenericWebPage<T> {
                     PageParameters params = new PageParameters();
                     params.set("theme", theme.name());
 
-                    subMenu.add(new MenuBookmarkablePageLink<Page>(getPageClass(), params, Model.of(theme.name())));
+                    subMenu.add(new MenuBookmarkablePageLink(getPageClass(), params, Model.of(theme.name())));
                 }
 
                 return subMenu;
@@ -170,11 +169,11 @@ abstract class BasePage<T> extends GenericWebPage<T> {
             protected List<AbstractLink> newSubMenuButtons(String buttonMarkupId) {
                 final List<AbstractLink> subMenu = new ArrayList<AbstractLink>();
 
-                subMenu.add(new MenuBookmarkablePageLink<HomePage>(Javascript.class, Model.of("Javascript")).setIconType(GlyphIconType.refresh));
-                subMenu.add(new MenuBookmarkablePageLink<DatePickerPage>(DatePickerPage.class, Model.of("DatePicker")).setIconType(GlyphIconType.time));
-                subMenu.add(new MenuBookmarkablePageLink<IssuesPage>(IssuesPage.class, Model.of("Github Issues")).setIconType(GlyphIconType.book));
-                subMenu.add(new MenuBookmarkablePageLink<ExtensionsPage>(ExtensionsPage.class, Model.of("Extensions")).setIconType(GlyphIconType.alignjustify));
-                subMenu.add(new MenuBookmarkablePageLink<FontAwesomePage>(FontAwesomePage.class, Model.of("Font Awesome")).setIconType(GlyphIconType.font));
+                subMenu.add(new MenuBookmarkablePageLink(Javascript.class, Model.of("Javascript")).setIconType(GlyphIconType.refresh));
+                subMenu.add(new MenuBookmarkablePageLink(DatePickerPage.class, Model.of("DatePicker")).setIconType(GlyphIconType.time));
+                subMenu.add(new MenuBookmarkablePageLink(IssuesPage.class, Model.of("Github Issues")).setIconType(GlyphIconType.book));
+                subMenu.add(new MenuBookmarkablePageLink(ExtensionsPage.class, Model.of("Extensions")).setIconType(GlyphIconType.alignjustify));
+                subMenu.add(new MenuBookmarkablePageLink(FontAwesomePage.class, Model.of("Font Awesome")).setIconType(GlyphIconType.font));
 
                 return subMenu;
             }
