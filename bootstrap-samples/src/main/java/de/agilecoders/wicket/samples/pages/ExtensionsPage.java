@@ -21,6 +21,7 @@ import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.OpenWebIconTy
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.OpenWebIconsCssReference;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.tour.TourBehavior;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.tour.TourStep;
+import de.agilecoders.wicket.samples.panels.pagination.InfinitePaginationPanel;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.markup.head.CssHeaderItem;
@@ -125,8 +126,7 @@ public class ExtensionsPage extends BasePage {
         addJasnyFileUploadDemo();
         addJasnyInputMaskDemo();
 
-//        add(new InfinitePaginationPanel("infinite"));
-        add(new WebMarkupContainer("infinite"));
+        add(new InfinitePaginationPanel("infinite"));
     }
 
     @Override
