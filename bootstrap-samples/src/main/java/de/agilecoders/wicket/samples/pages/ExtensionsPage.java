@@ -4,8 +4,8 @@ import com.google.common.collect.Lists;
 import de.agilecoders.wicket.core.markup.html.bootstrap.block.Code;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.DropDownButton;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.MenuBookmarkablePageLink;
+import de.agilecoders.wicket.core.markup.html.bootstrap.components.ProgressBar;
 import de.agilecoders.wicket.core.markup.html.bootstrap.components.TooltipConfig;
-import de.agilecoders.wicket.core.markup.html.bootstrap.components.UpdatableProgressBar;
 import de.agilecoders.wicket.core.markup.html.bootstrap.dialog.Modal;
 import de.agilecoders.wicket.core.markup.html.bootstrap.dialog.TextContentModal;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.Icon;
@@ -21,27 +21,22 @@ import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.OpenWebIconTy
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.OpenWebIconsCssReference;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.tour.TourBehavior;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.tour.TourStep;
-import de.agilecoders.wicket.samples.panels.pagination.InfinitePaginationPanel;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.html.TransparentWebMarkupContainer;
+import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.link.AbstractLink;
 import org.apache.wicket.markup.repeater.RepeatingView;
-import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.model.ResourceModel;
-import org.apache.wicket.protocol.http.servlet.MultipartServletWebRequestImpl;
-import org.apache.wicket.protocol.http.servlet.UploadInfo;
-import org.apache.wicket.request.IRequestParameters;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.wicketstuff.annotation.mount.MountPath;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -130,7 +125,8 @@ public class ExtensionsPage extends BasePage {
         addJasnyFileUploadDemo();
         addJasnyInputMaskDemo();
 
-        add(new InfinitePaginationPanel("infinite"));
+//        add(new InfinitePaginationPanel("infinite"));
+        add(new WebMarkupContainer("infinite"));
     }
 
     @Override
@@ -148,22 +144,9 @@ public class ExtensionsPage extends BasePage {
         FileUploadField fileUpload = new FileUploadField("fileUpload");
         fileUploadForm.add(fileUpload);
 
-        fileUploadForm.add(new UpdatableProgressBar("progressBar") {
-            @Override
-            protected IModel<Integer> newValue() {
-                final String upload = String.valueOf(getPageId());
-
-                final HttpServletRequest req = (HttpServletRequest) getRequest().getContainerRequest();
-                UploadInfo info = MultipartServletWebRequestImpl.getUploadInfo(req, upload);
-                long percents = 0L;
-                if (info != null) {
-                    long totalBytes = info.getTotalBytes();
-                    long bytesUploaded = info.getBytesUploaded();
-                    percents = totalBytes / bytesUploaded;
-                }
-                return Model.of((int) percents);
-            }
-        });
+        ProgressBar progressBar = new ProgressBar("progressBar", fileUploadForm, fileUpload, Model.of(0));
+        progressBar.striped(true).active(true);
+        fileUploadForm.add(progressBar);
         fileUploadForm.add(new AjaxButton("submit") {});
     }
 
