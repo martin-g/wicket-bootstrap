@@ -1,8 +1,7 @@
 @import "../../bootstrap/css/bootstrap.less";
 @import "bootstrap.amelia.variables.less";
 
-
-// Amelia 3.0.0
+// Amelia 3.0.2
 // Bootswatch
 // -----------------------------------------------------
 
@@ -39,31 +38,36 @@
 
 // Typography =================================================================
 
-h1, h2, h3, h4, h5, h6 {
-	font-family: 'Lobster', cursive;
-}
-
-.text-primary {
+.text-primary,
+.text-primary:hover {
 	color: lighten(@brand-primary, 40%);
 }
 
-.text-success {
+.text-success,
+.text-success:hover {
 	color: lighten(@brand-success, 20%);
 }
 
-.text-danger {
+.text-danger,
+.text-danger:hover {
 	color: lighten(@brand-danger, 20%);
 }
 
-.text-warning {
+.text-warning,
+.text-warning:hover {
 	color: lighten(@brand-warning, 20%);
 }
 
-.text-info {
+.text-info,
+.text-info:hover {
 	color: lighten(@brand-info, 40%);
 }
 
 // Tables =====================================================================
+
+.table-responsive > .table {
+	background-color: @table-bg;
+}
 
 // Forms ======================================================================
 

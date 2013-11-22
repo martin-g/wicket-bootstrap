@@ -6,7 +6,7 @@ import de.agilecoders.wicket.themes.markup.html.bootswatch.BootswatchTheme;
 /**
  * The {@code BootswatchThemeProvider} provides access to all available
  * bootswatch themes.
- *
+ * 
  * @author miha
  */
 public class BootswatchThemeProvider extends DefaultThemeProvider {
@@ -18,11 +18,10 @@ public class BootswatchThemeProvider extends DefaultThemeProvider {
         super();
 
         add(BootswatchTheme.AMELIA, BootswatchTheme.CERULEAN,
-            BootswatchTheme.CYBORG, BootswatchTheme.JOURNAL,
+            BootswatchTheme.COSMO, BootswatchTheme.CYBORG, 
+            BootswatchTheme.FLATLY,BootswatchTheme.JOURNAL,
             BootswatchTheme.READABLE, BootswatchTheme.SIMPLEX,
             BootswatchTheme.SLATE, BootswatchTheme.SPACELAB,
-            BootswatchTheme.SPRUCE, BootswatchTheme.SUPERHERO,
-            BootswatchTheme.UNITED, BootswatchTheme.COSMO);
+            BootswatchTheme.UNITED);
     }
-
 }
