@@ -4,6 +4,7 @@ import com.google.common.collect.Lists;
 import de.agilecoders.wicket.core.markup.html.bootstrap.block.Code;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.DropDownButton;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.MenuBookmarkablePageLink;
+import de.agilecoders.wicket.core.markup.html.bootstrap.components.ProgressBar;
 import de.agilecoders.wicket.core.markup.html.bootstrap.components.TooltipConfig;
 import de.agilecoders.wicket.core.markup.html.bootstrap.dialog.Modal;
 import de.agilecoders.wicket.core.markup.html.bootstrap.dialog.TextContentModal;
@@ -22,10 +23,13 @@ import de.agilecoders.wicket.extensions.markup.html.bootstrap.tour.TourBehavior;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.tour.TourStep;
 import de.agilecoders.wicket.samples.panels.pagination.InfinitePaginationPanel;
 import org.apache.wicket.Component;
+import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.html.TransparentWebMarkupContainer;
+import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.link.AbstractLink;
 import org.apache.wicket.markup.repeater.RepeatingView;
@@ -134,8 +138,16 @@ public class ExtensionsPage extends BasePage {
 
 
     private void addJasnyFileUploadDemo() {
+        Form fileUploadForm = new Form("fileUploadForm");
+        add(fileUploadForm);
+        fileUploadForm.setMultiPart(true);
         FileUploadField fileUpload = new FileUploadField("fileUpload");
-        add(fileUpload);
+        fileUploadForm.add(fileUpload);
+
+        ProgressBar progressBar = new ProgressBar("progressBar", fileUploadForm, fileUpload, Model.of(0));
+        progressBar.striped(true).active(true).type(ProgressBar.Type.INFO);
+        fileUploadForm.add(progressBar);
+        fileUploadForm.add(new AjaxButton("submit") {});
     }
 
     private void addJasnyInputMaskDemo() {

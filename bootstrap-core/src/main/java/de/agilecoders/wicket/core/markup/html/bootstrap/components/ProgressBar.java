@@ -1,44 +1,39 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.components;
 
-import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.CssClassNameAppender;
-import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.CssClassNameModifier;
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNameProvider;
+import de.agilecoders.wicket.core.markup.html.bootstrap.components.progress.UploadProgressBarJavaScriptReference;
 import de.agilecoders.wicket.core.util.Attributes;
-import de.agilecoders.wicket.jquery.util.Generics2;
 import org.apache.wicket.Component;
+import org.apache.wicket.behavior.Behavior;
+import org.apache.wicket.extensions.ajax.markup.html.form.upload.UploadProgressBar;
 import org.apache.wicket.markup.ComponentTag;
+import org.apache.wicket.markup.head.IHeaderResponse;
+import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.html.WebMarkupContainer;
-import org.apache.wicket.markup.html.panel.Panel;
+import org.apache.wicket.markup.html.form.Form;
+import org.apache.wicket.markup.html.form.upload.FileUploadField;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
+import org.apache.wicket.request.resource.ResourceReference;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.util.List;
 
 /**
  * TODO: document
  *
  * @author miha
  */
-public class ProgressBar extends Panel {
+public class ProgressBar extends UploadProgressBar {
     private static final Logger LOG = LoggerFactory.getLogger(ProgressBar.class);
 
     private static final int MIN = 0;
     private static final int MAX = 100;
 
-
-    private Component indicator;
-
     public enum Type implements ICssClassNameProvider {
         DEFAULT, INFO, SUCCESS, WARNING, DANGER;
 
         public String cssClassName() {
-            return equals(DEFAULT) ? "" : "progress-" + name().toLowerCase();
-        }
-
-        public CssClassNameAppender newCssClassNameModifier() {
-            return new CssClassNameAppender(cssClassName());
+            return equals(DEFAULT) ? "" : "progress-bar-" + name().toLowerCase();
         }
     }
 
@@ -51,15 +46,40 @@ public class ProgressBar extends Panel {
     }
 
     public ProgressBar(String id, IModel<Integer> model) {
-        super(id, model);
+        this(id, new Form("dummy"), null, model);
+    }
 
-        indicator = newIndicator("indicator");
+    public ProgressBar(String id, Form<?> form, FileUploadField fileUploadField, IModel<Integer> model) {
+        super(id, form, fileUploadField);
 
-        add(indicator);
+        setRenderBodyOnly(false);
+
+        setDefaultModel(model);
+
+        get("status").setVisible(false);
+
+        // TODO Rework once Wicket 6.13 is released to use #newBarComponent
+        indicator().add(new Behavior() {
+            @Override
+            public void onComponentTag(Component component, ComponentTag tag) {
+                super.onComponentTag(component, tag);
+
+                if (!Type.DEFAULT.equals(type)) {
+                    Attributes.addClass(tag, type().cssClassName());
+                }
+
+                tag.put("style", createStyleValue().getObject());
+            }
+        });
+    }
+
+    @Override
+    protected ResourceReference getCss() {
+        return null;
     }
 
     protected final Component indicator() {
-        return indicator;
+        return get("bar");
     }
 
     public boolean striped() {
@@ -93,8 +113,9 @@ public class ProgressBar extends Panel {
         return this;
     }
 
-    private Component newIndicator(final String markupId) {
-        return new WebMarkupContainer(markupId) {
+    // TODO: use this once Wicket 6.13 is released
+    protected Component newBarComponent(String id) {
+        return new WebMarkupContainer(id) {
             @Override
             protected void onComponentTag(ComponentTag tag) {
                 super.onComponentTag(tag);
@@ -127,27 +148,6 @@ public class ProgressBar extends Panel {
     }
 
     @Override
-    protected void onConfigure() {
-        super.onConfigure();
-
-        add(new CssClassNameModifier(cssClassNames()));
-    }
-
-    private List<String> cssClassNames() {
-        List<String> classNames = Generics2.newArrayList("progress");
-
-        if (active()) {
-            classNames.add("active");
-        }
-
-        if (striped()) {
-            classNames.add("progress-striped");
-        }
-
-        return classNames;
-    }
-
-    @Override
     protected void onComponentTag(ComponentTag tag) {
         super.onComponentTag(tag);
 
@@ -156,5 +156,23 @@ public class ProgressBar extends Panel {
 
             tag.setName("div");
         }
+
+        Attributes.addClass(tag, "progress");
+
+        if (active()) {
+            Attributes.addClass(tag, "active");
+        }
+
+        if (striped()) {
+            Attributes.addClass(tag, "progress-striped");
+        }
+
+    }
+
+    @Override
+    public void renderHead(IHeaderResponse response) {
+        super.renderHead(response);
+
+        response.render(JavaScriptHeaderItem.forReference(new UploadProgressBarJavaScriptReference()));
     }
 }
