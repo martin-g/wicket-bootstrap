@@ -42,22 +42,7 @@ public class BaseCssPage extends BasePage {
 
         add(newPagination("pagination"));
         add(newBreadcrumb("breadcrumb"));
-        add(newTabs("tabs"));              */
-    }
-
-    private Component newTabs(String markupId) {
-        return new BootstrapTabbedPanel<AbstractTab>(markupId, Lists.<AbstractTab>newArrayList(
-                createTab("Home"), createTab("Second")
-        ));
-    }
-
-    private AbstractTab createTab(final String title) {
-        return new AbstractTab(Model.of(title)) {
-            @Override
-            public WebMarkupContainer getPanel(String panelId) {
-                return new WebMarkupContainer(panelId);
-            }
-        };
+*/
     }
 
     private Component newBreadcrumb(String markupId) {

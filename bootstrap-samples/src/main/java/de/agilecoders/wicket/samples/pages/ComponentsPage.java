@@ -1,5 +1,6 @@
 package de.agilecoders.wicket.samples.pages;
 
+import com.google.common.collect.Lists;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.BootstrapAjaxLink;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.DropDownButton;
@@ -8,9 +9,15 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.MenuDivi
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.SplitButton;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.GlyphIconType;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
+import de.agilecoders.wicket.core.markup.html.bootstrap.tabs.AjaxBootstrapTabbedPanel;
+import de.agilecoders.wicket.core.markup.html.bootstrap.tabs.BootstrapTabbedPanel;
 import de.agilecoders.wicket.samples.components.basecss.ButtonGroups;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.extensions.markup.html.tabs.AbstractTab;
+import org.apache.wicket.markup.ComponentTag;
+import org.apache.wicket.markup.MarkupStream;
+import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.link.AbstractLink;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
@@ -41,7 +48,30 @@ public class ComponentsPage extends BasePage {
 
         // add example for dropdown button with sub-menu
 //        add(newDropDownSubMenuExample());
+
+        add(newTabs("tabs"));
     }
+
+    private Component newTabs(String markupId) {
+        return new AjaxBootstrapTabbedPanel<AbstractTab>(markupId, Lists.<AbstractTab>newArrayList(
+                createTab("Section 1"), createTab("Section 2"), createTab("Section 3")
+        ));
+    }
+
+    private AbstractTab createTab(final String title) {
+        return new AbstractTab(Model.of(title)) {
+            @Override
+            public WebMarkupContainer getPanel(String panelId) {
+                return new WebMarkupContainer(panelId) {
+                    @Override
+                    public void onComponentTagBody(MarkupStream markupStream, ComponentTag openTag) {
+                        replaceComponentTagBody(markupStream, openTag, "I'm in " + title);
+                    }
+                };
+            }
+        };
+    }
+
 
     /**
      * creates a new split button with some submenu links.
