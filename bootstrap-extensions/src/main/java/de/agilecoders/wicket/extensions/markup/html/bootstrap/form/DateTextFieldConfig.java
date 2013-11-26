@@ -13,7 +13,7 @@ import org.joda.time.format.DateTimeFormatter;
  *
  * @author miha
  */
-public final class DateTextFieldConfig extends AbstractConfig {
+public class DateTextFieldConfig extends AbstractConfig {
 
     private static final DateTimeFormatter FORMATTER = DateTimeFormat.forPattern("dd/MM/yyyy");
 

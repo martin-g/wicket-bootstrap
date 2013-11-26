@@ -133,4 +133,12 @@ public class DateTextField extends org.apache.wicket.extensions.markup.html.form
         return $(this).chain("datepicker", config).get();
     }
 
+    /**
+     * @return the config
+     */
+    protected final DateTextFieldConfig getConfig() {
+        return config;
+    }
+
+    
 }
