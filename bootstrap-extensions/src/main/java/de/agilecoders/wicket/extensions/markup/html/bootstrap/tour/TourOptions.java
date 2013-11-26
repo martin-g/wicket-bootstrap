@@ -1,6 +1,7 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.tour;
 
 import de.agilecoders.wicket.jquery.AbstractConfig;
+import de.agilecoders.wicket.jquery.IKey;
 import de.agilecoders.wicket.jquery.util.Json;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;

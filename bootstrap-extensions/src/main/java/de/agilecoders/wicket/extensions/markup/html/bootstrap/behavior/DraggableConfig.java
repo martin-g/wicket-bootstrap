@@ -1,6 +1,7 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.behavior;
 
 import de.agilecoders.wicket.jquery.AbstractConfig;
+import de.agilecoders.wicket.jquery.IKey;
 
 /**
  * {@link de.agilecoders.wicket.core.markup.html.bootstrap.components.PopoverBehavior} configuration

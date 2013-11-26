@@ -1,6 +1,7 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.form.typeahead;
 
 import de.agilecoders.wicket.jquery.AbstractConfig;
+import de.agilecoders.wicket.jquery.IKey;
 import de.agilecoders.wicket.jquery.util.Json;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.time.Duration;

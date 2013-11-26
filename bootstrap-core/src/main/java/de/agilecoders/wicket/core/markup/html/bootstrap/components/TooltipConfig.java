@@ -1,6 +1,7 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.components;
 
 import de.agilecoders.wicket.jquery.AbstractConfig;
+import de.agilecoders.wicket.jquery.IKey;
 import org.apache.wicket.util.time.Duration;
 
 /**

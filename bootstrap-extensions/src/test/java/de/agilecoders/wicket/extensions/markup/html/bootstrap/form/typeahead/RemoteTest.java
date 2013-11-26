@@ -1,5 +1,6 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.form.typeahead;
 
+import de.agilecoders.wicket.jquery.IKey;
 import org.junit.Assert;
 import org.junit.Test;
 

@@ -12,7 +12,6 @@ import static org.hamcrest.CoreMatchers.endsWith;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.startsWith;
-import static org.hamcrest.MatcherAssert.assertThat;
 
 /**
  * Tests the {@link RichPopoverBehavior}
@@ -46,6 +45,6 @@ public class RichPopoverBehaviorTest extends WicketApplicationTest {
         TagTester tag = tester().getTagByWicketId(id());
         assertThat(tag.getAttribute("data-content"), startsWith("<wicket:div wicket:id=\"compId\" class=\"progress\"><wicket:panel>"));
         assertThat(tag.getAttribute("data-content"), endsWith("</wicket:panel></wicket:div>"));
-        assertThat(tag.getAttribute("data-content"), containsString("<div wicket:id=\"indicator\" class=\"progress-bar\" style=\"width: 50%\"></div>"));
+        assertThat(tag.getAttribute("data-content"), containsString("<div wicket:id=\"bar\" class=\"progress-bar\" style=\"width: 50%\""));
     }
 }
