@@ -76,7 +76,7 @@ public class Modal extends Panel {
             }
         });
 
-        closeBehavior = new AjaxEventBehavior("hidden") {
+        closeBehavior = new AjaxEventBehavior("hidden.bs.modal") {
             @Override
             protected void onEvent(final AjaxRequestTarget target) {
                 handleCloseEvent(target);
