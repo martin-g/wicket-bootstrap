@@ -1,7 +1,5 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.image;
 
-import de.agilecoders.wicket.core.markup.html.bootstrap.common.Invertible;
-
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
@@ -12,7 +10,7 @@ import org.apache.wicket.model.Model;
  * @author miha
  * @version 1.0
  */
-public class Icon extends WebMarkupContainer implements Invertible<Icon> {
+public class Icon extends WebMarkupContainer {
 
     private final IconBehavior iconBehavior;
 
@@ -23,7 +21,7 @@ public class Icon extends WebMarkupContainer implements Invertible<Icon> {
     public Icon(final String componentId, final IModel<IconType> type) {
         super(componentId);
 
-        add(iconBehavior = new IconBehavior(type, false));
+        add(iconBehavior = new IconBehavior(type));
     }
 
     public Icon(final IModel<IconType> type) {
@@ -38,33 +36,6 @@ public class Icon extends WebMarkupContainer implements Invertible<Icon> {
         this("icon", Model.of(type));
     }
 
-    /**
-     * @return true, if the icon color is inverted
-     */
-    public boolean isInverted() {
-        return iconBehavior.isInverted();
-    }
-
-    /**
-     * marks the icon as inverted or not.
-     *
-     * @return the component's current instance
-     */
-    public Icon setInverted(final boolean value) {
-        iconBehavior.setInverted(value);
-        return this;
-    }
-
-    /**
-     * marks the icon as inverted.
-     *
-     * @return the component's current instance
-     */
-    public Icon invert() {
-        iconBehavior.invert();
-
-        return this;
-    }
 
     /**
      * sets a new icon type

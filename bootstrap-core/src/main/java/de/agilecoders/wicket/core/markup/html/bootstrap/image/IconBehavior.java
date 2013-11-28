@@ -15,44 +15,32 @@ import org.apache.wicket.model.Model;
  *
  * @author miha
  */
-public class IconBehavior extends Behavior implements Invertible<IconBehavior> {
+public class IconBehavior extends Behavior {
 
     private final IModel<IconType> type;
     private final IModel<String> value;
-    private final IModel<Boolean> invert;
 
     /**
      * Construct.
      *
      * @param type   The type of the icon, e.g. Search, Home, User,...
-     * @param invert whether to invert the icon or not
      */
-    public IconBehavior(final IconType type, final boolean invert) {
-        this(Model.of(type), invert);
+    public IconBehavior(final IconType type) {
+        this(Model.of(type));
     }
 
     /**
      * Construct.
      *
      * @param type   The type of the icon, e.g. Search, Home, User,...
-     * @param invert whether to invert the icon or not
      */
-    public IconBehavior(final IModel<IconType> type, final boolean invert) {
+    public IconBehavior(final IModel<IconType> type) {
         super();
 
         this.type = type;
         this.value = Model.of("");
-        this.invert = Model.of(invert);
     }
 
-    /**
-     * Construct.
-     *
-     * @param type The type of the icon, e.g. Search, Home, User,...
-     */
-    public IconBehavior(final IconType type) {
-        this(Model.of(type), false);
-    }
 
     @Override
     public void onComponentTag(Component component, ComponentTag tag) {
@@ -67,9 +55,7 @@ public class IconBehavior extends Behavior implements Invertible<IconBehavior> {
         super.onConfigure(component);
 
         if (hasIconType()) {
-            final String invertPostfix = isInverted() ? " icon-white" : "";
-
-            value.setObject(type.getObject().cssClassName() + invertPostfix);
+            value.setObject(type.getObject().cssClassName());
         } else {
             value.setObject("");
             component.setVisible(false);
@@ -83,23 +69,6 @@ public class IconBehavior extends Behavior implements Invertible<IconBehavior> {
         return type != null && type.getObject() != null;
     }
 
-    /**
-     * @return true, if the icon color is inverted
-     */
-    public boolean isInverted() {
-        return this.invert.getObject();
-    }
-
-    /**
-     * marks the icon as inverted.
-     *
-     * @return the component's current instance
-     */
-    public final IconBehavior invert() {
-        setInverted(true);
-
-        return this;
-    }
 
     /**
      * sets a new icon type
@@ -118,17 +87,11 @@ public class IconBehavior extends Behavior implements Invertible<IconBehavior> {
         return type.getObject();
     }
 
-    @Override
-    public IconBehavior setInverted(final boolean value) {
-        this.invert.setObject(value);
-        return this;
-    }
 
     @Override
     public void detach(Component component) {
         super.detach(component);
 
-        invert.detach();
         type.detach();
         value.detach();
     }

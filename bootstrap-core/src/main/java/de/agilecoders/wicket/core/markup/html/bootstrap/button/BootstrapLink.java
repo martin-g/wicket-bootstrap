@@ -101,7 +101,7 @@ public abstract class BootstrapLink<T> extends Link<T> implements IBootstrapButt
      * @return new icon component
      */
     protected Icon newIcon(final String markupId) {
-        return new Icon(markupId, (IconType) null).invert();
+        return new Icon(markupId, (IconType) null);
     }
 
     /**
@@ -184,18 +184,6 @@ public abstract class BootstrapLink<T> extends Link<T> implements IBootstrapButt
      */
     public BootstrapLink<T> setType(Buttons.Type type) {
         this.buttonBehavior.setType(type);
-        return this;
-    }
-
-    /**
-     * inverts the icon color
-     *
-     * @param inverted true, if inverted version should be used
-     * @return this instance for chaining
-     */
-    @Override
-    public BootstrapLink<T> setInverted(final boolean inverted) {
-        icon.setInverted(inverted);
         return this;
     }
 }

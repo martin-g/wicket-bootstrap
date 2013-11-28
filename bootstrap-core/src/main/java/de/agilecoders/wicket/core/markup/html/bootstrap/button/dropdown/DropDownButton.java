@@ -35,7 +35,7 @@ import static de.agilecoders.wicket.jquery.JQuery.$;
  *
  * @author miha
  */
-public abstract class DropDownButton extends AbstractLink implements Invertible<DropDownButton>, Activatable {
+public abstract class DropDownButton extends AbstractLink implements Activatable {
 
     private final IModel<Buttons.Size> buttonSize = Model.of(Buttons.Size.Medium);
     private final IModel<Buttons.Type> buttonType = Model.of(Buttons.Type.Default);
@@ -281,12 +281,6 @@ public abstract class DropDownButton extends AbstractLink implements Invertible<
         }
 
         Attributes.addClass(tag, createCssClassName());
-    }
-
-    @Override
-    public DropDownButton setInverted(final boolean inverted) {
-        icon.setInverted(inverted);
-        return this;
     }
 
     @Override

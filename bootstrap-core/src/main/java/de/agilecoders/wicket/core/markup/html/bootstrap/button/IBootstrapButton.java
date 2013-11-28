@@ -7,7 +7,7 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.common.Invertible;
  *
  * @author miha
  */
-public interface IBootstrapButton<T> extends Invertible<T> {
+public interface IBootstrapButton<T> {
 
     /**
      * sets the size of a button
