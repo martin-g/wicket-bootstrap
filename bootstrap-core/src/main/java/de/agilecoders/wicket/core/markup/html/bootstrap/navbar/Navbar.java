@@ -334,7 +334,7 @@ public class Navbar extends Panel implements Invertible<Navbar> {
      * @param componentId The non-null id of a new navigation component
      * @return a new inner container of the navigation bar.
      */
-    private TransparentWebMarkupContainer newContainer(String componentId) {
+    protected TransparentWebMarkupContainer newContainer(String componentId) {
         return new TransparentWebMarkupContainer(componentId);
     }
 
