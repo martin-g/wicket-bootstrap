@@ -18,7 +18,6 @@ public class LessResourceTest extends Assert {
      */
     @Test
     public void request() throws IOException {
-
         WicketTester tester = new WicketTester(new TestApplication());
         tester.startResourceReference(new LessResourceReference(HomePage.class, "resources/root.less"));
         String cssContent = tester.getLastResponseAsString();
