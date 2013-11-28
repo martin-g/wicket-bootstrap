@@ -177,7 +177,7 @@ abstract class BasePage<T> extends GenericWebPage<T> {
 
                 return subMenu;
             }
-        }.setIconType(GlyphIconType.thlarge).setInverted(true);
+        }.setIconType(GlyphIconType.thlarge);
     }
 
     /**
