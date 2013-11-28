@@ -33,6 +33,7 @@ public class ControlGroup extends Border implements IFormModelUpdateListener {
     private final Component help;
     private final Component feedback;
     private final Model<String> stateClassName;
+    private boolean useFormComponentLabel = true;
 
 
     /**
@@ -69,6 +70,15 @@ public class ControlGroup extends Border implements IFormModelUpdateListener {
         stateClassName = Model.of("");
 
         addToBorder(this.label, this.help, this.feedback);
+    }
+
+    /**
+     * @param value whether to use form components label as control group label or not
+     * @return this instance for chaining
+     */
+    public ControlGroup useFormComponentLabel(boolean value) {
+        this.useFormComponentLabel = value;
+        return this;
     }
 
     /**
@@ -132,7 +142,7 @@ public class ControlGroup extends Border implements IFormModelUpdateListener {
             FormComponent<?> formComponent = formComponents.get(size - 1);
             label.add(new AttributeModifier("for", formComponent.getMarkupId()));
 
-            if (formComponent.getLabel() != null && !Strings.isEmpty(formComponent.getLabel().getObject())) {
+            if (useFormComponentLabel && formComponent.getLabel() != null && !Strings.isEmpty(formComponent.getLabel().getObject())) {
                 label.setDefaultModel(formComponent.getLabel());
             }
         }
