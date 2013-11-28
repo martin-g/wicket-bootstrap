@@ -58,7 +58,7 @@ public class BootstrapButton extends Button implements IBootstrapButton<Bootstra
      * @return new icon component
      */
     protected Icon newIcon(final String markupId) {
-        return new Icon(markupId, (IconType) null).invert();
+        return new Icon(markupId, (IconType) null);
     }
 
     /**
@@ -138,10 +138,4 @@ public class BootstrapButton extends Button implements IBootstrapButton<Bootstra
         return this;
     }
 
-    @Override
-    public BootstrapButton setInverted(boolean inverted) {
-        this.icon.setInverted(inverted);
-
-        return this;
-    }
 }

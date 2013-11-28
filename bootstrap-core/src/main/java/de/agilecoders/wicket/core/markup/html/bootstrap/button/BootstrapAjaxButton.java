@@ -82,7 +82,7 @@ public abstract class BootstrapAjaxButton extends AjaxButton implements IBootstr
      * @return new icon component
      */
     protected Icon newIcon(final String markupId) {
-        return new Icon(markupId, (IconType) null).invert();
+        return new Icon(markupId, (IconType) null);
     }
 
     /**
@@ -166,16 +166,6 @@ public abstract class BootstrapAjaxButton extends AjaxButton implements IBootstr
      */
     public BootstrapAjaxButton setType(Buttons.Type type) {
         this.buttonBehavior.setType(type);
-        return this;
-    }
-
-    /**
-     * inverts the icon color
-     *
-     * @param inverted true, if inverted version should be used
-     */
-    public BootstrapAjaxButton setInverted(final boolean inverted) {
-        icon.setInverted(inverted);
         return this;
     }
 }

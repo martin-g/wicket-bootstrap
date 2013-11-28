@@ -48,7 +48,7 @@ public abstract class BootstrapAjaxFallbackButton extends AjaxFallbackButton imp
         super(id, model, form);
 
         add(buttonBehavior = new ButtonBehavior(type, Buttons.Size.Medium));
-        add(icon = new Icon("icon", (IconType) null).invert());
+        add(icon = new Icon("icon", (IconType) null));
         add(splitter = new WebMarkupContainer("splitter"));
 
         this.label = new Label("label", model);
@@ -120,13 +120,4 @@ public abstract class BootstrapAjaxFallbackButton extends AjaxFallbackButton imp
         return this;
     }
 
-    /**
-     * inverts the icon color
-     *
-     * @param inverted true, if inverted version should be used
-     */
-    public BootstrapAjaxFallbackButton setInverted(final boolean inverted) {
-        icon.setInverted(inverted);
-        return this;
-    }
 }

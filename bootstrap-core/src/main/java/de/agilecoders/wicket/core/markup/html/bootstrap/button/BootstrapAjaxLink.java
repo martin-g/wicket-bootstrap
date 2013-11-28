@@ -44,7 +44,7 @@ public abstract class BootstrapAjaxLink<T> extends AjaxLink<T> implements IBoots
         super(id, model);
 
         add(buttonBehavior = new ButtonBehavior(type, Buttons.Size.Medium));
-        add(icon = new Icon("icon", (IconType) null).invert());
+        add(icon = new Icon("icon", (IconType) null));
         add(splitter = new WebMarkupContainer("splitter"));
 
         this.label = new Label("label", model);
@@ -103,8 +103,4 @@ public abstract class BootstrapAjaxLink<T> extends AjaxLink<T> implements IBoots
         return this;
     }
 
-    public BootstrapAjaxLink<T> setInverted(final boolean inverted) {
-        icon.setInverted(inverted);
-        return this;
-    }
 }

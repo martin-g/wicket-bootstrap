@@ -150,12 +150,6 @@ public class BootstrapBookmarkablePageLink<T> extends BookmarkablePageLink<T> im
         return this;
     }
 
-    @Override
-    public BootstrapBookmarkablePageLink<T> setInverted(boolean inverted) {
-        icon.setInverted(inverted);
-        return this;
-    }
-
     /**
      * {@inheritDoc}
      */
