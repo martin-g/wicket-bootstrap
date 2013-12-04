@@ -82,10 +82,11 @@ public final class Buttons {
     }
 
     /**
-     * defines all possible button types.
+     * Defines all possible button types.
+     * {@link http://getbootstrap.com/css/#buttons}
      */
     public static enum Type implements ICssClassNameProvider {
-        Default(""), // Standard gray button with gradient
+        Default("btn-default"), // Standard gray button with gradient
         Menu(""), // Menu button which has no default css class name
         Primary("btn-primary"), // Provides extra visual weight and identifies the primary action in a set of buttons
         Info("btn-info"), // Used as an alternate to the default styles
