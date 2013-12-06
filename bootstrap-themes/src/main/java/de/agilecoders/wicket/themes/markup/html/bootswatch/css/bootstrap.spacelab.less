@@ -2,7 +2,7 @@
 @import "bootstrap.spacelab.variables.less";
 
 
-// Spacelab 3.0.0
+// Spacelab 3.0.3
 // Bootswatch
 // -----------------------------------------------------
 
@@ -10,6 +10,7 @@
 
 .btn-shadow(@color) {
 	#gradient > .vertical-three-colors(lighten(@color, 15%), @color, 50%, darken(@color, 4%));
+	filter: none;
 	border: 1px solid darken(@color, 10%);
 }
 
@@ -85,18 +86,31 @@
 
 // Typography =================================================================
 
-h1, h2, h3, h4, h5, h6 {
-	color: @gray-darker;
-}
-
 // Tables =====================================================================
 
 // Forms ======================================================================
 
 // Navs =======================================================================
 
+.pagination {
+
+	.active > a,
+	.active > a:hover {
+		border-color: #ddd;
+	}
+}
+
 // Indicators =================================================================
 
 // Progress bars ==============================================================
 
 // Containers =================================================================
+
+.panel {
+
+	&-primary {
+		.panel-title {
+			color: #fff;
+		}
+	}
+}

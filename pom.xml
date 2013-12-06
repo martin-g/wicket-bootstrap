@@ -39,7 +39,7 @@
     <properties>
         <github.global.server>github</github.global.server>
 
-        <bootstrap.version>3.0.2</bootstrap.version>
+        <bootstrap.version>3.0.3</bootstrap.version>
         <config.version>0.3.3</config.version>
         <wicket-webjars.version>0.3.2</wicket-webjars.version>
         <wicket-jquery-selectors>0.0.2</wicket-jquery-selectors>

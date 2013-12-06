@@ -2,16 +2,18 @@
 @import "bootstrap.slate.variables.less";
 
 
-// Slate 3.0.0
+// Slate 3.0.3
 // Bootswatch
 // -----------------------------------------------------
 
 .btn-shadow(@color) {
 	#gradient > .vertical-three-colors(lighten(@color, 6%), @color, 60%, darken(@color, 4%));
+	filter: none;
 }
 
 .btn-shadow-inverse(@color) {
 	#gradient > .vertical-three-colors(darken(@color, 24%), darken(@color, 18%), 40%, darken(@color, 14%));
+	filter: none;
 }
 
 // Navbar =====================================================================
@@ -112,23 +114,28 @@ h1, h2, h3, h4, h5, h6 {
 	text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.3);
 }
 
-.text-primary {
+.text-primary,
+.text-primary:hover {
 	color: @brand-primary;
 }
 
-.text-success {
+.text-success,
+.text-success:hover {
 	color: @brand-success;
 }
 
-.text-danger {
+.text-danger,
+.text-danger:hover {
 	color: @brand-danger;
 }
 
-.text-warning {
+.text-warning,
+.text-warning:hover {
 	color: @brand-warning;
 }
 
-.text-info {
+.text-info,
+.text-info:hover {
 	color: @brand-info;
 }
 
@@ -154,6 +161,10 @@ h1, h2, h3, h4, h5, h6 {
 			}
 		}
 	}
+}
+
+.table-responsive > .table {
+	background-color: @table-bg;
 }
 
 // Forms ======================================================================
