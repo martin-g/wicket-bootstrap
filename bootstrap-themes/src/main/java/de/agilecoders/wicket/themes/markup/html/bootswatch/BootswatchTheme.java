@@ -31,6 +31,7 @@ public class BootswatchTheme extends Theme {
     public static final BootswatchTheme SLATE = new BootswatchTheme(BootswatchCssReference.SLATE);
     public static final BootswatchTheme SPACELAB = new BootswatchTheme(BootswatchCssReference.SPACELAB);
     public static final BootswatchTheme UNITED = new BootswatchTheme(BootswatchCssReference.UNITED);
+    public static final BootswatchTheme YETI = new BootswatchTheme(BootswatchCssReference.YETI);
 
     /**
      * Construct.

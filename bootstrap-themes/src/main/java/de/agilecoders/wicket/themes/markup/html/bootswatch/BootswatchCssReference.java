@@ -27,6 +27,7 @@ public class BootswatchCssReference extends CssResourceReference {
     public static final BootswatchCssReference SLATE = new BootswatchCssReference("slate");
     public static final BootswatchCssReference SPACELAB = new BootswatchCssReference("spacelab");
     public static final BootswatchCssReference UNITED = new BootswatchCssReference("united");
+    public static final BootswatchCssReference YETI = new BootswatchCssReference("yeti");
 
     /**
      * Private constructor.
