@@ -160,7 +160,7 @@ public class DateTextFieldConfig extends AbstractConfig {
      * @return this instance for chaining
      */
     public DateTextFieldConfig withLanguage(final String value) {
-        put(Language, value.toLowerCase());
+        put(Language, value);
         return this;
     }
 
