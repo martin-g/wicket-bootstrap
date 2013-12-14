@@ -14,9 +14,6 @@ import org.joda.time.format.DateTimeFormatter;
  * @author miha
  */
 public class DateTextFieldConfig extends AbstractConfig {
-
-    private static final DateTimeFormatter FORMATTER = DateTimeFormat.forPattern("dd/MM/yyyy");
-
     /**
      * The earliest date that may be selected; all earlier dates will be disabled.
      */
@@ -133,7 +130,7 @@ public class DateTextFieldConfig extends AbstractConfig {
      * @return this instance for chaining
      */
     public DateTextFieldConfig withStartDate(final DateTime value) {
-        put(StartDate, value.toString(FORMATTER));
+        put(StartDate, value.toString());
         return this;
     }
 
@@ -144,7 +141,7 @@ public class DateTextFieldConfig extends AbstractConfig {
      * @return this instance for chaining
      */
     public DateTextFieldConfig withEndDate(final DateTime value) {
-        put(EndDate, value.toString(FORMATTER));
+        put(EndDate, value.toString());
         return this;
     }
 
