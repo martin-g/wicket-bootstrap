@@ -47,7 +47,7 @@ abstract public class InputBorder extends Border {
         }
 
         component.add(new CssClassNameAppender("add-on"));
-        add(component);
+        addToBorder(component);
     }
 
     protected abstract String id();
