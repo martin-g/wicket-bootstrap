@@ -7,9 +7,9 @@ Current build status: [![Build Status](https://buildhive.cloudbees.com/job/l0rdn
 Components
 ----------
 
-* Twitter Bootstrap (2.3.2): http://twitter.github.com/bootstrap
-* Apache Wicket (6.10.0): http://wicket.apache.org/
-* Bootswatch (2.3.0): http://bootswatch.com/
+* Twitter Bootstrap (3.0.3): https://github.com/twbs/bootstrap/
+* Apache Wicket (6.11.0): http://wicket.apache.org/
+* Bootswatch (3.0.3): http://bootswatch.com/
 
 Extensions
 ----------
