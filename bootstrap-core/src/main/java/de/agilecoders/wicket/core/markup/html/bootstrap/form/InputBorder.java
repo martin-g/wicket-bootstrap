@@ -55,7 +55,7 @@ abstract public class InputBorder extends Border {
     protected final void addComponent(Component component) {
         String inputGroupType = "input-group-" + getInputGroupType().type;
         component.add(new CssClassNameAppender(inputGroupType));
-        add(component);
+        addToBorder(component);
     }
 
     protected abstract String id();
