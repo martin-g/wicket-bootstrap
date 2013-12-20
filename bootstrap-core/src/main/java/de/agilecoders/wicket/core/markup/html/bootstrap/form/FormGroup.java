@@ -274,4 +274,25 @@ public class FormGroup extends Border implements IFormModelUpdateListener {
             }
         }
     }
+
+	/**
+	 * @return the label component
+	 */
+	protected Component getLabel() {
+		return label;
+	}
+
+	/**
+	 * @return the help component
+	 */
+	protected Component getHelp() {
+		return help;
+	}
+
+	/**
+	 * @return the feedback component
+	 */
+	protected Component getFeedback() {
+		return feedback;
+	}   
 }
