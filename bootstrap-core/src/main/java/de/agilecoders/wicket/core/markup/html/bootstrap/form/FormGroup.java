@@ -29,11 +29,13 @@ import java.util.List;
  */
 public class FormGroup extends Border implements IFormModelUpdateListener {
 
-    private final Component label;
-    private final Component help;
-    private final Component feedback;
+    private Component label;
+    private Component help;
+    private Component feedback;
     private final Model<String> stateClassName;
     private boolean useFormComponentLabel = true;
+    private final IModel<String> labelModel;
+    private final IModel<String> helpModel;
 
 
     /**
@@ -63,13 +65,9 @@ public class FormGroup extends Border implements IFormModelUpdateListener {
     public FormGroup(final String id, final IModel<String> label, final IModel<String> help) {
         super(id, Model.of(""));
 
-        this.label = newLabel("label", label);
-        this.help = newHelpLabel("help", help);
-        this.feedback = newFeedbackMessageContainer("error");
-
+        this.labelModel = label;
+        this.helpModel = help;
         stateClassName = Model.of("");
-
-        addToBorder(this.label, this.help, this.feedback);
     }
 
     /**
@@ -132,6 +130,12 @@ public class FormGroup extends Border implements IFormModelUpdateListener {
     @Override
     protected void onInitialize() {
         super.onInitialize();
+        
+        this.label = newLabel("label", labelModel);
+        this.help = newHelpLabel("help", helpModel);
+        this.feedback = newFeedbackMessageContainer("error");
+        addToBorder(this.label, this.help, this.feedback);
+
 
         final List<FormComponent<?>> formComponents = findFormComponents();
         final int size = formComponents.size();
