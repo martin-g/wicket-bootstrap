@@ -102,11 +102,14 @@ public class BootstrapAjaxPagingNavigator extends BootstrapPagingNavigator {
                 };
             }
             
+            /** Attribute for active state */
+            private final AttributeModifier activeAttribute = AttributeModifier.append("class", "active");
+            
             @Override
             protected void populateItem(final LoopItem loopItem) {
                 super.populateItem(loopItem);
                 if ((getStartIndex() + loopItem.getIndex()) == pageable.getCurrentPage()) {
-                    loopItem.add(AttributeModifier.append("class", "active"));
+                    loopItem.add(activeAttribute);
                 }
             }
         };
