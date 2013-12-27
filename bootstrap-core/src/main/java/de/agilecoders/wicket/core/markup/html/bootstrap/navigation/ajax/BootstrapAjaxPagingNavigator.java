@@ -2,6 +2,7 @@ package de.agilecoders.wicket.core.markup.html.bootstrap.navigation.ajax;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.navigation.BootstrapPagingNavigator;
 
+import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.MarkupContainer;
 import org.apache.wicket.ajax.AjaxRequestTarget;
@@ -11,6 +12,7 @@ import org.apache.wicket.ajax.markup.html.navigation.paging.AjaxPagingNavigation
 import org.apache.wicket.ajax.markup.html.navigation.paging.AjaxPagingNavigationLink;
 import org.apache.wicket.markup.html.link.AbstractLink;
 import org.apache.wicket.markup.html.link.Link;
+import org.apache.wicket.markup.html.list.LoopItem;
 import org.apache.wicket.markup.html.navigation.paging.IPageable;
 import org.apache.wicket.markup.html.navigation.paging.IPagingLabelProvider;
 import org.apache.wicket.markup.html.navigation.paging.PagingNavigation;
@@ -98,6 +100,17 @@ public class BootstrapAjaxPagingNavigator extends BootstrapPagingNavigator {
                         return new BootstrapAjaxPagingNavigationBehavior(this, pageable, event);
                     }
                 };
+            }
+            
+            /** Attribute for active state */
+            private final AttributeModifier activeAttribute = AttributeModifier.append("class", "active");
+            
+            @Override
+            protected void populateItem(final LoopItem loopItem) {
+                super.populateItem(loopItem);
+                if ((getStartIndex() + loopItem.getIndex()) == pageable.getCurrentPage()) {
+                    loopItem.add(activeAttribute);
+                }
             }
         };
     }
