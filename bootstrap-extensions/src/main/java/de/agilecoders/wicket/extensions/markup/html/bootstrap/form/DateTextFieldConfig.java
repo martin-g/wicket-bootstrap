@@ -36,7 +36,7 @@ public class DateTextFieldConfig extends AbstractConfig {
      * the current date. If true, the "Today" button will only move the current date
      * into view;
      */
-    private static final IKey<Boolean> ShowTodayButton = newKey("todayBtn", false);
+    private static final IKey<String> ShowTodayButton = newKey("todayBtn", String.valueOf(false));
 
     /**
      * Whether or not to allow date navigation by arrow keys.
@@ -227,7 +227,7 @@ public class DateTextFieldConfig extends AbstractConfig {
      * @return this instance for chaining
      */
     public DateTextFieldConfig showTodayButton(final boolean value) {
-        put(ShowTodayButton, value);
+        put(ShowTodayButton, value ? "linked" : String.valueOf(false));
         return this;
     }
 
