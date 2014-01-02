@@ -201,7 +201,7 @@ public class FormGroup extends Border implements IFormModelUpdateListener {
     private List<FormComponent<?>> findFormComponents() {
         final ComponentHierarchyIterator it = getBodyContainer().visitChildren(FormComponent.class);
 
-        final List<FormComponent<?>> components = new ArrayList<>();
+        final List<FormComponent<?>> components = new ArrayList<FormComponent<?>>();
         while (it.hasNext()) {
             components.add((FormComponent<?>) it.next());
         }

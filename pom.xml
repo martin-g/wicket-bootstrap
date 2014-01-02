@@ -38,6 +38,7 @@
 
     <properties>
         <github.global.server>github</github.global.server>
+        <java.version>1.6</java.version>
 
         <bootstrap.version>3.0.3</bootstrap.version>
         <config.version>0.3.3</config.version>
