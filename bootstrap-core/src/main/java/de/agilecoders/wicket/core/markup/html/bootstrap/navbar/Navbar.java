@@ -2,6 +2,7 @@ package de.agilecoders.wicket.core.markup.html.bootstrap.navbar;
 
 import com.google.common.base.Function;
 import com.google.common.base.Predicate;
+
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapResourcesBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.CssClassNameAppender;
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNameProvider;
@@ -10,7 +11,9 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.common.Invertible;
 import de.agilecoders.wicket.core.util.Attributes;
 import de.agilecoders.wicket.core.util.Behaviors;
 import de.agilecoders.wicket.core.util.Models;
+import de.agilecoders.wicket.jquery.JQuery;
 import de.agilecoders.wicket.jquery.util.Generics2;
+
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.Page;
@@ -141,7 +144,7 @@ public class Navbar extends Panel implements Invertible<Navbar> {
 
         final TransparentWebMarkupContainer container = newContainer("container");      
         final TransparentWebMarkupContainer collapse = newCollapseContainer("collapse");
-        final TransparentWebMarkupContainer collapseButton = newCollapseButton("collapseButton", collapse);
+        final TransparentWebMarkupContainer collapseButton = newCollapseButton("collapseButton", "#" + collapse.getMarkupId());
 
         final BookmarkablePageLink<Page> brandNameLink = newBrandNameLink("brandName");
         brandNameLink.add(brandLabel = newBrandLabel("brandLabel"));
@@ -340,12 +343,13 @@ public class Navbar extends Panel implements Invertible<Navbar> {
      * creates a new transparent container which is used to append the "data-target" attribute to the collapse button.
      *
      * @param componentId The non-null id of collapse button
-     * @param collapseContainer 
+     * @param selector non-null jquery selector to collapse
      * @return a button container.
      */
-    protected TransparentWebMarkupContainer newCollapseButton(String componentId, Component collapseContainer) {
+    protected TransparentWebMarkupContainer newCollapseButton(String componentId, String selector) {
     	TransparentWebMarkupContainer button = new TransparentWebMarkupContainer(componentId);
-    	button.add(new AttributeModifier("data-target", "#" + collapseContainer.getMarkupId()));
+    	Args.notNull(selector, "selector");
+    	button.add(new AttributeModifier("data-target", selector));
     	return button;
     }
 
