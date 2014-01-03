@@ -11,7 +11,6 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.common.Invertible;
 import de.agilecoders.wicket.core.util.Attributes;
 import de.agilecoders.wicket.core.util.Behaviors;
 import de.agilecoders.wicket.core.util.Models;
-import de.agilecoders.wicket.jquery.JQuery;
 import de.agilecoders.wicket.jquery.util.Generics2;
 
 import org.apache.wicket.AttributeModifier;
