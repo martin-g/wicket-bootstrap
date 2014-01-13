@@ -74,12 +74,30 @@ public class InputBehaviorTest extends WicketApplicationTest {
         assertThat(tester().getLastResponseAsString(), Matchers.containsString("</div"));
     }
 
+    /**
+     * Issue https://github.com/l0rdn1kk0n/wicket-bootstrap/issues/307
+     * Invisible input should not render the surrounding markup
+     */
+    @Test
+    public void invisibleInput() {
+        InputBehaviorPage page = new InputBehaviorPage();
+        page.textField.setVisible(false);
+        tester().startPage(page);
+
+        System.err.println("RES:\n\n" + tester().getLastResponseAsString());
+
+        assertThat(tester().getLastResponseAsString(), Matchers.not(Matchers.containsString("<div")));
+        assertThat(tester().getLastResponseAsString(), Matchers.not(Matchers.containsString("</div")));
+    }
+
     private static class InputBehaviorPage extends WebPage implements IMarkupResourceStreamProvider {
 
-        private InputBehavior inputBehavior = new InputBehavior();
+        private final InputBehavior inputBehavior = new InputBehavior();
+
+        private final TextField<String> textField;
 
         private InputBehaviorPage() {
-            TextField<String> textField = new TextField<String>("id", Model.of("data"));
+            this.textField = new TextField<String>("id", Model.of("data"));
             add(textField);
             textField.setMarkupId("input");
             textField.add(inputBehavior);
