@@ -2,6 +2,7 @@ package de.agilecoders.wicket.core.markup.html.bootstrap.navbar;
 
 import com.google.common.base.Function;
 import com.google.common.base.Predicate;
+
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapResourcesBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.CssClassNameAppender;
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNameProvider;
@@ -11,6 +12,7 @@ import de.agilecoders.wicket.core.util.Attributes;
 import de.agilecoders.wicket.core.util.Behaviors;
 import de.agilecoders.wicket.core.util.Models;
 import de.agilecoders.wicket.jquery.util.Generics2;
+
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.Page;
@@ -139,8 +141,9 @@ public class Navbar extends Panel implements Invertible<Navbar> {
 
         BootstrapResourcesBehavior.addTo(this);
 
-        final TransparentWebMarkupContainer container = newContainer("container");
+        final TransparentWebMarkupContainer container = newContainer("container");      
         final TransparentWebMarkupContainer collapse = newCollapseContainer("collapse");
+        final TransparentWebMarkupContainer collapseButton = newCollapseButton("collapseButton", "#" + collapse.getMarkupId());
 
         final BookmarkablePageLink<Page> brandNameLink = newBrandNameLink("brandName");
         brandNameLink.add(brandLabel = newBrandLabel("brandLabel"));
@@ -152,7 +155,7 @@ public class Navbar extends Panel implements Invertible<Navbar> {
         activeStateAppender = new CssClassNameAppender("active");
         invertModel = Model.of("");
 
-        add(container, collapse,
+        add(container, collapse, collapseButton,
             newToggleNavigationLabel("toggleNavigationLabel"),
             brandNameLink, leftAlignedComponentListView, rightAlignedComponentListView);
     }
@@ -334,6 +337,20 @@ public class Navbar extends Panel implements Invertible<Navbar> {
     protected TransparentWebMarkupContainer newContainer(String componentId) {
         return new TransparentWebMarkupContainer(componentId);
     }
+    
+    /**
+     * creates a new transparent container which is used to append the "data-target" attribute to the collapse button.
+     *
+     * @param componentId The non-null id of collapse button
+     * @param selector non-null jquery selector to collapse
+     * @return a button container.
+     */
+    protected TransparentWebMarkupContainer newCollapseButton(String componentId, String selector) {
+    	TransparentWebMarkupContainer button = new TransparentWebMarkupContainer(componentId);
+    	Args.notNull(selector, "selector");
+    	button.add(new AttributeModifier("data-target", selector));
+    	return button;
+    }
 
     /**
      * creates a new transparent inner container which is used to append some
@@ -343,7 +360,9 @@ public class Navbar extends Panel implements Invertible<Navbar> {
      * @return a new inner container of the navigation bar.
      */
     protected TransparentWebMarkupContainer newCollapseContainer(String componentId) {
-        return new TransparentWebMarkupContainer(componentId);
+    	TransparentWebMarkupContainer collapse = new TransparentWebMarkupContainer(componentId);
+    	collapse.setOutputMarkupId(true);	//needed to put the "data-target" attribute of the collapse button
+        return collapse;
     }
 
     /**
