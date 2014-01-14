@@ -4,6 +4,7 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNamePr
 import de.agilecoders.wicket.core.markup.html.bootstrap.components.progress.UploadProgressBarJavaScriptReference;
 import de.agilecoders.wicket.core.util.Attributes;
 import org.apache.wicket.Component;
+import org.apache.wicket.MarkupContainer;
 import org.apache.wicket.behavior.Behavior;
 import org.apache.wicket.extensions.ajax.markup.html.form.upload.UploadProgressBar;
 import org.apache.wicket.markup.ComponentTag;
@@ -55,22 +56,6 @@ public class ProgressBar extends UploadProgressBar {
         setRenderBodyOnly(false);
 
         setDefaultModel(model);
-
-        get("status").setVisible(false);
-
-        // TODO Rework once Wicket 6.13 is released to use #newBarComponent
-        indicator().add(new Behavior() {
-            @Override
-            public void onComponentTag(Component component, ComponentTag tag) {
-                super.onComponentTag(component, tag);
-
-                if (!Type.DEFAULT.equals(type)) {
-                    Attributes.addClass(tag, type().cssClassName());
-                }
-
-                tag.put("style", createStyleValue().getObject());
-            }
-        });
     }
 
     @Override
@@ -113,8 +98,8 @@ public class ProgressBar extends UploadProgressBar {
         return this;
     }
 
-    // TODO: use this once Wicket 6.13 is released
-    protected Component newBarComponent(String id) {
+    @Override
+    protected MarkupContainer newBarComponent(String id) {
         return new WebMarkupContainer(id) {
             @Override
             protected void onComponentTag(ComponentTag tag) {
@@ -127,6 +112,13 @@ public class ProgressBar extends UploadProgressBar {
                 tag.put("style", createStyleValue().getObject());
             }
         };
+    }
+
+    @Override
+    protected MarkupContainer newStatusComponent(String id) {
+        MarkupContainer status = super.newStatusComponent(id);
+        status.setVisible(false);
+        return status;
     }
 
     private IModel<String> createStyleValue() {

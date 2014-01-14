@@ -41,7 +41,7 @@
 
         <bootstrap.version>3.0.3</bootstrap.version>
         <config.version>0.3.3</config.version>
-        <wicket-webjars.version>0.3.2</wicket-webjars.version>
+        <wicket-webjars.version>0.3.3</wicket-webjars.version>
         <wicket-jquery-selectors>0.0.2</wicket-jquery-selectors>
 
         <enforcer.disable>true</enforcer.disable>
@@ -66,6 +66,7 @@
         <jquerypp.version>1.0.1</jquerypp.version>
         <jquery.version>2.0.3</jquery.version>
         <maven-bundle-plugin.version>2.4.0</maven-bundle-plugin.version>
+        <wicket.version>6.13.0</wicket.version>
     </properties>
 
     <dependencyManagement>
