@@ -4,6 +4,9 @@ import com.google.common.collect.Lists;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.WicketApplicationTest;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.util.string.Strings;
+import org.apache.wicket.util.tester.TagTester;
+import org.hamcrest.Matchers;
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.List;
@@ -15,9 +18,6 @@ import java.util.List;
  */
 public class Html5PlayerTest extends WicketApplicationTest {
 
-    /**
-     * TODO: ugly test...
-     */
     @Test
     public void componentIsRendered() {
         List<Html5Player.IVideo> videoList = Lists.<Html5Player.IVideo>newArrayList(
@@ -27,14 +27,15 @@ public class Html5PlayerTest extends WicketApplicationTest {
 
         tester().startComponentInPage(player);
 
-        String newLine = System.lineSeparator();
+        TagTester video = tester().getTagById("video1");
+        Assert.assertThat("video", Matchers.equalTo(video.getName()));
+        video.getAttributeIs("width", "370");
+        video.getAttributeIs("height", "215");
 
-        tester().assertContains(Strings.replaceAll("<wicket:panel>\n"
-                                + "            <video wicket:id=\"video\" width=\"370\" height=\"215\" id=\"video1\">\n"
-                                + "                <wicket:fragment wicket:id=\"videos\"><source wicket:id=\"element\" src=\"url\" type=\"type\"/></wicket:fragment>\n"
-                                + "                Your browser does not support the video tag.\n"
-                                + "            </video>\n"
-                                + "        </wicket:panel>", "\n", newLine).toString());
+        TagTester source = tester().getTagByWicketId("element");
+        Assert.assertThat("source", Matchers.equalTo(source.getName()));
+
+        tester().assertContains("Your browser does not support the video tag");
     }
 
 }
