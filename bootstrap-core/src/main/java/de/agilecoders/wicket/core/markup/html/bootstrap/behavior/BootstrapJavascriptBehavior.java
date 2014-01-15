@@ -10,8 +10,7 @@ import de.agilecoders.wicket.core.util.References;
 
 /**
  * The {@code BootstrapJavascriptBehavior} renders the
- * {@link de.agilecoders.wicket.core.markup.html.references.BootstrapJavaScriptReference} and if active
- * the {@link de.agilecoders.wicket.extensions.markup.html.references.JqueryPPJavaScriptReference} to
+ * {@link de.agilecoders.wicket.core.markup.html.references.BootstrapJavaScriptReference} to
  * the response.
  *
  * @author miha
@@ -19,8 +18,7 @@ import de.agilecoders.wicket.core.util.References;
 public class BootstrapJavascriptBehavior extends BootstrapBaseBehavior {
 
     /**
-     * render the {@link de.agilecoders.wicket.core.markup.html.references.BootstrapJavaScriptReference} and if active
-     * the {@link de.agilecoders.wicket.extensions.markup.html.references.JqueryPPJavaScriptReference} to
+     * render the {@link de.agilecoders.wicket.core.markup.html.references.BootstrapJavaScriptReference}  to
      * the response.
      *
      * @param settings       the bound {@link IBootstrapSettings}
