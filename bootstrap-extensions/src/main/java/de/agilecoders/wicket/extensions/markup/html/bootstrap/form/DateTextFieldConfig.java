@@ -66,7 +66,7 @@ public class DateTextFieldConfig extends AbstractConfig {
     /**
      * If true, highlights the current date.
      */
-    private static final IKey<Boolean> HighlightToday = newKey("todayHighlight", true);
+    private static final IKey<Boolean> HighlightToday = newKey("todayHighlight", false);
 
     /**
      * Whether or not to close the datepicker immediately when a date is selected.
