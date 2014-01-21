@@ -33,7 +33,7 @@ public class DatePickerPage extends BasePage {
             new Code("default-html-code", Model.of("//HTML\n<form><input wicket:id=\"default\"></form>")).setShowLineNumbers(true),
             new Code("default-java-code", Model.of("//JAVA\nadd(new DateTextField(\"default\"));")).setShowLineNumbers(true));
 
-        add(newDatePicker("birthday", new DateTextFieldConfig().showTodayButton(true).withStartDate(new DateTime().withYear(1900)).autoClose(true).withView(DateTextFieldConfig.View.Decade)),
+        add(newDatePicker("birthday", new DateTextFieldConfig().showTodayButton(DateTextFieldConfig.TodayButton.TRUE).withStartDate(new DateTime().withYear(1900)).autoClose(true).withView(DateTextFieldConfig.View.Decade)),
             new Code("birthday-html-code", Model.of("//HTML\n<form><input wicket:id=\"birthday\"></form>")).setShowLineNumbers(true),
             new Code("birthday-java-code", Model.of("//JAVA\nadd(new DateTextField(\"birthday\",\n\t\t new DateTextFieldConfig()\n"
                                                     + "\t\t\t.autoClose(true)\n"
@@ -41,7 +41,7 @@ public class DatePickerPage extends BasePage {
                                                     + "\t\t\t.showTodayButton(true)\n"
                                                     + "\t\t\t.withStartDate(new DateTime().withYear(1900));")).setShowLineNumbers(true));
 
-        add(newDatePicker("language", new DateTextFieldConfig().showTodayButton(true).autoClose(true).withLanguage("es")),
+        add(newDatePicker("language", new DateTextFieldConfig().showTodayButton(DateTextFieldConfig.TodayButton.LINKED).autoClose(true).withLanguage("es")),
             new Code("language-html-code", Model.of("//HTML\n<form><input wicket:id=\"language\"></form>")).setShowLineNumbers(true),
             new Code("language-java-code", Model.of("//JAVA\nadd(new DateTextField(\"language\",\n\t\t new DateTextFieldConfig()\n"
                                                     + "\t\t\t.autoClose(true)\n"

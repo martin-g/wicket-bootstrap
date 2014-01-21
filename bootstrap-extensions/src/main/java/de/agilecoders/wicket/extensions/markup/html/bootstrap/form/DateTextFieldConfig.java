@@ -1,12 +1,19 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.form;
 
-import de.agilecoders.wicket.core.util.Dates;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonSerializer;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializerProvider;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import org.joda.time.DateTime;
 
+import de.agilecoders.wicket.core.util.Dates;
 import de.agilecoders.wicket.jquery.AbstractConfig;
 import de.agilecoders.wicket.jquery.IKey;
-import org.joda.time.DateTime;
-import org.joda.time.format.DateTimeFormat;
-import org.joda.time.format.DateTimeFormatter;
+
+import java.io.IOException;
 
 /**
  * Configuration holder for all {@link DateTextField} configurations.
@@ -36,7 +43,7 @@ public class DateTextFieldConfig extends AbstractConfig {
      * the current date. If true, the "Today" button will only move the current date
      * into view;
      */
-    private static final IKey<Boolean> ShowTodayButton = newKey("todayBtn", false);
+    private static final IKey<TodayButton> ShowTodayButton = newKey("todayBtn", TodayButton.FALSE);
 
     /**
      * Whether or not to allow date navigation by arrow keys.
@@ -226,7 +233,7 @@ public class DateTextFieldConfig extends AbstractConfig {
      * @param value whether to show today button or not
      * @return this instance for chaining
      */
-    public DateTextFieldConfig showTodayButton(final boolean value) {
+    public DateTextFieldConfig showTodayButton(final TodayButton value) {
         put(ShowTodayButton, value);
         return this;
     }
@@ -254,5 +261,40 @@ public class DateTextFieldConfig extends AbstractConfig {
     public DateTextFieldConfig autoClose(final boolean value) {
         put(AutoClose, value);
         return this;
+    }
+
+    /**
+     * See <a href="http://bootstrap-datepicker.readthedocs.org/en/latest/options.html#todaybtn">docs</a>.
+     * Today button could be a boolean or string <em>"linked"</em>:
+     * <cite>If true or “linked”, displays a “Today” button at the bottom of the datepicker to select the
+     * current date. If true, the “Today” button will only move the current date into view; if “linked”,
+     * the current date will also be selected.</cite>
+     */
+    @JsonSerialize(using = TodayButtonSerializer.class)
+    public static enum TodayButton {
+        TRUE,
+        FALSE,
+        LINKED
+    }
+
+    /**
+     * Serializer for TodayButton
+     */
+    private static class TodayButtonSerializer extends JsonSerializer<TodayButton> {
+
+        @Override
+        public void serialize(TodayButton value, JsonGenerator jgen, SerializerProvider provider) throws IOException {
+            switch (value) {
+                case TRUE:
+                    jgen.writeBoolean(true);
+                    break;
+                case FALSE:
+                    jgen.writeBoolean(false);
+                    break;
+                case LINKED:
+                    jgen.writeString("linked");
+                    break;
+            }
+        }
     }
 }
