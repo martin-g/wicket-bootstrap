@@ -18,8 +18,8 @@
 
     <scm>
         <url>git@github.com:l0rdn1kk0n/wicket-bootstrap.git</url>
-        <connection>scm:git:git@github.com:l0rdn1kk0n/wicket-bootstrap.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com/:l0rdn1kk0n/wicket-bootstrap.git</developerConnection>
+        <connection>scm:git:git@github.com/l0rdn1kk0n/wicket-bootstrap.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/l0rdn1kk0n/wicket-bootstrap.git</developerConnection>
     </scm>
 
     <issueManagement>
