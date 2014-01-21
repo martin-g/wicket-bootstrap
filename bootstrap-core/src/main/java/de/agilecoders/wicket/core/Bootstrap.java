@@ -3,7 +3,7 @@ package de.agilecoders.wicket.core;
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapResourcesBehavior;
 import de.agilecoders.wicket.core.settings.BootstrapResourceAppender;
 import de.agilecoders.wicket.core.settings.IBootstrapSettings;
-import de.agilecoders.wicket.webjars.util.WicketWebjars;
+import de.agilecoders.wicket.webjars.WicketWebjars;
 import org.apache.wicket.Application;
 import org.apache.wicket.Component;
 import org.apache.wicket.MetaDataKey;

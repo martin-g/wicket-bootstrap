@@ -42,7 +42,7 @@
 
         <bootstrap.version>3.0.3</bootstrap.version>
         <config.version>0.3.3</config.version>
-        <wicket-webjars.version>0.3.3</wicket-webjars.version>
+        <wicket-webjars.version>0.3.4</wicket-webjars.version>
         <wicket-jquery-selectors>0.0.2</wicket-jquery-selectors>
 
         <enforcer.disable>true</enforcer.disable>
