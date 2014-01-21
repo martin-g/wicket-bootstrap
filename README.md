@@ -8,7 +8,7 @@ Components
 ----------
 
 * Twitter Bootstrap (3.0.3): https://github.com/twbs/bootstrap/
-* Apache Wicket (6.11.0): http://wicket.apache.org/
+* Apache Wicket (6.13.0): http://wicket.apache.org/
 * Bootswatch (3.0.3): http://bootswatch.com/
 
 Extensions
@@ -20,7 +20,7 @@ Extensions
 * JQueryUI (1.9.2): http://api.jqueryui.com/
    * Draggable: http://api.jqueryui.com/draggable
    * Resizable: http://api.jqueryui.com/resizable
-* less4j (1.0.4): https://github.com/SomMeri/less4j
+* less4j (1.2.4): https://github.com/SomMeri/less4j
 * bootstrap-tour: http://sorich87.github.com/bootstrap-tour
 * OpenWebIcons (2012-10-03): http://pfefferle.github.com/openwebicons/
 
@@ -34,13 +34,13 @@ How to get help and news
 * read more on my [blog](http://blog.agilecoders.de/).
 
 ## Maven
-wicket-bootstrap is [available](http://search.maven.org/#artifactdetails|de.agilecoders.wicket|wicket-bootstrap-core|0.8.4|jar) in Maven central repository.
+wicket-bootstrap is [available](http://search.maven.org/#artifactdetails|de.agilecoders.wicket|wicket-bootstrap-core|0.9.0|jar) in Maven central repository.
 
 core maven dependency:
 <pre><code>&lt;dependency&gt;
   &lt;groupId&gt;de.agilecoders.wicket&lt;/groupId&gt;
   &lt;artifactId&gt;wicket-bootstrap-core&lt;/artifactId&gt;
-  &lt;version&gt;0.8.4&lt;/version&gt;
+  &lt;version&gt;0.9.0&lt;/version&gt;
 &lt;/dependency&gt;
 </code></pre>
 
@@ -48,7 +48,7 @@ for all extensions:
 <pre><code>&lt;dependency&gt;
   &lt;groupId&gt;de.agilecoders.wicket&lt;/groupId&gt;
   &lt;artifactId&gt;wicket-bootstrap-extensions&lt;/artifactId&gt;
-  &lt;version&gt;0.8.4&lt;/version&gt;
+  &lt;version&gt;0.9.0&lt;/version&gt;
 &lt;/dependency&gt;
 </code></pre>
 
@@ -56,7 +56,7 @@ for all themes:
 <pre><code>&lt;dependency&gt;
   &lt;groupId&gt;de.agilecoders.wicket&lt;/groupId&gt;
   &lt;artifactId&gt;wicket-bootstrap-themes&lt;/artifactId&gt;
-  &lt;version&gt;0.8.4&lt;/version&gt;
+  &lt;version&gt;0.9.0&lt;/version&gt;
 &lt;/dependency&gt;
 </code></pre>
 
@@ -64,7 +64,7 @@ if you want to use a less compiler:
 <pre><code>&lt;dependency&gt;
   &lt;groupId&gt;de.agilecoders.wicket&lt;/groupId&gt;
   &lt;artifactId&gt;wicket-bootstrap-less&lt;/artifactId&gt;
-  &lt;version&gt;0.8.4&lt;/version&gt;
+  &lt;version&gt;0.9.0&lt;/version&gt;
 &lt;/dependency&gt;
 </code></pre>
 
@@ -72,7 +72,7 @@ all samples can be used with this dependency:
 <pre><code>&lt;dependency&gt;
   &lt;groupId&gt;de.agilecoders.wicket&lt;/groupId&gt;
   &lt;artifactId&gt;wicket-bootstrap-samples&lt;/artifactId&gt;
-  &lt;version&gt;0.8.4&lt;/version&gt;
+  &lt;version&gt;0.9.0&lt;/version&gt;
 &lt;/dependency&gt;
 </code></pre>
 
