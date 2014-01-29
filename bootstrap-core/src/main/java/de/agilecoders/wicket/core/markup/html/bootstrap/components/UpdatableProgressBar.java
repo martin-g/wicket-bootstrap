@@ -18,14 +18,10 @@ public abstract class UpdatableProgressBar extends ProgressBar {
 
     public UpdatableProgressBar(String id) {
         super(id);
-
-        commonInit();
     }
 
     public UpdatableProgressBar(String id, IModel<Integer> model) {
         super(id, model);
-
-        commonInit();
     }
 
     public Duration updateInterval() {
@@ -37,7 +33,10 @@ public abstract class UpdatableProgressBar extends ProgressBar {
         return this;
     }
 
-    private void commonInit() {
+    @Override
+    protected void onInitialize() {
+        super.onInitialize();
+
         setOutputMarkupId(true);
         active(true);
         striped(true);
