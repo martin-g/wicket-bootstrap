@@ -29,6 +29,6 @@ public class MenuHeader extends AbstractLink {
     protected void onConfigure() {
         super.onConfigure();
 
-        getParent().add(new CssClassNameAppender("nav-header"));
+        getParent().add(new CssClassNameAppender("dropdown-header"));
     }
 }
