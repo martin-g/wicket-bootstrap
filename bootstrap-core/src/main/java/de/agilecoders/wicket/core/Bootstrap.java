@@ -37,19 +37,21 @@ public final class Bootstrap {
      * @param settings The settings to use
      */
     public static void install(final Application app, final IBootstrapSettings settings) {
-        app.setMetaData(BOOTSTRAP_SETTINGS_METADATA_KEY, settings);
+        if (getSettings(app) == null) {
+            app.setMetaData(BOOTSTRAP_SETTINGS_METADATA_KEY, settings);
 
-        if (settings.updateSecurityManager()) {
-            updateSecurityManager(app);
+            if (settings.updateSecurityManager()) {
+                updateSecurityManager(app);
+            }
+
+            if (settings.autoAppendResources()) {
+                app.getComponentInstantiationListeners().add(new BootstrapResourceAppender());
+            }
+
+            configureMarkupSettings(app);
+
+            WicketWebjars.install(app);
         }
-
-        if (settings.autoAppendResources()) {
-            app.getComponentInstantiationListeners().add(new BootstrapResourceAppender());
-        }
-
-        configureMarkupSettings(app);
-
-        WicketWebjars.install(app);
     }
 
     /**
