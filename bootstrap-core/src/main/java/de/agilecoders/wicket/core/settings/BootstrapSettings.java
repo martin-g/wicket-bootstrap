@@ -14,10 +14,16 @@ import org.apache.wicket.request.resource.UrlResourceReference;
  */
 public class BootstrapSettings implements IBootstrapSettings {
 
-    private ResourceReference bootstrapJavaScriptReference = BootstrapJavaScriptReference.instance();
-    private ResourceReference bootstrapCssReference = BootstrapCssReference.instance();
+    private static final class Holder {
+        private static ResourceReference bootstrapJavaScriptReference = BootstrapJavaScriptReference.instance();
+        private static ResourceReference bootstrapCssReference = BootstrapCssReference.instance();
+        private static ThemeProvider themeProvider = new DefaultThemeProvider();
+    }
 
-    private ThemeProvider themeProvider = new DefaultThemeProvider();
+    private ResourceReference bootstrapJavaScriptReference = null;
+    private ResourceReference bootstrapCssReference = null;
+
+    private ThemeProvider themeProvider = null;
     private ActiveThemeProvider activeThemeProvider = new SessionThemeProvider();
     private String resourceFilterName = "";
     private boolean updateSecurityManager = true;
@@ -50,7 +56,9 @@ public class BootstrapSettings implements IBootstrapSettings {
 
     @Override
     public ResourceReference getCssResourceReference() {
-        return bootstrapCssReference;
+        ResourceReference ref = bootstrapCssReference;
+
+        return ref != null ? ref : Holder.bootstrapCssReference;
     }
 
     @Override
@@ -62,7 +70,7 @@ public class BootstrapSettings implements IBootstrapSettings {
         } else {
             jsReference = bootstrapJavaScriptReference;
         }
-        return jsReference;
+        return jsReference != null ? jsReference : Holder.bootstrapJavaScriptReference;
     }
 
     @Override
@@ -83,7 +91,9 @@ public class BootstrapSettings implements IBootstrapSettings {
 
     @Override
     public ThemeProvider getThemeProvider() {
-        return themeProvider;
+        ThemeProvider provider = themeProvider;
+
+        return provider != null ? provider : Holder.themeProvider;
     }
 
     @Override
