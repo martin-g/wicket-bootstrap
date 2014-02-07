@@ -72,7 +72,7 @@ public class ClientSideBootstrapTabbedPanel<T extends ITab> extends Panel {
 				} 
 				WebMarkupContainer link = newLink("link", contentsIds.get(listPosition));
 				tabPanel.add(link);
-				link.add(newTitleLabel("title", tab.getTitle()));
+				link.add(newTitleLabel("title", wrap(tab.getTitle())));
 				listPosition++;
 				tabIndex++;
 			}
