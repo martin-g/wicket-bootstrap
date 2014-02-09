@@ -20,18 +20,24 @@ import org.apache.wicket.util.lang.Args;
  */
 public class ClientSideBootstrapTabbedPanel<T extends ITab> extends Panel {
 
+	/**
+	 * Constructor.
+	 * @param id
+	 * @param tabs
+	 */
 	public ClientSideBootstrapTabbedPanel(String id, final List<T> tabs) {
 		this(id, tabs, null);
 	}
 
 	/**
+	 * Constructor.
 	 * @param id
 	 * @param model
 	 */
-	public ClientSideBootstrapTabbedPanel(String id, final List<T> tabs, IModel<Integer> model) {
-		super(id, model);
+	public ClientSideBootstrapTabbedPanel(String id, final List<T> tabs, IModel<Integer> activeTabIndexModel) {
+		super(id, activeTabIndexModel);
 		
-		int activeTab = model!=null? model.getObject():1;
+		int activeTab = activeTabIndexModel!=null? activeTabIndexModel.getObject():1;
 		
 		Args.notEmpty(tabs, "tabs");
 		
