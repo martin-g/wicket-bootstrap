@@ -2,14 +2,15 @@ package de.agilecoders.wicket.core.markup.html.bootstrap.tabs;
 
 import java.util.List;
 
+import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
-import org.apache.wicket.behavior.AttributeAppender;
 import org.apache.wicket.extensions.markup.html.tabs.ITab;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.markup.repeater.RepeatingView;
+import org.apache.wicket.model.AbstractReadOnlyModel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.util.lang.Args;
 
@@ -37,7 +38,7 @@ public class ClientSideBootstrapTabbedPanel<T extends ITab> extends Panel {
 	public ClientSideBootstrapTabbedPanel(String id, final List<T> tabs, IModel<Integer> activeTabIndexModel) {
 		super(id, activeTabIndexModel);
 		
-		int activeTab = activeTabIndexModel!=null? activeTabIndexModel.getObject():1;
+		
 		
 		Args.notEmpty(tabs, "tabs");
 		
@@ -52,36 +53,45 @@ public class ClientSideBootstrapTabbedPanel<T extends ITab> extends Panel {
 		tabsContainer.add(tabsView);
 		int tabIndex = 1;
 		for(T tab: tabs) {
-			if(tab.isVisible()) {
-				boolean isActive = (tabIndex == activeTab);
-				WebMarkupContainer panel = createContentPanel(panels.newChildId(), tab, isActive);
+			if(tab.isVisible()) {			
+				WebMarkupContainer panel = createContentPanel(panels.newChildId(), tab, tabIndex, activeTabIndexModel);
 				panels.add(panel);
-				WebMarkupContainer tabPanel = createTabPanel(panels.newChildId(), tab, isActive, panel.getMarkupId());
+				WebMarkupContainer tabPanel = createTabPanel(panels.newChildId(), tab, tabIndex, activeTabIndexModel, panel.getMarkupId());
 				tabsView.add(tabPanel);
 				tabIndex++;
 			}
 		}	
 	}
 	
-	private WebMarkupContainer createTabPanel(String id, T tab, boolean isActive, String tabPanelId) {
+	private WebMarkupContainer createTabPanel(String id, T tab, final int tabIndex, final IModel<Integer> activeTabIndexModel, String tabPanelId) {
 		WebMarkupContainer tabPanel = new WebMarkupContainer(id);
-		if(isActive) {
-			tabPanel.add(new AttributeAppender("class", "active"));
-		} 
+		tabPanel.add(new AttributeModifier("class", new AbstractReadOnlyModel<String>() {
+
+			@Override
+			public String getObject() {
+				int activeTab = activeTabIndexModel!=null? activeTabIndexModel.getObject():1;
+				boolean isActive = (tabIndex == activeTab);
+				return isActive?"active":"";
+			}
+		}));
 		WebMarkupContainer link = newLink("link", tabPanelId);
 		tabPanel.add(link);
 		link.add(newTitleLabel("title", wrap(tab.getTitle())));
 		return tabPanel;
 	}
 	
-	private WebMarkupContainer createContentPanel(String id, T tab, boolean isActive) {
+	private WebMarkupContainer createContentPanel(String id, T tab, final int tabIndex, final IModel<Integer> activeTabIndexModel) {
 		WebMarkupContainer panel = tab.getPanel(id);
 		panel.setRenderBodyOnly(false);
-		if(isActive) {
-			panel.add(new AttributeAppender("class", "tab-pane fade in active"));
-		} else {
-			panel.add(new AttributeAppender("class", "tab-pane fade"));
-		}
+		panel.add(new AttributeModifier("class", new AbstractReadOnlyModel<String>() {
+
+			@Override
+			public String getObject() {
+				int activeTab = activeTabIndexModel!=null? activeTabIndexModel.getObject():1;
+				boolean isActive = (tabIndex == activeTab);
+				return isActive?"tab-pane fade in active":"tab-pane fade";
+			}
+		}));
 		panel.setOutputMarkupId(true);
 		return panel;
 	}
