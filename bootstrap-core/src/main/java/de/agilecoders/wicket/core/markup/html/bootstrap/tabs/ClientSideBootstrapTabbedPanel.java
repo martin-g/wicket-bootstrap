@@ -47,18 +47,19 @@ public class ClientSideBootstrapTabbedPanel<T extends ITab> extends Panel {
 		int tabIndex = 1;
 		for(T tab: tabs) {
 			if(tab.isVisible()) {
-				WebMarkupContainer panel = createContentPanel(panels.newChildId(), tab, tabIndex, activeTab);
+				boolean isActive = (tabIndex == activeTab);
+				WebMarkupContainer panel = createContentPanel(panels.newChildId(), tab, isActive);
 				panels.add(panel);
-				WebMarkupContainer tabPanel = createTabPanel(panels.newChildId(), tab, tabIndex, activeTab, panel.getMarkupId());
+				WebMarkupContainer tabPanel = createTabPanel(panels.newChildId(), tab, isActive, panel.getMarkupId());
 				tabsView.add(tabPanel);
 				tabIndex++;
 			}
 		}	
 	}
 	
-	private WebMarkupContainer createTabPanel(String id, T tab, int tabIndex, int activeTab, String tabPanelId) {
+	private WebMarkupContainer createTabPanel(String id, T tab, boolean isActive, String tabPanelId) {
 		WebMarkupContainer tabPanel = new WebMarkupContainer(id);
-		if(tabIndex == activeTab) {
+		if(isActive) {
 			tabPanel.add(new AttributeAppender("class", "active"));
 		} 
 		WebMarkupContainer link = newLink("link", tabPanelId);
@@ -67,10 +68,10 @@ public class ClientSideBootstrapTabbedPanel<T extends ITab> extends Panel {
 		return tabPanel;
 	}
 	
-	private WebMarkupContainer createContentPanel(String id, T tab, int tabIndex, int activeTab) {
+	private WebMarkupContainer createContentPanel(String id, T tab, boolean isActive) {
 		WebMarkupContainer panel = tab.getPanel(id);
 		panel.setRenderBodyOnly(false);
-		if(tabIndex == activeTab) {
+		if(isActive) {
 			panel.add(new AttributeAppender("class", "tab-pane fade in active"));
 		} else {
 			panel.add(new AttributeAppender("class", "tab-pane fade"));
