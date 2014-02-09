@@ -37,9 +37,7 @@ public class ClientSideBootstrapTabbedPanel<T extends ITab> extends Panel {
 	 */
 	public ClientSideBootstrapTabbedPanel(String id, final List<T> tabs, IModel<Integer> activeTabIndexModel) {
 		super(id, activeTabIndexModel);
-		
-		
-		
+			
 		Args.notEmpty(tabs, "tabs");
 		
 		WebMarkupContainer panelsContainer = newPanelsContainer("panelsContainer");
