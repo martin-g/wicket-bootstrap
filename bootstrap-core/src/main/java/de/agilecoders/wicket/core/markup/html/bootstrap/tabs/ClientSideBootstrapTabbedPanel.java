@@ -1,6 +1,5 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.tabs;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.wicket.Component;
@@ -39,50 +38,65 @@ public class ClientSideBootstrapTabbedPanel<T extends ITab> extends Panel {
 		WebMarkupContainer panelsContainer = newPanelsContainer("panelsContainer");
 		add(panelsContainer);
 		
-		List<String> contentsIds = new ArrayList<String>();
 		RepeatingView panels = new RepeatingView("panels");		
 		panelsContainer.add(panels);
-		int tabIndex = 1;
-		for(T tab: tabs) {
-			if(tab.isVisible()) {
-				WebMarkupContainer panel = tab.getPanel(panels.newChildId());
-				if(tabIndex == activeTab) {
-					panel.add(new AttributeAppender("class", "tab-pane fade in active"));
-				} else {
-					panel.add(new AttributeAppender("class", "tab-pane fade"));
-				}
-				panel.setOutputMarkupId(true);
-				contentsIds.add(panel.getMarkupId());
-				panels.add(panel);
-				tabIndex++;
-			}
-		}	
 		WebMarkupContainer tabsContainer = newTabsContainer("tabsContainer");
 		add(tabsContainer);
 		RepeatingView tabsView = new RepeatingView("tabs");		
 		tabsContainer.add(tabsView);
-		int listPosition = 0;
-		tabIndex = 1;
+		int tabIndex = 1;
 		for(T tab: tabs) {
 			if(tab.isVisible()) {
-				WebMarkupContainer tabPanel = new WebMarkupContainer(panels.newChildId());
-				tabsView.add(tabPanel);	
-				if(tabIndex == activeTab) {
-					tabPanel.add(new AttributeAppender("class", "active"));
-				} 
-				WebMarkupContainer link = newLink("link", contentsIds.get(listPosition));
-				tabPanel.add(link);
-				link.add(newTitleLabel("title", wrap(tab.getTitle())));
-				listPosition++;
+				WebMarkupContainer panel = createContentPanel(panels.newChildId(), tab, tabIndex, activeTab);
+				panels.add(panel);
+				WebMarkupContainer tabPanel = createTabPanel(panels.newChildId(), tab, tabIndex, activeTab, panel.getMarkupId());
+				tabsView.add(tabPanel);
 				tabIndex++;
 			}
-		}
+		}	
 	}
 	
+	private WebMarkupContainer createTabPanel(String id, T tab, int tabIndex, int activeTab, String tabPanelId) {
+		WebMarkupContainer tabPanel = new WebMarkupContainer(id);
+		if(tabIndex == activeTab) {
+			tabPanel.add(new AttributeAppender("class", "active"));
+		} 
+		WebMarkupContainer link = newLink("link", tabPanelId);
+		tabPanel.add(link);
+		link.add(newTitleLabel("title", wrap(tab.getTitle())));
+		return tabPanel;
+	}
+	
+	private WebMarkupContainer createContentPanel(String id, T tab, int tabIndex, int activeTab) {
+		WebMarkupContainer panel = tab.getPanel(id);
+		panel.setRenderBodyOnly(false);
+		if(tabIndex == activeTab) {
+			panel.add(new AttributeAppender("class", "tab-pane fade in active"));
+		} else {
+			panel.add(new AttributeAppender("class", "tab-pane fade"));
+		}
+		panel.setOutputMarkupId(true);
+		return panel;
+	}
+	
+	/**
+	 * Override to create a new title label.
+	 * 
+	 * @param id
+	 * @param title
+	 * @return
+	 */
 	protected Component newTitleLabel(final String id, IModel<String> title) {
 		return new Label(id, title);
 	}
 	
+	/**
+	 * Override to create a new link.
+	 * 
+	 * @param id
+	 * @param href
+	 * @return
+	 */
 	protected WebMarkupContainer newLink(final String id, final String href) {
 		return new WebMarkupContainer(id)
 		{
@@ -113,6 +127,10 @@ public class ClientSideBootstrapTabbedPanel<T extends ITab> extends Panel {
 		};
 	}
 	
+	/**
+	 * Override to return a different container's panel CSS class.
+	 * @return
+	 */
 	protected CharSequence getPanelsContainerCssClass() {
 		return "tab-content";
 	}
@@ -132,6 +150,10 @@ public class ClientSideBootstrapTabbedPanel<T extends ITab> extends Panel {
 		};
 	}
 
+	/**
+	 * Override to return a different tabs CSS class.
+	 * @return
+	 */
 	protected CharSequence getTabContainerCssClass() {
 		return "nav nav-tabs";
 	}
