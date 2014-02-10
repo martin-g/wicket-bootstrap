@@ -80,9 +80,17 @@ Installation
 ------------
 Install bootstrap settings class:
 
-<pre><code>// best place to do this is in Application#init()
-Bootstrap.install(Application.get(), new BootstrapSettings());
-</code></pre>
+```java
+// best place to do this is in Application#init()
+Bootstrap.install(this);
+
+// if you want to customize bootstrap:
+WicketWebjars.install(this);
+
+BootstrapSettings settings = new BootstrapSettings();
+settings.setXXX(...);
+Bootstrap.install(this, settings);
+```
 
 then you are able to use all wicket-bootstrap components.
 
