@@ -2,6 +2,7 @@ package de.agilecoders.wicket.core;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapResourcesBehavior;
 import de.agilecoders.wicket.core.settings.BootstrapResourceAppender;
+import de.agilecoders.wicket.core.settings.BootstrapSettings;
 import de.agilecoders.wicket.core.settings.IBootstrapSettings;
 import de.agilecoders.wicket.webjars.WicketWebjars;
 import org.apache.wicket.Application;
@@ -36,8 +37,14 @@ public final class Bootstrap {
      * @param app      The current application
      * @param settings The settings to use
      */
-    public static void install(final Application app, final IBootstrapSettings settings) {
+    public static void install(final Application app, IBootstrapSettings settings) {
         if (getSettings(app) == null) {
+            WicketWebjars.install(app);
+
+            if (settings == null) {
+                settings = new BootstrapSettings();
+            }
+
             app.setMetaData(BOOTSTRAP_SETTINGS_METADATA_KEY, settings);
 
             if (settings.updateSecurityManager()) {
@@ -49,9 +56,16 @@ public final class Bootstrap {
             }
 
             configureMarkupSettings(app);
-
-            WicketWebjars.install(app);
         }
+    }
+
+    /**
+     * Installs given settings for given application
+     *
+     * @param app      The current application
+     */
+    public static void install(final Application app) {
+        install(app, null);
     }
 
     /**

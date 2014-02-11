@@ -165,7 +165,7 @@ abstract class BasePage<T> extends GenericWebPage<T> {
             /** serialVersionUID. */
             private static final long serialVersionUID = 1L;
 
-			@Override
+            @Override
             protected List<AbstractLink> newSubMenuButtons(String buttonMarkupId) {
                 final List<AbstractLink> subMenu = new ArrayList<AbstractLink>();
 

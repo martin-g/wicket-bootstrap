@@ -26,10 +26,12 @@ public class BootswatchTheme extends Theme {
     public static final BootswatchTheme CYBORG = new BootswatchTheme(BootswatchCssReference.CYBORG);
     public static final BootswatchTheme FLATLY = new BootswatchTheme(BootswatchCssReference.FLATLY);
     public static final BootswatchTheme JOURNAL = new BootswatchTheme(BootswatchCssReference.JOURNAL);
+    public static final BootswatchTheme LUMEN = new BootswatchTheme(BootswatchCssReference.LUMEN);
     public static final BootswatchTheme READABLE = new BootswatchTheme(BootswatchCssReference.READABLE);
     public static final BootswatchTheme SIMPLEX = new BootswatchTheme(BootswatchCssReference.SIMPLEX);
     public static final BootswatchTheme SLATE = new BootswatchTheme(BootswatchCssReference.SLATE);
     public static final BootswatchTheme SPACELAB = new BootswatchTheme(BootswatchCssReference.SPACELAB);
+    public static final BootswatchTheme SUPERHERO = new BootswatchTheme(BootswatchCssReference.SUPERHERO);
     public static final BootswatchTheme UNITED = new BootswatchTheme(BootswatchCssReference.UNITED);
     public static final BootswatchTheme YETI = new BootswatchTheme(BootswatchCssReference.YETI);
 

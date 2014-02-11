@@ -29,6 +29,7 @@ import de.agilecoders.wicket.themes.markup.html.google.GoogleTheme;
 import de.agilecoders.wicket.themes.markup.html.metro.MetroTheme;
 import de.agilecoders.wicket.themes.markup.html.wicket.WicketTheme;
 import de.agilecoders.wicket.themes.settings.BootswatchThemeProvider;
+import de.agilecoders.wicket.webjars.WicketWebjars;
 import net.ftlines.wicketsource.WicketSource;
 import org.apache.wicket.Application;
 import org.apache.wicket.Page;
@@ -174,6 +175,8 @@ public class WicketApplication extends WebApplication {
      * configures wicket-bootstrap and installs the settings.
      */
     private void configureBootstrap() {
+        WicketWebjars.install(this);
+
         final ThemeProvider themeProvider = new BootswatchThemeProvider() {{
             add(new WicketTheme());
             add(new MetroTheme());
