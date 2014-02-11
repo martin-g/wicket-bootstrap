@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.extensions.markup.html.tabs.ITab;
+import org.apache.wicket.extensions.markup.html.tabs.TabbedPanel;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
@@ -15,9 +16,13 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.util.lang.Args;
 
 /**
- * A pure client side tab. It is completely stateless.
+ * <p>
+ * 	A "pure" client side stateless tabs component. You use it as you would use {@link TabbedPanel}, 
+ * 	but instead of generating links that trigger server round trips id does generates just "client
+ * 	side" links. 
+ * </p>
  * 
- * @author reiern70
+ * @author Ernesto Reinaldo Barreiro (reiern70@gmailcom)
  */
 public class ClientSideBootstrapTabbedPanel<T extends ITab> extends Panel {
 
@@ -34,22 +39,22 @@ public class ClientSideBootstrapTabbedPanel<T extends ITab> extends Panel {
 	 * Constructor.
 	 * @param id
 	 * @param model
+	 * @param activeTabIndexModel
 	 */
 	public ClientSideBootstrapTabbedPanel(String id, final List<T> tabs, IModel<Integer> activeTabIndexModel) {
 		super(id, activeTabIndexModel);
 			
 		Args.notEmpty(tabs, "tabs");
 		
-		WebMarkupContainer panelsContainer = newPanelsContainer("panelsContainer");
-		add(panelsContainer);
-		
+		WebMarkupContainer panelsContainer = newTabsContentsContainer("panelsContainer");
+		add(panelsContainer);		
 		RepeatingView panels = new RepeatingView("panels");		
 		panelsContainer.add(panels);
 		WebMarkupContainer tabsContainer = newTabsContainer("tabsContainer");
 		add(tabsContainer);
 		RepeatingView tabsView = new RepeatingView("tabs");		
 		tabsContainer.add(tabsView);
-		int tabIndex = 1;
+		int tabIndex = 0;
 		for(T tab: tabs) {
 			if(tab.isVisible()) {			
 				WebMarkupContainer panel = createContentPanel(panels.newChildId(), tab, tabIndex, activeTabIndexModel);
@@ -61,23 +66,25 @@ public class ClientSideBootstrapTabbedPanel<T extends ITab> extends Panel {
 		}	
 	}
 	
+	// creates tabs panel.
 	private WebMarkupContainer createTabPanel(String id, T tab, final int tabIndex, final IModel<Integer> activeTabIndexModel, String tabPanelId) {
 		WebMarkupContainer tabPanel = new WebMarkupContainer(id);
 		tabPanel.add(new AttributeModifier("class", new AbstractReadOnlyModel<String>() {
 
 			@Override
 			public String getObject() {
-				int activeTab = activeTabIndexModel!=null? activeTabIndexModel.getObject():1;
+				int activeTab = activeTabIndexModel!=null? activeTabIndexModel.getObject():0;
 				boolean isActive = (tabIndex == activeTab);
-				return isActive?"active":"";
+				return "tab" + tabIndex + (isActive?" active":"");
 			}
 		}));
-		WebMarkupContainer link = newLink("link", tabPanelId);
+		WebMarkupContainer link = newTabLink("link", tabPanelId, tabIndex);
 		tabPanel.add(link);
-		link.add(newTitleLabel("title", wrap(tab.getTitle())));
+		link.add(newTabTitleLabel("title", wrap(tab.getTitle()), tabIndex));
 		return tabPanel;
 	}
 	
+	// creates tabs contents panel.
 	private WebMarkupContainer createContentPanel(String id, T tab, final int tabIndex, final IModel<Integer> activeTabIndexModel) {
 		WebMarkupContainer panel = tab.getPanel(id);
 		panel.setRenderBodyOnly(false);
@@ -85,9 +92,9 @@ public class ClientSideBootstrapTabbedPanel<T extends ITab> extends Panel {
 
 			@Override
 			public String getObject() {
-				int activeTab = activeTabIndexModel!=null? activeTabIndexModel.getObject():1;
+				int activeTab = activeTabIndexModel!=null? activeTabIndexModel.getObject():0;
 				boolean isActive = (tabIndex == activeTab);
-				return isActive?"tab-pane fade in active":"tab-pane fade";
+				return isActive?"tabs tab-pane fade in active":"tab-pane fade";
 			}
 		}));
 		panel.setOutputMarkupId(true);
@@ -95,31 +102,32 @@ public class ClientSideBootstrapTabbedPanel<T extends ITab> extends Panel {
 	}
 	
 	/**
-	 * Override to create a new title label.
+	 * Override to create a different title label.
 	 * 
 	 * @param id
-	 * @param title
+	 * @param title The label title
+	 * @param tabIndex The index of the tab
 	 * @return
 	 */
-	protected Component newTitleLabel(final String id, IModel<String> title) {
+	protected Component newTabTitleLabel(final String id, IModel<String> title, final int tabIndex) {
 		return new Label(id, title);
 	}
 	
 	/**
-	 * Override to create a new link.
+	 * Override to create a different tab's link.
 	 * 
 	 * @param id
-	 * @param href
+	 * @param href The href (id) of the corresponding tab's content.
+	 * @param tabIndex The index of the tab
 	 * @return
 	 */
-	protected WebMarkupContainer newLink(final String id, final String href) {
-		return new WebMarkupContainer(id)
-		{
+	protected WebMarkupContainer newTabLink(final String id, final String href,
+			final int tabIndex) {
+		return new WebMarkupContainer(id) {
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			protected void onComponentTag(final ComponentTag tag)
-			{
+			protected void onComponentTag(final ComponentTag tag) {
 				super.onComponentTag(tag);
 				tag.put("data-toggle", "tab");
 				tag.put("href", "#" + href);
@@ -127,15 +135,17 @@ public class ClientSideBootstrapTabbedPanel<T extends ITab> extends Panel {
 		};
 	}
 	
-	protected WebMarkupContainer newPanelsContainer(final String id)
-	{
-		return new WebMarkupContainer(id)
-		{
+	/** 
+	 * Override to create a  different tabs content's container.
+	 * @param id
+	 * @return
+	 */
+	protected WebMarkupContainer newTabsContentsContainer(final String id) {
+		return new WebMarkupContainer(id) {
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			protected void onComponentTag(final ComponentTag tag)
-			{
+			protected void onComponentTag(final ComponentTag tag) {
 				super.onComponentTag(tag);
 				tag.put("class", getPanelsContainerCssClass());
 			}
@@ -143,22 +153,25 @@ public class ClientSideBootstrapTabbedPanel<T extends ITab> extends Panel {
 	}
 	
 	/**
-	 * Override to return a different container's panel CSS class.
+	 * Override to return a different CSS class for tabs contents panel container.
 	 * @return
 	 */
 	protected CharSequence getPanelsContainerCssClass() {
 		return "tab-content";
 	}
 	
-	protected WebMarkupContainer newTabsContainer(final String id)
-	{
-		return new WebMarkupContainer(id)
-		{
+	/**
+	 * Override to returns a  different tabs container.
+	 * 
+	 * @param id
+	 * @return
+	 */
+	protected WebMarkupContainer newTabsContainer(final String id) {
+		return new WebMarkupContainer(id) {
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			protected void onComponentTag(final ComponentTag tag)
-			{
+			protected void onComponentTag(final ComponentTag tag) {
 				super.onComponentTag(tag);
 				tag.put("class", getTabContainerCssClass());
 			}
@@ -166,7 +179,7 @@ public class ClientSideBootstrapTabbedPanel<T extends ITab> extends Panel {
 	}
 
 	/**
-	 * Override to return a different tabs CSS class.
+	 * Override to return a different CSS class for tabs container.
 	 * @return
 	 */
 	protected CharSequence getTabContainerCssClass() {
