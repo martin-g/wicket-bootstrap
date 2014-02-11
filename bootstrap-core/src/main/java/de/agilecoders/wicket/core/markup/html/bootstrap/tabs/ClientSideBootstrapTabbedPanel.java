@@ -94,7 +94,7 @@ public class ClientSideBootstrapTabbedPanel<T extends ITab> extends Panel {
 			public String getObject() {
 				int activeTab = activeTabIndexModel!=null? activeTabIndexModel.getObject():0;
 				boolean isActive = (tabIndex == activeTab);
-				return isActive?"tabs tab-pane fade in active":"tab-pane fade";
+				return "tab" + tabIndex + (isActive?" tab-pane fade in active":" tab-pane fade");
 			}
 		}));
 		panel.setOutputMarkupId(true);
