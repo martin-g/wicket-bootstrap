@@ -1,6 +1,7 @@
 package de.agilecoders.wicket.samples.pages;
 
 import com.google.common.collect.Lists;
+
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.BootstrapAjaxLink;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.DropDownButton;
@@ -11,7 +12,9 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.image.GlyphIconType;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
 import de.agilecoders.wicket.core.markup.html.bootstrap.tabs.AjaxBootstrapTabbedPanel;
 import de.agilecoders.wicket.core.markup.html.bootstrap.tabs.BootstrapTabbedPanel;
+import de.agilecoders.wicket.core.markup.html.bootstrap.tabs.ClientSideBootstrapTabbedPanel;
 import de.agilecoders.wicket.samples.components.basecss.ButtonGroups;
+
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.extensions.markup.html.tabs.AbstractTab;
@@ -50,6 +53,8 @@ public class ComponentsPage extends BasePage {
 //        add(newDropDownSubMenuExample());
 
         add(newTabs("tabs"));
+        
+        add(newClientSideTabs("tabsClient"));
     }
 
     private Component newTabs(String markupId) {
@@ -58,6 +63,12 @@ public class ComponentsPage extends BasePage {
         ));
     }
 
+    private Component newClientSideTabs(String markupId) {
+        return new ClientSideBootstrapTabbedPanel<AbstractTab>(markupId, Lists.<AbstractTab>newArrayList(
+                createTab("Section 1"), createTab("Section 2"), createTab("Section 3")
+        ));
+    }
+    
     private AbstractTab createTab(final String title) {
         return new AbstractTab(Model.of(title)) {
             @Override
