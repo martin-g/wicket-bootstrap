@@ -76,7 +76,7 @@ public class ComponentsPage extends BasePage {
                 return new WebMarkupContainer(panelId) {
                     @Override
                     public void onComponentTagBody(MarkupStream markupStream, ComponentTag openTag) {
-                        replaceComponentTagBody(markupStream, openTag, "I'm in " + title);
+                        replaceComponentTagBody(markupStream, openTag, "<br/>I'm in " + title);
                     }
                 };
             }
