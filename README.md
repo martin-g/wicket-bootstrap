@@ -21,7 +21,7 @@ Extensions
    * Draggable: http://api.jqueryui.com/draggable
    * Resizable: http://api.jqueryui.com/resizable
 * less4j (1.2.4): https://github.com/SomMeri/less4j
-* bootstrap-tour: http://sorich87.github.com/bootstrap-tour
+* bootstrap-tour (0.9.0): http://sorich87.github.com/bootstrap-tour
 * OpenWebIcons (2012-10-03): http://pfefferle.github.com/openwebicons/
 * Twitter Typeahead (0.9.3): http://twitter.github.io/typeahead.js/
 

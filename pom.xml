@@ -60,13 +60,13 @@
         <lesscss-engine.version>1.3.3</lesscss-engine.version>
         <less4j.version>1.2.4</less4j.version>
         <modernizr.version>2.6.2-1</modernizr.version>
-        <jetty.version>8.1.11.v20130520</jetty.version>
+        <jetty.version>8.1.14.v20131031</jetty.version>
         <newrelic.version>3.4.1</newrelic.version>
         <google-closure.version>v20130603</google-closure.version>
         <contiperf.version>2.2.0</contiperf.version>
-        <logback.version>1.0.13</logback.version>
+        <logback.version>1.1.1</logback.version>
         <jquerypp.version>1.0.1</jquerypp.version>
-        <jquery.version>2.0.3-1</jquery.version>
+        <jquery.version>2.1.0-1</jquery.version>
         <maven-bundle-plugin.version>2.4.0</maven-bundle-plugin.version>
         <wicket.version>6.13.0</wicket.version>
     </properties>
