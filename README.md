@@ -7,9 +7,9 @@ Current build status: [![Build Status](https://buildhive.cloudbees.com/job/l0rdn
 Components
 ----------
 
-* Twitter Bootstrap (3.0.3): https://github.com/twbs/bootstrap/
+* Twitter Bootstrap (3.1.0): https://github.com/twbs/bootstrap/
 * Apache Wicket (6.13.0): http://wicket.apache.org/
-* Bootswatch (3.0.3): http://bootswatch.com/
+* Bootswatch (3.1.0): http://bootswatch.com/
 
 Extensions
 ----------
@@ -23,6 +23,7 @@ Extensions
 * less4j (1.2.4): https://github.com/SomMeri/less4j
 * bootstrap-tour: http://sorich87.github.com/bootstrap-tour
 * OpenWebIcons (2012-10-03): http://pfefferle.github.com/openwebicons/
+* Twitter Typeahead (0.9.3): http://twitter.github.io/typeahead.js/
 
 How to get help and news
 ------------------------
