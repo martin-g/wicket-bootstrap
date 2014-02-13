@@ -60,7 +60,9 @@ public class ButtonList extends ListView<AbstractLink> {
 
         for (final AbstractLink link : getList()) {
             if (link instanceof Activatable) {
-                return ((Activatable) link).isActive(activeButton);
+                if (((Activatable) link).isActive(activeButton)) {
+                    return true;
+                }
             } else if (link instanceof BookmarkablePageLink) {
                 if (((BookmarkablePageLink) link).getPageClass().equals(pageClass)) {
                     return true;
