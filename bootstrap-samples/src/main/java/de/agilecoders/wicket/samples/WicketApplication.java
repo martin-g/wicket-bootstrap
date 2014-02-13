@@ -36,6 +36,8 @@ import org.apache.wicket.Page;
 import org.apache.wicket.ResourceBundles;
 import org.apache.wicket.RuntimeConfigurationType;
 import org.apache.wicket.WicketRuntimeException;
+import org.apache.wicket.markup.html.IPackageResourceGuard;
+import org.apache.wicket.markup.html.SecurePackageResourceGuard;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.request.resource.CssResourceReference;
 import org.apache.wicket.request.resource.JavaScriptResourceReference;
@@ -97,6 +99,7 @@ public class WicketApplication extends WebApplication {
 
         configureBootstrap();
         configureResourceBundles();
+        configureResourceGuard();
 
         optimizeForWebPerformance();
 
@@ -109,6 +112,16 @@ public class WicketApplication extends WebApplication {
         }
 
         WicketSource.configure(this);
+    }
+
+    private void configureResourceGuard() {
+        if (usesDevelopmentConfig()) {
+            IPackageResourceGuard guard = getResourceSettings().getPackageResourceGuard();
+            if (guard instanceof SecurePackageResourceGuard) {
+                SecurePackageResourceGuard secureGuard = (SecurePackageResourceGuard) guard;
+                secureGuard.addPattern("+*.css.map");
+            }
+        }
     }
 
     /**
