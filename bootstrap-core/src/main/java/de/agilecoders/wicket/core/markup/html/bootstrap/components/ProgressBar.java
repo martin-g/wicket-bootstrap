@@ -5,7 +5,6 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.components.progress.Uplo
 import de.agilecoders.wicket.core.util.Attributes;
 import org.apache.wicket.Component;
 import org.apache.wicket.MarkupContainer;
-import org.apache.wicket.behavior.Behavior;
 import org.apache.wicket.extensions.ajax.markup.html.form.upload.UploadProgressBar;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.head.IHeaderResponse;
@@ -47,7 +46,7 @@ public class ProgressBar extends UploadProgressBar {
     }
 
     public ProgressBar(String id, IModel<Integer> model) {
-        this(id, new Form("dummy"), null, model);
+        this(id, new Form<Void>("dummy"), null, model);
     }
 
     public ProgressBar(String id, Form<?> form, FileUploadField fileUploadField, IModel<Integer> model) {
