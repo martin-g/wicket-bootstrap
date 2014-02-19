@@ -1,18 +1,15 @@
 package de.agilecoders.wicket.samples.pages;
 
-import com.google.common.collect.Lists;
-import de.agilecoders.wicket.core.markup.html.bootstrap.navigation.BootstrapPagingNavigator;
-import de.agilecoders.wicket.core.markup.html.bootstrap.navigation.Breadcrumb;
-import de.agilecoders.wicket.core.markup.html.bootstrap.tabs.BootstrapTabbedPanel;
 import org.apache.wicket.Component;
 import org.apache.wicket.extensions.breadcrumb.panel.BreadCrumbPanel;
-import org.apache.wicket.extensions.markup.html.tabs.AbstractTab;
-import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.navigation.paging.IPageable;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.wicketstuff.annotation.mount.MountPath;
+
+import de.agilecoders.wicket.core.markup.html.bootstrap.navigation.BootstrapPagingNavigator;
+import de.agilecoders.wicket.core.markup.html.bootstrap.navigation.Breadcrumb;
 
 /**
  * The {@code BaseCssPage}
@@ -45,7 +42,7 @@ public class BaseCssPage extends BasePage {
 */
     }
 
-    private Component newBreadcrumb(String markupId) {
+    protected Component newBreadcrumb(String markupId) {
         Breadcrumb breadcrumb = new Breadcrumb(markupId);
         breadcrumb.setActive(new BreadCrumbPanel("breadcrumbid", breadcrumb) {
             @Override
@@ -56,7 +53,7 @@ public class BaseCssPage extends BasePage {
         return breadcrumb;
     }
 
-    private Component newPagination(String markupId) {
+    protected Component newPagination(String markupId) {
         IPageable pageable = new IPageable() {
             @Override
             public long getCurrentPage() {

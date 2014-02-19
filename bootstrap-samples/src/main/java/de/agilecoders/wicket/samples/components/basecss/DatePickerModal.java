@@ -18,8 +18,7 @@ public class DatePickerModal extends Modal {
     public DatePickerModal(final String markupId) {
         super(markupId);
 
-        DateTextField dateTextField;
-        add(dateTextField = new DateTextField("date", Model.of(new Date(System.currentTimeMillis())), "MM/dd/yyyy"));
+        add(new DateTextField("date", Model.of(new Date(System.currentTimeMillis())), "MM/dd/yyyy"));
 
         show(true);
         setFooterVisible(true);

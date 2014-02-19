@@ -1,6 +1,24 @@
 package de.agilecoders.wicket.samples.pages;
 
+import java.util.List;
+
+import org.apache.wicket.Component;
+import org.apache.wicket.ajax.markup.html.form.AjaxButton;
+import org.apache.wicket.markup.head.CssHeaderItem;
+import org.apache.wicket.markup.head.IHeaderResponse;
+import org.apache.wicket.markup.html.TransparentWebMarkupContainer;
+import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.form.Form;
+import org.apache.wicket.markup.html.form.TextField;
+import org.apache.wicket.markup.html.link.AbstractLink;
+import org.apache.wicket.markup.repeater.RepeatingView;
+import org.apache.wicket.model.Model;
+import org.apache.wicket.model.ResourceModel;
+import org.apache.wicket.request.mapper.parameter.PageParameters;
+import org.wicketstuff.annotation.mount.MountPath;
+
 import com.google.common.collect.Lists;
+
 import de.agilecoders.wicket.core.markup.html.bootstrap.block.Code;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.DropDownButton;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.MenuBookmarkablePageLink;
@@ -22,23 +40,6 @@ import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.OpenWebIconsC
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.tour.TourBehavior;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.tour.TourStep;
 import de.agilecoders.wicket.samples.panels.pagination.InfinitePaginationPanel;
-import org.apache.wicket.Component;
-import org.apache.wicket.ajax.markup.html.form.AjaxButton;
-import org.apache.wicket.markup.head.CssHeaderItem;
-import org.apache.wicket.markup.head.IHeaderResponse;
-import org.apache.wicket.markup.html.TransparentWebMarkupContainer;
-import org.apache.wicket.markup.html.WebMarkupContainer;
-import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.markup.html.form.Form;
-import org.apache.wicket.markup.html.form.TextField;
-import org.apache.wicket.markup.html.link.AbstractLink;
-import org.apache.wicket.markup.repeater.RepeatingView;
-import org.apache.wicket.model.Model;
-import org.apache.wicket.model.ResourceModel;
-import org.apache.wicket.request.mapper.parameter.PageParameters;
-import org.wicketstuff.annotation.mount.MountPath;
-
-import java.util.List;
 
 /**
  * The {@code ExtensionsPage}
@@ -77,9 +78,9 @@ public class ExtensionsPage extends BasePage {
                                                    + "\t\t.setWidth(680).setHeight(360));")));
 
         final List<? extends AbstractLink> buttons = Lists.<AbstractLink>newArrayList(
-                new MenuBookmarkablePageLink(DatePickerPage.class, Model.of("DatePicker")).setIconType(GlyphIconType.time),
-                new MenuBookmarkablePageLink(IssuesPage.class, Model.of("Github Issues")).setIconType(GlyphIconType.book),
-                new MenuBookmarkablePageLink(ExtensionsPage.class, Model.of("Extensions")).setIconType(GlyphIconType.qrcode)
+                new MenuBookmarkablePageLink<DatePickerPage>(DatePickerPage.class, Model.of("DatePicker")).setIconType(GlyphIconType.time),
+                new MenuBookmarkablePageLink<IssuesPage>(IssuesPage.class, Model.of("Github Issues")).setIconType(GlyphIconType.book),
+                new MenuBookmarkablePageLink<ExtensionsPage>(ExtensionsPage.class, Model.of("Extensions")).setIconType(GlyphIconType.qrcode)
         );
         final Component contextPanel = new TransparentWebMarkupContainer("context-panel");
         final ButtonListContextMenu contextMenu = new ButtonListContextMenu("contextmenu", Model.ofList(buttons));
@@ -109,9 +110,9 @@ public class ExtensionsPage extends BasePage {
             @Override
             protected List<AbstractLink> newSubMenuButtons(String buttonMarkupId) {
                 return Lists.<AbstractLink>newArrayList(
-                        new MenuBookmarkablePageLink(DatePickerPage.class, Model.of("DatePicker")).setIconType(GlyphIconType.time),
-                        new MenuBookmarkablePageLink(IssuesPage.class, Model.of("Github Issues")).setIconType(GlyphIconType.book),
-                        new MenuBookmarkablePageLink(ExtensionsPage.class, Model.of("Extensions")).setIconType(GlyphIconType.qrcode)
+                        new MenuBookmarkablePageLink<DatePickerPage>(DatePickerPage.class, Model.of("DatePicker")).setIconType(GlyphIconType.time),
+                        new MenuBookmarkablePageLink<IssuesPage>(IssuesPage.class, Model.of("Github Issues")).setIconType(GlyphIconType.book),
+                        new MenuBookmarkablePageLink<ExtensionsPage>(ExtensionsPage.class, Model.of("Extensions")).setIconType(GlyphIconType.qrcode)
                 );
             }
         };
@@ -138,7 +139,7 @@ public class ExtensionsPage extends BasePage {
 
 
     private void addJasnyFileUploadDemo() {
-        Form fileUploadForm = new Form("fileUploadForm");
+        Form<Void> fileUploadForm = new Form<Void>("fileUploadForm");
         add(fileUploadForm);
         fileUploadForm.setMultiPart(true);
         FileUploadField fileUpload = new FileUploadField("fileUpload");
@@ -151,7 +152,7 @@ public class ExtensionsPage extends BasePage {
     }
 
     private void addJasnyInputMaskDemo() {
-        TextField textField = new TextField("inputMask", Model.of("l0rdn1kk0n"));
+        TextField<String> textField = new TextField<String>("inputMask", Model.of("l0rdn1kk0n"));
         InputMaskBehavior inputMask = new InputMaskBehavior() {
             @Override
             protected String getMask() {

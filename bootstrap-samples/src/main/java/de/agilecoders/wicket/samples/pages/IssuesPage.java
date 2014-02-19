@@ -136,7 +136,7 @@ public class IssuesPage extends BasePage {
      * @param markupId The components markup id
      * @return new form
      */
-    public Form createDatePickerForm(final String markupId) {
+    public Form<?> createDatePickerForm(final String markupId) {
         Form<DateBean> form = new Form<DateBean>(markupId,
                                                  new CompoundPropertyModel<DateBean>(
                                                          new PropertyModel<DateBean>(this, "dateBean")));
@@ -170,7 +170,7 @@ public class IssuesPage extends BasePage {
      * @param markupId The components markup id
      * @return new form
      */
-    public Form createColorPickerForm(final String markupId) {
+    public Form<?> createColorPickerForm(final String markupId) {
 
         final FeedbackPanel colorPickerFeedback = new FeedbackPanel("colorPickerFeedback");
         colorPickerFeedback.setOutputMarkupId(true);

@@ -67,7 +67,7 @@ public class Javascript extends BasePage {
 
         add(new Label("tooltip-top", Model.of("Tooltip on top")).add(new TooltipBehavior(Model.of("Tooltip on top"))));
 
-        add(new BootstrapAjaxLink("popover", Buttons.Type.Danger) {
+        add(new BootstrapAjaxLink<Void>("popover", Buttons.Type.Danger) {
 
             @Override
             protected void onInitialize() {
@@ -83,7 +83,7 @@ public class Javascript extends BasePage {
             }
         }.setLabel(Model.of("click here")));
 
-        add(new AjaxLink("loading") {
+        add(new AjaxLink<Void>("loading") {
 
             @Override
             protected void onInitialize() {
@@ -208,7 +208,7 @@ public class Javascript extends BasePage {
             @Override
             protected List<AbstractLink> newSubMenuButtons(String buttonMarkupId) {
                 List<AbstractLink> subMenu = new ArrayList<AbstractLink>();
-                subMenu.add(new MenuBookmarkablePageLink(Javascript.class).setLabel(Model.of("Link")));
+                subMenu.add(new MenuBookmarkablePageLink<Javascript>(Javascript.class).setLabel(Model.of("Link")));
                 subMenu.add(new NavbarAjaxLink<String>("button", Model.of("Ajax Link")) {
                     @Override
                     public void onClick(AjaxRequestTarget target) {

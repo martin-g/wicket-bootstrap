@@ -23,7 +23,7 @@ import java.util.List;
  *
  * @author miha
  */
-public class ButtonGroups extends Section {
+public class ButtonGroups extends Section<Void> {
 
     /**
      * Construct.
@@ -67,7 +67,7 @@ public class ButtonGroups extends Section {
      * @return The new button instance
      */
     private AbstractLink createIconButton(Icon icon) {
-        BootstrapBookmarkablePageLink button = new BootstrapBookmarkablePageLink(ButtonList.getButtonMarkupId(), ComponentsPage.class, Buttons.Type.Default);
+        BootstrapBookmarkablePageLink<ComponentsPage> button = new BootstrapBookmarkablePageLink<ComponentsPage>(ButtonList.getButtonMarkupId(), ComponentsPage.class, Buttons.Type.Default);
         button.setLabel(Model.of(""));
         button.setIconType(icon.getType());
         return button;

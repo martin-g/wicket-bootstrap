@@ -15,7 +15,7 @@ import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeIc
 
 /** FontAwesome demo page. */
 @MountPath(value = "/fontawesome")
-public class FontAwesomePage extends BasePage<Void> {
+public class FontAwesomePage extends BasePage {
 	/** serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
