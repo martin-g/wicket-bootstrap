@@ -210,7 +210,7 @@ public class Navbar extends Panel implements Invertible<Navbar> {
                 }
 
                 if (component instanceof Invertible) {
-                    ((Invertible) component).setInverted(!Models.isNullOrEmpty(invertModel));
+                    ((Invertible<?>) component).setInverted(!Models.isNullOrEmpty(invertModel));
                 }
             }
 
