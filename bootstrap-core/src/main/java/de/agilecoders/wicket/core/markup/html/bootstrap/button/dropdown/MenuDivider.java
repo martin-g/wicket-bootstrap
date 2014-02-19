@@ -31,8 +31,10 @@ public class MenuDivider extends AbstractLink {
         // add the divider if the parent is not a ListView
         // or a ListView that reuses its items
         ListView listView = findParent(ListView.class);
-        if (listView != null && listView.getReuseItems()) {
-            getParent().add(new CssClassNameAppender("divider"));
+        if (listView != null) {
+            if (listView.getReuseItems()) {
+                getParent().add(new CssClassNameAppender("divider"));
+            }
         } else {
             getParent().add(new CssClassNameAppender("divider"));
         }
