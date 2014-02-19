@@ -94,6 +94,7 @@ public final class Bootstrap {
             guard.addPattern("+*.eot");
             guard.addPattern("+*.svg");
             guard.addPattern("+*.ttf");
+            guard.addPattern("+*.css.map");
         }
     }
 
