@@ -67,7 +67,7 @@ public class ButtonGroups extends Section<Void> {
      * @return The new button instance
      */
     private AbstractLink createIconButton(Icon icon) {
-        BootstrapBookmarkablePageLink<ComponentsPage> button = new BootstrapBookmarkablePageLink<ComponentsPage>(ButtonList.getButtonMarkupId(), ComponentsPage.class, Buttons.Type.Default);
+        BootstrapBookmarkablePageLink<Void> button = new BootstrapBookmarkablePageLink<Void>(ButtonList.getButtonMarkupId(), ComponentsPage.class, Buttons.Type.Default);
         button.setLabel(Model.of(""));
         button.setIconType(icon.getType());
         return button;
