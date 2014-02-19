@@ -1,6 +1,5 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.image;
 
-import de.agilecoders.wicket.core.markup.html.bootstrap.common.Invertible;
 import de.agilecoders.wicket.core.util.Attributes;
 import de.agilecoders.wicket.core.util.Components;
 
