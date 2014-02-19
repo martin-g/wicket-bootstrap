@@ -84,8 +84,6 @@ public class InputBehaviorTest extends WicketApplicationTest {
         page.textField.setVisible(false);
         tester().startPage(page);
 
-        System.err.println("RES:\n\n" + tester().getLastResponseAsString());
-
         assertThat(tester().getLastResponseAsString(), Matchers.not(Matchers.containsString("<div")));
         assertThat(tester().getLastResponseAsString(), Matchers.not(Matchers.containsString("</div")));
     }
