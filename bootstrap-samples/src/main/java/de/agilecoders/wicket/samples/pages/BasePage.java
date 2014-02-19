@@ -1,5 +1,25 @@
 package de.agilecoders.wicket.samples.pages;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Properties;
+
+import org.apache.wicket.AttributeModifier;
+import org.apache.wicket.Component;
+import org.apache.wicket.markup.head.CssHeaderItem;
+import org.apache.wicket.markup.head.IHeaderResponse;
+import org.apache.wicket.markup.head.JavaScriptHeaderItem;
+import org.apache.wicket.markup.head.filter.FilteredHeaderItem;
+import org.apache.wicket.markup.head.filter.HeaderResponseContainer;
+import org.apache.wicket.markup.html.GenericWebPage;
+import org.apache.wicket.markup.html.TransparentWebMarkupContainer;
+import org.apache.wicket.markup.html.WebMarkupContainer;
+import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.link.AbstractLink;
+import org.apache.wicket.model.Model;
+import org.apache.wicket.request.mapper.parameter.PageParameters;
+import org.apache.wicket.util.string.StringValue;
+
 import com.newrelic.api.agent.NewRelic;
 
 import de.agilecoders.wicket.core.Bootstrap;
@@ -28,27 +48,6 @@ import de.agilecoders.wicket.samples.assets.base.ApplicationJavaScript;
 import de.agilecoders.wicket.samples.assets.base.DocsCssResourceReference;
 import de.agilecoders.wicket.samples.assets.base.FixBootstrapStylesCssResourceReference;
 import de.agilecoders.wicket.samples.components.site.Footer;
-
-import org.apache.wicket.AttributeModifier;
-import org.apache.wicket.Component;
-import org.apache.wicket.markup.head.CssHeaderItem;
-import org.apache.wicket.markup.head.IHeaderResponse;
-import org.apache.wicket.markup.head.JavaScriptHeaderItem;
-import org.apache.wicket.markup.head.filter.FilteredHeaderItem;
-import org.apache.wicket.markup.head.filter.HeaderResponseContainer;
-import org.apache.wicket.markup.html.GenericWebPage;
-import org.apache.wicket.markup.html.TransparentWebMarkupContainer;
-import org.apache.wicket.markup.html.WebMarkupContainer;
-import org.apache.wicket.markup.html.WebPage;
-import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.markup.html.link.AbstractLink;
-import org.apache.wicket.model.Model;
-import org.apache.wicket.request.mapper.parameter.PageParameters;
-import org.apache.wicket.util.string.StringValue;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Properties;
 
 /**
  * Base wicket-bootstrap {@link org.apache.wicket.Page}
@@ -122,10 +121,10 @@ abstract class BasePage extends GenericWebPage<Void> {
         navbar.brandName(Model.of("Wicket Bootstrap"));
 
         navbar.addComponents(NavbarComponents.transform(Navbar.ComponentPosition.LEFT,
-                                                        new NavbarButton<HomePage>(HomePage.class, Model.of("Overview")).setIconType(GlyphIconType.home),
-                                                        new NavbarButton<HomePage>(BaseCssPage.class, Model.of("Base CSS")),
-                                                        new NavbarButton<ComponentsPage>(ComponentsPage.class, Model.of("Components")),
-                                                        new NavbarButton<Scaffolding>(Scaffolding.class, Model.of("Scaffolding")),
+                                                        new NavbarButton<Void>(HomePage.class, Model.of("Overview")).setIconType(GlyphIconType.home),
+                                                        new NavbarButton<Void>(BaseCssPage.class, Model.of("Base CSS")),
+                                                        new NavbarButton<Void>(ComponentsPage.class, Model.of("Components")),
+                                                        new NavbarButton<Void>(Scaffolding.class, Model.of("Scaffolding")),
                                                         newAddonsDropDownButton())
         );
 
@@ -148,7 +147,7 @@ abstract class BasePage extends GenericWebPage<Void> {
                     PageParameters params = new PageParameters();
                     params.set("theme", theme.name());
 
-                    subMenu.add(new MenuBookmarkablePageLink<WebPage>(getPageClass(), params, Model.of(theme.name())));
+                    subMenu.add(new MenuBookmarkablePageLink<Void>(getPageClass(), params, Model.of(theme.name())));
                 }
 
                 return subMenu;
@@ -172,11 +171,11 @@ abstract class BasePage extends GenericWebPage<Void> {
             protected List<AbstractLink> newSubMenuButtons(String buttonMarkupId) {
                 final List<AbstractLink> subMenu = new ArrayList<AbstractLink>();
 
-                subMenu.add(new MenuBookmarkablePageLink<Javascript>(Javascript.class, Model.of("Javascript")).setIconType(GlyphIconType.refresh));
-                subMenu.add(new MenuBookmarkablePageLink<DatePickerPage>(DatePickerPage.class, Model.of("DatePicker")).setIconType(GlyphIconType.time));
-                subMenu.add(new MenuBookmarkablePageLink<IssuesPage>(IssuesPage.class, Model.of("Github Issues")).setIconType(GlyphIconType.book));
-                subMenu.add(new MenuBookmarkablePageLink<ExtensionsPage>(ExtensionsPage.class, Model.of("Extensions")).setIconType(GlyphIconType.alignjustify));
-                subMenu.add(new MenuBookmarkablePageLink<FontAwesomePage>(FontAwesomePage.class, Model.of("Font Awesome")).setIconType(GlyphIconType.font));
+                subMenu.add(new MenuBookmarkablePageLink<Void>(Javascript.class, Model.of("Javascript")).setIconType(GlyphIconType.refresh));
+                subMenu.add(new MenuBookmarkablePageLink<Void>(DatePickerPage.class, Model.of("DatePicker")).setIconType(GlyphIconType.time));
+                subMenu.add(new MenuBookmarkablePageLink<Void>(IssuesPage.class, Model.of("Github Issues")).setIconType(GlyphIconType.book));
+                subMenu.add(new MenuBookmarkablePageLink<Void>(ExtensionsPage.class, Model.of("Extensions")).setIconType(GlyphIconType.alignjustify));
+                subMenu.add(new MenuBookmarkablePageLink<Void>(FontAwesomePage.class, Model.of("Font Awesome")).setIconType(GlyphIconType.font));
 
                 return subMenu;
             }

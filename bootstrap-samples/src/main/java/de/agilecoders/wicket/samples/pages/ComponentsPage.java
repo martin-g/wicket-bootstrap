@@ -101,9 +101,9 @@ public class ComponentsPage extends BasePage {
             @Override
             protected List<AbstractLink> newSubMenuButtons(String buttonMarkupId) {
                 final List<AbstractLink> subMenu = new ArrayList<AbstractLink>();
-                subMenu.add(new MenuBookmarkablePageLink<ComponentsPage>(ComponentsPage.class, Model.of("Link 1")));
-                subMenu.add(new MenuBookmarkablePageLink<ComponentsPage>(ComponentsPage.class, Model.of("Link 2")));
-                subMenu.add(new MenuBookmarkablePageLink<ComponentsPage>(ComponentsPage.class, Model.of("Link 3")));
+                subMenu.add(new MenuBookmarkablePageLink<Void>(ComponentsPage.class, Model.of("Link 1")));
+                subMenu.add(new MenuBookmarkablePageLink<Void>(ComponentsPage.class, Model.of("Link 2")));
+                subMenu.add(new MenuBookmarkablePageLink<Void>(ComponentsPage.class, Model.of("Link 3")));
 
                 return subMenu;
             }

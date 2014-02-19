@@ -102,7 +102,7 @@ public class ButtonGroups extends Section<Void> {
      * @return The new button instance
      */
     private AbstractLink createButton(final String label) {
-        AbstractLink button = new BookmarkablePageLink<ComponentsPage>(ButtonList.getButtonMarkupId(), ComponentsPage.class).setBody(Model.of(label));
+        AbstractLink button = new BookmarkablePageLink<Void>(ButtonList.getButtonMarkupId(), ComponentsPage.class).setBody(Model.of(label));
         button.add(new ButtonBehavior());
 
         return button;
