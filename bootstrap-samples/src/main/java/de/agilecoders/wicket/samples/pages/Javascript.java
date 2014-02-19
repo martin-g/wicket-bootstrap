@@ -208,7 +208,7 @@ public class Javascript extends BasePage {
             @Override
             protected List<AbstractLink> newSubMenuButtons(String buttonMarkupId) {
                 List<AbstractLink> subMenu = new ArrayList<AbstractLink>();
-                subMenu.add(new MenuBookmarkablePageLink<Javascript>(Javascript.class).setLabel(Model.of("Link")));
+                subMenu.add(new MenuBookmarkablePageLink<Void>(Javascript.class).setLabel(Model.of("Link")));
                 subMenu.add(new NavbarAjaxLink<String>("button", Model.of("Ajax Link")) {
                     @Override
                     public void onClick(AjaxRequestTarget target) {
