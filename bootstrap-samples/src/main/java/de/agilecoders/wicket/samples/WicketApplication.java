@@ -99,7 +99,6 @@ public class WicketApplication extends WebApplication {
 
         configureBootstrap();
         configureResourceBundles();
-        configureResourceGuard();
 
         optimizeForWebPerformance();
 
@@ -112,16 +111,6 @@ public class WicketApplication extends WebApplication {
         }
 
         WicketSource.configure(this);
-    }
-
-    private void configureResourceGuard() {
-        if (usesDevelopmentConfig()) {
-            IPackageResourceGuard guard = getResourceSettings().getPackageResourceGuard();
-            if (guard instanceof SecurePackageResourceGuard) {
-                SecurePackageResourceGuard secureGuard = (SecurePackageResourceGuard) guard;
-                secureGuard.addPattern("+*.css.map");
-            }
-        }
     }
 
     /**
