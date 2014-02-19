@@ -1,6 +1,5 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.button;
 
-import de.agilecoders.wicket.core.markup.html.bootstrap.common.Invertible;
 
 /**
  * Base interface of all bootstrap styled buttons.
