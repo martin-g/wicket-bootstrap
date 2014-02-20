@@ -13,7 +13,7 @@ import org.apache.wicket.model.Model;
  *
  * @author miha
  */
-public class CustomNavbarForm extends NavbarForm {
+public class CustomNavbarForm extends NavbarForm<Void> {
     public CustomNavbarForm(String componentId) {
         super(componentId);
 

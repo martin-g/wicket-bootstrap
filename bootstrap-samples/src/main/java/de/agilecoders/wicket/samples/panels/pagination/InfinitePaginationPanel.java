@@ -19,7 +19,6 @@ import java.util.List;
  */
 public class InfinitePaginationPanel extends AbstractPaginationPanel {
 
-    private final InfiniteScrollingBehavior scrollingBehavior;
     private BootstrapPagingNavigator pager;
     private final Model<String> callbackUrl;
     private final Component nextLink;
@@ -37,7 +36,7 @@ public class InfinitePaginationPanel extends AbstractPaginationPanel {
         callbackUrl = new Model<String>();
 
         add(nextLink = new Label("next-page").add(new AttributeModifier("href", callbackUrl)));
-        add(scrollingBehavior = newInfiniteScrollingBehavior(pager, nextLink));
+        add(newInfiniteScrollingBehavior(pager, nextLink));
     }
 
     /**

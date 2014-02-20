@@ -64,7 +64,7 @@ public class ButtonList extends ListView<AbstractLink> {
                     return true;
                 }
             } else if (link instanceof BookmarkablePageLink) {
-                if (((BookmarkablePageLink) link).getPageClass().equals(pageClass)) {
+                if (((BookmarkablePageLink<?>) link).getPageClass().equals(pageClass)) {
                     return true;
                 }
             }
