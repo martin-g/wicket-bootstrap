@@ -36,6 +36,8 @@ public class AlignmentBehavior extends BootstrapBaseBehavior {
             case RIGHT:
             case LEFT:
                 Attributes.addClass(tag, alignement.getObject().className);
+            default:
+            	break;
         }
     }
 }
