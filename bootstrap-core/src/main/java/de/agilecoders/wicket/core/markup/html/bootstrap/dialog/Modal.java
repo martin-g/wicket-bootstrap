@@ -42,6 +42,7 @@ public class Modal extends Panel {
     public static enum Size implements ICssClassNameProvider {
         Default(""),
         Small("sm"),
+        Medium("md"),
         Large("lg");
 
         private final String cssClassName;
