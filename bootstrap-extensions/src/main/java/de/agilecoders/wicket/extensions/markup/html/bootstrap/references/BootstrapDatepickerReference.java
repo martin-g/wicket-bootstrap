@@ -20,6 +20,6 @@ public class BootstrapDatepickerReference extends CssResourceReference {
      * Private constructor.
      */
     private BootstrapDatepickerReference() {
-        super(BootstrapDatepickerReference.class, "css/datepicker.css");
+        super(BootstrapDatepickerReference.class, "css/datepicker3.css");
     }
 }
