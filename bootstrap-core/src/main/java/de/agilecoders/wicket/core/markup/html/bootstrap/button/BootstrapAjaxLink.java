@@ -49,7 +49,6 @@ public abstract class BootstrapAjaxLink<T> extends AjaxLink<T> implements IBoots
         add(splitter = newSplitter("splitter"));
 
         this.label = newLabel("label", model);
-        this.label.setRenderBodyOnly(true);
         add(label); 
     }
     
