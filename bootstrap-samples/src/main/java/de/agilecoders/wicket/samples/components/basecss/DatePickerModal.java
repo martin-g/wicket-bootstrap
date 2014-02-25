@@ -13,7 +13,7 @@ import java.util.Date;
  * @author miha
  * @version 1.0
  */
-public class DatePickerModal extends Modal {
+public class DatePickerModal extends Modal<Void> {
 
     public DatePickerModal(final String markupId) {
         super(markupId);

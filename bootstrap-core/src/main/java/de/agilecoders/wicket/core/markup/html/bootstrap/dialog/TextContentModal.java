@@ -9,7 +9,7 @@ import org.apache.wicket.model.IModel;
  * @author miha
  * @version 1.0
  */
-public class TextContentModal extends Modal {
+public class TextContentModal extends Modal<String> {
 
     /**
      * Construct.

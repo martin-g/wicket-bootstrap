@@ -16,7 +16,7 @@ import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
-import org.apache.wicket.markup.html.panel.Panel;
+import org.apache.wicket.markup.html.panel.GenericPanel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.util.string.Strings;
@@ -30,7 +30,7 @@ import java.util.List;
  *
  * @author miha
  */
-public class Modal extends Panel {
+public class Modal<T> extends GenericPanel<T> {
 
     public static final String BUTTON_MARKUP_ID = "button";
 
@@ -59,7 +59,7 @@ public class Modal extends Panel {
      * @param id    The non-null id of this component
      * @param model The component's body model
      */
-    public Modal(String id, IModel<?> model) {
+    public Modal(String id, IModel<T> model) {
         super(id, model);
 
         setOutputMarkupId(true);
@@ -123,7 +123,7 @@ public class Modal extends Panel {
      * @param label The header label
      * @return This
      */
-    public Modal header(IModel<String> label) {
+    public Modal<T> header(IModel<String> label) {
         headerLabel.setDefaultModel(label);
         setHeaderVisible(true);
         return this;
@@ -136,7 +136,7 @@ public class Modal extends Panel {
      * @param escapeMarkup True is model strings should be escaped
      * @return This
      */
-    public Modal header(final IModel<String> label, final boolean escapeMarkup) {
+    public Modal<T> header(final IModel<String> label, final boolean escapeMarkup) {
         headerLabel.setDefaultModel(label);
         headerLabel.setEscapeModelStrings(escapeMarkup);
         return this;
@@ -148,7 +148,7 @@ public class Modal extends Panel {
      * @param visible True if footer and any children should be visible
      * @return This
      */
-    public Modal setFooterVisible(final boolean visible) {
+    public Modal<T> setFooterVisible(final boolean visible) {
         footer.setVisible(visible);
         return this;
     }
@@ -159,7 +159,7 @@ public class Modal extends Panel {
      * @param visible True if header and any children should be visible
      * @return This
      */
-    public Modal setHeaderVisible(final boolean visible) {
+    public Modal<T> setHeaderVisible(final boolean visible) {
         header.setVisible(visible);
         return this;
     }
@@ -170,7 +170,7 @@ public class Modal extends Panel {
      * @param useCloseHandler True if close handler should be used
      * @return This
      */
-    public final Modal setUseCloseHandler(final boolean useCloseHandler) {
+    public final Modal<T> setUseCloseHandler(final boolean useCloseHandler) {
         this.useCloseHandler.setObject(useCloseHandler);
         return this;
     }
@@ -181,19 +181,49 @@ public class Modal extends Panel {
      * @param show Whether to show the dialog or not
      * @return This
      */
-    public Modal show(boolean show) {
+    public Modal<T> show(boolean show) {
         this.show.setObject(show);
         return this;
     }
 
-    public Modal appendCloseDialogJavaScript(final AjaxRequestTarget target) {
+    /**
+     * Append dialog close/hide JavaScript to current AJAX request target.
+     * 
+     * @param target
+     * @return This
+     */
+    public Modal<T> appendCloseDialogJavaScript(final AjaxRequestTarget target) {
         target.appendJavaScript(createActionScript(getMarkupId(true), "hide"));
         return this;
     }
 
-    public Modal appendShowDialogJavaScript(final AjaxRequestTarget target) {
+    /**
+     * A short alias for {@link Modal#appendCloseDialogJavaScript}
+     * @param target
+     * @return
+     */
+    public Modal<T> close(final AjaxRequestTarget target) {
+        return appendCloseDialogJavaScript(target);
+    }
+    
+    /**
+     * Append dialog show JavaScript to current request AJAX target.
+     * 
+     * @param target
+     * @return This
+     */
+    public Modal<T> appendShowDialogJavaScript(final AjaxRequestTarget target) {
         target.appendJavaScript(createActionScript(getMarkupId(true), "show"));
         return this;
+    }
+    
+    /**
+     * A short alias for {@link Modal#appendShowDialogJavaScript}
+     * @param target
+     * @return
+     */
+    public Modal<T> show(final AjaxRequestTarget target) {
+        return appendShowDialogJavaScript(target);
     }
 
     /**
@@ -207,7 +237,7 @@ public class Modal extends Panel {
         return "$('#" + markupId + "').modal('" + action + "');";
     }
 
-    public Modal addOpenerAttributesTo(final Component component) {
+    public Modal<T> addOpenerAttributesTo(final Component component) {
         component.add(new AttributeModifier("data-toggle", "modal"));
         component.add(new AttributeModifier("href", "#" + getMarkupId(true)));
         return this;
@@ -219,7 +249,7 @@ public class Modal extends Panel {
      * @param label The label of close button
      * @return this instance
      */
-    public Modal addCloseButton(final IModel<String> label) {
+    public Modal<T> addCloseButton(final IModel<String> label) {
         ModalCloseButton button = new ModalCloseButton(label);
         button.setAnchor(this);
 
@@ -231,7 +261,7 @@ public class Modal extends Panel {
      *
      * @return this instance
      */
-    public Modal addCloseButton() {
+    public Modal<T> addCloseButton() {
         return addCloseButton(Model.of("Close"));
     }
 
@@ -241,7 +271,7 @@ public class Modal extends Panel {
      * @param button Button to add to footer
      * @return this instance.
      */
-    public Modal addButton(final Component button) {
+    public Modal<T> addButton(final Component button) {
         if (!BUTTON_MARKUP_ID.equals(button.getId())) {
             throw new IllegalArgumentException(
                     String.format("Invalid button markup id. Must be '%s'.", BUTTON_MARKUP_ID));
@@ -368,7 +398,7 @@ public class Modal extends Panel {
      * @param fadein true, if dialog should be animated
      * @return This
      */
-    public final Modal setFadeIn(boolean fadein) {
+    public final Modal<T> setFadeIn(boolean fadein) {
         this.fadein.setObject(fadein);
         return this;
     }
@@ -379,7 +409,7 @@ public class Modal extends Panel {
      * @param keyboard true, if keyboard interaction is enabled
      * @return This
      */
-    public final Modal setUseKeyboard(boolean keyboard) {
+    public final Modal<T> setUseKeyboard(boolean keyboard) {
         this.keyboard.setObject(keyboard);
         return this;
     }
