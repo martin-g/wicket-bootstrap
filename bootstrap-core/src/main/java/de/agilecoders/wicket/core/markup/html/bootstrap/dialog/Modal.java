@@ -59,7 +59,7 @@ public class Modal extends Panel {
      * @param id    The non-null id of this component
      * @param model The component's body model
      */
-    public Modal(String id, IModel<String> model) {
+    public Modal(String id, IModel<?> model) {
         super(id, model);
 
         setOutputMarkupId(true);
