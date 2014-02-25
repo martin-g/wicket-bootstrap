@@ -122,7 +122,7 @@ public class IssuesPage extends BasePage {
     }
 
     private Modal<String> newModalDialog(String markupId) {
-        final Modal modal = new TextContentModal(markupId, Model.of("Issue #90"));
+        final Modal<String> modal = new TextContentModal(markupId, Model.of("Issue #90"));
         modal.addButton(new ModalCloseButton());
 
         return modal;
