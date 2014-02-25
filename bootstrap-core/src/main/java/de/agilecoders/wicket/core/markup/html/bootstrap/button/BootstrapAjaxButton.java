@@ -121,7 +121,7 @@ public abstract class BootstrapAjaxButton extends AjaxButton implements IBootstr
     protected void onConfigure() {
         super.onConfigure();
 
-        splitter.setVisible(icon.hasIconType() && StringUtils.isNotEmpty(getModelObject()));
+        splitter.setVisible(icon.hasIconType() && StringUtils.isNotEmpty(label.getDefaultModelObjectAsString()));
     }
 
     /**
