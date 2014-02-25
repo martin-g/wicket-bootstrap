@@ -2,6 +2,7 @@ package de.agilecoders.wicket.core.markup.html.bootstrap.button;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.Icon;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
+
 import org.apache.commons.lang3.StringUtils;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
@@ -19,7 +20,7 @@ import org.apache.wicket.model.IModel;
 public abstract class BootstrapAjaxLink<T> extends AjaxLink<T> implements IBootstrapButton<BootstrapAjaxLink<T>> {
 
     private final Icon icon;
-    private final Label label;
+    private final Component label;
     private final Component splitter;
     private final ButtonBehavior buttonBehavior;
 
@@ -44,13 +45,49 @@ public abstract class BootstrapAjaxLink<T> extends AjaxLink<T> implements IBoots
         super(id, model);
 
         add(buttonBehavior = new ButtonBehavior(type, Buttons.Size.Medium));
-        add(icon = new Icon("icon", (IconType) null));
-        add(splitter = new WebMarkupContainer("splitter"));
+        add(icon = newIcon("icon"));
+        add(splitter = newSplitter("splitter"));
 
-        this.label = new Label("label", model);
+        this.label = newLabel("label", model);
         this.label.setRenderBodyOnly(true);
-        add(label);
+        add(label); 
     }
+    
+    /**
+     * creates a new icon component
+     *
+     * @param markupId the component id of the icon
+     * @return new icon component
+     */
+    protected Icon newIcon(final String markupId) {
+        return new Icon(markupId, (IconType) null);
+    }
+
+    /**
+     * creates a new label component
+     *
+     * @param markupId the component id of the label
+     * @return new label component
+     */
+    protected Component newLabel(final String markupId, IModel<T> model) {
+        return new Label(markupId, model)
+                .setRenderBodyOnly(true);
+    }
+
+    
+    
+    /**
+    * creates a new splitter component. The splitter is visible only
+    * if icon is visible.
+    *
+    * @param markupId the component id of the splitter
+    * @return new splitter component
+    */
+   protected Component newSplitter(final String markupId) {
+       return new WebMarkupContainer(markupId)
+               .setRenderBodyOnly(true)
+               .setEscapeModelStrings(false);
+   }
 
     /**
      * {@inheritDoc}
