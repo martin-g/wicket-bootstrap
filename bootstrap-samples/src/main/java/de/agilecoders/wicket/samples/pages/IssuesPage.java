@@ -76,7 +76,7 @@ public class IssuesPage extends BasePage {
         }));
 
         // issue #90
-        Modal modal = newModalDialog("endless-modal").setUseCloseHandler(true).setFadeIn(true).setUseKeyboard(true);
+        Modal<String> modal = newModalDialog("endless-modal").setUseCloseHandler(true).setFadeIn(true).setUseKeyboard(true);
         Label button = new Label("open-endless-modal", "Open Modal Dialog");
         modal.addOpenerAttributesTo(button);
         add(modal, button);
@@ -121,8 +121,8 @@ public class IssuesPage extends BasePage {
         add(createColorPickerForm("colorpicker-form"));
     }
 
-    private Modal newModalDialog(String markupId) {
-        final Modal modal = new TextContentModal(markupId, Model.of("Issue #90"));
+    private Modal<String> newModalDialog(String markupId) {
+        final Modal<String> modal = new TextContentModal(markupId, Model.of("Issue #90"));
         modal.addButton(new ModalCloseButton());
 
         return modal;
