@@ -53,7 +53,7 @@ public abstract class BootstrapAjaxLink<T> extends AjaxLink<T> implements IBoots
     }
     
     /**
-     * creates a new icon component
+     * Creates a new icon component
      *
      * @param markupId the component id of the icon
      * @return new icon component
@@ -63,7 +63,7 @@ public abstract class BootstrapAjaxLink<T> extends AjaxLink<T> implements IBoots
     }
 
     /**
-     * creates a new label component
+     * Creates a new label component
      *
      * @param markupId the component id of the label
      * @return new label component
@@ -75,8 +75,8 @@ public abstract class BootstrapAjaxLink<T> extends AjaxLink<T> implements IBoots
 
     
     
-    /**
-    * creates a new splitter component. The splitter is visible only
+   /**
+    * Creates a new splitter component. The splitter is visible only
     * if icon is visible.
     *
     * @param markupId the component id of the splitter
@@ -104,7 +104,7 @@ public abstract class BootstrapAjaxLink<T> extends AjaxLink<T> implements IBoots
     }
 
     /**
-     * sets the label of the button.
+     * Sets the label of the button.
      *
      * @param label the new button label
      * @return reference to the current instance
@@ -116,7 +116,7 @@ public abstract class BootstrapAjaxLink<T> extends AjaxLink<T> implements IBoots
     }
 
     /**
-     * sets the button's icon which will be rendered in front of the label.
+     * Sets the button's icon which will be rendered in front of the label.
      *
      * @param iconType the new button icon type
      * @return reference to the current instance
@@ -126,13 +126,19 @@ public abstract class BootstrapAjaxLink<T> extends AjaxLink<T> implements IBoots
 
         return this;
     }
-
+   
+    /**
+     * Sets the size.
+     */
     public BootstrapAjaxLink<T> setSize(Buttons.Size size) {
         buttonBehavior.setSize(size);
 
         return this;
     }
 
+    /**
+     * Sets the type.
+     */
     public BootstrapAjaxLink<T> setType(Buttons.Type type) {
         this.buttonBehavior.setType(type);
 
