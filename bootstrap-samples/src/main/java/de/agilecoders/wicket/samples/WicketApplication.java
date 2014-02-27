@@ -142,7 +142,7 @@ public class WicketApplication extends WebApplication {
                                     (JavaScriptResourceReference) getJavaScriptLibrarySettings().getJQueryReference(),
                                     (JavaScriptResourceReference) getJavaScriptLibrarySettings().getWicketEventReference(),
                                     (JavaScriptResourceReference) getJavaScriptLibrarySettings().getWicketAjaxReference(),
-                                    (JavaScriptResourceReference) ModernizrJavaScriptReference.INSTANCE
+                                    (JavaScriptResourceReference) ModernizrJavaScriptReference.instance()
         );
 
         bundles.addJavaScriptBundle(WicketApplication.class, "bootstrap.js",

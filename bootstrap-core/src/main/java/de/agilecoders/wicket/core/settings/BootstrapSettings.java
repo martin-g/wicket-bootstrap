@@ -1,6 +1,7 @@
 package de.agilecoders.wicket.core.settings;
 
 import de.agilecoders.wicket.core.markup.html.references.BootstrapJavaScriptReference;
+import de.agilecoders.wicket.core.markup.html.references.ModernizrJavaScriptReference;
 import de.agilecoders.wicket.core.markup.html.themes.bootstrap.BootstrapCssReference;
 import org.apache.wicket.request.Url;
 import org.apache.wicket.request.resource.ResourceReference;
@@ -16,26 +17,33 @@ public class BootstrapSettings implements IBootstrapSettings {
 
     private static final class Holder {
         private static ResourceReference bootstrapJavaScriptReference = BootstrapJavaScriptReference.instance();
+        private static ResourceReference modernizrJavaScriptReference = ModernizrJavaScriptReference.instance();
         private static ResourceReference bootstrapCssReference = BootstrapCssReference.instance();
-        private static ThemeProvider themeProvider = new DefaultThemeProvider();
     }
 
     private ResourceReference bootstrapJavaScriptReference = null;
+    private ResourceReference modernizrJavaScriptReference = null;
     private ResourceReference bootstrapCssReference = null;
 
-    private ThemeProvider themeProvider = null;
-    private ActiveThemeProvider activeThemeProvider = new SessionThemeProvider();
-    private String resourceFilterName = "";
-    private boolean updateSecurityManager = true;
-    private boolean autoAppendResources = true;
-    private boolean useCdnResources = false;
+    private ThemeProvider themeProvider;
+    private ActiveThemeProvider activeThemeProvider;
+    private String resourceFilterName;
+    private boolean updateSecurityManager;
+    private boolean autoAppendResources;
+    private boolean useCdnResources;
     private String version = VERSION;
+    private String modernizrVersion = MODERNIZR_VERSION;
 
     /**
      * Constructor.
      */
     public BootstrapSettings() {
-        // so far nothing to do here
+        this.activeThemeProvider = new SessionThemeProvider();
+        this.resourceFilterName = "";
+        this.updateSecurityManager = true;
+        this.autoAppendResources = true;
+        this.useCdnResources = false;
+        this.themeProvider = null;
     }
 
     @Override
@@ -45,8 +53,19 @@ public class BootstrapSettings implements IBootstrapSettings {
     }
 
     @Override
+    public IBootstrapSettings setModernizrVersion(String version) {
+        this.modernizrVersion = version;
+        return this;
+    }
+
+    @Override
     public String getVersion() {
         return version;
+    }
+
+    @Override
+    public String getModernizrVersion() {
+        return modernizrVersion;
     }
 
     @Override
@@ -83,6 +102,20 @@ public class BootstrapSettings implements IBootstrapSettings {
     }
 
     @Override
+    public ResourceReference getModernizrResourceReference() {
+        ResourceReference jsReference;
+
+        if (useCdnResources()) {
+            String cdnUrl = String.format(MODERNIZR_CDN_PATTERN, getModernizrVersion());
+            jsReference = new UrlResourceReference(Url.parse(cdnUrl));
+        } else {
+            jsReference = modernizrJavaScriptReference;
+        }
+
+        return jsReference != null ? jsReference : Holder.modernizrJavaScriptReference;
+    }
+
+    @Override
     public String getJsResourceFilterName() {
         return resourceFilterName;
     }
@@ -102,7 +135,7 @@ public class BootstrapSettings implements IBootstrapSettings {
     public ThemeProvider getThemeProvider() {
         ThemeProvider provider = themeProvider;
 
-        return provider != null ? provider : Holder.themeProvider;
+        return provider != null ? provider : (themeProvider = new DefaultThemeProvider(this));
     }
 
     @Override
@@ -149,6 +182,14 @@ public class BootstrapSettings implements IBootstrapSettings {
     @Override
     public boolean useCdnResources() {
         return useCdnResources;
+    }
+
+    @Override
+    public final boolean useWebjars() {
+        return !useCdnResources() &&
+               (bootstrapCssReference == null ||
+                bootstrapJavaScriptReference == null ||
+                modernizrJavaScriptReference == null);
     }
 
     @Override

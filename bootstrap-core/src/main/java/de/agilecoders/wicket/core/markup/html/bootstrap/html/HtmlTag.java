@@ -3,8 +3,8 @@ package de.agilecoders.wicket.core.markup.html.bootstrap.html;
 import de.agilecoders.wicket.core.Bootstrap;
 import de.agilecoders.wicket.core.markup.html.references.ModernizrJavaScriptReference;
 import de.agilecoders.wicket.core.util.CssClassNames;
-
 import org.apache.wicket.markup.ComponentTag;
+import org.apache.wicket.markup.head.HeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.html.TransparentWebMarkupContainer;
@@ -168,7 +168,14 @@ public class HtmlTag extends TransparentWebMarkupContainer {
         super.renderHead(response);
 
         if (useModernizr) {
-            response.render(JavaScriptHeaderItem.forReference(ModernizrJavaScriptReference.INSTANCE));
+            response.render(newModernizrHeaderItem());
         }
+    }
+
+    /**
+     * @return modernizr javascript reference as header item
+     */
+    protected HeaderItem newModernizrHeaderItem() {
+        return JavaScriptHeaderItem.forReference(ModernizrJavaScriptReference.instance());
     }
 }

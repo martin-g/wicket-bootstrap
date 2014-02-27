@@ -15,9 +15,19 @@ public interface IBootstrapSettings {
     String VERSION = "3.1.1";
 
     /**
+     * The version of modernizr
+     */
+    String MODERNIZR_VERSION = "2.7.1";
+
+    /**
      * The url to the JavaScript resource at a CDN network
      */
     String JS_CDN_PATTERN = "//netdna.bootstrapcdn.com/bootstrap/%s/js/bootstrap.min.js";
+
+    /**
+     * The url to the modernizr JavaScript resource at a CDN network
+     */
+    String MODERNIZR_CDN_PATTERN = "//cdnjs.cloudflare.com/ajax/libs/modernizr/%s/modernizr.min.js";
 
     /**
      * The url to the css resource at a CDN network
@@ -31,9 +41,20 @@ public interface IBootstrapSettings {
     IBootstrapSettings setVersion(String version);
 
     /**
+     * @param version The version of modernizr. CDN resources use it to construct their urls
+     * @return same instance for chaining
+     */
+    IBootstrapSettings setModernizrVersion(String version);
+
+    /**
      * @return The version of Twitter Bootstrap. CDN resources use it to construct their urls
      */
     String getVersion();
+
+    /**
+     * @return The version of modernizr. CDN resources use it to construct their urls
+     */
+    String getModernizrVersion();
 
     /**
      * @return True, if bootstrap resources should be added to each page automatically
@@ -49,6 +70,11 @@ public interface IBootstrapSettings {
      * @return the base twitter bootstrap JavaScript resource reference
      */
     ResourceReference getJsResourceReference();
+
+    /**
+     * @return the modernizr JavaScript resource reference
+     */
+    ResourceReference getModernizrResourceReference();
 
     /**
      * @param reference a reference to the base twitter bootstrap css library.
@@ -132,6 +158,14 @@ public interface IBootstrapSettings {
      * @return true, if the resources for the themes should be loaded from a CDN network
      */
     boolean useCdnResources();
+
+    /**
+     * @return true, if wicket bootstrap uses the webjars library. If you don't want to use the webjars libraries,
+     * please set bootstrap css/js, modernizr reference to your own instance or call {@link #useCdnResources(boolean)}.
+     * Some components uses webjars references internally, so if you want to use them,
+     * please override the provided {@code newXYHeaderItem()} methods.
+     */
+    boolean useWebjars();
 
     /**
      * @param useCdnResources a flag indicating whether the resources for the themes should be loaded from a CDN network

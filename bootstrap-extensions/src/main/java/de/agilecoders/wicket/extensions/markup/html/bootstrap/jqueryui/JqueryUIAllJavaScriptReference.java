@@ -17,7 +17,16 @@ public class JqueryUIAllJavaScriptReference extends WebjarsJavaScriptResourceRef
     /**
      * Singleton instance of this reference
      */
-    private static final JqueryUIAllJavaScriptReference INSTANCE = new JqueryUIAllJavaScriptReference();
+    private static final class Holder {
+        private static final JqueryUIAllJavaScriptReference INSTANCE = new JqueryUIAllJavaScriptReference();
+    }
+
+    /**
+     * @return the single instance of the resource reference
+     */
+    public static JqueryUIAllJavaScriptReference instance() {
+        return Holder.INSTANCE;
+    }
 
     /**
      * Private constructor.
@@ -30,13 +39,6 @@ public class JqueryUIAllJavaScriptReference extends WebjarsJavaScriptResourceRef
     public Iterable<? extends HeaderItem> getDependencies() {
         return Dependencies.combine(super.getDependencies(),
                                     JavaScriptHeaderItem.forReference(Application.get().getJavaScriptLibrarySettings().getJQueryReference()));
-    }
-
-    /**
-     * @return the single instance of the resource reference
-     */
-    public static JqueryUIAllJavaScriptReference instance() {
-        return INSTANCE;
     }
 
     /**

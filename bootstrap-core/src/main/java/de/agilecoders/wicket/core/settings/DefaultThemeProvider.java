@@ -21,6 +21,15 @@ public class DefaultThemeProvider implements ThemeProvider {
 
     /**
      * Construct.
+     *
+     * @param settings the bootstrap settings
+     */
+    public DefaultThemeProvider(IBootstrapSettings settings) {
+        addDefaultTheme(new BootstrapTheme(settings));
+    }
+
+    /**
+     * Construct.
      */
     public DefaultThemeProvider() {
         addDefaultTheme(new BootstrapTheme());

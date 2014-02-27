@@ -4,6 +4,7 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapResour
 import de.agilecoders.wicket.core.markup.html.bootstrap.form.InputBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.layout.col.SpanType;
 import org.apache.wicket.markup.ComponentTag;
+import org.apache.wicket.markup.head.HeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.html.form.TextField;
@@ -141,7 +142,12 @@ public class Typeahead<T> extends TextField<T> {
             }
             remoteConfig.withUrl(remoteBehavior.getCallbackUrl());
         }
-        response.render(JavaScriptHeaderItem.forReference(TypeaheadJsReference.instance()));
+
+        response.render(newTypeaheadJsHeaderItem());
         response.render($(this).chain("typeahead", config).asDomReadyScript());
+    }
+
+    protected HeaderItem newTypeaheadJsHeaderItem() {
+        return JavaScriptHeaderItem.forReference(TypeaheadJsReference.instance());
     }
 }

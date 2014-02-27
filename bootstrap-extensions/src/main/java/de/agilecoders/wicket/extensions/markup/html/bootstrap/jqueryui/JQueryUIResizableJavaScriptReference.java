@@ -16,13 +16,15 @@ public class JQueryUIResizableJavaScriptReference extends WebjarsJavaScriptResou
     /**
      * Singleton instance of this reference
      */
-    private static final JQueryUIResizableJavaScriptReference INSTANCE = new JQueryUIResizableJavaScriptReference();
+    private static final class Holder {
+        private static final JQueryUIResizableJavaScriptReference INSTANCE = new JQueryUIResizableJavaScriptReference();
+    }
 
     /**
      * @return the single instance of the resource reference
      */
     public static JQueryUIResizableJavaScriptReference instance() {
-        return INSTANCE;
+        return Holder.INSTANCE;
     }
 
     /**

@@ -17,7 +17,16 @@ public class JqueryPPJavaScriptReference extends WebjarsJavaScriptResourceRefere
     /**
      * Singleton instance of this reference
      */
-    public static final JqueryPPJavaScriptReference INSTANCE = new JqueryPPJavaScriptReference();
+    private static final class Holder {
+        private static final JqueryPPJavaScriptReference INSTANCE = new JqueryPPJavaScriptReference();
+    }
+
+    /**
+     * @return the single instance of the resource reference
+     */
+    public static JqueryPPJavaScriptReference instance() {
+        return Holder.INSTANCE;
+    }
 
     /**
      * Private constructor.
@@ -30,13 +39,6 @@ public class JqueryPPJavaScriptReference extends WebjarsJavaScriptResourceRefere
     public Iterable<? extends HeaderItem> getDependencies() {
         return Dependencies.combine(super.getDependencies(),
                                     JavaScriptHeaderItem.forReference(Application.get().getJavaScriptLibrarySettings().getJQueryReference()));
-    }
-
-    /**
-     * @return the single instance of the resource reference
-     */
-    public static JqueryPPJavaScriptReference instance() {
-        return INSTANCE;
     }
 
     /**

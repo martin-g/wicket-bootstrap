@@ -16,13 +16,15 @@ public class JQueryUIMouseJavaScriptReference extends WebjarsJavaScriptResourceR
     /**
      * Singleton instance of this reference
      */
-    private static final JQueryUIMouseJavaScriptReference INSTANCE = new JQueryUIMouseJavaScriptReference();
+    private static final class Holder {
+        private static final JQueryUIMouseJavaScriptReference INSTANCE = new JQueryUIMouseJavaScriptReference();
+    }
 
     /**
      * @return the single instance of the resource reference
      */
     public static JQueryUIMouseJavaScriptReference instance() {
-        return INSTANCE;
+        return Holder.INSTANCE;
     }
 
     /**

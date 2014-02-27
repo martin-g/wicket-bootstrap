@@ -13,7 +13,9 @@ public class BootstrapCssReference extends WebjarsCssResourceReference {
     /**
      * Singleton instance of this reference
      */
-    private static final BootstrapCssReference INSTANCE = new BootstrapCssReference();
+    private static final class Holder {
+        private static final BootstrapCssReference INSTANCE = new BootstrapCssReference();
+    }
 
     /**
      * Normally you should not use this method, but use
@@ -22,7 +24,7 @@ public class BootstrapCssReference extends WebjarsCssResourceReference {
      * @return the single instance of the resource reference
      */
     public static BootstrapCssReference instance() {
-        return INSTANCE;
+        return Holder.INSTANCE;
     }
 
     /**

@@ -1,7 +1,6 @@
 package de.agilecoders.wicket.core.markup.html.references;
 
 import de.agilecoders.wicket.webjars.request.resource.WebjarsJavaScriptResourceReference;
-import org.apache.wicket.request.resource.ResourceReference;
 
 /**
  * Represents the modernizr js library
@@ -14,7 +13,19 @@ public class ModernizrJavaScriptReference extends WebjarsJavaScriptResourceRefer
     /**
      * Singleton instance of this reference
      */
-    public static final ResourceReference INSTANCE = new ModernizrJavaScriptReference();
+    private static final class Holder {
+        private static final ModernizrJavaScriptReference INSTANCE = new ModernizrJavaScriptReference();
+    }
+
+    /**
+     * Normally you should not use this method, but use
+     * {@link de.agilecoders.wicket.core.settings.IBootstrapSettings#getModernizrResourceReference()} to prevent version conflicts.
+     *
+     * @return the single instance of the resource reference
+     */
+    public static ModernizrJavaScriptReference instance() {
+        return Holder.INSTANCE;
+    }
 
     /**
      * Private constructor.

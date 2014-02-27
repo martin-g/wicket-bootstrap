@@ -5,6 +5,7 @@ import de.agilecoders.wicket.jquery.AbstractConfig;
 import de.agilecoders.wicket.jquery.IKey;
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.Behavior;
+import org.apache.wicket.markup.head.HeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.util.string.Strings;
@@ -39,7 +40,7 @@ public abstract class InputMaskBehavior extends Behavior {
 
         String mask = getMask();
         if (!Strings.isEmpty(mask)) {
-            response.render(JavaScriptHeaderItem.forReference(JasnyJsReference.INSTANCE));
+            response.render(newJasnyHeaderItem());
 
             InputMaskConfig config = new InputMaskConfig();
             config.withMask(mask);
@@ -51,6 +52,13 @@ public abstract class InputMaskBehavior extends Behavior {
 
             response.render($(component).chain("inputmask", config).asDomReadyScript());
         }
+    }
+
+    /**
+     * @return jasny resource reference
+     */
+    protected HeaderItem newJasnyHeaderItem() {
+        return JavaScriptHeaderItem.forReference(JasnyJsReference.instance());
     }
 
     /**

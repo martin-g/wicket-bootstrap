@@ -19,13 +19,15 @@ public class JQueryUICoreJavaScriptReference extends WebjarsJavaScriptResourceRe
     /**
      * Singleton instance of this reference
      */
-    private static final JQueryUICoreJavaScriptReference INSTANCE = new JQueryUICoreJavaScriptReference();
+    private static final class Holder {
+        private static final JQueryUICoreJavaScriptReference INSTANCE = new JQueryUICoreJavaScriptReference();
+    }
 
     /**
      * @return the single instance of the resource reference
      */
     public static JQueryUICoreJavaScriptReference instance() {
-        return INSTANCE;
+        return Holder.INSTANCE;
     }
 
     /**

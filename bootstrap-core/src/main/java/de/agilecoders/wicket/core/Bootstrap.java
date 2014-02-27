@@ -39,13 +39,15 @@ public final class Bootstrap {
      */
     public static void install(final Application app, IBootstrapSettings settings) {
         if (getSettings(app) == null) {
-            WicketWebjars.install(app);
-
             if (settings == null) {
                 settings = new BootstrapSettings();
             }
 
             app.setMetaData(BOOTSTRAP_SETTINGS_METADATA_KEY, settings);
+
+            if (settings.useWebjars()) {
+                WicketWebjars.install(app);
+            }
 
             if (settings.updateSecurityManager()) {
                 updateSecurityManager(app);

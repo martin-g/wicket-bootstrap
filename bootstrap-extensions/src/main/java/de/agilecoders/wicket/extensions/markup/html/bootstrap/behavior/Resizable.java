@@ -7,6 +7,7 @@ import de.agilecoders.wicket.extensions.markup.html.bootstrap.jqueryui.Resizable
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
+import org.apache.wicket.request.resource.JavaScriptResourceReference;
 
 import static de.agilecoders.wicket.jquery.JQuery.$;
 
@@ -22,8 +23,15 @@ public class Resizable extends BootstrapBaseBehavior {
         super.renderHead(component, headerResponse);
 
         headerResponse.render(CssHeaderItem.forReference(ResizableCssReference.instance()));
-        References.renderWithFilter(headerResponse, JQueryUIResizableJavaScriptReference.instance());
+        References.renderWithFilter(headerResponse, newResizableResourceReference());
         headerResponse.render($(component).chain("resizable").asDomReadyScript());
+    }
+
+    /**
+     * @return new draggable js resource reference
+     */
+    protected JavaScriptResourceReference newResizableResourceReference() {
+        return JQueryUIResizableJavaScriptReference.instance();
     }
 
     @Override

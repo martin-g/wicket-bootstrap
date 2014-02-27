@@ -1,10 +1,9 @@
 package de.agilecoders.wicket.core.markup.html.references;
 
-import org.apache.wicket.request.resource.ResourceReference;
 import org.apache.wicket.resource.JQueryPluginResourceReference;
 
 /**
- * represents the prettify js library
+ * represents the jquery backwards compatibility js library
  *
  * @author miha
  */
@@ -14,7 +13,16 @@ public class JQueryMigrateJavaScriptReference extends JQueryPluginResourceRefere
     /**
      * Singleton instance of this reference
      */
-    public static final ResourceReference INSTANCE = new JQueryMigrateJavaScriptReference();
+    private static final class Holder {
+        private static final JQueryMigrateJavaScriptReference INSTANCE = new JQueryMigrateJavaScriptReference();
+    }
+
+    /**
+     * @return the single instance of the resource reference
+     */
+    public static JQueryMigrateJavaScriptReference instance() {
+        return Holder.INSTANCE;
+    }
 
     /**
      * Private constructor.

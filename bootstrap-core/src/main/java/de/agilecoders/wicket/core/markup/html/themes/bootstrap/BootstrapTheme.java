@@ -1,5 +1,6 @@
 package de.agilecoders.wicket.core.markup.html.themes.bootstrap;
 
+import de.agilecoders.wicket.core.settings.IBootstrapSettings;
 import de.agilecoders.wicket.core.settings.Theme;
 
 /**
@@ -9,7 +10,14 @@ import de.agilecoders.wicket.core.settings.Theme;
  */
 public class BootstrapTheme extends Theme {
 
-//    private static final String CDN_PATTERN = "//netdna.bootstrapcdn.com/twitter-bootstrap/%s/css/bootstrap-combined.min.css";
+    /**
+     * Construct.
+     *
+     * @param settings the bootstrap settings
+     */
+    public BootstrapTheme(final IBootstrapSettings settings) {
+        super("bootstrap", settings.getCssResourceReference());
+    }
 
     /**
      * Construct.

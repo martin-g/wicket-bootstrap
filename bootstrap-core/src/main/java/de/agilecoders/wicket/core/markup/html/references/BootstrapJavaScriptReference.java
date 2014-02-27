@@ -7,10 +7,9 @@ import org.apache.wicket.markup.head.HeaderItem;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 
 /**
- * TODO: document
+ * represents the bootstrap js library
  *
  * @author miha
- * @version 1.0
  */
 public class BootstrapJavaScriptReference extends WebjarsJavaScriptResourceReference {
     private static final long serialVersionUID = 1L;
@@ -18,8 +17,9 @@ public class BootstrapJavaScriptReference extends WebjarsJavaScriptResourceRefer
     /**
      * Singleton instance of this reference
      */
-    private static final BootstrapJavaScriptReference INSTANCE = new BootstrapJavaScriptReference();
-
+    private static final class Holder {
+        private static final BootstrapJavaScriptReference INSTANCE = new BootstrapJavaScriptReference();
+    }
 
     /**
      * Normally you should not use this method, but use
@@ -28,7 +28,7 @@ public class BootstrapJavaScriptReference extends WebjarsJavaScriptResourceRefer
      * @return the single instance of the resource reference
      */
     public static BootstrapJavaScriptReference instance() {
-        return INSTANCE;
+        return Holder.INSTANCE;
     }
 
     /**
@@ -42,6 +42,6 @@ public class BootstrapJavaScriptReference extends WebjarsJavaScriptResourceRefer
     public Iterable<? extends HeaderItem> getDependencies() {
         return Dependencies.combine(super.getDependencies(),
                                     JavaScriptHeaderItem.forReference(Application.get().getJavaScriptLibrarySettings().getJQueryReference()),
-                                    JavaScriptHeaderItem.forReference(JQueryMigrateJavaScriptReference.INSTANCE));
+                                    JavaScriptHeaderItem.forReference(JQueryMigrateJavaScriptReference.instance()));
     }
 }

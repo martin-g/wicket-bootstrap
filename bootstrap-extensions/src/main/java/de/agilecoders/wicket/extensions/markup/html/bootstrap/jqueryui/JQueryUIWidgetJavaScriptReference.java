@@ -2,7 +2,6 @@ package de.agilecoders.wicket.extensions.markup.html.bootstrap.jqueryui;
 
 import com.google.common.collect.Lists;
 import de.agilecoders.wicket.webjars.request.resource.WebjarsJavaScriptResourceReference;
-import org.apache.wicket.Application;
 import org.apache.wicket.markup.head.HeaderItem;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 
@@ -17,13 +16,15 @@ public class JQueryUIWidgetJavaScriptReference extends WebjarsJavaScriptResource
     /**
      * Singleton instance of this reference
      */
-    private static final JQueryUIWidgetJavaScriptReference INSTANCE = new JQueryUIWidgetJavaScriptReference();
+    private static final class Holder {
+        private static final JQueryUIWidgetJavaScriptReference INSTANCE = new JQueryUIWidgetJavaScriptReference();
+    }
 
     /**
      * @return the single instance of the resource reference
      */
     public static JQueryUIWidgetJavaScriptReference instance() {
-        return INSTANCE;
+        return Holder.INSTANCE;
     }
 
     /**

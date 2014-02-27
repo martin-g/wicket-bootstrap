@@ -16,13 +16,15 @@ public class JQueryUIDraggableJavaScriptReference extends WebjarsJavaScriptResou
     /**
      * Singleton instance of this reference
      */
-    private static final JQueryUIDraggableJavaScriptReference INSTANCE = new JQueryUIDraggableJavaScriptReference();
+    private static final class Holder {
+        private static final JQueryUIDraggableJavaScriptReference INSTANCE = new JQueryUIDraggableJavaScriptReference();
+    }
 
     /**
      * @return the single instance of the resource reference
      */
     public static JQueryUIDraggableJavaScriptReference instance() {
-        return INSTANCE;
+        return Holder.INSTANCE;
     }
 
     /**
