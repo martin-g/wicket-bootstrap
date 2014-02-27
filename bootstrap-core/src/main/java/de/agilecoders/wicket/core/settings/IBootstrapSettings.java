@@ -20,6 +20,11 @@ public interface IBootstrapSettings {
     String JS_CDN_PATTERN = "//netdna.bootstrapcdn.com/bootstrap/%s/js/bootstrap.min.js";
 
     /**
+     * The url to the css resource at a CDN network
+     */
+    String CSS_CDN_PATTERN = "//netdna.bootstrapcdn.com/bootstrap/%s/css/bootstrap.min.css";
+
+    /**
      * @param version The version of Twitter Bootstrap. CDN resources use it to construct their urls
      * @return same instance for chaining
      */

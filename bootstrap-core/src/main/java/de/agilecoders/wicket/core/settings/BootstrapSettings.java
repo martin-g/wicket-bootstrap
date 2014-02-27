@@ -56,7 +56,14 @@ public class BootstrapSettings implements IBootstrapSettings {
 
     @Override
     public ResourceReference getCssResourceReference() {
-        ResourceReference ref = bootstrapCssReference;
+        ResourceReference ref;
+
+        if (useCdnResources()) {
+            String cdnUrl = String.format(CSS_CDN_PATTERN, getVersion());
+            ref = new UrlResourceReference(Url.parse(cdnUrl));
+        } else {
+            ref = bootstrapCssReference;
+        }
 
         return ref != null ? ref : Holder.bootstrapCssReference;
     }
@@ -64,12 +71,14 @@ public class BootstrapSettings implements IBootstrapSettings {
     @Override
     public ResourceReference getJsResourceReference() {
         ResourceReference jsReference;
+
         if (useCdnResources()) {
             String cdnUrl = String.format(JS_CDN_PATTERN, getVersion());
             jsReference = new UrlResourceReference(Url.parse(cdnUrl));
         } else {
             jsReference = bootstrapJavaScriptReference;
         }
+
         return jsReference != null ? jsReference : Holder.bootstrapJavaScriptReference;
     }
 
