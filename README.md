@@ -86,8 +86,6 @@ Install bootstrap settings class:
 Bootstrap.install(this);
 
 // if you want to customize bootstrap:
-WicketWebjars.install(this);
-
 BootstrapSettings settings = new BootstrapSettings();
 settings.setXXX(...);
 Bootstrap.install(this, settings);
