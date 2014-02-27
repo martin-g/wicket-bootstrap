@@ -82,8 +82,8 @@ public class BootstrapClientSideLink<T> extends AbstractLink implements IBootstr
     	onclickCode.detach();
     }
     
-    protected String getTarget() {
-    	return "#";
+    protected IModel<String> getTarget() {
+    	return Model.of("#");
     }
     
     @Override
