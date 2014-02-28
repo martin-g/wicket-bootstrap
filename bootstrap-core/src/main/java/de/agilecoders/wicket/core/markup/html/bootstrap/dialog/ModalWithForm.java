@@ -27,6 +27,7 @@ import org.apache.wicket.util.string.Strings;
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapResourcesBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.CssClassNameAppender;
 import de.agilecoders.wicket.core.util.Attributes;
+import de.agilecoders.wicket.jquery.JQuery;
 
 /**
  * The {@code Modal} dialog is a simple component with header,
@@ -257,7 +258,7 @@ public class ModalWithForm<T> extends GenericPanel<T> implements IModal {
      * @return This
      */
     public ModalWithForm<T> appendCloseDialogJavaScript(final AjaxRequestTarget target) {
-        target.appendJavaScript(createActionScript(getMarkupId(true), "hide"));
+        target.appendJavaScript(createActionScript(getMarkupId(true), ModalAction.Action.hide));
         return this;
     }
 
@@ -277,7 +278,7 @@ public class ModalWithForm<T> extends GenericPanel<T> implements IModal {
      * @return This
      */
     public ModalWithForm<T> appendShowDialogJavaScript(final AjaxRequestTarget target) {
-        target.appendJavaScript(createActionScript(getMarkupId(true), "show"));
+        target.appendJavaScript(createActionScript(getMarkupId(true), ModalAction.Action.show));
         return this;
     }
     
@@ -297,8 +298,8 @@ public class ModalWithForm<T> extends GenericPanel<T> implements IModal {
      * @param action   Possible values: show/hide
      * @return new script.
      */
-    protected String createActionScript(final String markupId, final String action) {
-        return "$('#" + markupId + "').modal('" + action + "');";
+    protected String createActionScript(final String markupId, final ModalAction.Action action) {
+        return JQuery.$("#"+markupId).chain(ModalAction.action(action)).get();
     }
 
     public ModalWithForm<T> addOpenerAttributesTo(final Component component) {
