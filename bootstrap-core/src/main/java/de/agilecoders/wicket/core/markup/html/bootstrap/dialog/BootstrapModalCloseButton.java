@@ -22,16 +22,16 @@ public class BootstrapModalCloseButton extends BootstrapClientSideLink<String> {
 	 * @param id
 	 * @param model
 	 */
-	public BootstrapModalCloseButton(String id, IModel<String> model) {
-		this(id, model, Buttons.Type.Default);
+	public BootstrapModalCloseButton(IModel<String> model) {
+		this(model, Buttons.Type.Default);
 	}
 
 	/**
 	 * @param id
 	 * @param type
 	 */
-	public BootstrapModalCloseButton(String id, Type type) {
-		this(id, Model.of("Close"), type);
+	public BootstrapModalCloseButton(Type type) {
+		this(Model.of("Close"), type);
 	}
 
 	/**
@@ -39,8 +39,8 @@ public class BootstrapModalCloseButton extends BootstrapClientSideLink<String> {
 	 * @param model
 	 * @param type
 	 */
-	public BootstrapModalCloseButton(String id, IModel<String> model, Type type) {
-		super(id, model, type, Model.of(""));
+	public BootstrapModalCloseButton(IModel<String> model, Type type) {
+		super(Modal.BUTTON_MARKUP_ID, model, type, Model.of(""));
 		add(new AttributeModifier("data-dismiss", "modal"));
 	}
 

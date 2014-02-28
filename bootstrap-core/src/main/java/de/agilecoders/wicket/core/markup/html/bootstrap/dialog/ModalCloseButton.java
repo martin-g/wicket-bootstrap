@@ -17,6 +17,7 @@ import org.apache.wicket.util.string.Strings;
  * A simple close button for the {@link Modal} component.
  *
  * @author miha
+ * @deprecated Please use {@link BootstrapModalCloseButton} because it does not trigger a server round trip.
  */
 public class ModalCloseButton extends AjaxLink<String> {
 
