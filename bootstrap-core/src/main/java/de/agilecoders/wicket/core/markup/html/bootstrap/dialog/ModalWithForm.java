@@ -34,7 +34,7 @@ import de.agilecoders.wicket.core.util.Attributes;
  *
  * @author miha
  */
-public class ModalWithForm<T> extends GenericPanel<T> {
+public class ModalWithForm<T> extends GenericPanel<T> implements IModal {
 
     public static final String BUTTON_MARKUP_ID = "button";
 
@@ -472,5 +472,10 @@ public class ModalWithForm<T> extends GenericPanel<T> {
         this.keyboard.setObject(keyboard);
         return this;
     }
+
+	@Override
+	public Component getModal() {
+		return this;
+	}
 
 }

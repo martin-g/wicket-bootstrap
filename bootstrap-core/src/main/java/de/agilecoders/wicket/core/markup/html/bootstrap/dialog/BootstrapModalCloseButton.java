@@ -1,7 +1,6 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.dialog;
 
 import org.apache.wicket.AttributeModifier;
-import org.apache.wicket.Component;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
@@ -46,16 +45,11 @@ public class BootstrapModalCloseButton extends BootstrapClientSideLink<String> {
 
 	@Override
 	protected IModel<String> getTarget() {
-		Component parent = getParent();
 		String target = null;
-		while (parent != null) {
-			if (parent instanceof Modal) {
-				target = parent.getMarkupId();
-				break;
-			} else {
-				parent = parent.getParent();
-			}
-		}
+		IModal modal = findParent(IModal.class);
+	    if(modal != null) {
+	    	target = modal.getModal().getMarkupId();
+	    }
 		return Model.of(target);
 	}
 }
