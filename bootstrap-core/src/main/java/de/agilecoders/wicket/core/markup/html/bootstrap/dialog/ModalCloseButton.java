@@ -1,13 +1,12 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.dialog;
 
-import de.agilecoders.wicket.core.markup.html.bootstrap.button.ButtonBehavior;
-import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons;
-
 import org.apache.wicket.AttributeModifier;
-import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
+
+import de.agilecoders.wicket.core.markup.html.bootstrap.button.ButtonBehavior;
+import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons;
 
 /**
  * A simple close button for the {@link Modal} component.
@@ -71,17 +70,9 @@ public class ModalCloseButton extends Link<String> {
     @Override
     protected void onConfigure() {
         super.onConfigure();
-
-        if (getAnchor() == null) {
-            Component parent = getParent();
-            while (parent != null) {
-                if (parent instanceof Modal) {
-                    setAnchor(parent);
-                    break;
-                } else {
-                    parent = parent.getParent();
-                }
-            }
+        IModal modal = findParent(IModal.class);
+        if(modal != null) {
+        	setAnchor(modal.getModal());
         }
     }
 }

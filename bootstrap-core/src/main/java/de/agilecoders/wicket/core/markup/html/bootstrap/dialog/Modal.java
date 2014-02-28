@@ -30,7 +30,7 @@ import java.util.List;
  *
  * @author miha
  */
-public class Modal<T> extends GenericPanel<T> {
+public class Modal<T> extends GenericPanel<T> implements IModal {
 
     public static final String BUTTON_MARKUP_ID = "button";
 
@@ -407,5 +407,10 @@ public class Modal<T> extends GenericPanel<T> {
         this.keyboard.setObject(keyboard);
         return this;
     }
+
+	@Override
+	public Component getModal() {
+		return this;
+	}
 
 }
