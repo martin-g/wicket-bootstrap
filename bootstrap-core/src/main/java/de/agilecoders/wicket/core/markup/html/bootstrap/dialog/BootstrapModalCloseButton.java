@@ -47,9 +47,9 @@ public class BootstrapModalCloseButton extends BootstrapClientSideLink<String> {
 	protected IModel<String> getTarget() {
 		String target = null;
 		IModal modal = findParent(IModal.class);
-	    if(modal != null) {
-	    	target = modal.getModal().getMarkupId();
-	    }
+		if (modal != null) {
+			target = modal.getModal().getMarkupId();
+		}
 		return Model.of(target);
 	}
 }
