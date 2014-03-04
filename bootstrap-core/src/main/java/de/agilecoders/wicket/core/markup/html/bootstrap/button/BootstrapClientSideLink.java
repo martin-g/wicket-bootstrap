@@ -3,7 +3,7 @@ package de.agilecoders.wicket.core.markup.html.bootstrap.button;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
-import org.apache.wicket.behavior.AttributeAppender;
+import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
 import org.apache.wicket.markup.html.WebMarkupContainer;
@@ -68,12 +68,15 @@ public class BootstrapClientSideLink<T> extends AbstractLink implements IBootstr
         this.onclickCode = onclickCode;
         add(buttonBehavior = new ButtonBehavior(type, Buttons.Size.Medium));
         add(icon = newIcon("icon"));
-        add(splitter = newSplitter("splitter"));
-        
-        add( new AttributeAppender("href", getTarget()));
-        
+        add(splitter = newSplitter("splitter"));        
         this.label = newLabel("label", model);
         add(label); 
+    }
+    
+    @Override
+    protected void onComponentTag(ComponentTag tag) {
+    	super.onComponentTag(tag);
+    	tag.put("href",  getTarget().getObject());
     }
     
     @Override
