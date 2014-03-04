@@ -2,7 +2,6 @@ package de.agilecoders.wicket.core.markup.html.bootstrap.button;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.wicket.Component;
-import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
@@ -19,7 +18,7 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.image.Icon;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
 
 /**
- * Default {@link AjaxLink} which is styled by bootstrap
+ * A link that does client "logic".
  *
  * @author reiern70
  */
