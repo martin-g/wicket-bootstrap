@@ -30,10 +30,10 @@ import de.agilecoders.wicket.core.util.Attributes;
 import de.agilecoders.wicket.jquery.JQuery;
 
 /**
- * The {@code Modal} dialog is a simple component with header,
- * footer and body.
+ * A component providing a bootstrap modal containing a Wicket {@link Form} for which  
+ * footer buttons can be used to submit form. 
  *
- * @author miha
+ * @author reiern70
  */
 public class ModalWithForm<T> extends GenericPanel<T> implements IModal {
 
