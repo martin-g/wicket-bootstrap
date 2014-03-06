@@ -10,7 +10,7 @@ import org.apache.wicket.request.resource.CssResourceReference;
  */
 public class DocsCssResourceReference extends CssResourceReference {
 
-    public static DocsCssResourceReference GOOGLE = new DocsCssResourceReference("google-docs.css");
+    public static final DocsCssResourceReference GOOGLE = new DocsCssResourceReference("google-docs.css");
 
     private DocsCssResourceReference(String name) {
         super(DocsCssResourceReference.class, name);

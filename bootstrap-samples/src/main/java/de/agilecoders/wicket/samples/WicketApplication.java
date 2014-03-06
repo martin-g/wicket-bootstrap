@@ -44,10 +44,12 @@ import org.apache.wicket.request.resource.caching.NoOpResourceCachingStrategy;
 import org.apache.wicket.request.resource.caching.version.CachingResourceVersion;
 import org.apache.wicket.serialize.java.DeflatedJavaSerializer;
 import org.apache.wicket.settings.IRequestCycleSettings;
+import org.apache.wicket.util.io.IOUtils;
 import org.apache.wicket.util.string.Strings;
 import org.wicketstuff.annotation.scan.AnnotatedMountScanner;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Properties;
 
 /**
@@ -207,7 +209,12 @@ public class WicketApplication extends WebApplication {
     private Properties loadProperties() {
         Properties properties = new Properties();
         try {
-            properties.load(getClass().getResourceAsStream("/config.properties"));
+            InputStream stream = getClass().getResourceAsStream("/config.properties");
+            try {
+                properties.load(stream);
+            } finally {
+                IOUtils.closeQuietly(stream);
+            }
         } catch (IOException e) {
             throw new WicketRuntimeException(e);
         }

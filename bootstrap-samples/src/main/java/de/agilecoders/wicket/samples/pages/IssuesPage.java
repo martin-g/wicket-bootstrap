@@ -213,7 +213,7 @@ public class IssuesPage extends BasePage {
         return form;
     }
 
-    public class DateBean implements Serializable {
+    public static class DateBean implements Serializable {
         private static final long serialVersionUID = 7570029514918506580L;
 
         private Date dueDate;
