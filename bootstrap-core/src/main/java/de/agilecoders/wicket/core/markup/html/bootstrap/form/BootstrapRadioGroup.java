@@ -70,6 +70,7 @@ public class BootstrapRadioGroup<T> extends GenericPanel<T> {
 	protected void onInitialize() {
 		super.onInitialize();		
 		RadioGroup<T> radioGroup = new RadioGroup<T>("radioGroup", getModel());
+		tuneRadioGroup(radioGroup);
 		radioGroup.setRenderBodyOnly(false);
 		add(radioGroup);
 		RepeatingView radios = new RepeatingView("radios");
@@ -83,8 +84,26 @@ public class BootstrapRadioGroup<T> extends GenericPanel<T> {
 				}
 			};
 			radios.add(wm);
-			wm.add(new Radio<T>("radio", model, radioGroup));
+			Radio<T> radio = new Radio<T>("radio", model, radioGroup);
+			tuneRadio(radio);
+			wm.add(radio);
 			wm.add(new Label("label", choiceRenderer.lableOf(model.getObject())).setRenderBodyOnly(true));
 		}
+	}
+	
+	/**
+	 * Override do do something to radioGroup
+	 * @param radio
+	 */
+	protected void tuneRadioGroup(final RadioGroup<T> radioGroup) {
+		// nops
+	}
+	
+	/**
+	 * Override do do something to radio
+	 * @param radio
+	 */
+	protected void tuneRadio(final Radio<T> radio) {
+		// nops
 	}
 }
