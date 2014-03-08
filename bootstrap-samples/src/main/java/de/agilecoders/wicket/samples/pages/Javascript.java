@@ -35,6 +35,7 @@ import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.AbstractLink;
+import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.request.resource.CssResourceReference;
@@ -53,6 +54,7 @@ import java.util.List;
 @MountPath(value = "/javascript", alt = "/js")
 public class Javascript extends BasePage {
 
+	private IModel<FilterMode> filterMode;
     /**
      * Construct.
      *
@@ -114,6 +116,21 @@ public class Javascript extends BasePage {
 
         add(new PaginationPanel("pagingNavigator"));
         add(new AjaxPaginationPanel("ajaxPagingNavigator"));
+        
+        filterMode = Model.of(FilterMode.AND);
+        
+        final Label mode = new Label("mode", filterMode);
+        mode.setOutputMarkupId(true);
+        add(mode);
+        add(new AjaxFilterModeRadioGroup("radioGroup", filterMode) {
+			
+			@Override
+			protected void onModeChanged(AjaxRequestTarget target, FilterMode filterMode) {
+				target.add(mode);
+			}
+		}); 
+        
+        
 
         add(newCarousel("carousel"));
 
