@@ -5,6 +5,7 @@ package de.agilecoders.wicket.core.markup.html.bootstrap.form;
 
 import org.apache.wicket.Application;
 import org.apache.wicket.Component;
+import org.apache.wicket.markup.html.form.EnumChoiceRenderer;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.util.lang.Classes;
@@ -12,8 +13,10 @@ import org.apache.wicket.util.lang.Classes;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons.Type;
 
 /**
+ * Enum radio renderer similar to {@link EnumChoiceRenderer}. Option labels are pulled 
+ * from the resources. 
+ * 
  * @author reiern70
- *
  */
 public class EnumRadioChoiceRenderer<T extends Enum<T>> extends DefaultRadioChoiceRenderer<T> {
 	
