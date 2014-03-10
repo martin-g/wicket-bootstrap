@@ -68,8 +68,7 @@ public class BootstrapClientSideLink<T> extends AbstractLink implements IBootstr
         add(buttonBehavior = new ButtonBehavior(type, Buttons.Size.Medium));
         add(icon = newIcon("icon"));
         add(splitter = newSplitter("splitter"));        
-        this.label = newLabel("label", model);
-        add(label); 
+        add(label = newLabel("label", model)); 
     }
     
     @Override
@@ -88,7 +87,7 @@ public class BootstrapClientSideLink<T> extends AbstractLink implements IBootstr
      * @return returns the target.
      */
     protected IModel<String> getTarget() {
-    	return Model.of("#");
+    	return Model.of("javascript:void(0)");
     }
     
     @Override
