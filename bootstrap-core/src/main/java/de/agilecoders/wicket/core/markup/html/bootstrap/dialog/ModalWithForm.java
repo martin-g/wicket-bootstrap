@@ -5,17 +5,21 @@ import java.util.List;
 
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
+import org.apache.wicket.MarkupContainer;
 import org.apache.wicket.ajax.AjaxEventBehavior;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.attributes.AjaxRequestAttributes;
 import org.apache.wicket.markup.ComponentTag;
+import org.apache.wicket.markup.MarkupStream;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.markup.html.panel.GenericPanel;
+import org.apache.wicket.markup.resolver.IComponentResolver;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.util.string.Strings;
@@ -26,12 +30,12 @@ import de.agilecoders.wicket.core.util.Attributes;
 import de.agilecoders.wicket.jquery.JQuery;
 
 /**
- * The {@code Modal} dialog is a simple component with header,
- * footer and body.
+ * A component providing a bootstrap modal containing a Wicket {@link Form} for which  
+ * footer buttons can be used to submit form. 
  *
- * @author miha
+ * @author reiern70
  */
-public class Modal<T> extends GenericPanel<T> implements IModal {
+public class ModalWithForm<T> extends GenericPanel<T> implements IModal {
 
     public static final String BUTTON_MARKUP_ID = "button";
 
@@ -45,12 +49,43 @@ public class Modal<T> extends GenericPanel<T> implements IModal {
     private final IModel<Boolean> useCloseHandler = Model.of(false);
     private final AjaxEventBehavior closeBehavior;
 
+    private final Form<?> form;
+    
+    /**
+     * Transparent form.
+     * 
+     * @author reiern70
+     */
+    private static class TranspanentForm extends Form<Void> implements IComponentResolver {
+
+		public TranspanentForm(String id) {
+			super(id);
+		}
+
+		@Override
+		public Component resolve(MarkupContainer container,
+				MarkupStream markupStream, ComponentTag tag) {
+			Component resolvedComponent = getParent().get(tag.getId());
+			if (resolvedComponent != null && getPage().wasRendered(resolvedComponent))
+			{
+				/*
+				 * Means that parent container has an associated homonymous tag to this grandchildren
+				 * tag in markup. The parent container wants render it and it should be not resolved to
+				 * their grandchildren.
+				 */
+				return null;
+			}
+			return resolvedComponent;
+		}
+    	
+    }
+    
     /**
      * Constructor.
      *
      * @param markupId The non-null id of this component
      */
-    public Modal(final String markupId) {
+    public ModalWithForm(final String markupId) {
         this(markupId, null);
     }
 
@@ -60,12 +95,16 @@ public class Modal<T> extends GenericPanel<T> implements IModal {
      * @param id    The non-null id of this component
      * @param model The component's body model
      */
-    public Modal(String id, IModel<T> model) {
+    public ModalWithForm(String id, IModel<T> model) {
         super(id, model);
 
         setOutputMarkupId(true);
         setOutputMarkupPlaceholderTag(true);
 
+        form = new TranspanentForm("form");
+        
+        add(form);
+        
         footer = new WebMarkupContainer("footer");
         header = new WebMarkupContainer("header");
         header.add(headerLabel = new Label("header-label", ""));
@@ -92,10 +131,14 @@ public class Modal<T> extends GenericPanel<T> implements IModal {
             }
         };
 
-        add(header, footer);
+        form.add(footer);
+        
+        add(header);
 
         BootstrapResourcesBehavior.addTo(this);
     }
+    
+    
 
     @Override
     protected void onComponentTag(ComponentTag tag) {
@@ -119,12 +162,33 @@ public class Modal<T> extends GenericPanel<T> implements IModal {
     protected void onClose(final AjaxRequestTarget target) {}
 
     /**
+     * Adds a className to the form.
+     * 
+     * @param className The class name to add
+     * @return This
+     */
+    public ModalWithForm<T> addFormCssClass(String className) {
+        return addFormCssClass(Model.of(className));
+    }
+    
+    /**
+     * Adds a className to the form.
+     * 
+     * @param className The class name to add
+     * @return This
+     */
+    public ModalWithForm<T> addFormCssClass(IModel<String> className) {
+        form.add(new CssClassNameAppender(className));
+        return this;
+    }
+    
+    /**
      * Sets the header label text.
      *
      * @param label The header label
      * @return This
      */
-    public Modal<T> header(IModel<String> label) {
+    public ModalWithForm<T> header(IModel<String> label) {
         headerLabel.setDefaultModel(label);
         setHeaderVisible(true);
         return this;
@@ -137,7 +201,7 @@ public class Modal<T> extends GenericPanel<T> implements IModal {
      * @param escapeMarkup True is model strings should be escaped
      * @return This
      */
-    public Modal<T> header(final IModel<String> label, final boolean escapeMarkup) {
+    public ModalWithForm<T> header(final IModel<String> label, final boolean escapeMarkup) {
         headerLabel.setDefaultModel(label);
         headerLabel.setEscapeModelStrings(escapeMarkup);
         return this;
@@ -149,7 +213,7 @@ public class Modal<T> extends GenericPanel<T> implements IModal {
      * @param visible True if footer and any children should be visible
      * @return This
      */
-    public Modal<T> setFooterVisible(final boolean visible) {
+    public ModalWithForm<T> setFooterVisible(final boolean visible) {
         footer.setVisible(visible);
         return this;
     }
@@ -160,7 +224,7 @@ public class Modal<T> extends GenericPanel<T> implements IModal {
      * @param visible True if header and any children should be visible
      * @return This
      */
-    public Modal<T> setHeaderVisible(final boolean visible) {
+    public ModalWithForm<T> setHeaderVisible(final boolean visible) {
         header.setVisible(visible);
         return this;
     }
@@ -171,7 +235,7 @@ public class Modal<T> extends GenericPanel<T> implements IModal {
      * @param useCloseHandler True if close handler should be used
      * @return This
      */
-    public final Modal<T> setUseCloseHandler(final boolean useCloseHandler) {
+    public final ModalWithForm<T> setUseCloseHandler(final boolean useCloseHandler) {
         this.useCloseHandler.setObject(useCloseHandler);
         return this;
     }
@@ -182,7 +246,7 @@ public class Modal<T> extends GenericPanel<T> implements IModal {
      * @param show Whether to show the dialog or not
      * @return This
      */
-    public Modal<T> show(boolean show) {
+    public ModalWithForm<T> show(boolean show) {
         this.show.setObject(show);
         return this;
     }
@@ -193,17 +257,17 @@ public class Modal<T> extends GenericPanel<T> implements IModal {
      * @param target
      * @return This
      */
-    public Modal<T> appendCloseDialogJavaScript(final AjaxRequestTarget target) {
+    public ModalWithForm<T> appendCloseDialogJavaScript(final AjaxRequestTarget target) {
         target.appendJavaScript(createActionScript(getMarkupId(true), ModalAction.Action.hide));
         return this;
     }
 
     /**
-     * A short alias for {@link Modal#appendCloseDialogJavaScript}
+     * A short alias for {@link ModalWithForm#appendCloseDialogJavaScript}
      * @param target
      * @return
      */
-    public Modal<T> close(final AjaxRequestTarget target) {
+    public ModalWithForm<T> close(final AjaxRequestTarget target) {
         return appendCloseDialogJavaScript(target);
     }
     
@@ -213,17 +277,17 @@ public class Modal<T> extends GenericPanel<T> implements IModal {
      * @param target
      * @return This
      */
-    public Modal<T> appendShowDialogJavaScript(final AjaxRequestTarget target) {
+    public ModalWithForm<T> appendShowDialogJavaScript(final AjaxRequestTarget target) {
         target.appendJavaScript(createActionScript(getMarkupId(true), ModalAction.Action.show));
         return this;
     }
     
     /**
-     * A short alias for {@link Modal#appendShowDialogJavaScript}
+     * A short alias for {@link ModalWithForm#appendShowDialogJavaScript}
      * @param target
      * @return
      */
-    public Modal<T> show(final AjaxRequestTarget target) {
+    public ModalWithForm<T> show(final AjaxRequestTarget target) {
         return appendShowDialogJavaScript(target);
     }
 
@@ -235,10 +299,10 @@ public class Modal<T> extends GenericPanel<T> implements IModal {
      * @return new script.
      */
     protected String createActionScript(final String markupId, final ModalAction.Action action) {
-    	return JQuery.$("#"+markupId).chain(ModalAction.action(action)).get();
+        return JQuery.$("#"+markupId).chain(ModalAction.action(action)).get();
     }
 
-    public Modal<T> addOpenerAttributesTo(final Component component) {
+    public ModalWithForm<T> addOpenerAttributesTo(final Component component) {
         component.add(new AttributeModifier("data-toggle", "modal"));
         component.add(new AttributeModifier("href", "#" + getMarkupId(true)));
         return this;
@@ -250,8 +314,9 @@ public class Modal<T> extends GenericPanel<T> implements IModal {
      * @param label The label of close button
      * @return this instance
      */
-    public Modal<T> addCloseButton(final IModel<String> label) {
+    public ModalWithForm<T> addCloseButton(final IModel<String> label) {
     	BootstrapModalCloseButton button = new BootstrapModalCloseButton(label);
+
         return addButton(button);
     }
 
@@ -260,7 +325,7 @@ public class Modal<T> extends GenericPanel<T> implements IModal {
      *
      * @return this instance
      */
-    public Modal<T> addCloseButton() {
+    public ModalWithForm<T> addCloseButton() {
         return addCloseButton(Model.of("Close"));
     }
 
@@ -270,7 +335,7 @@ public class Modal<T> extends GenericPanel<T> implements IModal {
      * @param button Button to add to footer
      * @return this instance.
      */
-    public Modal<T> addButton(final Component button) {
+    public ModalWithForm<T> addButton(final Component button) {
         if (!BUTTON_MARKUP_ID.equals(button.getId())) {
             throw new IllegalArgumentException(
                     String.format("Invalid button markup id. Must be '%s'.", BUTTON_MARKUP_ID));
@@ -393,7 +458,7 @@ public class Modal<T> extends GenericPanel<T> implements IModal {
      * @param fadein true, if dialog should be animated
      * @return This
      */
-    public final Modal<T> setFadeIn(boolean fadein) {
+    public final ModalWithForm<T> setFadeIn(boolean fadein) {
         this.fadein.setObject(fadein);
         return this;
     }
@@ -404,7 +469,7 @@ public class Modal<T> extends GenericPanel<T> implements IModal {
      * @param keyboard true, if keyboard interaction is enabled
      * @return This
      */
-    public final Modal<T> setUseKeyboard(boolean keyboard) {
+    public final ModalWithForm<T> setUseKeyboard(boolean keyboard) {
         this.keyboard.setObject(keyboard);
         return this;
     }

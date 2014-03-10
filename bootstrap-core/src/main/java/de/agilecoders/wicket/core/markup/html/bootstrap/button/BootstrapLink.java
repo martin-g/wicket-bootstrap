@@ -1,7 +1,5 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.button;
 
-import de.agilecoders.wicket.core.markup.html.bootstrap.image.Icon;
-import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.WebMarkupContainer;
@@ -10,7 +8,9 @@ import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.panel.IMarkupSourcingStrategy;
 import org.apache.wicket.markup.html.panel.PanelMarkupSourcingStrategy;
 import org.apache.wicket.model.IModel;
-import org.apache.wicket.model.Model;
+
+import de.agilecoders.wicket.core.markup.html.bootstrap.image.Icon;
+import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
 
 /**
  * Default {@link Link} which is styled by bootstrap.
@@ -91,7 +91,7 @@ public abstract class BootstrapLink<T> extends Link<T> implements IBootstrapButt
 
         add(icon = newIcon("icon"));
         add(splitter = newSplitter("splitter"));
-        add(label = newLabel("label"));
+        add(label = newLabel("label", model));
     }
 
     /**
@@ -110,8 +110,8 @@ public abstract class BootstrapLink<T> extends Link<T> implements IBootstrapButt
      * @param markupId the component id of the label
      * @return new label component
      */
-    protected Component newLabel(final String markupId) {
-        return new Label(markupId, new Model<String>(""))
+    protected Component newLabel(final String markupId, final IModel<T> model) {
+        return new Label(markupId, model)
                 .setRenderBodyOnly(true);
     }
 

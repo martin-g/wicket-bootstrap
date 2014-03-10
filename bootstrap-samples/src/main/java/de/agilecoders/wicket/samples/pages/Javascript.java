@@ -1,6 +1,7 @@
 package de.agilecoders.wicket.samples.pages;
 
 import com.google.common.collect.Lists;
+
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.BootstrapAjaxLink;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.ButtonBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons;
@@ -22,6 +23,7 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.tabs.Collapsible;
 import de.agilecoders.wicket.core.markup.html.bootstrap.tabs.TextContentTab;
 import de.agilecoders.wicket.samples.panels.pagination.AjaxPaginationPanel;
 import de.agilecoders.wicket.samples.panels.pagination.PaginationPanel;
+
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
@@ -30,6 +32,7 @@ import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.AbstractLink;
+import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.request.resource.CssResourceReference;
@@ -49,6 +52,7 @@ import java.util.List;
 @MountPath(value = "/javascript", alt = "/js")
 public class Javascript extends BasePage {
 
+	private IModel<FilterMode> filterMode;
     /**
      * Construct.
      *
@@ -110,6 +114,21 @@ public class Javascript extends BasePage {
 
         add(new PaginationPanel("pagingNavigator"));
         add(new AjaxPaginationPanel("ajaxPagingNavigator"));
+        
+        filterMode = Model.of(FilterMode.AND);
+        
+        final Label mode = new Label("mode", filterMode);
+        mode.setOutputMarkupId(true);
+        add(mode);
+        add(new AjaxFilterModeRadioGroup("radioGroup", filterMode) {
+			
+			@Override
+			protected void onModeChanged(AjaxRequestTarget target, FilterMode filterMode) {
+				target.add(mode);
+			}
+		}); 
+        
+        
 
         add(newCarousel("carousel"));
 
