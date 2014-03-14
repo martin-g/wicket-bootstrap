@@ -3,6 +3,7 @@ package de.agilecoders.wicket.samples.pages;
 import de.agilecoders.wicket.core.markup.html.bootstrap.block.Code;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.BootstrapButton;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons;
+import de.agilecoders.wicket.core.markup.html.bootstrap.dialog.Modal;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.DateTextField;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.DateTextFieldConfig;
 import de.agilecoders.wicket.samples.components.basecss.DatePickerModal;
@@ -27,7 +28,7 @@ public class DatePickerPage extends BasePage {
      * @param parameters the current page parameters.
      */
     public DatePickerPage(PageParameters parameters) {
-        super(new PageParameters());
+        super(parameters);
 
         add(newDefaultDatePicker("default"),
             new Code("default-html-code", Model.of("//HTML\n<form><input wicket:id=\"default\"></form>")).setShowLineNumbers(true),
@@ -50,6 +51,7 @@ public class DatePickerPage extends BasePage {
 
         DatePickerModal modal = new DatePickerModal("modal");
         modal.show(false);
+        modal.size(Modal.Size.Small);
         modal.setUseKeyboard(true);
         BootstrapButton modalButton = new BootstrapButton("modal-opener", Buttons.Type.Default);
         modalButton.setLabel(Model.of("Open Modal Dialog"));

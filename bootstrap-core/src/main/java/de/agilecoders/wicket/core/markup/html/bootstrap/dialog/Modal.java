@@ -2,6 +2,7 @@ package de.agilecoders.wicket.core.markup.html.bootstrap.dialog;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapResourcesBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.CssClassNameAppender;
+import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNameProvider;
 import de.agilecoders.wicket.core.util.Attributes;
 
 import org.apache.wicket.AttributeModifier;
@@ -12,6 +13,7 @@ import org.apache.wicket.ajax.attributes.AjaxRequestAttributes;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
+import org.apache.wicket.markup.html.TransparentWebMarkupContainer;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.list.ListItem;
@@ -34,6 +36,37 @@ public class Modal<T> extends GenericPanel<T> {
 
     public static final String BUTTON_MARKUP_ID = "button";
 
+    /**
+     * @see <a href="http://getbootstrap.com/javascript/#modals-sizes">Modal Sizes</a>
+     */
+    public static enum Size implements ICssClassNameProvider {
+        Default(""),
+        Small("sm"),
+        Medium("md"),
+        Large("lg");
+
+        private final String cssClassName;
+
+        /**
+         * Construct.
+         *
+         * @param cssClassName the css class name of button type
+         */
+        private Size(final String cssClassName) {
+            this.cssClassName = cssClassName;
+        }
+
+        /**
+         * @return css class name of button type
+         */
+        @Override
+        public String cssClassName() {
+            return "modal-" + cssClassName;
+        }
+
+    }
+
+    private final WebMarkupContainer dialog;
     private final WebMarkupContainer header;
     private final IModel<Boolean> show = Model.of(false);
     private final IModel<Boolean> fadein = Model.of(true);
@@ -43,6 +76,8 @@ public class Modal<T> extends GenericPanel<T> {
     private final WebMarkupContainer footer;
     private final IModel<Boolean> useCloseHandler = Model.of(false);
     private final AjaxEventBehavior closeBehavior;
+
+    private Size size;
 
     /**
      * Constructor.
@@ -65,6 +100,7 @@ public class Modal<T> extends GenericPanel<T> {
         setOutputMarkupId(true);
         setOutputMarkupPlaceholderTag(true);
 
+        dialog = createDialog("dialog");
         footer = new WebMarkupContainer("footer");
         header = new WebMarkupContainer("header");
         header.add(headerLabel = new Label("header-label", ""));
@@ -91,9 +127,53 @@ public class Modal<T> extends GenericPanel<T> {
             }
         };
 
-        add(header, footer);
+        add(dialog);
+        dialog.add(header, footer);
 
         BootstrapResourcesBehavior.addTo(this);
+    }
+
+    /**
+     * Creates a container for the 'modal-dialog' div.
+     * It is used to set the size of the modal.
+     *
+     * @param id The component id
+     * @return The dialog container
+     */
+    protected WebMarkupContainer createDialog(String id) {
+        WebMarkupContainer dialog = new TransparentWebMarkupContainer(id) {
+            @Override
+            protected void onComponentTag(ComponentTag tag) {
+                super.onComponentTag(tag);
+
+                Attributes.removeClass(tag, Size.Large.cssClassName());
+                Attributes.removeClass(tag, Size.Small.cssClassName());
+
+                switch (size) {
+                    case Large:
+                        Attributes.addClass(tag, Size.Large.cssClassName());
+                        break;
+                    case Small:
+                        Attributes.addClass(tag, Size.Small.cssClassName());
+                        break;
+                    default:
+                        // do nothing. the CSS classes are removed before the switch
+                }
+            }
+        };
+
+        return dialog;
+    }
+
+    /**
+     * Sets the size of the modal.
+     *
+     * @param size The size of the modal dialog.
+     * @return {@code this}, for method chaining
+     */
+    public Modal size(Size size) {
+        this.size = size;
+        return this;
     }
 
     @Override
