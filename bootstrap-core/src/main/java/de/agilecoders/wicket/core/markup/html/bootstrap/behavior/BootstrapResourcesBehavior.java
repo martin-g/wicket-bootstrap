@@ -1,6 +1,7 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.behavior;
 
 import de.agilecoders.wicket.core.settings.IBootstrapSettings;
+import org.apache.wicket.markup.head.CssReferenceHeaderItem;
 
 import org.apache.wicket.markup.head.IHeaderResponse;
 
@@ -35,6 +36,9 @@ public class BootstrapResourcesBehavior extends BootstrapJavascriptBehavior {
         super.renderHead(settings, headerResponse);
 
         // just includes all bootstrap resource references.
+        //adds the ccss header reference item. Makes sure that the CSS has been added if specified by CDN 
+        final CssReferenceHeaderItem cssReferenceHeaderItem = CssReferenceHeaderItem.forReference(settings.getCssResourceReference(), "screen");
+        headerResponse.render(cssReferenceHeaderItem);
     }
 
 }
