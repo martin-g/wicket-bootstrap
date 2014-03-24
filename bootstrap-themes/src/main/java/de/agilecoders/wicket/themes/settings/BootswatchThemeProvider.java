@@ -1,6 +1,7 @@
 package de.agilecoders.wicket.themes.settings;
 
 import de.agilecoders.wicket.core.settings.DefaultThemeProvider;
+import de.agilecoders.wicket.core.settings.IBootstrapSettings;
 import de.agilecoders.wicket.themes.markup.html.bootswatch.BootswatchTheme;
 
 /**
@@ -12,13 +13,32 @@ import de.agilecoders.wicket.themes.markup.html.bootswatch.BootswatchTheme;
 public class BootswatchThemeProvider extends DefaultThemeProvider {
 
     /**
+     * Construct.
+     *
+     * @param settings bootstrap settings to use.
+     */
+    public BootswatchThemeProvider(IBootstrapSettings settings) {
+        super(settings);
+
+        addBootswatchThemes();
+    }
+
+    /**
      * Constructor.
      */
+    @Deprecated
     public BootswatchThemeProvider() {
         super();
 
+        addBootswatchThemes();
+    }
+
+    /**
+     * add all available bootswatch themes.
+     */
+    private void addBootswatchThemes() {
         add(BootswatchTheme.AMELIA, BootswatchTheme.CERULEAN,
-            BootswatchTheme.COSMO, BootswatchTheme.CYBORG, 
+            BootswatchTheme.COSMO, BootswatchTheme.CYBORG,
             BootswatchTheme.FLATLY,BootswatchTheme.JOURNAL,
             BootswatchTheme.READABLE, BootswatchTheme.SIMPLEX,
             BootswatchTheme.SLATE, BootswatchTheme.SPACELAB,
