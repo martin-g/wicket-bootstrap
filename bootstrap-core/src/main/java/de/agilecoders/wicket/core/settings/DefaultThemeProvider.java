@@ -31,6 +31,7 @@ public class DefaultThemeProvider implements ThemeProvider {
     /**
      * Construct.
      */
+    @Deprecated
     public DefaultThemeProvider() {
         addDefaultTheme(new BootstrapTheme());
     }

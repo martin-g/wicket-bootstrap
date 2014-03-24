@@ -22,13 +22,9 @@ public class BootstrapTheme extends Theme {
     /**
      * Construct.
      */
+    @Deprecated
     public BootstrapTheme() {
         super("bootstrap", BootstrapCssReference.instance());
     }
-//
-//    @Override
-//    public Iterable<String> getCdnUrls() {
-//        String cdnUrl = String.format(CDN_PATTERN, getVersion());
-//        return Arrays.asList(cdnUrl);
-//    }
+
 }
