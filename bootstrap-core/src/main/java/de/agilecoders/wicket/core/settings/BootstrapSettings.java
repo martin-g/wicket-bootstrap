@@ -39,11 +39,11 @@ public class BootstrapSettings implements IBootstrapSettings {
      */
     public BootstrapSettings() {
         this.activeThemeProvider = new SessionThemeProvider();
+        this.themeProvider = new NoopThemeProvider();
         this.resourceFilterName = "";
         this.updateSecurityManager = true;
         this.autoAppendResources = true;
         this.useCdnResources = false;
-        this.themeProvider = null;
     }
 
     @Override

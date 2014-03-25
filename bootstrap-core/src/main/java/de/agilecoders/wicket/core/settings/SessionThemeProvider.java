@@ -1,7 +1,6 @@
 package de.agilecoders.wicket.core.settings;
 
 import de.agilecoders.wicket.core.Bootstrap;
-
 import org.apache.wicket.Application;
 import org.apache.wicket.Session;
 import org.apache.wicket.WicketRuntimeException;
@@ -49,7 +48,8 @@ public class SessionThemeProvider implements ActiveThemeProvider {
 
     /**
      * checks on existing session, if there isn't one it will be created.
-     * @param session
+     *
+     * @param session current session to bind
      */
     private void assertBoundSession(Session session) {
         if (session.isTemporary()) {
