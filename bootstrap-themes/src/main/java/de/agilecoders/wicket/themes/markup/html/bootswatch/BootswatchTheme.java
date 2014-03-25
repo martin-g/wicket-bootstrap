@@ -29,7 +29,7 @@ public enum BootswatchTheme implements ITheme {
      */
     private static final String CDN_PATTERN = "//netdna.bootstrapcdn.com/bootswatch/%s/%s/bootstrap.min.css";
 
-    private final String cdnUrl;
+    private String cdnUrl;
     private final ResourceReference reference;
 
     /**
@@ -37,7 +37,6 @@ public enum BootswatchTheme implements ITheme {
      */
     private BootswatchTheme() {
         this.reference = new BootswatchCssReference(name().toLowerCase());
-        this.cdnUrl = String.format(CDN_PATTERN, getVersion(), name().toLowerCase());
     }
 
     @Override
@@ -48,6 +47,9 @@ public enum BootswatchTheme implements ITheme {
     @Override
     public void renderHead(IHeaderResponse response) {
         if (useCdnResources()) {
+            if (cdnUrl == null) {
+                cdnUrl = String.format(CDN_PATTERN, getVersion(), name().toLowerCase());
+            }
             CssHeaderItem.forReference(new UrlResourceReference(Url.parse(cdnUrl)));
         }
         else {
@@ -63,7 +65,9 @@ public enum BootswatchTheme implements ITheme {
 
         if (Application.exists()) {
             IBootstrapSettings settings = Bootstrap.getSettings();
-            result = settings.useCdnResources();
+            if (settings != null) {
+                result = settings.useCdnResources();
+            }
         }
 
         return result;
@@ -75,7 +79,10 @@ public enum BootswatchTheme implements ITheme {
     private String getVersion() {
         String version = IBootstrapSettings.VERSION;
         if (Application.exists()) {
-            version = Bootstrap.getSettings().getVersion();
+            IBootstrapSettings settings = Bootstrap.getSettings();
+            if (settings != null) {
+                version = settings.getVersion();
+            }
         }
 
         return version;

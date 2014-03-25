@@ -5,6 +5,7 @@ import de.agilecoders.wicket.core.settings.ITheme;
 import de.agilecoders.wicket.core.settings.ThemeProvider;
 import de.agilecoders.wicket.themes.markup.html.bootswatch.BootswatchTheme;
 import org.apache.wicket.WicketRuntimeException;
+import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.string.Strings;
 
 import java.util.List;
@@ -32,7 +33,7 @@ public class BootswatchThemeProvider implements ThemeProvider {
      */
     public BootswatchThemeProvider(final BootswatchTheme defaultTheme) {
         this.themes = ImmutableList.<ITheme>builder().add(BootswatchTheme.values()).build();
-        this.defaultTheme = defaultTheme;
+        this.defaultTheme = Args.notNull(defaultTheme, "defaultTheme");
     }
 
     @Override
