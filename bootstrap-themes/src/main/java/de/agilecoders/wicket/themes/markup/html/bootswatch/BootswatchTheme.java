@@ -1,7 +1,14 @@
 package de.agilecoders.wicket.themes.markup.html.bootswatch;
 
-import de.agilecoders.wicket.core.settings.Theme;
+import de.agilecoders.wicket.core.Bootstrap;
+import de.agilecoders.wicket.core.settings.IBootstrapSettings;
+import de.agilecoders.wicket.core.settings.ITheme;
+import org.apache.wicket.Application;
+import org.apache.wicket.markup.head.CssHeaderItem;
+import org.apache.wicket.markup.head.IHeaderResponse;
+import org.apache.wicket.request.Url;
 import org.apache.wicket.request.resource.ResourceReference;
+import org.apache.wicket.request.resource.UrlResourceReference;
 
 import java.util.Arrays;
 
@@ -10,7 +17,9 @@ import java.util.Arrays;
  *
  * @author miha
  */
-public class BootswatchTheme extends Theme {
+public enum BootswatchTheme implements ITheme {
+    Amelia, Cerulean, Cosmo, Cyborg, Flatly, Journal, Lumen, Readable,
+    Simplex, Slate, Spacelab, Superhero, United, Yeti;
 
     /**
      * The placeholders are:
@@ -20,38 +29,55 @@ public class BootswatchTheme extends Theme {
      */
     private static final String CDN_PATTERN = "//netdna.bootstrapcdn.com/bootswatch/%s/%s/bootstrap.min.css";
 
-    public static final BootswatchTheme AMELIA = new BootswatchTheme(BootswatchCssReference.AMELIA);
-    public static final BootswatchTheme CERULEAN = new BootswatchTheme(BootswatchCssReference.CERULEAN);
-    public static final BootswatchTheme COSMO = new BootswatchTheme(BootswatchCssReference.COSMO);
-    public static final BootswatchTheme CYBORG = new BootswatchTheme(BootswatchCssReference.CYBORG);
-    public static final BootswatchTheme FLATLY = new BootswatchTheme(BootswatchCssReference.FLATLY);
-    public static final BootswatchTheme JOURNAL = new BootswatchTheme(BootswatchCssReference.JOURNAL);
-    public static final BootswatchTheme LUMEN = new BootswatchTheme(BootswatchCssReference.LUMEN);
-    public static final BootswatchTheme READABLE = new BootswatchTheme(BootswatchCssReference.READABLE);
-    public static final BootswatchTheme SIMPLEX = new BootswatchTheme(BootswatchCssReference.SIMPLEX);
-    public static final BootswatchTheme SLATE = new BootswatchTheme(BootswatchCssReference.SLATE);
-    public static final BootswatchTheme SPACELAB = new BootswatchTheme(BootswatchCssReference.SPACELAB);
-    public static final BootswatchTheme SUPERHERO = new BootswatchTheme(BootswatchCssReference.SUPERHERO);
-    public static final BootswatchTheme UNITED = new BootswatchTheme(BootswatchCssReference.UNITED);
-    public static final BootswatchTheme YETI = new BootswatchTheme(BootswatchCssReference.YETI);
+    private final String cdnUrl;
+    private final ResourceReference reference;
 
     /**
      * Construct.
      */
-    public BootswatchTheme(final String name, final ResourceReference... resourceReferences) {
-        super(name, resourceReferences);
-    }
-
-    /**
-     * Construct.
-     */
-    public BootswatchTheme(final BootswatchCssReference reference) {
-        this(reference.getSwatchName(), reference);
+    private BootswatchTheme() {
+        this.reference = new BootswatchCssReference(name().toLowerCase());
+        this.cdnUrl = String.format(CDN_PATTERN, getVersion(), name().toLowerCase());
     }
 
     @Override
     public Iterable<String> getCdnUrls() {
-        String cdnUrl = String.format(CDN_PATTERN, getVersion(), name());
         return Arrays.asList(cdnUrl);
+    }
+
+    @Override
+    public void renderHead(IHeaderResponse response) {
+        if (useCdnResources()) {
+            CssHeaderItem.forReference(new UrlResourceReference(Url.parse(cdnUrl)));
+        }
+        else {
+            response.render(CssHeaderItem.forReference(reference));
+        }
+    }
+
+    /**
+     * @return true, if cdn resources should be used instead of webjars.
+     */
+    private boolean useCdnResources() {
+        boolean result = false;
+
+        if (Application.exists()) {
+            IBootstrapSettings settings = Bootstrap.getSettings();
+            result = settings.useCdnResources();
+        }
+
+        return result;
+    }
+
+    /**
+     * @return The configured version of Twitter Bootstrap
+     */
+    private String getVersion() {
+        String version = IBootstrapSettings.VERSION;
+        if (Application.exists()) {
+            version = Bootstrap.getSettings().getVersion();
+        }
+
+        return version;
     }
 }

@@ -25,9 +25,7 @@ import de.agilecoders.wicket.less.BootstrapLess;
 import de.agilecoders.wicket.samples.assets.base.ApplicationJavaScript;
 import de.agilecoders.wicket.samples.assets.base.FixBootstrapStylesCssResourceReference;
 import de.agilecoders.wicket.samples.pages.HomePage;
-import de.agilecoders.wicket.themes.markup.html.google.GoogleTheme;
-import de.agilecoders.wicket.themes.markup.html.metro.MetroTheme;
-import de.agilecoders.wicket.themes.markup.html.wicket.WicketTheme;
+import de.agilecoders.wicket.themes.markup.html.bootswatch.BootswatchTheme;
 import de.agilecoders.wicket.themes.settings.BootswatchThemeProvider;
 import net.ftlines.wicketsource.WicketSource;
 import org.apache.wicket.Application;
@@ -177,12 +175,7 @@ public class WicketApplication extends WebApplication {
      */
     private void configureBootstrap() {
         final IBootstrapSettings settings = new BootstrapSettings();
-        final ThemeProvider themeProvider = new BootswatchThemeProvider(settings) {{
-            add(new WicketTheme());
-            add(new MetroTheme());
-            add(new GoogleTheme());
-            defaultTheme("bootstrap");
-        }};
+        final ThemeProvider themeProvider = new BootswatchThemeProvider(BootswatchTheme.Flatly);
 
         settings.setJsResourceFilterName("footer-container")
                 .setThemeProvider(themeProvider);

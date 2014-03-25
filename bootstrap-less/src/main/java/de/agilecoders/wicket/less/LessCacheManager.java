@@ -4,6 +4,9 @@ import com.github.sommeri.less4j.Less4jException;
 import com.github.sommeri.less4j.LessCompiler;
 import com.github.sommeri.less4j.LessSource;
 import com.github.sommeri.less4j.core.ThreadUnsafeLessCompiler;
+import de.agilecoders.wicket.webjars.WicketWebjars;
+import de.agilecoders.wicket.webjars.util.WebJarAssetLocator;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.wicket.Application;
 import org.apache.wicket.MetaDataKey;
 import org.apache.wicket.WicketRuntimeException;
@@ -29,6 +32,10 @@ public class LessCacheManager {
     private static final MetaDataKey<LessCacheManager> KEY = new MetaDataKey<LessCacheManager>() {
     };
 
+    private static final class Holder {
+        private static final WebJarAssetLocator locator = new WebJarAssetLocator(WicketWebjars.settings());
+    }
+
     /**
      * A cache that keeps the root LessSource.URLSource instance per URL.
      * Each root LessSource keeps references to all imported LessSource's in it.
@@ -50,14 +57,37 @@ public class LessCacheManager {
      * @return The LessSource for the Less resource file
      */
     public LessSource.URLSource getLessSource(URL lessUrl) {
-
-        LessSource.URLSource lessSource = new LessSource.URLSource(lessUrl);
+        LessSource.URLSource lessSource = new CustomWebjarsAwareLessUrlSource(lessUrl);
         LessSource.URLSource oldValue = urlSourceCache.putIfAbsent(lessUrl, lessSource);
         if (oldValue != null) {
             lessSource = oldValue;
         }
 
         return lessSource;
+    }
+
+    private static final class CustomWebjarsAwareLessUrlSource extends LessSource.URLSource {
+
+        public CustomWebjarsAwareLessUrlSource(URL inputURL) {
+            super(inputURL);
+        }
+
+        @Override
+        public LessSource relativeSource(String filename) throws FileNotFound, CannotReadFile {
+            if (StringUtils.startsWith(filename, "webjars!")) {
+                final String file = Holder.locator.getFullPath(filename.replaceFirst("webjars!", "/webjars/"));
+
+                try {
+                    final URL res = Thread.currentThread().getContextClassLoader().getResource(file);
+
+                    return new CustomWebjarsAwareLessUrlSource(res);
+                } catch (RuntimeException e) {
+                    throw new WicketRuntimeException(e);
+                }
+            } else {
+                return super.relativeSource(filename);
+            }
+        }
     }
 
     /**
@@ -88,14 +118,16 @@ public class LessCacheManager {
             timeToContentMap.clear();
 
             ThreadUnsafeLessCompiler compiler = new ThreadUnsafeLessCompiler();
+            LessCompiler.Configuration configuration = new LessCompiler.Configuration();
+            configuration.setLinkSourceMap(false);
 
             try {
-                LessCompiler.CompilationResult result = compiler.compile(lessSource);
+                LessCompiler.CompilationResult result = compiler.compile(lessSource, configuration);
                 List<LessCompiler.Problem> warnings = result.getWarnings();
 
                 for (LessCompiler.Problem warning : warnings) {
                     LOG.warn("There is a warning during compilation of '{}' at line {}, character {}. Message: {}",
-                             new Object[] {lessSource.getInputURL(), warning.getLine(), warning.getCharacter(), warning.getMessage()});
+                             lessSource.getInputURL(), warning.getLine(), warning.getCharacter(), warning.getMessage());
                 }
 
                 cssContent = result.getCss();
@@ -124,7 +156,7 @@ public class LessCacheManager {
      * has been modified
      *
      * @param source The LessSource which time to check
-     * @param time The last modification time of the parent resource
+     * @param time   The last modification time of the parent resource
      * @return The latest modified time of the root LessSource and its imported resources
      */
     private Time findLastModified(LessSource.URLSource source, Time time) {
@@ -147,6 +179,7 @@ public class LessCacheManager {
 
     /**
      * Registers this instance as the one which should be used in this application.
+     *
      * @param app The application used as a scope
      * @see #get()
      */
