@@ -50,7 +50,7 @@ public enum BootswatchTheme implements ITheme {
             if (cdnUrl == null) {
                 cdnUrl = String.format(CDN_PATTERN, getVersion(), name().toLowerCase());
             }
-            CssHeaderItem.forReference(new UrlResourceReference(Url.parse(cdnUrl)));
+            response.render(CssHeaderItem.forReference(new UrlResourceReference(Url.parse(cdnUrl))));
         }
         else {
             response.render(CssHeaderItem.forReference(reference));
