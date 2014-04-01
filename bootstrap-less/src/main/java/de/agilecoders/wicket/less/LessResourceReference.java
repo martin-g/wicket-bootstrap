@@ -15,13 +15,6 @@ public class LessResourceReference extends CssResourceReference {
     private static final long serialVersionUID = 1L;
 
     /**
-     * special variation which triggers the {@link LessResourceStreamLocator} to compile
-     * the less files.
-     */
-    @Deprecated
-    public static final String VARIATION = "less";
-
-    /**
      * Construct.
      *
      * @param scope mandatory parameter
