@@ -68,7 +68,7 @@
         <jquerypp.version>1.0.1</jquerypp.version>
         <jquery.version>2.1.0-1</jquery.version>
         <maven-bundle-plugin.version>2.4.0</maven-bundle-plugin.version>
-        <wicket.version>6.13.0</wicket.version>
+        <wicket.version>6.14.0</wicket.version>
     </properties>
 
     <dependencyManagement>
