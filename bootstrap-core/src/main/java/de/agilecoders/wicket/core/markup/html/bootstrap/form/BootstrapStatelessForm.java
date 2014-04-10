@@ -20,7 +20,7 @@ import org.apache.wicket.markup.html.form.StatelessForm;
 import org.apache.wicket.model.IModel;
 
 /**
- *
+ * Provides a StatelessForm which can be styled using the Bootstrap Behaviours
  * @author dbeer
  */
 public class BootstrapStatelessForm<T> extends StatelessForm<T> {
@@ -33,9 +33,7 @@ public class BootstrapStatelessForm<T> extends StatelessForm<T> {
      * @param id See Component
      */
     public BootstrapStatelessForm(String id) {
-        super(id);
-        
-        commonInit();
+       this(id, null);
     }
 
     /**
