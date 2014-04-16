@@ -77,7 +77,7 @@ public class Modal<T> extends GenericPanel<T> {
     private final IModel<Boolean> useCloseHandler = Model.of(false);
     private final AjaxEventBehavior closeBehavior;
 
-    private Size size;
+    private Size size = Size.Default;
 
     /**
      * Constructor.
