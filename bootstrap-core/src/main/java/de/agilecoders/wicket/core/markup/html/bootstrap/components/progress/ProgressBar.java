@@ -17,8 +17,6 @@ import de.agilecoders.wicket.core.util.Attributes;
 
 /**
  * A component for <a href="http://getbootstrap.com/components/#progress">Progress bars</a>
- *
- * @author miha
  */
 public class ProgressBar extends GenericPanel<Integer> {
     private static final Logger LOG = LoggerFactory.getLogger(ProgressBar.class);
@@ -115,6 +113,8 @@ public class ProgressBar extends GenericPanel<Integer> {
      */
     public ProgressBar(String id, IModel<Integer> model, Type type, boolean labeled) {
         super(id, model);
+
+        Args.notNull(type, "type");
 
         stacks = new RepeatingView("stacks");
         add(stacks);
