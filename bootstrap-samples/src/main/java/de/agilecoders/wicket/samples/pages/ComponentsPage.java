@@ -57,20 +57,33 @@ public class ComponentsPage extends BasePage {
     }
 
     private void addProgressBars() {
-        ProgressBar basic = new ProgressBar("basic");
+        ProgressBar basic = new ProgressBar("basic", Model.of(60));
         add(basic);
-        ProgressBar.Stack stack = basic.new Stack(Model.of(60));
-        basic.addStacks(stack);
 
-        ProgressBar striped = new ProgressBar("striped");
+        ProgressBar striped = new ProgressBar("striped", Model.of(20)).striped(true);
         add(striped);
-        ProgressBar.Stack stripedStack = striped.new Stack(Model.of(20));
-        striped.addStacks(stripedStack);
 
-        ProgressBar animated = new ProgressBar("animated");
+        ProgressBar animated = new ProgressBar("animated", Model.of(45)).active(true);
         add(animated);
-        ProgressBar.Stack animatedStack = animated.new Stack(Model.of(45));
-        animated.addStacks(animatedStack);
+
+        ProgressBar stacked = new ProgressBar("stacked");
+        add(stacked);
+        ProgressBar.Stack stackedStack1 = stacked.new Stack(Model.of(35)).type(ProgressBar.Type.SUCCESS);
+        ProgressBar.Stack stackedStack2 = stacked.new Stack(Model.of(20)).type(ProgressBar.Type.WARNING);
+        ProgressBar.Stack stackedStack3 = stacked.new Stack(Model.of(10)).type(ProgressBar.Type.DANGER);
+        stacked.addStacks(stackedStack1, stackedStack2, stackedStack3);
+
+        ProgressBar coloredInfo = new ProgressBar("coloredInfo", Model.of(20), ProgressBar.Type.INFO);
+        add(coloredInfo);
+
+        ProgressBar coloredSuccess = new ProgressBar("coloredSuccess", Model.of(40), ProgressBar.Type.SUCCESS);
+        add(coloredSuccess);
+
+        ProgressBar coloredWarning = new ProgressBar("coloredWarning", Model.of(60), ProgressBar.Type.WARNING);
+        add(coloredWarning);
+
+        ProgressBar coloredDanger = new ProgressBar("coloredDanger", Model.of(80), ProgressBar.Type.DANGER);
+        add(coloredDanger);
     }
 
     private Component newTabs(String markupId) {

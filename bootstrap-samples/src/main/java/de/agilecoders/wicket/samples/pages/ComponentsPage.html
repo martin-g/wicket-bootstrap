@@ -1988,7 +1988,7 @@
     <p>Add <code>.active</code> to <code>.progress-striped</code> to animate the stripes right to left. Not available in all versions of IE.</p>
 
     <div class="bs-docs-example">
-        <div wicket:id="aminated"></div>
+        <div wicket:id="animated"></div>
     </div>
 <pre class="prettyprint linenums">
 &lt;div class="progress progress-striped active"&gt;
@@ -2001,11 +2001,7 @@
     <p>Place multiple bars into the same <code>.progress</code> to stack them.</p>
 
     <div class="bs-docs-example">
-        <div class="progress">
-            <div class="progress-bar progress-bar-success" style="width: 35%"></div>
-            <div class="progress-bar progress-bar-warning" style="width: 20%"></div>
-            <div class="progress-bar progress-bar-danger" style="width: 10%"></div>
-        </div>
+        <div wicket:id="stacked"></div>
     </div>
 <pre class="prettyprint linenums">
 &lt;div class="progress"&gt;
@@ -2026,18 +2022,10 @@
     <p>Progress bars use some of the same button and alert classes for consistent styles.</p>
 
     <div class="bs-docs-example">
-        <div class="progress" style="margin-bottom: 9px;">
-            <div class="progress-bar progress-bar-info" style="width: 20%"></div>
-        </div>
-        <div class="progress" style="margin-bottom: 9px;">
-            <div class="progress-bar progress-bar-success" style="width: 40%"></div>
-        </div>
-        <div class="progress" style="margin-bottom: 9px;">
-            <div class="progress-bar progress-bar-warning" style="width: 60%"></div>
-        </div>
-        <div class="progress">
-            <div class="progress-bar progress-bar-danger" style="width: 80%"></div>
-        </div>
+        <div wicket:id="coloredInfo" style="margin-bottom: 9px;"></div>
+        <div wicket:id="coloredSuccess" style="margin-bottom: 9px;"></div>
+        <div wicket:id="coloredWarning" style="margin-bottom: 9px;"></div>
+        <div wicket:id="coloredDanger"></div>
     </div>
 <pre class="prettyprint linenums">
 &lt;div class="progress"&gt;
