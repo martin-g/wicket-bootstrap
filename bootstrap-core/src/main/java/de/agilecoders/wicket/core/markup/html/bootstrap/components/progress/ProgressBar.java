@@ -23,8 +23,8 @@ import de.agilecoders.wicket.core.util.Attributes;
 public class ProgressBar extends GenericPanel<Integer> {
     private static final Logger LOG = LoggerFactory.getLogger(ProgressBar.class);
 
-    private static final int MIN = 0;
-    private static final int MAX = 100;
+    public static final int MIN = 0;
+    public static final int MAX = 100;
 
     public enum Type implements ICssClassNameProvider {
         DEFAULT, INFO, SUCCESS, WARNING, DANGER;
