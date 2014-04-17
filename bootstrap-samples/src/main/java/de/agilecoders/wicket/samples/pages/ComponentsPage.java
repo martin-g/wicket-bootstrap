@@ -21,6 +21,7 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.button.BootstrapAjaxLink
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.MenuBookmarkablePageLink;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.SplitButton;
+import de.agilecoders.wicket.core.markup.html.bootstrap.components.progress.ProgressBar;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
 import de.agilecoders.wicket.core.markup.html.bootstrap.tabs.AjaxBootstrapTabbedPanel;
 import de.agilecoders.wicket.core.markup.html.bootstrap.tabs.ClientSideBootstrapTabbedPanel;
@@ -51,6 +52,25 @@ public class ComponentsPage extends BasePage {
         add(newTabs("tabs"));
         
         add(newClientSideTabs("tabsClient"));
+
+        addProgressBars();
+    }
+
+    private void addProgressBars() {
+        ProgressBar basic = new ProgressBar("basic");
+        add(basic);
+        ProgressBar.Stack stack = basic.new Stack(Model.of(60));
+        basic.addStacks(stack);
+
+        ProgressBar striped = new ProgressBar("striped");
+        add(striped);
+        ProgressBar.Stack stripedStack = striped.new Stack(Model.of(20));
+        striped.addStacks(stripedStack);
+
+        ProgressBar animated = new ProgressBar("animated");
+        add(animated);
+        ProgressBar.Stack animatedStack = animated.new Stack(Model.of(45));
+        animated.addStacks(animatedStack);
     }
 
     private Component newTabs(String markupId) {

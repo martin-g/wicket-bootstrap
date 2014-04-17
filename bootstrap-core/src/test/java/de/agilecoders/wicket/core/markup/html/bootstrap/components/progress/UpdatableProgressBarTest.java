@@ -1,4 +1,4 @@
-package de.agilecoders.wicket.core.markup.html.bootstrap.components;
+package de.agilecoders.wicket.core.markup.html.bootstrap.components.progress;
 
 import de.agilecoders.wicket.core.WicketApplicationTest;
 import org.apache.wicket.model.IModel;

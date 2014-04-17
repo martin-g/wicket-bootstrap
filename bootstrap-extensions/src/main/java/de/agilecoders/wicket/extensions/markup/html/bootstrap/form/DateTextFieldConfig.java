@@ -1,19 +1,17 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.form;
 
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import java.io.IOException;
+
+import org.joda.time.DateTime;
+
 import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonSerializer;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import org.joda.time.DateTime;
 
 import de.agilecoders.wicket.core.util.Dates;
 import de.agilecoders.wicket.jquery.AbstractConfig;
 import de.agilecoders.wicket.jquery.IKey;
-
-import java.io.IOException;
 
 /**
  * Configuration holder for all {@link DateTextField} configurations.

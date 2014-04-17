@@ -2,6 +2,7 @@ package de.agilecoders.wicket.samples.pages;
 
 import java.util.List;
 
+import de.agilecoders.wicket.core.markup.html.bootstrap.components.progress.UploadProgressBar;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.markup.head.CssHeaderItem;
@@ -22,7 +23,6 @@ import com.google.common.collect.Lists;
 import de.agilecoders.wicket.core.markup.html.bootstrap.block.Code;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.DropDownButton;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.MenuBookmarkablePageLink;
-import de.agilecoders.wicket.core.markup.html.bootstrap.components.ProgressBar;
 import de.agilecoders.wicket.core.markup.html.bootstrap.components.TooltipConfig;
 import de.agilecoders.wicket.core.markup.html.bootstrap.dialog.Modal;
 import de.agilecoders.wicket.core.markup.html.bootstrap.dialog.TextContentModal;
@@ -145,8 +145,8 @@ public class ExtensionsPage extends BasePage {
         FileUploadField fileUpload = new FileUploadField("fileUpload");
         fileUploadForm.add(fileUpload);
 
-        ProgressBar progressBar = new ProgressBar("progressBar", fileUploadForm, fileUpload, Model.of(0));
-        progressBar.striped(true).active(true).type(ProgressBar.Type.INFO);
+        UploadProgressBar progressBar = new UploadProgressBar("progressBar", fileUploadForm, fileUpload, Model.of(0));
+        progressBar.striped(true).active(true).type(UploadProgressBar.Type.INFO);
         fileUploadForm.add(progressBar);
         fileUploadForm.add(new AjaxButton("submit") {});
     }

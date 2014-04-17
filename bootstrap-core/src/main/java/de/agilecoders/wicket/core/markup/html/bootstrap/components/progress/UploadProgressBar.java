@@ -1,11 +1,10 @@
-package de.agilecoders.wicket.core.markup.html.bootstrap.components;
+package de.agilecoders.wicket.core.markup.html.bootstrap.components.progress;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNameProvider;
 import de.agilecoders.wicket.core.markup.html.bootstrap.components.progress.UploadProgressBarJavaScriptReference;
 import de.agilecoders.wicket.core.util.Attributes;
 import org.apache.wicket.Component;
 import org.apache.wicket.MarkupContainer;
-import org.apache.wicket.extensions.ajax.markup.html.form.upload.UploadProgressBar;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
@@ -23,8 +22,8 @@ import org.slf4j.LoggerFactory;
  *
  * @author miha
  */
-public class ProgressBar extends UploadProgressBar {
-    private static final Logger LOG = LoggerFactory.getLogger(ProgressBar.class);
+public class UploadProgressBar extends org.apache.wicket.extensions.ajax.markup.html.form.upload.UploadProgressBar {
+    private static final Logger LOG = LoggerFactory.getLogger(UploadProgressBar.class);
 
     private static final int MIN = 0;
     private static final int MAX = 100;
@@ -41,15 +40,15 @@ public class ProgressBar extends UploadProgressBar {
     private Type type = Type.DEFAULT;
     private boolean striped = false;
 
-    public ProgressBar(String id) {
+    public UploadProgressBar(String id) {
         this(id, Model.of(MIN));
     }
 
-    public ProgressBar(String id, IModel<Integer> model) {
+    public UploadProgressBar(String id, IModel<Integer> model) {
         this(id, new Form<Void>("dummy"), null, model);
     }
 
-    public ProgressBar(String id, Form<?> form, FileUploadField fileUploadField, IModel<Integer> model) {
+    public UploadProgressBar(String id, Form<?> form, FileUploadField fileUploadField, IModel<Integer> model) {
         super(id, form, fileUploadField);
 
         setRenderBodyOnly(false);
@@ -70,7 +69,7 @@ public class ProgressBar extends UploadProgressBar {
         return striped;
     }
 
-    public ProgressBar striped(boolean value) {
+    public UploadProgressBar striped(boolean value) {
         striped = value;
         return this;
     }
@@ -79,7 +78,7 @@ public class ProgressBar extends UploadProgressBar {
         return active;
     }
 
-    public ProgressBar active(boolean value) {
+    public UploadProgressBar active(boolean value) {
         active = value;
         return this;
     }
@@ -92,7 +91,7 @@ public class ProgressBar extends UploadProgressBar {
         return type;
     }
 
-    public ProgressBar type(Type type) {
+    public UploadProgressBar type(Type type) {
         this.type = type;
         return this;
     }
@@ -124,12 +123,12 @@ public class ProgressBar extends UploadProgressBar {
         return Model.of("width: " + value() + "%");
     }
 
-    public ProgressBar value(IModel<Integer> value) {
+    public UploadProgressBar value(IModel<Integer> value) {
         setDefaultModel(value);
         return this;
     }
 
-    public ProgressBar value(Integer value) {
+    public UploadProgressBar value(Integer value) {
         setDefaultModelObject(value);
         return this;
     }

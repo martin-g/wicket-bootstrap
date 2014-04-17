@@ -1,4 +1,4 @@
-package de.agilecoders.wicket.core.markup.html.bootstrap.components;
+package de.agilecoders.wicket.core.markup.html.bootstrap.components.progress;
 
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.AjaxSelfUpdatingTimerBehavior;
@@ -11,7 +11,7 @@ import org.apache.wicket.util.time.Duration;
  * @author miha
  * @version 1.0
  */
-public abstract class UpdatableProgressBar extends ProgressBar {
+public abstract class UpdatableProgressBar extends UploadProgressBar {
 
     Duration updateInterval = Duration.seconds(5);
     private UpdateBehavior behavior;
