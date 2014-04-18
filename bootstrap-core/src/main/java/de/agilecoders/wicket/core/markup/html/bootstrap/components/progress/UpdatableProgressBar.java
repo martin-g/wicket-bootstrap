@@ -11,30 +11,18 @@ import org.apache.wicket.util.time.Duration;
  * @author miha
  * @version 1.0
  */
-public abstract class UpdatableProgressBar extends UploadProgressBar {
+public abstract class UpdatableProgressBar extends ProgressBar {
 
     Duration updateInterval = Duration.seconds(5);
     private UpdateBehavior behavior;
 
     public UpdatableProgressBar(String id) {
-        super(id);
+        this(id, null);
     }
 
     public UpdatableProgressBar(String id, IModel<Integer> model) {
         super(id, model);
-    }
 
-    public Duration updateInterval() {
-        return behavior.updateInterval();
-    }
-
-    public UpdatableProgressBar updateInterval(Duration updateInterval) {
-        behavior.updateInterval(updateInterval);
-        return this;
-    }
-
-    @Override
-    protected void onInitialize() {
         super.onInitialize();
 
         setOutputMarkupId(true);
@@ -50,7 +38,16 @@ public abstract class UpdatableProgressBar extends UploadProgressBar {
             }
         };
 
-        indicator().add(behavior);
+        add(behavior);
+    }
+
+    public Duration updateInterval() {
+        return behavior.updateInterval();
+    }
+
+    public UpdatableProgressBar updateInterval(Duration updateInterval) {
+        behavior.updateInterval(updateInterval);
+        return this;
     }
 
     protected void onPostProcessTarget(AjaxRequestTarget target) {

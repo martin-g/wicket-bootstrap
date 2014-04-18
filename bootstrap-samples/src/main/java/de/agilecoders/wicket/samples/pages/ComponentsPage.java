@@ -3,6 +3,7 @@ package de.agilecoders.wicket.samples.pages;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.agilecoders.wicket.core.markup.html.bootstrap.components.progress.UpdatableProgressBar;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.extensions.markup.html.tabs.AbstractTab;
@@ -13,6 +14,7 @@ import org.apache.wicket.markup.html.link.AbstractLink;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
+import org.apache.wicket.util.time.Duration;
 import org.wicketstuff.annotation.mount.MountPath;
 
 import com.google.common.collect.Lists;
@@ -84,6 +86,16 @@ public class ComponentsPage extends BasePage {
 
         ProgressBar coloredDanger = new ProgressBar("coloredDanger", Model.of(80), ProgressBar.Type.DANGER);
         add(coloredDanger);
+
+        UpdatableProgressBar updatableBar = new UpdatableProgressBar("updatable", Model.of(0)) {
+            @Override
+            protected IModel<Integer> newValue() {
+                int newValue = (value() + 1) % ProgressBar.MAX;
+                return Model.of(newValue);
+            }
+        };
+        updatableBar.updateInterval(Duration.seconds(1));
+        add(updatableBar);
     }
 
     private Component newTabs(String markupId) {
