@@ -8,6 +8,7 @@ import static org.hamcrest.CoreMatchers.startsWith;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.util.tester.TagTester;
 import org.junit.Test;
@@ -40,7 +41,7 @@ public class RichPopoverBehaviorTest extends WicketApplicationTest {
         startBehaviorInPage(new RichPopoverBehavior(Model.of("header")) {
             @Override
             public Component newBodyComponent(String markupId) {
-                return new UploadProgressBar(markupId, Model.of(50));
+                return new UploadProgressBar(markupId, new Form("dummy"), Model.of(50));
             }
         });
 

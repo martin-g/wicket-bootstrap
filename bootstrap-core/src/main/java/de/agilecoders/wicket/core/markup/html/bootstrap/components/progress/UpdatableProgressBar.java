@@ -6,7 +6,8 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.util.time.Duration;
 
 /**
- * TODO: document
+ * A {@link de.agilecoders.wicket.core.markup.html.bootstrap.components.progress.ProgressBar} with
+ * self updating Ajax  behavior
  *
  * @author miha
  * @version 1.0
@@ -23,11 +24,8 @@ public abstract class UpdatableProgressBar extends ProgressBar {
     public UpdatableProgressBar(String id, IModel<Integer> model) {
         super(id, model);
 
-        super.onInitialize();
-
         setOutputMarkupId(true);
         active(true);
-        striped(true);
 
         behavior = new UpdateBehavior(updateInterval) {
             @Override
@@ -70,7 +68,8 @@ public abstract class UpdatableProgressBar extends ProgressBar {
     protected abstract IModel<Integer> newValue();
 
     /**
-     *
+     * An extension of AjaxSelfUpdatingTimerBehavior to be able to use
+     * #setUpdateInterval() method
      */
     private abstract static class UpdateBehavior extends AjaxSelfUpdatingTimerBehavior {
 

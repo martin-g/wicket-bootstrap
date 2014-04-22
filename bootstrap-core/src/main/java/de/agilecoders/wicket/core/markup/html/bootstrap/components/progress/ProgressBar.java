@@ -222,6 +222,15 @@ public class ProgressBar extends GenericPanel<Integer> {
     protected void onComponentTag(ComponentTag tag) {
         super.onComponentTag(tag);
 
+        internalOnComponentTag(tag, active(), striped());
+    }
+
+    /**
+     * Checks the tag name and sets the Bootstrap CSS classes
+     *
+     * @param tag The component tag to check and manage
+     */
+    static void internalOnComponentTag(ComponentTag tag, boolean isActive, boolean isStriped) {
         if (!"div".equalsIgnoreCase(tag.getName())) {
             LOG.warn("You've added a progress bar component to a non 'div' tag: {}. Changing it to 'div'!",
                      tag.getName());
@@ -231,14 +240,13 @@ public class ProgressBar extends GenericPanel<Integer> {
 
         Attributes.addClass(tag, "progress");
 
-        if (active()) {
+        if (isActive) {
             Attributes.addClass(tag, "active");
         }
 
-        if (striped()) {
+        if (isStriped) {
             Attributes.addClass(tag, "progress-striped");
         }
-
     }
 
     @Override

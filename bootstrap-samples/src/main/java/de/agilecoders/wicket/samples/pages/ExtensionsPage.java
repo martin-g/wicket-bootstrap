@@ -2,6 +2,7 @@ package de.agilecoders.wicket.samples.pages;
 
 import java.util.List;
 
+import de.agilecoders.wicket.core.markup.html.bootstrap.components.progress.ProgressBar;
 import de.agilecoders.wicket.core.markup.html.bootstrap.components.progress.UploadProgressBar;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
@@ -146,7 +147,7 @@ public class ExtensionsPage extends BasePage {
         fileUploadForm.add(fileUpload);
 
         UploadProgressBar progressBar = new UploadProgressBar("progressBar", fileUploadForm, fileUpload, Model.of(0));
-        progressBar.striped(true).active(true).type(UploadProgressBar.Type.INFO);
+        progressBar.striped(true).active(true).type(ProgressBar.Type.INFO);
         fileUploadForm.add(progressBar);
         fileUploadForm.add(new AjaxButton("submit") {});
     }

@@ -1,9 +1,5 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.components.progress;
 
-import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNameProvider;
-import de.agilecoders.wicket.core.markup.html.bootstrap.components.progress.UploadProgressBarJavaScriptReference;
-import de.agilecoders.wicket.core.util.Attributes;
-import org.apache.wicket.Component;
 import org.apache.wicket.MarkupContainer;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.head.IHeaderResponse;
@@ -14,40 +10,61 @@ import org.apache.wicket.markup.html.form.upload.FileUploadField;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.resource.ResourceReference;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
+import de.agilecoders.wicket.core.Bootstrap;
+import de.agilecoders.wicket.core.util.Attributes;
 
 /**
- * TODO: document
- *
- * @author miha
+ * A specialization of wicket-extensions' {@link org.apache.wicket.extensions.ajax.markup.html.form.upload.UploadProgressBar}
+ * that uses Bootstrap markup and styles.
  */
 public class UploadProgressBar extends org.apache.wicket.extensions.ajax.markup.html.form.upload.UploadProgressBar {
-    private static final Logger LOG = LoggerFactory.getLogger(UploadProgressBar.class);
 
-    private static final int MIN = 0;
-    private static final int MAX = 100;
+    /**
+     * The color type of the stack
+     */
+    private ProgressBar.Type type = ProgressBar.Type.DEFAULT;
 
-    public enum Type implements ICssClassNameProvider {
-        DEFAULT, INFO, SUCCESS, WARNING, DANGER;
-
-        public String cssClassName() {
-            return equals(DEFAULT) ? "" : "progress-bar-" + name().toLowerCase();
-        }
-    }
-
+    /**
+     * A flag indicating whether the progress bar is animated/active.
+     */
     private boolean active = false;
-    private Type type = Type.DEFAULT;
+
+    /**
+     * A flag indicating whether the progress bar is striped.
+     */
     private boolean striped = false;
 
-    public UploadProgressBar(String id) {
-        this(id, Model.of(MIN));
+    /**
+     * Constructor that will display the upload progress bar for every submit of the given form.
+     * Starts with initial progress value of {@value de.agilecoders.wicket.core.markup.html.bootstrap.components.progress.ProgressBar#MIN}
+     *
+     * @param id The component id
+     * @param form The form with the file upload fields
+     */
+    public UploadProgressBar(String id, Form<?> form) {
+        this(id, form, Model.of(ProgressBar.MIN));
     }
 
-    public UploadProgressBar(String id, IModel<Integer> model) {
-        this(id, new Form<Void>("dummy"), null, model);
+    /**
+     * Constructor that will display the upload progress bar for every submit of the given form.
+     *
+     * @param id The component id
+     * @param form The form with the file upload fields
+     * @param model The initial value of the progress
+     */
+    public UploadProgressBar(String id, Form<?> form, IModel<Integer> model) {
+        this(id, form, null, model);
     }
 
+    /**
+     * Constructor that will display the upload progress bar for the given file upload field.
+     *
+     * @param id The component id
+     * @param form The form with the file upload fields
+     * @param fileUploadField The file upload field which progress will be followed.
+     * @param model The initial value of the progress
+     */
     public UploadProgressBar(String id, Form<?> form, FileUploadField fileUploadField, IModel<Integer> model) {
         super(id, form, fileUploadField);
 
@@ -58,11 +75,7 @@ public class UploadProgressBar extends org.apache.wicket.extensions.ajax.markup.
 
     @Override
     protected ResourceReference getCss() {
-        return null;
-    }
-
-    protected final Component indicator() {
-        return get("bar");
+        return Bootstrap.getSettings(getApplication()).getCssResourceReference();
     }
 
     public boolean striped() {
@@ -80,18 +93,17 @@ public class UploadProgressBar extends org.apache.wicket.extensions.ajax.markup.
 
     public UploadProgressBar active(boolean value) {
         active = value;
+        if (value) {
+            striped(true);
+        }
         return this;
     }
 
-    public final boolean complete() {
-        return value() == MAX;
-    }
-
-    public Type type() {
+    public ProgressBar.Type type() {
         return type;
     }
 
-    public UploadProgressBar type(Type type) {
+    public UploadProgressBar type(ProgressBar.Type type) {
         this.type = type;
         return this;
     }
@@ -103,7 +115,7 @@ public class UploadProgressBar extends org.apache.wicket.extensions.ajax.markup.
             protected void onComponentTag(ComponentTag tag) {
                 super.onComponentTag(tag);
 
-                if (!Type.DEFAULT.equals(type)) {
+                if (!ProgressBar.Type.DEFAULT.equals(type)) {
                     Attributes.addClass(tag, type().cssClassName());
                 }
 
@@ -120,49 +132,59 @@ public class UploadProgressBar extends org.apache.wicket.extensions.ajax.markup.
     }
 
     private IModel<String> createStyleValue() {
-        return Model.of("width: " + value() + "%");
+        return Model.of(String.format("width: %s%%", value()));
     }
 
+    /**
+     * Returns whether the progress bar is complete or not.
+     *
+     * @return {@code true} if the progress bar is complete.
+     */
+    public final boolean complete() {
+        return value() == ProgressBar.MAX;
+    }
+
+    /**
+     * Sets a new value for the progress.
+     *
+     * @return this instance, for method chaining.
+     */
     public UploadProgressBar value(IModel<Integer> value) {
         setDefaultModel(value);
         return this;
     }
 
+    /**
+     * Sets a new value for the progress.
+     *
+     * @return this instance, for method chaining.
+     */
     public UploadProgressBar value(Integer value) {
         setDefaultModelObject(value);
         return this;
     }
 
+    /**
+     * Returns the current value of the progress.
+     *
+     * @return the current value of the progress.
+     */
     public Integer value() {
-        return Math.max(Math.min((Integer) getDefaultModelObject(), MAX), MIN);
+        return Math.max(Math.min((Integer) getDefaultModelObject(), ProgressBar.MAX), ProgressBar.MIN);
     }
 
     @Override
     protected void onComponentTag(ComponentTag tag) {
         super.onComponentTag(tag);
 
-        if (!"div".equalsIgnoreCase(tag.getName())) {
-            LOG.warn("you've added a progress bar component to a non 'div' tag: {}", tag.getName());
-
-            tag.setName("div");
-        }
-
-        Attributes.addClass(tag, "progress");
-
-        if (active()) {
-            Attributes.addClass(tag, "active");
-        }
-
-        if (striped()) {
-            Attributes.addClass(tag, "progress-striped");
-        }
-
+        ProgressBar.internalOnComponentTag(tag, active(), striped());
     }
 
     @Override
     public void renderHead(IHeaderResponse response) {
         super.renderHead(response);
 
+        // monkey patches the JavaScript provided by super.renderHead(response)
         response.render(JavaScriptHeaderItem.forReference(new UploadProgressBarJavaScriptReference()));
     }
 }
