@@ -202,6 +202,13 @@ public class ProgressBar extends GenericPanel<Integer> {
      * @return this instance, for method chaining.
      */
     public ProgressBar value(Integer value) {
+        if (value < MIN) {
+            LOG.warn("The provided value '{}' is smaller than the allowed minimum '{}'.", value, MIN);
+            value = MIN;
+        } else if (value > MAX) {
+            LOG.warn("The provided value '{}' is bigger than the allowed maximum'{}'.", value, MAX);
+            value = MAX;
+        }
         setDefaultModelObject(value);
         return this;
     }
@@ -215,7 +222,15 @@ public class ProgressBar extends GenericPanel<Integer> {
      * @return the current value of the progress.
      */
     public Integer value() {
-        return Math.max(Math.min((Integer) getDefaultModelObject(), MAX), MIN);
+        Integer value = getModelObject();
+        if (value < MIN) {
+            LOG.warn("The model object '{}' is smaller than the allowed minimum '{}'.", value, MIN);
+            value = MIN;
+        } else if (value > MAX) {
+            LOG.warn("The model object '{}' is bigger than the allowed maximum'{}'.", value, MAX);
+            value = MAX;
+        }
+        return value;
     }
 
     @Override
