@@ -257,21 +257,6 @@ public class ProgressBar extends GenericPanel<Integer> {
     }
 
     /**
-     * Creates a model that is used for the stack's label
-     *
-     * @param stack The stack to label
-     * @return A model with the label
-     */
-    protected IModel<String> createLabelModel(final Stack stack) {
-        return new AbstractReadOnlyModel<String>() {
-            @Override
-            public String getObject() {
-                return String.format("%s%%", stack.getModelObject());
-            }
-        };
-    }
-
-    /**
      * Represents a stack of the progress bar.
      */
     public class Stack extends GenericPanel<Integer> {
@@ -305,7 +290,7 @@ public class ProgressBar extends GenericPanel<Integer> {
         protected void onInitialize() {
             super.onInitialize();
 
-            srOnly = new Label("srOnly", createLabelModel(this));
+            srOnly = new Label("srOnly", createLabelModel());
             add(srOnly);
         }
 
@@ -349,6 +334,21 @@ public class ProgressBar extends GenericPanel<Integer> {
             if (!Type.DEFAULT.equals(type)) {
                 Attributes.addClass(tag, type().cssClassName());
             }
+        }
+
+
+        /**
+         * Creates a model that is used for the stack's label
+         *
+         * @return A model with the label
+         */
+        protected IModel<String> createLabelModel() {
+            return new AbstractReadOnlyModel<String>() {
+                @Override
+                public String getObject() {
+                    return String.format("%s%%", Stack.this.getModelObject());
+                }
+            };
         }
     }
 }

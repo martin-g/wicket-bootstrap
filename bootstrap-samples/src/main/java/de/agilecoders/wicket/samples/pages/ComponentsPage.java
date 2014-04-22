@@ -11,6 +11,7 @@ import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.MarkupStream;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.link.AbstractLink;
+import org.apache.wicket.model.AbstractReadOnlyModel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
@@ -67,6 +68,23 @@ public class ComponentsPage extends BasePage {
 
         ProgressBar animated = new ProgressBar("animated", Model.of(45)).active(true);
         add(animated);
+
+        ProgressBar labeledProgressBar = new ProgressBar("labeled");
+        ProgressBar.Stack labeledStack = labeledProgressBar.new Stack(Model.of(45)) {
+            @Override
+            protected IModel<String> createLabelModel() {
+                return new AbstractReadOnlyModel<String>() {
+                    @Override
+                    public String getObject() {
+                        return String.format("The progress is: %s%%", getModelObject());
+                    }
+                };
+            }
+        };
+        labeledStack.labeled(true).type(ProgressBar.Type.SUCCESS);
+        labeledProgressBar.addStacks(labeledStack);
+        add(labeledProgressBar);
+
 
         ProgressBar stacked = new ProgressBar("stacked");
         add(stacked);
