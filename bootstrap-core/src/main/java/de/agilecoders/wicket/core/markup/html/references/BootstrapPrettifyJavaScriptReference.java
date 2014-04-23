@@ -8,6 +8,8 @@ import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.request.resource.JavaScriptResourceReference;
 import org.apache.wicket.request.resource.ResourceReference;
 
+import java.util.List;
+
 /**
  * represents the prettify js library
  *
@@ -29,7 +31,7 @@ public class BootstrapPrettifyJavaScriptReference extends JavaScriptResourceRefe
     }
 
     @Override
-    public Iterable<? extends HeaderItem> getDependencies() {
+    public List<HeaderItem> getDependencies() {
         return Dependencies.combine(super.getDependencies(),
                                     JavaScriptHeaderItem.forReference(Bootstrap.getSettings().getJsResourceReference()));
     }

@@ -35,7 +35,7 @@ public class JQueryUIWidgetJavaScriptReference extends WebjarsJavaScriptResource
     }
 
     @Override
-    public Iterable<? extends HeaderItem> getDependencies() {
+    public List<HeaderItem> getDependencies() {
         final List<HeaderItem> dependencies = Lists.newArrayList(super.getDependencies());
         dependencies.add(JQueryUICoreJavaScriptReference.asHeaderItem());
 

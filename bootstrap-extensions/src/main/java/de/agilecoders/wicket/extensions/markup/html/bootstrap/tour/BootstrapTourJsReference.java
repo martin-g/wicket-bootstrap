@@ -8,6 +8,7 @@ import org.apache.wicket.markup.head.HeaderItem;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.request.resource.JavaScriptResourceReference;
 
+import java.util.List;
 import java.util.Locale;
 
 /**
@@ -26,7 +27,7 @@ public class BootstrapTourJsReference extends JavaScriptResourceReference {
     }
 
     @Override
-    public Iterable<? extends HeaderItem> getDependencies() {
+    public List<HeaderItem> getDependencies() {
         return Dependencies.combine(super.getDependencies(),
                                     CssHeaderItem.forReference(BootstrapTourCssReference.INSTANCE),
                                     JavaScriptHeaderItem.forReference(JQueryCookieJsReference.INSTANCE),

@@ -1,14 +1,14 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.html;
 
-import de.agilecoders.wicket.core.WicketApplicationTest;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.is;
+
 import org.apache.wicket.WicketRuntimeException;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.util.tester.TagTester;
 import org.junit.Test;
 
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.MatcherAssert.assertThat;
+import de.agilecoders.wicket.core.WicketApplicationTest;
 
 /**
  * Tests the {@link MetaTag} component

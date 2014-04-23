@@ -1,13 +1,15 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.form;
 
-import de.agilecoders.wicket.core.util.Attributes;
-import de.agilecoders.wicket.jquery.JQuery;
+import static de.agilecoders.wicket.jquery.JQuery.$;
+
+import java.util.List;
+import java.util.Map;
+
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AbstractDefaultAjaxBehavior;
 import org.apache.wicket.ajax.AjaxRequestHandler;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.AjaxRequestTarget.IJavaScriptResponse;
-import org.apache.wicket.ajax.AjaxRequestTarget.IListener;
 import org.apache.wicket.ajax.attributes.AjaxRequestAttributes;
 import org.apache.wicket.event.IEvent;
 import org.apache.wicket.markup.ComponentTag;
@@ -20,10 +22,8 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.request.IRequestParameters;
 import org.apache.wicket.util.string.StringValue;
 
-import java.util.List;
-import java.util.Map;
-
-import static de.agilecoders.wicket.jquery.JQuery.$;
+import de.agilecoders.wicket.core.util.Attributes;
+import de.agilecoders.wicket.jquery.JQuery;
 
 /**
  * Bootstrap ColorPicker from http://mjaalnir.github.io/bootstrap-colorpicker/
@@ -120,11 +120,7 @@ public class ColorPickerTextField extends TextField<String> {
         super.onEvent(event);
         if (event.getPayload() instanceof AjaxRequestHandler) {
             final AjaxRequestHandler target = (AjaxRequestHandler) event.getPayload();
-            target.addListener(new IListener() {
-                @Override
-                public void onBeforeRespond(Map<String, Component> map, AjaxRequestTarget target) {
-                }
-
+            target.addListener(new AjaxRequestTarget.AbstractListener() {
                 @Override
                 public void onAfterRespond(Map<String, Component> map, IJavaScriptResponse response) {
                     if (isEnabledInHierarchy() && !wasEnhanced) {

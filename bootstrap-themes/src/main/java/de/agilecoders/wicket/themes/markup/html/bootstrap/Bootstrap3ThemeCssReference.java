@@ -38,7 +38,7 @@ public class Bootstrap3ThemeCssReference extends CssResourceReference {
     }
 
     @Override
-    public Iterable<? extends HeaderItem> getDependencies() {
+    public List<HeaderItem> getDependencies() {
         final List<HeaderItem> dependencies = Generics2.newArrayList(super.getDependencies());
         dependencies.add(CssHeaderItem.forReference(Bootstrap.getSettings().getCssResourceReference()));
 

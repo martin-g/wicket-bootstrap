@@ -1,13 +1,13 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.common;
 
-import de.agilecoders.wicket.core.WicketApplicationTest;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.is;
+
 import org.apache.wicket.model.Model;
 import org.apache.wicket.util.tester.TagTester;
 import org.junit.Test;
 
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.MatcherAssert.assertThat;
+import de.agilecoders.wicket.core.WicketApplicationTest;
 
 /**
  * Tests the {@link NotificationPanel} component
@@ -38,10 +38,11 @@ public class NotificationPanelTest  extends WicketApplicationTest{
     @Test
     public void notificationMessageIsRendered() {
         NotificationPanel panel = new NotificationPanel(id());
-        panel.error(new NotificationMessage(Model.of("test")));
+        NotificationMessage notificationMessage = new NotificationMessage(Model.of("test"));
+        panel.error(notificationMessage);
 
         startComponentInPage(panel);
-        tester().assertErrorMessages("test");
+        tester().assertErrorMessages(notificationMessage);
     }
 
     @Test

@@ -20,7 +20,7 @@ public final class Dependencies {
      * @param additional all additional {@link HeaderItem}
      * @return combined list of {@link HeaderItem}
      */
-    public static Iterable<? extends HeaderItem> combine(final Iterable<? extends HeaderItem> headerItems, final HeaderItem... additional) {
+    public static List<HeaderItem> combine(final Iterable<? extends HeaderItem> headerItems, final HeaderItem... additional) {
         Args.notNull(headerItems, "headerItems");
         Args.notNull(additional, "additional");
 

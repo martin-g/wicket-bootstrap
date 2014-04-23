@@ -11,7 +11,7 @@ import org.apache.wicket.MetaDataKey;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.html.IPackageResourceGuard;
 import org.apache.wicket.markup.html.SecurePackageResourceGuard;
-import org.apache.wicket.settings.IMarkupSettings;
+import org.apache.wicket.settings.MarkupSettings;
 
 /**
  * Bootstrap core class
@@ -76,7 +76,7 @@ public final class Bootstrap {
      * @param application current application
      */
     private static void configureMarkupSettings(Application application) {
-        IMarkupSettings markupSettings = application.getMarkupSettings();
+        MarkupSettings markupSettings = application.getMarkupSettings();
 
         // wicket markup leads to ui problems because css selectors doesn't match.
         markupSettings.setStripWicketTags(true);

@@ -35,7 +35,7 @@ public class JQueryUIResizableJavaScriptReference extends WebjarsJavaScriptResou
     }
 
     @Override
-    public Iterable<? extends HeaderItem> getDependencies() {
+    public List<HeaderItem> getDependencies() {
         final List<HeaderItem> dependencies = Lists.newArrayList(super.getDependencies());
         dependencies.add(JQueryUIWidgetJavaScriptReference.asHeaderItem());
         dependencies.add(JQueryUIMouseJavaScriptReference.asHeaderItem());

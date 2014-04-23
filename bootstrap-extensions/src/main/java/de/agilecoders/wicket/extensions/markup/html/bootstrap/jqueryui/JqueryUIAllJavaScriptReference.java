@@ -6,6 +6,8 @@ import org.apache.wicket.Application;
 import org.apache.wicket.markup.head.HeaderItem;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 
+import java.util.List;
+
 /**
  * represents a reference to the jquery-ui javascript resource
  *
@@ -36,7 +38,7 @@ public class JqueryUIAllJavaScriptReference extends WebjarsJavaScriptResourceRef
     }
 
     @Override
-    public Iterable<? extends HeaderItem> getDependencies() {
+    public List<HeaderItem> getDependencies() {
         return Dependencies.combine(super.getDependencies(),
                                     JavaScriptHeaderItem.forReference(Application.get().getJavaScriptLibrarySettings().getJQueryReference()));
     }

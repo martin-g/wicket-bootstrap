@@ -33,7 +33,7 @@ public class PrettyJavaScriptReference extends JavaScriptResourceReference {
     }
 
     @Override
-    public Iterable<? extends HeaderItem> getDependencies() {
+    public List<HeaderItem> getDependencies() {
         List<HeaderItem> dependencies = Generics2.newArrayList(super.getDependencies());
         dependencies.add(JavaScriptHeaderItem.forReference(Bootstrap.getSettings().getJsResourceReference()));
         dependencies.add(CssHeaderItem.forReference(PrettyCssResourceReference.INSTANCE));

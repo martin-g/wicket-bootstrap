@@ -6,6 +6,8 @@ import org.apache.wicket.Application;
 import org.apache.wicket.markup.head.HeaderItem;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 
+import java.util.List;
+
 /**
  * represents the bootstrap js library
  *
@@ -39,7 +41,7 @@ public class BootstrapJavaScriptReference extends WebjarsJavaScriptResourceRefer
     }
 
     @Override
-    public Iterable<? extends HeaderItem> getDependencies() {
+    public List<HeaderItem> getDependencies() {
         return Dependencies.combine(super.getDependencies(),
                                     JavaScriptHeaderItem.forReference(Application.get().getJavaScriptLibrarySettings().getJQueryReference()),
                                     JavaScriptHeaderItem.forReference(JQueryMigrateJavaScriptReference.instance()));

@@ -39,11 +39,11 @@
 
     <properties>
         <github.global.server>github</github.global.server>
-        <java.version>1.6</java.version>
+        <java.version>1.7</java.version>
 
         <bootstrap.version>3.1.1</bootstrap.version>
         <config.version>0.3.4</config.version>
-        <wicket-webjars.version>0.4.1</wicket-webjars.version>
+        <wicket-webjars.version>0.4.2-SNAPSHOT</wicket-webjars.version>
         <wicket-jquery-selectors>0.0.3</wicket-jquery-selectors>
 
         <enforcer.disable>true</enforcer.disable>
@@ -67,7 +67,7 @@
         <jquerypp.version>1.0.1</jquerypp.version>
         <jquery.version>2.1.0-1</jquery.version>
         <maven-bundle-plugin.version>2.4.0</maven-bundle-plugin.version>
-        <wicket.version>6.14.0</wicket.version>
+        <wicket.version>7.0.0-M1</wicket.version>
     </properties>
 
     <dependencyManagement>

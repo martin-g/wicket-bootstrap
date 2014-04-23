@@ -7,6 +7,8 @@ import org.apache.wicket.markup.head.HeaderItem;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.resource.JQueryPluginResourceReference;
 
+import java.util.List;
+
 /**
  * A JavaScript reference that loads the JavaScript resources needed by
  * Jasny Twitter Bootstrap components.
@@ -31,7 +33,7 @@ public class JasnyJsReference extends JQueryPluginResourceReference {
     }
 
     @Override
-    public Iterable<? extends HeaderItem> getDependencies() {
+    public List<HeaderItem> getDependencies() {
         return Dependencies.combine(super.getDependencies(),
                                     CssHeaderItem.forReference(JasnyCssReference.INSTANCE),
                                     JavaScriptHeaderItem.forReference(Bootstrap.getSettings().getJsResourceReference()));
