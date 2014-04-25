@@ -1,6 +1,5 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.components.progress;
 
-import org.apache.wicket.Component;
 import org.apache.wicket.markup.repeater.RepeatingView;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.util.tester.TagTester;
