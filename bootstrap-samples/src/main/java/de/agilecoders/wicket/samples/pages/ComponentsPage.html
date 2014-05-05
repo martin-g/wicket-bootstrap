@@ -1962,9 +1962,7 @@
     <p>Default progress bar with a vertical gradient.</p>
 
     <div class="bs-docs-example">
-        <div class="progress">
-            <div class="progress-bar" style="width: 60%;"></div>
-        </div>
+        <div wicket:id="basic"></div>
     </div>
 <pre class="prettyprint linenums">
 &lt;div class="progress"&gt;
@@ -1977,9 +1975,7 @@
     <p>Uses a gradient to create a striped effect. Not available in IE7-8.</p>
 
     <div class="bs-docs-example">
-        <div class="progress progress-striped">
-            <div class="progress-bar" style="width: 20%;"></div>
-        </div>
+        <div wicket:id="striped"></div>
     </div>
 <pre class="prettyprint linenums">
 &lt;div class="progress progress-striped"&gt;
@@ -1992,12 +1988,23 @@
     <p>Add <code>.active</code> to <code>.progress-striped</code> to animate the stripes right to left. Not available in all versions of IE.</p>
 
     <div class="bs-docs-example">
-        <div class="progress progress-striped active">
-            <div class="progress-bar" style="width: 45%"></div>
-        </div>
+        <div wicket:id="animated"></div>
     </div>
 <pre class="prettyprint linenums">
 &lt;div class="progress progress-striped active"&gt;
+  &lt;div class="progress-bar" style="width: 40%;"&gt;&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+
+    <h3>Labeled</h3>
+
+    <p>Use <code>Stack#labeled(true)</code> to show the stack's label.</p>
+
+    <div class="bs-docs-example">
+        <div wicket:id="labeled" style="height: 20px"></div>
+    </div>
+<pre class="prettyprint linenums">
+&lt;div class="progress"&gt;
   &lt;div class="progress-bar" style="width: 40%;"&gt;&lt;/div&gt;
 &lt;/div&gt;
 </pre>
@@ -2007,11 +2014,7 @@
     <p>Place multiple bars into the same <code>.progress</code> to stack them.</p>
 
     <div class="bs-docs-example">
-        <div class="progress">
-            <div class="progress-bar progress-bar-success" style="width: 35%"></div>
-            <div class="progress-bar progress-bar-warning" style="width: 20%"></div>
-            <div class="progress-bar progress-bar-danger" style="width: 10%"></div>
-        </div>
+        <div wicket:id="stacked"></div>
     </div>
 <pre class="prettyprint linenums">
 &lt;div class="progress"&gt;
@@ -2032,18 +2035,10 @@
     <p>Progress bars use some of the same button and alert classes for consistent styles.</p>
 
     <div class="bs-docs-example">
-        <div class="progress" style="margin-bottom: 9px;">
-            <div class="progress-bar progress-bar-info" style="width: 20%"></div>
-        </div>
-        <div class="progress" style="margin-bottom: 9px;">
-            <div class="progress-bar progress-bar-success" style="width: 40%"></div>
-        </div>
-        <div class="progress" style="margin-bottom: 9px;">
-            <div class="progress-bar progress-bar-warning" style="width: 60%"></div>
-        </div>
-        <div class="progress">
-            <div class="progress-bar progress-bar-danger" style="width: 80%"></div>
-        </div>
+        <div wicket:id="coloredInfo" style="margin-bottom: 9px;"></div>
+        <div wicket:id="coloredSuccess" style="margin-bottom: 9px;"></div>
+        <div wicket:id="coloredWarning" style="margin-bottom: 9px;"></div>
+        <div wicket:id="coloredDanger"></div>
     </div>
 <pre class="prettyprint linenums">
 &lt;div class="progress"&gt;
@@ -2096,6 +2091,15 @@
 
     <hr class="bs-docs-separator">
 
+    <h3>Updatable bars</h3>
+
+    <p>A ProgressBar with self updating Ajax behavior.</p>
+
+    <div class="bs-docs-example">
+        <div wicket:id="updatable"></div>
+    </div>
+
+    <hr class="bs-docs-separator">
 
     <h2>Browser support</h2>
 

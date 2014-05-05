@@ -1,4 +1,4 @@
-package de.agilecoders.wicket.core.markup.html.bootstrap.components;
+package de.agilecoders.wicket.core.markup.html.bootstrap.components.progress;
 
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.AjaxSelfUpdatingTimerBehavior;
@@ -6,7 +6,8 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.util.time.Duration;
 
 /**
- * TODO: document
+ * A {@link de.agilecoders.wicket.core.markup.html.bootstrap.components.progress.ProgressBar} with
+ * self updating Ajax  behavior
  *
  * @author miha
  * @version 1.0
@@ -17,29 +18,14 @@ public abstract class UpdatableProgressBar extends ProgressBar {
     private UpdateBehavior behavior;
 
     public UpdatableProgressBar(String id) {
-        super(id);
+        this(id, null);
     }
 
     public UpdatableProgressBar(String id, IModel<Integer> model) {
         super(id, model);
-    }
-
-    public Duration updateInterval() {
-        return behavior.updateInterval();
-    }
-
-    public UpdatableProgressBar updateInterval(Duration updateInterval) {
-        behavior.updateInterval(updateInterval);
-        return this;
-    }
-
-    @Override
-    protected void onInitialize() {
-        super.onInitialize();
 
         setOutputMarkupId(true);
         active(true);
-        striped(true);
 
         behavior = new UpdateBehavior(updateInterval) {
             @Override
@@ -50,7 +36,16 @@ public abstract class UpdatableProgressBar extends ProgressBar {
             }
         };
 
-        indicator().add(behavior);
+        add(behavior);
+    }
+
+    public Duration updateInterval() {
+        return behavior.updateInterval();
+    }
+
+    public UpdatableProgressBar updateInterval(Duration updateInterval) {
+        behavior.updateInterval(updateInterval);
+        return this;
     }
 
     protected void onPostProcessTarget(AjaxRequestTarget target) {
@@ -73,7 +68,8 @@ public abstract class UpdatableProgressBar extends ProgressBar {
     protected abstract IModel<Integer> newValue();
 
     /**
-     *
+     * An extension of AjaxSelfUpdatingTimerBehavior to be able to use
+     * #setUpdateInterval() method
      */
     private abstract static class UpdateBehavior extends AjaxSelfUpdatingTimerBehavior {
 

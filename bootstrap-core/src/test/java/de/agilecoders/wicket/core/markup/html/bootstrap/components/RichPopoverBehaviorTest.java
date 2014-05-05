@@ -1,17 +1,20 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.components;
 
-import de.agilecoders.wicket.core.WicketApplicationTest;
-import org.apache.wicket.Component;
-import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.model.Model;
-import org.apache.wicket.util.tester.TagTester;
-import org.junit.Test;
-
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.endsWith;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.startsWith;
+
+import org.apache.wicket.Component;
+import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.form.Form;
+import org.apache.wicket.model.Model;
+import org.apache.wicket.util.tester.TagTester;
+import org.junit.Test;
+
+import de.agilecoders.wicket.core.WicketApplicationTest;
+import de.agilecoders.wicket.core.markup.html.bootstrap.components.progress.UploadProgressBar;
 
 /**
  * Tests the {@link RichPopoverBehavior}
@@ -38,7 +41,7 @@ public class RichPopoverBehaviorTest extends WicketApplicationTest {
         startBehaviorInPage(new RichPopoverBehavior(Model.of("header")) {
             @Override
             public Component newBodyComponent(String markupId) {
-                return new ProgressBar(markupId, Model.of(50));
+                return new UploadProgressBar(markupId, new Form("dummy"), Model.of(50));
             }
         });
 
