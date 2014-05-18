@@ -396,6 +396,11 @@
               $(opts.contentSelector).append(frag);
           }
 
+
+          // https://github.com/l0rdn1kk0n/wicket-bootstrap/issues/363
+          var ajaxResponse = data.getElementsByTagName('ajax-response')[0];
+          WicketInfinitescrollAdapter(ajaxResponse, com[0]).processInfiniteScrollResponse();
+
           // previously, we would pass in the new DOM element as context for the callback
           // however we're now using a documentfragment, which doesn't have parents or children,
           // so the context is the contentContainer guy, and we pass in an array

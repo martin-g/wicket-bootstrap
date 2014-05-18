@@ -22,6 +22,7 @@ import java.util.Map;
  * @link http://www.infinite-scroll.com/
  */
 public class InfiniteScrollingBehavior extends Behavior {
+    private static final ResourceReference WICKET_ADAPTER = new JQueryPluginResourceReference(InfiniteScrollingBehavior.class, "js/infinitescroll-wicket-adapter.js");
     private static final ResourceReference JS = new JQueryPluginResourceReference(InfiniteScrollingBehavior.class, "js/jquery.infinitescroll.js");
 
     private boolean autoScroll = true;
@@ -37,6 +38,7 @@ public class InfiniteScrollingBehavior extends Behavior {
     public void renderHead(Component component, IHeaderResponse headerResponse) {
         super.renderHead(component, headerResponse);
 
+        headerResponse.render(JavaScriptHeaderItem.forReference(WICKET_ADAPTER));
         headerResponse.render(JavaScriptHeaderItem.forReference(JS));
         headerResponse.render(OnDomReadyHeaderItem.forScript(createScript(component)));
     }
