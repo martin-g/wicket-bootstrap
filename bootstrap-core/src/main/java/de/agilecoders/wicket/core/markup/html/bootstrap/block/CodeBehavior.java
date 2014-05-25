@@ -9,6 +9,7 @@ import de.agilecoders.wicket.core.markup.html.references.BootstrapPrettifyJavaSc
 import de.agilecoders.wicket.core.util.Components;
 import de.agilecoders.wicket.core.util.CssClassNames;
 import de.agilecoders.wicket.core.util.References;
+import de.agilecoders.wicket.jquery.util.Strings2;
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.Behavior;
 import org.apache.wicket.markup.ComponentTag;
@@ -92,10 +93,10 @@ public class CodeBehavior extends Behavior {
 
         References.renderWithFilter(Bootstrap.getSettings(), response, JavaScriptHeaderItem.forReference(BootstrapPrettifyJavaScriptReference.INSTANCE));
 
-        response.render(OnDomReadyHeaderItem.forScript(createInitializerScript(component.getMarkupId(true))));
+        response.render(OnDomReadyHeaderItem.forScript(createInitializerScript(Strings2.getMarkupId(component))));
     }
 
-    private CharSequence createInitializerScript(String markupId) {
+    private CharSequence createInitializerScript(CharSequence markupId) {
         return "$('#" + markupId + "').html(prettyPrintOne($('#" + markupId + "').html().replace(/\\r\\n|\\r|\\n/g,'<br>'), '', $('#" + markupId + "').attr('class')));";
     }
 

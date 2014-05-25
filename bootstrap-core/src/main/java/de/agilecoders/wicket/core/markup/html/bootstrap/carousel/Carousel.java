@@ -4,6 +4,7 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapResour
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.CssClassNameAppender;
 import de.agilecoders.wicket.core.util.Attributes;
 
+import de.agilecoders.wicket.jquery.util.Strings2;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.ComponentTag;
@@ -190,7 +191,7 @@ public class Carousel extends Panel {
     public void renderHead(IHeaderResponse response) {
         super.renderHead(response);
 
-        response.render(OnDomReadyHeaderItem.forScript("$('#" + getMarkupId(true) + "').carousel({\n"
+        response.render(OnDomReadyHeaderItem.forScript("$('#" + Strings2.getMarkupId(this) + "').carousel({\n"
                                                        + "  interval: " + getInterval().getMilliseconds() + "\n"
                                                        + "})"));
     }
