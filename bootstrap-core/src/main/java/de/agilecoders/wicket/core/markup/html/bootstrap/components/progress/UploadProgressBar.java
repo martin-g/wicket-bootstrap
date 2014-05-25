@@ -75,7 +75,7 @@ public class UploadProgressBar extends org.apache.wicket.extensions.ajax.markup.
 
     @Override
     protected ResourceReference getCss() {
-        return Bootstrap.getSettings(getApplication()).getCssResourceReference();
+        return null;
     }
 
     public boolean striped() {
