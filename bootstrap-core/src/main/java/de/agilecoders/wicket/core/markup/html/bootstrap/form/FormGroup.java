@@ -147,11 +147,11 @@ public class FormGroup extends Border implements IFormModelUpdateListener {
             label.add(new AttributeModifier("for", formComponent.getMarkupId()));
 
             if (useFormComponentLabel) {
-            	if (formComponent.getLabel() != null && !Strings.isEmpty(formComponent.getLabel().getObject())) {
-            		label.setDefaultModel(formComponent.getLabel());	
-            	} else {
-            		label.setDefaultModel(Model.of(formComponent.getDefaultLabel()));
-            	}
+                if (formComponent.getLabel() != null && !Strings.isEmpty(formComponent.getLabel().getObject())) {
+                    label.setDefaultModel(formComponent.getLabel());
+                } else {
+                    label.setDefaultModel(Model.of(formComponent.getDefaultLabel()));
+                }
             }
         }
     }
