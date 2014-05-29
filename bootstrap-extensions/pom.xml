@@ -10,12 +10,11 @@
     </parent>
 
     <artifactId>wicket-bootstrap-extensions</artifactId>
-    <version>0.9.3-SNAPSHOT</version>
     <packaging>bundle</packaging>
     <name>bootstrap-extensions</name>
 
     <properties>
-        <jqueryui.version>1.10.2-1</jqueryui.version>
+        <jqueryui.version>1.10.4</jqueryui.version>
         <typeaheadjs.version>0.9.3</typeaheadjs.version>
     </properties>
 

@@ -10,7 +10,6 @@
     </parent>
 
     <artifactId>wicket-bootstrap-samples</artifactId>
-    <version>0.9.3-SNAPSHOT</version>
     <packaging>war</packaging>
     <name>bootstrap-samples</name>
 
