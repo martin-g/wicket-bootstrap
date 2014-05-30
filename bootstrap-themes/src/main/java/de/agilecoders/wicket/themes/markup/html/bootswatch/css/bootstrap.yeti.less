@@ -24,6 +24,11 @@
     .box-shadow(none);
   }
 
+  .btn {
+    padding-top: 6px;
+    padding-bottom: 6px;
+  }
+
   .dropdown {
 
     &-menu {
@@ -232,7 +237,6 @@ table {
 input,
 .form-control {
   padding: 7px;
-  font-size: @font-size-small;
 }
 
 label,
@@ -244,7 +248,6 @@ label,
   font-weight: normal;
 }
 
-.form-group .btn,
 .input-group-addon,
 .input-group-btn .btn {
   padding: 8px 14px;
@@ -337,6 +340,15 @@ label,
 
 // Indicators =================================================================
 
+.close {
+  opacity: 0.4;
+
+  &:hover,
+  &:focus {
+    opacity: 1;
+  }
+}
+
 .alert {
   font-size: @font-size-small;
   font-weight: 300;
@@ -346,6 +358,16 @@ label,
     font-weight: normal;
     color: #fff;
     text-decoration: underline;
+  }
+
+  .close {
+    color: #fff;
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+      color: #fff;
+    }
   }
 }
 

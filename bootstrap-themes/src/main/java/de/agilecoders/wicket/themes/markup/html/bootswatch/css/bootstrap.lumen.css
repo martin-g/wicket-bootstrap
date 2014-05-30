@@ -1,6 +1,6 @@
 @import url("//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic");
 /*!
- * Bootswatch v3.1.1
+ * Bootswatch v3.1.1+1
  * Homepage: http://bootswatch.com
  * Copyright 2012-2014 Thomas Park
  * Licensed under MIT
@@ -3940,7 +3940,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   border-color: #e7e7e7;
 }
 .navbar-default .navbar-brand {
-  color: #999999;
+  color: #333333;
 }
 .navbar-default .navbar-brand:hover,
 .navbar-default .navbar-brand:focus {
@@ -4172,9 +4172,9 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .pagination > .active > a:focus,
 .pagination > .active > span:focus {
   z-index: 2;
-  color: #555555;
-  background-color: #eeeeee;
-  border-color: #e2e2e2;
+  color: #ffffff;
+  background-color: #158cba;
+  border-color: #127ba3;
   cursor: default;
 }
 .pagination > .disabled > span,
@@ -5587,6 +5587,87 @@ button.close {
     bottom: 20px;
   }
 }
+.clearfix:before,
+.clearfix:after,
+.container:before,
+.container:after,
+.container-fluid:before,
+.container-fluid:after,
+.row:before,
+.row:after,
+.form-horizontal .form-group:before,
+.form-horizontal .form-group:after,
+.btn-toolbar:before,
+.btn-toolbar:after,
+.btn-group-vertical > .btn-group:before,
+.btn-group-vertical > .btn-group:after,
+.nav:before,
+.nav:after,
+.navbar:before,
+.navbar:after,
+.navbar-header:before,
+.navbar-header:after,
+.navbar-collapse:before,
+.navbar-collapse:after,
+.pager:before,
+.pager:after,
+.panel-body:before,
+.panel-body:after,
+.modal-footer:before,
+.modal-footer:after {
+  content: " ";
+  display: table;
+}
+.clearfix:after,
+.container:after,
+.container-fluid:after,
+.row:after,
+.form-horizontal .form-group:after,
+.btn-toolbar:after,
+.btn-group-vertical > .btn-group:after,
+.nav:after,
+.navbar:after,
+.navbar-header:after,
+.navbar-collapse:after,
+.pager:after,
+.panel-body:after,
+.modal-footer:after {
+  clear: both;
+}
+.center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.pull-right {
+  float: right !important;
+}
+.pull-left {
+  float: left !important;
+}
+.hide {
+  display: none !important;
+}
+.show {
+  display: block !important;
+}
+.invisible {
+  visibility: hidden;
+}
+.text-hide {
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+.hidden {
+  display: none !important;
+  visibility: hidden !important;
+}
+.affix {
+  position: fixed;
+}
 @-ms-viewport {
   width: device-width;
 }
@@ -5703,6 +5784,7 @@ button.close {
   border-width: 0 1px 4px 1px;
 }
 .btn {
+  padding: 8px 12px 7px;
   border-width: 0 1px 4px 1px;
   font-size: 12px;
   font-weight: bold;
@@ -5717,6 +5799,19 @@ button.close {
   border-bottom-width: 2px;
   -webkit-box-shadow: none;
   box-shadow: none;
+}
+.btn-lg,
+.btn-group-lg > .btn {
+  padding: 14px 16px 13px;
+  line-height: 15px;
+}
+.btn-sm,
+.btn-group-sm > .btn {
+  padding: 4px 10px;
+}
+.btn-xs,
+.btn-group-xs > .btn {
+  padding: 1px 5px;
 }
 .btn-default:hover,
 .btn-default:focus,
@@ -5758,6 +5853,24 @@ button.close {
   -webkit-box-shadow: none;
   box-shadow: none;
 }
+.navbar-btn:hover {
+  margin-top: 8px;
+}
+.navbar-btn:active {
+  margin-top: 9px;
+}
+.navbar-btn.btn-sm:hover {
+  margin-top: 11px;
+}
+.navbar-btn.btn-sm:active {
+  margin-top: 12px;
+}
+.navbar-btn.btn-xs:hover {
+  margin-top: 15px;
+}
+.navbar-btn.btn-xs:active {
+  margin-top: 16px;
+}
 .text-primary,
 .text-primary:hover {
   color: #158cba;
@@ -5778,12 +5891,28 @@ button.close {
 .text-info:hover {
   color: #75caeb;
 }
-table tr.success,
-.table tr.success,
-table tr.warning,
-.table tr.warning,
-table tr.danger,
-.table tr.danger {
+table a,
+.table a {
+  text-decoration: underline;
+}
+table .success,
+.table .success,
+table .warning,
+.table .warning,
+table .danger,
+.table .danger,
+table .info,
+.table .info {
+  color: #fff;
+}
+table .success a,
+.table .success a,
+table .warning a,
+.table .warning a,
+table .danger a,
+.table .danger a,
+table .info a,
+.table .info a {
   color: #fff;
 }
 table > thead > tr > th,
@@ -5808,7 +5937,8 @@ label {
   font-weight: normal;
 }
 .has-warning .help-block,
-.has-warning .control-label {
+.has-warning .control-label,
+.has-warning .form-control-feedback {
   color: #ff851b;
 }
 .has-warning .form-control,
@@ -5818,7 +5948,8 @@ label {
   box-shadow: inset 0 2px 0 rgba(0, 0, 0, 0.075);
 }
 .has-error .help-block,
-.has-error .control-label {
+.has-error .control-label,
+.has-error .form-control-feedback {
   color: #ff4136;
 }
 .has-error .form-control,
@@ -5828,7 +5959,8 @@ label {
   box-shadow: inset 0 2px 0 rgba(0, 0, 0, 0.075);
 }
 .has-success .help-block,
-.has-success .control-label {
+.has-success .control-label,
+.has-success .form-control-feedback {
   color: #28b62c;
 }
 .has-success .form-control,
@@ -5888,6 +6020,8 @@ label {
 .pager > li > a,
 .pagination > li > span,
 .pager > li > span {
+  position: relative;
+  top: 0;
   border-width: 0 1px 4px 1px;
   color: #555555;
   font-size: 12px;
@@ -5898,29 +6032,44 @@ label {
 .pager > li > a:hover,
 .pagination > li > span:hover,
 .pager > li > span:hover {
-  margin-top: 1px;
+  top: 1px;
   border-bottom-width: 3px;
 }
 .pagination > li > a:active,
 .pager > li > a:active,
 .pagination > li > span:active,
 .pager > li > span:active {
-  margin-top: 2px;
+  top: 2px;
   border-bottom-width: 2px;
 }
 .pagination > .disabled > a:hover,
 .pager > .disabled > a:hover,
 .pagination > .disabled > span:hover,
 .pager > .disabled > span:hover {
-  margin-top: 0;
+  top: 0;
   border-width: 0 1px 4px 1px;
 }
 .pagination > .disabled > a:active,
 .pager > .disabled > a:active,
 .pagination > .disabled > span:active,
 .pager > .disabled > span:active {
-  margin-top: 0;
+  top: 0;
   border-width: 0 1px 4px 1px;
+}
+.pager > li > a,
+.pager > li > span,
+.pager > .disabled > a,
+.pager > .disabled > span,
+.pager > li > a:hover,
+.pager > li > span:hover,
+.pager > .disabled > a:hover,
+.pager > .disabled > span:hover,
+.pager > li > a:active,
+.pager > li > span:active,
+.pager > .disabled > a:active,
+.pager > .disabled > span:active {
+  border-left-width: 2px;
+  border-right-width: 2px;
 }
 .alert {
   border-width: 0 1px 4px 1px;
@@ -5930,6 +6079,16 @@ label {
   font-weight: normal;
   color: #fff;
   text-decoration: underline;
+}
+.alert .close {
+  color: #fff;
+  text-decoration: none;
+  opacity: 0.4;
+}
+.alert .close:hover,
+.alert .close:focus {
+  color: #fff;
+  opacity: 1;
 }
 .label {
   font-weight: normal;
@@ -5955,87 +6114,5 @@ label {
 }
 .panel {
   border: 1px solid #e7e7e7;
-  -webkit-box-shadow: 0 4px 0 rgba(0, 0, 0, 0.15);
-  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.15);
-}
-.clearfix:before,
-.clearfix:after,
-.container:before,
-.container:after,
-.container-fluid:before,
-.container-fluid:after,
-.row:before,
-.row:after,
-.form-horizontal .form-group:before,
-.form-horizontal .form-group:after,
-.btn-toolbar:before,
-.btn-toolbar:after,
-.btn-group-vertical > .btn-group:before,
-.btn-group-vertical > .btn-group:after,
-.nav:before,
-.nav:after,
-.navbar:before,
-.navbar:after,
-.navbar-header:before,
-.navbar-header:after,
-.navbar-collapse:before,
-.navbar-collapse:after,
-.pager:before,
-.pager:after,
-.panel-body:before,
-.panel-body:after,
-.modal-footer:before,
-.modal-footer:after {
-  content: " ";
-  display: table;
-}
-.clearfix:after,
-.container:after,
-.container-fluid:after,
-.row:after,
-.form-horizontal .form-group:after,
-.btn-toolbar:after,
-.btn-group-vertical > .btn-group:after,
-.nav:after,
-.navbar:after,
-.navbar-header:after,
-.navbar-collapse:after,
-.pager:after,
-.panel-body:after,
-.modal-footer:after {
-  clear: both;
-}
-.center-block {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-.pull-right {
-  float: right !important;
-}
-.pull-left {
-  float: left !important;
-}
-.hide {
-  display: none !important;
-}
-.show {
-  display: block !important;
-}
-.invisible {
-  visibility: hidden;
-}
-.text-hide {
-  font: 0/0 a;
-  color: transparent;
-  text-shadow: none;
-  background-color: transparent;
-  border: 0;
-}
-.hidden {
-  display: none !important;
-  visibility: hidden !important;
-}
-.affix {
-  position: fixed;
+  border-width: 0 1px 4px 1px;
 }
