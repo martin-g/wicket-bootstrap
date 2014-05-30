@@ -58,9 +58,9 @@
         <rhino.version>1.7R4</rhino.version>
         <doxia.version>1.0</doxia.version>
         <less4j.version>1.5.4</less4j.version>
-        <modernizr.version>2.6.2-1</modernizr.version>
-        <jetty.version>8.1.14.v20131031</jetty.version>
-        <newrelic.version>3.4.1</newrelic.version>
+        <modernizr.version>2.7.1</modernizr.version>
+        <jetty.version>8.1.15.v20140411</jetty.version>
+        <newrelic.version>3.7.0</newrelic.version>
         <google-closure.version>v20130603</google-closure.version>
         <contiperf.version>2.2.0</contiperf.version>
         <logback.version>1.1.2</logback.version>
@@ -167,7 +167,7 @@
             <dependency>
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-lang3</artifactId>
-                <version>3.1</version>
+                <version>3.3.2</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
