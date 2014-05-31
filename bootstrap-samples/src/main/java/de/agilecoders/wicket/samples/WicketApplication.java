@@ -3,8 +3,8 @@ package de.agilecoders.wicket.samples;
 import com.google.javascript.jscomp.CompilationLevel;
 import de.agilecoders.wicket.core.Bootstrap;
 import de.agilecoders.wicket.core.markup.html.RenderJavaScriptToFooterHeaderResponseDecorator;
-import de.agilecoders.wicket.core.markup.html.references.BootstrapPrettifyCssReference;
-import de.agilecoders.wicket.core.markup.html.references.BootstrapPrettifyJavaScriptReference;
+import de.agilecoders.wicket.core.markup.html.bootstrap.block.prettyprint.PrettifyCssResourceReference;
+import de.agilecoders.wicket.core.markup.html.bootstrap.block.prettyprint.PrettifyJavaScriptReference;
 import de.agilecoders.wicket.core.markup.html.references.ModernizrJavaScriptReference;
 import de.agilecoders.wicket.core.request.resource.caching.version.Adler32ResourceVersion;
 import de.agilecoders.wicket.core.settings.BootstrapSettings;
@@ -95,7 +95,7 @@ public class WicketApplication extends WebApplication {
         getDebugSettings().setAjaxDebugModeEnabled(false);
 
         configureBootstrap();
-        configureResourceBundles();
+//        configureResourceBundles();
 
         optimizeForWebPerformance();
 
@@ -141,12 +141,12 @@ public class WicketApplication extends WebApplication {
                                     (JavaScriptResourceReference) getJavaScriptLibrarySettings().getJQueryReference(),
                                     (JavaScriptResourceReference) getJavaScriptLibrarySettings().getWicketEventReference(),
                                     (JavaScriptResourceReference) getJavaScriptLibrarySettings().getWicketAjaxReference(),
-                                    (JavaScriptResourceReference) ModernizrJavaScriptReference.instance()
+                                    ModernizrJavaScriptReference.instance()
         );
 
         bundles.addJavaScriptBundle(WicketApplication.class, "bootstrap.js",
                                     (JavaScriptResourceReference) Bootstrap.getSettings().getJsResourceReference(),
-                                    (JavaScriptResourceReference) BootstrapPrettifyJavaScriptReference.INSTANCE,
+                                    (JavaScriptResourceReference) PrettifyJavaScriptReference.INSTANCE,
                                     ApplicationJavaScript.INSTANCE
         );
 
@@ -165,7 +165,7 @@ public class WicketApplication extends WebApplication {
         );
 
         bundles.addCssBundle(WicketApplication.class, "application.css",
-                             (CssResourceReference) BootstrapPrettifyCssReference.INSTANCE,
+                             (CssResourceReference) PrettifyCssResourceReference.INSTANCE,
                              FixBootstrapStylesCssResourceReference.INSTANCE
         );
     }

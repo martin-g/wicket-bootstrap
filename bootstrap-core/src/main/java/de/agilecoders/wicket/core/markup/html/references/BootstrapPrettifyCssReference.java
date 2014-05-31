@@ -7,7 +7,9 @@ import org.apache.wicket.request.resource.ResourceReference;
  * The {@link CssResourceReference} for the prettify component.
  *
  * @author miha
+ * @deprecated Use {@link de.agilecoders.wicket.core.markup.html.bootstrap.block.prettyprint.PrettifyCssResourceReference} instead
  */
+@Deprecated
 public class BootstrapPrettifyCssReference extends CssResourceReference {
     private static final long serialVersionUID = 1L;
 
