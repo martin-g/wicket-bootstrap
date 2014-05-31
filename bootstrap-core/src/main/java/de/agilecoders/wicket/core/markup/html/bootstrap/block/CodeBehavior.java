@@ -40,7 +40,7 @@ public class CodeBehavior extends Behavior {
      */
     public enum Language implements ICssClassNameProvider {
         DYNAMIC, BSH, C, CC, CPP, CS, CSH, CYC, CV, HTM, HTML,
-        JAVA, JS, M, MXML, PERL, PL, PM, PY, RB, SH,
+        JAVA, JS, M, MXML, PERL, PL, PM, PY, RB, SCALA, SH,
         XHTML, XML, XSL;
 
         @Override
