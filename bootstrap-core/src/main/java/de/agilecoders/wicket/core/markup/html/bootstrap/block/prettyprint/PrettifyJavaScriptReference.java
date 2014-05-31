@@ -17,26 +17,26 @@ import java.util.List;
  * @author miha
  * @version 1.0
  */
-public class PrettyJavaScriptReference extends JavaScriptResourceReference {
+public class PrettifyJavaScriptReference extends JavaScriptResourceReference {
     private static final long serialVersionUID = 1L;
 
     /**
      * Singleton instance of this reference
      */
-    public static final ResourceReference INSTANCE = new PrettyJavaScriptReference();
+    public static final ResourceReference INSTANCE = new PrettifyJavaScriptReference();
 
     /**
      * Private constructor.
      */
-    private PrettyJavaScriptReference() {
-        super(PrettyJavaScriptReference.class, "prettify.js");
+    private PrettifyJavaScriptReference() {
+        super(PrettifyJavaScriptReference.class, "run_prettify.js");
     }
 
     @Override
     public List<HeaderItem> getDependencies() {
         List<HeaderItem> dependencies = Generics2.newArrayList(super.getDependencies());
         dependencies.add(JavaScriptHeaderItem.forReference(Bootstrap.getSettings().getJsResourceReference()));
-        dependencies.add(CssHeaderItem.forReference(PrettyCssResourceReference.INSTANCE));
+        dependencies.add(CssHeaderItem.forReference(PrettifyCssResourceReference.INSTANCE));
 
         return dependencies;
     }

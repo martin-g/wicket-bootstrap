@@ -14,7 +14,9 @@ import java.util.List;
  * represents the prettify js library
  *
  * @author miha
+ * @deprecated Use {@link de.agilecoders.wicket.core.markup.html.bootstrap.block.prettyprint.PrettifyJavaScriptReference} instead
  */
+@Deprecated
 public class BootstrapPrettifyJavaScriptReference extends JavaScriptResourceReference {
     private static final long serialVersionUID = 1L;
 

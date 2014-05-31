@@ -1,15 +1,6 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.block;
 
-import de.agilecoders.wicket.core.Bootstrap;
-import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
-import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.CssClassNameAppender;
-import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNameProvider;
-import de.agilecoders.wicket.core.markup.html.references.BootstrapPrettifyCssReference;
-import de.agilecoders.wicket.core.markup.html.references.BootstrapPrettifyJavaScriptReference;
-import de.agilecoders.wicket.core.util.Components;
-import de.agilecoders.wicket.core.util.CssClassNames;
-import de.agilecoders.wicket.core.util.References;
-import de.agilecoders.wicket.jquery.util.Strings2;
+import de.agilecoders.wicket.core.markup.html.bootstrap.block.prettyprint.PrettifyCssResourceReference;
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.Behavior;
 import org.apache.wicket.markup.ComponentTag;
@@ -19,6 +10,16 @@ import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
+
+import de.agilecoders.wicket.core.Bootstrap;
+import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
+import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.CssClassNameAppender;
+import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNameProvider;
+import de.agilecoders.wicket.core.markup.html.bootstrap.block.prettyprint.PrettifyJavaScriptReference;
+import de.agilecoders.wicket.core.util.Components;
+import de.agilecoders.wicket.core.util.CssClassNames;
+import de.agilecoders.wicket.core.util.References;
+import de.agilecoders.wicket.jquery.util.Strings2;
 
 /**
  * Wrap inline snippets of code with <code> and use <pre> for multiple
@@ -39,9 +40,17 @@ public class CodeBehavior extends Behavior {
      * enum that holds all possible languages
      */
     public enum Language implements ICssClassNameProvider {
-        DYNAMIC, BSH, C, CC, CPP, CS, CSH, CYC, CV, HTM, HTML,
-        JAVA, JS, M, MXML, PERL, PL, PM, PY, RB, SCALA, SH,
-        XHTML, XML, XSL;
+        DYNAMIC, // use this or don't set a lang for auto detection
+
+        // auto detected
+        BSH, C, CC, CPP, CS, CSH, CYC, CV, HTM, HTML,
+        JAVA, JS, M, MXML, PERL, PL, PM, PY, RB, SH,
+        XHTML, XML, XSL,
+
+        // plugins
+        APOLLO, BASIC, CLJ, CSS, DART, ERLANG, GO, HS, LISP,
+        LLVM, LUA, MATLAB, ML, MUMPS, N, PASCAL, PROTO, R, RD,
+        SCALA, SQL, TCL, TEX, VB, VHDL, WIKI, XQ, YAML;
 
         @Override
         public String cssClassName() {
@@ -67,7 +76,7 @@ public class CodeBehavior extends Behavior {
     public CodeBehavior() {
         super();
 
-        lineNumbers = Model.of(false);
+        lineNumbers = Model.of(true);
         cssClassNameModel = Model.of("");
         language = Model.of(Language.DYNAMIC);
         from = Model.of(0);
@@ -89,15 +98,15 @@ public class CodeBehavior extends Behavior {
     public void renderHead(final Component component, final IHeaderResponse response) {
         super.renderHead(component, response);
 
-        response.render(CssHeaderItem.forReference(BootstrapPrettifyCssReference.INSTANCE));
+        response.render(CssHeaderItem.forReference(PrettifyCssResourceReference.INSTANCE));
 
-        References.renderWithFilter(Bootstrap.getSettings(), response, JavaScriptHeaderItem.forReference(BootstrapPrettifyJavaScriptReference.INSTANCE));
+        References.renderWithFilter(Bootstrap.getSettings(), response, JavaScriptHeaderItem.forReference(PrettifyJavaScriptReference.INSTANCE));
 
         response.render(OnDomReadyHeaderItem.forScript(createInitializerScript(Strings2.getMarkupId(component))));
     }
 
     private CharSequence createInitializerScript(CharSequence markupId) {
-        return "$('#" + markupId + "').html(prettyPrintOne($('#" + markupId + "').html().replace(/\\r\\n|\\r|\\n/g,'<br>'), '', $('#" + markupId + "').attr('class')));";
+        return "$('#" + markupId + "').html(PR.prettyPrintOne($('#" + markupId + "').html().replace(/\\r\\n|\\r|\\n/g,'<br>'), '', $('#" + markupId + "').attr('class')));";
     }
 
     @Override
