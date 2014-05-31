@@ -29,7 +29,7 @@ public class PrettifyJavaScriptReference extends JavaScriptResourceReference {
      * Private constructor.
      */
     private PrettifyJavaScriptReference() {
-        super(PrettifyJavaScriptReference.class, "run_prettify.js");
+        super(PrettifyJavaScriptReference.class, "prettify.js");
     }
 
     @Override
