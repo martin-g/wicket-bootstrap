@@ -3,6 +3,7 @@ package de.agilecoders.wicket.core.markup.html.bootstrap.tabs;
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapResourcesBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.CssClassNameAppender;
 import de.agilecoders.wicket.core.util.Attributes;
+import de.agilecoders.wicket.jquery.util.Strings2;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.extensions.markup.html.tabs.ITab;
@@ -109,7 +110,7 @@ public class Collapsible extends Panel {
 
             @Override
             protected void populateItem(final LoopItem loopItem) {
-                final String parentMarkupId = Collapsible.this.getMarkupId(true);
+                final CharSequence parentMarkupId = Strings2.getMarkupId(Collapsible.this);
                 final ITab tab = Collapsible.this.tabs.get(loopItem.getIndex());
                 final State state = activeTab.getObject().equals(loopItem.getIndex()) ? State.Active : State.Inactive;
 

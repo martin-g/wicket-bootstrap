@@ -3,7 +3,6 @@ package de.agilecoders.wicket.core.markup.html.bootstrap.components.progress;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
-import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.panel.GenericPanel;
 import org.apache.wicket.markup.repeater.RepeatingView;
 import org.apache.wicket.model.AbstractReadOnlyModel;
@@ -48,12 +47,12 @@ public class ProgressBar extends GenericPanel<Integer> {
      * Constructor.
      *
      * Creates an empty progress bar.
-     * Use {@linkplain #addStacks(de.agilecoders.wicket.core.markup.html.bootstrap.components.progress.ProgressBar.Stack...)}
+     * Use {@linkplain #addStacks(Stack...)}
      * to add stacks to it
      *
      * @param id The component id
      * @see #ProgressBar(String, org.apache.wicket.model.IModel, de.agilecoders.wicket.core.markup.html.bootstrap.components.progress.ProgressBar.Type, boolean)  
-     * @see #addStacks(de.agilecoders.wicket.core.markup.html.bootstrap.components.progress.ProgressBar.Stack...) 
+     * @see #addStacks(Stack...)
      */
     public ProgressBar(String id) {
         this(id, null);
@@ -120,7 +119,7 @@ public class ProgressBar extends GenericPanel<Integer> {
         add(stacks);
         
         if (model != null) {
-            Stack defaultStack = this.new Stack(new AbstractReadOnlyModel<Integer>() {
+            Stack defaultStack = new Stack(getStackId(), new AbstractReadOnlyModel<Integer>() {
                 @Override
                 public Integer getObject() {
                     return ProgressBar.this.getModelObject();
@@ -129,6 +128,14 @@ public class ProgressBar extends GenericPanel<Integer> {
             defaultStack.type(type).labeled(labeled);
             addStacks(defaultStack);
         }
+    }
+
+    /**
+     * Generates a safe component id for a stack in this progress bar
+     * @return a component id for a stack
+     */
+    public String getStackId() {
+        return stacks.newChildId();
     }
 
     /**
@@ -271,99 +278,4 @@ public class ProgressBar extends GenericPanel<Integer> {
         response.render(JavaScriptHeaderItem.forReference(new UploadProgressBarJavaScriptReference()));
     }
 
-    /**
-     * Represents a stack of the progress bar.
-     */
-    public class Stack extends GenericPanel<Integer> {
-
-        /**
-         * A label for the stack's progress
-         */
-        private Label srOnly;
-
-        /**
-         * The color type of the stack
-         */
-        private Type type = Type.DEFAULT;
-
-        /**
-         * A flag that is used to decide whether to show the label or not.
-         * By default the label is not shown.
-         */
-        private boolean labeled = false;
-
-        /**
-         * Constructor.
-         * 
-         * @param model The progress of this stack
-         */
-        public Stack(IModel<Integer> model) {
-            super(stacks.newChildId(), model);
-        }
-
-        @Override
-        protected void onInitialize() {
-            super.onInitialize();
-
-            srOnly = new Label("srOnly", createLabelModel());
-            add(srOnly);
-        }
-
-        public Type type() {
-            return type;
-        }
-
-        public Stack type(Type type) {
-            this.type = type;
-            return this;
-        }
-
-        public boolean labeled() {
-            return labeled;
-        }
-
-        public Stack labeled(boolean labeled) {
-            this.labeled = labeled;
-            return this;
-        }
-
-        @Override
-        protected void onConfigure() {
-            super.onConfigure();
-
-            if (labeled()) {
-                srOnly.setRenderBodyOnly(true);
-            }
-        }
-
-        @Override
-        protected void onComponentTag(ComponentTag tag) {
-            super.onComponentTag(tag);
-
-            Integer value = getModelObject();
-            Attributes.set(tag, "style", String.format("width: %s%%", value));
-            Attributes.set(tag, "aria-valuenow", String.valueOf(value));
-            Attributes.set(tag, "aria-valuemin", String.valueOf(MIN));
-            Attributes.set(tag, "aria-valuemax", String.valueOf(MAX));
-
-            if (!Type.DEFAULT.equals(type)) {
-                Attributes.addClass(tag, type().cssClassName());
-            }
-        }
-
-
-        /**
-         * Creates a model that is used for the stack's label
-         *
-         * @return A model with the label
-         */
-        protected IModel<String> createLabelModel() {
-            return new AbstractReadOnlyModel<String>() {
-                @Override
-                public String getObject() {
-                    return String.format("%s%%", Stack.this.getModelObject());
-                }
-            };
-        }
-    }
 }

@@ -3,6 +3,7 @@ package de.agilecoders.wicket.samples.pages;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.agilecoders.wicket.core.markup.html.bootstrap.components.progress.Stack;
 import de.agilecoders.wicket.core.markup.html.bootstrap.components.progress.UpdatableProgressBar;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
@@ -70,7 +71,7 @@ public class ComponentsPage extends BasePage {
         add(animated);
 
         ProgressBar labeledProgressBar = new ProgressBar("labeled");
-        ProgressBar.Stack labeledStack = labeledProgressBar.new Stack(Model.of(45)) {
+        Stack labeledStack = new Stack(labeledProgressBar.getStackId(), Model.of(45)) {
             @Override
             protected IModel<String> createLabelModel() {
                 return new AbstractReadOnlyModel<String>() {
@@ -88,9 +89,9 @@ public class ComponentsPage extends BasePage {
 
         ProgressBar stacked = new ProgressBar("stacked");
         add(stacked);
-        ProgressBar.Stack stackedStack1 = stacked.new Stack(Model.of(35)).type(ProgressBar.Type.SUCCESS);
-        ProgressBar.Stack stackedStack2 = stacked.new Stack(Model.of(20)).type(ProgressBar.Type.WARNING);
-        ProgressBar.Stack stackedStack3 = stacked.new Stack(Model.of(10)).type(ProgressBar.Type.DANGER);
+        Stack stackedStack1 = new Stack(stacked.getStackId(), Model.of(35)).type(ProgressBar.Type.SUCCESS);
+        Stack stackedStack2 = new Stack(stacked.getStackId(), Model.of(20)).type(ProgressBar.Type.WARNING);
+        Stack stackedStack3 = new Stack(stacked.getStackId(), Model.of(10)).type(ProgressBar.Type.DANGER);
         stacked.addStacks(stackedStack1, stackedStack2, stackedStack3);
 
         ProgressBar coloredInfo = new ProgressBar("coloredInfo", Model.of(20), ProgressBar.Type.INFO);

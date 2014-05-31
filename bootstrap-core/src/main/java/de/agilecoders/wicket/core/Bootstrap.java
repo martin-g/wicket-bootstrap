@@ -12,6 +12,7 @@ import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.html.IPackageResourceGuard;
 import org.apache.wicket.markup.html.SecurePackageResourceGuard;
 import org.apache.wicket.settings.MarkupSettings;
+import org.apache.wicket.protocol.http.WebApplication;
 
 /**
  * Bootstrap core class
@@ -45,8 +46,8 @@ public final class Bootstrap {
 
             app.setMetaData(BOOTSTRAP_SETTINGS_METADATA_KEY, settings);
 
-            if (settings.useWebjars()) {
-                WicketWebjars.install(app);
+            if (settings.useWebjars() && app instanceof WebApplication) {
+                WicketWebjars.install((WebApplication) app);
             }
 
             if (settings.updateSecurityManager()) {
@@ -64,7 +65,7 @@ public final class Bootstrap {
     /**
      * Installs given settings for given application
      *
-     * @param app      The current application
+     * @param app The current application
      */
     public static void install(final Application app) {
         install(app, null);

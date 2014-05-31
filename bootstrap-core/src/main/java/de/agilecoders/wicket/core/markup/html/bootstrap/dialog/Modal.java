@@ -5,6 +5,7 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.CssClassNameApp
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNameProvider;
 import de.agilecoders.wicket.core.util.Attributes;
 
+import de.agilecoders.wicket.jquery.util.Strings2;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxEventBehavior;
@@ -314,7 +315,7 @@ public class Modal<T> extends GenericPanel<T> {
      * @return new script.
      */
     protected String createActionScript(final String markupId, final String action) {
-        return "$('#" + markupId + "').modal('" + action + "');";
+        return "$('#" + Strings2.escapeMarkupId(markupId) + "').modal('" + action + "');";
     }
 
     public Modal<T> addOpenerAttributesTo(final Component component) {

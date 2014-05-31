@@ -7,9 +7,9 @@ Current build status: [![Build Status](https://buildhive.cloudbees.com/job/l0rdn
 Components
 ----------
 
-* Twitter Bootstrap (3.1.0): https://github.com/twbs/bootstrap/
-* Apache Wicket (6.13.0): http://wicket.apache.org/
-* Bootswatch (3.1.0): http://bootswatch.com/
+* Twitter Bootstrap (3.1.1-1): https://github.com/twbs/bootstrap/
+* Apache Wicket (6.15.0): http://wicket.apache.org/
+* Bootswatch (3.1.1-1): http://bootswatch.com/
 
 Extensions
 ----------
@@ -20,7 +20,7 @@ Extensions
 * JQueryUI (1.9.2): http://api.jqueryui.com/
    * Draggable: http://api.jqueryui.com/draggable
    * Resizable: http://api.jqueryui.com/resizable
-* less4j (1.2.4): https://github.com/SomMeri/less4j
+* less4j (1.5.4): https://github.com/SomMeri/less4j
 * bootstrap-tour (0.9.0): http://sorich87.github.com/bootstrap-tour
 * OpenWebIcons (2012-10-03): http://pfefferle.github.com/openwebicons/
 * Twitter Typeahead (0.9.3): http://twitter.github.io/typeahead.js/
@@ -41,7 +41,7 @@ core maven dependency:
 <pre><code>&lt;dependency&gt;
   &lt;groupId&gt;de.agilecoders.wicket&lt;/groupId&gt;
   &lt;artifactId&gt;wicket-bootstrap-core&lt;/artifactId&gt;
-  &lt;version&gt;0.9.2&lt;/version&gt;
+  &lt;version&gt;0.9.3&lt;/version&gt;
 &lt;/dependency&gt;
 </code></pre>
 
@@ -49,7 +49,7 @@ for all extensions:
 <pre><code>&lt;dependency&gt;
   &lt;groupId&gt;de.agilecoders.wicket&lt;/groupId&gt;
   &lt;artifactId&gt;wicket-bootstrap-extensions&lt;/artifactId&gt;
-  &lt;version&gt;0.9.2&lt;/version&gt;
+  &lt;version&gt;0.9.3&lt;/version&gt;
 &lt;/dependency&gt;
 </code></pre>
 
@@ -57,7 +57,7 @@ for all themes:
 <pre><code>&lt;dependency&gt;
   &lt;groupId&gt;de.agilecoders.wicket&lt;/groupId&gt;
   &lt;artifactId&gt;wicket-bootstrap-themes&lt;/artifactId&gt;
-  &lt;version&gt;0.9.2&lt;/version&gt;
+  &lt;version&gt;0.9.3&lt;/version&gt;
 &lt;/dependency&gt;
 </code></pre>
 
@@ -65,7 +65,7 @@ if you want to use a less compiler:
 <pre><code>&lt;dependency&gt;
   &lt;groupId&gt;de.agilecoders.wicket&lt;/groupId&gt;
   &lt;artifactId&gt;wicket-bootstrap-less&lt;/artifactId&gt;
-  &lt;version&gt;0.9.2&lt;/version&gt;
+  &lt;version&gt;0.9.3&lt;/version&gt;
 &lt;/dependency&gt;
 </code></pre>
 
@@ -73,7 +73,7 @@ all samples can be used with this dependency:
 <pre><code>&lt;dependency&gt;
   &lt;groupId&gt;de.agilecoders.wicket&lt;/groupId&gt;
   &lt;artifactId&gt;wicket-bootstrap-samples&lt;/artifactId&gt;
-  &lt;version&gt;0.9.2&lt;/version&gt;
+  &lt;version&gt;0.9.3&lt;/version&gt;
 &lt;/dependency&gt;
 </code></pre>
 

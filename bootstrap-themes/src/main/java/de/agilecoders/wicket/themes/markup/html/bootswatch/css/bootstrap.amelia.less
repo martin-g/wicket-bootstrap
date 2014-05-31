@@ -15,6 +15,13 @@
   &-brand {
     font-family: 'Lobster', cursive;
   }
+
+  &-default {
+    .badge {
+      background-color: #fff;
+      color: @navbar-default-bg;
+    }
+  }
 }
 
 // Buttons ====================================================================
@@ -70,11 +77,35 @@
   background-color: @table-bg;
 }
 
+table,
+.table {
+
+  a {
+    color: #fff;
+    text-decoration: underline;
+  }
+
+  .text-muted {
+    color: @text-muted;
+  }
+}
+
 // Forms ======================================================================
+
+input,
+textarea {
+  color: @input-color;
+}
+
+legend {
+  font-family: 'Lobster', cursive;
+  color: #fff;
+}
 
 .has-warning {
   .help-block,
-  .control-label {
+  .control-label,
+  .form-control-feedback {
     color: lighten(@brand-warning, 20%);
   }
 
@@ -86,7 +117,8 @@
 
 .has-error {
   .help-block,
-  .control-label {
+  .control-label,
+  .form-control-feedback {
     color: lighten(@brand-primary, 40%);
   }
 
@@ -98,7 +130,8 @@
 
 .has-success {
   .help-block,
-  .control-label {
+  .control-label,
+  .form-control-feedback {
     color: lighten(@brand-success, 20%);
   }
 
@@ -106,11 +139,6 @@
   .form-control:focus {
     border-color: lighten(@brand-success, 20%);
   }
-}
-
-legend {
-  font-family: 'Lobster', cursive;
-  color: #fff;
 }
 
 .input-group-addon {
@@ -135,12 +163,23 @@ legend {
 
 // Indicators =================================================================
 
+.close {
+  opacity: 0.4;
+
+  &:hover,
+  &:focus {
+    opacity: 1;
+  }
+}
+
 // Progress bars ==============================================================
 
 // Containers =================================================================
 
-.list-group-item {
-  background-color: lighten(@body-bg, 5%);
+a.thumbnail:hover,
+a.thumbnail:focus,
+a.thumbnail.active {
+  border-color: @thumbnail-border;
 }
 
 .popover {

@@ -8,7 +8,7 @@ import org.apache.wicket.request.resource.UrlResourceReference;
  */
 public class FontAwesomeCDNCSSReference extends UrlResourceReference{
     private static final long serialVersionUID = 1L;
-    private static final String CDNURL = "//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css";
+    private static final String CDNURL = "//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css";
 
     /**
      * Singleton instance of this reference

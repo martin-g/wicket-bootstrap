@@ -3,6 +3,7 @@ package de.agilecoders.wicket.core.markup.html.bootstrap.navigation;
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
 
 import de.agilecoders.wicket.jquery.util.Json;
+import de.agilecoders.wicket.jquery.util.Strings2;
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.Behavior;
 import org.apache.wicket.markup.head.IHeaderResponse;
@@ -72,7 +73,7 @@ public class InfiniteScrollingBehavior extends Behavior {
     public InfiniteScrollingBehavior setNextSelector(Component component) {
         component.setOutputMarkupId(true);
 
-        jsonData.put("nextSelector", "#" + component.getMarkupId(true));
+        jsonData.put("nextSelector", "#" + Strings2.getMarkupId(component));
 
         return this;
     }
@@ -80,7 +81,7 @@ public class InfiniteScrollingBehavior extends Behavior {
     public InfiniteScrollingBehavior setNavSelector(Component component) {
         component.setOutputMarkupId(true);
 
-        jsonData.put("navSelector", "#" + component.getMarkupId(true));
+        jsonData.put("navSelector", "#" + Strings2.getMarkupId(component));
 
         return this;
     }
@@ -95,7 +96,7 @@ public class InfiniteScrollingBehavior extends Behavior {
 
     public InfiniteScrollingBehavior setContentSelector(Component component) {
         component.setOutputMarkupId(true);
-        jsonData.put("contentSelector", "#" + component.getMarkupId(true));
+        jsonData.put("contentSelector", "#" + Strings2.getMarkupId(component));
         return this;
     }
 

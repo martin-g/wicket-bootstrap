@@ -32,7 +32,7 @@
 //** Global textual link color.
 @link-color:            lighten(@brand-warning, 15%);
 //** Link hover color set via `darken()` function.
-@link-hover-color:      @brand-warning;
+@link-hover-color:      @link-color;
 
 
 //== Typography
@@ -637,7 +637,7 @@
 //##
 
 //** Background color on `.list-group-item`
-@list-group-bg:                 transparent;
+@list-group-bg:                 lighten(@body-bg, 5%);
 //** `.list-group-item` border color
 @list-group-border:             darken(@body-bg, 5%);
 //** List group border radius
@@ -701,9 +701,9 @@
 //** Padding around the thumbnail image
 @thumbnail-padding:           4px;
 //** Thumbnail background color
-@thumbnail-bg:                @body-bg;
+@thumbnail-bg:                @hr-border;
 //** Thumbnail border color
-@thumbnail-border:            #ddd;
+@thumbnail-border:            @hr-border;
 //** Thumbnail border radius
 @thumbnail-border-radius:     @border-radius-base;
 
@@ -778,7 +778,7 @@
 //##
 
 @close-font-weight:           bold;
-@close-color:                 #000;
+@close-color:                 #fff;
 @close-text-shadow:           0 1px 0 #fff;
 
 

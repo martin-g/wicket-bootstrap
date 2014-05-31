@@ -6,6 +6,7 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapResour
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.CssClassNameAppender;
 import de.agilecoders.wicket.core.util.References;
 
+import de.agilecoders.wicket.jquery.util.Strings2;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.head.IHeaderResponse;
@@ -86,7 +87,7 @@ public abstract class ContextMenu<T> extends GenericPanel<T> {
 
         component.setOutputMarkupId(true);
         component.add(new AttributeModifier("data-toggle", "context"));
-        component.add(new AttributeModifier("data-target", "#" + getMarkupId(true)));
+        component.add(new AttributeModifier("data-target", "#" + Strings2.getMarkupId(this)));
 
         return this;
     }

@@ -10,10 +10,21 @@
 
 // Navbar =====================================================================
 
+.navbar {
+
+  &-inverse {
+
+    .badge {
+      background-color: #fff;
+      color: @brand-primary;
+    }
+  }
+}
+
 // Buttons ====================================================================
 
-.btn {
-  border: none;
+.btn-lg {
+  padding-top: 19px;
 }
 
 // Typography =================================================================
@@ -45,12 +56,22 @@
 
 // Tables =====================================================================
 
+table,
 .table {
 
-  tr.success,
-  tr.warning,
-  tr.danger {
+  a {
+    text-decoration: underline;
+  }
+
+  .success,
+  .warning,
+  .danger,
+  .info {
     color: #fff;
+
+    a {
+      color: #fff;
+    }
   }
 }
 
@@ -59,7 +80,8 @@
 
 .has-warning {
   .help-block,
-  .control-label {
+  .control-label,
+  .form-control-feedback {
     color: @brand-warning;
   }
 
@@ -71,7 +93,8 @@
 
 .has-error {
   .help-block,
-  .control-label {
+  .control-label,
+  .form-control-feedback {
     color: @brand-danger;
   }
 
@@ -83,7 +106,8 @@
 
 .has-success {
   .help-block,
-  .control-label {
+  .control-label,
+  .form-control-feedback {
     color: @brand-success;
   }
 
@@ -119,14 +143,22 @@
     text-decoration: underline;
     color: #fff;
   }
+
+  .close {
+    color: #fff;
+    text-decoration: none;
+    opacity: 0.4;
+
+    &:hover,
+    &:focus {
+      color: #fff;
+      opacity: 1;
+    }
+  }
 }
 
 .label {
   border-radius: 0;
-}
-
-.close {
-  opacity: 1;
 }
 
 // Progress bars ==============================================================
@@ -134,6 +166,10 @@
 .progress {
   height: 8px;
   .box-shadow(none);
+  .progress-bar {
+    font-size: 8px;
+    line-height: 8px;
+  }
 }
 
 // Containers =================================================================

@@ -13,6 +13,7 @@ import org.apache.wicket.markup.html.border.Border;
 import org.apache.wicket.markup.html.form.FormComponent;
 import org.apache.wicket.markup.html.form.IFormModelUpdateListener;
 import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.LoadableDetachableModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.util.iterator.ComponentHierarchyIterator;
 import org.apache.wicket.util.string.Strings;
@@ -140,14 +141,28 @@ public class FormGroup extends Border implements IFormModelUpdateListener {
         final List<FormComponent<?>> formComponents = findFormComponents();
         final int size = formComponents.size();
 
-        addOutputMarkupId(formComponents);
-
         if (size > 0) {
-            FormComponent<?> formComponent = formComponents.get(size - 1);
+            addOutputMarkupId(formComponents);
+
+            final FormComponent<?> formComponent = formComponents.get(size - 1);
             label.add(new AttributeModifier("for", formComponent.getMarkupId()));
 
-            if (useFormComponentLabel && formComponent.getLabel() != null && !Strings.isEmpty(formComponent.getLabel().getObject())) {
-                label.setDefaultModel(formComponent.getLabel());
+            if (useFormComponentLabel) {
+                if (formComponent.getLabel() != null && !Strings.isEmpty(formComponent.getLabel().getObject())) {
+                    label.setDefaultModel(formComponent.getLabel());
+                } else {
+                    label.setDefaultModel(new LoadableDetachableModel<String>() {
+                        @Override
+                        protected String load() {
+                            String text = formComponent.getDefaultLabel("wicket:unknown");
+                            if (!"wicket:unknown".equals(text) && !Strings.isEmpty(text)) {
+                                return text;
+                            } else {
+                                return labelModel.getObject();
+                            }
+                        }
+                    });
+                }
             }
         }
     }
