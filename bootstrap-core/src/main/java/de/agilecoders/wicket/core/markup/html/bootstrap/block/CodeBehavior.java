@@ -76,7 +76,7 @@ public class CodeBehavior extends Behavior {
     public CodeBehavior() {
         super();
 
-        lineNumbers = Model.of(true);
+        lineNumbers = Model.of(false);
         cssClassNameModel = Model.of("");
         language = Model.of(Language.DYNAMIC);
         from = Model.of(0);
