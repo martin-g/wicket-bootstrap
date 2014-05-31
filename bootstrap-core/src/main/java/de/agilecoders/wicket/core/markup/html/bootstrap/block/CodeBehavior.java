@@ -202,6 +202,6 @@ public class CodeBehavior extends Behavior {
     public void onComponentTag(Component component, ComponentTag tag) {
         super.onComponentTag(component, tag);
 
-        Components.assertTag(component, tag, "code", "pre");
+        Components.assertTag(component, tag, "code", "pre","xmp");
     }
 }
