@@ -9,7 +9,7 @@ import org.apache.wicket.extensions.markup.html.tabs.TabbedPanel;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.markup.html.panel.Panel;
+import org.apache.wicket.markup.html.panel.GenericPanel;
 import org.apache.wicket.markup.repeater.RepeatingView;
 import org.apache.wicket.model.AbstractReadOnlyModel;
 import org.apache.wicket.model.IModel;
@@ -24,7 +24,7 @@ import org.apache.wicket.util.lang.Args;
  * 
  * @author Ernesto Reinaldo Barreiro (reiern70@gmailcom)
  */
-public class ClientSideBootstrapTabbedPanel<T extends ITab> extends Panel {
+public class ClientSideBootstrapTabbedPanel<T extends ITab> extends GenericPanel<Integer> {
 
     /**
      * Constructor.
