@@ -338,7 +338,7 @@
 
     <repositories>
         <repository>
-            <id>Apache Nexus</id>
+            <id>Apache Nexus snapshots</id>
             <url>https://repository.apache.org/content/repositories/snapshots/</url>
             <releases>
                 <enabled>false</enabled>
@@ -347,6 +347,16 @@
                 <enabled>true</enabled>
             </snapshots>
         </repository>
+			<repository>
+				<id>Sonatype OSS snapshots</id>
+				<url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+				<releases>
+					<enabled>false</enabled>
+				</releases>
+				<snapshots>
+					<enabled>true</enabled>
+				</snapshots>
+			</repository>
     </repositories>
 
 </project>
