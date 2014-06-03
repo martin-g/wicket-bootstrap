@@ -16,8 +16,6 @@ public class GoogleClosureJavaScriptCompressor implements IJavaScriptCompressor 
 
     private final CompilationLevel level;
 
-    private final CompilerOptions options;
-
     /**
      * Construct. Uses {@link CompilationLevel#ADVANCED_OPTIMIZATIONS} as compression
      * level.
@@ -32,27 +30,18 @@ public class GoogleClosureJavaScriptCompressor implements IJavaScriptCompressor 
      * @param level The compilation level to use
      */
     public GoogleClosureJavaScriptCompressor(final CompilationLevel level) {
-        this(level, new CompilerOptions());
+        this(level);
     }
 
-
-    /**
-     * Construct.
-     *
-     * @param level The compilation level to use
-     * @param options The compilation options to use
-     */
-    public GoogleClosureJavaScriptCompressor(final CompilationLevel level, final CompilerOptions options) {
-        this.level = Args.notNull(level, "level");
-        this.options = Args.notNull(options, "options");
-    }
 
     @Override
     public String compress(final String original) {
         final Compiler compiler = new Compiler();
 
         // Advanced mode is used here, but additional options could be set, too.
+        CompilerOptions options = new CompilerOptions();
         level.setOptionsForCompilationLevel(options);
+        overrideOptions(options);
 
         final SourceFile extern = getExterns();
 
@@ -75,5 +64,11 @@ public class GoogleClosureJavaScriptCompressor implements IJavaScriptCompressor 
         // To get the complete set of externs, the logic in
         // CompilerRunner.getDefaultExterns() should be used here.
         return SourceFile.fromCode("externs.js", "function alert(x) {}");
+    }
+    
+    /**
+     * This can be overridden to override options.
+     */
+    protected void overrideOptions(CompilerOptions options){
     }
 }
