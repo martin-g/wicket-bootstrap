@@ -5,6 +5,7 @@ import com.google.javascript.jscomp.Compiler;
 import com.google.javascript.jscomp.CompilerOptions;
 import com.google.javascript.jscomp.SourceFile;
 import org.apache.wicket.javascript.IJavaScriptCompressor;
+import org.apache.wicket.util.lang.Args;
 
 /**
  * Google Closure compiler version of {@link IJavaScriptCompressor}
@@ -14,6 +15,8 @@ import org.apache.wicket.javascript.IJavaScriptCompressor;
 public class GoogleClosureJavaScriptCompressor implements IJavaScriptCompressor {
 
     private final CompilationLevel level;
+
+    private final CompilerOptions options;
 
     /**
      * Construct. Uses {@link CompilationLevel#ADVANCED_OPTIMIZATIONS} as compression
@@ -29,20 +32,29 @@ public class GoogleClosureJavaScriptCompressor implements IJavaScriptCompressor 
      * @param level The compilation level to use
      */
     public GoogleClosureJavaScriptCompressor(final CompilationLevel level) {
-        this.level = level;
+        this(level, new CompilerOptions());
+    }
+
+
+    /**
+     * Construct.
+     *
+     * @param level The compilation level to use
+     * @param options The compilation options to use
+     */
+    public GoogleClosureJavaScriptCompressor(final CompilationLevel level, final CompilerOptions options) {
+        this.level = Args.notNull(level, "level");
+        this.options = Args.notNull(options, "options");
     }
 
     @Override
     public String compress(final String original) {
         final Compiler compiler = new Compiler();
 
-        final CompilerOptions options = new CompilerOptions();
         // Advanced mode is used here, but additional options could be set, too.
         level.setOptionsForCompilationLevel(options);
 
-        // To get the complete set of externs, the logic in
-        // CompilerRunner.getDefaultExterns() should be used here.
-        final SourceFile extern = SourceFile.fromCode("externs.js", "function alert(x) {}");
+        final SourceFile extern = getExterns();
 
         // The dummy input name "input.js" is used here so that any warnings or
         // errors will cite line numbers in terms of input.js.
@@ -54,5 +66,14 @@ public class GoogleClosureJavaScriptCompressor implements IJavaScriptCompressor 
         // The compiler is responsible for generating the compiled code; it is not
         // accessible via the Result.
         return compiler.toSource();
+    }
+
+    /**
+     * @return the externs to use when compiling
+     */
+    protected SourceFile getExterns() {
+        // To get the complete set of externs, the logic in
+        // CompilerRunner.getDefaultExterns() should be used here.
+        return SourceFile.fromCode("externs.js", "function alert(x) {}");
     }
 }
