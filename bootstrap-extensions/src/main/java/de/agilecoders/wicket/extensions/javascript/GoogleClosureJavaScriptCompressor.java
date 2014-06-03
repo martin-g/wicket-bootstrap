@@ -29,10 +29,10 @@ public class GoogleClosureJavaScriptCompressor implements IJavaScriptCompressor 
      *
      * @param level The compilation level to use
      */
-    public GoogleClosureJavaScriptCompressor(final CompilationLevel level) {
-        this(level);
+    public GoogleClosureJavaScriptCompressor(final CompilationLevel level)
+    {
+        this.level = Args.notNull(level, "level");
     }
-
 
     @Override
     public String compress(final String original) {
