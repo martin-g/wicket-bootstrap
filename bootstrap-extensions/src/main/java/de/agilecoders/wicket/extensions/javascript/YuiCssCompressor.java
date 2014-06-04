@@ -10,6 +10,18 @@ import org.apache.wicket.css.ICssCompressor;
 import com.yahoo.platform.yui.compressor.CssCompressor;
 import org.apache.wicket.util.lang.Args;
 
+/**
+ * An adapter for YUI CSS compressor.
+ * <p>To use it the application has to declare dependency to
+ * <pre><xmp>
+ *     <dependency>
+ *         <groupId>com.yahoo.platform.yui</groupId>
+ *         <artifactId>yuicompressor</artifactId>
+ *         <version>2.4.7</version>  <!-- Use the latest available in Maven repositories -->
+ *     </dependency>
+ * </xmp></pre>
+ * </p>
+ */
 public class YuiCssCompressor implements ICssCompressor {
 
     private int lineBreakPosition = 4000;
