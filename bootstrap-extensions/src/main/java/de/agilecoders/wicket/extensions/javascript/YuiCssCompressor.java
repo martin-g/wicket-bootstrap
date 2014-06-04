@@ -12,7 +12,7 @@ import org.apache.wicket.util.lang.Args;
 
 /**
  * An adapter for YUI CSS compressor.
- * <p>To use it the application has to declare dependency to
+ * <p>To use it the application has to declare dependency to:
  * <pre><xmp>
  *     <dependency>
  *         <groupId>com.yahoo.platform.yui</groupId>
@@ -20,7 +20,11 @@ import org.apache.wicket.util.lang.Args;
  *         <version>2.4.7</version>  <!-- Use the latest available in Maven repositories -->
  *     </dependency>
  * </xmp></pre>
+ *
+ * and install it with:
+ * <pre><code>org.apache.wicket.settings.IResourceSettings#setCssCompressor(new YuiCompressor)</code></pre>
  * </p>
+ * @see org.apache.wicket.settings.IResourceSettings#setCssCompressor(org.apache.wicket.css.ICssCompressor)
  */
 public class YuiCssCompressor implements ICssCompressor {
 
