@@ -1,6 +1,7 @@
 package de.agilecoders.wicket.core.settings;
 
 import de.agilecoders.wicket.core.markup.html.references.BootstrapJavaScriptReference;
+import de.agilecoders.wicket.core.markup.html.references.JQueryPluginUrlResourceReference;
 import de.agilecoders.wicket.core.markup.html.references.ModernizrJavaScriptReference;
 import de.agilecoders.wicket.core.markup.html.themes.bootstrap.BootstrapCssReference;
 import org.apache.wicket.request.Url;
@@ -93,7 +94,7 @@ public class BootstrapSettings implements IBootstrapSettings {
 
         if (useCdnResources()) {
             String cdnUrl = String.format(JS_CDN_PATTERN, getVersion());
-            jsReference = new UrlResourceReference(Url.parse(cdnUrl));
+            jsReference = new JQueryPluginUrlResourceReference(Url.parse(cdnUrl));
         } else {
             jsReference = bootstrapJavaScriptReference;
         }
