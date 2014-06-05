@@ -78,6 +78,14 @@ public class Modal<T> extends GenericPanel<T> {
     private final IModel<Boolean> closeOnEscapeKey = Model.of(true);
     private final IModel<Backdrop> backdrop = Model.of(Backdrop.TRUE);
 
+    /**
+     * Disables the enforcement of the focus.
+     * Needed in cases when a component inside the modal requires
+     * the focus as well.
+     * See <a href="https://github.com/l0rdn1kk0n/wicket-bootstrap/issues/381">#381</a>
+     */
+    private final IModel<Boolean> disableEnforceFocus = Model.of(false);
+
     private final Label headerLabel;
     private final List<Component> buttons = new ArrayList<Component>();
     private final WebMarkupContainer footer;
@@ -327,14 +335,29 @@ public class Modal<T> extends GenericPanel<T> {
     /**
      * Append dialog show JavaScript to current request AJAX target.
      * 
-     * @param target
+     * @param target The current {@link AjaxRequestTarget}
      * @return This
      */
     public Modal<T> appendShowDialogJavaScript(final AjaxRequestTarget target) {
         target.appendJavaScript(createActionScript(getMarkupId(true), "show"));
+        appendDisableEnforceFocus(target);
+
         return this;
     }
-    
+
+    /**
+     * Appends JavaScript snippet that disables the modal's enforceFocus functionality
+     *
+     * @param target The current {@link AjaxRequestTarget}
+     * @return This
+     */
+    protected Modal<T> appendDisableEnforceFocus(AjaxRequestTarget target) {
+        if (disableEnforceFocus.getObject()) {
+            target.appendJavaScript("$.fn.modal.Constructor.prototype.enforceFocus = function () {};");
+        }
+        return this;
+    }
+
     /**
      * A short alias for {@link Modal#appendShowDialogJavaScript}
      * @param target
@@ -531,5 +554,17 @@ public class Modal<T> extends GenericPanel<T> {
         this.keyboard.setObject(keyboard);
         return this;
     }
+
+    /**
+     * Whether the modal should not enforce the focus.
+     *
+     * @param disable true, if the modal should not enforce the focus
+     * @return This
+     */
+    public final Modal<T> setDisableEnforceFocus(boolean disable) {
+        this.disableEnforceFocus.setObject(disable);
+        return this;
+    }
+
 
 }
