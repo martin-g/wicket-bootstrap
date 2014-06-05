@@ -64,7 +64,10 @@ public class Modal<T> extends GenericPanel<T> {
         public String cssClassName() {
             return "modal-" + cssClassName;
         }
+    }
 
+    public static enum Backdrop {
+        TRUE, FALSE, STATIC
     }
 
     private final WebMarkupContainer dialog;
@@ -72,6 +75,9 @@ public class Modal<T> extends GenericPanel<T> {
     private final IModel<Boolean> show = Model.of(false);
     private final IModel<Boolean> fadein = Model.of(true);
     private final IModel<Boolean> keyboard = Model.of(true);
+    private final IModel<Boolean> closeOnEscapeKey = Model.of(true);
+    private final IModel<Backdrop> backdrop = Model.of(Backdrop.TRUE);
+
     private final Label headerLabel;
     private final List<Component> buttons = new ArrayList<Component>();
     private final WebMarkupContainer footer;
@@ -183,7 +189,13 @@ public class Modal<T> extends GenericPanel<T> {
 
         checkComponentTag(tag, "div");
         Attributes.addClass(tag, "modal");
-        Attributes.set(tag, "tabindex", "-1");
+        if (closeOnEscapeKey.getObject()) {
+            Attributes.set(tag, "tabindex", "-1");
+        }
+
+        if (backdrop.getObject() != Backdrop.TRUE) {
+            Attributes.set(tag, "data-backdrop", backdrop.getObject().name().toLowerCase() );
+        }
 
         // ARIA
         Attributes.set(tag, "role", "dialog");
@@ -264,6 +276,31 @@ public class Modal<T> extends GenericPanel<T> {
      */
     public Modal<T> show(boolean show) {
         this.show.setObject(show);
+        return this;
+    }
+
+    /**
+     * Sets a flag that decides whether using the <em>ESC</em> keyboard
+     * key will close this modal
+     *
+     * @param close The flag that is used to decide whether to close on <em>ESC</em> or not
+     * @return This
+     */
+    public Modal<T> setCloseOnEscapeKey(boolean close) {
+        this.closeOnEscapeKey.setObject(close);
+        return this;
+    }
+
+    /**
+     * Sets a flag that decides whether using the <em>ESC</em> keyboard
+     * key will close this modal
+     *
+     * @param backdrop Includes a modal-backdrop element.
+     *                 Alternatively, specify static for a backdrop which doesn't close the modal on click.
+     * @return This
+     */
+    public Modal<T> setBackdrop(Backdrop backdrop) {
+        this.backdrop.setObject(backdrop);
         return this;
     }
 
@@ -474,7 +511,7 @@ public class Modal<T> extends GenericPanel<T> {
     }
 
     /**
-     * Whether to fadin/fadeout the modal dialog or not
+     * Whether to fadein/fadeout the modal dialog or not
      *
      * @param fadein true, if dialog should be animated
      * @return This
