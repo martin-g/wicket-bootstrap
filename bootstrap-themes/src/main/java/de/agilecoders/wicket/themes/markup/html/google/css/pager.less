@@ -1,51 +1,70 @@
-// PAGER
-// -----
+//
+// Pager pagination
+// --------------------------------------------------
 
-.pager li > a {
-  padding: 4px 12px;
+.pager {
+  margin: @line-height-computed 0;
+  li {
+    > a,
+    > span {
+      padding: 11px 24px;
+      overflow: visible;
+      font-size: @font-size-large;
+      // font-weight: normal;
+      color: @pager-color;
+      text-decoration: none;
+      white-space: nowrap;
+      cursor: default;
+      background-color: @pager-bg;
+      border: 1px solid #5b5b5b; //old browsers fallback (ie8 etc)
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      border-radius: @pager-border-radius;
+      outline: none;
+      @shadow: 0 2px 1px rgba(0, 0, 0, 0.1), 0 0 1px rgba(0, 0, 0, 0.1);
+      .box-shadow(@shadow);
+      .reset-filter();
+    }
 
-  border: 1px solid #dcdcdc;
-  //.border-radius(2px);
-  
-  #gradient > .vertical(#f5f5f5,#f1f1f1);
-  .reset-filter();
-  background-color: #f5f5f5;
+    > a:hover,
+    > a:focus {
+      color: @pager-hover-color;
+      background-color: @pager-hover-bg;
+    }
 
-  color: #333;
-  text-shadow: 0 1px 0 #fff;
-  text-decoration: none;
-  white-space: nowrap;
-  font-weight: bold;
+    > a:active {
+      color: @pager-active-color;
+      background-color: @pager-active-bg;
+    }
 
-  cursor: default;
-  outline: none;
-  overflow: visible;
-}
-.pager li > a:hover {
-  border-color: #c6c6c6;
-  
-  #gradient > .vertical(#f8f8f8,#f1f1f1);
-  .reset-filter();
-  background-color: #f1f1f1;
-  
-  .box-shadow(0 1px 1px rgba(0,0,0,0.1));
-}
-.pager li > a:active {
-  #gradient > .vertical(#f6f6f6,#f1f1f1);
-  .reset-filter();
-  background-color: #f1f1f1;
-  
-  .box-shadow(inset 0 1px 2px rgba(0, 0, 0, 0.1));
-}
-.pager .disabled a,
-.pager .disabled a:hover {
-  color: darken(@white, 30%);
-  border-color: darken(@white, 15%);
-  
-  #gradient > .vertical(#f5f5f5,#f1f1f1);
-  .reset-filter();
-  background-color: @btnBackground;
-  
-  .box-shadow(none);
-  text-shadow: none;
+    .icon-prev {
+      .chevron(left, 4px, @pager-bg, -5px, 1.5px);
+      padding-right: 8px;
+    }
+    .icon-next {
+      .chevron(right, 4px, @pager-bg, -5px, 1.5px);
+      padding-left: 8px;
+    }
+  }
+
+  .disabled {
+    > a,
+    > a:hover,
+    > a:focus,
+    > span {
+      .box-shadow(none);
+      color: @pager-disabled-color;
+      background-color: @pager-disabled-bg;
+      border-color: @pager-disabled-border;
+      .reset-filter();
+    }
+
+    .icon-prev {
+      .chevron(left, 4px, @pager-disabled-bg, -5px, 1.5px, @pager-disabled-color);
+      padding-right: 8px;
+    }
+    .icon-next {
+      .chevron(right, 4px, @pager-disabled-bg, -5px, 1.5px, @pager-disabled-color);
+      padding-left: 8px;
+    }
+  }
 }
