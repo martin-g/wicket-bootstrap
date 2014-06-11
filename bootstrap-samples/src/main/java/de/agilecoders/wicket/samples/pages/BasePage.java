@@ -4,6 +4,7 @@ import com.newrelic.api.agent.NewRelic;
 import de.agilecoders.wicket.core.Bootstrap;
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.CssClassNameAppender;
 import de.agilecoders.wicket.core.markup.html.bootstrap.block.Code;
+import de.agilecoders.wicket.core.markup.html.bootstrap.button.BootstrapExternalLink;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.DropDownButton;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.MenuBookmarkablePageLink;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.MenuDivider;
@@ -19,6 +20,7 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.Navbar;
 import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.NavbarButton;
 import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.NavbarComponents;
 import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.NavbarDropDownButton;
+import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.NavbarExternalLink;
 import de.agilecoders.wicket.core.settings.IBootstrapSettings;
 import de.agilecoders.wicket.core.settings.ITheme;
 import de.agilecoders.wicket.samples.WicketApplication;
@@ -121,6 +123,10 @@ abstract class BasePage extends GenericWebPage<Void> {
                                                         new NavbarButton<Void>(BaseCssPage.class, Model.of("Base CSS")),
                                                         new NavbarButton<Void>(ComponentsPage.class, Model.of("Components")),
                                                         new NavbarButton<Void>(Scaffolding.class, Model.of("Scaffolding")),
+                                                        new NavbarExternalLink(Model.of("https://github.com/l0rdn1kk0n/wicket-bootstrap"))
+                                                                .setLabel(Model.of("Github"))
+                                                                .setTarget(BootstrapExternalLink.Target.blank)
+                                                                .setIconType(GlyphIconType.export),
                                                         newAddonsDropDownButton())
         );
 
