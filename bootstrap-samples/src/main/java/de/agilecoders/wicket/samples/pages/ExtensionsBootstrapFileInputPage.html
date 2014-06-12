@@ -25,12 +25,13 @@
 						
 							<div class="bs-docs-example">
 								<form wicket:id="bootstrapFileUploadForm">
-									<input type="file" wicket:id="bootstrapFileinput" multiple="multiple"> </input>
+									<input class="btn btn-default" type="file" wicket:id="bootstrapFileinput" multiple="multiple"> </input>
 								</form>
 							</div>
 							<br/>
 							<div>
-                                In your java code just use <code>de.agilecoders.wicket.extensions.markup.html.bootstrap.BootstrapFileUploadField</code> instead of Wicket's <code>org.apache.wicket.markup.html.form.upload.FileUploadField</code> and make sure your form has form.setOutputMarkupId(true).<br/>No additional HTML markup required.
+                                In your java code just use <code>de.agilecoders.wicket.extensions.markup.html.bootstrap.BootstrapFileUploadField</code> instead of Wicket's <code>org.apache.wicket.markup.html.form.upload.FileUploadField</code> and make sure your form has form.setOutputMarkupId(true).
+                                <br/>No additional HTML markup required. Though you could add class="btn btn-default" to make the AjaxFallback simple file input align properly in bootstrap forms.
                             </div>
 							
 						</section>
