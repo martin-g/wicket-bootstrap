@@ -116,7 +116,7 @@ abstract class BasePage extends GenericWebPage<Void> {
         navbar.setInverted(true);
 
         // show brand name
-        navbar.brandName(Model.of("Wicket Bootstrap"));
+        navbar.setBrandName(Model.of("Wicket Bootstrap"));
 
         navbar.addComponents(NavbarComponents.transform(Navbar.ComponentPosition.LEFT,
                                                         new NavbarButton<Void>(HomePage.class, Model.of("Overview")).setIconType(GlyphIconType.home),

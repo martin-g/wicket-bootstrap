@@ -32,7 +32,7 @@ public class ComponentsTest extends WicketApplicationTest {
     public void hasTagNameReturnsFalseIfNullValueIsGiven() {
         final ComponentTag tag = new ComponentTag("div", XmlTag.TagType.OPEN_CLOSE);
 
-        assertThat(Components.hasTagName(tag, (String)null), is(equalTo(false)));
+        assertThat(Components.hasTagName(tag, (String) null), is(equalTo(false)));
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -93,6 +93,26 @@ public class ComponentsTest extends WicketApplicationTest {
         Components.assertTag(createComponentMock(), new ComponentTag("div", XmlTag.TagType.OPEN_CLOSE), "a", "li");
     }
 
+    @Test
+    public void removeCssClassName() throws Exception {
+        final ComponentTag tag = new ComponentTag("div", XmlTag.TagType.OPEN_CLOSE);
+        tag.put("class", "class-a class-b class-c");
+
+        Components.removeClassNames(tag, "class-a", "class-c");
+
+        assertThat(tag.getAttribute("class"), is("class-b"));
+    }
+
+    @Test
+    public void removeCssClassNameWithEmptyClassAttribute() throws Exception {
+        final ComponentTag tag = new ComponentTag("div", XmlTag.TagType.OPEN_CLOSE);
+        tag.put("class", "");
+        Components.removeClassNames(tag, "class-a", "class-c");
+
+        tag.remove("class");
+        Components.removeClassNames(tag, "class-a", "class-c");
+    }
+
     /**
      * @return new component mock
      */
@@ -104,9 +124,10 @@ public class ComponentsTest extends WicketApplicationTest {
 
         IMarkupFragment markupFragment = mock(IMarkupFragment.class);
         when(markupFragment.getMarkupResourceStream()).thenReturn(
-		        new MarkupResourceStream(new StringResourceStream("markup")));
+                new MarkupResourceStream(new StringResourceStream("markup")));
         when(component.getMarkup()).thenReturn(markupFragment);
 
         return component;
     }
+
 }

@@ -2,6 +2,7 @@ package de.agilecoders.wicket.core.markup.html.bootstrap.navbar;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.BootstrapExternalLink;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons;
+import de.agilecoders.wicket.core.util.Components;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.model.IModel;
 
@@ -18,7 +19,7 @@ public class NavbarExternalLink extends BootstrapExternalLink {
      * @param href the link destination
      */
     public NavbarExternalLink(IModel<String> href) {
-        super(Navbar.componentId(), href);
+        this(href, Buttons.Type.Menu);
     }
 
     /**
@@ -36,6 +37,8 @@ public class NavbarExternalLink extends BootstrapExternalLink {
         if (!"a".equalsIgnoreCase(tag.getName())) {
             tag.setName("a");
         }
+
+        Components.removeClassNames(tag, "btn", "btn-link");
 
         super.onComponentTag(tag);
     }
