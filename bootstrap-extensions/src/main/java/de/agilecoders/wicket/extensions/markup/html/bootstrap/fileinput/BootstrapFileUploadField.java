@@ -35,7 +35,6 @@ public class BootstrapFileUploadField extends FileUploadField {
 		String ajaxEventName = Strings2.getMarkupId(this) + AJAX_EVENT_NAME_SUFFIX;
 		ajaxBehavior = newAjaxFormSubmitBehavior(ajaxEventName);
 		add(ajaxBehavior);
-		setOutputMarkupId(true);
 	}
 
 	protected AjaxFormSubmitBehavior newAjaxFormSubmitBehavior(

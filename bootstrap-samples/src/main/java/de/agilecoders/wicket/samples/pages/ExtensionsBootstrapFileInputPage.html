@@ -6,13 +6,6 @@
     </head>
     <body>
         <wicket:extend>
-            <header class="jumbotron subhead" id="overview">
-                <div class="container">
-                    <h1>Bootstrap Extensions - kartik-v Boostrap FileInput</h1>
-                </div>
-            </header>
-
-
             <div class="container">
 
                 <div class="row">
@@ -35,12 +28,14 @@
 									<input type="file" wicket:id="bootstrapFileinput" multiple="multiple"> </input>
 								</form>
 							</div>
-							
+							<br/>
 							<div>
-                                In your java code just use <code>de.agilecoders.wicket.extensions.markup.html.bootstrap.BootstrapFileUploadField</code> instead of Wicket's <code>org.apache.wicket.markup.html.form.upload.FileUploadField</code>.<br/>No additional HTML markup required.
+                                In your java code just use <code>de.agilecoders.wicket.extensions.markup.html.bootstrap.BootstrapFileUploadField</code> instead of Wicket's <code>org.apache.wicket.markup.html.form.upload.FileUploadField</code> and make sure your form has form.setOutputMarkupId(true).<br/>No additional HTML markup required.
                             </div>
 							
 						</section>
+						
+						<br/><br/>
 						
                     </div>
                 </div>

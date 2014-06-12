@@ -52,6 +52,6 @@ public class ExtensionsBootstrapFileInputPage extends BasePage {
 	
 	@Override
 	protected boolean hasNavigation() {
-		return true;
+		return false;
 	}
 }
