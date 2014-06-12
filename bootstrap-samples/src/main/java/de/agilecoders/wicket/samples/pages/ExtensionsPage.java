@@ -172,8 +172,6 @@ public class ExtensionsPage extends BasePage {
 		addJasnyFileUploadDemo();
 		addJasnyInputMaskDemo();
 
-		addBootstrapFileUploadDemo();
-
 		add(new InfinitePaginationPanel("infinite"));
 	}
 
@@ -198,33 +196,6 @@ public class ExtensionsPage extends BasePage {
 		jasnyFileUploadForm.add(progressBar);
 		jasnyFileUploadForm.add(new AjaxButton("submit") {
 		});
-	}
-
-	private void addBootstrapFileUploadDemo() {
-		Form<Void> bootstrapFileUploadForm = new Form<Void>(
-				"bootstrapFileUploadForm");
-		add(bootstrapFileUploadForm);
-
-		BootstrapFileUploadField bootstrapFileInput = new BootstrapFileUploadField(
-				"bootstrapFileinput", new IModel<List<FileUpload>>() {
-
-					@Override
-					public void detach() {
-						// ignore
-					}
-
-					@Override
-					public List<FileUpload> getObject() {
-						// ignore
-						return null;
-					}
-
-					@Override
-					public void setObject(List<FileUpload> object) {
-						// ignore
-					}
-				});
-		bootstrapFileUploadForm.add(bootstrapFileInput);
 	}
 
 	private void addJasnyInputMaskDemo() {

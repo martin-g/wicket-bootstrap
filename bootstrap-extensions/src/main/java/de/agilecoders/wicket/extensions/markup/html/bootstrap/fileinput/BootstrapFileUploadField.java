@@ -2,6 +2,7 @@ package de.agilecoders.wicket.extensions.markup.html.bootstrap.fileinput;
 
 import java.util.List;
 
+import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.form.AjaxFormSubmitBehavior;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
@@ -24,17 +25,31 @@ public class BootstrapFileUploadField extends FileUploadField {
 	private boolean showRemove = false;
 	private boolean showUpload = true;
 
+    public BootstrapFileUploadField(String id) {
+        this(id, null);
+    }
+	
 	public BootstrapFileUploadField(final String id,
 			final IModel<List<FileUpload>> model) {
 		super(id, model);
-		String ajaxEventName = getMarkupId() + AJAX_EVENT_NAME_SUFFIX;
+		String ajaxEventName = Strings2.getMarkupId(this) + AJAX_EVENT_NAME_SUFFIX;
 		ajaxBehavior = newAjaxFormSubmitBehavior(ajaxEventName);
 		add(ajaxBehavior);
+		setOutputMarkupId(true);
 	}
 
 	protected AjaxFormSubmitBehavior newAjaxFormSubmitBehavior(
 			final String event) {
 		return new AjaxFormSubmitBehavior(event) {
+			@Override
+			protected void onSubmit(AjaxRequestTarget target) {
+				target.add(getForm());
+			}
+			
+			@Override
+			protected void onError(AjaxRequestTarget target) {
+				onSubmit(target);
+			}
 		};
 	}
 

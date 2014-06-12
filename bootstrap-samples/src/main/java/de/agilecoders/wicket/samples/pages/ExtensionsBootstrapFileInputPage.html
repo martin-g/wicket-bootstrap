@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+    <head>
+        <meta charset="utf-8"/>
+        <title>ComponentsPage</title>
+    </head>
+    <body>
+        <wicket:extend>
+            <header class="jumbotron subhead" id="overview">
+                <div class="container">
+                    <h1>Bootstrap Extensions - kartik-v Boostrap FileInput</h1>
+                </div>
+            </header>
+
+
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-lg-3 bs-docs-sidebar">
+                        <ul wicket:id="navigation" class="nav nav-list bs-docs-sidenav">
+                            <li><a href="#issue303"><i class="icon-chevron-right"></i> kartik-v Bootstrap FileInput</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-9">
+
+                        <section id="issue303">
+                           <div class="page-header">
+                               <h1>kartik-v Bootstrap FileInput</h1>
+                           </div>
+
+                           <p>An improvement over Jasny File Upload by <a target="_blank" href="https://github.com/kartik-v/bootstrap-fileinput">kartik-v/bootstrap-fileinput</a>. See issue #<a href="https://github.com/l0rdn1kk0n/wicket-bootstrap/pull/383">303</a>.</p>
+						
+							<div class="bs-docs-example">
+								<form wicket:id="bootstrapFileUploadForm">
+									<input type="file" wicket:id="bootstrapFileinput" multiple="multiple"> </input>
+								</form>
+							</div>
+							
+							<div>
+                                In your java code just use <code>de.agilecoders.wicket.extensions.markup.html.bootstrap.BootstrapFileUploadField</code> instead of Wicket's <code>org.apache.wicket.markup.html.form.upload.FileUploadField</code>.<br/>No additional HTML markup required.
+                            </div>
+							
+						</section>
+						
+                    </div>
+                </div>
+            </div>
+        </wicket:extend>
+    </body>
+</html>
