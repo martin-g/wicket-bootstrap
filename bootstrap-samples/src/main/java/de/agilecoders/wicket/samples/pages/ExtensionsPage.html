@@ -28,6 +28,7 @@
                             <li><a href="#issue116"><i class="icon-chevron-right"></i> Tour Behavior</a></li>
                             <li><a href="#issue130-1"><i class="icon-chevron-right"></i> Jasny FileUpload</a></li>
                             <li><a href="#issue130-2"><i class="icon-chevron-right"></i> Jasny InputMask</a></li>
+                            <li><a href="#issue303"><i class="icon-chevron-right"></i> kartik-v Bootstrap FileInput</a></li>
                             <li><a href="#infinite"><i class="icon-chevron-right"></i> Infinite-Scroll</a></li>
                         </ul>
                     </div>
@@ -146,11 +147,11 @@
 
                             <div class="bs-docs-example">
                                 <h4>Demo 1</h4>
-                                <form wicket:id="fileUploadForm">
+                                <form wicket:id="jasnyFileUploadForm">
                                     <div class="fileupload fileupload-new" data-provides="fileupload">
                                         <div class="input-group">
                                             <div class="form-control uneditable-input span3"><i class="glyphicon glyphicon-file fileupload-exists"></i> <span class="fileupload-preview"></span></div>
-                                            <span class="input-group-addon btn btn-default btn-file"><span class="fileupload-new">Select file</span><span class="fileupload-exists">Change</span><input type="file" wicket:id="fileUpload"/></span>
+                                            <span class="input-group-addon btn btn-default btn-file"><span class="fileupload-new">Select file</span><span class="fileupload-exists">Change</span><input type="file" wicket:id="jasnyFileUpload"/></span>
                                             <a href="#" class="input-group-addon btn btn-default fileupload-exists" data-dismiss="fileupload">Remove</a>
                                         </div>
                                     </div>
@@ -195,7 +196,7 @@
                                 </div>
 
                                 <div>
-                                    In your java code just use <code>de.agilecoders.wicket.javascript.jasny.FileUploadField</code> instead of Wicket's <code>org.apache.wicket.markup.html.form.upload.FileUploadField</code>.<br/>For HTML markup use any of the recommended snippets at <a target="_blank" href="http://jasny.github.com/bootstrap/javascript.html#fileupload">Jasny FileUpload</a>.
+                                    In your java code just use <code>de.agilecoders.wicket.extensions.javascript.jasny.FileUploadField</code> instead of Wicket's <code>org.apache.wicket.markup.html.form.upload.FileUploadField</code>.<br/>For HTML markup use any of the recommended snippets at <a target="_blank" href="http://jasny.github.com/bootstrap/javascript.html#fileupload">Jasny FileUpload</a>.
                                 </div>
                             </div>
                         </section>
@@ -212,6 +213,25 @@
                             </div>
                         </section>
 
+                        <section id="issue303">
+                           <div class="page-header">
+                               <h1>kartik-v Bootstrap FileInput</h1>
+                           </div>
+
+                           <p>An improvement over Jasny File Upload by <a target="_blank" href="https://github.com/kartik-v/bootstrap-fileinput">kartik-v/bootstrap-fileinput</a>. See issue #<a href="https://github.com/l0rdn1kk0n/wicket-bootstrap/pull/383">303</a>.</p>
+						
+							<div class="bs-docs-example">
+								<form wicket:id="bootstrapFileUploadForm">
+									<input type="file" wicket:id="bootstrapFileinput">
+								</form>
+							</div>
+							
+							<div>
+                                In your java code just use <code>de.agilecoders.wicket.extensions.markup.html.bootstrap.BootstrapFileUploadField</code> instead of Wicket's <code>org.apache.wicket.markup.html.form.upload.FileUploadField</code>.<br/>No additional HTML markup required.
+                            </div>
+							
+						</section>
+						
                         <section id="infinite">
                             <div class="page-header">
                                 <h1>infinite-scroll</h1>
@@ -225,7 +245,7 @@
                                 </div>
                             </div>
                         </section>
-
+                        
                     </div>
                 </div>
             </div>
