@@ -2,56 +2,60 @@ package de.agilecoders.wicket.samples.pages;
 
 import java.util.List;
 
-import org.apache.wicket.markup.head.CssHeaderItem;
-import org.apache.wicket.markup.head.IHeaderResponse;
+import de.agilecoders.wicket.core.markup.html.bootstrap.common.NotificationPanel;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.fileinput.BootstrapFileInput;
+import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.upload.FileUpload;
+import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.util.ListModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.wicketstuff.annotation.mount.MountPath;
 
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.fileinput.BootstrapFileUploadField;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.OpenWebIconsCssReference;
-
-@MountPath(value = "/extensionsBootstrapFileInput")
+@MountPath(value = "/extensions/BootstrapFileInput")
 public class ExtensionsBootstrapFileInputPage extends BasePage {
 
-	public ExtensionsBootstrapFileInputPage(PageParameters parameters) {
-		super(parameters);
+    private final NotificationPanel feedback;
 
-		addBootstrapFileUploadDemo();
-	}
-	private void addBootstrapFileUploadDemo() {
-		Form<Void> bootstrapFileUploadForm = new Form<Void>(
-				"bootstrapFileUploadForm");
-		bootstrapFileUploadForm.setOutputMarkupId(true);
-		add(bootstrapFileUploadForm);
+    public ExtensionsBootstrapFileInputPage(PageParameters parameters) {
+        super(parameters);
 
-		IModel<List<FileUpload>> model = new IModel<List<FileUpload>>() {
+        addBootstrapFileUploadDemo();
+        this.feedback = new NotificationPanel("feedback");
+        feedback.setOutputMarkupId(true);
+        add(feedback);
+    }
+    private void addBootstrapFileUploadDemo() {
+        final IModel<List<FileUpload>> model = new ListModel<FileUpload>();
+        Form<Void> bootstrapFileUploadForm = new Form<Void>("bootstrapFileUploadForm") {
+            @Override
+            protected void onSubmit() {
+                super.onSubmit();
 
-			@Override
-			public void detach() {
-				// ignore
-			}
+            }
+        };
+        bootstrapFileUploadForm.setOutputMarkupId(true);
+        add(bootstrapFileUploadForm);
 
-			@Override
-			public List<FileUpload> getObject() {
-				// ignore
-				return null;
-			}
+        BootstrapFileInput bootstrapFileInput = new BootstrapFileInput("bootstrapFileinput", model) {
+            @Override
+            protected void onSubmit(AjaxRequestTarget target) {
+                super.onSubmit(target);
 
-			@Override
-			public void setObject(List<FileUpload> object) {
-				// ignore
-			}
-		};
-		BootstrapFileUploadField bootstrapFileInput = new BootstrapFileUploadField(
-				"bootstrapFileinput", model);
-		bootstrapFileUploadForm.add(bootstrapFileInput);
-	}
-	
-	@Override
-	protected boolean hasNavigation() {
-		return false;
-	}
+                List<FileUpload> fileUploads = model.getObject();
+                for (FileUpload upload : fileUploads) {
+                    success("Uploaded: " + upload.getClientFileName());
+                }
+
+                target.add(feedback);
+            }
+        };
+        bootstrapFileUploadForm.add(bootstrapFileInput);
+    }
+
+    @Override
+    protected boolean hasNavigation() {
+        return false;
+    }
 }
