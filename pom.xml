@@ -42,15 +42,9 @@
         <java.version>1.7</java.version>
 
         <bootstrap.version>3.1.1-1</bootstrap.version>
-<<<<<<< HEAD
-        <config.version>0.3.4</config.version>
+        <config.version>0.3.5</config.version>
         <wicket-webjars.version>0.5.0-SNAPSHOT</wicket-webjars.version>
         <wicket-jquery-selectors>0.2.0-SNAPSHOT</wicket-jquery-selectors>
-=======
-        <config.version>0.3.5</config.version>
-        <wicket-webjars.version>0.4.2</wicket-webjars.version>
-        <wicket-jquery-selectors>0.1.0</wicket-jquery-selectors>
->>>>>>> master
 
         <enforcer.disable>true</enforcer.disable>
         <pmd.disable>true</pmd.disable>
