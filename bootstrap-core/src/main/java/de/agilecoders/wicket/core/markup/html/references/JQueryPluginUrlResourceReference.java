@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * A specialization of UrlResourceReference that depends on JQuery
  *
- * @see org.apache.wicket.settings.IJavaScriptLibrarySettings#getJQueryReference()
+ * @see org.apache.wicket.settings.JavaScriptLibrarySettings#getJQueryReference()
  */
 public class JQueryPluginUrlResourceReference extends UrlResourceReference {
 

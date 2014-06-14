@@ -1,13 +1,8 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.navbar;
 
-import static org.hamcrest.CoreMatchers.containsString;
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.CoreMatchers.is;
-
 import de.agilecoders.wicket.core.WicketApplicationTest;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.GlyphIconType;
 import de.agilecoders.wicket.core.test.IntegrationTest;
-
 import org.apache.wicket.Component;
 import org.apache.wicket.Page;
 import org.apache.wicket.model.Model;
@@ -17,6 +12,10 @@ import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
 import java.util.List;
+
+import static org.hamcrest.CoreMatchers.containsString;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.is;
 
 /**
  * Tests the {@code Navbar de.agilecoders.wicket.core.markup.html.bootstrap.navbar.Navbar}.
@@ -37,7 +36,7 @@ public class NavbarTest extends WicketApplicationTest {
     @Test
     public void brandNameIsRendered() {
         Navbar navbar = new Navbar("id");
-        navbar.brandName(Model.of("Brand Name"));
+        navbar.setBrandName(Model.of("Brand Name"));
 
         tester().startComponentInPage(navbar);
         TagTester tagTester = tester().getTagByWicketId("brandLabel");

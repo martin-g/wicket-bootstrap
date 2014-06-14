@@ -2,7 +2,6 @@ package de.agilecoders.wicket.core.markup.html.bootstrap.navbar;
 
 import com.google.common.base.Function;
 import com.google.common.base.Predicate;
-
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapResourcesBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.CssClassNameAppender;
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNameProvider;
@@ -12,7 +11,6 @@ import de.agilecoders.wicket.core.util.Attributes;
 import de.agilecoders.wicket.core.util.Behaviors;
 import de.agilecoders.wicket.core.util.Models;
 import de.agilecoders.wicket.jquery.util.Generics2;
-
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.Page;
@@ -113,12 +111,9 @@ public class Navbar extends Panel implements Invertible<Navbar> {
     private IModel<String> invertModel;
     private CssClassNameAppender activeStateAppender;
 
-    private final Label brandLabel;
-    private final Image brandImage;
-
     private final IModel<Position> position = Model.of(Position.DEFAULT);
     private final IModel<Boolean> fluid = Model.of(false);
-
+    private final Component brandNameLink;
     private final List<INavbarComponent> components = new ArrayList<INavbarComponent>();
 
     /**
@@ -141,16 +136,14 @@ public class Navbar extends Panel implements Invertible<Navbar> {
 
         BootstrapResourcesBehavior.addTo(this);
 
-        final TransparentWebMarkupContainer container = newContainer("container");      
+        final TransparentWebMarkupContainer container = newContainer("container");
         final TransparentWebMarkupContainer collapse = newCollapseContainer("collapse");
         final TransparentWebMarkupContainer collapseButton = newCollapseButton("collapseButton", "#" + collapse.getMarkupId());
 
-        final BookmarkablePageLink<Page> brandNameLink = newBrandNameLink("brandName");
-        brandNameLink.add(brandLabel = newBrandLabel("brandLabel"));
-        brandNameLink.add(brandImage = newBrandImage("brandImage"));
+        this.brandNameLink = newBrandNameLink("brandName");
 
-        Component leftAlignedComponentListView = newNavigation("navLeftList", newPositionDependedComponentModel(components, POSITION_FILTER_LEFT));
-        Component rightAlignedComponentListView = newNavigation("navRightList", newPositionDependedComponentModel(components, POSITION_FILTER_RIGHT));
+        final Component leftAlignedComponentListView = newNavigation("navLeftList", newPositionDependedComponentModel(components, POSITION_FILTER_LEFT));
+        final Component rightAlignedComponentListView = newNavigation("navRightList", newPositionDependedComponentModel(components, POSITION_FILTER_RIGHT));
 
         activeStateAppender = new CssClassNameAppender("active");
         invertModel = Model.of("");
@@ -229,16 +222,20 @@ public class Navbar extends Panel implements Invertible<Navbar> {
      * @param componentId The non-null id of a new navigation component
      * @return a new brand name page link instance
      */
-    protected BookmarkablePageLink<Page> newBrandNameLink(String componentId) {
-        return new BookmarkablePageLink<Page>(componentId, getHomePage()) {
-
-            private static final long serialVersionUID = 1L;
-
+    protected Component newBrandNameLink(String componentId) {
+        BookmarkablePageLink<Page> link = new BookmarkablePageLink<Page>(componentId, getHomePage()) {
             @Override
-            public boolean isVisible() {
-                return brandLabel.isVisible() || brandImage.isVisible();
+            protected void onConfigure() {
+                super.onConfigure();
+
+                setVisible(get("brandLabel").isVisible() || get("brandImage").isVisible());
             }
         };
+
+        link.add(newBrandLabel("brandLabel"));
+        link.add(newBrandImage("brandImage"));
+
+        return link;
     }
 
     /**
@@ -275,7 +272,7 @@ public class Navbar extends Panel implements Invertible<Navbar> {
 
     /**
      * @return the page class which is used for the brand name link. The
-     *         application's homepage is used by default.
+     * application's homepage is used by default.
      */
     protected Class<? extends Page> getHomePage() {
         return getApplication().getHomePage();
@@ -337,19 +334,19 @@ public class Navbar extends Panel implements Invertible<Navbar> {
     protected TransparentWebMarkupContainer newContainer(String componentId) {
         return new TransparentWebMarkupContainer(componentId);
     }
-    
+
     /**
      * creates a new transparent container which is used to append the "data-target" attribute to the collapse button.
      *
      * @param componentId The non-null id of collapse button
-     * @param selector non-null jquery selector to collapse
+     * @param selector    non-null jquery selector to collapse
      * @return a button container.
      */
     protected TransparentWebMarkupContainer newCollapseButton(String componentId, String selector) {
-    	TransparentWebMarkupContainer button = new TransparentWebMarkupContainer(componentId);
-    	Args.notNull(selector, "selector");
-    	button.add(new AttributeModifier("data-target", selector));
-    	return button;
+        TransparentWebMarkupContainer button = new TransparentWebMarkupContainer(componentId);
+        Args.notNull(selector, "selector");
+        button.add(new AttributeModifier("data-target", selector));
+        return button;
     }
 
     /**
@@ -360,8 +357,8 @@ public class Navbar extends Panel implements Invertible<Navbar> {
      * @return a new inner container of the navigation bar.
      */
     protected TransparentWebMarkupContainer newCollapseContainer(String componentId) {
-    	TransparentWebMarkupContainer collapse = new TransparentWebMarkupContainer(componentId);
-    	collapse.setOutputMarkupId(true);	//needed to put the "data-target" attribute of the collapse button
+        TransparentWebMarkupContainer collapse = new TransparentWebMarkupContainer(componentId);
+        collapse.setOutputMarkupId(true); // needed to put the "data-target" attribute of the collapse button
         return collapse;
     }
 
@@ -371,8 +368,9 @@ public class Navbar extends Panel implements Invertible<Navbar> {
      * @param brandName the brand name label
      * @return the component's current instance
      */
-    public Navbar brandName(final IModel<String> brandName) {
-        brandLabel.setDefaultModel(brandName);
+    public Navbar setBrandName(final IModel<String> brandName) {
+        Component name = brandNameLink.get("brandLabel");
+        name.setDefaultModel(brandName);
 
         return this;
     }
@@ -385,6 +383,8 @@ public class Navbar extends Panel implements Invertible<Navbar> {
      * @return this instance for chaining
      */
     public Navbar setBrandImage(final ResourceReference imageResourceReference, final IModel<String> imageAltAttrModel) {
+        Image brandImage = (Image) brandNameLink.get("brandImage");
+
         brandImage.setImageResourceReference(imageResourceReference);
 
         if (!Models.isNullOrEmpty(imageAltAttrModel)) {
