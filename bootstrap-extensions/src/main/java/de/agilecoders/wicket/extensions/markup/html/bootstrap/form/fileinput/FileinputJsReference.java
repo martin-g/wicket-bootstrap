@@ -1,6 +1,7 @@
-package de.agilecoders.wicket.extensions.markup.html.bootstrap.form.fileinput.release;
+package de.agilecoders.wicket.extensions.markup.html.bootstrap.form.fileinput;
 
 import org.apache.wicket.Application;
+import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.HeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
@@ -14,13 +15,14 @@ public final class FileinputJsReference extends JavaScriptResourceReference impl
     public static final FileinputJsReference INSTANCE = new FileinputJsReference();
 
     private FileinputJsReference() {
-        super(FileinputJsReference.class, "fileinput.js");
+        super(FileinputJsReference.class, "res/fileinput.js");
     }
 
     @Override
     public Iterable<? extends HeaderItem> getDependencies() {
         return Dependencies.combine(
                 super.getDependencies(),
+                CssHeaderItem.forReference(FileinputCssReference.INSTANCE),
                 JavaScriptHeaderItem.forReference(Application.get().getJavaScriptLibrarySettings().getJQueryReference()));
     }
 

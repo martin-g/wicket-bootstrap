@@ -2,16 +2,16 @@ package de.agilecoders.wicket.samples.pages;
 
 import java.util.List;
 
-import de.agilecoders.wicket.core.markup.html.bootstrap.common.NotificationPanel;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.fileinput.BootstrapFileInput;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.upload.FileUpload;
-import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.util.ListModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.wicketstuff.annotation.mount.MountPath;
+
+import de.agilecoders.wicket.core.markup.html.bootstrap.common.NotificationPanel;
 
 @MountPath(value = "/extensions/BootstrapFileInput")
 public class ExtensionsBootstrapFileInputPage extends BasePage {
@@ -33,6 +33,11 @@ public class ExtensionsBootstrapFileInputPage extends BasePage {
             protected void onSubmit() {
                 super.onSubmit();
 
+                System.err.println("Outer form submitted!");
+                List<FileUpload> fileUploads = model.getObject();
+                for (FileUpload upload : fileUploads) {
+                    success("Normal Upload: " + upload.getClientFileName());
+                }
             }
         };
         bootstrapFileUploadForm.setOutputMarkupId(true);
@@ -51,6 +56,7 @@ public class ExtensionsBootstrapFileInputPage extends BasePage {
                 target.add(feedback);
             }
         };
+        bootstrapFileInput.withShowRemove(true);
         bootstrapFileUploadForm.add(bootstrapFileInput);
     }
 
