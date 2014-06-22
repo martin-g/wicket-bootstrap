@@ -21,6 +21,7 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.NavbarButton;
 import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.NavbarComponents;
 import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.NavbarDropDownButton;
 import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.NavbarExternalLink;
+import de.agilecoders.wicket.core.markup.html.references.RespondJavaScriptReference;
 import de.agilecoders.wicket.core.settings.IBootstrapSettings;
 import de.agilecoders.wicket.core.settings.ITheme;
 import de.agilecoders.wicket.samples.WicketApplication;
@@ -218,6 +219,7 @@ abstract class BasePage extends GenericWebPage<Void> {
 
         response.render(CssHeaderItem.forReference(FixBootstrapStylesCssResourceReference.INSTANCE));
         response.render(new FilteredHeaderItem(JavaScriptHeaderItem.forReference(ApplicationJavaScript.INSTANCE), "footer-container"));
+        response.render(RespondJavaScriptReference.headerItem());
 
         if ("google".equalsIgnoreCase(activeTheme().name())) {
             response.render(CssHeaderItem.forReference(DocsCssResourceReference.GOOGLE));
