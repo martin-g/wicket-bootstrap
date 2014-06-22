@@ -2,6 +2,8 @@ package de.agilecoders.wicket.extensions.markup.html.bootstrap.form;
 
 import java.io.IOException;
 
+import org.apache.wicket.util.lang.Args;
+import org.apache.wicket.util.string.Strings;
 import org.joda.time.DateTime;
 
 import com.fasterxml.jackson.core.JsonGenerator;
@@ -12,6 +14,8 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import de.agilecoders.wicket.core.util.Dates;
 import de.agilecoders.wicket.jquery.AbstractConfig;
 import de.agilecoders.wicket.jquery.IKey;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 
 /**
  * Configuration holder for all {@link DateTextField} configurations.
@@ -135,7 +139,15 @@ public class DateTextFieldConfig extends AbstractConfig {
      * @return this instance for chaining
      */
     public DateTextFieldConfig withStartDate(final DateTime value) {
-        put(StartDate, value.toString());
+        String format = getFormat();
+        String startDate;
+        if (Strings.isEmpty(format)) {
+            startDate = value.toString();
+        } else {
+            DateTimeFormatter dateTimeFormatter = DateTimeFormat.forPattern(format);
+            startDate = dateTimeFormatter.print(value);
+        }
+        put(StartDate, startDate);
         return this;
     }
 
@@ -146,7 +158,16 @@ public class DateTextFieldConfig extends AbstractConfig {
      * @return this instance for chaining
      */
     public DateTextFieldConfig withEndDate(final DateTime value) {
-        put(EndDate, value.toString());
+        Args.notNull(value, "value");
+        String format = getFormat();
+        String endDate;
+        if (Strings.isEmpty(format)) {
+            endDate = value.toString();
+        } else {
+            DateTimeFormatter dateTimeFormatter = DateTimeFormat.forPattern(format);
+            endDate = dateTimeFormatter.print(value);
+        }
+        put(EndDate, endDate);
         return this;
     }
 
