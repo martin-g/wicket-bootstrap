@@ -76,38 +76,42 @@ public class BootstrapFileInput extends GenericPanel<List<FileUpload>> {
 
 
     public boolean isShowCaption() {
-        return fileInput.showCaption;
+        return getConfig().showCaption();
     }
 
     public BootstrapFileInput withShowCaption(final boolean showCaption) {
-        fileInput.showCaption = showCaption;
+        getConfig().showCaption(showCaption);
         return this;
     }
 
     public boolean isShowPreview() {
-        return fileInput.showPreview;
+        return getConfig().showPreview();
     }
 
     public BootstrapFileInput withShowPreview(final boolean showPreview) {
-        fileInput.showPreview = showPreview;
+        getConfig().showPreview(showPreview);
         return this;
     }
 
     public boolean isShowRemove() {
-        return fileInput.showRemove;
+        return getConfig().showRemove();
     }
 
     public BootstrapFileInput withShowRemove(final boolean showRemove) {
-        fileInput.showRemove = showRemove;
+        getConfig().showRemove(showRemove);
         return this;
     }
 
     public boolean isShowUpload() {
-        return fileInput.showUpload;
+        return fileInput.config.showUpload();
     }
 
     public BootstrapFileInput withShowUpload(final boolean showUpload) {
-        fileInput.showUpload = showUpload;
+        getConfig().showUpload(showUpload);
         return this;
+    }
+
+    private FileInputConfig getConfig() {
+        return fileInput.config;
     }
 }

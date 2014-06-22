@@ -33,10 +33,11 @@ public class ExtensionsBootstrapFileInputPage extends BasePage {
             protected void onSubmit() {
                 super.onSubmit();
 
-                System.err.println("Outer form submitted!");
                 List<FileUpload> fileUploads = model.getObject();
-                for (FileUpload upload : fileUploads) {
-                    success("Normal Upload: " + upload.getClientFileName());
+                if (fileUploads != null) {
+                    for (FileUpload upload : fileUploads) {
+                        success("Normal Upload: " + upload.getClientFileName());
+                    }
                 }
             }
         };
@@ -49,14 +50,16 @@ public class ExtensionsBootstrapFileInputPage extends BasePage {
                 super.onSubmit(target);
 
                 List<FileUpload> fileUploads = model.getObject();
-                for (FileUpload upload : fileUploads) {
-                    success("Uploaded: " + upload.getClientFileName());
+                if (fileUploads != null) {
+                    for (FileUpload upload : fileUploads) {
+                        success("Uploaded: " + upload.getClientFileName());
+                    }
                 }
 
                 target.add(feedback);
             }
         };
-        bootstrapFileInput.withShowRemove(true);
+//        bootstrapFileInput.withShowRemove(false).withShowUpload(false);
         bootstrapFileUploadForm.add(bootstrapFileInput);
     }
 

@@ -1,5 +1,7 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.form.fileinput;
 
+import static de.agilecoders.wicket.jquery.JQuery.$;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,9 +14,10 @@ import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.upload.FileUpload;
 import org.apache.wicket.markup.html.form.upload.FileUploadField;
 import org.apache.wicket.model.IModel;
-
-import de.agilecoders.wicket.jquery.util.Strings2;
 import org.apache.wicket.util.template.PackageTextTemplate;
+
+import de.agilecoders.wicket.jquery.JQuery;
+import de.agilecoders.wicket.jquery.util.Strings2;
 
 /**
  * Integration with <a href="https://github.com/kartik-v/bootstrap-fileinput">Bootstrap FileInput</a>
@@ -41,10 +44,7 @@ class BootstrapFileInputField extends FileUploadField {
      */
     private AjaxFormSubmitBehavior ajaxUploadBehavior;
 
-    boolean showCaption = false;
-    boolean showPreview = true;
-    boolean showRemove = false;
-    boolean showUpload = true;
+    FileInputConfig config = new FileInputConfig();
 
     /**
      * Constructor
@@ -117,13 +117,11 @@ class BootstrapFileInputField extends FileUploadField {
     public void renderHead(final IHeaderResponse response) {
         FileinputJsReference.INSTANCE.renderHead(response);
 
+        JQuery fileinputJS = $(this).chain("fileinput", config);
+
         PackageTextTemplate tmpl = new PackageTextTemplate(BootstrapFileInputField.class, "res/fileinput.tmpl.js");
         Map<String, Object> variables = new HashMap<String, Object>();
         variables.put("markupId", Strings2.getMarkupId(this));
-        variables.put("showCaption", showCaption);
-        variables.put("showPreview", showPreview);
-        variables.put("showRemove", showRemove);
-        variables.put("showUpload", showUpload);
         for (String label : LABELS) {
             variables.put(label, getString(label));
         }
@@ -131,6 +129,6 @@ class BootstrapFileInputField extends FileUploadField {
 
         String js = tmpl.asString(variables);
 
-        response.render(OnDomReadyHeaderItem.forScript(js));
+        response.render(OnDomReadyHeaderItem.forScript(fileinputJS.get() + js));
     }
 }
