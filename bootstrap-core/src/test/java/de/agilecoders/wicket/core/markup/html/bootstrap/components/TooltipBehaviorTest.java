@@ -1,9 +1,11 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.components;
 
 import de.agilecoders.wicket.core.WicketApplicationTest;
+
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.model.Model;
+import org.apache.wicket.model.ResourceModel;
 import org.apache.wicket.util.tester.TagTester;
 import org.junit.Test;
 
@@ -40,6 +42,13 @@ public class TooltipBehaviorTest extends WicketApplicationTest {
 
         tester().assertNoErrorMessage();
         tester().assertVisible(id());
+    }
+    
+    @Test
+    public void labelIsLocalized() {
+        tester().startComponentInPage(new MyContainer(id()).add(new TooltipBehavior(new ResourceModel("label"))));
+        final TagTester tag = tester().getTagByWicketId(id());
+        assertThat(tag.getAttribute("title"), is(equalTo("bar")));
     }
 
     /**
