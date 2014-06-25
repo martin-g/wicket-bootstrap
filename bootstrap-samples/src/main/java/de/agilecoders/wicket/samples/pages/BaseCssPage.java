@@ -1,6 +1,7 @@
 package de.agilecoders.wicket.samples.pages;
 
 import com.google.common.collect.Lists;
+import de.agilecoders.wicket.core.markup.html.bootstrap.form.BootstrapCheckbox;
 import de.agilecoders.wicket.core.markup.html.bootstrap.form.BootstrapForm;
 import de.agilecoders.wicket.core.markup.html.bootstrap.form.BootstrapRadioChoice;
 import org.apache.wicket.Component;
@@ -52,6 +53,7 @@ public class BaseCssPage extends BasePage {
         Form<Void> form = new BootstrapForm<Void>("forms");
         add(form);
 
+        form.add(new BootstrapCheckbox("checkbox", null, Model.of("Checkbox demo")));
         form.add(new BootstrapRadioChoice<String>("radio", Lists.newArrayList("Radio One", "Radio Two")));
     }
 

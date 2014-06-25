@@ -1,0 +1,108 @@
+package de.agilecoders.wicket.core.markup.html.bootstrap.form;
+
+import de.agilecoders.wicket.core.util.Attributes;
+import org.apache.wicket.Component;
+import org.apache.wicket.MarkupContainer;
+import org.apache.wicket.markup.ComponentTag;
+import org.apache.wicket.markup.html.WebMarkupContainer;
+import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.form.CheckBox;
+import org.apache.wicket.markup.html.panel.GenericPanel;
+import org.apache.wicket.model.IModel;
+
+/**
+ * A specialization of a Checkbox with Bootstrap styling
+ *
+ * @see <a href="http://getbootstrap.com/css/#forms">Bootstrap forms</a>
+ */
+public class BootstrapCheckbox extends GenericPanel<Boolean> {
+
+    private final IModel<?> labelModel;
+    private boolean inline = false;
+
+    /**
+     * Constructor.
+     *
+     * @param id The component id
+     */
+    public BootstrapCheckbox(String id) {
+        this(id, null);
+    }
+
+    /**
+     * Constructor.
+     *
+     * @param id The component id
+     * @param model The model for the checkbox
+     */
+    public BootstrapCheckbox(String id, IModel<Boolean> model) {
+        this(id, model, null);
+    }
+
+    /**
+     * Constructor.
+     *
+     * @param id The component id
+     * @param model The model for the checkbox
+     * @param labelModel A model for the checkbox's label
+     */
+    public BootstrapCheckbox(String id, IModel<Boolean> model, IModel<?> labelModel) {
+        super(id, model);
+
+        this.labelModel = labelModel;
+
+        setRenderBodyOnly(true);
+    }
+
+    @Override
+    protected void onDetach() {
+        super.onDetach();
+
+        if (labelModel != null) {
+            labelModel.detach();
+        }
+    }
+
+    @Override
+    protected void onInitialize() {
+        super.onInitialize();
+
+        MarkupContainer label = newLabelContainer("label");
+        add(label);
+        label.add(newLabel("post-label"));
+        label.add(new CheckBox("checkbox", getModel()));
+    }
+
+    protected Component newLabel(String id) {
+        return new Label(id, labelModel) {
+            @Override
+            protected void onConfigure() {
+                super.onConfigure();
+
+                setVisible(labelModel != null && labelModel.getObject() != null);
+            }
+        };
+    }
+
+    protected MarkupContainer newLabelContainer(String id) {
+        return new WebMarkupContainer(id) {
+            @Override
+            protected void onComponentTag(ComponentTag tag) {
+                super.onComponentTag(tag);
+
+                if (isInline()) {
+                    Attributes.addClass(tag, "checkbox-inline");
+                }
+            }
+        };
+    }
+
+    public boolean isInline() {
+        return inline;
+    }
+
+    public BootstrapCheckbox setInline(boolean inline) {
+        this.inline = inline;
+        return this;
+    }
+}
