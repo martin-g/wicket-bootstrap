@@ -24,6 +24,10 @@ import de.agilecoders.wicket.jquery.util.Strings2;
  */
 public class BootstrapFileInputField extends FileUploadField {
 
+	/**
+	 * Make sure that this class is inside the uploadClass config, otherwise the ajax behavior will not work!
+	 */
+	public static final String JQUERY_IDENTIFIER_UPLOAD_BUTTON_CLASS = "fileinput-upload-button";
     private static final String AJAX_EVENT_NAME_SUFFIX = "_fileinput-upload-button-clicked";
 
     /**
@@ -75,6 +79,9 @@ public class BootstrapFileInputField extends FileUploadField {
     public BootstrapFileInputField(final String id, final IModel<List<FileUpload>> model, FileInputConfig config) {
         super(id, model);
         this.config = config;
+        if(config.uploadClass().contains(JQUERY_IDENTIFIER_UPLOAD_BUTTON_CLASS)){
+        	throw new IllegalArgumentException("Config value [uploadClass] does not contain ["+JQUERY_IDENTIFIER_UPLOAD_BUTTON_CLASS+"]. Ajax behavior does not work without this!");
+        }
     }
 
     public FileInputConfig getConfig(){
