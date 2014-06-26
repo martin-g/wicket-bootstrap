@@ -22,7 +22,7 @@ import de.agilecoders.wicket.jquery.util.Strings2;
 /**
  * Integration with <a href="https://github.com/kartik-v/bootstrap-fileinput">Bootstrap FileInput</a>
  */
-class BootstrapFileInputField extends FileUploadField {
+public class BootstrapFileInputField extends FileUploadField {
 
     private static final String AJAX_EVENT_NAME_SUFFIX = "_fileinput-upload-button-clicked";
 
@@ -44,7 +44,7 @@ class BootstrapFileInputField extends FileUploadField {
      */
     private AjaxFormSubmitBehavior ajaxUploadBehavior;
 
-    FileInputConfig config = new FileInputConfig();
+    private final FileInputConfig config;
 
     /**
      * Constructor
@@ -54,7 +54,7 @@ class BootstrapFileInputField extends FileUploadField {
     public BootstrapFileInputField(String id) {
         this(id, null);
     }
-
+    
     /**
      * Constructor
      *
@@ -62,7 +62,23 @@ class BootstrapFileInputField extends FileUploadField {
      * @param model The model that will store the uploaded files
      */
     public BootstrapFileInputField(final String id, final IModel<List<FileUpload>> model) {
+        this(id, model, new FileInputConfig());
+    }
+    
+    /**
+     * Constructor
+     *
+     * @param id The component id
+     * @param model The model that will store the uploaded files
+     * @param config The configuration for this file input
+     */
+    public BootstrapFileInputField(final String id, final IModel<List<FileUpload>> model, FileInputConfig config) {
         super(id, model);
+        this.config = config;
+    }
+
+    public FileInputConfig getConfig(){
+        return config;
     }
 
     void setForm(Form<?> form) {
