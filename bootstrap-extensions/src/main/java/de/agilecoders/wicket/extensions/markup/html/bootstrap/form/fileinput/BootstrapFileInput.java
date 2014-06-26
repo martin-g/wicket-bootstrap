@@ -112,6 +112,6 @@ public class BootstrapFileInput extends GenericPanel<List<FileUpload>> {
     }
 
     private FileInputConfig getConfig() {
-        return fileInput.config;
+        return fileInput.getConfig();
     }
 }
