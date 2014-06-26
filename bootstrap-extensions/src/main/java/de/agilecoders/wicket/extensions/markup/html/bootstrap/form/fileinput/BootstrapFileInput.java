@@ -103,7 +103,7 @@ public class BootstrapFileInput extends GenericPanel<List<FileUpload>> {
     }
 
     public boolean isShowUpload() {
-        return fileInput.config.showUpload();
+        return getConfig().showUpload();
     }
 
     public BootstrapFileInput withShowUpload(final boolean showUpload) {
@@ -112,6 +112,6 @@ public class BootstrapFileInput extends GenericPanel<List<FileUpload>> {
     }
 
     private FileInputConfig getConfig() {
-        return fileInput.config;
+        return fileInput.getConfig();
     }
 }
