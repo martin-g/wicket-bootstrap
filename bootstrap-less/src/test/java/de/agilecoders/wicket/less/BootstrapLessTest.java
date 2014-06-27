@@ -5,6 +5,7 @@ import de.agilecoders.wicket.webjars.WicketWebjars;
 import org.apache.wicket.util.tester.WicketTester;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.net.URL;
@@ -42,6 +43,7 @@ public class BootstrapLessTest {
     }
 
     @Test
+    @Ignore // unignore after https://github.com/l0rdn1kk0n/wicket-webjars/issues/17
     public void importWebJars() throws Exception {
         LessCacheManager less = LessCacheManager.get();
         URL res = Thread.currentThread().getContextClassLoader().getResource("import.less");
