@@ -29,8 +29,7 @@ public class FileInputConfig extends AbstractConfig {
 
     public static final IKey<String> RemoveClass = newKey("removeClass", "btn btn-default");
 
-    public static final IKey<String> UploadClass = newKey("browseClass", "btn btn-default "
-                    + BootstrapFileInputField.JQUERY_IDENTIFIER_UPLOAD_BUTTON_CLASS);
+    public static final IKey<String> UploadClass = newKey("uploadClass", "btn btn-default");
 
     public static final IKey<Integer> WrapTextLength = newKey("wrapTextLength", 250);
 

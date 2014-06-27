@@ -14,6 +14,7 @@ import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.upload.FileUpload;
 import org.apache.wicket.markup.html.form.upload.FileUploadField;
 import org.apache.wicket.model.IModel;
+import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.template.PackageTextTemplate;
 
 import de.agilecoders.wicket.jquery.JQuery;
@@ -79,9 +80,11 @@ public class BootstrapFileInputField extends FileUploadField {
      */
     public BootstrapFileInputField(final String id, final IModel<List<FileUpload>> model, FileInputConfig config) {
         super(id, model);
-        this.config = config;
-        if(!config.uploadClass().contains(JQUERY_IDENTIFIER_UPLOAD_BUTTON_CLASS)){
-            throw new IllegalArgumentException("Config value [uploadClass] does not contain ["+JQUERY_IDENTIFIER_UPLOAD_BUTTON_CLASS+"]. Ajax behavior does not work without this!");
+
+        this.config = Args.notNull(config, "config");
+        if (!config.uploadClass().contains(JQUERY_IDENTIFIER_UPLOAD_BUTTON_CLASS)) {
+            String uploadClass = config.uploadClass() + " " + JQUERY_IDENTIFIER_UPLOAD_BUTTON_CLASS;
+            config.uploadClass(uploadClass);
         }
     }
 
@@ -93,14 +96,16 @@ public class BootstrapFileInputField extends FileUploadField {
         this.form = form;
     }
 
- @Override
-    protected void onInitialize() {
-        super.onInitialize();
+    @Override
+    protected void onConfigure() {
+        super.onConfigure();
 
-        if(getConfig().showUpload()){
+        if (ajaxUploadBehavior == null && getConfig().showUpload()) {
             String ajaxEventName = Strings2.getMarkupId(this) + AJAX_EVENT_NAME_SUFFIX;
             ajaxUploadBehavior = newAjaxFormSubmitBehavior(ajaxEventName);
             add(ajaxUploadBehavior);
+        } else if (ajaxUploadBehavior != null) {
+            remove(ajaxUploadBehavior);
         }
     }
 
@@ -145,16 +150,19 @@ public class BootstrapFileInputField extends FileUploadField {
 
         JQuery fileinputJS = $(this).chain("fileinput", config);
 
-        PackageTextTemplate tmpl = new PackageTextTemplate(BootstrapFileInputField.class, "res/fileinput.tmpl.js");
-        Map<String, Object> variables = new HashMap<String, Object>();
-        variables.put("markupId", Strings2.getMarkupId(this));
-        for (String label : LABELS) {
-            variables.put(label, getString(label));
+        String ajaxUpload = "";
+        if (ajaxUploadBehavior != null) {
+            PackageTextTemplate tmpl = new PackageTextTemplate(BootstrapFileInputField.class, "res/fileinput.tmpl.js");
+            Map<String, Object> variables = new HashMap<String, Object>();
+            variables.put("markupId", Strings2.getMarkupId(this));
+            for (String label : LABELS) {
+                variables.put(label, getString(label));
+            }
+            variables.put("eventName", ajaxUploadBehavior.getEvent());
+
+            ajaxUpload = tmpl.asString(variables);
         }
-        variables.put("eventName", ajaxUploadBehavior.getEvent());
 
-        String js = tmpl.asString(variables);
-
-        response.render(OnDomReadyHeaderItem.forScript(fileinputJS.get() + js));
+        response.render(OnDomReadyHeaderItem.forScript(fileinputJS.get() + ajaxUpload));
     }
 }
