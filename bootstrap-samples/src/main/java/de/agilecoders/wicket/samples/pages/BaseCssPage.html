@@ -901,18 +901,15 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 
 <p>Individual form controls receive styling, but without any required base class on the <code>&lt;form&gt;</code> or large changes in markup. Results in stacked, left-aligned labels on top of form controls.</p>
 
-<form class="bs-docs-example">
+<form wicket:id="forms" class="bs-docs-example">
     <fieldset>
         <legend>Legend</legend>
         <label>Label name</label>
         <input type="text" class="form-control" placeholder="Type something...">
         <span class="help-block">Example block-level help text here.</span>
 
-        <div class="checkbox">
-            <label>
-                <input type="checkbox"> Check me out
-            </label>
-        </div>
+        <input type="checkbox" wicket:id="checkbox"/>
+        <span wicket:id="radio"></span>
         <button type="submit" class="btn">Submit</button>
     </fieldset>
 </form>

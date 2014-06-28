@@ -10,11 +10,14 @@ import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.util.tester.FormTester;
+import org.apache.wicket.util.tester.TagTester;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
 import de.agilecoders.wicket.core.WicketApplicationTest;
 import de.agilecoders.wicket.core.test.IntegrationTest;
+
+import static org.hamcrest.Matchers.containsString;
 
 @Category(IntegrationTest.class)
 public class FormGroupTest extends WicketApplicationTest {
@@ -66,6 +69,10 @@ public class FormGroupTest extends WicketApplicationTest {
         tester().startComponentInPage(
                 form,
                 Markup.of("<form wicket:id='form'><div wicket:id='id'><input type='text' wicket:id='value'/></div></form>"));
+
+        TagTester formGroupTester = tester().getTagByWicketId("id");
+        assertThat(formGroupTester.getAttribute("class"), containsString("form-group"));
+
         FormTester formTester = tester().newFormTester("form", false);
         formTester.setValue(input, "Hello World!");
 
@@ -73,6 +80,52 @@ public class FormGroupTest extends WicketApplicationTest {
 
         tester().assertNoErrorMessage();
         tester().assertNoInfoMessage();
+    }
+
+    @Test
+    public void formGroupLarge() {
+
+        Model<FormData> model = Model.of(new FormData());
+        model.getObject();
+
+        Form<FormData> form = new Form<FormData>("form", new CompoundPropertyModel<FormData>(model));
+
+        FormGroup group = new FormGroup("formGroup");
+        group.size(FormGroup.Size.Large);
+        form.add(group);
+
+        TextField<String> input = new TextField<String>("value");
+        input.setRequired(true);
+        group.add(input);
+
+        tester().startComponentInPage(
+                form,
+                Markup.of("<form wicket:id='form'><div wicket:id='formGroup'><input type='text' wicket:id='value'/></div></form>"));
+        TagTester formGroupTester = tester().getTagByWicketId("formGroup");
+        assertThat(formGroupTester.getAttribute("class"), containsString("form-group-lg"));
+    }
+
+    @Test
+    public void formGroupSmall() {
+
+        Model<FormData> model = Model.of(new FormData());
+        model.getObject();
+
+        Form<FormData> form = new Form<FormData>("form", new CompoundPropertyModel<FormData>(model));
+
+        FormGroup group = new FormGroup("formGroup");
+        group.size(FormGroup.Size.Small);
+        form.add(group);
+
+        TextField<String> input = new TextField<String>("value");
+        input.setRequired(true);
+        group.add(input);
+
+        tester().startComponentInPage(
+                form,
+                Markup.of("<form wicket:id='form'><div wicket:id='formGroup'><input type='text' wicket:id='value'/></div></form>"));
+        TagTester formGroupTester = tester().getTagByWicketId("formGroup");
+        assertThat(formGroupTester.getAttribute("class"), containsString("form-group-sm"));
     }
 
     @Test
@@ -105,9 +158,9 @@ public class FormGroupTest extends WicketApplicationTest {
 
     private class FormData implements Serializable {
 
-        private static final long	serialVersionUID	= 1L;
+        private static final long serialVersionUID = 1L;
 
-        private String				value;
+        private String value;
 
         /**
          * @return Returns the value.

@@ -1,7 +1,12 @@
 package de.agilecoders.wicket.samples.pages;
 
+import com.google.common.collect.Lists;
+import de.agilecoders.wicket.core.markup.html.bootstrap.form.BootstrapCheckbox;
+import de.agilecoders.wicket.core.markup.html.bootstrap.form.BootstrapForm;
+import de.agilecoders.wicket.core.markup.html.bootstrap.form.BootstrapRadioChoice;
 import org.apache.wicket.Component;
 import org.apache.wicket.extensions.breadcrumb.panel.BreadCrumbPanel;
+import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.navigation.paging.IPageable;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
@@ -29,6 +34,8 @@ public class BaseCssPage extends BasePage {
      */
     public BaseCssPage(PageParameters parameters) {
         super(parameters);
+
+        addForms();
 /*
         add(new DateTextField("date"));
 
@@ -40,6 +47,14 @@ public class BaseCssPage extends BasePage {
         add(newPagination("pagination"));
         add(newBreadcrumb("breadcrumb"));
 */
+    }
+
+    private void addForms() {
+        Form<Void> form = new BootstrapForm<Void>("forms");
+        add(form);
+
+        form.add(new BootstrapCheckbox("checkbox", null, Model.of("Checkbox demo")));
+        form.add(new BootstrapRadioChoice<String>("radio", Lists.newArrayList("Radio One", "Radio Two")));
     }
 
     protected Component newBreadcrumb(String markupId) {

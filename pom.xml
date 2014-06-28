@@ -41,7 +41,7 @@
         <github.global.server>github</github.global.server>
         <java.version>1.7</java.version>
 
-        <bootstrap.version>3.1.1-1</bootstrap.version>
+        <bootstrap.version>3.2.0</bootstrap.version>
         <config.version>0.3.5</config.version>
         <wicket-webjars.version>0.5.0-SNAPSHOT</wicket-webjars.version>
         <wicket-jquery-selectors>0.2.0-SNAPSHOT</wicket-jquery-selectors>
@@ -57,7 +57,7 @@
         <versions-maven-plugin.version>2.1</versions-maven-plugin.version>
         <rhino.version>1.7R4</rhino.version>
         <doxia.version>1.0</doxia.version>
-        <less4j.version>1.5.4</less4j.version>
+        <less4j.version>1.6.1</less4j.version>
         <modernizr.version>2.7.1</modernizr.version>
         <jetty.version>8.1.15.v20140411</jetty.version>
         <newrelic.version>3.7.0</newrelic.version>
@@ -217,6 +217,10 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-release-plugin</artifactId>
+                <version>2.5</version>
+                <configuration>
+                    <goals>deploy</goals>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

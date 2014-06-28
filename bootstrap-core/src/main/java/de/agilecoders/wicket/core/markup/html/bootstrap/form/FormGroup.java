@@ -1,6 +1,7 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.form;
 
 import com.google.common.base.Function;
+import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNameProvider;
 import de.agilecoders.wicket.core.util.Attributes;
 import de.agilecoders.wicket.core.util.Components;
 import org.apache.wicket.AttributeModifier;
@@ -30,11 +31,31 @@ import java.util.List;
  */
 public class FormGroup extends Border implements IFormModelUpdateListener {
 
+    /**
+     * Holder class for all possible form group sizes
+     */
+    public static enum Size implements ICssClassNameProvider {
+        Small("sm"), Large("lg");
+
+        private final String cssName;
+
+        private Size(String cssName) {
+            this.cssName = cssName;
+        }
+
+        @Override
+        public String cssClassName() {
+            return "form-group-" + cssName;
+        }
+
+    }
+
     private Component label;
     private Component help;
     private Component feedback;
     private final Model<String> stateClassName;
     private boolean useFormComponentLabel = true;
+    private Size size;
     private final IModel<String> labelModel;
     private final IModel<String> helpModel;
 
@@ -77,6 +98,17 @@ public class FormGroup extends Border implements IFormModelUpdateListener {
      */
     public FormGroup useFormComponentLabel(boolean value) {
         this.useFormComponentLabel = value;
+        return this;
+    }
+
+    /**
+     * sets the size of form-group
+     *
+     * @param size the size to use
+     * @return this instance for chaining
+     */
+    public FormGroup size(final Size size) {
+        this.size = size;
         return this;
     }
 
@@ -126,6 +158,9 @@ public class FormGroup extends Border implements IFormModelUpdateListener {
 
         checkComponentTag(tag, "div");
         Attributes.addClass(tag, "form-group", stateClassName.getObject());
+        if (size != null) {
+            Attributes.addClass(tag, size.cssClassName());
+        }
     }
 
     @Override

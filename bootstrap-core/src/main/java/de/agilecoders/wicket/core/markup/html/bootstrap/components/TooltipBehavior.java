@@ -2,12 +2,15 @@ package de.agilecoders.wicket.core.markup.html.bootstrap.components;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapJavascriptBehavior;
 import de.agilecoders.wicket.jquery.AbstractConfig;
+
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
+import org.apache.wicket.model.IComponentAssignedModel;
 import org.apache.wicket.model.IModel;
 
+import static com.google.common.base.Preconditions.*;
 import static de.agilecoders.wicket.jquery.JQuery.$;
 
 /**
@@ -20,6 +23,7 @@ public class TooltipBehavior extends BootstrapJavascriptBehavior {
 
     private final IModel<String> label;
     private final TooltipConfig config;
+    private IModel<String> labelResolved;
 
     /**
      * Construct.
@@ -53,16 +57,22 @@ public class TooltipBehavior extends BootstrapJavascriptBehavior {
         super.onComponentTag(component, tag);
 
         tag.put("rel", createRelAttribute());
-        tag.put("title", label.getObject());
+        tag.put("title", labelResolved.getObject());
     }
 
     @Override
     public void bind(final Component component) {
         super.bind(component);
-
+        labelResolved=wrapOnAssignment(label, component);
         component.setOutputMarkupId(true);
     }
-
+    private IModel<String> wrapOnAssignment(IModel<String> label, Component component) {
+        if (label != null && label instanceof IComponentAssignedModel) {
+            IComponentAssignedModel<String> cam = (IComponentAssignedModel<String>) label;
+            return cam.wrapOnAssignment(checkNotNull(component));
+        }
+        return label;
+    }
     /**
      * @return the value of the "rel" attribute
      */

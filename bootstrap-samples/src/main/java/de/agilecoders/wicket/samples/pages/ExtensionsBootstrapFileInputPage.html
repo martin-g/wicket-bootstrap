@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+    <head>
+        <meta charset="utf-8"/>
+        <title>ComponentsPage</title>
+    </head>
+    <body>
+        <wicket:extend>
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-lg-3 bs-docs-sidebar">
+                        <ul wicket:id="navigation" class="nav nav-list bs-docs-sidenav">
+                            <li><a href="#issue303"><i class="icon-chevron-right"></i> kartik-v Bootstrap FileInput</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-9">
+
+                        <section id="issue303">
+                           <div class="page-header">
+                               <h1>kartik-v Bootstrap FileInput</h1>
+                           </div>
+
+                           <p>An improvement over Jasny File Upload by <a target="_blank" href="https://github.com/kartik-v/bootstrap-fileinput">kartik-v/bootstrap-fileinput</a>. See issue #<a href="https://github.com/l0rdn1kk0n/wicket-bootstrap/pull/383">303</a>.</p>
+						
+							<div class="bs-docs-example">
+                                <div wicket:id="feedback"></div>
+								<form wicket:id="bootstrapFileUploadForm">
+									<input class="btn btn-default" type="file" wicket:id="bootstrapFileinput" multiple="multiple"/>
+                                    <button type="submit" class="btn btn-default">Non-Ajax Submit</button>
+								</form>
+							</div>
+							<br/>
+							<div>
+                                In your java code just use <code>de.agilecoders.wicket.extensions.markup.html.bootstrap.BootstrapFileUploadField</code> instead of Wicket's <code>org.apache.wicket.markup.html.form.upload.FileUploadField</code> and make sure your form has form.setOutputMarkupId(true).
+                                <br/>No additional HTML markup required. Though you could add class="btn btn-default" to make the AjaxFallback simple file input align properly in bootstrap forms.
+                            </div>
+							
+						</section>
+						
+						<br/><br/>
+						
+                    </div>
+                </div>
+            </div>
+        </wicket:extend>
+    </body>
+</html>

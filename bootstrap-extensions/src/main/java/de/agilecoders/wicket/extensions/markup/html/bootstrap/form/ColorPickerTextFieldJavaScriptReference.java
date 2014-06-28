@@ -1,13 +1,13 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.form;
 
-import org.apache.wicket.request.resource.JavaScriptResourceReference;
+import org.apache.wicket.resource.JQueryPluginResourceReference;
 
 /**
  * Bootstrap {@link ColorPickerTextField} JavaScript reference.
  *
  * @author ceefour
  */
-public class ColorPickerTextFieldJavaScriptReference extends JavaScriptResourceReference {
+public class ColorPickerTextFieldJavaScriptReference extends JQueryPluginResourceReference {
     private static final long serialVersionUID = 1L;
 
     /**

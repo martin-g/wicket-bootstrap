@@ -7,8 +7,8 @@ Current build status: [![Build Status](https://buildhive.cloudbees.com/job/l0rdn
 Components
 ----------
 
-* Twitter Bootstrap (3.1.1-1): https://github.com/twbs/bootstrap/
-* Apache Wicket (6.15.0): http://wicket.apache.org/
+* Twitter Bootstrap (3.2.0): https://github.com/twbs/bootstrap/
+* Apache Wicket (6.16.0): http://wicket.apache.org/
 * Bootswatch (3.1.1-1): http://bootswatch.com/
 
 Extensions
@@ -20,7 +20,7 @@ Extensions
 * JQueryUI (1.9.2): http://api.jqueryui.com/
    * Draggable: http://api.jqueryui.com/draggable
    * Resizable: http://api.jqueryui.com/resizable
-* less4j (1.5.4): https://github.com/SomMeri/less4j
+* less4j (1.6.1): https://github.com/SomMeri/less4j
 * bootstrap-tour (0.9.0): http://sorich87.github.com/bootstrap-tour
 * OpenWebIcons (2012-10-03): http://pfefferle.github.com/openwebicons/
 * Twitter Typeahead (0.9.3): http://twitter.github.io/typeahead.js/

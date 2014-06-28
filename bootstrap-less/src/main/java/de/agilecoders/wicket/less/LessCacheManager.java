@@ -36,6 +36,9 @@ public class LessCacheManager {
         private static final WebJarAssetLocator locator = new WebJarAssetLocator(WicketWebjars.settings());
     }
 
+    public static final String CLASSPATH_SCHEME = "classpath!";
+    public static final String WEBJARS_SCHEME = "webjars!";
+
     /**
      * A cache that keeps the root LessSource.URLSource instance per URL.
      * Each root LessSource keeps references to all imported LessSource's in it.
@@ -68,14 +71,15 @@ public class LessCacheManager {
 
     private static final class CustomWebjarsAwareLessUrlSource extends LessSource.URLSource {
 
-        public CustomWebjarsAwareLessUrlSource(URL inputURL) {
+        private CustomWebjarsAwareLessUrlSource(URL inputURL) {
             super(inputURL);
         }
 
         @Override
         public LessSource relativeSource(String filename) throws FileNotFound, CannotReadFile {
-            if (StringUtils.startsWith(filename, "webjars!")) {
-                final String file = Holder.locator.getFullPath(filename.replaceFirst("webjars!", "/webjars/"));
+            if (StringUtils.startsWith(filename, WEBJARS_SCHEME)) {
+                LOG.debug("Going to resolve an import from WebJars: {}", filename);
+                final String file = Holder.locator.getFullPath(filename.replaceFirst(WEBJARS_SCHEME, "/webjars/"));
 
                 try {
                     final URL res = Thread.currentThread().getContextClassLoader().getResource(file);
@@ -83,6 +87,20 @@ public class LessCacheManager {
                     return new CustomWebjarsAwareLessUrlSource(res);
                 } catch (RuntimeException e) {
                     throw new WicketRuntimeException(e);
+                }
+            } else if (StringUtils.startsWith(filename, CLASSPATH_SCHEME)) {
+                LOG.debug("Going to resolve an import from the classpath: {}", filename);
+                String resourceName = filename.substring(CLASSPATH_SCHEME.length() + 1);
+                if (resourceName.indexOf(0) != '/') {
+                    resourceName = '/' + resourceName;
+                }
+
+                URL url = LessCacheManager.class.getResource(resourceName);
+                if (url != null) {
+                    return new CustomWebjarsAwareLessUrlSource(url);
+                } else {
+                    throw new IllegalArgumentException(
+                            String.format("Cannot resolve relative source with name '%s' in the classpath", filename));
                 }
             } else {
                 return super.relativeSource(filename);
@@ -119,7 +137,7 @@ public class LessCacheManager {
 
             ThreadUnsafeLessCompiler compiler = new ThreadUnsafeLessCompiler();
             LessCompiler.Configuration configuration = new LessCompiler.Configuration();
-            configuration.setLinkSourceMap(false);
+            configuration.getSourceMapConfiguration().setLinkSourceMap(false);
 
             try {
                 LessCompiler.CompilationResult result = compiler.compile(lessSource, configuration);
