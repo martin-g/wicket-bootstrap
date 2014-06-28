@@ -66,7 +66,7 @@
         <logback.version>1.1.2</logback.version>
         <jquerypp.version>1.0.1</jquerypp.version>
         <jquery.version>2.1.1</jquery.version>
-        <maven-bundle-plugin.version>2.4.0</maven-bundle-plugin.version>
+        <maven-bundle-plugin.version>2.5.0</maven-bundle-plugin.version>
         <wicket.version>6.16.0</wicket.version>
     </properties>
 
