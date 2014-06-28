@@ -43,7 +43,7 @@ public class BootstrapLessTest {
     }
 
     @Test
-    @Ignore // unignore after https://github.com/l0rdn1kk0n/wicket-webjars/issues/17
+    // unignore after https://github.com/l0rdn1kk0n/wicket-webjars/issues/17
     public void importWebJars() throws Exception {
         LessCacheManager less = LessCacheManager.get();
         URL res = Thread.currentThread().getContextClassLoader().getResource("import.less");
