@@ -2,7 +2,7 @@
 @import "bootstrap.cyborg.variables.less";
 
 
-// Cyborg 3.1.1
+// Cyborg 3.2.0
 // Bootswatch
 // -----------------------------------------------------
 
@@ -74,7 +74,8 @@ table,
   }
 
   .form-control,
-  .form-control:focus {
+  .form-control:focus,
+  .input-group-addon {
     border-color: @brand-warning;
   }
 }
@@ -87,7 +88,8 @@ table,
   }
 
   .form-control,
-  .form-control:focus {
+  .form-control:focus,
+  .input-group-addon {
     border-color: @brand-danger;
   }
 }
@@ -100,7 +102,8 @@ table,
   }
 
   .form-control,
-  .form-control:focus {
+  .form-control:focus,
+  .input-group-addon {
     border-color: @brand-success;
   }
 }
@@ -136,15 +139,19 @@ legend {
   }
 
   .close {
-    color: #fff;
     text-decoration: none;
-    opacity: 0.4;
+  }
+}
 
-    &:hover,
-    &:focus {
-      color: #fff;
-      opacity: 1;
-    }
+.close {
+  color: #fff;
+  text-decoration: none;
+  opacity: 0.4;
+
+  &:hover,
+  &:focus {
+    color: #fff;
+    opacity: 1;
   }
 }
 

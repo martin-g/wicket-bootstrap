@@ -2,7 +2,7 @@
 @import "bootstrap.superhero.variables.less";
 
 
-// Superhero 3.1.1
+// Superhero 3.2.0
 // Bootswatch
 // -----------------------------------------------------
 
@@ -156,6 +156,10 @@ label,
   .form-control-feedback {
     color: @brand-warning;
   }
+
+  .input-group-addon {
+    border: none;
+  }
 }
 
 .has-error {
@@ -164,6 +168,10 @@ label,
   .form-control-feedback {
     color: @brand-danger;
   }
+
+  .input-group-addon {
+    border: none;
+  }
 }
 
 .has-success {
@@ -171,6 +179,10 @@ label,
   .control-label,
   .form-control-feedback {
     color: @brand-success;
+  }
+
+  .input-group-addon {
+    border: none;
   }
 }
 
@@ -216,15 +228,6 @@ label,
 
 // Indicators =================================================================
 
-.close {
-  opacity: 0.4;
-
-  &:hover,
-  &:focus {
-    opacity: 1;
-  }
-}
-
 .label {
   font-weight: 300;
 }
@@ -235,6 +238,15 @@ label,
   a,
   .alert-link {
     color: #fff;
+  }
+}
+
+.close {
+  opacity: 0.4;
+
+  &:hover,
+  &:focus {
+    opacity: 1;
   }
 }
 
