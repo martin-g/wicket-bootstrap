@@ -5,7 +5,6 @@ import de.agilecoders.wicket.webjars.WicketWebjars;
 import org.apache.wicket.util.tester.WicketTester;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import java.net.URL;
@@ -13,7 +12,6 @@ import java.net.URL;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
 
 /**
  * TODO miha: document class purpose
@@ -48,7 +46,7 @@ public class BootstrapLessTest {
         LessCacheManager less = LessCacheManager.get();
         URL res = Thread.currentThread().getContextClassLoader().getResource("import.less");
 
-        LessSource.URLSource lessSource = less.getLessSource(res);
+        LessSource.URLSource lessSource = less.getLessSource(res, null);
         String css = less.getCss(lessSource);
         assertThat(css, is(equalTo(".rule {\n  background: #428bca;\n}\n")));
 
@@ -59,9 +57,20 @@ public class BootstrapLessTest {
         LessCacheManager less = LessCacheManager.get();
         URL res = Thread.currentThread().getContextClassLoader().getResource("importClasspath.less");
 
-        LessSource.URLSource lessSource = less.getLessSource(res);
+        LessSource.URLSource lessSource = less.getLessSource(res, null);
         String css = less.getCss(lessSource);
         assertThat(css, is(equalTo(".classPathImported {\n  color: #333;\n}\n")));
+
+    }
+
+    @Test
+    public void importPackage() throws Exception {
+        LessCacheManager less = LessCacheManager.get();
+        URL res = BootstrapLessTest.class.getResource("1.less");
+
+        LessSource.URLSource lessSource = less.getLessSource(res, BootstrapLessTest.class.getName());
+        String css = less.getCss(lessSource);
+        assertThat(css, is(equalTo("body {\n  background-color: #808080;\n}\n")));
 
     }
 }

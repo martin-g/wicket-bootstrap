@@ -10,6 +10,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.wicket.Application;
 import org.apache.wicket.MetaDataKey;
 import org.apache.wicket.WicketRuntimeException;
+import org.apache.wicket.core.util.lang.WicketObjects;
 import org.apache.wicket.util.io.Connections;
 import org.apache.wicket.util.time.Time;
 import org.slf4j.Logger;
@@ -37,6 +38,7 @@ public class LessCacheManager {
     }
 
     public static final String CLASSPATH_SCHEME = "classpath!";
+    public static final String PACKAGE_SCHEME = "package!";
     public static final String WEBJARS_SCHEME = "webjars!";
 
     /**
@@ -57,10 +59,11 @@ public class LessCacheManager {
      * If there is no entry in the cache then it will be automatically registered
      *
      * @param lessUrl the URL to the Less resource file
+     * @param scopeClass
      * @return The LessSource for the Less resource file
      */
-    public LessSource.URLSource getLessSource(URL lessUrl) {
-        LessSource.URLSource lessSource = new CustomWebjarsAwareLessUrlSource(lessUrl);
+    public LessSource.URLSource getLessSource(URL lessUrl, String scopeClass) {
+        LessSource.URLSource lessSource = new CustomWebjarsAwareLessUrlSource(lessUrl, scopeClass);
         LessSource.URLSource oldValue = urlSourceCache.putIfAbsent(lessUrl, lessSource);
         if (oldValue != null) {
             lessSource = oldValue;
@@ -71,8 +74,11 @@ public class LessCacheManager {
 
     private static final class CustomWebjarsAwareLessUrlSource extends LessSource.URLSource {
 
-        private CustomWebjarsAwareLessUrlSource(URL inputURL) {
+        private final String scopeClass;
+
+        private CustomWebjarsAwareLessUrlSource(URL inputURL, String scopeClass) {
             super(inputURL);
+            this.scopeClass = scopeClass;
         }
 
         @Override
@@ -84,7 +90,7 @@ public class LessCacheManager {
                 try {
                     final URL res = Thread.currentThread().getContextClassLoader().getResource(file);
 
-                    return new CustomWebjarsAwareLessUrlSource(res);
+                    return new CustomWebjarsAwareLessUrlSource(res, scopeClass);
                 } catch (RuntimeException e) {
                     throw new WicketRuntimeException(e);
                 }
@@ -97,7 +103,22 @@ public class LessCacheManager {
 
                 URL url = LessCacheManager.class.getResource(resourceName);
                 if (url != null) {
-                    return new CustomWebjarsAwareLessUrlSource(url);
+                    return new CustomWebjarsAwareLessUrlSource(url, scopeClass);
+                } else {
+                    throw new IllegalArgumentException(
+                            String.format("Cannot resolve relative source with name '%s' in the classpath", filename));
+                }
+            } else if (scopeClass != null && StringUtils.startsWith(filename, PACKAGE_SCHEME)) {
+                LOG.debug("Going to resolve an import from the package: {}", filename);
+                String resourceName = filename.substring(PACKAGE_SCHEME.length());
+                if (resourceName.indexOf(0) == '/') {
+                    resourceName = resourceName.substring(1);
+                }
+
+                Class<?> scope = WicketObjects.resolveClass(scopeClass);
+                URL url = scope.getResource(resourceName);
+                if (url != null) {
+                    return new CustomWebjarsAwareLessUrlSource(url, scopeClass);
                 } else {
                     throw new IllegalArgumentException(
                             String.format("Cannot resolve relative source with name '%s' in the classpath", filename));
