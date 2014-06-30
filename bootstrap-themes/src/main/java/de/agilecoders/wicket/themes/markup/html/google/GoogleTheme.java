@@ -7,7 +7,7 @@ import de.agilecoders.wicket.core.settings.Theme;
  * # Description
  *
  * java representation of TODC Bootstrap. This theme modifies bootstrap and therefor both
- * files gets loaded (`bootstrap.css` and `todc-bootstrap.css`).
+ * files gets loaded (`bootstrap.css` and `google-bootstrap.css`).
  *
  * # Usage
  *
