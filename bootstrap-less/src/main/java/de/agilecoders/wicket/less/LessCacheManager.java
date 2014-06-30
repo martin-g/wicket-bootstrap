@@ -4,9 +4,6 @@ import com.github.sommeri.less4j.Less4jException;
 import com.github.sommeri.less4j.LessCompiler;
 import com.github.sommeri.less4j.LessSource;
 import com.github.sommeri.less4j.core.ThreadUnsafeLessCompiler;
-import de.agilecoders.wicket.webjars.WicketWebjars;
-import de.agilecoders.wicket.webjars.util.WebJarAssetLocator;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.wicket.Application;
 import org.apache.wicket.MetaDataKey;
 import org.apache.wicket.WicketRuntimeException;
@@ -32,13 +29,6 @@ public class LessCacheManager {
     private static final MetaDataKey<LessCacheManager> KEY = new MetaDataKey<LessCacheManager>() {
     };
 
-    private static final class Holder {
-        private static final WebJarAssetLocator locator = new WebJarAssetLocator(WicketWebjars.settings());
-    }
-
-    public static final String CLASSPATH_SCHEME = "classpath!";
-    public static final String WEBJARS_SCHEME = "webjars!";
-
     /**
      * A cache that keeps the root LessSource.URLSource instance per URL.
      * Each root LessSource keeps references to all imported LessSource's in it.
@@ -57,55 +47,17 @@ public class LessCacheManager {
      * If there is no entry in the cache then it will be automatically registered
      *
      * @param lessUrl the URL to the Less resource file
+     * @param scopeClass The name of the class used as a scope to resolve "package!" dependencies/imports
      * @return The LessSource for the Less resource file
      */
-    public LessSource.URLSource getLessSource(URL lessUrl) {
-        LessSource.URLSource lessSource = new CustomWebjarsAwareLessUrlSource(lessUrl);
+    public LessSource.URLSource getLessSource(URL lessUrl, String scopeClass) {
+        LessSource.URLSource lessSource = new LessUrlSource(lessUrl, scopeClass);
         LessSource.URLSource oldValue = urlSourceCache.putIfAbsent(lessUrl, lessSource);
         if (oldValue != null) {
             lessSource = oldValue;
         }
 
         return lessSource;
-    }
-
-    private static final class CustomWebjarsAwareLessUrlSource extends LessSource.URLSource {
-
-        private CustomWebjarsAwareLessUrlSource(URL inputURL) {
-            super(inputURL);
-        }
-
-        @Override
-        public LessSource relativeSource(String filename) throws FileNotFound, CannotReadFile {
-            if (StringUtils.startsWith(filename, WEBJARS_SCHEME)) {
-                LOG.debug("Going to resolve an import from WebJars: {}", filename);
-                final String file = Holder.locator.getFullPath(filename.replaceFirst(WEBJARS_SCHEME, "/webjars/"));
-
-                try {
-                    final URL res = Thread.currentThread().getContextClassLoader().getResource(file);
-
-                    return new CustomWebjarsAwareLessUrlSource(res);
-                } catch (RuntimeException e) {
-                    throw new WicketRuntimeException(e);
-                }
-            } else if (StringUtils.startsWith(filename, CLASSPATH_SCHEME)) {
-                LOG.debug("Going to resolve an import from the classpath: {}", filename);
-                String resourceName = filename.substring(CLASSPATH_SCHEME.length() + 1);
-                if (resourceName.indexOf(0) != '/') {
-                    resourceName = '/' + resourceName;
-                }
-
-                URL url = LessCacheManager.class.getResource(resourceName);
-                if (url != null) {
-                    return new CustomWebjarsAwareLessUrlSource(url);
-                } else {
-                    throw new IllegalArgumentException(
-                            String.format("Cannot resolve relative source with name '%s' in the classpath", filename));
-                }
-            } else {
-                return super.relativeSource(filename);
-            }
-        }
     }
 
     /**
