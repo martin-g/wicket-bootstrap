@@ -177,7 +177,7 @@ public class WicketApplication extends WebApplication {
      */
     private void configureBootstrap() {
         final IBootstrapSettings settings = new BootstrapSettings();
-        final ThemeProvider themeProvider = new SingleThemeProvider(new GoogleTheme()); //new BootswatchThemeProvider(BootswatchTheme.Flatly);
+        final ThemeProvider themeProvider = new BootswatchThemeProvider(BootswatchTheme.Flatly);
 
         settings.setJsResourceFilterName("footer-container")
                 .setThemeProvider(themeProvider);
