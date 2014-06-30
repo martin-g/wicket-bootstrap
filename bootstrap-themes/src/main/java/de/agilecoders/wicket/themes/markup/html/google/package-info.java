@@ -1,7 +1,4 @@
 /**
- *
- * # Description
- *
  * TODC Bootstrap is a Google styled theme for Bootstrap.
  *
  * The goal of TODC Bootstrap is to mimic the Google UI as seen in Gmail, Google Docs, Google Calendar, etc.
