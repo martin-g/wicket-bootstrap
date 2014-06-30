@@ -63,7 +63,7 @@ public class CssClassNameRemoverTest extends WicketApplicationTest {
         TagTester tester = tester().getTagByWicketId("id");
 
         // make sure the removed one is not here anymore
-        assertThat("classY classX", is(equalTo(tester.getAttribute("class"))));
+        assertThat("classX classY", is(equalTo(tester.getAttribute("class"))));
     }
 
     /**

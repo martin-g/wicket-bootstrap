@@ -1,17 +1,19 @@
 package de.agilecoders.wicket.core.util;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.Set;
+
+import org.apache.wicket.model.IModel;
+import org.apache.wicket.util.lang.Args;
+
 import com.google.common.base.Joiner;
 import com.google.common.base.Splitter;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNameProvider;
-
 import de.agilecoders.wicket.jquery.util.Generics2;
 import de.agilecoders.wicket.jquery.util.Strings2;
-import org.apache.wicket.model.IModel;
-import org.apache.wicket.util.lang.Args;
-
-import java.util.List;
-import java.util.Set;
 
 /**
  * helper class for css class names
@@ -99,7 +101,7 @@ public final class CssClassNames {
          * @param classValue the initial class name string
          */
         private Builder(final String classValue) {
-            classValues = Generics2.newHashSet();
+            classValues = Generics2.newLinkedHashSet(Collections.<String>emptySet());
 
             addRaw(classValue);
         }
@@ -173,7 +175,7 @@ public final class CssClassNames {
         public Builder add(final String... classNames) {
             Args.notNull(classNames, "classNames");
 
-            return add(Generics2.newHashSet(classNames));
+            return add(Generics2.newLinkedHashSet(Arrays.asList(classNames)));
         }
 
         /**
