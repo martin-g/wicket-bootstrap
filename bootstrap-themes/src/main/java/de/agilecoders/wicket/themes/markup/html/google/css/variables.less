@@ -22,7 +22,7 @@
 
 //== Scaffolding
 //
-// ## Settings for some of the most global styles.
+//## Settings for some of the most global styles.
 
 //** Background color for `<body>`.
 @body-bg:               #fff;
@@ -69,12 +69,15 @@
 @headings-color:          inherit;
 
 
-//-- Iconography
+//== Iconography
 //
-//## Specify custom locations of the include Glyphicons icon font. Useful for those including Bootstrap via Bower.
+//## Specify custom location and filename of the included Glyphicons icon font. Useful for those including Bootstrap via Bower.
 
+//** Load fonts from this directory.
 @icon-font-path:          "../fonts/";
+//** File name for all font files.
 @icon-font-name:          "glyphicons-halflings-regular";
+//** Element ID within SVG icon file.
 @icon-font-svg-id:        "glyphicons_halflingsregular";
 
 
@@ -99,7 +102,7 @@
 @line-height-xs:                 1.25;
 
 @border-radius-base:             2px;
-@border-radius-large:            4px;
+@border-radius-large:            1px;
 @border-radius-small:            1px;
 
 //** Global color for active items (e.g., navs or dropdowns).
@@ -235,7 +238,7 @@
 //** Text color for headers within dropdown menus.
 @dropdown-header-color:          @gray-light;
 
-// Note: Deprecated @dropdown-caret-color as of v3.1.0
+//** Deprecated `@dropdown-caret-color` as of v3.1.0
 @dropdown-caret-color:           #000;
 
 
@@ -248,8 +251,8 @@
 
 @zindex-navbar:            1000;
 @zindex-dropdown:          1000;
-@zindex-popover:           1010;
-@zindex-tooltip:           1030;
+@zindex-popover:           1060;
+@zindex-tooltip:           1070;
 @zindex-navbar-fixed:      1030;
 @zindex-modal-background:  1040;
 @zindex-modal:             1050;
@@ -264,27 +267,32 @@
 //## Define the breakpoints at which your layout will change, adapting to different screen sizes.
 
 // Extra small screen / phone
-// Note: Deprecated @screen-xs and @screen-phone as of v3.0.1
+//** Deprecated `@screen-xs` as of v3.0.1
 @screen-xs:                  480px;
+//** Deprecated `@screen-xs-min` as of v3.2.0
 @screen-xs-min:              @screen-xs;
+//** Deprecated `@screen-phone` as of v3.0.1
 @screen-phone:               @screen-xs-min;
 
 // Small screen / tablet
-// Note: Deprecated @screen-sm and @screen-tablet as of v3.0.1
+//** Deprecated `@screen-sm` as of v3.0.1
 @screen-sm:                  768px;
 @screen-sm-min:              @screen-sm;
+//** Deprecated `@screen-tablet` as of v3.0.1
 @screen-tablet:              @screen-sm-min;
 
 // Medium screen / desktop
-// Note: Deprecated @screen-md and @screen-desktop as of v3.0.1
+//** Deprecated `@screen-md` as of v3.0.1
 @screen-md:                  992px;
 @screen-md-min:              @screen-md;
+//** Deprecated `@screen-desktop` as of v3.0.1
 @screen-desktop:             @screen-md-min;
 
 // Large screen / wide desktop
-// Note: Deprecated @screen-lg and @screen-lg-desktop as of v3.0.1
+//** Deprecated `@screen-lg` as of v3.0.1
 @screen-lg:                  1200px;
 @screen-lg-min:              @screen-lg;
+//** Deprecated `@screen-lg-desktop` as of v3.0.1
 @screen-lg-desktop:          @screen-lg-min;
 
 // So media queries don't overlap when required, provide a maximum
@@ -808,17 +816,26 @@
 //** List group border radius
 @list-group-border-radius:      0;
 
-//** Background color of single list elements on hover
+//** Background color of single list items on hover
 @list-group-hover-bg:           @gray-lighter;
-//** Text color of active list elements
+//** Text color of active list items
 @list-group-active-color:       #dd4b39;
-//** Background color of active list elements
+//** Background color of active list items
 @list-group-active-bg:          transparent;
 //** Border color of active list elements
 @list-group-active-border:      @list-group-border;
+//** Text color for content within active list items
 @list-group-active-text-color:  lighten(@gray-darker, 40%);
 
+//** Text color of disabled list items
+@list-group-disabled-color:      @gray-light;
+//** Background color of disabled list items
+@list-group-disabled-bg:         @gray-lighter;
+//** Text color for content within disabled list items
+@list-group-disabled-text-color: @list-group-disabled-color;
+
 @list-group-link-color:         #555;
+@list-group-link-hover-color:   @list-group-link-color;
 @list-group-link-heading-color: #333;
 
 
@@ -828,6 +845,8 @@
 
 @panel-bg:                    #fff;
 @panel-body-padding:          15px 20px;
+@panel-heading-padding:       @panel-body-padding;
+@panel-footer-padding:        @panel-heading-padding;
 @panel-border-radius:         3px;
 
 //** Border color for elements within panels
@@ -941,11 +960,12 @@
 //
 //##
 
+@carousel-padding:                            50px;
 @carousel-bg:                                 #f5f5f5;
 @carousel-text-shadow:                        none;
 
 @carousel-control-color:                      #777;
-@carousel-control-width:                      15%;
+@carousel-control-width:                      (@carousel-padding * 2);
 @carousel-control-opacity:                    .33;
 @carousel-control-font-size:                  20px;
 
@@ -987,6 +1007,8 @@
 //
 //##
 
+//** Horizontal offset for forms and lists.
+@component-offset-horizontal: 180px;
 //** Text muted color
 @text-muted:                  @gray-light;
 //** Abbreviations and acronyms border color
@@ -1001,14 +1023,7 @@
 @blockquote-border-color:     @gray-lighter;
 //** Page header border color
 @page-header-border-color:    @gray-lighter;
-
-
-//== Miscellaneous
-//
-//##
-
+//** Width of horizontal description list titles
+@dl-horizontal-offset:        @component-offset-horizontal;
 //** Horizontal line color.
 @hr-border:                   @gray-lighter;
-
-//** Horizontal offset for forms and lists.
-@component-offset-horizontal: 180px;

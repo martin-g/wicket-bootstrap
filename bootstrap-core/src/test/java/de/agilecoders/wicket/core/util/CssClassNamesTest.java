@@ -5,6 +5,8 @@ import de.agilecoders.wicket.jquery.util.Generics2;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
+import java.util.Arrays;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
@@ -24,7 +26,7 @@ public class CssClassNamesTest {
 
     @Test
     public void joinJoinsClassNamesCorrect() {
-        assertThat(CssClassNames.join(Generics2.newHashSet("class1", "class2", "class3")), is(equalTo("class1 class2 class3")));
+        assertThat(CssClassNames.join(Generics2.newLinkedHashSet(Arrays.asList("class1", "class2", "class3"))), is(equalTo("class1 class2 class3")));
     }
 
     @Test
@@ -72,7 +74,7 @@ public class CssClassNamesTest {
         CssClassNames.Builder builder = CssClassNames.parse("class1 class2 class3");
         builder.add(CssClassNames.newBuilder().add("class4", "class5"));
 
-        assertThat(builder.asString(), is(equalTo("class4 class5 class1 class2 class3")));
+        assertThat(builder.asString(), is(equalTo("class1 class2 class3 class4 class5")));
     }
 
     @Test
