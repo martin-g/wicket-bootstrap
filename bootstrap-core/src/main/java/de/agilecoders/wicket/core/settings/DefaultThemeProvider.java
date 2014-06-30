@@ -6,6 +6,7 @@ import org.apache.wicket.WicketRuntimeException;
 import org.apache.wicket.util.string.Strings;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -106,7 +107,7 @@ public class DefaultThemeProvider implements ThemeProvider {
     public DefaultThemeProvider defaultTheme(final String themeName) {
         ITheme newDefaultTheme = byName(themeName);
 
-        if (defaultTheme != newDefaultTheme) {
+        if (newDefaultTheme != null && !newDefaultTheme.equals(defaultTheme)) {
             defaultTheme = newDefaultTheme;
         }
 
@@ -128,7 +129,7 @@ public class DefaultThemeProvider implements ThemeProvider {
 
     @Override
     public List<ITheme> available() {
-        return new ArrayList<ITheme>(themes);
+        return Collections.unmodifiableList(themes);
     }
 
     @Override
