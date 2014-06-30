@@ -9,9 +9,17 @@ import org.apache.wicket.request.resource.CssResourceReference;
 import java.util.List;
 
 /**
- * A google inspired theme
+ * # Description
  *
- * @author miha
+ * css resource reference that references `google-bootstrap.css`.
+ *
+ * # Usage
+ *
+ * ```java
+ * response.render(CssHeaderItem.forReference(GoogleCssReference.instance()));
+ * ```
+ *
+ * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public class GoogleCssReference extends CssResourceReference {
     private static final long serialVersionUID = 1L;

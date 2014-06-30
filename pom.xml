@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
@@ -20,7 +21,7 @@
         <url>git@github.com:l0rdn1kk0n/wicket-bootstrap.git</url>
         <connection>scm:git:git@github.com/l0rdn1kk0n/wicket-bootstrap.git</connection>
         <developerConnection>scm:git:ssh://git@github.com/l0rdn1kk0n/wicket-bootstrap.git</developerConnection>
-      <tag>HEAD</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <issueManagement>
@@ -236,6 +237,13 @@
                     <additionalJOptions>
                         <additionalJOption>-J-Xmx32m</additionalJOption>
                     </additionalJOptions>
+                    <doclet>ch.raffael.doclets.pegdown.PegdownDoclet</doclet>
+                    <docletArtifact>
+                        <groupId>ch.raffael.pegdown-doclet</groupId>
+                        <artifactId>pegdown-doclet</artifactId>
+                        <version>1.1</version>
+                    </docletArtifact>
+                    <useStandardDocletOptions>true</useStandardDocletOptions>
                 </configuration>
                 <executions>
                     <execution>

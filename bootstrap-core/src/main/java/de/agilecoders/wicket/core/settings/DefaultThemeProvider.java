@@ -10,10 +10,18 @@ import java.util.Collections;
 import java.util.List;
 
 /**
+ * # Description
+ *
  * A default {@link ThemeProvider} implementation that only contains
  * the {@link de.agilecoders.wicket.core.markup.html.themes.bootstrap.BootstrapTheme}.
  *
- * @author miha
+ * # Usage
+ *
+ * ```java
+ * settings.setThemeProvider(new DefaultThemeProvider(settings));
+ * ```
+ *
+ * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public class DefaultThemeProvider implements ThemeProvider {
 
