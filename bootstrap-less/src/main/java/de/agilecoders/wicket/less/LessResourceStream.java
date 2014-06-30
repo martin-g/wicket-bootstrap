@@ -23,18 +23,14 @@ public class LessResourceStream extends AbstractStringResourceStream {
      */
     private final LessSource.URLSource lessSource;
 
-    private final String scopeClass;
-
     /**
      * Constructor.
      *
      * @param lessStream The resource stream that loads the Less content. Only UrlResourceStream is supported at the moment!
-     * @param scopeClass The name of the class used as a scope
+     * @param scopeClass The name of the class used as a scope to resolve "package!" dependencies/imports
      */
     public LessResourceStream(IResourceStream lessStream, String scopeClass) {
         Args.notNull(lessStream, "lessStream");
-
-        this.scopeClass = scopeClass;
 
         while (lessStream instanceof ResourceStreamWrapper) {
             ResourceStreamWrapper wrapper = (ResourceStreamWrapper) lessStream;
