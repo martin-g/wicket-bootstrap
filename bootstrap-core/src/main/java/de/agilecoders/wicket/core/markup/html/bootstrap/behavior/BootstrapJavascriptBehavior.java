@@ -9,11 +9,13 @@ import de.agilecoders.wicket.core.settings.IBootstrapSettings;
 import de.agilecoders.wicket.core.util.References;
 
 /**
+ * #### Description
+ *
  * The {@code BootstrapJavascriptBehavior} renders the
  * {@link de.agilecoders.wicket.core.markup.html.references.BootstrapJavaScriptReference} to
  * the response.
  *
- * @author miha
+ * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public class BootstrapJavascriptBehavior extends BootstrapBaseBehavior {
 

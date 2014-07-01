@@ -26,7 +26,19 @@ import org.apache.wicket.util.string.Strings;
 import java.util.List;
 
 /**
+ * #### Description
+ *
  * Removes a value for the CSS class attribute
+ *
+ * #### Usage
+ *
+ * ```java
+ * component.add(new CssClassNameRemover("class-name-a", "class-name-b"));
+ * component.add(new CssClassNameRemover(List("class-name-a", "class-name-b")));
+ * component.add(new CssClassNameRemover(Model.of("class-name-a")));
+ * ```
+ *
+ * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public class CssClassNameRemover extends CssClassNameAppender {
 

@@ -4,12 +4,17 @@ import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.util.io.IClusterable;
 
 /**
+ * #### Description
+ *
  * The {@code ICssClassNameModifier} provides an interface to abstract
  * the styling of a component and the rendering of the class attribute.
  * <p/>
+ * #### Usage
+ *
  * This interface can be used with a {@link Enum}:
- * <pre>
- *     public enum Color implements {
+ *
+ * ```java
+ *     public enum Color implements ICssClassNameModifier {
  *         Red, Blue;
  *
  *         public CssClassNameAppender newCssClassNameModifier() {
@@ -24,9 +29,9 @@ import org.apache.wicket.util.io.IClusterable;
  *             add(color.newCssClassNameModifier());
  *         }
  *     }
- * </pre>
+ * ```
  *
- * @author miha
+ * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public interface ICssClassNameModifier extends IClusterable {
 

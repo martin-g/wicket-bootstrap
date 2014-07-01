@@ -12,6 +12,8 @@ import org.apache.wicket.model.Model;
 import java.util.Set;
 
 /**
+ * #### Description
+ *
  * The {@code AssertTagNameBehavior} asserts that one of a list of given tag
  * names to be present. If you add this behavior there is no need to override
  * {@link Component#onComponentTag(org.apache.wicket.markup.ComponentTag)}.
@@ -19,11 +21,18 @@ import java.util.Set;
  * To assert a {@code div} and a {@code span} tag just add an
  * {@code AssertTagNameBehavior} with both tag names.
  * <p/>
- * <pre>
- *     add(new AssertTagNameBehavior("div", "span"));
- * </pre>
  *
- * @author miha
+ * #### Usage
+ *
+ * ```java
+ * add(new AssertTagNameBehavior("div", "span"));
+ * ```
+ *
+ * #### Caution
+ *
+ * This class will be removed before 1.0 is released.
+ *
+ * @author Michael Haitz <michael.haitz@agilecoders.de>
  * @deprecated please use {@link Components#assertTag(org.apache.wicket.Component, org.apache.wicket.markup.ComponentTag, java.util.Set)}
  */
 public class AssertTagNameBehavior extends Behavior {
