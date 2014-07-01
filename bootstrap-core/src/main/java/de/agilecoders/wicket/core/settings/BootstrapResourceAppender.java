@@ -7,10 +7,26 @@ import org.apache.wicket.Page;
 import org.apache.wicket.application.IComponentInstantiationListener;
 
 /**
+ * #### Description
+ *
  * Appends a {@link BootstrapBaseBehavior} to all new {@link Page}
  * instances. As default {@link BootstrapResourcesBehavior} is used.
  *
- * @author miha
+ * #### Usage
+ *
+ * simple usage (adding both, js and css bootstrap resources):
+ *
+ * ```java
+ * app.getComponentInstantiationListener(new BootstrapResourceAppender());
+ * ```
+ *
+ * adding css resources only:
+ *
+ * ```java
+ * app.getComponentInstantiationListener(BootstrapBaseBehavior.instance());
+ * ```
+ *
+ * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public class BootstrapResourceAppender implements IComponentInstantiationListener {
 

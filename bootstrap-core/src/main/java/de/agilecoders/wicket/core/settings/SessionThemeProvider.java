@@ -7,10 +7,12 @@ import org.apache.wicket.WicketRuntimeException;
 import org.apache.wicket.util.string.Strings;
 
 /**
+ * #### Description
+ *
  * An {@link ActiveThemeProvider} implementation that stores the active theme
  * in the user session as style.
  *
- * @author miha
+ * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public class SessionThemeProvider implements ActiveThemeProvider {
 

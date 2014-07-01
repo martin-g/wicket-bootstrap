@@ -3,9 +3,11 @@ package de.agilecoders.wicket.core.settings;
 import org.apache.wicket.request.resource.ResourceReference;
 
 /**
+ * #### Description
+ *
  * Settings interface for bootstrap settings.
  *
- * @author miha
+ * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public interface IBootstrapSettings {
 

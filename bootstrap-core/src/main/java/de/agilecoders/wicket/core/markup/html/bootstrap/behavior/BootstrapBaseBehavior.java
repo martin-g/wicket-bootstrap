@@ -21,6 +21,13 @@ public class BootstrapBaseBehavior extends Behavior {
     private static final BootstrapBaseBehavior INSTANCE = new BootstrapBaseBehavior();
 
     /**
+     * @return bootstrap base behavior instance
+     */
+    public static BootstrapBaseBehavior instance() {
+        return INSTANCE;
+    }
+
+    /**
      * removes the {@link BootstrapBaseBehavior} from given {@link Component}
      *
      * @param component The component to remove the behavior from.

@@ -16,9 +16,21 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Default {@link ITheme} implementation
+ * #### Description
  *
- * @author miha
+ * Default {@link ITheme} implementation. This class can be used as base class for custom themes.
+ *
+ * #### Usage
+ *
+ * ```java
+ * public class MyCustomTheme extends Theme {
+ *     public MyCustomTheme() {
+ *         super("my-custom-theme", new MyCustomThemeCssReference());
+ *     }
+ * }
+ * ```
+ *
+ * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public class Theme implements ITheme {
 

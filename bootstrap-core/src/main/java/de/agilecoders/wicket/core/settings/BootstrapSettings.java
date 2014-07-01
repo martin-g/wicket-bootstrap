@@ -9,9 +9,11 @@ import org.apache.wicket.request.resource.ResourceReference;
 import org.apache.wicket.request.resource.UrlResourceReference;
 
 /**
+ * #### Description
+ *
  * Default {@link IBootstrapSettings} implementation
  *
- * @author miha
+ * @author Michael Haitz <michael.haitz@agilecoders.de>
  * @see IBootstrapSettings
  */
 public class BootstrapSettings implements IBootstrapSettings {

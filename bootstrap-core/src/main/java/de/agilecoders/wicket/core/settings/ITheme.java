@@ -3,9 +3,12 @@ package de.agilecoders.wicket.core.settings;
 import org.apache.wicket.markup.head.IHeaderResponse;
 
 /**
- * Interface that represents a special theme.
+ * #### Description
  *
- * @author miha
+ * Interface that represents a theme. A theme is responsible for rendering of all web resources that
+ * are needed.
+ *
+ * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public interface ITheme {
 

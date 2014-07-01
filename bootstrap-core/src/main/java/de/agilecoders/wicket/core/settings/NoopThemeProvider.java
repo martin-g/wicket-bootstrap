@@ -9,9 +9,11 @@ import java.util.Collections;
 import java.util.List;
 
 /**
+ * #### Description
+ *
  * Special theme that uses {@link de.agilecoders.wicket.core.settings.IBootstrapSettings#getCssResourceReference()}
  *
- * @author miha
+ * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public class NoopThemeProvider implements ThemeProvider {
 
