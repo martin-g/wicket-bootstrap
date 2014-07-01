@@ -3,11 +3,16 @@ package de.agilecoders.wicket.core.markup.html.bootstrap.behavior;
 import org.apache.wicket.util.io.IClusterable;
 
 /**
+ * #### Description
+ *
  * The {@code ICssClassNameProvider} provides an interface to abstract
  * the styling of a component and the rendering of the class attribute.
  * <p/>
+ *
+ * #### Usage
+ *
  * This interface can be used with a {@link Enum}:
- * <pre>
+ * ```java
  *     public enum Color implements {
  *         Red, Blue;
  *
@@ -24,7 +29,7 @@ import org.apache.wicket.util.io.IClusterable;
  *             add(new CssClassNameAppender(color.cssClassName()));
  *         }
  *     }
- * </pre>
+ * ```
  *
  * @author miha
  */
