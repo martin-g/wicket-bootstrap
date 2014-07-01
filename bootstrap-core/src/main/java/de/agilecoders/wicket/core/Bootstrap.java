@@ -15,7 +15,33 @@ import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.settings.IMarkupSettings;
 
 /**
- * Bootstrap core class
+ * # Description
+ *
+ * This is the bootstrap initializer class, you've to call `install` (with or without custom settings) to
+ * enable wicket-bootstrap in your project. wicket-bootstrap sets some wicket settings depending on your
+ * custom settings or if non provided depending on default settings. These are: `setStripWicketTags(true)` (always),
+ * `getPackageResourceGuard().addPattern(...)` (if `settings.updateSecurityManager()` is true) and
+ * `getComponentInstantiationListeners().add(new BootstrapResourceAppender())` (if `settings.autoAppendResources()`
+ * is true).
+ * `Bootstrap` initializes and uses wicket-webjars to load its web resources, therefor wicket-webjars will be initialized
+ * when calling `install` too (only if `settings.useWebjars()` returns true). If you use your own resources or
+ * the cdn resources, wicket-webjars won't be initialized. wicket-webjars can be initialized by calling
+ * `WicketWebjars.install(yourWicketApplication)` manually if needed.
+ *
+ * # Usage
+ *
+ * minimal version:
+ * ```java
+ * Bootstrap.install(yourWicketApplication);
+ * ```
+ *
+ * with custom settings:
+ * ```java
+ * final IBootstrapSettings settings = new BootstrapSettings();
+ * settings.useCdnResources(true);
+ * Bootstrap.install(yourWicketApplication, settings);
+ * ```
+ *
  */
 public final class Bootstrap {
 
