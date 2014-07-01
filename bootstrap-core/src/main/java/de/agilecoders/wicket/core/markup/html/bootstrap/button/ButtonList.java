@@ -1,5 +1,6 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.button;
 
+import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.DropDownSubMenu;
 import org.apache.wicket.Component;
 import org.apache.wicket.Page;
 import org.apache.wicket.markup.html.link.AbstractLink;
@@ -77,6 +78,11 @@ public class ButtonList extends ListView<AbstractLink> {
         final AbstractLink link = item.getModelObject();
 
         Args.isTrue(getButtonMarkupId().equals(link.getId()), "component id is invalid, please use ButtonList.getButtonMarkupId()");
+
+        // drop down submenu comes with its own "li" element
+        if (link instanceof DropDownSubMenu) {
+            item.setRenderBodyOnly(true);
+        }
 
         item.add(link);
     }
