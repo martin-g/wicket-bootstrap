@@ -1,6 +1,5 @@
 package de.agilecoders.wicket.themes.markup.html.google;
 
-import de.agilecoders.wicket.core.markup.html.themes.bootstrap.BootstrapCssReference;
 import de.agilecoders.wicket.core.settings.Theme;
 
 /**
@@ -23,11 +22,11 @@ public class GoogleTheme extends Theme {
      * Construct.
      */
     public GoogleTheme(final String name) {
-        super(name, BootstrapCssReference.instance(), GoogleCssReference.instance());
+        super(name, GoogleCssReference.instance());
     }
 
     /**
-     * Construct.
+     * Construct using default theme name: `google`
      */
     public GoogleTheme() {
         this("google");
