@@ -5,17 +5,16 @@ import de.agilecoders.wicket.jquery.util.Generics2;
 import org.apache.wicket.WicketRuntimeException;
 import org.apache.wicket.util.string.Strings;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 /**
- * # Description
+ * #### Description
  *
  * A default {@link ThemeProvider} implementation that only contains
  * the {@link de.agilecoders.wicket.core.markup.html.themes.bootstrap.BootstrapTheme}.
  *
- * # Usage
+ * #### Usage
  *
  * ```java
  * settings.setThemeProvider(new DefaultThemeProvider(settings));

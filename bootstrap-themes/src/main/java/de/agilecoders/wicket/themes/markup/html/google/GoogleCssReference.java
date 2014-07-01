@@ -7,11 +7,11 @@ import org.apache.wicket.markup.head.HeaderItem;
 import org.apache.wicket.request.resource.CssResourceReference;
 
 /**
- * # Description
+ * #### Description
  *
  * css resource reference that references `google-bootstrap.css`.
  *
- * # Usage
+ * #### Usage
  *
  * ```java
  * response.render(CssHeaderItem.forReference(GoogleCssReference.instance()));

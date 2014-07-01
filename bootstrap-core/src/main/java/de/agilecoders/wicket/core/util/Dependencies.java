@@ -7,7 +7,7 @@ import org.apache.wicket.util.lang.Args;
 import java.util.List;
 
 /**
- * # Description
+ * #### Description
  *
  * Helper class to handle {@link org.apache.wicket.request.resource.ResourceReference} dependencies.
  *
@@ -16,11 +16,11 @@ import java.util.List;
 public final class Dependencies {
 
     /**
-     * # Description
+     * #### Description
      *
      * combines two lists of {@link HeaderItem}.
      *
-     * # Usage
+     * #### Usage
      *
      * when using in `getDependencies()`:
      *

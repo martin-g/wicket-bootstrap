@@ -15,7 +15,7 @@ import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.settings.IMarkupSettings;
 
 /**
- * # Description
+ * #### Description
  *
  * This is the bootstrap initializer class, you've to call `install` (with or without custom settings) to
  * enable wicket-bootstrap in your project. wicket-bootstrap sets some wicket settings depending on your
@@ -28,14 +28,16 @@ import org.apache.wicket.settings.IMarkupSettings;
  * the cdn resources, wicket-webjars won't be initialized. wicket-webjars can be initialized by calling
  * `WicketWebjars.install(yourWicketApplication)` manually if needed.
  *
- * # Usage
+ * #### Usage
  *
  * minimal version:
+ *
  * ```java
  * Bootstrap.install(yourWicketApplication);
  * ```
  *
  * with custom settings:
+ *
  * ```java
  * final IBootstrapSettings settings = new BootstrapSettings();
  * settings.useCdnResources(true);

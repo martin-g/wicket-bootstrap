@@ -3,12 +3,12 @@ package de.agilecoders.wicket.themes.markup.html.google;
 import de.agilecoders.wicket.core.settings.Theme;
 
 /**
- * # Description
+ * #### Description
  *
  * java representation of TODC Bootstrap. This theme modifies bootstrap and therefor both
  * files gets loaded (`bootstrap.css` and `google-bootstrap.css`).
  *
- * # Usage
+ * #### Usage
  *
  * ```java
  * settings.setThemeProvider(new SingleThemeProvider(new GoogleTheme()));

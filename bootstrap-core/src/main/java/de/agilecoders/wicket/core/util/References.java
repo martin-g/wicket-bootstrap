@@ -17,7 +17,7 @@ import java.util.regex.Pattern;
 import static de.agilecoders.wicket.jquery.util.Strings2.nullToEmpty;
 
 /**
- * # Description
+ * #### Description
  *
  * Helper class for {@link org.apache.wicket.request.resource.ResourceReference} handling.
  *
@@ -35,13 +35,13 @@ public final class References {
     }
 
     /**
-     * # Description
+     * #### Description
      *
      * adds a ".min" extension in front of original extension if minimization is active.
      * If filename doesn't contain an extension no ".min" part will be added.
      * <p/>
      *
-     * # Usage
+     * #### Usage
      *
      * ```java
      * References.appendMinificationIdentifier(""); // = ""
@@ -64,13 +64,14 @@ public final class References {
     }
 
     /**
-     * # Description
+     * #### Description
      *
      * renders a given header item with as a `FilteredHeaderItem` with filter name from bootstrap settings if present.
      *
-     * # Usage
+     * #### Usage
      *
      * you can call this method in `renderHeader(IHeaderResponse response)`:
+     *
      * ```java
      * References.renderWithFilter(response, myCustomJsReference, mySecondJsReference);
      * ```
@@ -87,13 +88,14 @@ public final class References {
     }
 
     /**
-     * # Description
+     * #### Description
      *
      * renders a given header item with as a `FilteredHeaderItem` with filter name from bootstrap settings if present.
      *
-     * # Usage
+     * #### Usage
      *
      * you can call this method in `renderHeader(IHeaderResponse response)`:
+     *
      * ```java
      * References.renderWithFilter(response, myCustomJsReferenceHeaderItem, mySecondJsReferenceHeaderItem);
      * ```
@@ -106,13 +108,14 @@ public final class References {
     }
 
     /**
-     * # Description
+     * #### Description
      *
      * renders a given header item with as a `FilteredHeaderItem` with filter name from bootstrap settings if present.
      *
-     * # Usage
+     * #### Usage
      *
      * you can call this method in `renderHeader(IHeaderResponse response)`:
+     *
      * ```java
      * References.renderWithFilter(myBootstrapSettings, response, myCustomJsReferenceHeaderItem, mySecondJsReferenceHeaderItem);
      * ```

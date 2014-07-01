@@ -4,7 +4,7 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.util.string.Strings;
 
 /**
- * # Description
+ * #### Description
  *
  * helper class for {@link org.apache.wicket.model.IModel} handling.
  *
@@ -20,11 +20,11 @@ public final class Models {
     }
 
     /**
-     * # Description
+     * #### Description
      *
      * checks if given model is not null and string object is also not null or empty.
      *
-     * # Usage
+     * #### Usage
      *
      * ```java
      * Models.isNullOrEmpty(null); // = true

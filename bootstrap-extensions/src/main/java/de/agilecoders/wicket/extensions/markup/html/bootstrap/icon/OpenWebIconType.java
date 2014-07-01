@@ -144,7 +144,7 @@ public class OpenWebIconType extends IconType {
      *
      * @param cssClassName The css class name of the icon reference
      */
-    private OpenWebIconType(final String cssClassName) {
+    public OpenWebIconType(final String cssClassName) {
         super(cssClassName);
     }
 

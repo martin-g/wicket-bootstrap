@@ -17,11 +17,11 @@ public final class Dates {
     }
 
     /**
-     * # Description
+     * #### Description
      *
      * translates a javascript date format into a java date format.
      *
-     * # Usage
+     * #### Usage
      *
      * ```java
      * Dates.toJavaDateFormat("ddmmYYYY"); // = "ddMMYYYY"
@@ -35,11 +35,11 @@ public final class Dates {
     }
 
     /**
-     * # Description
+     * #### Description
      *
      * translates a java date format into a javascript date format.
      *
-     * # Usage
+     * #### Usage
      *
      * ```java
      * Dates.toJavaDateFormat("ddMMYYYY"); // = "ddmmYYYY"

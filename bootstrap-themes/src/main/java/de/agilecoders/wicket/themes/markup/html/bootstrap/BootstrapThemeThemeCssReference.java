@@ -7,14 +7,14 @@ import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.HeaderItem;
 
 /**
- * # Description
+ * #### Description
  *
  * The BootstrapThemeThemeCssReference uses the latest version of bootstrap-theme.css from the `org.webjars.bootstrap`
  * dependency which is defined in `pom.xml`. This reference has a dependency to base bootstrap css reference, but there
  * will be no version conflicts between this reference and the `bootstrap.css` from `BootstrapCssReference` because both
  * will are loaded from same jar file.
  *
- * # Usage
+ * #### Usage
  *
  * this css resource reference can be used directly:
  * ```java

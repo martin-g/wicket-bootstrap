@@ -5,7 +5,7 @@ import org.apache.wicket.behavior.Behavior;
 import org.apache.wicket.util.lang.Args;
 
 /**
- * # Description
+ * #### Description
  * <p/>
  * Helper class for {@link Behavior}s
  *
@@ -21,13 +21,14 @@ public final class Behaviors {
     }
 
     /**
-     * # Description
-     * <p/>
+     * #### Description
+     *
      * removes given behavior from given component if it was added before
-     * <p/>
-     * # Usage
-     * <p/>
+     *
+     * #### Usage
+     *
      * if behavior was added to component:
+     *
      * ```java
      * myComponent.add(myBehavior);
      * // ...
@@ -35,6 +36,7 @@ public final class Behaviors {
      * ```
      * <p/>
      * if behavior wasn't added to component before:
+     *
      * ```java
      * Behaviors.remove(myComponent, myBehavior); // = false
      * ```
@@ -56,13 +58,14 @@ public final class Behaviors {
     }
 
     /**
-     * # Description
+     * #### Description
      * <p/>
      * checks whether given behavior was added to given component before
      * <p/>
-     * # Usage
+     * #### Usage
      * <p/>
      * if behavior was added to component:
+     *
      * ```java
      * myComponent.add(myBehavior);
      * // ...
@@ -70,6 +73,7 @@ public final class Behaviors {
      * ```
      * <p/>
      * if behavior wasn't added to component before:
+     *
      * ```java
      * Behaviors.contains(myComponent, myBehavior); // = false
      * ```
@@ -92,11 +96,14 @@ public final class Behaviors {
     }
 
     /**
+     * #### Description
+     *
      * checks whether given behavior class was added to given component before
      * <p/>
-     * # Usage
+     * #### Usage
      * <p/>
      * if behavior was added to component:
+     *
      * ```java
      * myComponent.add(myBehavior);
      * // ...
@@ -104,6 +111,7 @@ public final class Behaviors {
      * ```
      * <p/>
      * if behavior wasn't added to component before:
+     *
      * ```java
      * Behaviors.contains(myComponent, MyBehavior.class); // = false
      * ```

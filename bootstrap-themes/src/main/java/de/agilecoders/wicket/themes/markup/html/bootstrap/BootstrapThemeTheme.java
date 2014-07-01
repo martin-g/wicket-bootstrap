@@ -3,11 +3,11 @@ package de.agilecoders.wicket.themes.markup.html.bootstrap;
 import de.agilecoders.wicket.core.settings.Theme;
 
 /**
- * # Description
+ * #### Description
  *
  * java representation of `bootstrap-theme.css` which is an enhanced default bootstrap theme.
  *
- * # Usage
+ * #### Usage
  *
  * ```
  * public void init() {
