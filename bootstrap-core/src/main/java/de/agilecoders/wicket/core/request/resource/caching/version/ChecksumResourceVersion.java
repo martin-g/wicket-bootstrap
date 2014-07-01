@@ -13,13 +13,15 @@ import java.util.regex.Pattern;
 import java.util.zip.Checksum;
 
 /**
+ * #### Description
+ *
  * computes the checksum of a {@link org.apache.wicket.request.resource.caching.IStaticCacheableResource} using
  * a special {@link Checksum} implementation and uses it as a version string.
  * <p/>
  * Using a {@link Checksum} is faster than using a {@link java.security.MessageDigest} but it has
  * a higher collision rate.
  *
- * @author miha
+ * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public abstract class ChecksumResourceVersion extends MessageDigestResourceVersion {
     private static final Pattern NON_PRINTABLE = Pattern.compile("[\\x00\\x08\\x0B\\x0C\\x0E-\\x1F]");
