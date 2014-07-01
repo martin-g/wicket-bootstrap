@@ -42,6 +42,7 @@ import org.apache.wicket.settings.IMarkupSettings;
  * Bootstrap.install(yourWicketApplication, settings);
  * ```
  *
+ * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public final class Bootstrap {
 

@@ -1,24 +1,24 @@
 package de.agilecoders.wicket.core.util;
 
+import com.google.common.base.Joiner;
+import com.google.common.base.Splitter;
+import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNameProvider;
+import de.agilecoders.wicket.jquery.util.Generics2;
+import de.agilecoders.wicket.jquery.util.Strings2;
+import org.apache.wicket.model.IModel;
+import org.apache.wicket.util.lang.Args;
+
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
-import org.apache.wicket.model.IModel;
-import org.apache.wicket.util.lang.Args;
-
-import com.google.common.base.Joiner;
-import com.google.common.base.Splitter;
-
-import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNameProvider;
-import de.agilecoders.wicket.jquery.util.Generics2;
-import de.agilecoders.wicket.jquery.util.Strings2;
-
 /**
+ * # Description
+ *
  * helper class for css class names
  *
- * @author miha
+ * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public final class CssClassNames {
     private static final Splitter SPLITTER = Splitter.on(' ').trimResults().omitEmptyStrings();

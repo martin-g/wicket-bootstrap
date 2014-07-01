@@ -4,9 +4,11 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.util.string.Strings;
 
 /**
+ * # Description
+ *
  * helper class for {@link org.apache.wicket.model.IModel} handling.
  *
- * @author miha
+ * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public final class Models {
 
@@ -18,7 +20,18 @@ public final class Models {
     }
 
     /**
+     * # Description
+     *
      * checks if given model is not null and string object is also not null or empty.
+     *
+     * # Usage
+     *
+     * ```java
+     * Models.isNullOrEmpty(null); // = true
+     * Models.isNullOrEmpty(Model.of(null)); // = true
+     * Models.isNullOrEmpty(Model.of("")); // = true
+     * Models.isNullOrEmpty(Model.of("value")); // = false
+     * ```
      *
      * @param model The model to check
      * @return true, if model is null or empty
@@ -26,6 +39,5 @@ public final class Models {
     public static boolean isNullOrEmpty(IModel<String> model) {
         return model == null || Strings.isEmpty(model.getObject());
     }
-
 
 }
