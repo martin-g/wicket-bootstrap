@@ -3,9 +3,22 @@ package de.agilecoders.wicket.core.markup.html.themes.bootstrap;
 import de.agilecoders.wicket.webjars.request.resource.WebjarsCssResourceReference;
 
 /**
- * The default bootstrap css.
+ * #### Description
  *
- * @author miha
+ * The default bootstrap css. To update the bootstrap version add the following dependency to
+ * your maven `dependencyManagement` section:
+ *
+ * ```xml
+ * <dependency>
+ *     <groupId>org.webjars</groupId>
+ *     <artifactId>bootstrap</artifactId>
+ *     <version>your-bootstrap-version</version>
+ * </dependency>
+ * ```
+ *
+ * The css resource will be loaded by wicket-webjars.
+ *
+ * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public class BootstrapCssReference extends WebjarsCssResourceReference {
     private static final long serialVersionUID = 1L;
