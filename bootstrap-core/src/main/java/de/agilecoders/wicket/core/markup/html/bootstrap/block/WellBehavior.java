@@ -5,18 +5,28 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNamePr
 import de.agilecoders.wicket.core.util.Attributes;
 import de.agilecoders.wicket.core.util.Components;
 import de.agilecoders.wicket.core.util.CssClassNames;
-
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.Behavior;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
+import org.apache.wicket.util.lang.Args;
 
 /**
+ * #### Description
+ * <p/>
  * Use the well as a simple effect on an element to give it an inset effect.
  * Control padding and rounded corners with two optional modifier classes ({@link Size}).
+ * <p/>
+ * #### Usage
+ * <p/>
+ * make a component looks like a well with tighter margin and padding:
+ * <p/>
+ * ```java
+ * component.add(new WellBehavior(Size.Small));
+ * ```
  *
- * @author miha
+ * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public class WellBehavior extends Behavior {
 
@@ -24,6 +34,7 @@ public class WellBehavior extends Behavior {
      * defines the size of a well
      */
     public enum Size implements ICssClassNameProvider {
+        // TODO miha: add documentation
         Default(""), Small("-sm"), Large("-lg");
 
         private final String cssName;
@@ -55,7 +66,7 @@ public class WellBehavior extends Behavior {
      * @param size The size of the well
      */
     public WellBehavior(Size size) {
-        this(Model.of(size));
+        this(Model.of(Args.notNull(size, "size")));
     }
 
     /**
@@ -66,7 +77,7 @@ public class WellBehavior extends Behavior {
     public WellBehavior(IModel<Size> sizeModel) {
         super();
 
-        this.size = sizeModel;
+        this.size = Args.notNull(sizeModel, "size");
     }
 
     @Override

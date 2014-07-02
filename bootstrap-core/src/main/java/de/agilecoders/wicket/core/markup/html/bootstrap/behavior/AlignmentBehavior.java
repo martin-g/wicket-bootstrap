@@ -9,23 +9,23 @@ import org.apache.wicket.util.lang.Args;
 
 /**
  * #### Description
- * <p/>
+ *
  * Alignment behavior to position components.
- * <p/>
+ *
  * #### Usage
- * <p/>
+ *
  * the following code snippet sets a container to be "right" positioned.
- * <p/>
+ *
  * ```java
  * WebMarkupContainer container = new WebMarkupContainer("id");
  * container.add(new AlignmentBehavior(Alignment.RIGHT));
  * add(container);
  * ```
- * <p/>
+ *
  * ```html
  * <div wicket:id="id">Content</div>
  * ```
- * <p/>
+ *
  * It is also possible to use a model that contains the {@link de.agilecoders.wicket.core.markup.html.bootstrap.behavior.AlignmentBehavior.Alignment}
  * instead of using {@link de.agilecoders.wicket.core.markup.html.bootstrap.behavior.AlignmentBehavior.Alignment} directly.
  *
