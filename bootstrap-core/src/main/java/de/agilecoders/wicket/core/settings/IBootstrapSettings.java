@@ -49,6 +49,11 @@ public interface IBootstrapSettings {
     IBootstrapSettings setModernizrVersion(String version);
 
     /**
+     * @return the deferJavascript flag
+     */
+    boolean deferJavascript();
+
+    /**
      * @return The version of Twitter Bootstrap. CDN resources use it to construct their urls
      */
     String getVersion();
@@ -121,6 +126,14 @@ public interface IBootstrapSettings {
      * @return same instance for chaining
      */
     IBootstrapSettings setUpdateSecurityManager(boolean activate);
+
+    /**
+     * if true, the <script/> tag for the bootstrap javascript will get the defer="defer" attribute
+     *
+     * @param defer
+     * @return same instance for chaining
+     */
+    IBootstrapSettings setDeferJavascript(boolean defer);
 
     /**
      * if true, all necessary exceptions will be added to security manager to allow

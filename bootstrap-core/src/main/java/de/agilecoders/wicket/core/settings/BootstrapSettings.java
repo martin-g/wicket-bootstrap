@@ -34,6 +34,8 @@ public class BootstrapSettings implements IBootstrapSettings {
     private boolean updateSecurityManager;
     private boolean autoAppendResources;
     private boolean useCdnResources;
+
+    private boolean deferJavascript;
     private String version = VERSION;
     private String modernizrVersion = MODERNIZR_VERSION;
 
@@ -47,6 +49,7 @@ public class BootstrapSettings implements IBootstrapSettings {
         this.updateSecurityManager = true;
         this.autoAppendResources = true;
         this.useCdnResources = false;
+        this.deferJavascript = true;
     }
 
     @Override
@@ -64,6 +67,11 @@ public class BootstrapSettings implements IBootstrapSettings {
     @Override
     public String getVersion() {
         return version;
+    }
+
+    @Override
+    public boolean deferJavascript() {
+        return deferJavascript;
     }
 
     @Override
@@ -171,6 +179,12 @@ public class BootstrapSettings implements IBootstrapSettings {
     }
 
     @Override
+    public IBootstrapSettings setDeferJavascript(boolean defer) {
+        deferJavascript = defer;
+        return this;
+    }
+
+    @Override
     public BootstrapSettings setActiveThemeProvider(ActiveThemeProvider activeThemeProvider) {
         this.activeThemeProvider = activeThemeProvider;
         return this;
@@ -190,7 +204,7 @@ public class BootstrapSettings implements IBootstrapSettings {
     @Override
     public final boolean useWebjars() {
         return !useCdnResources() &&
-               (bootstrapCssReference == null ||
+            (bootstrapCssReference == null ||
                 bootstrapJavaScriptReference == null ||
                 modernizrJavaScriptReference == null);
     }
