@@ -14,16 +14,22 @@ import org.apache.wicket.util.lang.Args;
 
 /**
  * #### Description
- * <p/>
+ *
  * Use the well as a simple effect on an element to give it an inset effect.
  * Control padding and rounded corners with two optional modifier classes ({@link Size}).
- * <p/>
+ *
+ * documentation: http://getbootstrap.com/components/#wells
+ *
  * #### Usage
- * <p/>
+ *
  * make a component looks like a well with tighter margin and padding:
- * <p/>
+ *
  * ```java
  * component.add(new WellBehavior(Size.Small));
+ * ```
+ *
+ * ```html
+ * <div wicket:id="id">content</div>
  * ```
  *
  * @author Michael Haitz <michael.haitz@agilecoders.de>

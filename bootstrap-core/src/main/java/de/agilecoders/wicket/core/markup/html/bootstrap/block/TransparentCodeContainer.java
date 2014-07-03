@@ -3,9 +3,29 @@ package de.agilecoders.wicket.core.markup.html.bootstrap.block;
 import org.apache.wicket.markup.html.TransparentWebMarkupContainer;
 
 /**
- * A simple transparent code container.
+ * #### Description
  *
- * @author miha
+ * A simple "transparent" markup container that contains formatted content.
+ *
+ * see: {@link de.agilecoders.wicket.core.markup.html.bootstrap.block.Code}
+ *
+ * #### Usage
+ *
+ * ```java
+ * TransparentCodeContainer code = new TransparentCodeContainer("id", Model.of("content"))
+ *                  .setShowLineNumbers(true) // whether to show line numbers or not
+ *                  .setLanguage(Language.JAVA) // use java as code language; default is dynamic
+ *                  .setStartFromLine(20); // hide first 20 lines
+ * add(code);
+ * ```
+ *
+ * ```html
+ * <code wicket:id="id">content</code>
+ * ```
+ *
+ * It's possible to use `pre`, `code` and `xmp` as tag name.
+ *
+ * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public class TransparentCodeContainer extends TransparentWebMarkupContainer {
 

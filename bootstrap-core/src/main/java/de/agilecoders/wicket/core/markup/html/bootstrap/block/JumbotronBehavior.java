@@ -8,19 +8,39 @@ import org.apache.wicket.behavior.Behavior;
 import org.apache.wicket.markup.ComponentTag;
 
 /**
- * Block-level element for quoting content from another source.
- * <p/>
- * <pre>
- *     <blockquote wicket:id="componentId">
+ * #### Description
+ *
+ * A lightweight, flexible component that can optionally extend the entire viewport to showcase key content on your site.
+ *
+ * documentation: http://getbootstrap.com/components/#jumbotron
+ *
+ * #### Usage
+ *
+ * ```java
+ * component.add(new HeroBehavior());
+ * ```
+ *
+ * ```html
+ *     <div wicket:id="componentId">
  *          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis.</p>
  *          <small>Someone famous</small>
- *     </blockquote>
- * </pre>
+ *     </div>
+ * ```
  *
- * @author miha
- * @version 1.0
+ * To make the jumbotron full width, and without rounded corners, place it outside all `.containers` and instead add a
+ * `.container` within.
+ *
+ * ```html
+ * <div wicket:id="componentId">
+ *      <div class="container">
+ *          content
+ *      </div>
+ * </div>
+ * ```
+ *
+ * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
-public class HeroBehavior extends Behavior {
+public class JumbotronBehavior extends Behavior {
 
     @Override
     public void onComponentTag(Component component, ComponentTag tag) {

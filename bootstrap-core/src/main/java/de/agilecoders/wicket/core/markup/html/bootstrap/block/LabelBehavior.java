@@ -11,9 +11,28 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
 /**
- * A Label is a highlighted text with rounded corners.
+ * #### Description
  *
- * @author miha
+ * A Label is a highlighted text with rounded corners. The {@link de.agilecoders.wicket.core.markup.html.bootstrap.block.LabelType}
+ * defines the color of a labels background. The tag name of a label must be `span`.
+ *
+ * documentation: http://getbootstrap.com/components/#labels
+ *
+ * #### Usage
+ *
+ * ```java
+ * // use constructor to set type:
+ * component.add(new LabelBehavior(LabelType.Success));
+ * // use setter to set type:
+ * component.add(new LabelBehavior()
+ *                  .setType(LabelType.Success));
+ * ```
+ *
+ * ```html
+ * <span wicket:id="componentId">content</span>
+ * ```
+ *
+ * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public class LabelBehavior extends Behavior {
     private final IModel<LabelType> type;

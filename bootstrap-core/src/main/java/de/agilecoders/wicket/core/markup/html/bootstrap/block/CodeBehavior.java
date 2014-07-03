@@ -22,17 +22,27 @@ import de.agilecoders.wicket.core.util.References;
 import de.agilecoders.wicket.jquery.util.Strings2;
 
 /**
+ * #### Description
+ *
  * Wrap inline snippets of code with <code> and use <pre> for multiple
  * lines of code. Angle brackets will be escaped in the code for proper rendering.
- * <p/>
- * Example markup:
- * <pre>
- *     &lt;pre&gt;
- *         &lt;p&gt;Sample text here...&lt;/p&gt;
- *    &lt;/pre&gt;
- * </pre>
  *
- * @author miha
+ * #### Usage
+ *
+ * ```java
+ * component.add(new CodeBehavior()
+ *                  .setShowLineNumbers(true) // whether to show line numbers or not
+ *                  .setLanguage(Language.JAVA) // use java as code language; default is dynamic
+ *                  .setStartFromLine(20)); // hide first 20 lines
+ * ```
+ *
+ * ```html
+ * <code wicket:id="id">content</code>
+ * ```
+ *
+ * It's possible to use `pre`, `code` and `xmp` as tag name.
+ *
+ * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public class CodeBehavior extends Behavior {
 

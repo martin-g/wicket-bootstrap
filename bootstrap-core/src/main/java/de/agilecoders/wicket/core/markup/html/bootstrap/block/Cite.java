@@ -4,10 +4,22 @@ import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.model.IModel;
 
 /**
+ * #### Description
+ *
  * A Cite just asserts the correct tag name and appends the
  * {@link de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapBaseBehavior}.
  *
- * @author miha
+ * #### Usage
+ *
+ * ```java
+ * Cite cite = new Cite("id");
+ * ```
+ *
+ * ```html
+ * <cite wicket:id="id">text</cite>
+ * ```
+ *
+ * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public class Cite extends WebMarkupContainer {
 

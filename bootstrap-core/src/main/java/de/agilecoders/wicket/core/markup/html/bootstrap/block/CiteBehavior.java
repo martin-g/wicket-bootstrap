@@ -8,10 +8,23 @@ import org.apache.wicket.behavior.Behavior;
 import org.apache.wicket.markup.ComponentTag;
 
 /**
+ * #### Description
+ *
  * A CiteBehavior just asserts the correct tag name and appends the
  * {@link BootstrapBaseBehavior}.
  *
- * @author miha
+ * #### Usage
+ *
+ * ```java
+ * Label label = new Label("id", Model.of("text"));
+ * label.add(new CiteBehavior());
+ * ```
+ *
+ * ```html
+ * <cite wicket:id="id"></cite>
+ * ```
+ *
+ * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public class CiteBehavior extends Behavior {
 

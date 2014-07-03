@@ -11,11 +11,27 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
 /**
+ * #### Description
+ *
  * A simple shell for an h1 to appropriately space out and segment sections
  * of content on a page. It can utilize the h1's default small, element as
  * well most other components (with additional styles).
  *
- * @author miha
+ * documentation: http://getbootstrap.com/components/#page-header
+ *
+ * #### Usage
+ *
+ * ```java
+ * PageHeader pageHeader = new PageHeader("id", Model.of("label text"))
+ *                              .setSubtitle(Model.of("subtitle")); // add a sub title (optional)
+ * add(pageHeader);
+ * ```
+ *
+ * ```html
+ * <div wicket:id="id"></div>
+ * ```
+ *
+ * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public class PageHeader extends Panel {
 
