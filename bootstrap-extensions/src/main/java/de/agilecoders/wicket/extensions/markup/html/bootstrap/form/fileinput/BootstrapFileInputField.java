@@ -106,6 +106,7 @@ public class BootstrapFileInputField extends FileUploadField {
             add(ajaxUploadBehavior);
         } else if (ajaxUploadBehavior != null && !getConfig().showUpload()) {
             remove(ajaxUploadBehavior);
+            ajaxUploadBehavior = null;
         }
     }
 
