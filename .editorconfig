@@ -1,8 +1,20 @@
+# wicket-bootstrap code formatting styles
+# checkout http://editorconfig.org/ for more information and how to use it
+
 root = true
 
 [*]
 charset = utf-8
-
-[*.java]
+end_of_line = lf
 indent_style = space
 indent_size = 4
+
+[{*.java,*.xml,*.js,*.css,*.less}]
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+[{*.md,.travis.yml}]
+indent_style = space
+indent_size = 2
+trim_trailing_whitespace = true
+

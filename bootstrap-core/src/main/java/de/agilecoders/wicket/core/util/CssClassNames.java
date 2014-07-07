@@ -222,4 +222,77 @@ public final class CssClassNames {
             return classValues.contains(className);
         }
     }
+
+    @SuppressWarnings("UnusedDeclaration")
+    public static final class Helper {
+        public static final String clearfix = "clearfix";
+        public static final String screenReaderOnly = "sr-only";
+    }
+
+    @SuppressWarnings("UnusedDeclaration")
+    public static final class Form {
+        public static final String form = "form";
+        public static final String control = "form-control";
+        public static final String label = "control-label";
+        public static final String staticControl = "form-control-static";
+        public static final String feedbackControl = "form-control-feedback";
+        public static final String group = "form-group";
+        public static final String groupLarge = "form-group-lg";
+        public static final String groupSmall = "form-group-sm";
+        public static final String horizontal = "form-horizontal";
+        public static final String help = "help-block";
+        public static final String inline = "form-inline";
+        public static final String disabled = "disabled";
+        public static final String radio = "radio";
+        public static final String radioInline = "radio-inline";
+        public static final String checkbox = "checkbox";
+        public static final String checkboxInline = "checkbox-inline";
+        public static final String hasSuccess = "has-success";
+        public static final String hasWarning = "has-warning";
+        public static final String hasFeedback = "has-feedback";
+        public static final String hasError = "has-error";
+        public static final String large = "input-lg";
+        public static final String small = "input-sm";
+    }
+
+    @SuppressWarnings("UnusedDeclaration")
+    public static final class Table {
+        public static final String table = "table";
+        public static final String striped = "table-striped";
+        public static final String bordered = "table-bordered";
+        public static final String hover = "table-hover";
+        public static final String condensed = "table-condensed";
+        public static final String responsive = "table-responsive";
+    }
+
+    @SuppressWarnings("UnusedDeclaration")
+    public static final class Grid {
+        public static final String container = "container"; // fixed-width
+        public static final String containerFluid = "container-fluid"; // full-width
+        public static final String row = "row";
+        public static final String colLarge = "col-lg";
+        public static final String colSmall = "col-sm";
+        public static final String colMedium = "col-md";
+        public static final String colXtraSmall = "col-xs";
+        public static final String visibleLargeBlock = "visible-lg-block";
+        public static final String visibleSmallBlock = "visible-sm-block";
+        public static final String visibleMediumBlock = "visible-md-block";
+        public static final String visibleXtraSmallBlock = "visible-xs-block";
+    }
+
+    @SuppressWarnings("UnusedDeclaration")
+    public static final class Typography {
+        public static final String lead = "lead";
+        public static final String lowercase = "text-lowercase";
+        public static final String uppercase = "text-uppercase";
+        public static final String capitalize = "text-capitalize";
+        public static final String initialism = "initialism";
+        public static final String textLeft = "text-left";
+        public static final String textCenter = "text-center";
+        public static final String textRight = "text-right";
+        public static final String textJustify = "text-justify";
+        public static final String textNowrap = "text-nowrap";
+        public static final String listInline = "list-inline";
+        public static final String dlHorizontal = "dl-horizontal";
+    }
 }

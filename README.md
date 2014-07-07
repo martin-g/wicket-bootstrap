@@ -4,12 +4,25 @@ WICKET COMPONENTS FOR TWITTER BOOTSTRAP
 Wicket-Bootstrap is based on Twitter's toolkit (bootstrap) and the Apache Wicket Framework.<br>
 Current build status: [![Build Status](https://buildhive.cloudbees.com/job/l0rdn1kk0n/job/wicket-bootstrap/badge/icon)](https://buildhive.cloudbees.com/job/l0rdn1kk0n/job/wicket-bootstrap/) [![Build Status](https://travis-ci.org/l0rdn1kk0n/wicket-bootstrap.png?branch=master)](https://travis-ci.org/l0rdn1kk0n/wicket-bootstrap)
 
+Current release version:
+
+* Wicket 6.* and Bootstrap 3.*: 0.9.4
+* Wicket 6.* and Bootstrap 2.*: 0.8.4
+
 Components
 ----------
 
 * Twitter Bootstrap (3.2.0): https://github.com/twbs/bootstrap/
 * Apache Wicket (6.16.0): http://wicket.apache.org/
-* Bootswatch (3.1.1-1): http://bootswatch.com/
+
+Themes
+------
+
+* Bootstrap (3.2.0): http://getbootstrap.com/
+* Vegibit (3.1.1): http://vegibit.com/vegithemes-twitter-bootstrap-themes/
+* Bootswatch (3.2.0): http://bootswatch.com/
+* todc-bootstrap, google styled theme (3.2.0): http://todc.github.io/todc-bootstrap
+* metro-bootstrap (3.1.1-1): https://github.com/TalksLab/metro-bootstrap
 
 Extensions
 ----------
@@ -35,47 +48,57 @@ How to get help and news
 * read more on my [blog](http://blog.agilecoders.de/).
 
 ## Maven
-wicket-bootstrap is [available](http://search.maven.org/#artifactdetails|de.agilecoders.wicket|wicket-bootstrap-core|0.9.2|jar) in Maven central repository.
+wicket-bootstrap is [available](http://search.maven.org/#artifactdetails|de.agilecoders.wicket|wicket-bootstrap-core|0.9.4|jar) in Maven central repository.
 
 core maven dependency:
-<pre><code>&lt;dependency&gt;
-  &lt;groupId&gt;de.agilecoders.wicket&lt;/groupId&gt;
-  &lt;artifactId&gt;wicket-bootstrap-core&lt;/artifactId&gt;
-  &lt;version&gt;0.9.4&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+
+```xml
+<dependency>
+    <groupId>de.agilecoders.wicket</groupId>
+    <artifactId>wicket-bootstrap-core</artifactId>
+    <version>0.9.4</version>
+</dependency>
+```
 
 for all extensions:
-<pre><code>&lt;dependency&gt;
-  &lt;groupId&gt;de.agilecoders.wicket&lt;/groupId&gt;
-  &lt;artifactId&gt;wicket-bootstrap-extensions&lt;/artifactId&gt;
-  &lt;version&gt;0.9.4&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+
+```xml
+<dependency>
+    <groupId>de.agilecoders.wicket</groupId>
+    <artifactId>wicket-bootstrap-extensions</artifactId>
+    <version>0.9.4</version>
+</dependency>
+```
 
 for all themes:
-<pre><code>&lt;dependency&gt;
-  &lt;groupId&gt;de.agilecoders.wicket&lt;/groupId&gt;
-  &lt;artifactId&gt;wicket-bootstrap-themes&lt;/artifactId&gt;
-  &lt;version&gt;0.9.4&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+
+```xml
+<dependency>
+    <groupId>de.agilecoders.wicket</groupId>
+    <artifactId>wicket-bootstrap-themes</artifactId>
+    <version>0.9.4</version>
+</dependency>
+```
 
 if you want to use a less compiler:
-<pre><code>&lt;dependency&gt;
-  &lt;groupId&gt;de.agilecoders.wicket&lt;/groupId&gt;
-  &lt;artifactId&gt;wicket-bootstrap-less&lt;/artifactId&gt;
-  &lt;version&gt;0.9.4&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+
+```xml
+<dependency>
+    <groupId>de.agilecoders.wicket</groupId>
+    <artifactId>wicket-bootstrap-less</artifactId>
+    <version>0.9.4</version>
+</dependency>
+```
 
 all samples can be used with this dependency:
-<pre><code>&lt;dependency&gt;
-  &lt;groupId&gt;de.agilecoders.wicket&lt;/groupId&gt;
-  &lt;artifactId&gt;wicket-bootstrap-samples&lt;/artifactId&gt;
-  &lt;version&gt;0.9.4&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+
+```xml
+<dependency>
+    <groupId>de.agilecoders.wicket</groupId>
+    <artifactId>wicket-bootstrap-samples</artifactId>
+    <version>0.9.4</version>
+</dependency>
+```
 
 Installation
 ------------

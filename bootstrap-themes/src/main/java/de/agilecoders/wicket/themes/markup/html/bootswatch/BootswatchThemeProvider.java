@@ -1,9 +1,8 @@
-package de.agilecoders.wicket.themes.settings;
+package de.agilecoders.wicket.themes.markup.html.bootswatch;
 
 import com.google.common.collect.ImmutableList;
 import de.agilecoders.wicket.core.settings.ITheme;
 import de.agilecoders.wicket.core.settings.ThemeProvider;
-import de.agilecoders.wicket.themes.markup.html.bootswatch.BootswatchTheme;
 import org.apache.wicket.WicketRuntimeException;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.string.Strings;
