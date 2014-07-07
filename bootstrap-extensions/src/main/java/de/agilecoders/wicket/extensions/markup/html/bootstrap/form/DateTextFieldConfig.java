@@ -278,7 +278,7 @@ public class DateTextFieldConfig extends AbstractConfig {
      * @param value Whether or not to display a 'clear' button, which allows for clearing the input field.
      * @return this instance for chaining
      */
-    public DateTextFieldConfig withClearButton(final boolean value) {
+    public DateTextFieldConfig clearButton(final boolean value) {
         put(ClearButton, value);
         return this;
     }
