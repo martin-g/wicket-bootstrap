@@ -11,6 +11,7 @@ import org.apache.wicket.Page;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.util.tester.TagTester;
 import org.apache.wicket.util.tester.WicketTester;
+import org.junit.Assert;
 import org.junit.Before;
 
 import java.util.List;
@@ -23,7 +24,7 @@ import static com.google.common.collect.Lists.newArrayList;
  *
  * @author miha
  */
-public class WicketApplicationTest {
+public class WicketApplicationTest extends Assert {
 
     private WebApplication application;
     private WicketTester tester;
