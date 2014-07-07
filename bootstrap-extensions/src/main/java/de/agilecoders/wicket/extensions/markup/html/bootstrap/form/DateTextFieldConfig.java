@@ -1,21 +1,19 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.form;
 
-import java.io.IOException;
-
-import org.apache.wicket.util.lang.Args;
-import org.apache.wicket.util.string.Strings;
-import org.joda.time.DateTime;
-
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-
 import de.agilecoders.wicket.core.util.Dates;
 import de.agilecoders.wicket.jquery.AbstractConfig;
 import de.agilecoders.wicket.jquery.IKey;
+import org.apache.wicket.util.lang.Args;
+import org.apache.wicket.util.string.Strings;
+import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
+
+import java.io.IOException;
 
 /**
  * Configuration holder for all {@link DateTextField} configurations.
@@ -89,6 +87,11 @@ public class DateTextFieldConfig extends AbstractConfig {
      * conforming to the given format.
      */
     private static final IKey<Boolean> ForceParse = newKey("forceParse", true);
+
+    /**
+     * Whether or not to show the clear button.
+     */
+    private static final IKey<Boolean> ClearButton = newKey("clearBtn", false);
 
     /**
      * holds all week days in a specific sort order.
@@ -268,6 +271,15 @@ public class DateTextFieldConfig extends AbstractConfig {
      */
     public DateTextFieldConfig forceParse(final boolean value) {
         put(ForceParse, value);
+        return this;
+    }
+
+    /**
+     * @param value Whether or not to display a 'clear' button, which allows for clearing the input field.
+     * @return this instance for chaining
+     */
+    public DateTextFieldConfig withClearButton(final boolean value) {
+        put(ClearButton, value);
         return this;
     }
 
