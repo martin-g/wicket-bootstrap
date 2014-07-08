@@ -7,7 +7,6 @@ import org.apache.wicket.extensions.markup.html.tabs.ITab;
 import org.apache.wicket.extensions.markup.html.tabs.TabbedPanel;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.model.IModel;
-import org.apache.wicket.model.Model;
 
 import java.util.List;
 
@@ -22,7 +21,7 @@ public class BootstrapTabbedPanel<T extends ITab> extends TabbedPanel<T> {
      * {@inheritDoc}
      */
     public BootstrapTabbedPanel(String id, List<T> tabs) {
-        this(id, tabs, Model.of(1));
+        this(id, tabs, null);
     }
 
     /**
