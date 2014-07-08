@@ -51,12 +51,15 @@ public class LessUrlSource extends LessSource.URLSource {
      */
     LessUrlSource(URL inputURL, String scopeClass) {
         super(inputURL);
+
         this.scopeClass = scopeClass;
     }
 
     @Override
     public LessSource relativeSource(String filename) throws FileNotFound, CannotReadFile {
-        LessSource relative;
+        final LessSource relative;
+        boolean addParent = true;
+
         if (StringUtils.startsWith(filename, WEBJARS_SCHEME)) {
             relative = resolveWebJarsDependency(filename);
         } else if (StringUtils.startsWith(filename, CLASSPATH_SCHEME)) {
@@ -64,7 +67,13 @@ public class LessUrlSource extends LessSource.URLSource {
         } else if (scopeClass != null && StringUtils.startsWith(filename, PACKAGE_SCHEME)) {
             relative = resolvePackageDependency(filename);
         } else {
+            addParent = false;
             relative = super.relativeSource(filename);
+        }
+
+        if (addParent) {
+            // add imported source to detect correct last modified time
+            addImportedSource(relative);
         }
 
         return relative;
