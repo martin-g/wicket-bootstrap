@@ -4,16 +4,25 @@ import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.model.IModel;
 
 /**
+ * #### Description
+ *
  * Block-level element for quoting content from another source.
- * <p/>
- * <pre>
+ *
+ * #### Usage
+ *
+ * ```java
+ * Quote quote = new Quote("componentId")
+ *                  .pullRight()); // set content right aligned (optional, default: left)
+ * ```
+ *
+ * ```html
  *     <blockquote wicket:id="componentId">
  *          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis.</p>
  *          <small>Someone famous</small>
  *     </blockquote>
- * </pre>
+ * ```
  *
- * @author miha
+ * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public class Quote extends WebMarkupContainer {
 

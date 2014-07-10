@@ -12,15 +12,20 @@ import org.apache.wicket.util.string.Strings;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import static de.agilecoders.wicket.jquery.util.Strings2.nullToEmpty;
 
 /**
+ * #### Description
+ *
  * Helper class for {@link org.apache.wicket.request.resource.ResourceReference} handling.
  *
- * @author miha
+ * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public final class References {
+
+    private static final Pattern MIN_PATTERN = Pattern.compile("\\.(?=[^.]*$)");
 
     /**
      * Construct.
@@ -30,25 +35,46 @@ public final class References {
     }
 
     /**
+     * #### Description
+     *
      * adds a ".min" extension in front of original extension if minimization is active.
      * If filename doesn't contain an extension no ".min" part will be added.
      * <p/>
-     * e.g. "file.js" will be "file.min.js"
      *
-     * @param referenceUrl The file name
+     * #### Usage
+     *
+     * ```java
+     * References.appendMinificationIdentifier(""); // = ""
+     * References.appendMinificationIdentifier(null); // = ""
+     * References.appendMinificationIdentifier("test"); // = "test"
+     * References.appendMinificationIdentifier("test.js"); // = "test.min.js"
+     * References.appendMinificationIdentifier("test.custom.js"); // = "test.custom.min.js"
+     * ```
+     *
+     * @param referenceUrl The reference url to append ".min" to
      * @return file name containing ".min"
      */
     public static String appendMinificationIdentifier(final String referenceUrl) {
         if (!Strings.isEmpty(referenceUrl) && referenceUrl.contains(".") &&
             (Application.get().getResourceSettings().getUseMinifiedResources())) {
-            return referenceUrl.replaceFirst("\\.(?=[^.]*$)", ".min.");
+            return MIN_PATTERN.matcher(referenceUrl).replaceFirst(".min.");
         }
 
         return nullToEmpty(referenceUrl);
     }
 
     /**
-     * renders a given header item with filter if present.
+     * #### Description
+     *
+     * renders a given header item with as a `FilteredHeaderItem` with filter name from bootstrap settings if present.
+     *
+     * #### Usage
+     *
+     * you can call this method in `renderHeader(IHeaderResponse response)`:
+     *
+     * ```java
+     * References.renderWithFilter(response, myCustomJsReference, mySecondJsReference);
+     * ```
      *
      * @param response   The current header response
      * @param references The resource references to render
@@ -62,9 +88,19 @@ public final class References {
     }
 
     /**
-     * renders a given header item with filter if present.
+     * #### Description
      *
-     * @param response    The current header response
+     * renders a given header item with as a `FilteredHeaderItem` with filter name from bootstrap settings if present.
+     *
+     * #### Usage
+     *
+     * you can call this method in `renderHeader(IHeaderResponse response)`:
+     *
+     * ```java
+     * References.renderWithFilter(response, myCustomJsReferenceHeaderItem, mySecondJsReferenceHeaderItem);
+     * ```
+     *
+     * @param response   The current header response
      * @param headerItems The header items to render
      */
     public static void renderWithFilter(final IHeaderResponse response, final JavaScriptReferenceHeaderItem... headerItems) {
@@ -72,10 +108,20 @@ public final class References {
     }
 
     /**
-     * renders a given header item with filter if present.
+     * #### Description
+     *
+     * renders a given header item with as a `FilteredHeaderItem` with filter name from bootstrap settings if present.
+     *
+     * #### Usage
+     *
+     * you can call this method in `renderHeader(IHeaderResponse response)`:
+     *
+     * ```java
+     * References.renderWithFilter(myBootstrapSettings, response, myCustomJsReferenceHeaderItem, mySecondJsReferenceHeaderItem);
+     * ```
      *
      * @param settings    The bootstrap settings
-     * @param response    The current header response
+     * @param response   The current header response
      * @param headerItems The header items to render
      */
     public static void renderWithFilter(final IBootstrapSettings settings, final IHeaderResponse response, final JavaScriptReferenceHeaderItem... headerItems) {

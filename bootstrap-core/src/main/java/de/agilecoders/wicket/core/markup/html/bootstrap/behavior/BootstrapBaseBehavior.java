@@ -10,15 +10,24 @@ import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.util.lang.Args;
 
 /**
+ * #### Description
+ *
  * The {@code BootstrapBaseBehavior} renders the current active
  * {@link ITheme} which includes the {@link de.agilecoders.wicket.core.markup.html.themes.bootstrap.BootstrapCssReference}
  * if enabled to the response.
  *
- * @author miha
+ * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public class BootstrapBaseBehavior extends Behavior {
 
     private static final BootstrapBaseBehavior INSTANCE = new BootstrapBaseBehavior();
+
+    /**
+     * @return bootstrap base behavior instance
+     */
+    public static BootstrapBaseBehavior instance() {
+        return INSTANCE;
+    }
 
     /**
      * removes the {@link BootstrapBaseBehavior} from given {@link Component}

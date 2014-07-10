@@ -10,26 +10,30 @@ import org.apache.wicket.model.Model;
 import java.util.List;
 
 /**
+ * #### Description
+ *
  * A CssClassNameModifier replaces an existing value with the given value.
  *
+ * #### Usage
+ *
  * <pre>
- *     &lt;span class=&quot;className&quot; wicket:id=&quot;foo&quot;&gt;
+ *     <span class="className" wicket:id="foo"></span>
  * </pre>
  *
  * can be modified with these CssClassNameAppender:
  *
- * <pre>
- * link.add(new CssClassNameModifier(&quot;className1&quot;));
- * link.add(new CssClassNameModifier(Arrays.asList(&quot;className2&quot;,&quot;className3&quot;)));
- * </pre>
+ * ```java
+ * link.add(new CssClassNameModifier("className1"));
+ * link.add(new CssClassNameModifier(Arrays.asList("className2", "className3")));
+ * ```
  *
  * this will result in the following markup:
  *
- * <pre>
- *     &lt;span class=&quot;className2 className3&quot; wicket:id=&quot;foo&quot; &gt;
- * </pre>
+ * ```html
+ *     <span class="className2 className3" wicket:id="foo"></span>
+ * ```
  *
- * @author miha
+ * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public class CssClassNameModifier extends AttributeModifier {
 

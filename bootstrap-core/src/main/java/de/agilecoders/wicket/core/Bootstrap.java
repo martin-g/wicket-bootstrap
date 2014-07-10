@@ -13,9 +13,39 @@ import org.apache.wicket.markup.html.IPackageResourceGuard;
 import org.apache.wicket.markup.html.SecurePackageResourceGuard;
 import org.apache.wicket.settings.MarkupSettings;
 import org.apache.wicket.protocol.http.WebApplication;
+import org.apache.wicket.util.lang.Args;
 
 /**
- * Bootstrap core class
+ * #### Description
+ * <p/>
+ * This is the bootstrap initializer class, you've to call `install` (with or without custom settings) to
+ * enable wicket-bootstrap in your project. wicket-bootstrap sets some wicket settings depending on your
+ * custom settings or if non provided depending on default settings. These are: `setStripWicketTags(true)` (always),
+ * `getPackageResourceGuard().addPattern(...)` (if `settings.updateSecurityManager()` is true) and
+ * `getComponentInstantiationListeners().add(new BootstrapResourceAppender())` (if `settings.autoAppendResources()`
+ * is true).
+ * `Bootstrap` initializes and uses wicket-webjars to load its web resources, therefor wicket-webjars will be initialized
+ * when calling `install` too (only if `settings.useWebjars()` returns true). If you use your own resources or
+ * the cdn resources, wicket-webjars won't be initialized. wicket-webjars can be initialized by calling
+ * `WicketWebjars.install(yourWicketApplication)` manually if needed.
+ * <p/>
+ * #### Usage
+ * <p/>
+ * minimal version:
+ * <p/>
+ * ```java
+ * Bootstrap.install(yourWicketApplication);
+ * ```
+ * <p/>
+ * with custom settings:
+ * <p/>
+ * ```java
+ * final IBootstrapSettings settings = new BootstrapSettings();
+ * settings.useCdnResources(true);
+ * Bootstrap.install(yourWicketApplication, settings);
+ * ```
+ *
+ * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public final class Bootstrap {
 
@@ -33,12 +63,15 @@ public final class Bootstrap {
     }
 
     /**
-     * Installs given settings for given application
+     * Installs given settings to given application. Duplicated calls to `install` will be ignored.
      *
      * @param app      The current application
      * @param settings The settings to use
+     * @throws java.lang.IllegalArgumentException if given application is null
      */
     public static void install(final Application app, IBootstrapSettings settings) {
+        Args.notNull(app, "app");
+
         if (getSettings(app) == null) {
             if (settings == null) {
                 settings = new BootstrapSettings();
@@ -63,9 +96,10 @@ public final class Bootstrap {
     }
 
     /**
-     * Installs given settings for given application
+     * Installs default bootstrap settings to given application. Duplicated calls to `install` will be ignored.
      *
      * @param app The current application
+     * @throws java.lang.IllegalArgumentException if given application is null
      */
     public static void install(final Application app) {
         install(app, null);
@@ -106,15 +140,17 @@ public final class Bootstrap {
      *
      * @param app The current application
      * @return assigned {@link IBootstrapSettings}
+     * @throws java.lang.IllegalArgumentException if given application is null
      */
     public static IBootstrapSettings getSettings(final Application app) {
-        return app.getMetaData(BOOTSTRAP_SETTINGS_METADATA_KEY);
+        return Args.notNull(app, "app").getMetaData(BOOTSTRAP_SETTINGS_METADATA_KEY);
     }
 
     /**
      * returns the {@link IBootstrapSettings} which are assigned to current application
      *
      * @return assigned {@link IBootstrapSettings}
+     * @throws IllegalStateException if there's no application bound to current thread
      */
     public static IBootstrapSettings getSettings() {
         if (Application.exists()) {
@@ -129,8 +165,13 @@ public final class Bootstrap {
      *
      * @param component current component
      * @param response  The current {@link IHeaderResponse}
+     * @throws java.lang.IllegalArgumentException if given component or response is null.
+     * @throws IllegalStateException              if there's no application bound to current thread
      */
     public static void renderHead(final Component component, final IHeaderResponse response) {
+        Args.notNull(component, "component");
+        Args.notNull(response, "response");
+
         BootstrapResourcesBehavior.instance().renderHead(getSettings(component.getApplication()), response);
     }
 
@@ -138,8 +179,12 @@ public final class Bootstrap {
      * renders all core bootstrap resource references
      *
      * @param response The current {@link IHeaderResponse}
+     * @throws java.lang.IllegalArgumentException if given response is null
+     * @throws IllegalStateException              if there's no application bound to current thread
      */
     public static void renderHead(final IHeaderResponse response) {
+        Args.notNull(response, "response");
+
         BootstrapResourcesBehavior.instance().renderHead(getSettings(Application.get()), response);
     }
 }

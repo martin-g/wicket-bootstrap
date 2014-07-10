@@ -5,10 +5,28 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
 /**
+ * #### Description
+ *
  * Wrap inline snippets of code with <code> and use <pre> for multiple
  * lines of code. Angle brackets will be escaped in the code for proper rendering.
  *
- * @author miha
+ * #### Usage
+ *
+ * ```java
+ * Code code = new Code("id", Model.of("content"))
+ *                  .setShowLineNumbers(true) // whether to show line numbers or not
+ *                  .setLanguage(Language.JAVA) // use java as code language; default is dynamic
+ *                  .setStartFromLine(20); // hide first 20 lines
+ * add(code);
+ * ```
+ *
+ * ```html
+ * <code wicket:id="id"></code>
+ * ```
+ *
+ * It's possible to use `pre`, `code` and `xmp` as tag name.
+ *
+ * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public class Code extends Label {
 

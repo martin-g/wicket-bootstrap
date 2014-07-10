@@ -4,9 +4,11 @@ import java.util.zip.Adler32;
 import java.util.zip.Checksum;
 
 /**
+ * #### Description
+ *
  * A checksum resource version that uses {@link Adler32}.
  *
- * @author miha
+ * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public class Adler32ResourceVersion extends ChecksumResourceVersion {
     @Override

@@ -104,8 +104,9 @@ public class BootstrapFileInputField extends FileUploadField {
             String ajaxEventName = Strings2.getMarkupId(this) + AJAX_EVENT_NAME_SUFFIX;
             ajaxUploadBehavior = newAjaxFormSubmitBehavior(ajaxEventName);
             add(ajaxUploadBehavior);
-        } else if (ajaxUploadBehavior != null) {
+        } else if (ajaxUploadBehavior != null && !getConfig().showUpload()) {
             remove(ajaxUploadBehavior);
+            ajaxUploadBehavior = null;
         }
     }
 

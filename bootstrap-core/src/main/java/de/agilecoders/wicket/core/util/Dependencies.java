@@ -7,14 +7,28 @@ import org.apache.wicket.util.lang.Args;
 import java.util.List;
 
 /**
+ * #### Description
+ *
  * Helper class to handle {@link org.apache.wicket.request.resource.ResourceReference} dependencies.
  *
- * @author miha
+ * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public final class Dependencies {
 
     /**
-     * creates a list of {@link HeaderItem}
+     * #### Description
+     *
+     * combines two lists of {@link HeaderItem}.
+     *
+     * #### Usage
+     *
+     * when using in `getDependencies()`:
+     *
+     * ```java
+     * public Iterable<? extends HeaderItem> getDependencies() {
+     *     return Dependencies.combine(super.getDependencies(), myCustomCssHeaderItem, myCustomJsHeaderItem);
+     * }
+     * ```
      *
      * @param headerItems the base header item list
      * @param additional all additional {@link HeaderItem}

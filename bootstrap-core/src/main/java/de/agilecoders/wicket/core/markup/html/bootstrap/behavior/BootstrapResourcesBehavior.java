@@ -5,11 +5,18 @@ import de.agilecoders.wicket.core.settings.IBootstrapSettings;
 import org.apache.wicket.markup.head.IHeaderResponse;
 
 /**
- * just includes all bootstrap resource references.
+ * #### Description
  *
- * {@inheritDoc}
+ * just includes all bootstrap resource references. If {@link de.agilecoders.wicket.core.settings.IBootstrapSettings#autoAppendResources()}
+ * is true, there's no need to add it manually.
  *
- * @author miha
+ * #### Usage
+ *
+ * ```java
+ * component.add(BootstrapResourceBehavior.instance());
+ * ```
+ *
+ * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public class BootstrapResourcesBehavior extends BootstrapJavascriptBehavior {
 

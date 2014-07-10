@@ -11,28 +11,31 @@ import org.apache.wicket.util.string.Strings;
 import java.util.List;
 
 /**
+ * #### Description
+ *
  * A CssClassNameAppender appends the given value, rather than replace it. This is especially useful
  * for adding CSS classes to markup elements.
- * <p/>
- * <pre>
- *     &lt;span class=&quot;className&quot; wicket:id=&quot;foo&quot;&gt;
- * </pre>
- * <p/>
- * can be modified with these CssClassNameAppender:
- * <p/>
- * <pre>
- * link.add(new CssClassNameAppender(&quot;className2&quot;));
- * link.add(new CssClassNameAppender(Arrays.asList(&quot;className2&quot;,&quot;className3&quot;)));
- * </pre>
- * <p/>
- * this will result in the following markup:
- * <p/>
- * <pre>
- *     &lt;span class=&quot;className className2 className3&quot; wicket:id=&quot;foo&quot; &gt;
- * </pre>
  *
- * @author miha
- * @version 1.0
+ * #### Usage
+ *
+ * ```html
+ *     <span class="className" wicket:id="foo"></span>
+ * ```
+ *
+ * can be modified with these CssClassNameAppender:
+ *
+ * ```java
+ * link.add(new CssClassNameAppender("className2"));
+ * link.add(new CssClassNameAppender(Arrays.asList("className2", "className3")));
+ * ```
+ *
+ * this will result in the following markup:
+ *
+ * ```html
+ *     <span class="className className2 className3" wicket:id="foo"></span>
+ * ```
+ *
+ * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public class CssClassNameAppender extends AttributeAppender {
 

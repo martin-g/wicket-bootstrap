@@ -98,7 +98,7 @@ public class ComponentsTest extends WicketApplicationTest {
         final ComponentTag tag = new ComponentTag("div", XmlTag.TagType.OPEN_CLOSE);
         tag.put("class", "class-a class-b class-c");
 
-        Components.removeClassNames(tag, "class-a", "class-c");
+        Attributes.removeClass(tag, "class-a", "class-c");
 
         assertThat(tag.getAttribute("class"), is("class-b"));
     }
@@ -107,10 +107,10 @@ public class ComponentsTest extends WicketApplicationTest {
     public void removeCssClassNameWithEmptyClassAttribute() throws Exception {
         final ComponentTag tag = new ComponentTag("div", XmlTag.TagType.OPEN_CLOSE);
         tag.put("class", "");
-        Components.removeClassNames(tag, "class-a", "class-c");
+        Attributes.removeClass(tag, "class-a", "class-c");
 
         tag.remove("class");
-        Components.removeClassNames(tag, "class-a", "class-c");
+        Attributes.removeClass(tag, "class-a", "class-c");
     }
 
     /**

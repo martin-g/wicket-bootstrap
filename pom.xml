@@ -20,7 +20,7 @@
         <url>git@github.com:l0rdn1kk0n/wicket-bootstrap.git</url>
         <connection>scm:git:git@github.com/l0rdn1kk0n/wicket-bootstrap.git</connection>
         <developerConnection>scm:git:ssh://git@github.com/l0rdn1kk0n/wicket-bootstrap.git</developerConnection>
-      <tag>HEAD</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <issueManagement>
@@ -57,7 +57,7 @@
         <versions-maven-plugin.version>2.1</versions-maven-plugin.version>
         <rhino.version>1.7R4</rhino.version>
         <doxia.version>1.0</doxia.version>
-        <less4j.version>1.6.1</less4j.version>
+        <less4j.version>1.7.0</less4j.version>
         <modernizr.version>2.7.1</modernizr.version>
         <jetty.version>8.1.15.v20140411</jetty.version>
         <newrelic.version>3.7.0</newrelic.version>
@@ -236,6 +236,13 @@
                     <additionalJOptions>
                         <additionalJOption>-J-Xmx32m</additionalJOption>
                     </additionalJOptions>
+                    <doclet>ch.raffael.doclets.pegdown.PegdownDoclet</doclet>
+                    <docletArtifact>
+                        <groupId>ch.raffael.pegdown-doclet</groupId>
+                        <artifactId>pegdown-doclet</artifactId>
+                        <version>1.1</version>
+                    </docletArtifact>
+                    <useStandardDocletOptions>true</useStandardDocletOptions>
                 </configuration>
                 <executions>
                     <execution>

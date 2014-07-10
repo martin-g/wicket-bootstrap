@@ -12,7 +12,7 @@ import java.util.Set;
 /**
  * Helper class for components.
  *
- * @author miha
+ * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public final class Components {
 
@@ -121,30 +121,4 @@ public final class Components {
         }
     }
 
-    /**
-     * removes given class names from a component tag
-     *
-     * @param tag    the component tag
-     * @param values the values to remove
-     * @return tag for chaining
-     */
-    public static ComponentTag removeClassNames(ComponentTag tag, String... values) {
-        Args.notNull(tag, "tag");
-
-        String classNameAttribute = tag.getAttribute("class");
-
-        if (values != null && !Strings.isEmpty(classNameAttribute)) {
-            Set<String> classNames = CssClassNames.split(classNameAttribute);
-
-            for (String value : values) {
-                if (classNames.contains(value)) {
-                    classNames.remove(value);
-                }
-            }
-
-            tag.put("class", CssClassNames.join(classNames));
-        }
-
-        return tag;
-    }
 }

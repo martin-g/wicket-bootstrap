@@ -5,12 +5,21 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNameMo
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNameProvider;
 
 /**
+ * #### Description
+ *
  * A LabelType defines the type of label which changes highlighted color.
  *
- * @author miha
+ * documentation: http://getbootstrap.com/components/#labels
+ *
+ * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public enum LabelType implements ICssClassNameProvider, ICssClassNameModifier {
-    Default, Primary, Success, Warning, Info, Danger;
+    Default,
+    Primary,
+    Success,
+    Warning,
+    Info,
+    Danger;
 
     @Override
     public String cssClassName() {

@@ -5,7 +5,7 @@ import static de.agilecoders.wicket.jquery.util.Strings2.nullToEmpty;
 /**
  * Helper class for dates.
  *
- * @author miha
+ * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public final class Dates {
 
@@ -17,7 +17,15 @@ public final class Dates {
     }
 
     /**
+     * #### Description
+     *
      * translates a javascript date format into a java date format.
+     *
+     * #### Usage
+     *
+     * ```java
+     * Dates.toJavaDateFormat("ddmmYYYY"); // = "ddMMYYYY"
+     * ```
      *
      * @param javaScriptDateFormat The javascript date format as string
      * @return java date format
@@ -27,7 +35,15 @@ public final class Dates {
     }
 
     /**
+     * #### Description
+     *
      * translates a java date format into a javascript date format.
+     *
+     * #### Usage
+     *
+     * ```java
+     * Dates.toJavaDateFormat("ddMMYYYY"); // = "ddmmYYYY"
+     * ```
      *
      * @param javaDateFormat The java date format as string
      * @return javascript date format

@@ -1,3 +1,11 @@
+# Upgrading from 0.9.4 to 0.9.5
+
+## Namespace changes (`from` -> `to`)
+
+You can search/replace these namespaces in your project after upgrading from 0.9.4 to 0.9.5:
+
+`de.agilecoders.wicket.themes.settings.bootswatch.BootswatchThemeProvider` -> `de.agilecoders.wicket.themes.markup.html.bootswatch.BootswatchThemeProvider`
+
 # Upgrading from 0.8.x to 0.9.x
 
 ## Namespace changes (`from` -> `to`)

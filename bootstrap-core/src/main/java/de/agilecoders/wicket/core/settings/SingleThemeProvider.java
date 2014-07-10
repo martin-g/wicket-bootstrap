@@ -4,9 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * #### Description
+ *
  * A special theme providers that contains only a single theme.
  *
- * @author miha
+ * #### Usage
+ *
+ * ```java
+ * settings.setThemeProvider(new SingleThemeProvider(new MyCustomTheme()));
+ * ````
+ *
+ * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public class SingleThemeProvider implements ThemeProvider {
     private final ITheme theme;

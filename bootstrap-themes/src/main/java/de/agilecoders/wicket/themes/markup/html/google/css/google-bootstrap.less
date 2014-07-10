@@ -8,50 +8,48 @@
  */
 
 // Core variables and mixins
-@import "variables";
-@import "../../bootstrap/less/mixins.less";
-@import "mixins";
+@import "variables.less";
+@import "webjars!/bootstrap/current/less/mixins.less";
+@import (reference) "webjars!/bootstrap/current/less/glyphicons.less";
+@import (reference) "webjars!/bootstrap/current/less/dropdowns.less";
+@import "mixins.less";
+@import "arrows.less";
 
-// Grid system and page structure
-@import "scaffolding";
-
-// Base CSS
+// Core CSS
+@import "scaffolding.less";
+@import "type.less";
+@import "code.less";
+@import "tables.less";
 @import "forms.less";
-@import "tables";
-
-// Components: common
-@import "sprites";
-@import "dropdowns.less";
-@import "wells";
-@import "scrollbars";
-
-// Components: Buttons & Alerts
 @import "buttons.less";
+
+// Components
+@import "dropdowns.less";
 @import "button-groups.less";
-@import "alerts.less";
-
-// Components: Nav
-@import "navs";
-@import "navbar";
+@import "input-groups.less";
+@import "navs.less";
+@import "navbar.less";
+@import "masthead.less";
+@import "toolbar.less";
+@import "navbar-common.less";
 @import "breadcrumbs.less";
-@import "pagination";
-@import "pager";
+@import "pagination.less";
+@import "pager.less";
+@import "labels.less";
+@import "badges.less";
+@import "jumbotron.less";
+@import "thumbnails.less";
+@import "alerts.less";
+@import "progress-bars.less";
+// @import "media.less";
+@import "list-group.less";
+@import "panels.less";
+@import "wells.less";
+// @import "close.less";
+@import "scrollbars.less";
 
-// Components: Popovers
-@import "modals";
-@import "tooltip";
-@import "popovers";
-
-// Components: Misc
-@import "labels-badges";
-@import "progress-bars";
-
-
-
-// Responsive
-// -------------------------------------------------------------
-
-
-// Responsive navbar
-// From 979px and below, show a button to toggle navbar contents
-@import "responsive-navbar";
+// Components w/ JavaScript
+@import "modals.less";
+@import "tooltip.less";
+@import "popovers.less";
+@import "carousel.less";

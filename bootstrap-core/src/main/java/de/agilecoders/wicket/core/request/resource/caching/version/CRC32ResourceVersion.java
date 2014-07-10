@@ -4,9 +4,11 @@ import java.util.zip.CRC32;
 import java.util.zip.Checksum;
 
 /**
+ * #### Description
+ *
  * A checksum resource version that uses {@link CRC32}.
  *
- * @author miha
+ * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public class CRC32ResourceVersion extends ChecksumResourceVersion {
     @Override
