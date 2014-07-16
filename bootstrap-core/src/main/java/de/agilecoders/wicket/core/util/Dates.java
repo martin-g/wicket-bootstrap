@@ -4,174 +4,146 @@ import static de.agilecoders.wicket.jquery.util.Strings2.nullToEmpty;
 
 /**
  * Helper class for dates.
- *
+ * 
  * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public final class Dates {
 
-    /**
-     * Construct.
-     */
-    private Dates() {
-        throw new UnsupportedOperationException();
-    }
+	/**
+	 * Construct.
+	 */
+	private Dates() {
+		throw new UnsupportedOperationException();
+	}
 
-    /**
-     * #### Description
-     * <p/>
-     * translates a javascript date format into a java date format.
-     * <p/>
-     * #### Usage
-     * <p/>
-     * ```java
-     * Dates.toJavaDateFormat("ddmmYYYY"); // = "ddMMYYYY"
-     * ```
-     *
-     * @param javaScriptDateFormat The javascript date format as string
-     * @return java date format
-     */
-    public static String toJavaDateFormat(final String javaScriptDateFormat) {
-        char[] chars = nullToEmpty(javaScriptDateFormat).toCharArray();
+	/**
+	 * #### Description
+	 * <p/>
+	 * translates a javascript date format into a java date format.
+	 * <p/>
+	 * #### Usage
+	 * <p/>
+	 * ```java Dates.toJavaDateFormat("ddmmYYYY"); // = "ddMMYYYY" ```
+	 * 
+	 * @param javaScriptDateFormat
+	 *            The javascript date format as string
+	 * @return java date format
+	 */
+	public static String toJavaDateFormat(final String javaScriptDateFormat) {
 
-        String pattern = "";
-        final StringBuilder finalPattern = new StringBuilder("");
+		char[] chars = nullToEmpty(javaScriptDateFormat).toCharArray();
+		final StringBuilder result = new StringBuilder();
 
-        for (int i = 0, l = chars.length; i < l; i++) {
-            boolean hasMore = i < l - 1;
-            char token = chars[i];
+		for (int i = 0; i < chars.length; i++) {
+			switch (chars[i]) {
 
-            switch(token) {
-                case 'd':
-                    if (hasMore && chars[i + 1] == 'd') {
-                        break;
-                    }
-                    finalPattern.append("dd");
-                    pattern = "";
-                    break;
+			case 'm':
+				result.append("MM"); // m -> MM
+				break;
 
-                case 'm':
-                    if (hasMore && chars[i + 1] == 'm') {
-                        pattern += "m";
-                        break;
-                    }
+			case 'M':
+				if (i + 1 < chars.length && chars[i + 1] == 'M') {
+					i++;
+					result.append("MMMM"); // MM -> MMMM
+				} else {
+					result.append("MMM"); // M -> MMM
+				}
+				break;
 
-                    if (pattern.length() < 2) {
-                        finalPattern.append("m");
-                    } else {
-                        finalPattern.append("mm");
-                    }
+			case 'd':
+				result.append("dd"); // d -> dd
+				break;
 
-                    pattern = "";
-                    break;
+			case 'D':
+				if (i + 1 < chars.length && chars[i + 1] == 'D') {
+					i++;
+					result.append("EEEE"); // DD - > EEEE
+				} else {
+					result.append("EEE"); // D -> EEE
+				}
+				break;
 
-                case 'M':
-                    if (hasMore && chars[i + 1] == 'M') {
-                        pattern += "M";
-                        break;
-                    }
+			default:
+				result.append(chars[i]); // as is
+			}
+		}
 
-                    if (pattern.length() < 2) {
-                        finalPattern.append("MMM");
-                    } else {
-                        finalPattern.append("MMMM");
-                    }
+		return result.toString();
+	}
 
-                    pattern = "";
-                    break;
+	/**
+	 * #### Description
+	 * <p/>
+	 * translates a java date format into a javascript date format.
+	 * <p/>
+	 * #### Usage
+	 * <p/>
+	 * ```java Dates.toJavaDateFormat("ddMMYYYY"); // = "dmmYYYY" ```
+	 * 
+	 * @param javaDateFormat
+	 *            The java date format as string
+	 * @return javascript date format
+	 */
+	public static String toJavaScriptDateFormat(final String javaDateFormat) {
 
-                case 'D':
-                    if (hasMore && chars[i + 1] == 'D') {
-                        pattern += "D";
-                        break;
-                    }
+		char[] chars = nullToEmpty(javaDateFormat).toCharArray();
+		final StringBuilder result = new StringBuilder();
 
-                    if (pattern.length() < 2) {
-                        finalPattern.append("E");
-                    } else {
-                        finalPattern.append("EEEE");
-                    }
+		for (int i = 0, l = chars.length; i < l; i++) {
+			switch (chars[i]) {
 
-                    pattern = "";
-                    break;
+			case 'M':
+				if (i + 1 < chars.length && chars[i + 1] == 'M') {
+					i++;
+					if (i + 1 < chars.length && chars[i + 1] == 'M') {
+						i++;
+						if (i + 1 < chars.length && chars[i + 1] == 'M') {
+							i++;
+							result.append("MM"); // MMMM -> MM
+						} else {
+							result.append("M"); // MMM -> M
+						}
+					} else {
+						result.append("m"); // MM -> m
+					}
+				} else {
+					result.append("m"); // M -> m
+				}
+				break;
 
-                default:
-                    finalPattern.append(token);
-            }
-        }
+			case 'd':
+				if (i + 1 < chars.length && chars[i + 1] == 'd') {
+					i++;
+					result.append("d"); // dd -> d
+				} else {
+					result.append("d"); // d -> d
+				}
+				break;
 
-        return finalPattern.toString();
-    }
+			case 'E':
+				if (i + 1 < chars.length && chars[i + 1] == 'E') {
+					i++;
+					if (i + 1 < chars.length && chars[i + 1] == 'E') {
+						i++;
+						if (i + 1 < chars.length && chars[i + 1] == 'E') {
+							i++;
+							result.append("DD"); // EEEE -> DD
+						} else {
+							result.append("D"); // EEE -> D
+						}
+					} else {
+						result.append("D"); // EE -> D
+					}
+				} else {
+					result.append("D"); // E -> D
+				}
+				break;
 
-    /**
-     * #### Description
-     * <p/>
-     * translates a java date format into a javascript date format.
-     * <p/>
-     * #### Usage
-     * <p/>
-     * ```java
-     * Dates.toJavaDateFormat("ddMMYYYY"); // = "dmmYYYY"
-     * ```
-     *
-     * @param javaDateFormat The java date format as string
-     * @return javascript date format
-     */
-    public static String toJavaScriptDateFormat(final String javaDateFormat) {
-        char[] chars = nullToEmpty(javaDateFormat).toCharArray();
+			default:
+				result.append(chars[i]); // as is
+			}
+		}
 
-        String pattern = "";
-        final StringBuilder finalPattern = new StringBuilder("");
-
-        for (int i = 0, l = chars.length; i < l; i++) {
-            boolean hasMore = i < l - 1;
-            char token = chars[i];
-
-            switch(token) {
-                case 'd':
-                    if (hasMore && chars[i + 1] == 'd') {
-                        break;
-                    }
-                    finalPattern.append("d");
-                    pattern = "";
-                    break;
-
-                case 'M':
-                    if (hasMore && chars[i + 1] == 'M') {
-                        pattern += "M";
-                        break;
-                    }
-
-                    if (pattern.length() <= 2) {
-                        finalPattern.append(pattern.toLowerCase());
-                    } else if (pattern.length() == 3) {
-                        finalPattern.append("M");
-                    } else if (pattern.length() > 3) {
-                        finalPattern.append("MM");
-                    }
-
-                    pattern = "";
-                    break;
-
-                case 'E':
-                    if (hasMore && chars[i + 1] == 'E') {
-                        pattern += "E";
-                        break;
-                    }
-
-                    if (pattern.length() <= 3) {
-                        finalPattern.append("D");
-                    } else {
-                        finalPattern.append("DD");
-                    }
-
-                    pattern = "";
-                    break;
-
-                default:
-                    finalPattern.append(token);
-            }
-        }
-
-        return finalPattern.toString();
-    }
+		return result.toString();
+	}
 }
