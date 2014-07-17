@@ -18,16 +18,88 @@ public class DatesTest {
 
     @Test
     public void toJavaScriptWorks() {
-        assertThat(Dates.toJavaScriptDateFormat("dd.MM.yyyy"), is(equalTo("d.m.yyyy")));
-        assertThat(Dates.toJavaScriptDateFormat("dd-MMMM-yyyy"), is(equalTo("d-M-yyyy")));
-        assertThat(Dates.toJavaScriptDateFormat("dd-MMM-yyyy"), is(equalTo("d-mm-yyyy")));
+        assertThat(Dates.toJavaScriptDateFormat("M"), is(equalTo("m")));
+        assertThat(Dates.toJavaScriptDateFormat(".M"), is(equalTo(".m")));
+        assertThat(Dates.toJavaScriptDateFormat("M."), is(equalTo("m.")));
+        assertThat(Dates.toJavaScriptDateFormat(".M."), is(equalTo(".m.")));
+
+        assertThat(Dates.toJavaScriptDateFormat("MM"), is(equalTo("m")));
+        assertThat(Dates.toJavaScriptDateFormat(".MM"), is(equalTo(".m")));
+        assertThat(Dates.toJavaScriptDateFormat("MM."), is(equalTo("m.")));
+        assertThat(Dates.toJavaScriptDateFormat(".MM."), is(equalTo(".m.")));
+
+        assertThat(Dates.toJavaScriptDateFormat("MMM"), is(equalTo("M")));
+        assertThat(Dates.toJavaScriptDateFormat(".MMM"), is(equalTo(".M")));
+        assertThat(Dates.toJavaScriptDateFormat("MMM."), is(equalTo("M.")));
+        assertThat(Dates.toJavaScriptDateFormat(".MMM."), is(equalTo(".M.")));
+
+        assertThat(Dates.toJavaScriptDateFormat("MMMM"), is(equalTo("MM")));
+        assertThat(Dates.toJavaScriptDateFormat(".MMMM"), is(equalTo(".MM")));
+        assertThat(Dates.toJavaScriptDateFormat("MMMM."), is(equalTo("MM.")));
+        assertThat(Dates.toJavaScriptDateFormat(".MMMM."), is(equalTo(".MM.")));
+
+        assertThat(Dates.toJavaScriptDateFormat("d"), is(equalTo("d")));
+        assertThat(Dates.toJavaScriptDateFormat(".d"), is(equalTo(".d")));
+        assertThat(Dates.toJavaScriptDateFormat("d."), is(equalTo("d.")));
+        assertThat(Dates.toJavaScriptDateFormat(".d."), is(equalTo(".d.")));
+
+        assertThat(Dates.toJavaScriptDateFormat("dd"), is(equalTo("d")));
+        assertThat(Dates.toJavaScriptDateFormat(".dd"), is(equalTo(".d")));
+        assertThat(Dates.toJavaScriptDateFormat("dd."), is(equalTo("d.")));
+        assertThat(Dates.toJavaScriptDateFormat(".dd."), is(equalTo(".d.")));
+
+        assertThat(Dates.toJavaScriptDateFormat("E"), is(equalTo("D")));
+        assertThat(Dates.toJavaScriptDateFormat(".E"), is(equalTo(".D")));
+        assertThat(Dates.toJavaScriptDateFormat("E."), is(equalTo("D.")));
+        assertThat(Dates.toJavaScriptDateFormat(".E."), is(equalTo(".D.")));
+
+        assertThat(Dates.toJavaScriptDateFormat("EE"), is(equalTo("D")));
+        assertThat(Dates.toJavaScriptDateFormat(".EE"), is(equalTo(".D")));
+        assertThat(Dates.toJavaScriptDateFormat("EE."), is(equalTo("D.")));
+        assertThat(Dates.toJavaScriptDateFormat(".EE."), is(equalTo(".D.")));
+
+        assertThat(Dates.toJavaScriptDateFormat("EEE"), is(equalTo("D")));
+        assertThat(Dates.toJavaScriptDateFormat(".EEE"), is(equalTo(".D")));
+        assertThat(Dates.toJavaScriptDateFormat("EEE."), is(equalTo("D.")));
+        assertThat(Dates.toJavaScriptDateFormat(".EEE."), is(equalTo(".D.")));
+
+        assertThat(Dates.toJavaScriptDateFormat("EEEE"), is(equalTo("DD")));
+        assertThat(Dates.toJavaScriptDateFormat(".EEEE"), is(equalTo(".DD")));
+        assertThat(Dates.toJavaScriptDateFormat("EEEE."), is(equalTo("DD.")));
+        assertThat(Dates.toJavaScriptDateFormat(".EEEE."), is(equalTo(".DD.")));
     }
 
     @Test
     public void toJavaWorks() {
-        assertThat(Dates.toJavaDateFormat("dd.mm.yyyy"), is(equalTo("dd.m.yyyy")));
-        assertThat(Dates.toJavaDateFormat("dd-mmmm-yyyy"), is(equalTo("dd-mm-yyyy")));
-        assertThat(Dates.toJavaDateFormat("dd-mmm-yyyy"), is(equalTo("dd-mm-yyyy")));
+        assertThat(Dates.toJavaDateFormat("m"), is(equalTo("MM")));
+        assertThat(Dates.toJavaDateFormat(".m"), is(equalTo(".MM")));
+        assertThat(Dates.toJavaDateFormat("m."), is(equalTo("MM.")));
+        assertThat(Dates.toJavaDateFormat(".m."), is(equalTo(".MM.")));
+
+        assertThat(Dates.toJavaDateFormat("M"), is(equalTo("MMM")));
+        assertThat(Dates.toJavaDateFormat(".M"), is(equalTo(".MMM")));
+        assertThat(Dates.toJavaDateFormat("M."), is(equalTo("MMM.")));
+        assertThat(Dates.toJavaDateFormat(".M."), is(equalTo(".MMM.")));
+
+        assertThat(Dates.toJavaDateFormat("MM"), is(equalTo("MMMM")));
+        assertThat(Dates.toJavaDateFormat(".MM"), is(equalTo(".MMMM")));
+        assertThat(Dates.toJavaDateFormat("MM."), is(equalTo("MMMM.")));
+        assertThat(Dates.toJavaDateFormat(".MM."), is(equalTo(".MMMM.")));
+
+        assertThat(Dates.toJavaDateFormat("d"), is(equalTo("dd")));
+        assertThat(Dates.toJavaDateFormat(".d"), is(equalTo(".dd")));
+        assertThat(Dates.toJavaDateFormat("d."), is(equalTo("dd.")));
+        assertThat(Dates.toJavaDateFormat(".d."), is(equalTo(".dd.")));
+
+        assertThat(Dates.toJavaDateFormat("D"), is(equalTo("EEE")));
+        assertThat(Dates.toJavaDateFormat(".D"), is(equalTo(".EEE")));
+        assertThat(Dates.toJavaDateFormat("D."), is(equalTo("EEE.")));
+        assertThat(Dates.toJavaDateFormat(".D."), is(equalTo(".EEE.")));
+
+        assertThat(Dates.toJavaDateFormat("DD"), is(equalTo("EEEE")));
+        assertThat(Dates.toJavaDateFormat(".DD"), is(equalTo(".EEEE")));
+        assertThat(Dates.toJavaDateFormat("DD."), is(equalTo("EEEE.")));
+        assertThat(Dates.toJavaDateFormat(".DD."), is(equalTo(".EEEE.")));
     }
 
 }

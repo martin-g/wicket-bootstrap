@@ -53,10 +53,12 @@ public final class Dates {
                     if (hasMore && chars[i + 1] == 'm') {
                         pattern += "m";
                         break;
+                    } else {
+                        pattern += "m";
                     }
 
                     if (pattern.length() < 2) {
-                        finalPattern.append("m");
+                        finalPattern.append("MM");
                     } else {
                         finalPattern.append("mm");
                     }
@@ -68,6 +70,8 @@ public final class Dates {
                     if (hasMore && chars[i + 1] == 'M') {
                         pattern += "M";
                         break;
+                    } else {
+                        pattern += "M";
                     }
 
                     if (pattern.length() < 2) {
@@ -83,10 +87,12 @@ public final class Dates {
                     if (hasMore && chars[i + 1] == 'D') {
                         pattern += "D";
                         break;
+                    } else {
+                        pattern += "D";
                     }
 
                     if (pattern.length() < 2) {
-                        finalPattern.append("E");
+                        finalPattern.append("EEE");
                     } else {
                         finalPattern.append("EEEE");
                     }
@@ -139,10 +145,12 @@ public final class Dates {
                     if (hasMore && chars[i + 1] == 'M') {
                         pattern += "M";
                         break;
+                    } else {
+                        pattern += "M";
                     }
 
                     if (pattern.length() <= 2) {
-                        finalPattern.append(pattern.toLowerCase());
+                        finalPattern.append("m");
                     } else if (pattern.length() == 3) {
                         finalPattern.append("M");
                     } else if (pattern.length() > 3) {
@@ -156,6 +164,8 @@ public final class Dates {
                     if (hasMore && chars[i + 1] == 'E') {
                         pattern += "E";
                         break;
+                    } else {
+                        pattern += "E";
                     }
 
                     if (pattern.length() <= 3) {
