@@ -10,13 +10,14 @@ import org.apache.wicket.util.string.Strings;
  * @author miha
  */
 public class DropDownJqueryFunction extends JQuery.AbstractFunction {
+    private static final CharSequence functionName = "dropdown";
 
     /**
      * shortcut for {@link de.agilecoders.wicket.core.markup.html.bootstrap.button.DropDownJqueryFunction}.
      *
      * @param action the dropdown action to execute.
      */
-    public static DropDownJqueryFunction dropdown(final String action) {
+    public static DropDownJqueryFunction dropdown(final CharSequence action) {
         return new DropDownJqueryFunction(action);
     }
 
@@ -32,8 +33,8 @@ public class DropDownJqueryFunction extends JQuery.AbstractFunction {
      *
      * @param action the button action to execute.
      */
-    public DropDownJqueryFunction(final String action) {
-        super("dropdown");
+    public DropDownJqueryFunction(final CharSequence action) {
+        super(functionName);
 
         if (!Strings.isEmpty(action)) {
             addParameter(toParameterValue(action));

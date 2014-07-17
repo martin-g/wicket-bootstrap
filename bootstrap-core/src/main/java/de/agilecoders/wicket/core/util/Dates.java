@@ -31,10 +31,10 @@ public final class Dates {
      * @return java date format
      */
     public static String toJavaDateFormat(final String javaScriptDateFormat) {
-        char[] chars = nullToEmpty(javaScriptDateFormat).toCharArray();
+        final char[] chars = nullToEmpty(javaScriptDateFormat).toCharArray();
 
         String pattern = "";
-        final StringBuilder finalPattern = new StringBuilder("");
+        final StringBuilder finalPattern = new StringBuilder(chars.length + 8);
 
         for (int i = 0, l = chars.length; i < l; i++) {
             boolean hasMore = i < l - 1;
@@ -123,10 +123,10 @@ public final class Dates {
      * @return javascript date format
      */
     public static String toJavaScriptDateFormat(final String javaDateFormat) {
-        char[] chars = nullToEmpty(javaDateFormat).toCharArray();
+        final char[] chars = nullToEmpty(javaDateFormat).toCharArray();
 
         String pattern = "";
-        final StringBuilder finalPattern = new StringBuilder("");
+        final StringBuilder finalPattern = new StringBuilder(chars.length + 8);
 
         for (int i = 0, l = chars.length; i < l; i++) {
             boolean hasMore = i < l - 1;

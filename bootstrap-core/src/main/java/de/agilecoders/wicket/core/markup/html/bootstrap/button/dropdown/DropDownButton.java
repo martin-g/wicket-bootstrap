@@ -1,10 +1,13 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown;
 
-import static de.agilecoders.wicket.core.markup.html.bootstrap.button.DropDownJqueryFunction.dropdown;
-import static de.agilecoders.wicket.jquery.JQuery.$;
-
-import java.util.List;
-
+import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.AlignmentBehavior;
+import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapResourcesBehavior;
+import de.agilecoders.wicket.core.markup.html.bootstrap.button.*;
+import de.agilecoders.wicket.core.markup.html.bootstrap.image.Icon;
+import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
+import de.agilecoders.wicket.core.util.Attributes;
+import de.agilecoders.wicket.core.util.Components;
+import de.agilecoders.wicket.jquery.JQuery;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.behavior.Behavior;
@@ -19,16 +22,10 @@ import org.apache.wicket.markup.html.panel.PanelMarkupSourcingStrategy;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
-import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.AlignmentBehavior;
-import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapResourcesBehavior;
-import de.agilecoders.wicket.core.markup.html.bootstrap.button.Activatable;
-import de.agilecoders.wicket.core.markup.html.bootstrap.button.ButtonBehavior;
-import de.agilecoders.wicket.core.markup.html.bootstrap.button.ButtonList;
-import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons;
-import de.agilecoders.wicket.core.markup.html.bootstrap.image.Icon;
-import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
-import de.agilecoders.wicket.core.util.Attributes;
-import de.agilecoders.wicket.core.util.Components;
+import java.util.List;
+
+import static de.agilecoders.wicket.core.markup.html.bootstrap.button.DropDownJqueryFunction.dropdown;
+import static de.agilecoders.wicket.jquery.JQuery.$;
 
 /**
  * Use any button to trigger a dropdown menu by placing it within a .btn-group and providing the proper menu markup.
@@ -113,7 +110,9 @@ public abstract class DropDownButton extends AbstractLink implements Activatable
      * @return new initializer script
      */
     protected String newInitializerScript() {
-        return $(this, ".dropdown-toggle").chain(dropdown()).get();
+        JQuery jQuery = $(this, (CharSequence)".dropdown-toggle");
+
+        return jQuery.chain(dropdown()).get();
     }
 
     /**
