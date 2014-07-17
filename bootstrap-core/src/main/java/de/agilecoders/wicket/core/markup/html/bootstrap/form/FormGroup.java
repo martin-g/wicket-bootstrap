@@ -12,7 +12,6 @@ import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.border.Border;
 import org.apache.wicket.markup.html.form.FormComponent;
-import org.apache.wicket.markup.html.form.IFormModelUpdateListener;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.LoadableDetachableModel;
 import org.apache.wicket.model.Model;
@@ -29,7 +28,7 @@ import java.util.List;
  *
  * @author miha
  */
-public class FormGroup extends Border implements IFormModelUpdateListener {
+public class FormGroup extends Border {
 
     /**
      * Holder class for all possible form group sizes
@@ -293,17 +292,6 @@ public class FormGroup extends Border implements IFormModelUpdateListener {
      */
     private String toClassName(final FeedbackMessage message) {
          return newFeedbackMessageToCssClassNameTransformer().apply(message);
-    }
-
-    @Override
-    public void updateModel() {
-        final List<FormComponent<?>> formComponents = findFormComponents();
-
-        for (final FormComponent<?> formComponent : formComponents) {
-            if (formComponent.isEnabled()) {
-                formComponent.updateModel();
-            }
-        }
     }
 
     /**
