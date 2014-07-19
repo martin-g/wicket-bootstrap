@@ -12,7 +12,7 @@ downloadTheme() {
     echo -e "@import \"../../bootstrap/css/bootstrap.less\";\n@import \"bootstrap.$theme.variables.less\";\n\n" | cat - css/bootstrap.$theme.less > tmp.$theme.out && mv tmp.$theme.out css/bootstrap.$theme.less
 }
 
-for theme in amelia cerulean cosmo cyborg flatly journal lumen readable simplex slate spacelab superhero united yeti
+for theme in amelia cerulean cosmo cyborg darkly flatly journal lumen readable simplex slate spacelab superhero united yeti
 do
     downloadTheme $theme 2>&1 & >/dev/null
 done
