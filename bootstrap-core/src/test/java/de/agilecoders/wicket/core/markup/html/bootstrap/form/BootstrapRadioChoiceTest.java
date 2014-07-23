@@ -1,11 +1,11 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.form;
 
+import static org.hamcrest.Matchers.endsWith;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.nullValue;
 
 import com.google.common.collect.Lists;
-import org.apache.wicket.model.Model;
 import org.apache.wicket.util.tester.TagTester;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
@@ -26,10 +26,10 @@ public class BootstrapRadioChoiceTest extends WicketApplicationTest {
         TagTester divTester = spanTester.getChild("class", "radio");
         assertThat(divTester.getName(), is(equalTo("div")));
 
-        TagTester labelTester = divTester.getChild("for", "id1-0");
+        TagTester labelTester = divTester.getChild("label");
         assertThat(labelTester.getName(), is(equalTo("label")));
         assertThat(labelTester.getAttribute("class"), is(nullValue()));
-//        assertThat(labelTester.getMarkup(), is(equalTo("One")));
+        assertThat(labelTester.getValue(), endsWith(" One"));
 
         TagTester radioTester = labelTester.getChild("type", "radio");
         assertThat(radioTester.getName(), is(equalTo("input")));
@@ -47,7 +47,7 @@ public class BootstrapRadioChoiceTest extends WicketApplicationTest {
         TagTester divTester = spanTester.getChild("class", "radio");
         assertThat(divTester.getName(), is(equalTo("div")));
 
-        TagTester labelTester = divTester.getChild("for", "id1-0");
+        TagTester labelTester = divTester.getChild("label");
         assertThat(labelTester.getName(), is(equalTo("label")));
         assertThat(labelTester.getAttribute("class"), is(equalTo("radio-inline")));
     }
