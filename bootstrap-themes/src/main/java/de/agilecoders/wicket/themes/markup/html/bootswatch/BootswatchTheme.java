@@ -19,7 +19,7 @@ import java.util.Arrays;
  * @author miha
  */
 public enum BootswatchTheme implements ITheme {
-    Amelia, Cerulean, Cosmo, Cyborg, Flatly, Journal, Lumen, Readable,
+    Amelia, Cerulean, Cosmo, Cyborg, Darkly, Flatly, Journal, Lumen, Readable,
     Simplex, Slate, Spacelab, Superhero, United, Yeti;
 
     /**

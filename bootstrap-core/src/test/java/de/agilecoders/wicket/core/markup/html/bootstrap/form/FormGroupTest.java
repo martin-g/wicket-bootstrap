@@ -1,8 +1,7 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.form;
 
-import java.io.Serializable;
-import java.util.Locale;
-
+import de.agilecoders.wicket.core.WicketApplicationTest;
+import de.agilecoders.wicket.core.test.IntegrationTest;
 import org.apache.wicket.markup.Markup;
 import org.apache.wicket.markup.MarkupException;
 import org.apache.wicket.markup.html.form.Form;
@@ -14,9 +13,11 @@ import org.apache.wicket.util.tester.TagTester;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
-import de.agilecoders.wicket.core.WicketApplicationTest;
-import de.agilecoders.wicket.core.test.IntegrationTest;
+import java.io.Serializable;
+import java.util.Locale;
+import java.util.concurrent.atomic.AtomicInteger;
 
+import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.containsString;
 
 @Category(IntegrationTest.class)
@@ -53,6 +54,7 @@ public class FormGroupTest extends WicketApplicationTest {
 
     @Test
     public void formGroupSubmit() {
+        final AtomicInteger updateModelCounter = new AtomicInteger(0);
 
         Model<FormData> model = Model.of(new FormData());
         model.getObject();
@@ -62,13 +64,19 @@ public class FormGroupTest extends WicketApplicationTest {
         FormGroup group = new FormGroup("id");
         form.add(group);
 
-        TextField<String> input = new TextField<String>("value");
+        TextField<String> input = new TextField<String>("value") {
+            @Override
+            public void updateModel() {
+                super.updateModel();
+                updateModelCounter.incrementAndGet();
+            }
+        };
         input.setRequired(true);
         group.add(input);
 
         tester().startComponentInPage(
-                form,
-                Markup.of("<form wicket:id='form'><div wicket:id='id'><input type='text' wicket:id='value'/></div></form>"));
+            form,
+            Markup.of("<form wicket:id='form'><div wicket:id='id'><input type='text' wicket:id='value'/></div></form>"));
 
         TagTester formGroupTester = tester().getTagByWicketId("id");
         assertThat(formGroupTester.getAttribute("class"), containsString("form-group"));
@@ -76,10 +84,12 @@ public class FormGroupTest extends WicketApplicationTest {
         FormTester formTester = tester().newFormTester("form", false);
         formTester.setValue(input, "Hello World!");
 
+        updateModelCounter.set(0);
         formTester.submit();
 
         tester().assertNoErrorMessage();
         tester().assertNoInfoMessage();
+        assertThat(updateModelCounter.get(), is(1));
     }
 
     @Test
