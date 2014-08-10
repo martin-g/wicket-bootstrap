@@ -28,7 +28,7 @@ public class InfiniteScrollingBehavior extends Behavior {
     private final Map<String, Object> jsonData;
 
     public InfiniteScrollingBehavior() {
-        jsonData = new HashMap<String, Object>();
+        jsonData = new HashMap<>();
         jsonData.put("localMode", true);
         jsonData.put("animate", true);
     }
