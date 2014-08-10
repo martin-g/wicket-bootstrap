@@ -15,8 +15,9 @@ import org.apache.wicket.markup.html.form.FormComponent;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.LoadableDetachableModel;
 import org.apache.wicket.model.Model;
-import org.apache.wicket.util.iterator.ComponentHierarchyIterator;
 import org.apache.wicket.util.string.Strings;
+import org.apache.wicket.util.visit.IVisit;
+import org.apache.wicket.util.visit.IVisitor;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -247,13 +248,15 @@ public class FormGroup extends Border {
     /**
      * @return all form components that are assigned to this {@link FormGroup}
      */
-    private List<FormComponent<?>> findFormComponents() {
-        final ComponentHierarchyIterator it = getBodyContainer().visitChildren(FormComponent.class);
-
-        final List<FormComponent<?>> components = new ArrayList<FormComponent<?>>();
-        while (it.hasNext()) {
-            components.add((FormComponent<?>) it.next());
-        }
+    List<FormComponent<?>> findFormComponents() {
+        final List<FormComponent<?>> components = new ArrayList<>();
+        getBodyContainer().visitChildren(FormComponent.class, new IVisitor<FormComponent, Void>() {
+            @Override
+            public void component(FormComponent formComponent, IVisit<Void> visit)
+            {
+                components.add(formComponent);
+            }
+        });
 
         return components;
     }
