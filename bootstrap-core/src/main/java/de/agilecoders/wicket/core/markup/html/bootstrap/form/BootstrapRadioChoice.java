@@ -210,12 +210,15 @@ public class BootstrapRadioChoice<T> extends RadioChoice<T> {
                 }
             }
 
-            if (getApplication().getDebugSettings().isOutputComponentPath())
+            String componentPathAttributeName = getApplication().getDebugSettings().getComponentPathAttributeName();
+            if (!Strings.isEmpty(componentPathAttributeName))
             {
                 CharSequence path = getPageRelativePath();
                 path = Strings.replaceAll(path, "_", "__");
                 path = Strings.replaceAll(path, ":", "_");
-                buffer.append(" wicketpath=\"")
+                buffer.append(' ')
+                        .append(componentPathAttributeName)
+                        .append("=\"")
                         .append(path)
                         .append("_input_")
                         .append(index)
