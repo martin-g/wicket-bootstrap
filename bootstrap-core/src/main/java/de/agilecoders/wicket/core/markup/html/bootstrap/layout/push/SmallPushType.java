@@ -1,9 +1,9 @@
-package de.agilecoders.wicket.core.markup.html.bootstrap.layout.push.pull;
+package de.agilecoders.wicket.core.markup.html.bootstrap.layout.push;
 
 /**
- * Pushes for phones.
+ * Pushes for tablets.
  */
-public enum ExtraSmallPushType implements PushType {
+public enum SmallPushType implements PushType {
 
     PUSH0,
     PUSH1, PUSH2, PUSH3, PUSH4,
@@ -15,13 +15,13 @@ public enum ExtraSmallPushType implements PushType {
     /**
      * Constructor.
      */
-    private ExtraSmallPushType() {
+    private SmallPushType() {
         this.cssClassName = name().toLowerCase();
     }
 
     @Override
     public String cssClassName() {
-        return equals(PUSH0) ? "" : "col-xs-push-" + cssClassName.replace("push", "");
+        return equals(PUSH0) ? "" : "col-sm-push-" + cssClassName.replace("push", "");
     }
 
 }

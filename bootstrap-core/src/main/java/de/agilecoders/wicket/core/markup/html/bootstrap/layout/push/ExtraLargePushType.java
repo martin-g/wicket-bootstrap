@@ -1,4 +1,4 @@
-package de.agilecoders.wicket.core.markup.html.bootstrap.layout.push.pull;
+package de.agilecoders.wicket.core.markup.html.bootstrap.layout.push;
 
 /**
  * Pushes for large desktops.
