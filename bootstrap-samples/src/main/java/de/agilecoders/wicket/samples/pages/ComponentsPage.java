@@ -118,13 +118,13 @@ public class ComponentsPage extends BasePage {
     }
 
     private Component newTabs(String markupId) {
-        return new AjaxBootstrapTabbedPanel<AbstractTab>(markupId, Lists.<AbstractTab>newArrayList(
+        return new AjaxBootstrapTabbedPanel<>(markupId, Lists.newArrayList(
                 createTab("Section 1"), createTab("Section 2"), createTab("Section 3")
         ));
     }
 
     private Component newClientSideTabs(String markupId) {
-        return new ClientSideBootstrapTabbedPanel<AbstractTab>(markupId, Lists.<AbstractTab>newArrayList(
+        return new ClientSideBootstrapTabbedPanel<>(markupId, Lists.newArrayList(
                 createTab("Section 1"), createTab("Section 2"), createTab("Section 3")
         ));
     }
@@ -164,7 +164,7 @@ public class ComponentsPage extends BasePage {
 
             @Override
             protected List<AbstractLink> newSubMenuButtons(String buttonMarkupId) {
-                final List<AbstractLink> subMenu = new ArrayList<AbstractLink>();
+                final List<AbstractLink> subMenu = new ArrayList<>();
                 subMenu.add(new MenuBookmarkablePageLink<Void>(ComponentsPage.class, Model.of("Link 1")));
                 subMenu.add(new MenuBookmarkablePageLink<Void>(ComponentsPage.class, Model.of("Link 2")));
                 subMenu.add(new MenuBookmarkablePageLink<Void>(ComponentsPage.class, Model.of("Link 3")));

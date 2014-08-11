@@ -82,7 +82,7 @@ public class BootstrapBookmarkablePageLink<T> extends BookmarkablePageLink<T> im
      * @return new label component
      */
     protected Component newLabel(final String markupId) {
-        return new Label(markupId, new Model<String>(""))
+        return new Label(markupId, new Model<>(""))
                 .setRenderBodyOnly(true);
     }
 

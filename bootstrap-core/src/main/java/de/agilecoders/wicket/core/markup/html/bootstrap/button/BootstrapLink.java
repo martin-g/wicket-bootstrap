@@ -111,7 +111,7 @@ public abstract class BootstrapLink<T> extends Link<T> implements IBootstrapButt
      * @return new label component
      */
     protected Component newLabel(final String markupId) {
-        return new Label(markupId, new Model<String>(""))
+        return new Label(markupId, new Model<>(""))
                 .setRenderBodyOnly(true);
     }
 

@@ -114,7 +114,7 @@ public class Navbar extends Panel implements Invertible<Navbar> {
     private final IModel<Position> position = Model.of(Position.DEFAULT);
     private final IModel<Boolean> fluid = Model.of(false);
     private final Component brandNameLink;
-    private final List<INavbarComponent> components = new ArrayList<INavbarComponent>();
+    private final List<INavbarComponent> components = new ArrayList<>();
 
     /**
      * Construct.

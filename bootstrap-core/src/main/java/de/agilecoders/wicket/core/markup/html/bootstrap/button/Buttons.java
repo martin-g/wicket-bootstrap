@@ -83,7 +83,7 @@ public final class Buttons {
 
     /**
      * Defines all possible button types.
-     * {@link http://getbootstrap.com/css/#buttons}
+     * @see  <a href="http://getbootstrap.com/css/#buttons">buttons</a>
      */
     public static enum Type implements ICssClassNameProvider {
         Default("btn-default"), // Standard gray button with gradient

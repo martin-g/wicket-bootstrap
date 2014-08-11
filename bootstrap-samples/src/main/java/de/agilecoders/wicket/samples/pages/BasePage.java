@@ -139,7 +139,7 @@ abstract class BasePage extends GenericWebPage<Void> {
 
             @Override
             protected List<AbstractLink> newSubMenuButtons(final String buttonMarkupId) {
-                final List<AbstractLink> subMenu = new ArrayList<AbstractLink>();
+                final List<AbstractLink> subMenu = new ArrayList<>();
                 subMenu.add(new MenuHeader(Model.of("all available themes:")));
                 subMenu.add(new MenuDivider());
 
@@ -172,7 +172,7 @@ abstract class BasePage extends GenericWebPage<Void> {
 
             @Override
             protected List<AbstractLink> newSubMenuButtons(String buttonMarkupId) {
-                final List<AbstractLink> subMenu = new ArrayList<AbstractLink>();
+                final List<AbstractLink> subMenu = new ArrayList<>();
 
                 subMenu.add(new MenuBookmarkablePageLink<Void>(Javascript.class, Model.of("Javascript")).setIconType(GlyphIconType.refresh));
                 subMenu.add(new MenuBookmarkablePageLink<Void>(DatePickerPage.class, Model.of("DatePicker")).setIconType(GlyphIconType.time));

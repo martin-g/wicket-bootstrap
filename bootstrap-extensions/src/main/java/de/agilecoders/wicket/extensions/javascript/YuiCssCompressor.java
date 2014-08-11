@@ -24,7 +24,7 @@ import org.apache.wicket.util.lang.Args;
  * and install it with:
  * <pre><code>org.apache.wicket.settings.IResourceSettings#setCssCompressor(new YuiCompressor)</code></pre>
  * </p>
- * @see org.apache.wicket.settings.IResourceSettings#setCssCompressor(org.apache.wicket.css.ICssCompressor)
+ * @see org.apache.wicket.settings.ResourceSettings#setCssCompressor(org.apache.wicket.css.ICssCompressor)
  */
 public class YuiCssCompressor implements ICssCompressor {
 

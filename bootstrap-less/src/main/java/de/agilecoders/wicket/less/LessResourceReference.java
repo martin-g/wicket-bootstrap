@@ -18,7 +18,7 @@ import java.util.Locale;
  * </ol>
  *
  * @author miha
- * @see org.apache.wicket.settings.IResourceSettings#getCssCompressor()
+ * @see org.apache.wicket.settings.ResourceSettings#getCssCompressor()
  */
 public class LessResourceReference extends CssResourceReference {
     private static final long serialVersionUID = 1L;

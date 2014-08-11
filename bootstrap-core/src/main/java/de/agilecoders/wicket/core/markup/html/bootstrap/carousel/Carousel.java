@@ -39,7 +39,7 @@ public class Carousel extends Panel {
      * @param images   the list of images
      */
     public Carousel(final String markupId, final List<? extends ICarouselImage> images) {
-        this(markupId, Model.<ICarouselImage>ofList(images));
+        this(markupId, Model.ofList(images));
     }
 
     /**

@@ -38,7 +38,7 @@ public class Code extends Label {
      * @param componentId The non-null id of a new component
      */
     public Code(final String componentId) {
-        this(componentId, new Model<String>(""));
+        this(componentId, new Model<>(""));
     }
 
     /**

@@ -133,7 +133,7 @@ public class InfiniteScrollingBehavior extends Behavior {
     private Map<String, Object> getLoadingData() {
         Map<String, Object> loading = (Map<String, Object>) jsonData.get("loading");
         if (loading == null) {
-            loading = new HashMap<String, Object>();
+            loading = new HashMap<>();
             jsonData.put("loading", loading);
         }
         return loading;

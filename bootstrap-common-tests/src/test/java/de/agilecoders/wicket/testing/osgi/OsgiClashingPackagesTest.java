@@ -32,18 +32,16 @@ public class OsgiClashingPackagesTest extends Assert {
         String[] dependencies = Strings.split(classpath, pathSeparator);
 
         // packageName -> projects containing a package with this name
-        Map<String, List<Project>> projectBuckets = new HashMap<String, List<Project>>();
+        Map<String, List<Project>> projectBuckets = new HashMap<>();
 
         for (String dependency : dependencies) {
             // process only wicket-bootstrap-xyz.jar
             if (dependency.contains("wicket-bootstrap-") && dependency.endsWith(".jar")) {
-                JarFile jarFile = new JarFile(dependency);
-                try {
+                try (JarFile jarFile = new JarFile(dependency))
+                {
                     String projectName = Strings.afterLast(dependency, '/');
                     Project project = new Project(projectName, jarFile);
                     project.addTo(projectBuckets);
-                } finally {
-                    jarFile.close();
                 }
             }
         }
@@ -79,7 +77,7 @@ public class OsgiClashingPackagesTest extends Assert {
 
     private static class Project {
         // a set with all package names in a dependency
-        private final Set<String> packagesWithContent = new TreeSet<String>();
+        private final Set<String> packagesWithContent = new TreeSet<>();
 
         // the name of the dependency
         private final String name;

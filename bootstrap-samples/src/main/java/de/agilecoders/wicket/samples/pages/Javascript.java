@@ -128,9 +128,8 @@ public class Javascript extends BasePage {
 
         Dataset dataset = new Dataset("demoLocal");
         dataset.withLocal(dataSource);
-        final Typeahead<String> typeahead = new Typeahead<String>(markupId, dataset);
 
-        return typeahead;
+	    return new Typeahead<>(markupId, dataset);
     }
 
 
@@ -207,7 +206,7 @@ public class Javascript extends BasePage {
         return new DropDownButton(markupId, Model.of("Dropdown (#89)"), Model.<IconType>of(GlyphIconType.bookmark)) {
             @Override
             protected List<AbstractLink> newSubMenuButtons(String buttonMarkupId) {
-                List<AbstractLink> subMenu = new ArrayList<AbstractLink>();
+                List<AbstractLink> subMenu = new ArrayList<>();
                 subMenu.add(new MenuBookmarkablePageLink<Void>(Javascript.class).setLabel(Model.of("Link")));
                 subMenu.add(new NavbarAjaxLink<String>("button", Model.of("Ajax Link")) {
                     @Override

@@ -57,7 +57,7 @@ public class RenderJavaScriptToFooterHeaderResponseDecorator implements IHeaderR
     public RenderJavaScriptToFooterHeaderResponseDecorator(final String filterName) {
         Args.notEmpty(filterName, "filterName");
 
-        filters = new ArrayList<FilteringHeaderResponse.IHeaderResponseFilter>();
+        filters = new ArrayList<>();
 
         final AbstractHeaderResponseFilter jsAcceptingFilter = new AbstractHeaderResponseFilter(filterName) {
             public boolean accepts(HeaderItem item) {

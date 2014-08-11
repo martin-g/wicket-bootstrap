@@ -181,7 +181,7 @@ public class ExtensionsPage extends BasePage {
 	}
 
 	private void addJasnyFileUploadDemo() {
-		Form<Void> jasnyFileUploadForm = new Form<Void>("jasnyFileUploadForm");
+		Form<Void> jasnyFileUploadForm = new Form<>("jasnyFileUploadForm");
 		add(jasnyFileUploadForm);
 		jasnyFileUploadForm.setMultiPart(true);
 		FileUploadField jasnyFileUpload = new FileUploadField("jasnyFileUpload");
@@ -196,7 +196,7 @@ public class ExtensionsPage extends BasePage {
 	}
 
 	private void addJasnyInputMaskDemo() {
-		TextField<String> textField = new TextField<String>("inputMask",
+		TextField<String> textField = new TextField<>("inputMask",
 				Model.of("l0rdn1kk0n"));
 		InputMaskBehavior inputMask = new InputMaskBehavior() {
 			@Override

@@ -21,9 +21,8 @@ public class InfinitePaginationPanel extends AbstractPaginationPanel {
 
     private BootstrapPagingNavigator pager;
     private final Model<String> callbackUrl;
-    private final Component nextLink;
 
-    /**
+	/**
      * Construct.
      *
      * @param markupId component id
@@ -33,8 +32,9 @@ public class InfinitePaginationPanel extends AbstractPaginationPanel {
 
         setOutputMarkupId(true);
 
-        callbackUrl = new Model<String>();
+        callbackUrl = new Model<>();
 
+        Component nextLink;
         add(nextLink = new Label("next-page").add(new AttributeModifier("href", callbackUrl)));
         add(newInfiniteScrollingBehavior(pager, nextLink));
     }
@@ -77,7 +77,7 @@ public class InfinitePaginationPanel extends AbstractPaginationPanel {
 
     @Override
     protected List<String> createData() {
-        List<String> elements = new ArrayList<String>(1000);
+        List<String> elements = new ArrayList<>(1000);
         for (int i = 0, l = 1000; i < l; ++i) {
             elements.add("element #" + i);
         }

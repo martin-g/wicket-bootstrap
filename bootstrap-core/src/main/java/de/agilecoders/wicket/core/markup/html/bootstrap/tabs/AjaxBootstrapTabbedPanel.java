@@ -15,22 +15,14 @@ import java.util.List;
 public class AjaxBootstrapTabbedPanel<T extends ITab> extends BootstrapTabbedPanel<T> {
 
 	/**
-	 * Constructor
-	 * 
-	 * @param id
-	 * @param tabs
+	 * {@inheritDoc}
 	 */
 	public AjaxBootstrapTabbedPanel(final String id, final List<T> tabs) {
 		this(id, tabs, null);
 	}
 
 	/**
-	 * Constructor
-	 * 
-	 * @param id
-	 * @param tabs
-	 * @param model
-	 *            model holding the index of the selected tab
+	 * {@inheritDoc}
 	 */
 	public AjaxBootstrapTabbedPanel(final String id, final List<T> tabs, IModel<Integer> model) {
 		super(id, tabs, model);

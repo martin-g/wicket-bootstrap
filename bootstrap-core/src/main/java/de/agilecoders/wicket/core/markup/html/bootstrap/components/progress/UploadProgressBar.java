@@ -11,7 +11,6 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.resource.ResourceReference;
 
-import de.agilecoders.wicket.core.Bootstrap;
 import de.agilecoders.wicket.core.util.Attributes;
 
 /**

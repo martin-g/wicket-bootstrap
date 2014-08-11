@@ -16,7 +16,7 @@ import java.util.List;
  */
 public class TourBehavior extends Behavior {
 
-    private final List<TourStep> steps = new ArrayList<TourStep>();
+    private final List<TourStep> steps = new ArrayList<>();
 
     /**
      * Adds a step to the tour

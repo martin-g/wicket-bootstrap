@@ -2,7 +2,10 @@ package de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.AlignmentBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapResourcesBehavior;
-import de.agilecoders.wicket.core.markup.html.bootstrap.button.*;
+import de.agilecoders.wicket.core.markup.html.bootstrap.button.Activatable;
+import de.agilecoders.wicket.core.markup.html.bootstrap.button.ButtonBehavior;
+import de.agilecoders.wicket.core.markup.html.bootstrap.button.ButtonList;
+import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.Icon;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
 import de.agilecoders.wicket.core.util.Attributes;
@@ -32,7 +35,8 @@ import static de.agilecoders.wicket.jquery.JQuery.$;
  *
  * @author miha
  */
-public abstract class DropDownButton extends AbstractLink implements Activatable {
+public abstract class DropDownButton extends AbstractLink implements Activatable
+{
 
     private final IModel<Buttons.Size> buttonSize = Model.of(Buttons.Size.Medium);
     private final IModel<Buttons.Type> buttonType = Model.of(Buttons.Type.Default);
@@ -203,7 +207,7 @@ public abstract class DropDownButton extends AbstractLink implements Activatable
     protected abstract List<AbstractLink> newSubMenuButtons(final String buttonMarkupId);
 
     /**
-     * creates a new {@link ButtonList} that contains all buttons from {@link #newButtonList(String)}
+     * creates a new {@link ButtonList} that contains all buttons from {@link #newSubMenuButtons(String)}
      *
      * @param markupId the markup id of {@link ButtonList}
      * @return new {@link ButtonList} instance
@@ -254,8 +258,8 @@ public abstract class DropDownButton extends AbstractLink implements Activatable
     /**
      * sets the dropdown menu alignment
      *
-     * @param alignment
-     * @return
+     * @param alignment The alignment of the button
+     * @return this instance for chaining
      */
     public DropDownButton setAlignment(final AlignmentBehavior.Alignment alignment) {
         this.alignment.setObject(alignment);

@@ -154,7 +154,7 @@ public class BootstrapFileInputField extends FileUploadField {
         String ajaxUpload = "";
         if (ajaxUploadBehavior != null) {
             PackageTextTemplate tmpl = new PackageTextTemplate(BootstrapFileInputField.class, "res/fileinput.tmpl.js");
-            Map<String, Object> variables = new HashMap<String, Object>();
+            Map<String, Object> variables = new HashMap<>();
             variables.put("markupId", Strings2.getMarkupId(this));
             for (String label : LABELS) {
                 variables.put(label, getString(label));

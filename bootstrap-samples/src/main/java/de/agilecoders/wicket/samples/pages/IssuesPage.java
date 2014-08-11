@@ -137,8 +137,7 @@ public class IssuesPage extends BasePage {
      * @return new form
      */
     public Form<?> createDatePickerForm(final String markupId) {
-        Form<DateBean> form = new Form<DateBean>(markupId,
-                                                 new CompoundPropertyModel<DateBean>(
+        Form<DateBean> form = new Form<>(markupId, new CompoundPropertyModel<>(
                                                          new PropertyModel<DateBean>(this, "dateBean")));
         add(form);
         DateTextField dueDate = new DateTextField("dueDate");
@@ -176,7 +175,7 @@ public class IssuesPage extends BasePage {
         colorPickerFeedback.setOutputMarkupId(true);
         add(colorPickerFeedback);
 
-        Form<Void> form = new Form<Void>(markupId);
+        Form<Void> form = new Form<>(markupId);
         add(form);
 
         ColorPickerConfig config = new ColorPickerConfig();
@@ -338,7 +337,7 @@ public class IssuesPage extends BasePage {
         /**
          * Constructor
          *
-         * @param target
+         * @param target The Ajax request handler
          */
         public ToggleSubNavbarState(AjaxRequestTarget target, SubNavGroup group) {
             this.target = target;

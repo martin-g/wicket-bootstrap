@@ -17,10 +17,10 @@ public class Breadcrumb extends BreadCrumbBar {
     /**
      * Construct.
      *
-     * @param markupId
+     * @param id The component id
      */
-    public Breadcrumb(final String markupId) {
-        super(markupId);
+    public Breadcrumb(final String id) {
+        super(id);
     }
 
     @Override

@@ -90,7 +90,7 @@ public abstract class BootstrapExternalLink extends ExternalLink implements IBoo
      * @return new label component
      */
     protected Component newLabel(final String markupId) {
-        return new Label(markupId, new Model<String>(""))
+        return new Label(markupId, new Model<>(""))
                 .setRenderBodyOnly(true);
     }
 

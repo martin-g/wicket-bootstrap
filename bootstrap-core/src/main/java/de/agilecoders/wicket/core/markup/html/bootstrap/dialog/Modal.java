@@ -87,7 +87,7 @@ public class Modal<T> extends GenericPanel<T> {
     private final IModel<Boolean> disableEnforceFocus = Model.of(false);
 
     private final Label headerLabel;
-    private final List<Component> buttons = new ArrayList<Component>();
+    private final List<Component> buttons = new ArrayList<>();
     private final WebMarkupContainer footer;
     private final IModel<Boolean> useCloseHandler = Model.of(false);
     private final AjaxEventBehavior closeBehavior;
@@ -315,8 +315,8 @@ public class Modal<T> extends GenericPanel<T> {
     /**
      * Append dialog close/hide JavaScript to current AJAX request target.
      * 
-     * @param target
-     * @return This
+     * @param target The Ajax request handler
+     * @return This instance, for chaining
      */
     public Modal<T> appendCloseDialogJavaScript(final AjaxRequestTarget target) {
         target.appendJavaScript(createActionScript(getMarkupId(true), "hide"));
@@ -325,8 +325,8 @@ public class Modal<T> extends GenericPanel<T> {
 
     /**
      * A short alias for {@link Modal#appendCloseDialogJavaScript}
-     * @param target
-     * @return
+     * @param target The Ajax  request handler
+     * @return This instance, for chaining
      */
     public Modal<T> close(final AjaxRequestTarget target) {
         return appendCloseDialogJavaScript(target);
@@ -360,8 +360,8 @@ public class Modal<T> extends GenericPanel<T> {
 
     /**
      * A short alias for {@link Modal#appendShowDialogJavaScript}
-     * @param target
-     * @return
+     * @param target The Ajax request handler
+     * @return This instance, for chaining
      */
     public Modal<T> show(final AjaxRequestTarget target) {
         return appendShowDialogJavaScript(target);
@@ -418,9 +418,9 @@ public class Modal<T> extends GenericPanel<T> {
                     String.format("Invalid button markup id. Must be '%s'.", BUTTON_MARKUP_ID));
         }
 
-        if (button instanceof ModalCloseButton) {
-            // ((ModalCloseButton) button).setAnchor(this);
-        }
+//        if (button instanceof ModalCloseButton) {
+//            ((ModalCloseButton) button).setAnchor(this);
+//        }
 
         buttons.add(button);
         return this;
@@ -559,7 +559,7 @@ public class Modal<T> extends GenericPanel<T> {
      * Whether the modal should not enforce the focus.
      *
      * @param disable true, if the modal should not enforce the focus
-     * @return This
+     * @return This instance, for chaining
      */
     public final Modal<T> setDisableEnforceFocus(boolean disable) {
         this.disableEnforceFocus.setObject(disable);

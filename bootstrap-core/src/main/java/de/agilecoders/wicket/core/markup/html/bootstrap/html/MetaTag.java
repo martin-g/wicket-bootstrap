@@ -49,7 +49,7 @@ public class MetaTag extends WebMarkupContainer {
      */
     @Deprecated
     public MetaTag(final String id, final String name) {
-        this(id, Model.<String>of(name));
+        this(id, Model.of(name));
     }
 
     /**
@@ -61,7 +61,7 @@ public class MetaTag extends WebMarkupContainer {
      */
     @Deprecated
     public MetaTag(String id, IModel<String> name) {
-        this(id, name, Model.<String>of(""));
+        this(id, name, Model.of(""));
     }
 
     /**

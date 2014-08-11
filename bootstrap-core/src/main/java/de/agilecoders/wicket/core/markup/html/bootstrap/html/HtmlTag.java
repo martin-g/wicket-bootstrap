@@ -144,7 +144,7 @@ public class HtmlTag extends TransparentWebMarkupContainer {
      * @return a set of browser shortcuts
      */
     private Set<String> createBrowserShortcut(final ClientProperties clientProperties) {
-        Set<String> shortcut = new HashSet<String>();
+        Set<String> shortcut = new HashSet<>();
 
         if (clientProperties.isBrowserInternetExplorer()) {
             if (clientProperties.getBrowserVersionMajor() < 9) {

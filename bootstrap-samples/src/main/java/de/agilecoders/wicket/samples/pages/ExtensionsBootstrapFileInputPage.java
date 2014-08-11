@@ -27,7 +27,7 @@ public class ExtensionsBootstrapFileInputPage extends BasePage {
         add(feedback);
     }
     private void addBootstrapFileUploadDemo() {
-        final IModel<List<FileUpload>> model = new ListModel<FileUpload>();
+        final IModel<List<FileUpload>> model = new ListModel<>();
         Form<Void> bootstrapFileUploadForm = new Form<Void>("bootstrapFileUploadForm") {
             @Override
             protected void onSubmit() {

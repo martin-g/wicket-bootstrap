@@ -80,7 +80,7 @@ public final class References {
      * @param references The resource references to render
      */
     public static void renderWithFilter(final IHeaderResponse response, final JavaScriptResourceReference... references) {
-        List<JavaScriptReferenceHeaderItem> headerItems = new ArrayList<JavaScriptReferenceHeaderItem>();
+        List<JavaScriptReferenceHeaderItem> headerItems = new ArrayList<>();
         for (JavaScriptResourceReference reference : references) {
             headerItems.add(JavaScriptHeaderItem.forReference(reference));
         }

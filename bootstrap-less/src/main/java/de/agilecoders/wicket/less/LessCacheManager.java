@@ -34,13 +34,13 @@ public class LessCacheManager {
      * Each root LessSource keeps references to all imported LessSource's in it.
      */
     private final ConcurrentMap<URL, LessSource.URLSource> urlSourceCache =
-            new ConcurrentHashMap<URL, LessSource.URLSource>();
+            new ConcurrentHashMap<>();
 
     /**
      * A cache that keeps the generated CSS content per root LessSource
      */
     private final ConcurrentMap<LessSource.URLSource, ConcurrentMap<Time, String>> contentCache =
-            new ConcurrentHashMap<LessSource.URLSource, ConcurrentMap<Time, String>>();
+            new ConcurrentHashMap<>();
 
     /**
      * Returns the LessSource.URLSource per URL.
@@ -72,7 +72,7 @@ public class LessCacheManager {
 
         ConcurrentMap<Time, String> timeToContentMap = contentCache.get(lessSource);
         if (timeToContentMap == null) {
-            timeToContentMap = new ConcurrentHashMap<Time, String>();
+            timeToContentMap = new ConcurrentHashMap<>();
             ConcurrentMap<Time, String> old = contentCache.putIfAbsent(lessSource, timeToContentMap);
             if (old != null) {
                 timeToContentMap = old;

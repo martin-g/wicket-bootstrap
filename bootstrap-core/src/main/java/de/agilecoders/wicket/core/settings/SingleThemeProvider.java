@@ -35,7 +35,7 @@ public class SingleThemeProvider implements ThemeProvider {
 
     @Override
     public List<ITheme> available() {
-        final List<ITheme> themes = new ArrayList<ITheme>();
+        final List<ITheme> themes = new ArrayList<>();
         themes.add(theme);
 
         return themes;

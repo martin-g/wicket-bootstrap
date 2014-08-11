@@ -50,11 +50,11 @@ public class BaseCssPage extends BasePage {
     }
 
     private void addForms() {
-        Form<Void> form = new BootstrapForm<Void>("forms");
+        Form<Void> form = new BootstrapForm<>("forms");
         add(form);
 
         form.add(new BootstrapCheckbox("checkbox", null, Model.of("Checkbox demo")));
-        form.add(new BootstrapRadioChoice<String>("radio", Lists.newArrayList("Radio One", "Radio Two")));
+        form.add(new BootstrapRadioChoice<>("radio", Lists.newArrayList("Radio One", "Radio Two")));
     }
 
     protected Component newBreadcrumb(String markupId) {

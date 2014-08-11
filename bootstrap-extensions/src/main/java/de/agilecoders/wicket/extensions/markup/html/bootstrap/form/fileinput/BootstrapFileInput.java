@@ -49,7 +49,7 @@ public class BootstrapFileInput extends GenericPanel<List<FileUpload>> {
 
         setRenderBodyOnly(true);
 
-        Form<Void> form = new Form<Void>("fileInputForm");
+        Form<Void> form = new Form<>("fileInputForm");
         add(form);
 
         this.fileInput = new BootstrapFileInputField("fileInput", model, config) {
