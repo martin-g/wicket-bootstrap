@@ -13,27 +13,27 @@ import java.util.List;
  *
  * @author miha
  */
-public class JqueryUIAllJavaScriptReference extends WebjarsJavaScriptResourceReference {
+public class JQueryUIAllJavaScriptReference extends WebjarsJavaScriptResourceReference {
     private static final long serialVersionUID = 1L;
 
     /**
      * Singleton instance of this reference
      */
     private static final class Holder {
-        private static final JqueryUIAllJavaScriptReference INSTANCE = new JqueryUIAllJavaScriptReference();
+        private static final JQueryUIAllJavaScriptReference INSTANCE = new JQueryUIAllJavaScriptReference();
     }
 
     /**
      * @return the single instance of the resource reference
      */
-    public static JqueryUIAllJavaScriptReference instance() {
+    public static JQueryUIAllJavaScriptReference instance() {
         return Holder.INSTANCE;
     }
 
     /**
      * Private constructor.
      */
-    private JqueryUIAllJavaScriptReference() {
+    private JQueryUIAllJavaScriptReference() {
         super("jquery-ui/current/ui/minified/jquery-ui.min.js");
     }
 
