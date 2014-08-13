@@ -14,7 +14,13 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.html.HtmlTag;
 import de.agilecoders.wicket.core.markup.html.bootstrap.html.MetaTag;
 import de.agilecoders.wicket.core.markup.html.bootstrap.html.OptimizedMobileViewportMetaTag;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.GlyphIconType;
-import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.*;
+import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.AffixBehavior;
+import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.ImmutableNavbarComponent;
+import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.Navbar;
+import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.NavbarButton;
+import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.NavbarComponents;
+import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.NavbarDropDownButton;
+import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.NavbarExternalLink;
 import de.agilecoders.wicket.core.markup.html.references.RespondJavaScriptReference;
 import de.agilecoders.wicket.core.settings.IBootstrapSettings;
 import de.agilecoders.wicket.core.settings.ITheme;
@@ -75,13 +81,13 @@ abstract class BasePage extends GenericWebPage<Void> {
 
         // add new relic RUM scripts.
         add(new Label("newrelic", Model.of(NewRelic.getBrowserTimingHeader()))
-                    .setEscapeModelStrings(false)
-                    .setRenderBodyOnly(true)
-                    .add(new AttributeModifier("id", "newrelic-rum-header")));
+                .setEscapeModelStrings(false)
+                .setRenderBodyOnly(true)
+                .add(new AttributeModifier("id", "newrelic-rum-header")));
         add(new Label("newrelic-footer", Model.of(NewRelic.getBrowserTimingFooter()))
-                    .setEscapeModelStrings(false)
-                    .setRenderBodyOnly(true)
-                    .add(new AttributeModifier("id", "newrelic-rum-footer")));
+                .setEscapeModelStrings(false)
+                .setRenderBodyOnly(true)
+                .add(new AttributeModifier("id", "newrelic-rum-footer")));
     }
 
     /**
@@ -114,15 +120,15 @@ abstract class BasePage extends GenericWebPage<Void> {
         navbar.setBrandName(Model.of("Wicket Bootstrap"));
 
         navbar.addComponents(NavbarComponents.transform(Navbar.ComponentPosition.LEFT,
-                                                        new NavbarButton<Void>(HomePage.class, Model.of("Overview")).setIconType(GlyphIconType.home),
-                                                        new NavbarButton<Void>(BaseCssPage.class, Model.of("Base CSS")),
-                                                        new NavbarButton<Void>(ComponentsPage.class, Model.of("Components")),
-                                                        new NavbarButton<Void>(Scaffolding.class, Model.of("Scaffolding")),
-                                                        new NavbarExternalLink(Model.of("https://github.com/l0rdn1kk0n/wicket-bootstrap"))
-                                                                .setLabel(Model.of("Github"))
-                                                                .setTarget(BootstrapExternalLink.Target.blank)
-                                                                .setIconType(GlyphIconType.export),
-                                                        newAddonsDropDownButton())
+                        new NavbarButton<Void>(HomePage.class, Model.of("Overview")).setIconType(GlyphIconType.home),
+                        new NavbarButton<Void>(BaseCssPage.class, Model.of("Base CSS")),
+                        new NavbarButton<Void>(ComponentsPage.class, Model.of("Components")),
+                        new NavbarButton<Void>(Scaffolding.class, Model.of("Scaffolding")),
+                        new NavbarExternalLink(Model.of("https://github.com/l0rdn1kk0n/wicket-bootstrap"))
+                                .setLabel(Model.of("Github"))
+                                .setTarget(BootstrapExternalLink.Target.blank)
+                                .setIconType(GlyphIconType.export),
+                        newAddonsDropDownButton())
         );
 
         DropDownButton dropdown = new NavbarDropDownButton(Model.of("Themes")) {
