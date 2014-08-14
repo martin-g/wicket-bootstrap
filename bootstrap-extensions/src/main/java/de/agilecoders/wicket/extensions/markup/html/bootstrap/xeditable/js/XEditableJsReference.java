@@ -11,7 +11,7 @@ public class XEditableJsReference extends WebjarsJavaScriptResourceReference {
     public static final XEditableJsReference INSTANCE = new XEditableJsReference();
 
     private XEditableJsReference() {
-        super("x-editable-bootstrap/1.5.1/js/bootstrap-editable.js");
+        super("x-editable-bootstrap/current/js/bootstrap-editable.js");
     }
 
     @Override

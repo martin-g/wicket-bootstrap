@@ -4,10 +4,10 @@ import de.agilecoders.wicket.webjars.request.resource.WebjarsCssResourceReferenc
 
 public class XEditableCssReference extends WebjarsCssResourceReference {
 
-    public static final XEditableCssReference INSTANCE = new XEditableCssReference("x-editable-bootstrap/1.5.1/css/bootstrap-editable.css");
+    public static final XEditableCssReference INSTANCE = new XEditableCssReference();
 
-    private XEditableCssReference(String name) {
-        super(name);
+    private XEditableCssReference() {
+        super("x-editable-bootstrap/current/css/bootstrap-editable.css");
     }
 
 }
