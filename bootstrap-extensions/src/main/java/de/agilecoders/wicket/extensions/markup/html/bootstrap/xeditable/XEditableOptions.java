@@ -9,6 +9,7 @@ import de.agilecoders.wicket.jquery.IKey;
  * Not every options is implemented.
  *
  * @link http://vitalets.github.io/x-editable/docs.html
+ * @author <a href="mailto:christian.schroeter@1und1.de">Christian Schröter</a>
  */
 public class XEditableOptions extends AbstractConfig {
 

@@ -23,6 +23,7 @@ import static de.agilecoders.wicket.jquery.JQuery.$;
  * It includes both popup and inline modes.
  *
  * @link http://vitalets.github.io/x-editable/index.html
+ * @author <a href="mailto:christian.schroeter@1und1.de">Christian Schröter</a>
  */
 public class XEditableBehavior extends Behavior {
 
