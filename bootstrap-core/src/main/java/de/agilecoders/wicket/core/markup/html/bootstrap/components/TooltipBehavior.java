@@ -50,6 +50,7 @@ public class TooltipBehavior extends BootstrapJavascriptBehavior {
         super.detach(component);
 
         label.detach();
+        labelResolved.detach();
     }
 
     @Override
