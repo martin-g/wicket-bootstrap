@@ -30,6 +30,9 @@ public class XEditableBehavior extends Behavior {
 
     private final XEditableOptions options;
 
+    private AjaxEventBehavior saveListener;
+    private AjaxEventBehavior hiddenListener;
+
     public XEditableBehavior() {
         this(new XEditableOptions());
     }
@@ -70,11 +73,23 @@ public class XEditableBehavior extends Behavior {
     @Override
     public void bind(Component component) {
         super.bind(component);
-        component.add(newSaveListener());
+        saveListener = newSaveListener();
+        component.add(saveListener);
 
         if (wantOnHiddenNotifications()) {
-            component.add(newHiddenListener());
+            hiddenListener = newHiddenListener();
+            component.add(hiddenListener);
         }
+    }
+
+    @Override
+    public void unbind(Component component) {
+        component.remove(saveListener);
+        if (hiddenListener != null) {
+            component.remove(hiddenListener);
+        }
+
+        super.unbind(component);
     }
 
     protected AjaxEventBehavior newSaveListener() {
