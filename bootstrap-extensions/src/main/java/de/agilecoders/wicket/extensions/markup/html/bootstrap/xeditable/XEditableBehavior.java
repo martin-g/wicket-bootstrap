@@ -11,6 +11,7 @@ import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.request.cycle.RequestCycle;
+import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.string.StringValue;
 
 import static de.agilecoders.wicket.jquery.JQuery.$;
@@ -27,14 +28,14 @@ import static de.agilecoders.wicket.jquery.JQuery.$;
  */
 public class XEditableBehavior extends Behavior {
 
-    private XEditableOptions options;
+    private final XEditableOptions options;
 
     public XEditableBehavior() {
         this(new XEditableOptions());
     }
 
     public XEditableBehavior(XEditableOptions options) {
-        this.options = options;
+        this.options = Args.notNull(options, "options");
     }
 
     @Override
@@ -70,7 +71,10 @@ public class XEditableBehavior extends Behavior {
     public void bind(Component component) {
         super.bind(component);
         component.add(newSaveListener());
-        component.add(newHiddenListener());
+
+        if (wantOnHiddenNotifications()) {
+            component.add(newHiddenListener());
+        }
     }
 
     protected AjaxEventBehavior newSaveListener() {
@@ -103,6 +107,14 @@ public class XEditableBehavior extends Behavior {
                 attributes.getDynamicExtraParameters().add("return [{'name':'reason', 'value': attrs.event.extraData}]");
             }
         };
+    }
+
+    /**
+     * @return {@code true} if Ajax notifications should be sent for the hidden/cancel event
+     */
+    protected boolean wantOnHiddenNotifications()
+    {
+        return false;
     }
 
     public enum Reason {

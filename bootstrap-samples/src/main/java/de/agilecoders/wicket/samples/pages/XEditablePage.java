@@ -41,6 +41,11 @@ public class XEditablePage extends BasePage {
                 XEditablePage.this.reason = reason.name();
                 target.add(reasonLabel);
             }
+
+            @Override
+            protected boolean wantOnHiddenNotifications() {
+                return true;
+            }
         });
 
         add(editableLabel, valueLabel, reasonLabel);
