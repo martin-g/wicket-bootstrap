@@ -5,8 +5,11 @@ import de.agilecoders.wicket.jquery.AbstractConfig;
 import de.agilecoders.wicket.jquery.IKey;
 
 /**
- * Please note:
- * Not every options is implemented.
+ * The options for {@link de.agilecoders.wicket.extensions.markup.html.bootstrap.xeditable.XEditableBehavior}
+ *
+ * Please note: Not all options are implemented. If more options are needed then
+ * the application can extend this class and add them. Or send a Pull Request to
+ * the project.
  *
  * @link http://vitalets.github.io/x-editable/docs.html
  * @author <a href="mailto:christian.schroeter@1und1.de">Christian Schröter</a>
