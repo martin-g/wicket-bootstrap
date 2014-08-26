@@ -1,8 +1,7 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.components;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapJavascriptBehavior;
-import de.agilecoders.wicket.jquery.AbstractConfig;
-
+import de.agilecoders.wicket.jquery.Config;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.head.IHeaderResponse;
@@ -10,7 +9,7 @@ import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
 import org.apache.wicket.model.IComponentAssignedModel;
 import org.apache.wicket.model.IModel;
 
-import static com.google.common.base.Preconditions.*;
+import static com.google.common.base.Preconditions.checkNotNull;
 import static de.agilecoders.wicket.jquery.JQuery.$;
 
 /**
@@ -95,7 +94,7 @@ public class TooltipBehavior extends BootstrapJavascriptBehavior {
      * @param config    The current configuration
      * @return new initializer script
      */
-    protected CharSequence createInitializerScript(final Component component, final AbstractConfig config) {
+    protected CharSequence createInitializerScript(final Component component, final Config config) {
         return $(component).chain("tooltip", config).get();
     }
 

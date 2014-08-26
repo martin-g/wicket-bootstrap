@@ -156,13 +156,12 @@ public class Modal<T> extends GenericPanel<T> {
      * @return The dialog container
      */
     protected WebMarkupContainer createDialog(String id) {
-        WebMarkupContainer dialog = new TransparentWebMarkupContainer(id) {
+        return new TransparentWebMarkupContainer(id) {
             @Override
             protected void onComponentTag(ComponentTag tag) {
                 super.onComponentTag(tag);
 
-                Attributes.removeClass(tag, Size.Large.cssClassName());
-                Attributes.removeClass(tag, Size.Small.cssClassName());
+                Attributes.removeClass(tag, Size.Large.cssClassName(), Size.Small.cssClassName());
 
                 switch (size) {
                     case Large:
@@ -176,8 +175,6 @@ public class Modal<T> extends GenericPanel<T> {
                 }
             }
         };
-
-        return dialog;
     }
 
     /**
@@ -315,8 +312,8 @@ public class Modal<T> extends GenericPanel<T> {
     /**
      * Append dialog close/hide JavaScript to current AJAX request target.
      * 
-     * @param target
-     * @return This
+     * @param target current ajax request target
+     * @return this instance for chaining
      */
     public Modal<T> appendCloseDialogJavaScript(final AjaxRequestTarget target) {
         target.appendJavaScript(createActionScript(getMarkupId(true), "hide"));
@@ -325,8 +322,9 @@ public class Modal<T> extends GenericPanel<T> {
 
     /**
      * A short alias for {@link Modal#appendCloseDialogJavaScript}
-     * @param target
-     * @return
+     *
+     * @param target current ajax request target
+     * @return this instance for chaining
      */
     public Modal<T> close(final AjaxRequestTarget target) {
         return appendCloseDialogJavaScript(target);
@@ -334,9 +332,9 @@ public class Modal<T> extends GenericPanel<T> {
     
     /**
      * Append dialog show JavaScript to current request AJAX target.
-     * 
-     * @param target The current {@link AjaxRequestTarget}
-     * @return This
+     *
+     * @param target current ajax request target
+     * @return this instance for chaining
      */
     public Modal<T> appendShowDialogJavaScript(final AjaxRequestTarget target) {
         target.appendJavaScript(createActionScript(getMarkupId(true), "show"));
@@ -348,8 +346,8 @@ public class Modal<T> extends GenericPanel<T> {
     /**
      * Appends JavaScript snippet that disables the modal's enforceFocus functionality
      *
-     * @param target The current {@link AjaxRequestTarget}
-     * @return This
+     * @param target current ajax request target
+     * @return this instance for chaining
      */
     protected Modal<T> appendDisableEnforceFocus(AjaxRequestTarget target) {
         if (disableEnforceFocus.getObject()) {
@@ -360,8 +358,9 @@ public class Modal<T> extends GenericPanel<T> {
 
     /**
      * A short alias for {@link Modal#appendShowDialogJavaScript}
-     * @param target
-     * @return
+     *
+     * @param target current ajax request target
+     * @return this instance for chaining
      */
     public Modal<T> show(final AjaxRequestTarget target) {
         return appendShowDialogJavaScript(target);
