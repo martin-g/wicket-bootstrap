@@ -100,4 +100,8 @@ public class BloodhoundConfig extends AbstractConfig {
     public Remote getRemote() {
         return get(Remote);
     }
+
+    public Json.RawValue getLocal() {
+        return get(Local);
+    }
 }

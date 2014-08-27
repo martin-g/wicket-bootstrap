@@ -2,6 +2,7 @@ package de.agilecoders.wicket.extensions.markup.html.bootstrap.form.typeaheadV10
 
 import com.fasterxml.jackson.databind.JsonNode;
 
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.typeahead.*;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.typeaheadV10.bloodhound.Bloodhound;
 import de.agilecoders.wicket.jquery.JQuery;
 import de.agilecoders.wicket.jquery.util.Json;
@@ -12,7 +13,9 @@ import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.attributes.CallbackParameter;
 import org.apache.wicket.behavior.Behavior;
 import org.apache.wicket.event.Broadcast;
+import org.apache.wicket.markup.head.HeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
+import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.IModel;
@@ -63,7 +66,7 @@ public class Typeahead<T> extends TextField<T> {
             dataSet.withSource(source);
         }
 
-        if (config.isSelectEvent() && selectBehavior == null) {
+        if (selectBehavior == null && config.isSelectEvent()) {
             add(selectBehavior = new TypeaheadBehavior(TypeaheadEvent.Type.SELECTED));
         }
     }
@@ -71,7 +74,12 @@ public class Typeahead<T> extends TextField<T> {
     @Override
     public void renderHead(final IHeaderResponse response) {
         super.renderHead(response);
+        response.render(newTypeaheadJsHeaderItem());
         response.render(getDomReadyScript(config));
+    }
+
+    protected HeaderItem newTypeaheadJsHeaderItem() {
+        return JavaScriptHeaderItem.forReference(TypeaheadJsReference.instance());
     }
 
     public OnDomReadyHeaderItem getDomReadyScript(TypeaheadConfig config) {

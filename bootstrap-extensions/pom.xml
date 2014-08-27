@@ -15,7 +15,7 @@
 
     <properties>
         <jqueryui.version>1.10.4</jqueryui.version>
-        <typeaheadjs.version>0.9.3</typeaheadjs.version>
+        <typeaheadjs.version>0.10.4</typeaheadjs.version>
         <yuicompressor.version>2.4.7</yuicompressor.version>
     </properties>
 
