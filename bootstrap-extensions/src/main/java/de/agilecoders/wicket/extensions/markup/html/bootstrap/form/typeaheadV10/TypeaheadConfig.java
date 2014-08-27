@@ -2,20 +2,21 @@ package de.agilecoders.wicket.extensions.markup.html.bootstrap.form.typeaheadV10
 
 import com.google.common.collect.ObjectArrays;
 
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.typeaheadV10.bloodhound.Bloodhound;
 import de.agilecoders.wicket.jquery.AbstractConfig;
 import de.agilecoders.wicket.jquery.IKey;
 
 /**
  * Basic configuration for <a href="https://github.com/twitter/typeahead.js/blob/master/doc/jquery_typeahead.md">typeahead.js</a>
  */
-public class TypeaheadConfig extends AbstractConfig {
+public class TypeaheadConfig<T> extends AbstractConfig {
 
-    private final DataSet[] datasets;
+    private final DataSet<T>[] datasets;
 
     /** If set to true, the component will bind to the typeahead:selected event **/
     private boolean selectEvent = false;
 
-    public TypeaheadConfig(DataSet firstSet, DataSet... datasets) {
+    public TypeaheadConfig(DataSet<T> firstSet, DataSet<T> ... datasets) {
 
         if (firstSet == null || firstSet.getSource() == null) {
             throw new IllegalArgumentException(
@@ -35,22 +36,22 @@ public class TypeaheadConfig extends AbstractConfig {
 
     private static final IKey<Integer> MinLength = newKey("minLength", 1);
 
-    public TypeaheadConfig withHighlight(final boolean highlight) {
+    public TypeaheadConfig<T> withHighlight(final boolean highlight) {
         put(Highlight, highlight);
         return this;
     }
 
-    public TypeaheadConfig withHint(final boolean hint) {
+    public TypeaheadConfig<T> withHint(final boolean hint) {
         put(Hint, hint);
         return this;
     }
 
-    public TypeaheadConfig withMinLength(final int minLength) {
+    public TypeaheadConfig<T> withMinLength(final int minLength) {
         put(MinLength, minLength);
         return this;
     }
 
-    public TypeaheadConfig withSelectEvent(boolean withSelectEvent) {
+    public TypeaheadConfig<T> withSelectEvent(boolean withSelectEvent) {
         this.selectEvent = withSelectEvent;
         return this;
     }
@@ -60,7 +61,15 @@ public class TypeaheadConfig extends AbstractConfig {
         return selectEvent;
     }
 
-    public DataSet[] getDatasets() {
+    public DataSet<T>[] getDatasets() {
         return datasets;
+    }
+
+    /**
+     * Convenience method for creating a typeahead.js remote {@link de.agilecoders.wicket.extensions.markup.html.bootstrap.form.typeaheadV10.bloodhound.Bloodhound}
+     * configuration
+     */
+    public static <T> TypeaheadConfig<T> forRemote(Bloodhound<T> bloodhound) {
+        return new TypeaheadConfig<T>(new DataSet<T>(bloodhound));
     }
 }

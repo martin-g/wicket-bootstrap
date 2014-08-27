@@ -13,6 +13,7 @@ import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.attributes.CallbackParameter;
 import org.apache.wicket.behavior.Behavior;
 import org.apache.wicket.event.Broadcast;
+import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.head.HeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
@@ -139,4 +140,14 @@ public class Typeahead<T> extends TextField<T> {
             }
         }
     }
+
+
+    @Override
+    protected void onComponentTag(ComponentTag tag) {
+        super.onComponentTag(tag);
+        checkComponentTag(tag, "input");
+        checkComponentTagAttribute(tag, "type", "text");
+        tag.put("autocomplete", "off");
+    }
+
 }
