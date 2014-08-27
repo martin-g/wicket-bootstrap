@@ -4,6 +4,7 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapResour
 import de.agilecoders.wicket.core.settings.BootstrapResourceAppender;
 import de.agilecoders.wicket.core.settings.BootstrapSettings;
 import de.agilecoders.wicket.core.settings.IBootstrapSettings;
+import de.agilecoders.wicket.jquery.WicketJquerySelectors;
 import de.agilecoders.wicket.webjars.WicketWebjars;
 import org.apache.wicket.Application;
 import org.apache.wicket.Component;
@@ -78,6 +79,10 @@ public final class Bootstrap {
             }
 
             app.setMetaData(BOOTSTRAP_SETTINGS_METADATA_KEY, settings);
+
+            if (!WicketJquerySelectors.isInstalled(app)) {
+                WicketJquerySelectors.install(app);
+            }
 
             if (settings.useWebjars() && app instanceof WebApplication) {
                 WicketWebjars.install((WebApplication) app);

@@ -85,7 +85,7 @@
         <dependency>
             <groupId>net.ftlines.wicket-source</groupId>
             <artifactId>wicket-source</artifactId>
-            <version>6.0.0.8</version>
+            <version>7.0.0</version>
         </dependency>
 
     </dependencies>

@@ -81,13 +81,13 @@ abstract class BasePage extends GenericWebPage<Void> {
 
         // add new relic RUM scripts.
         add(new Label("newrelic", Model.of(NewRelic.getBrowserTimingHeader()))
-                    .setEscapeModelStrings(false)
-                    .setRenderBodyOnly(true)
-                    .add(new AttributeModifier("id", "newrelic-rum-header")));
+                .setEscapeModelStrings(false)
+                .setRenderBodyOnly(true)
+                .add(new AttributeModifier("id", "newrelic-rum-header")));
         add(new Label("newrelic-footer", Model.of(NewRelic.getBrowserTimingFooter()))
-                    .setEscapeModelStrings(false)
-                    .setRenderBodyOnly(true)
-                    .add(new AttributeModifier("id", "newrelic-rum-footer")));
+                .setEscapeModelStrings(false)
+                .setRenderBodyOnly(true)
+                .add(new AttributeModifier("id", "newrelic-rum-footer")));
     }
 
     /**
@@ -120,15 +120,15 @@ abstract class BasePage extends GenericWebPage<Void> {
         navbar.setBrandName(Model.of("Wicket Bootstrap"));
 
         navbar.addComponents(NavbarComponents.transform(Navbar.ComponentPosition.LEFT,
-                                                        new NavbarButton<Void>(HomePage.class, Model.of("Overview")).setIconType(GlyphIconType.home),
-                                                        new NavbarButton<Void>(BaseCssPage.class, Model.of("Base CSS")),
-                                                        new NavbarButton<Void>(ComponentsPage.class, Model.of("Components")),
-                                                        new NavbarButton<Void>(Scaffolding.class, Model.of("Scaffolding")),
-                                                        new NavbarExternalLink(Model.of("https://github.com/l0rdn1kk0n/wicket-bootstrap"))
-                                                                .setLabel(Model.of("Github"))
-                                                                .setTarget(BootstrapExternalLink.Target.blank)
-                                                                .setIconType(GlyphIconType.export),
-                                                        newAddonsDropDownButton())
+                        new NavbarButton<Void>(HomePage.class, Model.of("Overview")).setIconType(GlyphIconType.home),
+                        new NavbarButton<Void>(BaseCssPage.class, Model.of("Base CSS")),
+                        new NavbarButton<Void>(ComponentsPage.class, Model.of("Components")),
+                        new NavbarButton<Void>(Scaffolding.class, Model.of("Scaffolding")),
+                        new NavbarExternalLink(Model.of("https://github.com/l0rdn1kk0n/wicket-bootstrap"))
+                                .setLabel(Model.of("Github"))
+                                .setTarget(BootstrapExternalLink.Target.blank)
+                                .setIconType(GlyphIconType.export),
+                        newAddonsDropDownButton())
         );
 
         DropDownButton dropdown = new NavbarDropDownButton(Model.of("Themes")) {
@@ -180,6 +180,7 @@ abstract class BasePage extends GenericWebPage<Void> {
                 subMenu.add(new MenuBookmarkablePageLink<Void>(ExtensionsPage.class, Model.of("Extensions")).setIconType(GlyphIconType.alignjustify));
                 subMenu.add(new MenuBookmarkablePageLink<Void>(ExtensionsBootstrapFileInputPage.class, Model.of("Extensions - Bootstrap FileInput")).setIconType(GlyphIconType.alignjustify));
                 subMenu.add(new MenuBookmarkablePageLink<Void>(FontAwesomePage.class, Model.of("Font Awesome")).setIconType(GlyphIconType.font));
+                subMenu.add(new MenuBookmarkablePageLink<Void>(XEditablePage.class, Model.of("X-Editable")).setIconType(GlyphIconType.pencil));
 
                 return subMenu;
             }

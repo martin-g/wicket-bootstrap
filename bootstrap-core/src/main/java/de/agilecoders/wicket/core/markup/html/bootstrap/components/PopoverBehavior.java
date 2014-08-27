@@ -1,6 +1,6 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.components;
 
-import de.agilecoders.wicket.jquery.AbstractConfig;
+import de.agilecoders.wicket.jquery.Config;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.model.IModel;
@@ -69,7 +69,7 @@ public class PopoverBehavior extends TooltipBehavior {
     }
 
     @Override
-    protected CharSequence createInitializerScript(final Component component, final AbstractConfig config) {
+    protected CharSequence createInitializerScript(final Component component, final Config config) {
         return $(component).chain("popover", config).get();
     }
 
