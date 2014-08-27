@@ -4,6 +4,7 @@ import de.agilecoders.wicket.core.Bootstrap;
 import de.agilecoders.wicket.webjars.request.resource.WebjarsJavaScriptResourceReference;
 import org.apache.wicket.markup.head.HeaderItem;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
+import org.apache.wicket.request.resource.JavaScriptResourceReference;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +12,7 @@ import java.util.List;
 /**
  * typeahead javascript library
  */
-public class TypeaheadJsReference extends WebjarsJavaScriptResourceReference {
+public class TypeaheadJsReference extends JavaScriptResourceReference {
 
     /**
      * Singleton instance of this reference
@@ -28,7 +29,7 @@ public class TypeaheadJsReference extends WebjarsJavaScriptResourceReference {
     }
 
     private TypeaheadJsReference() {
-        super("/typeaheadjs/current/typeahead.js");
+        super(TypeaheadJsReference.class, "js/typeahead.js");
     }
 
     @Override
