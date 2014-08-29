@@ -53,4 +53,10 @@ public abstract class NavbarDropDownButton extends DropDownButton {
         // do nothing, because navbar dropdown button inherits its styles from navbar.
     }
 
+    @Override
+    protected String newInitializerScript() {
+        // do not create initializer script because this component doesn't render its tag
+        // see #onInitialize() -> setRenderBodyOnly(true)
+        return null;
+    }
 }

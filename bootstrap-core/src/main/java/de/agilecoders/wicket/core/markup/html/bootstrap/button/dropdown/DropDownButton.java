@@ -24,6 +24,7 @@ import org.apache.wicket.markup.html.panel.IMarkupSourcingStrategy;
 import org.apache.wicket.markup.html.panel.PanelMarkupSourcingStrategy;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
+import org.apache.wicket.util.string.Strings;
 
 import java.util.List;
 
@@ -43,7 +44,6 @@ public abstract class DropDownButton extends AbstractLink implements Activatable
     private final IModel<Boolean> dropUp = Model.of(false);
     private final ButtonList buttonListView;
     private final WebMarkupContainer baseButton;
-    private final String script;
     private final Icon icon;
     private final IModel<AlignmentBehavior.Alignment> alignment = Model.of(AlignmentBehavior.Alignment.NONE);
 
@@ -66,8 +66,6 @@ public abstract class DropDownButton extends AbstractLink implements Activatable
      */
     public DropDownButton(final String markupId, final IModel<String> model, final IModel<IconType> iconTypeModel) {
         super(markupId, model);
-
-        this.script = newInitializerScript();
 
         add(baseButton = newButton("btn", model, iconTypeModel));
         WebMarkupContainer dropdownMenu = new WebMarkupContainer("dropdown-menu");
@@ -114,7 +112,7 @@ public abstract class DropDownButton extends AbstractLink implements Activatable
      * @return new initializer script
      */
     protected String newInitializerScript() {
-        JQuery jQuery = $(this, (CharSequence)".dropdown-toggle");
+        JQuery jQuery = $(this, ".dropdown-toggle");
 
         return jQuery.chain(dropdown()).get();
     }
@@ -185,7 +183,10 @@ public abstract class DropDownButton extends AbstractLink implements Activatable
     public void renderHead(IHeaderResponse response) {
         super.renderHead(response);
 
-        response.render(OnDomReadyHeaderItem.forScript(script));
+        String script = newInitializerScript();
+        if (!Strings.isEmpty(script)) {
+            response.render(OnDomReadyHeaderItem.forScript(script));
+        }
     }
 
     /**
