@@ -9,16 +9,33 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.button.BootstrapAjaxLink
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons;
 
 /**
- *
+ * A specialization of {@link de.agilecoders.wicket.core.markup.html.bootstrap.button.BootstrapAjaxLink}
+ * that disables itself during the Ajax call and shows a loading spinner
  */
 public abstract class LaddaAjaxLink<T> extends BootstrapAjaxLink<T> {
 
+    /**
+     * The behavior that sets the Ladda UI specific CSS classes and attributes
+     */
     private final LaddaBehavior laddaBehavior = new LaddaBehavior();
-    
+
+    /**
+     * Constructor.
+     *
+     * @param id The component id
+     * @param type The Bootstrap type of the button
+     */
     public LaddaAjaxLink(String id, Buttons.Type type) {
         super(id, type);
     }
 
+    /**
+     * Constructor.
+     *
+     * @param id The component id
+     * @param model The model to use for the label
+     * @param type The Bootstrap type of the button
+     */
     public LaddaAjaxLink(String id, IModel<T> model, Buttons.Type type) {
         super(id, model, type);
     }
@@ -30,17 +47,35 @@ public abstract class LaddaAjaxLink<T> extends BootstrapAjaxLink<T> {
         add(laddaBehavior);
     }
 
-    public LaddaAjaxLink<T> withStyle(LaddaBehavior.Effect effect) {
-        this.laddaBehavior.withStyle(effect);
+    /**
+     * Sets the effect to use
+     *
+     * @param effect The effect to use
+     * @return {@code this}, for chaining
+     */
+    public LaddaAjaxLink<T> setEffect(LaddaBehavior.Effect effect) {
+        this.laddaBehavior.withEffect(effect);
         return this;
     }
 
-    public LaddaAjaxLink<T> withSpinnerColor(String color) {
+    /**
+     * Sets the color for the spinner
+     *
+     * @param color The color for the spinner
+     * @return {@code this}, for chaining
+     */
+    public LaddaAjaxLink<T> setSpinnerColor(String color) {
         this.laddaBehavior.withSpinnerColor(color);
         return this;
     }
 
-    public LaddaAjaxLink<T> withSpinnerSize(int size) {
+    /**
+     * Sets the size of the spinner in pixels
+     *
+     * @param size The size of the spinner in pixels
+     * @return {@code this}, for chaining
+     */
+    public LaddaAjaxLink<T> setSpinnerSize(int size) {
         this.laddaBehavior.withSpinnerSize(size);
         return this;
     }
