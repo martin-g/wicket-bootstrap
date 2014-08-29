@@ -2,7 +2,6 @@ package de.agilecoders.wicket.samples.pages;
 
 import java.util.List;
 
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.ladda.LaddaAjaxLink;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
@@ -43,6 +42,7 @@ import de.agilecoders.wicket.extensions.markup.html.bootstrap.html5player.Video;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.OpenWebIconType;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.OpenWebIconsCssReference;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.ladda.LaddaAjaxButton;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.ladda.LaddaAjaxLink;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.ladda.LaddaBehavior;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.tour.TourBehavior;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.tour.TourStep;
@@ -202,11 +202,11 @@ public class ExtensionsPage extends BasePage {
 		laddaLink.setEffect(LaddaBehavior.Effect.EXPAND_LEFT).setSize(Buttons.Size.Medium);
 
 		form.add(new Code("linkCode", Model.of("laddaLink = new LaddaAjaxLink<String>(\"laddaLink\", Model.of(\"Link, 2secs\"), Buttons.Type.Success) {\n"
-										  + "    @Override public void onClick(AjaxRequestTarget target) {\n"
-										  + "        Duration.seconds(2).sleep();\n"
-										  + "    }\n"
-										  + "};\n"
-										  + "laddaLink.setEffect(LaddaBehavior.Effect.EXPAND_LEFT).setSize(Buttons.Size.Medium);")));
+                                               + "    @Override public void onClick(AjaxRequestTarget target) {\n"
+                                               + "        Duration.seconds(2).sleep();\n"
+                                               + "    }\n"
+                                               + "};\n"
+                                               + "laddaLink.setEffect(LaddaBehavior.Effect.EXPAND_LEFT).setSize(Buttons.Size.Medium);")));
 
 		form.add(laddaButton, laddaLink);
 	}
