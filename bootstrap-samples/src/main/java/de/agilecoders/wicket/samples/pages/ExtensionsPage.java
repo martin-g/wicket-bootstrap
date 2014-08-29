@@ -183,7 +183,7 @@ public class ExtensionsPage extends BasePage {
 		Form form = new Form("laddaForm");
 		add(form);
 
-        LaddaAjaxButton laddaButton = new LaddaAjaxButton("laddaButton", Model.of("Button, 3secs"), form, Buttons.Type.Info) {
+		LaddaAjaxButton laddaButton = new LaddaAjaxButton("laddaButton", Model.of("Button, 3secs"), form, Buttons.Type.Info) {
 			@Override
 			protected void onSubmit(AjaxRequestTarget target, Form<?> form) {
 				super.onSubmit(target, form);
@@ -202,11 +202,11 @@ public class ExtensionsPage extends BasePage {
 		laddaLink.setEffect(LaddaBehavior.Effect.EXPAND_LEFT).setSize(Buttons.Size.Medium);
 
 		form.add(new Code("linkCode", Model.of("laddaLink = new LaddaAjaxLink<String>(\"laddaLink\", Model.of(\"Link, 2secs\"), Buttons.Type.Success) {\n"
-                                               + "    @Override public void onClick(AjaxRequestTarget target) {\n"
-                                               + "        Duration.seconds(2).sleep();\n"
-                                               + "    }\n"
-                                               + "};\n"
-                                               + "laddaLink.setEffect(LaddaBehavior.Effect.EXPAND_LEFT).setSize(Buttons.Size.Medium);")));
+											   + "    @Override public void onClick(AjaxRequestTarget target) {\n"
+											   + "        Duration.seconds(2).sleep();\n"
+											   + "    }\n"
+											   + "};\n"
+											   + "laddaLink.setEffect(LaddaBehavior.Effect.EXPAND_LEFT).setSize(Buttons.Size.Medium);")));
 
 		form.add(laddaButton, laddaLink);
 	}
