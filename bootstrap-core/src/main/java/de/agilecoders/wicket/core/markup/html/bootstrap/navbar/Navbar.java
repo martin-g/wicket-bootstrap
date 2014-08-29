@@ -148,9 +148,9 @@ public class Navbar extends Panel implements Invertible<Navbar> {
         activeStateAppender = new CssClassNameAppender("active");
         invertModel = Model.of("");
 
-        add(container, collapse, collapseButton,
-            newToggleNavigationLabel("toggleNavigationLabel"),
-            brandNameLink, leftAlignedComponentListView, rightAlignedComponentListView);
+        container.add(collapse, collapseButton, brandNameLink, leftAlignedComponentListView, rightAlignedComponentListView);
+        collapseButton.add(newToggleNavigationLabel("toggleNavigationLabel"));
+        add(container);
     }
 
     @Override
