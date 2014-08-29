@@ -2,10 +2,9 @@ package de.agilecoders.wicket.samples.pages;
 
 import java.util.List;
 
-import de.agilecoders.wicket.core.markup.html.bootstrap.components.progress.ProgressBar;
-import de.agilecoders.wicket.core.markup.html.bootstrap.components.progress.UploadProgressBar;
-
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.ladda.LaddaAjaxLink;
 import org.apache.wicket.Component;
+import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
@@ -18,14 +17,18 @@ import org.apache.wicket.markup.repeater.RepeatingView;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.model.ResourceModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
+import org.apache.wicket.util.time.Duration;
 import org.wicketstuff.annotation.mount.MountPath;
 
 import com.google.common.collect.Lists;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.block.Code;
+import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.DropDownButton;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.MenuBookmarkablePageLink;
 import de.agilecoders.wicket.core.markup.html.bootstrap.components.TooltipConfig;
+import de.agilecoders.wicket.core.markup.html.bootstrap.components.progress.ProgressBar;
+import de.agilecoders.wicket.core.markup.html.bootstrap.components.progress.UploadProgressBar;
 import de.agilecoders.wicket.core.markup.html.bootstrap.dialog.Modal;
 import de.agilecoders.wicket.core.markup.html.bootstrap.dialog.TextContentModal;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.GlyphIconType;
@@ -39,6 +42,8 @@ import de.agilecoders.wicket.extensions.markup.html.bootstrap.html5player.Html5V
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.html5player.Video;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.OpenWebIconType;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.OpenWebIconsCssReference;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.ladda.LaddaAjaxButton;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.ladda.LaddaBehavior;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.tour.TourBehavior;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.tour.TourStep;
 import de.agilecoders.wicket.samples.panels.pagination.InfinitePaginationPanel;
@@ -170,6 +175,33 @@ public class ExtensionsPage extends BasePage {
 		addJasnyInputMaskDemo();
 
 		add(new InfinitePaginationPanel("infinite"));
+
+		laddaButton();
+	}
+
+	private void laddaButton() {
+		Form form = new Form("laddaForm");
+		add(form);
+
+        LaddaAjaxButton laddaButton = new LaddaAjaxButton("laddaButton", Model.of("Button, 3secs"), form, Buttons.Type.Info) {
+			@Override
+			protected void onSubmit(AjaxRequestTarget target, Form<?> form) {
+				super.onSubmit(target, form);
+
+				Duration.seconds(3).sleep();
+			}
+		};
+		laddaButton.withSize(LaddaBehavior.Size.L);
+
+		LaddaAjaxLink<String> laddaLink = new LaddaAjaxLink<String>("laddaLink", Model.of("Link, 2secs"), Buttons.Type.Success) {
+			@Override
+			public void onClick(AjaxRequestTarget target) {
+				Duration.seconds(2).sleep();
+			}
+		};
+		laddaLink.withSize(LaddaBehavior.Size.L).withStyle(LaddaBehavior.Style.EXPAND_LEFT);
+
+		form.add(laddaButton, laddaLink);
 	}
 
 	@Override
