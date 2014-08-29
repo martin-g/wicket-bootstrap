@@ -30,13 +30,8 @@ public abstract class LaddaAjaxLink<T> extends BootstrapAjaxLink<T> {
         add(laddaBehavior);
     }
 
-    public LaddaAjaxLink<T> withStyle(LaddaBehavior.Style style) {
-        this.laddaBehavior.withStyle(style);
-        return this;
-    }
-
-    public LaddaAjaxLink<T> withSize(LaddaBehavior.Size size) {
-        this.laddaBehavior.withSize(size);
+    public LaddaAjaxLink<T> withStyle(LaddaBehavior.Effect effect) {
+        this.laddaBehavior.withStyle(effect);
         return this;
     }
 

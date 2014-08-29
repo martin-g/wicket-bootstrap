@@ -191,7 +191,7 @@ public class ExtensionsPage extends BasePage {
 				Duration.seconds(3).sleep();
 			}
 		};
-		laddaButton.withSize(LaddaBehavior.Size.L);
+		laddaButton.setSize(Buttons.Size.Small);
 
 		LaddaAjaxLink<String> laddaLink = new LaddaAjaxLink<String>("laddaLink", Model.of("Link, 2secs"), Buttons.Type.Success) {
 			@Override
@@ -199,7 +199,7 @@ public class ExtensionsPage extends BasePage {
 				Duration.seconds(2).sleep();
 			}
 		};
-		laddaLink.withSize(LaddaBehavior.Size.L).withStyle(LaddaBehavior.Style.EXPAND_LEFT);
+		laddaLink.withStyle(LaddaBehavior.Effect.EXPAND_LEFT).setSize(Buttons.Size.Large);
 
 		form.add(laddaButton, laddaLink);
 	}

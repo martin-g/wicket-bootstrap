@@ -39,13 +39,8 @@ public class LaddaAjaxButton extends BootstrapAjaxButton {
         add(laddaBehavior);
     }
 
-    public LaddaAjaxButton withStyle(LaddaBehavior.Style style) {
-        this.laddaBehavior.withStyle(style);
-        return this;
-    }
-    
-    public LaddaAjaxButton withSize(LaddaBehavior.Size size) {
-        this.laddaBehavior.withSize(size);
+    public LaddaAjaxButton withStyle(LaddaBehavior.Effect effect) {
+        this.laddaBehavior.withStyle(effect);
         return this;
     }
 

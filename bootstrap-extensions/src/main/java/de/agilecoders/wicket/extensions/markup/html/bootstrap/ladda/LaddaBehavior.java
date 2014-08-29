@@ -15,15 +15,11 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNamePr
 import de.agilecoders.wicket.core.util.Attributes;
 
 /**
- *
+ * A behavior that applies the CSS classes required by <a href="http://msurguy.github.io/ladda-bootstrap/">Ladda UI</a>.
  */
 public class LaddaBehavior extends Behavior {
 
-    public static enum Size {
-        XS, S, M, L, XL
-    }
-
-    public static enum Style implements ICssClassNameProvider {
+    public enum Effect implements ICssClassNameProvider {
         EXPAND_LEFT, EXPAND_RIGHT, EXPAND_UP, EXPAND_DOWN,
         ZOOM_IN, ZOOM_OUT,
         SLIDE_LEFT, SLIDE_RIGHT, SLIDE_UP, SLIDE_DOWN,
@@ -35,21 +31,14 @@ public class LaddaBehavior extends Behavior {
         }
     }
 
-    private Style style = Style.ZOOM_OUT;
-
-    private Size size = Size.M;
+    private Effect effect = Effect.ZOOM_OUT;
 
     private String spinnerColor;
 
     private int spinnerSize;
 
-    public LaddaBehavior withStyle(Style style) {
-        this.style = Args.notNull(style, "style");
-        return this;
-    }
-
-    public LaddaBehavior withSize(Size size) {
-        this.size = size;
+    public LaddaBehavior withStyle(Effect effect) {
+        this.effect = Args.notNull(effect, "style");
         return this;
     }
 
@@ -68,10 +57,7 @@ public class LaddaBehavior extends Behavior {
         super.onComponentTag(component, tag);
 
         Attributes.addClass(tag, "ladda-button");
-        Attributes.set(tag, "data-style", style.cssClassName());
-        if (size != Size.M) {
-            Attributes.set(tag, "data-size", size.name().toLowerCase());
-        }
+        Attributes.set(tag, "data-style", effect.cssClassName());
 
         if (!Strings.isEmpty(spinnerColor)) {
             Attributes.set(tag, "data-spinner-color", spinnerColor);
