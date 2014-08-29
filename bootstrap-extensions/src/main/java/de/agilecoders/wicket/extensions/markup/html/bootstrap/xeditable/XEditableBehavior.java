@@ -85,8 +85,11 @@ public class XEditableBehavior extends Behavior {
     @Override
     public void unbind(Component component) {
         component.remove(saveListener);
+        saveListener = null;
+
         if (hiddenListener != null) {
             component.remove(hiddenListener);
+            hiddenListener = null;
         }
 
         super.unbind(component);
