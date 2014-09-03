@@ -32,12 +32,13 @@ import static de.agilecoders.wicket.jquery.JQuery.$;
  */
 public class Html5Player extends Panel {
 
-    private final IModel<Integer> width;
-    private final IModel<Integer> height;
     private final IModel<List<? extends IVideo>> resources;
     private final Html5VideoConfig config;
     private final WebMarkupContainer container;
     private final IModel<String> errorMessage;
+
+    private int width;
+    private int height;
 
     /**
      * Construct.
@@ -62,8 +63,8 @@ public class Html5Player extends Panel {
         resources = model;
         this.config = config;
 
-        width = Model.of(370);
-        height = Model.of(215);
+        width = 370;
+        height = 215;
         errorMessage = Model.of("Your browser does not support the video tag.");
 
         add(container = newVideoTag("video"));
@@ -86,8 +87,8 @@ public class Html5Player extends Panel {
      * @param width The width in pixel
      * @return this instance for chaining
      */
-    public Html5Player setWidth(final Integer width) {
-        this.width.setObject(width);
+    public Html5Player setWidth(final int width) {
+        this.width = width;
         return this;
     }
 
@@ -97,8 +98,8 @@ public class Html5Player extends Panel {
      * @param height The height in pixel
      * @return this instance for chaining
      */
-    public Html5Player setHeight(final Integer height) {
-        this.height.setObject(height);
+    public Html5Player setHeight(final int height) {
+        this.height = height;
         return this;
     }
 
@@ -152,8 +153,8 @@ public class Html5Player extends Panel {
             protected void onComponentTag(ComponentTag tag) {
                 super.onComponentTag(tag);
 
-                tag.put("width", width.getObject());
-                tag.put("height", height.getObject());
+                tag.put("width", width);
+                tag.put("height", height);
             }
         };
     }

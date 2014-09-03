@@ -58,8 +58,8 @@ public class Alert extends GenericPanel<String> {
     private final Component message;
     private final Label blockHeader;
     private final Label inlineHeader;
-    private final IModel<Type> type;
-    private final IModel<Boolean> dismissable;
+    private Type type;
+    private boolean dismissable;
     private Duration duration;
     private boolean useInlineHeader = true;
 
@@ -83,8 +83,8 @@ public class Alert extends GenericPanel<String> {
     public Alert(String id, IModel<String> message, IModel<String> header) {
         super(id, message);
 
-        type = Model.of(Type.Info);
-        dismissable = Model.of(Boolean.FALSE);
+        type = Type.Info;
+        dismissable = false;
 
         this.inlineHeader = new Label("inline", header);
         this.blockHeader = new Label("block", header);
@@ -102,9 +102,9 @@ public class Alert extends GenericPanel<String> {
 
         checkComponentTag(tag, "div");
         Attributes.addClass(tag, "alert");
-        Attributes.addClass(tag, type.getObject());
+        Attributes.addClass(tag, type);
 
-        if (dismissable.getObject()) {
+        if (dismissable) {
             Attributes.addClass(tag, "alert-dismissable");
         } else {
             Attributes.removeClass(tag, "alert-dismissable");
@@ -129,7 +129,7 @@ public class Alert extends GenericPanel<String> {
      * @return This
      */
     public Alert setCloseButtonVisible(boolean visible) {
-        this.dismissable.setObject(visible);
+        this.dismissable = visible;
         this.closeButton.setVisible(visible);
         return this;
     }
@@ -176,7 +176,7 @@ public class Alert extends GenericPanel<String> {
      * @return This.
      */
     public Alert type(Type type) {
-        this.type.setObject(type);
+        this.type = type;
 
         return this;
     }

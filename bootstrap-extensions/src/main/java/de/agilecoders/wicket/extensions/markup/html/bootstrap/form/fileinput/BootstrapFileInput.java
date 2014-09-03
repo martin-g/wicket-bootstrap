@@ -34,6 +34,17 @@ public class BootstrapFileInput extends GenericPanel<List<FileUpload>> {
      * @param model The model that will store the uploaded files
      */
     public BootstrapFileInput(String id, IModel<List<FileUpload>> model) {
+        this(id, model, new FileInputConfig());
+    }
+
+    /**
+     * Constructor.
+     *
+     * @param id The component id
+     * @param model The model that will store the uploaded files
+     * @param config The options for the JavaScript widget
+     */
+    public BootstrapFileInput(String id, IModel<List<FileUpload>> model, FileInputConfig config) {
         super(id, model);
 
         setRenderBodyOnly(true);
@@ -41,7 +52,7 @@ public class BootstrapFileInput extends GenericPanel<List<FileUpload>> {
         Form<Void> form = new Form<Void>("fileInputForm");
         add(form);
 
-        this.fileInput = new BootstrapFileInputField("fileInput", model) {
+        this.fileInput = new BootstrapFileInputField("fileInput", model, config) {
             @Override
             protected void onSubmit(AjaxRequestTarget target) {
                 super.onSubmit(target);

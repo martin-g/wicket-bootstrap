@@ -345,7 +345,7 @@
                 content = '<a href="' + self.uploadUrl + '" class="' + self.uploadClass + '"' + status + '>' + self.uploadIcon + self.uploadLabel + '</a>';
             }
             return content;
-        },
+        }
     }
 
     $.fn.fileinput = function (options) {
