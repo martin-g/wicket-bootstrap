@@ -57,7 +57,7 @@
         <versions-maven-plugin.version>2.1</versions-maven-plugin.version>
         <rhino.version>1.7R4</rhino.version>
         <doxia.version>1.0</doxia.version>
-        <less4j.version>1.7.0</less4j.version>
+        <less4j.version>1.8.1</less4j.version>
         <modernizr.version>2.7.1</modernizr.version>
         <jetty.version>8.1.15.v20140411</jetty.version>
         <newrelic.version>3.7.0</newrelic.version>
@@ -67,7 +67,7 @@
         <jquerypp.version>1.0.1</jquerypp.version>
         <jquery.version>2.1.1</jquery.version>
         <maven-bundle-plugin.version>2.5.0</maven-bundle-plugin.version>
-        <wicket.version>6.16.0</wicket.version>
+        <wicket.version>6.17.0</wicket.version>
     </properties>
 
     <dependencyManagement>
