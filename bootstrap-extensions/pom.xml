@@ -17,6 +17,7 @@
         <jqueryui.version>1.10.4</jqueryui.version>
         <typeaheadjs.version>0.10.4</typeaheadjs.version>
         <x-editable.version>1.5.1</x-editable.version>
+        <spin-js.version>2.0.0</spin-js.version>
         <yuicompressor.version>2.4.7</yuicompressor.version>
     </properties>
 
@@ -92,6 +93,12 @@
             <groupId>org.webjars</groupId>
             <artifactId>x-editable-bootstrap</artifactId>
             <version>${x-editable.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>spin-js</artifactId>
+            <version>${spin-js.version}</version>
         </dependency>
 
         <dependency>

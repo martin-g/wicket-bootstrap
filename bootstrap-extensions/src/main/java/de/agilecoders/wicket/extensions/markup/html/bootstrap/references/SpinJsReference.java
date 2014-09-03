@@ -1,15 +1,15 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.references;
 
-import org.apache.wicket.request.resource.JavaScriptResourceReference;
+import de.agilecoders.wicket.webjars.request.resource.WebjarsJavaScriptResourceReference;
 
 /**
  * A JavaScript resource reference that contributes spin.js.
  */
-public class SpinJsReference extends JavaScriptResourceReference {
+public class SpinJsReference extends WebjarsJavaScriptResourceReference {
 
     public static final SpinJsReference INSTANCE = new SpinJsReference();
 
     public SpinJsReference() {
-        super(SpinJsReference.class, "js/spin.js");
+        super("spin-js/current/spin.js");
     }
 }
