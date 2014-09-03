@@ -53,7 +53,7 @@ public class FormGroup extends Border {
     private Component label;
     private Component help;
     private Component feedback;
-    private final Model<String> stateClassName;
+    private String stateClassName;
     private boolean useFormComponentLabel = true;
     private Size size;
     private final IModel<String> labelModel;
@@ -89,7 +89,7 @@ public class FormGroup extends Border {
 
         this.labelModel = label;
         this.helpModel = help;
-        stateClassName = Model.of("");
+        this.stateClassName = "";
     }
 
     /**
@@ -157,7 +157,7 @@ public class FormGroup extends Border {
         super.onComponentTag(tag);
 
         checkComponentTag(tag, "div");
-        Attributes.addClass(tag, "form-group", stateClassName.getObject());
+        Attributes.addClass(tag, "form-group", stateClassName);
         if (size != null) {
             Attributes.addClass(tag, size.cssClassName());
         }
@@ -222,7 +222,7 @@ public class FormGroup extends Border {
         Components.show(help, label, feedback);
 
         // clear feedback message and current state
-        stateClassName.setObject("");
+        stateClassName = "";
         feedback.setDefaultModelObject("");
 
         final List<FormComponent<?>> formComponents = findFormComponents();
@@ -233,7 +233,7 @@ public class FormGroup extends Border {
                 final FeedbackMessage worstMessage = getWorstMessage(messages);
                 worstMessage.markRendered();
 
-                stateClassName.setObject(toClassName(worstMessage));
+                stateClassName = toClassName(worstMessage);
                 feedback.setDefaultModelObject(worstMessage.getMessage());
 
                 break; // render worst message of first found child component with feedback message

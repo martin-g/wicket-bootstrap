@@ -41,11 +41,12 @@ public abstract class DropDownButton extends AbstractLink implements Activatable
 
     private final IModel<Buttons.Size> buttonSize = Model.of(Buttons.Size.Medium);
     private final IModel<Buttons.Type> buttonType = Model.of(Buttons.Type.Default);
-    private final IModel<Boolean> dropUp = Model.of(false);
     private final ButtonList buttonListView;
     private final WebMarkupContainer baseButton;
     private final Icon icon;
     private final IModel<AlignmentBehavior.Alignment> alignment = Model.of(AlignmentBehavior.Alignment.NONE);
+
+    private boolean dropUp = false;
 
     /**
      * Construct.
@@ -228,7 +229,7 @@ public abstract class DropDownButton extends AbstractLink implements Activatable
      * @return this instance for chaining
      */
     public DropDownButton setDropUp(final boolean dropUp) {
-        this.dropUp.setObject(dropUp);
+        this.dropUp = dropUp;
         return this;
     }
 
@@ -240,7 +241,6 @@ public abstract class DropDownButton extends AbstractLink implements Activatable
      */
     public DropDownButton setSize(final Buttons.Size size) {
         this.buttonSize.setObject(size);
-
         return this;
     }
 
@@ -252,7 +252,6 @@ public abstract class DropDownButton extends AbstractLink implements Activatable
      */
     public DropDownButton setType(final Buttons.Type type) {
         this.buttonType.setObject(type);
-
         return this;
     }
 
@@ -280,7 +279,7 @@ public abstract class DropDownButton extends AbstractLink implements Activatable
 
         super.onComponentTag(tag);
 
-        if (dropUp.getObject()) {
+        if (dropUp) {
             Attributes.addClass(tag, "dropup");
         }
 
