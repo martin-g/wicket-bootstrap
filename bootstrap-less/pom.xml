@@ -14,7 +14,7 @@
     <packaging>bundle</packaging>
 
     <properties>
-        <antlr.version>3.4</antlr.version>
+        <antlr.version>3.5.2</antlr.version>
     </properties>
 
     <dependencies>

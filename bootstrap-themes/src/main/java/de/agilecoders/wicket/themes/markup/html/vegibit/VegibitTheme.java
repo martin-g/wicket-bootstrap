@@ -70,7 +70,7 @@ public enum VegibitTheme implements ITheme {
             }
         }
 
-        return false;
+        return result;
     }
 
     /**

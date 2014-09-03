@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>X-Editable Page</title>
+</head>
+<body>
+<wicket:extend>
+    <header class="jumbotron subhead" id="overview">
+        <div class="container">
+            <h1>X-Editable for Bootstrap3</h1>
+
+            <p class="lead">
+                The <a href="http://vitalets.github.io/x-editable/index.html" target="_blank">X-Editable library</a> allows you to create editable elements on your page. <br/>
+                It includes both popup and inline modes.
+            </p>
+        </div>
+    </header>
+
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Example</h2>
+                <p>
+                    Activate X-Editable by clicking here: <a href="#" wicket:id="label"></a>
+                </p>
+                <p>
+                    New value is : <span wicket:id="newValue"></span><br />
+                    Component was closed by: <span wicket:id="reason"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</wicket:extend>
+</body>
+</html>

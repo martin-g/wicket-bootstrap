@@ -1,10 +1,10 @@
-package de.agilecoders.wicket.extensions.markup.html.bootstrap.form.typeahead;
+package de.agilecoders.wicket.extensions.markup.html.bootstrap.form.typeaheadV10;
 
 import de.agilecoders.wicket.core.Bootstrap;
 import de.agilecoders.wicket.webjars.request.resource.WebjarsJavaScriptResourceReference;
+
 import org.apache.wicket.markup.head.HeaderItem;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
-import org.apache.wicket.request.resource.JavaScriptResourceReference;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * typeahead javascript library
  */
-public class TypeaheadJsReference extends JavaScriptResourceReference {
+public class TypeaheadJsReference extends WebjarsJavaScriptResourceReference {
 
     /**
      * Singleton instance of this reference
@@ -29,7 +29,7 @@ public class TypeaheadJsReference extends JavaScriptResourceReference {
     }
 
     private TypeaheadJsReference() {
-        super(TypeaheadJsReference.class, "js/typeahead.js");
+        super("typeaheadjs/current/typeahead.bundle.js");
     }
 
     @Override
@@ -39,5 +39,4 @@ public class TypeaheadJsReference extends JavaScriptResourceReference {
         dependencies.add(JavaScriptHeaderItem.forReference(Bootstrap.getSettings().getJsResourceReference()));
         return dependencies;
     }
-
 }

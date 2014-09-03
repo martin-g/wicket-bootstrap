@@ -70,13 +70,12 @@ public class Modal<T> extends GenericPanel<T> {
         TRUE, FALSE, STATIC
     }
 
-    private final WebMarkupContainer dialog;
     private final WebMarkupContainer header;
-    private final IModel<Boolean> show = Model.of(false);
-    private final IModel<Boolean> fadein = Model.of(true);
-    private final IModel<Boolean> keyboard = Model.of(true);
-    private final IModel<Boolean> closeOnEscapeKey = Model.of(true);
-    private final IModel<Backdrop> backdrop = Model.of(Backdrop.TRUE);
+    private boolean show = false;
+    private boolean fadein = true;
+    private boolean keyboard = true;
+    private boolean closeOnEscapeKey = true;
+    private Backdrop backdrop = Backdrop.TRUE;
 
     /**
      * Disables the enforcement of the focus.
@@ -115,7 +114,7 @@ public class Modal<T> extends GenericPanel<T> {
         setOutputMarkupId(true);
         setOutputMarkupPlaceholderTag(true);
 
-        dialog = createDialog("dialog");
+        WebMarkupContainer dialog = createDialog("dialog");
         footer = new WebMarkupContainer("footer");
         header = new WebMarkupContainer("header");
         header.add(headerLabel = new Label("header-label", ""));
@@ -156,13 +155,12 @@ public class Modal<T> extends GenericPanel<T> {
      * @return The dialog container
      */
     protected WebMarkupContainer createDialog(String id) {
-        WebMarkupContainer dialog = new TransparentWebMarkupContainer(id) {
+        return new TransparentWebMarkupContainer(id) {
             @Override
             protected void onComponentTag(ComponentTag tag) {
                 super.onComponentTag(tag);
 
-                Attributes.removeClass(tag, Size.Large.cssClassName());
-                Attributes.removeClass(tag, Size.Small.cssClassName());
+                Attributes.removeClass(tag, Size.Large.cssClassName(), Size.Small.cssClassName());
 
                 switch (size) {
                     case Large:
@@ -176,8 +174,6 @@ public class Modal<T> extends GenericPanel<T> {
                 }
             }
         };
-
-        return dialog;
     }
 
     /**
@@ -197,12 +193,12 @@ public class Modal<T> extends GenericPanel<T> {
 
         checkComponentTag(tag, "div");
         Attributes.addClass(tag, "modal");
-        if (closeOnEscapeKey.getObject()) {
+        if (closeOnEscapeKey) {
             Attributes.set(tag, "tabindex", "-1");
         }
 
-        if (backdrop.getObject() != Backdrop.TRUE) {
-            Attributes.set(tag, "data-backdrop", backdrop.getObject().name().toLowerCase() );
+        if (backdrop != Backdrop.TRUE) {
+            Attributes.set(tag, "data-backdrop", backdrop.name().toLowerCase() );
         }
 
         // ARIA
@@ -283,7 +279,7 @@ public class Modal<T> extends GenericPanel<T> {
      * @return This
      */
     public Modal<T> show(boolean show) {
-        this.show.setObject(show);
+        this.show = show;
         return this;
     }
 
@@ -295,7 +291,7 @@ public class Modal<T> extends GenericPanel<T> {
      * @return This
      */
     public Modal<T> setCloseOnEscapeKey(boolean close) {
-        this.closeOnEscapeKey.setObject(close);
+        this.closeOnEscapeKey = close;
         return this;
     }
 
@@ -308,15 +304,15 @@ public class Modal<T> extends GenericPanel<T> {
      * @return This
      */
     public Modal<T> setBackdrop(Backdrop backdrop) {
-        this.backdrop.setObject(backdrop);
+        this.backdrop = backdrop;
         return this;
     }
 
     /**
      * Append dialog close/hide JavaScript to current AJAX request target.
      * 
-     * @param target
-     * @return This
+     * @param target current ajax request target
+     * @return this instance for chaining
      */
     public Modal<T> appendCloseDialogJavaScript(final AjaxRequestTarget target) {
         target.appendJavaScript(createActionScript(getMarkupId(true), "hide"));
@@ -325,8 +321,9 @@ public class Modal<T> extends GenericPanel<T> {
 
     /**
      * A short alias for {@link Modal#appendCloseDialogJavaScript}
-     * @param target
-     * @return
+     *
+     * @param target current ajax request target
+     * @return this instance for chaining
      */
     public Modal<T> close(final AjaxRequestTarget target) {
         return appendCloseDialogJavaScript(target);
@@ -334,9 +331,9 @@ public class Modal<T> extends GenericPanel<T> {
     
     /**
      * Append dialog show JavaScript to current request AJAX target.
-     * 
-     * @param target The current {@link AjaxRequestTarget}
-     * @return This
+     *
+     * @param target current ajax request target
+     * @return this instance for chaining
      */
     public Modal<T> appendShowDialogJavaScript(final AjaxRequestTarget target) {
         target.appendJavaScript(createActionScript(getMarkupId(true), "show"));
@@ -348,8 +345,8 @@ public class Modal<T> extends GenericPanel<T> {
     /**
      * Appends JavaScript snippet that disables the modal's enforceFocus functionality
      *
-     * @param target The current {@link AjaxRequestTarget}
-     * @return This
+     * @param target current ajax request target
+     * @return this instance for chaining
      */
     protected Modal<T> appendDisableEnforceFocus(AjaxRequestTarget target) {
         if (disableEnforceFocus.getObject()) {
@@ -360,8 +357,9 @@ public class Modal<T> extends GenericPanel<T> {
 
     /**
      * A short alias for {@link Modal#appendShowDialogJavaScript}
-     * @param target
-     * @return
+     *
+     * @param target current ajax request target
+     * @return this instance for chaining
      */
     public Modal<T> show(final AjaxRequestTarget target) {
         return appendShowDialogJavaScript(target);
@@ -516,21 +514,21 @@ public class Modal<T> extends GenericPanel<T> {
      * @return true, if fade in animation is activated
      */
     protected final boolean useFadein() {
-        return fadein.getObject();
+        return fadein;
     }
 
     /**
      * @return true, if keyboard usage is activated
      */
     protected final boolean useKeyboard() {
-        return keyboard.getObject();
+        return keyboard;
     }
 
     /**
      * @return true, if modal dialog should be shown after initialization
      */
     protected final boolean showImmediately() {
-        return show.getObject();
+        return show;
     }
 
     /**
@@ -540,7 +538,7 @@ public class Modal<T> extends GenericPanel<T> {
      * @return This
      */
     public final Modal<T> setFadeIn(boolean fadein) {
-        this.fadein.setObject(fadein);
+        this.fadein = fadein;
         return this;
     }
 
@@ -551,7 +549,7 @@ public class Modal<T> extends GenericPanel<T> {
      * @return This
      */
     public final Modal<T> setUseKeyboard(boolean keyboard) {
-        this.keyboard.setObject(keyboard);
+        this.keyboard = keyboard;
         return this;
     }
 
@@ -565,6 +563,5 @@ public class Modal<T> extends GenericPanel<T> {
         this.disableEnforceFocus.setObject(disable);
         return this;
     }
-
 
 }

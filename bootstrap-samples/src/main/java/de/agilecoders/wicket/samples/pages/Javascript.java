@@ -1,6 +1,7 @@
 package de.agilecoders.wicket.samples.pages;
 
 import com.google.common.collect.Lists;
+
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.BootstrapAjaxLink;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.ButtonBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons;
@@ -13,15 +14,19 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.carousel.ICarouselImage;
 import de.agilecoders.wicket.core.markup.html.bootstrap.components.PopoverBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.components.TooltipBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.GlyphIconType;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.typeahead.Dataset;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.typeahead.Typeahead;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
 import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.NavbarAjaxLink;
 import de.agilecoders.wicket.core.markup.html.bootstrap.tabs.AjaxLazyLoadTextContentTab;
 import de.agilecoders.wicket.core.markup.html.bootstrap.tabs.Collapsible;
 import de.agilecoders.wicket.core.markup.html.bootstrap.tabs.TextContentTab;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.typeaheadV10.DataSet;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.typeaheadV10.Typeahead;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.typeaheadV10.TypeaheadConfig;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.typeaheadV10.bloodhound.Bloodhound;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.typeaheadV10.bloodhound.LocalBloodhound;
 import de.agilecoders.wicket.samples.panels.pagination.AjaxPaginationPanel;
 import de.agilecoders.wicket.samples.panels.pagination.PaginationPanel;
+
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
@@ -33,7 +38,6 @@ import org.apache.wicket.markup.html.link.AbstractLink;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.request.resource.CssResourceReference;
-import org.apache.wicket.util.string.Strings;
 import org.apache.wicket.util.time.Duration;
 import org.wicketstuff.annotation.mount.MountPath;
 
@@ -126,9 +130,9 @@ public class Javascript extends BasePage {
     private Typeahead<String> newLocalTypeahead(final String markupId) {
         final List<String> dataSource = Lists.newArrayList("abc", "def", "ghi");
 
-        Dataset dataset = new Dataset("demoLocal");
-        dataset.withLocal(dataSource);
-        final Typeahead<String> typeahead = new Typeahead<String>(markupId, dataset);
+        Bloodhound<String> bloodhound = new LocalBloodhound<String>("sample", dataSource);
+        TypeaheadConfig config = new TypeaheadConfig(new DataSet<String>(bloodhound));
+        final Typeahead<String> typeahead = new Typeahead<String>(markupId, Model.of(""), config);
 
         return typeahead;
     }
@@ -141,6 +145,7 @@ public class Javascript extends BasePage {
      * @return new typeahead instance
      */
     private Component newRemoteTypeahead(final String id) {
+
         final List<String> dataSource = Lists.newArrayList(
                 "Alabama", "Alaska", "Arizona", "Arkansas",
                 "California", "Colorado", "Connecticut",
@@ -158,33 +163,29 @@ public class Javascript extends BasePage {
                 "West Virginia", "Wisconsin", "Wyoming"
         );
 
-        Dataset dataset = new Dataset("demo");
-        //        dataset.withTemplate("<p>--<strong>{{value}}</strong>--</p>");
-        //        dataset.withEngine(new Json.RawValue("Hogan"));
-        dataset.withHeader("<strong>Header</strong>");
-        dataset.withFooter("<em>Footer</em>");
-        final Typeahead<String> typeahead = new Typeahead<String>(id, dataset) {
+        Bloodhound<String> bloodhound = new Bloodhound<String>("remote") {
             @Override
-            protected Iterable<String> getChoices(String input) {
-                List<String> choices = Lists.newArrayList();
-                for (String item : dataSource) {
-                    if (Strings.isEmpty(input) || item.toLowerCase().startsWith(input.toLowerCase())) {
-                        choices.add(item);
-                    }
-                }
-                return choices;
+            public Iterable<String> getChoices(String input) {
+                return dataSource;
             }
 
             @Override
-            public void renderHead(IHeaderResponse response) {
-                super.renderHead(response);
-
-                response.render(CssHeaderItem.forReference(new CssResourceReference(Javascript.class, "css/typeahead-demo.css")));
+            public String renderChoice(String choice) {
+                // create the datum for the choice
+                return String.format("{\"value\":\"%s\"}", choice);
             }
         };
-        typeahead.remote(true);
 
-        return typeahead;
+        TypeaheadConfig config = new TypeaheadConfig(new DataSet(bloodhound));
+
+        return new Typeahead<String>(id, Model.of(""), config);
+    }
+
+    @Override
+    public void renderHead(IHeaderResponse response) {
+        super.renderHead(response);
+
+        response.render(CssHeaderItem.forReference(new CssResourceReference(Javascript.class, "css/typeahead-demo.css")));
     }
 
     /**
