@@ -1,8 +1,5 @@
 package de.agilecoders.wicket.less;
 
-import de.agilecoders.wicket.less.BootstrapLess;
-import de.agilecoders.wicket.less.HomePage;
-import de.agilecoders.wicket.less.LessResourceReference;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.request.resource.ResourceReference;

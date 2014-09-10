@@ -2,6 +2,8 @@ package de.agilecoders.wicket.less;
 
 import com.github.sommeri.less4j.LessSource;
 import de.agilecoders.wicket.webjars.WicketWebjars;
+import org.apache.wicket.request.resource.IResourceReferenceFactory;
+import org.apache.wicket.request.resource.ResourceReferenceRegistry;
 import org.apache.wicket.util.tester.WicketTester;
 import org.junit.After;
 import org.junit.Before;
@@ -11,6 +13,7 @@ import java.net.URL;
 
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.instanceOf;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
@@ -72,5 +75,12 @@ public class BootstrapLessTest {
         assertThat(css, containsString("package1"));
         assertThat(css, containsString("package2"));
         assertThat(css, containsString("package3"));
+    }
+
+    @Test
+    public void lessResourceReferenceFactoryIsInstalled() {
+        ResourceReferenceRegistry registry = tester.getApplication().getResourceReferenceRegistry();
+        IResourceReferenceFactory referenceFactory = registry.getResourceReferenceFactory();
+        assertThat(referenceFactory, is(instanceOf(LessResourceReferenceFactory.class)));
     }
 }
