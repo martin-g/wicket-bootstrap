@@ -22,7 +22,9 @@ public final class Buttons {
      *
      * @param component the component to fix
      * @param tag       the component tag
+     * @deprecated Not used by the library because Wicket 7.0 doesn't mangle the link/button's markup anymore
      */
+    @Deprecated
     public static void fixDisabledState(Component component, ComponentTag tag) {
         if (!component.isEnabled()) {
             if (component instanceof AbstractLink) {
