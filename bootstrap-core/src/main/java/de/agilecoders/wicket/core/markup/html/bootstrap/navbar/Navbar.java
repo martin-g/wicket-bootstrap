@@ -229,9 +229,18 @@ public class Navbar extends Panel implements Invertible<Navbar> {
             protected void onConfigure() {
                 super.onConfigure();
 
-                setVisible(get("brandLabel").isVisible() || get("brandImage").isVisible());
+                Component brandLabel = get("brandLabel");
+                brandLabel.configure();
+                if (brandLabel.isVisible()) {
+                    setVisible(true);
+                } else {
+                    Component brandImage = get("brandImage");
+                    brandImage.configure();
+                    setVisible(brandImage.isVisible());
+                }
             }
         };
+        link.setOutputMarkupPlaceholderTag(true);
 
         link.add(newBrandLabel("brandLabel"));
         link.add(newBrandImage("brandImage"));
