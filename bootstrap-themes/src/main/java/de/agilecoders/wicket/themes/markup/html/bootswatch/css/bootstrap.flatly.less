@@ -76,7 +76,7 @@
 table,
 .table {
 
-  a {
+  a:not(.btn) {
     text-decoration: underline;
   }
 
@@ -213,19 +213,6 @@ input, {
 
 // Indicators =================================================================
 
-.alert {
-
-  a,
-  .alert-link {
-    color: #fff;
-    text-decoration: underline;
-  }
-
-  .close {
-    text-decoration: none;
-  }
-}
-
 .close {
   color: #fff;
   text-decoration: none;
@@ -235,6 +222,14 @@ input, {
   &:focus {
     color: #fff;
     opacity: 1;
+  }
+}
+
+.alert {
+
+  .alert-link {
+    color: #fff;
+    text-decoration: underline;
   }
 }
 
@@ -253,4 +248,22 @@ input, {
 
 .well {
   .box-shadow(none);
+}
+
+.panel {
+  &-default {
+    .close {
+      color: @text-color;
+    }
+  }
+}
+
+.modal {
+  .close {
+    color: @text-color;
+  }
+}
+
+.popover {
+  color: @text-color;
 }

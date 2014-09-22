@@ -152,10 +152,6 @@ h1, h2, h3, h4, h5, h6 {
 
 .table {
 
-  a {
-    text-decoration: underline;
-  }
-
   .success,
   .warning,
   .danger,
@@ -293,7 +289,8 @@ legend {
 
 .pagination {
 
-  & > li > a {
+  & > li > a,
+  & > li > span {
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
     .btn-shadow(@btn-default-bg);
 
@@ -302,12 +299,15 @@ legend {
     }
   }
 
-  & > li.active > a {
+  & > li.active > a,
+  & > li.active > span {
     .btn-shadow-inverse(@btn-default-bg);
   }
 
   & > li.disabled > a,
-  & > li.disabled > a:hover {
+  & > li.disabled > a:hover,
+  & > li.disabled > span,
+  & > li.disabled > span:hover {
     background-color: transparent;
     .btn-shadow(@btn-default-bg);
   }

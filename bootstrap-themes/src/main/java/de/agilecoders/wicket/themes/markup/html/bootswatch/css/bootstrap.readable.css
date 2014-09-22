@@ -1,6 +1,6 @@
 @import url("//fonts.googleapis.com/css?family=Raleway:400,700");
 /*!
- * Bootswatch v3.2.0
+ * bootswatch v3.2.0
  * Homepage: http://bootswatch.com
  * Copyright 2012-2014 Thomas Park
  * Licensed under MIT
@@ -1210,7 +1210,7 @@ a.bg-danger:hover {
 .page-header {
   padding-bottom: 10px;
   margin: 44px 0 22px;
-  border-bottom: 1px solid #eeeeee;
+  border-bottom: 1px solid #dddddd;
 }
 ul,
 ol {
@@ -3759,7 +3759,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar {
   position: relative;
-  min-height: 50px;
+  min-height: 65px;
   margin-bottom: 22px;
   border: 1px solid transparent;
 }
@@ -3867,10 +3867,10 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-brand {
   float: left;
-  padding: 14px 15px;
+  padding: 21.5px 15px;
   font-size: 20px;
   line-height: 22px;
-  height: 50px;
+  height: 65px;
 }
 .navbar-brand:hover,
 .navbar-brand:focus {
@@ -3887,8 +3887,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   float: right;
   margin-right: 15px;
   padding: 9px 10px;
-  margin-top: 8px;
-  margin-bottom: 8px;
+  margin-top: 15.5px;
+  margin-bottom: 15.5px;
   background-color: transparent;
   background-image: none;
   border: 1px solid transparent;
@@ -3912,7 +3912,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
 }
 .navbar-nav {
-  margin: 7px -15px;
+  margin: 10.75px -15px;
 }
 .navbar-nav > li > a {
   padding-top: 10px;
@@ -3950,8 +3950,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     float: left;
   }
   .navbar-nav > li > a {
-    padding-top: 14px;
-    padding-bottom: 14px;
+    padding-top: 21.5px;
+    padding-bottom: 21.5px;
   }
   .navbar-nav.navbar-right:last-child {
     margin-right: -15px;
@@ -3973,8 +3973,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   border-bottom: 1px solid transparent;
   -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);
-  margin-top: 5px;
-  margin-bottom: 5px;
+  margin-top: 12.5px;
+  margin-bottom: 12.5px;
 }
 @media (min-width: 768px) {
   .navbar-form .form-group {
@@ -4053,20 +4053,20 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   border-bottom-left-radius: 0;
 }
 .navbar-btn {
-  margin-top: 5px;
-  margin-bottom: 5px;
+  margin-top: 12.5px;
+  margin-bottom: 12.5px;
 }
 .navbar-btn.btn-sm {
-  margin-top: 8.5px;
-  margin-bottom: 8.5px;
+  margin-top: 16px;
+  margin-bottom: 16px;
 }
 .navbar-btn.btn-xs {
-  margin-top: 14px;
-  margin-bottom: 14px;
+  margin-top: 21.5px;
+  margin-bottom: 21.5px;
 }
 .navbar-text {
-  margin-top: 14px;
-  margin-bottom: 14px;
+  margin-top: 21.5px;
+  margin-bottom: 21.5px;
 }
 @media (min-width: 768px) {
   .navbar-text {
@@ -4080,7 +4080,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-default {
   background-color: #ffffff;
-  border-color: transparent;
+  border-color: #dddddd;
 }
 .navbar-default .navbar-brand {
   color: #4582ec;
@@ -4125,7 +4125,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-default .navbar-collapse,
 .navbar-default .navbar-form {
-  border-color: transparent;
+  border-color: #dddddd;
 }
 .navbar-default .navbar-nav > .open > a,
 .navbar-default .navbar-nav > .open > a:hover,
@@ -4176,7 +4176,7 @@ fieldset[disabled] .navbar-default .btn-link:focus {
 }
 .navbar-inverse {
   background-color: #ffffff;
-  border-color: transparent;
+  border-color: #dddddd;
 }
 .navbar-inverse .navbar-brand {
   color: #333333;
@@ -4231,10 +4231,10 @@ fieldset[disabled] .navbar-default .btn-link:focus {
 }
 @media (max-width: 767px) {
   .navbar-inverse .navbar-nav .open .dropdown-menu > .dropdown-header {
-    border-color: transparent;
+    border-color: #dddddd;
   }
   .navbar-inverse .navbar-nav .open .dropdown-menu .divider {
-    background-color: transparent;
+    background-color: #dddddd;
   }
   .navbar-inverse .navbar-nav .open .dropdown-menu > li > a {
     color: #333333;
@@ -5329,14 +5329,14 @@ a.list-group-item-danger.active:focus {
   font-size: 24px;
   font-weight: bold;
   line-height: 1;
-  color: #000000;
+  color: #ffffff;
   text-shadow: 0 1px 0 #ffffff;
   opacity: 0.2;
   filter: alpha(opacity=20);
 }
 .close:hover,
 .close:focus {
-  color: #000000;
+  color: #ffffff;
   text-decoration: none;
   cursor: pointer;
   opacity: 0.5;
@@ -6174,6 +6174,11 @@ button.close {
 .navbar {
   font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
+.navbar-nav,
+.navbar-form {
+  margin-left: 0;
+  margin-right: 0;
+}
 .navbar-nav > li > a {
   padding: 8px 12px;
   margin: 12px 6px;
@@ -6194,10 +6199,12 @@ button.close {
   color: #333333;
 }
 .navbar-brand {
-  margin-top: 6px;
+  padding-top: 20px;
 }
-.navbar-form {
-  margin-top: 12px;
+@media (max-width: 768px) {
+  .navbar .navbar-nav > li > a {
+    margin: 0;
+  }
 }
 .btn {
   font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -6233,23 +6240,20 @@ legend {
 .pager .disabled a {
   border-color: #dddddd;
 }
-.alert a,
-.alert .alert-link {
-  color: #ffffff;
-  text-decoration: underline;
-}
-.alert .close {
-  text-decoration: none;
-}
 .close {
   color: #fff;
   text-decoration: none;
+  text-shadow: none;
   opacity: 0.4;
 }
 .close:hover,
 .close:focus {
   color: #fff;
   opacity: 1;
+}
+.alert .alert-link {
+  color: #ffffff;
+  text-decoration: underline;
 }
 .label {
   font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -6269,11 +6273,8 @@ legend {
   -webkit-box-shadow: none;
   box-shadow: none;
 }
-.panel-default .panel-heading,
-.panel-default .panel-footer {
-  background-color: #fff;
-  font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: bold;
+.panel-default .close {
+  color: #333333;
 }
 .panel-primary .panel-heading,
 .panel-success .panel-heading,
@@ -6290,4 +6291,7 @@ legend {
   border: 1px solid #ddd;
   border-top-width: 0;
   border-radius: 0 0 4px 4px;
+}
+.modal .close {
+  color: #333333;
 }

@@ -1,6 +1,6 @@
 @import url("//fonts.googleapis.com/css?family=Lato:400,700,400italic");
 /*!
- * Bootswatch v3.2.0
+ * bootswatch v3.2.0
  * Homepage: http://bootswatch.com
  * Copyright 2012-2014 Thomas Park
  * Licensed under MIT
@@ -6213,8 +6213,8 @@ button.close {
 .text-info:hover {
   color: #3498db;
 }
-table a,
-.table a {
+table a:not(.btn),
+.table a:not(.btn) {
   text-decoration: underline;
 }
 table .success,
@@ -6339,14 +6339,6 @@ input:focus {
 .pager .disabled > span {
   background-color: #3be6c4;
 }
-.alert a,
-.alert .alert-link {
-  color: #fff;
-  text-decoration: underline;
-}
-.alert .close {
-  text-decoration: none;
-}
 .close {
   color: #fff;
   text-decoration: none;
@@ -6356,6 +6348,10 @@ input:focus {
 .close:focus {
   color: #fff;
   opacity: 1;
+}
+.alert .alert-link {
+  color: #fff;
+  text-decoration: underline;
 }
 .progress {
   height: 10px;
@@ -6369,4 +6365,13 @@ input:focus {
 .well {
   -webkit-box-shadow: none;
   box-shadow: none;
+}
+.panel-default .close {
+  color: #2c3e50;
+}
+.modal .close {
+  color: #2c3e50;
+}
+.popover {
+  color: #2c3e50;
 }
