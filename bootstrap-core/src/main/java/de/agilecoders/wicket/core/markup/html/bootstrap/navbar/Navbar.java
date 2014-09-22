@@ -258,8 +258,10 @@ public class Navbar extends Panel implements Invertible<Navbar> {
             private static final long serialVersionUID = 1L;
 
             @Override
-            public boolean isVisible() {
-                return getDefaultModel() != null;
+            protected void onConfigure() {
+                super.onConfigure();
+
+                setVisible(getDefaultModel() != null);
             }
         };
     }
@@ -274,8 +276,10 @@ public class Navbar extends Panel implements Invertible<Navbar> {
             private static final long serialVersionUID = 1L;
 
             @Override
-            public boolean isVisible() {
-                return getImageResourceReference() != null;
+            protected void onConfigure() {
+                super.onConfigure();
+
+                setVisible(getImageResourceReference() != null || getImageResource() != null);
             }
         };
     }
