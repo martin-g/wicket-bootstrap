@@ -113,6 +113,7 @@ public class Navbar extends Panel implements Invertible<Navbar> {
 
     private final IModel<Position> position = Model.of(Position.DEFAULT);
     private final IModel<Boolean> fluid = Model.of(false);
+    private final IModel<Boolean> container = Model.of(true);
     private final Component brandNameLink;
     private final List<INavbarComponent> components = new ArrayList<INavbarComponent>();
 
@@ -332,7 +333,16 @@ public class Navbar extends Panel implements Invertible<Navbar> {
      * @return a new inner container of the navigation bar.
      */
     protected TransparentWebMarkupContainer newContainer(String componentId) {
-        return new TransparentWebMarkupContainer(componentId);
+        return new TransparentWebMarkupContainer(componentId) {
+            @Override
+            protected void onComponentTag(ComponentTag tag) {
+                super.onComponentTag(tag);
+
+                if (!container.getObject()) {
+                    Attributes.removeClass(tag, "container");
+                }
+            }
+        };
     }
 
     /**
@@ -413,6 +423,18 @@ public class Navbar extends Panel implements Invertible<Navbar> {
      */
     public Navbar fluid() {
         this.fluid.setObject(true);
+
+        return this;
+    }
+
+    /**
+     * Sets whether the navbar's content should be wrapped in a &lt;div class="container"&gt;
+     * or should use the whole screen width.
+     *
+     * @return the component's current instance.
+     */
+    public Navbar container(boolean isContainer) {
+        this.container.setObject(isContainer);
 
         return this;
     }
