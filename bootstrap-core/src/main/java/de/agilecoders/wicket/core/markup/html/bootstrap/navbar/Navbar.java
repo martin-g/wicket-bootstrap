@@ -22,6 +22,7 @@ import org.apache.wicket.markup.html.link.BookmarkablePageLink;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.markup.html.panel.Panel;
+import org.apache.wicket.markup.repeater.RepeatingView;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.LoadableDetachableModel;
 import org.apache.wicket.model.Model;
@@ -116,6 +117,7 @@ public class Navbar extends Panel implements Invertible<Navbar> {
     private final IModel<Boolean> container = Model.of(true);
     private final Component brandNameLink;
     private final List<INavbarComponent> components = new ArrayList<INavbarComponent>();
+    private final RepeatingView extraItems;
 
     /**
      * Construct.
@@ -145,6 +147,8 @@ public class Navbar extends Panel implements Invertible<Navbar> {
 
         final Component leftAlignedComponentListView = newNavigation("navLeftList", newPositionDependedComponentModel(components, POSITION_FILTER_LEFT));
         final Component rightAlignedComponentListView = newNavigation("navRightList", newPositionDependedComponentModel(components, POSITION_FILTER_RIGHT));
+        extraItems = new RepeatingView("extraItems");
+        collapse.add(extraItems);
 
         activeStateAppender = new CssClassNameAppender("active");
         invertModel = Model.of("");
@@ -314,6 +318,21 @@ public class Navbar extends Panel implements Invertible<Navbar> {
      */
     public final Navbar addComponents(final INavbarComponent... components) {
         return addComponents(Generics2.newArrayList(components));
+    }
+
+    /**
+     * adds a component to the given position inside the navbar
+     *
+     * @param component the component to add
+     * @return this component instance for chaining
+     */
+    public final Navbar addComponents(final NavbarText component) {
+        extraItems.add(component);
+        return this;
+    }
+
+    public final String newExtraItemId() {
+        return extraItems.newChildId();
     }
 
     /**
