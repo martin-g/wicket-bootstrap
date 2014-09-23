@@ -114,7 +114,6 @@ public class Navbar extends Panel implements Invertible<Navbar> {
 
     private final IModel<Position> position = Model.of(Position.DEFAULT);
     private final IModel<Boolean> fluid = Model.of(false);
-    private final IModel<Boolean> container = Model.of(true);
     private final Component brandNameLink;
     private final List<INavbarComponent> components = new ArrayList<INavbarComponent>();
     private final RepeatingView extraItems;
@@ -370,8 +369,12 @@ public class Navbar extends Panel implements Invertible<Navbar> {
             protected void onComponentTag(ComponentTag tag) {
                 super.onComponentTag(tag);
 
-                if (!container.getObject()) {
-                    Attributes.removeClass(tag, "container");
+                Attributes.removeClass(tag, "container", "container-fluid");
+
+                if (isFluid()) {
+                    Attributes.addClass(tag, "container-fluid");
+                } else {
+                    Attributes.addClass(tag, "container");
                 }
             }
         };
@@ -455,18 +458,6 @@ public class Navbar extends Panel implements Invertible<Navbar> {
      */
     public Navbar fluid() {
         this.fluid.setObject(true);
-
-        return this;
-    }
-
-    /**
-     * Sets whether the navbar's content should be wrapped in a &lt;div class="container"&gt;
-     * or should use the whole screen width.
-     *
-     * @return the component's current instance.
-     */
-    public Navbar container(boolean isContainer) {
-        this.container.setObject(isContainer);
 
         return this;
     }
