@@ -53,6 +53,7 @@
         <findbugs.disable>true</findbugs.disable>
 
         <!-- TODO -->
+        <servlet-api.version>2.5</servlet-api.version>
         <javax.javaee-web-api.version>6.0</javax.javaee-web-api.version>
         <versions-maven-plugin.version>2.1</versions-maven-plugin.version>
         <rhino.version>1.7R4</rhino.version>
@@ -169,6 +170,14 @@
                 <artifactId>commons-lang3</artifactId>
                 <version>3.3.2</version>
             </dependency>
+
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>servlet-api</artifactId>
+                <version>${servlet-api.version}</version>
+                <scope>provided</scope>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
