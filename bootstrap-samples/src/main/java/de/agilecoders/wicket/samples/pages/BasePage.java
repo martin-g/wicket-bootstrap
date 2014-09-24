@@ -11,6 +11,7 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.MenuDivi
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.MenuHeader;
 import de.agilecoders.wicket.core.markup.html.bootstrap.html.ChromeFrameMetaTag;
 import de.agilecoders.wicket.core.markup.html.bootstrap.html.HtmlTag;
+import de.agilecoders.wicket.core.markup.html.bootstrap.html.IeEdgeMetaTag;
 import de.agilecoders.wicket.core.markup.html.bootstrap.html.MetaTag;
 import de.agilecoders.wicket.core.markup.html.bootstrap.html.OptimizedMobileViewportMetaTag;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.GlyphIconType;
@@ -68,7 +69,7 @@ abstract class BasePage extends GenericWebPage<Void> {
         add(new HtmlTag("html"));
 
         add(new OptimizedMobileViewportMetaTag("viewport"));
-        add(new ChromeFrameMetaTag("chrome-frame"));
+        add(new IeEdgeMetaTag("ie-edge"));
         add(new MetaTag("description", Model.of("description"), Model.of("Apache Wicket & Twitter Bootstrap Demo")));
         add(new MetaTag("author", Model.of("author"), Model.of("Michael Haitz <michael.haitz@agile-coders.de>")));
 
