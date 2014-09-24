@@ -1,4 +1,4 @@
-package de.agilecoders.wicket.samples.assets.base;
+package de.agilecoders.wicket.core.markup.html.references;
 
 import org.apache.wicket.request.resource.JavaScriptResourceReference;
 
@@ -13,6 +13,6 @@ public class BootlintJavaScriptReference extends JavaScriptResourceReference {
     public static final BootlintJavaScriptReference INSTANCE = new BootlintJavaScriptReference();
 
     private BootlintJavaScriptReference() {
-        super(BootlintJavaScriptReference.class, "bootlint.js");
+        super(BootlintJavaScriptReference.class, "js/bootlint.js");
     }
 }
