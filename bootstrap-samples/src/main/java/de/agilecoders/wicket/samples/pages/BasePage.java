@@ -11,6 +11,7 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.MenuDivi
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.MenuHeader;
 import de.agilecoders.wicket.core.markup.html.bootstrap.html.ChromeFrameMetaTag;
 import de.agilecoders.wicket.core.markup.html.bootstrap.html.HtmlTag;
+import de.agilecoders.wicket.core.markup.html.bootstrap.html.IeEdgeMetaTag;
 import de.agilecoders.wicket.core.markup.html.bootstrap.html.MetaTag;
 import de.agilecoders.wicket.core.markup.html.bootstrap.html.OptimizedMobileViewportMetaTag;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.GlyphIconType;
@@ -26,6 +27,7 @@ import de.agilecoders.wicket.core.settings.IBootstrapSettings;
 import de.agilecoders.wicket.core.settings.ITheme;
 import de.agilecoders.wicket.samples.WicketApplication;
 import de.agilecoders.wicket.samples.assets.base.ApplicationJavaScript;
+import de.agilecoders.wicket.core.markup.html.references.BootlintJavaScriptReference;
 import de.agilecoders.wicket.samples.assets.base.DocsCssResourceReference;
 import de.agilecoders.wicket.samples.assets.base.FixBootstrapStylesCssResourceReference;
 import de.agilecoders.wicket.samples.components.site.Footer;
@@ -67,7 +69,7 @@ abstract class BasePage extends GenericWebPage<Void> {
         add(new HtmlTag("html"));
 
         add(new OptimizedMobileViewportMetaTag("viewport"));
-        add(new ChromeFrameMetaTag("chrome-frame"));
+        add(new IeEdgeMetaTag("ie-edge"));
         add(new MetaTag("description", Model.of("description"), Model.of("Apache Wicket & Twitter Bootstrap Demo")));
         add(new MetaTag("author", Model.of("author"), Model.of("Michael Haitz <michael.haitz@agile-coders.de>")));
 
@@ -224,6 +226,10 @@ abstract class BasePage extends GenericWebPage<Void> {
 
         if ("google".equalsIgnoreCase(activeTheme().name())) {
             response.render(CssHeaderItem.forReference(DocsCssResourceReference.GOOGLE));
+        }
+
+        if (!getRequest().getRequestParameters().getParameterValue("bootlint").isNull()) {
+            response.render(JavaScriptHeaderItem.forReference(BootlintJavaScriptReference.INSTANCE));
         }
     }
 
