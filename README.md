@@ -13,7 +13,7 @@ Components
 ----------
 
 * Twitter Bootstrap (3.2.0): https://github.com/twbs/bootstrap/
-* Apache Wicket (6.16.0): http://wicket.apache.org/
+* Apache Wicket (6.17.0): http://wicket.apache.org/
 
 Themes
 ------
