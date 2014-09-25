@@ -1,13 +1,14 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.form;
 
 import de.agilecoders.wicket.core.util.Attributes;
+
 import org.apache.wicket.Component;
 import org.apache.wicket.MarkupContainer;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.CheckBox;
-import org.apache.wicket.markup.html.panel.GenericPanel;
+import org.apache.wicket.markup.html.form.FormComponentPanel;
 import org.apache.wicket.model.IModel;
 
 /**
@@ -15,10 +16,11 @@ import org.apache.wicket.model.IModel;
  *
  * @see <a href="http://getbootstrap.com/css/#forms">Bootstrap forms</a>
  */
-public class BootstrapCheckbox extends GenericPanel<Boolean> {
+public class BootstrapCheckbox extends FormComponentPanel<Boolean> {
 
     private final IModel<?> labelModel;
     private boolean inline = false;
+    private CheckBox checkbox;
 
     /**
      * Constructor.
@@ -70,7 +72,8 @@ public class BootstrapCheckbox extends GenericPanel<Boolean> {
         MarkupContainer label = newLabelContainer("label");
         add(label);
         label.add(newLabel("post-label"));
-        label.add(new CheckBox("checkbox", getModel()));
+        checkbox = new CheckBox("checkbox", getModel());
+        label.add(checkbox);
     }
 
     protected Component newLabel(String id) {
@@ -104,5 +107,15 @@ public class BootstrapCheckbox extends GenericPanel<Boolean> {
     public BootstrapCheckbox setInline(boolean inline) {
         this.inline = inline;
         return this;
+    }
+
+    public BootstrapCheckbox setLabel(IModel<String> label) {
+        checkbox.setLabel(label);
+        return this;
+    }
+
+    @Override
+    public IModel<String> getLabel() {
+        return checkbox.getLabel();
     }
 }
