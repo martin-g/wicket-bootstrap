@@ -18,12 +18,6 @@ import org.apache.wicket.request.resource.UrlResourceReference;
  */
 public class BootstrapSettings implements IBootstrapSettings {
 
-    private static final class Holder {
-        private static ResourceReference bootstrapJavaScriptReference = BootstrapJavaScriptReference.instance();
-        private static ResourceReference modernizrJavaScriptReference = ModernizrJavaScriptReference.instance();
-        private static ResourceReference bootstrapCssReference = BootstrapCssReference.instance();
-    }
-
     private ResourceReference bootstrapJavaScriptReference = null;
     private ResourceReference modernizrJavaScriptReference = null;
     private ResourceReference bootstrapCssReference = null;
@@ -95,7 +89,7 @@ public class BootstrapSettings implements IBootstrapSettings {
             ref = bootstrapCssReference;
         }
 
-        return ref != null ? ref : Holder.bootstrapCssReference;
+        return ref != null ? ref : BootstrapCssReference.instance();
     }
 
     @Override
@@ -109,7 +103,7 @@ public class BootstrapSettings implements IBootstrapSettings {
             jsReference = bootstrapJavaScriptReference;
         }
 
-        return jsReference != null ? jsReference : Holder.bootstrapJavaScriptReference;
+        return jsReference != null ? jsReference : BootstrapJavaScriptReference.instance();
     }
 
     @Override
@@ -123,7 +117,7 @@ public class BootstrapSettings implements IBootstrapSettings {
             jsReference = modernizrJavaScriptReference;
         }
 
-        return jsReference != null ? jsReference : Holder.modernizrJavaScriptReference;
+        return jsReference != null ? jsReference : ModernizrJavaScriptReference.instance();
     }
 
     @Override
