@@ -269,7 +269,7 @@ public class ExtensionsPage extends BasePage {
 			protected CharSequence createExtraConfig() {
 				return "if ( tour.ended() ) {\n"
 						+ "    $('<div class=\"alert alert-info\">\\\n"
-						+ "      <button class=\"close\" data-dismiss=\"alert\">&times;</button>\\\n"
+						+ "      <button type=\"button\" class=\"close\" data-dismiss=\"alert\">&times;</button>\\\n"
 						+ "      You ended the demo tour. <a href=\"\" class=\"restart\">Restart the demo tour.</a>\\\n"
 						+ "      </div>').prependTo(\".content\").alert();\n"
 						+ "  }\n" + "\n"
