@@ -9,7 +9,6 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.DropDown
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.MenuBookmarkablePageLink;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.MenuDivider;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.MenuHeader;
-import de.agilecoders.wicket.core.markup.html.bootstrap.html.ChromeFrameMetaTag;
 import de.agilecoders.wicket.core.markup.html.bootstrap.html.HtmlTag;
 import de.agilecoders.wicket.core.markup.html.bootstrap.html.IeEdgeMetaTag;
 import de.agilecoders.wicket.core.markup.html.bootstrap.html.MetaTag;
