@@ -50,7 +50,7 @@ import de.agilecoders.wicket.samples.panels.pagination.InfinitePaginationPanel;
 
 /**
  * The {@code ExtensionsPage}
- * 
+ *
  * @author miha
  */
 @MountPath(value = "/extensions")
@@ -58,7 +58,7 @@ public class ExtensionsPage extends BasePage {
 
 	/**
 	 * Construct.
-	 * 
+	 *
 	 * @param parameters
 	 *            the current page parameters.
 	 */
@@ -163,9 +163,9 @@ public class ExtensionsPage extends BasePage {
 						.of("dropDownButton.add(new DropDownAutoOpen());")));
 
 		addTour();
-		add(new Icon("html5-colored", OpenWebIconType.html5_colored_large),
+		add(new Icon("html5-colored", OpenWebIconType.html5_colored),
 				new Icon("apml", OpenWebIconType.apml), new Icon("feed",
-						OpenWebIconType.feed_colored_large));
+						OpenWebIconType.feed_colored));
 		add(new Icon("html5", OpenWebIconType.html5),
 				new Code(
 						"openwebicon-code",

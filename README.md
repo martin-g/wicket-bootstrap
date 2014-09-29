@@ -35,7 +35,7 @@ Extensions
    * Resizable: http://api.jqueryui.com/resizable
 * less4j (1.8.2): https://github.com/SomMeri/less4j
 * bootstrap-tour (0.9.3): http://sorich87.github.com/bootstrap-tour
-* OpenWebIcons (2012-10-03): http://pfefferle.github.com/openwebicons/
+* OpenWebIcons (2014-09-29): http://pfefferle.github.com/openwebicons/
 * [Twitter Typeahead (0.9.3)](https://github.com/l0rdn1kk0n/wicket-bootstrap/tree/master/bootstrap-extensions/src/main/java/de/agilecoders/wicket/extensions/markup/html/bootstrap/form/typeahead): http://twitter.github.io/typeahead.js/
 * [Twitter Typeahead (0.10.x)](https://github.com/l0rdn1kk0n/wicket-bootstrap/tree/master/bootstrap-extensions/src/main/java/de/agilecoders/wicket/extensions/markup/html/bootstrap/form/typeaheadv10): http://twitter.github.io/typeahead.js/
 
@@ -120,9 +120,9 @@ then you are able to use all wicket-bootstrap components.
 Authors
 -------
 
-[![Ohloh profile for Michael Haitz](https://www.ohloh.net/accounts/235496/widgets/account_detailed.gif)](https://www.ohloh.net/accounts/235496?ref=Detailed) 
+[![Ohloh profile for Michael Haitz](https://www.ohloh.net/accounts/235496/widgets/account_detailed.gif)](https://www.ohloh.net/accounts/235496?ref=Detailed)
 
-[![Ohloh profile for Martin Grigorov](https://www.ohloh.net/accounts/138913/widgets/account_detailed.gif)](https://www.ohloh.net/accounts/138913?ref=Detailed) 
+[![Ohloh profile for Martin Grigorov](https://www.ohloh.net/accounts/138913/widgets/account_detailed.gif)](https://www.ohloh.net/accounts/138913?ref=Detailed)
 
 Bug tracker
 -----------
