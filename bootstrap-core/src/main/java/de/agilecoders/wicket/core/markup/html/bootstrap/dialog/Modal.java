@@ -310,12 +310,12 @@ public class Modal<T> extends GenericPanel<T> {
 
     /**
      * Append dialog close/hide JavaScript to current AJAX request target.
-     * 
+     *
      * @param target current ajax request target
      * @return this instance for chaining
      */
     public Modal<T> appendCloseDialogJavaScript(final AjaxRequestTarget target) {
-        target.appendJavaScript(createActionScript(getMarkupId(true), "hide"));
+        target.prependJavaScript(createActionScript(getMarkupId(true), "hide"));
         return this;
     }
 
@@ -328,7 +328,7 @@ public class Modal<T> extends GenericPanel<T> {
     public Modal<T> close(final AjaxRequestTarget target) {
         return appendCloseDialogJavaScript(target);
     }
-    
+
     /**
      * Append dialog show JavaScript to current request AJAX target.
      *
