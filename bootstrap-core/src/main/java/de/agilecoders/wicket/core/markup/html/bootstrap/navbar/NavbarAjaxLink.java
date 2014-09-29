@@ -106,5 +106,4 @@ public abstract class NavbarAjaxLink<T> extends org.apache.wicket.ajax.markup.ht
 
         super.onComponentTag(tag);
     }
-
 }

@@ -4,8 +4,7 @@
     </head>
     <body>
         <wicket:panel>
-            <div class="container" wicket:id="container">
-                <!-- Brand and toggle get grouped for better mobile display -->
+            <div wicket:id="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" wicket:id="collapseButton">
                         <span class="sr-only" wicket:id="toggleNavigationLabel">[[CONTENT]]</span>
@@ -19,7 +18,7 @@
                     </a>
                 </div>
 
-                <div class="collapse navbar-collapse navbar-ex1-collapse" role="navigation" wicket:id="collapse">
+                <div class="collapse navbar-collapse" role="navigation" wicket:id="collapse">
                     <ul wicket:enclosure="navLeftList" class="nav navbar-nav">
                         <li wicket:id="navLeftList">
                             <div wicket:id="component">[[CONTENT]]</div>
@@ -30,6 +29,7 @@
                             <div wicket:id="component">[[CONTENT]]</div>
                         </li>
                     </ul>
+                    <div wicket:id="extraItems"></div>
                 </div>
             </div>
         </wicket:panel>

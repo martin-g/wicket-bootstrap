@@ -22,6 +22,7 @@ import org.apache.wicket.markup.html.link.BookmarkablePageLink;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.markup.html.panel.Panel;
+import org.apache.wicket.markup.repeater.RepeatingView;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.LoadableDetachableModel;
 import org.apache.wicket.model.Model;
@@ -115,6 +116,7 @@ public class Navbar extends Panel implements Invertible<Navbar> {
     private final IModel<Boolean> fluid = Model.of(false);
     private final Component brandNameLink;
     private final List<INavbarComponent> components = new ArrayList<INavbarComponent>();
+    private final RepeatingView extraItems;
 
     /**
      * Construct.
@@ -144,6 +146,8 @@ public class Navbar extends Panel implements Invertible<Navbar> {
 
         final Component leftAlignedComponentListView = newNavigation("navLeftList", newPositionDependedComponentModel(components, POSITION_FILTER_LEFT));
         final Component rightAlignedComponentListView = newNavigation("navRightList", newPositionDependedComponentModel(components, POSITION_FILTER_RIGHT));
+        extraItems = new RepeatingView("extraItems");
+        collapse.add(extraItems);
 
         activeStateAppender = new CssClassNameAppender("active");
         invertModel = Model.of("");
@@ -228,9 +232,18 @@ public class Navbar extends Panel implements Invertible<Navbar> {
             protected void onConfigure() {
                 super.onConfigure();
 
-                setVisible(get("brandLabel").isVisible() || get("brandImage").isVisible());
+                Component brandLabel = get("brandLabel");
+                brandLabel.configure();
+                if (brandLabel.isVisible()) {
+                    setVisible(true);
+                } else {
+                    Component brandImage = get("brandImage");
+                    brandImage.configure();
+                    setVisible(brandImage.isVisible());
+                }
             }
         };
+        link.setOutputMarkupPlaceholderTag(true);
 
         link.add(newBrandLabel("brandLabel"));
         link.add(newBrandImage("brandImage"));
@@ -248,8 +261,10 @@ public class Navbar extends Panel implements Invertible<Navbar> {
             private static final long serialVersionUID = 1L;
 
             @Override
-            public boolean isVisible() {
-                return getDefaultModel() != null;
+            protected void onConfigure() {
+                super.onConfigure();
+
+                setVisible(getDefaultModel() != null);
             }
         };
     }
@@ -264,8 +279,10 @@ public class Navbar extends Panel implements Invertible<Navbar> {
             private static final long serialVersionUID = 1L;
 
             @Override
-            public boolean isVisible() {
-                return getImageResourceReference() != null;
+            protected void onConfigure() {
+                super.onConfigure();
+
+                setVisible(getImageResourceReference() != null || getImageResource() != null);
             }
         };
     }
@@ -305,6 +322,21 @@ public class Navbar extends Panel implements Invertible<Navbar> {
     /**
      * adds a component to the given position inside the navbar
      *
+     * @param component the component to add
+     * @return this component instance for chaining
+     */
+    public final Navbar addComponents(final NavbarText component) {
+        extraItems.add(component);
+        return this;
+    }
+
+    public final String newExtraItemId() {
+        return extraItems.newChildId();
+    }
+
+    /**
+     * adds a component to the given position inside the navbar
+     *
      * @param components the components to add
      * @return this component instance for chaining
      */
@@ -332,7 +364,20 @@ public class Navbar extends Panel implements Invertible<Navbar> {
      * @return a new inner container of the navigation bar.
      */
     protected TransparentWebMarkupContainer newContainer(String componentId) {
-        return new TransparentWebMarkupContainer(componentId);
+        return new TransparentWebMarkupContainer(componentId) {
+            @Override
+            protected void onComponentTag(ComponentTag tag) {
+                super.onComponentTag(tag);
+
+                Attributes.removeClass(tag, "container", "container-fluid");
+
+                if (isFluid()) {
+                    Attributes.addClass(tag, "container-fluid");
+                } else {
+                    Attributes.addClass(tag, "container");
+                }
+            }
+        };
     }
 
     /**
