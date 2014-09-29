@@ -26,7 +26,6 @@ public abstract class NavbarAjaxLink<T> extends org.apache.wicket.ajax.markup.ht
      * Construct. Navbar ajax link with default component id for navbar components ("component") and
      * an empty label.
      */
-    // TODO mgrigorov: What is the use case for a link without text ? No way to see/click it !
     public NavbarAjaxLink() {
         this(Model.of(""));
     }
