@@ -2,6 +2,9 @@ language: java
 jdk:
   - openjdk6
 
-after_failure: 
+after_failure:
   - "cat bootstrap-core/target/surefire-reports/de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.DropDownButtonTest.txt"
   - "cat bootstrap-core/target/surefire-reports/TEST-de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.DnTest.xml"
+
+after_success:
+  - mvn clean cobertura:cobertura coveralls:cobertura
