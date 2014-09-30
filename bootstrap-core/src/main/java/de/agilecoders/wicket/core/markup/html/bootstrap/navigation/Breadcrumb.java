@@ -8,7 +8,7 @@ import org.apache.wicket.markup.ComponentTag;
 
 /**
  * A component that renders bread crumbs like {@link BreadCrumbBar} that is
- * styled with twitter-bootstrap.
+ * styled with bootstrap.
  *
  * @author miha
  */
@@ -39,7 +39,7 @@ public class Breadcrumb extends BreadCrumbBar {
     }
     
 	/**
-	 * Overrides the method in the super class to remove the default / separator since twitter-bootstrap adds the separators via CSS.
+	 * Overrides the method in the super class to remove the default / separator since bootstrap adds the separators via CSS.
 	 * 
 	 * @see org.apache.wicket.extensions.breadcrumb.BreadCrumbBar#getSeparatorMarkup()
 	 */

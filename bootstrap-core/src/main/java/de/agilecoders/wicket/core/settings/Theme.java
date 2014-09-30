@@ -104,7 +104,7 @@ public class Theme implements ITheme {
     }
 
     /**
-     * @return The configured version of Twitter Bootstrap
+     * @return The configured version of Bootstrap
      */
     protected String getVersion() {
         String version = IBootstrapSettings.VERSION;

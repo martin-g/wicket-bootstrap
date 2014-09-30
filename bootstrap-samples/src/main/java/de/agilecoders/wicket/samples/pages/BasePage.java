@@ -68,7 +68,7 @@ abstract class BasePage extends GenericWebPage<Void> {
 
         add(new OptimizedMobileViewportMetaTag("viewport"));
         add(new IeEdgeMetaTag("ie-edge"));
-        add(new MetaTag("description", Model.of("description"), Model.of("Apache Wicket & Twitter Bootstrap Demo")));
+        add(new MetaTag("description", Model.of("description"), Model.of("Apache Wicket & Bootstrap Demo")));
         add(new MetaTag("author", Model.of("author"), Model.of("Michael Haitz <michael.haitz@agile-coders.de>")));
 
         add(newNavbar("navbar"));

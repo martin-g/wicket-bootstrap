@@ -4,7 +4,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/DECORATION/1.0.0 http://maven.apache.org/xsd/decoration-1.0.0.xsd">
     <bannerLeft>
-        <name>A Maven Site using Twitter Bootstrap</name>
+        <name>A Maven Site using Bootstrap</name>
         <src>http://html5-slides-template.googlecode.com/git/images/akquinet-logo-small.png</src>
         <href>http://www.akquinet.de/en</href>
     </bannerLeft>
@@ -40,7 +40,7 @@
         <menu ref="reports"/>
 
         <menu name="Regular Web Site">
-            <item name="Twitter-Bootstrap" href="http://twitter.github.com/bootstrap/"/>
+            <item name="Twitter-Bootstrap" href="http://getbootstrap.com/"/>
             <item name="Apache Wicket" href="http://wicket.apache.org/"/>
         </menu>
 

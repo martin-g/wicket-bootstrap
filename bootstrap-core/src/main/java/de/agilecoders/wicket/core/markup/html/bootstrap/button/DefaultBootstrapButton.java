@@ -4,7 +4,7 @@ import org.apache.wicket.model.IModel;
 
 /**
  * A default {@link BootstrapButton} which uses all default styles
- * of twitter bootstrap (mostly grey)
+ * of bootstrap (mostly grey)
  *
  * @author miha
  */
