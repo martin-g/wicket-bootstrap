@@ -37,7 +37,7 @@ public interface IBootstrapSettings {
     String CSS_CDN_PATTERN = "//netdna.bootstrapcdn.com/bootstrap/%s/css/bootstrap.min.css";
 
     /**
-     * @param version The version of Twitter Bootstrap. CDN resources use it to construct their urls
+     * @param version The version of Bootstrap. CDN resources use it to construct their urls
      * @return same instance for chaining
      */
     IBootstrapSettings setVersion(String version);
@@ -54,7 +54,7 @@ public interface IBootstrapSettings {
     boolean deferJavascript();
 
     /**
-     * @return The version of Twitter Bootstrap. CDN resources use it to construct their urls
+     * @return The version of Bootstrap. CDN resources use it to construct their urls
      */
     String getVersion();
 
@@ -69,12 +69,12 @@ public interface IBootstrapSettings {
     boolean autoAppendResources();
 
     /**
-     * @return the base twitter bootstrap css resource reference
+     * @return the base bootstrap css resource reference
      */
     ResourceReference getCssResourceReference();
 
     /**
-     * @return the base twitter bootstrap JavaScript resource reference
+     * @return the base bootstrap JavaScript resource reference
      */
     ResourceReference getJsResourceReference();
 
@@ -84,14 +84,14 @@ public interface IBootstrapSettings {
     ResourceReference getModernizrResourceReference();
 
     /**
-     * @param reference a reference to the base twitter bootstrap css library.
+     * @param reference a reference to the base bootstrap css library.
      *                  Defaults to the embedded bootstrap.css
      * @return same instance for chaining
      */
     IBootstrapSettings setCssResourceReference(ResourceReference reference);
 
     /**
-     * @param reference a reference to the base twitter bootstrap JavaScript library.
+     * @param reference a reference to the base bootstrap JavaScript library.
      *                  Defaults to the embedded bootstrap.js
      * @return same instance for chaining
      */

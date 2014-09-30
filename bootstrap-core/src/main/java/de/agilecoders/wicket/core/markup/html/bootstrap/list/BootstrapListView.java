@@ -6,7 +6,7 @@ import org.apache.wicket.model.IModel;
 import java.util.List;
 
 /**
- * A special list view that is styled by twitter bootstrap.
+ * A special list view that is styled by bootstrap.
  *
  * @author miha
  */

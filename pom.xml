@@ -13,7 +13,7 @@
     <packaging>pom</packaging>
     <name>bootstrap-parent</name>
 
-    <description>wicket with twitter bootstrap integration</description>
+    <description>wicket with bootstrap integration</description>
     <url>https://github.com/l0rdn1kk0n/wicket-bootstrap</url>
 
     <scm>

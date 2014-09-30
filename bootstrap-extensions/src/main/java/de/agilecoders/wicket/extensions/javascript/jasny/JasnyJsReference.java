@@ -9,7 +9,7 @@ import org.apache.wicket.resource.JQueryPluginResourceReference;
 
 /**
  * A JavaScript reference that loads the JavaScript resources needed by
- * Jasny Twitter Bootstrap components.
+ * Jasny Bootstrap components.
  */
 public class JasnyJsReference extends JQueryPluginResourceReference {
     private static final class Holder {

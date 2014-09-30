@@ -75,7 +75,7 @@ public enum BootswatchTheme implements ITheme {
     }
 
     /**
-     * @return The configured version of Twitter Bootstrap
+     * @return The configured version of Bootstrap
      */
     private String getVersion() {
         String version = IBootstrapSettings.VERSION;
