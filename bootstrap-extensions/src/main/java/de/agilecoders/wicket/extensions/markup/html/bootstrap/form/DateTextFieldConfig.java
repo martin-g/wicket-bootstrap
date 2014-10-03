@@ -94,6 +94,11 @@ public class DateTextFieldConfig extends AbstractConfig {
     private static final IKey<Boolean> ClearButton = newKey("clearBtn", false);
 
     /**
+     * Whether or not to show week numbers to the left of week rows.
+     */
+    private static final IKey<Boolean> CalendarWeeks = newKey("calendarWeeks", false);
+
+    /**
      * holds all week days in a specific sort order.
      */
     public enum Day {
@@ -280,6 +285,15 @@ public class DateTextFieldConfig extends AbstractConfig {
      */
     public DateTextFieldConfig clearButton(final boolean value) {
         put(ClearButton, value);
+        return this;
+    }
+
+    /**
+     * @param value Whether or not to show week numbers to the left of week rows.
+     * @return this instance for chaining
+     */
+    public DateTextFieldConfig calendarWeeks(final boolean value) {
+        put(CalendarWeeks, value);
         return this;
     }
 
