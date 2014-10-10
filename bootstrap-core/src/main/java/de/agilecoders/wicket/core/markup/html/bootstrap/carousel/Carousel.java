@@ -30,7 +30,7 @@ import java.util.List;
 public class Carousel extends Panel {
 
     private Duration interval = Duration.seconds(5);
-    private final IModel<List<? extends ICarouselImage>> model;
+    private final IModel<List<ICarouselImage>> model;
 
     /**
      * Construct.
@@ -38,7 +38,7 @@ public class Carousel extends Panel {
      * @param markupId the component id
      * @param images   the list of images
      */
-    public Carousel(final String markupId, final List<? extends ICarouselImage> images) {
+    public Carousel(final String markupId, final List<ICarouselImage> images) {
         this(markupId, Model.ofList(images));
     }
 
@@ -48,7 +48,7 @@ public class Carousel extends Panel {
      * @param markupId the component id
      * @param model    the list of images
      */
-    public Carousel(final String markupId, final IModel<List<? extends ICarouselImage>> model) {
+    public Carousel(final String markupId, final IModel<List<ICarouselImage>> model) {
         super(markupId, model);
         this.model = model;
 

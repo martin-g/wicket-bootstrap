@@ -2,15 +2,14 @@ package de.agilecoders.wicket.samples.pages;
 
 import com.newrelic.api.agent.NewRelic;
 import de.agilecoders.wicket.core.Bootstrap;
-import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.CssClassNameAppender;
 import de.agilecoders.wicket.core.markup.html.bootstrap.block.Code;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.BootstrapExternalLink;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.DropDownButton;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.MenuBookmarkablePageLink;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.MenuDivider;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.MenuHeader;
-import de.agilecoders.wicket.core.markup.html.bootstrap.html.ChromeFrameMetaTag;
 import de.agilecoders.wicket.core.markup.html.bootstrap.html.HtmlTag;
+import de.agilecoders.wicket.core.markup.html.bootstrap.html.IeEdgeMetaTag;
 import de.agilecoders.wicket.core.markup.html.bootstrap.html.MetaTag;
 import de.agilecoders.wicket.core.markup.html.bootstrap.html.OptimizedMobileViewportMetaTag;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.GlyphIconType;
@@ -21,11 +20,13 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.NavbarButton;
 import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.NavbarComponents;
 import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.NavbarDropDownButton;
 import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.NavbarExternalLink;
+import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.NavbarText;
 import de.agilecoders.wicket.core.markup.html.references.RespondJavaScriptReference;
 import de.agilecoders.wicket.core.settings.IBootstrapSettings;
 import de.agilecoders.wicket.core.settings.ITheme;
 import de.agilecoders.wicket.samples.WicketApplication;
 import de.agilecoders.wicket.samples.assets.base.ApplicationJavaScript;
+import de.agilecoders.wicket.core.markup.html.references.BootlintJavaScriptReference;
 import de.agilecoders.wicket.samples.assets.base.DocsCssResourceReference;
 import de.agilecoders.wicket.samples.assets.base.FixBootstrapStylesCssResourceReference;
 import de.agilecoders.wicket.samples.components.site.Footer;
@@ -37,7 +38,6 @@ import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.head.filter.FilteredHeaderItem;
 import org.apache.wicket.markup.head.filter.HeaderResponseContainer;
 import org.apache.wicket.markup.html.GenericWebPage;
-import org.apache.wicket.markup.html.TransparentWebMarkupContainer;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.AbstractLink;
@@ -67,8 +67,8 @@ abstract class BasePage extends GenericWebPage<Void> {
         add(new HtmlTag("html"));
 
         add(new OptimizedMobileViewportMetaTag("viewport"));
-        add(new ChromeFrameMetaTag("chrome-frame"));
-        add(new MetaTag("description", Model.of("description"), Model.of("Apache Wicket & Twitter Bootstrap Demo")));
+        add(new IeEdgeMetaTag("ie-edge"));
+        add(new MetaTag("description", Model.of("description"), Model.of("Apache Wicket & Bootstrap Demo")));
         add(new MetaTag("author", Model.of("author"), Model.of("Michael Haitz <michael.haitz@agile-coders.de>")));
 
         add(newNavbar("navbar"));
@@ -104,14 +104,7 @@ abstract class BasePage extends GenericWebPage<Void> {
      * @return a new {@link Navbar} instance
      */
     protected Navbar newNavbar(String markupId) {
-        Navbar navbar = new Navbar(markupId) {
-            @Override
-            protected TransparentWebMarkupContainer newCollapseContainer(String componentId) {
-                TransparentWebMarkupContainer container = super.newCollapseContainer(componentId);
-                container.add(new CssClassNameAppender("bs-navbar-collapse"));
-                return container;
-            }
-        };
+        Navbar navbar = new Navbar(markupId);
 
         navbar.setPosition(Navbar.Position.TOP);
         navbar.setInverted(true);
@@ -130,6 +123,7 @@ abstract class BasePage extends GenericWebPage<Void> {
                                 .setIconType(GlyphIconType.export),
                         newAddonsDropDownButton())
         );
+        navbar.addComponents(new NavbarText(navbar.newExtraItemId(), "Plain text").position(Navbar.ComponentPosition.RIGHT));
 
         DropDownButton dropdown = new NavbarDropDownButton(Model.of("Themes")) {
             @Override
@@ -224,6 +218,10 @@ abstract class BasePage extends GenericWebPage<Void> {
 
         if ("google".equalsIgnoreCase(activeTheme().name())) {
             response.render(CssHeaderItem.forReference(DocsCssResourceReference.GOOGLE));
+        }
+
+        if (!getRequest().getRequestParameters().getParameterValue("bootlint").isNull()) {
+            response.render(JavaScriptHeaderItem.forReference(BootlintJavaScriptReference.INSTANCE));
         }
     }
 

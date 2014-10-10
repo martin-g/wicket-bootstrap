@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  * Provides a JavaScript that overrides Wicket-Extensions' progressbar.js
- * methods with ones which are more suitable for Twitter Bootstrap Progress component
+ * methods with ones which are more suitable for Bootstrap Progress component
  */
 public class UploadProgressBarJavaScriptReference extends JQueryPluginResourceReference {
 

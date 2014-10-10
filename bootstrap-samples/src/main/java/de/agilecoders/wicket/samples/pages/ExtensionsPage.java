@@ -50,7 +50,7 @@ import de.agilecoders.wicket.samples.panels.pagination.InfinitePaginationPanel;
 
 /**
  * The {@code ExtensionsPage}
- * 
+ *
  * @author miha
  */
 @MountPath(value = "/extensions")
@@ -58,7 +58,7 @@ public class ExtensionsPage extends BasePage {
 
 	/**
 	 * Construct.
-	 * 
+	 *
 	 * @param parameters
 	 *            the current page parameters.
 	 */
@@ -96,7 +96,7 @@ public class ExtensionsPage extends BasePage {
 						+ "\tnew Html5VideoConfig().showProgressBar(false).autoHideControlBar(false))\n"
 						+ "\t\t.setWidth(680).setHeight(360));")));
 
-		final List<? extends AbstractLink> buttons = Lists
+		final List<AbstractLink> buttons = Lists
 				.<AbstractLink> newArrayList(
 						new MenuBookmarkablePageLink<Void>(
 								DatePickerPage.class, Model.of("DatePicker"))
@@ -163,9 +163,9 @@ public class ExtensionsPage extends BasePage {
 						.of("dropDownButton.add(new DropDownAutoOpen());")));
 
 		addTour();
-		add(new Icon("html5-colored", OpenWebIconType.html5_colored_large),
+		add(new Icon("html5-colored", OpenWebIconType.html5_colored),
 				new Icon("apml", OpenWebIconType.apml), new Icon("feed",
-						OpenWebIconType.feed_colored_large));
+						OpenWebIconType.feed_colored));
 		add(new Icon("html5", OpenWebIconType.html5),
 				new Code(
 						"openwebicon-code",
@@ -269,7 +269,7 @@ public class ExtensionsPage extends BasePage {
 			protected CharSequence createExtraConfig() {
 				return "if ( tour.ended() ) {\n"
 						+ "    $('<div class=\"alert alert-info\">\\\n"
-						+ "      <button class=\"close\" data-dismiss=\"alert\">&times;</button>\\\n"
+						+ "      <button type=\"button\" class=\"close\" data-dismiss=\"alert\">&times;</button>\\\n"
 						+ "      You ended the demo tour. <a href=\"\" class=\"restart\">Restart the demo tour.</a>\\\n"
 						+ "      </div>').prependTo(\".content\").alert();\n"
 						+ "  }\n" + "\n"

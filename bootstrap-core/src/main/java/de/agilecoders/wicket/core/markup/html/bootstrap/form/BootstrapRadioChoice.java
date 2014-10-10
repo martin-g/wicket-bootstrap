@@ -7,7 +7,7 @@ import org.apache.wicket.markup.html.form.ChoiceRenderer;
 import org.apache.wicket.markup.html.form.IChoiceRenderer;
 import org.apache.wicket.markup.html.form.RadioChoice;
 import org.apache.wicket.model.IModel;
-import org.apache.wicket.model.util.WildcardListModel;
+import org.apache.wicket.model.util.ListModel;
 import org.apache.wicket.util.value.IValueMap;
 import org.apache.wicket.util.value.ValueMap;
 
@@ -21,25 +21,25 @@ import org.apache.wicket.util.value.ValueMap;
 public class BootstrapRadioChoice<T> extends RadioChoice<T> {
 
     private boolean inline = false;
-    
+
     public BootstrapRadioChoice(String id) {
         this(id, new ArrayList<T>());
     }
 
-    public BootstrapRadioChoice(String id, List<? extends T> choices) {
+    public BootstrapRadioChoice(String id, List<T> choices) {
         this(id, choices, new ChoiceRenderer<T>());
     }
 
-    public BootstrapRadioChoice(String id, List<? extends T> choices, IChoiceRenderer<? super T> renderer) {
+    public BootstrapRadioChoice(String id, List<T> choices, IChoiceRenderer<? super T> renderer) {
         this(id, null, choices, renderer);
     }
 
-    public BootstrapRadioChoice(String id, IModel<T> model, List<? extends T> choices) {
+    public BootstrapRadioChoice(String id, IModel<T> model, List<T> choices) {
         this(id, model, choices, new ChoiceRenderer<T>());
     }
 
-    public BootstrapRadioChoice(String id, IModel<T> model, List<? extends T> choices, IChoiceRenderer<? super T> renderer) {
-        this(id, model, new WildcardListModel<T>(choices), renderer);
+    public BootstrapRadioChoice(String id, IModel<T> model, List<T> choices, IChoiceRenderer<? super T> renderer) {
+        this(id, model, new ListModel<>(choices), renderer);
     }
 
     public BootstrapRadioChoice(String id, IModel<? extends List<? extends T>> choices) {

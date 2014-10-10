@@ -122,22 +122,23 @@ public class OpenWebIconType extends IconType {
     public static final OpenWebIconType html5_colored = new OpenWebIconType("html5-colored");
 
     // large colored icons
-    public static final OpenWebIconType html5_colored_large = new OpenWebIconType("html5-colored large");
-    public static final OpenWebIconType apml_colored_large = new OpenWebIconType("apml-colored large");
-    public static final OpenWebIconType openshare_colored_large = new OpenWebIconType("open-share-colored large");
-    public static final OpenWebIconType share_colored_large = new OpenWebIconType("share-colored large");
-    public static final OpenWebIconType epub_colored_large = new OpenWebIconType("epub-colored large");
-    public static final OpenWebIconType microformats_colored_large = new OpenWebIconType("microformats-colored large");
-    public static final OpenWebIconType feed_colored_large = new OpenWebIconType("feed-colored large");
-    public static final OpenWebIconType ostatus_colored_large = new OpenWebIconType("ostatus-colored large");
-    public static final OpenWebIconType remotestorage_colored_large = new OpenWebIconType(
+    // deprecated. use font-size instead. See http://pfefferle.github.io/openwebicons/ > Scalable
+    @Deprecated public static final OpenWebIconType html5_colored_large = new OpenWebIconType("html5-colored large");
+    @Deprecated public static final OpenWebIconType apml_colored_large = new OpenWebIconType("apml-colored large");
+    @Deprecated public static final OpenWebIconType openshare_colored_large = new OpenWebIconType("open-share-colored large");
+    @Deprecated public static final OpenWebIconType share_colored_large = new OpenWebIconType("share-colored large");
+    @Deprecated public static final OpenWebIconType epub_colored_large = new OpenWebIconType("epub-colored large");
+    @Deprecated public static final OpenWebIconType microformats_colored_large = new OpenWebIconType("microformats-colored large");
+    @Deprecated public static final OpenWebIconType feed_colored_large = new OpenWebIconType("feed-colored large");
+    @Deprecated public static final OpenWebIconType ostatus_colored_large = new OpenWebIconType("ostatus-colored large");
+    @Deprecated public static final OpenWebIconType remotestorage_colored_large = new OpenWebIconType(
             "remote-storage-colored large");
-    public static final OpenWebIconType odata_colored_large = new OpenWebIconType("odata-colored large");
-    public static final OpenWebIconType activity_colored_large = new OpenWebIconType("activity-colored large");
-    public static final OpenWebIconType opml_colored_large = new OpenWebIconType("opml-colored large");
-    public static final OpenWebIconType opensearch_colored_large = new OpenWebIconType("opensearch-colored large");
-    public static final OpenWebIconType geo_colored_large = new OpenWebIconType("geo-colored large");
-    public static final OpenWebIconType infocard_colored_large = new OpenWebIconType("info-card-colored large");
+    @Deprecated public static final OpenWebIconType odata_colored_large = new OpenWebIconType("odata-colored large");
+    @Deprecated public static final OpenWebIconType activity_colored_large = new OpenWebIconType("activity-colored large");
+    @Deprecated public static final OpenWebIconType opml_colored_large = new OpenWebIconType("opml-colored large");
+    @Deprecated public static final OpenWebIconType opensearch_colored_large = new OpenWebIconType("opensearch-colored large");
+    @Deprecated public static final OpenWebIconType geo_colored_large = new OpenWebIconType("geo-colored large");
+    @Deprecated public static final OpenWebIconType infocard_colored_large = new OpenWebIconType("info-card-colored large");
 
     /**
      * Constructor.

@@ -47,7 +47,9 @@ public class WicketApplicationTest extends Assert {
 
     @After
     public final void tearDown() throws Exception {
-        tester.destroy();
+        if (tester != null) {
+            tester.destroy();
+        }
     }
 
     protected WebApplication newWebApplication() {

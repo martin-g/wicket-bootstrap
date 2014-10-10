@@ -14,7 +14,7 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
 /**
- * Default {@link AjaxButton} which is styled by twitter bootstrap.
+ * Default {@link AjaxButton} which is styled by bootstrap.
  *
  * @author miha
  */

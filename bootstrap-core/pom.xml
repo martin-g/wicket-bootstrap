@@ -100,8 +100,7 @@
 
         <dependency>
             <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <scope>provided</scope>
+            <artifactId>servlet-api</artifactId>
         </dependency>
 
     </dependencies>

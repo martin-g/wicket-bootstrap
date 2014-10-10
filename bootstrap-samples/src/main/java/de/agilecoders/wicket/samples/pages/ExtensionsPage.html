@@ -10,7 +10,7 @@
                 <div class="container">
                     <h1>Bootstrap Extensions</h1>
 
-                    <p class="lead">Some third party modules for twitter bootstrap and apache wicket.</p>
+                    <p class="lead">Some third party modules for bootstrap and apache wicket.</p>
                 </div>
             </header>
 
@@ -67,7 +67,7 @@
 
                             <h3>Default</h3>
 
-                            <p>A context menu extension of Twitter Bootstrap made for everyone's convenience.</p>
+                            <p>A context menu extension of Bootstrap made for everyone's convenience.</p>
 
                             <div class="bs-docs-example">
                                 <div wicket:id="context-panel">Just right click here...</div>
@@ -114,10 +114,10 @@
                             <p>all available icons are documented <a href="http://pfefferle.github.com/openwebicons/">here</a>.</p>
 
                             <div class="bs-docs-example">
-                                <i wicket:id="html5"></i>
+                                <i wicket:id="html5" style="font-size: 32px"></i>
                                 <i wicket:id="html5-colored"></i>
                                 <i wicket:id="apml"></i>
-                                <i wicket:id="feed"></i>
+                                <i wicket:id="feed" style="font-size: 32px"></i>
                             </div>
                             <pre wicket:id="openwebicon-code"></pre>
                         </section>
@@ -150,8 +150,10 @@
                                 <form wicket:id="jasnyFileUploadForm">
                                     <div class="fileupload fileupload-new" data-provides="fileupload">
                                         <div class="input-group">
-                                            <div class="form-control uneditable-input span3"><i class="glyphicon glyphicon-file fileupload-exists"></i> <span class="fileupload-preview"></span></div>
+                                            <div class="form-control uneditable-input"><i class="glyphicon glyphicon-file fileupload-exists"></i> <span class="fileupload-preview"></span></div>
                                             <span class="input-group-addon btn btn-default btn-file"><span class="fileupload-new">Select file</span><span class="fileupload-exists">Change</span><input type="file" wicket:id="jasnyFileUpload"/></span>
+                                        </div>
+                                        <div class="input-group">
                                             <a href="#" class="input-group-addon btn btn-default fileupload-exists" data-dismiss="fileupload">Remove</a>
                                         </div>
                                     </div>

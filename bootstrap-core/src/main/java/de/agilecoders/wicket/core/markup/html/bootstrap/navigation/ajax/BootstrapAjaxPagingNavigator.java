@@ -19,7 +19,7 @@ import org.apache.wicket.markup.html.navigation.paging.PagingNavigation;
 import org.apache.wicket.markup.repeater.AbstractRepeater;
 
 /**
- * A paging navigator with Ajax capabilities and Twitter Bootstrap styles.
+ * A paging navigator with Ajax capabilities and Bootstrap styles.
  */
 public class BootstrapAjaxPagingNavigator extends BootstrapPagingNavigator {
 

@@ -37,7 +37,7 @@ import java.util.Set;
  */
 public class AssertTagNameBehavior extends Behavior {
 
-    private final IModel<Set<? extends String>> tagNames;
+    private final IModel<Set<String>> tagNames;
 
     /**
      * Constructor.
@@ -54,7 +54,7 @@ public class AssertTagNameBehavior extends Behavior {
      * @param tagNames a set of html tag names
      */
     public AssertTagNameBehavior(Set<String> tagNames) {
-        this(Model.<String>ofSet(tagNames));
+        this(Model.ofSet(tagNames));
     }
 
     /**
@@ -62,7 +62,7 @@ public class AssertTagNameBehavior extends Behavior {
      *
      * @param tagNames a model that contains a set of html tag names
      */
-    public AssertTagNameBehavior(IModel<Set<? extends String>> tagNames) {
+    public AssertTagNameBehavior(IModel<Set<String>> tagNames) {
         super();
 
         this.tagNames = tagNames;

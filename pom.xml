@@ -13,7 +13,7 @@
     <packaging>pom</packaging>
     <name>bootstrap-parent</name>
 
-    <description>wicket with twitter bootstrap integration</description>
+    <description>wicket with bootstrap integration</description>
     <url>https://github.com/l0rdn1kk0n/wicket-bootstrap</url>
 
     <scm>
@@ -53,11 +53,12 @@
         <findbugs.disable>true</findbugs.disable>
 
         <!-- TODO -->
+        <servlet-api.version>2.5</servlet-api.version>
         <javax.javaee-web-api.version>6.0</javax.javaee-web-api.version>
         <versions-maven-plugin.version>2.1</versions-maven-plugin.version>
         <rhino.version>1.7R4</rhino.version>
         <doxia.version>1.0</doxia.version>
-        <less4j.version>1.8.1</less4j.version>
+        <less4j.version>1.8.2</less4j.version>
         <modernizr.version>2.7.1</modernizr.version>
         <jetty.version>8.1.15.v20140411</jetty.version>
         <newrelic.version>3.7.0</newrelic.version>
@@ -169,6 +170,14 @@
                 <artifactId>commons-lang3</artifactId>
                 <version>3.3.2</version>
             </dependency>
+
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>servlet-api</artifactId>
+                <version>${servlet-api.version}</version>
+                <scope>provided</scope>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
@@ -297,6 +306,23 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>cobertura-maven-plugin</artifactId>
+                <version>${cobertura-maven-plugin.version}</version>
+                <configuration>
+                    <format>xml</format>
+                    <maxmem>256m</maxmem>
+                    <!-- aggregated reports for multi-module projects -->
+                    <aggregate>true</aggregate>
+                    <check />
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.eluder.coveralls</groupId>
+                <artifactId>coveralls-maven-plugin</artifactId>
+                <version>2.2.0</version>
             </plugin>
         </plugins>
     </build>

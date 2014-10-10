@@ -32,7 +32,7 @@ import static de.agilecoders.wicket.jquery.JQuery.$;
  */
 public class Html5Player extends Panel {
 
-    private final IModel<List<? extends IVideo>> resources;
+    private final IModel<List<IVideo>> resources;
     private final Html5VideoConfig config;
     private final WebMarkupContainer container;
     private final IModel<String> errorMessage;
@@ -46,7 +46,7 @@ public class Html5Player extends Panel {
      * @param markupId The components id
      * @param model    The list of video resources
      */
-    public Html5Player(final String markupId, final IModel<List<? extends IVideo>> model) {
+    public Html5Player(final String markupId, final IModel<List<IVideo>> model) {
         this(markupId, model, new Html5VideoConfig());
     }
 
@@ -57,7 +57,7 @@ public class Html5Player extends Panel {
      * @param model    The list of video resources
      * @param config   The javascript configuration
      */
-    public Html5Player(final String markupId, final IModel<List<? extends IVideo>> model, final Html5VideoConfig config) {
+    public Html5Player(final String markupId, final IModel<List<IVideo>> model, final Html5VideoConfig config) {
         super(markupId, model);
 
         resources = model;

@@ -19,8 +19,8 @@ import java.util.Arrays;
  * @author miha
  */
 public enum BootswatchTheme implements ITheme {
-    Amelia, Cerulean, Cosmo, Cyborg, Darkly, Flatly, Journal, Lumen, Readable,
-    Simplex, Slate, Spacelab, Superhero, United, Yeti;
+    Amelia, Cerulean, Cosmo, Cyborg, Darkly, Flatly, Journal, Lumen, Paper, Readable,
+    Sandstone, Simplex, Slate, Spacelab, Superhero, United, Yeti;
 
     /**
      * The placeholders are:
@@ -75,7 +75,7 @@ public enum BootswatchTheme implements ITheme {
     }
 
     /**
-     * @return The configured version of Twitter Bootstrap
+     * @return The configured version of Bootstrap
      */
     private String getVersion() {
         String version = IBootstrapSettings.VERSION;

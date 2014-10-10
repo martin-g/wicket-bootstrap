@@ -3,7 +3,8 @@ package de.agilecoders.wicket.extensions.markup.html.bootstrap.icon;
 import org.apache.wicket.request.resource.CssResourceReference;
 
 /**
- * reference for open web icon css
+ * Reference for <a href="http://pfefferle.github.io/openwebicons/">open web icon css</a>
+ * <p>Last update: 29.09.2014</p>
  *
  * @author miha
  */

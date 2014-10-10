@@ -1,15 +1,15 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.html5player;
 
-import com.google.common.collect.Lists;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.WicketApplicationTest;
+import java.util.List;
+
 import org.apache.wicket.model.Model;
-import org.apache.wicket.util.string.Strings;
 import org.apache.wicket.util.tester.TagTester;
 import org.hamcrest.Matchers;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.List;
+import com.google.common.collect.Lists;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.WicketApplicationTest;
 
 /**
  * Tests the {@link Html5Player} class

@@ -14,14 +14,14 @@ import java.util.List;
  *
  * @author miha
  */
-public class ButtonListContextMenu extends ContextMenu<List<? extends AbstractLink>> {
+public class ButtonListContextMenu extends ContextMenu<List<AbstractLink>> {
 
     /**
      * Construct.
      *
      * @param markupId The component id
      */
-    public ButtonListContextMenu(final String markupId, final IModel<List<? extends AbstractLink>> model) {
+    public ButtonListContextMenu(final String markupId, final IModel<List<AbstractLink>> model) {
         super(markupId, model);
 
         add(new CssClassNameAppender("dropdown"));
