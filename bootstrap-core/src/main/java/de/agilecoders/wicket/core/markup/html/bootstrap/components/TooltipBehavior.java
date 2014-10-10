@@ -8,6 +8,7 @@ import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
 import org.apache.wicket.model.IComponentAssignedModel;
 import org.apache.wicket.model.IModel;
+import org.apache.wicket.util.string.Strings;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 import static de.agilecoders.wicket.jquery.JQuery.$;
@@ -57,7 +58,11 @@ public class TooltipBehavior extends BootstrapJavascriptBehavior {
         super.onComponentTag(component, tag);
 
         tag.put("rel", createRelAttribute());
-        tag.put("title", labelResolved.getObject());
+
+        String title = labelResolved.getObject();
+        if (!Strings.isEmpty(title)) {
+            tag.put("title", title);
+        }
     }
 
     @Override
