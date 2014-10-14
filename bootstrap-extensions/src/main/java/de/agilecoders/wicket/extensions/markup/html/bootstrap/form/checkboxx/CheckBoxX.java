@@ -1,9 +1,9 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.form.checkboxx;
 
 import java.util.Locale;
+import org.apache.wicket.ajax.AjaxEventBehavior;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.attributes.AjaxRequestAttributes;
-import org.apache.wicket.ajax.form.AjaxFormComponentUpdatingBehavior;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
@@ -11,10 +11,12 @@ import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
 import org.apache.wicket.markup.html.form.CheckBox;
 import org.apache.wicket.model.IModel;
+import org.apache.wicket.request.IRequestParameters;
 import org.apache.wicket.request.http.WebRequest;
 import org.apache.wicket.request.resource.CssResourceReference;
 import org.apache.wicket.request.resource.JavaScriptResourceReference;
 import org.apache.wicket.util.convert.IConverter;
+import org.apache.wicket.util.string.StringValue;
 
 import static de.agilecoders.wicket.jquery.JQuery.$;
 
@@ -69,38 +71,39 @@ public class CheckBoxX extends CheckBox {
 
     @Override
     protected void convertInput() {
-        super.convertInput();
-
-        WebRequest request = getWebRequest();
-        if (request.isAjax()) {
-            String value = request.getRequestParameters().getParameterValue("value").toString();
-
-            Boolean convertedInput = CheckBoxXConverter.INSTANCE.convertToObject(value, getLocale());
-            setConvertedInput(convertedInput);
-        } else {
-            // a normal form submit. the value is already set by an earlier click (with Ajax)
-            setConvertedInput(getModelObject());
-        }
+        // a normal form submit or another ajax submit behavior. the value is already set by an earlier click (with Ajax)
+        setConvertedInput(getModelObject());
     }
 
     @Override
     protected void onInitialize() {
         super.onInitialize();
 
-        add(new AjaxFormComponentUpdatingBehavior("change") {
+        add(new AjaxEventBehavior("change") {
             @Override
-            protected void onUpdate(AjaxRequestTarget target) {
-                Boolean value = getModelObject();
-                onChange(value, target);
+            protected void onEvent(AjaxRequestTarget target) {
+                WebRequest request = getWebRequest();
+                IRequestParameters requestParameters = request.getRequestParameters();
+                StringValue value = requestParameters.getParameterValue(getParameterName());
+                if (!value.isNull()) {
+                    Boolean convertedInput = CheckBoxXConverter.INSTANCE.convertToObject(value.toString(), getLocale());
+                    setModelObject(convertedInput);
+                    onChange(convertedInput, target);
+                }
             }
 
             @Override
             protected void updateAjaxAttributes(AjaxRequestAttributes attributes) {
                 super.updateAjaxAttributes(attributes);
 
-                attributes.getDynamicExtraParameters().add("return {'value': Wicket.$(attrs.c).value}");
+                attributes.setMethod(AjaxRequestAttributes.Method.POST);
+                attributes.getDynamicExtraParameters().add("return {'"+getParameterName()+"': Wicket.$(attrs.c).value}");
             }
         });
+    }
+
+    private String getParameterName() {
+        return "checkboxx::"+getInputName();
     }
 
     /**
@@ -131,15 +134,12 @@ public class CheckBoxX extends CheckBox {
         response.render(OnDomReadyHeaderItem.forScript($(this).chain("checkboxX", getConfig()).get()));
     }
 
-
     /**
      * Converter specific for CheckBox-X.
      * @see <a href="https://github.com/kartik-v/bootstrap-checkbox-x#documentation">The official documentaion</a>
      */
     private static class CheckBoxXConverter implements IConverter<Boolean>
     {
-        private static final long serialVersionUID = 1L;
-
         private static final IConverter<Boolean> INSTANCE = new CheckBoxXConverter();
 
         @Override
