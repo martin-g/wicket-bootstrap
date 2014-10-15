@@ -1,6 +1,6 @@
 /*!
  * @copyright &copy; Kartik Visweswaran, Krajee.com, 2014
- * @version 1.1.0
+ * @version 1.2.0
  *
  * An extended checkbox plugin for bootstrap with three states and additional styles.
  *
@@ -40,30 +40,30 @@
                 self.reset();
             });
             self.$cbx.on('click', function(e) {
-                self.change()
+                if (!options.enclosedLabel) {
+                    self.change();
+                }
             });
             self.$cbx.on('keyup', function(e) {
                 e.which == 32 && self.change();
             });
             self.$element.on('click', function(e) {
-                self.change(options.labelClickEvent)
+                self.change();
             });
         },
         change: function () {
-            var self = this, flag = (arguments.length == 0) ? true : arguments[0];
+            var self = this;
             if (self.disabled) {
                 return;
             }
             var options = self.options, val = parseInt(self.$element.val()), newVal, threeState = options.threeState;
-            if (val === 1) {
-                newVal = threeState ? null : 0;
+            if (threeState) {
+                newVal = val === 1 ? null : (val === 0 ? 1 : 0); 
             } else {
-                newVal = (val === 0) ? 1 : (threeState ? 0 : 1);
+                newVal = val === 1 ? 0 : 1;
             }
             self.$element.val(newVal);
-            if (flag) {
-                self.$element.trigger('change');
-            }
+            self.$element.trigger('change');
             self.$cbx.html(self.getIndicator());
         },
         reset: function () {
@@ -131,7 +131,7 @@
         iconUnchecked: ' ',
         iconNull: '<i class="glyphicon glyphicon-stop"></i>',
         size: 'md',
-        labelClickEvent: true
+        enclosedLabel: false
     };
 
     $('input[data-toggle="checkbox-x"]').addClass('cbx-loading');

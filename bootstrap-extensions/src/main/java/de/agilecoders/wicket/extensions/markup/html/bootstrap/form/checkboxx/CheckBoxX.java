@@ -23,9 +23,9 @@ import static de.agilecoders.wicket.jquery.JQuery.$;
 /**
  * An extension of {@link org.apache.wicket.markup.html.form.CheckBox} that allows to have three states:
  * <ul>
- *     <li>checked</li>
- *     <li>unchecked</li>
- *     <li>undefined</li>
+ *     <li>checked - model object value is {@link java.lang.Boolean#TRUE}</li>
+ *     <li>unchecked - model object value is {@link java.lang.Boolean#FALSE}</li>
+ *     <li>undefined - model object value is {@code null}</li>
  * </ul>
  *
  * Integrates <a href="https://github.com/kartik-v/bootstrap-checkbox-x">Checkbox X</a>
@@ -55,7 +55,7 @@ public class CheckBoxX extends CheckBox {
         super(id, model);
 
         // clicks on a wrapping <label> should not fire change events because this leads to double submits
-        config.withLabelClickEvent(false);
+        config.withEnclosedLabel(true);
 
         setOutputMarkupId(true);
     }

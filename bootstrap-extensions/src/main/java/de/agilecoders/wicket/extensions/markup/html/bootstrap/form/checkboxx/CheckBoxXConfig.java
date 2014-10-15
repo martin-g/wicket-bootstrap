@@ -51,7 +51,7 @@ public class CheckBoxXConfig extends AbstractConfig {
     /**
      * A flag indicating whether clicks on a wrapping &lt;label&gt; should fire change events
      */
-    private static final IKey<Boolean> LabelClickEvent = newKey("labelClickEvent", true);
+    private static final IKey<Boolean> EnclosedLabel = newKey("enclosedLabel", false);
 
     /**
      * Default constructor
@@ -67,7 +67,7 @@ public class CheckBoxXConfig extends AbstractConfig {
     public CheckBoxXConfig(CheckBoxXConfig copy) {
         Args.notNull(copy, "copy");
         withThreeState(copy.get(ThreeState));
-        withLabelClickEvent(copy.get(LabelClickEvent));
+        withEnclosedLabel(copy.get(EnclosedLabel));
         withInline(copy.get(Inline));
         withIconChecked(copy.get(IconChecked));
         withIconUnchecked(copy.get(IconUnchecked));
@@ -80,8 +80,8 @@ public class CheckBoxXConfig extends AbstractConfig {
         return this;
     }
 
-    public CheckBoxXConfig withLabelClickEvent(final boolean value) {
-        put(LabelClickEvent, value);
+    public CheckBoxXConfig withEnclosedLabel(final boolean value) {
+        put(EnclosedLabel, value);
         return this;
     }
 
