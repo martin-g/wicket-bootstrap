@@ -72,8 +72,12 @@ public class BootstrapCheckbox extends FormComponentPanel<Boolean> {
         MarkupContainer label = newLabelContainer("label");
         add(label);
         label.add(newLabel("post-label"));
-        checkbox = new CheckBox("checkbox", getModel());
+        checkbox = newCheckBox("checkbox", getModel());
         label.add(checkbox);
+    }
+
+    protected CheckBox newCheckBox(String id, IModel<Boolean> model) {
+        return new CheckBox(id, model);
     }
 
     protected Component newLabel(String id) {
