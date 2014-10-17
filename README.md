@@ -8,7 +8,7 @@ Current build status: [![Build Status](https://buildhive.cloudbees.com/job/l0rdn
 
 Current release version:
 
-* Wicket 6.* and Bootstrap 3.*: 0.9.6
+* Wicket 6.* and Bootstrap 3.*: 0.9.7
 * Wicket 6.* and Bootstrap 2.*: 0.8.4
 
 Components

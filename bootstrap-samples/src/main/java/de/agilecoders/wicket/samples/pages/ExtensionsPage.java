@@ -12,6 +12,7 @@ import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.link.AbstractLink;
+import org.apache.wicket.markup.html.panel.ComponentFeedbackPanel;
 import org.apache.wicket.markup.repeater.RepeatingView;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.model.ResourceModel;
@@ -36,6 +37,7 @@ import de.agilecoders.wicket.extensions.javascript.jasny.FileUploadField;
 import de.agilecoders.wicket.extensions.javascript.jasny.InputMaskBehavior;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.button.DropDownAutoOpen;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.contextmenu.ButtonListContextMenu;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.checkboxx.CheckBoxX;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.html5player.Html5Player;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.html5player.Html5VideoConfig;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.html5player.Video;
@@ -67,12 +69,12 @@ public class ExtensionsPage extends BasePage {
 
 		List<Html5Player.IVideo> videos = Lists
 				.<Html5Player.IVideo> newArrayList(
-						new Video(
-								"http://ia700305.us.archive.org/18/items/CopyingIsNotTheft/CINT_Nik_H264_720.ogv",
-								"video/ogg"),
-						new Video(
-								"http://ia700305.us.archive.org/18/items/CopyingIsNotTheft/CINT_Nik_H264_720_512kb.mp4",
-								"video/mp4"));
+                    new Video(
+                        "http://ia700305.us.archive.org/18/items/CopyingIsNotTheft/CINT_Nik_H264_720.ogv",
+                        "video/ogg"),
+                    new Video(
+                        "http://ia700305.us.archive.org/18/items/CopyingIsNotTheft/CINT_Nik_H264_720_512kb.mp4",
+                        "video/mp4"));
 		add(new Html5Player("video", Model.ofList(videos)));
 		add(new Code(
 				"video-code",
@@ -177,6 +179,41 @@ public class ExtensionsPage extends BasePage {
 		add(new InfinitePaginationPanel("infinite"));
 
 		laddaButton();
+
+		checkboxX();
+	}
+
+	private void checkboxX() {
+		CheckBoxX checkBoxX = new CheckBoxX("checkboxX", new Model<Boolean>(true)) {
+			@Override
+			protected void onChange(Boolean value, AjaxRequestTarget target) {
+				super.onChange(value, target);
+
+				String s;
+				if (Boolean.FALSE.equals(value)) {
+					s = "unchecked";
+				} else if (Boolean.TRUE.equals(value)) {
+					s = "checked";
+				} else {
+					s = "undefined";
+				}
+				info("The selection is: " + s);
+				target.add(getParent().get("feedback"));
+			}
+		};
+
+		final ComponentFeedbackPanel feedback = new ComponentFeedbackPanel("feedback", checkBoxX);
+		feedback.setOutputMarkupId(true);
+
+		Code code = new Code("linkCode", Model.of("CheckboxX checkboxX = new CheckboxX(\"checkboxX\", new Model<Boolean>(true)) {\n"
+												  + "  @Override\n"
+												  + "  protected void onChange(Boolean value, AjaxRequestTarget target) {\n"
+												  + "    info(\"The selection is: \" + value);\n"
+												  + "    target.add(feedback);\n"
+												  + "  }\n"
+												  + "};"));
+
+		add(checkBoxX, feedback, code);
 	}
 
 	private void laddaButton() {
@@ -215,8 +252,7 @@ public class ExtensionsPage extends BasePage {
 	public void renderHead(IHeaderResponse response) {
 		super.renderHead(response);
 
-		response.render(CssHeaderItem.forReference(OpenWebIconsCssReference
-				.instance()));
+		response.render(CssHeaderItem.forReference(OpenWebIconsCssReference.instance()));
 	}
 
 	private void addJasnyFileUploadDemo() {

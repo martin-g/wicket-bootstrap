@@ -1,12 +1,18 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.behavior;
 
 import de.agilecoders.wicket.core.Bootstrap;
+import de.agilecoders.wicket.core.markup.html.references.Html5ShivJavaScriptReference;
+import de.agilecoders.wicket.core.markup.html.references.RespondJavaScriptReference;
 import de.agilecoders.wicket.core.settings.IBootstrapSettings;
 import de.agilecoders.wicket.core.settings.ITheme;
 import org.apache.wicket.Component;
 import org.apache.wicket.WicketRuntimeException;
 import org.apache.wicket.behavior.Behavior;
 import org.apache.wicket.markup.head.IHeaderResponse;
+import org.apache.wicket.markup.head.JavaScriptHeaderItem;
+import org.apache.wicket.protocol.http.ClientProperties;
+import org.apache.wicket.protocol.http.WebSession;
+import org.apache.wicket.protocol.http.request.WebClientInfo;
 import org.apache.wicket.util.lang.Args;
 
 /**
@@ -90,6 +96,22 @@ public class BootstrapBaseBehavior extends Behavior {
         final ITheme theme = settings.getActiveThemeProvider().getActiveTheme();
 
         theme.renderHead(headerResponse);
+
+        contributeIE8Dependencies(headerResponse);
+    }
+
+    /**
+     * Contributes dependencies needed for proper behavior in older browsers (IE 6-8)
+     *
+     * @param headerResponse the current {@link IHeaderResponse}
+     */
+    protected void contributeIE8Dependencies(IHeaderResponse headerResponse) {
+        WebClientInfo clientInfo = WebSession.get().getClientInfo();
+        ClientProperties properties = clientInfo.getProperties();
+        if (properties.isBrowserInternetExplorer() && properties.getBrowserVersionMajor() < 9) {
+            headerResponse.render(JavaScriptHeaderItem.forReference(RespondJavaScriptReference.instance()));
+            headerResponse.render(JavaScriptHeaderItem.forReference(Html5ShivJavaScriptReference.instance()));
+        }
     }
 
 }
