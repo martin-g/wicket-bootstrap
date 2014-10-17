@@ -70,7 +70,7 @@ public class CheckBoxX extends CheckBox {
     }
 
     @Override
-    protected void convertInput() {
+    public void convertInput() {
         // a normal form submit or another ajax submit behavior. the value is already set by an earlier click (with Ajax)
         setConvertedInput(getModelObject());
     }
