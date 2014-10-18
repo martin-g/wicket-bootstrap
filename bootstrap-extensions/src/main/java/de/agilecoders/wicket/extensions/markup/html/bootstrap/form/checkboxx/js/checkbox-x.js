@@ -1,6 +1,6 @@
 /*!
  * @copyright &copy; Kartik Visweswaran, Krajee.com, 2014
- * @version 1.2.0
+ * @version 1.3.0
  *
  * An extended checkbox plugin for bootstrap with three states and additional styles.
  *
@@ -20,23 +20,36 @@
     CheckboxX.prototype = {
         constructor: CheckboxX,
         init: function (options) {
-            var self = this,
+            var self = this, $el = self.$element, isCbx = $el.is(':checkbox'), val = $el.val(),
                 css = options.inline ? 'cbx-container' : 'cbx-container cbx-block';
             self.options = options;
+            if (isCbx && val !== 0 && val !== 1) {
+                $el.attr('checked', false);
+                if (options.threeState) {
+                    $el.prop('indeterminate', true);
+                }
+            } 
+            if (isCbx && options.useNative) {
+                $el.on('change', function(e) {
+                    self.change(true, true);
+                });
+                $el.removeClass('cbx-loading');                
+                return;
+            }
             if (typeof self.$container == 'undefined') {
                 self.$container = $(document.createElement("div")).addClass(css).html(self.render());
-                self.$element.before(self.$container);
-                self.$container.append(self.$element);
-                self.$element.hide();
+                $el.before(self.$container);
+                self.$container.append($el);
+                $el.hide();
             }
             else {
-                self.$container.before(self.$element);
+                self.$container.before($el);
                 self.$container.addClass(css).html(self.render());
-                self.$container.append(self.$element);
+                self.$container.append($el);
             }
-            self.$element.removeClass('cbx-loading');
+            $el.removeClass('cbx-loading');
             self.$cbx = self.$container.find('.cbx');
-            self.$element.closest('form').on('reset', function (e) {
+            $el.closest('form').on('reset', function (e) {
                 self.reset();
             });
             self.$cbx.on('click', function(e) {
@@ -47,30 +60,65 @@
             self.$cbx.on('keyup', function(e) {
                 e.which == 32 && self.change();
             });
-            self.$element.on('click', function(e) {
-                self.change();
-            });
+            if (isCbx && !options.useNative) {
+                $el.on('change', function(e) {
+                    self.change(true);
+                });
+            } else {
+                $el.on('click', function(e) {
+                    self.change(true);
+                });
+            }
         },
         change: function () {
-            var self = this;
+            var self = this, $el = self.$element, flag = arguments.length && arguments[0],
+                useNative = arguments.length && arguments[1] === true, newVal;
             if (self.disabled) {
                 return;
             }
-            var options = self.options, val = parseInt(self.$element.val()), newVal, threeState = options.threeState;
-            if (threeState) {
-                newVal = val === 1 ? null : (val === 0 ? 1 : 0); 
+            newVal = self.calculate();
+            $el.val(newVal);
+            if (!flag && !useNative) {
+                $el.trigger('change');
             } else {
-                newVal = val === 1 ? 0 : 1;
+                self.validateCheckbox(useNative, newVal);
             }
-            self.$element.val(newVal);
-            self.$element.trigger('change');
-            self.$cbx.html(self.getIndicator());
+            if (!useNative) {
+                self.$cbx.html(self.getIndicator());
+            }
+        },
+        calculate: function() {
+            var self = this, $el=self.$element, val = parseInt($el.val()), 
+                threeState = self.options.threeState;
+            if (threeState) {
+                return (val === 1 ? null : (val === 0 ? 1 : 0)); 
+            } else {
+                return (val === 1 ? 0 : 1);
+            }
+        },
+        validateCheckbox: function(useNative, newVal) {
+            var self = this, $el = self.$element, isCbx = $el.is(':checkbox');
+            if (!isCbx) {
+                if (!useNative) {
+                    $el.trigger('change');
+                }
+                return;
+            }
+            $el.prop('indeterminate', false);
+            $el.prop('checked', false);
+            if (newVal == 1) {
+                $el.prop('checked', true);
+            } else {
+                if (newVal !== 0) {
+                    $el.prop('indeterminate', true);
+                }
+            }
         },
         reset: function () {
-            var self = this;
-            self.$element.val(self.initialValue);
+            var self = this, $el = self.$element;
+            $el.val(self.initialValue);
             self.refresh();
-            self.$element.trigger('reset');
+            $el.trigger('checkbox.reset');
         },
         refresh: function (options) {
             var self = this;
@@ -131,7 +179,8 @@
         iconUnchecked: ' ',
         iconNull: '<i class="glyphicon glyphicon-stop"></i>',
         size: 'md',
-        enclosedLabel: false
+        enclosedLabel: false,
+        useNative: false
     };
 
     $('input[data-toggle="checkbox-x"]').addClass('cbx-loading');
