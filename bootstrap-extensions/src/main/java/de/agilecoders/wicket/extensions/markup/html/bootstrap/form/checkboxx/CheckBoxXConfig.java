@@ -54,6 +54,14 @@ public class CheckBoxXConfig extends AbstractConfig {
     private static final IKey<Boolean> EnclosedLabel = newKey("enclosedLabel", false);
 
     /**
+     * A flag indicating whether to display the native checkbox control instead of the advanced styled input generated
+     * by the plugin. Defaults to false. This property will be applied only if your source element is a checkbox input.
+     * Setting it to true will allow you to use a threeState native checkbox. Note that when you have set useNative to
+     * true, you will lose the advanced styling features offered by bootstrap-checkbox-x.
+     */
+    private static final IKey<Boolean> UseNative = newKey("useNative", false);
+
+    /**
      * Default constructor
      */
     public CheckBoxXConfig() {
@@ -68,10 +76,11 @@ public class CheckBoxXConfig extends AbstractConfig {
         Args.notNull(copy, "copy");
         withThreeState(copy.get(ThreeState));
         withEnclosedLabel(copy.get(EnclosedLabel));
+        withUseNative(copy.get(UseNative));
         withInline(copy.get(Inline));
-        withIconChecked(copy.get(IconChecked));
-        withIconUnchecked(copy.get(IconUnchecked));
-        withIconNull(copy.get(IconNull));
+        withIconChecked(copy.getString(IconChecked));
+        withIconUnchecked(copy.getString(IconUnchecked));
+        withIconNull(copy.getString(IconNull));
         withSize(copy.get(Size));
     }
 
@@ -82,6 +91,11 @@ public class CheckBoxXConfig extends AbstractConfig {
 
     public CheckBoxXConfig withEnclosedLabel(final boolean value) {
         put(EnclosedLabel, value);
+        return this;
+    }
+
+    public CheckBoxXConfig withUseNative(final boolean value) {
+        put(UseNative, value);
         return this;
     }
 
