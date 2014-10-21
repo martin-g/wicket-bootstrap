@@ -5,18 +5,22 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons;
 
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
-import org.apache.wicket.markup.html.link.Link;
+import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
+import org.apache.wicket.util.string.Strings;
 
 /**
  * A simple close button for the {@link Modal} component.
  *
  * @author miha
  */
-public class ModalCloseButton extends Link<String> {
+public class ModalCloseButton extends AjaxLink<String> {
 
     private final ButtonBehavior buttonBehavior;
+
+    private Modal<?> anchor;
 
     /**
      * Construct.
@@ -63,24 +67,22 @@ public class ModalCloseButton extends Link<String> {
     }
 
     @Override
-    public void onClick() {
-        // nothing to do here;
-    }
-
-    @Override
-    protected void onConfigure() {
-        super.onConfigure();
-
-        if (getAnchor() == null) {
-            Component parent = getParent();
-            while (parent != null) {
-                if (parent instanceof Modal) {
-                    setAnchor(parent);
-                    break;
-                } else {
-                    parent = parent.getParent();
-                }
+    public void onClick(AjaxRequestTarget target) {
+        Component _anchor = this.anchor;
+        if (_anchor == null) {
+            _anchor = findParent(Modal.class);
+        }
+        if (_anchor != null) {
+            String anchorMarkupId = _anchor.getMarkupId();
+            if (!Strings.isEmpty(anchorMarkupId)) {
+                target.appendJavaScript(String.format("document.location.hash='%s'", anchorMarkupId));
             }
         }
     }
+
+    public ModalCloseButton setAnchor(Modal<?> anchor) {
+        this.anchor = anchor;
+        return this;
+    }
+
 }
