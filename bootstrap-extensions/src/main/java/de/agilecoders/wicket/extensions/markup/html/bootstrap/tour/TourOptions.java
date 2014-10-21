@@ -1,10 +1,16 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.tour;
 
+import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.databind.JsonSerializer;
+import com.fasterxml.jackson.databind.SerializerProvider;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import de.agilecoders.wicket.jquery.AbstractConfig;
 import de.agilecoders.wicket.jquery.IKey;
 import de.agilecoders.wicket.jquery.util.Json;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
+
+import java.io.IOException;
 
 
 public class TourOptions extends AbstractConfig {
@@ -18,7 +24,7 @@ public class TourOptions extends AbstractConfig {
     /**
      * Appends the step popover to a specific element.
      */
-    private static final IKey<IModel> Container = newKey("body", (IModel) Model.of("body"));
+    private static final IKey<IModel> Container = newKey("container", (IModel) Model.of("body"));
 
     /**
      * This option set the left and right arrow navigation.
@@ -40,6 +46,8 @@ public class TourOptions extends AbstractConfig {
      */
     private static final IKey<Boolean> Backdrop = newKey("backdrop", Boolean.FALSE);
 
+    private static final IKey<BackdropPadding> BackdropPadding = newKey("backdropPadding", new BackdropPadding(0));
+
     /**
      * Set a custom function to execute as redirect function. The default redirect relies on the traditional document.location.href
      */
@@ -50,6 +58,11 @@ public class TourOptions extends AbstractConfig {
      * The step is fixed positioned in the middle of the page.
      */
     private static final IKey<Boolean> Orphan = newKey("orphan", Boolean.FALSE);
+
+    /**
+     * TODO waiting http://bootstraptour.com/api/ to be updated
+     */
+    private static final IKey<Integer> Delay = newKey("delay", 0);
 
     /**
      * Specify a default base path prepended to the  path option of every single step.
@@ -132,13 +145,25 @@ public class TourOptions extends AbstractConfig {
     }
 
     /**
-     * The storage system you want to use. could be the objects window.localStorage, window.sessionStorage of your own object.
+     * Show a dark backdrop behind the popover and its element, highlighting the current step.
      *
      * @param value mandatory parameter
      * @return this instance for chaining.
      */
     public TourOptions withBackdrop(boolean value) {
         put(Backdrop, value);
+        return this;
+    }
+
+    /**
+     * Add padding to the backdrop element that highlights the step element.
+     It can be a number or a object containing optional top, right, bottom and left numbers.
+     *
+     * @param value mandatory parameter
+     * @return this instance for chaining.
+     */
+    public TourOptions withBackdropPadding(BackdropPadding value) {
+        put(BackdropPadding, value);
         return this;
     }
 
@@ -177,6 +202,11 @@ public class TourOptions extends AbstractConfig {
         return this;
     }
 
+    public TourOptions withDelay(Integer value) {
+        put(Delay, value);
+        return this;
+    }
+
     /**
      * String or function that returns a string of the HTML template for the popovers.
      *
@@ -188,4 +218,43 @@ public class TourOptions extends AbstractConfig {
         return this;
     }
 
+    @JsonSerialize(using = BackdropPaddingSerializer.class)
+    public static class BackdropPadding {
+        private final int top, right, bottom, left;
+
+        public BackdropPadding(int value) {
+            this.top = value;
+            this.right = value;
+            this.bottom = value;
+            this.left = value;
+        }
+
+        public BackdropPadding(int top, int right, int bottom, int left) {
+            this.top = top;
+            this.right = right;
+            this.bottom = bottom;
+            this.left = left;
+        }
+    }
+
+
+    /**
+     * Serializer for BackdropPadding
+     */
+    private static class BackdropPaddingSerializer extends JsonSerializer<BackdropPadding> {
+
+        @Override
+        public void serialize(BackdropPadding value, JsonGenerator jgen, SerializerProvider provider) throws IOException {
+            if ((value.top == value.right) && (value.right == value.bottom) && (value.bottom == value.left)) {
+                jgen.writeNumber(value.top);
+            } else {
+                jgen.writeStartObject();
+                jgen.writeNumberField("top",    value.top);
+                jgen.writeNumberField("right",  value.right);
+                jgen.writeNumberField("bottom", value.bottom);
+                jgen.writeNumberField("left",   value.left);
+                jgen.writeEndObject();
+            }
+        }
+    }
 }
