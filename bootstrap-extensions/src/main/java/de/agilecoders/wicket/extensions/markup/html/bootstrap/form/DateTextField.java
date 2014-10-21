@@ -103,10 +103,10 @@ public class DateTextField extends org.apache.wicket.extensions.markup.html.form
 
     @Override
     protected void onComponentTag(ComponentTag tag) {
-        super.onComponentTag(tag);
-
         checkComponentTag(tag, "input");
         Attributes.set(tag, "type", "text");
+
+        super.onComponentTag(tag);
     }
 
     @Override
@@ -140,5 +140,5 @@ public class DateTextField extends org.apache.wicket.extensions.markup.html.form
         return config;
     }
 
-    
+
 }
