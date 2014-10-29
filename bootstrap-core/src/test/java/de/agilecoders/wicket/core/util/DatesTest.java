@@ -23,10 +23,10 @@ public class DatesTest {
         assertThat(Dates.toJavaScriptDateFormat("M."), is(equalTo("m.")));
         assertThat(Dates.toJavaScriptDateFormat(".M."), is(equalTo(".m.")));
 
-        assertThat(Dates.toJavaScriptDateFormat("MM"), is(equalTo("m")));
-        assertThat(Dates.toJavaScriptDateFormat(".MM"), is(equalTo(".m")));
-        assertThat(Dates.toJavaScriptDateFormat("MM."), is(equalTo("m.")));
-        assertThat(Dates.toJavaScriptDateFormat(".MM."), is(equalTo(".m.")));
+        assertThat(Dates.toJavaScriptDateFormat("MM"), is(equalTo("mm")));
+        assertThat(Dates.toJavaScriptDateFormat(".MM"), is(equalTo(".mm")));
+        assertThat(Dates.toJavaScriptDateFormat("MM."), is(equalTo("mm.")));
+        assertThat(Dates.toJavaScriptDateFormat(".MM."), is(equalTo(".mm.")));
 
         assertThat(Dates.toJavaScriptDateFormat("MMM"), is(equalTo("M")));
         assertThat(Dates.toJavaScriptDateFormat(".MMM"), is(equalTo(".M")));
@@ -43,10 +43,10 @@ public class DatesTest {
         assertThat(Dates.toJavaScriptDateFormat("d."), is(equalTo("d.")));
         assertThat(Dates.toJavaScriptDateFormat(".d."), is(equalTo(".d.")));
 
-        assertThat(Dates.toJavaScriptDateFormat("dd"), is(equalTo("d")));
-        assertThat(Dates.toJavaScriptDateFormat(".dd"), is(equalTo(".d")));
-        assertThat(Dates.toJavaScriptDateFormat("dd."), is(equalTo("d.")));
-        assertThat(Dates.toJavaScriptDateFormat(".dd."), is(equalTo(".d.")));
+        assertThat(Dates.toJavaScriptDateFormat("dd"), is(equalTo("dd")));
+        assertThat(Dates.toJavaScriptDateFormat(".dd"), is(equalTo(".dd")));
+        assertThat(Dates.toJavaScriptDateFormat("dd."), is(equalTo("dd.")));
+        assertThat(Dates.toJavaScriptDateFormat(".dd."), is(equalTo(".dd.")));
 
         assertThat(Dates.toJavaScriptDateFormat("E"), is(equalTo("D")));
         assertThat(Dates.toJavaScriptDateFormat(".E"), is(equalTo(".D")));
