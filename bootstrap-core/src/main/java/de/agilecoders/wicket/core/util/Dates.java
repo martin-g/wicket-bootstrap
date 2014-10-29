@@ -44,11 +44,7 @@ public final class Dates {
 
             switch(token) {
                 case 'd':
-                    if (hasMore && chars[i + 1] == 'd') {
-                        break;
-                    }
-                    finalPattern.append("dd");
-                    pattern = "";
+                    finalPattern.append(token);
                     break;
 
                 case 'm':
@@ -59,8 +55,8 @@ public final class Dates {
                         pattern += "m";
                     }
 
-                    if (pattern.length() < 2) {
-                        finalPattern.append("MM");
+                    if (pattern.length() <= 2) {
+                        finalPattern.append(pattern.toUpperCase(Locale.ENGLISH));
                     } else {
                         finalPattern.append("mm");
                     }
