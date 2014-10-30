@@ -9545,35 +9545,35 @@ SemVer.prototype.comparePre = function(other) {
 
 // preminor will bump the version up to the next minor release, and immediately
 // down to pre-release. premajor and prepatch work the same way.
-SemVer.prototype.inc = function(release) {
+SemVer.prototype.inc = function(release, identifier) {
   switch (release) {
     case 'premajor':
       this.prerelease.length = 0;
       this.patch = 0;
       this.minor = 0;
       this.major++;
-      this.inc('pre');
+      this.inc('pre', identifier);
       break;
     case 'preminor':
       this.prerelease.length = 0;
       this.patch = 0;
       this.minor++;
-      this.inc('pre');
+      this.inc('pre', identifier);
       break;
     case 'prepatch':
       // If this is already a prerelease, it will bump to the next version
       // drop any prereleases that might already exist, since they are not
       // relevant at this point.
       this.prerelease.length = 0;
-      this.inc('patch');
-      this.inc('pre');
+      this.inc('patch', identifier);
+      this.inc('pre', identifier);
       break;
     // If the input is a non-prerelease version, this acts the same as
     // prepatch.
     case 'prerelease':
       if (this.prerelease.length === 0)
-        this.inc('patch');
-      this.inc('pre');
+        this.inc('patch', identifier);
+      this.inc('pre', identifier);
       break;
 
     case 'major':
@@ -9607,7 +9607,7 @@ SemVer.prototype.inc = function(release) {
       this.prerelease = [];
       break;
     // This probably shouldn't be used publicly.
-    // 1.0.0 "pre" would become 1.0.0 which is the wrong direction.
+    // 1.0.0 "pre" would become 1.0.0-0 which is the wrong direction.
     case 'pre':
       if (this.prerelease.length === 0)
         this.prerelease = [0];
@@ -9622,6 +9622,15 @@ SemVer.prototype.inc = function(release) {
         if (i === -1) // didn't increment anything
           this.prerelease.push(0);
       }
+      if (identifier) {
+        // 1.2.0-beta.1 bumps to 1.2.0-beta.2,
+        // 1.2.0-beta.fooblz or 1.2.0-beta bumps to 1.2.0-beta.0
+        if (this.prerelease[0] === identifier) {
+          if (isNaN(this.prerelease[1]))
+            this.prerelease = [identifier, 0];
+        } else
+          this.prerelease = [identifier, 0];
+      }
       break;
 
     default:
@@ -9632,9 +9641,14 @@ SemVer.prototype.inc = function(release) {
 };
 
 exports.inc = inc;
-function inc(version, release, loose) {
+function inc(version, release, loose, identifier) {
+  if (typeof(loose) === 'string') {
+    identifier = loose;
+    loose = undefined;
+  }
+
   try {
-    return new SemVer(version, loose).inc(release).version;
+    return new SemVer(version, loose).inc(release, identifier).version;
   } catch (er) {
     return null;
   }
@@ -10321,8 +10335,8 @@ var semver = require('semver');
 (function (exports) {
     'use strict';
     var NUM_COLS = 12;
-    var COL_REGEX = /\bcol-(xs|sm|md|lg)-(\d{0,2})\b/;
-    var COL_REGEX_G = /\bcol-(xs|sm|md|lg)-(\d{0,2})\b/g;
+    var COL_REGEX = /\bcol-(xs|sm|md|lg)-(\d{1,2})\b/;
+    var COL_REGEX_G = /\bcol-(xs|sm|md|lg)-(\d{1,2})\b/g;
     var COL_CLASSES = [];
     var SCREENS = ['xs', 'sm', 'md', 'lg'];
     SCREENS.forEach(function (screen) {
@@ -10475,6 +10489,7 @@ var semver = require('semver');
     var allLinters = {};
     function addLinter(id, linter) {
         if (allLinters[id]) {
+            /* @covignore */
             throw new Error("Linter already registered with ID: " + id);
         }
 
@@ -10486,6 +10501,7 @@ var semver = require('semver');
             Problem = LintWarning;
         }
         else {
+            /* @covignore */
             throw new Error("Invalid linter ID: " + id);
         }
 
@@ -10522,6 +10538,7 @@ var semver = require('semver');
             };
         }
         else {
+            /* @covignore */
             return function lintDoctype($, reporter) {
                 /*eslint-disable no-undef, block-scoped-var */
                 var doc = window.document;
@@ -10625,6 +10642,7 @@ var semver = require('semver');
         catch (e) {
             // deliberately do nothing
         }
+        /* @covignore */
         if (theWindow) {
             // check browser global jQuery
             var globaljQuery = theWindow.$ || theWindow.jQuery;
@@ -10896,7 +10914,7 @@ var semver = require('semver');
         }
     });
     addLinter("E027", function lintTableResponsive($, reporter) {
-        var badStructure = $('.table.table-responsive,table.table-responsive');
+        var badStructure = $('.table.table-responsive, table.table-responsive');
         if (badStructure.length) {
             reporter("`.table-responsive` is supposed to be used on the table's parent wrapper <div>, not on the table itself", badStructure);
         }
@@ -11003,6 +11021,28 @@ var semver = require('semver');
             reporter(".modal-title must be a child of .modal-header", elements);
         }
     });
+    addLinter("E033", function lintAlertMissingDismissible($, reporter) {
+        var alertsMissingDismissible = $('.alert:not(.alert-dismissible):has([data-dismiss="alert"])');
+        if (alertsMissingDismissible.length) {
+            reporter('`.alert` with dismiss button must have class `.alert-dismissible`', alertsMissingDismissible);
+        }
+    });
+    addLinter("E034", function lintAlertDismissStructure($, reporter) {
+        var nonFirstChildCloses = $('.alert>.close:not(:first-child)');
+        var closesPrecededByText = $('.alert>.close').filter(function () {
+            return !!($(this).parent().contents().eq(0).text().trim());
+        });
+        var problematicCloses = nonFirstChildCloses.add(closesPrecededByText);
+        if (problematicCloses.length) {
+            reporter('`.close` button for `.alert` must be the first element in the `.alert`', problematicCloses);
+        }
+    });
+    addLinter("E035", function lintFormGroupWithFormClass($, reporter) {
+        var badFormGroups = $('.form-group.form-inline, .form-group.form-horizontal');
+        if (badFormGroups.length) {
+            reporter('Neither .form-inline nor .form-horizontal should be used directly on a `.form-group`. Instead, nest the .form-group within the .form-inline or .form-horizontal', badFormGroups);
+        }
+    });
 
     exports._lint = function ($, reporter, disabledIdList) {
         var disabledIdSet = {};
@@ -11031,6 +11071,7 @@ var semver = require('semver');
     }
     else {
         // jQuery; in-browser
+        /* @covignore */
         (function () {
             var $ = cheerio;
             /**
