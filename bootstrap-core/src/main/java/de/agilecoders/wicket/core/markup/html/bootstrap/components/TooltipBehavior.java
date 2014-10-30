@@ -71,6 +71,7 @@ public class TooltipBehavior extends BootstrapJavascriptBehavior {
         labelResolved=wrapOnAssignment(label, component);
         component.setOutputMarkupId(true);
     }
+
     private IModel<String> wrapOnAssignment(IModel<String> label, Component component) {
         if (label != null && label instanceof IComponentAssignedModel) {
             IComponentAssignedModel<String> cam = (IComponentAssignedModel<String>) label;
