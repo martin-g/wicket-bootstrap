@@ -23,6 +23,8 @@ import java.util.List;
 @MountPath(value = "/select")
 public class SelectPage extends BasePage {
 
+    private static final long serialVersionUID = -7206242562056511774L;
+
     private static final List<String> data = Lists.newArrayList(
             "Alabama", "Alaska", "Arizona", "Arkansas",
             "California", "Colorado", "Connecticut",
@@ -40,7 +42,7 @@ public class SelectPage extends BasePage {
             "West Virginia", "Wisconsin", "Wyoming"
     );
 
-    private String formHtmlCode = "Default select\n"
+    private final String formHtmlCode = "Default select\n"
             + "<select wicket:id=\"default\">\n"
             + "</select>\n"
             + "Select with live search\n"
@@ -55,7 +57,7 @@ public class SelectPage extends BasePage {
             + "Multi select with limited selection\n"
             + "<select wicket:id=\"multi-max-count-2\">\n"
             + "</select>\n";
-    private String formJavaCode = "add(new BootstrapSelect<String>(\"default\"),\n"
+    private final String formJavaCode = "add(new BootstrapSelect<String>(\"default\"),\n"
             + "add(new BootstrapSelect<String>(\"default-live-search\").with(\n" +
             "new BootstrapSelectConfig().withLiveSearch(true)));\n"
             + "add(\n"
@@ -66,15 +68,14 @@ public class SelectPage extends BasePage {
             "new BootstrapSelectConfig().withLiveSearch(true).withMaxOptions(2))\n"
             + ");\n";
 
-    private String i18nJavaCode = "BootstrapSelectConfig config = new BootstrapSelectConfig();\n"
+    private final String i18nJavaCode = "BootstrapSelectConfig config = new BootstrapSelectConfig();\n"
             + "            config\n"
-            + "                    .withNoneSelectedText(\"Ничего не выбрано\")\n"
-            + "                    .withNoResultText(\"Не найдено совпадений для\")\n"
-            + "                    .withCountSelectedText(\"Выбрано {0} из {1}\")\n"
-            + "                    .withMaxOptionsText(\"Достигнут предел ({n} {var} максимум)\",\n"
-            + "                            \"Достигнут предел группы({n} {var} максимум)\",\n"
-            + "                            \"\",\n"
-            + "                            \"\");";
+            + "                    .withNoneSelectedText(\"My nothing selected\")\n"
+            + "                    .withNoResultText(\"My no results found\")\n"
+            + "                    .withCountSelectedText(\"My selected {0} from {1}\")\n"
+            + "                    .withMaxOptionsText(\"My limit ({n} {var} max)\",\n"
+            + "                            \"My group limit({n} {var} max)\",\n"
+            + "                            \"items\", \"item\");\n";
 
     /**
      * Construct.
@@ -113,11 +114,8 @@ public class SelectPage extends BasePage {
         );
         fr.add(new AjaxLink<Void>("update-default") {
 
-            /**
-             * Listener method invoked on the ajax request generated when the user clicks the link
-             *
-             * @param target
-             */
+            private static final long serialVersionUID = -3698659776363173730L;
+
             @Override
             public void onClick(AjaxRequestTarget target) {
                 target.add(first);
@@ -129,14 +127,16 @@ public class SelectPage extends BasePage {
     private BootstrapSelectConfig of(boolean i18n) {
         BootstrapSelectConfig config = new BootstrapSelectConfig();
         if (i18n) {
+            //            "Limit reached ({n} {var} max)",
+            //                    "Group limit reached ({n} {var} max)",
+            //                    new Object[] { "items", "item" }
             config
-                    .withNoneSelectedText("Ничего не выбрано")
-                    .withNoResultText("Не найдено совпадений для")
-                    .withCountSelectedText("Выбрано {0} из {1}")
-                    .withMaxOptionsText("Достигнут предел ({n} {var} максимум)",
-                            "Достигнут предел группы({n} {var} максимум)",
-                            "",
-                            "");
+                    .withNoneSelectedText("My nothing selected")
+                    .withNoResultText("My no results found")
+                    .withCountSelectedText("My selected {0} from {1}")
+                    .withMaxOptionsText("My limit ({n} {var} max)",
+                            "My group limit({n} {var} max)",
+                            "items", "item");
         }
         return config;
     }

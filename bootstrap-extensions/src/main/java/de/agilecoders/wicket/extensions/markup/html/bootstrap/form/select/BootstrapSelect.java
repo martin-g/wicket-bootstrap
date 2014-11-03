@@ -142,7 +142,17 @@ public class BootstrapSelect<T> extends DropDownChoice<T> {
     @Override
     protected void onInitialize() {
         super.onInitialize();
-        add(new BootstrapSelectBehavior(config));
+        add(newBootstrapSelectBehavior(config));
+    }
+
+    /**
+     * create new behavior by specified config
+     *
+     * @param config config
+     * @return new instance of select behavior
+     */
+    protected BootstrapSelectBehavior newBootstrapSelectBehavior(BootstrapSelectConfig config) {
+        return new BootstrapSelectBehavior(config);
     }
 
 }

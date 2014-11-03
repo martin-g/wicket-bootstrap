@@ -33,9 +33,6 @@ public class BootstrapSelectBehavior extends Behavior {
         }
     }
 
-    // if behavior should omit css from resources
-    private static volatile boolean omitCSS = false;
-
     // destroy script for component
     private static final IFunction destroyScript = new DestroyScript();
 
@@ -65,30 +62,17 @@ public class BootstrapSelectBehavior extends Behavior {
     public void renderHead(Component component, IHeaderResponse response) {
         super.renderHead(component, response);
         response.render(JavaScriptHeaderItem.forReference(SelectJSReference.instance()));
-        if (!isOmitCSS()) {
-            response.render(CssHeaderItem.forReference(SelectCSSReference.instance()));
-        }
+        renderCss(response);
         response.render($(component).chain("selectpicker", config).asDomReadyScript());
     }
 
     /**
-     * @return true if css will not included into head
+     * render css resource
+     *
+     * @param response response
      */
-    public static boolean isOmitCSS() {
-        return omitCSS;
+    protected void renderCss(IHeaderResponse response) {
+        response.render(CssHeaderItem.forReference(SelectCSSReference.instance()));
     }
 
-    /**
-     * omit css resource
-     */
-    public static void omitCSS() {
-        BootstrapSelectBehavior.omitCSS = true;
-    }
-
-    /**
-     * include css resource
-     */
-    public static void includeCSS() {
-        BootstrapSelectBehavior.omitCSS = false;
-    }
 }
