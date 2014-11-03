@@ -15,6 +15,7 @@
 
     <properties>
         <wicket.configuration>DEVELOPMENT</wicket.configuration>
+        <wicketstuff.version>7.0.0-M3</wicketstuff.version>
     </properties>
 
     <dependencies>
@@ -86,6 +87,12 @@
             <groupId>net.ftlines.wicket-source</groupId>
             <artifactId>wicket-source</artifactId>
             <version>7.0.0</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.wicket</groupId>
+                    <artifactId>wicket</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
     </dependencies>
@@ -143,6 +150,8 @@
                             <keyPassword>wicket</keyPassword>
                         </connector>
                     </connectors>
+                    <stopKey />
+                    <stopPort />
                 </configuration>
             </plugin>
 
