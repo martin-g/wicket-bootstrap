@@ -150,8 +150,8 @@ public class BootstrapMultiSelect<T> extends ListMultipleChoice<T> {
     }
 
     @Override
-    protected void onConfigure() {
-        super.onConfigure();
+    protected void onInitialize() {
+        super.onInitialize();
         add(new BootstrapSelectBehavior(config));
     }
 }
