@@ -1,5 +1,7 @@
 package de.agilecoders.wicket.core.util;
 
+import java.util.Locale;
+
 import static de.agilecoders.wicket.jquery.util.Strings2.nullToEmpty;
 
 /**
@@ -42,11 +44,7 @@ public final class Dates {
 
             switch(token) {
                 case 'd':
-                    if (hasMore && chars[i + 1] == 'd') {
-                        break;
-                    }
-                    finalPattern.append("dd");
-                    pattern = "";
+                    finalPattern.append(token);
                     break;
 
                 case 'm':
@@ -57,8 +55,8 @@ public final class Dates {
                         pattern += "m";
                     }
 
-                    if (pattern.length() < 2) {
-                        finalPattern.append("MM");
+                    if (pattern.length() <= 2) {
+                        finalPattern.append(pattern.toUpperCase(Locale.ENGLISH));
                     } else {
                         finalPattern.append("mm");
                     }
@@ -134,11 +132,7 @@ public final class Dates {
 
             switch(token) {
                 case 'd':
-                    if (hasMore && chars[i + 1] == 'd') {
-                        break;
-                    }
-                    finalPattern.append("d");
-                    pattern = "";
+                    finalPattern.append(token);
                     break;
 
                 case 'M':
@@ -150,9 +144,9 @@ public final class Dates {
                     }
 
                     if (pattern.length() <= 2) {
-                        finalPattern.append("m");
+                        finalPattern.append(pattern.toLowerCase(Locale.ENGLISH));
                     } else if (pattern.length() == 3) {
-                        finalPattern.append("M");
+                        finalPattern.append('M');
                     } else if (pattern.length() > 3) {
                         finalPattern.append("MM");
                     }
@@ -169,7 +163,7 @@ public final class Dates {
                     }
 
                     if (pattern.length() <= 3) {
-                        finalPattern.append("D");
+                        finalPattern.append('D');
                     } else {
                         finalPattern.append("DD");
                     }
