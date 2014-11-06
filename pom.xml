@@ -58,7 +58,7 @@
         <versions-maven-plugin.version>2.1</versions-maven-plugin.version>
         <rhino.version>1.7R4</rhino.version>
         <doxia.version>1.0</doxia.version>
-        <less4j.version>1.8.2</less4j.version>
+        <less4j.version>1.8.4</less4j.version>
         <modernizr.version>2.7.1</modernizr.version>
         <jetty.version>8.1.15.v20140411</jetty.version>
         <newrelic.version>3.7.0</newrelic.version>
