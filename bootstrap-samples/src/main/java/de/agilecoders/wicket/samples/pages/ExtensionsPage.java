@@ -2,6 +2,9 @@ package de.agilecoders.wicket.samples.pages;
 
 import java.util.List;
 
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.behavior.Draggable;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.behavior.DraggableConfig;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.behavior.Resizable;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
@@ -132,9 +135,8 @@ public class ExtensionsPage extends BasePage {
 		Modal<String> draggableModal = new TextContentModal(
 				"draggable-modal",
 				Model.of("Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."));
-		// draggableModal.add(new Draggable(new
-		// DraggableConfig().withHandle(".modal-header").withCursor("move")));
-		// draggableModal.add(new Resizable());
+		draggableModal.add(new Draggable(new DraggableConfig().withHandle(".modal-header").withCursor("move")));
+		draggableModal.add(new Resizable().withChildSelector(".modal-content"));
 		draggableModal.setUseKeyboard(true).addCloseButton();
 		draggableModal.setFadeIn(false);
 		Label draggableButton = new Label("open-draggable", "Open Modal Dialog");
