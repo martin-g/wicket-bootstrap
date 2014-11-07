@@ -11,6 +11,7 @@ import org.apache.wicket.request.resource.ResourceReference;
 import org.apache.wicket.request.resource.UrlResourceReference;
 
 import java.util.Collections;
+import java.util.List;
 
 /**
  * A {@link de.agilecoders.wicket.core.settings.ITheme theme} for Bootstrap
@@ -41,6 +42,11 @@ public enum VegibitTheme implements ITheme {
     }
 
     @Override
+    public List<ResourceReference> getResourceReferences() {
+        return Collections.singletonList(reference);
+    }
+
+    @Override
     public Iterable<String> getCdnUrls() {
         return Collections.emptyList();
     }
@@ -53,7 +59,9 @@ public enum VegibitTheme implements ITheme {
             }
             response.render(CssHeaderItem.forReference(new UrlResourceReference(Url.parse(cdnUrl))));
         } else {
-            response.render(CssHeaderItem.forReference(reference));
+            for (ResourceReference resourceReference : getResourceReferences()) {
+                response.render(CssHeaderItem.forReference(resourceReference));
+            }
         }
     }
 

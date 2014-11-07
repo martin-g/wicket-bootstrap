@@ -1,6 +1,10 @@
 package de.agilecoders.wicket.themes.markup.html.google;
 
 import de.agilecoders.wicket.core.settings.Theme;
+import org.apache.wicket.request.resource.ResourceReference;
+
+import java.util.Collections;
+import java.util.List;
 
 /**
  * #### Description
@@ -22,7 +26,7 @@ public class GoogleTheme extends Theme {
      * Construct.
      */
     public GoogleTheme(final String name) {
-        super(name, GoogleCssReference.instance());
+        super(name);
     }
 
     /**
@@ -32,4 +36,8 @@ public class GoogleTheme extends Theme {
         this("google");
     }
 
+    @Override
+    public List<ResourceReference> getResourceReferences() {
+        return Collections.<ResourceReference>singletonList(GoogleCssReference.instance());
+    }
 }

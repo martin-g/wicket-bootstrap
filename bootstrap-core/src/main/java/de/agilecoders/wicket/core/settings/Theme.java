@@ -48,17 +48,16 @@ public class Theme implements ITheme {
         this.resourceReferences = Generics2.newArrayList(resourceReferences);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public String name() {
         return name;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
+    public List<ResourceReference> getResourceReferences() {
+        return resourceReferences;
+    }
+
     @Override
     public void renderHead(IHeaderResponse response) {
         if (useCdnResources()) {
@@ -94,7 +93,7 @@ public class Theme implements ITheme {
     }
 
     private void renderPackageReferences(IHeaderResponse response) {
-        for (ResourceReference resourceReference : resourceReferences) {
+        for (ResourceReference resourceReference : getResourceReferences()) {
             if (resourceReference instanceof CssResourceReference) {
                 response.render(CssHeaderItem.forReference(resourceReference));
             } else if (resourceReference instanceof JavaScriptResourceReference) {

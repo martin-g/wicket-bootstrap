@@ -4,6 +4,7 @@ import de.agilecoders.wicket.core.Bootstrap;
 import de.agilecoders.wicket.jquery.util.Generics2;
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
+import org.apache.wicket.request.resource.ResourceReference;
 
 import java.util.Collections;
 import java.util.List;
@@ -39,6 +40,11 @@ public class NoopThemeProvider implements ThemeProvider {
         @Override
         public String name() {
             return "bootstrap";
+        }
+
+        @Override
+        public List<ResourceReference> getResourceReferences() {
+            return Collections.emptyList();
         }
 
         @Override
