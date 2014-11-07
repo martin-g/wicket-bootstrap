@@ -1,7 +1,8 @@
 package de.agilecoders.wicket.themes.markup.html.bootstrap;
 
 import de.agilecoders.wicket.core.settings.Theme;
-import org.apache.wicket.request.resource.ResourceReference;
+import org.apache.wicket.markup.head.CssHeaderItem;
+import org.apache.wicket.markup.head.HeaderItem;
 
 import java.util.Collections;
 import java.util.List;
@@ -42,7 +43,7 @@ public class BootstrapThemeTheme extends Theme {
     }
 
     @Override
-    public List<ResourceReference> getResourceReferences() {
-        return Collections.<ResourceReference>singletonList(BootstrapThemeThemeCssReference.instance());
+    public List<HeaderItem> getDependencies() {
+        return Collections.<HeaderItem>singletonList(CssHeaderItem.forReference(BootstrapThemeThemeCssReference.instance()));
     }
 }

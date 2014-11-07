@@ -5,6 +5,7 @@ import de.agilecoders.wicket.core.settings.IBootstrapSettings;
 import de.agilecoders.wicket.core.settings.ITheme;
 import org.apache.wicket.Application;
 import org.apache.wicket.markup.head.CssHeaderItem;
+import org.apache.wicket.markup.head.HeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.request.Url;
 import org.apache.wicket.request.resource.ResourceReference;
@@ -48,8 +49,8 @@ public enum BootswatchTheme implements ITheme {
     }
 
     @Override
-    public List<ResourceReference> getResourceReferences() {
-        return Collections.singletonList(reference);
+    public List<HeaderItem> getDependencies() {
+        return Collections.<HeaderItem>singletonList(CssHeaderItem.forReference(reference));
     }
 
     @Override
@@ -61,8 +62,8 @@ public enum BootswatchTheme implements ITheme {
             response.render(CssHeaderItem.forReference(new UrlResourceReference(Url.parse(cdnUrl))));
         }
         else {
-            for (ResourceReference resourceReference : getResourceReferences()) {
-                response.render(CssHeaderItem.forReference(resourceReference));
+            for (HeaderItem headerItem : getDependencies()) {
+                response.render(headerItem);
             }
         }
     }

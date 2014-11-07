@@ -2,7 +2,8 @@ package de.agilecoders.wicket.themes.markup.html.metro;
 
 import de.agilecoders.wicket.core.markup.html.themes.bootstrap.BootstrapCssReference;
 import de.agilecoders.wicket.core.settings.Theme;
-import org.apache.wicket.request.resource.ResourceReference;
+import org.apache.wicket.markup.head.CssHeaderItem;
+import org.apache.wicket.markup.head.HeaderItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,11 +31,11 @@ public class MetroTheme extends Theme {
     }
 
     @Override
-    public List<ResourceReference> getResourceReferences() {
-        List<ResourceReference> references = new ArrayList<ResourceReference>();
-        references.addAll(super.getResourceReferences());
-        references.add(BootstrapCssReference.instance());
-        references.add(MetroCssReference.instance());
+    public List<HeaderItem> getDependencies() {
+        List<HeaderItem> references = new ArrayList<HeaderItem>();
+        references.addAll(super.getDependencies());
+        references.add(CssHeaderItem.forReference(BootstrapCssReference.instance()));
+        references.add(CssHeaderItem.forReference(MetroCssReference.instance()));
         return references;
     }
 }
