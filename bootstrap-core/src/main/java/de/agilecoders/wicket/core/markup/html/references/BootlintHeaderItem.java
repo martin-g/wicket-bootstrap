@@ -15,13 +15,15 @@ import java.util.Arrays;
  */
 public class BootlintHeaderItem extends JavaScriptContentHeaderItem {
 
+    public static final BootlintHeaderItem INSTANCE = new BootlintHeaderItem();
+
     /**
      * Constructor
      *
      * Configures checking for the current DOM document and generating a report
      * without disabled checks
      */
-    public BootlintHeaderItem() {
+    private BootlintHeaderItem() {
         this("bootlint.showLintReportForCurrentDocument([]);");
     }
 
