@@ -14,7 +14,6 @@
     };
 
     /**
-     * @Override
      * @param $element form element
      * @param $messageTarget element for message
      */

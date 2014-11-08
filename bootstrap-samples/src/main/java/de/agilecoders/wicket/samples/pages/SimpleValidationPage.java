@@ -48,7 +48,7 @@ public class SimpleValidationPage extends BaseValidationPage {
     @Override
     protected WebMarkupContainer newHeader(String wicketId) {
         WebMarkupContainer container = super.newHeader(wicketId);
-        container.add(new Label("type", Model.of("<p> next to fields")));
+        container.add(new Label("type", Model.of("p-tag next to input fields")));
         BookmarkablePageLink link = new BookmarkablePageLink("link", TooltipValidationPage.class);
         link.add(new Label("other", "tooltip validation"));
         container.add(link);

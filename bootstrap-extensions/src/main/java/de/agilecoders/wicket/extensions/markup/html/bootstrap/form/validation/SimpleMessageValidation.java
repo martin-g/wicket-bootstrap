@@ -8,11 +8,11 @@ import org.apache.wicket.markup.head.JavaScriptHeaderItem;
  * <h1>Validation behavior.</h1>
  * <p>Display error messages on form.</p>
  * This behavior may not properly with widgets like bootstrap-select or select2.
- * In that case try to wrap all inputs in div (that's done by default in bootstrap form layout)
+ * In this case try to wrap all inputs in div (that's done by default in bootstrap form layout)
  * and set appendToParent of config to true.
  * <br/>
  * <br/>
- * <b>DO NOT USE simple message and tooltip behavior on one page.</b>
+ * <b>DO NOT USE simple message validation behavior and tooltip validation behavior on one page.</b>
  *
  * @author Alexey Volkov
  * @see FormComponentVisitor
