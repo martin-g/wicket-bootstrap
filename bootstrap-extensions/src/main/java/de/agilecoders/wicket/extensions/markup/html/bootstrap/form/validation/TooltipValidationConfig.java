@@ -10,7 +10,7 @@ import de.agilecoders.wicket.jquery.IKey;
  * @author Osipov Anton
  * @since 31.10.2014
  */
-public class TooltipValidationConfig extends AbstractConfig {
+public class TooltipValidationConfig extends AbstractValidationConfig {
 
     private static final IKey<Boolean> Animation = newKey("animation", true);
     private static final IKey<String> Container = newKey("container", null);

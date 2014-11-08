@@ -1,20 +1,26 @@
 (function ($) {
-	/**
-	 * @Override
-	 * @param $element form element
-	 * @param message error message
-	 */
-	$.wb_validation.showError = function ($element, message) {
-		$element.css('border-color', '#8A370C');
-		$element.after('<p class="validation validation-message">' + message + '</p>');
-	};
+    /**
+     * Show error message.
+     *
+     * @param $element form element
+     * @param $messageTarget element for message
+     * @param message error message
+     */
+    $.wb_validation.showError = function ($element, $messageTarget, message) {
+        if (this.config.borderColor != null) {
+            $element.css('border-color', this.config.borderColor);
+        }
+        $messageTarget.after('<p class="validation validation-message">' + message + '</p>');
+    };
 
-	/**
-	 * @Override
-	 * @param $element form element
-	 */
-	$.wb_validation.hideError = function ($element) {
-		$element.css('border-color', '');
-		$element.next().remove();
-	};
+    /**
+     * @param $element form element
+     * @param $messageTarget message target
+     */
+    $.wb_validation.hideError = function ($element, $messageTarget) {
+        if (this.config.borderColor != null) {
+            $element.css('border-color', '');
+        }
+        $messageTarget.next().remove();
+    };
 })(jQuery);
