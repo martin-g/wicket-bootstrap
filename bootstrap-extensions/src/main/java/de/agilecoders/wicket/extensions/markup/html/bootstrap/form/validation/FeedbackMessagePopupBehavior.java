@@ -10,7 +10,7 @@ import org.apache.wicket.markup.ComponentTag;
 
 /**
  * <h1>Component behavior.</h1>
- * <p>Это поведение добавляет в тег компонента аттрибут содержащий текстовое описание ошибки.</p>
+ * <p>This behavior add an attribute to dom with error message.</p>
  */
 public class FeedbackMessagePopupBehavior extends Behavior {
 
