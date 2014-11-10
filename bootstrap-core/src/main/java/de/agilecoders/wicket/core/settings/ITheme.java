@@ -1,8 +1,7 @@
 package de.agilecoders.wicket.core.settings;
 
+import org.apache.wicket.markup.head.HeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
-import org.apache.wicket.request.resource.CssResourceReference;
-import org.apache.wicket.request.resource.ResourceReference;
 
 import java.util.List;
 
@@ -24,7 +23,7 @@ public interface ITheme {
     /**
      * @return A list of all resources needed by the theme
      */
-    List<ResourceReference> getResourceReferences();
+    List<HeaderItem> getDependencies();
 
     /**
      * Print to the web response what ever the {@link ITheme} wants to contribute to the head section.

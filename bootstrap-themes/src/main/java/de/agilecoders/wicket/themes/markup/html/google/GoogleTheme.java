@@ -1,7 +1,8 @@
 package de.agilecoders.wicket.themes.markup.html.google;
 
 import de.agilecoders.wicket.core.settings.Theme;
-import org.apache.wicket.request.resource.ResourceReference;
+import org.apache.wicket.markup.head.CssHeaderItem;
+import org.apache.wicket.markup.head.HeaderItem;
 
 import java.util.Collections;
 import java.util.List;
@@ -37,7 +38,7 @@ public class GoogleTheme extends Theme {
     }
 
     @Override
-    public List<ResourceReference> getResourceReferences() {
-        return Collections.<ResourceReference>singletonList(GoogleCssReference.instance());
+    public List<HeaderItem> getDependencies() {
+        return Collections.<HeaderItem>singletonList(CssHeaderItem.forReference(GoogleCssReference.instance()));
     }
 }

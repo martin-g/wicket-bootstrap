@@ -213,7 +213,7 @@ abstract class BasePage extends GenericWebPage<Void> {
     public void renderHead(IHeaderResponse response) {
         super.renderHead(response);
 
-        response.render(CssHeaderItem.forReference(FixBootstrapStylesCssResourceReference.INSTANCE));
+//        response.render(CssHeaderItem.forReference(FixBootstrapStylesCssResourceReference.INSTANCE));
         response.render(new FilteredHeaderItem(JavaScriptHeaderItem.forReference(ApplicationJavaScript.INSTANCE), "footer-container"));
         response.render(RespondJavaScriptReference.headerItem());
 
