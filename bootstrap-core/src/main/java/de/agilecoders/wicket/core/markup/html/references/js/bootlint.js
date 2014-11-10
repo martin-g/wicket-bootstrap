@@ -1,11 +1,13 @@
 /*!
- * Bootlint v0.7.0 (https://github.com/twbs/bootlint)
+ * Bootlint v0.8.0 (https://github.com/twbs/bootlint)
  * HTML linter for Bootstrap projects
  * Copyright (c) 2014 Christopher Rebert
  * Licensed under the MIT License (https://github.com/twbs/bootlint/blob/master/LICENSE).
  */
 
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+
+},{}],2:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.1.1
  * http://jquery.com/
@@ -9197,7 +9199,7 @@ return jQuery;
 
 }));
 
-},{}],2:[function(require,module,exports){
+},{}],3:[function(require,module,exports){
 ;(function(exports) {
 
 // export the class if we are in a Node-like system.
@@ -10319,7 +10321,7 @@ if (typeof define === 'function' && define.amd)
   semver = {}
 );
 
-},{}],3:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 /*!
  * Bootlint - an HTML linter for Bootstrap projects
  * https://github.com/twbs/bootlint
@@ -10331,6 +10333,8 @@ if (typeof define === 'function' && define.amd)
 
 var cheerio = require('cheerio');
 var semver = require('semver');
+var _location = require('./location');
+var LocationIndex = _location.LocationIndex;
 
 (function (exports) {
     'use strict';
@@ -11075,14 +11079,29 @@ var semver = require('semver');
         }
     });
 
-    exports._lint = function ($, reporter, disabledIdList) {
+    exports._lint = function ($, reporter, disabledIdList, html) {
+        var locationIndex = IN_NODE_JS ? new LocationIndex(html) : null;
+        var reporterWrapper = IN_NODE_JS ? function (problem) {
+            if (problem.elements) {
+                problem.elements = problem.elements.each(function (i, element) {
+                    if (element.startIndex !== undefined) {
+                        var location = locationIndex.locationOf(element.startIndex);
+                        if (location) {
+                            element.startLocation = location;
+                        }
+                    }
+                });
+            }
+            reporter(problem);
+        } : reporter;
+
         var disabledIdSet = {};
         disabledIdList.forEach(function (disabledId) {
             disabledIdSet[disabledId] = true;
         });
         Object.keys(allLinters).sort().forEach(function (linterId) {
             if (!disabledIdSet[linterId]) {
-                allLinters[linterId]($, reporter);
+                allLinters[linterId]($, reporterWrapper);
             }
         });
     };
@@ -11096,8 +11115,8 @@ var semver = require('semver');
          * @returns {undefined} Nothing
          */
         exports.lintHtml = function (html, reporter, disabledIds) {
-            var $ = cheerio.load(html);
-            this._lint($, reporter, disabledIds);
+            var $ = cheerio.load(html, {withStartIndices: true});
+            this._lint($, reporter, disabledIds, html);
         };
     }
     else {
@@ -11154,4 +11173,4 @@ var semver = require('semver');
     }
 })(typeof exports === 'object' && exports || this);
 
-},{"cheerio":1,"semver":2}]},{},[3]);
+},{"./location":1,"cheerio":2,"semver":3}]},{},[4]);
