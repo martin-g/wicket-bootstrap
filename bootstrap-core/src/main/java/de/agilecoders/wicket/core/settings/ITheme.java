@@ -2,8 +2,6 @@ package de.agilecoders.wicket.core.settings;
 
 import org.apache.wicket.markup.head.HeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
-import org.apache.wicket.request.resource.CssResourceReference;
-import org.apache.wicket.request.resource.ResourceReference;
 
 import java.util.List;
 
