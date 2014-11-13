@@ -56,7 +56,6 @@
         <servlet-api.version>2.5</servlet-api.version>
         <javax.javaee-web-api.version>6.0</javax.javaee-web-api.version>
         <versions-maven-plugin.version>2.1</versions-maven-plugin.version>
-        <rhino.version>1.7R4</rhino.version>
         <doxia.version>1.0</doxia.version>
         <less4j.version>1.8.4</less4j.version>
         <modernizr.version>2.8.3</modernizr.version>
@@ -151,12 +150,6 @@
                 <groupId>javax</groupId>
                 <artifactId>javaee-web-api</artifactId>
                 <version>${javax.javaee-web-api.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.mozilla</groupId>
-                <artifactId>rhino</artifactId>
-                <version>${rhino.version}</version>
             </dependency>
 
             <dependency>
