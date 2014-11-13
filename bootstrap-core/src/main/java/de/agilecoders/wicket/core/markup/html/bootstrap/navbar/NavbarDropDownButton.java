@@ -1,11 +1,11 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.navbar;
 
-import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.CssClassNameAppender;
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.CssClassNameRemover;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.DropDownButton;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
 
+import de.agilecoders.wicket.core.util.ListItemCssClassHelper;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.model.IModel;
 
@@ -40,6 +40,7 @@ public abstract class NavbarDropDownButton extends DropDownButton {
         super.onInitialize();
 
         this.setRenderBodyOnly(true);
+        ListItemCssClassHelper.onInitialize(this, "dropdown");
     }
 
     @Override
@@ -47,7 +48,7 @@ public abstract class NavbarDropDownButton extends DropDownButton {
         super.onConfigure();
 
         // add the dropdown css class name to the parent element not button element itself.
-        this.getParent().add(new CssClassNameAppender("dropdown"));
+        ListItemCssClassHelper.onConfigure(this, "dropdown");
     }
 
     @Override
