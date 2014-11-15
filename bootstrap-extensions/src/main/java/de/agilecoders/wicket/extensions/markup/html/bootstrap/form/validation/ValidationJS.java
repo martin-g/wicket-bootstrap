@@ -7,7 +7,7 @@ import org.apache.wicket.request.resource.JavaScriptResourceReference;
 import org.apache.wicket.resource.JQueryPluginResourceReference;
 
 /**
- * Collect js resource for validation
+ * Collect js resource references for validation
  *
  * @author Alexey Volkov
  * @since 07.11.14

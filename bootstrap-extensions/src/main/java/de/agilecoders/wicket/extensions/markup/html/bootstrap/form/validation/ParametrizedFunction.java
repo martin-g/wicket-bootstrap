@@ -5,9 +5,9 @@ import de.agilecoders.wicket.jquery.JQuery;
 
 /**
  * <h1>JS function with parameters {@link de.agilecoders.wicket.jquery.JQuery.AbstractFunction}.</h1>
- * <p>Create JS function with string or {@link de.agilecoders.wicket.jquery.AbstractConfig} parameters <br>
+ * <p>Create JS function with string or {@link de.agilecoders.wicket.jquery.Config} parameters <br>
  *
- * @TODO move to wicket-jquery-selectors
+ * TODO move to wicket-jquery-selectors
  *
  * @author Anton Osipov
  * @author Alexey Volkov

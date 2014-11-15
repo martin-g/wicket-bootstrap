@@ -29,7 +29,7 @@ import static de.agilecoders.wicket.jquery.JQuery.$;
 public abstract class ValidationBehavior<T extends AbstractValidationConfig> extends Behavior {
 
     private static final String attribute = "wb-validation-message";
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = -8804371445707865320L;
 
     /**
      * config

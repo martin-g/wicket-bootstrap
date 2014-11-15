@@ -14,7 +14,6 @@ public class SimpleValidationConfig extends AbstractValidationConfig {
      * sets flag of display parent to false
      */
     public SimpleValidationConfig() {
-        appendToParent(false);
     }
 
 }

@@ -5,10 +5,15 @@ import de.agilecoders.wicket.jquery.IKey;
 
 /**
  * Base configuration for validation behaviors.
- * Config contains one flag - target for validation message.
- * If appendToParent set to true message will be append to input parent element in DOM.
- * Otherwise message will be append to input element. Bt default appendToParent is false
- * errorClass - is validation class which appends to parent element in DOM. By default uses bootstrap "has-error" class.
+ * Config contains two parameters:
+ * <p>
+ * appendToParent flag - target for validation message.
+ * If appendToParent sets to true message will be append to input parent element in DOM.
+ * Otherwise message will be append to input element. By default appendToParent is false
+ * </p>
+  * <p>
+ * errorClass - is css validation class which appends to parent element in DOM. By default uses bootstrap "has-error" class.
+ * </p>
  *
  * @author Alexey Volkov
  * @since 08.11.14
@@ -36,7 +41,7 @@ public abstract class AbstractValidationConfig extends AbstractConfig {
     }
 
     /**
-     * @return flag
+     * @return append to parent flag
      */
     public Boolean getAppendToParent() {
         return get(AppendToParent);

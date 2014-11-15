@@ -14,11 +14,10 @@ import org.apache.wicket.markup.head.JavaScriptHeaderItem;
  * and set appendToParent of config to true.
  * <br/>
  * <br/>
- * <b>DO NOT USE simple message validation behavior and tooltip validation behavior on one page.</b>
+ * <b>DO NOT USE SimpleMessageValidation behavior and TooltipValidation behavior on one page.</b>
  *
  * @author Alexey Volkov
  * @author Osipov Anton
- * @see FeedbackMessageBehaviorVisitor
  * @since 15.09.2014
  */
 public class TooltipValidation extends ValidationBehavior<TooltipValidationConfig> {

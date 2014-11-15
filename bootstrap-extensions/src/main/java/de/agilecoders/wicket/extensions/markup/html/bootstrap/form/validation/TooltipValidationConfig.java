@@ -1,6 +1,5 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.form.validation;
 
-import de.agilecoders.wicket.jquery.AbstractConfig;
 import de.agilecoders.wicket.jquery.IKey;
 
 /**

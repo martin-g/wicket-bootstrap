@@ -4,14 +4,14 @@ import org.apache.wicket.MarkupContainer;
 import org.apache.wicket.markup.html.form.FormComponent;
 import org.apache.wicket.util.visit.IVisit;
 import org.apache.wicket.util.visit.IVisitor;
-import org.apache.wicket.util.visit.Visits;
 
 /**
  * <h1>Component visitor.</h1>
- * <p>adds to all FormComponents component {@link FeedbackMessageBehavior}.</p>
+ * <p>adds {@link FeedbackMessageBehavior} to all form components.</p>
  *
  * @author Alexey Volkov
  * @author Osipov Anton
+ * @since 15.09.2014
  */
 public class FeedbackMessageBehaviorVisitor implements IVisitor<FormComponent<?>, Void> {
 
@@ -30,7 +30,7 @@ public class FeedbackMessageBehaviorVisitor implements IVisitor<FormComponent<?>
     }
 
     /**
-     * Add visitor instance to all children's.<br>
+     * Add visitor instance to all children form components.<br>
      *
      * @param parentComponent parent component
      * @param attribute       name of tag attribute

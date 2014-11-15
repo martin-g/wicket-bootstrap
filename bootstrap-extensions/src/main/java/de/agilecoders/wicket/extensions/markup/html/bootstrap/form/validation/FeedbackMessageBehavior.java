@@ -12,7 +12,10 @@ import static com.google.common.base.Strings.isNullOrEmpty;
 
 /**
  * <h1>Component behavior.</h1>
- * <p>This behavior adds an attribute to dom element with feedback message.</p>
+ * <p>This behavior adds an attribute to DOM element with feedback message.</p>
+ *
+ * @author Alexey Volkov
+ * @since 15.09.2014
  */
 public class FeedbackMessageBehavior extends Behavior {
 
@@ -33,12 +36,18 @@ public class FeedbackMessageBehavior extends Behavior {
     public void onComponentTag(Component component, ComponentTag tag) {
         FeedbackMessages messages = component.getFeedbackMessages();
         if (messages != null) {
+            StringBuilder sb = new StringBuilder();
             for (FeedbackMessage message : messages.messages(ErrorLevelFeedbackMessageFilter.ALL)) {
-                String messageString = message.getMessage().toString();
-                if (!isNullOrEmpty(messageString)) {
-                    tag.getAttributes().put(attributeName, messageString);
+                String msg = message.getMessage().toString();
+                if (!isNullOrEmpty(msg)) {
+                    sb.append(msg);
                 }
             }
+            String messageString = sb.toString();
+            if (!isNullOrEmpty(messageString)) {
+                tag.getAttributes().put(attributeName, messageString);
+            }
+
         }
     }
 }
