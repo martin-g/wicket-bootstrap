@@ -1,6 +1,14 @@
 (function ($) {
     $.wb_validation = {
-        config: {appendToParent: false},
+        config: null,
+        defaultConfig: {
+            appendToParent: false,
+            errorClass: "has-error"
+        },
+
+        updateConfig: function (config) {
+            this.config = $.extend(this.defaultConfig, config);
+        },
 
         validation: function ($container) {
             $container.find("input, select, textarea").filter(':eq(0)').focus();
@@ -19,10 +27,12 @@
                     $element = notValid.parent();
                 }
                 that.showError(notValid, $element, notValid.attr('wb-validation-message'));
+                that.addErrorClass(notValid, $element);
                 notValid.removeAttr('wb-validation-message');
 
                 notValid.one('click keydown change blur', function () {
                     that.hideError(notValid, $element);
+                    that.removeErrorClass(notValid, $element);
                 });
             });
         },
@@ -43,10 +53,33 @@
          *
          * @param $element form element
          * @param $messageTarget message target
-         * @param $messageTarget message target
          */
         hideError: function ($element, $messageTarget) {
             // need override this method
+        },
+
+        /**
+         * add error class to element
+         *
+         * @param $element
+         * @param $messageTarget
+         */
+        addErrorClass: function ($element, $messageTarget) {
+            if (this.config.errorClass != null) {
+                $messageTarget.parent().addClass(this.config.errorClass);
+            }
+        },
+
+        /**
+         * removes error class from element
+         *
+         * @param $element
+         * @param $messageTarget
+         */
+        removeErrorClass: function ($element, $messageTarget) {
+            if (this.config.errorClass != null) {
+                $messageTarget.parent().removeClass(this.config.errorClass);
+            }
         }
     };
 

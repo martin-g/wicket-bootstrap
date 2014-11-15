@@ -5,7 +5,6 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapResour
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
-import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
 
 /**
  * <h1>Validation behavior.</h1>
@@ -19,7 +18,7 @@ import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
  *
  * @author Alexey Volkov
  * @author Osipov Anton
- * @see FormComponentVisitor
+ * @see FeedbackMessageBehaviorVisitor
  * @since 15.09.2014
  */
 public class TooltipValidation extends ValidationBehavior<TooltipValidationConfig> {

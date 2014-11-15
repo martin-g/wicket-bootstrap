@@ -238,7 +238,7 @@ public class ExtensionsPage extends BasePage {
 		};
 		laddaLink.setEffect(LaddaBehavior.Effect.EXPAND_LEFT).setSize(Buttons.Size.Medium);
 
-		form.add(new Code("linkCode", Model.of("laddaLink = new LaddaAjaxLink<String>(\"laddaLink\", Model.of(\"Link, 2secs\"), Buttons.Type.Success) {\n"
+		form.add(new Code("linkCode", Model.of("laddaLink = new LaddaAjaxLink<String>(\"laddaLink\", Model.func(\"Link, 2secs\"), Buttons.Type.Success) {\n"
 											   + "    @Override public void onClick(AjaxRequestTarget target) {\n"
 											   + "        Duration.seconds(2).sleep();\n"
 											   + "    }\n"

@@ -1,6 +1,6 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.form.validation;
 
-import de.agilecoders.wicket.jquery.AbstractConfig;
+import de.agilecoders.wicket.jquery.Config;
 import de.agilecoders.wicket.jquery.JQuery;
 
 /**
@@ -24,8 +24,8 @@ public class ParametrizedFunction extends JQuery.AbstractFunction {
     public ParametrizedFunction(String functionName, Object... parameters) {
         super(functionName);
         for (Object parameter : parameters) {
-            if (parameter instanceof AbstractConfig) {
-                addParameter(((AbstractConfig) parameter).toJsonString());
+            if (parameter instanceof Config) {
+                addParameter(((Config) parameter).toJsonString());
             } else {
                 addParameter(toParameterValue(parameter));
             }
@@ -39,7 +39,7 @@ public class ParametrizedFunction extends JQuery.AbstractFunction {
      * @param value value
      * @return inline function
      */
-    public static ParametrizedFunction of(String name, String... value) {
+    public static ParametrizedFunction func(String name, Object... value) {
         return new ParametrizedFunction(name, value);
     }
 

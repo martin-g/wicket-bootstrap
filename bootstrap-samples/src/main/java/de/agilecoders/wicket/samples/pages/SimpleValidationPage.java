@@ -23,7 +23,7 @@ public class SimpleValidationPage extends BaseValidationPage {
         "    public MyWebPage(PageParameters parameters) {\n"
         + "        super(parameters);\n"
         + "        SimpleMessageValidation validation = new SimpleMessageValidation();\n"
-        + "        validation.getConfig().withBorderColor(\"#8A370C\").appendToParent(true);\n"
+        + "        validation.getConfig().appendToParent(true);\n"
         + "        add(validation);\n"
         + "    }\n";
 
@@ -33,7 +33,7 @@ public class SimpleValidationPage extends BaseValidationPage {
     public SimpleValidationPage(PageParameters parameters) {
         super(parameters);
         SimpleMessageValidation validation = new SimpleMessageValidation();
-        validation.getConfig().withBorderColor("#8A370C").appendToParent(true);
+        validation.getConfig().appendToParent(true);
         add(validation);
         add(new Label("behavior", Model.of(SimpleMessageValidation.class.getSimpleName())));
         add(new Label("behavior-other", Model.of(TooltipValidation.class.getSimpleName())));

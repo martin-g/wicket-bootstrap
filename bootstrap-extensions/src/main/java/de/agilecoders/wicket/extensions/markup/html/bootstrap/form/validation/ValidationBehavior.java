@@ -8,7 +8,6 @@ import org.apache.wicket.event.IEvent;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
-import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.util.visit.IVisit;
 import org.apache.wicket.util.visit.IVisitor;
@@ -24,7 +23,7 @@ import static de.agilecoders.wicket.jquery.JQuery.$;
  *
  * @author Alexey Volkov
  * @author Osipov Anton
- * @see FormComponentVisitor
+ * @see FeedbackMessageBehaviorVisitor
  * @since 15.09.2014
  */
 public abstract class ValidationBehavior<T extends AbstractValidationConfig> extends Behavior {
@@ -40,7 +39,7 @@ public abstract class ValidationBehavior<T extends AbstractValidationConfig> ext
     @Override
     public void onConfigure(Component component) {
         if (component instanceof MarkupContainer) {
-            FormComponentVisitor.add((MarkupContainer) component, attribute);
+            FeedbackMessageBehaviorVisitor.add((MarkupContainer) component, attribute);
         }
     }
 
@@ -50,11 +49,9 @@ public abstract class ValidationBehavior<T extends AbstractValidationConfig> ext
             AjaxRequestTarget target = (AjaxRequestTarget) event.getPayload();
             if (component instanceof Form<?>) {
                 attachJavaScript(target, component);
-            } else {
-                if (component instanceof MarkupContainer) {
-                    for (Form<?> form : getChildren((MarkupContainer) component, Form.class)) {
-                        attachJavaScript(target, form);
-                    }
+            } else if (component instanceof MarkupContainer) {
+                for (Form<?> form : getChildren((MarkupContainer) component, Form.class)) {
+                    attachJavaScript(target, form);
                 }
             }
         }
@@ -63,14 +60,12 @@ public abstract class ValidationBehavior<T extends AbstractValidationConfig> ext
     @Override
     public void renderHead(Component component, IHeaderResponse response) {
         response.render(JavaScriptHeaderItem.forReference(ValidationJS.common()));
-        response.render(OnDomReadyHeaderItem.forScript("$.wb_validation.config = " + config.toJsonString() + ";"));
+        response.render(OnDomReadyHeaderItem.forScript("$.wb_validation.updateConfig(" + config.toJsonString() + ");"));
         if (component instanceof Form<?>) {
             renderJavaScript(response, component);
-        } else {
-            if (component instanceof MarkupContainer) {
-                for (Form<?> form : getChildren((MarkupContainer) component, Form.class)) {
-                    renderJavaScript(response, form);
-                }
+        } else if (component instanceof MarkupContainer) {
+            for (Form<?> form : getChildren((MarkupContainer) component, Form.class)) {
+                renderJavaScript(response, form);
             }
         }
 
@@ -93,7 +88,7 @@ public abstract class ValidationBehavior<T extends AbstractValidationConfig> ext
     }
 
     private void renderJavaScript(IHeaderResponse response, Component component) {
-        response.render($(component).chain(ParametrizedFunction.of("wb_validation", "validate"))
+        response.render($(component).chain(ParametrizedFunction.func("wb_validation", "validate"))
             .asDomReadyScript());
     }
 
