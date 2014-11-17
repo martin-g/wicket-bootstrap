@@ -68,6 +68,7 @@
         <jquery.version>2.1.1</jquery.version>
         <maven-bundle-plugin.version>2.5.0</maven-bundle-plugin.version>
         <wicket.version>6.18.0</wicket.version>
+        <yuicompressor.version>2.4.7</yuicompressor.version>
     </properties>
 
     <dependencyManagement>
@@ -169,6 +170,13 @@
                 <artifactId>servlet-api</artifactId>
                 <version>${servlet-api.version}</version>
                 <scope>provided</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.yahoo.platform.yui</groupId>
+                <artifactId>yuicompressor</artifactId>
+                <version>${yuicompressor.version}</version>
+                <optional>true</optional>
             </dependency>
 
         </dependencies>
