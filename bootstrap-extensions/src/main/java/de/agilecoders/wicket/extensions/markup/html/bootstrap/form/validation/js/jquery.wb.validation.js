@@ -1,3 +1,11 @@
+/**
+ * custom js, some kind of jQuery plugin with 2 not implemented functions: 'showError' and 'hideError'
+ *
+ * any extension of $.wb_validation should correctly implement 'showError' and 'hideError' functions.
+ *
+ * 'showError' should add validation message artifacts to DOM
+ * 'hideError' should remove from DOM all generated validation message artifacts
+ */
 (function ($) {
     $.wb_validation = {
         config: null,
@@ -45,7 +53,7 @@
          * @param message error message
          */
         showError: function ($element, $messageTarget, message) {
-            // need override this method
+            // override this method
         },
 
         /**
@@ -55,7 +63,7 @@
          * @param $messageTarget message target
          */
         hideError: function ($element, $messageTarget) {
-            // need override this method
+            // override this method
         },
 
         /**

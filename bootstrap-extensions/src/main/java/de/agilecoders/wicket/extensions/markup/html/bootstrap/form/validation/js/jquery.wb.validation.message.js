@@ -1,4 +1,11 @@
+/**
+ * 'showError' and 'hideError' functions implementation of $.wb_validation (@see jquery.wb.validation.js)
+ *
+ * 'showError'-function appends p-tag with validation message.
+ * 'hideError'-function removes appended p-tag with validation message.
+ */
 (function ($) {
+
     /**
      * Show error message.
      *
