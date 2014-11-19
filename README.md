@@ -35,7 +35,7 @@ Extensions
 * JQueryUI (1.9.2): http://api.jqueryui.com/
    * Draggable: http://api.jqueryui.com/draggable
    * Resizable: http://api.jqueryui.com/resizable
-* less4j (1.8.2): https://github.com/SomMeri/less4j
+* less4j (1.8.4): https://github.com/SomMeri/less4j
 * bootstrap-tour (0.9.3): http://sorich87.github.com/bootstrap-tour
 * OpenWebIcons (2014-09-29): http://pfefferle.github.com/openwebicons/
 * [Twitter Typeahead (0.9.3)](https://github.com/l0rdn1kk0n/wicket-bootstrap/tree/master/bootstrap-extensions/src/main/java/de/agilecoders/wicket/extensions/markup/html/bootstrap/form/typeahead): http://twitter.github.io/typeahead.js/
@@ -59,7 +59,7 @@ core maven dependency:
 <dependency>
     <groupId>de.agilecoders.wicket</groupId>
     <artifactId>wicket-bootstrap-core</artifactId>
-    <version>0.9.5</version>
+    <version>0.9.7</version>
 </dependency>
 ```
 
@@ -69,7 +69,7 @@ for all extensions:
 <dependency>
     <groupId>de.agilecoders.wicket</groupId>
     <artifactId>wicket-bootstrap-extensions</artifactId>
-    <version>0.9.5</version>
+    <version>0.9.7</version>
 </dependency>
 ```
 
@@ -79,7 +79,7 @@ for all themes:
 <dependency>
     <groupId>de.agilecoders.wicket</groupId>
     <artifactId>wicket-bootstrap-themes</artifactId>
-    <version>0.9.5</version>
+    <version>0.9.7</version>
 </dependency>
 ```
 
@@ -89,7 +89,7 @@ if you want to use a less compiler:
 <dependency>
     <groupId>de.agilecoders.wicket</groupId>
     <artifactId>wicket-bootstrap-less</artifactId>
-    <version>0.9.5</version>
+    <version>0.9.7</version>
 </dependency>
 ```
 
@@ -99,7 +99,7 @@ all samples can be used with this dependency:
 <dependency>
     <groupId>de.agilecoders.wicket</groupId>
     <artifactId>wicket-bootstrap-samples</artifactId>
-    <version>0.9.5</version>
+    <version>0.9.7</version>
 </dependency>
 ```
 
@@ -122,9 +122,10 @@ then you are able to use all wicket-bootstrap components.
 Authors
 -------
 
-[![Ohloh profile for Michael Haitz](https://www.ohloh.net/accounts/235496/widgets/account_detailed.gif)](https://www.ohloh.net/accounts/235496?ref=Detailed)
+[![OpenHub profile for Michael Haitz](https://www.openhub.net/accounts/l0rdn1kk0n/widgets/account_detailed.gif)](https://www.openhub.net/accounts/l0rdn1kk0n?ref=Detailed)
 
-[![Ohloh profile for Martin Grigorov](https://www.ohloh.net/accounts/138913/widgets/account_detailed.gif)](https://www.ohloh.net/accounts/138913?ref=Detailed)
+[![OpenHub profile for Martin Grigorov](https://www.openhub.net/accounts/mgrigorov/widgets/account_detailed.gif)](https://www.openhub.net/accounts/mgrigorov?ref=Detailed)
+
 
 Bug tracker
 -----------
