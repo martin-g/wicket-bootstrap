@@ -1,9 +1,9 @@
 package de.agilecoders.wicket.core.settings;
 
 import de.agilecoders.wicket.core.Bootstrap;
-import de.agilecoders.wicket.jquery.util.Generics2;
 import org.apache.wicket.Application;
 import org.apache.wicket.markup.head.CssHeaderItem;
+import org.apache.wicket.markup.head.HeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.request.Url;
@@ -12,6 +12,7 @@ import org.apache.wicket.request.resource.JavaScriptResourceReference;
 import org.apache.wicket.request.resource.ResourceReference;
 import org.apache.wicket.request.resource.UrlResourceReference;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -35,7 +36,7 @@ import java.util.List;
 public class Theme implements ITheme {
 
     private final String name;
-    private final List<ResourceReference> resourceReferences;
+    private final List<HeaderItem> headerItems = new ArrayList<HeaderItem>();
 
     /**
      * Construct.
@@ -45,20 +46,26 @@ public class Theme implements ITheme {
      */
     public Theme(final String name, final ResourceReference... resourceReferences) {
         this.name = name;
-        this.resourceReferences = Generics2.newArrayList(resourceReferences);
+
+        for (ResourceReference resourceReference : resourceReferences) {
+            if (resourceReference instanceof CssResourceReference) {
+                headerItems.add(CssHeaderItem.forReference(resourceReference));
+            } else if (resourceReference instanceof JavaScriptResourceReference) {
+                headerItems.add(JavaScriptHeaderItem.forReference(resourceReference));
+            }
+        }
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public String name() {
         return name;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
+    public List<HeaderItem> getDependencies() {
+        return headerItems;
+    }
+
     @Override
     public void renderHead(IHeaderResponse response) {
         if (useCdnResources()) {
@@ -94,12 +101,8 @@ public class Theme implements ITheme {
     }
 
     private void renderPackageReferences(IHeaderResponse response) {
-        for (ResourceReference resourceReference : resourceReferences) {
-            if (resourceReference instanceof CssResourceReference) {
-                response.render(CssHeaderItem.forReference(resourceReference));
-            } else if (resourceReference instanceof JavaScriptResourceReference) {
-                response.render(JavaScriptHeaderItem.forReference(resourceReference));
-            }
+        for (HeaderItem headerItem : getDependencies()) {
+            response.render(headerItem);
         }
     }
 

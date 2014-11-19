@@ -1,8 +1,8 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown;
 
-import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.CssClassNameAppender;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.ButtonList;
 
+import de.agilecoders.wicket.core.util.ListItemCssClassHelper;
 import org.apache.wicket.markup.html.link.AbstractLink;
 import org.apache.wicket.model.IModel;
 
@@ -26,9 +26,16 @@ public class MenuHeader extends AbstractLink {
     }
 
     @Override
+    protected void onInitialize() {
+        super.onInitialize();
+
+        ListItemCssClassHelper.onInitialize(this, "dropdown-header");
+    }
+
+    @Override
     protected void onConfigure() {
         super.onConfigure();
 
-        getParent().add(new CssClassNameAppender("dropdown-header"));
+        ListItemCssClassHelper.onConfigure(this, "dropdown-header");
     }
 }

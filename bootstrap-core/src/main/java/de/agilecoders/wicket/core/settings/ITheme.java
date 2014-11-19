@@ -1,6 +1,9 @@
 package de.agilecoders.wicket.core.settings;
 
+import org.apache.wicket.markup.head.HeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
+
+import java.util.List;
 
 /**
  * #### Description
@@ -16,6 +19,11 @@ public interface ITheme {
      * @return The unique name of this theme.
      */
     String name();
+
+    /**
+     * @return A list of all resources needed by the theme
+     */
+    List<HeaderItem> getDependencies();
 
     /**
      * Print to the web response what ever the {@link ITheme} wants to contribute to the head section.

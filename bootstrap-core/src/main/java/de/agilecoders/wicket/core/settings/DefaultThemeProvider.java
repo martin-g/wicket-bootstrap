@@ -98,27 +98,26 @@ public class DefaultThemeProvider implements ThemeProvider {
     /**
      * sets the default theme.
      *
-     * @param theme The new default theme
+     * @param newDefaultTheme The new default theme
      * @return This instance
      */
-    public DefaultThemeProvider defaultTheme(final ITheme theme) {
-        return defaultTheme(theme.name());
-    }
-
-    /**
-     * sets the default theme.
-     *
-     * @param themeName The new default theme
-     * @return This instance
-     */
-    public DefaultThemeProvider defaultTheme(final String themeName) {
-        ITheme newDefaultTheme = byName(themeName);
-
+    public DefaultThemeProvider defaultTheme(final ITheme newDefaultTheme) {
         if (newDefaultTheme != null && !newDefaultTheme.equals(defaultTheme)) {
             defaultTheme = newDefaultTheme;
         }
 
         return this;
+    }
+
+    /**
+     * sets the default theme.
+     *
+     * @param themeName The name of the new default theme
+     * @return This instance
+     */
+    public DefaultThemeProvider defaultTheme(final String themeName) {
+        ITheme newDefaultTheme = byName(themeName);
+        return defaultTheme(newDefaultTheme);
     }
 
     @Override

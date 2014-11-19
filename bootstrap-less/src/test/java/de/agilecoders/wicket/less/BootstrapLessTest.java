@@ -45,14 +45,13 @@ public class BootstrapLessTest {
     }
 
     @Test
-    // unignore after https://github.com/l0rdn1kk0n/wicket-webjars/issues/17
     public void importWebJars() throws Exception {
         LessCacheManager less = LessCacheManager.get();
         URL res = Thread.currentThread().getContextClassLoader().getResource("import.less");
 
         LessSource.URLSource lessSource = less.getLessSource(res, null);
         String css = less.getCss(lessSource);
-        assertThat(css, is(equalTo(".rule {\n  background: #428bca;\n}\n")));
+        assertThat(css, is(equalTo(".rule {\n  background: #337ab7;\n}\n")));
     }
 
     @Test

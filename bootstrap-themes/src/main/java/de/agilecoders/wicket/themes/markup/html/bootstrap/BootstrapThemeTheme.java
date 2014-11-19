@@ -1,6 +1,11 @@
 package de.agilecoders.wicket.themes.markup.html.bootstrap;
 
 import de.agilecoders.wicket.core.settings.Theme;
+import org.apache.wicket.markup.head.CssHeaderItem;
+import org.apache.wicket.markup.head.HeaderItem;
+
+import java.util.Collections;
+import java.util.List;
 
 /**
  * #### Description
@@ -12,9 +17,8 @@ import de.agilecoders.wicket.core.settings.Theme;
  * ```
  * public void init() {
  *     final IBootstrapSettings settings = new BootstrapSettings();
- *     Bootstrap.install(this, settings);
- *     // theme provider must be set after `install` because it needs webjars.
  *     settings.setThemeProvider(new SingleThemeProvider(new BootstrapThemeTheme()));
+ *     Bootstrap.install(this, settings);
  * }
  * ```
  *
@@ -28,7 +32,7 @@ public class BootstrapThemeTheme extends Theme {
      * @param name the theme name
      */
     public BootstrapThemeTheme(String name) {
-        super(name, BootstrapThemeThemeCssReference.instance());
+        super(name);
     }
 
     /**
@@ -36,5 +40,10 @@ public class BootstrapThemeTheme extends Theme {
      */
     public BootstrapThemeTheme() {
         this("bootstrap-theme");
+    }
+
+    @Override
+    public List<HeaderItem> getDependencies() {
+        return Collections.<HeaderItem>singletonList(CssHeaderItem.forReference(BootstrapThemeThemeCssReference.instance()));
     }
 }

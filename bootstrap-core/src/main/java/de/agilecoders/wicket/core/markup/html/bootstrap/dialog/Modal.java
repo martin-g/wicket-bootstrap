@@ -450,7 +450,12 @@ public class Modal<T> extends GenericPanel<T> {
         super.onConfigure();
 
         if (useFadein()) {
-            add(new CssClassNameAppender("fade"));
+            add(new CssClassNameAppender("fade") {
+                @Override
+                public boolean isTemporary(Component component) {
+                    return true;
+                }
+            });
         }
 
         if (Strings.isEmpty(headerLabel.getDefaultModelObjectAsString())) {

@@ -113,7 +113,7 @@ public abstract class DropDownButton extends AbstractLink implements Activatable
      * @return new initializer script
      */
     protected String newInitializerScript() {
-        JQuery jQuery = $(this, ".dropdown-toggle");
+        JQuery jQuery = $(baseButton);
 
         return jQuery.chain(dropdown()).get();
     }

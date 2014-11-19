@@ -1,10 +1,12 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.navbar;
 
-import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.CssClassNameAppender;
+import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.CssClassNameRemover;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.DropDownButton;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
 
+import de.agilecoders.wicket.core.util.ListItemCssClassHelper;
+import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.model.IModel;
 
 /**
@@ -22,7 +24,7 @@ public abstract class NavbarDropDownButton extends DropDownButton {
     public NavbarDropDownButton(final IModel<String> model) {
         super(Navbar.componentId(), model);
     }
-    
+
     /**
      * Construct.
      *
@@ -38,6 +40,7 @@ public abstract class NavbarDropDownButton extends DropDownButton {
         super.onInitialize();
 
         this.setRenderBodyOnly(true);
+        ListItemCssClassHelper.onInitialize(this, "dropdown");
     }
 
     @Override
@@ -45,7 +48,7 @@ public abstract class NavbarDropDownButton extends DropDownButton {
         super.onConfigure();
 
         // add the dropdown css class name to the parent element not button element itself.
-        this.getParent().add(new CssClassNameAppender("dropdown"));
+        ListItemCssClassHelper.onConfigure(this, "dropdown");
     }
 
     @Override
@@ -53,10 +56,9 @@ public abstract class NavbarDropDownButton extends DropDownButton {
         // do nothing, because navbar dropdown button inherits its styles from navbar.
     }
 
-    @Override
-    protected String newInitializerScript() {
-        // do not create initializer script because this component doesn't render its tag
-        // see #onInitialize() -> setRenderBodyOnly(true)
-        return null;
+    protected WebMarkupContainer newButton(String markupId, IModel<String> labelModel, IModel<IconType> iconTypeModel) {
+        WebMarkupContainer button = super.newButton(markupId, labelModel, iconTypeModel);
+        button.add(new CssClassNameRemover("btn"));
+        return button;
     }
 }

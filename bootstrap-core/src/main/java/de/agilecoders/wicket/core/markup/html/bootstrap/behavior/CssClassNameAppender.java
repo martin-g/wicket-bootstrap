@@ -90,7 +90,7 @@ public class CssClassNameAppender extends AttributeAppender {
         if (Strings.isEmpty(currentValue)) {
             return appendValue != null ? appendValue : null;
         } else if (Strings.isEmpty(appendValue)) {
-            return currentValue != null ? currentValue : null;
+            return currentValue;
         }
 
         return CssClassNames.parse(currentValue).addRaw(appendValue).asString();

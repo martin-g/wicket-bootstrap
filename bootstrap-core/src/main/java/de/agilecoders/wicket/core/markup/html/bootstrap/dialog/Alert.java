@@ -1,6 +1,5 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.dialog;
 
-import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapResourcesBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNameProvider;
 import de.agilecoders.wicket.core.util.Attributes;
@@ -93,7 +92,7 @@ public class Alert extends GenericPanel<String> {
 
         add(this.inlineHeader, this.blockHeader, this.message, this.closeButton);
 
-        BootstrapBaseBehavior.addTo(this);
+        add(BootstrapResourcesBehavior.instance());
     }
 
     @Override
@@ -216,9 +215,5 @@ public class Alert extends GenericPanel<String> {
         }
 
         this.message.setDefaultModel(getDefaultModel());
-
-        if (closeButton.isVisible()) {
-            add(BootstrapResourcesBehavior.instance());
-        }
     }
 }

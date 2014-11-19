@@ -26,7 +26,7 @@ import de.agilecoders.wicket.core.settings.IBootstrapSettings;
 import de.agilecoders.wicket.core.settings.ITheme;
 import de.agilecoders.wicket.samples.WicketApplication;
 import de.agilecoders.wicket.samples.assets.base.ApplicationJavaScript;
-import de.agilecoders.wicket.core.markup.html.references.BootlintJavaScriptReference;
+import de.agilecoders.wicket.core.markup.html.references.BootlintHeaderItem;
 import de.agilecoders.wicket.samples.assets.base.DocsCssResourceReference;
 import de.agilecoders.wicket.samples.assets.base.FixBootstrapStylesCssResourceReference;
 import de.agilecoders.wicket.samples.components.site.Footer;
@@ -213,7 +213,7 @@ abstract class BasePage extends GenericWebPage<Void> {
     public void renderHead(IHeaderResponse response) {
         super.renderHead(response);
 
-        response.render(CssHeaderItem.forReference(FixBootstrapStylesCssResourceReference.INSTANCE));
+//        response.render(CssHeaderItem.forReference(FixBootstrapStylesCssResourceReference.INSTANCE));
         response.render(new FilteredHeaderItem(JavaScriptHeaderItem.forReference(ApplicationJavaScript.INSTANCE), "footer-container"));
         response.render(RespondJavaScriptReference.headerItem());
 
@@ -222,7 +222,7 @@ abstract class BasePage extends GenericWebPage<Void> {
         }
 
         if (!getRequest().getRequestParameters().getParameterValue("bootlint").isNull()) {
-            response.render(JavaScriptHeaderItem.forReference(BootlintJavaScriptReference.INSTANCE));
+            response.render(BootlintHeaderItem.INSTANCE);
         }
     }
 

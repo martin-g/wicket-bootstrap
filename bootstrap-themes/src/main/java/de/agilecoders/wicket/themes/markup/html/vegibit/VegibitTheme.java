@@ -5,12 +5,14 @@ import de.agilecoders.wicket.core.settings.IBootstrapSettings;
 import de.agilecoders.wicket.core.settings.ITheme;
 import org.apache.wicket.Application;
 import org.apache.wicket.markup.head.CssHeaderItem;
+import org.apache.wicket.markup.head.HeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.request.Url;
 import org.apache.wicket.request.resource.ResourceReference;
 import org.apache.wicket.request.resource.UrlResourceReference;
 
 import java.util.Collections;
+import java.util.List;
 
 /**
  * A {@link de.agilecoders.wicket.core.settings.ITheme theme} for Bootstrap
@@ -41,6 +43,11 @@ public enum VegibitTheme implements ITheme {
     }
 
     @Override
+    public List<HeaderItem> getDependencies() {
+        return Collections.<HeaderItem>singletonList(CssHeaderItem.forReference(reference));
+    }
+
+    @Override
     public Iterable<String> getCdnUrls() {
         return Collections.emptyList();
     }
@@ -53,7 +60,9 @@ public enum VegibitTheme implements ITheme {
             }
             response.render(CssHeaderItem.forReference(new UrlResourceReference(Url.parse(cdnUrl))));
         } else {
-            response.render(CssHeaderItem.forReference(reference));
+            for (HeaderItem headerItem : getDependencies()) {
+                response.render(headerItem);
+            }
         }
     }
 

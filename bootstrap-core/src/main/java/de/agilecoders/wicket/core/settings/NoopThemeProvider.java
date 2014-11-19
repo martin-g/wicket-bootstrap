@@ -3,6 +3,7 @@ package de.agilecoders.wicket.core.settings;
 import de.agilecoders.wicket.core.Bootstrap;
 import de.agilecoders.wicket.jquery.util.Generics2;
 import org.apache.wicket.markup.head.CssHeaderItem;
+import org.apache.wicket.markup.head.HeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
 
 import java.util.Collections;
@@ -39,6 +40,11 @@ public class NoopThemeProvider implements ThemeProvider {
         @Override
         public String name() {
             return "bootstrap";
+        }
+
+        @Override
+        public List<HeaderItem> getDependencies() {
+            return Collections.emptyList();
         }
 
         @Override
