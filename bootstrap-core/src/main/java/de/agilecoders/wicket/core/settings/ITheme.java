@@ -16,6 +16,13 @@ import java.util.List;
 public interface ITheme {
 
     /**
+     * The markup id to use for the CSS resource reference.
+     * If the theme is changed in an Ajax response wicket-ajax.js will properly
+     * remove the old &lt;link&gt; and add the new one.
+     */
+    String BOOTSTRAP_THEME_MARKUP_ID = "wb-theme";
+
+    /**
      * @return The unique name of this theme.
      */
     String name();

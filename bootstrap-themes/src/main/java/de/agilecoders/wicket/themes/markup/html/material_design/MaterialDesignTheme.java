@@ -26,8 +26,8 @@ public class MaterialDesignTheme extends Theme {
 
     @Override
     public List<HeaderItem> getDependencies() {
-        List<HeaderItem> references = new ArrayList<HeaderItem>();
-        references.add(CssHeaderItem.forReference(new MaterialDesignCssReference()));
+        List<HeaderItem> references = new ArrayList<>();
+        references.add(CssHeaderItem.forReference(new MaterialDesignCssReference()).setId(BOOTSTRAP_THEME_MARKUP_ID));
         references.add(JavaScriptHeaderItem.forReference(new JQueryPluginResourceReference(MaterialDesignTheme.class, "js/ripples.js")));
         references.add(JavaScriptHeaderItem.forReference(new JQueryPluginResourceReference(MaterialDesignTheme.class, "js/material.js")));
         references.add(OnDomReadyHeaderItem.forScript("$.material.init()"));

@@ -146,7 +146,7 @@ public class BootstrapSettings implements IBootstrapSettings {
     public ThemeProvider getThemeProvider() {
         ThemeProvider provider = themeProvider;
 
-        return provider != null ? provider : (themeProvider = new DefaultThemeProvider(this));
+        return provider != null ? provider : (themeProvider = new DefaultThemeProvider());
     }
 
     @Override

@@ -266,7 +266,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.5.1</version>
+                <version>${maven-compiler-plugin.version}</version>
                 <configuration>
                     <source>${maven.java.source}</source>
                     <target>${maven.java.target}</target>
@@ -398,16 +398,16 @@
                 <enabled>true</enabled>
             </snapshots>
         </repository>
-			<repository>
-				<id>Sonatype OSS snapshots</id>
-				<url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-				<releases>
-					<enabled>false</enabled>
-				</releases>
-				<snapshots>
-					<enabled>true</enabled>
-				</snapshots>
-			</repository>
+        <repository>
+            <id>Sonatype OSS snapshots</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
     </repositories>
 
 </project>

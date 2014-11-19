@@ -44,6 +44,7 @@ public class BootstrapThemeTheme extends Theme {
 
     @Override
     public List<HeaderItem> getDependencies() {
-        return Collections.<HeaderItem>singletonList(CssHeaderItem.forReference(BootstrapThemeThemeCssReference.instance()));
+        HeaderItem headerItem = CssHeaderItem.forReference(BootstrapThemeThemeCssReference.instance()).setId(BOOTSTRAP_THEME_MARKUP_ID);
+        return Collections.singletonList(headerItem);
     }
 }

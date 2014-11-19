@@ -44,7 +44,7 @@ public enum VegibitTheme implements ITheme {
 
     @Override
     public List<HeaderItem> getDependencies() {
-        return Collections.<HeaderItem>singletonList(CssHeaderItem.forReference(reference));
+        return Collections.<HeaderItem>singletonList(CssHeaderItem.forReference(reference).setId(BOOTSTRAP_THEME_MARKUP_ID));
     }
 
     @Override

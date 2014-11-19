@@ -1,18 +1,20 @@
 package de.agilecoders.wicket.core.markup.html.themes.bootstrap;
 
+import de.agilecoders.wicket.core.Bootstrap;
 import de.agilecoders.wicket.core.settings.IBootstrapSettings;
 import de.agilecoders.wicket.core.settings.Theme;
+import org.apache.wicket.Application;
+import org.apache.wicket.markup.head.CssHeaderItem;
+import org.apache.wicket.markup.head.HeaderItem;
+import org.apache.wicket.request.resource.ResourceReference;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * #### Description
  *
  * Bootstrap theme that uses the css resource reference from bootstrap settings.
- *
- * #### Caution
- *
- * There's a constructor which is deprecated and will be removed before 1.0 is released. Please
- * use {@link de.agilecoders.wicket.core.markup.html.themes.bootstrap.BootstrapTheme#BootstrapTheme(de.agilecoders.wicket.core.settings.IBootstrapSettings)}
- * instead.
  *
  * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
@@ -20,19 +22,22 @@ public class BootstrapTheme extends Theme {
 
     /**
      * Construct.
-     *
-     * @param settings the bootstrap settings
      */
-    public BootstrapTheme(final IBootstrapSettings settings) {
-        super("bootstrap", settings.getCssResourceReference());
-    }
-
-    /**
-     * Construct.
-     */
-    @Deprecated
     public BootstrapTheme() {
-        super("bootstrap", BootstrapCssReference.instance());
+        super("bootstrap");
     }
 
+    @Override
+    public List<HeaderItem> getDependencies() {
+        List<HeaderItem> references = new ArrayList<>();
+        ResourceReference cssResourceReference;
+        if (Application.exists()) {
+            IBootstrapSettings settings = Bootstrap.getSettings();
+            cssResourceReference = settings.getCssResourceReference();
+        } else {
+            cssResourceReference = BootstrapCssReference.instance();
+        }
+        references.add(CssHeaderItem.forReference(cssResourceReference).setId(BOOTSTRAP_THEME_MARKUP_ID));
+        return references;
+    }
 }

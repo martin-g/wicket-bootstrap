@@ -39,6 +39,7 @@ public class GoogleTheme extends Theme {
 
     @Override
     public List<HeaderItem> getDependencies() {
-        return Collections.<HeaderItem>singletonList(CssHeaderItem.forReference(GoogleCssReference.instance()));
+        HeaderItem headerItem = CssHeaderItem.forReference(GoogleCssReference.instance()).setId(BOOTSTRAP_THEME_MARKUP_ID);
+        return Collections.singletonList(headerItem);
     }
 }
