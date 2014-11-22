@@ -2,9 +2,6 @@ package de.agilecoders.wicket.samples.pages;
 
 import java.util.List;
 
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.behavior.Draggable;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.behavior.DraggableConfig;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.behavior.Resizable;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
@@ -38,9 +35,14 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.image.GlyphIconType;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.Icon;
 import de.agilecoders.wicket.extensions.javascript.jasny.FileUploadField;
 import de.agilecoders.wicket.extensions.javascript.jasny.InputMaskBehavior;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.behavior.Draggable;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.behavior.DraggableConfig;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.behavior.Resizable;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.button.DropDownAutoOpen;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.contextmenu.ButtonListContextMenu;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.checkboxx.CheckBoxX;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.spinner.Spinner;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.spinner.SpinnerConfig;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.html5player.Html5Player;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.html5player.Html5VideoConfig;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.html5player.Video;
@@ -72,12 +74,12 @@ public class ExtensionsPage extends BasePage {
 
 		List<Html5Player.IVideo> videos = Lists
 				.<Html5Player.IVideo> newArrayList(
-                    new Video(
-                        "http://ia700305.us.archive.org/18/items/CopyingIsNotTheft/CINT_Nik_H264_720.ogv",
-                        "video/ogg"),
-                    new Video(
-                        "http://ia700305.us.archive.org/18/items/CopyingIsNotTheft/CINT_Nik_H264_720_512kb.mp4",
-                        "video/mp4"));
+						new Video(
+								"http://ia700305.us.archive.org/18/items/CopyingIsNotTheft/CINT_Nik_H264_720.ogv",
+								"video/ogg"),
+								new Video(
+										"http://ia700305.us.archive.org/18/items/CopyingIsNotTheft/CINT_Nik_H264_720_512kb.mp4",
+										"video/mp4"));
 		add(new Html5Player("video", Model.ofList(videos)));
 		add(new Code(
 				"video-code",
@@ -89,7 +91,7 @@ public class ExtensionsPage extends BasePage {
 
 		add(new Html5Player("video-custom", Model.ofList(videos),
 				new Html5VideoConfig().showProgressBar(false)
-						.autoHideControlBar(false)).setWidth(680)
+				.autoHideControlBar(false)).setWidth(680)
 				.setHeight(360));
 		add(new Code(
 				"video-custom-code",
@@ -106,12 +108,12 @@ public class ExtensionsPage extends BasePage {
 						new MenuBookmarkablePageLink<Void>(
 								DatePickerPage.class, Model.of("DatePicker"))
 								.setIconType(GlyphIconType.time),
-						new MenuBookmarkablePageLink<Void>(IssuesPage.class,
-								Model.of("Github Issues"))
-								.setIconType(GlyphIconType.book),
-						new MenuBookmarkablePageLink<Void>(
-								ExtensionsPage.class, Model.of("Extensions"))
-								.setIconType(GlyphIconType.qrcode));
+								new MenuBookmarkablePageLink<Void>(IssuesPage.class,
+										Model.of("Github Issues"))
+										.setIconType(GlyphIconType.book),
+										new MenuBookmarkablePageLink<Void>(
+												ExtensionsPage.class, Model.of("Extensions"))
+												.setIconType(GlyphIconType.qrcode));
 		final Component contextPanel = new TransparentWebMarkupContainer(
 				"context-panel");
 		final ButtonListContextMenu contextMenu = new ButtonListContextMenu(
@@ -152,12 +154,12 @@ public class ExtensionsPage extends BasePage {
 						new MenuBookmarkablePageLink<Void>(
 								DatePickerPage.class, Model.of("DatePicker"))
 								.setIconType(GlyphIconType.time),
-						new MenuBookmarkablePageLink<Void>(IssuesPage.class,
-								Model.of("Github Issues"))
-								.setIconType(GlyphIconType.book),
-						new MenuBookmarkablePageLink<Void>(
-								ExtensionsPage.class, Model.of("Extensions"))
-								.setIconType(GlyphIconType.qrcode));
+								new MenuBookmarkablePageLink<Void>(IssuesPage.class,
+										Model.of("Github Issues"))
+										.setIconType(GlyphIconType.book),
+										new MenuBookmarkablePageLink<Void>(
+												ExtensionsPage.class, Model.of("Extensions"))
+												.setIconType(GlyphIconType.qrcode));
 			}
 		};
 
@@ -183,6 +185,13 @@ public class ExtensionsPage extends BasePage {
 		laddaButton();
 
 		checkboxX();
+
+		spinnerSample();
+	}
+
+	private void spinnerSample() {
+		Spinner<Double> spinner = new Spinner<Double>("spinner", new SpinnerConfig().withPrefix("pre").withDecimals(2).withPostfix("post").withMin(20).withMax(2000).withStep(.2).withVerticalbuttons(true).withBootstap(2).withInitVal(24));
+		add(spinner);
 	}
 
 	private void checkboxX() {
@@ -208,12 +217,12 @@ public class ExtensionsPage extends BasePage {
 		feedback.setOutputMarkupId(true);
 
 		Code code = new Code("linkCode", Model.of("CheckboxX checkboxX = new CheckboxX(\"checkboxX\", new Model<Boolean>(true)) {\n"
-												  + "  @Override\n"
-												  + "  protected void onChange(Boolean value, AjaxRequestTarget target) {\n"
-												  + "    info(\"The selection is: \" + value);\n"
-												  + "    target.add(feedback);\n"
-												  + "  }\n"
-												  + "};"));
+				+ "  @Override\n"
+				+ "  protected void onChange(Boolean value, AjaxRequestTarget target) {\n"
+				+ "    info(\"The selection is: \" + value);\n"
+				+ "    target.add(feedback);\n"
+				+ "  }\n"
+				+ "};"));
 
 		add(checkBoxX, feedback, code);
 	}
@@ -241,11 +250,11 @@ public class ExtensionsPage extends BasePage {
 		laddaLink.setEffect(LaddaBehavior.Effect.EXPAND_LEFT).setSize(Buttons.Size.Medium);
 
 		form.add(new Code("linkCode", Model.of("laddaLink = new LaddaAjaxLink<String>(\"laddaLink\", Model.of(\"Link, 2secs\"), Buttons.Type.Success) {\n"
-											   + "    @Override public void onClick(AjaxRequestTarget target) {\n"
-											   + "        Duration.seconds(2).sleep();\n"
-											   + "    }\n"
-											   + "};\n"
-											   + "laddaLink.setEffect(LaddaBehavior.Effect.EXPAND_LEFT).setSize(Buttons.Size.Medium);")));
+				+ "    @Override public void onClick(AjaxRequestTarget target) {\n"
+				+ "        Duration.seconds(2).sleep();\n"
+				+ "    }\n"
+				+ "};\n"
+				+ "laddaLink.setEffect(LaddaBehavior.Effect.EXPAND_LEFT).setSize(Buttons.Size.Medium);")));
 
 		form.add(laddaButton, laddaLink);
 	}
@@ -318,26 +327,26 @@ public class ExtensionsPage extends BasePage {
 			}
 		};
 		tourBehavior
-				.addStep(new TourStep()
-						.title(Model.of("Step One Title"))
-						.element(stepOne)
-						.content(
-								Model.of("Some longer help content <strong> for step <span style='color: red'>1</span>.")));
+		.addStep(new TourStep()
+		.title(Model.of("Step One Title"))
+		.element(stepOne)
+		.content(
+				Model.of("Some longer help content <strong> for step <span style='color: red'>1</span>.")));
 		tourBehavior
-				.addStep(new TourStep()
-						.title(new ResourceModel("tour.step.two"))
-						.element(stepTwo)
-						.placement(TooltipConfig.Placement.left)
-						.content(
-								Model.of("Some longer help content <strong> for step <span style='color: red'>2</span>."))
-						.backdrop(true));
+		.addStep(new TourStep()
+		.title(new ResourceModel("tour.step.two"))
+		.element(stepTwo)
+		.placement(TooltipConfig.Placement.left)
+		.content(
+				Model.of("Some longer help content <strong> for step <span style='color: red'>2</span>."))
+				.backdrop(true));
 		tourBehavior
-				.addStep(new TourStep()
-						.title(Model.of("Step Three Title"))
-						.element(stepThree)
-						.placement(TooltipConfig.Placement.left)
-						.content(
-								Model.of("Some longer help content <strong> for step <span style='color: red'>3</span>.")));
+		.addStep(new TourStep()
+		.title(Model.of("Step Three Title"))
+		.element(stepThree)
+		.placement(TooltipConfig.Placement.left)
+		.content(
+				Model.of("Some longer help content <strong> for step <span style='color: red'>3</span>.")));
 		view.add(tourBehavior);
 	}
 
