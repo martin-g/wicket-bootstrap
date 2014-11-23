@@ -2,6 +2,7 @@ package de.agilecoders.wicket.samples.pages;
 
 import java.util.List;
 
+import de.agilecoders.wicket.core.markup.html.bootstrap.common.NotificationPanel;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.behavior.Draggable;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.behavior.DraggableConfig;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.behavior.Resizable;
@@ -191,19 +192,34 @@ public class ExtensionsPage extends BasePage {
 	}
 
 	private void spinnerSample() {
+		final NotificationPanel feedback = new NotificationPanel("spinnerFeedback");
+		feedback.setOutputMarkupId(true);
+		final Number minValue = 20d;
 		SpinnerConfig config = new SpinnerConfig();
 		config
 			.withPrefix("pre")
 			.withDecimals(2)
 			.withPostfix("post")
-			.withMin(20)
-			.withMax(2000)
+			.withMin(minValue)
+			.withMax(30)
 			.withStep(.2)
 			.withVerticalbuttons(true)
 			.withBootstap(2)
 			.withInitVal(24);
-		Spinner<Double> spinner = new Spinner<Double>("spinner", config);
-		add(spinner);
+		Spinner<Double> spinner = new Spinner<Double>("spinner", config) {
+			@Override
+			protected boolean wantMinNotification() {
+				return true;
+			}
+
+			@Override
+			protected void onMin(AjaxRequestTarget target) {
+				super.onMin(target);
+				info("Reached the configured min value of " + minValue);
+				target.add(feedback);
+			}
+		};
+		add(spinner, feedback);
 	}
 
 	private void checkboxX() {

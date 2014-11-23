@@ -71,129 +71,174 @@ public class Spinner<T extends Number> extends TextField<T>{
 
     @Override
     protected void onInitialize() {
-        addActionListeners();
+        if (wantStartNotification()) {
+            registerStartListener();
+        }
+        if (wantStartUpNotification()) {
+            registerStartUpListener();
+        }
+        if (wantStartDownNotification()) {
+            registerStartDownListener();
+        }
+        if (wantStopNotification()) {
+            registerStopListener();
+        }
+        if (wantStopUpNotification()) {
+            registerStopUpListener();
+        }
+        if (wantStopDownNotification()) {
+            registerStopDownListener();
+        }
+        if (wantMinNotification()) {
+            registerMinListener();
+        }
+        if (wantMaxNotification()) {
+            registerMaxListener();
+        }
         super.onInitialize();
     }
 
-    protected void addActionListeners() {
+    private void registerStartListener() {
         add(new AjaxEventBehavior("touchspin.on.startspin"){
-
-            private static final long serialVersionUID = 3911562409088754189L;
-
             @Override
             protected void onEvent(AjaxRequestTarget target) {
                 LOG.debug("Start spin");
-                onStartSpin();
+                onStartSpin(target);
             }
         });
+    }
 
+    protected boolean wantStartNotification() {
+        return false;
+    }
+
+    private void registerStartUpListener() {
         add(new AjaxEventBehavior("touchspin.on.startupspin"){
-
-            private static final long serialVersionUID = 3911562409088754189L;
-
             @Override
             protected void onEvent(AjaxRequestTarget target) {
                 LOG.debug("Start up spin");
-                onStartUpSpin();
+                onStartUpSpin(target);
             }
         });
+    }
 
+    protected boolean wantStartUpNotification() {
+        return false;
+    }
+
+    private void registerStartDownListener() {
         add(new AjaxEventBehavior("touchspin.on.startdownspin"){
-
-            private static final long serialVersionUID = 3911562409088754189L;
-
             @Override
             protected void onEvent(AjaxRequestTarget target) {
                 LOG.debug("Start down spin");
-                onStartDownSpin();
+                onStartDownSpin(target);
             }
         });
+    }
 
+    protected boolean wantStartDownNotification() {
+        return false;
+    }
+
+    private void registerStopListener() {
         add(new AjaxEventBehavior("touchspin.on.stopspin"){
-
-            private static final long serialVersionUID = 3911562409088754189L;
-
             @Override
             protected void onEvent(AjaxRequestTarget target) {
                 LOG.debug("Stop spin");
-                onStopSpin();
+                onStopSpin(target);
             }
         });
+    }
 
+    protected boolean wantStopNotification() {
+        return false;
+    }
+
+    private void registerStopUpListener() {
         add(new AjaxEventBehavior("touchspin.on.stopupspin"){
-
-            private static final long serialVersionUID = 3911562409088754189L;
-
             @Override
             protected void onEvent(AjaxRequestTarget target) {
                 LOG.debug("Stop up spin");
-                onStopUpSpin();
+                onStopUpSpin(target);
             }
         });
+    }
 
+    protected boolean wantStopUpNotification() {
+        return false;
+    }
+
+    private void registerStopDownListener() {
         add(new AjaxEventBehavior("touchspin.on.stopdownspin"){
-
-            private static final long serialVersionUID = 3911562409088754189L;
-
             @Override
             protected void onEvent(AjaxRequestTarget target) {
                 LOG.debug("Stop down spin");
-                onStopDownSpin();
+                onStopDownSpin(target);
             }
         });
+    }
 
+    protected boolean wantStopDownNotification() {
+        return false;
+    }
+
+    private void registerMinListener() {
         add(new AjaxEventBehavior("touchspin.on.min"){
-
-            private static final long serialVersionUID = 3911562409088754189L;
-
             @Override
             protected void onEvent(AjaxRequestTarget target) {
                 LOG.debug("Reached minimum value");
-                onMin();
+                onMin(target);
             }
         });
+    }
 
+    protected boolean wantMinNotification() {
+        return false;
+    }
+
+    private void registerMaxListener() {
         add(new AjaxEventBehavior("touchspin.on.max"){
-
-            private static final long serialVersionUID = 3911562409088754189L;
-
             @Override
             protected void onEvent(AjaxRequestTarget target) {
                 LOG.debug("Reached maximum value");
-                onMax();
+                onMax(target);
             }
         });
     }
 
-    protected void onMax() {
+    protected boolean wantMaxNotification() {
+        return false;
+    }
+
+    protected void onMax(AjaxRequestTarget target) {
 
     }
 
-    protected void onMin() {
+    protected void onMin(AjaxRequestTarget target) {
 
     }
 
-    protected void onStopDownSpin() {
+    protected void onStopDownSpin(AjaxRequestTarget target) {
 
     }
 
-    protected void onStopUpSpin() {
+    protected void onStopUpSpin(AjaxRequestTarget target) {
 
     }
 
-    protected void onStopSpin() {
+    protected void onStopSpin(AjaxRequestTarget target) {
 
     }
 
-    protected void onStartDownSpin() {
+    protected void onStartDownSpin(AjaxRequestTarget target) {
 
     }
 
-    protected void onStartSpin() {
+    protected void onStartSpin(AjaxRequestTarget target) {
 
     }
 
-    protected void onStartUpSpin() {
+    protected void onStartUpSpin(AjaxRequestTarget target) {
 
     }
 
