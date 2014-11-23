@@ -32,9 +32,9 @@ public class SpinnerConfig extends AbstractConfig {
 
 	private static final IKey<Integer> decimals = newKey("decimals", 0);
 
-	private static final IKey<String> buttondown_class = newKey("buttondown_class", null);
+	private static final IKey<String> buttondown_class = newKey("buttondown_class", "btn btn-default");
 
-	private static final IKey<String> buttonup_class = newKey("buttonup_class", null);
+	private static final IKey<String> buttonup_class = newKey("buttonup_class", "btn btn-default");
 
 	private static final IKey<Boolean> verticalbuttons = newKey("verticalbuttons", Boolean.FALSE);
 
@@ -44,11 +44,11 @@ public class SpinnerConfig extends AbstractConfig {
 
 	private static final IKey<String> prefix = newKey("prefix", "");
 
-	private static final IKey<String> prefix_extraclass = newKey("prefix_extraclass", null);
+	private static final IKey<String> prefix_extraclass = newKey("prefix_extraclass", "");
 
-	private static final IKey<String> postfix = newKey("postfix", null);
+	private static final IKey<String> postfix = newKey("postfix", "");
 
-	private static final IKey<String> postfix_extraclass = newKey("postfix_extraclass", null);
+	private static final IKey<String> postfix_extraclass = newKey("postfix_extraclass", "");
 
 
 	private static Number getDefaultValueAsNumber(Number value){
