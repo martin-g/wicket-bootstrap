@@ -60,11 +60,11 @@ public class Spinner<T extends Number> extends TextField<T>{
 		super.renderHead(response);
 		response.render(CssHeaderItem.forReference(SPINNER_CSS));
 		response.render(JavaScriptHeaderItem.forReference(SPINNER_JS));
-		response.render(OnDomReadyHeaderItem.forScript(createScript(config)));
+		response.render(OnDomReadyHeaderItem.forScript(createScript(getConfig())));
 	}
 
 	protected CharSequence createScript(final SpinnerConfig config) {
-		return $(this).chain("TouchSpin", getConfig()).get();
+		return $(this).chain("TouchSpin", config).get();
 	}
 
 	public SpinnerConfig getConfig() {
