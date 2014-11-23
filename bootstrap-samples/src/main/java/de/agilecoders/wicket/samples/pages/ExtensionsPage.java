@@ -241,7 +241,7 @@ public class ExtensionsPage extends BasePage {
 			}
 		};
 
-		final ComponentFeedbackPanel feedback = new ComponentFeedbackPanel("feedback", checkBoxX);
+		final NotificationPanel feedback = new NotificationPanel("feedback", checkBoxX);
 		feedback.setOutputMarkupId(true);
 
 		Code code = new Code("linkCode", Model.of("CheckboxX checkboxX = new CheckboxX(\"checkboxX\", new Model<Boolean>(true)) {\n"
