@@ -26,183 +26,182 @@ import de.agilecoders.wicket.core.util.Attributes;
  */
 public class Spinner<T extends Number> extends TextField<T>{
 
-	private static final long serialVersionUID = -2660832209883037448L;
+    private static final long serialVersionUID = 1L;
 
-	private static final Logger LOG = LoggerFactory.getLogger(Spinner.class);
-	
-	private static final CssResourceReference SPINNER_CSS = new CssResourceReference(Spinner.class,
-			"css/touchspin.min.css");
-	private static final JavaScriptResourceReference SPINNER_JS = new JavaScriptResourceReference(Spinner.class,
-			"js/touchspin.min.js");
+    private static final Logger LOG = LoggerFactory.getLogger(Spinner.class);
 
-	private final SpinnerConfig config;
+    private static final CssResourceReference SPINNER_CSS = new CssResourceReference(Spinner.class,
+            "css/touchspin.min.css");
+    private static final JavaScriptResourceReference SPINNER_JS = new JavaScriptResourceReference(Spinner.class,
+            "js/touchspin.min.js");
 
-	public Spinner(String id) {
-		this(id, null, new SpinnerConfig());
-	}
+    private final SpinnerConfig config;
 
-	public Spinner(String id, SpinnerConfig config) {
-		this(id, null, config);
-	}
+    public Spinner(String id) {
+        this(id, null, new SpinnerConfig());
+    }
 
-	public Spinner(String id, final IModel<T> model) {
-		this(id, model, new SpinnerConfig());
-	}
+    public Spinner(String id, SpinnerConfig config) {
+        this(id, null, config);
+    }
 
-	public Spinner(String id, final IModel<T> model, SpinnerConfig config) {
-		super(id, model);
-		this.config = config;
-	}
+    public Spinner(String id, final IModel<T> model) {
+        this(id, model, new SpinnerConfig());
+    }
 
-	@Override
-	protected void onComponentTag(ComponentTag tag) {
-		super.onComponentTag(tag);
-		checkComponentTag(tag, "input");
-		Attributes.set(tag, "type", "text");
-	}
+    public Spinner(String id, final IModel<T> model, SpinnerConfig config) {
+        super(id, model);
+        this.config = config;
+    }
 
-	@Override
-	public void renderHead(final IHeaderResponse response) {
-		super.renderHead(response);
-		response.render(CssHeaderItem.forReference(SPINNER_CSS));
-		response.render(JavaScriptHeaderItem.forReference(SPINNER_JS));
-		response.render(OnDomReadyHeaderItem.forScript(createScript(getConfig())));
-	}
-	
-	@Override
-	protected void onInitialize() {
-		addActionListeners();
-		super.onInitialize();
-	}
-	
+    @Override
+    protected void onComponentTag(ComponentTag tag) {
+        super.onComponentTag(tag);
+        checkComponentTag(tag, "input");
+        Attributes.set(tag, "type", "text");
+    }
 
-	private void addActionListeners() {
-		add(new AjaxEventBehavior("touchspin.on.startspin"){
+    @Override
+    public void renderHead(final IHeaderResponse response) {
+        super.renderHead(response);
+        response.render(CssHeaderItem.forReference(SPINNER_CSS));
+        response.render(JavaScriptHeaderItem.forReference(SPINNER_JS));
+        response.render(OnDomReadyHeaderItem.forScript(createScript(getConfig())));
+    }
 
-			private static final long serialVersionUID = 3911562409088754189L;
+    @Override
+    protected void onInitialize() {
+        addActionListeners();
+        super.onInitialize();
+    }
 
-			@Override
-			protected void onEvent(AjaxRequestTarget target) {
-				LOG.debug("Start spin");
-				onStartSpin();
-			}
-		});
+    protected void addActionListeners() {
+        add(new AjaxEventBehavior("touchspin.on.startspin"){
 
-		add(new AjaxEventBehavior("touchspin.on.startupspin"){
+            private static final long serialVersionUID = 3911562409088754189L;
 
-			private static final long serialVersionUID = 3911562409088754189L;
+            @Override
+            protected void onEvent(AjaxRequestTarget target) {
+                LOG.debug("Start spin");
+                onStartSpin();
+            }
+        });
 
-			@Override
-			protected void onEvent(AjaxRequestTarget target) {
-				LOG.debug("Start up spin");
-				onStartUpSpin();
-			}
-		});
-		
-		add(new AjaxEventBehavior("touchspin.on.startdownspin"){
+        add(new AjaxEventBehavior("touchspin.on.startupspin"){
 
-			private static final long serialVersionUID = 3911562409088754189L;
+            private static final long serialVersionUID = 3911562409088754189L;
 
-			@Override
-			protected void onEvent(AjaxRequestTarget target) {
-				LOG.debug("Start down spin");
-				onStartDownSpin();
-			}
-		});
-		
-		add(new AjaxEventBehavior("touchspin.on.stopspin"){
+            @Override
+            protected void onEvent(AjaxRequestTarget target) {
+                LOG.debug("Start up spin");
+                onStartUpSpin();
+            }
+        });
 
-			private static final long serialVersionUID = 3911562409088754189L;
+        add(new AjaxEventBehavior("touchspin.on.startdownspin"){
 
-			@Override
-			protected void onEvent(AjaxRequestTarget target) {
-				LOG.debug("Stop spin");
-				onStopSpin();
-			}
-		});
-		
-		add(new AjaxEventBehavior("touchspin.on.stopupspin"){
+            private static final long serialVersionUID = 3911562409088754189L;
 
-			private static final long serialVersionUID = 3911562409088754189L;
+            @Override
+            protected void onEvent(AjaxRequestTarget target) {
+                LOG.debug("Start down spin");
+                onStartDownSpin();
+            }
+        });
 
-			@Override
-			protected void onEvent(AjaxRequestTarget target) {
-				LOG.debug("Stop up spin");
-				onStopUpSpin();
-			}
-		});
+        add(new AjaxEventBehavior("touchspin.on.stopspin"){
 
-		add(new AjaxEventBehavior("touchspin.on.stopdownspin"){
+            private static final long serialVersionUID = 3911562409088754189L;
 
-			private static final long serialVersionUID = 3911562409088754189L;
+            @Override
+            protected void onEvent(AjaxRequestTarget target) {
+                LOG.debug("Stop spin");
+                onStopSpin();
+            }
+        });
 
-			@Override
-			protected void onEvent(AjaxRequestTarget target) {
-				LOG.debug("Stop down spin");
-				onStopDownSpin();
-			}
-		});
-		
-		add(new AjaxEventBehavior("touchspin.on.min"){
+        add(new AjaxEventBehavior("touchspin.on.stopupspin"){
 
-			private static final long serialVersionUID = 3911562409088754189L;
+            private static final long serialVersionUID = 3911562409088754189L;
 
-			@Override
-			protected void onEvent(AjaxRequestTarget target) {
-				LOG.debug("Reached minimum value");
-				onMin();
-			}
-		});
-		
-		add(new AjaxEventBehavior("touchspin.on.max"){
+            @Override
+            protected void onEvent(AjaxRequestTarget target) {
+                LOG.debug("Stop up spin");
+                onStopUpSpin();
+            }
+        });
 
-			private static final long serialVersionUID = 3911562409088754189L;
+        add(new AjaxEventBehavior("touchspin.on.stopdownspin"){
 
-			@Override
-			protected void onEvent(AjaxRequestTarget target) {
-				LOG.debug("Reached maximum value");
-				onMax();
-			}
-		});
-	}
+            private static final long serialVersionUID = 3911562409088754189L;
 
-	protected void onMax() {
+            @Override
+            protected void onEvent(AjaxRequestTarget target) {
+                LOG.debug("Stop down spin");
+                onStopDownSpin();
+            }
+        });
 
-	}
+        add(new AjaxEventBehavior("touchspin.on.min"){
 
-	protected void onMin() {
-		
-	}
+            private static final long serialVersionUID = 3911562409088754189L;
 
-	protected void onStopDownSpin() {
-		
-	}
+            @Override
+            protected void onEvent(AjaxRequestTarget target) {
+                LOG.debug("Reached minimum value");
+                onMin();
+            }
+        });
 
-	protected void onStopUpSpin() {
-		
-	}
+        add(new AjaxEventBehavior("touchspin.on.max"){
 
-	protected void onStopSpin() {
-		
-	}
+            private static final long serialVersionUID = 3911562409088754189L;
 
-	protected void onStartDownSpin() {
-		
-	}
+            @Override
+            protected void onEvent(AjaxRequestTarget target) {
+                LOG.debug("Reached maximum value");
+                onMax();
+            }
+        });
+    }
 
-	protected void onStartSpin() {
-		
-	}
+    protected void onMax() {
 
-	protected void onStartUpSpin() {
-		
-	}
+    }
 
-	protected CharSequence createScript(final SpinnerConfig config) {
-		return $(this).chain("TouchSpin", config).get();
-	}
+    protected void onMin() {
 
-	public SpinnerConfig getConfig() {
-		return config;
-	}
+    }
+
+    protected void onStopDownSpin() {
+
+    }
+
+    protected void onStopUpSpin() {
+
+    }
+
+    protected void onStopSpin() {
+
+    }
+
+    protected void onStartDownSpin() {
+
+    }
+
+    protected void onStartSpin() {
+
+    }
+
+    protected void onStartUpSpin() {
+
+    }
+
+    protected CharSequence createScript(final SpinnerConfig config) {
+        return $(this).chain("TouchSpin", config).get();
+    }
+
+    public SpinnerConfig getConfig() {
+        return config;
+    }
 }
