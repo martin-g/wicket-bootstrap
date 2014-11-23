@@ -69,12 +69,11 @@ public class Spinner<T extends Number> extends TextField<T>{
 		super.onInitialize();
 	}
 
-
 	protected CharSequence createScript(final SpinnerConfig config) {
 		return $(this).chain("TouchSpin", config).get();
 	}
 
-	protected final SpinnerConfig getConfig() {
+	public SpinnerConfig getConfig() {
 		return config;
 	}
 }

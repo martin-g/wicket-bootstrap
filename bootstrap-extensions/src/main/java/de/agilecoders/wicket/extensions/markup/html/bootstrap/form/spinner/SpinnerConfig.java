@@ -2,7 +2,6 @@ package de.agilecoders.wicket.extensions.markup.html.bootstrap.form.spinner;
 
 import de.agilecoders.wicket.jquery.AbstractConfig;
 import de.agilecoders.wicket.jquery.IKey;
-
 /**
  * @author daniel.jipa
  * @reference http://www.virtuosoft.eu/code/bootstrap-touchspin/
@@ -123,5 +122,4 @@ public class SpinnerConfig extends AbstractConfig {
 		put(postfix_extraclass, value);
 		return this;
 	}
-
 }
