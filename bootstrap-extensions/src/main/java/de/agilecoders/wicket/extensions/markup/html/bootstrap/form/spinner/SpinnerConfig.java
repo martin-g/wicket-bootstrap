@@ -6,9 +6,9 @@ import de.agilecoders.wicket.jquery.IKey;
 
 public class SpinnerConfig extends AbstractConfig {
 
-    private static final long serialVersionUID = 2239107002237150197L;
+    private static final long serialVersionUID = 1L;
 
-    private static final IKey<Number> initval = newKey("initval", null);
+    private static final IKey<String> initval = newKey("initval", "");
 
     private static final IKey<Number> max = newKey("max", getDefaultValueAsNumber(100));
 
@@ -56,7 +56,7 @@ public class SpinnerConfig extends AbstractConfig {
     }
 
     public SpinnerConfig withInitVal(Number value) {
-        put(initval, value);
+        put(initval, String.valueOf(value));
         return this;
     }
 

@@ -186,12 +186,23 @@ public class ExtensionsPage extends BasePage {
 		laddaButton();
 
 		checkboxX();
-		
+
 		spinnerSample();
 	}
 
 	private void spinnerSample() {
-		Spinner<Double> spinner = new Spinner<Double>("spinner", new SpinnerConfig().withPrefix("pre").withDecimals(2).withPostfix("post").withMin(20).withMax(2000).withStep(.2).withVerticalbuttons(true).withBootstap(2).withInitVal(24));
+		SpinnerConfig config = new SpinnerConfig();
+		config
+			.withPrefix("pre")
+			.withDecimals(2)
+			.withPostfix("post")
+			.withMin(20)
+			.withMax(2000)
+			.withStep(.2)
+			.withVerticalbuttons(true)
+			.withBootstap(2)
+			.withInitVal(24);
+		Spinner<Double> spinner = new Spinner<Double>("spinner", config);
 		add(spinner);
 	}
 
