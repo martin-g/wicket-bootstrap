@@ -5,6 +5,7 @@ import java.util.List;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.behavior.Draggable;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.behavior.DraggableConfig;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.behavior.Resizable;
+
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
@@ -41,6 +42,8 @@ import de.agilecoders.wicket.extensions.javascript.jasny.InputMaskBehavior;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.button.DropDownAutoOpen;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.contextmenu.ButtonListContextMenu;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.checkboxx.CheckBoxX;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.spinner.Spinner;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.spinner.SpinnerConfig;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.html5player.Html5Player;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.html5player.Html5VideoConfig;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.html5player.Video;
@@ -183,6 +186,13 @@ public class ExtensionsPage extends BasePage {
 		laddaButton();
 
 		checkboxX();
+		
+		spinnerSample();
+	}
+
+	private void spinnerSample() {
+		Spinner<Double> spinner = new Spinner<Double>("spinner", new SpinnerConfig().withPrefix("pre").withDecimals(2).withPostfix("post").withMin(20).withMax(2000).withStep(.2).withVerticalbuttons(true).withBootstap(2).withInitVal(24));
+		add(spinner);
 	}
 
 	private void checkboxX() {
