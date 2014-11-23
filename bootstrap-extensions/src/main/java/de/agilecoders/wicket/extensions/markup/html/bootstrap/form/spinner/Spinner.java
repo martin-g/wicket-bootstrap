@@ -15,8 +15,10 @@ import org.apache.wicket.request.resource.JavaScriptResourceReference;
 import de.agilecoders.wicket.core.util.Attributes;
 
 /**
+ * A mobile and touch friendly input spinner component for Bootstrap 3. It supports the mousewheel and the up/down keys.
+ * Integrates <a href="http://www.virtuosoft.eu/code/bootstrap-touchspin/">Bootstrap TouchSpin</a> plugin.
+ *
  * @author daniel.jipa
- * @reference http://www.virtuosoft.eu/code/bootstrap-touchspin/
  */
 public class Spinner<T extends Number> extends TextField<T>{
 
@@ -30,18 +32,15 @@ public class Spinner<T extends Number> extends TextField<T>{
 	private final SpinnerConfig config;
 
 	public Spinner(String id) {
-		super(id);
-		this.config = new SpinnerConfig();
+		this(id, null, new SpinnerConfig());
 	}
 
 	public Spinner(String id, SpinnerConfig config) {
-		super(id);
-		this.config = config;
+		this(id, null, config);
 	}
 
 	public Spinner(String id, final IModel<T> model) {
-		super(id, model);
-		this.config = new SpinnerConfig();
+		this(id, model, new SpinnerConfig());
 	}
 
 	public Spinner(String id, final IModel<T> model, SpinnerConfig config) {
@@ -64,13 +63,8 @@ public class Spinner<T extends Number> extends TextField<T>{
 		response.render(OnDomReadyHeaderItem.forScript(createScript(config)));
 	}
 
-	@Override
-	protected void onInitialize() {
-		super.onInitialize();
-	}
-
 	protected CharSequence createScript(final SpinnerConfig config) {
-		return $(this).chain("TouchSpin", config).get();
+		return $(this).chain("TouchSpin", getConfig()).get();
 	}
 
 	public SpinnerConfig getConfig() {
