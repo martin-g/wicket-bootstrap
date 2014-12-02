@@ -19,7 +19,6 @@
         },
 
         validation: function ($container) {
-            $container.find("input, select, textarea").filter(':eq(0)').focus();
             this.showErrors($container);
         },
 
