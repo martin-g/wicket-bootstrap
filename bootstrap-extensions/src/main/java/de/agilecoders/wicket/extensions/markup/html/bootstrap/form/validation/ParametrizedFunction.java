@@ -7,13 +7,13 @@ import de.agilecoders.wicket.jquery.JQuery;
  * <h1>JS function with parameters {@link de.agilecoders.wicket.jquery.JQuery.AbstractFunction}.</h1>
  * <p>Create JS function with string or {@link de.agilecoders.wicket.jquery.Config} parameters <br>
  *
- * TODO move to wicket-jquery-selectors
+ * TODO Replace with Function once wicket-jquery-selectors:0.1.5 is released
  *
  * @author Anton Osipov
  * @author Alexey Volkov
  * @since 30.09.2014
  */
-public class ParametrizedFunction extends JQuery.AbstractFunction {
+class ParametrizedFunction extends JQuery.AbstractFunction {
 
     private static final long serialVersionUID = 1L;
 
@@ -21,7 +21,7 @@ public class ParametrizedFunction extends JQuery.AbstractFunction {
      * @param functionName function name
      * @param parameters   parameters
      */
-    public ParametrizedFunction(String functionName, Object... parameters) {
+    ParametrizedFunction(String functionName, Object... parameters) {
         super(functionName);
         for (Object parameter : parameters) {
             if (parameter instanceof Config) {
