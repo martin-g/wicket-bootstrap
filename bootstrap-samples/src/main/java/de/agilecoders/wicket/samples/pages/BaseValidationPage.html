@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:wicket="http://wicket.apache.org">
+<body>
+<wicket:extend>
+
+    <header class="jumbotron subhead" id="overview">
+        <div class="container" wicket:id="header">
+            <h1>Validation</h1>
+
+            <p class="lead">Validation messages in <span wicket:id="type"></span></p>
+
+            <p class="lead">Switch to <a wicket:id="link"><span wicket:id="other"></span></a></p>
+        </div>
+    </header>
+    <div class="container">
+
+        <div class="row">
+            <div class="col-sm-3 bs-docs-sidebar">
+                <ul wicket:id="navigation" class="nav list-group bs-docs-sidenav">
+                    <li><a href="#guide"><i class="icon-chevron-right"></i>How to use</a></li>
+                    <li><a href="#validation"><i class="icon-chevron-right"></i>Validation</a></li>
+                    <li><a href="#validation-ajax"><i class="icon-chevron-right"></i>Validation with ajax</a></li>
+                    <li><a href="#validation-modal"><i class="icon-chevron-right"></i> Validation (modal)</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-9">
+
+                <section id="guide">
+                    <div class="page-header">
+                        <h1>How to use</h1>
+                    </div>
+                    <p>
+                        Add <span wicket:id="behavior"></span> to any markup container and all validation inside container
+                        will look like in examples below. Do not use it with <span wicket:id="behavior-other"></span> on one
+                        page.
+                    </p>
+
+                    <p>This behavior may not work properly with widgets like bootstrap-select or select2.
+                        In this case try to wrap all input fields in div (that's done by default in bootstrap form layout)
+                        and set appendToParent of config to true.</p>
+
+                    <code class="bs-docs-example" wicket:id="config">
+                    </code>
+
+                </section>
+
+                <section id="validation">
+                    <div class="page-header">
+                        <h1>Validation</h1>
+                    </div>
+                    <h2>Example</h2>
+
+                    <p>Validation for non-ajax forms.</p>
+
+                    <div wicket:id="form" class="bs-docs-example">
+                    </div>
+                </section>
+
+                <section id="validation-ajax">
+                    <div class="page-header">
+                        <h1>Validation for ajax forms</h1>
+                    </div>
+
+                    <h2>Example</h2>
+
+                    <p>Validation also works with ajax form processing.</p>
+
+                    <div class="bs-docs-example" wicket:id="form-ajax">
+                    </div>
+                </section>
+
+                <section id="validation-modal">
+                    <div class="page-header">
+                        <h1>Validation in modals</h1>
+                    </div>
+
+                    <h2>Example</h2>
+
+                    <p>Validation in modals.</p>
+
+                    <div class="bs-docs-example">
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+                            Open modal
+                        </button>
+
+                        <!-- Modal -->
+                        <div id="myModal" wicket:id="modal">
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+</wicket:extend>
+</body>
+</html>

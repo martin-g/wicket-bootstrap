@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<wicket:panel xmlns:wicket="http://wicket.apache.org">
+    <form wicket:id="form" role="form">
+        <div class="form-group">
+            <label wicket:for="required">Required input:</label>
+
+            <div class="controls">
+                <input wicket:id="required" type="text" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label wicket:for="pass">Password input:</label>
+
+            <div class="controls">
+                <input wicket:id="pass" type="password" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label wicket:for="date">Required date:</label>
+
+            <div class="controls">
+                <input wicket:id="date" type="text" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <wicket:fragment wicket:id="select">
+                <label wicket:for="state">Select picker:</label>
+
+                <div class="controls">
+
+                    <select wicket:id="state" class="form-control">
+                    </select>
+                </div>
+            </wicket:fragment>
+        </div>
+        <button type="submit" class="btn btn-main">Submit</button>
+    </form>
+
+</wicket:panel>
+
