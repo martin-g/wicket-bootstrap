@@ -84,7 +84,7 @@ public class NotificationPanel extends FencedFeedbackPanel {
 
     @Override
     protected FeedbackMessagesModel newFeedbackMessagesModel() {
-        FeedbackMessagesModel model = new FeedbackMessagesModel(this);
+        FeedbackMessagesModel model = super.newFeedbackMessagesModel();
 
         if (!showRenderedMessages) {
             model.setFilter(new IFeedbackMessageFilter() {

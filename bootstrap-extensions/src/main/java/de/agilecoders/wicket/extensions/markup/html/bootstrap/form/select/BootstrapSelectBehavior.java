@@ -1,6 +1,7 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.form.select;
 
-import de.agilecoders.wicket.jquery.IFunction;
+import de.agilecoders.wicket.jquery.function.AbstractFunction;
+import de.agilecoders.wicket.jquery.function.IFunction;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.behavior.Behavior;
@@ -10,7 +11,6 @@ import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 
 import static de.agilecoders.wicket.jquery.JQuery.$;
-import static de.agilecoders.wicket.jquery.JQuery.AbstractFunction;
 
 /**
  * Bootstrap select behavior. Add js/css resources and updates views

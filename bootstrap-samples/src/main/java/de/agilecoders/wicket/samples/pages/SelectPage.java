@@ -5,6 +5,7 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.block.Code;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.select.BootstrapMultiSelect;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.select.BootstrapSelect;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.select.BootstrapSelectConfig;
+import de.agilecoders.wicket.samples.components.base.StateSelect;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.markup.html.panel.Fragment;
@@ -94,11 +95,11 @@ public class SelectPage extends BasePage {
     }
 
     private BootstrapSelect<String> newSelect(String wicketId, BootstrapSelectConfig config) {
-        return new BootstrapSelect<String>(wicketId, data).with(config);
+        return new StateSelect(wicketId).with(config);
     }
 
     private BootstrapMultiSelect<String> newMultiSelect(String wicketId, BootstrapSelectConfig config) {
-        return new BootstrapMultiSelect<String>(wicketId, data).with(config);
+        return new BootstrapMultiSelect<String>(wicketId, StateSelect.DATA).with(config);
     }
 
     private Fragment fragment(String wicketId, boolean i18n) {

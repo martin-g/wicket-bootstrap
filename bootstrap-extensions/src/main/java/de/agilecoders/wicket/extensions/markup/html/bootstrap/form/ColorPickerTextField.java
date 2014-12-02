@@ -24,6 +24,7 @@ import org.apache.wicket.util.string.StringValue;
 
 import de.agilecoders.wicket.core.util.Attributes;
 import de.agilecoders.wicket.jquery.JQuery;
+import de.agilecoders.wicket.jquery.function.JavaScriptInlineFunction;
 
 /**
  * Bootstrap ColorPicker from http://mjaalnir.github.io/bootstrap-colorpicker/
@@ -156,7 +157,7 @@ public class ColorPickerTextField extends TextField<String> {
             String toColor = config.getFormat().to();
 
             CharSequence attrs = colorChangeAjaxBehavior.getAttrs();
-            script.on("changeColor", new JQuery.JavaScriptInlineFunction(
+            script.on("changeColor", new JavaScriptInlineFunction(
                     String.format("var color = evt.color.%s; new Wicket.Ajax.Call().ajax(%s)",
                                   toColor, attrs)));
         }
