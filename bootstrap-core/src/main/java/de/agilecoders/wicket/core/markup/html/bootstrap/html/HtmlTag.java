@@ -113,7 +113,7 @@ public class HtmlTag extends TransparentWebMarkupContainer {
      * @return locale as attribute
      */
     private String toAttributeValue(final Locale locale) {
-        return locale.toLanguageTag();
+        return locale.toLanguageTag(); // IETF BCP 47
     }
 
     @Override
