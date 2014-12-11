@@ -113,7 +113,13 @@ public class HtmlTag extends TransparentWebMarkupContainer {
      * @return locale as attribute
      */
     private String toAttributeValue(final Locale locale) {
-        return locale.toString().replace("_", "-").toLowerCase();
+        return locale.toString().replace("_", "-")
+            // emulate subset of IETF BCP 47: https://github.com/l0rdn1kk0n/wicket-bootstrap/issues/474
+            .replaceFirst("^und", "")
+            .replaceFirst("^iw", "he")
+            .replaceFirst("^ji", "yi")
+            .replaceFirst("^in", "id")
+            .replaceFirst("^no-NO-NY", "nn-NO");
     }
 
     @Override
