@@ -1,14 +1,14 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.html;
 
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.nullValue;
+
 import de.agilecoders.wicket.core.WicketApplicationTest;
 import org.apache.wicket.WicketRuntimeException;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.util.tester.TagTester;
 import org.junit.Test;
-
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.MatcherAssert.assertThat;
 
 /**
  * Tests the {@link MetaTag} component
@@ -49,5 +49,19 @@ public class MetaTagTest extends WicketApplicationTest {
         TagTester tag = startComponentInPage(new MetaTag(id(), "name-of-meta-tag", "text/html").type(MetaTag.Type.HttpEquiv), MARKUP);
 
         assertThat(tag.getAttribute("http-equiv"), is(equalTo("name-of-meta-tag")));
+    }
+
+    /**
+     * https://github.com/l0rdn1kk0n/wicket-bootstrap/issues/478
+     */
+    @Test
+    public void openGraphProperty() {
+        String nameValue = "og:title";
+        String content = "The Rock";
+        TagTester tag = startComponentInPage(new MetaTag(id(), Model.of(nameValue), Model.of(content)).type(MetaTag.Type.Property), MARKUP);
+
+        assertThat(tag.getAttribute("name"), is(nullValue()));
+        assertThat(tag.getAttribute("property"), is(nameValue));
+        assertThat(tag.getAttribute("content"), is(equalTo(content)));
     }
 }
