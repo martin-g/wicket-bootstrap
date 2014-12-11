@@ -1,6 +1,6 @@
 @import url("//fonts.googleapis.com/css?family=Lato:400,700,400italic");
 /*!
- * bootswatch v3.3.1+1
+ * bootswatch v3.3.1+2
  * Homepage: http://bootswatch.com
  * Copyright 2012-2014 Thomas Park
  * Licensed under MIT
@@ -2122,7 +2122,7 @@ th {
   border-bottom-width: 2px;
 }
 .table-striped > tbody > tr:nth-child(odd) {
-  background-color: #303030;
+  background-color: #3d3d3d;
 }
 .table-hover > tbody > tr:hover {
   background-color: #464545;
