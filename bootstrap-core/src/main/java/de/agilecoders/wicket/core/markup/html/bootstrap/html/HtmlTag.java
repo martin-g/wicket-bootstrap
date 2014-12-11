@@ -113,7 +113,7 @@ public class HtmlTag extends TransparentWebMarkupContainer {
      * @return locale as attribute
      */
     private String toAttributeValue(final Locale locale) {
-        return locale.toString().replace("_", "-").toLowerCase();
+        return locale.toLanguageTag();
     }
 
     @Override
