@@ -27,13 +27,25 @@ public class MetaTag extends WebMarkupContainer {
 
     private static final String ATTRIBUTE_NAME_DEFAULT = "name";
     private static final String ATTRIBUTE_NAME_HTTPEQUIV = "http-equiv";
+    private static final String ATTRIBUTE_NAME_PROPERTY = "property";
     private static final String ATTRIBUTE_NAME_CONTENT = "content";
 
     /**
      * All possible meta tag types
      */
     public enum Type {
-        Detect, Default, HttpEquiv
+        Detect(""), Default(ATTRIBUTE_NAME_DEFAULT), HttpEquiv(ATTRIBUTE_NAME_HTTPEQUIV), Property(ATTRIBUTE_NAME_PROPERTY);
+
+        private final String nameAttribute;
+
+        private Type(String nameAttribute) {
+            this.nameAttribute = nameAttribute;
+        }
+
+        @Override
+        public String toString() {
+            return nameAttribute;
+        }
     }
 
     private final IModel<String> name;
@@ -101,6 +113,8 @@ public class MetaTag extends WebMarkupContainer {
     private Type detect(String name) {
         if (HTTP_EQUIV_NAMES.contains(nullToEmpty(name).toLowerCase())) {
             return Type.HttpEquiv;
+        } else if (Type.Property.nameAttribute.equalsIgnoreCase(name)) {
+            return Type.Property;
         }
 
         return Type.Default;
@@ -121,7 +135,7 @@ public class MetaTag extends WebMarkupContainer {
     /**
      * @return the type of this meta tag.
      */
-    public Type type() {
+    public final Type type() {
         if (Type.Detect.equals(type)) {
             type = detect(name());
         }
@@ -162,7 +176,7 @@ public class MetaTag extends WebMarkupContainer {
 
         Components.assertTag(this, tag, "meta");
 
-        final String nameAttribute = Type.Default.equals(type()) ? ATTRIBUTE_NAME_DEFAULT : ATTRIBUTE_NAME_HTTPEQUIV;
+        String nameAttribute = type().nameAttribute;
 
         tag.put(nameAttribute, name());
         tag.put(ATTRIBUTE_NAME_CONTENT, content());
