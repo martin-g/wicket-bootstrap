@@ -26,6 +26,6 @@ public class HtmlTagTest extends WicketApplicationTest {
     public void onComponentTagEnUsLocale() throws Exception {
         HtmlTag htmlTag = new HtmlTag("id", Locale.US);
         htmlTag.onComponentTag(tag);
-        assertThat(tag.getAttribute("lang"), is(equalTo("en-us")));
+        assertThat(tag.getAttribute("lang"), is(equalTo("en-US")));
     }
 }
