@@ -2,6 +2,7 @@ package de.agilecoders.wicket.core.markup.html.bootstrap.html;
 
 import de.agilecoders.wicket.core.util.Components;
 import de.agilecoders.wicket.jquery.util.Generics2;
+import org.apache.wicket.IGenericComponent;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.model.IModel;
@@ -14,9 +15,11 @@ import static de.agilecoders.wicket.jquery.util.Strings2.nullToEmpty;
 /**
  * A simple meta tag component.
  *
+ * <p>The value of the <em>content</em> attribute is stored as model object for this component</p>
+ *
  * @author miha
  */
-public class MetaTag extends WebMarkupContainer {
+public class MetaTag extends WebMarkupContainer implements IGenericComponent<String> {
     // @see http://www.w3schools.com/tags/att_meta_http_equiv.asp
     private static final List<String> HTTP_EQUIV_NAMES = Generics2.newArrayList(
             "content-type", "expires", "refresh", "pragma", "cache-control",
@@ -49,7 +52,6 @@ public class MetaTag extends WebMarkupContainer {
     }
 
     private final IModel<String> name;
-    private final IModel<String> content;
     private Type type;
 
     /**
@@ -84,7 +86,7 @@ public class MetaTag extends WebMarkupContainer {
      * @param content the content of this meta tag
      */
     public MetaTag(String id, String name, String content) {
-        this(id, Model.<String>of(name), Model.<String>of(content));
+        this(id, Model.of(name), Model.of(content));
     }
 
     /**
@@ -95,10 +97,9 @@ public class MetaTag extends WebMarkupContainer {
      * @param content the content of this meta tag
      */
     public MetaTag(String id, IModel<String> name, IModel<String> content) {
-        super(id);
+        super(id, content);
 
         this.name = name;
-        this.content = content;
         this.type = Type.Detect;
     }
 
@@ -154,7 +155,7 @@ public class MetaTag extends WebMarkupContainer {
      * @return the content of this meta tag
      */
     public String content() {
-        return content.getObject();
+        return getModelObject();
     }
 
     /**
@@ -166,7 +167,7 @@ public class MetaTag extends WebMarkupContainer {
      */
     @Deprecated
     public MetaTag content(String content) {
-        this.content.setObject(content);
+        this.setModelObject(content);
         return this;
     }
 
@@ -180,5 +181,25 @@ public class MetaTag extends WebMarkupContainer {
 
         tag.put(nameAttribute, name());
         tag.put(ATTRIBUTE_NAME_CONTENT, content());
+    }
+
+    @Override
+    public IModel<String> getModel() {
+        return (IModel<String>) getDefaultModel();
+    }
+
+    @Override
+    public void setModel(IModel<String> model) {
+        setDefaultModel(model);
+    }
+
+    @Override
+    public void setModelObject(String object) {
+        setDefaultModelObject(object);
+    }
+
+    @Override
+    public String getModelObject() {
+        return getDefaultModelObjectAsString();
     }
 }
