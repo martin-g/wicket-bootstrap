@@ -2,13 +2,13 @@
 <html xmlns:wicket="http://wicket.apache.org">
 <body>
 <wicket:panel>
-    <li><a wicket:id="first" class="first">&lt;&lt;</a></li>
-    <li><a wicket:id="prev" class="prev">&lt;</a></li>
+    <li wicket:id="firstItem"><a wicket:id="first" class="first">&lt;&lt;</a></li>
+    <li wicket:id="prevItem"><a wicket:id="prev" class="prev" rel="prev">&lt;</a></li>
     <li wicket:id="navigation"><a wicket:id="pageLink">
         <wicket:fragment wicket:id="pageNumber">5</wicket:fragment>
     </a></li>
-    <li><a wicket:id="next" class="next">&gt;</a></li>
-    <li><a wicket:id="last" class="last">&gt;&gt;</a></li>
+    <li wicket:id="nextItem"><a wicket:id="next" class="next" rel="next">&gt;</a></li>
+    <li wicket:id="lastItem"><a wicket:id="last" class="last">&gt;&gt;</a></li>
 </wicket:panel>
 </body>
 </html>
