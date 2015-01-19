@@ -1,5 +1,6 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.common;
 
+import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapJavascriptBehavior;
 import org.apache.wicket.Component;
 import org.apache.wicket.feedback.FeedbackMessage;
 import org.apache.wicket.feedback.FeedbackMessagesModel;
@@ -57,6 +58,9 @@ public class NotificationPanel extends FencedFeedbackPanel {
      */
     public NotificationPanel(String id, Component fence, IFeedbackMessageFilter filter) {
         super(id, fence, filter);
+
+        // contribute bootstrap.js to allow closing the feedback messages (the alerts)
+        BootstrapJavascriptBehavior.addTo(this);
     }
 
     /**
