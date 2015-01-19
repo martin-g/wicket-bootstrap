@@ -64,4 +64,64 @@ public class MetaTagTest extends WicketApplicationTest {
         assertThat(tag.getAttribute("property"), is(nameValue));
         assertThat(tag.getAttribute("content"), is(equalTo(content)));
     }
+
+    @Test
+    public void propertyOgNamesAreUsed() throws Exception {
+        String ogTitle = "og:title";
+        String value = "value";
+        TagTester tag = startComponentInPage(new MetaTag(id(), ogTitle, value), MARKUP);
+
+        assertThat(tag.getAttribute(MetaTag.ATTRIBUTE_NAME_PROPERTY), is(equalTo(ogTitle)));
+        assertThat(tag.getAttribute(MetaTag.ATTRIBUTE_NAME_CONTENT), is(equalTo(value)));
+    }
+
+    @Test
+    public void propertyMusicNamesAreUsed() throws Exception {
+        String property = "music:song";
+        String value = "value";
+        TagTester tag = startComponentInPage(new MetaTag(id(), property, value), MARKUP);
+
+        assertThat(tag.getAttribute(MetaTag.ATTRIBUTE_NAME_PROPERTY), is(equalTo(property)));
+        assertThat(tag.getAttribute(MetaTag.ATTRIBUTE_NAME_CONTENT), is(equalTo(value)));
+    }
+
+    @Test
+    public void propertyVideoNamesAreUsed() throws Exception {
+        String ogTitle = "video:actor";
+        String value = "value";
+        TagTester tag = startComponentInPage(new MetaTag(id(), ogTitle, value), MARKUP);
+
+        assertThat(tag.getAttribute(MetaTag.ATTRIBUTE_NAME_PROPERTY), is(equalTo(ogTitle)));
+        assertThat(tag.getAttribute(MetaTag.ATTRIBUTE_NAME_CONTENT), is(equalTo(value)));
+    }
+
+    @Test
+    public void propertyArticleNamesAreUsed() throws Exception {
+        String ogTitle = "article:author";
+        String value = "value";
+        TagTester tag = startComponentInPage(new MetaTag(id(), ogTitle, value), MARKUP);
+
+        assertThat(tag.getAttribute(MetaTag.ATTRIBUTE_NAME_PROPERTY), is(equalTo(ogTitle)));
+        assertThat(tag.getAttribute(MetaTag.ATTRIBUTE_NAME_CONTENT), is(equalTo(value)));
+    }
+
+    @Test
+    public void propertyBookNamesAreUsed() throws Exception {
+        String ogTitle = "book:author";
+        String value = "value";
+        TagTester tag = startComponentInPage(new MetaTag(id(), ogTitle, value), MARKUP);
+
+        assertThat(tag.getAttribute(MetaTag.ATTRIBUTE_NAME_PROPERTY), is(equalTo(ogTitle)));
+        assertThat(tag.getAttribute(MetaTag.ATTRIBUTE_NAME_CONTENT), is(equalTo(value)));
+    }
+
+    @Test
+    public void propertyProfileNamesAreUsed() throws Exception {
+        String ogTitle = "profile:first_name";
+        String value = "value";
+        TagTester tag = startComponentInPage(new MetaTag(id(), ogTitle, value), MARKUP);
+
+        assertThat(tag.getAttribute(MetaTag.ATTRIBUTE_NAME_PROPERTY), is(equalTo(ogTitle)));
+        assertThat(tag.getAttribute(MetaTag.ATTRIBUTE_NAME_CONTENT), is(equalTo(value)));
+    }
 }

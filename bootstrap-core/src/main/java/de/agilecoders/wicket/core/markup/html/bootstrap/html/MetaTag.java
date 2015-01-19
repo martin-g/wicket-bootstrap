@@ -33,8 +33,8 @@ public class MetaTag extends WebMarkupContainer implements IGenericComponent<Str
 
     private static final String ATTRIBUTE_NAME_DEFAULT = "name";
     private static final String ATTRIBUTE_NAME_HTTPEQUIV = "http-equiv";
-    private static final String ATTRIBUTE_NAME_PROPERTY = "property";
-    private static final String ATTRIBUTE_NAME_CONTENT = "content";
+    static final String ATTRIBUTE_NAME_PROPERTY = "property";
+    static final String ATTRIBUTE_NAME_CONTENT = "content";
 
     /**
      * All possible meta tag types
