@@ -9,6 +9,7 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
 import java.util.List;
+import java.util.regex.Pattern;
 
 import static de.agilecoders.wicket.jquery.util.Strings2.nullToEmpty;
 
@@ -27,6 +28,8 @@ public class MetaTag extends WebMarkupContainer implements IGenericComponent<Str
             "content-style-type", "last-modified", "date", "location",
             "window-target"
     );
+    // @see http://ogp.me/
+    private static final Pattern OGP_PROPERTIES = Pattern.compile("^(og|music|video|article|book|profile):.+");
 
     private static final String ATTRIBUTE_NAME_DEFAULT = "name";
     private static final String ATTRIBUTE_NAME_HTTPEQUIV = "http-equiv";
@@ -114,7 +117,7 @@ public class MetaTag extends WebMarkupContainer implements IGenericComponent<Str
     private Type detect(String name) {
         if (HTTP_EQUIV_NAMES.contains(nullToEmpty(name).toLowerCase())) {
             return Type.HttpEquiv;
-        } else if (Type.Property.nameAttribute.equalsIgnoreCase(name)) {
+        } else if (OGP_PROPERTIES.matcher(nullToEmpty(name)).matches()) {
             return Type.Property;
         }
 
