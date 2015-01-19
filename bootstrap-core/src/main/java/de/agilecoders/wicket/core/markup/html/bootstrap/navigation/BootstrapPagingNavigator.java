@@ -1,8 +1,5 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.navigation;
 
-import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
-import de.agilecoders.wicket.core.util.Attributes;
-import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.CssClassNameAppender;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.html.TransparentWebMarkupContainer;
@@ -11,7 +8,9 @@ import org.apache.wicket.markup.html.navigation.paging.IPageable;
 import org.apache.wicket.markup.html.navigation.paging.IPagingLabelProvider;
 import org.apache.wicket.markup.html.navigation.paging.PagingNavigation;
 import org.apache.wicket.markup.html.navigation.paging.PagingNavigator;
-import org.apache.wicket.model.AbstractReadOnlyModel;
+
+import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
+import de.agilecoders.wicket.core.util.Attributes;
 
 /**
  * A Wicket panel component to draw and maintain a complete page navigator, meant to be easily added
@@ -65,34 +64,10 @@ public class BootstrapPagingNavigator extends PagingNavigator {
     @Override
     protected void onInitialize() {
         super.onInitialize();
-        add(new TransparentWebMarkupContainer("firstItem")
-                .add(new CssClassNameAppender(new AbstractReadOnlyModel<String>() {
-                    @Override
-                    public String getObject() {
-                        return get("first").isEnabled() ? null : "disabled";
-                    }
-                })));
-        add(new TransparentWebMarkupContainer("prevItem")
-                .add(new CssClassNameAppender(new AbstractReadOnlyModel<String>() {
-                    @Override
-                    public String getObject() {
-                        return get("prev").isEnabled() ? null : "disabled";
-                    }
-                })));
-        add(new TransparentWebMarkupContainer("nextItem")
-                .add(new CssClassNameAppender(new AbstractReadOnlyModel<String>() {
-                    @Override
-                    public String getObject() {
-                        return get("next").isEnabled() ? null : "disabled";
-                    }
-                })));
-        add(new TransparentWebMarkupContainer("lastItem")
-                .add(new CssClassNameAppender(new AbstractReadOnlyModel<String>() {
-                    @Override
-                    public String getObject() {
-                        return get("last").isEnabled() ? null : "disabled";
-                    }
-                })));
+        add(new PagingItem("firstItem", "first"));
+        add(new PagingItem("prevItem", "prev"));
+        add(new PagingItem("nextItem", "next"));
+        add(new PagingItem("lastItem", "last"));
     }
 
     @Override
@@ -110,7 +85,7 @@ public class BootstrapPagingNavigator extends PagingNavigator {
 
     /**
      * Create a new PagingNavigation. May be subclassed to make us of specialized PagingNavigation.
-     * 
+     *
      * @param id
      *            The id of the navigation component
      * @param pageable
@@ -119,7 +94,7 @@ public class BootstrapPagingNavigator extends PagingNavigator {
      *            The label provider for the link text.
      * @return the navigation object
      */
-    
+
     @Override
     protected PagingNavigation newNavigation(final String id, final IPageable pageable, final IPagingLabelProvider labelProvider) {
         return new PagingNavigation(id, pageable, labelProvider) {
@@ -146,4 +121,25 @@ public class BootstrapPagingNavigator extends PagingNavigator {
         this.size = Size.Default.equals(size) ? null : size;
         return this;
     }
+
+    private static class PagingItem extends TransparentWebMarkupContainer {
+
+        private final String childId;
+
+        private PagingItem(String id, final String childId) {
+            super(id);
+
+            this.childId = childId;
+        }
+
+        @Override
+        protected void onComponentTag(ComponentTag tag) {
+            super.onComponentTag(tag);
+
+            if (!getParent().get(childId).isEnabled()) {
+                Attributes.addClass(tag, "disabled");
+            }
+        }
+    }
+
 }
