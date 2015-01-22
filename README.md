@@ -20,10 +20,10 @@ Components
 Themes
 ------
 
-* Bootstrap (3.2.0): http://getbootstrap.com/
+* Bootstrap (3.2.2): http://getbootstrap.com/
 * Vegibit (3.1.1): http://vegibit.com/vegithemes-twitter-bootstrap-themes/
-* Bootswatch (3.2.0): http://bootswatch.com/
-* todc-bootstrap, google styled theme (3.2.0): http://todc.github.io/todc-bootstrap
+* Bootswatch (3.2.2): http://bootswatch.com/
+* todc-bootstrap, google styled theme (3.2.2): http://todc.github.io/todc-bootstrap
 * metro-bootstrap (3.1.1-1): https://github.com/TalksLab/metro-bootstrap
 
 Extensions
