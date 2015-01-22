@@ -33,6 +33,8 @@ import org.apache.wicket.Page;
 import org.apache.wicket.ResourceBundles;
 import org.apache.wicket.RuntimeConfigurationType;
 import org.apache.wicket.WicketRuntimeException;
+import org.apache.wicket.markup.html.IPackageResourceGuard;
+import org.apache.wicket.markup.html.SecurePackageResourceGuard;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.request.resource.CssResourceReference;
 import org.apache.wicket.request.resource.JavaScriptResourceReference;
@@ -105,6 +107,12 @@ public class WicketApplication extends WebApplication {
             final String cdn = properties.getProperty("cdn.baseUrl");
 
             StaticResourceRewriteMapper.withBaseUrl(cdn).install(this);
+        }
+
+        IPackageResourceGuard packageResourceGuard = getResourceSettings().getPackageResourceGuard();
+        if (packageResourceGuard instanceof SecurePackageResourceGuard) {
+            SecurePackageResourceGuard securePackageResourceGuard = (SecurePackageResourceGuard) packageResourceGuard;
+            securePackageResourceGuard.addPattern("+*.woff2");
         }
 
         WicketSource.configure(this);
