@@ -88,7 +88,13 @@ public class Alert extends GenericPanel<String> {
         this.inlineHeader = new Label("inline", header);
         this.blockHeader = new Label("block", header);
         this.message = createMessage("message", getModel());
-        this.closeButton = new WebMarkupContainer("close");
+        this.closeButton = new WebMarkupContainer("close") {
+            @Override
+            protected void onConfigure() {
+                super.onConfigure();
+                setVisible(dismissable);
+            }
+        };
 
         add(this.inlineHeader, this.blockHeader, this.message, this.closeButton);
 
