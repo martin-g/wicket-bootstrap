@@ -1,7 +1,16 @@
 package de.agilecoders.wicket.less;
 
+import com.github.sommeri.less4j.LessFunction;
+import com.github.sommeri.less4j.LessProblems;
 import com.github.sommeri.less4j.LessSource;
+import com.github.sommeri.less4j.LessCompiler.Configuration;
+import com.github.sommeri.less4j.core.ast.Expression;
+import com.github.sommeri.less4j.core.ast.FunctionExpression;
+import com.github.sommeri.less4j.core.ast.IdentifierExpression;
+
 import de.agilecoders.wicket.webjars.WicketWebjars;
+
+import org.apache.wicket.Application;
 import org.apache.wicket.request.resource.IResourceReferenceFactory;
 import org.apache.wicket.request.resource.ResourceReferenceRegistry;
 import org.apache.wicket.util.tester.WicketTester;
@@ -10,6 +19,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.net.URL;
+import java.util.List;
 
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.equalTo;
@@ -81,5 +91,36 @@ public class BootstrapLessTest {
         ResourceReferenceRegistry registry = tester.getApplication().getResourceReferenceRegistry();
         IResourceReferenceFactory referenceFactory = registry.getResourceReferenceFactory();
         assertThat(referenceFactory, is(instanceOf(LessResourceReferenceFactory.class)));
+    }
+    
+    @Test
+    public void usesCustomLessCompilerConfigurationFactoryWhenProvided() {
+        // tests the invocation of a custom less function that will be registered within the configuration factory
+        BootstrapLess.install(Application.get(), new LessCompilerConfigurationFactory() {
+            @Override
+            public Configuration newConfiguration() {
+                Configuration config = new Configuration();
+                config.addCustomFunction(new LessFunction() {
+                    @Override
+                    public Expression evaluate(FunctionExpression input, List<Expression> parameters, Expression evaluatedParameter,
+                            LessProblems problems) {
+                        return new IdentifierExpression(input.getUnderlyingStructure(), "blue");
+                    }
+                    
+                    @Override
+                    public boolean canEvaluate(FunctionExpression input, List<Expression> parameters) {
+                        return "myFancyFunction".equals(input.getName());
+                    }
+                });
+                return config;
+            }
+        });
+
+        LessCacheManager less = LessCacheManager.get();
+        URL res = BootstrapLessTest.class.getResource("resources/custom-functions.less");
+
+        LessSource.URLSource lessSource = new LessSource.URLSource(res);
+        String css = less.getCss(lessSource);
+        assertThat(css, is(".my-class {\n  color: blue;\n}\n"));
     }
 }
