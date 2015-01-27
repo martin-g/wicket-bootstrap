@@ -27,6 +27,7 @@ public class LessCacheManager {
     private static final Logger LOG = LoggerFactory.getLogger(LessCacheManager.class);
 
     private static final MetaDataKey<LessCacheManager> KEY = new MetaDataKey<LessCacheManager>() {
+        private static final long serialVersionUID = 1L;
     };
 
     /**
@@ -42,6 +43,29 @@ public class LessCacheManager {
     private final ConcurrentMap<LessSource.URLSource, ConcurrentMap<Time, String>> contentCache =
             new ConcurrentHashMap<>();
 
+    /**
+     * A factory that creates {@link LessCompiler.Configuration}s.
+     */
+    private final LessCompilerConfigurationFactory configFactory;
+    
+    /**
+     * Creates a less cache manager with the {@link LessCompilerConfigurationFactory} provided.
+     * Choose this constructor if you want to use application specific configuration for example
+     * custom less functions.
+     * 
+     * @param configFactory The factory to use when creating a new {@link LessCompiler.Configuration}.
+     */
+    public LessCacheManager(LessCompilerConfigurationFactory configFactory) {
+        this.configFactory = configFactory != null ? configFactory : new SimpleLessCompilerConfigurationFactory();
+    }
+    
+    /**
+     * Creates a less cache manager with a {@link SimpleLessCompilerConfigurationFactory}.
+     */
+    public LessCacheManager() {
+        this(null);
+    }
+    
     /**
      * Returns the LessSource.URLSource per URL.
      * If there is no entry in the cache then it will be automatically registered
@@ -88,7 +112,7 @@ public class LessCacheManager {
             timeToContentMap.clear();
 
             ThreadUnsafeLessCompiler compiler = new ThreadUnsafeLessCompiler();
-            LessCompiler.Configuration configuration = new LessCompiler.Configuration();
+            LessCompiler.Configuration configuration = configFactory.newConfiguration();
             configuration.getSourceMapConfiguration().setLinkSourceMap(false);
 
             try {
@@ -155,6 +179,16 @@ public class LessCacheManager {
      */
     public void install(Application app) {
         app.setMetaData(KEY, this);
+    }
+    
+    /**
+     * Clears the CSS-cache to enable recomiling at runtime. This will clear the complete cache,
+     * not for a single .less-file.
+     * 
+     * @see #contentCache
+     */
+    public void clearCache() {
+        contentCache.clear();
     }
 
     /**

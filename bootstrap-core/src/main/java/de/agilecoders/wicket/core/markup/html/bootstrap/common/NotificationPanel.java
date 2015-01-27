@@ -109,6 +109,15 @@ public class NotificationPanel extends FencedFeedbackPanel {
 
     @Override
     protected Component newMessageDisplayComponent(String markupId, FeedbackMessage message) {
-        return new NotificationAlert(markupId, message, duration);
+        NotificationAlert alert = new NotificationAlert(markupId, message, duration);
+        alert.setCloseButtonVisible(isCloseButtonVisible());
+        return alert;
+    }
+
+    /**
+     * @return {@code true} if the notification alerts should have close button (x)
+     */
+    protected boolean isCloseButtonVisible() {
+        return true;
     }
 }

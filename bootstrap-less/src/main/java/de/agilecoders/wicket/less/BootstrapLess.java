@@ -6,6 +6,8 @@ import org.apache.wicket.markup.html.SecurePackageResourceGuard;
 import org.apache.wicket.request.resource.IResourceReferenceFactory;
 import org.apache.wicket.request.resource.ResourceReferenceRegistry;
 
+import com.github.sommeri.less4j.LessCompiler;
+
 /**
  * Bootstrap less compiler settings accessor class
  */
@@ -21,11 +23,12 @@ public final class BootstrapLess {
     /**
      * Installs given settings for given application
      *
-     * @param app      The current application
+     * @param app            The current application
+     * @param configFactory  The {@link LessCompilerConfigurationFactory} to create new {@link LessCompiler.Configuration}.
      */
-    public static void install(final Application app) {
+    public static void install(final Application app, final LessCompilerConfigurationFactory configFactory) {
 
-        LessCacheManager cacheManager = new LessCacheManager();
+        LessCacheManager cacheManager = new LessCacheManager(configFactory);
         cacheManager.install(app);
 
         IPackageResourceGuard resourceGuard = app.getResourceSettings().getPackageResourceGuard();
@@ -38,4 +41,14 @@ public final class BootstrapLess {
         IResourceReferenceFactory delegate = resourceReferenceRegistry.getResourceReferenceFactory();
         resourceReferenceRegistry.setResourceReferenceFactory(new LessResourceReferenceFactory(delegate));
     }
+    
+    /**
+     * Installs given settings for given application
+     *
+     * @param app      The current application
+     */
+    public static void install(final Application app) {
+        install(app, null);
+    }
+
 }

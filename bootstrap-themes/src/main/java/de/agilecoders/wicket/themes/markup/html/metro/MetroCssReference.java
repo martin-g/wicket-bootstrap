@@ -37,7 +37,7 @@ public class MetroCssReference extends CssResourceReference {
      * Private constructor.
      */
     private MetroCssReference() {
-        super(MetroCssReference.class, "css/metro.css");
+        super(MetroCssReference.class, "css/m8tro.css");
     }
 
     @Override
