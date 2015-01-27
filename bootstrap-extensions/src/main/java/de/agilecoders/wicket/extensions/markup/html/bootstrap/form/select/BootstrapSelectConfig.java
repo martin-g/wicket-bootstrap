@@ -3,7 +3,8 @@ package de.agilecoders.wicket.extensions.markup.html.bootstrap.form.select;
 import de.agilecoders.wicket.jquery.AbstractConfig;
 
 import de.agilecoders.wicket.jquery.IKey;
-import org.apache.wicket.util.lang.Arrays;
+
+import java.util.Arrays;
 
 /**
  * Bootstrap select config
