@@ -33,7 +33,7 @@ public class JasnyJsReference extends JQueryPluginResourceReference {
     @Override
     public Iterable<? extends HeaderItem> getDependencies() {
         return Dependencies.combine(super.getDependencies(),
-                                    CssHeaderItem.forReference(JasnyCssReference.INSTANCE),
+                                    CssHeaderItem.forReference(Bootstrap.getSettings().getCssResourceReference()),
                                     JavaScriptHeaderItem.forReference(Bootstrap.getSettings().getJsResourceReference()));
     }
 }
