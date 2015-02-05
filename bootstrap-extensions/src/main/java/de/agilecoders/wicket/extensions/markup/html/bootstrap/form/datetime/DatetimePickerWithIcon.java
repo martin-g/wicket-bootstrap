@@ -1,6 +1,5 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.form.datetime;
 
-import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapResourcesBehavior;
 import org.apache.wicket.extensions.markup.html.form.DateTextField;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.panel.Panel;
@@ -67,7 +66,6 @@ public class DatetimePickerWithIcon extends Panel {
     @Override
     protected void onInitialize() {
         super.onInitialize();
-        BootstrapResourcesBehavior.addTo(this);
         WebMarkupContainer container = new WebMarkupContainer("dateWrapper");
         add(container
                 .add(newInput("date", config.getFormat()))

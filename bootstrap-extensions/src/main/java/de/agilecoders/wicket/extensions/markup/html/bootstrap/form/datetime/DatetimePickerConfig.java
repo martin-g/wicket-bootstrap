@@ -11,16 +11,25 @@ import java.util.Date;
 import static de.agilecoders.wicket.jquery.util.Strings2.nullToEmpty;
 
 /**
- * Config on date input field with a time.
+ * Config of datetime picker plugin.
  *
- * @author Osipov Anton (palevo)
- * @since 01.10.2014
+ * @author Alexey Volkov
+ * @since 02.02.2015
  */
 public class DatetimePickerConfig extends AbstractConfig {
 
     public enum ViewModeType {
+        /**
+         * year view
+         */
         YEARS("years"),
+        /**
+         * months view
+         */
         MONTHS("months"),
+        /**
+         * days view
+         */
         DAYS("days");
 
         private final String code;

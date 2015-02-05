@@ -15,7 +15,10 @@ import java.util.List;
  * <p/>
  * <p>As markup use any of the recommended markup snippets at
  * <a href="http://jasny.github.com/bootstrap/javascript.html#fileupload">Jasny File Upload</a></p>
+ *
+ * @deprecated since 0.9.8. Use BootstrapFileInput instead.
  */
+@Deprecated
 public class FileUploadField extends org.apache.wicket.markup.html.form.upload.FileUploadField {
 
     /**

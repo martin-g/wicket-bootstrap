@@ -83,7 +83,6 @@ public class DatetimePicker extends DateTextField {
     @Override
     protected void onInitialize() {
         super.onInitialize();
-        //        BootstrapResourcesBehavior.addTo(this);
         add(new DatetimePickerBehavior(config));
         if (config.getMaskInput()) {
             add(config.newMaskBehavior());
