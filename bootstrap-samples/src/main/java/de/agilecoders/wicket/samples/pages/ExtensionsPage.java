@@ -8,6 +8,7 @@ import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.html.TransparentWebMarkupContainer;
+import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
@@ -53,7 +54,6 @@ import de.agilecoders.wicket.extensions.markup.html.bootstrap.ladda.LaddaAjaxLin
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.ladda.LaddaBehavior;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.tour.TourBehavior;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.tour.TourStep;
-import de.agilecoders.wicket.samples.panels.pagination.InfinitePaginationPanel;
 
 /**
  * The {@code ExtensionsPage}
@@ -136,8 +136,14 @@ public class ExtensionsPage extends BasePage {
 
 		Modal<String> draggableModal = new TextContentModal(
 				"draggable-modal",
-				Model.of("Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."));
-		draggableModal.add(new Draggable(new DraggableConfig().withHandle(".modal-header").withCursor("move")));
+				Model.of("Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.")) {
+            @Override
+            protected WebMarkupContainer createDialog(String id) {
+                WebMarkupContainer dialog = super.createDialog(id);
+                dialog.add(new Draggable(new DraggableConfig().withHandle(".modal-header").withCursor("move")));
+                return dialog;
+            }
+        };
 		draggableModal.add(new Resizable().withChildSelector(".modal-content"));
 		draggableModal.setUseKeyboard(true).addCloseButton();
 		draggableModal.setFadeIn(false);
@@ -179,8 +185,6 @@ public class ExtensionsPage extends BasePage {
 
 		addJasnyFileUploadDemo();
 		addJasnyInputMaskDemo();
-
-		add(new InfinitePaginationPanel("infinite"));
 
 		laddaButton();
 
