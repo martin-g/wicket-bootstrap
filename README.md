@@ -15,7 +15,7 @@ Components
 ----------
 
 * Bootstrap (3.3.2): https://github.com/twbs/bootstrap/
-* Apache Wicket (6.18.0): http://wicket.apache.org/
+* Apache Wicket (6.19.0): http://wicket.apache.org/
 
 Themes
 ------
