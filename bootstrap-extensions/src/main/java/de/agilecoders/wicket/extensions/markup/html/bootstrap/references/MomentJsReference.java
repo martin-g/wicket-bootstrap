@@ -12,7 +12,7 @@ import org.apache.wicket.markup.head.JavaScriptHeaderItem;
  */
 public class MomentJsReference extends WebjarsJavaScriptResourceReference {
 
-    private static final long serialVersionUID = -183841786312223075L;
+    private static final long serialVersionUID = 1L;
 
     /**
      * Singleton instance of this reference

@@ -2,7 +2,6 @@ package de.agilecoders.wicket.extensions.markup.html.bootstrap.form.datetime;
 
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.references.DatetimePickerCssReference;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.references.DatetimePickerJsReference;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.references.MomentWithLocalesJsReference;
 import de.agilecoders.wicket.jquery.IFunction;
 import de.agilecoders.wicket.jquery.JQuery;
 import org.apache.wicket.Component;
@@ -14,18 +13,18 @@ import org.apache.wicket.markup.head.IHeaderResponse;
 import static de.agilecoders.wicket.jquery.JQuery.$;
 
 /**
- * Datetime picker behavior for Eondan datetime picker plugin.
+ * Datetime picker behavior for Eonasdan datetime picker plugin.
  *
  * @author Alexey Volkov
  * @since 01.02.2015
  */
 public class DatetimePickerBehavior extends Behavior {
 
-    private static final long serialVersionUID = -3798192516061954773L;
+    private static final long serialVersionUID = 1L;
 
     private static class DestroyScript extends JQuery.AbstractFunction {
 
-        private static final long serialVersionUID = 5744163685461085633L;
+        private static final long serialVersionUID = 1L;
 
         private DestroyScript() {
             super("datetimepicker");
@@ -49,9 +48,8 @@ public class DatetimePickerBehavior extends Behavior {
     @Override
     public void renderHead(Component component, final IHeaderResponse response) {
         super.renderHead(component, response);
-        response.render(MomentWithLocalesJsReference.asHeaderItem());
-        response.render(DatetimePickerJsReference.asHeaderItem());
         response.render(DatetimePickerCssReference.asHeaderItem());
+        response.render(DatetimePickerJsReference.asHeaderItem());
         response.render($(component).chain("datetimepicker", config).asDomReadyScript());
     }
 

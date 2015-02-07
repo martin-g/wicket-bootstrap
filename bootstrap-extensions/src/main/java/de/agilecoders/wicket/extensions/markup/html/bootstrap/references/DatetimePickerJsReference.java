@@ -14,7 +14,7 @@ import org.apache.wicket.markup.head.JavaScriptHeaderItem;
  */
 public class DatetimePickerJsReference extends WebjarsJavaScriptResourceReference {
 
-    private static final long serialVersionUID = -183841786312223075L;
+    private static final long serialVersionUID = 1L;
 
     /**
      * Singleton instance of this reference
@@ -41,7 +41,8 @@ public class DatetimePickerJsReference extends WebjarsJavaScriptResourceReferenc
     @Override
     public Iterable<? extends HeaderItem> getDependencies() {
         return Dependencies.combine(super.getDependencies(),
-            JavaScriptHeaderItem.forReference(Application.get().getJavaScriptLibrarySettings().getJQueryReference()));
+            JavaScriptHeaderItem.forReference(Application.get().getJavaScriptLibrarySettings().getJQueryReference()),
+            MomentWithLocalesJsReference.asHeaderItem());
     }
 
     /**

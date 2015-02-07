@@ -12,7 +12,7 @@ import org.apache.wicket.markup.head.JavaScriptHeaderItem;
  */
 public class MomentWithLocalesJsReference extends WebjarsJavaScriptResourceReference {
 
-    private static final long serialVersionUID = -3723464770950985038L;
+    private static final long serialVersionUID = 1L;
 
     /**
      * Singleton instance of this reference

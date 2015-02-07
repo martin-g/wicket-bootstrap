@@ -61,6 +61,7 @@ public class DatetimePickerConfig extends AbstractConfig {
 
     private static final IKey<String[]> DisabledDates = newKey("disabledDates", null);
     private static final IKey<String[]> EnabledDates = newKey("enabledDates", null);
+    private static final IKey<DatetimePickerIconConfig> Icons = newKey("icons", null);
 
     private Boolean maskInput = false;
 
@@ -95,6 +96,17 @@ public class DatetimePickerConfig extends AbstractConfig {
      */
     public DatetimePickerConfig withFormat(String format) {
         put(Format, toJavaScriptDateFormat(format));
+        return this;
+    }
+
+    /**
+     * Set icon config.
+     *
+     * @param iconConfig icon config
+     * @return config instance
+     */
+    public DatetimePickerConfig with(DatetimePickerIconConfig iconConfig) {
+        put(Icons, iconConfig);
         return this;
     }
 
@@ -278,7 +290,7 @@ public class DatetimePickerConfig extends AbstractConfig {
      * @return java date format
      */
     public static String toJavaDateFormat(final String javaScriptDateFormat) {
-        return nullToEmpty(javaScriptDateFormat).replaceAll("DD", "dd").replaceAll("YYYY", "yyyy");
+        return nullToEmpty(javaScriptDateFormat).replaceAll("D", "d").replaceAll("Y", "y");
     }
 
     /**
@@ -288,7 +300,7 @@ public class DatetimePickerConfig extends AbstractConfig {
      * @return java script date format
      */
     public static String toJavaScriptDateFormat(final String javaDateFormat) {
-        return nullToEmpty(javaDateFormat).replaceAll("dd", "DD").replaceAll("yyyy", "YYYY");
+        return nullToEmpty(javaDateFormat).replaceAll("d", "D").replaceAll("y", "Y");
     }
 
     /**

@@ -13,27 +13,8 @@ import java.util.Date;
  */
 public class DatetimePicker extends DateTextField {
 
-    private static final long serialVersionUID = -9043590922065213472L;
-    private DatetimePickerConfig config = newDefaultConfig();
-
-    /**
-     * Construct.
-     *
-     * @param id wicket id
-     */
-    public DatetimePicker(String id) {
-        super(id);
-    }
-
-    /**
-     * Construct.
-     *
-     * @param id    wicket id
-     * @param model model
-     */
-    public DatetimePicker(String id, IModel<Date> model) {
-        super(id, model);
-    }
+    private static final long serialVersionUID = 1L;
+    private DatetimePickerConfig config;
 
     /**
      * Construct.
@@ -53,8 +34,8 @@ public class DatetimePicker extends DateTextField {
      * @param datePattern datetime pattern
      */
     public DatetimePicker(String id, IModel<Date> model, String datePattern) {
-        this(id, model);
-        config.withFormat(datePattern);
+        super(id, model, datePattern);
+        config = new DatetimePickerConfig().withFormat(datePattern);
     }
 
     /**
@@ -64,7 +45,7 @@ public class DatetimePicker extends DateTextField {
      * @param config config
      */
     public DatetimePicker(String id, DatetimePickerConfig config) {
-        this(id);
+        this(id, null, config.getFormat());
         this.config = config;
     }
 
@@ -76,7 +57,7 @@ public class DatetimePicker extends DateTextField {
      * @param config config
      */
     public DatetimePicker(String id, IModel<Date> model, DatetimePickerConfig config) {
-        super(id, model, config.getFormat());
+        this(id, model, config.getFormat());
         this.config = config;
     }
 
@@ -87,13 +68,6 @@ public class DatetimePicker extends DateTextField {
         if (config.getMaskInput()) {
             add(config.newMaskBehavior());
         }
-    }
-
-    /**
-     * @return new default config
-     */
-    protected DatetimePickerConfig newDefaultConfig() {
-        return new DatetimePickerConfig();
     }
 
 }

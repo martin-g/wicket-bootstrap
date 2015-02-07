@@ -1,5 +1,9 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.form.datetime;
 
+import de.agilecoders.wicket.core.markup.html.bootstrap.image.GlyphIconType;
+import de.agilecoders.wicket.core.markup.html.bootstrap.image.Icon;
+import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
+import org.apache.wicket.Component;
 import org.apache.wicket.extensions.markup.html.form.DateTextField;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.panel.Panel;
@@ -17,17 +21,7 @@ public class DatetimePickerWithIcon extends Panel {
 
     private static final long serialVersionUID = 1L;
 
-    private DatetimePickerConfig config = newDefaultConfig();
-
-    /**
-     * Construct.
-     *
-     * @param markupId markup id
-     */
-    public DatetimePickerWithIcon(String markupId) {
-        super(markupId);
-        setRenderBodyOnly(true);
-    }
+    private DatetimePickerConfig config;
 
     /**
      * Construct.
@@ -36,19 +30,7 @@ public class DatetimePickerWithIcon extends Panel {
      * @param config   DateTimePicker config
      */
     public DatetimePickerWithIcon(String markupId, DatetimePickerConfig config) {
-        this(markupId);
-        this.config = config;
-    }
-
-    /**
-     * Construct.
-     *
-     * @param markupId markup id
-     * @param model    model
-     */
-    public DatetimePickerWithIcon(String markupId, IModel<Date> model) {
-        this(markupId);
-        setDefaultModel(model);
+        this(markupId, null, config);
     }
 
     /**
@@ -59,17 +41,23 @@ public class DatetimePickerWithIcon extends Panel {
      * @param config   DateTimePicker config
      */
     public DatetimePickerWithIcon(String markupId, IModel<Date> model, DatetimePickerConfig config) {
-        this(markupId, model);
+        super(markupId, model);
+        setDefaultModel(model);
+        setRenderBodyOnly(true);
         this.config = config;
     }
 
     @Override
     protected void onInitialize() {
         super.onInitialize();
-        WebMarkupContainer container = new WebMarkupContainer("dateWrapper");
-        add(container
-                .add(newInput("date", config.getFormat()))
-                .add(new DatetimePickerBehavior(config))
+        add(new WebMarkupContainer("dateWrapper")
+                .add(
+                    newInput("date", config.getFormat()),
+                    newIcon("icon")
+                )
+                .add(
+                    new DatetimePickerBehavior(config)
+                )
         );
     }
 
@@ -98,10 +86,17 @@ public class DatetimePickerWithIcon extends Panel {
     }
 
     /**
-     * @return new default config
+     * @param wicketId wicket id
+     * @return icon component
      */
-    protected DatetimePickerConfig newDefaultConfig() {
-        return new DatetimePickerConfig();
+    protected Component newIcon(String wicketId) {
+        return new Icon(wicketId, newIconType());
     }
 
+    /**
+     * @return icon type
+     */
+    protected IconType newIconType() {
+        return GlyphIconType.calendar;
+    }
 }
