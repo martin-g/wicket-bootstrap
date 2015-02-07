@@ -12,7 +12,7 @@ import org.apache.wicket.resource.JQueryPluginResourceReference;
  */
 public class JasnyJsReference extends JQueryPluginResourceReference {
 
-    private static final long serialVersionUID = 3759810200114324816L;
+    private static final long serialVersionUID = 1L;
 
     private static final class Holder {
 
