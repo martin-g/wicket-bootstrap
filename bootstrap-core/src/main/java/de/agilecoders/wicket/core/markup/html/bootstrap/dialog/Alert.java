@@ -110,9 +110,9 @@ public class Alert extends GenericPanel<String> {
         Attributes.addClass(tag, type);
 
         if (dismissable) {
-            Attributes.addClass(tag, "alert-dismissable");
+            Attributes.addClass(tag, "alert-dismissible");
         } else {
-            Attributes.removeClass(tag, "alert-dismissable");
+            Attributes.removeClass(tag, "alert-dismissible");
         }
     }
 

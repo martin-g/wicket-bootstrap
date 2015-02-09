@@ -17,7 +17,7 @@
             <div class="container">
 
                 <div class="row">
-                    <section id="issue303">
+                    <section id="issue303" class="col-xs-12">
 
                         <div class="bs-docs-example">
                             <div wicket:id="feedback"></div>
@@ -31,11 +31,9 @@
                             In your java code just use <code>de.agilecoders.wicket.extensions.markup.html.bootstrap.BootstrapFileUploadField</code> instead of Wicket's <code>org.apache.wicket.markup.html.form.upload.FileUploadField</code> and make sure your form has form.setOutputMarkupId(true).
                             <br/>No additional HTML markup required. Though you could add class="btn btn-default" to make the AjaxFallback simple file input align properly in bootstrap forms.
                         </div>
-
                     </section>
-
-                    <br/><br/>
                 </div>
+                <br/><br/>
             </div>
         </wicket:extend>
     </body>
