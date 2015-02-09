@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>ComponentsPage</title>
+</head>
+<body>
+<wicket:extend>
+    <header class="jumbotron subhead" id="overview">
+        <div class="container">
+            <h1>Datetime Picker</h1>
+
+            <p class="lead">A datetime picker for @twitter bootstrap from Eonasdan </p>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-3 bs-docs-sidebar">
+                <ul wicket:id="navigation" class="nav list-group bs-docs-sidenav">
+                    <li><a href="#datepicker"><i class="icon-chevron-right"></i>DatetimePicker</a></li>
+                    <li><a href="#datepicker-birthday"><i class="icon-chevron-right"></i>BirthdayPicker</a></li>
+                    <li><a href="#datepicker-masked"><i class="icon-chevron-right"></i>DatetimePicker with mask</a></li>
+                    <li><a href="#datepicker-icons"><i class="icon-chevron-right"></i>DatetimePicker with icons</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-9">
+
+                <section id="datepicker">
+                    <div class="page-header">
+                        <h1>Datetime Picker</h1>
+                    </div>
+
+                    <h2>Example</h2>
+
+                    <p>Simple datetime picker.</p>
+
+                    <div class="bs-docs-example" wicket:id="simple">
+
+                    </div>
+                    Configuration code:
+                    <pre wicket:id="default-java-code"></pre>
+                </section>
+
+                <section id="datepicker-birthday">
+                    <div class="page-header">
+                        <h1>BirthdayPicker</h1>
+                    </div>
+
+                    <h2>Example</h2>
+
+                    <p>Birthday picker</p>
+
+                    <div class="bs-docs-example" wicket:id="birthday">
+                    </div>
+                    Configuration code:
+                    <pre wicket:id="birthday-java-code"></pre>
+                </section>
+
+                <section id="datepicker-masked">
+                    <div class="page-header">
+                        <h1>DatetimePicker with mask</h1>
+                    </div>
+
+                    <h2>Example</h2>
+
+                    <p>Datetime picker with masks</p>
+
+                    <div class="bs-docs-example" wicket:id="masked">
+                    </div>
+                    Configuration code:
+                    <pre wicket:id="masked-java-code"></pre>
+                </section>
+
+                <section id="datepicker-icons">
+                    <div class="page-header">
+                        <h1>DatetimePicker with icons</h1>
+                    </div>
+
+                    <h2>Example</h2>
+
+                    <p>Datetime picker with FontAwesome icons</p>
+
+                    <div class="bs-docs-example" wicket:id="icons">
+                    </div>
+                    Configuration code:
+                    <pre wicket:id="icons-java-code"></pre>
+                </section>
+            </div>
+        </div>
+    </div>
+</wicket:extend>
+</body>
+</html>
