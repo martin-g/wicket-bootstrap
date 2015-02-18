@@ -1,7 +1,6 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.dialog;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapResourcesBehavior;
-import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.CssClassNameAppender;
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNameProvider;
 import de.agilecoders.wicket.core.util.Attributes;
 
@@ -193,6 +192,13 @@ public class Modal<T> extends GenericPanel<T> {
 
         checkComponentTag(tag, "div");
         Attributes.addClass(tag, "modal");
+
+        if (useFadein()) {
+            Attributes.addClass(tag, "fade");
+        } else {
+            Attributes.removeClass(tag, "fade");
+        }
+
         if (closeOnEscapeKey) {
             Attributes.set(tag, "tabindex", "-1");
         }
@@ -448,15 +454,6 @@ public class Modal<T> extends GenericPanel<T> {
     @Override
     protected void onConfigure() {
         super.onConfigure();
-
-        if (useFadein()) {
-            add(new CssClassNameAppender("fade") {
-                @Override
-                public boolean isTemporary(Component component) {
-                    return true;
-                }
-            });
-        }
 
         if (Strings.isEmpty(headerLabel.getDefaultModelObjectAsString())) {
             // there must be at least on character inside the header to prevent

@@ -2,7 +2,6 @@ package de.agilecoders.wicket.extensions.javascript.jasny;
 
 import de.agilecoders.wicket.core.Bootstrap;
 import de.agilecoders.wicket.core.util.Dependencies;
-import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.HeaderItem;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.resource.JQueryPluginResourceReference;
@@ -14,7 +13,11 @@ import java.util.List;
  * Jasny Bootstrap components.
  */
 public class JasnyJsReference extends JQueryPluginResourceReference {
+
+    private static final long serialVersionUID = 1L;
+
     private static final class Holder {
+
         private static final JasnyJsReference INSTANCE = new JasnyJsReference();
     }
 
@@ -35,7 +38,8 @@ public class JasnyJsReference extends JQueryPluginResourceReference {
     @Override
     public List<HeaderItem> getDependencies() {
         return Dependencies.combine(super.getDependencies(),
-                                    CssHeaderItem.forReference(JasnyCssReference.INSTANCE),
-                                    JavaScriptHeaderItem.forReference(Bootstrap.getSettings().getJsResourceReference()));
+            // omit css resource reference because it breaks theme provider.
+            // CssHeaderItem.forReference(Bootstrap.getSettings().getCssResourceReference()),
+            JavaScriptHeaderItem.forReference(Bootstrap.getSettings().getJsResourceReference()));
     }
 }
