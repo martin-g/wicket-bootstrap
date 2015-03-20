@@ -40,6 +40,12 @@
             <artifactId>modernizr</artifactId>
             <version>${modernizr.version}</version>
         </dependency>
+        
+        <dependency>
+		    <groupId>org.webjars</groupId>
+		    <artifactId>animate.css</artifactId>
+		    <version>${animate.css.version}</version>
+		</dependency>
 
         <dependency>
             <groupId>joda-time</groupId>
