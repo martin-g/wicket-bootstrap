@@ -13,7 +13,7 @@ public class AnimateBehaviorTest extends WicketApplicationTest {
 
     @Test
     public void classNameWasAdded() {
-        assertCssClass(new AnimatedBehavior(Animation.bounce), "animate bounce");
+        assertCssClass(new AnimatedBehavior(Animation.bounce), "animated bounce");
     }
 
 }
