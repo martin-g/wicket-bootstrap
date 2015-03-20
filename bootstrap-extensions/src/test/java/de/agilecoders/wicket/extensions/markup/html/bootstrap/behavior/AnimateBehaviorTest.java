@@ -16,27 +16,22 @@ import de.agilecoders.wicket.extensions.markup.html.bootstrap.behavior.AnimatedB
 
 /**
  * @author daniel.jipa
- *
  */
 public class AnimateBehaviorTest extends WicketApplicationTest {
 
-	@Test
-	public void classNameWasAdded() {
-		TagTester tag = startBehaviorInPage(new AnimatedBehavior(
-				Animation.bounce));
-		Args.notNull(tag, "tag");
-		final CssClassNames.Builder cssClasses = CssClassNames.parse(tag
-				.getAttribute("class"));
-		assertThat(
-				cssClasses.contains("animated")
-						&& cssClasses.contains("bounce"), is(equalTo(true)));
-	}
+    @Test
+    public void classNameWasAdded() {
+        TagTester tag = startBehaviorInPage(new AnimatedBehavior(Animation.bounce));
+        Args.notNull(tag, "tag");
+        final CssClassNames.Builder cssClasses = CssClassNames.parse(tag.getAttribute("class"));
+        assertThat(cssClasses.contains("animated")
+                        && cssClasses.contains("bounce"), is(equalTo(true)));
+    }
 
-	protected TagTester startBehaviorInPage(final Behavior behavior) {
-		Component component = new WebMarkupContainer("id");
-		component.add(behavior);
-		tester().startComponentInPage(component);
-		return tester().getTagByWicketId("id");
-	}
-
+    protected TagTester startBehaviorInPage(final Behavior behavior) {
+        Component component = new WebMarkupContainer("id");
+        component.add(behavior);
+        tester().startComponentInPage(component);
+        return tester().getTagByWicketId("id");
+    }
 }
