@@ -18,6 +18,7 @@
         <typeaheadjs.version>0.10.4</typeaheadjs.version>
         <x-editable.version>1.5.1</x-editable.version>
         <spin-js.version>2.0.0</spin-js.version>
+        <animate.css.version>3.2.5</animate.css.version>
     </properties>
 
     <dependencies>
@@ -106,6 +107,12 @@
             <artifactId>spin-js</artifactId>
             <version>${spin-js.version}</version>
         </dependency>
+
+		<dependency>
+	    	<groupId>org.webjars</groupId>
+	    	<artifactId>animate.css</artifactId>
+	    	<version>${animate.css.version}</version>
+		</dependency>
 
         <dependency>
             <groupId>org.databene</groupId>
