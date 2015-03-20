@@ -8,17 +8,17 @@ Current build status: [![Build Status](https://buildhive.cloudbees.com/job/l0rdn
 
 Current release version:
 
-* [Wicket 7.0.0-M5](http://wicket.apache.org/) and [Bootstrap 3.3.2](https://github.com/twbs/bootstrap/):  0.10.0
-* [Wicket 6.19.0](http://wicket.apache.org/) and [Bootstrap 3.3.2](https://github.com/twbs/bootstrap/): 0.9.8
+* [Wicket 7.0.0-M5](http://wicket.apache.org/) and [Bootstrap 3.3.4](https://github.com/twbs/bootstrap/):  0.10.0
+* [Wicket 6.19.0](http://wicket.apache.org/) and [Bootstrap 3.3.4](https://github.com/twbs/bootstrap/): 0.9.8
 * Wicket 6.* and Bootstrap 2.*: 0.8.4
 
 Themes
 ------
 
-* Bootstrap (3.3.2): http://getbootstrap.com/
+* Bootstrap (3.3.4): http://getbootstrap.com/
 * Vegibit (3.1.1): http://vegibit.com/vegithemes-twitter-bootstrap-themes/
-* Bootswatch (3.3.2): http://bootswatch.com/
-* todc-bootstrap, google styled theme (3.3.2): http://todc.github.io/todc-bootstrap
+* Bootswatch (3.3.4): http://bootswatch.com/
+* todc-bootstrap, google styled theme (3.3.4): http://todc.github.io/todc-bootstrap
 * metro-bootstrap (3.3.2): https://github.com/TalksLab/metro-bootstrap
 
 Extensions
@@ -27,10 +27,10 @@ Extensions
 * DatePicker: https://github.com/eternicode/bootstrap-datepicker
 * Html5 Video Player: http://html5-ninja.com/item/Bootstrap-video-player-jQuery-plugin
 * Open-On-Hover for dropdown buttons: https://github.com/CWSpear/twitter-bootstrap-hover-dropdown
-* JQueryUI (1.9.2): http://api.jqueryui.com/
+* JQueryUI (1.10.4): http://api.jqueryui.com/
    * Draggable: http://api.jqueryui.com/draggable
    * Resizable: http://api.jqueryui.com/resizable
-* less4j (1.8.4): https://github.com/SomMeri/less4j
+* less4j (1.9.0): https://github.com/SomMeri/less4j
 * bootstrap-tour (0.9.3): http://sorich87.github.com/bootstrap-tour
 * OpenWebIcons (2014-09-29): http://pfefferle.github.com/openwebicons/
 * [Twitter Typeahead (0.9.3)](https://github.com/l0rdn1kk0n/wicket-bootstrap/tree/master/bootstrap-extensions/src/main/java/de/agilecoders/wicket/extensions/markup/html/bootstrap/form/typeahead): http://twitter.github.io/typeahead.js/
