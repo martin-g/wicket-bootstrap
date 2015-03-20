@@ -18,7 +18,7 @@ Themes
 * Bootstrap (3.3.4): http://getbootstrap.com/
 * Vegibit (3.1.1): http://vegibit.com/vegithemes-twitter-bootstrap-themes/
 * Bootswatch (3.3.4): http://bootswatch.com/
-* todc-bootstrap, google styled theme (3.3.2): http://todc.github.io/todc-bootstrap
+* todc-bootstrap, google styled theme (3.3.4): http://todc.github.io/todc-bootstrap
 * metro-bootstrap (3.3.2): https://github.com/TalksLab/metro-bootstrap
 
 Extensions
