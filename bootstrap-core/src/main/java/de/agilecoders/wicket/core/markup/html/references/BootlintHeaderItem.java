@@ -24,7 +24,7 @@ public class BootlintHeaderItem extends JavaScriptContentHeaderItem {
      * without disabled checks
      */
     private BootlintHeaderItem() {
-        this("bootlint.showLintReportForCurrentDocument([]);");
+        this("bootlint.showLintReportForCurrentDocument([], {'problemFree': false});");
     }
 
     /**
