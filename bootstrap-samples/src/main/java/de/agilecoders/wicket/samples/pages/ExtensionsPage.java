@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
@@ -36,6 +37,8 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.image.GlyphIconType;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.Icon;
 import de.agilecoders.wicket.extensions.javascript.jasny.FileUploadField;
 import de.agilecoders.wicket.extensions.javascript.jasny.InputMaskBehavior;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.behavior.AnimatedBehavior;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.behavior.AnimatedBehavior.Animation;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.behavior.Draggable;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.behavior.DraggableConfig;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.behavior.Resizable;
@@ -191,6 +194,7 @@ public class ExtensionsPage extends BasePage {
 		checkboxX();
 
 		spinnerSample();
+		animationSample();
 	}
 
 	private void spinnerSample() {
@@ -222,6 +226,23 @@ public class ExtensionsPage extends BasePage {
 			}
 		};
 		add(spinner, feedback);
+	}
+	
+	private void animationSample(){
+		final NotificationPanel feedback = new NotificationPanel("animationFeedback");
+		feedback.setOutputMarkupId(true).add(new AnimatedBehavior(Animation.bounceInLeft));
+
+		AjaxLink<Void> animate = new AjaxLink<Void>("startAnimation") {
+
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void onClick(AjaxRequestTarget target) {
+				info("Nice feedback transition!");
+				target.add(feedback);
+			}
+		};
+		add(animate, feedback);
 	}
 
 	private void checkboxX() {

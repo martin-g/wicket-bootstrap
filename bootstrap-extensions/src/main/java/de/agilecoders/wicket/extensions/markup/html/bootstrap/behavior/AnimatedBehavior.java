@@ -1,4 +1,4 @@
-package de.agilecoders.wicket.core.markup.html.bootstrap.block;
+package de.agilecoders.wicket.extensions.markup.html.bootstrap.behavior;
 
 import org.apache.wicket.Application;
 import org.apache.wicket.Component;
