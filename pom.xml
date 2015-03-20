@@ -69,7 +69,7 @@
         <maven-bundle-plugin.version>2.5.0</maven-bundle-plugin.version>
         <wicket.version>6.19.0</wicket.version>
         <yuicompressor.version>2.4.7</yuicompressor.version>
-        <animate.css.version>3.2.3</animate.css.version>
+        <animate.css.version>3.2.5</animate.css.version>
     </properties>
 
     <dependencyManagement>
