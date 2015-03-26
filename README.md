@@ -16,7 +16,7 @@ Themes
 ------
 
 * Bootstrap (3.3.4): http://getbootstrap.com/
-* Bootswatch (3.3.4): http://bootswatch.com/
+* Bootswatch (3.3.4+1): http://bootswatch.com/
 * Material Design by FezVrasta (0.3.0): https://github.com/FezVrasta/bootstrap-material-design
 * todc-bootstrap, google styled theme (3.3.4): https://todc.github.io/todc-bootstrap
 * metro-bootstrap (3.3.2): https://github.com/TalksLab/metro-bootstrap
