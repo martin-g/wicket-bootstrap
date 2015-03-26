@@ -2,6 +2,8 @@ package de.agilecoders.wicket.samples.pages;
 
 import java.util.List;
 
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.password.strength.PasswordStrengthBehavior;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.password.strength.PasswordStrengthConfig;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
@@ -12,6 +14,9 @@ import org.apache.wicket.markup.html.TransparentWebMarkupContainer;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Form;
+import org.apache.wicket.markup.html.form.PasswordTextField;
+import org.apache.wicket.markup.html.form.RequiredTextField;
+import org.apache.wicket.markup.html.form.StatelessForm;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.link.AbstractLink;
 import org.apache.wicket.markup.repeater.RepeatingView;
@@ -195,9 +200,33 @@ public class ExtensionsPage extends BasePage {
 
 		spinnerSample();
 		animationSample();
+
+		pwstrengthSample();
 	}
 
-	private void spinnerSample() {
+	private void pwstrengthSample() {
+		StatelessForm<Void> pwstrengthForm = new StatelessForm<Void>("pwstrengthForm");
+
+		RequiredTextField<String> username = new RequiredTextField<String>("username", Model.of(""));
+		PasswordTextField password = new PasswordTextField("password", Model.of(""));
+        PasswordStrengthConfig config = new PasswordStrengthConfig();
+        config
+            .withDebug(true)
+            .withMinChar(3)
+            .withUsernameField(username)
+//            .withShowPopover(true)
+            .withShowVerdicts(true)
+            .withUseVerdictCssClass(true)
+            .withShowErrors(true);
+
+		password.add(new PasswordStrengthBehavior(config));
+
+		pwstrengthForm.add(username, password);
+
+		add(pwstrengthForm);
+	}
+
+    private void spinnerSample() {
 		final NotificationPanel feedback = new NotificationPanel("spinnerFeedback");
 		feedback.setOutputMarkupId(true);
 		final Number minValue = 20d;
@@ -227,7 +256,7 @@ public class ExtensionsPage extends BasePage {
 		};
 		add(spinner, feedback);
 	}
-	
+
 	private void animationSample(){
 		final NotificationPanel feedback = new NotificationPanel("animationFeedback");
 		feedback.setOutputMarkupId(true).add(new AnimatedBehavior(Animation.bounceInLeft));

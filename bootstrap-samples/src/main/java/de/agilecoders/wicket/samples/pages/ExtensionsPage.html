@@ -32,6 +32,7 @@
                             <li><a href="#checkboxX"><i class="icon-chevron-right"></i> CheckBox-X - three state checkbox</a></li>
                             <li><a href="#spinner"><i class="icon-chevron-right"></i> Spinner - a number text field with a spinner</a></li>
                             <li><a href="#animate.css"><i class="icon-chevron-right"></i> Animate.css - CSS animations</a></li>
+                            <li><a href="#pwstrength"><i class="icon-chevron-right"></i> Pwstrength - Password Strength checker</a></li>
                         </ul>
                     </div>
                     <div class="col-lg-9">
@@ -263,7 +264,7 @@
                             <div wicket:id="spinnerFeedback"></div>
                         </section>
                         <section id="animate.css">
-							<div class="page-header">
+                            <div class="page-header">
                                 <h1>Animation</h1>
                             </div>
 
@@ -276,6 +277,28 @@
                                     </div>
                                 </form>
                                 <div wicket:id="animationFeedback"></div>
+                            </div>
+                        </section>
+                        <section id="pwstrength">
+                            <div class="page-header">
+                                <h1>Password strength</h1>
+                            </div>
+
+                            <p>Rulesets for visually displaying the quality of passwords with <a target="_blank" href="https://github.com/ablanco/jquery.pwstrength.bootstrap">Pwstrength</a>.</p>
+
+                            <div class="bs-docs-example">
+                                <form wicket:id="pwstrengthForm" role="form">
+                                    <div class="form-group">
+                                        <label class="control-label" wicket:for="username">Username</label>
+                                        <input type="text" class="form-control" wicket:id="username"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label" wicket:for="password">Password</label>
+                                        <input type="password" class="form-control" wicket:id="password"/>
+                                    </div>
+
+                                    <!--<button class="btn btn-primary" type="submit">Submit</button>-->
+                                </form>
                             </div>
                         </section>
                     </div>
