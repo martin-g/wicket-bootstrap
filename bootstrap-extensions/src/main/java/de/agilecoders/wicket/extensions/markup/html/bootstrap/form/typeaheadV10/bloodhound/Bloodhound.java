@@ -56,11 +56,6 @@ public abstract class Bloodhound<T> extends AbstractAjaxBehavior implements Sour
     protected void onBind() {
         super.onBind();
 
-        // we have a local bloodhound config, no need to attach a behavior
-        if (config.getLocal() != null) {
-            return;
-        }
-
         Remote remote = config.getRemote();
 
         if (remote == null) {
