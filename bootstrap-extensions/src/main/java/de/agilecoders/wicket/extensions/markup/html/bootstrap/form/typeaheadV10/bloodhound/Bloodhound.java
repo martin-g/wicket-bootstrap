@@ -56,11 +56,6 @@ public abstract class Bloodhound<T> extends AbstractAjaxBehavior implements Sour
     protected void onBind() {
         super.onBind();
 
-        // we have a local bloodhound config, no need to attach a behavior
-        if (config.getLocal() != null) {
-            return;
-        }
-
         Remote remote = config.getRemote();
 
         if (remote == null) {
@@ -79,6 +74,14 @@ public abstract class Bloodhound<T> extends AbstractAjaxBehavior implements Sour
     public abstract Iterable<T> getChoices(String input);
 
     public BloodhoundConfig getConfig() {
+
+        // prevent StalePageException
+        // see https://github.com/l0rdn1kk0n/wicket-bootstrap/issues/493
+        if (config != null && config.getRemote() != null) {
+          Remote remote = config.getRemote();
+          remote.withUrl(getRemoteUrl(remote.getWildcard() != null ? remote.getWildcard() : Remote.DEFAULT_WILDCARD));
+        }
+
         return config;
     }
 
