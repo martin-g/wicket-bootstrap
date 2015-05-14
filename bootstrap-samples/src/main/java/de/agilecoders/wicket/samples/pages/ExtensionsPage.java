@@ -1,9 +1,8 @@
 package de.agilecoders.wicket.samples.pages;
 
 import java.util.List;
+import java.util.Map;
 
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.password.strength.PasswordStrengthBehavior;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.password.strength.PasswordStrengthConfig;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
@@ -22,8 +21,12 @@ import org.apache.wicket.markup.html.link.AbstractLink;
 import org.apache.wicket.markup.repeater.RepeatingView;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.model.ResourceModel;
+import org.apache.wicket.protocol.http.servlet.MultipartServletWebRequest;
+import org.apache.wicket.protocol.http.servlet.ServletWebRequest;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
+import org.apache.wicket.util.lang.Bytes;
 import org.apache.wicket.util.time.Duration;
+import org.apache.wicket.util.upload.FileItem;
 import org.wicketstuff.annotation.mount.MountPath;
 
 import com.google.common.collect.Lists;
@@ -49,7 +52,10 @@ import de.agilecoders.wicket.extensions.markup.html.bootstrap.behavior.Draggable
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.behavior.Resizable;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.button.DropDownAutoOpen;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.contextmenu.ButtonListContextMenu;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.fileUpload.DropZoneFileUpload;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.checkboxx.CheckBoxX;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.password.strength.PasswordStrengthBehavior;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.password.strength.PasswordStrengthConfig;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.spinner.Spinner;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.spinner.SpinnerConfig;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.html5player.Html5Player;
@@ -69,7 +75,8 @@ import de.agilecoders.wicket.extensions.markup.html.bootstrap.tour.TourStep;
  * @author miha
  */
 @MountPath(value = "/extensions")
-public class ExtensionsPage extends BasePage {
+public class ExtensionsPage extends BasePage
+{
 
 	/**
 	 * Construct.
@@ -77,119 +84,102 @@ public class ExtensionsPage extends BasePage {
 	 * @param parameters
 	 *            the current page parameters.
 	 */
-	public ExtensionsPage(PageParameters parameters) {
+	public ExtensionsPage(PageParameters parameters)
+	{
 		super(parameters);
 
-		List<Html5Player.IVideo> videos = Lists
-				.<Html5Player.IVideo> newArrayList(
-                    new Video(
-                        "http://ia700305.us.archive.org/18/items/CopyingIsNotTheft/CINT_Nik_H264_720.ogv",
-                        "video/ogg"),
-                    new Video(
-                        "http://ia700305.us.archive.org/18/items/CopyingIsNotTheft/CINT_Nik_H264_720_512kb.mp4",
-                        "video/mp4"));
+		dropzoneFileUpload();
+
+		List<Html5Player.IVideo> videos = Lists.<Html5Player.IVideo> newArrayList(
+			new Video(
+				"http://ia700305.us.archive.org/18/items/CopyingIsNotTheft/CINT_Nik_H264_720.ogv",
+				"video/ogg"),
+			new Video(
+				"http://ia700305.us.archive.org/18/items/CopyingIsNotTheft/CINT_Nik_H264_720_512kb.mp4",
+				"video/mp4"));
 		add(new Html5Player("video", Model.ofList(videos)));
-		add(new Code(
-				"video-code",
-				Model.of("List<Html5Player.IVideo> videos = Lists.<Html5Player.IVideo>newArrayList(\n"
-						+ "\t\tnew Video(\"video.ogv\", \"video/ogg\"),\n"
-						+ "\t\tnew Video(\"video.mp4\", \"video/mp4\")\n"
-						+ ");\n"
-						+ "add(new Html5Player(\"video\", Model.ofList(videos)));")));
+		add(new Code("video-code",
+			Model.of("List<Html5Player.IVideo> videos = Lists.<Html5Player.IVideo>newArrayList(\n"
+				+ "\t\tnew Video(\"video.ogv\", \"video/ogg\"),\n"
+				+ "\t\tnew Video(\"video.mp4\", \"video/mp4\")\n" + ");\n"
+				+ "add(new Html5Player(\"video\", Model.ofList(videos)));")));
 
 		add(new Html5Player("video-custom", Model.ofList(videos),
-				new Html5VideoConfig().showProgressBar(false)
-						.autoHideControlBar(false)).setWidth(680)
-				.setHeight(360));
-		add(new Code(
-				"video-custom-code",
-				Model.of("List<Html5Player.IVideo> videos = Lists.<Html5Player.IVideo>newArrayList(\n"
-						+ "\t\tnew Video(\"video.ogv\", \"video/ogg\"),\n"
-						+ "\t\tnew Video(\"video.mp4\", \"video/mp4\")\n"
-						+ ");\n"
-						+ "add(new Html5Player(\"video\", Model.ofList(videos),\n"
-						+ "\tnew Html5VideoConfig().showProgressBar(false).autoHideControlBar(false))\n"
-						+ "\t\t.setWidth(680).setHeight(360));")));
+			new Html5VideoConfig().showProgressBar(false).autoHideControlBar(false)).setWidth(680)
+			.setHeight(360));
+		add(new Code("video-custom-code",
+			Model.of("List<Html5Player.IVideo> videos = Lists.<Html5Player.IVideo>newArrayList(\n"
+				+ "\t\tnew Video(\"video.ogv\", \"video/ogg\"),\n"
+				+ "\t\tnew Video(\"video.mp4\", \"video/mp4\")\n" + ");\n"
+				+ "add(new Html5Player(\"video\", Model.ofList(videos),\n"
+				+ "\tnew Html5VideoConfig().showProgressBar(false).autoHideControlBar(false))\n"
+				+ "\t\t.setWidth(680).setHeight(360));")));
 
-		final List<? extends AbstractLink> buttons = Lists
-				.<AbstractLink> newArrayList(
-						new MenuBookmarkablePageLink<Void>(
-								DatePickerPage.class, Model.of("DatePicker"))
-								.setIconType(GlyphIconType.time),
-						new MenuBookmarkablePageLink<Void>(IssuesPage.class,
-								Model.of("Github Issues"))
-								.setIconType(GlyphIconType.book),
-						new MenuBookmarkablePageLink<Void>(
-								ExtensionsPage.class, Model.of("Extensions"))
-								.setIconType(GlyphIconType.qrcode));
-		final Component contextPanel = new TransparentWebMarkupContainer(
-				"context-panel");
-		final ButtonListContextMenu contextMenu = new ButtonListContextMenu(
-				"contextmenu", Model.ofList(buttons));
+		final List<? extends AbstractLink> buttons = Lists.<AbstractLink> newArrayList(
+			new MenuBookmarkablePageLink<Void>(DatePickerPage.class, Model.of("DatePicker")).setIconType(GlyphIconType.time),
+			new MenuBookmarkablePageLink<Void>(IssuesPage.class, Model.of("Github Issues")).setIconType(GlyphIconType.book),
+			new MenuBookmarkablePageLink<Void>(ExtensionsPage.class, Model.of("Extensions")).setIconType(GlyphIconType.qrcode));
+		final Component contextPanel = new TransparentWebMarkupContainer("context-panel");
+		final ButtonListContextMenu contextMenu = new ButtonListContextMenu("contextmenu",
+			Model.ofList(buttons));
 		contextMenu.assignTo(contextPanel);
 		add(contextMenu,
-				contextPanel,
-				new Code(
-						"context-code",
-						Model.of(""
-								+ "final List<? extends AbstractLink> buttons = Lists.<AbstractLink>newArrayList(\n"
-								+ "\tnew MenuBookmarkablePageLink<>(...),\n"
-								+ "\t[...]\n"
-								+ ");\n"
-								+ "final Component contextPanel = new TransparentWebMarkupContainer(\"context-panel\");\n"
-								+ "final ButtonListContextMenu contextMenu = new ButtonListContextMenu(\"contextmenu\", \n"
-								+ "\t\tModel.ofList(buttons));\n"
-								+ "contextMenu.assignTo(contextPanel);\n"
-								+ "add(contextMenu, contextPanel,")));
+			contextPanel,
+			new Code(
+				"context-code",
+				Model.of(""
+					+ "final List<? extends AbstractLink> buttons = Lists.<AbstractLink>newArrayList(\n"
+					+ "\tnew MenuBookmarkablePageLink<>(...),\n"
+					+ "\t[...]\n"
+					+ ");\n"
+					+ "final Component contextPanel = new TransparentWebMarkupContainer(\"context-panel\");\n"
+					+ "final ButtonListContextMenu contextMenu = new ButtonListContextMenu(\"contextmenu\", \n"
+					+ "\t\tModel.ofList(buttons));\n" + "contextMenu.assignTo(contextPanel);\n"
+					+ "add(contextMenu, contextPanel,")));
 
 		Modal<String> draggableModal = new TextContentModal(
-				"draggable-modal",
-				Model.of("Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.")) {
-            @Override
-            protected WebMarkupContainer createDialog(String id) {
-                WebMarkupContainer dialog = super.createDialog(id);
-                dialog.add(new Draggable(new DraggableConfig().withHandle(".modal-header").withCursor("move")));
-                return dialog;
-            }
-        };
+			"draggable-modal",
+			Model.of("Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."))
+		{
+			@Override
+			protected WebMarkupContainer createDialog(String id)
+			{
+				WebMarkupContainer dialog = super.createDialog(id);
+				dialog.add(new Draggable(new DraggableConfig().withHandle(".modal-header")
+					.withCursor("move")));
+				return dialog;
+			}
+		};
 		draggableModal.add(new Resizable().withChildSelector(".modal-content"));
 		draggableModal.setUseKeyboard(true).addCloseButton();
 		draggableModal.setFadeIn(false);
 		Label draggableButton = new Label("open-draggable", "Open Modal Dialog");
 		draggableModal.addOpenerAttributesTo(draggableButton);
-		add(draggableModal, draggableButton,
-				new Code("draggable-code", Model.of("")));
+		add(draggableModal, draggableButton, new Code("draggable-code", Model.of("")));
 
-		DropDownButton dropDownButton = new DropDownButton("dropdown",
-				Model.of("open-on-hover")) {
+		DropDownButton dropDownButton = new DropDownButton("dropdown", Model.of("open-on-hover"))
+		{
 			@Override
-			protected List<AbstractLink> newSubMenuButtons(String buttonMarkupId) {
+			protected List<AbstractLink> newSubMenuButtons(String buttonMarkupId)
+			{
 				return Lists.<AbstractLink> newArrayList(
-						new MenuBookmarkablePageLink<Void>(
-								DatePickerPage.class, Model.of("DatePicker"))
-								.setIconType(GlyphIconType.time),
-						new MenuBookmarkablePageLink<Void>(IssuesPage.class,
-								Model.of("Github Issues"))
-								.setIconType(GlyphIconType.book),
-						new MenuBookmarkablePageLink<Void>(
-								ExtensionsPage.class, Model.of("Extensions"))
-								.setIconType(GlyphIconType.qrcode));
+					new MenuBookmarkablePageLink<Void>(DatePickerPage.class, Model.of("DatePicker")).setIconType(GlyphIconType.time),
+					new MenuBookmarkablePageLink<Void>(IssuesPage.class, Model.of("Github Issues")).setIconType(GlyphIconType.book),
+					new MenuBookmarkablePageLink<Void>(ExtensionsPage.class, Model.of("Extensions")).setIconType(GlyphIconType.qrcode));
 			}
 		};
 
 		dropDownButton.add(new DropDownAutoOpen());
 		add(dropDownButton,
-				new Code("dropdown-code", Model
-						.of("dropDownButton.add(new DropDownAutoOpen());")));
+			new Code("dropdown-code", Model.of("dropDownButton.add(new DropDownAutoOpen());")));
 
 		addTour();
-		add(new Icon("html5-colored", OpenWebIconType.html5_colored),
-				new Icon("apml", OpenWebIconType.apml), new Icon("feed",
-						OpenWebIconType.feed_colored));
+		add(new Icon("html5-colored", OpenWebIconType.html5_colored), new Icon("apml",
+			OpenWebIconType.apml), new Icon("feed", OpenWebIconType.feed_colored));
 		add(new Icon("html5", OpenWebIconType.html5),
-				new Code(
-						"openwebicon-code",
-						Model.of("response.render(JavaScriptHeaderItem.forReference(OpenWebIconsCssReference.instance()));\n\nadd(new Icon(\"html5\", OpenWebIconType.html5));")));
+			new Code(
+				"openwebicon-code",
+				Model.of("response.render(JavaScriptHeaderItem.forReference(OpenWebIconsCssReference.instance()));\n\nadd(new Icon(\"html5\", OpenWebIconType.html5));")));
 
 		addJasnyFileUploadDemo();
 		addJasnyInputMaskDemo();
@@ -204,20 +194,47 @@ public class ExtensionsPage extends BasePage {
 		pwstrengthSample();
 	}
 
-	private void pwstrengthSample() {
+	private void dropzoneFileUpload()
+	{
+		DropZoneFileUpload dropZoneFileUpload = new DropZoneFileUpload("dropzone")
+		{
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			protected void onUpload(AjaxRequestTarget target)
+			{
+				try
+				{
+					ServletWebRequest webRequest = (ServletWebRequest)getRequest();
+					MultipartServletWebRequest multiPartRequest = webRequest.newMultipartWebRequest(
+						Bytes.bytes(getMaxFileSize() * 1000000), "ignored");
+					multiPartRequest.parseFileParts();
+					Map<String, List<FileItem>> files = multiPartRequest.getFiles();
+
+					// Handle files and update components based on the AjaxRequestTarget
+					System.out.println(files);
+				}
+				catch (Exception e)
+				{
+					e.printStackTrace();
+				}
+			}
+		};
+		add(dropZoneFileUpload);
+	}
+
+	private void pwstrengthSample()
+	{
 		StatelessForm<Void> pwstrengthForm = new StatelessForm<Void>("pwstrengthForm");
 
 		RequiredTextField<String> username = new RequiredTextField<String>("username", Model.of(""));
 		PasswordTextField password = new PasswordTextField("password", Model.of(""));
-        PasswordStrengthConfig config = new PasswordStrengthConfig();
-        config
-            .withDebug(true)
-            .withMinChar(3)
-            .withUsernameField(username)
-//            .withShowPopover(true)
-            .withShowVerdicts(true)
-            .withUseVerdictCssClass(true)
-            .withShowErrors(true);
+		PasswordStrengthConfig config = new PasswordStrengthConfig();
+		config.withDebug(true).withMinChar(3).withUsernameField(username)
+// .withShowPopover(true)
+			.withShowVerdicts(true)
+			.withUseVerdictCssClass(true)
+			.withShowErrors(true);
 
 		password.add(new PasswordStrengthBehavior(config));
 
@@ -226,13 +243,13 @@ public class ExtensionsPage extends BasePage {
 		add(pwstrengthForm);
 	}
 
-    private void spinnerSample() {
+	private void spinnerSample()
+	{
 		final NotificationPanel feedback = new NotificationPanel("spinnerFeedback");
 		feedback.setOutputMarkupId(true);
 		final Number minValue = 20d;
 		SpinnerConfig config = new SpinnerConfig();
-		config
-			.withPrefix("pre")
+		config.withPrefix("pre")
 			.withDecimals(2)
 			.withPostfix("post")
 			.withMin(minValue)
@@ -241,14 +258,17 @@ public class ExtensionsPage extends BasePage {
 			.withVerticalbuttons(true)
 			.withBootstap(2)
 			.withInitVal(24);
-		Spinner<Double> spinner = new Spinner<Double>("spinner", config) {
+		Spinner<Double> spinner = new Spinner<Double>("spinner", config)
+		{
 			@Override
-			protected boolean wantMinNotification() {
+			protected boolean wantMinNotification()
+			{
 				return true;
 			}
 
 			@Override
-			protected void onMin(AjaxRequestTarget target) {
+			protected void onMin(AjaxRequestTarget target)
+			{
 				super.onMin(target);
 				info("Reached the configured min value of " + minValue);
 				target.add(feedback);
@@ -257,16 +277,19 @@ public class ExtensionsPage extends BasePage {
 		add(spinner, feedback);
 	}
 
-	private void animationSample(){
+	private void animationSample()
+	{
 		final NotificationPanel feedback = new NotificationPanel("animationFeedback");
 		feedback.setOutputMarkupId(true).add(new AnimatedBehavior(Animation.bounceInLeft));
 
-		AjaxLink<Void> animate = new AjaxLink<Void>("startAnimation") {
+		AjaxLink<Void> animate = new AjaxLink<Void>("startAnimation")
+		{
 
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			public void onClick(AjaxRequestTarget target) {
+			public void onClick(AjaxRequestTarget target)
+			{
 				info("Nice feedback transition!");
 				target.add(feedback);
 			}
@@ -274,18 +297,26 @@ public class ExtensionsPage extends BasePage {
 		add(animate, feedback);
 	}
 
-	private void checkboxX() {
-		CheckBoxX checkBoxX = new CheckBoxX("checkboxX", new Model<Boolean>(true)) {
+	private void checkboxX()
+	{
+		CheckBoxX checkBoxX = new CheckBoxX("checkboxX", new Model<Boolean>(true))
+		{
 			@Override
-			protected void onChange(Boolean value, AjaxRequestTarget target) {
+			protected void onChange(Boolean value, AjaxRequestTarget target)
+			{
 				super.onChange(value, target);
 
 				String s;
-				if (Boolean.FALSE.equals(value)) {
+				if (Boolean.FALSE.equals(value))
+				{
 					s = "unchecked";
-				} else if (Boolean.TRUE.equals(value)) {
+				}
+				else if (Boolean.TRUE.equals(value))
+				{
 					s = "checked";
-				} else {
+				}
+				else
+				{
 					s = "undefined";
 				}
 				info("The selection is: " + s);
@@ -296,24 +327,29 @@ public class ExtensionsPage extends BasePage {
 		final NotificationPanel feedback = new NotificationPanel("feedback", checkBoxX);
 		feedback.setOutputMarkupId(true);
 
-		Code code = new Code("linkCode", Model.of("CheckboxX checkboxX = new CheckboxX(\"checkboxX\", new Model<Boolean>(true)) {\n"
-												  + "  @Override\n"
-												  + "  protected void onChange(Boolean value, AjaxRequestTarget target) {\n"
-												  + "    info(\"The selection is: \" + value);\n"
-												  + "    target.add(feedback);\n"
-												  + "  }\n"
-												  + "};"));
+		Code code = new Code(
+			"linkCode",
+			Model.of("CheckboxX checkboxX = new CheckboxX(\"checkboxX\", new Model<Boolean>(true)) {\n"
+				+ "  @Override\n"
+				+ "  protected void onChange(Boolean value, AjaxRequestTarget target) {\n"
+				+ "    info(\"The selection is: \" + value);\n"
+				+ "    target.add(feedback);\n"
+				+ "  }\n" + "};"));
 
 		add(checkBoxX, feedback, code);
 	}
 
-	private void laddaButton() {
+	private void laddaButton()
+	{
 		Form form = new Form("laddaForm");
 		add(form);
 
-		LaddaAjaxButton laddaButton = new LaddaAjaxButton("laddaButton", Model.of("Button, 3secs"), form, Buttons.Type.Info) {
+		LaddaAjaxButton laddaButton = new LaddaAjaxButton("laddaButton", Model.of("Button, 3secs"),
+			form, Buttons.Type.Info)
+		{
 			@Override
-			protected void onSubmit(AjaxRequestTarget target, Form<?> form) {
+			protected void onSubmit(AjaxRequestTarget target, Form<?> form)
+			{
 				super.onSubmit(target, form);
 
 				Duration.seconds(3).sleep();
@@ -321,52 +357,62 @@ public class ExtensionsPage extends BasePage {
 		};
 		laddaButton.setSize(Buttons.Size.Small);
 
-		LaddaAjaxLink<String> laddaLink = new LaddaAjaxLink<String>("laddaLink", Model.of("Link, 2secs"), Buttons.Type.Success) {
+		LaddaAjaxLink<String> laddaLink = new LaddaAjaxLink<String>("laddaLink",
+			Model.of("Link, 2secs"), Buttons.Type.Success)
+		{
 			@Override
-			public void onClick(AjaxRequestTarget target) {
+			public void onClick(AjaxRequestTarget target)
+			{
 				Duration.seconds(2).sleep();
 			}
 		};
 		laddaLink.setEffect(LaddaBehavior.Effect.EXPAND_LEFT).setSize(Buttons.Size.Medium);
 
-		form.add(new Code("linkCode", Model.of("laddaLink = new LaddaAjaxLink<String>(\"laddaLink\", Model.of(\"Link, 2secs\"), Buttons.Type.Success) {\n"
-											   + "    @Override public void onClick(AjaxRequestTarget target) {\n"
-											   + "        Duration.seconds(2).sleep();\n"
-											   + "    }\n"
-											   + "};\n"
-											   + "laddaLink.setEffect(LaddaBehavior.Effect.EXPAND_LEFT).setSize(Buttons.Size.Medium);")));
+		form.add(new Code(
+			"linkCode",
+			Model.of("laddaLink = new LaddaAjaxLink<String>(\"laddaLink\", Model.of(\"Link, 2secs\"), Buttons.Type.Success) {\n"
+				+ "    @Override public void onClick(AjaxRequestTarget target) {\n"
+				+ "        Duration.seconds(2).sleep();\n"
+				+ "    }\n"
+				+ "};\n"
+				+ "laddaLink.setEffect(LaddaBehavior.Effect.EXPAND_LEFT).setSize(Buttons.Size.Medium);")));
 
 		form.add(laddaButton, laddaLink);
 	}
 
 	@Override
-	public void renderHead(IHeaderResponse response) {
+	public void renderHead(IHeaderResponse response)
+	{
 		super.renderHead(response);
 
 		response.render(CssHeaderItem.forReference(OpenWebIconsCssReference.instance()));
 	}
 
-	private void addJasnyFileUploadDemo() {
+	private void addJasnyFileUploadDemo()
+	{
 		Form<Void> jasnyFileUploadForm = new Form<Void>("jasnyFileUploadForm");
 		add(jasnyFileUploadForm);
 		jasnyFileUploadForm.setMultiPart(true);
 		FileUploadField jasnyFileUpload = new FileUploadField("jasnyFileUpload");
 		jasnyFileUploadForm.add(jasnyFileUpload);
 
-		UploadProgressBar progressBar = new UploadProgressBar("progressBar",
-				jasnyFileUploadForm, jasnyFileUpload, Model.of(0));
+		UploadProgressBar progressBar = new UploadProgressBar("progressBar", jasnyFileUploadForm,
+			jasnyFileUpload, Model.of(0));
 		progressBar.striped(true).active(true).type(ProgressBar.Type.INFO);
 		jasnyFileUploadForm.add(progressBar);
-		jasnyFileUploadForm.add(new AjaxButton("submit") {
+		jasnyFileUploadForm.add(new AjaxButton("submit")
+		{
 		});
 	}
 
-	private void addJasnyInputMaskDemo() {
-		TextField<String> textField = new TextField<String>("inputMask",
-				Model.of("l0rdn1kk0n"));
-		InputMaskBehavior inputMask = new InputMaskBehavior() {
+	private void addJasnyInputMaskDemo()
+	{
+		TextField<String> textField = new TextField<String>("inputMask", Model.of("l0rdn1kk0n"));
+		InputMaskBehavior inputMask = new InputMaskBehavior()
+		{
 			@Override
-			protected String getMask() {
+			protected String getMask()
+			{
 				// Allow entering l0rdn1kk0n
 				return "a9aaa9aa9a";
 			}
@@ -378,7 +424,8 @@ public class ExtensionsPage extends BasePage {
 	/**
 	 * Demo for TourBehavior. Issue #116
 	 */
-	private void addTour() {
+	private void addTour()
+	{
 		RepeatingView view = new RepeatingView("tourDemo");
 		add(view);
 
@@ -391,47 +438,42 @@ public class ExtensionsPage extends BasePage {
 		Label stepThree = new Label(view.newChildId(), "Step Three");
 		view.add(stepThree);
 
-		TourBehavior tourBehavior = new TourBehavior() {
+		TourBehavior tourBehavior = new TourBehavior()
+		{
 			@Override
-			protected CharSequence createExtraConfig() {
+			protected CharSequence createExtraConfig()
+			{
 				return "if ( tour.ended() ) {\n"
-						+ "    $('<div class=\"alert alert-info\">\\\n"
-						+ "      <button type=\"button\" class=\"close\" data-dismiss=\"alert\">&times;</button>\\\n"
-						+ "      You ended the demo tour. <a href=\"\" class=\"restart\">Restart the demo tour.</a>\\\n"
-						+ "      </div>').prependTo(\".content\").alert();\n"
-						+ "  }\n" + "\n"
-						+ "  $(\".restart\").click(function (e) {\n"
-						+ "    e.preventDefault();\n" + "    tour.restart();\n"
-						+ "    $(this).parents(\".alert\").alert(\"close\");\n"
-						+ "  });";
+					+ "    $('<div class=\"alert alert-info\">\\\n"
+					+ "      <button type=\"button\" class=\"close\" data-dismiss=\"alert\">&times;</button>\\\n"
+					+ "      You ended the demo tour. <a href=\"\" class=\"restart\">Restart the demo tour.</a>\\\n"
+					+ "      </div>').prependTo(\".content\").alert();\n" + "  }\n" + "\n"
+					+ "  $(\".restart\").click(function (e) {\n" + "    e.preventDefault();\n"
+					+ "    tour.restart();\n"
+					+ "    $(this).parents(\".alert\").alert(\"close\");\n" + "  });";
 			}
 		};
-		tourBehavior
-				.addStep(new TourStep()
-						.title(Model.of("Step One Title"))
-						.element(stepOne)
-						.content(
-								Model.of("Some longer help content <strong> for step <span style='color: red'>1</span>.")));
-		tourBehavior
-				.addStep(new TourStep()
-						.title(new ResourceModel("tour.step.two"))
-						.element(stepTwo)
-						.placement(TooltipConfig.Placement.left)
-						.content(
-								Model.of("Some longer help content <strong> for step <span style='color: red'>2</span>."))
-						.backdrop(true));
-		tourBehavior
-				.addStep(new TourStep()
-						.title(Model.of("Step Three Title"))
-						.element(stepThree)
-						.placement(TooltipConfig.Placement.left)
-						.content(
-								Model.of("Some longer help content <strong> for step <span style='color: red'>3</span>.")));
+		tourBehavior.addStep(new TourStep().title(Model.of("Step One Title"))
+			.element(stepOne)
+			.content(
+				Model.of("Some longer help content <strong> for step <span style='color: red'>1</span>.")));
+		tourBehavior.addStep(new TourStep().title(new ResourceModel("tour.step.two"))
+			.element(stepTwo)
+			.placement(TooltipConfig.Placement.left)
+			.content(
+				Model.of("Some longer help content <strong> for step <span style='color: red'>2</span>."))
+			.backdrop(true));
+		tourBehavior.addStep(new TourStep().title(Model.of("Step Three Title"))
+			.element(stepThree)
+			.placement(TooltipConfig.Placement.left)
+			.content(
+				Model.of("Some longer help content <strong> for step <span style='color: red'>3</span>.")));
 		view.add(tourBehavior);
 	}
 
 	@Override
-	protected boolean hasNavigation() {
+	protected boolean hasNavigation()
+	{
 		return true;
 	}
 }
