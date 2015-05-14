@@ -8,31 +8,26 @@ import org.apache.wicket.request.resource.JavaScriptResourceReference;
  * @author Tobias Soloschenko
  *
  */
-public class DropZoneFileUploadJavaScriptReference extends JavaScriptResourceReference
-{
+public class DropZoneFileUploadJavaScriptReference extends JavaScriptResourceReference {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	/**
-	 * Singleton instance of this reference
-	 */
-	private static final DropZoneFileUploadJavaScriptReference INSTANCE = new DropZoneFileUploadJavaScriptReference();
+    /**
+     * Singleton instance of this reference
+     */
+    private static final DropZoneFileUploadJavaScriptReference INSTANCE = new DropZoneFileUploadJavaScriptReference();
 
+    /**
+     * @return the single instance of the resource reference
+     */
+    public static DropZoneFileUploadJavaScriptReference instance() {
+	return INSTANCE;
+    }
 
-	/**
-	 * @return the single instance of the resource reference
-	 */
-	public static DropZoneFileUploadJavaScriptReference instance()
-	{
-		return INSTANCE;
-	}
-
-
-	/**
-	 * Private constructor.
-	 */
-	private DropZoneFileUploadJavaScriptReference()
-	{
-		super(DropZoneFileUploadJavaScriptReference.class, "js/dropzone.js");
-	}
+    /**
+     * Private constructor.
+     */
+    private DropZoneFileUploadJavaScriptReference() {
+	super(DropZoneFileUploadJavaScriptReference.class, "js/dropzone.js");
+    }
 }
