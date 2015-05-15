@@ -15,6 +15,7 @@ import static de.agilecoders.wicket.jquery.util.Strings2.nullToEmpty;
  *
  * @author Alexey Volkov
  * @since 02.02.2015
+ * @see <a href="http://eonasdan.github.io/bootstrap-datetimepicker/Options/">JS widget options</a>
  */
 public class DatetimePickerConfig extends AbstractConfig {
 
@@ -56,6 +57,7 @@ public class DatetimePickerConfig extends AbstractConfig {
     private static final IKey<String> ViewMode = newKey("viewMode", null);
 
     private static final IKey<Boolean> ShowToday = newKey("showTodayButton", false);
+    private static final IKey<Boolean> ShowClose = newKey("showClose", false);
     private static final IKey<Boolean> Collapse = newKey("collapse", true);
     private static final IKey<Boolean> SideBySide = newKey("sideBySide", false);
 
@@ -195,6 +197,17 @@ public class DatetimePickerConfig extends AbstractConfig {
      */
     public DatetimePickerConfig setShowToday(Boolean showToday) {
         put(ShowToday, showToday);
+        return this;
+    }
+
+    /**
+     * Show close button.
+     *
+     * @param showClose flag
+     * @return config instance
+     */
+    public DatetimePickerConfig setShowClose(Boolean showClose) {
+        put(ShowClose, showClose);
         return this;
     }
 
