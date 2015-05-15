@@ -1,22 +1,22 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.fileUpload;
 
-import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.wicket.WicketRuntimeException;
 import org.apache.wicket.ajax.AbstractDefaultAjaxBehavior;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.attributes.AjaxRequestAttributes;
 import org.apache.wicket.markup.head.IHeaderResponse;
-import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.head.JavaScriptReferenceHeaderItem;
+import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.protocol.http.servlet.MultipartServletWebRequest;
 import org.apache.wicket.protocol.http.servlet.ServletWebRequest;
-import org.apache.wicket.util.io.IOUtils;
+import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.lang.Bytes;
+import org.apache.wicket.util.template.PackageTextTemplate;
 import org.apache.wicket.util.upload.FileItem;
 import org.apache.wicket.util.upload.FileUploadException;
 
@@ -34,35 +34,32 @@ public abstract class DropZoneFileUpload extends Panel {
 
     private static final long serialVersionUID = 1L;
 
+    private final DropZoneConfig config;
+
     private DropZoneFileUploadAjaxEventBehavior dropZoneFileUploadAjaxEventBehavior;
-
-    private int maxFileSize = 5;
-
-    private int parallelUploads = 1;
-
-    private String acceptedFiles;
 
     private class DropZoneFileUploadAjaxEventBehavior extends AbstractDefaultAjaxBehavior {
 
-    private static final long serialVersionUID = 1L;
+        private static final long serialVersionUID = 1L;
 
-    @Override
-    protected void respond(AjaxRequestTarget target) {
-        try {
-        ServletWebRequest webRequest = (ServletWebRequest) getRequest();
-        MultipartServletWebRequest multiPartRequest = webRequest.newMultipartWebRequest(
-            Bytes.bytes(getMaxFileSize() * 1000000), "ignored");
-        multiPartRequest.parseFileParts();
-        onUpload(target, multiPartRequest.getFiles());
-        } catch (FileUploadException e) {
-        throw new WicketRuntimeException("An error occured during the file upload", e);
+        @Override
+        protected void respond(AjaxRequestTarget target) {
+            try {
+                ServletWebRequest webRequest = (ServletWebRequest) getRequest();
+                Bytes maxFileSize = config.getMaxFileSize();
+                MultipartServletWebRequest multiPartRequest = webRequest.newMultipartWebRequest(maxFileSize, "ignored");
+                multiPartRequest.parseFileParts();
+                onUpload(target, multiPartRequest.getFiles());
+            } catch (FileUploadException fux) {
+                onError(target, fux);
+            }
         }
-    }
 
-    @Override
-    protected void updateAjaxAttributes(AjaxRequestAttributes attributes) {
-        attributes.setMultipart(true);
-    }
+        @Override
+        protected void updateAjaxAttributes(AjaxRequestAttributes attributes) {
+            super.updateAjaxAttributes(attributes);
+            attributes.setMultipart(true);
+        }
     }
 
     /**
@@ -72,7 +69,7 @@ public abstract class DropZoneFileUpload extends Panel {
      *            the wicket id where the component is going to be rendered
      */
     public DropZoneFileUpload(String id) {
-    this(id, null);
+        this(id, null, new DropZoneConfig());
     }
 
     /**
@@ -84,8 +81,23 @@ public abstract class DropZoneFileUpload extends Panel {
      *            the model of this component
      */
     public DropZoneFileUpload(String id, IModel<?> model) {
-    super(id, model);
-    add(dropZoneFileUploadAjaxEventBehavior = new DropZoneFileUploadAjaxEventBehavior());
+        this(id, model, new DropZoneConfig());
+    }
+
+    /**
+     * Creates a DropZoneFileUpload with the given id
+     *
+     * @param id
+     *            the wicket id where the component is going to be rendered
+     * @param model
+     *            the model of this component
+     * @param config
+     *            the configuration for the widget
+     */
+    public DropZoneFileUpload(String id, IModel<?> model, DropZoneConfig config) {
+        super(id, model);
+        this.config = Args.notNull(config, "config");
+        add(dropZoneFileUploadAjaxEventBehavior = new DropZoneFileUploadAjaxEventBehavior());
     }
 
     /**
@@ -93,21 +105,16 @@ public abstract class DropZoneFileUpload extends Panel {
      */
     @Override
     public void renderHead(IHeaderResponse response) {
-    try {
         References.renderWithFilter(Bootstrap.getSettings(), response,
-            JavaScriptReferenceHeaderItem.forReference(DropZoneFileUploadJavaScriptReference.instance()));
-        String dropZoneScript = IOUtils.toString(DropZoneFileUploadJavaScriptReference.class
-            .getResourceAsStream("js/dropzone_init.js"));
-        dropZoneScript = dropZoneScript.replaceAll("%\\(callbackurl\\)", dropZoneFileUploadAjaxEventBehavior
-            .getCallbackUrl().toString());
-        dropZoneScript = dropZoneScript.replaceAll("%\\(maxfilesize\\)", Integer.toString(maxFileSize));
-        dropZoneScript = dropZoneScript.replaceAll("%\\(paralleluploads\\)", Integer.toString(parallelUploads));
-        dropZoneScript = dropZoneScript.replaceAll("%\\(acceptedfiles\\)",
-            acceptedFiles != null ? "acceptedFiles: \"" + acceptedFiles + "\"," : "");
-        response.render(JavaScriptHeaderItem.forScript(dropZoneScript, "dropzone" + getMarkupId()));
-    } catch (IOException e) {
-        throw new WicketRuntimeException("Error occured while loading the drop zone scripts", e);
-    }
+                                    JavaScriptReferenceHeaderItem.forReference(DropZoneFileUploadJavaScriptReference.instance()));
+
+        PackageTextTemplate dropZoneTemplate = new PackageTextTemplate(DropZoneFileUpload.class,  "js/dropzone_init.js");
+        config.withCallbackUrl(dropZoneFileUploadAjaxEventBehavior.getCallbackUrl().toString());
+        String jsonConfig = config.toJsonString();
+        Map<String, Object> variables = new HashMap<String, Object>();
+        variables.put("config", jsonConfig);
+        String js = dropZoneTemplate.asString(variables);
+        response.render(OnDomReadyHeaderItem.forScript(js));
     }
 
     /**
@@ -115,68 +122,27 @@ public abstract class DropZoneFileUpload extends Panel {
      *
      * @return the max file size in mb
      */
-    public int getMaxFileSize() {
-    return maxFileSize;
-    }
-
-    /**
-     * Sets the default max file size to be used for file upload
-     *
-     * @param maxFileSize
-     *            the max file size in mb to be used
-     */
-    public void setMaxFileSize(int maxFileSize) {
-    this.maxFileSize = maxFileSize;
-    }
-
-    /**
-     * Gets the number how many files can be uploaded parallel
-     *
-     * @return the number of how many files can be uploaded parallel
-     */
-    public int getParallelUploads() {
-    return parallelUploads;
-    }
-
-    /**
-     * Sets the number how many files can be uploaded parallel
-     *
-     * @param parallelUploads
-     *            the number of how many files can be uploaded parallel
-     */
-    public void setParallelUploads(int parallelUploads) {
-    this.parallelUploads = parallelUploads;
-    }
-
-    /**
-     * The file types that are accepted for this upload
-     *
-     * @return the file types which are accepted for this upload
-     */
-    public String getAcceptedFiles() {
-    return acceptedFiles;
-    }
-
-    /**
-     * Sets the types that are accepted for this upload.<br/>
-     * <br/>
-     * e.g.: "image/*,application/pdf,.psd"<br/>
-     * or simply: "*"
-     *
-     * @param acceptedFiles
-     *            the file types which are accepted for this upload
-     */
-    public void setAcceptedFiles(String acceptedFiles) {
-    this.acceptedFiles = acceptedFiles;
+    public final DropZoneConfig getConfig() {
+        return config;
     }
 
     /**
      * Needs to be overridden to handle file upload
      *
      * @param target
-     *            the target to get the upload from
+     *            the Ajax request handler
      * @param fileMap
      *            providing the file information
      */
     protected abstract void onUpload(AjaxRequestTarget target, Map<String, List<FileItem>> fileMap);
+
+    /**
+     * Callback method called when an error occurs while parcing the uploaded files
+     *
+     * @param target
+     *            the Ajax request handler
+     * @param fux
+     *            the thrown exception
+     */
+    protected void onError(AjaxRequestTarget target, FileUploadException fux) {};
 }

@@ -3,6 +3,7 @@ package de.agilecoders.wicket.samples.pages;
 import java.util.List;
 import java.util.Map;
 
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.fileUpload.DropZoneConfig;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
@@ -22,6 +23,7 @@ import org.apache.wicket.markup.repeater.RepeatingView;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.model.ResourceModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
+import org.apache.wicket.util.lang.Bytes;
 import org.apache.wicket.util.time.Duration;
 import org.apache.wicket.util.upload.FileItem;
 import org.wicketstuff.annotation.mount.MountPath;
@@ -177,17 +179,23 @@ public class ExtensionsPage extends BasePage {
     }
 
     private void dropzoneFileUpload() {
-    DropZoneFileUpload dropZoneFileUpload = new DropZoneFileUpload("dropzone") {
-        private static final long serialVersionUID = 1L;
+        DropZoneFileUpload dropZoneFileUpload = new DropZoneFileUpload("dropzone") {
+            private static final long serialVersionUID = 1L;
 
-        @Override
-        protected void onUpload(AjaxRequestTarget target, Map<String, List<FileItem>> fileMap) {
-        // Handle files and update components based on the
-        // AjaxRequestTarget
-        System.out.println(fileMap);
-        }
-    };
-    add(dropZoneFileUpload);
+            @Override
+            protected void onUpload(AjaxRequestTarget target, Map<String, List<FileItem>> fileMap) {
+            // Handle files and update components based on the
+            // AjaxRequestTarget
+            System.out.println(fileMap);
+            }
+        };
+        dropZoneFileUpload.getConfig()
+            .withMaxFileSize(Bytes.megabytes(1))
+            .withThumbnailHeight(80)
+            .withThumbnailWidth(80)
+            .withPreviewsContainer(".dropzone-previews")
+            .withParallelUploads(2);
+        add(dropZoneFileUpload);
     }
 
     private void pwstrengthSample() {
