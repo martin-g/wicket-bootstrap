@@ -23,7 +23,6 @@ import org.apache.wicket.util.upload.FileUploadException;
 
 import de.agilecoders.wicket.core.Bootstrap;
 import de.agilecoders.wicket.core.util.References;
-import de.agilecoders.wicket.jquery.Key;
 
 /**
  * Provides a modern file upload by using dropzone.js
@@ -51,9 +50,9 @@ public abstract class DropZoneFileUpload extends Panel {
                 MultipartServletWebRequest multiPartRequest = webRequest.newMultipartWebRequest(
                     Bytes.megabytes(config.getMaxFileSize()), "ignored");
                 multiPartRequest.parseFileParts();
-                onUpload(target, multiPartRequest.getFiles());
+                onUpload(multiPartRequest.getFiles());
             } catch (FileUploadException fux) {
-                onError(target, fux);
+                onError(fux);
             }
         }
 
@@ -114,12 +113,7 @@ public abstract class DropZoneFileUpload extends Panel {
         try {
             dropZoneTemplate = new PackageTextTemplate(DropZoneFileUpload.class, "js/dropzone_init.js");
             config.withCallbackUrl(dropZoneFileUploadAjaxEventBehavior.getCallbackUrl().toString());
-            config.put(new Key<String>("clickable"), ".fileinput-button");
-            config.put(new Key<Boolean>("autoQueue"), false);
             String jsonConfig = config.toJsonString();
-            // How to add an object to the config which is not escaped with "" ?
-            jsonConfig = jsonConfig.substring(0, jsonConfig.lastIndexOf("}"));
-            jsonConfig += ", previewTemplate : previewTemplate}";
             Map<String, Object> variables = new HashMap<String, Object>();
             variables.put("config", jsonConfig);
             String js = dropZoneTemplate.asString(variables);
@@ -139,24 +133,26 @@ public abstract class DropZoneFileUpload extends Panel {
     }
 
     /**
-     * Needs to be overridden to handle file upload
+     * Needs to be overridden to handle file upload.<br/>
+     * <br/>
+     * <strong>Note</strong>: The Ajax request is sent by DropZone, not Wicket.Ajax,
+     * that's why there is no way to write back a response (i.e. no AjaxRequestTarget)
      *
-     * @param target
-     *            the Ajax request handler
      * @param fileMap
      *            providing the file information
      */
-    protected abstract void onUpload(AjaxRequestTarget target, Map<String, List<FileItem>> fileMap);
+    protected abstract void onUpload(Map<String, List<FileItem>> fileMap);
 
     /**
      * Callback method called when an error occurs while parcing the uploaded
-     * files
+     * files<br/>
+     * <br/>
+     * <strong>Note</strong>: The Ajax request is sent by DropZone, not Wicket.Ajax,
+     * that's why there is no way to write back a response (i.e. no AjaxRequestTarget)
      *
-     * @param target
-     *            the Ajax request handler
      * @param fux
      *            the thrown exception
      */
-    protected void onError(AjaxRequestTarget target, FileUploadException fux) {
+    protected void onError(FileUploadException fux) {
     }
 }

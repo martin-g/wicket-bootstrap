@@ -181,10 +181,9 @@ public class ExtensionsPage extends BasePage {
             private static final long serialVersionUID = 1L;
 
             @Override
-            protected void onUpload(AjaxRequestTarget target, Map<String, List<FileItem>> fileMap) {
-                // Handle files and update components based on the
-                // AjaxRequestTarget
-                System.out.println(fileMap);
+            protected void onUpload(Map<String, List<FileItem>> fileMap) {
+                // Handle files
+                System.out.println("Successfully Uploaded: " + fileMap);
             }
         };
         dropZoneFileUpload.getConfig()

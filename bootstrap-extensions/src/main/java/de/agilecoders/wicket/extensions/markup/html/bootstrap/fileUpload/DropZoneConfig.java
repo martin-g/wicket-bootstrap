@@ -2,6 +2,7 @@ package de.agilecoders.wicket.extensions.markup.html.bootstrap.fileUpload;
 
 import de.agilecoders.wicket.jquery.AbstractConfig;
 import de.agilecoders.wicket.jquery.IKey;
+import de.agilecoders.wicket.jquery.util.Json;
 
 /**
  * Configuration for {@link DropZoneFileUpload}
@@ -17,9 +18,16 @@ public class DropZoneConfig extends AbstractConfig {
     private static final IKey<String> AcceptedFiles = newKey("acceptedFiles", null);
     private static final IKey<Integer> ThumbnailWidth = newKey("thumbnailWidth", null);
     private static final IKey<Integer> ThumbnailHeight = newKey("thumbnailHeight", null);
-    private static final IKey<Boolean> AutoQueue = newKey("autoQueue", Boolean.FALSE);
+    private static final IKey<Boolean> AutoQueue = newKey("autoQueue", null);
     private static final IKey<String> PreviewsContainer = newKey("previewsContainer", null);
-    private static final IKey<String> Clickable = newKey("clickable", ".fileinput-button");
+    private static final IKey<Json.RawValue> PreviewTemplate = newKey("previewTemplate", null);
+    private static final IKey<String> Clickable = newKey("clickable", null);
+
+    public DropZoneConfig() {
+        withClickable(".fileinput-button");
+        withAutoQueue(false);
+        withPreviewTemplate("previewTemplate");
+    }
 
     /**
      * @param callbackUrl
@@ -105,6 +113,15 @@ public class DropZoneConfig extends AbstractConfig {
      */
     public DropZoneConfig withPreviewsContainer(String previewsContainer) {
         put(PreviewsContainer, previewsContainer);
+        return this;
+    }
+
+    /**
+     * @param previewTemplate
+     * @return current instance
+     */
+    public DropZoneConfig withPreviewTemplate(String previewTemplate) {
+        put(PreviewTemplate, new Json.RawValue(previewTemplate));
         return this;
     }
 
