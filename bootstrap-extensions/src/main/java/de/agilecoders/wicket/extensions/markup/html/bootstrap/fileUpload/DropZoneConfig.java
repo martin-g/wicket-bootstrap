@@ -2,7 +2,6 @@ package de.agilecoders.wicket.extensions.markup.html.bootstrap.fileUpload;
 
 import de.agilecoders.wicket.jquery.AbstractConfig;
 import de.agilecoders.wicket.jquery.IKey;
-import org.apache.wicket.util.lang.Bytes;
 
 /**
  * Configuration for {@link DropZoneFileUpload}
@@ -13,7 +12,7 @@ public class DropZoneConfig extends AbstractConfig {
 
     private static final IKey<String> CallbackUrl = newKey("url", null);
     private static final IKey<String> ParamName = newKey("paramName", "file");
-    private static final IKey<Double> MaxFileSize = newKey("maxFilesize", null);
+    private static final IKey<Integer> MaxFileSize = newKey("maxFilesize", null);
     private static final IKey<Integer> ParallelUploads = newKey("parallelUploads", null);
     private static final IKey<String> AcceptedFiles = newKey("acceptedFiles", null);
     private static final IKey<Integer> ThumbnailWidth = newKey("thumbnailWidth", null);
@@ -23,34 +22,36 @@ public class DropZoneConfig extends AbstractConfig {
     private static final IKey<String> Clickable = newKey("clickable", ".fileinput-button");
 
     /**
-     * @param callbackUrl The url to call back
+     * @param callbackUrl
+     *            The url to call back
      * @return current instance
      */
     public DropZoneConfig withCallbackUrl(String callbackUrl) {
-        put(CallbackUrl, callbackUrl);
-        return this;
+	put(CallbackUrl, callbackUrl);
+	return this;
     }
 
     /**
-     * @param paramName The name that will be used to transfer the file(s)
+     * @param paramName
+     *            The name that will be used to transfer the file(s)
      * @return current instance
      */
     public DropZoneConfig withParamName(String paramName) {
-        put(ParamName, paramName);
-        return this;
+	put(ParamName, paramName);
+	return this;
     }
 
     /**
      * @param maxFileSize
      * @return current instance
      */
-    public DropZoneConfig withMaxFileSize(Bytes maxFileSize) {
-        put(MaxFileSize, maxFileSize.megabytes());
-        return this;
+    public DropZoneConfig withMaxFileSize(int maxFileSize) {
+	put(MaxFileSize, maxFileSize);
+	return this;
     }
 
-    public Bytes getMaxFileSize() {
-        return Bytes.megabytes(get(MaxFileSize));
+    public int getMaxFileSize() {
+	return get(MaxFileSize);
     }
 
     /**
@@ -58,8 +59,8 @@ public class DropZoneConfig extends AbstractConfig {
      * @return current instance
      */
     public DropZoneConfig withParallelUploads(int parallelUploads) {
-        put(ParallelUploads, parallelUploads);
-        return this;
+	put(ParallelUploads, parallelUploads);
+	return this;
     }
 
     /**
@@ -67,8 +68,8 @@ public class DropZoneConfig extends AbstractConfig {
      * @return current instance
      */
     public DropZoneConfig withAcceptedFiles(String acceptedFiles) {
-        put(AcceptedFiles, acceptedFiles);
-        return this;
+	put(AcceptedFiles, acceptedFiles);
+	return this;
     }
 
     /**
@@ -76,8 +77,8 @@ public class DropZoneConfig extends AbstractConfig {
      * @return current instance
      */
     public DropZoneConfig withThumbnailWidth(int thumbnailWidth) {
-        put(ThumbnailWidth, thumbnailWidth);
-        return this;
+	put(ThumbnailWidth, thumbnailWidth);
+	return this;
     }
 
     /**
@@ -85,8 +86,8 @@ public class DropZoneConfig extends AbstractConfig {
      * @return current instance
      */
     public DropZoneConfig withThumbnailHeight(int thumbnailHeight) {
-        put(ThumbnailHeight, thumbnailHeight);
-        return this;
+	put(ThumbnailHeight, thumbnailHeight);
+	return this;
     }
 
     /**
@@ -94,8 +95,8 @@ public class DropZoneConfig extends AbstractConfig {
      * @return current instance
      */
     public DropZoneConfig withAutoQueue(boolean autoQueue) {
-        put(AutoQueue, autoQueue);
-        return this;
+	put(AutoQueue, autoQueue);
+	return this;
     }
 
     /**
@@ -103,8 +104,8 @@ public class DropZoneConfig extends AbstractConfig {
      * @return current instance
      */
     public DropZoneConfig withPreviewsContainer(String previewsContainer) {
-        put(PreviewsContainer, previewsContainer);
-        return this;
+	put(PreviewsContainer, previewsContainer);
+	return this;
     }
 
     /**
@@ -112,7 +113,7 @@ public class DropZoneConfig extends AbstractConfig {
      * @return current instance
      */
     public DropZoneConfig withClickable(String clickable) {
-        put(Clickable, clickable);
-        return this;
+	put(Clickable, clickable);
+	return this;
     }
 }

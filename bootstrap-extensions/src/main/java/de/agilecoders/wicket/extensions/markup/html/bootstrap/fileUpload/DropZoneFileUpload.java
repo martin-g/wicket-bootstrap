@@ -14,6 +14,7 @@ import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.protocol.http.servlet.MultipartServletWebRequest;
 import org.apache.wicket.protocol.http.servlet.ServletWebRequest;
+import org.apache.wicket.util.io.IOUtils;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.lang.Bytes;
 import org.apache.wicket.util.template.PackageTextTemplate;
@@ -22,6 +23,7 @@ import org.apache.wicket.util.upload.FileUploadException;
 
 import de.agilecoders.wicket.core.Bootstrap;
 import de.agilecoders.wicket.core.util.References;
+import de.agilecoders.wicket.jquery.Key;
 
 /**
  * Provides a modern file upload by using dropzone.js
@@ -40,26 +42,26 @@ public abstract class DropZoneFileUpload extends Panel {
 
     private class DropZoneFileUploadAjaxEventBehavior extends AbstractDefaultAjaxBehavior {
 
-        private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-        @Override
-        protected void respond(AjaxRequestTarget target) {
-            try {
-                ServletWebRequest webRequest = (ServletWebRequest) getRequest();
-                Bytes maxFileSize = config.getMaxFileSize();
-                MultipartServletWebRequest multiPartRequest = webRequest.newMultipartWebRequest(maxFileSize, "ignored");
-                multiPartRequest.parseFileParts();
-                onUpload(target, multiPartRequest.getFiles());
-            } catch (FileUploadException fux) {
-                onError(target, fux);
-            }
-        }
+	@Override
+	protected void respond(AjaxRequestTarget target) {
+	    try {
+		ServletWebRequest webRequest = (ServletWebRequest) getRequest();
+		MultipartServletWebRequest multiPartRequest = webRequest.newMultipartWebRequest(
+			Bytes.megabytes(config.getMaxFileSize()), "ignored");
+		multiPartRequest.parseFileParts();
+		onUpload(target, multiPartRequest.getFiles());
+	    } catch (FileUploadException fux) {
+		onError(target, fux);
+	    }
+	}
 
-        @Override
-        protected void updateAjaxAttributes(AjaxRequestAttributes attributes) {
-            super.updateAjaxAttributes(attributes);
-            attributes.setMultipart(true);
-        }
+	@Override
+	protected void updateAjaxAttributes(AjaxRequestAttributes attributes) {
+	    super.updateAjaxAttributes(attributes);
+	    attributes.setMultipart(true);
+	}
     }
 
     /**
@@ -69,7 +71,7 @@ public abstract class DropZoneFileUpload extends Panel {
      *            the wicket id where the component is going to be rendered
      */
     public DropZoneFileUpload(String id) {
-        this(id, null, new DropZoneConfig());
+	this(id, null, new DropZoneConfig());
     }
 
     /**
@@ -81,7 +83,7 @@ public abstract class DropZoneFileUpload extends Panel {
      *            the model of this component
      */
     public DropZoneFileUpload(String id, IModel<?> model) {
-        this(id, model, new DropZoneConfig());
+	this(id, model, new DropZoneConfig());
     }
 
     /**
@@ -95,9 +97,9 @@ public abstract class DropZoneFileUpload extends Panel {
      *            the configuration for the widget
      */
     public DropZoneFileUpload(String id, IModel<?> model, DropZoneConfig config) {
-        super(id, model);
-        this.config = Args.notNull(config, "config");
-        add(dropZoneFileUploadAjaxEventBehavior = new DropZoneFileUploadAjaxEventBehavior());
+	super(id, model);
+	this.config = Args.notNull(config, "config");
+	add(dropZoneFileUploadAjaxEventBehavior = new DropZoneFileUploadAjaxEventBehavior());
     }
 
     /**
@@ -105,16 +107,26 @@ public abstract class DropZoneFileUpload extends Panel {
      */
     @Override
     public void renderHead(IHeaderResponse response) {
-        References.renderWithFilter(Bootstrap.getSettings(), response,
-                                    JavaScriptReferenceHeaderItem.forReference(DropZoneFileUploadJavaScriptReference.instance()));
+	References.renderWithFilter(Bootstrap.getSettings(), response,
+		JavaScriptReferenceHeaderItem.forReference(DropZoneFileUploadJavaScriptReference.instance()));
 
-        PackageTextTemplate dropZoneTemplate = new PackageTextTemplate(DropZoneFileUpload.class,  "js/dropzone_init.js");
-        config.withCallbackUrl(dropZoneFileUploadAjaxEventBehavior.getCallbackUrl().toString());
-        String jsonConfig = config.toJsonString();
-        Map<String, Object> variables = new HashMap<String, Object>();
-        variables.put("config", jsonConfig);
-        String js = dropZoneTemplate.asString(variables);
-        response.render(OnDomReadyHeaderItem.forScript(js));
+	PackageTextTemplate dropZoneTemplate = null;
+	try {
+	    dropZoneTemplate = new PackageTextTemplate(DropZoneFileUpload.class, "js/dropzone_init.js");
+	    config.withCallbackUrl(dropZoneFileUploadAjaxEventBehavior.getCallbackUrl().toString());
+	    config.put(new Key<String>("clickable"), ".fileinput-button");
+	    config.put(new Key<Boolean>("autoQueue"), false);
+	    String jsonConfig = config.toJsonString();
+	    // How to add an object to the config which is not escaped with "" ?
+	    jsonConfig = jsonConfig.substring(0, jsonConfig.lastIndexOf("}"));
+	    jsonConfig += ", previewTemplate : previewTemplate}";
+	    Map<String, Object> variables = new HashMap<String, Object>();
+	    variables.put("config", jsonConfig);
+	    String js = dropZoneTemplate.asString(variables);
+	    response.render(OnDomReadyHeaderItem.forScript(js));
+	} finally {
+	    IOUtils.closeQuietly(dropZoneTemplate);
+	}
     }
 
     /**
@@ -123,7 +135,7 @@ public abstract class DropZoneFileUpload extends Panel {
      * @return the max file size in mb
      */
     public final DropZoneConfig getConfig() {
-        return config;
+	return config;
     }
 
     /**
@@ -137,12 +149,14 @@ public abstract class DropZoneFileUpload extends Panel {
     protected abstract void onUpload(AjaxRequestTarget target, Map<String, List<FileItem>> fileMap);
 
     /**
-     * Callback method called when an error occurs while parcing the uploaded files
+     * Callback method called when an error occurs while parcing the uploaded
+     * files
      *
      * @param target
      *            the Ajax request handler
      * @param fux
      *            the thrown exception
      */
-    protected void onError(AjaxRequestTarget target, FileUploadException fux) {};
+    protected void onError(AjaxRequestTarget target, FileUploadException fux) {
+    };
 }
