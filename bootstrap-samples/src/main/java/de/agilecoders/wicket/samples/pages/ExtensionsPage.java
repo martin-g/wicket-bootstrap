@@ -190,7 +190,7 @@ public class ExtensionsPage extends BasePage {
             }
         };
         dropZoneFileUpload.getConfig()
-            .withMaxFileSize(Bytes.megabytes(1))
+            .withMaxFileSize(1)
             .withThumbnailHeight(80)
             .withThumbnailWidth(80)
             .withPreviewsContainer(".dropzone-previews")
