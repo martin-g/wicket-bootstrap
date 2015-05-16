@@ -27,8 +27,8 @@ public class DropZoneConfig extends AbstractConfig {
      * @return current instance
      */
     public DropZoneConfig withCallbackUrl(String callbackUrl) {
-	put(CallbackUrl, callbackUrl);
-	return this;
+        put(CallbackUrl, callbackUrl);
+        return this;
     }
 
     /**
@@ -37,8 +37,8 @@ public class DropZoneConfig extends AbstractConfig {
      * @return current instance
      */
     public DropZoneConfig withParamName(String paramName) {
-	put(ParamName, paramName);
-	return this;
+        put(ParamName, paramName);
+        return this;
     }
 
     /**
@@ -46,12 +46,12 @@ public class DropZoneConfig extends AbstractConfig {
      * @return current instance
      */
     public DropZoneConfig withMaxFileSize(int maxFileSize) {
-	put(MaxFileSize, maxFileSize);
-	return this;
+        put(MaxFileSize, maxFileSize);
+        return this;
     }
 
     public int getMaxFileSize() {
-	return get(MaxFileSize);
+    return get(MaxFileSize);
     }
 
     /**
@@ -59,8 +59,8 @@ public class DropZoneConfig extends AbstractConfig {
      * @return current instance
      */
     public DropZoneConfig withParallelUploads(int parallelUploads) {
-	put(ParallelUploads, parallelUploads);
-	return this;
+        put(ParallelUploads, parallelUploads);
+        return this;
     }
 
     /**
@@ -68,8 +68,8 @@ public class DropZoneConfig extends AbstractConfig {
      * @return current instance
      */
     public DropZoneConfig withAcceptedFiles(String acceptedFiles) {
-	put(AcceptedFiles, acceptedFiles);
-	return this;
+        put(AcceptedFiles, acceptedFiles);
+        return this;
     }
 
     /**
@@ -77,8 +77,8 @@ public class DropZoneConfig extends AbstractConfig {
      * @return current instance
      */
     public DropZoneConfig withThumbnailWidth(int thumbnailWidth) {
-	put(ThumbnailWidth, thumbnailWidth);
-	return this;
+        put(ThumbnailWidth, thumbnailWidth);
+        return this;
     }
 
     /**
@@ -86,8 +86,8 @@ public class DropZoneConfig extends AbstractConfig {
      * @return current instance
      */
     public DropZoneConfig withThumbnailHeight(int thumbnailHeight) {
-	put(ThumbnailHeight, thumbnailHeight);
-	return this;
+        put(ThumbnailHeight, thumbnailHeight);
+        return this;
     }
 
     /**
@@ -95,8 +95,8 @@ public class DropZoneConfig extends AbstractConfig {
      * @return current instance
      */
     public DropZoneConfig withAutoQueue(boolean autoQueue) {
-	put(AutoQueue, autoQueue);
-	return this;
+        put(AutoQueue, autoQueue);
+        return this;
     }
 
     /**
@@ -104,8 +104,8 @@ public class DropZoneConfig extends AbstractConfig {
      * @return current instance
      */
     public DropZoneConfig withPreviewsContainer(String previewsContainer) {
-	put(PreviewsContainer, previewsContainer);
-	return this;
+        put(PreviewsContainer, previewsContainer);
+        return this;
     }
 
     /**
@@ -113,7 +113,7 @@ public class DropZoneConfig extends AbstractConfig {
      * @return current instance
      */
     public DropZoneConfig withClickable(String clickable) {
-	put(Clickable, clickable);
-	return this;
+        put(Clickable, clickable);
+        return this;
     }
 }
