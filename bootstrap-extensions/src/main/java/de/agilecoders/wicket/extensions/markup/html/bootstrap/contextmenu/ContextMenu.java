@@ -41,7 +41,6 @@ public abstract class ContextMenu<T> extends GenericPanel<T> {
     public ContextMenu(final String markupId, final IModel<T> model) {
         super(markupId, model);
 
-        setOutputMarkupId(true);
         setOutputMarkupPlaceholderTag(true);
 
         BootstrapResourcesBehavior.addTo(this);

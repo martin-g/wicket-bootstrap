@@ -7,7 +7,6 @@ import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.typeaheadV10.
 
 import org.apache.wicket.markup.Markup;
 import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
-import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.util.tester.WicketTester;
 import org.junit.Test;
@@ -42,7 +41,7 @@ public class TypeaheadConfigTest extends WicketApplicationTest {
 
 
         OnDomReadyHeaderItem item = field.getDomReadyScript(config);
-        String expected = "var engine = new Bloodhound({\"datumTokenizer\":function(d) { return Bloodhound.tokenizers.whitespace(d.value); },\"queryTokenizer\":Bloodhound.tokenizers.whitespace,\"remote\":\"./page?0-1.IBehaviorListener.0-typeahead&term=%QUERY\"});engine.initialize();$('#typeahead1').typeahead({},{\"source\":engine.ttAdapter(),\"name\":\"engine\"});";
+        String expected = "var engine = new Bloodhound({\"datumTokenizer\":function(d) { return Bloodhound.tokenizers.whitespace(d.value); },\"queryTokenizer\":Bloodhound.tokenizers.whitespace,\"remote\":\"./wicket/page?0-1.IBehaviorListener.0-typeahead&term=%QUERY\"});engine.initialize();$('#typeahead1').typeahead({},{\"source\":engine.ttAdapter(),\"name\":\"engine\"});";
         assertEquals(expected, item.getJavaScript());
     }
 

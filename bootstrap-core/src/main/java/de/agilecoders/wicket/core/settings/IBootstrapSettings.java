@@ -98,6 +98,13 @@ public interface IBootstrapSettings {
     IBootstrapSettings setJsResourceReference(ResourceReference reference);
 
     /**
+     * @param reference a reference to the Modernizr library.
+     *                  Defaults to the embedded modernizr.js
+     * @return same instance for chaining
+     */
+    IBootstrapSettings setModernizrResourceReference(ResourceReference reference);
+
+    /**
      * @return javascript resource filter name
      */
     String getJsResourceFilterName();

@@ -173,6 +173,12 @@ public class BootstrapSettings implements IBootstrapSettings {
     }
 
     @Override
+    public BootstrapSettings setModernizrResourceReference(final ResourceReference modernizrJavaScriptReference) {
+        this.modernizrJavaScriptReference = modernizrJavaScriptReference;
+        return this;
+    }
+
+    @Override
     public IBootstrapSettings setUpdateSecurityManager(boolean activate) {
         updateSecurityManager = activate;
         return this;

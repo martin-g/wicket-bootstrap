@@ -32,7 +32,7 @@ public class DataSet<T> extends AbstractConfig {
 
     private static final IKey<String> DisplayKey = newKey("displayKey", "value");
 
-    private static final IKey<Map<String, String>> Templates = newKey("templates", null);
+    private static final IKey<Map<String, Json.RawValue>> Templates = newKey("templates", null);
 
 
     public DataSet withName(final String name) {
@@ -53,7 +53,7 @@ public class DataSet<T> extends AbstractConfig {
         return this;
     }
 
-    public DataSet withTemplates(final Map<String, String> templates) {
+    public DataSet withTemplates(final Map<String, Json.RawValue> templates) {
         Args.notNull(templates, "templates");
         put(Templates, templates);
         return this;
