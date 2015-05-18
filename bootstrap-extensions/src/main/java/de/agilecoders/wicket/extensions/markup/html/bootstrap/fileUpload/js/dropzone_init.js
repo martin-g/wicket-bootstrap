@@ -4,7 +4,20 @@ previewNode.id = "";
 var previewTemplate = previewNode.parentNode.innerHTML;
 previewNode.parentNode.removeChild(previewNode);
 
-var myDropzone = new Dropzone(document.body, ${config});
+var config = ${config};
+config.headers = {uploadMultiple:true,"Wicket-Ajax":"true","Wicket-Ajax-BaseURL":Wicket.Ajax.baseUrl}
+var myDropzone = new Dropzone(document.body,config);
+
+myDropzone.wicketresponse = {};
+// store the response of an upload so that it is going to be processed on queuecomplete
+myDropzone.on("success", function(notneeded,response) {
+	myDropzone.wicketresponse = response;
+});
+
+// used to only update the client side component once
+myDropzone.on("queuecomplete", function() {
+	Wicket.Ajax.process(myDropzone.wicketresponse);
+});
 
 myDropzone.on("addedfile", function(file) {
   // Hookup the start button
