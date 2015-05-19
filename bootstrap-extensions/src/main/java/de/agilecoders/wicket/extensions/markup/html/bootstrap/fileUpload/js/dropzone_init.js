@@ -5,7 +5,7 @@ var previewTemplate = previewNode.parentNode.innerHTML;
 previewNode.parentNode.removeChild(previewNode);
 
 var config = ${config};
-config.headers = {uploadMultiple:true,"Wicket-Ajax":"true","Wicket-Ajax-BaseURL":Wicket.Ajax.baseUrl}
+config.headers = {"Wicket-Ajax":"true","Wicket-Ajax-BaseURL":Wicket.Ajax.baseUrl}
 var myDropzone = new Dropzone(document.body,config);
 
 myDropzone.wicketresponse = {};
