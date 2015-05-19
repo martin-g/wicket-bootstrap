@@ -200,13 +200,18 @@ public class ExtensionsPage extends BasePage {
     }
 
     private void dropzoneFileUpload() {
+	final Label label = new Label("dropzonelabel","This is a label changed by dropzone");
+	label.setOutputMarkupId(true);
+	add(label);
         DropZoneFileUpload dropZoneFileUpload = new DropZoneFileUpload("dropzone") {
             private static final long serialVersionUID = 1L;
 
             @Override
-            protected void onUpload(Map<String, List<FileItem>> fileMap) {
+            protected void onUpload(AjaxRequestTarget target, Map<String, List<FileItem>> fileMap) {
                 // Handle files
                 System.out.println("Successfully Uploaded: " + fileMap);
+                label.setDefaultModelObject("This is a label changed by dropzone - file uploaded");
+                target.add(label);
             }
         };
         dropZoneFileUpload.getConfig()

@@ -50,9 +50,9 @@ public abstract class DropZoneFileUpload extends Panel {
                 MultipartServletWebRequest multiPartRequest = webRequest.newMultipartWebRequest(
                     Bytes.megabytes(config.getMaxFileSize()), "ignored");
                 multiPartRequest.parseFileParts();
-                onUpload(multiPartRequest.getFiles());
+                onUpload(target, multiPartRequest.getFiles());
             } catch (FileUploadException fux) {
-                onError(fux);
+                onError(target, fux);
             }
         }
 
@@ -135,24 +135,25 @@ public abstract class DropZoneFileUpload extends Panel {
     /**
      * Needs to be overridden to handle file upload.<br/>
      * <br/>
-     * <strong>Note</strong>: The Ajax request is sent by DropZone, not Wicket.Ajax,
-     * that's why there is no way to write back a response (i.e. no AjaxRequestTarget)
+     * 
+     * @param target 
+     * 		  target the target to update components
      *
      * @param fileMap
      *            providing the file information
      */
-    protected abstract void onUpload(Map<String, List<FileItem>> fileMap);
+    protected abstract void onUpload(AjaxRequestTarget target, Map<String, List<FileItem>> fileMap);
 
     /**
      * Callback method called when an error occurs while parcing the uploaded
      * files<br/>
      * <br/>
-     * <strong>Note</strong>: The Ajax request is sent by DropZone, not Wicket.Ajax,
-     * that's why there is no way to write back a response (i.e. no AjaxRequestTarget)
+     * @param target 
+     * 		  target the target to update components
      *
      * @param fux
      *            the thrown exception
      */
-    protected void onError(FileUploadException fux) {
+    protected void onError(AjaxRequestTarget target, FileUploadException fux) {
     }
 }
