@@ -245,6 +245,18 @@ public class DatetimePickerConfig extends AbstractConfig {
     }
 
     /**
+     * Set Option
+     *
+     * @param key jquery key
+     * @param value new value for the key
+     * @return config instance
+     */
+    public <T> DatetimePickerConfig withOption(IKey<T> key, T value) {
+        put(key, value);
+        return this;
+    }
+
+    /**
      * Get date format.
      *
      * @return date format
