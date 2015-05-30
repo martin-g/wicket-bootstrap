@@ -6,7 +6,7 @@
 // Bootswatch
 // -----------------------------------------------------
 
-@import url("//fonts.googleapis.com/css?family=Lato:400,700,400italic");
+@import url("https://fonts.googleapis.com/css?family=Lato:400,700,400italic");
 
 // Navbar =====================================================================
 
@@ -45,6 +45,10 @@
 }
 
 // Buttons ====================================================================
+
+.btn {
+  border-width: 2px;
+}
 
 .btn:active {
   .box-shadow(none);
@@ -136,7 +140,7 @@ textarea {
 .form-control,
 input,
 textarea {
-  border: none;
+  border: 2px hidden transparent;
   .box-shadow(none);
 
   &:focus {
