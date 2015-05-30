@@ -6,7 +6,7 @@
 // Bootswatch
 // -----------------------------------------------------
 
-@import url("//fonts.googleapis.com/css?family=Roboto:300,400,500,700");
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700");
 
 // Navbar =====================================================================
 
@@ -23,7 +23,8 @@
       color: #fff;
       .placeholder(@navbar-inverse-link-color);
 
-      &[type=text] {
+      &[type=text],
+      &[type=password] {
         .box-shadow(inset 0 -1px 0 @navbar-inverse-link-color);
 
         &:focus {
@@ -31,10 +32,6 @@
         }
       }
     }
-  }
-
-  &-nav > li > .dropdown-menu {
-    margin-top: 2px;
   }
 }
 
@@ -131,6 +128,14 @@ a {
 }
 
 // Tables =====================================================================
+
+.table-hover {
+  > tbody > tr,
+  > tbody > tr > th,
+  > tbody > tr > td {
+    .transition(all 0.2s);
+  }
+}
 
 // Forms ======================================================================
 
@@ -412,8 +417,10 @@ input[type="checkbox"],
 
     & > li > a,
     & > li > a:hover,
+    & > li > a:focus,
     & > .active > a,
-    & > .active > a:hover {
+    & > .active > a:hover,
+    & > .active > a:focus {
       border: none;
     }
   }
@@ -424,6 +431,7 @@ input[type="checkbox"],
 }
 
 .dropdown-menu {
+  margin-top: 0;
   border: none;
   .box-shadow(0 1px 4px rgba(0,0,0,.3));
 }
@@ -493,18 +501,18 @@ input[type="checkbox"],
         background-color: lighten(@progress-bar-bg, 35%);
       }
     }
-    
+
     &-success:last-child.progress-bar:before {
       background-color: lighten(@brand-success, 35%);
     }
-    
+
     &-info:last-child.progress-bar:before {
       background-color: lighten(@brand-info, 45%);
     }
     &-warning:last-child.progress-bar:before {
       background-color: lighten(@brand-warning, 35%);
     }
-    
+
     &-danger:last-child.progress-bar:before {
       background-color: lighten(@brand-danger, 25%);
     }
@@ -520,6 +528,7 @@ input[type="checkbox"],
   font-weight: 300;
   line-height: 24px;
   opacity: 0.6;
+  .transition(all 0.2s);
 
   &:hover {
     opacity: 1;
@@ -553,46 +562,6 @@ input[type="checkbox"],
 
   &-footer {
     border-top: none;
-  }
-
-  &-success {
-    .panel-heading {
-      background-color: @brand-success;
-    }
-
-    .panel-title {
-      color: #fff;
-    }
-  }
-
-  &-info {
-    .panel-heading {
-      background-color: @brand-info;
-    }
-
-    .panel-title {
-      color: #fff;
-    }
-  }
-
-  &-warning {
-    .panel-heading {
-      background-color: @brand-warning;
-    }
-
-    .panel-title {
-      color: #fff;
-    }
-  }
-
-  &-danger {
-    .panel-heading {
-      background-color: @brand-danger;
-    }
-
-    .panel-title {
-      color: #fff;
-    }
   }
 }
 

@@ -109,7 +109,7 @@
 //** Global color for active items (e.g., navs or dropdowns).
 @component-active-color:    #fff;
 //** Global background color for active items (e.g., navs or dropdowns).
-@component-active-bg:       @brand-success;
+@component-active-bg:       @brand-primary;
 
 //** Width of the `border` for generating carets that indicator dropdowns.
 @caret-width-base:          4px;
@@ -201,11 +201,11 @@
 @input-color-placeholder:        @gray-light;
 
 //** Default `.form-control` height
-@input-height-base:              (@line-height-computed + (@padding-base-vertical * 2) + 2);
+@input-height-base:              (@line-height-computed + (@padding-base-vertical * 2) + 4);
 //** Large `.form-control` height
-@input-height-large:             (ceil(@font-size-large * @line-height-large) + (@padding-large-vertical * 2) + 2);
+@input-height-large:             (ceil(@font-size-large * @line-height-large) + (@padding-large-vertical * 2) + 4);
 //** Small `.form-control` height
-@input-height-small:             (floor(@font-size-small * @line-height-small) + (@padding-small-vertical * 2) + 2);
+@input-height-small:             (floor(@font-size-small * @line-height-small) + (@padding-small-vertical * 2) + 4);
 
 //** `.form-group` margin
 @form-group-margin-bottom:       15px;
@@ -227,16 +227,16 @@
 //## Dropdown menu container and contents.
 
 //** Background for the dropdown menu.
-@dropdown-bg:                    #fff;
+@dropdown-bg:                    @gray-dark;
 //** Dropdown menu `border-color`.
 @dropdown-border:                rgba(0,0,0,.15);
 //** Dropdown menu `border-color` **for IE8**.
 @dropdown-fallback-border:       #ccc;
 //** Divider color for between dropdown items.
-@dropdown-divider-bg:            #e5e5e5;
+@dropdown-divider-bg:            @gray;
 
 //** Dropdown link text color.
-@dropdown-link-color:            @brand-primary;
+@dropdown-link-color:            @gray-lighter;
 //** Hover color for dropdown links.
 @dropdown-link-hover-color:      #fff;
 //** Hover background for dropdown links.

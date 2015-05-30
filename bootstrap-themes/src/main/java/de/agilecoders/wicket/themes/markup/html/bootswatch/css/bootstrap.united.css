@@ -1,4 +1,4 @@
-@import url("//fonts.googleapis.com/css?family=Ubuntu");
+@import url("https://fonts.googleapis.com/css?family=Ubuntu:400,700");
 /*!
  * bootswatch v3.3.4+1
  * Homepage: http://bootswatch.com
@@ -6585,4 +6585,9 @@ button.close {
 .navbar-inverse .badge {
   background-color: #fff;
   color: #772953;
+}
+@media (max-width: 767px) {
+  .navbar .dropdown-menu a {
+    color: #fff;
+  }
 }
