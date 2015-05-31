@@ -1,7 +1,7 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.form.validation;
 
 import de.agilecoders.wicket.jquery.Config;
-import de.agilecoders.wicket.jquery.JQuery;
+import de.agilecoders.wicket.jquery.function.AbstractFunction;
 
 /**
  * <h1>JS function with parameters {@link de.agilecoders.wicket.jquery.JQuery.AbstractFunction}.</h1>
@@ -13,7 +13,7 @@ import de.agilecoders.wicket.jquery.JQuery;
  * @author Alexey Volkov
  * @since 30.09.2014
  */
-class ParametrizedFunction extends JQuery.AbstractFunction {
+class ParametrizedFunction extends AbstractFunction {
 
     private static final long serialVersionUID = 1L;
 

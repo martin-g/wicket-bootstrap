@@ -1,14 +1,14 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.navbar;
 
-import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
-import de.agilecoders.wicket.jquery.JQuery;
+import static de.agilecoders.wicket.jquery.JQuery.$;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.markup.head.IHeaderResponse;
 
-import static de.agilecoders.wicket.jquery.JQuery.$;
-import static de.agilecoders.wicket.jquery.JQuery.EachJqueryFunction.each;
+import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
+import de.agilecoders.wicket.jquery.function.JavaScriptInlineFunction;
+import static de.agilecoders.wicket.jquery.function.EachJqueryFunction.each;
 
 /**
  * A {@link ScrollSpyBehavior} updates the active state of a assigned
@@ -25,7 +25,7 @@ public class ScrollSpyBehavior extends BootstrapBaseBehavior {
      */
     public static void refresh(final AjaxRequestTarget target) {
         target.appendJavaScript($("[data-spy=\"scroll\"]")
-                                        .chain(each(new JQuery.JavaScriptInlineFunction("var $spy = $(this).scrollspy('refresh');"))).get());
+                                        .chain(each(new JavaScriptInlineFunction("var $spy = $(this).scrollspy('refresh');"))).get());
     }
 
     @Override

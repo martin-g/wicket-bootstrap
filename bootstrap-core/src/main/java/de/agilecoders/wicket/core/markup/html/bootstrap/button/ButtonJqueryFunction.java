@@ -1,13 +1,13 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.button;
 
-import de.agilecoders.wicket.jquery.JQuery;
+import de.agilecoders.wicket.jquery.function.AbstractFunction;
 
 /**
  * A jquery function abstraction for buttons.
  *
  * @author miha
  */
-public class ButtonJqueryFunction extends JQuery.AbstractFunction {
+public class ButtonJqueryFunction extends AbstractFunction {
     private static final CharSequence functionName = "button";
 
     /**
