@@ -238,6 +238,7 @@
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>${maven-javadoc-plugin.version}</version>
                 <configuration>
+                    <skip>true</skip>
                     <quiet>true</quiet>
                     <links>
                         <link>http://docs.oracle.com/javase/6/docs/api/</link>
