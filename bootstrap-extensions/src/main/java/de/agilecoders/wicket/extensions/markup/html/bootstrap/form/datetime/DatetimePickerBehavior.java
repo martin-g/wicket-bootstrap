@@ -1,16 +1,17 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.form.datetime;
 
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.references.DatetimePickerCssReference;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.references.DatetimePickerJsReference;
-import de.agilecoders.wicket.jquery.IFunction;
-import de.agilecoders.wicket.jquery.JQuery;
+import static de.agilecoders.wicket.jquery.JQuery.$;
+
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.behavior.Behavior;
 import org.apache.wicket.event.IEvent;
 import org.apache.wicket.markup.head.IHeaderResponse;
 
-import static de.agilecoders.wicket.jquery.JQuery.$;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.references.DatetimePickerCssReference;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.references.DatetimePickerJsReference;
+import de.agilecoders.wicket.jquery.function.AbstractFunction;
+import de.agilecoders.wicket.jquery.function.IFunction;
 
 /**
  * Datetime picker behavior for Eonasdan datetime picker plugin.
@@ -22,7 +23,7 @@ public class DatetimePickerBehavior extends Behavior {
 
     private static final long serialVersionUID = 1L;
 
-    private static class DestroyScript extends JQuery.AbstractFunction {
+    private static class DestroyScript extends AbstractFunction {
 
         private static final long serialVersionUID = 1L;
 
