@@ -41,7 +41,7 @@ public class TypeaheadConfigTest extends WicketApplicationTest {
 
 
         OnDomReadyHeaderItem item = field.getDomReadyScript(config);
-        String expected = "var engine = new Bloodhound({\"datumTokenizer\":function(d) { return Bloodhound.tokenizers.whitespace(d.value); },\"queryTokenizer\":Bloodhound.tokenizers.whitespace,\"remote\":\"./wicket/page?0-1.IBehaviorListener.0-typeahead&term=%QUERY\"});engine.initialize();$('#typeahead1').typeahead({},{\"source\":engine.ttAdapter(),\"name\":\"engine\"});";
+        String expected = "var engine = new Bloodhound({\"datumTokenizer\":function(d) { return Bloodhound.tokenizers.whitespace(d.value); },\"queryTokenizer\":Bloodhound.tokenizers.whitespace,\"remote\":\"./wicket/page?0-1.IBehaviorListener.0-typeahead&term=%QUERY\"});engine.initialize();$('#typeahead1').typeahead({},{\"name\":\"engine\",\"source\":engine.ttAdapter()});";
         assertEquals(expected, item.getJavaScript());
     }
 
@@ -54,7 +54,7 @@ public class TypeaheadConfigTest extends WicketApplicationTest {
         BloodhoundConfig config = new BloodhoundConfig();
         config.withRemote(remote);
 
-        String expected = "{\"datumTokenizer\":function(d) { return Bloodhound.tokenizers.whitespace(d.value); },\"queryTokenizer\":Bloodhound.tokenizers.whitespace,\"remote\":\"{\\\"wildcard\\\":\\\"%FOO\\\",\\\"url\\\":\\\"foo\\\"}\"}";
+        String expected = "{\"datumTokenizer\":function(d) { return Bloodhound.tokenizers.whitespace(d.value); },\"queryTokenizer\":Bloodhound.tokenizers.whitespace,\"remote\":\"{\\\"url\\\":\\\"foo\\\",\\\"wildcard\\\":\\\"%FOO\\\"}\"}";
         assertEquals(expected, config.toJsonString());
 
     }
