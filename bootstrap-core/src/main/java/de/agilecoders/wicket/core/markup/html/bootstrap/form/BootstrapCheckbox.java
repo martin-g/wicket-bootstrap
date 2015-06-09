@@ -51,6 +51,8 @@ public class BootstrapCheckbox extends FormComponentPanel<Boolean> {
     public BootstrapCheckbox(String id, IModel<Boolean> model, IModel<?> labelModel) {
         super(id, model);
 
+        setType(Boolean.class);
+
         this.labelModel = labelModel;
 
         setRenderBodyOnly(true);
