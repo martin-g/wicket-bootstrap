@@ -124,4 +124,9 @@ public class BootstrapCheckbox extends FormComponentPanel<Boolean> {
     public IModel<String> getLabel() {
         return checkbox.getLabel();
     }
+    
+    @Override
+    protected void convertInput() {
+        setConvertedInput(checkbox.getConvertedInput());
+    }
 }
