@@ -21,7 +21,7 @@ import org.apache.wicket.util.value.ValueMap;
 public class BootstrapRadioChoice<T> extends RadioChoice<T> {
 
     private boolean inline = false;
-    
+
     public BootstrapRadioChoice(String id) {
         this(id, new ArrayList<T>());
     }
@@ -57,8 +57,7 @@ public class BootstrapRadioChoice<T> extends RadioChoice<T> {
     public BootstrapRadioChoice(String id, IModel<T> model, IModel<? extends List<? extends T>> choices, IChoiceRenderer<? super T> renderer) {
         super(id, model, choices, renderer);
 
-        setPrefix("<div class=\"radio\">");
-        setSuffix("</div>");
+        setInline(false);
         setLabelPosition(LabelPosition.WRAP_AFTER);
     }
 
@@ -67,6 +66,13 @@ public class BootstrapRadioChoice<T> extends RadioChoice<T> {
     }
 
     public BootstrapRadioChoice<T> setInline(boolean inline) {
+        if (inline) {
+            setPrefix("");
+            setSuffix("");
+        } else {
+            setPrefix("<div class=\"radio\">");
+            setSuffix("</div>");
+        }
         this.inline = inline;
         return this;
     }
