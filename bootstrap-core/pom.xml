@@ -40,7 +40,7 @@
             <artifactId>modernizr</artifactId>
             <version>${modernizr.version}</version>
         </dependency>
-        
+
         <dependency>
             <groupId>joda-time</groupId>
             <artifactId>joda-time</artifactId>
