@@ -126,7 +126,7 @@ public class BootstrapCheckbox extends FormComponentPanel<Boolean> {
     }
     
     @Override
-    protected void convertInput() {
+    public void convertInput() {
         setConvertedInput(checkbox.getConvertedInput());
     }
 }
