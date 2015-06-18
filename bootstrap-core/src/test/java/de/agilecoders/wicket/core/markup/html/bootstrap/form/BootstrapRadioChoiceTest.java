@@ -44,10 +44,7 @@ public class BootstrapRadioChoiceTest extends WicketApplicationTest {
         tester().startComponentInPage(radio);
         TagTester spanTester = tester().getTagByWicketId("id");
 
-        TagTester divTester = spanTester.getChild("class", "radio");
-        assertThat(divTester.getName(), is(equalTo("div")));
-
-        TagTester labelTester = divTester.getChild("label");
+        TagTester labelTester = spanTester.getChild("label");
         assertThat(labelTester.getName(), is(equalTo("label")));
         assertThat(labelTester.getAttribute("class"), is(equalTo("radio-inline")));
     }

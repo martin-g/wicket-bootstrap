@@ -34,12 +34,12 @@ public class FormGroup extends Border {
     /**
      * Holder class for all possible form group sizes
      */
-    public static enum Size implements ICssClassNameProvider {
+    public enum Size implements ICssClassNameProvider {
         Small("sm"), Large("lg");
 
         private final String cssName;
 
-        private Size(String cssName) {
+        Size(String cssName) {
             this.cssName = cssName;
         }
 
@@ -166,7 +166,7 @@ public class FormGroup extends Border {
     @Override
     protected void onInitialize() {
         super.onInitialize();
-        
+
         this.label = newLabel("label", labelModel);
         this.help = newHelpLabel("help", helpModel);
         this.feedback = newFeedbackMessageContainer("error");
@@ -183,12 +183,12 @@ public class FormGroup extends Border {
             label.add(new AttributeModifier("for", formComponent.getMarkupId()));
 
             if (useFormComponentLabel) {
-                if (formComponent.getLabel() != null && !Strings.isEmpty(formComponent.getLabel().getObject())) {
-                    label.setDefaultModel(formComponent.getLabel());
-                } else {
-                    label.setDefaultModel(new LoadableDetachableModel<String>() {
-                        @Override
-                        protected String load() {
+                label.setDefaultModel(new LoadableDetachableModel<String>() {
+                    @Override
+                    protected String load() {
+                        if (formComponent.getLabel() != null && !Strings.isEmpty(formComponent.getLabel().getObject())) {
+                            return formComponent.getLabel().getObject();
+                        } else {
                             String text = formComponent.getDefaultLabel("wicket:unknown");
                             if (!"wicket:unknown".equals(text) && !Strings.isEmpty(text)) {
                                 return text;
@@ -196,8 +196,8 @@ public class FormGroup extends Border {
                                 return labelModel.getObject();
                             }
                         }
-                    });
-                }
+                    }
+                });
             }
         }
     }

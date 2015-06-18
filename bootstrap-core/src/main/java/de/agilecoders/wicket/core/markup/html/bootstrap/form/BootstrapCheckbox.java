@@ -51,6 +51,8 @@ public class BootstrapCheckbox extends FormComponentPanel<Boolean> {
     public BootstrapCheckbox(String id, IModel<Boolean> model, IModel<?> labelModel) {
         super(id, model);
 
+        setType(Boolean.class);
+
         this.labelModel = labelModel;
 
         setRenderBodyOnly(true);
@@ -121,5 +123,10 @@ public class BootstrapCheckbox extends FormComponentPanel<Boolean> {
     @Override
     public IModel<String> getLabel() {
         return checkbox.getLabel();
+    }
+    
+    @Override
+    protected void convertInput() {
+        setConvertedInput(checkbox.getConvertedInput());
     }
 }
