@@ -15,11 +15,6 @@
 
     <properties>
         <wicket.configuration>DEVELOPMENT</wicket.configuration>
-        <wicketstuff.version>7.0.0-M3</wicketstuff.version>
-
-        <!-- use version newer than 16.0.1 to be able to deploy the samples
-        in a container with CDI enabled by default. For example JBoss WildFly-->
-        <guava.version>18.0</guava.version>
     </properties>
 
     <dependencies>
