@@ -11,18 +11,18 @@ Current build status: [![Build Status](https://buildhive.cloudbees.com/job/l0rdn
 
 Current release version:
 
-* [Wicket 7.0.0-M5](http://wicket.apache.org/) and [Bootstrap 3.3.5](https://github.com/twbs/bootstrap/):  0.10.1
-* [Wicket 6.20.0](http://wicket.apache.org/) and [Bootstrap 3.3.5](https://github.com/twbs/bootstrap/): 0.9.10
+* [Wicket 7.0.0-M6](http://wicket.apache.org/) and [Bootstrap 3.3.5](https://github.com/twbs/bootstrap/):  0.10.2
+* [Wicket 6.20.0](http://wicket.apache.org/) and [Bootstrap 3.3.5](https://github.com/twbs/bootstrap/): 0.9.11
 * Wicket 6.* and Bootstrap 2.*: 0.8.4
 
 Themes
 ------
 
 * Bootstrap (3.3.5): http://getbootstrap.com/
-* Bootswatch (3.3.4+1): http://bootswatch.com/
+* Bootswatch (3.3.5): http://bootswatch.com/
 * Material Design by FezVrasta (0.3.0): https://github.com/FezVrasta/bootstrap-material-design
-* todc-bootstrap, google styled theme (3.3.4): https://todc.github.io/todc-bootstrap
-* metro-bootstrap (3.3.2): https://github.com/TalksLab/metro-bootstrap
+* todc-bootstrap, google styled theme (3.3.5): https://todc.github.io/todc-bootstrap
+* metro-bootstrap (3.3.5): https://github.com/TalksLab/metro-bootstrap
 * Vegibit (3.1.1): http://vegibit.com/vegithemes-twitter-bootstrap-themes/
 
 
