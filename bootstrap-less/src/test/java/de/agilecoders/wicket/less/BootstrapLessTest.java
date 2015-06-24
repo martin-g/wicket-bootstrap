@@ -11,13 +11,18 @@ import com.github.sommeri.less4j.core.ast.IdentifierExpression;
 import de.agilecoders.wicket.webjars.WicketWebjars;
 
 import org.apache.wicket.Application;
+import org.apache.wicket.protocol.http.WebApplication;
+import org.apache.wicket.protocol.http.mock.MockServletContext;
 import org.apache.wicket.request.resource.IResourceReferenceFactory;
 import org.apache.wicket.request.resource.ResourceReferenceRegistry;
+import org.apache.wicket.util.file.File;
+import org.apache.wicket.util.file.Folder;
 import org.apache.wicket.util.tester.WicketTester;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.net.URI;
 import java.net.URL;
 import java.util.List;
 
@@ -52,6 +57,23 @@ public class BootstrapLessTest {
     @After
     public void after() {
         tester.destroy();
+    }
+
+    @Test
+    public void importWebContext() throws Exception {
+        WebApplication application = tester.getApplication();
+        URI uri = getClass().getResource("/de/agilecoders/wicket/less/test/webContextImported.less").toURI();
+        File file = new File(uri);
+        File contextRoot = file.getParentFolder();
+        // setup folder /.../bootstrap-less/src/test/resources/de/agilecoders/wicket/less/test as a root for the ServletContext
+        application.setServletContext(new MockServletContext(application, contextRoot.getAbsolutePath()));
+
+        LessCacheManager less = LessCacheManager.get();
+        URL res = Thread.currentThread().getContextClassLoader().getResource("importWebContext.less");
+
+        LessSource.URLSource lessSource = less.getLessSource(res, null);
+        String css = less.getCss(lessSource);
+        assertThat(css, is(equalTo(".rule {\n  background: #999;\n}\n")));
     }
 
     @Test
@@ -92,7 +114,7 @@ public class BootstrapLessTest {
         IResourceReferenceFactory referenceFactory = registry.getResourceReferenceFactory();
         assertThat(referenceFactory, is(instanceOf(LessResourceReferenceFactory.class)));
     }
-    
+
     @Test
     public void usesCustomLessCompilerConfigurationFactoryWhenProvided() {
         // tests the invocation of a custom less function that will be registered within the configuration factory
@@ -106,7 +128,7 @@ public class BootstrapLessTest {
                             LessProblems problems) {
                         return new IdentifierExpression(input.getUnderlyingStructure(), "blue");
                     }
-                    
+
                     @Override
                     public boolean canEvaluate(FunctionExpression input, List<Expression> parameters) {
                         return "myFancyFunction".equals(input.getName());
