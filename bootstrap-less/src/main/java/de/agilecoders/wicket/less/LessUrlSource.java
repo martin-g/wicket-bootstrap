@@ -4,12 +4,16 @@ import com.github.sommeri.less4j.LessSource;
 import de.agilecoders.wicket.webjars.WicketWebjars;
 import de.agilecoders.wicket.webjars.util.WebJarAssetLocator;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.wicket.Application;
 import org.apache.wicket.WicketRuntimeException;
 import org.apache.wicket.core.util.lang.WicketObjects;
+import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.util.string.Strings;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.servlet.ServletContext;
+import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
@@ -36,6 +40,7 @@ public class LessUrlSource extends LessSource.URLSource {
     public static final String CLASSPATH_SCHEME = "classpath!";
     public static final String PACKAGE_SCHEME = "package!";
     public static final String WEBJARS_SCHEME = "webjars!";
+    public static final String WEB_CONTEXT_SCHEME = "webcontext!";
 
     /**
      * The scope class used with LessResourceReference.
@@ -64,6 +69,8 @@ public class LessUrlSource extends LessSource.URLSource {
             relative = resolveWebJarsDependency(filename);
         } else if (StringUtils.startsWith(filename, CLASSPATH_SCHEME)) {
             relative = resolveClasspathDependency(filename);
+        } else if (StringUtils.startsWith(filename, WEB_CONTEXT_SCHEME)) {
+            relative = resolveWebContextDependency(filename);
         } else if (scopeClass != null && StringUtils.startsWith(filename, PACKAGE_SCHEME)) {
             relative = resolvePackageDependency(filename);
         } else {
@@ -77,6 +84,23 @@ public class LessUrlSource extends LessSource.URLSource {
         }
 
         return relative;
+    }
+
+    private LessSource resolveWebContextDependency(String filename) {
+        LOG.debug("Going to resolve an import from the web context: {}", filename);
+        String resourceName = filename.substring(WEB_CONTEXT_SCHEME.length());
+        if (resourceName.indexOf(0) == '/') {
+            resourceName = resourceName.substring(1);
+        }
+
+        final ServletContext context = ((WebApplication) Application.get()).getServletContext();
+        URL url;
+        try {
+            url = context.getResource(resourceName);
+            return new LessUrlSource(url, scopeClass);
+        } catch (MalformedURLException mux) {
+            throw new IllegalArgumentException("Cannot create a URL to a resource in the web context", mux);
+        }
     }
 
     private LessUrlSource resolvePackageDependency(String filename) {
