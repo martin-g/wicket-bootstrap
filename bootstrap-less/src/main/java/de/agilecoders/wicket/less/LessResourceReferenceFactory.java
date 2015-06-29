@@ -30,6 +30,10 @@ public class LessResourceReferenceFactory implements IResourceReferenceFactory {
     @Override
     public ResourceReference create(ResourceReference.Key key) {
         String name = key.getName();
+        String variation = key.getVariation();
+        if (ContextRelativeLessResourceReference.CONTEXT_RELATIVE_LESS_REFERENCE_VARIATION.equals(variation)) {
+            return new ContextRelativeLessResourceReference(name); // TODO what about the min extension ?!
+        }
         if (name != null && name.endsWith(".less")) {
             return new LessResourceReference(key);
         } else {

@@ -76,6 +76,26 @@ public class BootstrapLessTest {
         assertThat(css, is(equalTo(".rule {\n  background: #999;\n}\n")));
     }
 
+    /**
+     * Tests with {@link ContextRelativeLessResourceReference}
+     *
+     * https://github.com/l0rdn1kk0n/wicket-bootstrap/issues/524
+     * @throws Exception
+     */
+    @Test
+    public void importServletContextRelative() throws Exception {
+        WebApplication application = tester.getApplication();
+        URI uri = getClass().getResource("/servlet/context/root/").toURI();
+        File contextRoot = new File(uri);
+        // setup folder /.../bootstrap-less/src/test/resources/servlet/context/root as a root for the ServletContext
+        application.setServletContext(new MockServletContext(application, contextRoot.getAbsolutePath()));
+
+//        tester.startPage(HomePage.class);
+        tester.executeUrl("./wicket/resource/org.apache.wicket.Application/relative.less?--" + ContextRelativeLessResourceReference.CONTEXT_RELATIVE_LESS_REFERENCE_VARIATION);
+        tester.assertContains("less-servlet-relative-cls");
+        tester.assertContains("color: #333;");
+    }
+
     @Test
     public void importWebJars() throws Exception {
         LessCacheManager less = LessCacheManager.get();
