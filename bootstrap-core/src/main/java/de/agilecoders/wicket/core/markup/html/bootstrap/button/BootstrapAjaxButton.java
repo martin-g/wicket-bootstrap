@@ -13,6 +13,8 @@ import org.apache.wicket.markup.html.panel.PanelMarkupSourcingStrategy;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
+import java.io.Serializable;
+
 /**
  * Default {@link AjaxButton} which is styled by bootstrap.
  *
@@ -91,7 +93,7 @@ public abstract class BootstrapAjaxButton extends AjaxButton implements IBootstr
      * @param markupId the component id of the label
      * @return new label component
      */
-    protected Component newLabel(final String markupId, IModel<String> model) {
+    protected <L extends Serializable> Component newLabel(final String markupId, IModel<L> model) {
         return new Label(markupId, model)
                 .setRenderBodyOnly(true);
     }
