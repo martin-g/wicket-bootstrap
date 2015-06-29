@@ -2,7 +2,6 @@ package de.agilecoders.wicket.extensions.markup.html.bootstrap.form.typeaheadV10
 
 import com.fasterxml.jackson.databind.JsonNode;
 
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.typeahead.*;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.typeaheadV10.bloodhound.Bloodhound;
 import de.agilecoders.wicket.jquery.JQuery;
 import de.agilecoders.wicket.jquery.util.Json;
@@ -23,7 +22,6 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.request.IRequestParameters;
 import org.apache.wicket.request.Request;
 import org.apache.wicket.request.cycle.RequestCycle;
-import org.apache.wicket.util.string.StringValue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
