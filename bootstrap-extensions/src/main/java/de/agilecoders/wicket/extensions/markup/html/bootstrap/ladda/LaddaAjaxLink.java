@@ -8,6 +8,8 @@ import org.apache.wicket.model.IModel;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.BootstrapAjaxLink;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons;
 
+import java.io.Serializable;
+
 /**
  * A specialization of {@link de.agilecoders.wicket.core.markup.html.bootstrap.button.BootstrapAjaxLink}
  * that disables itself during the Ajax call and shows a loading spinner
@@ -88,7 +90,7 @@ public abstract class LaddaAjaxLink<T> extends BootstrapAjaxLink<T> {
     }
 
     @Override
-    protected Component newLabel(String markupId, IModel<T> model) {
+    protected <L extends Serializable> Component newLabel(String markupId, IModel<L> model) {
         Component label = super.newLabel(markupId, model);
         label.setRenderBodyOnly(false);
         label.add(AttributeModifier.append("class", "ladda-label"));

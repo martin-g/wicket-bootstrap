@@ -11,6 +11,9 @@ import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.panel.IMarkupSourcingStrategy;
 import org.apache.wicket.markup.html.panel.PanelMarkupSourcingStrategy;
 import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.Model;
+
+import java.io.Serializable;
 
 /**
  * Default {@link AjaxLink} which is styled by bootstrap
@@ -38,20 +41,32 @@ public abstract class BootstrapAjaxLink<T> extends AjaxLink<T> implements IBoots
      * Construct.
      *
      * @param id    The component id
-     * @param model mandatory parameter
+     * @param model The component model
      * @param type  the type of the button
      */
     public BootstrapAjaxLink(String id, IModel<T> model, Buttons.Type type) {
+        this(id, model, type, Model.of(""));
+    }
+
+    /**
+     * Construct.
+     *
+     * @param id    The component id
+     * @param model The component model
+     * @param type  the type of the button
+     * @param labelModel The model for the link's label
+     */
+    public <L extends Serializable> BootstrapAjaxLink(String id, IModel<T> model, Buttons.Type type, IModel<L> labelModel) {
         super(id, model);
 
         add(buttonBehavior = new ButtonBehavior(type, Buttons.Size.Medium));
         add(icon = newIcon("icon"));
         add(splitter = newSplitter("splitter"));
 
-        this.label = newLabel("label", model);
-        add(label); 
+        this.label = newLabel("label", labelModel);
+        add(label);
     }
-    
+
     /**
      * Creates a new icon component
      *
@@ -68,13 +83,13 @@ public abstract class BootstrapAjaxLink<T> extends AjaxLink<T> implements IBoots
      * @param markupId the component id of the label
      * @return new label component
      */
-    protected Component newLabel(final String markupId, IModel<T> model) {
+    protected <L extends Serializable> Component newLabel(final String markupId, IModel<L> model) {
         return new Label(markupId, model)
                 .setRenderBodyOnly(true);
     }
 
-    
-    
+
+
    /**
     * Creates a new splitter component. The splitter is visible only
     * if icon is visible.
@@ -109,7 +124,7 @@ public abstract class BootstrapAjaxLink<T> extends AjaxLink<T> implements IBoots
      * @param label the new button label
      * @return reference to the current instance
      */
-    public BootstrapAjaxLink<T> setLabel(IModel<?> label) {
+    public <L extends Serializable> BootstrapAjaxLink<T> setLabel(IModel<L> label) {
         this.label.setDefaultModel(label);
 
         return this;
@@ -126,7 +141,7 @@ public abstract class BootstrapAjaxLink<T> extends AjaxLink<T> implements IBoots
 
         return this;
     }
-   
+
     /**
      * Sets the size.
      */

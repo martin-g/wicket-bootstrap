@@ -9,6 +9,8 @@ import org.apache.wicket.model.IModel;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.BootstrapAjaxButton;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons;
 
+import java.io.Serializable;
+
 /**
  * A specialization of {@link de.agilecoders.wicket.core.markup.html.bootstrap.button.BootstrapAjaxButton}
  * that disables itself during the Ajax call and shows a loading spinner
@@ -103,7 +105,7 @@ public class LaddaAjaxButton extends BootstrapAjaxButton {
         this.laddaBehavior.withSpinnerSize(size);
         return this;
     }
-    
+
     @Override
     protected void updateAjaxAttributes(AjaxRequestAttributes attributes) {
         super.updateAjaxAttributes(attributes);
@@ -111,7 +113,7 @@ public class LaddaAjaxButton extends BootstrapAjaxButton {
     }
 
     @Override
-    protected Component newLabel(String markupId, IModel<String> model) {
+    protected <L extends Serializable> Component newLabel(String markupId, IModel<L> model) {
         Component label = super.newLabel(markupId, model);
         label.add(AttributeModifier.append("class", "ladda-label"));
         return label;
