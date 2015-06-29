@@ -117,6 +117,10 @@ public class DropZoneConfig extends AbstractConfig {
     }
 
     /**
+     * If the preview template is going to be overridden ensure that you provide
+     * the .start class to the action button / link / hidden field so that the
+     * file is going to be enqueued on click.
+     * 
      * @param previewTemplate
      * @return current instance
      */
