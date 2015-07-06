@@ -29,7 +29,7 @@ public abstract class BootstrapListView<T> extends ListView<T> {
      * @param id    the markup id
      * @param model the list model
      */
-    public BootstrapListView(String id, IModel<? extends List<? extends T>> model) {
+    public BootstrapListView(String id, IModel<? extends List<T>> model) {
         super(id, model);
     }
 
@@ -39,7 +39,7 @@ public abstract class BootstrapListView<T> extends ListView<T> {
      * @param id       the markup id
      * @param listData the list data
      */
-    public BootstrapListView(String id, List<? extends T> listData) {
+    public BootstrapListView(String id, List<T> listData) {
         super(id, listData);
     }
 
