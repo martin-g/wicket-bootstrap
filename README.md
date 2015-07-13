@@ -1,28 +1,32 @@
-WICKET COMPONENTS FOR TWITTER BOOTSTRAP
+WICKET COMPONENTS FOR BOOTSTRAP
 =======================================
 
-Wicket-Bootstrap is based on Twitter's toolkit (bootstrap) and the Apache Wicket Framework.<br>
+[![Join the chat at https://gitter.im/l0rdn1kk0n/wicket-bootstrap](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/l0rdn1kk0n/wicket-bootstrap?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
+Wicket-Bootstrap is based on the Bootstrap toolkit and the Apache Wicket Framework.<br>
 Current build status: [![Build Status](https://buildhive.cloudbees.com/job/l0rdn1kk0n/job/wicket-bootstrap/badge/icon)](https://buildhive.cloudbees.com/job/l0rdn1kk0n/job/wicket-bootstrap/) [![Build Status](https://travis-ci.org/l0rdn1kk0n/wicket-bootstrap.png?branch=master)](https://travis-ci.org/l0rdn1kk0n/wicket-bootstrap)
+
+[![Coverage Status](https://img.shields.io/coveralls/l0rdn1kk0n/wicket-bootstrap.svg)](https://coveralls.io/r/l0rdn1kk0n/wicket-bootstrap)
+
+[![Issue Stats](http://www.issuestats.com/github/l0rdn1kk0n/wicket-bootstrap/badge/issue?style=flat)](http://www.issuestats.com/github/l0rdn1kk0n/wicket-bootstrap)
+[![Issue Stats](http://www.issuestats.com/github/l0rdn1kk0n/wicket-bootstrap/badge/pr?style=flat)](http://www.issuestats.com/github/l0rdn1kk0n/wicket-bootstrap)
 
 Current release version:
 
-* Wicket 6.* and Bootstrap 3.*: 0.9.5
+* [Wicket 7.0.0-M6](http://wicket.apache.org/) and [Bootstrap 3.3.5](https://github.com/twbs/bootstrap/):  0.10.2
+* [Wicket 6.20.0](http://wicket.apache.org/) and [Bootstrap 3.3.5](https://github.com/twbs/bootstrap/): 0.9.11
 * Wicket 6.* and Bootstrap 2.*: 0.8.4
-
-Components
-----------
-
-* Twitter Bootstrap (3.2.0): https://github.com/twbs/bootstrap/
-* Apache Wicket (6.16.0): http://wicket.apache.org/
 
 Themes
 ------
 
-* Bootstrap (3.2.0): http://getbootstrap.com/
+* Bootstrap (3.3.5): http://getbootstrap.com/
+* Bootswatch (3.3.5): http://bootswatch.com/
+* Material Design by FezVrasta (0.3.0): https://github.com/FezVrasta/bootstrap-material-design
+* todc-bootstrap, google styled theme (3.3.5): https://todc.github.io/todc-bootstrap
+* metro-bootstrap (3.3.5): https://github.com/TalksLab/metro-bootstrap
 * Vegibit (3.1.1): http://vegibit.com/vegithemes-twitter-bootstrap-themes/
-* Bootswatch (3.2.0): http://bootswatch.com/
-* todc-bootstrap, google styled theme (3.2.0): http://todc.github.io/todc-bootstrap
-* metro-bootstrap (3.1.1-1): https://github.com/TalksLab/metro-bootstrap
+
 
 Extensions
 ----------
@@ -30,13 +34,14 @@ Extensions
 * DatePicker: https://github.com/eternicode/bootstrap-datepicker
 * Html5 Video Player: http://html5-ninja.com/item/Bootstrap-video-player-jQuery-plugin
 * Open-On-Hover for dropdown buttons: https://github.com/CWSpear/twitter-bootstrap-hover-dropdown
-* JQueryUI (1.9.2): http://api.jqueryui.com/
+* JQueryUI (1.11.4): http://api.jqueryui.com/
    * Draggable: http://api.jqueryui.com/draggable
    * Resizable: http://api.jqueryui.com/resizable
-* less4j (1.7.0): https://github.com/SomMeri/less4j
-* bootstrap-tour (0.9.0): http://sorich87.github.com/bootstrap-tour
-* OpenWebIcons (2012-10-03): http://pfefferle.github.com/openwebicons/
-* Twitter Typeahead (0.9.3): http://twitter.github.io/typeahead.js/
+* less4j (1.12.0): https://github.com/SomMeri/less4j
+* bootstrap-tour (0.9.3): http://sorich87.github.com/bootstrap-tour
+* OpenWebIcons (2014-09-29): http://pfefferle.github.com/openwebicons/
+* [Twitter Typeahead (0.9.3)](https://github.com/l0rdn1kk0n/wicket-bootstrap/tree/master/bootstrap-extensions/src/main/java/de/agilecoders/wicket/extensions/markup/html/bootstrap/form/typeahead): http://twitter.github.io/typeahead.js/
+* [Twitter Typeahead (0.10.x)](https://github.com/l0rdn1kk0n/wicket-bootstrap/tree/master/bootstrap-extensions/src/main/java/de/agilecoders/wicket/extensions/markup/html/bootstrap/form/typeaheadv10): http://twitter.github.io/typeahead.js/
 
 How to get help and news
 ------------------------
@@ -56,7 +61,7 @@ core maven dependency:
 <dependency>
     <groupId>de.agilecoders.wicket</groupId>
     <artifactId>wicket-bootstrap-core</artifactId>
-    <version>0.9.5</version>
+    <version>0.9.7</version>
 </dependency>
 ```
 
@@ -66,7 +71,7 @@ for all extensions:
 <dependency>
     <groupId>de.agilecoders.wicket</groupId>
     <artifactId>wicket-bootstrap-extensions</artifactId>
-    <version>0.9.5</version>
+    <version>0.9.7</version>
 </dependency>
 ```
 
@@ -76,7 +81,7 @@ for all themes:
 <dependency>
     <groupId>de.agilecoders.wicket</groupId>
     <artifactId>wicket-bootstrap-themes</artifactId>
-    <version>0.9.5</version>
+    <version>0.9.7</version>
 </dependency>
 ```
 
@@ -86,7 +91,7 @@ if you want to use a less compiler:
 <dependency>
     <groupId>de.agilecoders.wicket</groupId>
     <artifactId>wicket-bootstrap-less</artifactId>
-    <version>0.9.5</version>
+    <version>0.9.7</version>
 </dependency>
 ```
 
@@ -96,7 +101,7 @@ all samples can be used with this dependency:
 <dependency>
     <groupId>de.agilecoders.wicket</groupId>
     <artifactId>wicket-bootstrap-samples</artifactId>
-    <version>0.9.5</version>
+    <version>0.9.7</version>
 </dependency>
 ```
 
@@ -119,9 +124,10 @@ then you are able to use all wicket-bootstrap components.
 Authors
 -------
 
-[![Ohloh profile for Michael Haitz](https://www.ohloh.net/accounts/235496/widgets/account_detailed.gif)](https://www.ohloh.net/accounts/235496?ref=Detailed) 
+[![OpenHub profile for Michael Haitz](https://www.openhub.net/accounts/l0rdn1kk0n/widgets/account_detailed.gif)](https://www.openhub.net/accounts/l0rdn1kk0n?ref=Detailed)
 
-[![Ohloh profile for Martin Grigorov](https://www.ohloh.net/accounts/138913/widgets/account_detailed.gif)](https://www.ohloh.net/accounts/138913?ref=Detailed) 
+[![OpenHub profile for Martin Grigorov](https://www.openhub.net/accounts/mgrigorov/widgets/account_detailed.gif)](https://www.openhub.net/accounts/mgrigorov?ref=Detailed)
+
 
 Bug tracker
 -----------
