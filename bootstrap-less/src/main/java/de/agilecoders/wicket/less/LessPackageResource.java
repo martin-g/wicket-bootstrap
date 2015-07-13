@@ -26,8 +26,8 @@ public class LessPackageResource extends CssPackageResource {
     }
 
     @Override
-    public IResourceStream getCacheableResourceStream() {
-        IResourceStream resourceStream = super.getCacheableResourceStream();
+    public IResourceStream getResourceStream() {
+        IResourceStream resourceStream = super.getResourceStream();
         return new LessResourceStream(resourceStream, getScope().getName());
     }
 
