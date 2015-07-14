@@ -89,7 +89,6 @@ public class ModalCloseButton extends AjaxLink<String> {
 
     @Override
     public void onClick(AjaxRequestTarget target) {
-
     }
 
     public ModalCloseButton setAnchor(Modal<?> anchor) {

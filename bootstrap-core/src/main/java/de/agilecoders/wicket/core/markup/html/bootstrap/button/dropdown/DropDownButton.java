@@ -12,8 +12,8 @@ import de.agilecoders.wicket.core.util.Attributes;
 import de.agilecoders.wicket.core.util.Components;
 import de.agilecoders.wicket.jquery.JQuery;
 import org.apache.wicket.Component;
-import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.behavior.Behavior;
+import org.apache.wicket.core.request.handler.IPartialPageRequestHandler;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
@@ -119,11 +119,11 @@ public abstract class DropDownButton extends AbstractLink implements Activatable
     }
 
     /**
-     * appends a toggle menu script to a given {@link AjaxRequestTarget}.
+     * appends a toggle menu script to a given {@link IPartialPageRequestHandler}.
      *
      * @param target the current target
      */
-    public final void appendToggleMenuScript(final AjaxRequestTarget target) {
+    public final void appendToggleMenuScript(final IPartialPageRequestHandler target) {
         target.appendJavaScript($(this, ".dropdown-toggle").chain(dropdown("toggle")).get());
     }
 

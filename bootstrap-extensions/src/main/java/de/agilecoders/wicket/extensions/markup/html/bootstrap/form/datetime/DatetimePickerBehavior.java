@@ -3,8 +3,8 @@ package de.agilecoders.wicket.extensions.markup.html.bootstrap.form.datetime;
 import static de.agilecoders.wicket.jquery.JQuery.$;
 
 import org.apache.wicket.Component;
-import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.behavior.Behavior;
+import org.apache.wicket.core.request.handler.IPartialPageRequestHandler;
 import org.apache.wicket.event.IEvent;
 import org.apache.wicket.markup.head.IHeaderResponse;
 
@@ -57,8 +57,8 @@ public class DatetimePickerBehavior extends Behavior {
     @Override
     public void onEvent(Component component, IEvent<?> event) {
         super.onEvent(component, event);
-        if (event.getPayload() instanceof AjaxRequestTarget) {
-            AjaxRequestTarget target = (AjaxRequestTarget) event.getPayload();
+        if (event.getPayload() instanceof IPartialPageRequestHandler) {
+            IPartialPageRequestHandler target = (IPartialPageRequestHandler) event.getPayload();
             if (target.getComponents().contains(component)) {
                 // if this component is being repainted by ajax, directly, we must destroy bootstrap select so it removes
                 // its elements from DOM

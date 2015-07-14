@@ -2,6 +2,7 @@ package de.agilecoders.wicket.core.markup.html.bootstrap.components.progress;
 
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.AjaxSelfUpdatingTimerBehavior;
+import org.apache.wicket.core.request.handler.IPartialPageRequestHandler;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.util.time.Duration;
 
@@ -48,7 +49,7 @@ public abstract class UpdatableProgressBar extends ProgressBar {
         return this;
     }
 
-    protected void onPostProcessTarget(AjaxRequestTarget target) {
+    protected void onPostProcessTarget(IPartialPageRequestHandler target) {
         value(newValue());
 
         if (complete()) {
@@ -58,7 +59,7 @@ public abstract class UpdatableProgressBar extends ProgressBar {
         }
     }
 
-    protected void onComplete(AjaxRequestTarget target) {
+    protected void onComplete(IPartialPageRequestHandler target) {
         active(false);
         striped(false);
 

@@ -2,7 +2,6 @@ package de.agilecoders.wicket.core.markup.html.bootstrap.navbar;
 
 import de.agilecoders.wicket.core.WicketApplicationTest;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.GlyphIconType;
-import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
 
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.model.Model;

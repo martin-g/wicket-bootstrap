@@ -2,7 +2,7 @@ package de.agilecoders.wicket.core.markup.html.bootstrap.button;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapJavascriptBehavior;
 import org.apache.wicket.Component;
-import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.core.request.handler.IPartialPageRequestHandler;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.util.lang.Args;
@@ -65,23 +65,23 @@ public class LoadingBehavior extends BootstrapJavascriptBehavior {
      * appends a javascript that resets the loading state.
      *
      * @param component         The button component
-     * @param ajaxRequestTarget The {@link AjaxRequestTarget}
+     * @param target The {@link IPartialPageRequestHandler}
      */
-    public static void reset(final Component component, final AjaxRequestTarget ajaxRequestTarget) {
+    public static void reset(final Component component, final IPartialPageRequestHandler target) {
         Args.notNull(component, "component");
-        Args.notNull(ajaxRequestTarget, "ajaxRequestTarget");
+        Args.notNull(target, "target");
 
-        ajaxRequestTarget.appendJavaScript($(component).chain(button("reset")).get());
+        target.appendJavaScript($(component).chain(button("reset")).get());
     }
 
     /**
      * appends a javascript that resets the loading state.
      *
-     * @param ajaxRequestTarget The {@link AjaxRequestTarget}
+     * @param target The {@link IPartialPageRequestHandler}
      */
-    public void reset(final AjaxRequestTarget ajaxRequestTarget) {
+    public void reset(final IPartialPageRequestHandler target) {
         if (component != null) {
-            reset(component, ajaxRequestTarget);
+            reset(component, target);
         }
     }
 

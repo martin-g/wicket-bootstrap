@@ -10,6 +10,7 @@ import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxEventBehavior;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.attributes.AjaxRequestAttributes;
+import org.apache.wicket.core.request.handler.IPartialPageRequestHandler;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
@@ -216,9 +217,9 @@ public class Modal<T> extends GenericPanel<T> {
     /**
      * hook to react on modal close event. The {@link }
      *
-     * @param target The current {@link AjaxRequestTarget}
+     * @param target The current {@link IPartialPageRequestHandler}
      */
-    protected void onClose(final AjaxRequestTarget target) {}
+    protected void onClose(final IPartialPageRequestHandler target) {}
 
     /**
      * Sets the header label text.
@@ -316,11 +317,11 @@ public class Modal<T> extends GenericPanel<T> {
 
     /**
      * Append dialog close/hide JavaScript to current AJAX request target.
-     * 
+     *
      * @param target The Ajax request handler
      * @return This instance, for chaining
      */
-    public Modal<T> appendCloseDialogJavaScript(final AjaxRequestTarget target) {
+    public Modal<T> appendCloseDialogJavaScript(final IPartialPageRequestHandler target) {
         target.prependJavaScript(createActionScript(getMarkupId(true), "hide"));
         return this;
     }
@@ -331,7 +332,7 @@ public class Modal<T> extends GenericPanel<T> {
      * @param target The Ajax  request handler
      * @return This instance, for chaining
      */
-    public Modal<T> close(final AjaxRequestTarget target) {
+    public Modal<T> close(final IPartialPageRequestHandler target) {
         return appendCloseDialogJavaScript(target);
     }
 
@@ -341,7 +342,7 @@ public class Modal<T> extends GenericPanel<T> {
      * @param target current ajax request target
      * @return this instance for chaining
      */
-    public Modal<T> appendShowDialogJavaScript(final AjaxRequestTarget target) {
+    public Modal<T> appendShowDialogJavaScript(final IPartialPageRequestHandler target) {
         target.appendJavaScript(createActionScript(getMarkupId(true), "show"));
         appendDisableEnforceFocus(target);
 
@@ -354,7 +355,7 @@ public class Modal<T> extends GenericPanel<T> {
      * @param target current ajax request target
      * @return this instance for chaining
      */
-    protected Modal<T> appendDisableEnforceFocus(AjaxRequestTarget target) {
+    protected Modal<T> appendDisableEnforceFocus(IPartialPageRequestHandler target) {
         if (disableEnforceFocus.getObject()) {
             target.appendJavaScript("$.fn.modal.Constructor.prototype.enforceFocus = function () {};");
         }
@@ -366,7 +367,7 @@ public class Modal<T> extends GenericPanel<T> {
      * @param target The Ajax request handler
      * @return This instance, for chaining
      */
-    public Modal<T> show(final AjaxRequestTarget target) {
+    public Modal<T> show(final IPartialPageRequestHandler target) {
         return appendShowDialogJavaScript(target);
     }
 
@@ -441,9 +442,9 @@ public class Modal<T> extends GenericPanel<T> {
     /**
      * handles the close event.
      *
-     * @param target The current {@link AjaxRequestTarget}
+     * @param target The current {@link IPartialPageRequestHandler}
      */
-    private void handleCloseEvent(final AjaxRequestTarget target) {
+    private void handleCloseEvent(final IPartialPageRequestHandler target) {
         if (isVisible()) {
             onClose(target);
 

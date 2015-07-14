@@ -2,8 +2,8 @@ package de.agilecoders.wicket.extensions.markup.html.bootstrap.form.validation;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.MarkupContainer;
-import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.behavior.Behavior;
+import org.apache.wicket.core.request.handler.IPartialPageRequestHandler;
 import org.apache.wicket.event.IEvent;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
@@ -53,8 +53,8 @@ public abstract class ValidationBehavior<T extends AbstractValidationConfig> ext
 
     @Override
     public void onEvent(Component component, IEvent<?> event) {
-        if (event.getPayload() instanceof AjaxRequestTarget) {
-            AjaxRequestTarget target = (AjaxRequestTarget) event.getPayload();
+        if (event.getPayload() instanceof IPartialPageRequestHandler) {
+            IPartialPageRequestHandler target = (IPartialPageRequestHandler) event.getPayload();
             if (component instanceof Form<?>) {
                 attachJavaScript(target, component);
             } else if (component instanceof MarkupContainer) {
@@ -86,7 +86,7 @@ public abstract class ValidationBehavior<T extends AbstractValidationConfig> ext
         return config;
     }
 
-    private void attachJavaScript(AjaxRequestTarget target, Component component) {
+    private void attachJavaScript(IPartialPageRequestHandler target, Component component) {
         target.appendJavaScript($(component).chain("wb_validation").get());
     }
 
