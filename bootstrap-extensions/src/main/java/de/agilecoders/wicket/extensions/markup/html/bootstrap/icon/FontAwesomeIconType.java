@@ -132,6 +132,7 @@ public class FontAwesomeIconType extends IconType {
     public static final FontAwesomeIconType css3 = on(FontAwesomeIconTypeBuilder.FontAwesomeGraphic.css3).build();
     public static final FontAwesomeIconType cut = on(FontAwesomeIconTypeBuilder.FontAwesomeGraphic.cut).build();
     public static final FontAwesomeIconType cutlery = on(FontAwesomeGraphic.cutlery).build();
+    public static final FontAwesomeIconType database = on(FontAwesomeGraphic.database).build();
     public static final FontAwesomeIconType dashboard = on(FontAwesomeGraphic.dashboard).build();
     public static final FontAwesomeIconType dedent = on(FontAwesomeGraphic.dedent).build();
     public static final FontAwesomeIconType desktop = on(FontAwesomeGraphic.desktop).build();
@@ -449,7 +450,7 @@ public class FontAwesomeIconType extends IconType {
 
     /**
      * Constructor.
-     * 
+     *
      * @param cssClassName The css class name of the icon reference
      */
     FontAwesomeIconType(final String... cssClassName) {
