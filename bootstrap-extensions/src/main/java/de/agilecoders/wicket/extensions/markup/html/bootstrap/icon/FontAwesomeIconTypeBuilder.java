@@ -39,7 +39,7 @@ public class FontAwesomeIconTypeBuilder {
         chevron_circle_right, chevron_circle_up, chevron_down, chevron_left, chevron_right, chevron_up, circle,
         circle_o, clipboard, clock_o, cloud, cloud_download, cloud_upload, cny, code, code_fork, coffee, cog, cogs,
         collapse, collapse_alt, collapse_top, columns, comment, comment_o, comments, comments_o, compass, compress,
-        copy, credit_card, crop, crosshairs, css3, cut, cutlery, dashboard, dedent, desktop, dot_circle_o, download,
+        copy, credit_card, crop, crosshairs, css3, cut, cutlery, database, dashboard, dedent, desktop, dot_circle_o, download,
         dribbble, dropbox, edit, eject, ellipsis_h, ellipsis_v, envelope, envelope_o, eraser, eur, exchange,
         exclamation, exclamation_circle, exclamation_triangle, expand, external_link, external_link_square, eye,
         eye_slash, facebook, facebook_square, fast_backward, fast_forward, female, fighter_jet, file, file_o,
@@ -179,7 +179,7 @@ public class FontAwesomeIconTypeBuilder {
 
     /**
      * make the icon spin
-     * 
+     *
      * @return the builder
      */
     public FontAwesomeIconTypeBuilder spin() {
