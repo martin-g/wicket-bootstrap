@@ -12,6 +12,8 @@ public class SummernoteConfig extends AbstractConfig {
     private static final IKey<Integer> MinHeight = newKey("minHeight", null);
     private static final IKey<Integer> Height = newKey("height", null);
     private static final IKey<Boolean> Force = newKey("force", null);
+    private static final IKey<Integer> MaxFileSize = newKey("maxFilesize", 2097152);
+    private static final IKey<String> ImageUploadCallbackUrl = newKey("imageUploadUrl", null);
 
     public SummernoteConfig() {
     }
@@ -64,5 +66,28 @@ public class SummernoteConfig extends AbstractConfig {
     public SummernoteConfig force(boolean force) {
 	put(Force, force);
 	return this;
+    }
+
+    /**
+     * @param maxFileSize
+     * @return current instance
+     */
+    public SummernoteConfig withMaxFileSize(int maxFileSize) {
+	put(MaxFileSize, maxFileSize);
+	return this;
+    }
+
+    public int getMaxFileSize() {
+	return get(MaxFileSize);
+    }
+
+    /**
+     * @param callbackUrl
+     *            The image upload url to call back
+     * @return current instance
+     */
+    public SummernoteConfig withImageUploadCallbackUrl(String callbackUrl) {
+        put(ImageUploadCallbackUrl, callbackUrl);
+        return this;
     }
 }
