@@ -7,6 +7,7 @@ public class SummernoteConfig extends AbstractConfig {
 
     private static final long serialVersionUID = 1L;
 
+    public static final IKey<String> Id = newKey("summernoteEditorId", null);
     private static final IKey<Boolean> AirMode = newKey("airMode", null);
     private static final IKey<Integer> MaxHeight = newKey("maxHeight", null);
     private static final IKey<Integer> MinHeight = newKey("minHeight", null);
