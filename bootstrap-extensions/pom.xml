@@ -47,7 +47,7 @@
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>Eonasdan-bootstrap-datetimepicker</artifactId>
-            <version>4.7.14</version>
+            <version>4.14.30</version>
         </dependency>
 
         <dependency>
