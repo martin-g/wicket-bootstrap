@@ -67,7 +67,7 @@
         <jquerypp.version>1.0.1</jquerypp.version>
         <jquery.version>2.1.4</jquery.version>
         <maven-bundle-plugin.version>2.5.4</maven-bundle-plugin.version>
-        <wicket.version>7.0.0-SNAPSHOT</wicket.version>
+        <wicket.version>7.0.0</wicket.version>
         <yuicompressor.version>2.4.8</yuicompressor.version>
         <maven-javadoc-plugin.version>2.10.3</maven-javadoc-plugin.version>
         <guava.version>18.0</guava.version>
