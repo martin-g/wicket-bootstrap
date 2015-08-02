@@ -1,5 +1,10 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.editor;
 
+import java.io.File;
+
+import org.apache.wicket.WicketRuntimeException;
+import org.apache.wicket.util.lang.Args;
+
 import de.agilecoders.wicket.jquery.AbstractConfig;
 import de.agilecoders.wicket.jquery.IKey;
 
@@ -15,6 +20,8 @@ public class SummernoteConfig extends AbstractConfig {
     private static final IKey<Boolean> Force = newKey("force", null);
     private static final IKey<Integer> MaxFileSize = newKey("maxFilesize", 2097152);
     private static final IKey<String> ImageUploadCallbackUrl = newKey("imageUploadUrl", null);
+
+    private static File uploadFolder;
 
     public SummernoteConfig() {
     }
@@ -88,7 +95,33 @@ public class SummernoteConfig extends AbstractConfig {
      * @return current instance
      */
     public SummernoteConfig withImageUploadCallbackUrl(String callbackUrl) {
-        put(ImageUploadCallbackUrl, callbackUrl);
-        return this;
+	put(ImageUploadCallbackUrl, callbackUrl);
+	return this;
+    }
+
+    /**
+     * Gets the upload folder images are going to be stored
+     * 
+     * @return the upload folder
+     */
+    public static File getUploadFolder() {
+	if(SummernoteConfig.uploadFolder == null){
+	    throw new WicketRuntimeException("The upload folder has not been set!");
+	}
+	return uploadFolder;
+    }
+
+    /**
+     * Sets the upload folder images are going to be stored
+     * 
+     * @param uploadFolder
+     *            the upload folder
+     */
+    public static void setUploadFolder(File uploadFolder) {
+	SummernoteConfig.uploadFolder = Args.notNull(uploadFolder, "uploadFolder");
+	if (!SummernoteConfig.uploadFolder.isDirectory()) {
+	    throw new WicketRuntimeException("The given file is not a folder" + uploadFolder);
+	}
+	SummernoteConfig.uploadFolder = uploadFolder;
     }
 }

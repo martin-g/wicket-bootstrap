@@ -18,12 +18,13 @@ $(function() {
 					cache : false,
 					contentType : false,
 					processData : false,
-					success : function() {
-						var fileReader = new FileReader();
-						fileReader.onload = function(e){
-							$('#'+summernoteconfig.summernoteEditorId).summernote('insertImage', fileReader.result);
-						};
-						fileReader.readAsDataURL(file);
+					success : function(res, status, xhr) {
+//						var fileReader = new FileReader();
+//						fileReader.onload = function(e){
+//							$('#'+summernoteconfig.summernoteEditorId).summernote('insertImage', fileReader.result);
+//						};
+//						fileReader.readAsDataURL(file);
+						$('#'+summernoteconfig.summernoteEditorId).summernote('insertImage', xhr.getResponseHeader("imageUrl"));
 					}
 				});
 			});
