@@ -19,12 +19,10 @@ $(function() {
 					contentType : false,
 					processData : false,
 					success : function(res, status, xhr) {
-//						var fileReader = new FileReader();
-//						fileReader.onload = function(e){
-//							$('#'+summernoteconfig.summernoteEditorId).summernote('insertImage', fileReader.result);
-//						};
-//						fileReader.readAsDataURL(file);
-						$('#'+summernoteconfig.summernoteEditorId).summernote('insertImage', xhr.getResponseHeader("imageUrl"));
+						var imageUrl = xhr.getResponseHeader("imageUrl");
+						var decodedImageUrl = window.atob(/(image=)(.*)[^&]*/.exec(imageUrl)[2]);
+						imageUrl = imageUrl.replace(/(image=)[^&]*/, '$1' + decodedImageUrl);
+						$('#'+summernoteconfig.summernoteEditorId).summernote('insertImage',imageUrl);
 					}
 				});
 			});

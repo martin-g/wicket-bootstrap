@@ -85,6 +85,11 @@ public class SummernoteConfig extends AbstractConfig {
 	return this;
     }
 
+    /**
+     * Gets the max file size
+     * 
+     * @return the max file size
+     */
     public int getMaxFileSize() {
 	return get(MaxFileSize);
     }
@@ -105,7 +110,7 @@ public class SummernoteConfig extends AbstractConfig {
      * @return the upload folder
      */
     public static File getUploadFolder() {
-	if(SummernoteConfig.uploadFolder == null){
+	if (SummernoteConfig.uploadFolder == null) {
 	    throw new WicketRuntimeException("The upload folder has not been set!");
 	}
 	return uploadFolder;

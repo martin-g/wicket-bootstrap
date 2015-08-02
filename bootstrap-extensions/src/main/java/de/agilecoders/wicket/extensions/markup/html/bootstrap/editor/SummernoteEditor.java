@@ -20,6 +20,7 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.protocol.http.servlet.MultipartServletWebRequest;
 import org.apache.wicket.protocol.http.servlet.ServletWebRequest;
 import org.apache.wicket.request.http.WebResponse;
+import org.apache.wicket.util.crypt.Base64;
 import org.apache.wicket.util.io.IOUtils;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.lang.Bytes;
@@ -31,9 +32,10 @@ import com.google.common.io.Files;
 
 /**
  * 
- * Please add 
+ * Please add
  * 
- * mountResource(SummernoteStoredImageResourceReference.SUMMERNOTE_MOUNT_PATH, new SummernoteStoredImageResourceReference());
+ * mountResource(SummernoteStoredImageResourceReference.SUMMERNOTE_MOUNT_PATH,
+ * new SummernoteStoredImageResourceReference());
  * 
  * @author Tobias Soloschenko
  *
@@ -89,7 +91,7 @@ public class SummernoteEditor extends FormComponent<String> {
 			files.add(file);
 			WebResponse response = (WebResponse) target.getHeaderResponse().getResponse();
 			response.setHeader("imageUrl", SummernoteStoredImageResourceReference.SUMMERNOTE_MOUNT_PATH
-				+ "?image=" + file.getName());
+				+ "?image=" + Base64.encodeBase64String(file.getName().getBytes()));
 		    } catch (IOException e) {
 			// TODO Inform the user of failure
 		    }
