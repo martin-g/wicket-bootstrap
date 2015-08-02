@@ -3,6 +3,8 @@ package de.agilecoders.wicket.samples.pages;
 import java.util.List;
 import java.util.Map;
 
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.confirmation.ConfirmationBehavior;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.confirmation.ConfirmationConfig;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
@@ -167,6 +169,7 @@ public class ExtensionsPage extends BasePage {
         addJasnyInputMaskDemo();
 
         laddaButton();
+        confirmationButton();
 
         checkboxX();
 
@@ -322,6 +325,50 @@ public class ExtensionsPage extends BasePage {
                 + "laddaLink.setEffect(LaddaBehavior.Effect.EXPAND_LEFT).setSize(Buttons.Size.Medium);")));
 
         form.add(laddaButton, laddaLink);
+    }
+
+    private void confirmationButton() {
+        Form form = new Form("confirmationForm");
+        add(form);
+
+        final NotificationPanel feedback = new NotificationPanel("confirmationFeedback");
+        feedback.setOutputMarkupId(true);
+        add(feedback);
+
+        AjaxButton confirmationButton = new AjaxButton("confirmationButton", Model.of("Button")) {
+            @Override
+            protected void onSubmit(AjaxRequestTarget target, Form<?> form) {
+                super.onSubmit(target, form);
+
+                info("Invoked button's #onSubmit()!");
+                target.add(feedback);
+            }
+        };
+        confirmationButton.add(new ConfirmationBehavior(new ConfirmationConfig()
+            .withSingleton(true).withPopout(true).withBtnOkLabel("Confirm")
+        ));
+
+        AjaxLink<String> confirmationLink = new AjaxLink<String>("confirmationLink", Model.of("Link")) {
+            @Override
+            public void onClick(AjaxRequestTarget target) {
+                info("Invoked link's #onClick()!");
+                target.add(feedback);
+            }
+        };
+        confirmationLink.add(new ConfirmationBehavior(new ConfirmationConfig().withBtnCancelLabel("Reject")));
+
+        form.add(new Code(
+            "linkCode",
+            Model.of("confirmationLink = new AjaxLink<String>(\"confirmationLink\", Model.of(\"Link\")) {\n"
+                     + "    @Override public void onClick(AjaxRequestTarget target) {\n"
+                     + "        info(\"Invoked link's #onClick()!\");\n"
+                     + "        target.add(feedback);\n"
+                     + "    }\n"
+                     + "};\n"
+                     + "confirmationLink.add(new ConfirmationBehavior(new ConfirmationConfig().withBtnCancelLabel(\"Reject\")));\n"
+            )));
+
+        form.add(confirmationButton, confirmationLink);
     }
 
     @Override
