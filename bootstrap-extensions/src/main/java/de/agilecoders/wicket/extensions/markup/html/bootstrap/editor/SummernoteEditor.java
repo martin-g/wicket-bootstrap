@@ -35,7 +35,12 @@ import com.google.common.io.Files;
  * Please add
  * 
  * mountResource(SummernoteStoredImageResourceReference.SUMMERNOTE_MOUNT_PATH,
- * new SummernoteStoredImageResourceReference());
+ * new SummernoteStoredImageResourceReference(new File("/Users/MyUser/"),"subpath"));
+ * 
+ * and then use config
+ * SummernoteConfig config = new SummernoteConfig();
+ * config.setSubFolderName(subpath");
+ * ...
  * 
  * @author Tobias Soloschenko
  *
@@ -86,7 +91,7 @@ public class SummernoteEditor extends FormComponent<String> {
 		while (fileItemIterator.hasNext()) {
 		    try {
 			FileItem fileItem = fileItemIterator.next();
-			File file = new File(SummernoteConfig.getUploadFolder(), fileItem.getName());
+			File file = new File(SummernoteConfig.getUploadFolder(config.getSubFolderName()), fileItem.getName());
 			Files.write(IOUtils.toByteArray(fileItem.getInputStream()), file);
 			files.add(file);
 			WebResponse response = (WebResponse) target.getHeaderResponse().getResponse();

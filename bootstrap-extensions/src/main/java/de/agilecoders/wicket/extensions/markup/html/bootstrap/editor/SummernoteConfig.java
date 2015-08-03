@@ -1,6 +1,8 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.editor;
 
 import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.apache.wicket.WicketRuntimeException;
 import org.apache.wicket.util.lang.Args;
@@ -21,10 +23,9 @@ public class SummernoteConfig extends AbstractConfig {
     private static final IKey<Integer> MaxFileSize = newKey("maxFilesize", 2097152);
     private static final IKey<String> ImageUploadCallbackUrl = newKey("imageUploadUrl", null);
 
-    private static File uploadFolder;
+    private static Map<String, File> uploadFolders = new HashMap<String, File>();
 
-    public SummernoteConfig() {
-    }
+    private String subFolderName;
 
     /**
      * @param airmode
@@ -107,13 +108,17 @@ public class SummernoteConfig extends AbstractConfig {
     /**
      * Gets the upload folder images are going to be stored
      * 
+     * @param subFolderName
+     *            the name of the sub folder within the upload folder
+     * 
      * @return the upload folder
      */
-    public static File getUploadFolder() {
-	if (SummernoteConfig.uploadFolder == null) {
+    public static File getUploadFolder(String subFolderName) {
+	File uploadFolder = SummernoteConfig.uploadFolders.get(subFolderName);
+	if (uploadFolder == null) {
 	    throw new WicketRuntimeException("The upload folder has not been set!");
 	}
-	return uploadFolder;
+	return new File(uploadFolder, subFolderName == null ? "" : subFolderName);
     }
 
     /**
@@ -121,12 +126,41 @@ public class SummernoteConfig extends AbstractConfig {
      * 
      * @param uploadFolder
      *            the upload folder
+     * @param subFolderName
+     *            the name of the sub folder within the upload folder
      */
-    public static void setUploadFolder(File uploadFolder) {
-	SummernoteConfig.uploadFolder = Args.notNull(uploadFolder, "uploadFolder");
-	if (!SummernoteConfig.uploadFolder.isDirectory()) {
+    public static void setUploadFolder(File uploadFolder, String subFolderName) {
+	uploadFolder = Args.notNull(uploadFolder, "uploadFolder");
+	if (!uploadFolder.isDirectory()) {
 	    throw new WicketRuntimeException("The given file is not a folder" + uploadFolder);
 	}
-	SummernoteConfig.uploadFolder = uploadFolder;
+	File subFolder = new File(uploadFolder, subFolderName == null ? "" : subFolderName);
+	if (!subFolder.exists()) {
+	    boolean created = subFolder.mkdirs();
+	    if (!created) {
+		throw new WicketRuntimeException("folder structure could'nt be created" + subFolder.getPath());
+	    }
+	}
+	uploadFolders.put(subFolderName, uploadFolder);
+    }
+
+    /**
+     * Gets the name of the sub folder
+     * 
+     * @return the name of the sub folder
+     */
+    public String getSubFolderName() {
+	return subFolderName;
+    }
+
+    /**
+     * Sets the name of the sub folder
+     * 
+     * @param subFolderName
+     *            the name of the sub folder
+     */
+    public void setSubFolderName(String subFolderName) {
+	subFolderName = Args.notNull(subFolderName, "uploadFolder");
+	this.subFolderName = subFolderName;
     }
 }
