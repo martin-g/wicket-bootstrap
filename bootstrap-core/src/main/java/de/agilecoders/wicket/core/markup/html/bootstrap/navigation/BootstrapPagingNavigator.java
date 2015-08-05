@@ -22,12 +22,12 @@ import de.agilecoders.wicket.core.util.Attributes;
  */
 public class BootstrapPagingNavigator extends PagingNavigator {
 
-    public static enum Size {
+    public enum Size {
         Small("sm"), Default(""), Large("lg");
 
         private final String size;
 
-        private Size(String size) {
+        Size(String size) {
             this.size = size;
         }
 

@@ -46,7 +46,7 @@ public final class Buttons {
     /**
      * defines all possible sizes of a button element.
      */
-    public static enum Size implements ICssClassNameProvider {
+    public enum Size implements ICssClassNameProvider {
         Mini("btn-xs"),
         Small("btn-sm"),
         Medium(""), // default button size doesn't need any css class
@@ -59,7 +59,7 @@ public final class Buttons {
          *
          * @param cssClassName the css class name of this size
          */
-        private Size(String cssClassName) {
+        Size(String cssClassName) {
             this.cssClassName = cssClassName;
         }
 
@@ -73,7 +73,7 @@ public final class Buttons {
     /**
      * Make a set of buttons appear vertically or horizontally stacked.
      */
-    public static enum Orientation implements ICssClassNameProvider {
+    public enum Orientation implements ICssClassNameProvider {
         Horizontal,
         Vertical;
 
@@ -87,7 +87,7 @@ public final class Buttons {
      * Defines all possible button types.
      * @see <a href="http://getbootstrap.com/css/#buttons">Buttons</a>
      */
-    public static enum Type implements ICssClassNameProvider {
+    public enum Type implements ICssClassNameProvider {
         Default("btn-default"), // Standard gray button with gradient
         Menu(""), // Menu button which has no default css class name
         Primary("btn-primary"), // Provides extra visual weight and identifies the primary action in a set of buttons
@@ -104,7 +104,7 @@ public final class Buttons {
          *
          * @param cssClassName the css class name of button type
          */
-        private Type(String cssClassName) {
+        Type(String cssClassName) {
             this.cssClassName = cssClassName;
         }
 
