@@ -51,7 +51,7 @@ public class BootstrapAjaxPagingNavigationBehavior extends AjaxPagingNavigationB
     @Override
     protected void updateAjaxAttributes(AjaxRequestAttributes attributes) {
         super.updateAjaxAttributes(attributes);
-        attributes.setPreventDefault(true);
+        attributes.setAllowDefault(false);
     }
 
     /**
