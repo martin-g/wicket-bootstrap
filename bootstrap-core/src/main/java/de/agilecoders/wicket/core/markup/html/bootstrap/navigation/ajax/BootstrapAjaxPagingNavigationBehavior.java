@@ -18,8 +18,10 @@ package de.agilecoders.wicket.core.markup.html.bootstrap.navigation.ajax;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.ajax.attributes.AjaxRequestAttributes;
 import org.apache.wicket.ajax.markup.html.IAjaxLink;
 import org.apache.wicket.ajax.markup.html.navigation.paging.AjaxPagingNavigationBehavior;
+import org.apache.wicket.ajax.markup.html.navigation.paging.AjaxPagingNavigationLink;
 import org.apache.wicket.markup.html.navigation.paging.IPageable;
 
 /**
@@ -46,6 +48,12 @@ public class BootstrapAjaxPagingNavigationBehavior extends AjaxPagingNavigationB
         this.owner = owner;
     }
 
+    @Override
+    protected void updateAjaxAttributes(AjaxRequestAttributes attributes) {
+        super.updateAjaxAttributes(attributes);
+        attributes.setPreventDefault(true);
+    }
+
     /**
      * The ajax event handler. This will execute the event, and update the following components,
      * when present: the navigator the owner link is part of, or when the link is a stand alone
@@ -68,5 +76,4 @@ public class BootstrapAjaxPagingNavigationBehavior extends AjaxPagingNavigationB
             navigator.onAjaxEvent(target);
         }
     }
-
 }
