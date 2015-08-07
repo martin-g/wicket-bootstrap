@@ -374,7 +374,7 @@ public class ExtensionsPage extends BasePage {
             }
         };
         confirmationButton.add(new ConfirmationBehavior(new ConfirmationConfig()
-            .withSingleton(true).withPopout(true).withBtnOkLabel("Confirm")
+            .withTitle("My title?").withSingleton(true).withPopout(true).withBtnOkLabel("Confirm")
         ));
 
         AjaxLink<String> confirmationLink = new AjaxLink<String>("confirmationLink", Model.of("Link")) {

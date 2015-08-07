@@ -14,6 +14,7 @@ import org.apache.wicket.util.lang.Args;
  */
 public class ConfirmationConfig extends AbstractConfig {
 
+    private static final IKey<String> Title = new Key<String>("title", "Are you sure?");
     private static final IKey<Boolean> Singleton = new Key<Boolean>("singleton", Boolean.FALSE);
     private static final IKey<Boolean> Popout = new Key<Boolean>("popout", Boolean.FALSE);
     private static final IKey<String> BtnOkClass = new Key<String>("btnOkClass", "btn-xs btn-primary");
@@ -23,6 +24,11 @@ public class ConfirmationConfig extends AbstractConfig {
     private static final IKey<String> BtnCancelIcon = new Key<String>("btnCancelIcon", "glyphicon glyphicon-remove");
     private static final IKey<String> BtnCancelLabel = new Key<String>("btnCancelLabel", "No");
     private static final IKey<TooltipConfig.Placement> Placement = new Key<TooltipConfig.Placement>("placement", TooltipConfig.Placement.top);
+
+    public ConfirmationConfig withTitle(String title) {
+        put(Title, title);
+        return this;
+    }
 
     public ConfirmationConfig withBtnOkClass(String btnOkClass) {
         put(BtnOkClass, btnOkClass);
