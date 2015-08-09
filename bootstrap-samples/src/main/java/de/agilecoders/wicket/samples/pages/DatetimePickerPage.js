@@ -1,5 +1,5 @@
 
-$('.nav a').on('click', function(evt) {
+$('a[data-sample="datetimepicker"]').on('click', function(evt) {
     evt.preventDefault();
 
     $('section').hide();
