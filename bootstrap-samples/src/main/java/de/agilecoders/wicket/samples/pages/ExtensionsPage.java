@@ -88,8 +88,8 @@ public class ExtensionsPage extends BasePage {
         dropzoneFileUpload();
 
         List<Html5Player.IVideo> videos = Lists.<Html5Player.IVideo> newArrayList(new Video(
-            "http://ia700305.us.archive.org/18/items/CopyingIsNotTheft/CINT_Nik_H264_720.ogv", "video/ogg"),
-            new Video("http://ia700305.us.archive.org/18/items/CopyingIsNotTheft/CINT_Nik_H264_720_512kb.mp4",
+            "https://archive.org/download/CopyingIsNotTheft/CINT_Nik_H264_720.ogv", "video/ogg"),
+            new Video("https://archive.org/download/CopyingIsNotTheft/CINT_Nik_H264_720_512kb.mp4",
                 "video/mp4"));
         add(new Html5Player("video", Model.ofList(videos)));
         add(new Code("video-code",
