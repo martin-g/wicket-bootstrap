@@ -29,28 +29,10 @@ public class DatetimePickerPanel extends Panel {
      */
     public DatetimePickerPanel(String id, DatetimePickerConfig config) {
         super(id);
-        Form<Object> form = new Form<Object>("form");
+
         add(
-            form.add(
-                new DatetimePicker("input", PropertyModel.<Date>of(this, "date"), config),
-                new DatetimePickerWithIcon("with-icon", PropertyModel.<Date>of(this, "date"), config),
-                new BootstrapAjaxButton("submit", Model.of("Submit"), form, Buttons.Type.Default) {
-
-                    private static final long serialVersionUID = 3921151963195781052L;
-
-                    @Override
-                    protected void onSubmit(AjaxRequestTarget target, Form<?> form) {
-                        super.onSubmit(target, form);
-                        target.add(form);
-                    }
-
-                    @Override
-                    protected void onError(AjaxRequestTarget target, Form<?> form) {
-                        super.onError(target, form);
-                        target.add(form);
-                    }
-                }
-            )
+            new DatetimePicker("input", PropertyModel.<Date>of(this, "date"), config),
+            new DatetimePickerWithIcon("with-icon", PropertyModel.<Date>of(this, "date"), config)
         );
     }
 

@@ -33,7 +33,7 @@ public class DatetimePickerCssReference extends WebjarsJavaScriptResourceReferen
      * Private constructor.
      */
     private DatetimePickerCssReference() {
-        super("Eonasdan-bootstrap-datetimepicker/current/bootstrap-datetimepicker.min.css");
+        super("Eonasdan-bootstrap-datetimepicker/current/css/bootstrap-datetimepicker.css");
     }
 
     /**
