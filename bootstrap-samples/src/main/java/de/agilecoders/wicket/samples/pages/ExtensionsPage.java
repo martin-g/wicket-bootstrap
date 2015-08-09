@@ -306,8 +306,8 @@ public class ExtensionsPage extends BasePage {
         };
         laddaButton.setSize(Buttons.Size.Small);
 
-        LaddaAjaxLink<String> laddaLink = new LaddaAjaxLink<String>("laddaLink", Model.of("Link, 2secs"),
-            Buttons.Type.Success) {
+        LaddaAjaxLink<String> laddaLink = new LaddaAjaxLink<String>("laddaLink", null,
+            Buttons.Type.Success, Model.of("Link, 2secs")) {
             @Override
             public void onClick(AjaxRequestTarget target) {
             Duration.seconds(2).sleep();
