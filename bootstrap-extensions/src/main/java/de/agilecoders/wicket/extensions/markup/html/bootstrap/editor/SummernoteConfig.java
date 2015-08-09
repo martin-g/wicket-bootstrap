@@ -132,13 +132,13 @@ public class SummernoteConfig extends AbstractConfig {
     public static void setUploadFolder(File uploadFolder, String subFolderName) {
 	uploadFolder = Args.notNull(uploadFolder, "uploadFolder");
 	if (!uploadFolder.isDirectory()) {
-	    throw new WicketRuntimeException("The given file is not a folder" + uploadFolder);
+	    throw new WicketRuntimeException("The given file is not a folder " + uploadFolder);
 	}
 	File subFolder = new File(uploadFolder, subFolderName == null ? "" : subFolderName);
 	if (!subFolder.exists()) {
 	    boolean created = subFolder.mkdirs();
 	    if (!created) {
-		throw new WicketRuntimeException("folder structure could'nt be created" + subFolder.getPath());
+		throw new WicketRuntimeException("folder structure couldn't be created " + subFolder.getPath());
 	    }
 	}
 	uploadFolders.put(subFolderName, uploadFolder);

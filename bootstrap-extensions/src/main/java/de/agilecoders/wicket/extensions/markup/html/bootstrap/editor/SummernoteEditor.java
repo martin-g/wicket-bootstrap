@@ -30,6 +30,8 @@ import org.apache.wicket.util.upload.FileUploadException;
 
 import com.google.common.io.Files;
 
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeCDNCSSReference;
+
 /**
  * 
  * Please add
@@ -39,7 +41,7 @@ import com.google.common.io.Files;
  * 
  * and then use config
  * SummernoteConfig config = new SummernoteConfig();
- * config.setSubFolderName(subpath");
+ * config.setSubFolderName("subpath");
  * ...
  * 
  * @author Tobias Soloschenko
@@ -130,7 +132,7 @@ public class SummernoteEditor extends FormComponent<String> {
     public void renderHead(IHeaderResponse response) {
 	response.render(JavaScriptHeaderItem.forReference(SummernoteEditorJavaScriptReference.instance()));
 	response.render(CssHeaderItem.forReference(SummernoteEditorCssReference.instance()));
-	response.render(CssHeaderItem.forUrl("//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"));
+	response.render(CssHeaderItem.forReference(FontAwesomeCDNCSSReference.instance()));
 	PackageTextTemplate summernoteTemplate = null;
 	try {
 	    summernoteTemplate = new PackageTextTemplate(SummernoteEditor.class, "js/summernote_init.js");

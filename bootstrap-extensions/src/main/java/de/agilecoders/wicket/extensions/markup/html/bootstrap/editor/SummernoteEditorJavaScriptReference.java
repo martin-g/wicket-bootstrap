@@ -1,13 +1,8 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.editor;
 
-import java.util.ArrayList;
+import org.apache.wicket.resource.JQueryPluginResourceReference;
 
-import org.apache.wicket.markup.head.HeaderItem;
-import org.apache.wicket.markup.head.JavaScriptHeaderItem;
-import org.apache.wicket.request.resource.JavaScriptResourceReference;
-import org.apache.wicket.resource.JQueryResourceReference;
-
-public class SummernoteEditorJavaScriptReference extends JavaScriptResourceReference {
+public class SummernoteEditorJavaScriptReference extends JQueryPluginResourceReference {
 
     private static final long serialVersionUID = 1L;
 
@@ -28,12 +23,5 @@ public class SummernoteEditorJavaScriptReference extends JavaScriptResourceRefer
      */
     private SummernoteEditorJavaScriptReference() {
 	super(SummernoteEditorJavaScriptReference.class, "js/summernote.js");
-    }
-
-    @Override
-    public Iterable<? extends HeaderItem> getDependencies() {
-	ArrayList<HeaderItem> dependencies = new ArrayList<HeaderItem>();
-	dependencies.add(JavaScriptHeaderItem.forReference(JQueryResourceReference.get()));
-	return dependencies;
     }
 }
