@@ -7388,6 +7388,21 @@ input:focus {
 .well {
   box-shadow: none;
 }
+.bg-gray-darker {
+  background-color: #222222;
+}
+.bg-gray-dark {
+  background-color: #212121;
+}
+.bg-gray-light {
+  background-color: #727272;
+}
+.bg-gray-lighter {
+  background-color: #cccccc;
+}
+.bg-gray {
+  background-color: #4a4a4a;
+}
 .bg-wp-amber {
   background-color: #f0a30a;
 }
