@@ -425,11 +425,11 @@ public class ExtensionsPage extends BasePage {
         TourBehavior tourBehavior = new TourBehavior() {
             @Override
             protected CharSequence createExtraConfig() {
-            return "if ( tour.ended() ) {\n"
-                + "    $('<div class=\"alert alert-info\">\\\n"
+            return
+                  "    $('<div class=\"alert alert-info\">\\\n"
                 + "      <button type=\"button\" class=\"close\" data-dismiss=\"alert\">&times;</button>\\\n"
-                + "      You ended the demo tour. <a href=\"\" class=\"restart\">Restart the demo tour.</a>\\\n"
-                + "      </div>').prependTo(\".content\").alert();\n" + "  }\n" + "\n"
+                + "      <a href=\"\" class=\"restart\" style=\"color:white\">Start the demo tour.</a>\\\n"
+                + "      </div>').prependTo(\".tourContent\").alert();\n" + "  \n" + "\n"
                 + "  $(\".restart\").click(function (e) {\n" + "    e.preventDefault();\n"
                 + "    tour.restart();\n" + "    $(this).parents(\".alert\").alert(\"close\");\n" + "  });";
             }
