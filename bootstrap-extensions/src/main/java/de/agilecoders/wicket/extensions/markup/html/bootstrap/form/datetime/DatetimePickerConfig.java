@@ -55,6 +55,7 @@ public class DatetimePickerConfig extends AbstractConfig {
     private static final IKey<String> MinDate = newKey("minDate", null);
     private static final IKey<String> MaxDate = newKey("maxDate", null);
     private static final IKey<String> ViewMode = newKey("viewMode", null);
+    private static final IKey<String> Locale = newKey("locale", null);
 
     private static final IKey<Boolean> ShowToday = newKey("showTodayButton", false);
     private static final IKey<Boolean> ShowClose = newKey("showClose", false);
@@ -71,7 +72,17 @@ public class DatetimePickerConfig extends AbstractConfig {
      * Construct config
      */
     public DatetimePickerConfig() {
+        useLocale("en-gb");
         withFormat("MM/dd/yyyy");
+    }
+
+    /**
+     * @param locale The moment.js locale
+     * @return current instance
+     */
+    public DatetimePickerConfig useLocale(String locale) {
+        put(Locale, locale);
+        return this;
     }
 
     /**

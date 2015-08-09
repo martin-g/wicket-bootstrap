@@ -85,14 +85,12 @@ public class ExtensionsPage extends BasePage {
     public ExtensionsPage(PageParameters parameters) {
         super(parameters);
 
-        List<Html5Player.IVideo> videos = Lists
-                .<Html5Player.IVideo> newArrayList(
-                    new Video(
-                        "http://ia700305.us.archive.org/18/items/CopyingIsNotTheft/CINT_Nik_H264_720.ogv",
-                        "video/ogg"),
-                    new Video(
-                        "http://ia700305.us.archive.org/18/items/CopyingIsNotTheft/CINT_Nik_H264_720_512kb.mp4",
-                        "video/mp4"));
+        dropzoneFileUpload();
+
+        List<Html5Player.IVideo> videos = Lists.<Html5Player.IVideo> newArrayList(new Video(
+            "https://archive.org/download/CopyingIsNotTheft/CINT_Nik_H264_720.ogv", "video/ogg"),
+            new Video("https://archive.org/download/CopyingIsNotTheft/CINT_Nik_H264_720_512kb.mp4",
+                "video/mp4"));
         add(new Html5Player("video", Model.ofList(videos)));
         add(new Code(
                 "video-code",
@@ -338,7 +336,8 @@ public class ExtensionsPage extends BasePage {
         };
         laddaButton.setSize(Buttons.Size.Small);
 
-        LaddaAjaxLink<String> laddaLink = new LaddaAjaxLink<String>("laddaLink", Model.of("Link, 2secs"), Buttons.Type.Success) {
+        LaddaAjaxLink<String> laddaLink = new LaddaAjaxLink<String>("laddaLink", null,
+            Buttons.Type.Success, Model.of("Link, 2secs")) {
             @Override
             public void onClick(AjaxRequestTarget target) {
                 Duration.seconds(2).sleep();
@@ -455,16 +454,13 @@ public class ExtensionsPage extends BasePage {
         TourBehavior tourBehavior = new TourBehavior() {
             @Override
             protected CharSequence createExtraConfig() {
-                return "if ( tour.ended() ) {\n"
-                        + "    $('<div class=\"alert alert-info\">\\\n"
-                        + "      <button type=\"button\" class=\"close\" data-dismiss=\"alert\">&times;</button>\\\n"
-                        + "      You ended the demo tour. <a href=\"\" class=\"restart\">Restart the demo tour.</a>\\\n"
-                        + "      </div>').prependTo(\".content\").alert();\n"
-                        + "  }\n" + "\n"
-                        + "  $(\".restart\").click(function (e) {\n"
-                        + "    e.preventDefault();\n" + "    tour.restart();\n"
-                        + "    $(this).parents(\".alert\").alert(\"close\");\n"
-                        + "  });";
+            return
+                  "    $('<div class=\"alert alert-info\">\\\n"
+                + "      <button type=\"button\" class=\"close\" data-dismiss=\"alert\">&times;</button>\\\n"
+                + "      <a href=\"\" class=\"restart\" style=\"color:white\">Start the demo tour.</a>\\\n"
+                + "      </div>').prependTo(\".tourContent\").alert();\n" + "  \n" + "\n"
+                + "  $(\".restart\").click(function (e) {\n" + "    e.preventDefault();\n"
+                + "    tour.restart();\n" + "    $(this).parents(\".alert\").alert(\"close\");\n" + "  });";
             }
         };
         tourBehavior

@@ -1,6 +1,6 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.references;
 
-import de.agilecoders.wicket.webjars.request.resource.WebjarsJavaScriptResourceReference;
+import de.agilecoders.wicket.webjars.request.resource.WebjarsCssResourceReference;
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.HeaderItem;
 
@@ -10,7 +10,7 @@ import org.apache.wicket.markup.head.HeaderItem;
  * @author Alexey Volkov
  * @since 01.02.15
  */
-public class DatetimePickerCssReference extends WebjarsJavaScriptResourceReference {
+public class DatetimePickerCssReference extends WebjarsCssResourceReference {
 
     private static final long serialVersionUID = 1L;
 
@@ -33,7 +33,7 @@ public class DatetimePickerCssReference extends WebjarsJavaScriptResourceReferen
      * Private constructor.
      */
     private DatetimePickerCssReference() {
-        super("Eonasdan-bootstrap-datetimepicker/current/bootstrap-datetimepicker.min.css");
+        super("Eonasdan-bootstrap-datetimepicker/current/css/bootstrap-datetimepicker.css");
     }
 
     /**

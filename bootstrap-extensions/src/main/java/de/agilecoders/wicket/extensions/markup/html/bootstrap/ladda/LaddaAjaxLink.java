@@ -42,6 +42,18 @@ public abstract class LaddaAjaxLink<T> extends BootstrapAjaxLink<T> {
         super(id, model, type);
     }
 
+    /**
+     * Constructor.
+     *
+     * @param id The component id
+     * @param model The model to use for the label
+     * @param type The Bootstrap type of the button
+     * @param labelModel The model for the link's label
+     */
+    public <L extends Serializable> LaddaAjaxLink(String id, IModel<T> model, Buttons.Type type, IModel<L> labelModel) {
+        super(id, model, type, labelModel);
+    }
+
     @Override
     protected void onInitialize() {
         super.onInitialize();

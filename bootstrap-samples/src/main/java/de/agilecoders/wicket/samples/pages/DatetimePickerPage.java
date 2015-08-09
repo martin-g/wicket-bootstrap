@@ -8,8 +8,11 @@ import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeIc
 import de.agilecoders.wicket.samples.panels.DatetimePickerPanel;
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
+import org.apache.wicket.markup.head.JavaScriptHeaderItem;
+import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
+import org.apache.wicket.resource.JQueryPluginResourceReference;
 import org.wicketstuff.annotation.mount.MountPath;
 
 import java.util.Date;
@@ -32,6 +35,10 @@ public class DatetimePickerPage extends BasePage {
      */
     public DatetimePickerPage(PageParameters parameters) {
         super(parameters);
+
+        Form<Object> form = new Form<Object>("form");
+        add(form);
+
         DatetimePickerConfig simpleConfig = new DatetimePickerConfig()
             .withFormat("dd/MM/yyyy HH:mm:ss");
         DatetimePickerConfig birthDayConfig = new DatetimePickerConfig()
@@ -50,28 +57,28 @@ public class DatetimePickerPage extends BasePage {
                     .useDownIcon(FontAwesomeIconType.arrow_down)
             );
 
-        add(
+        form.add(
             new DatetimePickerPanel("simple", simpleConfig),
             new Code("default-java-code", Model.of("new DatetimePickerConfig()\n"
-                + "            .withFormat(\"dd/MM/yyyy HH:mm:ss\");")),
+                                                   + "            .withFormat(\"dd/MM/yyyy HH:mm:ss\");")),
             new DatetimePickerPanel("birthday", birthDayConfig),
             new Code("birthday-java-code", Model.of("new DatetimePickerConfig()\n"
-                + "            .useView(DatetimePickerConfig.ViewModeType.YEARS)\n"
-                + "            .withFormat(\"dd/MM/yyyy\")\n"
-                + "            .withMaxDate(new Date());")),
+                                                    + "            .useView(DatetimePickerConfig.ViewModeType.YEARS)\n"
+                                                    + "            .withFormat(\"dd/MM/yyyy\")\n"
+                                                    + "            .withMaxDate(new Date());")),
             new DatetimePickerPanel("masked", maskedConfig),
             new Code("masked-java-code", Model.of("new DatetimePickerConfig()\n"
-                + "            .withFormat(\"dd/MM/yyyy HH:mm:ss\")\n"
-                + "            .useMaskInput(true);")),
+                                                  + "            .withFormat(\"dd/MM/yyyy HH:mm:ss\")\n"
+                                                  + "            .useMaskInput(true);")),
             new DatetimePickerPanel("icons", iconsConfig),
             new Code("icons-java-code", Model.of("new DatetimePickerConfig()\n"
-                + "            .withFormat(\"dd/MM/yyyy HH:mm:ss\").with(\n"
-                + "                new DatetimePickerIconConfig()\n"
-                + "                    .useDateIcon(FontAwesomeIconType.calendar)\n"
-                + "                    .useTimeIcon(FontAwesomeIconType.clock_o)\n"
-                + "                    .useUpIcon(FontAwesomeIconType.arrow_up)\n"
-                + "                    .useDownIcon(FontAwesomeIconType.arrow_down)\n"
-                + "            );"))
+                                                 + "            .withFormat(\"dd/MM/yyyy HH:mm:ss\").with(\n"
+                                                 + "                new DatetimePickerIconConfig()\n"
+                                                 + "                    .useDateIcon(FontAwesomeIconType.calendar)\n"
+                                                 + "                    .useTimeIcon(FontAwesomeIconType.clock_o)\n"
+                                                 + "                    .useUpIcon(FontAwesomeIconType.arrow_up)\n"
+                                                 + "                    .useDownIcon(FontAwesomeIconType.arrow_down)\n"
+                                                 + "            );"))
         );
     }
 
@@ -84,5 +91,8 @@ public class DatetimePickerPage extends BasePage {
     public void renderHead(IHeaderResponse response) {
         super.renderHead(response);
         response.render(CssHeaderItem.forReference(FontAwesomeCssReference.instance()));
+
+        // Use JS to show/hide the demo <section>s because otherwise DateTimePicker JS widget confuses which <input> is being clicked
+        response.render(JavaScriptHeaderItem.forReference(new JQueryPluginResourceReference(DatetimePickerPage.class, "DatetimePickerPage.js")));
     }
 }

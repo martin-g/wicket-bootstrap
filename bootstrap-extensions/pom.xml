@@ -47,13 +47,19 @@
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>Eonasdan-bootstrap-datetimepicker</artifactId>
-            <version>4.14.30</version>
+            <version>4.15.35</version>
         </dependency>
 
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>momentjs</artifactId>
             <version>2.10.3</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>font-awesome</artifactId>
+            <version>4.4.0</version>
         </dependency>
 
         <dependency>
