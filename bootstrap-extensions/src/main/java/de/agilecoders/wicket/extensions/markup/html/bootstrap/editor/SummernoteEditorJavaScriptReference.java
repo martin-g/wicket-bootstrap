@@ -1,8 +1,8 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.editor;
 
-import org.apache.wicket.resource.JQueryPluginResourceReference;
+import de.agilecoders.wicket.webjars.request.resource.WebjarsJavaScriptResourceReference;
 
-public class SummernoteEditorJavaScriptReference extends JQueryPluginResourceReference {
+public class SummernoteEditorJavaScriptReference extends WebjarsJavaScriptResourceReference {
 
     private static final long serialVersionUID = 1L;
 
@@ -22,6 +22,6 @@ public class SummernoteEditorJavaScriptReference extends JQueryPluginResourceRef
      * Private constructor.
      */
     private SummernoteEditorJavaScriptReference() {
-	super(SummernoteEditorJavaScriptReference.class, "js/summernote.js");
+	super("summernote/current/dist/summernote.js");
     }
 }

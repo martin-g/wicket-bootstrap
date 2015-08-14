@@ -1,8 +1,8 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.editor;
 
-import org.apache.wicket.request.resource.CssResourceReference;
+import de.agilecoders.wicket.webjars.request.resource.WebjarsCssResourceReference;
 
-public class SummernoteEditorCssReference extends CssResourceReference {
+public class SummernoteEditorCssReference extends WebjarsCssResourceReference {
 
     private static final long serialVersionUID = 1L;
 
@@ -22,6 +22,6 @@ public class SummernoteEditorCssReference extends CssResourceReference {
      * Private constructor.
      */
     private SummernoteEditorCssReference() {
-	super(SummernoteEditorCssReference.class, "css/summernote.css");
+	super("summernote/current/dist/summernote.css");
     }
 }
