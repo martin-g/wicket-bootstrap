@@ -19,11 +19,13 @@ import org.apache.wicket.markup.html.form.FormComponent;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.protocol.http.servlet.MultipartServletWebRequest;
 import org.apache.wicket.protocol.http.servlet.ServletWebRequest;
+import org.apache.wicket.request.cycle.RequestCycle;
 import org.apache.wicket.request.http.WebResponse;
 import org.apache.wicket.util.crypt.Base64;
 import org.apache.wicket.util.io.IOUtils;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.lang.Bytes;
+import org.apache.wicket.util.string.StringValue;
 import org.apache.wicket.util.template.PackageTextTemplate;
 import org.apache.wicket.util.upload.FileItem;
 import org.apache.wicket.util.upload.FileUploadException;
@@ -55,8 +57,8 @@ public class SummernoteEditor extends FormComponent<String> {
 		MultipartServletWebRequest multiPartRequest = webRequest.newMultipartWebRequest(
 			Bytes.megabytes(config.getMaxFileSize()), "ignored");
 		multiPartRequest.parseFileParts();
-		List<SummernoteStorage> storages = storeFile(target, multiPartRequest);
-		onImageUpload(target, storages);
+		List<FileItem> fileItems = storeFile(target, multiPartRequest);
+		onImageUpload(target, fileItems);
 	    } catch (FileUploadException fux) {
 		onImageError(target, fux);
 	    }
@@ -73,8 +75,8 @@ public class SummernoteEditor extends FormComponent<String> {
 	 * @throws IOException
 	 *             if an exception occured while reading / writing any file
 	 */
-	private List<SummernoteStorage> storeFile(AjaxRequestTarget target, MultipartServletWebRequest multiPartRequest) {
-	    List<SummernoteStorage> summernoteStorages = new ArrayList<SummernoteStorage>();
+	private List<FileItem> storeFile(AjaxRequestTarget target, MultipartServletWebRequest multiPartRequest) {
+	    List<FileItem> fileItems = new ArrayList<FileItem>();
 	    Map<String, List<FileItem>> fileMap = multiPartRequest.getFiles();
 	    Iterator<List<FileItem>> fileItemListIterator = fileMap.values().iterator();
 	    while (fileItemListIterator.hasNext()) {
@@ -87,12 +89,13 @@ public class SummernoteEditor extends FormComponent<String> {
 			WebResponse response = (WebResponse) target.getHeaderResponse().getResponse();
 			response.setHeader("imageUrl", SummernoteStoredImageResourceReference.SUMMERNOTE_MOUNT_PATH
 				+ "?image=" + Base64.encodeBase64String(fileItem.getName().getBytes()));
+			fileItems.add(fileItem);
 		    } catch (IOException e) {
 			throw new WicketRuntimeException("Error while writing image: " + fileItem.getName());
 		    }
 		}
 	    }
-	    return summernoteStorages;
+	    return fileItems;
 	}
 
 	@Override
@@ -135,12 +138,19 @@ public class SummernoteEditor extends FormComponent<String> {
 	    IOUtils.closeQuietly(summernoteTemplate);
 	}
     }
-
-    protected void onSubmit(AjaxRequestTarget target) {
-	// TODO receive text on submit in form component ajax behavior
+    
+    /**
+     * If a form has been submitted the content of the current editor can be
+     * received.
+     * 
+     * @return the submitted content of the editor
+     */
+    public String getSubmittedContent() {
+	return RequestCycle.get().getRequest().getRequestParameters().getParameterValue(getMarkupId() + "_content")
+		.toString();
     }
-
-    public void onImageUpload(AjaxRequestTarget target, List<SummernoteStorage> storages) {
+    
+    public void onImageUpload(AjaxRequestTarget target, List<FileItem> fileItems) {
 	// NOOP
     }
 

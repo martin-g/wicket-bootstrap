@@ -1,5 +1,6 @@
 $(function() {
 	var summernoteconfig = ${summernoteconfig};
+	var summernote = $('#'+summernoteconfig.summernoteEditorId);
 	var summernoteconfigdefault = {
 		onImageUpload : function(files) {
 			$(files).each(function(){
@@ -26,9 +27,18 @@ $(function() {
 					}
 				});
 			});
+		},
+		onBlur: function(e) {
+			// Create a hidden field so that if the form has been submitted the content will be available in the backend
+			var form = summernote.closest("form");
+			if($('#'+summernoteconfig.summernoteEditorId+"_content",form).length <= 0){
+				$(form).append("<input type='hidden' id='"+summernoteconfig.summernoteEditorId+"_content' name='"+summernoteconfig.summernoteEditorId+"_content' value='' />");
+			}
+			$('#'+summernoteconfig.summernoteEditorId+"_content",form).val(summernote.code());
 		}
 	};
-	var summernote = $('#'+summernoteconfig.summernoteEditorId);
+	
 	$.extend(summernoteconfigdefault, summernoteconfig);
 	summernote.summernote(summernoteconfigdefault);
+	summernote.code(summernoteconfig.content);
 });
