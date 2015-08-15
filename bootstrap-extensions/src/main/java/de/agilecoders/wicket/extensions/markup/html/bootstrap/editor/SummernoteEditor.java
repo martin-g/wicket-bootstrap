@@ -1,6 +1,5 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.editor;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,6 +7,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.wicket.WicketRuntimeException;
 import org.apache.wicket.ajax.AbstractDefaultAjaxBehavior;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.attributes.AjaxRequestAttributes;
@@ -28,21 +28,10 @@ import org.apache.wicket.util.template.PackageTextTemplate;
 import org.apache.wicket.util.upload.FileItem;
 import org.apache.wicket.util.upload.FileUploadException;
 
-import com.google.common.io.Files;
-
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeCDNCSSReference;
 
 /**
- * 
- * Please add
- * 
- * mountResource(SummernoteStoredImageResourceReference.SUMMERNOTE_MOUNT_PATH,
- * new SummernoteStoredImageResourceReference(new File("/Users/MyUser/"),"subpath"));
- * 
- * and then use config
- * SummernoteConfig config = new SummernoteConfig();
- * config.setSubFolderName("subpath");
- * ...
+ * A summer note editor
  * 
  * @author Tobias Soloschenko
  *
@@ -66,8 +55,8 @@ public class SummernoteEditor extends FormComponent<String> {
 		MultipartServletWebRequest multiPartRequest = webRequest.newMultipartWebRequest(
 			Bytes.megabytes(config.getMaxFileSize()), "ignored");
 		multiPartRequest.parseFileParts();
-		List<File> storedFile = storeFile(target, multiPartRequest);
-		onImageUpload(target, storedFile);
+		List<SummernoteStorage> storages = storeFile(target, multiPartRequest);
+		onImageUpload(target, storages);
 	    } catch (FileUploadException fux) {
 		onImageError(target, fux);
 	    }
@@ -84,27 +73,26 @@ public class SummernoteEditor extends FormComponent<String> {
 	 * @throws IOException
 	 *             if an exception occured while reading / writing any file
 	 */
-	private List<File> storeFile(AjaxRequestTarget target, MultipartServletWebRequest multiPartRequest) {
-	    List<File> files = new ArrayList<File>();
+	private List<SummernoteStorage> storeFile(AjaxRequestTarget target, MultipartServletWebRequest multiPartRequest) {
+	    List<SummernoteStorage> summernoteStorages = new ArrayList<SummernoteStorage>();
 	    Map<String, List<FileItem>> fileMap = multiPartRequest.getFiles();
 	    Iterator<List<FileItem>> fileItemListIterator = fileMap.values().iterator();
 	    while (fileItemListIterator.hasNext()) {
 		Iterator<FileItem> fileItemIterator = fileItemListIterator.next().iterator();
 		while (fileItemIterator.hasNext()) {
+		    FileItem fileItem = fileItemIterator.next();
 		    try {
-			FileItem fileItem = fileItemIterator.next();
-			File file = new File(SummernoteConfig.getUploadFolder(config.getSubFolderName()), fileItem.getName());
-			Files.write(IOUtils.toByteArray(fileItem.getInputStream()), file);
-			files.add(file);
+			SummernoteStorage storage = SummernoteConfig.getStorage(config.getStorageId());
+			storage.writeContent(fileItem.getName(), fileItem.getInputStream());
 			WebResponse response = (WebResponse) target.getHeaderResponse().getResponse();
 			response.setHeader("imageUrl", SummernoteStoredImageResourceReference.SUMMERNOTE_MOUNT_PATH
-				+ "?image=" + Base64.encodeBase64String(file.getName().getBytes()));
+				+ "?image=" + Base64.encodeBase64String(fileItem.getName().getBytes()));
 		    } catch (IOException e) {
-			// TODO Inform the user of failure
+			throw new WicketRuntimeException("Error while writing image: " + fileItem.getName());
 		    }
 		}
 	    }
-	    return files;
+	    return summernoteStorages;
 	}
 
 	@Override
@@ -152,7 +140,7 @@ public class SummernoteEditor extends FormComponent<String> {
 	// TODO receive text on submit in form component ajax behavior
     }
 
-    public void onImageUpload(AjaxRequestTarget target, List<File> files) {
+    public void onImageUpload(AjaxRequestTarget target, List<SummernoteStorage> storages) {
 	// NOOP
     }
 

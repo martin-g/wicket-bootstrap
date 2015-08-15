@@ -1,32 +1,40 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.editor;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-
-import org.apache.wicket.WicketRuntimeException;
 import org.apache.wicket.request.resource.DynamicImageResource;
-import org.apache.wicket.util.io.IOUtils;
 
+/**
+ * Gets the stored image resource by reading it from the storage with the given
+ * id and the given image name
+ * 
+ * @author Tobias Soloschenko
+ *
+ */
 public class SummernoteStoredImageResource extends DynamicImageResource {
 
     private static final long serialVersionUID = 1L;
-    private File image;
 
-    public SummernoteStoredImageResource(File image) {
-	this.image = image;
+    private String imageName;
+
+    private String storageId;
+
+    /**
+     * Creates a summernote stored image resource
+     * 
+     * @param storageId
+     *            the storage id to get the image from
+     * @param imageName
+     *            the name of the image
+     */
+    public SummernoteStoredImageResource(String storageId, String imageName) {
+	this.imageName = imageName;
+	this.storageId = storageId;
     }
 
+    /**
+     * Gets the image data
+     */
     @Override
     protected byte[] getImageData(Attributes attributes) {
-	FileInputStream fileInputStream = null;
-	try {
-	    fileInputStream = new FileInputStream(image);
-	    return IOUtils.toByteArray(fileInputStream);
-	} catch (IOException e) {
-	    throw new WicketRuntimeException("Error while reading the file for the response", e);
-	} finally {
-	    IOUtils.closeQuietly(fileInputStream);
-	}
+	return SummernoteConfig.getStorage(storageId).getContent(imageName);
     }
 }
