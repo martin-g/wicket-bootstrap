@@ -14,6 +14,7 @@ import org.apache.wicket.util.io.IOUtils;
  * A File storage for the summer note editor.<br>
  * <br>
  * Example:
+ * 
  * <pre>
  * <b>SummernoteStoredImageResourceReference:</b>
  * mountResource(SummernoteStoredImageResourceReference.SUMMERNOTE_MOUNT_PATH, new SummernoteStoredImageResourceReference("storageId"));
@@ -25,7 +26,10 @@ import org.apache.wicket.util.io.IOUtils;
  * SummernoteConfig summernoteConfig = new SummernoteConfig();
  * summernoteConfig.useStorageId("storageId");
  * </pre>
- * <b>Result: Images are stored into /User/Someone/storageId/&lt;imageName&gt;</b><br><br>
+ * 
+ * <b>Result: Images are stored into
+ * /User/Someone/storageId/&lt;imageName&gt;</b><br>
+ * <br>
  * 
  * @author Tobias Soloschenko
  *
@@ -36,14 +40,35 @@ public class SummernoteFileStorage implements SummernoteStorage {
 
     private String id;
 
+    /**
+     * Creates a file storage which stores the images into the given folder and
+     * subfolder of the given id
+     * 
+     * @param id
+     *            the id of the file storage which also is used as subfolder to
+     *            store the images
+     * @param folder
+     *            the folder to store images
+     */
     public SummernoteFileStorage(String id, File folder) {
 	this.folder = folder;
 	this.id = id;
     }
 
+    /**
+     * Gets image data form the file system
+     * 
+     * @param imageName
+     *            the image name
+     * @return the image bytes
+     */
     @Override
     public byte[] getContent(String imageName) {
 	File file = new File(folder, id);
+	// Create directories if not found
+	if(!file.exists()){
+	    file.mkdirs();
+	}
 	File image = new File(file, imageName);
 	FileInputStream fileInputStream = null;
 	try {
@@ -58,9 +83,21 @@ public class SummernoteFileStorage implements SummernoteStorage {
 	}
     }
 
+    /**
+     * Writes image data to the file system
+     * 
+     * @param imageName
+     *            the name of the image
+     * @param inputStream
+     *            the stream of the image
+     */
     @Override
     public void writeContent(String imageName, InputStream inputStream) {
 	File file = new File(folder, id);
+	// Create directories if not found
+	if(!file.exists()){
+	    file.mkdirs();
+	}
 	File image = new File(file, imageName);
 	FileOutputStream fileOutputStream = null;
 	try {
@@ -75,6 +112,11 @@ public class SummernoteFileStorage implements SummernoteStorage {
 	}
     }
 
+    /**
+     * Gets the id of the storage
+     * 
+     * @return the id of the storage
+     */
     @Override
     public String getId() {
 	return id;

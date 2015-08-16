@@ -3,9 +3,11 @@ package de.agilecoders.wicket.extensions.markup.html.bootstrap.editor;
 import java.io.InputStream;
 
 /**
- * Used to provide different implementations to store images
+ * Used to provide different implementations to store images. See example implementation SummernoteFileStorage
  * 
  * @author Tobias Soloschenko
+ * 
+ * @see SummernoteFileStorage
  *
  */
 public interface SummernoteStorage {

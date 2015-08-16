@@ -2,6 +2,11 @@ package de.agilecoders.wicket.extensions.markup.html.bootstrap.editor;
 
 import org.apache.wicket.request.resource.JavaScriptResourceReference;
 
+/**
+ * A workaround to provide FormData for IE>10
+ * 
+ * @author Tobias Soloschenko
+ */
 public class SummernoteEditorFormDataReference extends JavaScriptResourceReference {
 
     private static final long serialVersionUID = 1L;

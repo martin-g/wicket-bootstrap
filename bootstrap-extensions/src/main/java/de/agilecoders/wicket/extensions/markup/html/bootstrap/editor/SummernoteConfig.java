@@ -8,13 +8,18 @@ import org.apache.wicket.WicketRuntimeException;
 import de.agilecoders.wicket.jquery.AbstractConfig;
 import de.agilecoders.wicket.jquery.IKey;
 
+/**
+ * Provides config information for the summernote editor
+ * 
+ * @author Tobias Soloschenko
+ *
+ */
 public class SummernoteConfig extends AbstractConfig {
 
     private static final long serialVersionUID = 1L;
 
     public static final IKey<String> Id = newKey("summernoteEditorId", null);
     public static final IKey<String> Content = newKey("content", null);
-    
     private static final IKey<Boolean> AirMode = newKey("airMode", null);
     private static final IKey<Integer> MaxHeight = newKey("maxHeight", null);
     private static final IKey<Integer> MinHeight = newKey("minHeight", null);
@@ -23,8 +28,14 @@ public class SummernoteConfig extends AbstractConfig {
     private static final IKey<Integer> MaxFileSize = newKey("maxFilesize", 2097152);
     private static final IKey<String> ImageUploadCallbackUrl = newKey("imageUploadUrl", null);
     
-
+    /**
+     * A set of storages used by the *StoredImageResourceReference and the *Editor
+     */
     private static Set<SummernoteStorage> storages = new HashSet<SummernoteStorage>();
+    
+    /**
+     * The storage id of the storage the editor should use
+     */
     private String storageId;
 
     /**

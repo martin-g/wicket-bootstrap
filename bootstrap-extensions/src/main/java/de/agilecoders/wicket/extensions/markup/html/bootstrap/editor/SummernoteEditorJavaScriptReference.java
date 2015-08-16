@@ -2,6 +2,12 @@ package de.agilecoders.wicket.extensions.markup.html.bootstrap.editor;
 
 import de.agilecoders.wicket.webjars.request.resource.WebjarsJavaScriptResourceReference;
 
+/**
+ * The summernote javascript provided via webjars
+ * 
+ * @author Tobias Soloschenko 
+ *
+ */
 public class SummernoteEditorJavaScriptReference extends WebjarsJavaScriptResourceReference {
 
     private static final long serialVersionUID = 1L;

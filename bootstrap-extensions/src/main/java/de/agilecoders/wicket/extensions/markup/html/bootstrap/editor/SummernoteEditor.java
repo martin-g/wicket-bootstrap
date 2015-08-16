@@ -151,10 +151,29 @@ public class SummernoteEditor extends FormComponent<String> {
 		.getParameterValue(getMarkupId() + "_content").toString()));
     }
 
+    /**
+     * If an image is going to be inserted into the editor this callback is
+     * going to be invoked for each image
+     * 
+     * @param target
+     *            the target to update components
+     * @param fileItems
+     *            the list of file items (the image)
+     */
     public void onImageUpload(AjaxRequestTarget target, List<FileItem> fileItems) {
 	// NOOP
     }
 
+    /**
+     * If an error occured while inserting an image into the editor this
+     * callback is going to be invoked for each image which can be uploaded
+     * 
+     * @param target
+     *            the target to update components (to give a hint that the
+     *            upload failed)
+     * @param fux
+     *            the exception
+     */
     public void onImageError(AjaxRequestTarget target, FileUploadException fux) {
 	// NOOP
     }
