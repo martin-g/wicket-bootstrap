@@ -13,6 +13,8 @@ public class SummernoteConfig extends AbstractConfig {
     private static final long serialVersionUID = 1L;
 
     public static final IKey<String> Id = newKey("summernoteEditorId", null);
+    public static final IKey<String> Content = newKey("content", null);
+    
     private static final IKey<Boolean> AirMode = newKey("airMode", null);
     private static final IKey<Integer> MaxHeight = newKey("maxHeight", null);
     private static final IKey<Integer> MinHeight = newKey("minHeight", null);
@@ -21,7 +23,6 @@ public class SummernoteConfig extends AbstractConfig {
     private static final IKey<Integer> MaxFileSize = newKey("maxFilesize", 2097152);
     private static final IKey<String> ImageUploadCallbackUrl = newKey("imageUploadUrl", null);
     
-    public static final IKey<String> Content = newKey("content", null);
 
     private static Set<SummernoteStorage> storages = new HashSet<SummernoteStorage>();
     private String storageId;
@@ -147,15 +148,5 @@ public class SummernoteConfig extends AbstractConfig {
      */
     public void useStorageId(String storageId) {
 	this.storageId = storageId;
-    }
-    
-    /**
-     * @param content
-     *            The content of the editor
-     * @return current instance
-     */
-    public SummernoteConfig withContent(String content) {
-	put(Content, content);
-	return this;
     }
 }

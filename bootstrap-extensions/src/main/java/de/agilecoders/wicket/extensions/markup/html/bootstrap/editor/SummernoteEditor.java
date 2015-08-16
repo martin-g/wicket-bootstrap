@@ -25,7 +25,6 @@ import org.apache.wicket.util.crypt.Base64;
 import org.apache.wicket.util.io.IOUtils;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.lang.Bytes;
-import org.apache.wicket.util.string.StringValue;
 import org.apache.wicket.util.template.PackageTextTemplate;
 import org.apache.wicket.util.upload.FileItem;
 import org.apache.wicket.util.upload.FileUploadException;
@@ -122,6 +121,7 @@ public class SummernoteEditor extends FormComponent<String> {
     @Override
     public void renderHead(IHeaderResponse response) {
 	response.render(JavaScriptHeaderItem.forReference(SummernoteEditorJavaScriptReference.instance()));
+	response.render(JavaScriptHeaderItem.forReference(SummernoteEditorFormDataReference.instance()));
 	response.render(CssHeaderItem.forReference(SummernoteEditorCssReference.instance()));
 	response.render(CssHeaderItem.forReference(FontAwesomeCDNCSSReference.instance()));
 	PackageTextTemplate summernoteTemplate = null;
@@ -129,6 +129,7 @@ public class SummernoteEditor extends FormComponent<String> {
 	    summernoteTemplate = new PackageTextTemplate(SummernoteEditor.class, "js/summernote_init.js");
 	    config.withImageUploadCallbackUrl(summernoteEditorImageAjaxEventBehavior.getCallbackUrl().toString());
 	    config.put(SummernoteConfig.Id, getMarkupId());
+	    config.put(SummernoteConfig.Content, getModelValue());
 	    String jsonConfig = config.toJsonString();
 	    Map<String, Object> variables = new HashMap<String, Object>();
 	    variables.put("summernoteconfig", jsonConfig);
