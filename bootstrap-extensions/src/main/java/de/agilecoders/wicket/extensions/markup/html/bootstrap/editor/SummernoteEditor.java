@@ -138,7 +138,7 @@ public class SummernoteEditor extends FormComponent<String> {
 	    IOUtils.closeQuietly(summernoteTemplate);
 	}
     }
-    
+
     /**
      * If a form has been submitted the content of the current editor can be
      * received.
@@ -146,10 +146,10 @@ public class SummernoteEditor extends FormComponent<String> {
      * @return the submitted content of the editor
      */
     public String getSubmittedContent() {
-	return RequestCycle.get().getRequest().getRequestParameters().getParameterValue(getMarkupId() + "_content")
-		.toString();
+	return new String(Base64.decodeBase64(RequestCycle.get().getRequest().getRequestParameters()
+		.getParameterValue(getMarkupId() + "_content").toString()));
     }
-    
+
     public void onImageUpload(AjaxRequestTarget target, List<FileItem> fileItems) {
 	// NOOP
     }

@@ -34,7 +34,7 @@ $(function() {
 			if($('#'+summernoteconfig.summernoteEditorId+"_content",form).length <= 0){
 				$(form).append("<input type='hidden' id='"+summernoteconfig.summernoteEditorId+"_content' name='"+summernoteconfig.summernoteEditorId+"_content' value='' />");
 			}
-			$('#'+summernoteconfig.summernoteEditorId+"_content",form).val(summernote.code());
+			$('#'+summernoteconfig.summernoteEditorId+"_content",form).val(window.btoa(summernote.code()));
 		}
 	};
 	
