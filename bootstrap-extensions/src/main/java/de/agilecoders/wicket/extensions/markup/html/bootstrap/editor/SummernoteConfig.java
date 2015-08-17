@@ -51,16 +51,6 @@ public class SummernoteConfig extends AbstractConfig {
     private Map<String, List<String>> toolbarOptions = new LinkedHashMap<String, List<String>>() {
 	private static final long serialVersionUID = 1L;
 	{
-	    put("Insert", new ArrayList<String>() {
-		private static final long serialVersionUID = 1L;
-		{
-		    add("picture");
-		    add("link");
-		    add("video");
-		    add("table");
-		    add("hr");
-		}
-	    });
 	    put("Style", new ArrayList<String>() {
 		private static final long serialVersionUID = 1L;
 		{
@@ -82,6 +72,16 @@ public class SummernoteConfig extends AbstractConfig {
 		    add("ol");
 		    add("paragraph");
 		    add("height");
+		}
+	    });
+	    put("Insert", new ArrayList<String>() {
+		private static final long serialVersionUID = 1L;
+		{
+		    add("picture");
+		    add("link");
+		    add("video");
+		    add("table");
+		    add("hr");
 		}
 	    });
 	    put("Misc", new ArrayList<String>() {
