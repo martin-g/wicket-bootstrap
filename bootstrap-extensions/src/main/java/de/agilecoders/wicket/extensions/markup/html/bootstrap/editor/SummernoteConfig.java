@@ -228,7 +228,7 @@ public class SummernoteConfig extends AbstractConfig {
      * 
      * @return a list of button ids
      */
-    public List<String> getButton(String category) {
+    public List<String> getButtons(String category) {
 	return toolbarOptions.get(category);
     }
 

@@ -132,7 +132,7 @@ public class SummernoteEditor extends FormComponent<String> {
 	    config.put(SummernoteConfig.Content, getModelValue());
 	    // Remove picture button if no storage id is provided
 	    if (config.getStorageId() == null) {
-		config.getButton("Insert").remove("picture");
+		config.getButtons("Insert").remove("picture");
 	    }
 	    String jsonConfig = config.toJsonString();
 	    Map<String, Object> variables = new HashMap<String, Object>();
