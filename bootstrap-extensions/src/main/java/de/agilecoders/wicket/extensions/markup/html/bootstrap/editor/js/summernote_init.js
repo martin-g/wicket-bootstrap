@@ -1,7 +1,17 @@
 $(function() {
 	var summernoteconfig = ${summernoteconfig};
 	var summernote = $('#'+summernoteconfig.summernoteEditorId);
+	
+	var toolbar = new Array();
+	$.each(summernoteconfig.ToolbarOptions, function(key, value){
+		var category = new Array();
+		category.push(key);
+		category.push(value);
+		toolbar.push(category);
+	});
+	
 	var summernoteconfigdefault = {
+		toolbar : toolbar,
 		onImageUpload : function(files) {
 			$(files).each(function(){
 				var file = this;

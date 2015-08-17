@@ -1,6 +1,12 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.editor;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import org.apache.wicket.WicketRuntimeException;
@@ -27,16 +33,72 @@ public class SummernoteConfig extends AbstractConfig {
     private static final IKey<Boolean> Force = newKey("force", null);
     private static final IKey<Integer> MaxFileSize = newKey("maxFilesize", 2097152);
     private static final IKey<String> ImageUploadCallbackUrl = newKey("imageUploadUrl", null);
-    
+
     /**
-     * A set of storages used by the *StoredImageResourceReference and the *Editor
+     * A set of storages used by the *StoredImageResourceReference and the
+     * *Editor
      */
     private static Set<SummernoteStorage> storages = new HashSet<SummernoteStorage>();
-    
+
     /**
      * The storage id of the storage the editor should use
      */
     private String storageId;
+
+    private static final IKey<Map<String, List<String>>> ToolbarOptions = newKey("ToolbarOptions", null);
+
+    private Map<String, List<String>> toolbarOptions = new HashMap<String, List<String>>() {
+	private static final long serialVersionUID = 1L;
+	{
+	    put("Insert", new ArrayList<String>() {
+		private static final long serialVersionUID = 1L;
+		{
+		    add("picture");
+		    add("link");
+		    add("video");
+		    add("table");
+		    add("hr");
+		}
+	    });
+	    put("Style", new ArrayList<String>() {
+		private static final long serialVersionUID = 1L;
+		{
+		    add("style");
+		    add("fontname");
+		    add("fontsize");
+		    add("color");
+		    add("bold");
+		    add("italic");
+		    add("underline");
+		    add("strikethrough");
+		    add("clear");
+		}
+	    });
+	    put("Layout", new ArrayList<String>() {
+		private static final long serialVersionUID = 1L;
+		{
+		    add("ul");
+		    add("ol");
+		    add("paragraph");
+		    add("height");
+		}
+	    });
+	    put("Misc", new ArrayList<String>() {
+		private static final long serialVersionUID = 1L;
+		{
+		    add("fullscreen");
+		    add("codeview");
+		    add("undo");
+		    add("redo");
+		    add("help");
+		}
+	    });
+	}
+    };
+
+    public SummernoteConfig() {
+	put(ToolbarOptions, toolbarOptions);
+    }
 
     /**
      * @param airmode
@@ -159,5 +221,36 @@ public class SummernoteConfig extends AbstractConfig {
      */
     public void useStorageId(String storageId) {
 	this.storageId = storageId;
+    }
+
+    /**
+     * Gets a list of button ids of the given category
+     * 
+     * @return a list of button ids
+     */
+    public List<String> getButton(String category) {
+	return toolbarOptions.get(category);
+    }
+
+    /**
+     * Adds buttons to the toolbar
+     * 
+     * @param category
+     *            the button category
+     * @param buttonIds
+     *            the ids of the buttons
+     */
+    public void addButtons(String category, List<String> buttonIds) {
+	toolbarOptions.put(category, buttonIds);
+    }
+
+    /**
+     * Removes buttons of a given category
+     * 
+     * @param category
+     *            the category to remove buttons
+     */
+    public void removeButtons(String category) {
+	toolbarOptions.remove(category);
     }
 }
