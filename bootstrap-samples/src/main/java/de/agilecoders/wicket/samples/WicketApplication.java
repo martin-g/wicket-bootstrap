@@ -138,6 +138,7 @@ public class WicketApplication extends WebApplication {
         // the folder where to store the images
         Folder folder = new Folder(System.getProperty("java.io.tmpdir"), "bootstrap-summernote");
         folder.mkdirs();
+        folder.deleteOnExit();
 
         SummernoteConfig.addStorage(new SummernoteFileStorage(STORAGE_ID, folder));
 
