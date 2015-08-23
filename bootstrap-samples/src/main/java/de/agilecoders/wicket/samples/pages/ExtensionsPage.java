@@ -180,9 +180,10 @@ public class ExtensionsPage extends BasePage {
     }
 
     private void dropzoneFileUpload() {
-	final Label label = new Label("dropzonelabel","This is a label changed by dropzone");
-	label.setOutputMarkupId(true);
-	add(label);
+        final Label label = new Label("dropzonelabel","This is a label changed by dropzone");
+        label.setOutputMarkupId(true);
+        add(label);
+
         DropZoneFileUpload dropZoneFileUpload = new DropZoneFileUpload("dropzone") {
             private static final long serialVersionUID = 1L;
 
