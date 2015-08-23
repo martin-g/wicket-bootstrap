@@ -1,15 +1,12 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.editor;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
+import com.google.common.collect.Lists;
 import org.apache.wicket.WicketRuntimeException;
 
 import de.agilecoders.wicket.jquery.AbstractConfig;
@@ -17,7 +14,7 @@ import de.agilecoders.wicket.jquery.IKey;
 
 /**
  * Provides config information for the summernote editor
- * 
+ *
  * @author Tobias Soloschenko
  *
  */
@@ -48,67 +45,28 @@ public class SummernoteConfig extends AbstractConfig {
 
     private static final IKey<Map<String, List<String>>> ToolbarOptions = newKey("ToolbarOptions", null);
 
+
     private Map<String, List<String>> toolbarOptions = new LinkedHashMap<String, List<String>>() {
-	private static final long serialVersionUID = 1L;
-	{
-	    put("Style", new ArrayList<String>() {
-		private static final long serialVersionUID = 1L;
-		{
-		    add("style");
-		    add("fontname");
-		    add("fontsize");
-		    add("color");
-		    add("bold");
-		    add("italic");
-		    add("underline");
-		    add("strikethrough");
-		    add("clear");
-		}
-	    });
-	    put("Layout", new ArrayList<String>() {
-		private static final long serialVersionUID = 1L;
-		{
-		    add("ul");
-		    add("ol");
-		    add("paragraph");
-		    add("height");
-		}
-	    });
-	    put("Insert", new ArrayList<String>() {
-		private static final long serialVersionUID = 1L;
-		{
-		    add("picture");
-		    add("link");
-		    add("video");
-		    add("table");
-		    add("hr");
-		}
-	    });
-	    put("Misc", new ArrayList<String>() {
-		private static final long serialVersionUID = 1L;
-		{
-		    add("fullscreen");
-		    add("codeview");
-		    add("undo");
-		    add("redo");
-		    add("help");
-		}
-	    });
-	}
+        {
+            put("Style", Lists.newArrayList("style", "fontname", "fontsize", "color", "bold", "italic", "underline", "strikethrough", "clear"));
+            put("Layout", Lists.newArrayList("ul", "ol", "paragraph", "height"));
+            put("Insert", Lists.newArrayList("picture", "link", "video", "table", "hr"));
+            put("Misc", Lists.newArrayList("fullscreen", "codeview", "undo", "redo", "help"));
+        }
     };
 
     public SummernoteConfig() {
-	put(ToolbarOptions, toolbarOptions);
+        put(ToolbarOptions, toolbarOptions);
     }
 
     /**
-     * @param airmode
+     * @param airMode
      *            if air mode should be used or normal
      * @return current instance
      */
     public SummernoteConfig withAirMode(boolean airMode) {
-	put(AirMode, airMode);
-	return this;
+        put(AirMode, airMode);
+        return this;
     }
 
     /**
@@ -117,8 +75,8 @@ public class SummernoteConfig extends AbstractConfig {
      * @return current instance
      */
     public SummernoteConfig withMaxHeight(Integer maxHeight) {
-	put(MaxHeight, maxHeight);
-	return this;
+        put(MaxHeight, maxHeight);
+        return this;
     }
 
     /**
@@ -127,8 +85,8 @@ public class SummernoteConfig extends AbstractConfig {
      * @return current instance
      */
     public SummernoteConfig withMinHeight(Integer minHeight) {
-	put(MinHeight, minHeight);
-	return this;
+        put(MinHeight, minHeight);
+        return this;
     }
 
     /**
@@ -137,8 +95,8 @@ public class SummernoteConfig extends AbstractConfig {
      * @return current instance
      */
     public SummernoteConfig withHeight(Integer height) {
-	put(Height, height);
-	return this;
+        put(Height, height);
+        return this;
     }
 
     /**
@@ -147,8 +105,8 @@ public class SummernoteConfig extends AbstractConfig {
      * @return current instance
      */
     public SummernoteConfig force(boolean force) {
-	put(Force, force);
-	return this;
+        put(Force, force);
+        return this;
     }
 
     /**
@@ -156,17 +114,17 @@ public class SummernoteConfig extends AbstractConfig {
      * @return current instance
      */
     public SummernoteConfig withMaxFileSize(int maxFileSize) {
-	put(MaxFileSize, maxFileSize);
-	return this;
+        put(MaxFileSize, maxFileSize);
+        return this;
     }
 
     /**
      * Gets the max file size
-     * 
+     *
      * @return the max file size
      */
     public int getMaxFileSize() {
-	return get(MaxFileSize);
+        return get(MaxFileSize);
     }
 
     /**
@@ -175,83 +133,83 @@ public class SummernoteConfig extends AbstractConfig {
      * @return current instance
      */
     public SummernoteConfig withImageUploadCallbackUrl(String callbackUrl) {
-	put(ImageUploadCallbackUrl, callbackUrl);
-	return this;
+        put(ImageUploadCallbackUrl, callbackUrl);
+        return this;
     }
 
     /**
      * Gets the storage
-     * 
+     *
      * @param storageId
      *            the storage id;
      * @return the storage
      */
     public static SummernoteStorage getStorage(String storageId) {
-	for (SummernoteStorage storage : storages) {
-	    if (storage.getId().equals(storageId)) {
-		return storage;
-	    }
-	}
-	throw new WicketRuntimeException("Please ensure that you provided a storage by the id " + storageId);
+        for (SummernoteStorage storage : storages) {
+                if (storage.getId().equals(storageId)) {
+                return storage;
+            }
+        }
+        throw new WicketRuntimeException("Please ensure that you provided a storage by the id " + storageId);
     }
 
     /**
      * Adds a summer note storage
-     * 
+     *
      * @param storage
      *            the storage to be added
      */
     public static void addStorage(SummernoteStorage storage) {
-	storages.add(storage);
+        storages.add(storage);
     }
 
     /**
      * Gets the storage id
-     * 
+     *
      * @return the storage id
      */
     public String getStorageId() {
-	return storageId;
+        return storageId;
     }
 
     /**
      * Tells the summernote editor which storage should be used
-     * 
+     *
      * @param storageId
      *            the storage id to be used
      */
     public void useStorageId(String storageId) {
-	this.storageId = storageId;
+        this.storageId = storageId;
     }
 
     /**
      * Gets a list of button ids of the given category
-     * 
+     *
      * @return a list of button ids
      */
     public List<String> getButtons(String category) {
-	return toolbarOptions.get(category);
+        return toolbarOptions.get(category);
     }
 
     /**
      * Adds buttons to the toolbar
-     * 
+     *
      * @param category
      *            the button category
      * @param buttonIds
      *            the ids of the buttons
      */
     public void addButtons(String category, List<String> buttonIds) {
-	toolbarOptions.put(category, buttonIds);
+        toolbarOptions.put(category, buttonIds);
     }
 
     /**
      * Removes buttons of a given category
-     * 
+     *
      * @param category
      *            the category to remove buttons
      */
     public void removeButtons(String category) {
-	toolbarOptions.remove(category);
+        toolbarOptions.remove(category);
     }
 }
