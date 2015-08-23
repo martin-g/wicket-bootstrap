@@ -27,7 +27,7 @@ public class SummernotePage extends BasePage {
         final NotificationPanel feedback = new NotificationPanel("feedback");
         feedback.setOutputMarkupId(true);
 
-        Form<Void> form = new Form<Void>("form");
+        Form<Void> form = new Form<>("form");
 
         SummernoteConfig summernoteConfig = new SummernoteConfig();
         Folder folder = new Folder(System.getProperty("java.io.tmpdir"), "bootstrap-summernote");

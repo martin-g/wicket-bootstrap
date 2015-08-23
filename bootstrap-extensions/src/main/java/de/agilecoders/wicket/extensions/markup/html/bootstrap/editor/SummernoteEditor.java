@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Map;
 
 import com.google.common.base.Charsets;
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileUploadException;
 import org.apache.wicket.WicketRuntimeException;
 import org.apache.wicket.ajax.AbstractDefaultAjaxBehavior;
 import org.apache.wicket.ajax.AjaxRequestTarget;
@@ -30,8 +32,6 @@ import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.lang.Bytes;
 import org.apache.wicket.util.string.StringValue;
 import org.apache.wicket.util.template.PackageTextTemplate;
-import org.apache.wicket.util.upload.FileItem;
-import org.apache.wicket.util.upload.FileUploadException;
 
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeCDNCSSReference;
 
@@ -161,7 +161,7 @@ public class SummernoteEditor extends FormComponent<String> {
          *             if an exception occurred while reading / writing any file
          */
         private List<FileItem> storeFile(AjaxRequestTarget target, MultipartServletWebRequest multiPartRequest) {
-            List<FileItem> fileItems = new ArrayList<FileItem>();
+            List<FileItem> fileItems = new ArrayList<>();
             Map<String, List<FileItem>> fileMap = multiPartRequest.getFiles();
             Iterator<List<FileItem>> fileItemListIterator = fileMap.values().iterator();
             while (fileItemListIterator.hasNext()) {

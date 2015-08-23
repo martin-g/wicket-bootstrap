@@ -2,7 +2,6 @@ package de.agilecoders.wicket.extensions.markup.html.bootstrap.editor;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -74,8 +73,6 @@ public class SummernoteFileStorage implements SummernoteStorage {
         try {
             fileInputStream = new FileInputStream(image);
             return IOUtils.toByteArray(fileInputStream);
-        } catch (FileNotFoundException e) {
-            throw new WicketRuntimeException("Error while reading file: " + image.getPath(), e);
         } catch (IOException e) {
             throw new WicketRuntimeException("Error while reading file: " + image.getPath(), e);
         } finally {
@@ -103,8 +100,6 @@ public class SummernoteFileStorage implements SummernoteStorage {
         try {
             fileOutputStream = new FileOutputStream(image);
             IOUtils.copy(inputStream, fileOutputStream);
-        } catch (FileNotFoundException e) {
-            throw new WicketRuntimeException("Error while writing file: " + image.getPath(), e);
         } catch (IOException e) {
             throw new WicketRuntimeException("Error while writing file: " + image.getPath(), e);
         } finally {
