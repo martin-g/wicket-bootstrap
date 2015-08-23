@@ -85,8 +85,6 @@ public class ExtensionsPage extends BasePage {
     public ExtensionsPage(PageParameters parameters) {
         super(parameters);
 
-        dropzoneFileUpload();
-
         List<Html5Player.IVideo> videos = Lists.<Html5Player.IVideo> newArrayList(new Video(
             "https://archive.org/download/CopyingIsNotTheft/CINT_Nik_H264_720.ogv", "video/ogg"),
             new Video("https://archive.org/download/CopyingIsNotTheft/CINT_Nik_H264_720_512kb.mp4",
