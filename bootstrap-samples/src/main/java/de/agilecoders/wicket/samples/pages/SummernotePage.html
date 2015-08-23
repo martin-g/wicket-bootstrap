@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>Summernote Page</title>
+</head>
+<body>
+<wicket:extend>
+    <header class="jumbotron subhead" id="overview">
+        <div class="container">
+            <h1>Rich Editor for Bootstrap3</h1>
+
+            <p class="lead">
+                The <a href="https://github.com/summernote/summernote" target="_blank">Summernote editor</a>. <br/>
+            </p>
+        </div>
+    </header>
+
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-12">
+                <form wicket:id="form">
+                    <div wicket:id="summernote"></div>
+                    <input wicket:id="submit" type="submit" value="submit"/>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12" wicket:id="feedback"></div>
+        </div>
+    </div>
+</wicket:extend>
+</body>
+</html>
