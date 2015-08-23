@@ -150,7 +150,7 @@ public class SummernoteConfig extends AbstractConfig {
                 return storage;
             }
         }
-        throw new WicketRuntimeException("Please ensure that you provided a storage by the id " + storageId);
+        throw new WicketRuntimeException("Cannot find a storage with id: " + storageId + ". Use #addStorage(SummernoteStorage) to setup it.");
     }
 
     /**

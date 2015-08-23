@@ -12,6 +12,9 @@ import de.agilecoders.wicket.core.settings.IBootstrapSettings;
 import de.agilecoders.wicket.core.settings.ThemeProvider;
 import de.agilecoders.wicket.extensions.javascript.GoogleClosureJavaScriptCompressor;
 import de.agilecoders.wicket.extensions.javascript.YuiCssCompressor;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.editor.SummernoteConfig;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.editor.SummernoteFileStorage;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.editor.SummernoteStoredImageResourceReference;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.html5player.Html5PlayerCssReference;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.html5player.Html5PlayerJavaScriptReference;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.OpenWebIconsCssReference;
@@ -43,6 +46,7 @@ import org.apache.wicket.request.resource.caching.NoOpResourceCachingStrategy;
 import org.apache.wicket.request.resource.caching.version.CachingResourceVersion;
 import org.apache.wicket.serialize.java.DeflatedJavaSerializer;
 import org.apache.wicket.settings.IRequestCycleSettings;
+import org.apache.wicket.util.file.Folder;
 import org.apache.wicket.util.io.IOUtils;
 import org.apache.wicket.util.string.Strings;
 import org.wicketstuff.annotation.scan.AnnotatedMountScanner;
@@ -55,6 +59,13 @@ import java.util.Properties;
  * Demo Application instance.
  */
 public class WicketApplication extends WebApplication {
+
+    /**
+     * The id of the storage for images
+     */
+    public static final String STORAGE_ID = "fileStorage";
+
+
     private Properties properties;
 
     /**
@@ -115,7 +126,24 @@ public class WicketApplication extends WebApplication {
             securePackageResourceGuard.addPattern("+*.woff2");
         }
 
+        configureSummernote();
+
         WicketSource.configure(this);
+    }
+
+    /**
+     * Setups Summernote's file storage for image uploads
+     */
+    private void configureSummernote() {
+        // the folder where to store the images
+        Folder folder = new Folder(System.getProperty("java.io.tmpdir"), "bootstrap-summernote");
+        folder.mkdirs();
+
+        SummernoteConfig.addStorage(new SummernoteFileStorage(STORAGE_ID, folder));
+
+        // mount the resource reference responsible for image uploads
+        mountResource(SummernoteStoredImageResourceReference.SUMMERNOTE_MOUNT_PATH,
+                      new SummernoteStoredImageResourceReference(STORAGE_ID));
     }
 
     /**
