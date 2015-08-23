@@ -19,6 +19,7 @@
         <x-editable.version>1.5.1</x-editable.version>
         <spin-js.version>2.0.0</spin-js.version>
         <animate.css.version>3.2.5</animate.css.version>
+        <summernote.version>0.6.16</summernote.version>
     </properties>
 
     <dependencies>
@@ -118,6 +119,12 @@
 	    	<groupId>org.webjars</groupId>
 	    	<artifactId>animate.css</artifactId>
 	    	<version>${animate.css.version}</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.webjars.bower</groupId>
+		    <artifactId>summernote</artifactId>
+		    <version>${summernote.version}</version>
 		</dependency>
 
         <dependency>
