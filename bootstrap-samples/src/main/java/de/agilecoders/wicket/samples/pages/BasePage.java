@@ -170,6 +170,7 @@ abstract class BasePage extends GenericWebPage<Void> {
                 subMenu.add(new MenuBookmarkablePageLink<Void>(XEditablePage.class, Model.of("X-Editable")).setIconType(GlyphIconType.pencil));
                 subMenu.add(new MenuBookmarkablePageLink<Void>(TooltipValidationPage.class, Model.of("Validation")).setIconType(GlyphIconType.okcircle));
                 subMenu.add(new MenuBookmarkablePageLink<Void>(SummernotePage.class, Model.of("Summernote")).setIconType(GlyphIconType.edit));
+                subMenu.add(new MenuBookmarkablePageLink<Void>(CheckboxesPage.class, Model.of("Checkboxes and Toggles")).setIconType(GlyphIconType.check));
                 return subMenu;
             }
         }.setIconType(GlyphIconType.thlarge);

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>Summernote Page</title>
+</head>
+<body>
+<wicket:extend>
+    <header class="jumbotron subhead" id="overview">
+        <div class="container">
+            <h1>Bootstrap-Checkbox(Picker)</h1>
+
+            <p class="lead">
+                The <a href="http://vsn4ik.github.io/bootstrap-checkbox/" target="_blank">Bootstrap-Checkbox(Picker)</a>. <br/>
+            </p>
+        </div>
+    </header>
+
+
+    <div class="container" style="padding-bottom: 50px">
+
+        <div class="row">
+            <div class="col-md-12">
+                <input type="checkbox" wicket:id="checkboxPicker">
+            </div>
+        </div>
+        <div class="row" style="padding-top: 10px">
+            <div class="col-md-12" wicket:id="feedback"></div>
+        </div>
+    </div>
+
+    <div class="container"style="padding-bottom: 100px">
+        <div class="row">
+            <div class="col-md-12">
+                The source of this demo could be found <a target="_blank" href="https://github.com/l0rdn1kk0n/wicket-bootstrap/blob/master/bootstrap-samples/src/main/java/de/agilecoders/wicket/samples/pages/CheckboxesPage.java">here</a>.
+            </div>
+        </div>
+    </div>
+
+</wicket:extend>
+</body>
+</html>

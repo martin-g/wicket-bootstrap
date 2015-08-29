@@ -1,6 +1,7 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.button;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
+import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNameProvider;
 import de.agilecoders.wicket.core.util.Attributes;
 
 import org.apache.wicket.markup.ComponentTag;
@@ -19,13 +20,17 @@ public abstract class ButtonGroup extends Panel {
     /** serialVersionUID. */
     private static final long serialVersionUID = 1L;
 
-    public static enum Size {
+    public enum Size implements ICssClassNameProvider {
         ExtraSmall("xs"), Small("sm"), Default(""), Large("lg");
 
         private final String cssName;
 
-        private Size(String cssName) {
+        Size(String cssName) {
             this.cssName = cssName;
+        }
+
+        public String cssClassName() {
+            return "btn-group-" +cssName;
         }
     }
 
@@ -62,7 +67,7 @@ public abstract class ButtonGroup extends Panel {
 
         BootstrapBaseBehavior.addTo(this);
     }
-    
+
     /**
      * @see org.apache.wicket.Component#onInitialize()
      */
@@ -79,7 +84,7 @@ public abstract class ButtonGroup extends Panel {
         Attributes.addClass(tag, orientation.cssClassName(), "btn-group");
 
         if (!Size.Default.equals(size)) {
-            Attributes.addClass(tag, "btn-group-" + size.cssName);
+            Attributes.addClass(tag, size.cssClassName());
         }
     }
 
