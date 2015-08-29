@@ -1,8 +1,10 @@
 package de.agilecoders.wicket.samples.pages;
 
+import de.agilecoders.wicket.core.markup.html.bootstrap.block.Code;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.ButtonGroup;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.checkbox.bootstrapcheckbox.BootstrapCheckBoxPicker;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.checkbox.bootstrapcheckbox.BootstrapCheckBoxPickerConfig;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.checkboxx.CheckBoxX;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeCssReference;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeIconType;
 import org.apache.wicket.ajax.AjaxRequestTarget;
@@ -27,7 +29,19 @@ public class CheckboxesPage extends BasePage {
     public CheckboxesPage(PageParameters parameters) {
         super(parameters);
 
-        final NotificationPanel feedback = new NotificationPanel("feedback");
+        addCheckboxPicker();
+        addCheckboxX();
+    }
+
+    @Override
+    public void renderHead(IHeaderResponse response) {
+        super.renderHead(response);
+
+        response.render(CssHeaderItem.forReference(FontAwesomeCssReference.instance()));
+    }
+
+    private void addCheckboxPicker() {
+        final NotificationPanel feedback = new NotificationPanel("checkBoxPickerFeedback");
         feedback.setOutputMarkupId(true);
 
         BootstrapCheckBoxPickerConfig config = new BootstrapCheckBoxPickerConfig();
@@ -45,14 +59,37 @@ public class CheckboxesPage extends BasePage {
                 target.add(feedback);
             }
         });
-
-        add(feedback, checkBoxPicker);
+        add(checkBoxPicker, feedback);
     }
 
-    @Override
-    public void renderHead(IHeaderResponse response) {
-        super.renderHead(response);
+    private void addCheckboxX() {
+        final NotificationPanel feedback = new NotificationPanel("checkBoxXFeedback");
+        feedback.setOutputMarkupId(true);
 
-        response.render(CssHeaderItem.forReference(FontAwesomeCssReference.instance()));
+        CheckBoxX checkBoxX = new CheckBoxX("checkboxX", new Model<Boolean>(true)) {
+            @Override
+            protected void onChange(Boolean value, AjaxRequestTarget target) {
+                super.onChange(value, target);
+
+                String s;
+                if (Boolean.FALSE.equals(value)) {
+                    s = "unchecked";
+                } else if (Boolean.TRUE.equals(value)) {
+                    s = "checked";
+                } else {
+                    s = "undefined";
+                }
+                info("The selection is: " + s);
+                target.add(feedback);
+            }
+        };
+
+        Code code = new Code("linkCode",
+                             Model.of("CheckboxX checkboxX = new CheckboxX(\"checkboxX\", new Model<Boolean>(true)) {\n"
+                                      + "  @Override\n" + "  protected void onChange(Boolean value, AjaxRequestTarget target) {\n"
+                                      + "    info(\"The selection is: \" + value);\n" + "    target.add(feedback);\n" + "  }\n"
+                                      + "};"));
+
+        add(checkBoxX, feedback, code);
     }
 }
