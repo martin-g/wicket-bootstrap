@@ -189,8 +189,6 @@ public class ExtensionsPage extends BasePage {
         laddaButton();
         confirmationButton();
 
-        checkboxX();
-
         spinnerSample();
         animationSample();
 
@@ -286,39 +284,6 @@ public class ExtensionsPage extends BasePage {
             }
         };
         add(animate, feedback);
-    }
-
-    private void checkboxX() {
-        CheckBoxX checkBoxX = new CheckBoxX("checkboxX", new Model<Boolean>(true)) {
-            @Override
-            protected void onChange(Boolean value, AjaxRequestTarget target) {
-                super.onChange(value, target);
-
-                String s;
-                if (Boolean.FALSE.equals(value)) {
-                    s = "unchecked";
-                } else if (Boolean.TRUE.equals(value)) {
-                    s = "checked";
-                } else {
-                    s = "undefined";
-                }
-                info("The selection is: " + s);
-                target.add(getParent().get("feedback"));
-            }
-        };
-
-        final NotificationPanel feedback = new NotificationPanel("feedback", checkBoxX);
-        feedback.setOutputMarkupId(true);
-
-        Code code = new Code("linkCode", Model.of("CheckboxX checkboxX = new CheckboxX(\"checkboxX\", new Model<Boolean>(true)) {\n"
-                                                  + "  @Override\n"
-                                                  + "  protected void onChange(Boolean value, AjaxRequestTarget target) {\n"
-                                                  + "    info(\"The selection is: \" + value);\n"
-                                                  + "    target.add(feedback);\n"
-                                                  + "  }\n"
-                                                  + "};"));
-
-        add(checkBoxX, feedback, code);
     }
 
     private void laddaButton() {

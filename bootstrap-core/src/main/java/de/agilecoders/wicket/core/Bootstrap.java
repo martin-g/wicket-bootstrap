@@ -1,11 +1,7 @@
 package de.agilecoders.wicket.core;
 
-import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapResourcesBehavior;
-import de.agilecoders.wicket.core.settings.BootstrapResourceAppender;
-import de.agilecoders.wicket.core.settings.BootstrapSettings;
-import de.agilecoders.wicket.core.settings.IBootstrapSettings;
-import de.agilecoders.wicket.jquery.WicketJquerySelectors;
-import de.agilecoders.wicket.webjars.WicketWebjars;
+import java.io.IOException;
+
 import org.apache.wicket.Application;
 import org.apache.wicket.Component;
 import org.apache.wicket.MetaDataKey;
@@ -15,6 +11,23 @@ import org.apache.wicket.markup.html.SecurePackageResourceGuard;
 import org.apache.wicket.settings.MarkupSettings;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.util.lang.Args;
+
+import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.core.Version;
+import com.fasterxml.jackson.databind.JsonSerializer;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializerProvider;
+import com.fasterxml.jackson.databind.module.SimpleModule;
+
+import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapResourcesBehavior;
+import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
+import de.agilecoders.wicket.core.settings.BootstrapResourceAppender;
+import de.agilecoders.wicket.core.settings.BootstrapSettings;
+import de.agilecoders.wicket.core.settings.IBootstrapSettings;
+import de.agilecoders.wicket.jquery.WicketJquerySelectors;
+import de.agilecoders.wicket.jquery.settings.ObjectMapperFactory;
+import de.agilecoders.wicket.jquery.settings.SingletonObjectMapperFactory;
+import de.agilecoders.wicket.webjars.WicketWebjars;
 
 /**
  * #### Description
@@ -83,6 +96,19 @@ public final class Bootstrap {
             if (!WicketJquerySelectors.isInstalled(app)) {
                 WicketJquerySelectors.install(app);
             }
+            ObjectMapperFactory objectMapperFactory = WicketJquerySelectors.assignedSettingsOrDefault().getObjectMapperFactory();
+            if (objectMapperFactory instanceof SingletonObjectMapperFactory) {
+                SingletonObjectMapperFactory singletonObjectMapperFactory = (SingletonObjectMapperFactory) objectMapperFactory;
+                ObjectMapper objectMapper = singletonObjectMapperFactory.newObjectMapper();
+                SimpleModule module = new SimpleModule("wicket-bootstrap", new Version(1, 0, 0, null, "de.agilecoders.wicket", "wicket-bootstrap"));
+                module.addSerializer(IconType.class, new JsonSerializer<IconType>() {
+                    @Override
+                    public void serialize(IconType iconType, JsonGenerator jsonGenerator, SerializerProvider serializerProvider) throws IOException {
+                        jsonGenerator.writeString(iconType.cssClassName());
+                    }
+                });
+                objectMapper.registerModule(module);
+            }
 
             if (settings.useWebjars() && app instanceof WebApplication) {
                 WicketWebjars.install((WebApplication) app);
@@ -133,7 +159,7 @@ public final class Bootstrap {
         if (packageResourceGuard instanceof SecurePackageResourceGuard) {
             SecurePackageResourceGuard guard = (SecurePackageResourceGuard) packageResourceGuard;
             guard.addPattern("+*.woff");
-            guard.addPattern("+*.woff2");            
+            guard.addPattern("+*.woff2");
             guard.addPattern("+*.eot");
             guard.addPattern("+*.svg");
             guard.addPattern("+*.ttf");

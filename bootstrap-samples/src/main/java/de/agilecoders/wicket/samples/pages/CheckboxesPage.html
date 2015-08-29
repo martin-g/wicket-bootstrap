@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>Summernote Page</title>
+</head>
+<body>
+<wicket:extend>
+    <header class="jumbotron subhead" id="overview">
+        <div class="container">
+            <h1>Checkboxes and Toogles</h1>
+        </div>
+    </header>
+
+    <section class="container" style="padding-bottom: 50px">
+        <div class="page-header">
+            <h1>Bootstrap-Checkbox(Picker)</h1>
+        </div>
+
+        <p>Toggleable checkbox with <a href="http://vsn4ik.github.io/bootstrap-checkbox/" target="_blank">Bootstrap-Checkbox(Picker)</a></p>
+
+        <div class="row">
+            <div class="col-md-12">
+                <input type="checkbox" wicket:id="checkboxPicker">
+            </div>
+        </div>
+        <div class="row" style="padding-top: 10px">
+            <div class="col-md-12" wicket:id="checkBoxPickerFeedback"></div>
+        </div>
+    </section>
+
+    <section id="checkboxX" class="container" style="padding-bottom: 50px">
+        <div class="page-header">
+            <h1>CheckBox-X - three state checkbox</h1>
+        </div>
+
+        <p>Three state checkboxes with <a target="_blank" href="https://github.com/kartik-v/bootstrap-checkbox-x">Checkbox-X</a>.</p>
+
+        <div class="bs-docs-example">
+            <label>Click it &gt; <input type="checkbox" wicket:id="checkboxX" class="form-control" /></label>
+            <div class="col-md-12" wicket:id="checkBoxXFeedback"></div>
+            To use it just replace the usage of <em>org.apache.wicket.markup.html.form.CheckBox</em> with
+            <em>de.agilecoders.wicket.extensions.markup.html.bootstrap.form.checkboxx.CheckBoxX</em>
+            <pre wicket:id="linkCode"></pre>
+        </div>
+    </section>
+
+    <div class="container"style="padding-bottom: 100px">
+        <div class="row">
+            <div class="col-md-12">
+                The source of this demo could be found <a target="_blank" href="https://github.com/l0rdn1kk0n/wicket-bootstrap/blob/master/bootstrap-samples/src/main/java/de/agilecoders/wicket/samples/pages/CheckboxesPage.java">here</a>.
+            </div>
+        </div>
+    </div>
+
+</wicket:extend>
+</body>
+</html>

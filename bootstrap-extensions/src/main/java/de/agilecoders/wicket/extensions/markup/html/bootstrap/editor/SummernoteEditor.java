@@ -1,9 +1,9 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.editor;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -110,10 +110,10 @@ public class SummernoteEditor extends FormComponent<String> {
      *
      * @param target
      *            the target to update components
-     * @param fileItems
-     *            the list of file items (the image)
+     * @param fileItemsMap
+     *            a map with the image name and the list of file items (the image)
      */
-    protected void onImageUpload(AjaxRequestTarget target, List<FileItem> fileItems) {
+    protected void onImageUpload(AjaxRequestTarget target, Map<String,FileItem> fileItemsMap) {
         // NOOP
     }
 
@@ -142,8 +142,8 @@ public class SummernoteEditor extends FormComponent<String> {
                 MultipartServletWebRequest multiPartRequest = webRequest.newMultipartWebRequest(
                     Bytes.megabytes(config.getMaxFileSize()), "ignored");
                 multiPartRequest.parseFileParts();
-                List<FileItem> fileItems = storeFile(target, multiPartRequest);
-                onImageUpload(target, fileItems);
+                Map<String,FileItem> fileItemsMap = storeFile(target, multiPartRequest);
+                onImageUpload(target, fileItemsMap);
             } catch (FileUploadException fux) {
                 onImageError(target, fux);
             }
@@ -160,27 +160,28 @@ public class SummernoteEditor extends FormComponent<String> {
          * @throws IOException
          *             if an exception occurred while reading / writing any file
          */
-        private List<FileItem> storeFile(AjaxRequestTarget target, MultipartServletWebRequest multiPartRequest) {
-            List<FileItem> fileItems = new ArrayList<>();
+        private Map<String,FileItem> storeFile(AjaxRequestTarget target, MultipartServletWebRequest multiPartRequest) {
+            Map<String,FileItem> fileItemsMap = new LinkedHashMap<String, FileItem>();
             Map<String, List<FileItem>> fileMap = multiPartRequest.getFiles();
             Iterator<List<FileItem>> fileItemListIterator = fileMap.values().iterator();
             while (fileItemListIterator.hasNext()) {
                 Iterator<FileItem> fileItemIterator = fileItemListIterator.next().iterator();
                 while (fileItemIterator.hasNext()) {
                     FileItem fileItem = fileItemIterator.next();
+                    String imageName = config.getImageNamePrefix() + fileItem.getName();
                     try {
                         SummernoteStorage storage = SummernoteConfig.getStorage(config.getStorageId());
-                        storage.writeContent(fileItem.getName(), fileItem.getInputStream());
+                        storage.writeContent(imageName, fileItem.getInputStream());
                         WebResponse response = (WebResponse) target.getHeaderResponse().getResponse();
                         response.setHeader("imageUrl", SummernoteStoredImageResourceReference.SUMMERNOTE_MOUNT_PATH
-                                                       + "?image=" + Base64.encodeBase64String(fileItem.getName().getBytes()));
-                        fileItems.add(fileItem);
+                                                       + "?image=" + Base64.encodeBase64String(imageName.getBytes()));
+                        fileItemsMap.put(imageName, fileItem);
                     } catch (IOException e) {
-                        throw new WicketRuntimeException("Error while writing image: " + fileItem.getName(), e);
+                        throw new WicketRuntimeException("Error while writing image: " + imageName, e);
                     }
                 }
             }
-            return fileItems;
+            return fileItemsMap;
         }
 
         @Override
