@@ -214,14 +214,14 @@ public class SummernoteConfig extends AbstractConfig {
     public void removeButtons(String category) {
         toolbarOptions.remove(category);
     }
-    
+
     /**
      * Override this method to provide a customized prefix images should be
      * stored.
-     * 
+     *
      * @return a prefix for the image names to be stored
      */
     public String getImageNamePrefix() {
-	return UUID.randomUUID().toString();
+        return UUID.randomUUID().toString();
     }
 }
