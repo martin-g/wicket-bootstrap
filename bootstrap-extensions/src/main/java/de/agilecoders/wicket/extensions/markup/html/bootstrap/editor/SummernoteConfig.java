@@ -5,9 +5,11 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.UUID;
+
+import org.apache.wicket.WicketRuntimeException;
 
 import com.google.common.collect.Lists;
-import org.apache.wicket.WicketRuntimeException;
 
 import de.agilecoders.wicket.jquery.AbstractConfig;
 import de.agilecoders.wicket.jquery.IKey;
@@ -211,5 +213,15 @@ public class SummernoteConfig extends AbstractConfig {
      */
     public void removeButtons(String category) {
         toolbarOptions.remove(category);
+    }
+    
+    /**
+     * Override this method to provide a customized prefix images should be
+     * stored.
+     * 
+     * @return a prefix for the image names to be stored
+     */
+    public String getImageNamePrefix() {
+	return UUID.randomUUID().toString();
     }
 }
