@@ -4,6 +4,8 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.block.Code;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.ButtonGroup;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.checkbox.bootstrapcheckbox.BootstrapCheckBoxPicker;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.checkbox.bootstrapcheckbox.BootstrapCheckBoxPickerConfig;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.checkbox.bootstraptoggle.BootstrapToggle;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.checkbox.bootstraptoggle.BootstrapToggleConfig;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.checkboxx.CheckBoxX;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeCssReference;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeIconType;
@@ -11,6 +13,8 @@ import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.form.AjaxFormComponentUpdatingBehavior;
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
+import org.apache.wicket.markup.html.form.CheckBox;
+import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.wicketstuff.annotation.mount.MountPath;
@@ -30,6 +34,7 @@ public class CheckboxesPage extends BasePage {
         super(parameters);
 
         addCheckboxPicker();
+        addCheckboxToggle();
         addCheckboxX();
     }
 
@@ -60,6 +65,32 @@ public class CheckboxesPage extends BasePage {
             }
         });
         add(checkBoxPicker, feedback);
+    }
+
+    private void addCheckboxToggle() {
+        final NotificationPanel feedback = new NotificationPanel("checkBoxToggleFeedback");
+        feedback.setOutputMarkupId(true);
+
+        BootstrapToggleConfig config = new BootstrapToggleConfig();
+        config
+            .withOnStyle(BootstrapToggleConfig.Style.info).withOffStyle(BootstrapToggleConfig.Style.warning)
+            .withStyle("customCssClass");
+
+        final BootstrapToggle checkBoxToggle = new BootstrapToggle("checkboxToggle", Model.of(true), config) {
+            @Override
+            protected CheckBox newCheckBox(String id, IModel<Boolean> model) {
+                final CheckBox checkBox = super.newCheckBox(id, model);
+                checkBox.add(new AjaxFormComponentUpdatingBehavior("change") {
+                    @Override
+                    protected void onUpdate(AjaxRequestTarget target) {
+                        info("Selected: " + checkBox.getModelObject());
+                        target.add(feedback);
+                    }
+                });
+                return checkBox;
+            }
+        };
+        add(checkBoxToggle, feedback);
     }
 
     private void addCheckboxX() {
