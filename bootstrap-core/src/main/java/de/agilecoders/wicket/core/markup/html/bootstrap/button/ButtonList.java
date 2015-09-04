@@ -9,6 +9,8 @@ import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.util.lang.Args;
 
+import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.CssClassNameAppender;
+
 import java.util.List;
 
 /**
@@ -73,13 +75,24 @@ public class ButtonList extends ListView<AbstractLink> {
         return false;
     }
 
+    
+    @Override
+    protected void onConfigure() {
+        //configure the list's items as I need to check the "enabled" state in populateItem.  
+        for(AbstractLink link :  getList()) {
+            link.configure();
+        }
+        super.onConfigure();
+    }
 
     @Override
     protected void populateItem(ListItem<AbstractLink> item) {
         final AbstractLink link = item.getModelObject();
-
         Args.isTrue(getButtonMarkupId().equals(link.getId()), "component id is invalid, please use ButtonList.getButtonMarkupId()");
 
+        if (!link.isEnabled()) {
+            item.add(new CssClassNameAppender("disabled"));
+        }
         item.add(link);
     }
 }
