@@ -33,7 +33,7 @@ public class SummernoteConfig extends AbstractConfig {
     private static final IKey<Boolean> Force = newKey("force", null);
     private static final IKey<Integer> MaxFileSize = newKey("maxFilesize", 2097152);
     private static final IKey<String> ImageUploadCallbackUrl = newKey("imageUploadUrl", null);
-    private static final IKey<Integer> OverlayTimeout = newKey("overlayTimeout",2000);
+    private static final IKey<Integer> OverlayTimeout = newKey("overlayTimeout", 2000);
 
     /**
      * A set of storages used by the *StoredImageResourceReference and the
