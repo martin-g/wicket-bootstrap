@@ -13,15 +13,15 @@ $(function() {
     var summernoteConfigDefault = {
         toolbar : toolbar,
         onImageUpload : function(files) {
-		var files = $(files);
-		var filesSize = files.length;
-		var overlay;
+            var files = $(files);
+            var filesSize = files.length;
+            var overlay;
 
-		// Show Overlay
-		var overlayTimeout = setTimeout(function() {
-			overlay = $("<div class='summernoteOverlay'></div>").appendTo("body");
-			new Spinner({color:'#fff'}).spin(overlay[0]);
-		}, summernoteConfig.overlayTimeout);
+            // Show Overlay
+            var overlayTimeout = setTimeout(function() {
+                overlay = $("<div class='summernoteOverlay'></div>").appendTo("body");
+                new Spinner({color:'#fff'}).spin(overlay[0]);
+            }, summernoteConfig.overlayTimeout);
 
             files.each(function() {
                 var file = this;
@@ -40,7 +40,7 @@ $(function() {
                     contentType : false,
                     processData : false,
                     success : function(res, status, xhr) {
-			// Insert image
+                        // Insert image
                         var imageUrl = xhr.getResponseHeader("imageUrl");
                         var decodedImageUrl = window.atob(/(image=)(.*)[^&]*/.exec(imageUrl)[2]);
                         imageUrl = imageUrl.replace(/(image=)[^&]*/, '$1' + decodedImageUrl);
@@ -48,11 +48,11 @@ $(function() {
 
                         // Hide Overlay
                         filesSize -= 1;
-                        if(!filesSize) {
-				clearTimeout(overlayTimeout);
-				if(overlay) {
-					overlay.remove();
-				}
+                        if (!filesSize) {
+                            clearTimeout(overlayTimeout);
+                            if(overlay) {
+                                overlay.remove();
+                            }
                         }
                     }
                 });
