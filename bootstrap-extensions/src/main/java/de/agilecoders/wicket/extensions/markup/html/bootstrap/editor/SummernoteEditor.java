@@ -26,6 +26,7 @@ import org.apache.wicket.request.IRequestParameters;
 import org.apache.wicket.request.Request;
 import org.apache.wicket.request.cycle.RequestCycle;
 import org.apache.wicket.request.http.WebResponse;
+import org.apache.wicket.request.resource.JavaScriptResourceReference;
 import org.apache.wicket.util.crypt.Base64;
 import org.apache.wicket.util.io.IOUtils;
 import org.apache.wicket.util.lang.Args;
@@ -36,6 +37,7 @@ import org.apache.wicket.util.upload.FileItem;
 import org.apache.wicket.util.upload.FileUploadException;
 
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeCDNCSSReference;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.references.SpinJsReference;
 
 /**
  * A summer note editor
@@ -70,8 +72,10 @@ public class SummernoteEditor extends FormComponent<String> {
     public void renderHead(IHeaderResponse response) {
         response.render(JavaScriptHeaderItem.forReference(SummernoteEditorJavaScriptReference.instance()));
         response.render(JavaScriptHeaderItem.forReference(SummernoteEditorFormDataReference.instance()));
+        response.render(JavaScriptHeaderItem.forReference(SpinJsReference.INSTANCE));
         response.render(CssHeaderItem.forReference(SummernoteEditorCssReference.instance()));
         response.render(CssHeaderItem.forReference(FontAwesomeCDNCSSReference.instance()));
+        response.render(CssHeaderItem.forReference(SummernoteEditorOverlayCssReference.instance()));
         PackageTextTemplate summernoteTemplate = null;
         try {
             summernoteTemplate = new PackageTextTemplate(SummernoteEditor.class, "js/summernote_init.js");

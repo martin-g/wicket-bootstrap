@@ -13,7 +13,14 @@ $(function() {
     var summernoteConfigDefault = {
         toolbar : toolbar,
         onImageUpload : function(files) {
-            $(files).each(function(){
+        	var files = $(files);
+        	var filesSize = files.length;
+        	
+        	// Show Overlay
+        	$("body").append("<div class='summernoteOverlay'></div>");
+        	new Spinner({color:'#fff'}).spin($(".summernoteOverlay")[0]);
+        	
+            files.each(function(){
                 var file = this;
                 var data = new FormData();
                 data.append("file", file);
@@ -30,10 +37,19 @@ $(function() {
                     contentType : false,
                     processData : false,
                     success : function(res, status, xhr) {
+                    	// Insert image
                         var imageUrl = xhr.getResponseHeader("imageUrl");
                         var decodedImageUrl = window.atob(/(image=)(.*)[^&]*/.exec(imageUrl)[2]);
                         imageUrl = imageUrl.replace(/(image=)[^&]*/, '$1' + decodedImageUrl);
                         $('#'+summernoteConfig.summernoteEditorId).summernote('insertImage',imageUrl);
+                        
+                        filesSize = filesSize-1;
+
+                        // Hide Overlay
+                        console.log(filesSize);
+                        if(filesSize <= 0){
+                        	$(".summernoteOverlay").remove();
+                        }
                     }
                 });
             });
