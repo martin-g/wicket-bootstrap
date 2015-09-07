@@ -4,8 +4,8 @@ import org.apache.wicket.request.resource.CssResourceReference;
 
 /**
  * The summernote overlay css resource reference
- * 
- * @author Tobias Soloschenko 
+ *
+ * @author Tobias Soloschenko
  *
  */
 public class SummernoteEditorOverlayCssReference extends CssResourceReference {
@@ -21,13 +21,13 @@ public class SummernoteEditorOverlayCssReference extends CssResourceReference {
      * @return the single instance of the resource reference
      */
     public static SummernoteEditorOverlayCssReference instance() {
-	return INSTANCE;
+        return INSTANCE;
     }
 
     /**
      * Private constructor.
      */
     private SummernoteEditorOverlayCssReference() {
-	super(SummernoteEditorOverlayCssReference.class,"css/summernote.css");
+        super(SummernoteEditorOverlayCssReference.class,"css/summernote.css");
     }
 }
