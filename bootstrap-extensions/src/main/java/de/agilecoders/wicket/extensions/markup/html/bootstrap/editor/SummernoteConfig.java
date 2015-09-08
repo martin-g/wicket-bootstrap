@@ -13,6 +13,8 @@ import com.google.common.collect.Lists;
 
 import de.agilecoders.wicket.jquery.AbstractConfig;
 import de.agilecoders.wicket.jquery.IKey;
+import org.apache.wicket.util.lang.Bytes;
+import org.apache.wicket.util.time.Duration;
 
 /**
  * Provides config information for the summernote editor
@@ -23,6 +25,9 @@ import de.agilecoders.wicket.jquery.IKey;
 public class SummernoteConfig extends AbstractConfig {
 
     private static final long serialVersionUID = 1L;
+
+    private static final int DEFAULT_OVERLAY_TIMEOUT = (int)Duration.seconds(2).getMilliseconds();
+    private static final int DEFAULT_MAX_SIZE = (int)Bytes.megabytes(2).bytes();
 
     public static final IKey<String> Id = newKey("summernoteEditorId", null);
     public static final IKey<String> Content = newKey("content", null);
@@ -60,8 +65,8 @@ public class SummernoteConfig extends AbstractConfig {
 
     public SummernoteConfig() {
         put(ToolbarOptions, toolbarOptions);
-        put(OverlayTimeout,2000);
-        put(MaxFileSize,2097152);
+        put(OverlayTimeout, DEFAULT_OVERLAY_TIMEOUT);
+        put(MaxFileSize, DEFAULT_MAX_SIZE);
     }
 
     /**
@@ -103,7 +108,7 @@ public class SummernoteConfig extends AbstractConfig {
         put(Height, height);
         return this;
     }
-    
+
     /**
      * @param overlayTimeout
      *            the timeout until the overlay is shown
