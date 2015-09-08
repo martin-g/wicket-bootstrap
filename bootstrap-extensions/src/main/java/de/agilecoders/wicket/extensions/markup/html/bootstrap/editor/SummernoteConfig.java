@@ -31,9 +31,9 @@ public class SummernoteConfig extends AbstractConfig {
     private static final IKey<Integer> MinHeight = newKey("minHeight", null);
     private static final IKey<Integer> Height = newKey("height", null);
     private static final IKey<Boolean> Force = newKey("force", null);
-    private static final IKey<Integer> MaxFileSize = newKey("maxFilesize", 2097152);
+    private static final IKey<Integer> MaxFileSize = newKey("maxFilesize", null);
     private static final IKey<String> ImageUploadCallbackUrl = newKey("imageUploadUrl", null);
-    private static final IKey<Integer> OverlayTimeout = newKey("overlayTimeout", 2000);
+    private static final IKey<Integer> OverlayTimeout = newKey("overlayTimeout", null);
 
     /**
      * A set of storages used by the *StoredImageResourceReference and the
@@ -60,6 +60,8 @@ public class SummernoteConfig extends AbstractConfig {
 
     public SummernoteConfig() {
         put(ToolbarOptions, toolbarOptions);
+        put(OverlayTimeout,2000);
+        put(MaxFileSize,2097152);
     }
 
     /**
