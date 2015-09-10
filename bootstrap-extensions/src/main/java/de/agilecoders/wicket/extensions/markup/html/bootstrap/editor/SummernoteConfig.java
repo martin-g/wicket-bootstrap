@@ -30,7 +30,6 @@ public class SummernoteConfig extends AbstractConfig {
     private static final int DEFAULT_MAX_SIZE = (int)Bytes.megabytes(2).bytes();
 
     public static final IKey<String> Id = newKey("summernoteEditorId", null);
-    public static final IKey<String> Content = newKey("content", null);
     private static final IKey<Boolean> AirMode = newKey("airMode", null);
     private static final IKey<Integer> MaxHeight = newKey("maxHeight", null);
     private static final IKey<Integer> MinHeight = newKey("minHeight", null);
