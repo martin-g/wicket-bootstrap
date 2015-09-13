@@ -57,18 +57,10 @@ $(function() {
                     }
                 });
             });
-        },
-        onBlur: function(e) {
-            // Create a hidden field so that if the form has been submitted the content will be available in the backend
-            var form = summernote.closest("form");
-            if($('#'+summernoteConfig.summernoteEditorId+"_content",form).length <= 0){
-                $(form).append("<input type='hidden' id='"+summernoteConfig.summernoteEditorId+"_content' name='"+summernoteConfig.summernoteEditorId+"_content' value='' />");
-            }
-            $('#'+summernoteConfig.summernoteEditorId+"_content",form).val(window.btoa(summernote.code()));
         }
     };
 
     $.extend(summernoteConfigDefault, summernoteConfig);
+    
     summernote.summernote(summernoteConfigDefault);
-    summernote.code(summernoteConfig.content);
 });
