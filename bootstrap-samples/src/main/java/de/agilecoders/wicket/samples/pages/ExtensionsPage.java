@@ -3,8 +3,6 @@ package de.agilecoders.wicket.samples.pages;
 import java.util.List;
 import java.util.Map;
 
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.confirmation.ConfirmationBehavior;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.confirmation.ConfirmationConfig;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
@@ -25,6 +23,7 @@ import org.apache.wicket.markup.repeater.RepeatingView;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.model.ResourceModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
+import org.apache.wicket.request.resource.CssResourceReference;
 import org.apache.wicket.util.time.Duration;
 import org.wicketstuff.annotation.mount.MountPath;
 
@@ -50,9 +49,10 @@ import de.agilecoders.wicket.extensions.markup.html.bootstrap.behavior.Draggable
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.behavior.DraggableConfig;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.behavior.Resizable;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.button.DropDownAutoOpen;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.confirmation.ConfirmationBehavior;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.confirmation.ConfirmationConfig;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.contextmenu.ButtonListContextMenu;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.fileUpload.DropZoneFileUpload;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.checkboxx.CheckBoxX;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.password.strength.PasswordStrengthBehavior;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.password.strength.PasswordStrengthConfig;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.spinner.Spinner;
@@ -62,6 +62,7 @@ import de.agilecoders.wicket.extensions.markup.html.bootstrap.html5player.Html5V
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.html5player.Video;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.OpenWebIconType;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.OpenWebIconsCssReference;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.jqueryui.JQueryUICssReference;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.ladda.LaddaAjaxButton;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.ladda.LaddaAjaxLink;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.ladda.LaddaBehavior;
@@ -148,9 +149,16 @@ public class ExtensionsPage extends BasePage {
                 Model.of("Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.")) {
             @Override
             protected WebMarkupContainer createDialog(String id) {
-            WebMarkupContainer dialog = super.createDialog(id);
-            dialog.add(new Draggable(new DraggableConfig().withHandle(".modal-header").withCursor("move")));
-            return dialog;
+                WebMarkupContainer dialog = super.createDialog(id);
+                dialog.add(new Draggable(new DraggableConfig().withHandle(".modal-header").withCursor("move")));
+                return dialog;
+            }
+
+            @Override
+            public void renderHead(IHeaderResponse response) {
+                super.renderHead(response);
+                response.render(JQueryUICssReference.asHeaderItem());
+                response.render(CssHeaderItem.forReference(new CssResourceReference(JQueryUICssReference.class, "css/resizable.css")));
             }
         };
         draggableModal.add(new Resizable().withChildSelector(".modal-content"));

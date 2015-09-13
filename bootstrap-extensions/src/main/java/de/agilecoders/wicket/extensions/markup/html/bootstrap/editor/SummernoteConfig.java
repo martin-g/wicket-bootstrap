@@ -13,6 +13,8 @@ import com.google.common.collect.Lists;
 
 import de.agilecoders.wicket.jquery.AbstractConfig;
 import de.agilecoders.wicket.jquery.IKey;
+import org.apache.wicket.util.lang.Bytes;
+import org.apache.wicket.util.time.Duration;
 
 /**
  * Provides config information for the summernote editor
@@ -24,16 +26,18 @@ public class SummernoteConfig extends AbstractConfig {
 
     private static final long serialVersionUID = 1L;
 
+    private static final int DEFAULT_OVERLAY_TIMEOUT = (int)Duration.seconds(2).getMilliseconds();
+    private static final int DEFAULT_MAX_SIZE = (int)Bytes.megabytes(2).bytes();
+
     public static final IKey<String> Id = newKey("summernoteEditorId", null);
-    public static final IKey<String> Content = newKey("content", null);
     private static final IKey<Boolean> AirMode = newKey("airMode", null);
     private static final IKey<Integer> MaxHeight = newKey("maxHeight", null);
     private static final IKey<Integer> MinHeight = newKey("minHeight", null);
     private static final IKey<Integer> Height = newKey("height", null);
     private static final IKey<Boolean> Force = newKey("force", null);
-    private static final IKey<Integer> MaxFileSize = newKey("maxFilesize", 2097152);
+    private static final IKey<Integer> MaxFileSize = newKey("maxFilesize", null);
     private static final IKey<String> ImageUploadCallbackUrl = newKey("imageUploadUrl", null);
-    private static final IKey<Integer> OverlayTimeout = newKey("overlayTimeout", 2000);
+    private static final IKey<Integer> OverlayTimeout = newKey("overlayTimeout", null);
 
     /**
      * A set of storages used by the *StoredImageResourceReference and the
@@ -60,6 +64,8 @@ public class SummernoteConfig extends AbstractConfig {
 
     public SummernoteConfig() {
         put(ToolbarOptions, toolbarOptions);
+        put(OverlayTimeout, DEFAULT_OVERLAY_TIMEOUT);
+        put(MaxFileSize, DEFAULT_MAX_SIZE);
     }
 
     /**

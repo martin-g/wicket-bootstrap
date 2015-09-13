@@ -75,7 +75,6 @@ public class ButtonList extends ListView<AbstractLink> {
         return false;
     }
 
-
     @Override
     protected void onConfigure() {
         //configure the list's items as I need to check the "enabled" state in populateItem.

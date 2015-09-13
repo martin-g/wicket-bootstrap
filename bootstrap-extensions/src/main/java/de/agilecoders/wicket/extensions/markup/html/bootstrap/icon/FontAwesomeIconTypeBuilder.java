@@ -23,9 +23,9 @@ import java.util.List;
  */
 public class FontAwesomeIconTypeBuilder {
     /**
-     * All the icons available in fontawesome.
+     * All the icons available in Font Awesome.
      */
-    public static enum FontAwesomeGraphic {
+    public enum FontAwesomeGraphic {
         px500, adjust, adn, align_center, align_justify, align_left, align_right, amazon, ambulance, anchor, android,
         angellist, angle_double_down, angle_double_left, angle_double_right, angle_double_up, angle_down, angle_left,
         angle_right, angle_up, apple, area_chart, archive, arrow_circle_down, arrow_circle_left, arrow_circle_o_down,
@@ -95,14 +95,14 @@ public class FontAwesomeIconTypeBuilder {
     /**
      * Rotation that can be done on an icon.
      */
-    public static enum Rotation {
+    public enum Rotation {
         flip_horizontal, flip_vertical, normal, rotate_180, rotate_270, rotate_90
     }
 
     /**
      * Sizes on an icon.
      */
-    public static enum Size {
+    public enum Size {
         two, three, four, five, large
     }
 

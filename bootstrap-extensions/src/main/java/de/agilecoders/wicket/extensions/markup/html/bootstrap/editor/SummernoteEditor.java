@@ -7,7 +7,6 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.google.common.base.Charsets;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.wicket.WicketRuntimeException;
@@ -22,16 +21,11 @@ import org.apache.wicket.markup.html.form.FormComponent;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.protocol.http.servlet.MultipartServletWebRequest;
 import org.apache.wicket.protocol.http.servlet.ServletWebRequest;
-import org.apache.wicket.request.IRequestParameters;
-import org.apache.wicket.request.Request;
-import org.apache.wicket.request.cycle.RequestCycle;
 import org.apache.wicket.request.http.WebResponse;
-import org.apache.wicket.request.resource.JavaScriptResourceReference;
 import org.apache.wicket.util.crypt.Base64;
 import org.apache.wicket.util.io.IOUtils;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.lang.Bytes;
-import org.apache.wicket.util.string.StringValue;
 import org.apache.wicket.util.template.PackageTextTemplate;
 
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeCDNCSSReference;
@@ -79,7 +73,7 @@ public class SummernoteEditor extends FormComponent<String> {
             summernoteTemplate = new PackageTextTemplate(SummernoteEditor.class, "js/summernote_init.js");
             config.withImageUploadCallbackUrl(summernoteEditorImageAjaxEventBehavior.getCallbackUrl().toString());
             config.put(SummernoteConfig.Id, getMarkupId());
-            config.put(SummernoteConfig.Content, getModelValue());
+
             // Remove picture button if no storage id is provided
             if (config.getStorageId() == null) {
             config.getButtons("Insert").remove("picture");
@@ -92,20 +86,6 @@ public class SummernoteEditor extends FormComponent<String> {
         } finally {
             IOUtils.closeQuietly(summernoteTemplate);
         }
-    }
-
-    /**
-     * If a form has been submitted the content of the current editor can be
-     * received.
-     *
-     * @return the submitted content of the editor
-     */
-    public String getSubmittedContent() {
-        Request request = RequestCycle.get().getRequest();
-        IRequestParameters requestParameters = request.getRequestParameters();
-        String parameterName = getMarkupId() + "_content";
-        StringValue parameterValue = requestParameters.getParameterValue(parameterName);
-        return new String(Base64.decodeBase64(parameterValue.toString()), Charsets.UTF_8);
     }
 
     /**

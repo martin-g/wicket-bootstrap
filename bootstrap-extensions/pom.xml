@@ -14,7 +14,7 @@
     <name>bootstrap-extensions</name>
 
     <properties>
-        <jqueryui.version>1.10.4</jqueryui.version>
+        <jqueryui.version>1.11.4</jqueryui.version>
         <typeaheadjs.version>0.10.4</typeaheadjs.version>
         <x-editable.version>1.5.1</x-editable.version>
         <spin-js.version>2.0.0</spin-js.version>
