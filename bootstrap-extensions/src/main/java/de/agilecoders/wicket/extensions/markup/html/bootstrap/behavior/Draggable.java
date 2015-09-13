@@ -1,13 +1,14 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.behavior;
 
-import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
-import de.agilecoders.wicket.core.util.References;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.jqueryui.JQueryUIDraggableJavaScriptReference;
+import static de.agilecoders.wicket.jquery.JQuery.$;
+
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.request.resource.JavaScriptResourceReference;
 
-import static de.agilecoders.wicket.jquery.JQuery.$;
+import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
+import de.agilecoders.wicket.core.util.References;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.jqueryui.JQueryUIJavaScriptReference;
 
 /**
  * Makes an assigned component draggable.
@@ -46,7 +47,7 @@ public class Draggable extends BootstrapBaseBehavior {
      * @return new draggable js resource reference
      */
     protected JavaScriptResourceReference newDraggableResourceReference() {
-        return JQueryUIDraggableJavaScriptReference.instance();
+        return JQueryUIJavaScriptReference.instance();
     }
 
     @Override

@@ -1,10 +1,7 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.behavior;
 
-import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
-import de.agilecoders.wicket.core.util.References;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.jqueryui.JQueryUIResizableJavaScriptReference;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.jqueryui.ResizableCssReference;
-import de.agilecoders.wicket.jquery.JQuery;
+import static de.agilecoders.wicket.jquery.JQuery.$;
+
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
@@ -12,7 +9,11 @@ import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
 import org.apache.wicket.request.resource.JavaScriptResourceReference;
 import org.apache.wicket.util.string.Strings;
 
-import static de.agilecoders.wicket.jquery.JQuery.$;
+import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
+import de.agilecoders.wicket.core.util.References;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.jqueryui.JQueryUICssReference;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.jqueryui.JQueryUIJavaScriptReference;
+import de.agilecoders.wicket.jquery.JQuery;
 
 /**
  * Makes an assigned component draggable.
@@ -39,7 +40,7 @@ public class Resizable extends BootstrapBaseBehavior {
     public void renderHead(Component component, IHeaderResponse headerResponse) {
         super.renderHead(component, headerResponse);
 
-        headerResponse.render(CssHeaderItem.forReference(ResizableCssReference.instance()));
+        headerResponse.render(CssHeaderItem.forReference(JQueryUICssReference.instance()));
         References.renderWithFilter(headerResponse, newResizableResourceReference());
 
         JQuery $el = $(component);
@@ -54,7 +55,7 @@ public class Resizable extends BootstrapBaseBehavior {
      * @return new draggable js resource reference
      */
     protected JavaScriptResourceReference newResizableResourceReference() {
-        return JQueryUIResizableJavaScriptReference.instance();
+        return JQueryUIJavaScriptReference.instance();
     }
 
     @Override
