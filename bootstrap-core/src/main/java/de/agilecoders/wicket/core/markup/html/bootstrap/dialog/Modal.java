@@ -7,6 +7,7 @@ import de.agilecoders.wicket.core.util.Attributes;
 import de.agilecoders.wicket.jquery.util.Strings2;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
+import org.apache.wicket.MarkupContainer;
 import org.apache.wicket.ajax.AjaxEventBehavior;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.attributes.AjaxRequestAttributes;
@@ -69,7 +70,6 @@ public class Modal<T> extends GenericPanel<T> {
         TRUE, FALSE, STATIC
     }
 
-    private final WebMarkupContainer header;
     private boolean show = false;
     private boolean fadein = true;
     private boolean keyboard = true;
@@ -84,11 +84,11 @@ public class Modal<T> extends GenericPanel<T> {
      */
     private final IModel<Boolean> disableEnforceFocus = Model.of(false);
 
-    private final Label headerLabel;
+    private Component headerLabel;
     private final List<Component> buttons = new ArrayList<Component>();
-    private final WebMarkupContainer footer;
-    private final IModel<Boolean> useCloseHandler = Model.of(false);
-    private final AjaxEventBehavior closeBehavior;
+    private MarkupContainer footer;
+    private MarkupContainer header;
+    private AjaxEventBehavior closeBehavior;
 
     private Size size = Size.Default;
 
@@ -110,13 +110,16 @@ public class Modal<T> extends GenericPanel<T> {
     public Modal(String id, IModel<T> model) {
         super(id, model);
 
-        setOutputMarkupId(true);
         setOutputMarkupPlaceholderTag(true);
+    }
 
-        WebMarkupContainer dialog = createDialog("dialog");
-        footer = new WebMarkupContainer("footer");
-        header = new WebMarkupContainer("header");
-        header.add(headerLabel = new Label("header-label", ""));
+    @Override
+    protected void onInitialize() {
+        super.onInitialize();
+
+        footer = createFooter("footer");
+        header = createHeader("header");
+        header.add(headerLabel = createHeaderLabel("header-label", ""));
         headerLabel.setOutputMarkupId(true);
 
         footer.add(new ListView<Component>("buttons", buttons) {
@@ -126,24 +129,41 @@ public class Modal<T> extends GenericPanel<T> {
             }
         });
 
-        closeBehavior = new AjaxEventBehavior("hidden.bs.modal") {
-            @Override
-            protected void onEvent(final AjaxRequestTarget target) {
-                handleCloseEvent(target);
-            }
-
-            @Override
-            protected void updateAjaxAttributes(AjaxRequestAttributes attributes) {
-                super.updateAjaxAttributes(attributes);
-
-                attributes.setEventPropagation(AjaxRequestAttributes.EventPropagation.BUBBLE);
-            }
-        };
-
+        WebMarkupContainer dialog = createDialog("dialog");
         add(dialog);
         dialog.add(header, footer);
 
         BootstrapResourcesBehavior.addTo(this);
+    }
+
+    /**
+     * Factory method for the Modal's header label
+     *
+     * @param id The component id
+     * @return The header label
+     */
+    protected Component createHeaderLabel(String id, String label) {
+        return new Label(id, label);
+    }
+
+    /**
+     * Factory method for the Modal's header
+     *
+     * @param id The component id
+     * @return The header container
+     */
+    protected MarkupContainer createHeader(String id) {
+        return new WebMarkupContainer(id);
+    }
+
+    /**
+     * Factory method for the Modal's footer
+     *
+     * @param id The component id
+     * @return The footer container
+     */
+    protected MarkupContainer createFooter(String id) {
+        return new WebMarkupContainer(id);
     }
 
     /**
@@ -274,7 +294,15 @@ public class Modal<T> extends GenericPanel<T> {
      * @return This
      */
     public final Modal<T> setUseCloseHandler(final boolean useCloseHandler) {
-        this.useCloseHandler.setObject(useCloseHandler);
+        if (useCloseHandler) {
+            if (closeBehavior == null) {
+                closeBehavior = new ModalCloseBehavior();
+                add(closeBehavior);
+            }
+        } else if (closeBehavior != null) {
+            remove(closeBehavior);
+            closeBehavior = null;
+        }
         return this;
     }
 
@@ -430,15 +458,6 @@ public class Modal<T> extends GenericPanel<T> {
         return this;
     }
 
-    @Override
-    protected void onInitialize() {
-        super.onInitialize();
-
-        if (useCloseHandler.getObject()) {
-            add(closeBehavior);
-        }
-    }
-
     /**
      * handles the close event.
      *
@@ -503,7 +522,7 @@ public class Modal<T> extends GenericPanel<T> {
      * @return close handler script
      */
     private String addCloseHandlerScript(final String markupId, final String script) {
-        if (useCloseHandler.getObject()) {
+        if (closeBehavior != null) {
             return script + ";$('#" + markupId + "').on('hidden', function () { "
                    + "  Wicket.Ajax.ajax({'u':'" + closeBehavior.getCallbackUrl() + "','c':'" + markupId + "'});"
                    + "})";
@@ -564,6 +583,28 @@ public class Modal<T> extends GenericPanel<T> {
     public final Modal<T> setDisableEnforceFocus(boolean disable) {
         this.disableEnforceFocus.setObject(disable);
         return this;
+    }
+
+    private class ModalCloseBehavior extends AjaxEventBehavior {
+
+        /**
+         * Constructor.
+         */
+        public ModalCloseBehavior() {
+            super("hidden.bs.modal");
+        }
+
+        @Override
+        protected void onEvent(final AjaxRequestTarget target) {
+            handleCloseEvent(target);
+        }
+
+        @Override
+        protected void updateAjaxAttributes(AjaxRequestAttributes attributes) {
+            super.updateAjaxAttributes(attributes);
+
+            attributes.setEventPropagation(AjaxRequestAttributes.EventPropagation.BUBBLE);
+        }
     }
 
 }
