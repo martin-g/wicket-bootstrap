@@ -39,7 +39,7 @@ public class Modal<T> extends GenericPanel<T> {
     /**
      * @see <a href="http://getbootstrap.com/javascript/#modals-sizes">Modal Sizes</a>
      */
-    public static enum Size implements ICssClassNameProvider {
+    public enum Size implements ICssClassNameProvider {
         Default(""),
         Small("sm"),
         Medium("md"),
@@ -52,7 +52,7 @@ public class Modal<T> extends GenericPanel<T> {
          *
          * @param cssClassName the css class name of button type
          */
-        private Size(final String cssClassName) {
+        Size(final String cssClassName) {
             this.cssClassName = cssClassName;
         }
 
@@ -65,7 +65,7 @@ public class Modal<T> extends GenericPanel<T> {
         }
     }
 
-    public static enum Backdrop {
+    public enum Backdrop {
         TRUE, FALSE, STATIC
     }
 
