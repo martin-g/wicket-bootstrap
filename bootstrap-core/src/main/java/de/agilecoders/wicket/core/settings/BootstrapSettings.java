@@ -49,7 +49,7 @@ public class BootstrapSettings implements IBootstrapSettings {
         this.updateSecurityManager = true;
         this.autoAppendResources = true;
         this.useCdnResources = false;
-        this.deferJavascript = true;
+        this.deferJavascript = false;
     }
 
     @Override
