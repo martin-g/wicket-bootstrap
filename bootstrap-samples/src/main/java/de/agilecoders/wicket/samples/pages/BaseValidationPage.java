@@ -2,6 +2,7 @@ package de.agilecoders.wicket.samples.pages;
 
 import de.agilecoders.wicket.samples.panels.validation.SimpleFormModal;
 import de.agilecoders.wicket.samples.panels.validation.SimpleFormPanel;
+import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 
@@ -13,19 +14,29 @@ public abstract class BaseValidationPage extends BasePage {
 
     private static final long serialVersionUID = 8101772374853082900L;
 
+    private final SimpleFormModal modal;
+
     /**
      * @param parameters current page parameters
      */
     public BaseValidationPage(PageParameters parameters) {
         super(parameters);
         add(newHeader("header"));
-        add(new SimpleFormModal("modal", newSimpleFormPanel("content")));
+        final SimpleFormPanel modalContent = newSimpleFormPanel("content");
+        modal = new SimpleFormModal("modal", modalContent);
+        add(modal);
         add(newSimpleFormPanel("form"));
         add(newSimpleFormPanel("form-ajax").withAjax());
     }
 
     protected SimpleFormPanel newSimpleFormPanel(String wicketId) {
-        return new SimpleFormPanel(wicketId);
+        return new SimpleFormPanel(wicketId) {
+            @Override
+            protected void onSubmit(AjaxRequestTarget target) {
+                super.onSubmit(target);
+                modal.close(target);
+            }
+        };
     }
 
     @Override
