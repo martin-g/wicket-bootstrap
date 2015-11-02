@@ -13,9 +13,9 @@ Current build status: [![Build Status](https://buildhive.cloudbees.com/job/l0rdn
 
 Current release version:
 
-* [Wicket 7.0.0-M6](http://wicket.apache.org/) and [Bootstrap 3.3.5](https://github.com/twbs/bootstrap/):  0.10.2
-* [Wicket 6.20.0](http://wicket.apache.org/) and [Bootstrap 3.3.5](https://github.com/twbs/bootstrap/): 0.9.11
-* Wicket 6.* and Bootstrap 2.*: 0.8.4
+* [Wicket 7.x](http://wicket.apache.org/) and [Bootstrap 3.3.5](https://github.com/twbs/bootstrap/):  0.10.4
+* [Wicket 6.x](http://wicket.apache.org/) and [Bootstrap 3.3.5](https://github.com/twbs/bootstrap/): 0.9.13
+* Wicket 6.x and Bootstrap 2.*: 0.8.4
 
 Themes
 ------
