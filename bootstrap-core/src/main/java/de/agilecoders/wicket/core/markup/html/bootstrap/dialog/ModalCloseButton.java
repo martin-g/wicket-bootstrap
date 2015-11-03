@@ -37,7 +37,19 @@ public class ModalCloseButton extends AjaxLink<String> {
      * @param label The button label
      */
     public ModalCloseButton(final IModel<String> label) {
-        super("button", label);
+        this("button", label);
+    }
+
+    /**
+     * Construct
+     *
+     * @param id
+     * @param label
+     *            The button label
+     */
+    public ModalCloseButton(final String id, final IModel<String> label) {
+
+        super(id, label);
 
         setBody(getDefaultModel());
         buttonBehavior = new ButtonBehavior(Buttons.Type.Default);
@@ -95,5 +107,4 @@ public class ModalCloseButton extends AjaxLink<String> {
         this.anchor = anchor;
         return this;
     }
-
 }
