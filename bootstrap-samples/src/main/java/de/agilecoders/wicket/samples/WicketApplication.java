@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
+import de.agilecoders.wicket.core.settings.CookieThemeProvider;
 import net.ftlines.wicketsource.WicketSource;
 
 import org.apache.wicket.Application;
@@ -210,7 +211,8 @@ public class WicketApplication extends WebApplication {
         final ThemeProvider themeProvider = new BootswatchThemeProvider(BootswatchTheme.Flatly);
 
         settings.setJsResourceFilterName("footer-container")
-                .setThemeProvider(themeProvider);
+                .setThemeProvider(themeProvider)
+                .setActiveThemeProvider(new CookieThemeProvider());
 
         Bootstrap.install(this, settings);
         BootstrapLess.install(this);
