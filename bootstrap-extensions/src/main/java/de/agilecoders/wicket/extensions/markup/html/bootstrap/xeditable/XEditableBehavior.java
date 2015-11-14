@@ -1,12 +1,12 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.xeditable;
 
+import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapJavascriptBehavior;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.xeditable.css.XEditableCssReference;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.xeditable.js.XEditableJsReference;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxEventBehavior;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.attributes.AjaxRequestAttributes;
-import org.apache.wicket.behavior.Behavior;
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
@@ -26,7 +26,7 @@ import static de.agilecoders.wicket.jquery.JQuery.$;
  * @link http://vitalets.github.io/x-editable/index.html
  * @author <a href="mailto:christian.schroeter@1und1.de">Christian Schröter</a>
  */
-public class XEditableBehavior extends Behavior {
+public class XEditableBehavior extends BootstrapJavascriptBehavior {
 
     private final XEditableOptions options;
 
@@ -44,8 +44,8 @@ public class XEditableBehavior extends Behavior {
     @Override
     public void renderHead(Component component, IHeaderResponse response) {
         super.renderHead(component, response);
-        response.render(JavaScriptHeaderItem.forReference(XEditableJsReference.INSTANCE));
         response.render(CssHeaderItem.forReference(XEditableCssReference.INSTANCE));
+        response.render(JavaScriptHeaderItem.forReference(XEditableJsReference.INSTANCE));
 
         response.render($(component).chain("editable", options).asDomReadyScript());
     }

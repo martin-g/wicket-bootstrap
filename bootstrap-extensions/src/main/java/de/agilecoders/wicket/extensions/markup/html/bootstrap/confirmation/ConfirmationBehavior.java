@@ -1,9 +1,8 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.confirmation;
 
+import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapJavascriptBehavior;
 import de.agilecoders.wicket.core.util.References;
 import org.apache.wicket.Component;
-import org.apache.wicket.behavior.Behavior;
-import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.resource.JQueryPluginResourceReference;
@@ -15,7 +14,7 @@ import static de.agilecoders.wicket.jquery.JQuery.$;
  * A behavior that shows a popover with OK/Cancel buttons to confirm an action.
  * @since 0.9.12
  */
-public class ConfirmationBehavior extends Behavior {
+public class ConfirmationBehavior extends BootstrapJavascriptBehavior {
 
     private final ConfirmationConfig config;
 

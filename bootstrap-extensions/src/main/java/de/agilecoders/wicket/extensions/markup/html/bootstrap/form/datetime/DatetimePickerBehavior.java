@@ -2,9 +2,9 @@ package de.agilecoders.wicket.extensions.markup.html.bootstrap.form.datetime;
 
 import static de.agilecoders.wicket.jquery.JQuery.$;
 
+import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapJavascriptBehavior;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
-import org.apache.wicket.behavior.Behavior;
 import org.apache.wicket.event.IEvent;
 import org.apache.wicket.markup.head.IHeaderResponse;
 
@@ -19,7 +19,7 @@ import de.agilecoders.wicket.jquery.function.IFunction;
  * @author Alexey Volkov
  * @since 01.02.2015
  */
-public class DatetimePickerBehavior extends Behavior {
+public class DatetimePickerBehavior extends BootstrapJavascriptBehavior {
 
     private static final long serialVersionUID = 1L;
 

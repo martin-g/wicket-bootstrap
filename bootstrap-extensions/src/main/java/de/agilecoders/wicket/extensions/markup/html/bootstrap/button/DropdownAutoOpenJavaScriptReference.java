@@ -1,12 +1,6 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.button;
 
-import com.google.common.collect.Lists;
-import org.apache.wicket.Application;
-import org.apache.wicket.markup.head.HeaderItem;
-import org.apache.wicket.markup.head.JavaScriptHeaderItem;
-import org.apache.wicket.request.resource.JavaScriptResourceReference;
-
-import java.util.List;
+import org.apache.wicket.resource.JQueryPluginResourceReference;
 
 /**
  * A {@link org.apache.wicket.request.resource.JavaScriptResourceReference} that includes the dropdown
@@ -14,7 +8,7 @@ import java.util.List;
  *
  * @author miha
  */
-public class DropdownAutoOpenJavaScriptReference extends JavaScriptResourceReference {
+public class DropdownAutoOpenJavaScriptReference extends JQueryPluginResourceReference {
     private static final long serialVersionUID = 1L;
 
     /**
@@ -35,13 +29,5 @@ public class DropdownAutoOpenJavaScriptReference extends JavaScriptResourceRefer
      */
     private DropdownAutoOpenJavaScriptReference() {
         super(DropdownAutoOpenJavaScriptReference.class, "dropdown-autoopen.js");
-    }
-
-    @Override
-    public Iterable<? extends HeaderItem> getDependencies() {
-        final List<HeaderItem> dependencies = Lists.newArrayList(super.getDependencies());
-        dependencies.add(JavaScriptHeaderItem.forReference(Application.get().getJavaScriptLibrarySettings().getJQueryReference()));
-
-        return dependencies;
     }
 }

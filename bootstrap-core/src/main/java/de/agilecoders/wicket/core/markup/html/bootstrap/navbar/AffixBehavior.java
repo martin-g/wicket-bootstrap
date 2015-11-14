@@ -1,7 +1,7 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.navbar;
 
+import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapJavascriptBehavior;
 import org.apache.wicket.Component;
-import org.apache.wicket.behavior.Behavior;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
@@ -24,7 +24,7 @@ import org.apache.wicket.util.lang.Args;
  * @author miha
  * @version 1.0
  */
-public class AffixBehavior extends Behavior {
+public class AffixBehavior extends BootstrapJavascriptBehavior {
 
     private final IModel<String> offset;
 
