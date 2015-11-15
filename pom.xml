@@ -357,7 +357,7 @@
                  http://mail-archives.apache.org/mod_mbox/maven-users/201403.mbox/%3CCANWgJS5xHWiGE+Lecey+mZVbj9Via4JUWsaBeZtQr2aQNebupA@mail.gmail.com%3E
                  http://blog.joda.org/2014/02/turning-off-doclint-in-jdk-8-javadoc.html
                  -->
-                <additionalparam>-Xdoclint:none</additionalparam>
+                <additionalparam>-Xdoclint:-html</additionalparam>
             </properties>
         </profile>
     </profiles>
