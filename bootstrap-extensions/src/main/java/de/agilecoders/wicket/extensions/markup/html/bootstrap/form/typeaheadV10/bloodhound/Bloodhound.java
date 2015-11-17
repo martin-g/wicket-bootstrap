@@ -67,7 +67,11 @@ public abstract class Bloodhound<T> extends AbstractAjaxBehavior implements Sour
     }
 
     protected CharSequence getRemoteUrl(String wildcard) {
-        return String.format("%s&%s=%s", getCallbackUrl(), QUERY_PARAM, wildcard);
+        String callbackUrl = getCallbackUrl().toString();
+        if (callbackUrl.contains("?")) {
+            return String.format("%s&%s=%s", callbackUrl, QUERY_PARAM, wildcard);
+        }
+        return String.format("%s?%s=%s", callbackUrl, QUERY_PARAM, wildcard);
     }
 
     @Override

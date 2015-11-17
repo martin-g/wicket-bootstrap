@@ -21,7 +21,6 @@ import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.attributes.AjaxRequestAttributes;
 import org.apache.wicket.ajax.markup.html.IAjaxLink;
 import org.apache.wicket.ajax.markup.html.navigation.paging.AjaxPagingNavigationBehavior;
-import org.apache.wicket.ajax.markup.html.navigation.paging.AjaxPagingNavigationLink;
 import org.apache.wicket.markup.html.navigation.paging.IPageable;
 
 /**

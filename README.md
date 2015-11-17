@@ -128,6 +128,7 @@ Authors
 
 [![OpenHub profile for Martin Grigorov](https://www.openhub.net/accounts/mgrigorov/widgets/account_detailed.gif)](https://www.openhub.net/accounts/mgrigorov?ref=Detailed)
 
+powered by [![Jetbrains](https://www.jetbrains.com/idea/docs/logo_intellij_idea.png)](https://www.jetbrains.com/idea)
 
 Bug tracker
 -----------

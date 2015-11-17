@@ -2,8 +2,8 @@ package de.agilecoders.wicket.extensions.markup.html.bootstrap.form.password.str
 
 import static de.agilecoders.wicket.jquery.JQuery.$;
 
+import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapJavascriptBehavior;
 import org.apache.wicket.Component;
-import org.apache.wicket.behavior.Behavior;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.html.form.PasswordTextField;
@@ -14,7 +14,7 @@ import org.apache.wicket.util.lang.Args;
  * A behavior that can be added to {@link org.apache.wicket.markup.html.form.PasswordTextField}
  * to add client-side password strength checks
  */
-public class PasswordStrengthBehavior extends Behavior {
+public class PasswordStrengthBehavior extends BootstrapJavascriptBehavior {
 
     private final PasswordStrengthConfig config;
 

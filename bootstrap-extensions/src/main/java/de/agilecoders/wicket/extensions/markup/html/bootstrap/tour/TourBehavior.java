@@ -1,7 +1,7 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.tour;
 
+import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapJavascriptBehavior;
 import org.apache.wicket.Component;
-import org.apache.wicket.behavior.Behavior;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
@@ -14,7 +14,7 @@ import java.util.List;
  * A behavior that contributes the resources needed for
  * <a href="http://sorich87.github.com/bootstrap-tour/">Bootstrap Tour</a>.
  */
-public class TourBehavior extends Behavior {
+public class TourBehavior extends BootstrapJavascriptBehavior {
 
     private final List<TourStep> steps = new ArrayList<>();
 

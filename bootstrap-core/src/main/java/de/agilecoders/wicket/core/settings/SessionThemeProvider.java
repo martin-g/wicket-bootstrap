@@ -18,7 +18,7 @@ public class SessionThemeProvider implements ActiveThemeProvider {
 
     @Override
     public ITheme getActiveTheme() {
-        String style = Session.get().getStyle();
+        String style = loadThemeName();
 
         ThemeProvider themeProvider = themeProvider();
 
@@ -38,14 +38,31 @@ public class SessionThemeProvider implements ActiveThemeProvider {
 
     @Override
     public void setActiveTheme(ITheme theme) {
+        if (theme != null) {
+            storeThemeName(theme.name());
+        } else {
+            storeThemeName(null);
+        }
+    }
+
+    /**
+     * Loads the name of theme from the session's style
+     *
+     * @return The session's style
+     */
+    protected String loadThemeName() {
+        return Session.get().getStyle();
+    }
+
+    /**
+     * Stores the theme name in the session's style
+     *
+     * @param themeName The name of the current theme
+     */
+    protected void storeThemeName(String themeName) {
         Session session = Session.get();
         assertBoundSession(session);
-
-        if (theme != null) {
-            session.setStyle(theme.name());
-        } else {
-            session.setStyle(null);
-        }
+        session.setStyle(themeName);
     }
 
     /**
@@ -53,7 +70,7 @@ public class SessionThemeProvider implements ActiveThemeProvider {
      *
      * @param session current session to bind
      */
-    private void assertBoundSession(Session session) {
+    protected void assertBoundSession(Session session) {
         if (session.isTemporary()) {
             session.bind();
         }

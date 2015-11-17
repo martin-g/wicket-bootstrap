@@ -2,9 +2,11 @@ package de.agilecoders.wicket.extensions.markup.html.bootstrap.form.select;
 
 import static de.agilecoders.wicket.jquery.JQuery.$;
 
+import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapJavascriptBehavior;
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.Behavior;
 import org.apache.wicket.core.request.handler.IPartialPageRequestHandler;
+import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.event.IEvent;
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
@@ -20,7 +22,7 @@ import de.agilecoders.wicket.jquery.function.IFunction;
  * @author Alexey Volkov
  * @since 02.11.14
  */
-public class BootstrapSelectBehavior extends Behavior {
+public class BootstrapSelectBehavior extends BootstrapJavascriptBehavior {
 
     private static final long serialVersionUID = 4785647088660913269L;
 

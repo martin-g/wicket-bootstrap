@@ -20,11 +20,16 @@ public class DatePickerModal extends Modal<Void> {
 
         add(new DateTextField("date", Model.of(new Date(System.currentTimeMillis())), "MM/dd/yyyy"));
 
+    }
+
+    @Override
+    protected void onInitialize() {
+        super.onInitialize();
+
         show(true);
         setFooterVisible(true);
         addCloseButton();
         header(Model.of("DatePicker"));
         setUseCloseHandler(true);
     }
-
 }

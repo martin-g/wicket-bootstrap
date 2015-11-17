@@ -6,7 +6,7 @@ import de.agilecoders.wicket.extensions.markup.html.bootstrap.references.JQueryC
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.HeaderItem;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
-import org.apache.wicket.request.resource.JavaScriptResourceReference;
+import org.apache.wicket.resource.JQueryPluginResourceReference;
 
 import java.util.List;
 import java.util.Locale;
@@ -15,7 +15,7 @@ import java.util.Locale;
  * A JavaScript resource reference that contributes the bootstrap-tour.js and
  * its dependencies.
  */
-public class BootstrapTourJsReference extends JavaScriptResourceReference {
+public class BootstrapTourJsReference extends JQueryPluginResourceReference {
     public static final BootstrapTourJsReference INSTANCE = new BootstrapTourJsReference();
 
     public BootstrapTourJsReference() {
