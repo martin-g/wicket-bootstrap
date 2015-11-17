@@ -7,10 +7,10 @@
             <div id="actions" class="row">
                 <div class="col-lg-7">
                     <!-- The fileinput-button span is used to style the file input field as button -->
-                    <span class="btn btn-success fileinput-button">
+                    <button type="button" class="btn btn-success fileinput-button">
                         <i class="glyphicon glyphicon-plus"></i>
                         <span><wicket:message key="dropzonefileupload.addfiles"></wicket:message></span>
-                    </span>
+                    </button>
                     <button type="submit" class="btn btn-primary start">
                         <i class="glyphicon glyphicon-upload"></i>
                         <span><wicket:message key="dropzonefileupload.startupload"></wicket:message></span>
@@ -50,13 +50,13 @@
                         </div>
                     </div>
                     <div>
-                        <button class="btn btn-primary start">
+                        <button type="button" class="btn btn-primary start">
                             <i class="glyphicon glyphicon-upload"></i> <span><wicket:message key="dropzonefileupload.start"></wicket:message></span>
                         </button>
-                        <button data-dz-remove class="btn btn-warning cancel">
+                        <button type="button" data-dz-remove class="btn btn-warning cancel">
                             <i class="glyphicon glyphicon-ban-circle"></i> <span><wicket:message key="dropzonefileupload.cancel"></wicket:message></span>
                         </button>
-                        <button data-dz-remove class="btn btn-danger delete">
+                        <button type="button" data-dz-remove class="btn btn-danger delete">
                             <i class="glyphicon glyphicon-trash"></i> <span><wicket:message key="dropzonefileupload.delete"></wicket:message></span>
                         </button>
                     </div>
