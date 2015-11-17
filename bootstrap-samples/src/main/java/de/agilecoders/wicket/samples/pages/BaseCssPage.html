@@ -963,7 +963,7 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
       &lt;input type="password" class="form-control input-sm" placeholder="Password"&gt;
       &lt;div class="checkbox"&gt;
           &lt;label&gt;
-            &lt;input type="checkbox" class="form-control"&gt; Remember me
+            &lt;input type="checkbox" &gt; Remember me
           &lt;/label&gt;
       &lt;/div&gt;
       &lt;button type="submit" class="btn"&gt;Sign in&lt;/button&gt;
@@ -1063,19 +1063,19 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 <form class="bs-docs-example">
     <div class="checkbox">
         <label>
-            <input type="checkbox" value="" class="form-control">
+            <input type="checkbox" value="">
             Option one is this and that&mdash;be sure to include why it's great
         </label>
     </div>
     <div class="radio">
         <label>
-            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" class="form-control" checked>
+            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
             Option one is this and that&mdash;be sure to include why it's great
         </label>
     </div>
     <div  class="radio">
         <label>
-            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" class="form-control">
+            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
             Option two can be something else and selecting it will deselect option one
         </label>
     </div>
@@ -1083,19 +1083,19 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 <pre class="prettyprint linenums">
 &lt;div class="checkbox"&gt;
     &lt;label&gt;
-        &lt;input type="checkbox" value="" class="form-control"&gt;
+        &lt;input type="checkbox" value="" &gt;
         Option one is this and that&mdash;be sure to include why it's great
     &lt;/label&gt;
 &lt;/div&gt;
 &lt;div class="radio"&gt;
     &lt;label&gt;
-        &lt;input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" class="form-control" checked&gt;
+        &lt;input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked&gt;
         Option one is this and that&mdash;be sure to include why it's great
     &lt;/label&gt;
 &lt;/div&gt;
 &lt;div  class="radio"&gt;
     &lt;label&gt;
-        &lt;input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" class="form-control"&gt;
+        &lt;input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" &gt;
         Option two can be something else and selecting it will deselect option one
     &lt;/label&gt;
 &lt;/div&gt;
@@ -1747,12 +1747,12 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
     <p>Add the <code>.disabled</code> class to <code>&lt;a&gt;</code> buttons.</p>
 
     <p class="bs-docs-example">
-        <a href="#" class="btn btn-lg btn-primary disabled">Primary link</a>
-        <a href="#" class="btn btn-lg disabled">Link</a>
+        <a href="#" class="btn btn-lg btn-primary" disabled="disabled">Primary link</a>
+        <a href="#" class="btn btn-lg" disabled="disabled">Link</a>
     </p>
 <pre class="prettyprint linenums">
-&lt;a href="#" class="btn btn-lg btn-primary disabled"&gt;Primary link&lt;/a&gt;
-&lt;a href="#" class="btn btn-lg disabled"&gt;Link&lt;/a&gt;
+&lt;a href="#" class="btn btn-lg btn-primary" disabled="disabled"&gt;Primary link&lt;/a&gt;
+&lt;a href="#" class="btn btn-lg" disabled="disabled"&gt;Link&lt;/a&gt;
 </pre>
     <p>
         <span class="label label-info">Heads up!</span>
@@ -1764,12 +1764,12 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
     <p>Add the <code>disabled</code> attribute to <code>&lt;button&gt;</code> buttons.</p>
 
     <p class="bs-docs-example">
-        <button type="button" class="btn btn-lg btn-primary disabled" disabled="disabled">Primary button</button>
-        <button type="button" class="btn btn-lg" disabled>Button</button>
+        <button type="button" class="btn btn-lg btn-primary" disabled="disabled">Primary button</button>
+        <button type="button" class="btn btn-lg"  disabled="disabled">Button</button>
     </p>
 <pre class="prettyprint linenums">
-&lt;button type="button" class="btn btn-lg btn-primary disabled" disabled="disabled"&gt;Primary button&lt;/button&gt;
-&lt;button type="button" class="btn btn-lg" disabled&gt;Button&lt;/button&gt;
+&lt;button type="button" class="btn btn-lg btn-primary" disabled="disabled"&gt;Primary button&lt;/button&gt;
+&lt;button type="button" class="btn btn-lg"  disabled="disabled"&gt;Button&lt;/button&gt;
 </pre>
 
 
