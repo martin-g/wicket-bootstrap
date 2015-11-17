@@ -26,6 +26,6 @@ public class CustomNavbarForm extends NavbarForm<Void> {
     }
 
     private Component newSearchField(String markupId) {
-        return new TextField<String>(markupId);
+        return new TextField<String>(markupId, Model.of(""));
     }
 }

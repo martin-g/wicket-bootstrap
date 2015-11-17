@@ -191,7 +191,7 @@ public class ExtensionsPage extends BasePage {
                 "openwebicon-code",
                 Model.of("response.render(JavaScriptHeaderItem.forReference(OpenWebIconsCssReference.instance()));\n\nadd(new Icon(\"html5\", OpenWebIconType.html5));")));
 
-        addJasnyFileUploadDemo();
+//        addJasnyFileUploadDemo();
         addJasnyInputMaskDemo();
 
         laddaButton();
