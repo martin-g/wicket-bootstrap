@@ -703,6 +703,8 @@ public class FontAwesomeIconType extends IconType {
 
     private static final long serialVersionUID = 1L;
 
+    private boolean fixedWidth;
+
     /**
      * Constructor.
      *
@@ -714,6 +716,15 @@ public class FontAwesomeIconType extends IconType {
 
     @Override
     public String cssClassName() {
-        return "fa fa-" + getCssClassName();
+        String cssClass = "fa fa-" + getCssClassName();
+        if (fixedWidth) {
+            cssClass += " fa-fw";
+        }
+        return cssClass;
+    }
+
+    public FontAwesomeIconType fixedWidth() {
+        this.fixedWidth = true;
+        return this;
     }
 }
