@@ -13,6 +13,6 @@ public class OptimizedMobileViewportMetaTag extends MetaTag {
      * @param id the markup id
      */
     public OptimizedMobileViewportMetaTag(final String id) {
-        super(id, "viewport", "width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no");
+        super(id, "viewport", "width=device-width, initial-scale=1");
     }
 }
