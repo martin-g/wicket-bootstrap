@@ -701,9 +701,7 @@ public class FontAwesomeIconType extends IconType {
     public static final FontAwesomeIconType youtube_square = on(FontAwesomeGraphic.youtube_square).build();
     public static final FontAwesomeIconType yen = on(FontAwesomeGraphic.jpy).build();
 
-    private static final long serialVersionUID = 1L;
-
-    private boolean fixedWidth;
+    private static final long serialversionuid = 1l;
 
     /**
      * Constructor.
@@ -716,15 +714,6 @@ public class FontAwesomeIconType extends IconType {
 
     @Override
     public String cssClassName() {
-        String cssClass = "fa fa-" + getCssClassName();
-        if (fixedWidth) {
-            cssClass += " fa-fw";
-        }
-        return cssClass;
-    }
-
-    public FontAwesomeIconType fixedWidth() {
-        this.fixedWidth = true;
-        return this;
+        return "fa fa-" + getCssClassName();
     }
 }

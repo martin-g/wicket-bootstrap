@@ -131,6 +131,8 @@ public class FontAwesomeIconTypeBuilder {
      */
     private boolean spin;
 
+    private boolean fixedWidth;
+
     /**
      * @param fontAwesomeGraphic icon to use in the builder
      */
@@ -150,6 +152,10 @@ public class FontAwesomeIconTypeBuilder {
         // add spin class?
         if (spin) {
             styles.add("fa-spin");
+        }
+
+        if (fixedWidth) {
+            styles.add("fa-fw");
         }
 
         // add rotation class?
@@ -207,6 +213,25 @@ public class FontAwesomeIconTypeBuilder {
     public FontAwesomeIconTypeBuilder spin() {
         this.spin = true;
         return this;
+    }
+
+    /**
+     * make the icon fixed width
+     *
+     * @return the builder
+     */
+    public FontAwesomeIconTypeBuilder fixedWidth() {
+        this.fixedWidth = true;
+        return this;
+    }
+
+    /**
+     * An alias for {@link #fixedWidth()}
+     *
+     * @return the builder
+     */
+    public FontAwesomeIconTypeBuilder fw() {
+        return fixedWidth();
     }
 
     /**
