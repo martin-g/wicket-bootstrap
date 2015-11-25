@@ -43,7 +43,11 @@ public class MobileViewportMetaTag extends WebMarkupContainer implements IGeneri
 
     public void setWidth(String width) {
         this.width = "width=" + width;
-        this.setModelObject(this.width);
+        if(content() != null && content().length() > 1) {
+            this.setModelObject(this.getModelObject().concat(", " + this.width));
+        } else {
+            this.setModelObject(this.width);
+        }
     }
 
     public String getInitialScale() {
