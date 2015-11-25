@@ -8,13 +8,13 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
 /**
- * A special {@link MetaTag} that adds a TODO
+ * A special {@link MetaTag} that adds viewport related settings
+ * like scale and width
  *
  * @author David Beer
  */
 public class MobileViewportMetaTag extends WebMarkupContainer implements IGenericComponent<String> {
 
-    private final IModel<String> name;
     private String width;
     private String initialScale;
     private String maximumScale;
@@ -27,14 +27,6 @@ public class MobileViewportMetaTag extends WebMarkupContainer implements IGeneri
      */
     public MobileViewportMetaTag(final String id) {
         super(id, Model.of(""));
-        this.name = Model.of("viewport");
-    }
-
-    /**
-     * @return the name of this meta tag
-     */
-    public String name() {
-        return name.getObject();
     }
 
     public String getWidth() {
@@ -122,7 +114,7 @@ public class MobileViewportMetaTag extends WebMarkupContainer implements IGeneri
 
         Components.assertTag(this, tag, "meta");
 
-        tag.put("name", name());
+        tag.put("name", "viewport");
         tag.put("content", content());
     }
 
