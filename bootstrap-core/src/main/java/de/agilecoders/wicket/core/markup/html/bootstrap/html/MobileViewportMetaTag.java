@@ -1,11 +1,9 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.html;
 
 import de.agilecoders.wicket.core.util.Components;
-import org.apache.wicket.IGenericComponent;
 import org.apache.wicket.markup.ComponentTag;
-import org.apache.wicket.markup.html.WebMarkupContainer;
-import org.apache.wicket.model.IModel;
-import org.apache.wicket.model.Model;
+import org.apache.wicket.markup.html.WebComponent;
+import org.apache.wicket.util.string.Strings;
 
 /**
  * A special {@link MetaTag} that adds viewport related settings
@@ -13,12 +11,14 @@ import org.apache.wicket.model.Model;
  *
  * @author David Beer
  */
-public class MobileViewportMetaTag extends WebMarkupContainer implements IGenericComponent<String> {
+public class MobileViewportMetaTag extends WebComponent {
 
     private String width;
+    private String height;
     private String initialScale;
+    private String minimumScale;
     private String maximumScale;
-    private String userScalable;
+    private boolean userScalable = true;
 
     /**
      * Default Constructor
@@ -26,86 +26,61 @@ public class MobileViewportMetaTag extends WebMarkupContainer implements IGeneri
      * @param id the markup id
      */
     public MobileViewportMetaTag(final String id) {
-        super(id, Model.of(""));
+        super(id);
     }
 
     public String getWidth() {
         return width;
     }
 
-    public void setWidth(String width) {
-        this.width = "width=" + width;
-        if(content() != null && content().length() > 1) {
-            this.setModelObject(this.getModelObject().concat(", " + this.width));
-        } else {
-            this.setModelObject(this.width);
-        }
+    public MobileViewportMetaTag setWidth(String width) {
+        this.width = width;
+        return this;
+    }
+
+    public String getHeight() {
+        return height;
+    }
+
+    public MobileViewportMetaTag setHeight(String height) {
+        this.height = height;
+        return this;
     }
 
     public String getInitialScale() {
         return initialScale;
     }
 
-    public void setInitialScale(String value) {
+    public MobileViewportMetaTag setInitialScale(String value) {
         this.initialScale = value;
-        if (content() != null && content().length() > 1) {
-            this.setModelObject(this.getModelObject().concat(", " + this.initialScale));
-        } else {
-            this.setModelObject(this.initialScale);
-        }
+        return this;
+    }
+
+    public String getMinimumScale() {
+        return minimumScale;
+    }
+
+    public MobileViewportMetaTag setMinimumScale(String minimumScale) {
+        this.minimumScale = minimumScale;
+        return this;
     }
 
     public String getMaximumScale() {
         return maximumScale;
     }
 
-    public void setMaximumScale(String maximumScale) {
+    public MobileViewportMetaTag setMaximumScale(String maximumScale) {
         this.maximumScale = maximumScale;
-        if (content() != null && content().length() > 1) {
-            this.setModelObject(this.getModelObject().concat(", " + this.maximumScale));
-        } else {
-            this.setModelObject(this.maximumScale);
-        }
+        return this;
     }
 
-    public String getUserScalable() {
+    public boolean isUserScalable() {
         return userScalable;
     }
 
-    public void setUserScalable(String userScalable) {
+    public MobileViewportMetaTag setUserScalable(boolean userScalable) {
         this.userScalable = userScalable;
-        if (content() != null && content().length() > 1) {
-            this.setModelObject(this.content().concat(", " + this.userScalable));
-        } else {
-            this.setModelObject(this.userScalable);
-        }
-    }
-
-    /**
-     * @return the content of this meta tag
-     */
-    public String content() {
-        return getModelObject();
-    }
-
-    @Override
-    public IModel<String> getModel() {
-        return (IModel<String>) getDefaultModel();
-    }
-
-    @Override
-    public void setModel(IModel<String> model) {
-        setDefaultModel(model);
-    }
-
-    @Override
-    public void setModelObject(String object) {
-        setDefaultModelObject(object);
-    }
-
-    @Override
-    public String getModelObject() {
-        return getDefaultModelObjectAsString();
+        return this;
     }
 
     @Override
@@ -115,7 +90,50 @@ public class MobileViewportMetaTag extends WebMarkupContainer implements IGeneri
         Components.assertTag(this, tag, "meta");
 
         tag.put("name", "viewport");
-        tag.put("content", content());
+
+        StringBuilder content = new StringBuilder();
+
+        String _width = getWidth();
+        if (!Strings.isEmpty(_width)) {
+            content.append("width=").append(_width);
+        }
+
+        String _height = getHeight();
+        if (!Strings.isEmpty(_height)) {
+            ensureComma(content);
+            content.append("height=").append(_height);
+        }
+
+        String _initialScale = getInitialScale();
+        if (!Strings.isEmpty(_initialScale)) {
+            ensureComma(content);
+            content.append("initial-scale=").append(_initialScale);
+        }
+
+        String _minimumScale = getMinimumScale();
+        if (!Strings.isEmpty(_minimumScale)) {
+            ensureComma(content);
+            content.append("minimum-scale=").append(_minimumScale);
+        }
+
+        String _maximumScale = getMaximumScale();
+        if (!Strings.isEmpty(_maximumScale)) {
+            ensureComma(content);
+            content.append("maximum-scale=").append(_maximumScale);
+        }
+
+        if (!isUserScalable()) {
+            ensureComma(content);
+            content.append("user-scalable=no");
+        }
+
+        tag.put("content", content);
+    }
+
+    private void ensureComma(StringBuilder content) {
+        if (content.length() > 0) {
+            content.append(',');
+        }
     }
 
 
