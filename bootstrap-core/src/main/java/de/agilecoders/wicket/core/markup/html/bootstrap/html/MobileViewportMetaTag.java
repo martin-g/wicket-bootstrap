@@ -10,7 +10,7 @@ import org.apache.wicket.model.Model;
 /**
  * A special {@link MetaTag} that adds a TODO
  *
- * @author miha
+ * @author David Beer
  */
 public class MobileViewportMetaTag extends WebMarkupContainer implements IGenericComponent<String> {
 
