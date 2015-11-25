@@ -8,10 +8,7 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.DropDown
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.MenuBookmarkablePageLink;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.MenuDivider;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.MenuHeader;
-import de.agilecoders.wicket.core.markup.html.bootstrap.html.HtmlTag;
-import de.agilecoders.wicket.core.markup.html.bootstrap.html.IeEdgeMetaTag;
-import de.agilecoders.wicket.core.markup.html.bootstrap.html.MetaTag;
-import de.agilecoders.wicket.core.markup.html.bootstrap.html.OptimizedMobileViewportMetaTag;
+import de.agilecoders.wicket.core.markup.html.bootstrap.html.*;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.GlyphIconType;
 import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.*;
 import de.agilecoders.wicket.core.markup.html.references.BootlintHeaderItem;
@@ -57,8 +54,11 @@ abstract class BasePage extends GenericWebPage<Void> {
         super(parameters);
 
         add(new HtmlTag("html"));
-
-        add(new OptimizedMobileViewportMetaTag("viewport"));
+        MobileViewportMetaTag mvt = new MobileViewportMetaTag("viewport");
+        mvt.setWidth("device-width");
+        mvt.setInitialScale("initial-scale=1");
+        add(mvt);
+//        add(new OptimizedMobileViewportNoZoomMetaTag("viewport1"));
         add(new IeEdgeMetaTag("ie-edge"));
         add(new MetaTag("description", Model.of("description"), Model.of("Apache Wicket & Bootstrap Demo")));
         add(new MetaTag("author", Model.of("author"), Model.of("Michael Haitz <michael.haitz@agile-coders.de>")));
