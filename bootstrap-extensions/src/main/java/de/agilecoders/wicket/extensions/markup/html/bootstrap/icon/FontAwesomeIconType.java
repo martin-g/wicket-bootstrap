@@ -701,7 +701,7 @@ public class FontAwesomeIconType extends IconType {
     public static final FontAwesomeIconType youtube_square = on(FontAwesomeGraphic.youtube_square).build();
     public static final FontAwesomeIconType yen = on(FontAwesomeGraphic.jpy).build();
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialversionuid = 1l;
 
     /**
      * Constructor.
