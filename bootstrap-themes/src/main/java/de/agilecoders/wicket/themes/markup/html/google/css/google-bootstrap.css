@@ -1,5 +1,5 @@
 /*!
- * TODC Bootstrap v3.3.5-3.3.5 (http://todc.github.com/todc-bootstrap/)
+ * TODC Bootstrap v3.3.6-3.3.6 (http://todc.github.com/todc-bootstrap/)
  * Copyright 2011-2015 Tim O'Donnell
  * Licensed under the MIT (http://www.opensource.org/licenses/mit-license.php) license
  */
@@ -1547,9 +1547,11 @@ fieldset[disabled] .btn-link:focus fieldset[disabled] .btn-link.focus {
   border-width: 0 5px 5px;
 }
 .btn-group-vertical > .btn:first-child:not(:last-child) {
+  border-top-left-radius: 2px;
   border-top-right-radius: 2px;
 }
 .btn-group-vertical > .btn:last-child:not(:first-child) {
+  border-bottom-right-radius: 2px;
   border-bottom-left-radius: 2px;
 }
 .input-group-lg > .form-control,
