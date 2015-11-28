@@ -6,7 +6,12 @@
 // Bootswatch
 // -----------------------------------------------------
 
-@import url("https://fonts.googleapis.com/css?family=Raleway:400,700");
+@web-font-path: "https://fonts.googleapis.com/css?family=Raleway:400,700";
+
+.web-font(@path) {
+  @import url("@{path}");
+}
+.web-font(@web-font-path);
 
 // Navbar =====================================================================
 
@@ -59,7 +64,7 @@
   }
 }
 
-@media (max-width: @grid-float-breakpoint - 1) {
+@media (max-width: (@grid-float-breakpoint - 1)) {
   .navbar {
     .navbar-nav > li > a {
       margin: 0;
