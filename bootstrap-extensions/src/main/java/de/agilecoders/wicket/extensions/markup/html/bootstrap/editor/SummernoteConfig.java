@@ -35,8 +35,11 @@ public class SummernoteConfig extends AbstractConfig {
     private static final IKey<Integer> MinHeight = newKey("minHeight", null);
     private static final IKey<Integer> Height = newKey("height", null);
     private static final IKey<Boolean> Force = newKey("force", null);
+    private static final IKey<Boolean> DisableDragDrop = newKey("disableDragAndDrop", false);
+    private static final IKey<Boolean> Shortcuts = newKey("shortcuts", true);
     private static final IKey<Integer> MaxFileSize = newKey("maxFilesize", null);
     private static final IKey<String> ImageUploadCallbackUrl = newKey("imageUploadUrl", null);
+    private static final IKey<String> Placeholder = newKey("placeholder", null);
     private static final IKey<Integer> OverlayTimeout = newKey("overlayTimeout", null);
 
     /**
@@ -75,6 +78,30 @@ public class SummernoteConfig extends AbstractConfig {
      */
     public SummernoteConfig withAirMode(boolean airMode) {
         put(AirMode, airMode);
+        return this;
+    }
+
+    public boolean isAirMode() {
+        return get(AirMode);
+    }
+
+    /**
+     * @param disableDragAndDrop
+     *            A flag to disable/enable the drag and drop support
+     * @return current instance
+     */
+    public SummernoteConfig withDisableDragAndDrop(boolean disableDragAndDrop) {
+        put(DisableDragDrop, disableDragAndDrop);
+        return this;
+    }
+
+    /**
+     * @param shortcuts
+     *            A flag to disable/enable the support for shortcuts
+     * @return current instance
+     */
+    public SummernoteConfig withShortcuts(boolean shortcuts) {
+        put(Shortcuts, shortcuts);
         return this;
     }
 
@@ -153,6 +180,16 @@ public class SummernoteConfig extends AbstractConfig {
      */
     public SummernoteConfig withImageUploadCallbackUrl(String callbackUrl) {
         put(ImageUploadCallbackUrl, callbackUrl);
+        return this;
+    }
+
+    /**
+     * @param placeholder
+     *            The placeholder text in the empty editor
+     * @return current instance
+     */
+    public SummernoteConfig withPlaceholder(String placeholder) {
+        put(Placeholder, placeholder);
         return this;
     }
 

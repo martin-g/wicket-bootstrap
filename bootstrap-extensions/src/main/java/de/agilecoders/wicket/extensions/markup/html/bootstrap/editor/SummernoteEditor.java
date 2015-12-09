@@ -13,6 +13,9 @@ import org.apache.wicket.WicketRuntimeException;
 import org.apache.wicket.ajax.AbstractDefaultAjaxBehavior;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.attributes.AjaxRequestAttributes;
+import org.apache.wicket.core.util.string.JavaScriptUtils;
+import org.apache.wicket.markup.ComponentTag;
+import org.apache.wicket.markup.MarkupStream;
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
@@ -26,6 +29,7 @@ import org.apache.wicket.util.crypt.Base64;
 import org.apache.wicket.util.io.IOUtils;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.lang.Bytes;
+import org.apache.wicket.util.string.Strings;
 import org.apache.wicket.util.template.PackageTextTemplate;
 
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeCDNCSSReference;
@@ -46,28 +50,50 @@ public class SummernoteEditor extends FormComponent<String> {
     private final SummernoteEditorImageAjaxEventBehavior summernoteEditorImageAjaxEventBehavior;
 
     public SummernoteEditor(String id) {
-    this(id, null, new SummernoteConfig());
+        this(id, null, new SummernoteConfig());
     }
 
     public SummernoteEditor(String id, IModel<String> model) {
-    this(id, model, new SummernoteConfig());
+        this(id, model, new SummernoteConfig());
     }
 
     public SummernoteEditor(String id, IModel<String> model, SummernoteConfig config) {
         super(id, model);
 
+        this.setOutputMarkupId(true);
         this.config = Args.notNull(config, "config");
+        if (config.isAirMode()) {
+            setEscapeModelStrings(false);
+        }
         add(summernoteEditorImageAjaxEventBehavior = new SummernoteEditorImageAjaxEventBehavior());
     }
 
     @Override
+    protected void onComponentTag(ComponentTag tag) {
+        super.onComponentTag(tag);
+
+        if (config.isAirMode()) {
+            tag.setName("div");
+        }
+    }
+
+    @Override
+    public void onComponentTagBody(MarkupStream markupStream, ComponentTag openTag) {
+        super.onComponentTagBody(markupStream, openTag);
+
+        if (config.isAirMode()) {
+            replaceComponentTagBody(markupStream, openTag, getModelObject());
+        }
+    }
+
+    @Override
     public void renderHead(IHeaderResponse response) {
-        response.render(JavaScriptHeaderItem.forReference(SummernoteEditorJavaScriptReference.instance()));
-        response.render(JavaScriptHeaderItem.forReference(SummernoteEditorFormDataReference.instance()));
-        response.render(JavaScriptHeaderItem.forReference(SpinJsReference.INSTANCE));
         response.render(CssHeaderItem.forReference(SummernoteEditorCssReference.instance()));
         response.render(CssHeaderItem.forReference(FontAwesomeCDNCSSReference.instance()));
         response.render(CssHeaderItem.forReference(SummernoteEditorOverlayCssReference.instance()));
+        response.render(JavaScriptHeaderItem.forReference(SummernoteEditorJavaScriptReference.instance()));
+        response.render(JavaScriptHeaderItem.forReference(SummernoteEditorFormDataReference.instance()));
+        response.render(JavaScriptHeaderItem.forReference(SpinJsReference.INSTANCE));
         PackageTextTemplate summernoteTemplate = null;
         try {
             summernoteTemplate = new PackageTextTemplate(SummernoteEditor.class, "js/summernote_init.js");
@@ -85,6 +111,12 @@ public class SummernoteEditor extends FormComponent<String> {
             response.render(OnDomReadyHeaderItem.forScript(summernoteTemplateJavaScript));
         } finally {
             IOUtils.closeQuietly(summernoteTemplate);
+        }
+
+        String modelObject = getModelObject();
+        if (!config.isAirMode() && !Strings.isEmpty(modelObject)) {
+            response.render(OnDomReadyHeaderItem.forScript(String.format("$('#%s').summernote('code', '%s')",
+                                                                         getMarkupId(), JavaScriptUtils.escapeQuotes(modelObject))));
         }
     }
 
