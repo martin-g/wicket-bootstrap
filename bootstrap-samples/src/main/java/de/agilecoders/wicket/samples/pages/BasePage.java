@@ -56,7 +56,7 @@ abstract class BasePage extends GenericWebPage<Void> {
         add(new HtmlTag("html"));
         MobileViewportMetaTag mvt = new MobileViewportMetaTag("viewport");
         mvt.setWidth("device-width");
-        mvt.setInitialScale("initial-scale=1");
+        mvt.setInitialScale("1");
         add(mvt);
 //        add(new OptimizedMobileViewportNoZoomMetaTag("viewport1"));
         add(new IeEdgeMetaTag("ie-edge"));
