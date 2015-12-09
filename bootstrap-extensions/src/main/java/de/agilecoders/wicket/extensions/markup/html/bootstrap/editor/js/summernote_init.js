@@ -1,10 +1,10 @@
-$(function() {
+;(function() {
     var summernoteConfig = ${summernoteconfig};
     var summernote = $('#'+summernoteConfig.summernoteEditorId);
 
-    var toolbar = new Array();
+    var toolbar = [];
     $.each(summernoteConfig.ToolbarOptions, function(key, value) {
-        var category = new Array();
+        var category = [];
         category.push(key);
         category.push(value);
         toolbar.push(category);
@@ -61,6 +61,6 @@ $(function() {
     };
 
     $.extend(summernoteConfigDefault, summernoteConfig);
-    
+
     summernote.summernote(summernoteConfigDefault);
-});
+})();
