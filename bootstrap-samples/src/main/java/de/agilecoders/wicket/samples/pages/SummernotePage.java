@@ -56,6 +56,7 @@ public class SummernotePage extends BasePage {
 
             @Override
             protected void updateAjaxAttributes(AjaxRequestAttributes attributes) {
+                attributes.setAllowDefault(false);
                 if (isAirMode) {
                     super.updateAjaxAttributes(attributes);
                 }
