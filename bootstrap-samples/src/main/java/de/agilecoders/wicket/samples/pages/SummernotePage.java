@@ -40,9 +40,8 @@ public class SummernotePage extends BasePage {
         summernoteConfig.useStorageId(WicketApplication.STORAGE_ID);
         summernoteConfig.withHeight(50);
         summernoteConfig.withAirMode(isAirMode);
-        summernoteConfig.withPlaceholder("Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.");
 
-        final IModel<String> summernoteModel = Model.of();
+        final IModel<String> summernoteModel = Model.of("Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.");
 
         final SummernoteEditor summernoteEditor = new SummernoteEditor("summernote" + idSuffix, summernoteModel, summernoteConfig);
         form.add(summernoteEditor);
