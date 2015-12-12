@@ -9,7 +9,7 @@
 
     <groupId>de.agilecoders.wicket</groupId>
     <artifactId>bootstrap-parent</artifactId>
-    <version>0.9.15-SNAPSHOT</version>
+    <version>0.9.15</version>
     <packaging>pom</packaging>
     <name>bootstrap-parent</name>
 
@@ -20,7 +20,7 @@
         <url>git@github.com:l0rdn1kk0n/wicket-bootstrap.git</url>
         <connection>scm:git:git@github.com/l0rdn1kk0n/wicket-bootstrap.git</connection>
         <developerConnection>scm:git:ssh://git@github.com/l0rdn1kk0n/wicket-bootstrap.git</developerConnection>
-        <tag>HEAD</tag>
+        <tag>bootstrap-parent-0.9.15</tag>
     </scm>
 
     <issueManagement>
