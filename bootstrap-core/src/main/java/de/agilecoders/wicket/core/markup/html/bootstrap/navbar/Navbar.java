@@ -59,7 +59,7 @@ public class Navbar extends Panel implements Invertible<Navbar> {
     /**
      * indicates the position of the navigation bar itself
      */
-    public static enum Position implements ICssClassNameProvider {
+    public enum Position implements ICssClassNameProvider {
         /**
          * fixate at the top of the screen
          */
@@ -87,7 +87,7 @@ public class Navbar extends Panel implements Invertible<Navbar> {
          *
          * @param className css class name of this position enum
          */
-        private Position(final String className) {
+        Position(final String className) {
             this.className = className;
         }
 
@@ -101,7 +101,7 @@ public class Navbar extends Panel implements Invertible<Navbar> {
     /**
      * indicates the position of a button inside the navigation bar.
      */
-    public static enum ComponentPosition {
+    public enum ComponentPosition {
         LEFT, RIGHT
     }
 
