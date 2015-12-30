@@ -3,6 +3,7 @@ package de.agilecoders.wicket.samples.pages;
 import de.agilecoders.wicket.core.markup.html.bootstrap.block.Code;
 import de.agilecoders.wicket.extensions.slider.NumericBootstrapSlider;
 import org.apache.wicket.Component;
+import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.wicketstuff.annotation.mount.MountPath;
@@ -25,8 +26,10 @@ public class SliderPage extends BasePage {
     public SliderPage(PageParameters parameters) {
         super(parameters);
 
-        add(newSlider("slider", longSliderModel, 0L, 100000L, 10L),
-            new Code("default-html-code", Model.of("//HTML\n<form><input wicket:id=\"slider\"></form>")).setShowLineNumbers(true),
+        Form<Void> sliderForm = new Form<Void>("sliderForm");
+        add(sliderForm);
+        sliderForm.add(newSlider("slider", longSliderModel, 0L, 100000L, 10L));
+        add(new Code("default-html-code", Model.of("//HTML\n<form><input wicket:id=\"slider\"></form>")).setShowLineNumbers(true),
             new Code("default-java-code", Model.of("//JAVA\nadd(new DateTextField(\"default\"));")).setShowLineNumbers(true));
     }
 

@@ -126,7 +126,7 @@ public class BootstrapSlider<T extends ISliderValue, N extends Number> extends T
         tag.put("data-slider-max",max != null? max.toString(): "10");
         tag.put("data-slider-step",step != null? step.toString(): "1");
         tag.put("type", "text");
-
+        tag.put("id", getMarkupId());
     }
 
     @Override
