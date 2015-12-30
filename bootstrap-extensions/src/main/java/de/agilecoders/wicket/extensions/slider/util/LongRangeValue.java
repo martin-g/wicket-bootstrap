@@ -1,4 +1,6 @@
-package de.agilecoders.wicket.extensions.slider;
+package de.agilecoders.wicket.extensions.slider.util;
+
+import de.agilecoders.wicket.extensions.slider.ISliderValue;
 
 /**
  * Range
@@ -25,7 +27,7 @@ public class LongRangeValue implements ISliderValue {
 
     @Override
     public Class<? extends Number> getNumberType() {
-        return Double.class;
+        return Long.class;
     }
 
     @Override

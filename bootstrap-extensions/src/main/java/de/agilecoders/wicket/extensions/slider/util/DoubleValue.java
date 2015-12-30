@@ -1,9 +1,11 @@
-package de.agilecoders.wicket.extensions.slider;
+package de.agilecoders.wicket.extensions.slider.util;
+
+import de.agilecoders.wicket.extensions.slider.ISliderValue;
 
 /**
  * DoubleValue
  */
-public class DoubleValue implements ISliderValue {
+public class DoubleValue implements ISliderValue, INumericValue<Double> {
 
     private double value;
 
@@ -29,11 +31,11 @@ public class DoubleValue implements ISliderValue {
         return Double.toString(value);
     }
 
-    public double getValue() {
+    public Double getValue() {
         return value;
     }
 
-    public void setValue(double value) {
+    public void setValue(Double value) {
         this.value = value;
     }
 }

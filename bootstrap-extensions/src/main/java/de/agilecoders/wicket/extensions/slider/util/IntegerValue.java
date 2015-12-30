@@ -1,22 +1,24 @@
-package de.agilecoders.wicket.extensions.slider;
+package de.agilecoders.wicket.extensions.slider.util;
+
+import de.agilecoders.wicket.extensions.slider.ISliderValue;
 
 /**
  * DoubleValue
  */
-public class LongValue implements ISliderValue {
+public class IntegerValue implements ISliderValue, INumericValue<Integer> {
 
-    private long value;
+    private int value;
 
-    public LongValue() {
+    public IntegerValue() {
     }
 
-    public LongValue(long value) {
+    public IntegerValue(int value) {
         this.value = value;
     }
 
     @Override
     public ISliderValue fromString(String value) {
-        return new LongValue(Long.parseLong(value));
+        return new IntegerValue(Integer.parseInt(value));
     }
 
     @Override
@@ -24,25 +26,25 @@ public class LongValue implements ISliderValue {
         return Double.toString(value);
     }
 
-    public long getValue() {
+    public Integer getValue() {
         return value;
     }
 
-    public void setValue(long value) {
+    public void setValue(Integer value) {
         this.value = value;
     }
 
     @Override
     public Class<? extends Number> getNumberType() {
-        return Long.class;
+        return Integer.class;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof LongValue)) return false;
+        if (!(o instanceof IntegerValue)) return false;
 
-        LongValue longValue = (LongValue) o;
+        IntegerValue longValue = (IntegerValue) o;
 
         if (value != longValue.value) return false;
 
