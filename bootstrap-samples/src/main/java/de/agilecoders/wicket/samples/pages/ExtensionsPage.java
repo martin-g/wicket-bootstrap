@@ -112,6 +112,8 @@ public class ExtensionsPage extends BasePage {
         final List<? extends AbstractLink> buttons = Lists.<AbstractLink> newArrayList(
             new MenuBookmarkablePageLink<Void>(DatePickerPage.class, Model.of("DatePicker"))
                 .setIconType(GlyphIconType.time),
+                new MenuBookmarkablePageLink<Void>(SliderPage.class, Model.of("Slider"))
+                        .setIconType(GlyphIconType.signal),
             new MenuBookmarkablePageLink<Void>(IssuesPage.class, Model.of("Github Issues"))
                 .setIconType(GlyphIconType.book), new MenuBookmarkablePageLink<Void>(ExtensionsPage.class,
                 Model.of("Extensions")).setIconType(GlyphIconType.qrcode));
@@ -155,7 +157,10 @@ public class ExtensionsPage extends BasePage {
             protected List<AbstractLink> newSubMenuButtons(String buttonMarkupId) {
             return Lists.<AbstractLink> newArrayList(
                 new MenuBookmarkablePageLink<Void>(DatePickerPage.class, Model.of("DatePicker"))
-                    .setIconType(GlyphIconType.time), new MenuBookmarkablePageLink<Void>(IssuesPage.class,
+                    .setIconType(GlyphIconType.time),
+                    new MenuBookmarkablePageLink<Void>(SliderPage.class, Model.of("Slider"))
+                            .setIconType(GlyphIconType.screenshot),
+                    new MenuBookmarkablePageLink<Void>(IssuesPage.class,
                     Model.of("Github Issues")).setIconType(GlyphIconType.book),
                 new MenuBookmarkablePageLink<Void>(ExtensionsPage.class, Model.of("Extensions"))
                     .setIconType(GlyphIconType.qrcode));
