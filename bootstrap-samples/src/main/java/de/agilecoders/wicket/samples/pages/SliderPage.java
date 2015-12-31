@@ -22,6 +22,8 @@ public class SliderPage extends BasePage {
     private Model<Long> longSliderModel  = Model.of(100L);
     
     private Model<LongRangeValue> longRangeModel = Model.of( new LongRangeValue(10, 20));
+
+    private Model<LongRangeValue> disabledRangeModel = Model.of( new LongRangeValue(10, 20));
     
     /**
      * Construct.
@@ -42,13 +44,19 @@ public class SliderPage extends BasePage {
         rangeForm.add(newRangeSlider("rangeSlider", longRangeModel, 0L, 100L, 5L));
         add(new Code("range-html-code", Model.of("//HTML\n<form><input wicket:id=\"rangeSlider\"></form>")).setShowLineNumbers(true),
                 new Code("range-java-code", Model.of("//JAVA\nadd(new BootstrapSlider<LongRangeValue, Long>(\"rangeSlider\")).setMin(min).setMax(max).setStep(step);")).setShowLineNumbers(true));
+
+        Form<Void> disabledForm = new Form<Void>("disabledForm");
+        add(disabledForm);
+        disabledForm.add(newRangeSlider("disabledSlider", disabledRangeModel, 0L, 100L, 5L).setEnabled(false));
+        add(new Code("disabled-html-code", Model.of("//HTML\n<form><input wicket:id=\"disabledSlider\"></form>")).setShowLineNumbers(true),
+                new Code("disabled-java-code", Model.of("//JAVA\nadd(new BootstrapSlider<LongRangeValue, Long>(\"disabledSlider\")).setMin(min).setMax(max).setStep(step);")).setShowLineNumbers(true));
     }
 
     private Component newSlider(String markupId, Model<Long> longSliderModel, Long min, Long max, Long step) {
         return new NumericBootstrapSlider<Long>(markupId, longSliderModel).setMin(min).setMax(max).setStep(step);
     }
 
-    private Component newRangeSlider(String markupId, Model<LongRangeValue> longSliderModel, Long min, Long max, Long step) {
+    private BootstrapSlider newRangeSlider(String markupId, Model<LongRangeValue> longSliderModel, Long min, Long max, Long step) {
         return new BootstrapSlider<LongRangeValue, Long>(markupId, longSliderModel, LongRangeValue.class).setMin(min).setMax(max).setStep(step).setHandle(BootstrapSlider.HandleType.triangle);
     }
 
