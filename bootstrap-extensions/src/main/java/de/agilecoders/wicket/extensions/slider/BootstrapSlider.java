@@ -24,6 +24,10 @@ public class BootstrapSlider<T extends ISliderValue, N extends Number> extends T
     public static enum TooltipType {
         show, hide, always    
     }
+
+    public static enum HandleType {
+        round, square, triangle, custom;
+    }
     
     public static class BootstrapDoubleSliderConverter implements IConverter<ISliderValue>
     {
@@ -82,7 +86,8 @@ public class BootstrapSlider<T extends ISliderValue, N extends Number> extends T
     private N max;
     private N step;
     private TooltipType tooltip;
-
+    private HandleType handle;
+    
     public BootstrapSlider(String id, IModel<T> model, Class<T> typeClass)
     {
         super(id, model, typeClass);
@@ -134,6 +139,9 @@ public class BootstrapSlider<T extends ISliderValue, N extends Number> extends T
         if(tooltip != null) {
             tag.put("data-slider-tooltip", tooltip.name());
         }
+        if(handle != null) {
+            tag.put("data-slider-handle", handle.name());
+        }
         tag.put("id", getMarkupId());
     }
 
@@ -179,6 +187,15 @@ public class BootstrapSlider<T extends ISliderValue, N extends Number> extends T
 
     public BootstrapSlider setTooltip(TooltipType tooltip) {
         this.tooltip = tooltip;
+        return this;
+    }
+
+    public HandleType getHandle() {
+        return handle;
+    }
+
+    public BootstrapSlider setHandle(HandleType handle) {
+        this.handle = handle;
         return this;
     }
 }

@@ -49,7 +49,7 @@ public class SliderPage extends BasePage {
     }
 
     private Component newRangeSlider(String markupId, Model<LongRangeValue> longSliderModel, Long min, Long max, Long step) {
-        return new BootstrapSlider<LongRangeValue, Long>(markupId, longSliderModel, LongRangeValue.class).setMin(min).setMax(max).setStep(step);
+        return new BootstrapSlider<LongRangeValue, Long>(markupId, longSliderModel, LongRangeValue.class).setMin(min).setMax(max).setStep(step).setHandle(BootstrapSlider.HandleType.triangle);
     }
 
     @Override
