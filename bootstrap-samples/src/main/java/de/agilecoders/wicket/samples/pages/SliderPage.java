@@ -41,7 +41,7 @@ public class SliderPage extends BasePage {
 
         Form<Void> rangeForm = new Form<Void>("rangeForm");
         add(rangeForm);
-        rangeForm.add(newRangeSlider("rangeSlider", longRangeModel, 0L, 100L, 5L));
+        rangeForm.add(newRangeSlider("rangeSlider", longRangeModel, 0L, 100L, 5L).setHandle(BootstrapSlider.HandleType.triangle));
         add(new Code("range-html-code", Model.of("//HTML\n<form><input wicket:id=\"rangeSlider\"></form>")).setShowLineNumbers(true),
                 new Code("range-java-code", Model.of("//JAVA\nadd(new BootstrapSlider<LongRangeValue, Long>(\"rangeSlider\")).setMin(min).setMax(max).setStep(step);")).setShowLineNumbers(true));
 
@@ -57,7 +57,7 @@ public class SliderPage extends BasePage {
     }
 
     private BootstrapSlider newRangeSlider(String markupId, Model<LongRangeValue> longSliderModel, Long min, Long max, Long step) {
-        return new BootstrapSlider<LongRangeValue, Long>(markupId, longSliderModel, LongRangeValue.class).setMin(min).setMax(max).setStep(step).setHandle(BootstrapSlider.HandleType.triangle);
+        return new BootstrapSlider<LongRangeValue, Long>(markupId, longSliderModel, LongRangeValue.class).setMin(min).setMax(max).setStep(step);
     }
 
     @Override
