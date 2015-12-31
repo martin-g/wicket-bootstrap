@@ -25,6 +25,8 @@ public class SliderPage extends BasePage {
 
     private Model<LongRangeValue> disabledRangeModel = Model.of( new LongRangeValue(10, 20));
     
+    private Model<LongRangeValue> tooltipFormRangeModel = Model.of( new LongRangeValue(10, 20));
+    
     /**
      * Construct.
      *
@@ -50,6 +52,10 @@ public class SliderPage extends BasePage {
         disabledForm.add(newRangeSlider("disabledSlider", disabledRangeModel, 0L, 100L, 5L).setEnabled(false));
         add(new Code("disabled-html-code", Model.of("//HTML\n<form><input wicket:id=\"disabledSlider\"></form>")).setShowLineNumbers(true),
                 new Code("disabled-java-code", Model.of("//JAVA\nadd(new BootstrapSlider<LongRangeValue, Long>(\"disabledSlider\")).setMin(min).setMax(max).setStep(step);")).setShowLineNumbers(true));
+
+        Form<Void> tooltipForm = new Form<Void>("tooltipForm");
+        add(tooltipForm);
+        tooltipForm.add(newRangeSlider("tooltipSlider", tooltipFormRangeModel, 0L, 100L, 5L).setTooltip(BootstrapSlider.TooltipType.always).setFormatter("function(value){ return 'The values is:' + value; }"));
     }
 
     private Component newSlider(String markupId, Model<Long> longSliderModel, Long min, Long max, Long step) {

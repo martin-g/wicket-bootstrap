@@ -87,6 +87,8 @@ public class BootstrapSlider<T extends ISliderValue, N extends Number> extends T
     private N step;
     private TooltipType tooltip;
     private HandleType handle;
+    // function to create custom tooltip.
+    private String formatter;
 
     public BootstrapSlider(String id, IModel<T> model, Class<T> typeClass)
     {
@@ -153,7 +155,11 @@ public class BootstrapSlider<T extends ISliderValue, N extends Number> extends T
         response.render(JavaScriptHeaderItem.forReference(BootstrapSliderResourceReference.getInstance()));
         response.render(CssHeaderItem.forReference(BootstrapSliderCssResourceReference.getInstance()));
         StringBuilder builder = new StringBuilder();
-        builder.append("$('#").append(getMarkupId()).append("').slider();");
+        builder.append("$('#").append(getMarkupId()).append("').slider({");
+        if(formatter != null) {
+            builder.append("'formatter':").append(formatter);
+        }
+        builder.append("});");
         response.render(OnDomReadyHeaderItem.forScript(builder));
     }
 
@@ -199,6 +205,15 @@ public class BootstrapSlider<T extends ISliderValue, N extends Number> extends T
 
     public BootstrapSlider setHandle(HandleType handle) {
         this.handle = handle;
+        return this;
+    }
+
+    public String getFormatter() {
+        return formatter;
+    }
+
+    public BootstrapSlider setFormatter(String formatter) {
+        this.formatter = formatter;
         return this;
     }
 }
