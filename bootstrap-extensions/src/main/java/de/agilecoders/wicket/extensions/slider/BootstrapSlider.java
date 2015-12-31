@@ -159,8 +159,14 @@ public class BootstrapSlider<T extends ISliderValue, N extends Number> extends T
         if(formatter != null) {
             builder.append("'formatter':").append(formatter);
         }
+        configExtraParams(builder);
         builder.append("});");
         response.render(OnDomReadyHeaderItem.forScript(builder));
+    }
+    
+    protected void configExtraParams(StringBuilder builder) {
+        
+        
     }
 
     public N getMin() {
