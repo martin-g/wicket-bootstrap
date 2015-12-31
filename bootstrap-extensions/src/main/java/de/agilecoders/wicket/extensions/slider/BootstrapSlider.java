@@ -21,6 +21,10 @@ import java.util.Locale;
  */
 public class BootstrapSlider<T extends ISliderValue, N extends Number> extends TextField<T> {
     
+    public static enum TooltipType {
+        show, hide, always    
+    }
+    
     public static class BootstrapDoubleSliderConverter implements IConverter<ISliderValue>
     {
         @Override
@@ -77,6 +81,7 @@ public class BootstrapSlider<T extends ISliderValue, N extends Number> extends T
     private N min;
     private N max;
     private N step;
+    private TooltipType tooltip;
 
     public BootstrapSlider(String id, IModel<T> model, Class<T> typeClass)
     {
@@ -126,6 +131,9 @@ public class BootstrapSlider<T extends ISliderValue, N extends Number> extends T
         tag.put("data-slider-max",max != null? max.toString(): "10");
         tag.put("data-slider-step",step != null? step.toString(): "1");
         tag.put("type", "text");
+        if(tooltip != null) {
+            tag.put("data-slider-tooltip", tooltip.name());
+        }
         tag.put("id", getMarkupId());
     }
 
@@ -162,6 +170,15 @@ public class BootstrapSlider<T extends ISliderValue, N extends Number> extends T
 
     public BootstrapSlider setStep(N step) {
         this.step = step;
+        return this;
+    }
+
+    public TooltipType getTooltip() {
+        return tooltip;
+    }
+
+    public BootstrapSlider setTooltip(TooltipType tooltip) {
+        this.tooltip = tooltip;
         return this;
     }
 }
