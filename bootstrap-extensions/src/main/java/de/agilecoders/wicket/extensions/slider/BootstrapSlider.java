@@ -108,7 +108,16 @@ public class BootstrapSlider<T extends ISliderValue, N extends Number> extends T
         }
     }
     
-    
+    protected T newInstance() {
+        try {
+            return (T)getType().newInstance();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     @Override
     public <C> IConverter<C> getConverter(final Class<C> type)
@@ -160,13 +169,20 @@ public class BootstrapSlider<T extends ISliderValue, N extends Number> extends T
             builder.append("'formatter':").append(formatter);
         }
         configExtraParams(builder);
-        builder.append("});");
+        builder.append("})");
+        configEvents(builder);
+        builder.append(";");
         response.render(OnDomReadyHeaderItem.forScript(builder));
     }
     
     protected void configExtraParams(StringBuilder builder) {
         
         
+    }
+
+    protected void configEvents(StringBuilder builder) {
+
+
     }
 
     public N getMin() {

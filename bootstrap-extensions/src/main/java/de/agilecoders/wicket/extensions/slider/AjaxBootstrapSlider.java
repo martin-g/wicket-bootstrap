@@ -3,7 +3,9 @@ package de.agilecoders.wicket.extensions.slider;
 import org.apache.wicket.ajax.AbstractDefaultAjaxBehavior;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.model.IModel;
+import org.apache.wicket.request.cycle.RequestCycle;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,7 +23,7 @@ public class AjaxBootstrapSlider<T extends ISliderValue, N extends Number> exten
         change 
     }
     
-    public static interface EventHandler<T extends ISliderValue> {
+    public static interface EventHandler<T extends ISliderValue> extends Serializable {
         
         public void onAjaxEvent(AjaxRequestTarget target, T newValue);
     }
@@ -34,7 +36,13 @@ public class AjaxBootstrapSlider<T extends ISliderValue, N extends Number> exten
         behavior = new AbstractDefaultAjaxBehavior() {
             @Override
             protected void respond(AjaxRequestTarget target) {
-                
+                SliderEvent event = SliderEvent.valueOf(RequestCycle.get().getRequest().getRequestParameters().getParameterValue("event").toString());
+                AjaxBootstrapSlider.EventHandler<T> handler = handlers.get(event);
+                T value = (T)newInstance().fromString(RequestCycle.get().getRequest().getRequestParameters().getParameterValue("value").toString());
+                getModel().setObject(value);
+                if(handler != null) {
+                    handler.onAjaxEvent(target, value);
+                }
             }
         };        
         add(behavior);
@@ -43,5 +51,17 @@ public class AjaxBootstrapSlider<T extends ISliderValue, N extends Number> exten
     public AjaxBootstrapSlider addHandler(SliderEvent event, EventHandler<T> handler) {
         handlers.put(event, handler);
         return this;
+    }
+
+    @Override
+    protected void configEvents(StringBuilder builder) {
+        CharSequence url = behavior.getCallbackUrl();
+        for(SliderEvent event: handlers.keySet()) {
+            builder.append(".on('").append(event.name()).append("',").append("function(value) {\n");
+            builder.append("var ep={};\n").append("ep['event']='").append(event.name()).append("';\n");
+            builder.append("ep['value']=value['value'];\n");
+            builder.append("Wicket.Ajax.get({'u': '").append(url).append("', 'ep': ep").append("});");
+            builder.append("\n})");
+        }
     }
 }

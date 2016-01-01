@@ -1,11 +1,18 @@
 package de.agilecoders.wicket.samples.pages;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.block.Code;
+import de.agilecoders.wicket.extensions.slider.AjaxBootstrapSlider;
+import de.agilecoders.wicket.extensions.slider.AjaxNumericBootstrapSlider;
 import de.agilecoders.wicket.extensions.slider.BootstrapSlider;
 import de.agilecoders.wicket.extensions.slider.NumericBootstrapSlider;
+import de.agilecoders.wicket.extensions.slider.util.INumericValue;
 import de.agilecoders.wicket.extensions.slider.util.LongRangeValue;
+import de.agilecoders.wicket.extensions.slider.util.LongValue;
 import org.apache.wicket.Component;
+import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Form;
+import org.apache.wicket.model.AbstractReadOnlyModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.wicketstuff.annotation.mount.MountPath;
@@ -26,6 +33,8 @@ public class SliderPage extends BasePage {
     private Model<LongRangeValue> disabledRangeModel = Model.of( new LongRangeValue(10, 20));
     
     private Model<LongRangeValue> tooltipFormRangeModel = Model.of( new LongRangeValue(10, 20));
+
+    private Model<Long> ajaxSliderModel  = Model.of(100L);
     
     /**
      * Construct.
@@ -56,6 +65,27 @@ public class SliderPage extends BasePage {
         Form<Void> tooltipForm = new Form<Void>("tooltipForm");
         add(tooltipForm);
         tooltipForm.add(newRangeSlider("tooltipSlider", tooltipFormRangeModel, 0L, 100L, 5L).setTooltip(BootstrapSlider.TooltipType.always).setFormatter("function(value){ return 'The values is:' + value; }"));
+
+        final Label feedback = new Label("feedback", new AbstractReadOnlyModel<String>() {
+            @Override
+            public String getObject() {
+                return ajaxSliderModel.getObject().toString();
+            }
+        });
+        feedback.setOutputMarkupId(true);
+        add(feedback);
+        Form<Void> ajaxForm = new Form<Void>("ajaxForm");
+        add(ajaxForm);
+        ajaxForm.add(newAjaxSlider("ajaxSlider", ajaxSliderModel, 0L, 1000L, 10L, AjaxBootstrapSlider.SliderEvent.slideStop, new AjaxBootstrapSlider.EventHandler<LongValue>() {
+            @Override
+            public void onAjaxEvent(AjaxRequestTarget target, LongValue newValue) {
+                target.add(feedback);
+            }
+        }));
+    }
+
+    private static  <T extends Number, V extends INumericValue> Component newAjaxSlider(String markupId, Model<T> longSliderModel, T min, T max, T step, AjaxBootstrapSlider.SliderEvent event, AjaxBootstrapSlider.EventHandler<V> handler) {
+        return new AjaxNumericBootstrapSlider<T>(markupId, longSliderModel).addHandler(event, ( AjaxBootstrapSlider.EventHandler<INumericValue<T>>)handler).setMin(min).setMax(max).setStep(step);
     }
 
     private Component newSlider(String markupId, Model<Long> longSliderModel, Long min, Long max, Long step) {
