@@ -28,6 +28,10 @@ public class BootstrapSlider<T extends ISliderValue, N extends Number> extends T
     public static enum HandleType {
         round, square, triangle, custom
     }
+
+    public static enum Orientation {
+        horizontal, vertical
+    }
     
     public static class BootstrapDoubleSliderConverter implements IConverter<ISliderValue>
     {
@@ -89,7 +93,8 @@ public class BootstrapSlider<T extends ISliderValue, N extends Number> extends T
     private HandleType handle;
     // function to create custom tooltip.
     private String formatter;
-
+    private Orientation orientation;
+    
     public BootstrapSlider(String id, IModel<T> model, Class<T> typeClass)
     {
         super(id, model, typeClass);
@@ -155,6 +160,9 @@ public class BootstrapSlider<T extends ISliderValue, N extends Number> extends T
         }
         if(!isEnabled()) {
             tag.put("data-slider-enabled", false);
+        }
+        if(orientation != null) {
+            tag.put("data-slider-orientation", orientation.name());
         }
         tag.put("id", getMarkupId());
     }
@@ -236,6 +244,15 @@ public class BootstrapSlider<T extends ISliderValue, N extends Number> extends T
 
     public BootstrapSlider setFormatter(String formatter) {
         this.formatter = formatter;
+        return this;
+    }
+
+    public Orientation getOrientation() {
+        return orientation;
+    }
+
+    public BootstrapSlider setOrientation(Orientation orientation) {
+        this.orientation = orientation;
         return this;
     }
 }

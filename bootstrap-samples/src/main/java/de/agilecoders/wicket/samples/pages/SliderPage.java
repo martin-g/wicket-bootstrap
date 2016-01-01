@@ -35,6 +35,8 @@ public class SliderPage extends BasePage {
     private Model<LongRangeValue> tooltipFormRangeModel = Model.of( new LongRangeValue(10, 20));
 
     private Model<Long> ajaxSliderModel  = Model.of(100L);
+
+    private Model<LongRangeValue> verticalRangeModel = Model.of( new LongRangeValue(10, 20));
     
     /**
      * Construct.
@@ -82,6 +84,10 @@ public class SliderPage extends BasePage {
                 target.add(feedback);
             }
         }));
+
+        Form<Void> verticalForm = new Form<Void>("verticalForm");
+        add(verticalForm);
+        verticalForm.add(newRangeSlider("verticalSlider", verticalRangeModel, 0L, 100L, 5L).setOrientation(BootstrapSlider.Orientation.vertical));
     }
 
     private static  <T extends Number, V extends INumericValue> Component newAjaxSlider(String markupId, Model<T> longSliderModel, T min, T max, T step, AjaxBootstrapSlider.SliderEvent event, AjaxBootstrapSlider.EventHandler<V> handler) {
