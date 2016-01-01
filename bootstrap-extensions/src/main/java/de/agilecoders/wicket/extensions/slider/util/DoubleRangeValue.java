@@ -20,7 +20,7 @@ public class DoubleRangeValue implements ISliderValue {
 
     @Override
     public ISliderValue fromString(String value) {
-        String toParser = value.substring(1, value.length()-1);
+        String toParser = value.indexOf('[')>=0 ? value.substring(1, value.length()-1): value;
         String[] values = toParser.split(",");
         return new DoubleRangeValue(Double.parseDouble(values[0]),Double.parseDouble(values[1]));
     }

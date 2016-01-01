@@ -20,7 +20,7 @@ public class LongRangeValue implements ISliderValue {
 
     @Override
     public ISliderValue fromString(String value) {
-        String toParser = value.substring(1, value.length()-1);
+        String toParser = value.indexOf('[')>=0 ? value.substring(1, value.length()-1): value;
         String[] values = toParser.split(",");
         return new LongRangeValue(Long.parseLong(values[0]),Long.parseLong(values[1]));
     }
