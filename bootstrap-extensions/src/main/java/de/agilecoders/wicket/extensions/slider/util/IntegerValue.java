@@ -3,7 +3,7 @@ package de.agilecoders.wicket.extensions.slider.util;
 import de.agilecoders.wicket.extensions.slider.ISliderValue;
 
 /**
- * DoubleValue
+ * IntegerValue
  */
 public class IntegerValue implements ISliderValue, INumericValue<Integer> {
 

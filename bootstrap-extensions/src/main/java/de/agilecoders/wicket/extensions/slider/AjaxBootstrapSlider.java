@@ -10,25 +10,25 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * AjaxBootstrapSlider
+ * AjaxBootstrapSlider: ajaxified version of Slider.
  */
 public class AjaxBootstrapSlider<T extends ISliderValue, N extends Number> extends BootstrapSlider<T,N> {
 
     private AbstractDefaultAjaxBehavior behavior;
     
-    public static enum SliderEvent {
+    public enum SliderEvent {
         slide,	//This event fires when the slider is dragged        
         slideStart,	//This event fires when dragging starts	The new slider value
         slideStop,	//This event fires when the dragging stops or has been clicked on	The new slider value
         change 
     }
     
-    public static interface EventHandler<T extends ISliderValue> extends Serializable {
+    public interface EventHandler<T extends ISliderValue> extends Serializable {
         
         public void onAjaxEvent(AjaxRequestTarget target, T newValue);
     }
     
-    private Map<SliderEvent, EventHandler> handlers = new HashMap<SliderEvent, EventHandler>();
+    private final Map<SliderEvent, EventHandler> handlers = new HashMap<SliderEvent, EventHandler>();
     
     public AjaxBootstrapSlider(String id, IModel<T> model, Class<T> typeClass) {
         super(id, model, typeClass);

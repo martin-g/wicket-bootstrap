@@ -13,27 +13,33 @@ import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.util.convert.ConversionException;
 import org.apache.wicket.util.convert.IConverter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Locale;
 
 /**
- * BootstrapSlider
+ * BootstrapSlider: a Wicket wrapper for: https://github.com/seiyria/bootstrap-slider
+ * 
+ * @author Ernesto Reinaldo Barreiro (reiern70@gmail.com)
  */
 public class BootstrapSlider<T extends ISliderValue, N extends Number> extends TextField<T> {
     
-    public static enum TooltipType {
+    private static Logger logger = LoggerFactory.getLogger(BootstrapSlider.class);
+    
+    public enum TooltipType {
         show, hide, always    
     }
 
-    public static enum HandleType {
+    public enum HandleType {
         round, square, triangle, custom
     }
 
-    public static enum Orientation {
+    public enum Orientation {
         horizontal, vertical
     }
     
-    public static class BootstrapDoubleSliderConverter implements IConverter<ISliderValue>
+    private static class BootstrapDoubleSliderConverter implements IConverter<ISliderValue>
     {
         @Override
         public ISliderValue convertToObject(String value, Locale locale) throws ConversionException {
@@ -50,7 +56,7 @@ public class BootstrapSlider<T extends ISliderValue, N extends Number> extends T
         }
     }
 
-    public static class BootstrapLongSliderConverter implements IConverter<ISliderValue>
+    private static class BootstrapLongSliderConverter implements IConverter<ISliderValue>
     {
         @Override
         public ISliderValue convertToObject(String value, Locale locale) throws ConversionException {
@@ -67,7 +73,7 @@ public class BootstrapSlider<T extends ISliderValue, N extends Number> extends T
         }
     }
 
-    public static class BootstrapIntegerSliderConverter implements IConverter<ISliderValue>
+    private static class BootstrapIntegerSliderConverter implements IConverter<ISliderValue>
     {
         @Override
         public ISliderValue convertToObject(String value, Locale locale) throws ConversionException {
@@ -95,9 +101,10 @@ public class BootstrapSlider<T extends ISliderValue, N extends Number> extends T
     private String formatter;
     private Orientation orientation;
     
-    public BootstrapSlider(String id, IModel<T> model, Class<T> typeClass)
+    public BootstrapSlider(final String id, final IModel<T> model, final Class<T> typeClass)
     {
         super(id, model, typeClass);
+        setOutputMarkupId(true);
         try {
             if(Double.class.isAssignableFrom(typeClass.newInstance().getNumberType())) {
                 converter = new BootstrapDoubleSliderConverter();
@@ -115,11 +122,11 @@ public class BootstrapSlider<T extends ISliderValue, N extends Number> extends T
     
     protected T newInstance() {
         try {
-            return (T)getType().newInstance();
+            return getType().newInstance();
         } catch (InstantiationException e) {
-            e.printStackTrace();
+            logger.error("newInstance", e);
         } catch (IllegalAccessException e) {
-            e.printStackTrace();
+            logger.error("newInstance", e);
         }
         return null;
     }
@@ -138,13 +145,8 @@ public class BootstrapSlider<T extends ISliderValue, N extends Number> extends T
     }
 
     @Override
-    protected void onInitialize() {
-        super.onInitialize();
-        setOutputMarkupId(true);
-    }
-
-    @Override
     protected void onComponentTag(ComponentTag tag) {
+        super.onComponentTag(tag);
         // Must be attached to an input tag
         checkComponentTag(tag, "input");
         tag.put("data-slider-value", converter.convertToString(getModelObject(), getLocale()));
@@ -183,7 +185,7 @@ public class BootstrapSlider<T extends ISliderValue, N extends Number> extends T
         response.render(OnDomReadyHeaderItem.forScript(builder));
     }
     
-    protected void configExtraParams(StringBuilder builder) {
+    protected void configExtraParams(final StringBuilder builder) {
         
         
     }

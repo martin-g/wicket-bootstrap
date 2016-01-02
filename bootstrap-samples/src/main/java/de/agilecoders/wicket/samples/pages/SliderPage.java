@@ -20,7 +20,7 @@ import org.wicketstuff.annotation.mount.MountPath;
 /**
  * The {@code BaseCssPage}
  *
- * @author miha
+ * @author Ernesto Reinaldo Barreiro
  * @version 1.0
  */
 @MountPath(value = "/slider")
@@ -37,6 +37,8 @@ public class SliderPage extends BasePage {
     private Model<Long> ajaxSliderModel  = Model.of(100L);
 
     private Model<LongRangeValue> verticalRangeModel = Model.of( new LongRangeValue(10, 20));
+
+    private Model<LongRangeValue> ajaxFormRangeModel = Model.of( new LongRangeValue(10, 20));
     
     /**
      * Construct.
@@ -88,6 +90,23 @@ public class SliderPage extends BasePage {
         Form<Void> verticalForm = new Form<Void>("verticalForm");
         add(verticalForm);
         verticalForm.add(newRangeSlider("verticalSlider", verticalRangeModel, 0L, 100L, 5L).setOrientation(BootstrapSlider.Orientation.vertical));
+
+        final Label feedback1 = new Label("feedback1", new AbstractReadOnlyModel<String>() {
+            @Override
+            public String getObject() {
+                return ajaxFormRangeModel.getObject().toString();
+            }
+        });
+        feedback1.setOutputMarkupId(true);
+        add(feedback1);
+        Form<Void> ajaxRangeForm = new Form<Void>("ajaxRangeForm");
+        add(ajaxRangeForm);
+        ajaxRangeForm.add(newAjaxRangeSlider("ajaxRangeSlider", ajaxFormRangeModel, 0L, 100L, 5L).addHandler(AjaxBootstrapSlider.SliderEvent.slideStop, new AjaxBootstrapSlider.EventHandler<LongRangeValue>() {
+            @Override
+            public void onAjaxEvent(AjaxRequestTarget target, LongRangeValue newValue) {
+                target.add(feedback1);
+            }
+        }));
     }
 
     private static  <T extends Number, V extends INumericValue> Component newAjaxSlider(String markupId, Model<T> longSliderModel, T min, T max, T step, AjaxBootstrapSlider.SliderEvent event, AjaxBootstrapSlider.EventHandler<V> handler) {
@@ -100,6 +119,12 @@ public class SliderPage extends BasePage {
 
     private BootstrapSlider newRangeSlider(String markupId, Model<LongRangeValue> longSliderModel, Long min, Long max, Long step) {
         return new BootstrapSlider<LongRangeValue, Long>(markupId, longSliderModel, LongRangeValue.class).setMin(min).setMax(max).setStep(step);
+    }
+
+    private AjaxBootstrapSlider newAjaxRangeSlider(String markupId, Model<LongRangeValue> longSliderModel, Long min, Long max, Long step) {
+        AjaxBootstrapSlider<LongRangeValue, Long> slider = new AjaxBootstrapSlider<LongRangeValue, Long>(markupId, longSliderModel, LongRangeValue.class);
+        slider.setMin(min).setMax(max).setStep(step);
+        return slider;
     }
 
     @Override

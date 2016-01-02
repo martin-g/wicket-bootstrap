@@ -4,7 +4,7 @@ import de.agilecoders.wicket.extensions.slider.util.*;
 import org.apache.wicket.model.IModel;
 
 /**
- * NumericBootstrapSlider
+ * NumericBootstrapSlider: version of slider that works with numeric values.
  */
 public class NumericBootstrapSlider<T extends Number> extends BootstrapSlider<INumericValue, T> {
 

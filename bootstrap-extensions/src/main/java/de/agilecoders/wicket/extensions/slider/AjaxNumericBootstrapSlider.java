@@ -4,7 +4,7 @@ import de.agilecoders.wicket.extensions.slider.util.*;
 import org.apache.wicket.model.IModel;
 
 /**
- * AjaxNumericBootstrapSlider
+ * AjaxNumericBootstrapSlider: version of Ajaxified slider that makes easier to work with numeric values.
  */
 public class AjaxNumericBootstrapSlider<T extends Number> extends AjaxBootstrapSlider<INumericValue<T>, T> {
 

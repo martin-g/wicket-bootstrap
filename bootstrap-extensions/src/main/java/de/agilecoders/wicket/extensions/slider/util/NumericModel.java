@@ -3,7 +3,7 @@ package de.agilecoders.wicket.extensions.slider.util;
 import org.apache.wicket.model.IModel;
 
 /**
- * NumericModel
+ * NumericModel: wrapper model around a numeric model (it bridges with internal slider representation of data).
  */
 public class NumericModel<T extends Number> implements IModel<INumericValue<T>> {
 
