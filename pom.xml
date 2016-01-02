@@ -59,7 +59,7 @@
         <doxia.version>1.0</doxia.version>
         <less4j.version>1.15.4</less4j.version>
         <modernizr.version>2.8.3</modernizr.version>
-        <jetty.version>8.1.18.v20150929</jetty.version>
+        <jetty.version>8.1.16.v20140903</jetty.version>
         <newrelic.version>3.7.0</newrelic.version>
         <google-closure.version>v20130603</google-closure.version>
         <contiperf.version>2.3.4</contiperf.version>

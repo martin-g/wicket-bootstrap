@@ -91,6 +91,7 @@ public class ExtensionsPage extends BasePage {
             new Video("https://archive.org/download/CopyingIsNotTheft/CINT_Nik_H264_720_512kb.mp4",
                 "video/mp4"));
         add(new Html5Player("video", Model.ofList(videos)));
+
         add(new Code(
                 "video-code",
                 Model.of("List<Html5Player.IVideo> videos = Lists.<Html5Player.IVideo>newArrayList(\n"
@@ -128,6 +129,7 @@ public class ExtensionsPage extends BasePage {
                 "context-panel");
         final ButtonListContextMenu contextMenu = new ButtonListContextMenu(
                 "contextmenu", Model.ofList(buttons));
+
         contextMenu.assignTo(contextPanel);
         add(contextMenu,
                 contextPanel,
@@ -173,7 +175,10 @@ public class ExtensionsPage extends BasePage {
             protected List<AbstractLink> newSubMenuButtons(String buttonMarkupId) {
             return Lists.<AbstractLink> newArrayList(
                 new MenuBookmarkablePageLink<Void>(DatePickerPage.class, Model.of("DatePicker"))
-                    .setIconType(GlyphIconType.time), new MenuBookmarkablePageLink<Void>(IssuesPage.class,
+                    .setIconType(GlyphIconType.time),
+                    new MenuBookmarkablePageLink<Void>(SliderPage.class, Model.of("Slider"))
+                            .setIconType(GlyphIconType.screenshot),
+                    new MenuBookmarkablePageLink<Void>(IssuesPage.class,
                     Model.of("Github Issues")).setIconType(GlyphIconType.book),
                 new MenuBookmarkablePageLink<Void>(ExtensionsPage.class, Model.of("Extensions"))
                     .setIconType(GlyphIconType.qrcode));

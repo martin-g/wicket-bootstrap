@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+    <head>
+        <meta charset="utf-8"/>
+        <title>ComponentsPage</title>
+    </head>
+    <body>
+        <wicket:extend>
+            <header class="jumbotron subhead" id="overview">
+                <div class="container">
+                    <h1>Slider</h1>
+
+                    <p class="lead"> A wrapper of http://seiyria.com/bootstrap-slider/</p>
+                </div>
+            </header>
+
+
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-lg-3 bs-docs-sidebar">
+                        <ul wicket:id="navigation" class="nav list-group bs-docs-sidenav">
+                            <li><a href="#slider"><i class="icon-chevron-right"></i> Slider</a></li>
+                            <li><a href="#range"><i class="icon-chevron-right"></i> Range Slider</a></li>
+                            <li><a href="#disabled"><i class="icon-chevron-right"></i> Disabled Slider</a></li>
+                            <li><a href="#ajax"><i class="icon-chevron-right"></i>Ajax Slider</a></li>
+                            <li><a href="#vertical"><i class="icon-chevron-right"></i>Vertical Slider</a></li>
+                            <li><a href="#ajaxRange"><i class="icon-chevron-right"></i>Ajax Slider- Range values</a></li>
+                            <li><a href="#reversed"><i class="icon-chevron-right"></i>Reversed Slider</a></li>
+                         </ul>
+                    </div>
+                    <div class="col-lg-9">
+
+                        <section id="slider">
+                            <div class="page-header">
+                                <h1>Slider</h1>
+                            </div>
+
+                            <h2>Example</h2>
+
+                            <p>DOC.</p>
+
+                            <div class="bs-docs-example">
+                                <form wicket:id="sliderForm"><input wicket:id="slider" type="text"></form>
+                            </div>
+                            <pre wicket:id="default-html-code"></pre>
+                            <pre wicket:id="default-java-code"></pre>
+                        </section>
+                        <section id="range">
+                            <div class="page-header">
+                                <h1>Slider- Range selector- With triangle handles</h1>
+                            </div>
+
+                            <h2>Example</h2>
+
+                            <p>DOC.</p>
+
+                            <div class="bs-docs-example">
+                                <form wicket:id="rangeForm"><input wicket:id="rangeSlider" type="text"></form>
+                            </div>
+                            <pre wicket:id="range-html-code"></pre>
+                            <pre wicket:id="range-java-code"></pre>
+                        </section>
+
+                        <section id="disabled">
+                            <div class="page-header">
+                                <h1>Slider- Range selector-Disabled</h1>
+                            </div>
+
+                            <h2>Example</h2>
+
+                            <p>DOC.</p>
+
+                            <div class="bs-docs-example">
+                                <form wicket:id="disabledForm"><input wicket:id="disabledSlider" type="text"></form>
+                            </div>
+                            <pre wicket:id="disabled-html-code"></pre>
+                            <pre wicket:id="disabled-java-code"></pre>
+                        </section>
+
+                        <section id="tooltip">
+                            <div class="page-header">
+                                <h1>Tooltip always visible and custom formatter</h1>
+                            </div>
+
+                            <h2>Example</h2>
+
+                            <div class="bs-docs-example">
+                                <form wicket:id="tooltipForm"><input wicket:id="tooltipSlider" type="text"></form>
+                            </div>
+
+                        </section>
+
+                        <section id="ajax">
+                            <div class="page-header">
+                                <h1>Ajax Slider</h1>
+                            </div>
+
+                            <h2>Example</h2>
+                            
+                            <div wicket:id="feedback"></div>
+                            <div class="bs-docs-example">
+                                <form wicket:id="ajaxForm"><input wicket:id="ajaxSlider" type="text"></form>
+                            </div>
+
+                        </section>
+
+                        <section id="vertical">
+                            <div class="page-header">
+                                <h1>Vertical Slider</h1>
+                            </div>
+
+                            <h2>Example</h2>
+
+                            <div class="bs-docs-example">
+                                <form wicket:id="verticalForm"><input wicket:id="verticalSlider" type="text"></form>
+                            </div>
+
+                        </section>
+
+                        <section id="ajaxRange">
+                            <div class="page-header">
+                                <h1>Ajax Slider- Range values- Tootip splitted</h1>
+                            </div>
+
+                            <h2>Example</h2>
+
+                            <div wicket:id="feedback1"></div>
+                            <div class="bs-docs-example">
+                                <form wicket:id="ajaxRangeForm"><input wicket:id="ajaxRangeSlider" type="text"></form>
+                            </div>
+                        </section>
+
+                        <section id="reversed">
+                            <div class="page-header">
+                                <h1>Reversed Slider</h1>
+                            </div>
+
+                            <h2>Example</h2>
+
+                            <div class="bs-docs-example">
+                                <form wicket:id="reversedForm"><input wicket:id="reversedSlider" type="text"></form>
+                            </div>
+
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </wicket:extend>
+    </body>
+</html>
