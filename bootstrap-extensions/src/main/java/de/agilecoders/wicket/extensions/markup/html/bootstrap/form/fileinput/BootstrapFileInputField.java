@@ -60,7 +60,7 @@ public class BootstrapFileInputField extends FileUploadField {
     public BootstrapFileInputField(String id) {
         this(id, null);
     }
-    
+
     /**
      * Constructor
      *
@@ -70,7 +70,7 @@ public class BootstrapFileInputField extends FileUploadField {
     public BootstrapFileInputField(final String id, final IModel<List<FileUpload>> model) {
         this(id, model, new FileInputConfig());
     }
-    
+
     /**
      * Constructor
      *
@@ -133,7 +133,7 @@ public class BootstrapFileInputField extends FileUploadField {
      *
      * @param target The Ajax request handler
      */
-    void onError(AjaxRequestTarget target) {
+    protected void onError(AjaxRequestTarget target) {
     }
 
     /**
@@ -142,7 +142,7 @@ public class BootstrapFileInputField extends FileUploadField {
      *
      * @param target The Ajax request handler
      */
-    void onSubmit(AjaxRequestTarget target) {
+    protected void onSubmit(AjaxRequestTarget target) {
     }
 
     @Override

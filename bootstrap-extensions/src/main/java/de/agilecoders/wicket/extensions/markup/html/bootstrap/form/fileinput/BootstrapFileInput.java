@@ -16,7 +16,9 @@ import java.util.List;
  */
 public class BootstrapFileInput extends GenericPanel<List<FileUpload>> {
 
-    private final BootstrapFileInputField fileInput;
+    private final FileInputConfig config;
+
+    private BootstrapFileInputField fileInput;
 
     /**
      * Constructor.
@@ -47,26 +49,35 @@ public class BootstrapFileInput extends GenericPanel<List<FileUpload>> {
     public BootstrapFileInput(String id, IModel<List<FileUpload>> model, FileInputConfig config) {
         super(id, model);
 
+        this.config = config;
+
         setRenderBodyOnly(true);
+    }
+
+    @Override
+    protected void onInitialize() {
+        super.onInitialize();
 
         Form<Void> form = new Form<Void>("fileInputForm");
         add(form);
 
-        this.fileInput = new BootstrapFileInputField("fileInput", model, config) {
+        this.fileInput = newBootstrapFileInputField("fileInput", getModel(), config);
+        fileInput.setForm(form);
+        form.add(fileInput);
+    }
+
+    private BootstrapFileInputField newBootstrapFileInputField(String id, IModel<List<FileUpload>> model, FileInputConfig config) {
+        return new BootstrapFileInputField(id, model, config) {
             @Override
             protected void onSubmit(AjaxRequestTarget target) {
-                super.onSubmit(target);
                 BootstrapFileInput.this.onSubmit(target);
             }
 
             @Override
             protected void onError(AjaxRequestTarget target) {
-                super.onError(target);
                 BootstrapFileInput.this.onError(target);
             }
         };
-        fileInput.setForm(form);
-        form.add(fileInput);
     }
 
     /**
