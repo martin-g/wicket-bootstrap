@@ -1,11 +1,20 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.editor;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.wicket.Application;
+import org.apache.wicket.markup.head.HeaderItem;
+import org.apache.wicket.markup.head.JavaScriptHeaderItem;
+import org.apache.wicket.request.resource.ResourceReference;
+import org.apache.wicket.resource.DynamicJQueryResourceReference;
+
 import de.agilecoders.wicket.webjars.request.resource.WebjarsJavaScriptResourceReference;
 
 /**
  * The summernote javascript provided via webjars
- * 
- * @author Tobias Soloschenko 
+ *
+ * @author Tobias Soloschenko
  *
  */
 public class SummernoteEditorJavaScriptReference extends WebjarsJavaScriptResourceReference {
@@ -29,5 +38,18 @@ public class SummernoteEditorJavaScriptReference extends WebjarsJavaScriptResour
      */
     private SummernoteEditorJavaScriptReference() {
 	super("summernote/current/dist/summernote.js");
+    }
+
+    @Override
+    public Iterable<? extends HeaderItem> getDependencies() {
+        List<HeaderItem> dependencies = new ArrayList<HeaderItem>();
+        ResourceReference jQueryResourceReference;
+        if (Application.exists()) {
+            jQueryResourceReference = Application.get().getJavaScriptLibrarySettings().getJQueryReference();
+        } else {
+            jQueryResourceReference = DynamicJQueryResourceReference.get();
+        }
+        dependencies.add(JavaScriptHeaderItem.forReference(jQueryResourceReference));
+        return dependencies;
     }
 }
