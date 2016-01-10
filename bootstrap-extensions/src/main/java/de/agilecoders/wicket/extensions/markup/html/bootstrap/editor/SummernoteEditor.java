@@ -6,6 +6,7 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 import org.apache.wicket.WicketRuntimeException;
 import org.apache.wicket.ajax.AbstractDefaultAjaxBehavior;
@@ -44,6 +45,8 @@ import de.agilecoders.wicket.extensions.markup.html.bootstrap.references.SpinJsR
 public class SummernoteEditor extends FormComponent<String> {
 
     private static final long serialVersionUID = 1L;
+
+    private static final Pattern NEW_LINE_PATTERN = Pattern.compile("(\\r\\n|\\n|\\r)");
 
     private final SummernoteConfig config;
 
@@ -115,8 +118,10 @@ public class SummernoteEditor extends FormComponent<String> {
 
         String modelObject = getModelObject();
         if (!config.isAirMode() && !Strings.isEmpty(modelObject)) {
+            modelObject = NEW_LINE_PATTERN.matcher(modelObject).replaceAll("<br/>");
+            CharSequence safeModelObject = JavaScriptUtils.escapeQuotes(modelObject);
             response.render(OnDomReadyHeaderItem.forScript(String.format("$('#%s').summernote('code', '%s')",
-                                                                         getMarkupId(), JavaScriptUtils.escapeQuotes(modelObject))));
+                                                                         getMarkupId(), safeModelObject)));
         }
     }
 
