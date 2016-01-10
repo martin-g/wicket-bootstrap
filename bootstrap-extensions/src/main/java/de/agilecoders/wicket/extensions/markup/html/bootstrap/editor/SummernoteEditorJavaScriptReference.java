@@ -1,9 +1,10 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.editor;
 
+import org.apache.wicket.markup.head.HeaderItem;
+
 import java.util.List;
 
 import org.apache.wicket.Application;
-import org.apache.wicket.markup.head.HeaderItem;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.request.resource.ResourceReference;
 import org.apache.wicket.resource.DynamicJQueryResourceReference;

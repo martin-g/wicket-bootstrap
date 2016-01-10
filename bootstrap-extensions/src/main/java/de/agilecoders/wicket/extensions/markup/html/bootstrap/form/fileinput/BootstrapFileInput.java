@@ -58,7 +58,7 @@ public class BootstrapFileInput extends GenericPanel<List<FileUpload>> {
     protected void onInitialize() {
         super.onInitialize();
 
-        Form<Void> form = new Form<>("fileInputForm");
+        Form<Void> form = new Form<Void>("fileInputForm");
         add(form);
 
         this.fileInput = newBootstrapFileInputField("fileInput", getModel(), config);

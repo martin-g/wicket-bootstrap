@@ -41,7 +41,7 @@ public class SummernotePage extends BasePage {
         summernoteConfig.withHeight(50);
         summernoteConfig.withAirMode(isAirMode);
 
-        final IModel<String> summernoteModel = Model.of("Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.");
+        final IModel<String> summernoteModel = Model.of("Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam \r\nnvoluptua.");
 
         final SummernoteEditor summernoteEditor = new SummernoteEditor("summernote" + idSuffix, summernoteModel, summernoteConfig);
         form.add(summernoteEditor);
