@@ -99,6 +99,11 @@ public class DateTextFieldConfig extends AbstractConfig {
     private static final IKey<Boolean> CalendarWeeks = newKey("calendarWeeks", false);
 
     /**
+     * Defines the min view of the date picker
+     */
+    private static final IKey<Integer> MinViewMode = newKey("minViewMode", null);
+
+    /**
      * holds all week days in a specific sort order.
      */
     public enum Day {
@@ -109,7 +114,7 @@ public class DateTextFieldConfig extends AbstractConfig {
      * holds all view options.
      */
     public enum View {
-        Month, Year, Decade
+        Month, Year, Decade, Day
     }
 
     /**
@@ -156,6 +161,16 @@ public class DateTextFieldConfig extends AbstractConfig {
             startDate = dateTimeFormatter.print(value);
         }
         put(StartDate, startDate);
+        return this;
+    }
+
+    /**
+     * Sets the minimal view of the date picker
+     * @param minViewMode the minimal view
+     * @return this instance for chaining
+     */
+    public DateTextFieldConfig withMinViewMode(View minViewMode) {
+        put(MinViewMode, minViewMode.ordinal());
         return this;
     }
 
