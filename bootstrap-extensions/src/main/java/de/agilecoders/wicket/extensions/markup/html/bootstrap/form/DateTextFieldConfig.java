@@ -166,11 +166,13 @@ public class DateTextFieldConfig extends AbstractConfig {
 
     /**
      * Sets the minimal view of the date picker
-     * @param minViewMode the minimal view
+     * @param minViewMode the minimal view (View.Decade is not supported and will be handle as Day)
      * @return this instance for chaining
      */
     public DateTextFieldConfig withMinViewMode(View minViewMode) {
-        put(MinViewMode, minViewMode.ordinal());
+        // +1 is necessary because date datepicker.js interprets Month as 1 and Year as 2;
+        // but in our View enum Month = 0, Year = 1
+        put(MinViewMode, minViewMode.ordinal() + 1);
         return this;
     }
 
