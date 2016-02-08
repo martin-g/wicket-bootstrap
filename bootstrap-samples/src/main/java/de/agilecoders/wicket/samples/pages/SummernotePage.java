@@ -18,7 +18,9 @@ import de.agilecoders.wicket.samples.WicketApplication;
 @MountPath(value = "/summernote")
 public class SummernotePage extends BasePage {
 
-    /**
+	private static final long serialVersionUID = 1L;
+
+	/**
      * Construct.
      *
      * @param parameters current page parameters

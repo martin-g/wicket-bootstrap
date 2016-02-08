@@ -28,6 +28,6 @@ public class JQueryMigrateJavaScriptReference extends JQueryPluginResourceRefere
      * Private constructor.
      */
     private JQueryMigrateJavaScriptReference() {
-        super(JQueryMigrateJavaScriptReference.class, "js/jquery-migrate-1.2.1.js");
+        super(JQueryMigrateJavaScriptReference.class, "js/jquery-migrate-1.3.0.js");
     }
 }

@@ -99,6 +99,11 @@ public class DateTextFieldConfig extends AbstractConfig {
     private static final IKey<Boolean> CalendarWeeks = newKey("calendarWeeks", false);
 
     /**
+     * Defines the min view of the date picker
+     */
+    private static final IKey<Integer> MinViewMode = newKey("minViewMode", null);
+
+    /**
      * holds all week days in a specific sort order.
      */
     public enum Day {
@@ -109,7 +114,7 @@ public class DateTextFieldConfig extends AbstractConfig {
      * holds all view options.
      */
     public enum View {
-        Month, Year, Decade
+        Month, Year, Decade, Day
     }
 
     /**
@@ -156,6 +161,18 @@ public class DateTextFieldConfig extends AbstractConfig {
             startDate = dateTimeFormatter.print(value);
         }
         put(StartDate, startDate);
+        return this;
+    }
+
+    /**
+     * Sets the minimal view of the date picker
+     * @param minViewMode the minimal view (View.Decade is not supported and will be handle as Day)
+     * @return this instance for chaining
+     */
+    public DateTextFieldConfig withMinViewMode(View minViewMode) {
+        // +1 is necessary because date datepicker.js interprets Month as 1 and Year as 2;
+        // but in our View enum Month = 0, Year = 1
+        put(MinViewMode, minViewMode.ordinal() + 1);
         return this;
     }
 
