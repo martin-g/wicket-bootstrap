@@ -37,7 +37,7 @@ Extensions
 * JQueryUI (1.11.4): http://api.jqueryui.com/
    * Draggable: http://api.jqueryui.com/draggable
    * Resizable: http://api.jqueryui.com/resizable
-* less4j (1.12.0): https://github.com/SomMeri/less4j
+* less4j (1.17.0): https://github.com/SomMeri/less4j
 * bootstrap-tour (0.9.3): http://sorich87.github.com/bootstrap-tour
 * OpenWebIcons (2014-09-29): http://pfefferle.github.com/openwebicons/
 * [Twitter Typeahead (0.9.3)](https://github.com/l0rdn1kk0n/wicket-bootstrap/tree/master/bootstrap-extensions/src/main/java/de/agilecoders/wicket/extensions/markup/html/bootstrap/form/typeahead): http://twitter.github.io/typeahead.js/
@@ -61,7 +61,7 @@ core maven dependency:
 <dependency>
     <groupId>de.agilecoders.wicket</groupId>
     <artifactId>wicket-bootstrap-core</artifactId>
-    <version>0.9.7</version>
+    <version>0.9.16</version>
 </dependency>
 ```
 
@@ -71,7 +71,7 @@ for all extensions:
 <dependency>
     <groupId>de.agilecoders.wicket</groupId>
     <artifactId>wicket-bootstrap-extensions</artifactId>
-    <version>0.9.7</version>
+    <version>0.9.16</version>
 </dependency>
 ```
 
@@ -81,7 +81,7 @@ for all themes:
 <dependency>
     <groupId>de.agilecoders.wicket</groupId>
     <artifactId>wicket-bootstrap-themes</artifactId>
-    <version>0.9.7</version>
+    <version>0.9.16</version>
 </dependency>
 ```
 
@@ -91,7 +91,7 @@ if you want to use a less compiler:
 <dependency>
     <groupId>de.agilecoders.wicket</groupId>
     <artifactId>wicket-bootstrap-less</artifactId>
-    <version>0.9.7</version>
+    <version>0.9.16</version>
 </dependency>
 ```
 
@@ -101,7 +101,7 @@ all samples can be used with this dependency:
 <dependency>
     <groupId>de.agilecoders.wicket</groupId>
     <artifactId>wicket-bootstrap-samples</artifactId>
-    <version>0.9.7</version>
+    <version>0.9.16</version>
 </dependency>
 ```
 
