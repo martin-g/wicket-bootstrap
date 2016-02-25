@@ -25,6 +25,8 @@ import org.apache.wicket.model.ResourceModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.request.resource.CssResourceReference;
 import org.apache.wicket.util.time.Duration;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.wicketstuff.annotation.mount.MountPath;
 
 import com.google.common.collect.Lists;
@@ -76,6 +78,8 @@ import de.agilecoders.wicket.extensions.markup.html.bootstrap.tour.TourStep;
  */
 @MountPath(value = "/extensions")
 public class ExtensionsPage extends BasePage {
+
+    private static final Logger LOG = LoggerFactory.getLogger(ExtensionsPage.class);
 
     /**
      * Construct.
@@ -220,7 +224,7 @@ public class ExtensionsPage extends BasePage {
             @Override
             protected void onUpload(AjaxRequestTarget target, Map<String, List<FileItem>> fileMap) {
                 // Handle files
-                System.out.println("Successfully Uploaded: " + fileMap);
+                LOG.info("Successfully Uploaded: '{}'", fileMap);
                 label.setDefaultModelObject("This is a label changed by dropzone - file uploaded");
                 target.add(label);
             }
