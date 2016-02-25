@@ -91,6 +91,8 @@ public class NavbarTest extends WicketApplicationTest {
         Navbar navbar = new Navbar("id");
 
         tester().startComponentInPage(navbar);
+        System.err.println(tester().getLastResponseAsString());
+
         TagTester tagTester = tester().getTagByWicketId("collapse");
         TagTester ulTag = tagTester.getChild("style", "display:none");
 
