@@ -16,6 +16,7 @@ import org.apache.wicket.Component;
 import org.apache.wicket.Page;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.html.TransparentWebMarkupContainer;
+import org.apache.wicket.markup.html.basic.EnclosureContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.image.Image;
 import org.apache.wicket.markup.html.link.BookmarkablePageLink;
@@ -152,7 +153,16 @@ public class Navbar extends Panel implements Invertible<Navbar> {
         activeStateAppender = new CssClassNameAppender("active");
         invertModel = Model.of("");
 
-        container.add(collapse, collapseButton, brandNameLink, leftAlignedComponentListView, rightAlignedComponentListView);
+        EnclosureContainer navLeftListEnclosure = new EnclosureContainer("navLeftListEnclosure", leftAlignedComponentListView);
+        navLeftListEnclosure.add(leftAlignedComponentListView);
+        navLeftListEnclosure.setRenderBodyOnly(false);
+
+        EnclosureContainer navRightListEnclosure = new EnclosureContainer("navRightListEnclosure", leftAlignedComponentListView);
+        navRightListEnclosure.add(rightAlignedComponentListView);
+        navRightListEnclosure.setRenderBodyOnly(false);
+        collapse.add(navLeftListEnclosure, navRightListEnclosure);
+
+        container.add(collapse, collapseButton, brandNameLink);
         collapseButton.add(newToggleNavigationLabel("toggleNavigationLabel"));
         add(container);
     }
