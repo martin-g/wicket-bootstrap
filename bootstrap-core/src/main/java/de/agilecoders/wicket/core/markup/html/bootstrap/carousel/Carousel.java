@@ -109,7 +109,7 @@ public class Carousel extends Panel {
      * @param wicketId The component id
      * @return new list view.
      */
-    private Component newImageList(String wicketId) {
+    protected Component newImageList(String wicketId) {
         return new ListView<ICarouselImage>(wicketId, model) {
 
             private boolean renderedActive = false;
@@ -133,6 +133,13 @@ public class Carousel extends Panel {
                 }
 
                 item.add(image, header, description, caption);
+            }
+            
+             @Override
+            protected void onConfigure() {
+                super.onConfigure();
+                //fix page refresh
+                renderedActive = false;
             }
         };
     }
