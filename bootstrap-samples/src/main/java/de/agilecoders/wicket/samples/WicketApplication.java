@@ -5,6 +5,8 @@ import java.io.InputStream;
 import java.util.Properties;
 
 import de.agilecoders.wicket.core.settings.CookieThemeProvider;
+import de.agilecoders.wicket.core.settings.SingleThemeProvider;
+import de.agilecoders.wicket.themes.markup.html.material_design.MaterialDesignTheme;
 import net.ftlines.wicketsource.WicketSource;
 
 import org.apache.wicket.Application;
@@ -208,7 +210,7 @@ public class WicketApplication extends WebApplication {
      */
     private void configureBootstrap() {
         final IBootstrapSettings settings = new BootstrapSettings();
-        final ThemeProvider themeProvider = new BootswatchThemeProvider(BootswatchTheme.Flatly);
+        final ThemeProvider themeProvider = new SingleThemeProvider(new MaterialDesignTheme());//BootswatchThemeProvider(BootswatchTheme.Flatly);
 
         settings.setJsResourceFilterName("footer-container")
                 .setThemeProvider(themeProvider)
