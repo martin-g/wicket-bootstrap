@@ -1,7 +1,7 @@
 /*!
  * bootswatch v3.3.6
  * Homepage: http://bootswatch.com
- * Copyright 2012-2015 Thomas Park
+ * Copyright 2012-2016 Thomas Park
  * Licensed under MIT
  * Based on Bootstrap
 */
@@ -1189,7 +1189,7 @@ h6,
 .h6 {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 500;
-  line-height: 1.1;
+  line-height: 1.2;
   color: #317eac;
 }
 h1 small,

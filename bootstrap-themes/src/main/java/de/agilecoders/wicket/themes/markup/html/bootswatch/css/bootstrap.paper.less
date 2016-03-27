@@ -418,6 +418,13 @@ input[type="checkbox"],
   }
 }
 
+.form-group-lg {
+  select,
+  select.form-control {
+    line-height: 1.5;
+  }
+}
+
 // Navs =======================================================================
 
 .nav-tabs {
@@ -498,7 +505,7 @@ input[type="checkbox"],
     background-color: @brand-danger;
   }
 
-  a:not(.close),
+  a:not(.close):not(.btn),
   .alert-link {
     color: #fff;
     font-weight: bold;
