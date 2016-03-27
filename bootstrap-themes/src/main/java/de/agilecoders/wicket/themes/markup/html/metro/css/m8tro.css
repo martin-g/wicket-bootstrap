@@ -1539,15 +1539,15 @@ samp {
 code {
   padding: 2px 4px;
   font-size: 90%;
-  color: #b7c6ca;
-  background-color: #231f20;
+  color: #727272;
+  background-color: #212121;
   border-radius: 0;
 }
 kbd {
   padding: 2px 4px;
   font-size: 90%;
-  color: #fff;
-  background-color: #333;
+  color: #727272;
+  background-color: #212121;
   border-radius: 0;
   -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.25);
           box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.25);
@@ -6825,9 +6825,35 @@ table a:hover,
   text-decoration: underline;
   color: #fff;
 }
-a.text-muted:hover {
+tr:hover a.text-muted {
+  color: #000;
+}
+.text-muted a,
+.text-primary a,
+.text-success a,
+.text-info a,
+.text-warning a,
+.text-danger a {
   color: inherit;
   text-decoration: underline;
+}
+.text-muted a:hover {
+  color: #595959;
+}
+.text-primary a:hover {
+  color: #008182;
+}
+.text-success a:hover {
+  color: #679f33;
+}
+.text-info a:hover {
+  color: #2781b8;
+}
+.text-warning a:hover {
+  color: #dc8b05;
+}
+.text-danger a:hover {
+  color: #c61017;
 }
 a.list-group-item:hover,
 a.list-group-item:focus {
@@ -8208,4 +8234,52 @@ input[type=range]::-ms-thumb {
   width: 13px;
   background: #fff;
   border-radius: 0;
+}
+::-moz-selection {
+  color: #000;
+  background: #fff;
+}
+::selection {
+  color: #000;
+  background: #fff;
+}
+.text-primary::-moz-selection,
+.text-primary a::-moz-selection {
+  background: #00b3b5;
+}
+.text-primary::selection,
+.text-primary a::selection {
+  background: #00b3b5;
+}
+.text-success::-moz-selection,
+.text-success a::-moz-selection {
+  background: #80c342;
+}
+.text-success::selection,
+.text-success a::selection {
+  background: #80c342;
+}
+.text-info::-moz-selection,
+.text-info a::-moz-selection {
+  background: #3c9cd6;
+}
+.text-info::selection,
+.text-info a::selection {
+  background: #3c9cd6;
+}
+.text-warning::-moz-selection,
+.text-warning a::-moz-selection {
+  background: #faa61a;
+}
+.text-warning::selection,
+.text-warning a::selection {
+  background: #faa61a;
+}
+.text-danger::-moz-selection,
+.text-danger a::-moz-selection {
+  background: #ed1c24;
+}
+.text-danger::selection,
+.text-danger a::selection {
+  background: #ed1c24;
 }

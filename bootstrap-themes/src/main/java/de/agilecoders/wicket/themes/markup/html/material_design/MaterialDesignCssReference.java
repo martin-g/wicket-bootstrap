@@ -20,14 +20,13 @@ public class MaterialDesignCssReference extends CssResourceReference {
      * Private constructor.
      */
     public MaterialDesignCssReference() {
-        super(MaterialDesignCssReference.class, "css/material-fullpalette.css");
+        super(MaterialDesignCssReference.class, "css/bootstrap-material-design.css");
     }
 
     @Override
     public List<HeaderItem> getDependencies() {
         List<HeaderItem> dependencies = new ArrayList<HeaderItem>();
         dependencies.add(CssHeaderItem.forReference(Bootstrap.getSettings().getCssResourceReference()));
-        dependencies.add(CssHeaderItem.forReference(new CssResourceReference(MaterialDesignCssReference.class, "css/roboto.css")));
         dependencies.add(CssHeaderItem.forReference(new CssResourceReference(MaterialDesignCssReference.class, "css/ripples.css")));
         return dependencies;
     }

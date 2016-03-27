@@ -109,10 +109,8 @@ public class Carousel extends Panel {
      * @param wicketId The component id
      * @return new list view.
      */
-    private Component newImageList(String wicketId) {
+    protected Component newImageList(String wicketId) {
         return new ListView<ICarouselImage>(wicketId, model) {
-
-            private boolean renderedActive = false;
 
             @Override
             protected void populateItem(ListItem<ICarouselImage> item) {
@@ -125,10 +123,7 @@ public class Carousel extends Panel {
                 final TransparentWebMarkupContainer caption = new TransparentWebMarkupContainer("caption");
                 caption.setVisible(header.isVisible() || description.isVisible());
 
-                // REFACTOR: use better way to detect first element
-                if (!renderedActive) {
-                    renderedActive = true;
-
+                if (item.getIndex() == 0) {
                     item.add(new CssClassNameAppender("active"));
                 }
 
