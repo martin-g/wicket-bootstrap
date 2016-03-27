@@ -1,6 +1,5 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.markdown;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.wicket.markup.head.HeaderItem;
@@ -15,8 +14,8 @@ public class MarkdownJsResourceReference extends JQueryPluginResourceReference {
     }
 
     @Override
-    public Iterable<? extends HeaderItem> getDependencies() {
-        List<HeaderItem> dependencies = new ArrayList<HeaderItem>();
+    public List<HeaderItem> getDependencies() {
+        List<HeaderItem> dependencies = super.getDependencies();
         dependencies.add(JavaScriptHeaderItem.forReference(new JavaScriptResourceReference(MarkdownJsResourceReference.class, "res/js/markdown.js")));
         dependencies.add(JavaScriptHeaderItem.forReference(new JavaScriptResourceReference(MarkdownJsResourceReference.class, "res/js/to-markdown.js")));
         return dependencies;
