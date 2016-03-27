@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>Markdown Page</title>
+</head>
+<body>
+<wicket:extend>
+    <header class="jumbotron subhead" id="overview">
+        <div class="container">
+            <h1>Markdown Editor for Bootstrap3</h1>
+
+            <p class="lead">
+                Based on <a href="http://www.codingdrama.com/bootstrap-markdown/" target="_blank">Bootstrap Markdown</a>. <br/>
+            </p>
+        </div>
+    </header>
+
+
+    <div class="container" style="margin-bottom: 100px">
+
+        <div class="row">
+            <div class="col-md-12">
+                <form wicket:id="form">
+                    <div class="form-group">
+                        <textarea wicket:id="markdown"></textarea>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12" style="margin-top: 20px">
+                            <input wicket:id="submit" type="submit" value="submit" class="btn btn-primary"/>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12" wicket:id="feedback"></div>
+        </div>
+
+    </div>
+</wicket:extend>
+</body>
+</html>
