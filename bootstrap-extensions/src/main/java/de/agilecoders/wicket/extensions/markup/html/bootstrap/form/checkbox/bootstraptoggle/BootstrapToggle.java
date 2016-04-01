@@ -97,11 +97,13 @@ public class BootstrapToggle extends BootstrapCheckbox {
         IModel<String> offLabel = getOffLabel();
         if (offLabel != null) {
             getConfig().withOffLabel(offLabel.getObject());
+            offLabel.detach();
         }
 
         IModel<String> onLabel = getOnLabel();
         if (onLabel != null) {
             getConfig().withOnLabel(onLabel.getObject());
+            onLabel.detach();
         }
     }
 
@@ -113,7 +115,7 @@ public class BootstrapToggle extends BootstrapCheckbox {
     }
 
     /*
-      I18n-able settings for BootstrapCheckBoxPicker. Use ResourceModel("some.key') if customization is needed
+      I18n-able settings for BootstrapToggle. Use ResourceModel("some.key') if customization is needed
      */
 
     protected IModel<String> getOffLabel() {
