@@ -32,12 +32,28 @@ public class BootstrapToggleConfig extends AbstractConfig {
     public BootstrapToggleConfig() {
     }
 
-    public BootstrapToggleConfig withOffLabel(String value) {
+    /**
+     * Sets the <em>off</em> label of the toggle.
+     *
+     * Use {@link BootstrapToggle#getOffLabel()} for better i18n support
+     *
+     * @param value
+     * @return this instance, for method chaining
+     */
+    protected BootstrapToggleConfig withOffLabel(String value) {
         put(OffLabel, value);
         return this;
     }
 
-    public BootstrapToggleConfig withOnLabel(String value) {
+    /**
+     * Sets the <em>on</em> label of the toggle.
+     *
+     * Use {@link BootstrapToggle#getOnLabel()} for better i18n support
+     *
+     * @param value
+     * @return this instance, for method chaining
+     */
+    protected BootstrapToggleConfig withOnLabel(String value) {
         put(OnLabel, value);
         return this;
     }
