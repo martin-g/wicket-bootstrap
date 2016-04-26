@@ -15,7 +15,7 @@ public class NotificationMessage implements INotificationMessage {
     private final IModel<String> message;
     private final IModel<String> header;
     private boolean inlineHeader;
-    private boolean escapeModelStrings;
+    private boolean escapeModelStrings = true;
     private Duration duration;
 
     /**
