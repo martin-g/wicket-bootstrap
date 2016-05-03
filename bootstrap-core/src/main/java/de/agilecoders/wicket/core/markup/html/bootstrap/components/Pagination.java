@@ -6,6 +6,7 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.button.ButtonList;
 import de.agilecoders.wicket.core.util.Attributes;
 
 import org.apache.wicket.markup.ComponentTag;
+import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.link.AbstractLink;
 import org.apache.wicket.markup.html.panel.Panel;
 
@@ -19,10 +20,12 @@ import java.util.List;
  */
 public abstract class Pagination extends Panel {
 
+    private final WebMarkupContainer paginationUl;
+
     /**
      * Add one of two optional classes to change the alignment of pagination links: .pagination-centered and .pagination-right.
      */
-    public static enum Alignment implements ICssClassNameProvider {
+    public enum Alignment implements ICssClassNameProvider {
         Centered,
         Right,
         Left;
@@ -55,15 +58,19 @@ public abstract class Pagination extends Panel {
 
         this.alignment = alignment;
 
-        add(newButtonList("buttons"));
+        paginationUl = new WebMarkupContainer("paginationUl") {
+            @Override
+            protected void onComponentTag(ComponentTag tag) {
+                super.onComponentTag(tag);
+
+                Attributes.addClass(tag, "pagination", alignment.cssClassName());
+            }
+        };
+
+        add(paginationUl);
+
+        paginationUl.add(newButtonList("buttons"));
         BootstrapBaseBehavior.addTo(this);
-    }
-
-    @Override
-    protected void onComponentTag(ComponentTag tag) {
-        super.onComponentTag(tag);
-
-        Attributes.addClass(tag, "pagination", alignment.cssClassName());
     }
 
     /**
