@@ -1,15 +1,16 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.components;
 
+import java.util.List;
+
+import org.apache.wicket.markup.ComponentTag;
+import org.apache.wicket.markup.html.WebMarkupContainer;
+import org.apache.wicket.markup.html.link.AbstractLink;
+import org.apache.wicket.markup.html.panel.Panel;
+
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNameProvider;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.ButtonList;
 import de.agilecoders.wicket.core.util.Attributes;
-
-import org.apache.wicket.markup.ComponentTag;
-import org.apache.wicket.markup.html.link.AbstractLink;
-import org.apache.wicket.markup.html.panel.Panel;
-
-import java.util.List;
 
 /**
  * Simple pagination inspired by Rdio, great for apps and search results.
@@ -19,10 +20,14 @@ import java.util.List;
  */
 public abstract class Pagination extends Panel {
 
+    private final WebMarkupContainer paginationUl;
+
     /**
      * Add one of two optional classes to change the alignment of pagination links: .pagination-centered and .pagination-right.
+     * @deprecated Leftover from Bootstrap 2.x. It is ignored by Bootstrap 3.x
      */
-    public static enum Alignment implements ICssClassNameProvider {
+    @Deprecated
+    public enum Alignment implements ICssClassNameProvider {
         Centered,
         Right,
         Left;
@@ -33,37 +38,67 @@ public abstract class Pagination extends Panel {
         }
     }
 
-    private final Alignment alignment;
+    public enum Size implements ICssClassNameProvider {
+        Large("lg"),
+        Small("sm"),
+        Default("");
 
-    /**
-     * Construct.
-     *
-     * @param markupId The markup id.
-     */
-    public Pagination(final String markupId) {
-        this(markupId, Alignment.Left);
+        private final String size;
+
+        Size(String size) {this.size = size;}
+
+
+        @Override
+        public String cssClassName() {
+            return equals(Default) ? "" : "pagination-" + size;
+        }
     }
 
     /**
      * Construct.
      *
-     * @param markupId  The markup id.
+     * @param markupId The component id.
+     */
+    public Pagination(final String markupId) {
+        this(markupId, Alignment.Left, Size.Default);
+    }
+
+    /**
+     * Construct.
+     *
+     * @param markupId  The component id.
      * @param alignment The alignment of the buttons
      */
     public Pagination(final String markupId, final Alignment alignment) {
-        super(markupId);
-
-        this.alignment = alignment;
-
-        add(newButtonList("buttons"));
-        BootstrapBaseBehavior.addTo(this);
+        this(markupId, alignment, Size.Default);
     }
 
-    @Override
-    protected void onComponentTag(ComponentTag tag) {
-        super.onComponentTag(tag);
+    /**
+     * Construct.
+     *
+     * @param markupId  The component id.
+     * @param size The size of the pagination
+     */
+    public Pagination(final String markupId, final Size size) {
+        this(markupId, Alignment.Left, size);
+    }
 
-        Attributes.addClass(tag, "pagination", alignment.cssClassName());
+    public Pagination(String markupId, Alignment ignored, final Size size) {
+        super(markupId);
+
+        paginationUl = new WebMarkupContainer("paginationUl") {
+            @Override
+            protected void onComponentTag(ComponentTag tag) {
+                super.onComponentTag(tag);
+
+                Attributes.addClass(tag, "pagination", size.cssClassName());
+            }
+        };
+
+        add(paginationUl);
+
+        paginationUl.add(newButtonList("buttons"));
+        BootstrapBaseBehavior.addTo(this);
     }
 
     /**
