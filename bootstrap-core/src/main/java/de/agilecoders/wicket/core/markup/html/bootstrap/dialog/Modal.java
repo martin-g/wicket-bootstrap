@@ -112,11 +112,6 @@ public class Modal<T> extends GenericPanel<T> {
         super(id, model);
 
         setOutputMarkupPlaceholderTag(true);
-    }
-
-    @Override
-    protected void onInitialize() {
-        super.onInitialize();
 
         footer = createFooter("footer");
         header = createHeader("header");
