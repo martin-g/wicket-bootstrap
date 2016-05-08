@@ -23,6 +23,7 @@
         <li><a href="#dropdowns"><i class="icon-chevron-right"></i> Dropdowns</a></li>
         <li><a href="#buttonGroups"><i class="icon-chevron-right"></i> Button groups</a></li>
         <li><a href="#buttonDropdowns"><i class="icon-chevron-right"></i> Button dropdowns</a></li>
+        <li><a href="#radioChoices"><i class="icon-chevron-right"></i> Radio choices</a></li>
         <li><a href="#navs"><i class="icon-chevron-right"></i> Navs</a></li>
         <li><a href="#navbar"><i class="icon-chevron-right"></i> Navbar</a></li>
         <li><a href="#breadcrumbs"><i class="icon-chevron-right"></i> Breadcrumbs</a></li>
@@ -470,6 +471,38 @@
   &lt;/ul&gt;
 &lt;/div&gt;
 </pre>
+
+</section>
+
+<section id="radioChoices">
+
+    <h3>Radio buttons</h3>
+
+    <p>Radio buttons as in <a href="http://getbootstrap.com/javascript/#buttons">buttons</a>.</p>
+
+
+    <div class="bs-docs-example">
+        <spnan wicket:id="boolean"></spnan>
+    </div>
+
+    <p>
+        <pre class="prettyprint linenums">
+         add(new BooleanRadioGroup("boolean", new Model&lt;&gt;(Boolean.FALSE)));
+        </pre>
+    </p>
+
+    <p>Boolean radio buttons with AJAX: the selected value is <span wicket:id="booleanAjaxSelected"></span> </p>
+
+    <div class="bs-docs-example">
+        <spnan wicket:id="booleanAjax"></spnan>
+    </div>
+
+
+    <p>Enum based radio buttons with AJAX: the selected value is <span wicket:id="enumAjaxSelected"></span> </p>
+
+    <div class="bs-docs-example">
+        <spnan wicket:id="enumAjax"></spnan>
+    </div>
 
 </section>
 

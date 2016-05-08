@@ -1,16 +1,16 @@
 package de.agilecoders.wicket.samples.pages;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-import de.agilecoders.wicket.core.markup.html.bootstrap.components.progress.Stack;
-import de.agilecoders.wicket.core.markup.html.bootstrap.components.progress.UpdatableProgressBar;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.extensions.markup.html.tabs.AbstractTab;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.MarkupStream;
 import org.apache.wicket.markup.html.WebMarkupContainer;
+import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.AbstractLink;
 import org.apache.wicket.model.AbstractReadOnlyModel;
 import org.apache.wicket.model.IModel;
@@ -26,6 +26,12 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.MenuBookmarkablePageLink;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.SplitButton;
 import de.agilecoders.wicket.core.markup.html.bootstrap.components.progress.ProgressBar;
+import de.agilecoders.wicket.core.markup.html.bootstrap.components.progress.Stack;
+import de.agilecoders.wicket.core.markup.html.bootstrap.components.progress.UpdatableProgressBar;
+import de.agilecoders.wicket.core.markup.html.bootstrap.form.radio.AjaxBooleanRadioGroup;
+import de.agilecoders.wicket.core.markup.html.bootstrap.form.radio.AjaxBootstrapRadioGroup;
+import de.agilecoders.wicket.core.markup.html.bootstrap.form.radio.BooleanRadioGroup;
+import de.agilecoders.wicket.core.markup.html.bootstrap.form.radio.EnumRadioChoiceRenderer;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
 import de.agilecoders.wicket.core.markup.html.bootstrap.tabs.AjaxBootstrapTabbedPanel;
 import de.agilecoders.wicket.core.markup.html.bootstrap.tabs.ClientSideBootstrapTabbedPanel;
@@ -39,6 +45,16 @@ import de.agilecoders.wicket.samples.components.basecss.ButtonGroups;
 @MountPath(value = "/components")
 public class ComponentsPage extends BasePage {
 
+    private static enum Status {
+        submitted,
+        onReview,
+        discarded,
+        accepted
+    }
+
+    private Label booleanAjaxSelected;
+    private Label enumAjaxSelected;
+
     /**
      * Construct.
      *
@@ -48,13 +64,17 @@ public class ComponentsPage extends BasePage {
         super(parameters);
 
         add(newSplitButton("splitbutton"));
+
         add(new ButtonGroups("buttonGroups"));
+
+        // create radio buttons
+        addRadioGroups();
 
         // add example for dropdown button with sub-menu
 //        add(newDropDownSubMenuExample());
 
         add(newTabs("tabs"));
-        
+
         add(newClientSideTabs("tabsClient"));
 
         addProgressBars();
@@ -113,8 +133,42 @@ public class ComponentsPage extends BasePage {
                 return Model.of(newValue);
             }
         };
-        updatableBar.updateInterval(Duration.seconds(1));
+        updatableBar.updateInterval(Duration.seconds(80));
         add(updatableBar);
+
+
+    }
+
+    private void addRadioGroups() {
+        add(new BooleanRadioGroup("boolean", new Model<>(Boolean.FALSE)));
+
+        IModel<Boolean> booleanAjaxSelectedModel = Model.of(true);
+        booleanAjaxSelected = new Label("booleanAjaxSelected", booleanAjaxSelectedModel);
+        booleanAjaxSelected.setOutputMarkupId(true);
+        add(booleanAjaxSelected);
+
+        add(new AjaxBooleanRadioGroup("booleanAjax", booleanAjaxSelectedModel) {
+            @Override
+            protected void onSelectionChanged(AjaxRequestTarget target, Boolean value) {
+                target.add(booleanAjaxSelected);
+            }
+        });
+
+
+        IModel<Status> enumAjaxSelectedModel = Model.of(Status.submitted);
+        enumAjaxSelected = new Label("enumAjaxSelected", enumAjaxSelectedModel);
+        enumAjaxSelected.setOutputMarkupId(true);
+        add(enumAjaxSelected);
+
+        AjaxBootstrapRadioGroup<Status> enumAjax = new AjaxBootstrapRadioGroup<Status>("enumAjax", Arrays.asList(Status.values())) {
+            @Override
+            protected void onSelectionChanged(AjaxRequestTarget target, Status value) {
+                target.add(enumAjaxSelected);
+            }
+        };
+        enumAjax.setDefaultModel(enumAjaxSelectedModel);
+        enumAjax.setChoiceRenderer(new EnumRadioChoiceRenderer<Status>(Buttons.Type.Success, enumAjax));
+        add(enumAjax);
     }
 
     private Component newTabs(String markupId) {
@@ -128,7 +182,7 @@ public class ComponentsPage extends BasePage {
                 createTab("Section 1"), createTab("Section 2"), createTab("Section 3")
         ));
     }
-    
+
     private AbstractTab createTab(final String title) {
         return new AbstractTab(Model.of(title)) {
             @Override
