@@ -56,6 +56,13 @@ public class BootstrapCheckbox extends FormComponentPanel<Boolean> {
         this.labelModel = labelModel;
 
         setRenderBodyOnly(true);
+
+        MarkupContainer label = newLabelContainer("label");
+        add(label);
+        label.add(newLabel("post-label"));
+        checkbox = newCheckBox("checkbox", getModel());
+        label.add(checkbox);
+
     }
 
     @Override
@@ -65,17 +72,6 @@ public class BootstrapCheckbox extends FormComponentPanel<Boolean> {
         if (labelModel != null) {
             labelModel.detach();
         }
-    }
-
-    @Override
-    protected void onInitialize() {
-        super.onInitialize();
-
-        MarkupContainer label = newLabelContainer("label");
-        add(label);
-        label.add(newLabel("post-label"));
-        checkbox = newCheckBox("checkbox", getModel());
-        label.add(checkbox);
     }
 
     protected CheckBox newCheckBox(String id, IModel<Boolean> model) {
@@ -115,6 +111,7 @@ public class BootstrapCheckbox extends FormComponentPanel<Boolean> {
         return this;
     }
 
+    @Override
     public BootstrapCheckbox setLabel(IModel<String> label) {
         checkbox.setLabel(label);
         return this;
@@ -124,7 +121,7 @@ public class BootstrapCheckbox extends FormComponentPanel<Boolean> {
     public IModel<String> getLabel() {
         return checkbox.getLabel();
     }
-    
+
     @Override
     protected void convertInput() {
         setConvertedInput(checkbox.getConvertedInput());
