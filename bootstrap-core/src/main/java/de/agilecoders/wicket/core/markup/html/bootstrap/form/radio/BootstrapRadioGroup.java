@@ -72,7 +72,7 @@ public class BootstrapRadioGroup<T extends Serializable> extends GenericPanel<T>
         super(id, model);
         this.choiceRenderer = choiceRenderer;
         Args.notEmpty(options, "options");
-        this.options = new ArrayList<>();
+        this.options = new ArrayList<IModel<T>>();
         for(T t: options) {
             this.options.add(choiceRenderer != null? choiceRenderer.modelOf(t): Model.of(t));
         }
@@ -129,11 +129,11 @@ public class BootstrapRadioGroup<T extends Serializable> extends GenericPanel<T>
 
 
     protected RadioGroup<T> newRadioGroup(String id, IModel<T> model) {
-        return new RadioGroup<>(id, model);
+        return new RadioGroup<T>(id, model);
     }
 
     protected  Radio<T> newRadio(String id, IModel<T> model, RadioGroup<T> radioGroup) {
-        return  new Radio<>(id, model, radioGroup);
+        return  new Radio<T>(id, model, radioGroup);
     }
 
     public void setChoiceRenderer(IRadioChoiceRenderer<T> choiceRenderer) {

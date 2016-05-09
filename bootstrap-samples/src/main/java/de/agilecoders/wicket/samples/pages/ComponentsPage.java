@@ -140,7 +140,7 @@ public class ComponentsPage extends BasePage {
     }
 
     private void addRadioGroups() {
-        add(new BooleanRadioGroup("boolean", new Model<>(Boolean.FALSE)));
+        add(new BooleanRadioGroup("boolean", new Model<Boolean>(Boolean.FALSE)));
 
         IModel<Boolean> booleanAjaxSelectedModel = Model.of(true);
         booleanAjaxSelected = new Label("booleanAjaxSelected", booleanAjaxSelectedModel);

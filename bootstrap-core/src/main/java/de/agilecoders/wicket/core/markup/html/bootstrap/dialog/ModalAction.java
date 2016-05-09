@@ -1,28 +1,28 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.dialog;
 
-import de.agilecoders.wicket.jquery.JQuery.AbstractFunction;
+import de.agilecoders.wicket.jquery.function.AbstractFunction;
 
 /**
  * Helper class used to generate hide, show callbacks.
- *  
+ *
  * @author reiern70
  */
 public class ModalAction extends AbstractFunction {
-	
+
 	public static enum Action {
 		show,
 		hide
 	}
-	
+
 	public ModalAction() {
 		super("modal");
 	}
-	
-	
+
+
 	public static ModalAction show() {
 		return  action(Action.show);
 	}
-	
+
 	public static ModalAction hide() {
 		return  action(Action.hide);
 	}
