@@ -18,6 +18,7 @@ import org.apache.wicket.model.IModel;
  */
 public class BootstrapCheckbox extends FormComponentPanel<Boolean> {
 
+    private final WebMarkupContainer wrapper;
     private final IModel<?> labelModel;
     private boolean inline = false;
     private CheckBox checkbox;
@@ -57,8 +58,10 @@ public class BootstrapCheckbox extends FormComponentPanel<Boolean> {
 
         setRenderBodyOnly(true);
 
+        wrapper = new WebMarkupContainer("wrapper");
+        add(wrapper);
         MarkupContainer label = newLabelContainer("label");
-        add(label);
+        wrapper.add(label);
         label.add(newLabel("post-label"));
         checkbox = newCheckBox("checkbox", getModel());
         label.add(checkbox);
@@ -108,6 +111,7 @@ public class BootstrapCheckbox extends FormComponentPanel<Boolean> {
 
     public BootstrapCheckbox setInline(boolean inline) {
         this.inline = inline;
+        wrapper.setRenderBodyOnly(inline);
         return this;
     }
 
