@@ -759,7 +759,6 @@ public class FontAwesomeIconType extends IconType {
     public static final FontAwesomeIconType youtube_square = on(FontAwesomeGraphic.youtube_square).build();
     public static final FontAwesomeIconType yen = on(FontAwesomeGraphic.jpy).build();
 
-
     /**
      * Constructor.
      *
