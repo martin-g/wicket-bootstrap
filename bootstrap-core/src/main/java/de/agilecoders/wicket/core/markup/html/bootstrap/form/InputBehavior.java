@@ -17,12 +17,12 @@ public class InputBehavior extends BootstrapBaseBehavior {
     /**
      * Holder class for all possible input element height sizes
      */
-    public static enum Size implements ICssClassNameProvider {
+    public enum Size implements ICssClassNameProvider {
         Small("sm"), Medium("md"), Large("lg");
 
         private final String cssName;
 
-        private Size(String cssName) {
+        Size(String cssName) {
             this.cssName = cssName;
         }
 
