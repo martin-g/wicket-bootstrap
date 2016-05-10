@@ -22,7 +22,7 @@
         <dependency>
             <groupId>org.wicketstuff</groupId>
             <artifactId>wicketstuff-annotation</artifactId>
-            <version>${wicketstuff.version}</version>
+            <version>${wicket-stuff.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.apache.wicket</groupId>
