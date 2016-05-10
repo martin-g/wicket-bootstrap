@@ -19,12 +19,12 @@ import org.apache.wicket.model.IModel;
  */
 abstract public class InputBorder extends Border {
 
-    public static enum Type {
+    public enum Type {
         Addon("addon"), Button("btn");
 
         private final String type;
 
-        private Type(String type) {
+        Type(String type) {
             this.type = type;
         }
     }
