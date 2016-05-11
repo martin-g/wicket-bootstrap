@@ -32,19 +32,14 @@ public class BooleanRadioChoiceRenderer extends DefaultRadioChoiceRenderer<Boole
         return Model.of(getDisplayValue(option).toString());
     }
 
-    /** {@inheritDoc} */
-    public final CharSequence getDisplayValue(Boolean option)
-    {
-        final String value;
-
+    public final CharSequence getDisplayValue(Boolean option) {
         String key = resourceKey(option);
 
-        if (resourceSource != null)
-        {
+        final String value;
+        if (resourceSource != null) {
             value = resourceSource.getString(key);
         }
-        else
-        {
+        else {
             value = Application.get().getResourceSettings().getLocalizer().getString(key, null);
         }
 

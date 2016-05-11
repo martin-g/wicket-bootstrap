@@ -21,7 +21,6 @@ public class EnumRadioChoiceRenderer<T extends Enum<T>> extends DefaultRadioChoi
      */
     private final Component resourceSource;
 
-
     public EnumRadioChoiceRenderer(Buttons.Type type) {
         this(type, null);
     }
@@ -56,7 +55,7 @@ public class EnumRadioChoiceRenderer<T extends Enum<T>> extends DefaultRadioChoi
     }
 
     /**
-     * Postprocesses the {@code value} after it is retrieved from the localizer. Default
+     * Post processes the {@code value} after it is retrieved from the localizer. Default
      * implementation escapes any markup found in the {@code value}.
      *
      * @param value

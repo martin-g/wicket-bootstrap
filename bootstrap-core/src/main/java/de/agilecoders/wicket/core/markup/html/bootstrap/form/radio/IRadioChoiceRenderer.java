@@ -4,7 +4,7 @@ import org.apache.wicket.model.IDetachable;
 import org.apache.wicket.model.IModel;
 
 /**
- * Allows to define configure radio choise component
+ * Allows to configure radio choice component
  *
  * @param <T>
  */

@@ -13,21 +13,16 @@ import org.apache.wicket.model.IModel;
 public abstract class AjaxBootstrapRadioGroup<T extends Serializable> extends BootstrapRadioGroup<T> {
 
     public AjaxBootstrapRadioGroup(String id, Collection<T> options) {
-        super(id, new ArrayList<T>(options), null);
-        initAjax();
+        this(id, new ArrayList<>(options), null);
     }
 
     public AjaxBootstrapRadioGroup(String id, Collection<T> options, IRadioChoiceRenderer<T> choiceRenderer) {
-        super(id, new ArrayList<T>(options), choiceRenderer);
-        initAjax();
+        this(id, null, new ArrayList<>(options), choiceRenderer);
     }
 
     public AjaxBootstrapRadioGroup(String id, IModel<T> model, Collection<T> options, IRadioChoiceRenderer<T> choiceRenderer) {
-        super(id, model, new ArrayList<T>(options), choiceRenderer);
-        initAjax();
-    }
+        super(id, model, new ArrayList<>(options), choiceRenderer);
 
-    private void initAjax() {
         setOutputMarkupId(true);
         setChangeHandler(new ISelectionChangeHandler<T>() {
             @Override

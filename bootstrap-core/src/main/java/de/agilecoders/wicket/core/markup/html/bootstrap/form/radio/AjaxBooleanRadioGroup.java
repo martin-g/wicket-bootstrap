@@ -9,13 +9,12 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons.Type;
 
 public abstract class AjaxBooleanRadioGroup extends BootstrapRadioGroup<Boolean> {
 
-
     public AjaxBooleanRadioGroup(String id, final IModel<Boolean> model) {
         this(id, model, Type.Danger);
     }
 
     public AjaxBooleanRadioGroup(String id, final IModel<Boolean> model, Type type) {
-        super(id, model,  Arrays.asList(Boolean.TRUE, Boolean.FALSE), null);
+        super(id, model,  Arrays.asList(Boolean.TRUE, Boolean.FALSE));
         setChoiceRenderer(new BooleanRadioChoiceRenderer(type, this));
         setOutputMarkupId(true);
         setChangeHandler(new ISelectionChangeHandler<Boolean>() {
@@ -27,7 +26,6 @@ public abstract class AjaxBooleanRadioGroup extends BootstrapRadioGroup<Boolean>
             }
         });
     }
-
 
 	protected abstract void onSelectionChanged(AjaxRequestTarget target, Boolean value);
 }

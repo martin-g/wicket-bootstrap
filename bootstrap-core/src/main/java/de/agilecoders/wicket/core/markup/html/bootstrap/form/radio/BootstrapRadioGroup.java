@@ -4,7 +4,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.agilecoders.wicket.jquery.util.Strings2;
 import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.ajax.attributes.AjaxRequestAttributes;
 import org.apache.wicket.ajax.form.AjaxFormChoiceComponentUpdatingBehavior;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.head.IHeaderResponse;
@@ -30,7 +32,7 @@ import org.apache.wicket.util.lang.Args;
  */
 public class BootstrapRadioGroup<T extends Serializable> extends GenericPanel<T> {
 
-    private List<IModel<T>> options;
+    private final List<IModel<T>> options;
 
     private IRadioChoiceRenderer<T> choiceRenderer;
 
@@ -44,7 +46,6 @@ public class BootstrapRadioGroup<T extends Serializable> extends GenericPanel<T>
      * @param <T>
      */
     public interface ISelectionChangeHandler<T>  extends Serializable {
-
         void onSelectionChanged(AjaxRequestTarget target, T bean);
     }
 
@@ -70,18 +71,19 @@ public class BootstrapRadioGroup<T extends Serializable> extends GenericPanel<T>
 
     public BootstrapRadioGroup(String id, IModel<T> model, List<T> options, IRadioChoiceRenderer<T> choiceRenderer) {
         super(id, model);
-        this.choiceRenderer = choiceRenderer;
         Args.notEmpty(options, "options");
-        this.options = new ArrayList<IModel<T>>();
-        for(T t: options) {
-            this.options.add(choiceRenderer != null? choiceRenderer.modelOf(t): Model.of(t));
+
+        this.choiceRenderer = choiceRenderer;
+        this.options = new ArrayList<>();
+        for (T t: options) {
+            this.options.add(choiceRenderer != null ? choiceRenderer.modelOf(t) : Model.of(t));
         }
     }
 
     @Override
     protected void detachModel() {
         super.detachModel();
-        for(IModel<? extends T> model: options) {
+        for (IModel<? extends T> model: options) {
             model.detach();
         }
         choiceRenderer.detach();
@@ -101,6 +103,13 @@ public class BootstrapRadioGroup<T extends Serializable> extends GenericPanel<T>
                 protected void onUpdate(AjaxRequestTarget target) {
                     changeHandler.onSelectionChanged(target, radioGroup.getModel().getObject());
                 }
+
+                @Override
+                protected void updateAjaxAttributes(AjaxRequestAttributes attributes) {
+                    super.updateAjaxAttributes(attributes);
+                    // stop event propagation: do not remove otherwise component is not working
+                    attributes.setEventPropagation(AjaxRequestAttributes.EventPropagation.STOP);
+                }
             });
         }
         RepeatingView radios = new RepeatingView("radios");
@@ -112,7 +121,7 @@ public class BootstrapRadioGroup<T extends Serializable> extends GenericPanel<T>
                     super.onComponentTag(tag);
                     // TODO: use model comparator?
                     boolean active = model.getObject().equals(BootstrapRadioGroup.this.getModel().getObject());
-                    tag.put("class", "btn "+ choiceRenderer.getButtonClass(model.getObject())+ (active?" active":""));
+                    tag.put("class", "btn "+ choiceRenderer.getButtonClass(model.getObject())+ (active ? " active" : ""));
                 }
             };
             radios.add(wm);
@@ -124,9 +133,8 @@ public class BootstrapRadioGroup<T extends Serializable> extends GenericPanel<T>
 
     @Override
     public void renderHead(IHeaderResponse response) {
-        response.render(OnDomReadyHeaderItem.forScript("$('#" + radioGroup.getMarkupId() + " .btn').button()"));
+        response.render(OnDomReadyHeaderItem.forScript("$('#" + Strings2.getMarkupId(radioGroup) + " .btn').button()"));
     }
-
 
     protected RadioGroup<T> newRadioGroup(String id, IModel<T> model) {
         return new RadioGroup<T>(id, model);
@@ -139,7 +147,6 @@ public class BootstrapRadioGroup<T extends Serializable> extends GenericPanel<T>
     public void setChoiceRenderer(IRadioChoiceRenderer<T> choiceRenderer) {
         this.choiceRenderer = choiceRenderer;
     }
-
 
     public void setChangeHandler(ISelectionChangeHandler<T> handler) {
         this.changeHandler = handler;
