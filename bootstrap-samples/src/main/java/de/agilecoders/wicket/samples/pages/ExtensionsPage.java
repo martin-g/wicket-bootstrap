@@ -55,13 +55,14 @@ import de.agilecoders.wicket.extensions.markup.html.bootstrap.contextmenu.Button
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.fileUpload.DropZoneFileUpload;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.password.strength.PasswordStrengthBehavior;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.password.strength.PasswordStrengthConfig;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.rating.Rating;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.rating.RatingField;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.rating.RatingConfig;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.spinner.Spinner;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.spinner.SpinnerConfig;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.html5player.Html5Player;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.html5player.Html5VideoConfig;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.html5player.Video;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeCssReference;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.OpenWebIconType;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.OpenWebIconsCssReference;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.jqueryui.JQueryUICssReference;
@@ -264,12 +265,12 @@ public class ExtensionsPage extends BasePage {
 		feedback.setOutputMarkupId(true);
 		RatingConfig config = new RatingConfig();
 		config.withStart(0).withStop(10).withStep(2d).withFilled("fa fa-star fa-3x").withEmpty("fa fa-star-o fa-3x");
-		Rating<String> rating = new Rating<String>("rating", config) {
+		RatingField<String> rating = new RatingField<String>("rating", config) {
 
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			protected boolean wantChangeListener() {
+			protected boolean wantAjaxNotification() {
 				return true;
 			}
 
@@ -384,7 +385,7 @@ public class ExtensionsPage extends BasePage {
         super.renderHead(response);
 
         response.render(CssHeaderItem.forReference(OpenWebIconsCssReference.instance()));
-		response.render(CssHeaderItem.forReference(new WebjarsCssResourceReference("font-awesome/current/css/font-awesome.css")));
+		response.render(CssHeaderItem.forReference(FontAwesomeCssReference.instance()));
 
     }
 
