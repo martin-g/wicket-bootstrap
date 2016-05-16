@@ -29,7 +29,7 @@ public enum BootswatchTheme implements ITheme {
      * The placeholders are:
      * - the version
      * - the theme name
-     * Example: //netdna.bootstrapcdn.com/bootswatch/3.1.1/amelia/bootstrap.min.css
+     * Example: //netdna.bootstrapcdn.com/bootswatch/3.1.1/cosmo/bootstrap.min.css
      */
     private static final String CDN_PATTERN = "//netdna.bootstrapcdn.com/bootswatch/%s/%s/bootstrap.min.css";
 
