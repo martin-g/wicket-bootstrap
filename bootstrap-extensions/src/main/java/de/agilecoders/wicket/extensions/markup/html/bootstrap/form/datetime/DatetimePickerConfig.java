@@ -35,7 +35,7 @@ public class DatetimePickerConfig extends AbstractConfig {
 
         private final String code;
 
-        private ViewModeType(String code) {
+        ViewModeType(String code) {
             this.code = code;
         }
 
@@ -54,6 +54,7 @@ public class DatetimePickerConfig extends AbstractConfig {
     private static final IKey<Integer> MinuteStepping = newKey("stepping", 1);
     private static final IKey<String> MinDate = newKey("minDate", null);
     private static final IKey<String> MaxDate = newKey("maxDate", null);
+    private static final IKey<String> DefaultDate = newKey("defaultDate", null);
     private static final IKey<String> ViewMode = newKey("viewMode", null);
     private static final IKey<String> Locale = newKey("locale", null);
 
@@ -61,6 +62,7 @@ public class DatetimePickerConfig extends AbstractConfig {
     private static final IKey<Boolean> ShowClose = newKey("showClose", false);
     private static final IKey<Boolean> Collapse = newKey("collapse", true);
     private static final IKey<Boolean> SideBySide = newKey("sideBySide", false);
+    private static final IKey<Boolean> Strict = newKey("useStrict", false);
 
     private static final IKey<String[]> DisabledDates = newKey("disabledDates", null);
     private static final IKey<String[]> EnabledDates = newKey("enabledDates", null);
@@ -140,18 +142,28 @@ public class DatetimePickerConfig extends AbstractConfig {
      * @param sideBySide side by side
      * @return config instance
      */
-    public DatetimePickerConfig useSideBySide(Boolean sideBySide) {
+    public DatetimePickerConfig useSideBySide(boolean sideBySide) {
         put(SideBySide, sideBySide);
         return this;
     }
 
+    /**
+     * Sets strict date parsing
+     *
+     * @param strict A flag indicating whether or not to use strict date parsing
+     * @return config instance
+     */
+    public DatetimePickerConfig useStrictParsing(boolean strict) {
+        put(Strict, strict);
+        return this;
+    }
     /**
      * Set current date in input.
      *
      * @param useCurrent flag
      * @return config instance
      */
-    public DatetimePickerConfig useCurrent(Boolean useCurrent) {
+    public DatetimePickerConfig useCurrent(boolean useCurrent) {
         put(UseCurrent, useCurrent);
         return this;
     }
@@ -162,7 +174,7 @@ public class DatetimePickerConfig extends AbstractConfig {
      * @param calendarWeeks flag
      * @return config instance
      */
-    public DatetimePickerConfig useCalendarWeeks(Boolean calendarWeeks) {
+    public DatetimePickerConfig useCalendarWeeks(boolean calendarWeeks) {
         put(CalendarWeeks, calendarWeeks);
         return this;
     }
@@ -173,7 +185,7 @@ public class DatetimePickerConfig extends AbstractConfig {
      * @param minuteStepping interval minutes
      * @return config instance
      */
-    public DatetimePickerConfig withMinuteStepping(Integer minuteStepping) {
+    public DatetimePickerConfig withMinuteStepping(int minuteStepping) {
         put(MinuteStepping, minuteStepping);
         return this;
     }
@@ -185,7 +197,7 @@ public class DatetimePickerConfig extends AbstractConfig {
      * @return config instance
      */
     public DatetimePickerConfig withMinDate(Date minDate) {
-        put(MinDate, customDateFormatter().format(minDate));
+        put(MinDate, defaultDateValueFormatter().format(minDate));
         return this;
     }
 
@@ -196,8 +208,28 @@ public class DatetimePickerConfig extends AbstractConfig {
      * @return config instance
      */
     public DatetimePickerConfig withMaxDate(Date maxDate) {
-        put(MaxDate, customDateFormatter().format(maxDate));
+        put(MaxDate, defaultDateValueFormatter().format(maxDate));
         return this;
+    }
+
+    /**
+     * Set the default date.
+     *
+     * @param defaultDate  the default date
+     * @return config instance
+     */
+    public DatetimePickerConfig withDefaultDate(Date defaultDate) {
+        put(DefaultDate, defaultDateValueFormatter().format(defaultDate));
+        return this;
+    }
+
+    /**
+     * Get date formatter based config format.
+     *
+     * @return date formatter
+     */
+    private SimpleDateFormat defaultDateValueFormatter() {
+        return new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
     }
 
     /**
@@ -206,7 +238,7 @@ public class DatetimePickerConfig extends AbstractConfig {
      * @param showToday flag
      * @return config instance
      */
-    public DatetimePickerConfig setShowToday(Boolean showToday) {
+    public DatetimePickerConfig setShowToday(boolean showToday) {
         put(ShowToday, showToday);
         return this;
     }
@@ -217,7 +249,7 @@ public class DatetimePickerConfig extends AbstractConfig {
      * @param showClose flag
      * @return config instance
      */
-    public DatetimePickerConfig setShowClose(Boolean showClose) {
+    public DatetimePickerConfig setShowClose(boolean showClose) {
         put(ShowClose, showClose);
         return this;
     }
@@ -314,7 +346,7 @@ public class DatetimePickerConfig extends AbstractConfig {
      * @return java date format
      */
     public static String toJavaDateFormat(final String javaScriptDateFormat) {
-        return nullToEmpty(javaScriptDateFormat).replaceAll("D", "d").replaceAll("Y", "y");
+        return nullToEmpty(javaScriptDateFormat).replace('D', 'd').replace('Y', 'y');
     }
 
     /**
@@ -324,7 +356,7 @@ public class DatetimePickerConfig extends AbstractConfig {
      * @return java script date format
      */
     public static String toJavaScriptDateFormat(final String javaDateFormat) {
-        return nullToEmpty(javaDateFormat).replaceAll("d", "D").replaceAll("y", "Y");
+        return nullToEmpty(javaDateFormat).replace('d', 'D').replace('y', 'Y');
     }
 
     /**

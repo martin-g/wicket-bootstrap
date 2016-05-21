@@ -25,7 +25,7 @@ public class LaddaBehavior extends Behavior {
         EXPAND_LEFT, EXPAND_RIGHT, EXPAND_UP, EXPAND_DOWN,
         ZOOM_IN, ZOOM_OUT,
         SLIDE_LEFT, SLIDE_RIGHT, SLIDE_UP, SLIDE_DOWN,
-        CONTACT;
+        CONTRACT;
 
         @Override
         public String cssClassName() {

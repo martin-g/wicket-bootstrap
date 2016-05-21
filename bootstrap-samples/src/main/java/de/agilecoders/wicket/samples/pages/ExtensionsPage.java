@@ -57,11 +57,14 @@ import de.agilecoders.wicket.extensions.markup.html.bootstrap.contextmenu.Button
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.fileUpload.DropZoneFileUpload;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.password.strength.PasswordStrengthBehavior;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.password.strength.PasswordStrengthConfig;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.rating.RatingField;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.rating.RatingConfig;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.spinner.Spinner;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.spinner.SpinnerConfig;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.html5player.Html5Player;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.html5player.Html5VideoConfig;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.html5player.Video;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeCssReference;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.OpenWebIconType;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.OpenWebIconsCssReference;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.jqueryui.JQueryUICssReference;
@@ -70,6 +73,7 @@ import de.agilecoders.wicket.extensions.markup.html.bootstrap.ladda.LaddaAjaxLin
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.ladda.LaddaBehavior;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.tour.TourBehavior;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.tour.TourStep;
+import de.agilecoders.wicket.webjars.request.resource.WebjarsCssResourceReference;
 
 /**
  * The {@code ExtensionsPage}
@@ -207,6 +211,7 @@ public class ExtensionsPage extends BasePage {
         confirmationButton();
 
         spinnerSample();
+        ratingSample();
         animationSample();
 
         dropzoneFileUpload();
@@ -286,7 +291,30 @@ public class ExtensionsPage extends BasePage {
         add(spinner, feedback);
     }
 
-    private void animationSample(){
+    private void ratingSample() {
+        final NotificationPanel feedback = new NotificationPanel("ratingFeedback");
+        feedback.setOutputMarkupId(true);
+        RatingConfig config = new RatingConfig();
+        config.withStart(0).withStop(10).withStep(2).withFilled("fa fa-star fa-3x").withEmpty("fa fa-star-o fa-3x");
+        RatingField<String> rating = new RatingField<String>("rating", Model.of(""), config) {
+
+            private static final long serialVersionUID = 1L;
+
+            @Override
+            protected boolean wantAjaxNotification() {
+                return true;
+            }
+
+            protected void onChange(AjaxRequestTarget target) {
+                super.onChange(target);
+                info("Changed rating to " + getModelObject());
+                target.add(feedback);
+            }
+        };
+        add(rating, feedback);
+    }
+
+    private void animationSample() {
         final NotificationPanel feedback = new NotificationPanel("animationFeedback");
         feedback.setOutputMarkupId(true).add(new AnimatedBehavior(Animation.bounceInLeft));
 
@@ -385,6 +413,8 @@ public class ExtensionsPage extends BasePage {
         super.renderHead(response);
 
         response.render(CssHeaderItem.forReference(OpenWebIconsCssReference.instance()));
+		response.render(CssHeaderItem.forReference(FontAwesomeCssReference.instance()));
+
     }
 
     private void addJasnyFileUploadDemo() {

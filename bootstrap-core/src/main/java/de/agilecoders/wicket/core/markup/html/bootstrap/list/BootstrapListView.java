@@ -2,6 +2,7 @@ package de.agilecoders.wicket.core.markup.html.bootstrap.list;
 
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.Model;
 
 import java.util.List;
 
@@ -20,7 +21,7 @@ public abstract class BootstrapListView<T> extends ListView<T> {
      * @param id the markup id
      */
     public BootstrapListView(final String id) {
-        super(id);
+        this(id, (List<T>) null);
     }
 
     /**
@@ -31,6 +32,8 @@ public abstract class BootstrapListView<T> extends ListView<T> {
      */
     public BootstrapListView(String id, IModel<? extends List<T>> model) {
         super(id, model);
+
+        add(listBehavior = new ListBehavior());
     }
 
     /**
@@ -40,14 +43,7 @@ public abstract class BootstrapListView<T> extends ListView<T> {
      * @param listData the list data
      */
     public BootstrapListView(String id, List<T> listData) {
-        super(id, listData);
-    }
-
-    @Override
-    protected void onInitialize() {
-        super.onInitialize();
-
-        add(listBehavior = new ListBehavior());
+        this(id, Model.ofList(listData));
     }
 
     /**

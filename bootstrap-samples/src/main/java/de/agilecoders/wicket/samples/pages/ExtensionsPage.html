@@ -32,6 +32,7 @@
                             <li><a href="#ladda"><i class="icon-chevron-right"></i> Ladda buttons</a></li>
                             <li><a href="#confirmation"><i class="icon-chevron-right"></i> Confirmation</a></li>
                             <li><a href="#spinner"><i class="icon-chevron-right"></i> Spinner - a number text field with a spinner</a></li>
+                            <li><a href="#rating"><i class="icon-chevron-right"></i> Rating</a></li>
                             <li><a href="#animate.css"><i class="icon-chevron-right"></i> Animate.css - CSS animations</a></li>
                             <li><a href="#pwstrength"><i class="icon-chevron-right"></i> Pwstrength - Password Strength checker</a></li>
                         </ul>
@@ -204,6 +205,19 @@
                                </div>
                             </form>
                             <div wicket:id="spinnerFeedback"></div>
+                        </section>
+                        <section id="rating">
+                            <div class="page-header">
+                                <h1>Rating</h1>
+                            </div>
+                            <p>Bootstrap Rating is a jQuery plugin that creates a rating control that uses Bootstrap glyphicons for rating symbols. <a target="_blank" href="http://dreyescat.github.io/bootstrap-rating/">Bootstrap Rating </a>.</p>
+                            <form role="form">
+                               <div class="form-group">
+                                    <label for="spinner">Rating</label>
+                                <input type="hidden" wicket:id="rating" class="form-control">
+                               </div>
+                            </form>
+                            <div wicket:id="ratingFeedback"></div>
                         </section>
                         <section id="animate.css">
                             <div class="page-header">

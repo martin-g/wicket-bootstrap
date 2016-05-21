@@ -13,6 +13,7 @@ import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.resource.JQueryPluginResourceReference;
+import org.joda.time.LocalDate;
 import org.wicketstuff.annotation.mount.MountPath;
 
 import java.util.Date;
@@ -39,12 +40,18 @@ public class DatetimePickerPage extends BasePage {
         Form<Object> form = new Form<Object>("form");
         add(form);
 
+        LocalDate max = LocalDate.now();
+        LocalDate min = max.minusWeeks(1);
+
         DatetimePickerConfig simpleConfig = new DatetimePickerConfig()
+            .withMinDate(min.toDate())
+            .withMaxDate(max.toDate())
             .withFormat("dd/MM/yyyy HH:mm:ss");
+
         DatetimePickerConfig birthDayConfig = new DatetimePickerConfig()
             .useView(DatetimePickerConfig.ViewModeType.YEARS)
             .withFormat("dd/MM/yyyy")
-            .withMaxDate(new Date());
+            .withMaxDate(max.toDate());
         DatetimePickerConfig maskedConfig = new DatetimePickerConfig()
             .withFormat("dd/MM/yyyy HH:mm:ss")
             .useMaskInput(true);
