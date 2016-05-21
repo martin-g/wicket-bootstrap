@@ -259,29 +259,29 @@ public class ExtensionsPage extends BasePage {
         };
         add(spinner, feedback);
     }
-    
+
     private void ratingSample() {
-		final NotificationPanel feedback = new NotificationPanel("ratingFeedback");
-		feedback.setOutputMarkupId(true);
-		RatingConfig config = new RatingConfig();
-		config.withStart(0).withStop(10).withStep(2d).withFilled("fa fa-star fa-3x").withEmpty("fa fa-star-o fa-3x");
-		RatingField<String> rating = new RatingField<String>("rating", config) {
+        final NotificationPanel feedback = new NotificationPanel("ratingFeedback");
+        feedback.setOutputMarkupId(true);
+        RatingConfig config = new RatingConfig();
+        config.withStart(0).withStop(10).withStep(2).withFilled("fa fa-star fa-3x").withEmpty("fa fa-star-o fa-3x");
+        RatingField<String> rating = new RatingField<String>("rating", Model.of(""), config) {
 
-			private static final long serialVersionUID = 1L;
+            private static final long serialVersionUID = 1L;
 
-			@Override
-			protected boolean wantAjaxNotification() {
-				return true;
-			}
+            @Override
+            protected boolean wantAjaxNotification() {
+                return true;
+            }
 
-			protected void onChange(AjaxRequestTarget target) {
-				super.onChange(target);
-				info("Changed rating");
-				target.add(feedback);
-			}
-		};
-		add(rating, feedback);
-	}
+            protected void onChange(AjaxRequestTarget target) {
+                super.onChange(target);
+                info("Changed rating to " + getModelObject());
+                target.add(feedback);
+            }
+        };
+        add(rating, feedback);
+    }
 
     private void animationSample() {
         final NotificationPanel feedback = new NotificationPanel("animationFeedback");
