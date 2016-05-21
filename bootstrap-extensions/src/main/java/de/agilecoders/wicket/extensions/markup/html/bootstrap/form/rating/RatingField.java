@@ -4,6 +4,7 @@ import static de.agilecoders.wicket.jquery.JQuery.$;
 
 import org.apache.wicket.ajax.AjaxEventBehavior;
 import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.ajax.form.AjaxFormComponentUpdatingBehavior;
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
@@ -18,7 +19,7 @@ import org.slf4j.LoggerFactory;
  * Bootstrap Rating is a jQuery plugin that creates a rating control that uses
  * Bootstrap glyphicons for rating symbols.
  * http://dreyescat.github.io/bootstrap-rating
- * 
+ *
  * @author daniel.jipa
  */
 public class RatingField<T> extends HiddenField<T> {
@@ -64,12 +65,12 @@ public class RatingField<T> extends HiddenField<T> {
 	}
 
 	private void registerChangeListener() {
-		add(new AjaxEventBehavior("change") {
+		add(new AjaxFormComponentUpdatingBehavior("change") {
 
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			protected void onEvent(AjaxRequestTarget target) {
+			protected void onUpdate(AjaxRequestTarget target) {
 				LOG.debug("change rate triggered");
 				onChange(target);
 			}
