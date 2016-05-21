@@ -1,9 +1,9 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.form.rating;
 
-import org.apache.wicket.request.resource.PackageResourceReference;
+import org.apache.wicket.request.resource.CssResourceReference;
 
 
-public class RatingCssResourceReference extends PackageResourceReference {
+public class RatingCssResourceReference extends CssResourceReference {
 
 	private static final long serialVersionUID = 1L;
 
