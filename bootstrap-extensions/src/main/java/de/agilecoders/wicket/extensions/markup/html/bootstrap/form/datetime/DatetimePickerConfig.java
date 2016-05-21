@@ -185,7 +185,7 @@ public class DatetimePickerConfig extends AbstractConfig {
      * @return config instance
      */
     public DatetimePickerConfig withMinDate(Date minDate) {
-        put(MinDate, customDateFormatter().format(minDate));
+        put(MinDate, defaultDateValueFormatter().format(minDate));
         return this;
     }
 
@@ -196,8 +196,28 @@ public class DatetimePickerConfig extends AbstractConfig {
      * @return config instance
      */
     public DatetimePickerConfig withMaxDate(Date maxDate) {
-        put(MaxDate, customDateFormatter().format(maxDate));
+        put(MaxDate, defaultDateValueFormatter().format(maxDate));
         return this;
+    }
+
+    /**
+     * Set the default date.
+     *
+     * @param defaultDate  the default date
+     * @return config instance
+     */
+    public DatetimePickerConfig withDefaultDate(Date defaultDate) {
+        put(DefaultDate, defaultDateValueFormatter().format(defaultDate));
+        return this;
+    }
+
+    /**
+     * Get date formatter based config format.
+     *
+     * @return date formatter
+     */
+    private SimpleDateFormat defaultDateValueFormatter() {
+        return new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
     }
 
     /**
