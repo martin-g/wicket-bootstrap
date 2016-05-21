@@ -3,9 +3,6 @@ package de.agilecoders.wicket.samples.pages;
 import java.util.List;
 import java.util.Map;
 
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.confirmation.ConfirmationBehavior;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.confirmation.ConfirmationConfig;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.jqueryui.JQueryUICssReference;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
@@ -52,22 +49,29 @@ import de.agilecoders.wicket.extensions.markup.html.bootstrap.behavior.Draggable
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.behavior.DraggableConfig;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.behavior.Resizable;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.button.DropDownAutoOpen;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.confirmation.ConfirmationBehavior;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.confirmation.ConfirmationConfig;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.contextmenu.ButtonListContextMenu;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.fileUpload.DropZoneFileUpload;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.password.strength.PasswordStrengthBehavior;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.password.strength.PasswordStrengthConfig;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.rating.RatingField;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.rating.RatingConfig;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.spinner.Spinner;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.spinner.SpinnerConfig;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.html5player.Html5Player;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.html5player.Html5VideoConfig;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.html5player.Video;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeCssReference;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.OpenWebIconType;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.OpenWebIconsCssReference;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.jqueryui.JQueryUICssReference;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.ladda.LaddaAjaxButton;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.ladda.LaddaAjaxLink;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.ladda.LaddaBehavior;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.tour.TourBehavior;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.tour.TourStep;
+import de.agilecoders.wicket.webjars.request.resource.WebjarsCssResourceReference;
 
 /**
  * The {@code ExtensionsPage}
@@ -185,6 +189,7 @@ public class ExtensionsPage extends BasePage {
         confirmationButton();
 
         spinnerSample();
+        ratingSample();
         animationSample();
 
         pwstrengthSample();
@@ -254,6 +259,29 @@ public class ExtensionsPage extends BasePage {
         };
         add(spinner, feedback);
     }
+    
+    private void ratingSample() {
+		final NotificationPanel feedback = new NotificationPanel("ratingFeedback");
+		feedback.setOutputMarkupId(true);
+		RatingConfig config = new RatingConfig();
+		config.withStart(0).withStop(10).withStep(2d).withFilled("fa fa-star fa-3x").withEmpty("fa fa-star-o fa-3x");
+		RatingField<String> rating = new RatingField<String>("rating", config) {
+
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			protected boolean wantAjaxNotification() {
+				return true;
+			}
+
+			protected void onChange(AjaxRequestTarget target) {
+				super.onChange(target);
+				info("Changed rating");
+				target.add(feedback);
+			}
+		};
+		add(rating, feedback);
+	}
 
     private void animationSample() {
         final NotificationPanel feedback = new NotificationPanel("animationFeedback");
@@ -357,6 +385,8 @@ public class ExtensionsPage extends BasePage {
         super.renderHead(response);
 
         response.render(CssHeaderItem.forReference(OpenWebIconsCssReference.instance()));
+		response.render(CssHeaderItem.forReference(FontAwesomeCssReference.instance()));
+
     }
 
     private void addJasnyFileUploadDemo() {

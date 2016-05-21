@@ -13,6 +13,7 @@ import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.request.resource.CssResourceReference;
 import org.apache.wicket.request.resource.JavaScriptResourceReference;
+import org.apache.wicket.util.lang.Args;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -51,6 +52,7 @@ public class Spinner<T extends Number> extends TextField<T>{
 
     public Spinner(String id, final IModel<T> model, SpinnerConfig config) {
         super(id, model);
+        Args.notNull(config, "config");
         this.config = config;
     }
 
