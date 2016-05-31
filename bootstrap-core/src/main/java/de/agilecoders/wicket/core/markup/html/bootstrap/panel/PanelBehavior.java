@@ -40,7 +40,7 @@ import de.agilecoders.wicket.core.util.Components;
  * @author Eric Hamel <eric.hamel@me.com>
  *
  */
-public class PanelBehavior extends Behavior{
+public class PanelBehavior extends Behavior {
 	
 	 private final IModel<PanelType> type;
 

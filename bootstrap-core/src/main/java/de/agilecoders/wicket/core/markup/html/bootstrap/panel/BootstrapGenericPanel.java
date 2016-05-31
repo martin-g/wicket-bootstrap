@@ -71,20 +71,18 @@ public class BootstrapGenericPanel<T> extends GenericPanel<T>{
 		
 		//Panel Title
 		Label panelTitle = newTitleLabel(_PANEL_TITLE_ID, getModel(), getTitleModel());
-		addOrReplace(panelTitle);
+		add(panelTitle);
 		Components.hideIfModelIsEmpty(panelTitle);
 		
 		//Panel Body
 		Panel panelBody = newBodyPanel(_PANEL_BODY_ID, getModel());
-		panelBody.add(CssClassNameModifier.append("class", "panel-body"));
-		addOrReplace(panelBody);
+		add(panelBody);
 		Components.hideIfModelIsEmpty(panelBody);
 		
 		
 		//Panel Footer
 		Panel panelFooter = newFooterPanel(_PANEL_FOOTER_ID, getModel());
-		panelFooter.add(CssClassNameModifier.append("class", "panel-footer"));
-		addOrReplace(panelFooter);
+		add(panelFooter);
 		Components.hideIfModelIsEmpty(panelFooter);
 		
 	}

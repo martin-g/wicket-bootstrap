@@ -5,22 +5,15 @@
     <body>
         <wicket:panel>
         	
-        	<wicket:enclosure child="panelTitle">
-        		<div class="panel-heading">
-        			<h3 class="panel-title"><span wicket:id="panelTitle"></span></h3>
-        		</div>
-        	</wicket:enclosure>
+        	<div class="panel-heading" wicket:enclosure child="panelTitle">
+        		<h3 class="panel-title"><span wicket:id="panelTitle"></span></h3>
+        	</div>
         	
-			
-			<wicket:enclosure child="panelBody">
-				<div wicket:id="panelBody"></div>
-			</wicket:enclosure>
-			
+			<div class="panel-body" wicket:id="panelBody"></div>
+					
 			<wicket:child/>
-
-			<wicket:enclosure child="panelFooter">
-				<div wicket:id="panelFooter"></div>
-			</wicket:enclosure>			
+		
+			<div class="panel-footer" wicket:id="panelFooter"></div>
 			
         </wicket:panel>
     </body>
