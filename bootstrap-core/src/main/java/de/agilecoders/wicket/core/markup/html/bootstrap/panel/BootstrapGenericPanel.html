@@ -1,0 +1,27 @@
+<html xmlns:wicket="http://wicket.apache.org">
+    <head>
+        <title>BootstrapGenericPanel</title>
+    </head>
+    <body>
+        <wicket:panel>
+        	
+        	<wicket:enclosure child="panelTitle">
+        		<div class="panel-heading">
+        			<h3 class="panel-title"><span wicket:id="panelTitle"></span></h3>
+        		</div>
+        	</wicket:enclosure>
+        	
+			
+			<wicket:enclosure child="panelBody">
+				<div wicket:id="panelBody"></div>
+			</wicket:enclosure>
+			
+			<wicket:child/>
+
+			<wicket:enclosure child="panelFooter">
+				<div wicket:id="panelFooter"></div>
+			</wicket:enclosure>			
+			
+        </wicket:panel>
+    </body>
+</html>
