@@ -1,5 +1,7 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.panel;
 
+import java.util.Arrays;
+
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.Behavior;
 import org.apache.wicket.markup.ComponentTag;
@@ -76,6 +78,12 @@ public class PanelBehavior extends Behavior {
 	        super.onComponentTag(component, tag);
 
 	        Components.assertTag(component, tag, "div");
+	        
+	        //Clear any previous PanelType css 
+	        for(PanelType panelType : Arrays.asList(PanelType.values())){
+	        	Attributes.removeClass(tag, panelType.cssClassName());	
+	        }
+	        	        
 	        Attributes.addClass(tag, className(), getType().cssClassName());
 	    }
 
