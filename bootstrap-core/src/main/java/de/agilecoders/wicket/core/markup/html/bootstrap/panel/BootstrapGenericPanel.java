@@ -27,12 +27,12 @@ import de.agilecoders.wicket.core.util.Components;
  * @param <T> the type of the panel's model object
  */
 public class BootstrapGenericPanel<T> extends GenericPanel<T>{
-	
+		
 	private static final String _PANEL_TITLE_ID = "panelTitle";
 	private static final String _PANEL_BODY_ID = "panelBody";
 	private static final String _PANEL_FOOTER_ID = "panelFooter";
-
-	private PanelType panelType;
+	
+	private PanelBehavior panelBehavior;
 	private final IModel<String> titleModel;
 	
 	/**
@@ -66,8 +66,9 @@ public class BootstrapGenericPanel<T> extends GenericPanel<T>{
 	public BootstrapGenericPanel(String id, IModel<T> model, IModel<String> panelTitleModel, PanelType panelType) {
 		super(id, model);
 		
-		this.panelType = panelType;
 		this.titleModel = panelTitleModel;
+		
+		add(this.panelBehavior = new PanelBehavior(panelType));
 		
 		//Panel Title
 		Label panelTitle = newTitleLabel(_PANEL_TITLE_ID, getModel(), getTitleModel());
@@ -87,21 +88,13 @@ public class BootstrapGenericPanel<T> extends GenericPanel<T>{
 		
 	}
 	
-	@Override
-	protected void onBeforeRender() {
-	
-		add(new PanelBehavior(getPanelType()));
-		
-		super.onBeforeRender();
-	}
-	
 	/**
 	 * Getter for Panel Type.
 	 * 
 	 * @return the panelType
 	 */
 	public PanelType getPanelType() {
-		return panelType;
+		return this.panelBehavior.getType();
 	}
 
 	/**
@@ -112,7 +105,7 @@ public class BootstrapGenericPanel<T> extends GenericPanel<T>{
 	 */
 	public BootstrapGenericPanel<T> setPanelType(PanelType panelType) {
 		
-		this.panelType = panelType;
+		this.panelBehavior.setType(panelType);
 		
 		return this;
 	}
