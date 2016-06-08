@@ -15,6 +15,8 @@ import static de.agilecoders.wicket.jquery.JQuery.$;
  * @since 0.9.12
  */
 public class ConfirmationBehavior extends BootstrapJavascriptBehavior {
+    /** serialVersionUID. */
+    private static final long serialVersionUID = 1L;
     /** Configuration. */
     private final ConfirmationConfig config;
     /** Jquery Selector (if you don't want to use the one of the component for singleton for example). */
@@ -34,8 +36,7 @@ public class ConfirmationBehavior extends BootstrapJavascriptBehavior {
     public ConfirmationBehavior(ConfirmationConfig config) {
         this(null, config);
     }
-    
-    
+
     /**
      * Constructor that uses a custom configuration
      * @param config configuration to use
@@ -45,7 +46,7 @@ public class ConfirmationBehavior extends BootstrapJavascriptBehavior {
         this.config = Args.notNull(config, "config");
         this.selector = selector;
     }
-
+    
     @Override
     public void renderHead(Component component, IHeaderResponse response) {
         super.renderHead(component, response);
