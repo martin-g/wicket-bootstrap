@@ -1,4 +1,4 @@
-package de.agilecoders.wicket.core.markup.html.bootstrap.table.sort;
+package de.agilecoders.wicket.extensions.markup.html.bootstrap.table.sort;
 
 
 import org.apache.wicket.extensions.markup.html.repeater.data.sort.ISortStateLocator;
@@ -60,12 +60,14 @@ public abstract class BootstrapOrderByBorder<S> extends Border {
 		iconSort.setVisible(false);
 		link.add(iconSort);
 		
-		if(stateLocator.getSortState().getPropertySortOrder(property) == SortOrder.ASCENDING && ascendingIconType() != null){
+		SortOrder sortOrder = stateLocator.getSortState().getPropertySortOrder(property);
+		
+		if(SortOrder.ASCENDING == sortOrder && ascendingIconType() != null){
 			
 			iconSort.setVisible(true);
 			iconSort.add(new IconBehavior(ascendingIconType()));
 			
-		}else if(stateLocator.getSortState().getPropertySortOrder(property) == SortOrder.DESCENDING && descendingIconType() != null){
+		}else if(SortOrder.DESCENDING == sortOrder && descendingIconType() != null){
 			
 			iconSort.setVisible(true);
 			iconSort.add(new IconBehavior(descendingIconType()));
@@ -75,8 +77,6 @@ public abstract class BootstrapOrderByBorder<S> extends Border {
 			iconSort.setVisible(true);
 			iconSort.add(new IconBehavior(unsortedIconType()));
 		}
-			
-
 	}
 
 	/**
@@ -109,9 +109,6 @@ public abstract class BootstrapOrderByBorder<S> extends Border {
 	}
 
 	protected abstract IconType ascendingIconType();
-	
 	protected abstract IconType descendingIconType();
-	
 	protected abstract IconType unsortedIconType();
-
 }

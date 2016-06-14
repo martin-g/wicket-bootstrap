@@ -1,4 +1,4 @@
-package de.agilecoders.wicket.core.markup.html.bootstrap.table.toolbars;
+package de.agilecoders.wicket.extensions.markup.html.bootstrap.table.toolbars;
 
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.AbstractToolbar;
@@ -12,9 +12,9 @@ import org.apache.wicket.markup.html.navigation.paging.PagingNavigator;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.AbstractReadOnlyModel;
 
-import de.agilecoders.wicket.core.markup.html.bootstrap.navigation.BootstrapNavigatorLabel;
 import de.agilecoders.wicket.core.markup.html.bootstrap.navigation.BootstrapPagingNavigator;
 import de.agilecoders.wicket.core.markup.html.bootstrap.navigation.BootstrapPagingNavigator.Size;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.navigation.BootstrapNavigatorLabel;
 
 /**
  * Bootstrap styled toolbar that displays links used to navigate the pages of the datatable as well as a message

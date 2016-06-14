@@ -1,4 +1,4 @@
-package de.agilecoders.wicket.core.markup.html.bootstrap.navigation;
+package de.agilecoders.wicket.extensions.markup.html.bootstrap.navigation;
 
 import org.apache.wicket.extensions.markup.html.repeater.data.table.DataTable;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.NavigatorLabel;
@@ -7,6 +7,7 @@ import org.apache.wicket.markup.html.WebComponent;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.panel.Panel;
 
+import de.agilecoders.wicket.core.markup.html.bootstrap.navigation.BootstrapPagingNavigator;
 import de.agilecoders.wicket.core.markup.html.bootstrap.navigation.BootstrapPagingNavigator.Size;
 import de.agilecoders.wicket.core.util.Attributes;
 
@@ -30,8 +31,6 @@ public class BootstrapNavigatorLabel extends Panel{
 			protected void onComponentTag(ComponentTag tag) {
 		        checkComponentTag(tag, "ul");
 
-		        Attributes.addClass(tag, "pagination");
-
 		        if (size != null && !size.equals(Size.Default)) {
 		            Attributes.addClass(tag, size.cssClass());
 		        }
@@ -40,10 +39,6 @@ public class BootstrapNavigatorLabel extends Panel{
 		add(paginationStyleMarkupContainer);
 		
 		paginationStyleMarkupContainer.add(newNavigatorLabel(_NAVIGATOR_LABEL_ID, table));
-		
-		
-
-		
 	}
 
 	/**
@@ -53,8 +48,7 @@ public class BootstrapNavigatorLabel extends Panel{
 	 * @return the web component to display
 	 */
 	protected WebComponent newNavigatorLabel(String navigatorLabelId, DataTable<?, ?> table) {
-
-		return new NavigatorLabel(_NAVIGATOR_LABEL_ID, table);
+		return new NavigatorLabel(navigatorLabelId, table);
 	}
 
 }

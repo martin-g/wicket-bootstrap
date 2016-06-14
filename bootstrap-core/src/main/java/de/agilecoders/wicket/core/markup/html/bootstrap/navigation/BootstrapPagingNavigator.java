@@ -78,8 +78,8 @@ public class BootstrapPagingNavigator extends PagingNavigator {
 
         Attributes.addClass(tag, "pagination");
 
-        if (getSize() != null && !getSize().equals(Size.Default)) {
-            Attributes.addClass(tag, getSize().cssClass());
+        if(Size.Default != getSize()){
+        	Attributes.addClass(tag, getSize().cssClass());
         }
     }
 
@@ -121,16 +121,12 @@ public class BootstrapPagingNavigator extends PagingNavigator {
         this.size = Size.Default.equals(size) ? null : size;
         return this;
     }
-    
-    
-
+ 
     public Size getSize() {
 		return size;
 	}
 
-
-
-	private static class PagingItem extends TransparentWebMarkupContainer {
+    private static class PagingItem extends TransparentWebMarkupContainer {
 
         private final String childId;
 

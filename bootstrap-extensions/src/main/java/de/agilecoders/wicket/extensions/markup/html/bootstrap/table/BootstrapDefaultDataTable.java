@@ -1,4 +1,4 @@
-package de.agilecoders.wicket.core.markup.html.bootstrap.table;
+package de.agilecoders.wicket.extensions.markup.html.bootstrap.table;
 
 import java.util.List;
 
@@ -7,8 +7,9 @@ import org.apache.wicket.extensions.markup.html.repeater.data.table.IColumn;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.ISortableDataProvider;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.NoRecordsToolbar;
 
-import de.agilecoders.wicket.core.markup.html.bootstrap.table.toolbars.BootstrapHeadersToolbar;
-import de.agilecoders.wicket.core.markup.html.bootstrap.table.toolbars.BootstrapNavigationToolbar;
+import de.agilecoders.wicket.core.markup.html.bootstrap.table.TableBehavior;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.table.toolbars.BootstrapHeadersToolbar;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.table.toolbars.BootstrapNavigationToolbar;
 
 /**
  * An implementation of the DataTable that aims to solve the 90% usecase by adding navigation,
@@ -47,7 +48,6 @@ public class BootstrapDefaultDataTable<T,S> extends DataTable<T, S> {
 		addTopToolbar(new BootstrapNavigationToolbar(this));
 		addTopToolbar(new BootstrapHeadersToolbar<S>(this, dataProvider));
 		addBottomToolbar(new NoRecordsToolbar(this));
-		
 	}
 
     /**
@@ -56,7 +56,6 @@ public class BootstrapDefaultDataTable<T,S> extends DataTable<T, S> {
      * @return this instance for chaining
      */
     public BootstrapDefaultDataTable striped() {
-    	
     	tableBehavior.striped();
     	
         return this;
@@ -68,7 +67,6 @@ public class BootstrapDefaultDataTable<T,S> extends DataTable<T, S> {
      * @return this instance for chaining
      */
     public BootstrapDefaultDataTable condensed() {
-    	
     	tableBehavior.condensed();
     	
         return this;
@@ -80,7 +78,6 @@ public class BootstrapDefaultDataTable<T,S> extends DataTable<T, S> {
      * @return this instance for chaining
      */
     public BootstrapDefaultDataTable bordered() {
-    	
     	tableBehavior.bordered();
     	
         return this;
@@ -92,10 +89,8 @@ public class BootstrapDefaultDataTable<T,S> extends DataTable<T, S> {
      * @return this instance for chaining
      */
     public BootstrapDefaultDataTable hover() {
-    	
     	tableBehavior.hover();
     	
         return this;
     }
-	
 }
