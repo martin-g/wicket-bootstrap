@@ -7,6 +7,7 @@ import org.apache.wicket.extensions.markup.html.repeater.data.sort.SortOrder;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.border.Border;
 
+import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.CssClassNameModifier;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.GlyphIconType;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
@@ -52,6 +53,8 @@ public abstract class BootstrapOrderByBorder<S> extends Border {
 		super(id);
 
 		OrderByLink<S> link = newOrderByLink("orderByLink", property, stateLocator);
+		link.add(CssClassNameModifier.append("class", "show"));
+				
 		addToBorder(link);
 		add(new OrderByLink.CssModifier<S>(link, cssProvider));
 		link.add(getBodyContainer());

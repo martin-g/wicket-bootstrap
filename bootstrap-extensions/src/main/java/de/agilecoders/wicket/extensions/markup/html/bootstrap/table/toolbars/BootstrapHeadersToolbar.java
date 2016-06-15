@@ -34,17 +34,17 @@ public class BootstrapHeadersToolbar<S> extends HeadersToolbar<S>{
 
 			@Override
 			protected IconType ascendingIconType() {
-				return GlyphIconType.chevronup;
+				return GlyphIconType.sortbyattributes;
 			}
 
 			@Override
 			protected IconType descendingIconType() {
-				return GlyphIconType.chevrondown;
+				return GlyphIconType.sortbyattributesalt;
 			}
 
 			@Override
 			protected IconType unsortedIconType() {
-				return GlyphIconType.minus;
+				return GlyphIconType.sort;
 			}
 		}; 
 	}
