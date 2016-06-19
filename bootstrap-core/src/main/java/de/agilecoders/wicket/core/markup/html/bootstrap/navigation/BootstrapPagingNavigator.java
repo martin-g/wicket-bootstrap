@@ -22,12 +22,12 @@ import de.agilecoders.wicket.core.util.Attributes;
  */
 public class BootstrapPagingNavigator extends PagingNavigator {
 
-    public static enum Size {
+    public enum Size {
         Small("sm"), Default(""), Large("lg");
 
         private final String size;
 
-        private Size(String size) {
+        Size(String size) {
             this.size = size;
         }
 
@@ -36,7 +36,7 @@ public class BootstrapPagingNavigator extends PagingNavigator {
         }
     }
 
-    private Size size;
+    private Size size = Size.Default;
 
     /**
      * Construct.
@@ -78,8 +78,8 @@ public class BootstrapPagingNavigator extends PagingNavigator {
 
         Attributes.addClass(tag, "pagination");
 
-        if(Size.Default != getSize()){
-        	Attributes.addClass(tag, getSize().cssClass());
+        if (getSize() != Size.Default) {
+            Attributes.addClass(tag, getSize().cssClass());
         }
     }
 
@@ -118,13 +118,13 @@ public class BootstrapPagingNavigator extends PagingNavigator {
      * @return {@code this} instance, for chaining
      */
     public BootstrapPagingNavigator setSize(Size size) {
-        this.size = Size.Default.equals(size) ? null : size;
+        this.size = size == null ? Size.Default: size;
         return this;
     }
- 
+
     public Size getSize() {
-		return size;
-	}
+        return size;
+    }
 
     private static class PagingItem extends TransparentWebMarkupContainer {
 

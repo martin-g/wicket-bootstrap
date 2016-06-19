@@ -11,44 +11,44 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.navigation.BootstrapPagi
 import de.agilecoders.wicket.core.markup.html.bootstrap.navigation.BootstrapPagingNavigator.Size;
 import de.agilecoders.wicket.core.util.Attributes;
 
-public class BootstrapNavigatorLabel extends Panel{
+public class BootstrapNavigatorLabel extends Panel {
 
-	private static final String _NAVIGATOR_LABEL_ID = "navigatorLabel";
-	
-	/**
-	 * Construct.
-	 * 
-	 * @param id the component id
-	 * @param table the pageable table
-	 * @param size the size of the label
-	 */
-	public BootstrapNavigatorLabel(String id, DataTable<?, ?> table, final BootstrapPagingNavigator.Size size) {
-		super(id);
+    private static final String _NAVIGATOR_LABEL_ID = "navigatorLabel";
 
-		WebMarkupContainer paginationStyleMarkupContainer = new WebMarkupContainer("paginationStyleMarkupContainer") {
-			
-			@Override
-			protected void onComponentTag(ComponentTag tag) {
-		        checkComponentTag(tag, "ul");
+    /**
+     * Construct.
+     *
+     * @param id the component id
+     * @param table the pageable table
+     * @param size the size of the label
+     */
+    public BootstrapNavigatorLabel(String id, DataTable<?, ?> table, final BootstrapPagingNavigator.Size size) {
+        super(id);
 
-		        if (size != null && !size.equals(Size.Default)) {
-		            Attributes.addClass(tag, size.cssClass());
-		        }
-			}
-		};
-		add(paginationStyleMarkupContainer);
-		
-		paginationStyleMarkupContainer.add(newNavigatorLabel(_NAVIGATOR_LABEL_ID, table));
-	}
+        WebMarkupContainer paginationStyleMarkupContainer = new WebMarkupContainer("paginationStyleMarkupContainer") {
 
-	/**
-	 * Override this method to provide your own implementation of NavigatorLabel
-	 * @param navigatorLabelId the navigator label id
-	 * @param table the pageable table
-	 * @return the web component to display
-	 */
-	protected WebComponent newNavigatorLabel(String navigatorLabelId, DataTable<?, ?> table) {
-		return new NavigatorLabel(navigatorLabelId, table);
-	}
+            @Override
+            protected void onComponentTag(ComponentTag tag) {
+                checkComponentTag(tag, "ul");
+
+                if (size != null && size != Size.Default) {
+                    Attributes.addClass(tag, size.cssClass());
+                }
+            }
+        };
+        add(paginationStyleMarkupContainer);
+
+        paginationStyleMarkupContainer.add(newNavigatorLabel(_NAVIGATOR_LABEL_ID, table));
+    }
+
+    /**
+     * Override this method to provide your own implementation of NavigatorLabel
+     * @param navigatorLabelId the navigator label id
+     * @param table the pageable table
+     * @return the web component to display
+     */
+    protected WebComponent newNavigatorLabel(String navigatorLabelId, DataTable<?, ?> table) {
+        return new NavigatorLabel(navigatorLabelId, table);
+    }
 
 }
