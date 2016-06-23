@@ -102,7 +102,10 @@ public class DateTextFieldConfig extends AbstractConfig {
      * Defines the min view of the date picker
      */
     private static final IKey<Integer> MinViewMode = newKey("minViewMode", null);
-
+    /**
+     * Defines if multi selection is enabled
+     */
+    private static final IKey<Boolean> Multidate = newKey("multidate", false);
     /**
      * holds all week days in a specific sort order.
      */
@@ -324,7 +327,17 @@ public class DateTextFieldConfig extends AbstractConfig {
         put(AutoClose, value);
         return this;
     }
-
+    /**
+     * Whether multi date selection is enabled.
+     * 
+     * @param value true, if datepicker should accept multiple selections
+     * @return this instance for chaining
+     */
+     public DateTextFieldConfig withMulti(final boolean value) {
+         put(Multidate, value);
+         return this;
+     }
+     
     /**
      * See <a href="http://bootstrap-datepicker.readthedocs.org/en/latest/options.html#todaybtn">docs</a>.
      * Today button could be a boolean or string <em>"linked"</em>:
