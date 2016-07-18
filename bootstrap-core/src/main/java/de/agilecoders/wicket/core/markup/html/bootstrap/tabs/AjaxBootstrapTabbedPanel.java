@@ -8,6 +8,7 @@ import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.model.IModel;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Styled version of {@link AjaxTabbedPanel}.
@@ -38,12 +39,10 @@ public class AjaxBootstrapTabbedPanel<T extends ITab> extends BootstrapTabbedPan
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			public void onClick(final AjaxRequestTarget target) {
+			public void onClick(final Optional<AjaxRequestTarget> targetOptional) {
 				setSelectedTab(index);
-				if (target != null) {
-					target.add(AjaxBootstrapTabbedPanel.this);
-				}
-				onAjaxUpdate(target);
+				targetOptional.ifPresent(target -> target.add(AjaxBootstrapTabbedPanel.this));
+				onAjaxUpdate(targetOptional);
 			}
 
 		};
@@ -57,10 +56,10 @@ public class AjaxBootstrapTabbedPanel<T extends ITab> extends BootstrapTabbedPan
 	 * <strong>Note</strong> Since an {@link AjaxFallbackLink} is used to back the ajax update the <code>target</code>
 	 * argument can be null when the client browser does not support ajax and the fallback mode is used. See
 	 * {@link AjaxFallbackLink} for details.
-	 * 
-	 * @param target
+	 *
+	 * @param targetOptional
 	 *            ajax target used to update this component
 	 */
-	protected void onAjaxUpdate(final AjaxRequestTarget target) {
+	protected void onAjaxUpdate(final Optional<AjaxRequestTarget> targetOptional) {
 	}
 }

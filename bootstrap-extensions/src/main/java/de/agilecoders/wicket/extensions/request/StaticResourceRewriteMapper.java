@@ -13,6 +13,8 @@ import org.apache.wicket.request.resource.caching.IStaticCacheableResource;
 import org.apache.wicket.util.IProvider;
 import org.apache.wicket.util.string.Strings;
 
+import java.util.function.Supplier;
+
 /**
  * Enables a Wicket application to have its static resources proxied by a CDN, for example
  * by Amazon Cloudfront. This works by intercepting Wicket's default behavior for rendering
@@ -167,13 +169,8 @@ public class StaticResourceRewriteMapper implements IRequestMapper {
          * @param app The web application
          * @return new provider
          */
-        private IProvider<String> newParentFolderPlaceholder(final WebApplication app) {
-            return new IProvider<String>() {
-                @Override
-                public String get() {
-                    return app.getResourceSettings().getParentFolderPlaceholder();
-                }
-            };
+        private Supplier<String> newParentFolderPlaceholder(final WebApplication app) {
+            return () -> app.getResourceSettings().getParentFolderPlaceholder();
         }
 
         /**
@@ -182,13 +179,8 @@ public class StaticResourceRewriteMapper implements IRequestMapper {
          * @param app The web application
          * @return new provider
          */
-        private IProvider<IResourceCachingStrategy> newResourceCachingStrategy(final WebApplication app) {
-            return new IProvider<IResourceCachingStrategy>() {
-                @Override
-                public IResourceCachingStrategy get() {
-                    return app.getResourceSettings().getCachingStrategy();
-                }
-            };
+        private Supplier<IResourceCachingStrategy> newResourceCachingStrategy(final WebApplication app) {
+            return () -> app.getResourceSettings().getCachingStrategy();
         }
     }
 }

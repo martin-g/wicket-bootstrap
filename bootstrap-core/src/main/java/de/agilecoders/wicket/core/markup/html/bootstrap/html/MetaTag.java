@@ -20,7 +20,7 @@ import static de.agilecoders.wicket.jquery.util.Strings2.nullToEmpty;
  *
  * @author miha
  */
-public class MetaTag extends WebMarkupContainer implements IGenericComponent<String> {
+public class MetaTag extends WebMarkupContainer implements IGenericComponent<String, MetaTag> {
     // @see http://www.w3schools.com/tags/att_meta_http_equiv.asp
     private static final List<String> HTTP_EQUIV_NAMES = Generics2.newArrayList(
             "content-type", "expires", "refresh", "pragma", "cache-control",
@@ -44,7 +44,7 @@ public class MetaTag extends WebMarkupContainer implements IGenericComponent<Str
 
         private final String nameAttribute;
 
-        private Type(String nameAttribute) {
+        Type(String nameAttribute) {
             this.nameAttribute = nameAttribute;
         }
 
@@ -184,25 +184,5 @@ public class MetaTag extends WebMarkupContainer implements IGenericComponent<Str
 
         tag.put(nameAttribute, name());
         tag.put(ATTRIBUTE_NAME_CONTENT, content());
-    }
-
-    @Override
-    public IModel<String> getModel() {
-        return (IModel<String>) getDefaultModel();
-    }
-
-    @Override
-    public void setModel(IModel<String> model) {
-        setDefaultModel(model);
-    }
-
-    @Override
-    public void setModelObject(String object) {
-        setDefaultModelObject(object);
-    }
-
-    @Override
-    public String getModelObject() {
-        return getDefaultModelObjectAsString();
     }
 }

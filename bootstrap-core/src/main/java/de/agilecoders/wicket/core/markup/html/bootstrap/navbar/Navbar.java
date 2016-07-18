@@ -187,7 +187,7 @@ public class Navbar extends Panel implements Invertible<Navbar> {
         return new LoadableDetachableModel<List<Component>>() {
             @Override
             public List<Component> load() {
-                return transform(filter(components, withPosition), NAVBAR_COMPONENT_TO_COMPONENT_FUNCTION);
+                return transform(Generics2.filter(components, withPosition), NAVBAR_COMPONENT_TO_COMPONENT_FUNCTION);
             }
         };
     }

@@ -41,7 +41,7 @@ public class TypeaheadConfigTest extends WicketApplicationTest {
 
 
         OnDomReadyHeaderItem item = field.getDomReadyScript(config);
-        String expected = "var engine = new Bloodhound({\"datumTokenizer\":function(d) { return Bloodhound.tokenizers.whitespace(d.value); },\"queryTokenizer\":Bloodhound.tokenizers.whitespace,\"remote\":\"./wicket/page?0-1.IBehaviorListener.0-typeahead&term=%QUERY\"});engine.initialize();$('#typeahead1').typeahead({},{\"name\":\"engine\",\"source\":engine.ttAdapter()});";
+        String expected = "var engine = new Bloodhound({\"datumTokenizer\":function(d) { return Bloodhound.tokenizers.whitespace(d.value); },\"queryTokenizer\":Bloodhound.tokenizers.whitespace,\"remote\":\"./wicket/page?0-1.0-typeahead&term=%QUERY\"});engine.initialize();$('#typeahead1').typeahead({},{\"name\":\"engine\",\"source\":engine.ttAdapter()});";
         assertEquals(expected, item.getJavaScript());
     }
 
