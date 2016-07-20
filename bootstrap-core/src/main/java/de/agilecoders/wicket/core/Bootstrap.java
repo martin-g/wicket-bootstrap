@@ -28,6 +28,8 @@ import de.agilecoders.wicket.jquery.WicketJquerySelectors;
 import de.agilecoders.wicket.jquery.settings.ObjectMapperFactory;
 import de.agilecoders.wicket.jquery.settings.SingletonObjectMapperFactory;
 import de.agilecoders.wicket.webjars.WicketWebjars;
+import de.agilecoders.wicket.webjars.settings.IWebjarsSettings;
+import de.agilecoders.wicket.webjars.settings.WebjarsSettings;
 
 /**
  * #### Description
@@ -75,15 +77,16 @@ public final class Bootstrap {
     private Bootstrap() {
         throw new UnsupportedOperationException();
     }
-
+    
     /**
-     * Installs given settings to given application. Duplicated calls to `install` will be ignored.
+     * Installs given bootstrap settings and wicketwebjars settings to given application. Duplicated calls to `install` will be ignored.
      *
      * @param app      The current application
      * @param settings The settings to use
+     * @param webjarSettings The webjars settings to use
      * @throws java.lang.IllegalArgumentException if given application is null
      */
-    public static void install(final Application app, IBootstrapSettings settings) {
+    public static void install(final Application app, IBootstrapSettings settings, IWebjarsSettings webjarSettings) {
         Args.notNull(app, "app");
 
         if (getSettings(app) == null) {
@@ -111,7 +114,7 @@ public final class Bootstrap {
             }
 
             if (settings.useWebjars() && app instanceof WebApplication) {
-                WicketWebjars.install((WebApplication) app);
+                WicketWebjars.install((WebApplication) app, webjarSettings);
             }
 
             if (settings.updateSecurityManager()) {
@@ -124,6 +127,17 @@ public final class Bootstrap {
 
             configureMarkupSettings(app);
         }
+    }
+    
+    /**
+     * Installs given settings to given application. Duplicated calls to `install` will be ignored.
+     * 
+     * @param app The current application
+     * @param settings The settings to use
+     * @throws java.lang.IllegalArgumentException if given application is null
+     */
+    public static void install(final Application app, IBootstrapSettings settings) {
+    	install(app, settings, null);
     }
 
     /**
