@@ -2,6 +2,8 @@ package de.agilecoders.wicket.core;
 
 import java.io.IOException;
 
+import de.agilecoders.wicket.jquery.settings.IWicketJquerySelectorsSettings;
+import de.agilecoders.wicket.webjars.settings.IWebjarsSettings;
 import org.apache.wicket.Application;
 import org.apache.wicket.Component;
 import org.apache.wicket.MetaDataKey;
@@ -76,6 +78,35 @@ public final class Bootstrap {
         throw new UnsupportedOperationException();
     }
 
+    public static class Builder {
+        private IWicketJquerySelectorsSettings jquerySelectorsSettings;
+        private IWebjarsSettings webjarsSettings;
+        private IBootstrapSettings bootstrapSettings;
+
+        public Builder withJQuerySelectorSettings(IWicketJquerySelectorsSettings jQuerySelectorSettings) {
+            this.jquerySelectorsSettings = jQuerySelectorSettings;
+            return this;
+        }
+
+        public Builder withWebjarsSettings(IWebjarsSettings webjarsSettings) {
+            this.webjarsSettings = webjarsSettings;
+            return this;
+        }
+
+        public Builder withBootstrapSettings(IBootstrapSettings bootstrapSettings) {
+            this.bootstrapSettings = bootstrapSettings;
+            return this;
+        }
+
+        public void install(Application application) {
+            Bootstrap.install(application, bootstrapSettings, webjarsSettings, jquerySelectorsSettings);
+        }
+    }
+
+    public static Builder builder() {
+        return new Builder();
+    }
+
     /**
      * Installs given settings to given application. Duplicated calls to `install` will be ignored.
      *
@@ -84,6 +115,13 @@ public final class Bootstrap {
      * @throws java.lang.IllegalArgumentException if given application is null
      */
     public static void install(final Application app, IBootstrapSettings settings) {
+        install(app, settings, null, null);
+    }
+
+    private static void install(final Application app,
+                                IBootstrapSettings settings,
+                                final IWebjarsSettings webjarsSettings,
+                                final IWicketJquerySelectorsSettings jquerySelectorsSettings) {
         Args.notNull(app, "app");
 
         if (getSettings(app) == null) {
@@ -94,7 +132,7 @@ public final class Bootstrap {
             app.setMetaData(BOOTSTRAP_SETTINGS_METADATA_KEY, settings);
 
             if (!WicketJquerySelectors.isInstalled(app)) {
-                WicketJquerySelectors.install(app);
+                WicketJquerySelectors.install(app, jquerySelectorsSettings);
             }
             ObjectMapperFactory objectMapperFactory = WicketJquerySelectors.assignedSettingsOrDefault().getObjectMapperFactory();
             if (objectMapperFactory instanceof SingletonObjectMapperFactory) {
@@ -111,7 +149,7 @@ public final class Bootstrap {
             }
 
             if (settings.useWebjars() && app instanceof WebApplication) {
-                WicketWebjars.install((WebApplication) app);
+                WicketWebjars.install((WebApplication) app, webjarsSettings);
             }
 
             if (settings.updateSecurityManager()) {
