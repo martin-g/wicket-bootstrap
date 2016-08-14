@@ -132,4 +132,8 @@ public class BootstrapFileInput extends GenericPanel<List<FileUpload>> {
         config.showUpload(showUpload);
         return this;
     }
+
+    public FileInputConfig getConfig() {
+        return config;
+    }
 }

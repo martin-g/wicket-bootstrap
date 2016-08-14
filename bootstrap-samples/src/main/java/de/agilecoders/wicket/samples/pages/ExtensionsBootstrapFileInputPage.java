@@ -27,7 +27,7 @@ public class ExtensionsBootstrapFileInputPage extends BasePage {
         add(feedback);
     }
     private void addBootstrapFileUploadDemo() {
-        final IModel<List<FileUpload>> model = new ListModel<>();
+        final IModel<List<FileUpload>> model = new ListModel<FileUpload>();
         Form<Void> bootstrapFileUploadForm = new Form<Void>("bootstrapFileUploadForm") {
             @Override
             protected void onSubmit() {
@@ -59,7 +59,7 @@ public class ExtensionsBootstrapFileInputPage extends BasePage {
                 target.add(feedback);
             }
         };
-//        bootstrapFileInput.withShowRemove(false).withShowUpload(false);
+        bootstrapFileInput.getConfig().maxFileCount(1);
         bootstrapFileUploadForm.add(bootstrapFileInput);
     }
 
