@@ -18,6 +18,7 @@ import java.util.List;
 
 import static com.google.common.base.Strings.nullToEmpty;
 import static com.google.common.collect.Lists.newArrayList;
+import static de.agilecoders.wicket.core.Bootstrap.install;
 
 /**
  * Base integration test class
@@ -37,7 +38,9 @@ public class WicketApplicationTest extends Assert {
             protected void init() {
                 super.init();
 
-                Bootstrap.install(this, WicketApplicationTest.this.createBootstrapSettings());
+                Bootstrap.builder()
+                    .withBootstrapSettings(WicketApplicationTest.this.createBootstrapSettings())
+                    .install(this);
 
                 getMarkupSettings().setStripWicketTags(false);
             }

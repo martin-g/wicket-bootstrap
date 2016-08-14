@@ -214,7 +214,7 @@ public class WicketApplication extends WebApplication {
                 .setThemeProvider(themeProvider)
                 .setActiveThemeProvider(new CookieThemeProvider());
 
-        Bootstrap.install(this, settings);
+        Bootstrap.builder().withBootstrapSettings(settings).install(this);
         BootstrapLess.install(this);
     }
 

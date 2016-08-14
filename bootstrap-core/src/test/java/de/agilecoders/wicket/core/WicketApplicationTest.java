@@ -59,7 +59,9 @@ public class WicketApplicationTest extends Assert {
             protected void init() {
                 super.init();
 
-                Bootstrap.install(this, WicketApplicationTest.this.createBootstrapSettings());
+                Bootstrap.builder()
+                    .withBootstrapSettings(WicketApplicationTest.this.createBootstrapSettings())
+                    .install(this);
 
                 getMarkupSettings().setStripWicketTags(false);
                 getMarkupSettings().setDefaultMarkupEncoding(Charsets.UTF_8.name());
