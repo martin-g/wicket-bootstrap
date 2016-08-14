@@ -59,7 +59,7 @@ public class ExtensionsBootstrapFileInputPage extends BasePage {
                 target.add(feedback);
             }
         };
-//        bootstrapFileInput.withShowRemove(false).withShowUpload(false);
+        bootstrapFileInput.getConfig().maxFileCount(1);
         bootstrapFileUploadForm.add(bootstrapFileInput);
     }
 

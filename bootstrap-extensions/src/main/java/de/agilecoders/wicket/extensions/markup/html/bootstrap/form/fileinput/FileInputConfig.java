@@ -8,7 +8,7 @@ import de.agilecoders.wicket.jquery.IKey;
  * Options</a>
  */
 public class FileInputConfig extends AbstractConfig {
-    
+
     public static final IKey<Boolean> ShowCaption = newKey("showCaption", Boolean.TRUE);
 
     public static final IKey<Boolean> ShowPreview = newKey("showPreview", Boolean.TRUE);
@@ -32,13 +32,17 @@ public class FileInputConfig extends AbstractConfig {
     public static final IKey<String> UploadClass = newKey("uploadClass", "btn btn-default");
 
     public static final IKey<Integer> WrapTextLength = newKey("wrapTextLength", 250);
-    
+
+    public static final IKey<Integer> MaxFileCount = newKey("maxFileCount", 0);
+
+    public static final IKey<Integer> MinFileCount = newKey("minFileCount", 0);
+
     public static final IKey<String> BrowseIcon = newKey("browseIcon", "<i class=\"glyphicon glyphicon-folder-open\"></i> &nbsp;");
-    
+
     public static final IKey<String> RemoveIcon = newKey("removeIcon", "<i class=\"glyphicon glyphicon-ban-circle\"></i> &nbsp;");
-    
+
     public static final IKey<String> UploadIcon = newKey("uploadIcon", "<i class=\"glyphicon glyphicon-upload\"></i> &nbsp;");
-    
+
     public static final IKey<String> PreviewFileType = newKey("previewFileType", "image");
 
     public FileInputConfig showCaption(boolean showCaption) {
@@ -103,22 +107,32 @@ public class FileInputConfig extends AbstractConfig {
         put(WrapTextLength, wrapTextLength);
         return this;
     }
-    
+
+    public FileInputConfig minFileCount(int minFileCount) {
+        put(MinFileCount, minFileCount);
+        return this;
+    }
+
+    public FileInputConfig maxFileCount(int maxFileCount) {
+        put(MaxFileCount, maxFileCount);
+        return this;
+    }
+
     public FileInputConfig browseIcon(String browseIcon) {
         put(BrowseIcon, browseIcon);
         return this;
     }
-    
+
     public FileInputConfig removeIcon(String removeIcon) {
         put(RemoveIcon, removeIcon);
         return this;
     }
-    
+
     public FileInputConfig uploadIcon(String uploadIcon) {
         put(UploadIcon, uploadIcon);
         return this;
     }
-    
+
     public FileInputConfig previewFileType(String previewFileType) {
         put(PreviewFileType, previewFileType);
         return this;
@@ -171,15 +185,15 @@ public class FileInputConfig extends AbstractConfig {
     public String browseIcon() {
         return get(BrowseIcon);
     }
-    
+
     public String removeIcon() {
         return get(RemoveIcon);
     }
-    
+
     public String uploadIcon() {
         return get(UploadIcon);
     }
-    
+
     public String previewFileType() {
         return get(PreviewFileType);
     }
