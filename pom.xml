@@ -41,7 +41,7 @@
         <github.global.server>github</github.global.server>
         <java.version>1.7</java.version>
 
-        <bootstrap.version>3.3.6</bootstrap.version>
+        <bootstrap.version>3.3.7</bootstrap.version>
         <config.version>0.3.5</config.version>
         <wicket-webjars.version>0.5.4</wicket-webjars.version>
         <wicket-jquery-selectors.version>0.2.3</wicket-jquery-selectors.version>
