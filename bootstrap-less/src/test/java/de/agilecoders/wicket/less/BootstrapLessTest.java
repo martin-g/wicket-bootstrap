@@ -16,7 +16,6 @@ import org.apache.wicket.protocol.http.mock.MockServletContext;
 import org.apache.wicket.request.resource.IResourceReferenceFactory;
 import org.apache.wicket.request.resource.ResourceReferenceRegistry;
 import org.apache.wicket.util.file.File;
-import org.apache.wicket.util.file.Folder;
 import org.apache.wicket.util.tester.WicketTester;
 import org.junit.After;
 import org.junit.Before;
