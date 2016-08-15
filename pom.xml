@@ -67,7 +67,7 @@
         <jquery.version>2.2.4</jquery.version>
         <maven-bundle-plugin.version>2.5.4</maven-bundle-plugin.version>
         <wicket.version>6.23.0</wicket.version>
-        <wicketstuff.version>6.23.0</wicketstuff.version>
+        <wicketstuff.version>6.24.0</wicketstuff.version>
         <yuicompressor.version>2.4.8</yuicompressor.version>
         <maven-javadoc-plugin.version>2.10.3</maven-javadoc-plugin.version>
         <guava.version>19.0</guava.version>
