@@ -8,13 +8,10 @@ import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.form.AjaxFormSubmitBehavior;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.markup.html.WebMarkupContainer;
-import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.PasswordTextField;
 import org.apache.wicket.markup.html.form.RequiredTextField;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.Model;
-
-import java.util.Date;
 
 /**
  * @author Alexey Volkov
@@ -34,19 +31,19 @@ public class SimpleFormPanel extends Panel {
         public SimpleForm(String componentId) {
             super(componentId);
             type(FormType.Horizontal);
-            add(new RequiredTextField<String>("required", Model.of("")).setLabel(Model.of("Username")));
+            add(new RequiredTextField<>("required", Model.of("")).setLabel(Model.of("Username")));
             add(new PasswordTextField("pass", Model.of("")).setLabel(Model.of("Password")));
-            add(new DateTextField("date", Model.<Date>of()).setRequired(true).setLabel(Model.of("Date")));
+            add(new DateTextField("date", Model.of()).setRequired(true).setLabel(Model.of("Date")));
             add(new AjaxButton("submitBtn") {
                 @Override
-                protected void onSubmit(AjaxRequestTarget target, Form<?> form) {
-                    super.onSubmit(target, form);
+                protected void onSubmit(AjaxRequestTarget target) {
+                    super.onSubmit(target);
                     SimpleFormPanel.this.onSubmit(target);
                 }
 
                 @Override
-                protected void onError(AjaxRequestTarget target, Form<?> form) {
-                    super.onError(target, form);
+                protected void onError(AjaxRequestTarget target) {
+                    super.onError(target);
                     target.add(form);
                 }
             });

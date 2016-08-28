@@ -50,7 +50,7 @@ public class MarkdownPage extends BasePage {
             private static final long serialVersionUID = 1L;
 
             @Override
-            protected void onSubmit(AjaxRequestTarget target, Form<?> form) {
+            protected void onSubmit(AjaxRequestTarget target) {
                 info("Submitted text: \n" + model.getObject());
                 target.add(feedback);
             }

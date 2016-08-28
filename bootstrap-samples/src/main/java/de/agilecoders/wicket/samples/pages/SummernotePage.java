@@ -51,14 +51,14 @@ public class SummernotePage extends BasePage {
             private static final long serialVersionUID = 1L;
 
             @Override
-            protected void onSubmit(AjaxRequestTarget target, Form<?> form) {
+            protected void onSubmit(AjaxRequestTarget target) {
                 info("Submitted text: \n" + summernoteModel.getObject());
                 target.add(feedback);
             }
 
             @Override
             protected void updateAjaxAttributes(AjaxRequestAttributes attributes) {
-                attributes.setAllowDefault(false);
+                attributes.setPreventDefault(true);
                 if (isAirMode) {
                     super.updateAjaxAttributes(attributes);
                 }

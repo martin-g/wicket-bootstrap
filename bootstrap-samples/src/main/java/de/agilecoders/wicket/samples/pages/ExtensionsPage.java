@@ -1,8 +1,45 @@
 package de.agilecoders.wicket.samples.pages;
 
-import java.util.List;
-import java.util.Map;
-
+import com.google.common.collect.Lists;
+import de.agilecoders.wicket.core.markup.html.bootstrap.block.Code;
+import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons;
+import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.DropDownButton;
+import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.MenuBookmarkablePageLink;
+import de.agilecoders.wicket.core.markup.html.bootstrap.common.NotificationPanel;
+import de.agilecoders.wicket.core.markup.html.bootstrap.components.TooltipConfig;
+import de.agilecoders.wicket.core.markup.html.bootstrap.dialog.Modal;
+import de.agilecoders.wicket.core.markup.html.bootstrap.dialog.TextContentModal;
+import de.agilecoders.wicket.core.markup.html.bootstrap.image.GlyphIconType;
+import de.agilecoders.wicket.core.markup.html.bootstrap.image.Icon;
+import de.agilecoders.wicket.extensions.javascript.jasny.InputMaskBehavior;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.behavior.AnimatedBehavior;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.behavior.AnimatedBehavior.Animation;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.behavior.Draggable;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.behavior.DraggableConfig;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.behavior.Resizable;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.button.DropDownAutoOpen;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.confirmation.ConfirmationBehavior;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.confirmation.ConfirmationConfig;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.contextmenu.ButtonListContextMenu;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.fileUpload.DropZoneFileUpload;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.password.strength.PasswordStrengthBehavior;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.password.strength.PasswordStrengthConfig;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.rating.RatingConfig;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.rating.RatingField;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.spinner.Spinner;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.spinner.SpinnerConfig;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.html5player.Html5Player;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.html5player.Html5VideoConfig;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.html5player.Video;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeCssReference;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.OpenWebIconType;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.OpenWebIconsCssReference;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.jqueryui.JQueryUICssReference;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.ladda.LaddaAjaxButton;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.ladda.LaddaAjaxLink;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.ladda.LaddaBehavior;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.tour.TourBehavior;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.tour.TourStep;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
@@ -29,51 +66,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.wicketstuff.annotation.mount.MountPath;
 
-import com.google.common.collect.Lists;
-
-import de.agilecoders.wicket.core.markup.html.bootstrap.block.Code;
-import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons;
-import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.DropDownButton;
-import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.MenuBookmarkablePageLink;
-import de.agilecoders.wicket.core.markup.html.bootstrap.common.NotificationPanel;
-import de.agilecoders.wicket.core.markup.html.bootstrap.components.TooltipConfig;
-import de.agilecoders.wicket.core.markup.html.bootstrap.components.progress.ProgressBar;
-import de.agilecoders.wicket.core.markup.html.bootstrap.components.progress.UploadProgressBar;
-import de.agilecoders.wicket.core.markup.html.bootstrap.dialog.Modal;
-import de.agilecoders.wicket.core.markup.html.bootstrap.dialog.TextContentModal;
-import de.agilecoders.wicket.core.markup.html.bootstrap.image.GlyphIconType;
-import de.agilecoders.wicket.core.markup.html.bootstrap.image.Icon;
-import de.agilecoders.wicket.extensions.javascript.jasny.FileUploadField;
-import de.agilecoders.wicket.extensions.javascript.jasny.InputMaskBehavior;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.behavior.AnimatedBehavior;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.behavior.AnimatedBehavior.Animation;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.behavior.Draggable;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.behavior.DraggableConfig;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.behavior.Resizable;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.button.DropDownAutoOpen;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.confirmation.ConfirmationBehavior;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.confirmation.ConfirmationConfig;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.contextmenu.ButtonListContextMenu;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.fileUpload.DropZoneFileUpload;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.password.strength.PasswordStrengthBehavior;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.password.strength.PasswordStrengthConfig;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.rating.RatingField;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.rating.RatingConfig;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.spinner.Spinner;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.spinner.SpinnerConfig;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.html5player.Html5Player;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.html5player.Html5VideoConfig;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.html5player.Video;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeCssReference;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.OpenWebIconType;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.OpenWebIconsCssReference;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.jqueryui.JQueryUICssReference;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.ladda.LaddaAjaxButton;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.ladda.LaddaAjaxLink;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.ladda.LaddaBehavior;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.tour.TourBehavior;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.tour.TourStep;
-import de.agilecoders.wicket.webjars.request.resource.WebjarsCssResourceReference;
+import java.util.List;
+import java.util.Map;
 
 /**
  * The {@code ExtensionsPage}
@@ -337,8 +331,8 @@ public class ExtensionsPage extends BasePage {
 
         LaddaAjaxButton laddaButton = new LaddaAjaxButton("laddaButton", Model.of("Button, 3secs"), form, Buttons.Type.Info) {
             @Override
-            protected void onSubmit(AjaxRequestTarget target, Form<?> form) {
-                super.onSubmit(target, form);
+            protected void onSubmit(AjaxRequestTarget target) {
+                super.onSubmit(target);
 
                 Duration.seconds(3).sleep();
             }
@@ -374,8 +368,8 @@ public class ExtensionsPage extends BasePage {
 
         AjaxButton confirmationButton = new AjaxButton("confirmationButton", Model.of("Button")) {
             @Override
-            protected void onSubmit(AjaxRequestTarget target, Form<?> form) {
-                super.onSubmit(target, form);
+            protected void onSubmit(AjaxRequestTarget target) {
+                super.onSubmit(target);
 
                 info("Invoked button's #onSubmit()!");
                 target.add(feedback);
@@ -415,21 +409,6 @@ public class ExtensionsPage extends BasePage {
         response.render(CssHeaderItem.forReference(OpenWebIconsCssReference.instance()));
 		response.render(CssHeaderItem.forReference(FontAwesomeCssReference.instance()));
 
-    }
-
-    private void addJasnyFileUploadDemo() {
-        Form<Void> jasnyFileUploadForm = new Form<>("jasnyFileUploadForm");
-        add(jasnyFileUploadForm);
-        jasnyFileUploadForm.setMultiPart(true);
-        FileUploadField jasnyFileUpload = new FileUploadField("jasnyFileUpload");
-        jasnyFileUploadForm.add(jasnyFileUpload);
-
-        UploadProgressBar progressBar = new UploadProgressBar("progressBar",
-                jasnyFileUploadForm, jasnyFileUpload, Model.of(0));
-        progressBar.striped(true).active(true).type(ProgressBar.Type.INFO);
-        jasnyFileUploadForm.add(progressBar);
-        jasnyFileUploadForm.add(new AjaxButton("submit") {
-        });
     }
 
     private void addJasnyInputMaskDemo() {

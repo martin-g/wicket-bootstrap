@@ -154,8 +154,7 @@ public class IssuesPage extends BasePage {
             }
 
             @Override
-            protected void onSubmit(AjaxRequestTarget target, Form<?> form) {
-                System.out.print(dateBean);
+            protected void onSubmit(AjaxRequestTarget target) {
                 target.appendJavaScript("alert('DateBean.dueDate is: " + dateBean.getDueDate() + "');");
             }
         });
@@ -203,7 +202,7 @@ public class IssuesPage extends BasePage {
             }
 
             @Override
-            protected void onSubmit(AjaxRequestTarget target, Form<?> form) {
+            protected void onSubmit(AjaxRequestTarget target) {
                 success("Selected color is: " + colorPicker.getModelObject());
                 target.add(colorPickerFeedback);
             }
