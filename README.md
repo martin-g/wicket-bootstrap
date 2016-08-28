@@ -13,18 +13,19 @@ Current build status: [![Build Status](https://buildhive.cloudbees.com/job/l0rdn
 
 Current release version:
 
-* [Wicket 7.x](http://wicket.apache.org/) and [Bootstrap 3.3.5](https://github.com/twbs/bootstrap/):  0.10.6
-* [Wicket 6.x](http://wicket.apache.org/) and [Bootstrap 3.3.5](https://github.com/twbs/bootstrap/): 0.9.16
+* [Wicket 8.x](http://wicket.apache.org/) and [Bootstrap 3.3.7](https://github.com/twbs/bootstrap/):  2.x
+* [Wicket 7.x](http://wicket.apache.org/) and [Bootstrap 3.3.7](https://github.com/twbs/bootstrap/):  0.10.x
+* [Wicket 6.x](http://wicket.apache.org/) and [Bootstrap 3.3.7](https://github.com/twbs/bootstrap/): 0.9.x
 * Wicket 6.x and Bootstrap 2.*: 0.8.4
 
 Themes
 ------
 
-* Bootstrap (3.3.5): http://getbootstrap.com/
-* Bootswatch (3.3.5): http://bootswatch.com/
+* Bootstrap (3.3.7): http://getbootstrap.com/
+* Bootswatch (3.3.7): http://bootswatch.com/
 * Material Design by FezVrasta (0.3.0): https://github.com/FezVrasta/bootstrap-material-design
-* todc-bootstrap, google styled theme (3.3.5): https://todc.github.io/todc-bootstrap
-* metro-bootstrap (3.3.5): https://github.com/TalksLab/metro-bootstrap
+* todc-bootstrap, google styled theme (3.3.7): https://todc.github.io/todc-bootstrap
+* metro-bootstrap (3.3.7): https://github.com/TalksLab/metro-bootstrap
 * Vegibit (3.1.1): http://vegibit.com/vegithemes-twitter-bootstrap-themes/
 
 
@@ -38,7 +39,7 @@ Extensions
    * Draggable: http://api.jqueryui.com/draggable
    * Resizable: http://api.jqueryui.com/resizable
 * less4j (1.17.0): https://github.com/SomMeri/less4j
-* bootstrap-tour (0.9.3): http://sorich87.github.com/bootstrap-tour
+* bootstrap-tour (0.10.3): http://sorich87.github.com/bootstrap-tour
 * OpenWebIcons (2014-09-29): http://pfefferle.github.com/openwebicons/
 * [Twitter Typeahead (0.9.3)](https://github.com/l0rdn1kk0n/wicket-bootstrap/tree/master/bootstrap-extensions/src/main/java/de/agilecoders/wicket/extensions/markup/html/bootstrap/form/typeahead): http://twitter.github.io/typeahead.js/
 * [Twitter Typeahead (0.10.x)](https://github.com/l0rdn1kk0n/wicket-bootstrap/tree/master/bootstrap-extensions/src/main/java/de/agilecoders/wicket/extensions/markup/html/bootstrap/form/typeaheadv10): http://twitter.github.io/typeahead.js/
