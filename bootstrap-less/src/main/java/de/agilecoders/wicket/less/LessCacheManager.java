@@ -109,33 +109,49 @@ public class LessCacheManager {
         String cssContent = timeToContentMap.get(lastModifiedTime);
 
         if (cssContent == null) {
-
-            // clear any obsolete content
-            timeToContentMap.clear();
-
-            ThreadUnsafeLessCompiler compiler = new ThreadUnsafeLessCompiler();
-            LessCompiler.Configuration configuration = configFactory.newConfiguration();
-            configuration.getSourceMapConfiguration().setLinkSourceMap(false);
-
-            try {
-                LessCompiler.CompilationResult result = compiler.compile(lessSource, configuration);
-                List<LessCompiler.Problem> warnings = result.getWarnings();
-
-                for (LessCompiler.Problem warning : warnings) {
-                    LOG.warn("There is a warning during compilation of '{}' at line {}, character {}. Message: {}",
-                             lessSource.getInputURL(), warning.getLine(), warning.getCharacter(), warning.getMessage());
-                }
-
-                cssContent = result.getCss();
-
-                // Make sure that all last modified files are taken into account before adding the
-                // compiled result to the cache
+            // We only want to compile the Less once. If we end up here waiting for another thread
+            // to finish will it be ok to wait. It will also probably go faster than compile it once
+            // more.
+            // Recompile the cached lessSource will append imports once more and we will end up with
+            // multiple import references, if there are any in the Less file.
+            synchronized (lessSource) {
                 lastModifiedTime = getLastModifiedTime(lessSource);
+                cssContent = timeToContentMap.get(lastModifiedTime);
 
-                timeToContentMap.put(lastModifiedTime, cssContent);
+                if (cssContent == null) {
+                    // clear any obsolete content
+                    timeToContentMap.clear();
 
-            } catch (Less4jException x) {
-                throw new WicketRuntimeException("An error occurred while compiling Less resource " + lessSource.getInputURL().toExternalForm(), x);
+                    ThreadUnsafeLessCompiler compiler = new ThreadUnsafeLessCompiler();
+                    LessCompiler.Configuration configuration = configFactory.newConfiguration();
+                    configuration.getSourceMapConfiguration().setLinkSourceMap(false);
+
+                    try {
+                        LessCompiler.CompilationResult result =
+                                compiler.compile(lessSource, configuration);
+                        List<LessCompiler.Problem> warnings = result.getWarnings();
+
+                        for (LessCompiler.Problem warning : warnings) {
+                            LOG.warn("There is a warning during compilation of '{}'" +
+                                    " at line {}, character {}. Message: {}",
+                                    lessSource.getInputURL(), warning.getLine(),
+                                    warning.getCharacter(), warning.getMessage());
+                        }
+
+                        cssContent = result.getCss();
+
+                        // Make sure that all last modified files are taken into account before
+                        // adding the compiled result to the cache
+                        lastModifiedTime = getLastModifiedTime(lessSource);
+
+                        timeToContentMap.put(lastModifiedTime, cssContent);
+
+                    } catch (Less4jException x) {
+                        throw new WicketRuntimeException(
+                                "An error occurred while compiling Less resource " +
+                                lessSource.getInputURL().toExternalForm(), x);
+                    }
+                }
             }
         }
 
