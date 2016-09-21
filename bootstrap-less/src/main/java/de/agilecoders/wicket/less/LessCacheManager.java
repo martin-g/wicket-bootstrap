@@ -192,8 +192,11 @@ public class LessCacheManager {
      * for a single .less-file.
      *
      * @see #contentCache
+     * @see #urlSourceCache
      */
     public void clearCache() {
+        // Clear both caches to make sure that we have a clean URLSource during the recompiling
+        urlSourceCache.clear();
         contentCache.clear();
     }
 

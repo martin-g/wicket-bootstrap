@@ -1,6 +1,7 @@
 package de.agilecoders.wicket.less;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.io.File;
 import java.io.IOException;
@@ -129,5 +130,39 @@ public class LessCacheManagerTest {
 
         cacheManager.getCss(urlSource);
         assertEquals(expectedTimeAfterCompile, cacheManager.getLastModifiedTime(urlSource));
+    }
+
+    @Test
+    public void clearCacheCreatesNewUrlSource()
+    {
+        LessCacheManager cacheManager = new LessCacheManager();
+
+        URL resourceUrl = getClass().getResource("resources/root.less");
+        String scopeClass = getClass().getName();
+        URLSource urlSourceBefore = cacheManager.getLessSource(resourceUrl, scopeClass);
+        cacheManager.clearCache();
+        URLSource urlSourceAfter = cacheManager.getLessSource(resourceUrl, scopeClass);
+
+        assertTrue("We should get different instances of URLSource",
+                urlSourceBefore != urlSourceAfter);
+    }
+
+    @Test
+    public void clearCacheImportedSourcesSize()
+    {
+        LessCacheManager cacheManager = new LessCacheManager();
+
+        URL resourceUrl = getClass().getResource("resources/root.less");
+        String scopeClass = getClass().getName();
+        URLSource urlSource = cacheManager.getLessSource(resourceUrl, scopeClass);
+
+        cacheManager.getCss(urlSource);
+        int expectedItems = urlSource.getImportedSources().size();
+
+        cacheManager.clearCache();
+        urlSource = cacheManager.getLessSource(resourceUrl, scopeClass);
+
+        cacheManager.getCss(urlSource);
+        assertEquals(expectedItems, urlSource.getImportedSources().size());
     }
 }
