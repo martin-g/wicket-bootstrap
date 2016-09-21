@@ -1,9 +1,12 @@
 package de.agilecoders.wicket.less;
 
-import com.github.sommeri.less4j.Less4jException;
-import com.github.sommeri.less4j.LessCompiler;
-import com.github.sommeri.less4j.LessSource;
-import com.github.sommeri.less4j.core.ThreadUnsafeLessCompiler;
+import java.io.IOException;
+import java.net.URL;
+import java.util.Collection;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
+
 import org.apache.wicket.Application;
 import org.apache.wicket.MetaDataKey;
 import org.apache.wicket.WicketRuntimeException;
@@ -12,12 +15,10 @@ import org.apache.wicket.util.time.Time;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.Collection;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
+import com.github.sommeri.less4j.Less4jException;
+import com.github.sommeri.less4j.LessCompiler;
+import com.github.sommeri.less4j.LessSource;
+import com.github.sommeri.less4j.core.ThreadUnsafeLessCompiler;
 
 /**
  * A class that manages the generated CSS content for Less resources.
@@ -47,25 +48,26 @@ public class LessCacheManager {
      * A factory that creates {@link LessCompiler.Configuration}s.
      */
     private final LessCompilerConfigurationFactory configFactory;
-    
+
     /**
      * Creates a less cache manager with the {@link LessCompilerConfigurationFactory} provided.
      * Choose this constructor if you want to use application specific configuration for example
      * custom less functions.
-     * 
-     * @param configFactory The factory to use when creating a new {@link LessCompiler.Configuration}.
+     *
+     * @param configFactory
+     *            The factory to use when creating a new {@link LessCompiler.Configuration}.
      */
     public LessCacheManager(LessCompilerConfigurationFactory configFactory) {
         this.configFactory = configFactory != null ? configFactory : new SimpleLessCompilerConfigurationFactory();
     }
-    
+
     /**
      * Creates a less cache manager with a {@link SimpleLessCompilerConfigurationFactory}.
      */
     public LessCacheManager() {
         this(null);
     }
-    
+
     /**
      * Returns the LessSource.URLSource per URL.
      * If there is no entry in the cache then it will be automatically registered
@@ -126,6 +128,10 @@ public class LessCacheManager {
 
                 cssContent = result.getCss();
 
+                // Make sure that all last modified files are taken into account before adding the
+                // compiled result to the cache
+                lastModifiedTime = getLastModifiedTime(lessSource);
+
                 timeToContentMap.put(lastModifiedTime, cssContent);
 
             } catch (Less4jException x) {
@@ -180,11 +186,11 @@ public class LessCacheManager {
     public void install(Application app) {
         app.setMetaData(KEY, this);
     }
-    
+
     /**
-     * Clears the CSS-cache to enable recomiling at runtime. This will clear the complete cache,
-     * not for a single .less-file.
-     * 
+     * Clears the CSS-cache to enable recomiling at runtime. This will clear the complete cache, not
+     * for a single .less-file.
+     *
      * @see #contentCache
      */
     public void clearCache() {
