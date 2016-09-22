@@ -3,6 +3,8 @@ package de.agilecoders.wicket.extensions.markup.html.bootstrap.form.fileinput;
 import de.agilecoders.wicket.jquery.AbstractConfig;
 import de.agilecoders.wicket.jquery.IKey;
 
+import java.util.List;
+
 /**
  * See <a href="http://plugins.krajee.com/file-input#options">File Input
  * Options</a>
@@ -44,6 +46,10 @@ public class FileInputConfig extends AbstractConfig {
     public static final IKey<String> UploadIcon = newKey("uploadIcon", "<i class=\"glyphicon glyphicon-upload\"></i> &nbsp;");
 
     public static final IKey<String> PreviewFileType = newKey("previewFileType", "image");
+
+    public static final IKey<List<String>> AllowedFileExtensions = newKey("allowedFileExtensions", null);
+
+    public static final IKey<List<String>> AllowedFileTypes = newKey("allowedFileTypes", null);
 
     public FileInputConfig showCaption(boolean showCaption) {
         put(ShowCaption, showCaption);
@@ -136,6 +142,24 @@ public class FileInputConfig extends AbstractConfig {
     public FileInputConfig previewFileType(String previewFileType) {
         put(PreviewFileType, previewFileType);
         return this;
+    }
+
+    public FileInputConfig allowedFileExtensions(List<String> allowedFileExtensions) {
+        put(AllowedFileExtensions, allowedFileExtensions);
+        return this;
+    }
+
+    public FileInputConfig allowedFileTypes(List<String> allowedFileTypes) {
+        put(AllowedFileTypes, allowedFileTypes);
+        return this;
+    }
+
+    public List<String> allowedFileTypes() {
+        return get(AllowedFileTypes);
+    }
+
+    public List<String> allowedFileExtensions() {
+        return get(AllowedFileExtensions);
     }
 
     public boolean showCaption() {
