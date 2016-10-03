@@ -15,19 +15,14 @@ import org.junit.Test;
 
 public class LessCacheManagerConcurrentTest
 {
+    public static final int MAX_RETRIES = 200;
     private WicketTester tester;
+
 
     @Before
     public void before()
     {
-        tester = new WicketTester(new TestApplication()
-        {
-            @Override
-            public void init()
-            {
-                super.init();
-            }
-        });
+        tester = new WicketTester(new TestApplication());
     }
 
     @After
@@ -47,44 +42,37 @@ public class LessCacheManagerConcurrentTest
         CssPackageResource cpr = new CssPackageResource(scope, name, null, null, null);
         IResourceStream resourceStream = cpr.getResourceStream();
 
-        try
+        for (int retries = 0; retries < MAX_RETRIES; retries++)
         {
-            for (int retries = 0; retries < 200; retries++)
+            LessCacheManager.get().clearCache();
+
+            CountDownLatch latch = new CountDownLatch(1);
+            int internalThreadCount = 2;
+            Thread[] threads = new Thread[internalThreadCount];
+            TestRunnable[] runnables = new TestRunnable[internalThreadCount];
+
+            for (int i = 0; i < internalThreadCount; i++)
             {
-                LessCacheManager.get().clearCache();
+                TestRunnable runner = new TestRunnable(tester.getApplication(), latch,
+                        resourceStream, scope.getName());
+                runnables[i] = runner;
 
-                CountDownLatch latch = new CountDownLatch(1);
-                int internalThreadCount = 5;
-                Thread[] threads = new Thread[internalThreadCount];
-                TestRunnable[] runnables = new TestRunnable[internalThreadCount];
-
-                for (int i = 0; i < internalThreadCount; i++)
-                {
-                    TestRunnable runner = new TestRunnable(tester.getApplication(), latch,
-                            resourceStream, scope.getName());
-                    runnables[i] = runner;
-
-                    threads[i] = new Thread(runner, "LessTest_" + i + "_" + retries);
-                    threads[i].start();
-                }
-
-                // Release the waiting threads
-                latch.countDown();
-
-                boolean failed = false;
-                for (int i = 0; i < internalThreadCount; i++)
-                {
-                    threads[i].join();
-
-                    failed = failed || runnables[i].hasFailed();
-                }
-
-                Assert.assertFalse("At least one thread reported error", failed);
+                threads[i] = new Thread(runner, "LessTest_" + i + "_" + retries);
+                threads[i].start();
             }
-        }
-        finally
-        {
-            tester.destroy();
+
+            // Release the waiting threads
+            latch.countDown();
+
+            boolean failed = false;
+            for (int i = 0; i < internalThreadCount; i++)
+            {
+                threads[i].join();
+
+                failed = failed || runnables[i].hasFailed();
+            }
+
+            Assert.assertFalse("At least one thread reported error", failed);
         }
     }
 
