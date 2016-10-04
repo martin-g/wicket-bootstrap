@@ -157,7 +157,7 @@ public class Navbar extends Panel implements Invertible<Navbar> {
         navLeftListEnclosure.add(leftAlignedComponentListView);
         navLeftListEnclosure.setRenderBodyOnly(false).setOutputMarkupPlaceholderTag(true);
 
-        EnclosureContainer navRightListEnclosure = new EnclosureContainer("navRightListEnclosure", leftAlignedComponentListView);
+        EnclosureContainer navRightListEnclosure = new EnclosureContainer("navRightListEnclosure", rightAlignedComponentListView);
         navRightListEnclosure.add(rightAlignedComponentListView);
         navRightListEnclosure.setRenderBodyOnly(false).setOutputMarkupPlaceholderTag(true);
         collapse.add(navLeftListEnclosure, navRightListEnclosure);
