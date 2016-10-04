@@ -6,6 +6,7 @@ import org.apache.wicket.Application;
 import org.apache.wicket.ThreadContext;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.request.resource.CssPackageResource;
+import org.apache.wicket.util.io.IOUtils;
 import org.apache.wicket.util.resource.IResourceStream;
 import org.apache.wicket.util.tester.WicketTester;
 import org.junit.After;
@@ -17,7 +18,6 @@ public class LessCacheManagerConcurrentTest
 {
     public static final int MAX_RETRIES = 200;
     private WicketTester tester;
-
 
     @Before
     public void before()
@@ -97,22 +97,18 @@ public class LessCacheManagerConcurrentTest
         @Override
         public void run()
         {
+            LessResourceStream lessResourceStream = null;
             try
             {
                 if (!Application.exists())
                 {
                     ThreadContext.setApplication(mApplication);
                 }
+                lessResourceStream = new LessResourceStream(mResourceStream, mScopeName);
 
-                try (LessResourceStream lessResourceStream = new LessResourceStream(mResourceStream,
-                        mScopeName))
-                {
-                    // Wait for the latch to be released
-                    mLatch.await();
-
-                    // Compile
-                    lessResourceStream.getString();
-                }
+                // Wait for the latch to be released and then compile the less file
+                mLatch.await();
+                lessResourceStream.getString();
             }
             catch (Throwable e)
             {
@@ -120,6 +116,10 @@ public class LessCacheManagerConcurrentTest
                 e.printStackTrace();
 
                 mHasFailed = true;
+            }
+            finally
+            {
+                IOUtils.closeQuietly(lessResourceStream);
             }
         }
 
