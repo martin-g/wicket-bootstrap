@@ -183,8 +183,12 @@ public class LessCacheManager {
 
             Collection<LessSource> importedSources = source.getImportedSources();
             if (importedSources != null) {
-                for (LessSource importedSource : importedSources) {
-                    max = findLastModified((LessSource.URLSource) importedSource, max);
+
+                LessSource[] importedSourcesArray = importedSources.toArray(new LessSource[0]);
+                int size = importedSourcesArray.length;
+
+                for (int i = 0; i < size; i++) {
+                    max = findLastModified((LessSource.URLSource) importedSourcesArray[i], max);
                 }
             }
         } catch (IOException iox) {
