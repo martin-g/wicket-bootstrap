@@ -54,7 +54,7 @@ public class TypeaheadConfigTest extends WicketApplicationTest {
         BloodhoundConfig config = new BloodhoundConfig();
         config.withRemote(remote);
 
-        String expected = "{\"datumTokenizer\":function(d) { return Bloodhound.tokenizers.whitespace(d.value); },\"queryTokenizer\":Bloodhound.tokenizers.whitespace,\"remote\":\"{\\\"url\\\":\\\"foo\\\",\\\"wildcard\\\":\\\"%FOO\\\"}\"}";
+        String expected = "{\"datumTokenizer\":function(d) { return Bloodhound.tokenizers.whitespace(d.value); },\"queryTokenizer\":Bloodhound.tokenizers.whitespace,\"remote\":{\"url\":\"foo\",\"wildcard\":\"%FOO\"}}";
         assertEquals(expected, config.toJsonString());
 
     }
