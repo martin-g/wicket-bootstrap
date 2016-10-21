@@ -119,7 +119,7 @@ public class Remote extends AbstractConfig {
             if (remote.isSimple()) {
                 jsonGenerator.writeString(remote.getString(Url));
             } else {
-                jsonGenerator.writeString(remote.toJsonString());
+                jsonGenerator.writeRawValue(remote.toJsonString());
             }
 
         }
