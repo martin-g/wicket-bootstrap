@@ -23,7 +23,7 @@
             </div>
         </div>
         <div class="form-group">
-            <wicket:fragment wicket:id="select">
+            <wicket:container wicket:id="select">
                 <label wicket:for="state">Select picker:</label>
 
                 <div class="controls">
@@ -31,7 +31,7 @@
                     <select wicket:id="state" class="form-control">
                     </select>
                 </div>
-            </wicket:fragment>
+            </wicket:container>
         </div>
         <button type="submit" class="btn btn-main" wicket:id="submitBtn">Submit</button>
     </form>
