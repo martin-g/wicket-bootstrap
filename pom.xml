@@ -71,7 +71,7 @@
         <wicket.version>8.0.0-M2</wicket.version>
         <wicketstuff.version>8.0.0-M2</wicketstuff.version>
         <yuicompressor.version>2.4.8</yuicompressor.version>
-        <maven-javadoc-plugin.version>2.10.3</maven-javadoc-plugin.version>
+        <maven-javadoc-plugin.version>2.10.4</maven-javadoc-plugin.version>
         <guava.version>20.0</guava.version>
         <junit.version>4.12</junit.version>
         <logback.version>1.1.7</logback.version>
