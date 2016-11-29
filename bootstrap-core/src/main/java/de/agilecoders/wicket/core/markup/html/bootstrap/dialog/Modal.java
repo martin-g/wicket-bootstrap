@@ -3,7 +3,6 @@ package de.agilecoders.wicket.core.markup.html.bootstrap.dialog;
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapResourcesBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNameProvider;
 import de.agilecoders.wicket.core.util.Attributes;
-
 import de.agilecoders.wicket.jquery.util.Strings2;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
@@ -86,6 +85,7 @@ public class Modal<T> extends GenericPanel<T> {
     private final IModel<Boolean> disableEnforceFocus = Model.of(false);
 
     private Component headerLabel;
+    private Component headerCloseButton;
     private final List<Component> buttons = new ArrayList<Component>();
     private MarkupContainer footer;
     private MarkupContainer header;
@@ -117,6 +117,8 @@ public class Modal<T> extends GenericPanel<T> {
         header = createHeader("header");
         header.add(headerLabel = createHeaderLabel("header-label", ""));
         headerLabel.setOutputMarkupId(true);
+        header.add(headerCloseButton = createHeaderCloseButton("header-close-button"));
+        headerCloseButton.setOutputMarkupId(true);
 
         footer.add(new ListView<Component>("buttons", buttons) {
             @Override
@@ -130,6 +132,17 @@ public class Modal<T> extends GenericPanel<T> {
         dialog.add(header, footer);
 
         BootstrapResourcesBehavior.addTo(this);
+    }
+
+    /**
+     * Factory method for the Modal's header 'closebutton'
+     * By default it generates the markup for original Bootstrap Modal closebutton
+     *
+     * @param id The component id
+     * @return the close button
+     */
+    protected Component createHeaderCloseButton(String id) {
+        return new WebMarkupContainer(id);
     }
 
     /**

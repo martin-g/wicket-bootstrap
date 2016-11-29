@@ -10,7 +10,6 @@ import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.panel.IMarkupSourcingStrategy;
 import org.apache.wicket.markup.html.panel.PanelMarkupSourcingStrategy;
 import org.apache.wicket.model.IModel;
-import org.apache.wicket.model.Model;
 
 /**
  * A bootstrap styled {@link Button}
@@ -31,7 +30,7 @@ public class BootstrapButton extends Button implements IBootstrapButton<Bootstra
      * @param type        The type of the button
      */
     public BootstrapButton(final String componentId, final Buttons.Type type) {
-        this(componentId, new Model<String>(), type);
+        this(componentId, null, type);
     }
 
     /**
