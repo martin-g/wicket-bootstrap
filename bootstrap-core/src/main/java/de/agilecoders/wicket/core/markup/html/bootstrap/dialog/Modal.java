@@ -2,10 +2,7 @@ package de.agilecoders.wicket.core.markup.html.bootstrap.dialog;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapResourcesBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNameProvider;
-import de.agilecoders.wicket.core.markup.html.bootstrap.button.BootstrapButton;
-import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons;
 import de.agilecoders.wicket.core.util.Attributes;
-
 import de.agilecoders.wicket.jquery.util.Strings2;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
@@ -135,24 +132,19 @@ public class Modal<T> extends GenericPanel<T> {
 
         BootstrapResourcesBehavior.addTo(this);
     }
-    
+
     /**
      * Factory method for the Modal's header 'closebutton'
      * By default it generates the markup for original Bootstrap Modal closebutton
-     * 
+     *
      * @param id The component id
      * @return the close button
      */
-    
     protected Component createHeaderCloseButton(String id) {
+        return new WebMarkupContainer(id);
+    }
 
-    	BootstrapButton btn = new BootstrapButton(id, Buttons.Type.Link);
-    	btn.setLabel(new  Model<String>("\u00D7"));
-    	btn.add(new AttributeModifier("class","close"));
-    	return btn; 
-	}
-
-	/**
+    /**
      * Factory method for the Modal's header label
      *
      * @param id The component id
