@@ -82,10 +82,12 @@ public class DateTextField extends org.apache.wicket.extensions.markup.html.form
 
         private final Event event;
         private final IAjaxEvenHandler handler;
+        private final boolean updateModel;
 
-        public AbstractAjaxEvent(Event event, IAjaxEvenHandler handler) {
+        public AbstractAjaxEvent(Event event, IAjaxEvenHandler handler, boolean updateModel) {
             this.event = event;
             this.handler = handler;
+            this.updateModel = updateModel;
         }
 
         protected void updateAjaxAttributes(AjaxRequestAttributes attributes) {
@@ -97,7 +99,9 @@ public class DateTextField extends org.apache.wicket.extensions.markup.html.form
             String dateStr = RequestCycle.get().getRequest().getRequestParameters().getParameterValue(DATE).toString(null);
             Date date = !Strings.isEmpty(dateStr)?
                 DateTextField.this.getConverter(Date.class).convertToObject(dateStr, RequestCycle.get().getRequest().getLocale()): null;
-            DateTextField.this.setDefaultModelObject(date);
+            if(updateModel) {
+                DateTextField.this.setDefaultModelObject(date);
+            }
             handler.onAjaxEvent(target, date);
         }
     }
@@ -107,14 +111,14 @@ public class DateTextField extends org.apache.wicket.extensions.markup.html.form
         private final AbstractAjaxEvent abstractAjaxEvent;
 
 
-        public DatePickerAbstractDefaultAjaxBehavior(Event event, IAjaxEvenHandler handler) {
+        public DatePickerAbstractDefaultAjaxBehavior(Event event, IAjaxEvenHandler handler, boolean updateModel) {
             Args.notNull(event, "event");
             Args.notNull(handler, "handler");
-            abstractAjaxEvent = createNew(event, handler);
+            abstractAjaxEvent = createNew(event, handler, updateModel);
         }
 
-        protected AbstractAjaxEvent createNew(Event event, IAjaxEvenHandler handler) {
-            return new AbstractAjaxEvent(event, handler) {
+        protected AbstractAjaxEvent createNew(Event event, IAjaxEvenHandler handler, boolean updateModel) {
+            return new AbstractAjaxEvent(event, handler, updateModel) {
                 @Override
                 protected String getBody() {
                     return DatePickerAbstractDefaultAjaxBehavior.this.getCallbackScript().toString();
@@ -270,15 +274,28 @@ public class DateTextField extends org.apache.wicket.extensions.markup.html.form
     }
 
     /**
-     *  Adds and ajax based event
+     * Adds and ajax based event. Model object is not updated.
      *
-     * @param type he event type
+     * @param type the event type
      * @param evenHandler The event handler
      */
-    public void addAjaxEvent(Event type, IAjaxEvenHandler evenHandler) {
-        DatePickerAbstractDefaultAjaxBehavior datePickerAbstractDefaultAjaxBehavior = new DatePickerAbstractDefaultAjaxBehavior(event, evenHandler);
+    public DateTextField addAjaxEvent(Event type, IAjaxEvenHandler evenHandler) {
+        addAjaxEvent(type, evenHandler, false);
+        return this;
+    }
+
+    /**
+     *  Adds and ajax based event
+     *
+     * @param type the event type
+     * @param evenHandler The event handler
+     * @param updateModel if model object should be updated when even is fired
+     */
+    public DateTextField addAjaxEvent(Event type, IAjaxEvenHandler evenHandler, boolean updateModel) {
+        DatePickerAbstractDefaultAjaxBehavior datePickerAbstractDefaultAjaxBehavior = new DatePickerAbstractDefaultAjaxBehavior(type, evenHandler, updateModel);
         add(datePickerAbstractDefaultAjaxBehavior);
         addEvent(type, datePickerAbstractDefaultAjaxBehavior.abstractAjaxEvent);
+        return this;
     }
 
     /**

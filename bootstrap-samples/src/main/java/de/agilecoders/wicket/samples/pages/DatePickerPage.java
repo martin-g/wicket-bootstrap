@@ -8,10 +8,15 @@ import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.DateTextField
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.DateTextFieldConfig;
 import de.agilecoders.wicket.samples.components.basecss.DatePickerModal;
 import org.apache.wicket.Component;
+import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.model.AbstractReadOnlyModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.joda.time.DateTime;
 import org.wicketstuff.annotation.mount.MountPath;
+
+import java.util.Date;
 
 /**
  * The {@code BaseCssPage}
@@ -22,6 +27,7 @@ import org.wicketstuff.annotation.mount.MountPath;
 @MountPath(value = "/datepicker")
 public class DatePickerPage extends BasePage {
 
+    private Date date = null;
     /**
      * Construct.
      *
@@ -58,6 +64,37 @@ public class DatePickerPage extends BasePage {
         modal.addOpenerAttributesTo(modalButton);
 
         add(modal, modalButton);
+
+        final Label selectedDate = new Label("selectedDate", new AbstractReadOnlyModel<String>() {
+            @Override
+            public String getObject() {
+                return date != null? date.toString() : "--NO SELECTED DATE--";
+            }
+        });
+        selectedDate.setOutputMarkupId(true);
+
+        add(selectedDate);
+        add(new DateTextField("ajax-default").addAjaxEvent(DateTextField.Event.changeDate, new DateTextField.IAjaxEvenHandler() {
+            @Override
+            public void onAjaxEvent(AjaxRequestTarget target, Date date) {
+                DatePickerPage.this.date = date;
+                target.add(selectedDate);
+            }
+        }));
+
+
+
+        add(new Code("ajax-default-html-code", Model.of("//HTML\n<form><input wicket:id=\"ajax-default\"></form>\n" +
+                " <p>\n" +
+                "   Selected date: <span wicket:id=\"selectedDate\"></span>\n" +
+                " </p>")).setShowLineNumbers(true),
+            new Code("ajax-default-java-code", Model.of("//JAVA\nadd(new DateTextField(\"ajax-default\").addAjaxEvent(DateTextField.Event.changeDate, new DateTextField.IAjaxEvenHandler() {\n" +
+                "            @Override\n" +
+                "            public void onAjaxEvent(AjaxRequestTarget target, Date date) {\n" +
+                "                DatePickerPage.this.date = date;\n" +
+                "                target.add(selectedDate);\n" +
+                "            }\n" +
+                "        }));")).setShowLineNumbers(true));
     }
 
     private Component newDatePicker(String markupId, DateTextFieldConfig dateTextFieldConfig) {
