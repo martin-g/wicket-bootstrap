@@ -74,9 +74,9 @@ public class DatePickerPage extends BasePage {
         selectedDate.setOutputMarkupId(true);
 
         add(selectedDate);
-        add(new DateTextField("ajax-default").addAjaxEvent(DateTextField.Event.changeDate, new DateTextField.IAjaxEvenHandler() {
+        add(new DateTextField("ajax-default").addAjaxEvent(DateTextField.Event.changeDate, new DateTextField.IAjaxEventHandler() {
             @Override
-            public void onAjaxEvent(AjaxRequestTarget target, Date date) {
+            public void onAjaxEvent(AjaxRequestTarget target, Date date, DateTextField.Event event) {
                 DatePickerPage.this.date = date;
                 target.add(selectedDate);
             }
@@ -88,9 +88,9 @@ public class DatePickerPage extends BasePage {
                 " <p>\n" +
                 "   Selected date: <span wicket:id=\"selectedDate\"></span>\n" +
                 " </p>")).setShowLineNumbers(true),
-            new Code("ajax-default-java-code", Model.of("//JAVA\nadd(new DateTextField(\"ajax-default\").addAjaxEvent(DateTextField.Event.changeDate, new DateTextField.IAjaxEvenHandler() {\n" +
+            new Code("ajax-default-java-code", Model.of("//JAVA\nadd(new DateTextField(\"ajax-default\").addAjaxEvent(DateTextField.Event.changeDate, new DateTextField.IAjaxEventHandler() {\n" +
                 "            @Override\n" +
-                "            public void onAjaxEvent(AjaxRequestTarget target, Date date) {\n" +
+                "            public void onAjaxEvent(AjaxRequestTarget target, Date date, DateTextField.Event event) {\n" +
                 "                DatePickerPage.this.date = date;\n" +
                 "                target.add(selectedDate);\n" +
                 "            }\n" +

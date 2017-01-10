@@ -59,7 +59,7 @@ public class DateTextField extends org.apache.wicket.extensions.markup.html.form
      */
     public abstract class AbstractEventHandler implements Serializable {
 
-        protected abstract String getBody();
+        protected abstract CharSequence getBody();
 
         protected String getFunction() {
             StringBuilder sb = new StringBuilder("function(e) {\n");
@@ -72,19 +72,19 @@ public class DateTextField extends org.apache.wicket.extensions.markup.html.form
     /**
      * Ajax event handler
      */
-    public interface IAjaxEvenHandler extends Serializable {
+    public interface IAjaxEventHandler extends Serializable {
 
-        void onAjaxEvent(AjaxRequestTarget target, Date date);
+        void onAjaxEvent(AjaxRequestTarget target, Date date, Event event);
 
     }
 
     private abstract class AbstractAjaxEvent extends AbstractEventHandler {
 
         private final Event event;
-        private final IAjaxEvenHandler handler;
+        private final IAjaxEventHandler handler;
         private final boolean updateModel;
 
-        public AbstractAjaxEvent(Event event, IAjaxEvenHandler handler, boolean updateModel) {
+        public AbstractAjaxEvent(Event event, IAjaxEventHandler handler, boolean updateModel) {
             this.event = event;
             this.handler = handler;
             this.updateModel = updateModel;
@@ -102,7 +102,7 @@ public class DateTextField extends org.apache.wicket.extensions.markup.html.form
             if(updateModel) {
                 DateTextField.this.setDefaultModelObject(date);
             }
-            handler.onAjaxEvent(target, date);
+            handler.onAjaxEvent(target, date, event);
         }
     }
 
@@ -111,20 +111,20 @@ public class DateTextField extends org.apache.wicket.extensions.markup.html.form
         private final AbstractAjaxEvent abstractAjaxEvent;
 
 
-        public DatePickerAbstractDefaultAjaxBehavior(Event event, IAjaxEvenHandler handler, boolean updateModel) {
+        public DatePickerAbstractDefaultAjaxBehavior(Event event, IAjaxEventHandler handler, boolean updateModel) {
             Args.notNull(event, "event");
             Args.notNull(handler, "handler");
             abstractAjaxEvent = createNew(event, handler, updateModel);
         }
 
-        protected AbstractAjaxEvent createNew(Event event, IAjaxEvenHandler handler, boolean updateModel) {
+        protected AbstractAjaxEvent createNew(Event event, IAjaxEventHandler handler, boolean updateModel) {
             return new AbstractAjaxEvent(event, handler, updateModel) {
                 @Override
-                protected String getBody() {
+                protected CharSequence getBody() {
                     return DatePickerAbstractDefaultAjaxBehavior.this.getCallbackScript().toString();
                 }
             };
-        };
+        }
 
         @Override
         protected void updateAjaxAttributes(AjaxRequestAttributes attributes) {
@@ -137,7 +137,7 @@ public class DateTextField extends org.apache.wicket.extensions.markup.html.form
         }
     }
 
-    private Map<Event, AbstractEventHandler> eventMap = new HashMap<Event, AbstractEventHandler>();
+    private final Map<Event, AbstractEventHandler> eventMap = new HashMap<Event, AbstractEventHandler>();
 
     private final DateTextFieldConfig config;
 
@@ -246,11 +246,12 @@ public class DateTextField extends org.apache.wicket.extensions.markup.html.form
         if(eventMap.isEmpty()) {
             return script;
         }
+        // remove trailing ;
         StringBuilder sb = new StringBuilder(script.subSequence(0, script.length()-1));
         for(Event type: eventMap.keySet()) {
-            sb.append(".on('").append(type).append("',") .append(eventMap.get(type).getFunction()).append(")");
+            sb.append(".on('").append(type).append("',") .append(eventMap.get(type).getFunction()).append(')');
         }
-        sb.append(";");
+        sb.append(';');
         return sb;
     }
 
@@ -279,7 +280,7 @@ public class DateTextField extends org.apache.wicket.extensions.markup.html.form
      * @param type the event type
      * @param evenHandler The event handler
      */
-    public DateTextField addAjaxEvent(Event type, IAjaxEvenHandler evenHandler) {
+    public DateTextField addAjaxEvent(Event type, IAjaxEventHandler evenHandler) {
         addAjaxEvent(type, evenHandler, false);
         return this;
     }
@@ -291,7 +292,7 @@ public class DateTextField extends org.apache.wicket.extensions.markup.html.form
      * @param evenHandler The event handler
      * @param updateModel if model object should be updated when even is fired
      */
-    public DateTextField addAjaxEvent(Event type, IAjaxEvenHandler evenHandler, boolean updateModel) {
+    public DateTextField addAjaxEvent(Event type, IAjaxEventHandler evenHandler, boolean updateModel) {
         DatePickerAbstractDefaultAjaxBehavior datePickerAbstractDefaultAjaxBehavior = new DatePickerAbstractDefaultAjaxBehavior(type, evenHandler, updateModel);
         add(datePickerAbstractDefaultAjaxBehavior);
         addEvent(type, datePickerAbstractDefaultAjaxBehavior.abstractAjaxEvent);
