@@ -1,7 +1,5 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.tabs;
 
-import java.util.List;
-
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.extensions.markup.html.tabs.ITab;
@@ -11,17 +9,18 @@ import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.panel.GenericPanel;
 import org.apache.wicket.markup.repeater.RepeatingView;
-import org.apache.wicket.model.AbstractReadOnlyModel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.util.lang.Args;
 
+import java.util.List;
+
 /**
  * <p>
- * 	A "pure" client side stateless tabs component. You use it as you would use {@link TabbedPanel}, 
+ * 	A "pure" client side stateless tabs component. You use it as you would use {@link TabbedPanel},
  * 	but instead of generating links that trigger server round trips id does generates just "client
- * 	side" links. 
+ * 	side" links.
  * </p>
- * 
+ *
  * @author Ernesto Reinaldo Barreiro (reiern70@gmailcom)
  */
 public class ClientSideBootstrapTabbedPanel<T extends ITab> extends GenericPanel<Integer> {
@@ -71,14 +70,11 @@ public class ClientSideBootstrapTabbedPanel<T extends ITab> extends GenericPanel
     // creates tabs panel.
     private WebMarkupContainer createTabPanel(String id, T tab, final int tabIndex, final IModel<Integer> activeTabIndexModel, String tabPanelId) {
         WebMarkupContainer tabPanel = new WebMarkupContainer(id);
-        tabPanel.add(new AttributeModifier("class", new AbstractReadOnlyModel<String>() {
-            @Override
-            public String getObject() {
+        tabPanel.add(new AttributeModifier("class", () -> {
                 int activeTab = activeTabIndexModel!=null? activeTabIndexModel.getObject():0;
                 boolean isActive = (tabIndex == activeTab);
                 return "tab" + tabIndex + (isActive?" active":"");
-            }
-        }));
+            }));
         WebMarkupContainer link = newTabLink("link", tabPanelId, tabIndex);
         tabPanel.add(link);
         link.add(newTabTitleLabel("title", wrap(tab.getTitle()), tabIndex));
@@ -89,14 +85,11 @@ public class ClientSideBootstrapTabbedPanel<T extends ITab> extends GenericPanel
     private WebMarkupContainer createContentPanel(String id, T tab, final int tabIndex, final IModel<Integer> activeTabIndexModel) {
         WebMarkupContainer panel = tab.getPanel(id);
         panel.setRenderBodyOnly(false);
-        panel.add(new AttributeModifier("class", new AbstractReadOnlyModel<String>() {
-            @Override
-            public String getObject() {
+        panel.add(new AttributeModifier("class", () -> {
                 int activeTab = activeTabIndexModel!=null? activeTabIndexModel.getObject():0;
                 boolean isActive = (tabIndex == activeTab);
                 return "tab" + tabIndex + (isActive?" tab-pane fade in active":" tab-pane fade");
-            }
-        }));
+            }));
         panel.setOutputMarkupId(true);
         return panel;
     }

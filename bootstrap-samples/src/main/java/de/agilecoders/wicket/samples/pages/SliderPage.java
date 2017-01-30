@@ -12,7 +12,6 @@ import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Form;
-import org.apache.wicket.model.AbstractReadOnlyModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.wicketstuff.annotation.mount.MountPath;
@@ -27,11 +26,11 @@ import org.wicketstuff.annotation.mount.MountPath;
 public class SliderPage extends BasePage {
 
     private Model<Long> longSliderModel  = Model.of(100L);
-    
+
     private Model<LongRangeValue> longRangeModel = Model.of( new LongRangeValue(10, 20));
 
     private Model<LongRangeValue> disabledRangeModel = Model.of( new LongRangeValue(10, 20));
-    
+
     private Model<LongRangeValue> tooltipFormRangeModel = Model.of( new LongRangeValue(10, 20));
 
     private Model<Long> ajaxSliderModel  = Model.of(100L);
@@ -41,7 +40,7 @@ public class SliderPage extends BasePage {
     private Model<LongRangeValue> ajaxFormRangeModel = Model.of( new LongRangeValue(10, 20));
 
     private Model<Long> reversedSliderModel  = Model.of(100L);
-    
+
     /**
      * Construct.
      *
@@ -72,12 +71,7 @@ public class SliderPage extends BasePage {
         add(tooltipForm);
         tooltipForm.add(newRangeSlider("tooltipSlider", tooltipFormRangeModel, 0L, 100L, 5L).setTooltip(BootstrapSlider.TooltipType.always).setFormatter("function(value){ return 'The values is:' + value; }"));
 
-        final Label feedback = new Label("feedback", new AbstractReadOnlyModel<String>() {
-            @Override
-            public String getObject() {
-                return ajaxSliderModel.getObject().toString();
-            }
-        });
+        final Label feedback = new Label("feedback", () -> ajaxSliderModel.getObject().toString());
         feedback.setOutputMarkupId(true);
         add(feedback);
         Form<Void> ajaxForm = new Form<Void>("ajaxForm");
@@ -93,12 +87,7 @@ public class SliderPage extends BasePage {
         add(verticalForm);
         verticalForm.add(newRangeSlider("verticalSlider", verticalRangeModel, 0L, 100L, 5L).setOrientation(BootstrapSlider.Orientation.vertical));
 
-        final Label feedback1 = new Label("feedback1", new AbstractReadOnlyModel<String>() {
-            @Override
-            public String getObject() {
-                return ajaxFormRangeModel.getObject().toString();
-            }
-        });
+        final Label feedback1 = new Label("feedback1", () -> ajaxFormRangeModel.getObject().toString());
         feedback1.setOutputMarkupId(true);
         add(feedback1);
         Form<Void> ajaxRangeForm = new Form<Void>("ajaxRangeForm");

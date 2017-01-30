@@ -4,7 +4,6 @@ import de.agilecoders.wicket.core.util.Attributes;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.panel.GenericPanel;
-import org.apache.wicket.model.AbstractReadOnlyModel;
 import org.apache.wicket.model.IModel;
 
 /**
@@ -95,11 +94,6 @@ public class Stack extends GenericPanel<Integer> {
      * @return A model with the label
      */
     protected IModel<String> createLabelModel() {
-        return new AbstractReadOnlyModel<String>() {
-            @Override
-            public String getObject() {
-                return String.format("%s%%", Stack.this.getModelObject());
-            }
-        };
+        return () -> String.format("%s%%", Stack.this.getModelObject());
     }
 }
