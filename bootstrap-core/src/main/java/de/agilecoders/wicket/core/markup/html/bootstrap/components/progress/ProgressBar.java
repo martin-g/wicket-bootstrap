@@ -1,18 +1,16 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.components.progress;
 
+import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNameProvider;
+import de.agilecoders.wicket.core.util.Attributes;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.html.panel.GenericPanel;
 import org.apache.wicket.markup.repeater.RepeatingView;
-import org.apache.wicket.model.AbstractReadOnlyModel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.util.lang.Args;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNameProvider;
-import de.agilecoders.wicket.core.util.Attributes;
 
 /**
  * A component for <a href="http://getbootstrap.com/components/#progress">Progress bars</a>
@@ -51,7 +49,7 @@ public class ProgressBar extends GenericPanel<Integer> {
      * to add stacks to it
      *
      * @param id The component id
-     * @see #ProgressBar(String, org.apache.wicket.model.IModel, de.agilecoders.wicket.core.markup.html.bootstrap.components.progress.ProgressBar.Type, boolean)  
+     * @see #ProgressBar(String, org.apache.wicket.model.IModel, de.agilecoders.wicket.core.markup.html.bootstrap.components.progress.ProgressBar.Type, boolean)
      * @see #addStacks(Stack...)
      */
     public ProgressBar(String id) {
@@ -117,14 +115,9 @@ public class ProgressBar extends GenericPanel<Integer> {
 
         stacks = new RepeatingView("stacks");
         add(stacks);
-        
+
         if (model != null) {
-            Stack defaultStack = new Stack(getStackId(), new AbstractReadOnlyModel<Integer>() {
-                @Override
-                public Integer getObject() {
-                    return ProgressBar.this.getModelObject();
-                }
-            });
+            Stack defaultStack = new Stack(getStackId(), () -> ProgressBar.this.getModelObject());
             defaultStack.type(type).labeled(labeled);
             addStacks(defaultStack);
         }
@@ -140,7 +133,7 @@ public class ProgressBar extends GenericPanel<Integer> {
 
     /**
      * Adds stacks to this progress bar.
-     * 
+     *
      * @param _stacks The stacks to add
      * @return this instance, for method chaining
      */

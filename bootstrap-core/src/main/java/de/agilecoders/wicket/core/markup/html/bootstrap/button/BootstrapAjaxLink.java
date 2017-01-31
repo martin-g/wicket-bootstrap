@@ -2,9 +2,9 @@ package de.agilecoders.wicket.core.markup.html.bootstrap.button;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.Icon;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
-
 import org.apache.commons.lang3.StringUtils;
 import org.apache.wicket.Component;
+import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
@@ -12,6 +12,9 @@ import org.apache.wicket.markup.html.panel.IMarkupSourcingStrategy;
 import org.apache.wicket.markup.html.panel.PanelMarkupSourcingStrategy;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
+import org.apache.wicket.util.lang.Args;
+import org.danekja.java.util.function.serializable.SerializableBiConsumer;
+import org.danekja.java.util.function.serializable.SerializableConsumer;
 
 import java.io.Serializable;
 
@@ -158,6 +161,46 @@ public abstract class BootstrapAjaxLink<T> extends AjaxLink<T> implements IBoots
         this.buttonBehavior.setType(type);
 
         return this;
+    }
+
+    /**
+     * Creates a new BootstrapAjaxLink instance.
+     *
+     * @param id       The component id
+     * @param type     The type of the button
+     * @param onClick  The lambda to call when the link is submitted
+     * @param <T>      The component model type
+     * @return         new BootstrapAjaxLink instance
+     */
+    public static <T> BootstrapAjaxLink<T> onClick(final String id, final Buttons.Type type, final SerializableConsumer<AjaxRequestTarget> onClick) {
+        Args.notNull(onClick, "onClick");
+        return new BootstrapAjaxLink<T>(id, type) {
+            private static final long serialVersionUID = 1L;
+
+            public void onClick(AjaxRequestTarget target) {
+                onClick.accept(target);
+            }
+        };
+    }
+
+    /**
+     * * Creates a new BootstrapAjaxLink instance.
+     *
+     * @param id       The component id
+     * @param type     The type of the button
+     * @param onClick  The lambda to call when the link is submitted
+     * @param <T>      The component model type
+     * @return         new BootstrapAjaxLink instance
+     */
+    public static <T> BootstrapAjaxLink<T> onClick(final String id, Buttons.Type type, final SerializableBiConsumer<AjaxLink<T>, AjaxRequestTarget> onClick) {
+        Args.notNull(onClick, "onClick");
+        return new BootstrapAjaxLink<T>(id, type) {
+            private static final long serialVersionUID = 1L;
+
+            public void onClick(AjaxRequestTarget target) {
+                onClick.accept(this, target);
+            }
+        };
     }
 
 }

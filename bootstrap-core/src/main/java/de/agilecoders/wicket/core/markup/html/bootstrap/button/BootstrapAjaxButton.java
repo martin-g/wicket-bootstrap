@@ -4,6 +4,7 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.image.Icon;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.wicket.Component;
+import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
@@ -12,6 +13,8 @@ import org.apache.wicket.markup.html.panel.IMarkupSourcingStrategy;
 import org.apache.wicket.markup.html.panel.PanelMarkupSourcingStrategy;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
+import org.apache.wicket.util.lang.Args;
+import org.danekja.java.util.function.serializable.SerializableBiConsumer;
 
 import java.io.Serializable;
 
@@ -169,5 +172,49 @@ public abstract class BootstrapAjaxButton extends AjaxButton implements IBootstr
     public BootstrapAjaxButton setType(Buttons.Type type) {
         this.buttonBehavior.setType(type);
         return this;
+    }
+
+    /**
+     * Creates a new BootstrapAjaxButton instance.
+     *
+     * @param id       The component id
+     * @param type     The type of the button
+     * @param onSubmit The lambda to call when the form associated with the button is submitted
+     * @return         new BootstrapAjaxButton instance
+     */
+    public static BootstrapAjaxButton onSubmit(final String id, final Buttons.Type type, final SerializableBiConsumer<AjaxButton, AjaxRequestTarget> onSubmit) {
+        Args.notNull(onSubmit, "onSubmit");
+        return new BootstrapAjaxButton(id, type) {
+            private static final long serialVersionUID = 1L;
+
+            public void onSubmit(AjaxRequestTarget target) {
+                onSubmit.accept(this, target);
+            }
+        };
+    }
+
+    /**
+     * Creates a new BootstrapAjaxButton instance.
+     *
+     * @param id       The component id
+     * @param type     The type of the button
+     * @param onSubmit The lambda to call when the form associated with the button is submitted
+     * @param onError  The lambda to call when the form associated with the button has an error
+     * @return         new BootstrapAjaxButton instance
+     */
+    public static BootstrapAjaxButton onSubmit(final String id, final Buttons.Type type, final SerializableBiConsumer<AjaxButton, AjaxRequestTarget> onSubmit, final SerializableBiConsumer<AjaxButton, AjaxRequestTarget> onError) {
+        Args.notNull(onSubmit, "onSubmit");
+        Args.notNull(onError, "onError");
+        return new BootstrapAjaxButton(id, type) {
+            private static final long serialVersionUID = 1L;
+
+            public void onSubmit(AjaxRequestTarget target) {
+                onSubmit.accept(this, target);
+            }
+
+            protected void onError(AjaxRequestTarget target) {
+                onError.accept(this, target);
+            }
+        };
     }
 }
