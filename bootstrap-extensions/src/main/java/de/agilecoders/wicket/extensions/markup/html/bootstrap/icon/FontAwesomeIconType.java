@@ -13,7 +13,11 @@ import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeIc
 public class FontAwesomeIconType extends IconType {
     /** serialVersionUID. */
     private static final long serialVersionUID = 1L;
-    
+
+    public static final FontAwesomeIconType address_book = on(FontAwesomeGraphic.address_book).build();
+    public static final FontAwesomeIconType address_book_o = on(FontAwesomeGraphic.address_book_o).build();
+    public static final FontAwesomeIconType address_card = on(FontAwesomeGraphic.address_card).build();
+    public static final FontAwesomeIconType address_card_o = on(FontAwesomeGraphic.address_card_o).build();
     public static final FontAwesomeIconType adjust = on(FontAwesomeGraphic.adjust).build();
     public static final FontAwesomeIconType adn = on(FontAwesomeGraphic.adn).build();
     public static final FontAwesomeIconType align_center = on(FontAwesomeGraphic.align_center).build();
@@ -66,10 +70,13 @@ public class FontAwesomeIconType extends IconType {
     public static final FontAwesomeIconType balance_scale = on(
             FontAwesomeIconTypeBuilder.FontAwesomeGraphic.balance_scale).build();
     public static final FontAwesomeIconType ban = on(FontAwesomeGraphic.ban).build();
+    public static final FontAwesomeIconType bandcamp = on(FontAwesomeGraphic.bandcamp).build();
     public static final FontAwesomeIconType bank = on(FontAwesomeGraphic.university).build();
     public static final FontAwesomeIconType bar_chart_o = on(FontAwesomeGraphic.bar_chart_o).build();
     public static final FontAwesomeIconType barcode = on(FontAwesomeGraphic.barcode).build();
     public static final FontAwesomeIconType bars = on(FontAwesomeGraphic.bars).build();
+    public static final FontAwesomeIconType bath = on(FontAwesomeGraphic.bath).build();
+    public static final FontAwesomeIconType bathtub = on(FontAwesomeGraphic.bath).build();
     public static final FontAwesomeIconType battery_0 = on(FontAwesomeGraphic.battery_empty).build();
     public static final FontAwesomeIconType battery_1 = on(FontAwesomeGraphic.battery_quarter).build();
     public static final FontAwesomeIconType battery_2 = on(FontAwesomeGraphic.battery_half).build();
@@ -228,19 +235,25 @@ public class FontAwesomeIconType extends IconType {
     public static final FontAwesomeIconType dot_circle_o = on(FontAwesomeGraphic.dot_circle_o).build();
     public static final FontAwesomeIconType download = on(FontAwesomeGraphic.download).build();
     public static final FontAwesomeIconType dribbble = on(FontAwesomeGraphic.dribbble).build();
+    public static final FontAwesomeIconType drivers_license = on(FontAwesomeGraphic.id_card).build();
+    public static final FontAwesomeIconType getDrivers_license_o = on(FontAwesomeGraphic.id_card_o).build();
     public static final FontAwesomeIconType dropbox = on(FontAwesomeGraphic.dropbox).build();
     public static final FontAwesomeIconType drupal = on(FontAwesomeGraphic.drupal).build();
     public static final FontAwesomeIconType edit = on(FontAwesomeGraphic.edit).build();
     public static final FontAwesomeIconType edge = on(FontAwesomeGraphic.edge).build();
+    public static final FontAwesomeIconType eercast = on(FontAwesomeGraphic.eercast).build();
     public static final FontAwesomeIconType eject = on(FontAwesomeGraphic.eject).build();
     public static final FontAwesomeIconType ellipsis_h = on(FontAwesomeGraphic.ellipsis_h).build();
     public static final FontAwesomeIconType ellipsis_v = on(FontAwesomeGraphic.ellipsis_v).build();
     public static final FontAwesomeIconType empire = on(FontAwesomeGraphic.empire).build();
     public static final FontAwesomeIconType envelope = on(FontAwesomeGraphic.envelope).build();
     public static final FontAwesomeIconType envelope_o = on(FontAwesomeGraphic.envelope_o).build();
+    public static final FontAwesomeIconType envelope_open = on(FontAwesomeGraphic.envelope_open).build();
+    public static final FontAwesomeIconType envelope_open_o = on(FontAwesomeGraphic.envelope_open_o).build();
     public static final FontAwesomeIconType envelope_square = on(FontAwesomeGraphic.envelope_square).build();
     public static final FontAwesomeIconType envira = on(FontAwesomeGraphic.envira).build();
     public static final FontAwesomeIconType eraser = on(FontAwesomeGraphic.eraser).build();
+    public static final FontAwesomeIconType etsy = on(FontAwesomeGraphic.etsy).build();
     public static final FontAwesomeIconType eur = on(FontAwesomeGraphic.eur).build();
     public static final FontAwesomeIconType euro = on(FontAwesomeGraphic.eur).build();
     public static final FontAwesomeIconType exchange = on(FontAwesomeGraphic.exchange).build();
@@ -306,6 +319,7 @@ public class FontAwesomeIconType extends IconType {
     public static final FontAwesomeIconType forumbee = on(FontAwesomeGraphic.forumbee).build();
     public static final FontAwesomeIconType forward = on(FontAwesomeGraphic.forward).build();
     public static final FontAwesomeIconType foursquare = on(FontAwesomeGraphic.foursquare).build();
+    public static final FontAwesomeIconType free_code_camp = on(FontAwesomeGraphic.free_code_camp).build();
     public static final FontAwesomeIconType frown_o = on(FontAwesomeGraphic.frown_o).build();
     public static final FontAwesomeIconType futbol_o = on(FontAwesomeGraphic.futbol_o).build();
     public static final FontAwesomeIconType gamepad = on(FontAwesomeGraphic.gamepad).build();
@@ -335,6 +349,7 @@ public class FontAwesomeIconType extends IconType {
     public static final FontAwesomeIconType google_plus_square = on(FontAwesomeGraphic.google_plus_square).build();
     public static final FontAwesomeIconType google_wallet = on(FontAwesomeGraphic.google_wallet).build();
     public static final FontAwesomeIconType graduation_cap = on(FontAwesomeGraphic.graduation_cap).build();
+    public static final FontAwesomeIconType grav = on(FontAwesomeGraphic.grav).build();
     public static final FontAwesomeIconType group = on(FontAwesomeGraphic.group).build();
     public static final FontAwesomeIconType h_square = on(FontAwesomeGraphic.h_square).build();
     public static final FontAwesomeIconType hacker_news = on(FontAwesomeGraphic.hacker_news).build();
@@ -348,6 +363,7 @@ public class FontAwesomeIconType extends IconType {
     public static final FontAwesomeIconType hand_peace_o = on(FontAwesomeGraphic.hand_peace_o).build();
     public static final FontAwesomeIconType hand_pointer_o = on(FontAwesomeGraphic.hand_pointer_o).build();
     public static final FontAwesomeIconType hand_rock_o = on(FontAwesomeGraphic.hand_rock_o).build();
+    public static final FontAwesomeIconType handshake_o = on(FontAwesomeGraphic.handshake_o).build();
     public static final FontAwesomeIconType hand_scissors_o = on(FontAwesomeGraphic.hand_scissors_o).build();
     public static final FontAwesomeIconType hand_spock_o = on(FontAwesomeGraphic.hand_spock_o).build();
     public static final FontAwesomeIconType hand_stop_o = hand_paper_o;
@@ -374,7 +390,11 @@ public class FontAwesomeIconType extends IconType {
     public static final FontAwesomeIconType houzz = on(FontAwesomeGraphic.houzz).build();
     public static final FontAwesomeIconType html5 = on(FontAwesomeGraphic.html5).build();
     public static final FontAwesomeIconType i_cursor = on(FontAwesomeGraphic.i_cursor).build();
+    public static final FontAwesomeIconType id_badge = on(FontAwesomeGraphic.id_badge).build();
+    public static final FontAwesomeIconType id_card = on(FontAwesomeGraphic.id_card).build();
+    public static final FontAwesomeIconType id_card_o = on(FontAwesomeGraphic.id_card_o).build();
     public static final FontAwesomeIconType ils = on(FontAwesomeGraphic.ils).build();
+    public static final FontAwesomeIconType imdb = on(FontAwesomeGraphic.imdb).build();
     public static final FontAwesomeIconType inbox = on(FontAwesomeGraphic.inbox).build();
     public static final FontAwesomeIconType indent = on(FontAwesomeGraphic.indent).build();
     public static final FontAwesomeIconType industry = on(FontAwesomeGraphic.industry).build();
@@ -409,6 +429,7 @@ public class FontAwesomeIconType extends IconType {
     public static final FontAwesomeIconType life_saver = life_bouy;
     public static final FontAwesomeIconType lightbulb_o = on(FontAwesomeGraphic.lightbulb_o).build();
     public static final FontAwesomeIconType line_chart = on(FontAwesomeGraphic.line_chart).build();
+    public static final FontAwesomeIconType linode = on(FontAwesomeGraphic.linode).build();
     public static final FontAwesomeIconType link = on(FontAwesomeGraphic.link).build();
     public static final FontAwesomeIconType linkedin = on(FontAwesomeGraphic.linkedin).build();
     public static final FontAwesomeIconType linkedin_square = on(FontAwesomeGraphic.linkedin_square).build();
@@ -447,6 +468,8 @@ public class FontAwesomeIconType extends IconType {
     public static final FontAwesomeIconType medkit = on(FontAwesomeGraphic.medkit).build();
     public static final FontAwesomeIconType meh_o = on(FontAwesomeGraphic.meh_o).build();
     public static final FontAwesomeIconType mercury = on(FontAwesomeGraphic.mercury).build();
+    public static final FontAwesomeIconType meetup = on(FontAwesomeGraphic.meetup).build();
+    public static final FontAwesomeIconType microchip = on(FontAwesomeGraphic.microchip).build();
     public static final FontAwesomeIconType microphone = on(FontAwesomeGraphic.microphone).build();
     public static final FontAwesomeIconType microphone_slash = on(FontAwesomeGraphic.microphone_slash).build();
     public static final FontAwesomeIconType minus = on(FontAwesomeGraphic.minus).build();
@@ -510,6 +533,7 @@ public class FontAwesomeIconType extends IconType {
     public static final FontAwesomeIconType plus_circle = on(FontAwesomeGraphic.plus_circle).build();
     public static final FontAwesomeIconType plus_square = on(FontAwesomeGraphic.plus_square).build();
     public static final FontAwesomeIconType plus_square_o = on(FontAwesomeGraphic.plus_square_o).build();
+    public static final FontAwesomeIconType podcast = on(FontAwesomeGraphic.podcast).build();
     public static final FontAwesomeIconType power_off = on(FontAwesomeGraphic.power_off).build();
     public static final FontAwesomeIconType print = on(FontAwesomeGraphic.print).build();
     public static final FontAwesomeIconType product_hunt = on(FontAwesomeGraphic.product_hunt).build();
@@ -522,8 +546,10 @@ public class FontAwesomeIconType extends IconType {
     public static final FontAwesomeIconType question_circle_o = on(FontAwesomeGraphic.question_circle_o).build();
     public static final FontAwesomeIconType quote_left = on(FontAwesomeGraphic.quote_left).build();
     public static final FontAwesomeIconType quote_right = on(FontAwesomeGraphic.quote_right).build();
+    public static final FontAwesomeIconType quora = on(FontAwesomeGraphic.quora).build();
     public static final FontAwesomeIconType ra = on(FontAwesomeGraphic.rebel).build();
     public static final FontAwesomeIconType random = on(FontAwesomeGraphic.random).build();
+    public static final FontAwesomeIconType ravelry = on(FontAwesomeGraphic.ravelry).build();
     public static final FontAwesomeIconType rebel = ra;
     public static final FontAwesomeIconType recycle = on(FontAwesomeGraphic.recycle).build();
     public static final FontAwesomeIconType reddit = on(FontAwesomeGraphic.reddit).build();
@@ -547,6 +573,7 @@ public class FontAwesomeIconType extends IconType {
     public static final FontAwesomeIconType ruble = on(FontAwesomeGraphic.rub).build();
     public static final FontAwesomeIconType rouble = on(FontAwesomeGraphic.rub).build();
     public static final FontAwesomeIconType rupee = on(FontAwesomeGraphic.rupee).build();
+    public static final FontAwesomeIconType s15 = on(FontAwesomeGraphic.bath).build();
     public static final FontAwesomeIconType safari = on(FontAwesomeGraphic.safari).build();
     public static final FontAwesomeIconType save = on(FontAwesomeGraphic.save).build();
     public static final FontAwesomeIconType scissors = on(FontAwesomeGraphic.scissors).build();
@@ -572,6 +599,7 @@ public class FontAwesomeIconType extends IconType {
             FontAwesomeIconTypeBuilder.FontAwesomeGraphic.shopping_basket).build();
     public static final FontAwesomeIconType shopping_cart = on(            
             FontAwesomeIconTypeBuilder.FontAwesomeGraphic.shopping_cart).build();
+    public static final FontAwesomeIconType shower = on(FontAwesomeGraphic.shower).build();
     public static final FontAwesomeIconType sign_blank = on(FontAwesomeGraphic.sign_blank).build();
     public static final FontAwesomeIconType sign_in = on(FontAwesomeGraphic.sign_in).build();
     public static final FontAwesomeIconType sign_language = on(FontAwesomeGraphic.sign_language).build();
@@ -589,6 +617,7 @@ public class FontAwesomeIconType extends IconType {
     public static final FontAwesomeIconType snapchat = on(FontAwesomeGraphic.snapchat).build();
     public static final FontAwesomeIconType snapchat_ghost = on(FontAwesomeGraphic.snapchat_ghost).build();
     public static final FontAwesomeIconType snapchat_square = on(FontAwesomeGraphic.snapchat_square).build();
+    public static final FontAwesomeIconType snowflake_o = on(FontAwesomeGraphic.snowflake_o).build();
     public static final FontAwesomeIconType soccer_ball_o = futbol_o;
     public static final FontAwesomeIconType sort = on(FontAwesomeGraphic.sort).build();
     public static final FontAwesomeIconType sort_alpha_asc = on(FontAwesomeGraphic.sort_alpha_asc).build();
@@ -638,6 +667,7 @@ public class FontAwesomeIconType extends IconType {
     public static final FontAwesomeIconType sun_o = on(FontAwesomeGraphic.sun_o).build();
     public static final FontAwesomeIconType superscript = on(FontAwesomeIconTypeBuilder.FontAwesomeGraphic.superscript)
             .build();
+    public static final FontAwesomeIconType superpowers = on(FontAwesomeGraphic.superpowers).build();
     public static final FontAwesomeIconType support = life_bouy;
     public static final FontAwesomeIconType table = on(FontAwesomeGraphic.table).build();
     public static final FontAwesomeIconType tablet = on(FontAwesomeGraphic.tablet).build();
@@ -647,6 +677,7 @@ public class FontAwesomeIconType extends IconType {
     public static final FontAwesomeIconType tasks = on(FontAwesomeGraphic.tasks).build();
     public static final FontAwesomeIconType taxi = cab;
     public static final FontAwesomeIconType television = on(FontAwesomeGraphic.television).build();
+    public static final FontAwesomeIconType telegram = on(FontAwesomeGraphic.telegram).build();
     public static final FontAwesomeIconType tencent_weibo = on(FontAwesomeGraphic.tencent_weibo).build();
     public static final FontAwesomeIconType terminal = on(FontAwesomeGraphic.terminal).build();
     public static final FontAwesomeIconType text_height = on(FontAwesomeGraphic.text_height).build();
@@ -656,6 +687,17 @@ public class FontAwesomeIconType extends IconType {
             .build();
     public static final FontAwesomeIconType th_list = on(FontAwesomeGraphic.th_list).build();
     public static final FontAwesomeIconType themeisle = on(FontAwesomeGraphic.themeisle).build();
+    public static final FontAwesomeIconType thermometer = on(FontAwesomeGraphic.thermometer_full).build();
+    public static final FontAwesomeIconType thermometer_0 = on(FontAwesomeGraphic.thermometer_empty).build();
+    public static final FontAwesomeIconType thermometer_1 = on(FontAwesomeGraphic.thermometer_quarter).build();
+    public static final FontAwesomeIconType thermometer_2 = on(FontAwesomeGraphic.thermometer_half).build();
+    public static final FontAwesomeIconType thermometer_3 = on(FontAwesomeGraphic.thermometer_three_quarters).build();
+    public static final FontAwesomeIconType thermometer_4 = on(FontAwesomeGraphic.thermometer_full).build();
+    public static final FontAwesomeIconType thermometer_empty = on(FontAwesomeGraphic.thermometer_empty).build();
+    public static final FontAwesomeIconType thermometer_full = on(FontAwesomeGraphic.thermometer_full).build();
+    public static final FontAwesomeIconType thermometer_half = on(FontAwesomeGraphic.thermometer_half).build();
+    public static final FontAwesomeIconType thermometer_quarter = on(FontAwesomeGraphic.thermometer_quarter).build();
+    public static final FontAwesomeIconType thermometer_three_quarters = on(FontAwesomeGraphic.thermometer_three_quarters).build();
     public static final FontAwesomeIconType thumb_tack = on(FontAwesomeGraphic.thumb_tack).build();
     public static final FontAwesomeIconType thumbs_down = on(FontAwesomeGraphic.thumbs_down).build();
     public static final FontAwesomeIconType thumbs_o_down = on(FontAwesomeGraphic.thumbs_o_down).build();
@@ -665,6 +707,8 @@ public class FontAwesomeIconType extends IconType {
     public static final FontAwesomeIconType times = on(FontAwesomeGraphic.times).build();
     public static final FontAwesomeIconType times_circle = on(FontAwesomeGraphic.times_circle).build();
     public static final FontAwesomeIconType times_circle_o = on(FontAwesomeGraphic.times_circle_o).build();
+    public static final FontAwesomeIconType times_rectangle = on(FontAwesomeGraphic.times_close).build();
+    public static final FontAwesomeIconType times_rectangle_o = on(FontAwesomeGraphic.times_close_o).build();
     public static final FontAwesomeIconType tint = on(FontAwesomeGraphic.tint).build();
     public static final FontAwesomeIconType toggle_down = on(FontAwesomeGraphic.toggle_down).build();
     public static final FontAwesomeIconType toggle_left = on(FontAwesomeGraphic.toggle_left).build();
@@ -709,11 +753,16 @@ public class FontAwesomeIconType extends IconType {
     public static final FontAwesomeIconType usb = on(FontAwesomeGraphic.usb).build();
     public static final FontAwesomeIconType usd = on(FontAwesomeGraphic.usd).build();
     public static final FontAwesomeIconType user = on(FontAwesomeGraphic.user).build();
+    public static final FontAwesomeIconType user_circle = on(FontAwesomeGraphic.user_circle).build();
+    public static final FontAwesomeIconType user_circle_o = on(FontAwesomeGraphic.user_circle_o).build();
     public static final FontAwesomeIconType user_md = on(FontAwesomeGraphic.user_md).build();
+    public static final FontAwesomeIconType user_o = on(FontAwesomeGraphic.user_o).build();
     public static final FontAwesomeIconType user_plus = on(FontAwesomeGraphic.user_plus).build();
     public static final FontAwesomeIconType user_secret = on(FontAwesomeGraphic.user_secret).build();
     public static final FontAwesomeIconType user_times = on(FontAwesomeGraphic.user_times).build();
     public static final FontAwesomeIconType users = on(FontAwesomeGraphic.users).build();
+    public static final FontAwesomeIconType vcard = on(FontAwesomeGraphic.address_card).build();
+    public static final FontAwesomeIconType vcard_o = on(FontAwesomeGraphic.address_card_o).build();
     public static final FontAwesomeIconType venus = on(FontAwesomeGraphic.venus).build();
     public static final FontAwesomeIconType venus_double = on(FontAwesomeGraphic.venus_double).build();
     public static final FontAwesomeIconType venus_mars = on(FontAwesomeGraphic.venus_mars).build();
@@ -739,10 +788,16 @@ public class FontAwesomeIconType extends IconType {
     public static final FontAwesomeIconType wheelchair = on(FontAwesomeGraphic.wheelchair).build();
     public static final FontAwesomeIconType wifi = on(FontAwesomeGraphic.wifi).build();
     public static final FontAwesomeIconType wikipedia_w = on(FontAwesomeGraphic.wikipedia_w).build();
+    public static final FontAwesomeIconType window_close = on(FontAwesomeGraphic.window_close).build();
+    public static final FontAwesomeIconType window_close_o = on(FontAwesomeGraphic.window_close_o).build();
+    public static final FontAwesomeIconType window_maximise = on(FontAwesomeGraphic.window_maximise).build();
+    public static final FontAwesomeIconType window_minimize = on(FontAwesomeGraphic.window_minimize).build();
+    public static final FontAwesomeIconType window_restore = on(FontAwesomeGraphic.window_restore).build();
     public static final FontAwesomeIconType windows = on(FontAwesomeGraphic.windows).build();
     public static final FontAwesomeIconType won = krw;
     public static final FontAwesomeIconType wordpress = on(FontAwesomeGraphic.wordpress).build();
     public static final FontAwesomeIconType wpbeginner = on(FontAwesomeGraphic.wpbeginner).build();
+    public static final FontAwesomeIconType wpexplorer = on(FontAwesomeGraphic.wpexplorer).build();
     public static final FontAwesomeIconType wpforms = on(FontAwesomeGraphic.wpforms).build();
     public static final FontAwesomeIconType wrench = on(FontAwesomeGraphic.wrench).build();
     public static final FontAwesomeIconType xing = on(FontAwesomeGraphic.xing).build();
