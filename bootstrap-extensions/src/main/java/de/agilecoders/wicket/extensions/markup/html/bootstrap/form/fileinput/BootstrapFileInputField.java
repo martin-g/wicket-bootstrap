@@ -148,6 +148,9 @@ public class BootstrapFileInputField extends FileUploadField {
     @Override
     public void renderHead(final IHeaderResponse response) {
         FileinputJsReference.INSTANCE.renderHead(response);
+        
+        if(config.locale() != null)
+        	new FileinputLocaleJsReference(config.locale()).renderHead(response);
 
         JQuery fileinputJS = $(this).chain("fileinput", config);
 
