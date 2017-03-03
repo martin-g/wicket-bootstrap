@@ -7,10 +7,13 @@ import org.apache.wicket.Component;
 import org.apache.wicket.Page;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.util.tester.TagTester;
+import org.apache.wicket.util.visit.IVisit;
+import org.apache.wicket.util.visit.IVisitor;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.hamcrest.CoreMatchers.containsString;
@@ -142,5 +145,23 @@ public class NavbarTest extends WicketApplicationTest {
 
         Assert.assertThat(tester().getTagByWicketId(Navbar.componentId()).hasChildTag("i"), is(equalTo(true)));
         Assert.assertThat(tester().getTagByWicketId("icon").getAttribute("class"), containsString("icon-align-center"));
+    }
+
+    @Test
+    public void allComponents_areStateless_BUGGY() {
+        final List<String> statefulComponents = new ArrayList<>();
+
+        Navbar navbar = new Navbar("id");
+        navbar.visitChildren(new IVisitor<Component, Void>() {
+            @Override
+            public void component(Component component, IVisit<Void> arg1) {
+                if (!component.isStateless())
+                    statefulComponents.add(component.getId());
+            }
+        });
+
+        // TODO should be empty
+        Assert.assertThat(statefulComponents.size(), is(equalTo(1)));
+        Assert.assertThat(statefulComponents.get(0), is(equalTo("brandImage")));
     }
 }
