@@ -148,7 +148,7 @@ public class NavbarTest extends WicketApplicationTest {
     }
 
     @Test
-    public void allComponents_areStateless_BUGGY() {
+    public void allComponents_areStateless() {
         final List<String> statefulComponents = new ArrayList<>();
 
         Navbar navbar = new Navbar("id");
@@ -160,8 +160,6 @@ public class NavbarTest extends WicketApplicationTest {
             }
         });
 
-        // TODO should be empty
-        Assert.assertThat(statefulComponents.size(), is(equalTo(1)));
-        Assert.assertThat(statefulComponents.get(0), is(equalTo("brandImage")));
+        Assert.assertThat(statefulComponents.size(), is(equalTo(0)));
     }
 }
