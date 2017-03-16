@@ -51,7 +51,7 @@ public class FileInputConfig extends AbstractConfig {
 
     public static final IKey<List<String>> AllowedFileTypes = newKey("allowedFileTypes", null);
     
-    public static final IKey<String> Locale = newKey("locale", null);
+    public static final IKey<String> Language = newKey("language", null);
 
     public FileInputConfig showCaption(boolean showCaption) {
         put(ShowCaption, showCaption);
@@ -157,13 +157,13 @@ public class FileInputConfig extends AbstractConfig {
     }
     
     /**
-     * Sets fileinput locale. See {@link de.agilecoders.wicket.extensions.markup.html.bootstrap.form.fileinput.res.locales}
+     * Sets fileinput language. See {@link de.agilecoders.wicket.extensions.markup.html.bootstrap.form.fileinput.res.locales}
      * 
-     * @param locale
+     * @param language
      * @return config
      */
-    public FileInputConfig withLocale(String locale) {
-    	put(Locale, locale);
+    public FileInputConfig withLocale(String language) {
+    	put(Language, language);
     	return this;
     }
 
@@ -235,7 +235,7 @@ public class FileInputConfig extends AbstractConfig {
         return get(PreviewFileType);
     }
     
-    public String locale() {
-    	return get(Locale);
+    public String language() {
+    	return get(Language);
     }
 }
