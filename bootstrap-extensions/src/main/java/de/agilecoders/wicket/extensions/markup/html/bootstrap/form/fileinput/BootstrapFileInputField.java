@@ -124,6 +124,10 @@ public class BootstrapFileInputField extends FileUploadField {
                 target.add(getForm());
                 BootstrapFileInputField.this.onSubmit(target);
             }
+            @Override
+            protected void onError(AjaxRequestTarget target) {
+            	BootstrapFileInputField.this.onError(target);
+            }
         };
     }
 
