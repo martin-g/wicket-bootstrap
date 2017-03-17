@@ -292,7 +292,16 @@ public class Navbar extends Panel implements Invertible<Navbar> {
             protected void onConfigure() {
                 super.onConfigure();
 
-                setVisible(getImageResourceReference() != null || getImageResource() != null);
+                setVisible(isResourceSet());
+            }
+
+            private boolean isResourceSet() {
+                return getImageResourceReference() != null || getImageResource() != null;
+            }
+
+            @Override
+            protected boolean getStatelessHint() {
+                return isResourceSet() ? super.getStatelessHint() : true;
             }
         };
     }
