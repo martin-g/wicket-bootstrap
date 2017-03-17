@@ -124,6 +124,10 @@ public class BootstrapFileInputField extends FileUploadField {
                 target.add(getForm());
                 BootstrapFileInputField.this.onSubmit(target);
             }
+            @Override
+            protected void onError(AjaxRequestTarget target) {
+            	BootstrapFileInputField.this.onError(target);
+            }
         };
     }
 
@@ -148,6 +152,9 @@ public class BootstrapFileInputField extends FileUploadField {
     @Override
     public void renderHead(final IHeaderResponse response) {
         FileinputJsReference.INSTANCE.renderHead(response);
+        
+        if(config.language() != null)
+        	new FileinputLocaleJsReference(config.language()).renderHead(response);
 
         JQuery fileinputJS = $(this).chain("fileinput", config);
 
