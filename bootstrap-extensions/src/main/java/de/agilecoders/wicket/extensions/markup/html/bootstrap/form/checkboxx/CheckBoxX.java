@@ -1,10 +1,5 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.form.checkboxx;
 
-import static de.agilecoders.wicket.jquery.JQuery.$;
-
-import java.util.Locale;
-
-import org.apache.wicket.Application;
 import org.apache.wicket.ajax.AjaxEventBehavior;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.attributes.AjaxRequestAttributes;
@@ -18,10 +13,13 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.request.IRequestParameters;
 import org.apache.wicket.request.http.WebRequest;
 import org.apache.wicket.request.resource.CssResourceReference;
-import org.apache.wicket.request.resource.JavaScriptResourceReference;
 import org.apache.wicket.resource.JQueryPluginResourceReference;
 import org.apache.wicket.util.convert.IConverter;
 import org.apache.wicket.util.string.StringValue;
+
+import java.util.Locale;
+
+import static de.agilecoders.wicket.jquery.JQuery.$;
 
 /**
  * An extension of {@link org.apache.wicket.markup.html.form.CheckBox} that allows to have three states:
@@ -131,9 +129,8 @@ public class CheckBoxX extends CheckBox {
     public void renderHead(IHeaderResponse response) {
         super.renderHead(response);
 
-        response.render(JavaScriptHeaderItem.forReference(new JQueryPluginResourceReference(CheckBoxX.class, "js/checkbox-x.js")));
         response.render(CssHeaderItem.forReference(new CssResourceReference(CheckBoxX.class, "css/checkbox-x.css")));
-        response.render(JavaScriptHeaderItem.forReference(new JavaScriptResourceReference(CheckBoxX.class, "js/checkbox-x.js")));
+        response.render(JavaScriptHeaderItem.forReference(new JQueryPluginResourceReference(CheckBoxX.class, "js/checkbox-x.js")));
 
         response.render(OnDomReadyHeaderItem.forScript($(this).chain("checkboxX", getConfig()).get()));
     }
