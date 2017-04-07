@@ -131,7 +131,7 @@ public class ButtonBehavior extends BootstrapBaseBehavior {
     public void onComponentTag(Component component, ComponentTag tag) {
         super.onComponentTag(component, tag);
 
-        if (!component.isEnabled()) {
+        if (!component.isEnabledInHierarchy()) {
             tag.put("disabled", "disabled");
         }
         
