@@ -24,7 +24,7 @@ public final class Buttons {
      * @param tag       the component tag
      */
     public static void fixDisabledState(Component component, ComponentTag tag) {
-        if (!component.isEnabled()) {
+        if (!component.isEnabledInHierarchy()) {
             if (component instanceof AbstractLink) {
                 tag.setName("a");
             } else if (component instanceof Button) {
