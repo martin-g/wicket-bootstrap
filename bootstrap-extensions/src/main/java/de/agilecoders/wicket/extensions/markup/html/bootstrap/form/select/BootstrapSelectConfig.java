@@ -28,6 +28,10 @@ public class BootstrapSelectConfig extends AbstractConfig {
     private static final IKey<String> NoneResultsText = newKey("noneResultsText", null);
     private static final IKey<String> CountSelectedText = newKey("countSelectedText", null);
 
+    private static final IKey<Boolean> ActionsBox = newKey("actionsBox", false);
+    private static final IKey<String> SelectAllText = newKey("selectAllText", null);
+    private static final IKey<String> DeselectAllText = newKey("deselectAllText", null);
+
     private static final long serialVersionUID = -1083532309683379273L;
 
     /**
@@ -113,6 +117,47 @@ public class BootstrapSelectConfig extends AbstractConfig {
         put(CountSelectedText, text);
         return this;
     }
+    
+    /**
+     * Shows or hides actions box with select all / deselect all buttons. 
+     * Applicable only for {@link BootstrapMultiSelect}.
+     * 
+     * @param actionsBox is Actions box
+     * @return current instance
+     */
+    public BootstrapSelectConfig withActionsBox(Boolean actionsBox) {
+    	put(ActionsBox, actionsBox);
+    	return this;
+    }
+    
+
+    /**
+     * Sets text for select all button in case actions box is turned on. 
+     * Applicable only for {@link BootstrapMultiSelect}.
+     * 
+     * @see BootstrapSelectConfig#withActionsBox(Boolean)
+     * 
+     * @param actionsBox is Actions box
+     * @return current instance
+     */
+    public BootstrapSelectConfig withSelectAllText(String selectAllText) {
+    	put(SelectAllText, selectAllText);
+    	return this;
+    }
+    
+    /**
+     * Sets text for deselect all button in case actions box is turned on. 
+     * Applicable only for {@link BootstrapMultiSelect}.
+     * 
+     * @see BootstrapSelectConfig#withActionsBox(Boolean)
+     * 
+     * @param actionsBox is Actions box
+     * @return current instance
+     */
+    public BootstrapSelectConfig withDeselectAllText(String deselectAllText) {
+    	put(DeselectAllText, deselectAllText);
+    	return this;
+    }
 
     /**
      * @return selected title
@@ -161,6 +206,27 @@ public class BootstrapSelectConfig extends AbstractConfig {
      */
     public String getCountSelectedText() {
         return get(CountSelectedText);
+    }
+
+    /**
+     * @return actions box
+     */
+    public boolean getActionsBox() {
+    	return get(ActionsBox);
+    }
+
+    /**
+     * @return select all text
+     */
+    public String getSelectAllText() {
+    	return get(SelectAllText);
+    }
+
+    /**
+     * @return select all text
+     */
+    public String getDeselectAllText() {
+    	return get(DeselectAllText);
     }
 
     /**
