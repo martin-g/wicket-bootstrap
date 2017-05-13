@@ -167,6 +167,12 @@ public class BootstrapSettings implements IBootstrapSettings {
     }
 
     @Override
+    public IBootstrapSettings setModernizrJsResourceReference(ResourceReference reference) {
+        modernizrJavaScriptReference = reference;
+        return this;
+    }
+
+    @Override
     public IBootstrapSettings setJsResourceFilterName(String name) {
         resourceFilterName = name;
         return this;
