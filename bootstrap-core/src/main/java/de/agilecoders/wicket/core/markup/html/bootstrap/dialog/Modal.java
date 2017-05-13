@@ -431,9 +431,7 @@ public class Modal<T> extends GenericPanel<T> {
      * @return this instance
      */
     public Modal<T> addCloseButton(final IModel<String> label) {
-        ModalCloseButton button = new ModalCloseButton(label);
-        button.setAnchor(this);
-
+    	BootstrapModalCloseButton button = new BootstrapModalCloseButton(label);
         return addButton(button);
     }
 
@@ -456,10 +454,6 @@ public class Modal<T> extends GenericPanel<T> {
         if (!BUTTON_MARKUP_ID.equals(button.getId())) {
             throw new IllegalArgumentException(
                     String.format("Invalid button markup id. Must be '%s'.", BUTTON_MARKUP_ID));
-        }
-
-        if (button instanceof ModalCloseButton) {
-            // ((ModalCloseButton) button).setAnchor(this);
         }
 
         buttons.add(button);

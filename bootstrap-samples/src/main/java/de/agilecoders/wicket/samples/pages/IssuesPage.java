@@ -1,25 +1,8 @@
 package de.agilecoders.wicket.samples.pages;
 
-import de.agilecoders.wicket.core.markup.html.bootstrap.button.BootstrapLink;
-import de.agilecoders.wicket.core.markup.html.bootstrap.button.ButtonBehavior;
-import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons;
-import de.agilecoders.wicket.core.markup.html.bootstrap.common.NotificationMessage;
-import de.agilecoders.wicket.core.markup.html.bootstrap.common.NotificationPanel;
-import de.agilecoders.wicket.core.markup.html.bootstrap.components.PopoverBehavior;
-import de.agilecoders.wicket.core.markup.html.bootstrap.components.PopoverConfig;
-import de.agilecoders.wicket.core.markup.html.bootstrap.components.RichPopoverBehavior;
-import de.agilecoders.wicket.core.markup.html.bootstrap.components.TooltipConfig;
-import de.agilecoders.wicket.core.markup.html.bootstrap.dialog.Modal;
-import de.agilecoders.wicket.core.markup.html.bootstrap.dialog.ModalCloseButton;
-import de.agilecoders.wicket.core.markup.html.bootstrap.dialog.TextContentModal;
-import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.AbstractNavbarComponent;
-import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.ImmutableNavbarComponent;
-import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.Navbar;
-import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.NavbarAjaxLink;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.ColorPickerConfig;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.ColorPickerTextField;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.DateTextField;
-import de.agilecoders.wicket.samples.components.issues.CustomNavbarForm;
+import java.io.Serializable;
+import java.util.Date;
+
 import org.apache.wicket.Component;
 import org.apache.wicket.Page;
 import org.apache.wicket.ajax.AjaxRequestTarget;
@@ -37,8 +20,25 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.util.time.Duration;
 import org.wicketstuff.annotation.mount.MountPath;
 
-import java.io.Serializable;
-import java.util.Date;
+import de.agilecoders.wicket.core.markup.html.bootstrap.button.BootstrapLink;
+import de.agilecoders.wicket.core.markup.html.bootstrap.button.ButtonBehavior;
+import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons;
+import de.agilecoders.wicket.core.markup.html.bootstrap.common.NotificationMessage;
+import de.agilecoders.wicket.core.markup.html.bootstrap.common.NotificationPanel;
+import de.agilecoders.wicket.core.markup.html.bootstrap.components.PopoverBehavior;
+import de.agilecoders.wicket.core.markup.html.bootstrap.components.PopoverConfig;
+import de.agilecoders.wicket.core.markup.html.bootstrap.components.RichPopoverBehavior;
+import de.agilecoders.wicket.core.markup.html.bootstrap.components.TooltipConfig;
+import de.agilecoders.wicket.core.markup.html.bootstrap.dialog.Modal;
+import de.agilecoders.wicket.core.markup.html.bootstrap.dialog.TextContentModal;
+import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.AbstractNavbarComponent;
+import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.ImmutableNavbarComponent;
+import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.Navbar;
+import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.NavbarAjaxLink;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.ColorPickerConfig;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.ColorPickerTextField;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.DateTextField;
+import de.agilecoders.wicket.samples.components.issues.CustomNavbarForm;
 
 /**
  * The {@code BaseCssPage}
@@ -123,7 +123,7 @@ public class IssuesPage extends BasePage {
 
     private Modal<String> newModalDialog(String markupId) {
         final Modal<String> modal = new TextContentModal(markupId, Model.of("Issue #90"));
-        modal.addButton(new ModalCloseButton());
+        modal.addCloseButton();
 
         return modal;
     }

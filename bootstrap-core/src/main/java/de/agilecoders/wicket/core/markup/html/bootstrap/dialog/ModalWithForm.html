@@ -1,0 +1,27 @@
+<html xmlns:wicket="http://wicket.apache.org">
+    <head>
+        <title>Modal</title>
+    </head>
+    <body>
+        <wicket:panel>
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div wicket:id="header" class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 wicket:id="header-label" class="modal-title">Modal header</h4>
+                    </div>
+                    <form wicket:id="form" class="form">
+	                    <div class="modal-body">
+	                        <wicket:child/>
+	                    </div>
+	                    <div class="modal-footer" wicket:id="footer">
+	                        <wicket:fragment wicket:id="buttons">
+	                            <button type="button" wicket:id="button"></button>
+	                        </wicket:fragment>
+	                    </div>
+                    </form>
+                </div>
+            </div>
+        </wicket:panel>
+    </body>
+</html>
