@@ -150,7 +150,7 @@ public abstract class DropDownButton extends AbstractLink implements Activatable
         final WebMarkupContainer baseButton = new WebMarkupContainer(markupId);
 
         baseButton.setOutputMarkupId(true);
-        baseButton.add(newButtonLabel("label", labelModel));
+        baseButton.add(newButtonLabel("label", wrap(labelModel)));
 
         return baseButton;
     }
@@ -163,7 +163,7 @@ public abstract class DropDownButton extends AbstractLink implements Activatable
      * @return new label component
      */
     protected Component newButtonLabel(final String markupId, final IModel<?> labelModel) {
-        final Label label = new Label(markupId, labelModel);
+        final Label label = new Label(markupId, wrap(labelModel));
         label.setRenderBodyOnly(true);
 
         return label;

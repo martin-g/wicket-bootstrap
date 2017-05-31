@@ -87,8 +87,8 @@ public class FormGroup extends Border {
     public FormGroup(final String id, final IModel<String> label, final IModel<String> help) {
         super(id, Model.of(""));
 
-        this.labelModel = label;
-        this.helpModel = help;
+        this.labelModel = wrap(label);
+        this.helpModel = wrap(help);
         this.stateClassName = "";
     }
 
