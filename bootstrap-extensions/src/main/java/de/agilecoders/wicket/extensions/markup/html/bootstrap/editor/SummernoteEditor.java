@@ -1,5 +1,7 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.editor;
 
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeCssReference;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.references.SpinJsReference;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -7,7 +9,6 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
-
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.wicket.WicketRuntimeException;
@@ -32,9 +33,6 @@ import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.lang.Bytes;
 import org.apache.wicket.util.string.Strings;
 import org.apache.wicket.util.template.PackageTextTemplate;
-
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeCDNCSSReference;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.references.SpinJsReference;
 
 /**
  * A summer note editor
@@ -92,7 +90,7 @@ public class SummernoteEditor extends FormComponent<String> {
     @Override
     public void renderHead(IHeaderResponse response) {
         response.render(CssHeaderItem.forReference(SummernoteEditorCssReference.instance()));
-        response.render(CssHeaderItem.forReference(FontAwesomeCDNCSSReference.instance()));
+        response.render(CssHeaderItem.forReference(FontAwesomeCssReference.instance()));
         response.render(CssHeaderItem.forReference(SummernoteEditorOverlayCssReference.instance()));
         response.render(JavaScriptHeaderItem.forReference(SummernoteEditorJavaScriptReference.instance()));
         response.render(JavaScriptHeaderItem.forReference(SummernoteEditorFormDataReference.instance()));

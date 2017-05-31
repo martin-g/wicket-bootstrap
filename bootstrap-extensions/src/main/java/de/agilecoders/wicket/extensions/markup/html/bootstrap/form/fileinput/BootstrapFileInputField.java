@@ -125,6 +125,11 @@ public class BootstrapFileInputField extends FileUploadField {
                 BootstrapFileInputField.this.onSubmit(target);
             }
             @Override
+            protected void onAfterSubmit(AjaxRequestTarget target) {
+            	super.onAfterSubmit(target);
+            	BootstrapFileInputField.this.onAfterSubmit(target);
+            }
+            @Override
             protected void onError(AjaxRequestTarget target) {
             	BootstrapFileInputField.this.onError(target);
             }
@@ -147,6 +152,15 @@ public class BootstrapFileInputField extends FileUploadField {
      * @param target The Ajax request handler
      */
     protected void onSubmit(AjaxRequestTarget target) {
+    }
+    
+    /**
+	 * A callback method that is called after successful file upload triggered
+	 * by the usage of the <em>Upload</em> button.
+	 * 
+	 * @param target the {@link AjaxRequestTarget}
+	 */
+    protected void onAfterSubmit(AjaxRequestTarget target) {
     }
 
     @Override
