@@ -54,7 +54,7 @@ public class BootstrapCheckbox extends FormComponentPanel<Boolean> {
 
         setType(Boolean.class);
 
-        this.labelModel = labelModel;
+        this.labelModel = wrap(labelModel);
 
         setRenderBodyOnly(true);
 
