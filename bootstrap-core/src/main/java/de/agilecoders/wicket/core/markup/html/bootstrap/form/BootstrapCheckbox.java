@@ -19,7 +19,6 @@ import org.apache.wicket.model.IModel;
 public class BootstrapCheckbox extends FormComponentPanel<Boolean> {
 
     private final WebMarkupContainer wrapper;
-    private final IModel<?> labelModel;
     private boolean inline = false;
     private CheckBox checkbox;
 
@@ -54,40 +53,31 @@ public class BootstrapCheckbox extends FormComponentPanel<Boolean> {
 
         setType(Boolean.class);
 
-        this.labelModel = wrap(labelModel);
-
         setRenderBodyOnly(true);
 
         wrapper = new WebMarkupContainer("wrapper");
         add(wrapper);
         MarkupContainer label = newLabelContainer("label");
         wrapper.add(label);
-        label.add(newLabel("post-label"));
+        label.add(newLabel("post-label", labelModel));
         checkbox = newCheckBox("checkbox", getModel());
         label.add(checkbox);
 
     }
 
-    @Override
-    protected void onDetach() {
-        super.onDetach();
-
-        if (labelModel != null) {
-            labelModel.detach();
-        }
-    }
 
     protected CheckBox newCheckBox(String id, IModel<Boolean> model) {
         return new CheckBox(id, model);
     }
 
-    protected Component newLabel(String id) {
+    protected Component newLabel(String id, IModel<?> labelModel) {
         return new Label(id, labelModel) {
             @Override
             protected void onConfigure() {
                 super.onConfigure();
 
-                setVisible(labelModel != null && labelModel.getObject() != null);
+                IModel<?> model = getDefaultModel();
+                setVisible(model != null && model.getObject() != null);
             }
         };
     }
