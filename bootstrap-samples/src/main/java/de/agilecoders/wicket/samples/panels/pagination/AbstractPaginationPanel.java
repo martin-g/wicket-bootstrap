@@ -1,10 +1,12 @@
 package de.agilecoders.wicket.samples.panels.pagination;
 
+import de.agilecoders.wicket.core.markup.html.bootstrap.components.PopoverBehavior;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.PageableListView;
 import org.apache.wicket.markup.html.panel.Panel;
+import org.apache.wicket.model.Model;
 
 import java.util.Arrays;
 import java.util.List;
@@ -24,7 +26,7 @@ public abstract class AbstractPaginationPanel extends Panel {
         pageable = new PageableListView<String>("pageable", data, pageSize()) {
             @Override
             protected void populateItem(ListItem<String> item) {
-                item.add(new Label("item", item.getModelObject()));
+                onPopulateItem(item);
             }
         };
         add(pageable);
@@ -34,6 +36,11 @@ public abstract class AbstractPaginationPanel extends Panel {
 
     protected List<String> createData() {
         return Arrays.asList("Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 6");
+    }
+
+    protected void onPopulateItem(ListItem<String> item) {
+        item.add(new Label("item", item.getModelObject())
+                     .add(new PopoverBehavior(Model.of("popover" + item.getModelObject()), Model.of("body"))));
     }
 
     protected int pageSize() {
