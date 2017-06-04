@@ -44,8 +44,6 @@ public abstract class BootstrapOrderByBorder<S> extends Border {
 
 		addToBorder(link);
 
-		link.add(getBodyContainer());
-
 		WebMarkupContainer iconSort = new WebMarkupContainer("iconSort");
 		iconSort.setVisible(false);
 		link.add(iconSort);
