@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.wicket.extensions.markup.html.repeater.data.grid.DataGridView;
+import org.apache.wicket.extensions.markup.html.repeater.data.sort.OrderByLink;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.IColumn;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.ISortableDataProvider;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.PropertyColumn;
@@ -35,8 +36,8 @@ public class BootstrapDefaultDataTableTest extends WicketApplicationTest {
 
     @Override
     protected void onBefore() {
-        columns.add(new PropertyColumn<DemoType, String>(Model.of("id"), "id"));
-        columns.add(new PropertyColumn<DemoType, String>(Model.of("name"), "name"));
+        columns.add(new PropertyColumn<DemoType, String>(Model.of("id"), "id", "id"));
+        columns.add(new PropertyColumn<DemoType, String>(Model.of("name"), "name", "name"));
     }
 
     @Test
@@ -90,6 +91,7 @@ public class BootstrapDefaultDataTableTest extends WicketApplicationTest {
     public void hasVisibleHeaderTopToolbar() {
         startComponentWithRowsPerPage(10);
         tester().assertComponent("table:topToolbars", WebMarkupContainer.class);
+        tester().debugComponentTrees();
         assertHeadersToolbar("table:topToolbars:toolbars");
     }
 
@@ -100,9 +102,9 @@ public class BootstrapDefaultDataTableTest extends WicketApplicationTest {
         tester().assertComponent(hp, RefreshingView.class);
         tester().assertComponent(hp + ":1", Item.class);
         tester().assertComponent(hp + ":1:header", WebMarkupContainer.class);
-        tester().assertComponent(hp + ":1:header:label", Label.class);
-        tester().assertModelValue(hp + ":1:header:label", "id");
-        tester().assertModelValue(hp + ":2:header:label", "name");
+        tester().assertComponent(hp + ":1:header:orderByLink", OrderByLink.class);
+        tester().assertModelValue(hp + ":1:header:orderByLink:header_body:label", "id");
+        tester().assertModelValue(hp + ":2:header:orderByLink:header_body:label", "name");
     }
 
     @Test
