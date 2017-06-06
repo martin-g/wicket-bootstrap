@@ -33,6 +33,12 @@ public class BootstrapDefaultDataTableTest extends WicketApplicationTest {
     private final ISortableDataProvider<DemoType, String> provider = new DemoProvider();
     private BootstrapDefaultDataTable<DemoType, String> table;
 
+    @Override
+    protected void onBefore() {
+        columns.add(new PropertyColumn<DemoType, String>(Model.of("id"), "id"));
+        columns.add(new PropertyColumn<DemoType, String>(Model.of("name"), "name"));
+    }
+
     @Test
     public void canStartComponentInPage() {
         startComponentWithRowsPerPage(10);
@@ -41,9 +47,6 @@ public class BootstrapDefaultDataTableTest extends WicketApplicationTest {
     }
 
     private void startComponentWithRowsPerPage(int rowsPerPage) {
-        columns.add(new PropertyColumn<DemoType, String>(Model.of("id"), "id"));
-        columns.add(new PropertyColumn<DemoType, String>(Model.of("name"), "name"));
-
         table = new BootstrapDefaultDataTable<>("table", columns, provider, rowsPerPage);
         tester().startComponentInPage(table, Markup.of(MARKUP));
     }
@@ -148,6 +151,45 @@ public class BootstrapDefaultDataTableTest extends WicketApplicationTest {
         tester().assertComponent(np + ":prevItem", TransparentWebMarkupContainer.class);
         tester().assertComponent(np + ":nextItem", TransparentWebMarkupContainer.class);
         tester().assertComponent(np + ":lastItem", TransparentWebMarkupContainer.class);
+    }
+
+    @Test
+    public void basic() {
+        table = new BootstrapDefaultDataTable<>("table", columns, provider, 10);
+        tester().startComponentInPage(table, Markup.of(MARKUP));
+        assertEquals("dataview table", tester().getTagByWicketId("table").getAttribute("class"));
+    }
+
+    @Test
+    public void striped() {
+        table = new BootstrapDefaultDataTable<>("table", columns, provider, 10);
+        table.striped();
+        tester().startComponentInPage(table, Markup.of(MARKUP));
+        assertTrue(tester().getTagByWicketId("table").getAttribute("class").contains("table-striped"));
+    }
+
+    @Test
+    public void bordered() {
+        table = new BootstrapDefaultDataTable<>("table", columns, provider, 10);
+        table.bordered();
+        tester().startComponentInPage(table, Markup.of(MARKUP));
+        assertTrue(tester().getTagByWicketId("table").getAttribute("class").contains("table-bordered"));
+    }
+
+    @Test
+    public void condensed() {
+        table = new BootstrapDefaultDataTable<>("table", columns, provider, 10);
+        table.condensed();
+        tester().startComponentInPage(table, Markup.of(MARKUP));
+        assertTrue(tester().getTagByWicketId("table").getAttribute("class").contains("table-condensed"));
+    }
+
+    @Test
+    public void hover() {
+        table = new BootstrapDefaultDataTable<>("table", columns, provider, 10);
+        table.hover();
+        tester().startComponentInPage(table, Markup.of(MARKUP));
+        assertTrue(tester().getTagByWicketId("table").getAttribute("class").contains("table-hover"));
     }
 
 }
