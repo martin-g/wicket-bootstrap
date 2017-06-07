@@ -36,6 +36,7 @@ class FeedbackMessageBehaviorVisitor implements IVisitor<FormComponent<?>, Void>
      * @param attribute       name of tag attribute
      */
     static void add(MarkupContainer parentComponent, String attribute) {
+        parentComponent.internalInitialize();
         parentComponent.visitChildren(FormComponent.class, new FeedbackMessageBehaviorVisitor(attribute));
     }
 }
