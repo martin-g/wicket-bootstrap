@@ -38,9 +38,11 @@ class FeedbackMessageBehavior extends Behavior {
         if (messages != null && messages.size() > 0) {
             StringBuilder sb = new StringBuilder();
             for (FeedbackMessage message : messages.messages(ErrorLevelFeedbackMessageFilter.ALL)) {
-                String msg = message.getMessage().toString();
-                if (!isNullOrEmpty(msg)) {
-                    sb.append(msg);
+                if (!message.isRendered()) {
+                    String msg = message.getMessage().toString();
+                    if (!isNullOrEmpty(msg)) {
+                        sb.append(msg);
+                    }
                 }
             }
             String messageString = sb.toString();
