@@ -2,7 +2,6 @@ package de.agilecoders.wicket.extensions.slider;
 
 import de.agilecoders.wicket.extensions.slider.res.BootstrapSliderCssResourceReference;
 import de.agilecoders.wicket.extensions.slider.res.BootstrapSliderResourceReference;
-import de.agilecoders.wicket.extensions.slider.util.*;
 import org.apache.wicket.WicketRuntimeException;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.head.CssHeaderItem;
@@ -11,24 +10,21 @@ import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.IModel;
-import org.apache.wicket.util.convert.ConversionException;
 import org.apache.wicket.util.convert.IConverter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.Locale;
-
 /**
  * BootstrapSlider: a Wicket wrapper for: https://github.com/seiyria/bootstrap-slider
- * 
+ *
  * @author Ernesto Reinaldo Barreiro (reiern70@gmail.com)
  */
 public class BootstrapSlider<T extends ISliderValue, N extends Number> extends TextField<T> {
-    
+
     private static Logger logger = LoggerFactory.getLogger(BootstrapSlider.class);
-    
+
     public enum TooltipType {
-        show, hide, always    
+        show, hide, always
     }
 
     public enum HandleType {
@@ -38,65 +34,14 @@ public class BootstrapSlider<T extends ISliderValue, N extends Number> extends T
     public enum Orientation {
         horizontal, vertical
     }
-    
+
     public enum Scale {
         logarithmic,
         linear
     }
-    
-    private static class BootstrapDoubleSliderConverter implements IConverter<ISliderValue>
-    {
-        @Override
-        public ISliderValue convertToObject(String value, Locale locale) throws ConversionException {
-            if(value.contains("[")) {
-                return new DoubleRangeValue().fromString(value);
-            } else {
-                return new DoubleValue().fromString(value);
-            }
-        }
 
-        @Override
-        public String convertToString(ISliderValue value, Locale locale) {
-            return value.toString();
-        }
-    }
+    private final IConverter<ISliderValue> converter;
 
-    private static class BootstrapLongSliderConverter implements IConverter<ISliderValue>
-    {
-        @Override
-        public ISliderValue convertToObject(String value, Locale locale) throws ConversionException {
-            if(value.contains("[")) {
-                return new LongRangeValue().fromString(value);
-            } else {
-                return new LongValue().fromString(value);
-            }
-        }
-
-        @Override
-        public String convertToString(ISliderValue value, Locale locale) {
-            return value.toString();
-        }
-    }
-
-    private static class BootstrapIntegerSliderConverter implements IConverter<ISliderValue>
-    {
-        @Override
-        public ISliderValue convertToObject(String value, Locale locale) throws ConversionException {
-            if(value.contains("[")) {
-                return new IntegerRangeValue().fromString(value);
-            } else {
-                return new IntegerValue().fromString(value);
-            }
-        }
-
-        @Override
-        public String convertToString(ISliderValue value, Locale locale) {
-            return value.toString();
-        }
-    }
-    
-    private  IConverter<ISliderValue> converter;
-    
     private N min;
     private N max;
     private N step;
@@ -117,9 +62,9 @@ public class BootstrapSlider<T extends ISliderValue, N extends Number> extends T
      * The number of digits shown after the decimal. Defaults to the number of digits after the decimal of step value.
      */
     private Integer precision;
-    
+
     private Scale scale;
-    
+
     public BootstrapSlider(final String id, final IModel<T> model, final Class<T> typeClass)
     {
         super(id, model, typeClass);
@@ -132,22 +77,27 @@ public class BootstrapSlider<T extends ISliderValue, N extends Number> extends T
             } else {
                 converter = new BootstrapLongSliderConverter();
             }
-        } catch (InstantiationException e) {
-            throw new WicketRuntimeException(e);
-        } catch (IllegalAccessException e) {
+        } catch (InstantiationException | IllegalAccessException e) {
             throw new WicketRuntimeException(e);
         }
     }
-    
+
     protected T newInstance() {
         try {
             return getType().newInstance();
-        } catch (InstantiationException e) {
-            logger.error("newInstance", e);
-        } catch (IllegalAccessException e) {
-            logger.error("newInstance", e);
+        } catch (InstantiationException | IllegalAccessException e) {
+            logger.error("An error occurred while instantiating ISliderValue", e);
         }
         return null;
+    }
+
+    @Override
+    public String getInput() {
+        String input = super.getInput();
+        if (input != null && input.indexOf(',') > 0) {
+            return "[" + input + "]";
+        }
+        return input;
     }
 
     @Override
@@ -185,7 +135,6 @@ public class BootstrapSlider<T extends ISliderValue, N extends Number> extends T
         if(orientation != null) {
             tag.put("data-slider-orientation", orientation.name());
         }
-        tag.put("id", getMarkupId());
     }
 
     @Override
@@ -215,15 +164,11 @@ public class BootstrapSlider<T extends ISliderValue, N extends Number> extends T
         builder.append(";");
         response.render(OnDomReadyHeaderItem.forScript(builder));
     }
-    
+
     protected void configExtraParams(final StringBuilder builder) {
-        
-        
     }
 
     protected void configEvents(StringBuilder builder) {
-
-
     }
 
     public N getMin() {

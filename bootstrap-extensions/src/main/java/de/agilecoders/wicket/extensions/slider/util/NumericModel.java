@@ -7,8 +7,8 @@ import org.apache.wicket.model.IModel;
  */
 public class NumericModel<T extends Number> implements IModel<INumericValue<T>> {
 
-    private IModel<T> model;
-    
+    private final IModel<T> model;
+
     public NumericModel(IModel<T> model) {
         this.model = model;
     }
@@ -23,14 +23,14 @@ public class NumericModel<T extends Number> implements IModel<INumericValue<T>> 
     @Override
     public void setObject(INumericValue<T> object) {
         model.setObject(object.getValue());
-        
+
     }
 
     @Override
     public void detach() {
         model.detach();
     }
-    
+
     public static INumericValue<?> getValue(Class<?> typeClass) {
         if(Double.class.isAssignableFrom(typeClass)) {
             return new DoubleValue();
