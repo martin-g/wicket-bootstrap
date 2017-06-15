@@ -10,7 +10,6 @@ import org.apache.wicket.request.handler.resource.ResourceReferenceRequestHandle
 import org.apache.wicket.request.mapper.parameter.PageParametersEncoder;
 import org.apache.wicket.request.resource.caching.IResourceCachingStrategy;
 import org.apache.wicket.request.resource.caching.IStaticCacheableResource;
-import org.apache.wicket.util.IProvider;
 import org.apache.wicket.util.string.Strings;
 
 import java.util.function.Supplier;

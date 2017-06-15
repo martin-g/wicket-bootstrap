@@ -47,7 +47,7 @@ public class SummernoteEditorJavaScriptReference extends WebjarsJavaScriptResour
         if (Application.exists()) {
             jQueryResourceReference = Application.get().getJavaScriptLibrarySettings().getJQueryReference();
         } else {
-            jQueryResourceReference = DynamicJQueryResourceReference.get();
+            jQueryResourceReference = DynamicJQueryResourceReference.getV2();
         }
         dependencies.add(JavaScriptHeaderItem.forReference(jQueryResourceReference));
         return dependencies;
