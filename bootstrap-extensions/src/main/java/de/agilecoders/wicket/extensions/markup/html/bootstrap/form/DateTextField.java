@@ -139,7 +139,7 @@ public class DateTextField extends org.apache.wicket.extensions.markup.html.form
 
     private final Map<Event, AbstractEventHandler> eventMap = new HashMap<Event, AbstractEventHandler>();
 
-    private final DateTextFieldConfig config;
+    private DateTextFieldConfig config;
 
     /**
      * Construct.
@@ -191,7 +191,7 @@ public class DateTextField extends org.apache.wicket.extensions.markup.html.form
     public DateTextField(final String markupId, final IModel<Date> model, final DateTextFieldConfig config) {
         super(markupId, model, config.getFormat());
 
-        this.config = config;
+        this.config = Args.notNull(config, "config");
     }
 
     /**
@@ -203,7 +203,7 @@ public class DateTextField extends org.apache.wicket.extensions.markup.html.form
     public DateTextField(final String markupId, final DateTextFieldConfig config) {
         super(markupId, config.getFormat());
 
-        this.config = config;
+        this.config = Args.notNull(config, "config");
     }
 
     @Override
@@ -258,10 +258,20 @@ public class DateTextField extends org.apache.wicket.extensions.markup.html.form
     /**
      * @return the config
      */
-    protected final DateTextFieldConfig getConfig() {
+    public final DateTextFieldConfig getConfig() {
         return config;
     }
 
+    /**
+     * @param config config to use
+     * @return current instance
+     */
+    public DateTextField with(DateTextFieldConfig config) {
+        if (config != null) {
+            this.config = config;
+        }
+        return this;
+    }
 
     /**
      *  Allows to register/add an event handler.

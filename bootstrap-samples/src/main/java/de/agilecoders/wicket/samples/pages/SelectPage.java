@@ -99,7 +99,7 @@ public class SelectPage extends BasePage {
     }
 
     private BootstrapMultiSelect<String> newMultiSelect(String wicketId, BootstrapSelectConfig config) {
-        return new BootstrapMultiSelect<String>(wicketId, StateSelect.DATA).with(config);
+        return new BootstrapMultiSelect<>(wicketId, StateSelect.DATA).with(config);
     }
 
     private Fragment fragment(String wicketId, boolean i18n) {
