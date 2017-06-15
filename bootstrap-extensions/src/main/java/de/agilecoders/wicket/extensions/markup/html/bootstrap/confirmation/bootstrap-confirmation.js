@@ -1,37 +1,110 @@
 /*!
  * Bootstrap Confirmation
  * Copyright 2013 Nimit Suwannagate <ethaizone@hotmail.com>
- * Copyright 2014-2016 Damien "Mistic" Sorel <http://www.strangeplanet.fr>
- * Licensed under the Apache License, Version 2.0 (the "License")
+ * Copyright 2014-2017 Damien "Mistic" Sorel <contact@git.strangeplanet.fr>
+ * Licensed under the Apache License, Version 2.0
  */
 
-(function ($) {
+(function($) {
   'use strict';
 
+  var activeConfirmation;
+
   // Confirmation extends popover.js
-  if (!$.fn.popover) throw new Error('Confirmation requires popover.js');
+  if (!$.fn.popover) {
+    throw new Error('Confirmation requires popover.js');
+  }
 
   // CONFIRMATION PUBLIC CLASS DEFINITION
   // ===============================
-  var Confirmation = function (element, options) {
+  var Confirmation = function(element, options) {
     options.trigger = 'click';
 
-    this.init('confirmation', element, options);
+    this.init(element, options);
+  };
+
+  Confirmation.VERSION = '2.4.0';
+
+  /**
+   * Map between keyboard events "keyCode|which" and "key"
+   */
+  Confirmation.KEYMAP = {
+    13: 'Enter',
+    27: 'Escape',
+    39: 'ArrowRight',
+    40: 'ArrowDown'
+  };
+
+  Confirmation.DEFAULTS = $.extend({}, $.fn.popover.Constructor.DEFAULTS, {
+    placement: 'top',
+    title: 'Are you sure?',
+    popout: false,
+    singleton: false,
+    copyAttributes: 'href target',
+    buttons: null,
+    onConfirm: $.noop,
+    onCancel: $.noop,
+    btnOkClass: 'btn-xs btn-primary',
+    btnOkIcon: 'glyphicon glyphicon-ok',
+    btnOkLabel: 'Yes',
+    btnCancelClass: 'btn-xs btn-default',
+    btnCancelIcon: 'glyphicon glyphicon-remove',
+    btnCancelLabel: 'No',
+    // @formatter:off
+    // href="#" allows the buttons to be focused
+    template: '<div class="popover confirmation">' +
+      '<div class="arrow"></div>' +
+      '<h3 class="popover-title"></h3>' +
+      '<div class="popover-content">' +
+        '<p class="confirmation-content"></p>' +
+        '<div class="confirmation-buttons text-center">' +
+          '<div class="btn-group">' +
+            '<a href="#" class="btn" data-apply="confirmation"></a>' +
+            '<a href="#" class="btn" data-dismiss="confirmation"></a>' +
+          '</div>' +
+        '</div>' +
+      '</div>' +
+    '</div>'
+    // @formatter:on
+  });
+
+  Confirmation.prototype = $.extend({}, $.fn.popover.Constructor.prototype);
+  Confirmation.prototype.constructor = Confirmation;
+
+  /**
+   * Expose defaults
+   * @returns {object}
+   */
+  Confirmation.prototype.getDefaults = function() {
+    return Confirmation.DEFAULTS;
+  };
+
+  /**
+   * Init the component
+   * @param element {jQuery}
+   * @param options {object}
+   */
+  Confirmation.prototype.init = function(element, options) {
+    $.fn.popover.Constructor.prototype.init.call(this, 'confirmation', element, options);
+
+    if ((this.options.popout || this.options.singleton) && !options.rootSelector) {
+      throw new Error('The rootSelector option is required to use popout and singleton features since jQuery 3.');
+    }
 
     // keep trace of selectors
     this.options._isDelegate = false;
     if (options.selector) { // container of buttons
-      this.options._selector = this._options._selector = options._root_selector +' '+ options.selector;
+      this.options._selector = this._options._selector = options.rootSelector + ' ' + options.selector;
     }
     else if (options._selector) { // children of container
       this.options._selector = options._selector;
       this.options._isDelegate = true;
     }
     else { // standalone
-      this.options._selector = options._root_selector;
+      this.options._selector = options.rootSelector;
     }
 
-    var that = this;
+    var self = this;
 
     if (!this.options.selector) {
       // store copied attributes
@@ -50,7 +123,7 @@
       }, this);
 
       // cancel original event
-      this.$element.on(that.options.trigger, function(e, ack) {
+      this.$element.on(this.options.trigger, function(e, ack) {
         if (!ack) {
           e.preventDefault();
           e.stopPropagation();
@@ -60,11 +133,21 @@
 
       // manage singleton
       this.$element.on('show.bs.confirmation', function(e) {
-        if (that.options.singleton) {
+        if (self.options.singleton) {
           // close all other popover already initialized
-          $(that.options._selector).not($(this)).filter(function() {
+          $(self.options._selector).not($(this)).filter(function() {
             return $(this).data('bs.confirmation') !== undefined;
           }).confirmation('hide');
+        }
+      });
+    }
+    else {
+      // cancel original event
+      this.$element.on(this.options.trigger, this.options.selector, function(e, ack) {
+        if (!ack) {
+          e.preventDefault();
+          e.stopPropagation();
+          e.stopImmediatePropagation();
         }
       });
     }
@@ -75,100 +158,131 @@
       this.uid = this.$element[0].id || this.getUID('group_');
 
       this.$element.on('shown.bs.confirmation', function(e) {
-        if (that.options.popout && !that.eventBody) {
-          var $this = $(this);
-          that.eventBody = $('body').on('click.bs.confirmation.'+that.uid, function(e) {
-            if ($(that.options._selector).is(e.target)) {
+        if (self.options.popout && !self.eventBody) {
+          self.eventBody = $('body').on('click.bs.confirmation.' + self.uid, function(e) {
+            if ($(self.options._selector).is(e.target)) {
               return;
             }
 
             // close all popover already initialized
-            $(that.options._selector).filter(function() {
+            $(self.options._selector).filter(function() {
               return $(this).data('bs.confirmation') !== undefined;
             }).confirmation('hide');
 
-            $('body').off('click.bs.'+that.uid);
-            that.eventBody = false;
+            $('body').off('click.bs.' + self.uid);
+            self.eventBody = false;
           });
         }
       });
     }
   };
 
-  Confirmation.DEFAULTS = $.extend({}, $.fn.popover.Constructor.DEFAULTS, {
-    placement: 'top',
-    title: 'Are you sure?',
-    html: true,
-    popout: false,
-    singleton: false,
-    copyAttributes: 'href target',
-    onConfirm: $.noop,
-    onCancel: $.noop,
-    btnOkClass: 'btn-xs btn-primary',
-    btnOkIcon: 'glyphicon glyphicon-ok',
-    btnOkLabel: 'Yes',
-    btnCancelClass: 'btn-xs btn-default',
-    btnCancelIcon: 'glyphicon glyphicon-remove',
-    btnCancelLabel: 'No',
-    template:
-      '<div class="popover confirmation">' +
-        '<div class="arrow"></div>' +
-        '<h3 class="popover-title"></h3>' +
-        '<div class="popover-content text-center">'+
-          '<div class="btn-group">'+
-            '<a class="btn" data-apply="confirmation"></a>'+
-            '<a class="btn" data-dismiss="confirmation"></a>'+
-          '</div>'+
-        '</div>'+
-      '</div>'
-  });
-
-  Confirmation.prototype = $.extend({}, $.fn.popover.Constructor.prototype);
-
-  Confirmation.prototype.constructor = Confirmation;
-
-  Confirmation.prototype.getDefaults = function () {
-    return Confirmation.DEFAULTS;
+  /**
+   * Overrides, always show
+   * @returns {boolean}
+   */
+  Confirmation.prototype.hasContent = function() {
+    return true;
   };
 
-  Confirmation.prototype.setContent = function () {
-    var that = this,
-        $tip = this.tip(),
-        o = this.options;
+  /**
+   * Sets the popover content
+   */
+  Confirmation.prototype.setContent = function() {
+    var self = this;
+    var $tip = this.tip();
+    var title = this.getTitle();
+    var content = this.getContent();
 
-    $tip.find('.popover-title')[o.html ? 'html' : 'text'](this.getTitle());
+    $tip.find('.popover-title')[this.options.html ? 'html' : 'text'](title);
 
-    $tip.on('click', function (e) {
-      e.preventDefault();
+    $tip.find('.confirmation-content').toggle(!!content).children().detach().end()[
+      // we use append for html objects to maintain js events
+      this.options.html ? (typeof content == 'string' ? 'html' : 'append') : 'text'
+      ](content);
+
+    $tip.on('click', function(e) {
       e.stopPropagation();
     });
 
-    // configure 'ok' button
-    $tip.find('[data-apply="confirmation"]')
-      .addClass(o.btnOkClass)
-      .html(o.btnOkLabel)
-      .attr(this.options._attributes)
-      .prepend($('<i></i>').addClass(o.btnOkIcon), ' ')
-      .off('click')
-      .one('click', function(e) {
-        that.getOnConfirm.call(that).call(that.$element);
-        that.$element.trigger('confirmed.bs.confirmation');
-        that.$element.trigger(that.options.trigger, [true]);
-        that.$element.confirmation('hide');
-      });
+    if (this.options.buttons) {
+      // configure custom buttons
+      var $group = $tip.find('.confirmation-buttons .btn-group').empty();
 
-    // configure 'cancel' button
-    $tip.find('[data-dismiss="confirmation"]')
-      .addClass(o.btnCancelClass)
-      .html(o.btnCancelLabel)
-      .prepend($('<i></i>').addClass(o.btnCancelIcon), ' ')
-      .off('click')
-      .one('click', function(e) {
-        that.getOnCancel.call(that).call(that.$element);
-        if (that.inState) that.inState.click = false; // Bootstrap 3.3.5
-        that.$element.trigger('canceled.bs.confirmation');
-        that.$element.confirmation('hide');
-      });
+      this.options.buttons.forEach(function(button) {
+        $group.append(
+          $('<a href="#"></a>')
+            .addClass(button.class || 'btn btn-xs btn-default')
+            .html(button.label || '')
+            .attr(button.attr || {})
+            .prepend($('<i></i>').addClass(button.icon), ' ')
+            .one('click', function(e) {
+              if ($(this).attr('href') === '#') {
+                e.preventDefault();
+              }
+
+              if (button.onClick) {
+                button.onClick.call(self.$element);
+              }
+
+              if (button.cancel) {
+                self.getOnCancel().call(self.$element, button.value);
+                self.$element.trigger('canceled.bs.confirmation', [button.value]);
+              }
+              else {
+                self.getOnConfirm().call(self.$element, button.value);
+                self.$element.trigger('confirmed.bs.confirmation', [button.value]);
+              }
+
+              if (self.inState) { // Bootstrap 3.3.5
+                self.inState.click = false;
+              }
+
+              self.hide();
+            })
+        );
+      }, this);
+    }
+    else {
+      // configure 'ok' button
+      $tip.find('[data-apply="confirmation"]')
+        .addClass(this.options.btnOkClass)
+        .html(this.options.btnOkLabel)
+        .attr(this.options._attributes)
+        .prepend($('<i></i>').addClass(this.options.btnOkIcon), ' ')
+        .off('click')
+        .one('click', function(e) {
+          if ($(this).attr('href') === '#') {
+            e.preventDefault();
+          }
+
+          self.getOnConfirm().call(self.$element);
+          self.$element.trigger('confirmed.bs.confirmation');
+
+          self.$element.trigger(self.options.trigger, [true]);
+
+          self.hide();
+        });
+
+      // configure 'cancel' button
+      $tip.find('[data-dismiss="confirmation"]')
+        .addClass(this.options.btnCancelClass)
+        .html(this.options.btnCancelLabel)
+        .prepend($('<i></i>').addClass(this.options.btnCancelIcon), ' ')
+        .off('click')
+        .one('click', function(e) {
+          e.preventDefault();
+
+          self.getOnCancel().call(self.$element);
+          self.$element.trigger('canceled.bs.confirmation');
+
+          if (self.inState) { // Bootstrap 3.3.5
+            self.inState.click = false;
+          }
+
+          self.hide();
+        });
+    }
 
     $tip.removeClass('fade top bottom left right in');
 
@@ -177,8 +291,87 @@
     if (!$tip.find('.popover-title').html()) {
       $tip.find('.popover-title').hide();
     }
+
+    // bind key navigation
+    activeConfirmation = this;
+    $(window)
+      .off('keyup.bs.confirmation')
+      .on('keyup.bs.confirmation', this._onKeyup.bind(this));
   };
 
+  /**
+   * Remove key binding on destroy
+   */
+  Confirmation.prototype.destroy = function() {
+    if (activeConfirmation === this) {
+      activeConfirmation = undefined;
+      $(window).off('keyup.bs.confirmation');
+    }
+    $.fn.popover.Constructor.prototype.destroy.call(this);
+  };
+
+  /**
+   * Remove key binding on hide
+   */
+  Confirmation.prototype.hide = function() {
+    if (activeConfirmation === this) {
+      activeConfirmation = undefined;
+      $(window).off('keyup.bs.confirmation');
+    }
+    $.fn.popover.Constructor.prototype.hide.call(this);
+  };
+
+  /**
+   * Navigate through buttons with keyboard
+   * @param event
+   * @private
+   */
+  Confirmation.prototype._onKeyup = function(event) {
+    if (!this.$tip) {
+      activeConfirmation = undefined;
+      $(window).off('keyup.bs.confirmation');
+      return;
+    }
+
+    var key = event.key || Confirmation.KEYMAP[event.keyCode || event.which];
+
+    var $group = this.$tip.find('.confirmation-buttons .btn-group');
+    var $active = $group.find('.active');
+    var $next;
+
+    switch (key) {
+      case 'Escape':
+        this.hide();
+        break;
+
+      case 'ArrowRight':
+        if ($active.length && $active.next().length) {
+          $next = $active.next();
+        }
+        else {
+          $next = $group.children().first();
+        }
+        $active.removeClass('active');
+        $next.addClass('active').focus();
+        break;
+
+      case 'ArrowLeft':
+        if ($active.length && $active.prev().length) {
+          $next = $active.prev();
+        }
+        else {
+          $next = $group.children().last();
+        }
+        $active.removeClass('active');
+        $next.addClass('active').focus();
+        break;
+    }
+  };
+
+  /**
+   * Gets the on-confirm callback
+   * @returns {function}
+   */
   Confirmation.prototype.getOnConfirm = function() {
     if (this.$element.attr('data-on-confirm')) {
       return getFunctionFromString(this.$element.attr('data-on-confirm'));
@@ -188,6 +381,10 @@
     }
   };
 
+  /**
+   * Gets the on-cancel callback
+   * @returns {function}
+   */
   Confirmation.prototype.getOnCancel = function() {
     if (this.$element.attr('data-on-cancel')) {
       return getFunctionFromString(this.$element.attr('data-on-cancel'));
@@ -197,17 +394,17 @@
     }
   };
 
-  /*
+  /**
    * Generates an anonymous function from a function name
    * function name may contain dots (.) to navigate through objects
    * root context is window
    */
   function getFunctionFromString(functionName) {
-    var context = window,
-        namespaces = functionName.split('.'),
-        func = namespaces.pop();
+    var context = window;
+    var namespaces = functionName.split('.');
+    var func = namespaces.pop();
 
-    for (var i=0, l=namespaces.length; i<l; i++) {
+    for (var i = 0, l = namespaces.length; i < l; i++) {
       context = context[namespaces[i]];
     }
 
@@ -222,13 +419,13 @@
 
   var old = $.fn.confirmation;
 
-  $.fn.confirmation = function (option) {
+  $.fn.confirmation = function(option) {
     var options = (typeof option == 'object' && option) || {};
-    options._root_selector = this.selector;
+    options.rootSelector = this.selector || options.rootSelector; // this.selector removed in jQuery > 3
 
-    return this.each(function () {
-      var $this = $(this),
-          data  = $this.data('bs.confirmation');
+    return this.each(function() {
+      var $this = $(this);
+      var data = $this.data('bs.confirmation');
 
       if (!data && option == 'destroy') {
         return;
@@ -238,7 +435,7 @@
       }
       if (typeof option == 'string') {
         data[option]();
-        
+
         if (option == 'hide' && data.inState) { //data.inState doesn't exist in Bootstrap < 3.3.5
           data.inState.click = false;
         }
@@ -252,7 +449,7 @@
   // CONFIRMATION NO CONFLICT
   // ===================
 
-  $.fn.confirmation.noConflict = function () {
+  $.fn.confirmation.noConflict = function() {
     $.fn.confirmation = old;
     return this;
   };
