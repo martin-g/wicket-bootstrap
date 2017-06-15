@@ -15,39 +15,41 @@ import java.util.Map;
 public class AjaxBootstrapSlider<T extends ISliderValue, N extends Number> extends BootstrapSlider<T,N> {
 
     private AbstractDefaultAjaxBehavior behavior;
-    
+
     public enum SliderEvent {
-        slide,	//This event fires when the slider is dragged        
+        slide,	//This event fires when the slider is dragged
         slideStart,	//This event fires when dragging starts	The new slider value
         slideStop,	//This event fires when the dragging stops or has been clicked on	The new slider value
-        change 
+        change
     }
-    
+
     public interface EventHandler<T extends ISliderValue> extends Serializable {
-        
-        public void onAjaxEvent(AjaxRequestTarget target, T newValue);
+
+        void onAjaxEvent(AjaxRequestTarget target, T newValue);
     }
-    
-    private final Map<SliderEvent, EventHandler> handlers = new HashMap<SliderEvent, EventHandler>();
-    
+
+    private final Map<SliderEvent, EventHandler> handlers = new HashMap<>();
+
     public AjaxBootstrapSlider(String id, IModel<T> model, Class<T> typeClass) {
         super(id, model, typeClass);
 
         behavior = new AbstractDefaultAjaxBehavior() {
             @Override
             protected void respond(AjaxRequestTarget target) {
-                SliderEvent event = SliderEvent.valueOf(RequestCycle.get().getRequest().getRequestParameters().getParameterValue("event").toString());
+                final String _event = RequestCycle.get().getRequest().getRequestParameters().getParameterValue("event").toString();
+                SliderEvent event = SliderEvent.valueOf(_event);
                 AjaxBootstrapSlider.EventHandler<T> handler = handlers.get(event);
-                T value = (T)newInstance().fromString(RequestCycle.get().getRequest().getRequestParameters().getParameterValue("value").toString());
+                final String _value = RequestCycle.get().getRequest().getRequestParameters().getParameterValue("value").toString();
+                T value = (T)newInstance().fromString(_value);
                 getModel().setObject(value);
-                if(handler != null) {
+                if (handler != null) {
                     handler.onAjaxEvent(target, value);
                 }
             }
-        };        
+        };
         add(behavior);
     }
-    
+
     public AjaxBootstrapSlider addHandler(SliderEvent event, EventHandler<T> handler) {
         handlers.put(event, handler);
         return this;

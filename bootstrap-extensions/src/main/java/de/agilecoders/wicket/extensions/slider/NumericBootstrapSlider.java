@@ -11,8 +11,8 @@ public class NumericBootstrapSlider<T extends Number> extends BootstrapSlider<IN
     public NumericBootstrapSlider(String id, IModel<T> model) {
         super(id, new NumericModel(model), (Class<INumericValue>)getSliderClass(model.getObject().getClass()));
     }
-    
-    private static  Class<? extends INumericValue> getSliderClass(Class<?> typeClass) {
+
+    static  Class<? extends INumericValue> getSliderClass(Class<?> typeClass) {
         if(Double.class.isAssignableFrom(typeClass)) {
             return DoubleValue.class;
         } else if(Integer.class.isAssignableFrom(typeClass)) {
@@ -20,6 +20,6 @@ public class NumericBootstrapSlider<T extends Number> extends BootstrapSlider<IN
         } else {
             return LongValue.class;
         }
-        
+
     }
 }
