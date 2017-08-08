@@ -31,7 +31,7 @@ public enum BootswatchTheme implements ITheme {
      * - the theme name
      * Example: //netdna.bootstrapcdn.com/bootswatch/3.1.1/cosmo/bootstrap.min.css
      */
-    private static final String CDN_PATTERN = "//netdna.bootstrapcdn.com/bootswatch/%s/%s/bootstrap.min.css";
+    private static final String CDN_PATTERN = "//maxcdn.bootstrapcdn.com/bootswatch/%s/%s/bootstrap.min.css";
 
     private String cdnUrl;
     private final ResourceReference reference;
