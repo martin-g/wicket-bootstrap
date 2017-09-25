@@ -25,7 +25,7 @@ Themes
 * Bootswatch (3.3.7): http://bootswatch.com/
 * Material Design by FezVrasta (0.3.0): https://github.com/FezVrasta/bootstrap-material-design
 * todc-bootstrap, google styled theme (3.3.7): https://todc.github.io/todc-bootstrap
-* metro-bootstrap (3.3.7): https://github.com/TalksLab/metro-bootstrap
+* metro-bootstrap (3.3.7): https://github.com/idleberg/metro-bootstrap
 * Vegibit (3.1.1): http://vegibit.com/vegithemes-twitter-bootstrap-themes/
 
 
