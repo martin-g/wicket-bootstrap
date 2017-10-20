@@ -1,8 +1,12 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.image;
 
+import org.apache.wicket.markup.ComponentTag;
+import org.apache.wicket.markup.MarkupStream;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
+
+import de.agilecoders.wicket.core.util.Components;
 
 /**
  * An Icon component displays a non localizable image resource.
@@ -11,7 +15,9 @@ import org.apache.wicket.model.Model;
  * @version 1.0
  */
 public class Icon extends WebMarkupContainer {
-
+    /** serialVersionUID. */
+    private static final long serialVersionUID = 1L;
+    /** Icon behavior. */
     private final IconBehavior iconBehavior;
 
     /**
@@ -24,14 +30,25 @@ public class Icon extends WebMarkupContainer {
         add(iconBehavior = new IconBehavior(type));
     }
 
-    public Icon(final IModel<IconType> type) {
-        this("icon", type);
+    /**
+     * @param typeModel the model containing the icon type
+     */
+    public Icon(final IModel<IconType> typeModel) {
+        this("icon", typeModel);
     }
 
+    /**
+     * @param id the component id
+     * @param type the icon type
+     */
     public Icon(final String id, final IconType type) {
         this(id, Model.of(type));
     }
 
+    /**
+     * 
+     * @param type the icon type
+     */
     public Icon(final IconType type) {
         this("icon", Model.of(type));
     }
@@ -66,7 +83,20 @@ public class Icon extends WebMarkupContainer {
      * @return current icon type
      */
     public IconType type() {
-        return iconBehavior.type();
+        return getType();
     }
 
+    @Override
+    public void onComponentTagBody(MarkupStream markupStream, ComponentTag openTag) {
+        super.onComponentTagBody(markupStream, openTag);
+        if(hasIconType() && getType().getTagBody() != null) {
+            replaceComponentTagBody(markupStream, openTag, getType().getTagBody());
+        }
+    }
+
+    @Override
+    protected void onComponentTag(ComponentTag tag) {
+        super.onComponentTag(tag);
+        Components.assertTag(this, tag, "i", "span");
+    }
 }
