@@ -18,6 +18,7 @@ import org.apache.wicket.model.Model;
  * <p>
  * You can use a link like:
  * <p/>
+ * 
  * <pre>
  * add(new BootstrapLink(&quot;myLink&quot;)
  * {
@@ -30,6 +31,7 @@ import org.apache.wicket.model.Model;
  * <p/>
  * and in your HTML file:
  * <p/>
+ * 
  * <pre>
  *  &lt;a href=&quot;#&quot; wicket:id=&quot;myLink&quot;&gt;click here&lt;/a&gt;
  * </pre>
@@ -38,6 +40,7 @@ import org.apache.wicket.model.Model;
  * The following snippet shows how to pass a parameter from the Page creating the Page to the Page
  * responded by the Link.
  * <p/>
+ * 
  * <pre>
  * add(new BootstrapLink&lt;MyObject&gt;(&quot;link&quot;, listItem.getModel(), Type.Primary )
  * {
@@ -56,11 +59,13 @@ public abstract class BootstrapLink<T> extends Link<T> implements IBootstrapButt
     private final Component label;
     private final Component splitter;
     private final ButtonBehavior buttonBehavior;
+    /** To use the splitter or not (true by default). */
+    private boolean useSplitter = true;
 
     /**
      * Construct.
      *
-     * @param id    the components id
+     * @param id the components id
      * @param model mandatory parameter
      */
     public BootstrapLink(final String id, final IModel<T> model) {
@@ -70,7 +75,7 @@ public abstract class BootstrapLink<T> extends Link<T> implements IBootstrapButt
     /**
      * Construct.
      *
-     * @param id   the components id
+     * @param id the components id
      * @param type the type of the button
      */
     public BootstrapLink(final String id, final Buttons.Type type) {
@@ -80,9 +85,9 @@ public abstract class BootstrapLink<T> extends Link<T> implements IBootstrapButt
     /**
      * Construct.
      *
-     * @param id    The component id
+     * @param id The component id
      * @param model mandatory parameter
-     * @param type  the type of the button
+     * @param type the type of the button
      */
     public BootstrapLink(final String id, final IModel<T> model, final Buttons.Type type) {
         super(id, model);
@@ -111,21 +116,18 @@ public abstract class BootstrapLink<T> extends Link<T> implements IBootstrapButt
      * @return new label component
      */
     protected Component newLabel(final String markupId) {
-        return new Label(markupId, new Model<>(""))
-                .setRenderBodyOnly(true);
+        return new Label(markupId, new Model<>("")).setRenderBodyOnly(true);
     }
 
     /**
      * creates a new splitter component. The splitter is visible only
-     * if icon is visible.
+     * if icon is visible and useSplitter is true.
      *
      * @param markupId the component id of the splitter
      * @return new splitter component
      */
     protected Component newSplitter(final String markupId) {
-        return new WebMarkupContainer(markupId)
-                .setRenderBodyOnly(true)
-                .setEscapeModelStrings(false);
+        return new WebMarkupContainer(markupId).setRenderBodyOnly(true).setEscapeModelStrings(false).setVisible(false);
     }
 
     /**
@@ -140,7 +142,9 @@ public abstract class BootstrapLink<T> extends Link<T> implements IBootstrapButt
     protected void onConfigure() {
         super.onConfigure();
 
-        splitter.setVisible(icon.hasIconType() && StringUtils.isNotEmpty(label.getDefaultModelObjectAsString()));
+        if (useSplitter) {
+            splitter.setVisible(icon.hasIconType() && StringUtils.isNotEmpty(label.getDefaultModelObjectAsString()));
+        }
     }
 
     /**
@@ -186,7 +190,7 @@ public abstract class BootstrapLink<T> extends Link<T> implements IBootstrapButt
         this.buttonBehavior.setType(type);
         return this;
     }
-    
+
     /**
      * Sets whether this button should display inline or block
      *
@@ -194,7 +198,16 @@ public abstract class BootstrapLink<T> extends Link<T> implements IBootstrapButt
      * @return this instance for chaining
      */
     public BootstrapLink<T> setBlock(boolean block) {
-    	this.buttonBehavior.setBlock(block);
-    	return this;
+        this.buttonBehavior.setBlock(block);
+        return this;
+    }
+
+    /**
+     * @param value whether to use splitter between the icon and the label or not
+     * @return this instance for chaining
+     */
+    public BootstrapLink<T> useSplitter(boolean value) {
+        this.useSplitter = value;
+        return this;
     }
 }
