@@ -15,7 +15,7 @@ public abstract class IconType implements ICssClassNameProvider, ICssClassNameMo
     private static final long serialVersionUID = 1L;
     /** CSS classname. */
     private final String cssClassName;
-    /** The body of the tag (for material icons &lti class="material-icon"&gttag-body&lt/i&gt). */
+    /** The body of the tag (for material icons &lt;i class="material-icon"&gt;tag-body&lt;/i&gt;). */
     private final String tagBody;
 
     /**
@@ -33,7 +33,7 @@ public abstract class IconType implements ICssClassNameProvider, ICssClassNameMo
      * Constructor.
      *
      * @param cssClassName The css class name of the icon reference
-     * @param tagBody the body of the tag (for material icons &lti class="material-icons"&gttag-content&lt/i&gt)
+     * @param tagBody the body of the tag (for material icons &lt;i class="material-icons"&gt;tag-content&lt;/i&gt;)
      */
     protected IconType(String cssClassName, String tagBody) {
         Args.notEmpty(cssClassName, "cssClassName");
