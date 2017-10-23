@@ -6,8 +6,6 @@ import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
-import de.agilecoders.wicket.core.util.Components;
-
 /**
  * An Icon component displays a non localizable image resource.
  *
@@ -88,15 +86,11 @@ public class Icon extends WebMarkupContainer {
 
     @Override
     public void onComponentTagBody(MarkupStream markupStream, ComponentTag openTag) {
-        super.onComponentTagBody(markupStream, openTag);
         if(hasIconType() && getType().getTagBody() != null) {
             replaceComponentTagBody(markupStream, openTag, getType().getTagBody());
+        } else {
+            super.onComponentTagBody(markupStream, openTag);
         }
     }
-
-    @Override
-    protected void onComponentTag(ComponentTag tag) {
-        super.onComponentTag(tag);
-        Components.assertTag(this, tag, "i", "span");
-    }
 }
+
