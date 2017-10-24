@@ -26,6 +26,8 @@ public abstract class BootstrapAjaxLink<T> extends AjaxLink<T> implements IBoots
     private final Component label;
     private final Component splitter;
     private final ButtonBehavior buttonBehavior;
+    /** To use the splitter or not (true by default). */
+    private boolean useSplitter = true;
 
     /**
      * Construct.
@@ -92,7 +94,7 @@ public abstract class BootstrapAjaxLink<T> extends AjaxLink<T> implements IBoots
 
    /**
     * Creates a new splitter component. The splitter is visible only
-    * if icon is visible.
+    * if icon is visible and useSplitter is true.
     *
     * @param markupId the component id of the splitter
     * @return new splitter component
@@ -100,7 +102,8 @@ public abstract class BootstrapAjaxLink<T> extends AjaxLink<T> implements IBoots
    protected Component newSplitter(final String markupId) {
        return new WebMarkupContainer(markupId)
                .setRenderBodyOnly(true)
-               .setEscapeModelStrings(false);
+               .setEscapeModelStrings(false)
+               .setVisible(false);
    }
 
     /**
@@ -115,7 +118,9 @@ public abstract class BootstrapAjaxLink<T> extends AjaxLink<T> implements IBoots
     protected void onConfigure() {
         super.onConfigure();
 
-        splitter.setVisible(icon.hasIconType() && StringUtils.isNotEmpty(label.getDefaultModelObjectAsString()));
+        if(useSplitter) {
+            splitter.setVisible(icon.hasIconType() && StringUtils.isNotEmpty(label.getDefaultModelObjectAsString()));
+        }
     }
 
     /**
@@ -160,4 +165,12 @@ public abstract class BootstrapAjaxLink<T> extends AjaxLink<T> implements IBoots
         return this;
     }
 
+    /**
+     * @param value whether to use splitter between the icon and the label or not
+     * @return this instance for chaining
+     */
+    public BootstrapAjaxLink<T> useSplitter(boolean value) {
+        this.useSplitter = value;
+        return this;
+    }
 }
