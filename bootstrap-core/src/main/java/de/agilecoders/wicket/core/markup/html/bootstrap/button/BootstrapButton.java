@@ -1,6 +1,5 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.button;
 
-import de.agilecoders.wicket.core.markup.html.bootstrap.form.FormGroup;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.Icon;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
 import org.apache.commons.lang3.StringUtils;
@@ -28,7 +27,7 @@ public class BootstrapButton extends Button implements IBootstrapButton<Bootstra
     private final ButtonBehavior buttonBehavior;
     /** To use the splitter or not (true by default). */
     private boolean useSplitter = true;
-    
+
 
     /**
      * Construct.
