@@ -1,5 +1,6 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.button;
 
+import de.agilecoders.wicket.core.markup.html.bootstrap.form.FormGroup;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.Icon;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
 import org.apache.commons.lang3.StringUtils;
@@ -17,11 +18,17 @@ import org.apache.wicket.model.IModel;
  * @author miha
  */
 public class BootstrapButton extends Button implements IBootstrapButton<BootstrapButton> {
-
+    /** The icon of the button. */
     private final Icon icon;
+    /** The label of the button. */
     private final Component label;
+    /** The splitter (space between the icon and the label. */
     private final Component splitter;
+    /** The button behavior. */
     private final ButtonBehavior buttonBehavior;
+    /** To use the splitter or not (true by default). */
+    private boolean useSplitter = true;
+    
 
     /**
      * Construct.
@@ -73,7 +80,7 @@ public class BootstrapButton extends Button implements IBootstrapButton<Bootstra
 
     /**
      * creates a new splitter component. The splitter is visible only
-     * if icon is visible.
+     * if icon is visible or if useSplitter is true.
      *
      * @param markupId the component id of the splitter
      * @return new splitter component
@@ -81,14 +88,17 @@ public class BootstrapButton extends Button implements IBootstrapButton<Bootstra
     protected Component newSplitter(final String markupId) {
         return new WebMarkupContainer(markupId)
                 .setRenderBodyOnly(true)
-                .setEscapeModelStrings(false);
+                .setEscapeModelStrings(false)
+                .setVisible(false);
     }
 
     @Override
     protected void onConfigure() {
         super.onConfigure();
 
-        splitter.setVisible(icon.hasIconType() && StringUtils.isNotEmpty(getModelObject()));
+        if (useSplitter) {
+            splitter.setVisible(icon.hasIconType() && StringUtils.isNotEmpty(getModelObject()));
+        }
     }
 
     /**
@@ -108,6 +118,8 @@ public class BootstrapButton extends Button implements IBootstrapButton<Bootstra
     @Override
     public BootstrapButton setLabel(IModel<String> label) {
         this.label.setDefaultModel(label);
+        //the label is also store in the button's model
+        setModel(label);
 
         return this;
     }
@@ -137,4 +149,12 @@ public class BootstrapButton extends Button implements IBootstrapButton<Bootstra
         return this;
     }
 
+    /**
+     * @param value whether to use splitter between the icon and the label or not
+     * @return this instance for chaining
+     */
+    public BootstrapButton useSplitter(boolean value) {
+        this.useSplitter = value;
+        return this;
+    }
 }

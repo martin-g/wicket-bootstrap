@@ -4,7 +4,6 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.image.Icon;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.wicket.Component;
-import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
@@ -13,8 +12,6 @@ import org.apache.wicket.markup.html.panel.IMarkupSourcingStrategy;
 import org.apache.wicket.markup.html.panel.PanelMarkupSourcingStrategy;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
-import org.apache.wicket.util.lang.Args;
-import org.danekja.java.util.function.serializable.SerializableBiConsumer;
 
 import java.io.Serializable;
 
@@ -29,6 +26,8 @@ public abstract class BootstrapAjaxButton extends AjaxButton implements IBootstr
     private final Component label;
     private final Component splitter;
     private final ButtonBehavior buttonBehavior;
+    /** To use the splitter or not (true by default). */
+    private boolean useSplitter = true;
 
     /**
      * Construct.
@@ -103,7 +102,7 @@ public abstract class BootstrapAjaxButton extends AjaxButton implements IBootstr
 
     /**
      * creates a new splitter component. The splitter is visible only
-     * if icon is visible.
+     * if icon is visible and useSplitter is true.
      *
      * @param markupId the component id of the splitter
      * @return new splitter component
@@ -111,7 +110,8 @@ public abstract class BootstrapAjaxButton extends AjaxButton implements IBootstr
     protected Component newSplitter(final String markupId) {
         return new WebMarkupContainer(markupId)
                 .setRenderBodyOnly(true)
-                .setEscapeModelStrings(false);
+                .setEscapeModelStrings(false)
+                .setVisible(false);
     }
 
     /**
@@ -126,7 +126,9 @@ public abstract class BootstrapAjaxButton extends AjaxButton implements IBootstr
     protected void onConfigure() {
         super.onConfigure();
 
-        splitter.setVisible(icon.hasIconType() && StringUtils.isNotEmpty(label.getDefaultModelObjectAsString()));
+        if(useSplitter) {
+            splitter.setVisible(icon.hasIconType() && StringUtils.isNotEmpty(label.getDefaultModelObjectAsString()));
+        }
     }
 
     /**
@@ -175,46 +177,11 @@ public abstract class BootstrapAjaxButton extends AjaxButton implements IBootstr
     }
 
     /**
-     * Creates a new BootstrapAjaxButton instance.
-     *
-     * @param id       The component id
-     * @param type     The type of the button
-     * @param onSubmit The lambda to call when the form associated with the button is submitted
-     * @return         new BootstrapAjaxButton instance
+     * @param value whether to use splitter between the icon and the label or not
+     * @return this instance for chaining
      */
-    public static BootstrapAjaxButton onSubmit(final String id, final Buttons.Type type, final SerializableBiConsumer<AjaxButton, AjaxRequestTarget> onSubmit) {
-        Args.notNull(onSubmit, "onSubmit");
-        return new BootstrapAjaxButton(id, type) {
-            private static final long serialVersionUID = 1L;
-
-            public void onSubmit(AjaxRequestTarget target) {
-                onSubmit.accept(this, target);
-            }
-        };
-    }
-
-    /**
-     * Creates a new BootstrapAjaxButton instance.
-     *
-     * @param id       The component id
-     * @param type     The type of the button
-     * @param onSubmit The lambda to call when the form associated with the button is submitted
-     * @param onError  The lambda to call when the form associated with the button has an error
-     * @return         new BootstrapAjaxButton instance
-     */
-    public static BootstrapAjaxButton onSubmit(final String id, final Buttons.Type type, final SerializableBiConsumer<AjaxButton, AjaxRequestTarget> onSubmit, final SerializableBiConsumer<AjaxButton, AjaxRequestTarget> onError) {
-        Args.notNull(onSubmit, "onSubmit");
-        Args.notNull(onError, "onError");
-        return new BootstrapAjaxButton(id, type) {
-            private static final long serialVersionUID = 1L;
-
-            public void onSubmit(AjaxRequestTarget target) {
-                onSubmit.accept(this, target);
-            }
-
-            protected void onError(AjaxRequestTarget target) {
-                onError.accept(this, target);
-            }
-        };
+    public BootstrapAjaxButton useSplitter(boolean value) {
+        this.useSplitter = value;
+        return this;
     }
 }

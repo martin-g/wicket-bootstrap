@@ -2,9 +2,9 @@ package de.agilecoders.wicket.core.markup.html.bootstrap.button;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.Icon;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
+
 import org.apache.commons.lang3.StringUtils;
 import org.apache.wicket.Component;
-import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
@@ -12,9 +12,6 @@ import org.apache.wicket.markup.html.panel.IMarkupSourcingStrategy;
 import org.apache.wicket.markup.html.panel.PanelMarkupSourcingStrategy;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
-import org.apache.wicket.util.lang.Args;
-import org.danekja.java.util.function.serializable.SerializableBiConsumer;
-import org.danekja.java.util.function.serializable.SerializableConsumer;
 
 import java.io.Serializable;
 
@@ -29,6 +26,8 @@ public abstract class BootstrapAjaxLink<T> extends AjaxLink<T> implements IBoots
     private final Component label;
     private final Component splitter;
     private final ButtonBehavior buttonBehavior;
+    /** To use the splitter or not (true by default). */
+    private boolean useSplitter = true;
 
     /**
      * Construct.
@@ -95,7 +94,7 @@ public abstract class BootstrapAjaxLink<T> extends AjaxLink<T> implements IBoots
 
    /**
     * Creates a new splitter component. The splitter is visible only
-    * if icon is visible.
+    * if icon is visible and useSplitter is true.
     *
     * @param markupId the component id of the splitter
     * @return new splitter component
@@ -103,7 +102,8 @@ public abstract class BootstrapAjaxLink<T> extends AjaxLink<T> implements IBoots
    protected Component newSplitter(final String markupId) {
        return new WebMarkupContainer(markupId)
                .setRenderBodyOnly(true)
-               .setEscapeModelStrings(false);
+               .setEscapeModelStrings(false)
+               .setVisible(false);
    }
 
     /**
@@ -118,7 +118,9 @@ public abstract class BootstrapAjaxLink<T> extends AjaxLink<T> implements IBoots
     protected void onConfigure() {
         super.onConfigure();
 
-        splitter.setVisible(icon.hasIconType() && StringUtils.isNotEmpty(label.getDefaultModelObjectAsString()));
+        if(useSplitter) {
+            splitter.setVisible(icon.hasIconType() && StringUtils.isNotEmpty(label.getDefaultModelObjectAsString()));
+        }
     }
 
     /**
@@ -164,43 +166,11 @@ public abstract class BootstrapAjaxLink<T> extends AjaxLink<T> implements IBoots
     }
 
     /**
-     * Creates a new BootstrapAjaxLink instance.
-     *
-     * @param id       The component id
-     * @param type     The type of the button
-     * @param onClick  The lambda to call when the link is submitted
-     * @param <T>      The component model type
-     * @return         new BootstrapAjaxLink instance
+     * @param value whether to use splitter between the icon and the label or not
+     * @return this instance for chaining
      */
-    public static <T> BootstrapAjaxLink<T> onClick(final String id, final Buttons.Type type, final SerializableConsumer<AjaxRequestTarget> onClick) {
-        Args.notNull(onClick, "onClick");
-        return new BootstrapAjaxLink<T>(id, type) {
-            private static final long serialVersionUID = 1L;
-
-            public void onClick(AjaxRequestTarget target) {
-                onClick.accept(target);
-            }
-        };
+    public BootstrapAjaxLink<T> useSplitter(boolean value) {
+        this.useSplitter = value;
+        return this;
     }
-
-    /**
-     * * Creates a new BootstrapAjaxLink instance.
-     *
-     * @param id       The component id
-     * @param type     The type of the button
-     * @param onClick  The lambda to call when the link is submitted
-     * @param <T>      The component model type
-     * @return         new BootstrapAjaxLink instance
-     */
-    public static <T> BootstrapAjaxLink<T> onClick(final String id, Buttons.Type type, final SerializableBiConsumer<AjaxLink<T>, AjaxRequestTarget> onClick) {
-        Args.notNull(onClick, "onClick");
-        return new BootstrapAjaxLink<T>(id, type) {
-            private static final long serialVersionUID = 1L;
-
-            public void onClick(AjaxRequestTarget target) {
-                onClick.accept(this, target);
-            }
-        };
-    }
-
 }
