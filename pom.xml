@@ -45,8 +45,8 @@
 
         <bootstrap.version>3.3.7-1</bootstrap.version>
         <config.version>0.3.5</config.version>
-        <wicket-webjars.version>2.0.3</wicket-webjars.version>
-        <wicket-jquery-selectors.version>2.0.0-M3</wicket-jquery-selectors.version>
+        <wicket-webjars.version>2.0.4</wicket-webjars.version>
+        <wicket-jquery-selectors.version>2.0.0-M4</wicket-jquery-selectors.version>
 
         <enforcer.disable>true</enforcer.disable>
         <pmd.disable>true</pmd.disable>
@@ -68,13 +68,13 @@
         <jquerypp.version>1.0.1</jquerypp.version>
         <jquery.version>2.2.4</jquery.version>
         <maven-bundle-plugin.version>3.3.0</maven-bundle-plugin.version>
-        <wicket.version>8.0.0-M6</wicket.version>
-        <wicketstuff.version>8.0.0-M6</wicketstuff.version>
+        <wicket.version>8.0.0-M8</wicket.version>
+        <wicketstuff.version>8.0.0-M8</wicketstuff.version>
         <yuicompressor.version>2.4.8</yuicompressor.version>
         <maven-javadoc-plugin.version>2.10.4</maven-javadoc-plugin.version>
-        <guava.version>21.0</guava.version>
+        <guava.version>23.0</guava.version>
         <junit.version>4.12</junit.version>
-        <logback.version>1.2.2</logback.version>
+        <logback.version>1.2.3</logback.version>
     </properties>
 
     <dependencyManagement>
