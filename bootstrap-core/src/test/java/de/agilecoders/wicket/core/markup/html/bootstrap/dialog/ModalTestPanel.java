@@ -6,6 +6,10 @@ import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.RequiredTextField;
 import org.apache.wicket.model.Model;
 
+/**
+ * Simple Modal that adds a button via the addButton method to ensure it renders properly when
+ * buttons are added.
+ */
 public class ModalTestPanel extends Modal<String>
 {
     public ModalTestPanel(String id)
