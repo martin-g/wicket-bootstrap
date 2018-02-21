@@ -176,7 +176,6 @@ public class WicketApplication extends WebApplication {
         ResourceBundles bundles = getResourceBundles();
         bundles.addJavaScriptBundle(WicketApplication.class, "core.js",
                                     (JavaScriptResourceReference) getJavaScriptLibrarySettings().getJQueryReference(),
-                                    (JavaScriptResourceReference) getJavaScriptLibrarySettings().getWicketEventReference(),
                                     (JavaScriptResourceReference) getJavaScriptLibrarySettings().getWicketAjaxReference(),
                                     ModernizrJavaScriptReference.instance()
         );

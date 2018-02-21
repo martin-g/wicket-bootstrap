@@ -67,6 +67,11 @@
             <artifactId>wicket-util</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+        </dependency>
+
         <!-- LOGGING DEPENDENCIES - LOG4J -->
         <dependency>
             <groupId>org.slf4j</groupId>
