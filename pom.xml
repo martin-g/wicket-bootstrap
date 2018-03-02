@@ -55,7 +55,7 @@
         <!-- TODO -->
         <servlet-api.version>3.0.1</servlet-api.version>
         <javax.javaee-web-api.version>7.0</javax.javaee-web-api.version>
-        <versions-maven-plugin.version>2.2</versions-maven-plugin.version>
+        <versions-maven-plugin.version>2.5</versions-maven-plugin.version>
         <doxia.version>1.0</doxia.version>
         <less4j.version>1.17.2</less4j.version>
         <modernizr.version>2.8.3</modernizr.version>
