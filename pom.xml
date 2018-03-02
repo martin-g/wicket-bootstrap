@@ -70,7 +70,7 @@
         <wicketstuff.version>7.10.0</wicketstuff.version>
         <yuicompressor.version>2.4.8</yuicompressor.version>
         <maven-javadoc-plugin.version>2.10.4</maven-javadoc-plugin.version>
-        <guava.version>19.0</guava.version>
+        <guava.version>20.0</guava.version>
         <junit.version>4.12</junit.version>
         <logback.version>1.2.2</logback.version>
     </properties>
