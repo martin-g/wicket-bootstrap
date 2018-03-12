@@ -18,8 +18,16 @@ import org.apache.wicket.util.time.Duration;
 public class NotificationPanel extends FencedFeedbackPanel {
 
     private Duration duration;
-    private boolean showRenderedMessages = false;
-
+	private IFeedbackMessageFilter SKIP_RENDERED_MESSAGES_FILTER = new IFeedbackMessageFilter()
+	{
+		
+		@Override
+		public boolean accept(FeedbackMessage message)
+		{
+			return !message.isRendered();
+		}
+	};
+    
     /**
      * Construct.
      *
@@ -70,7 +78,10 @@ public class NotificationPanel extends FencedFeedbackPanel {
      * @return this instance for chaining
      */
     public NotificationPanel showRenderedMessages(final boolean showRenderedMessages) {
-        this.showRenderedMessages = showRenderedMessages;
+    	if(showRenderedMessages)
+    		setFilter(IFeedbackMessageFilter.ALL);
+    	else
+    		setFilter(SKIP_RENDERED_MESSAGES_FILTER);
         return this;
     }
 
@@ -89,16 +100,7 @@ public class NotificationPanel extends FencedFeedbackPanel {
     @Override
     protected FeedbackMessagesModel newFeedbackMessagesModel() {
         FeedbackMessagesModel model = super.newFeedbackMessagesModel();
-
-        if (!showRenderedMessages) {
-            model.setFilter(new IFeedbackMessageFilter() {
-                @Override
-                public boolean accept(FeedbackMessage message) {
-                    return !message.isRendered();
-                }
-            });
-        }
-
+        model.setFilter(SKIP_RENDERED_MESSAGES_FILTER);
         return model;
     }
 
