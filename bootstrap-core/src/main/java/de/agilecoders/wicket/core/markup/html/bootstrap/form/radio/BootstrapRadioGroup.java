@@ -86,7 +86,10 @@ public class BootstrapRadioGroup<T extends Serializable> extends GenericPanel<T>
         for (IModel<? extends T> model: options) {
             model.detach();
         }
-        choiceRenderer.detach();
+
+        if (choiceRenderer != null) {
+            choiceRenderer.detach();
+        }
     }
 
     @Override
