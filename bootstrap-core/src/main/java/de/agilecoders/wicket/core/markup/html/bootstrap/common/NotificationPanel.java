@@ -18,7 +18,7 @@ import org.apache.wicket.util.time.Duration;
 public class NotificationPanel extends FencedFeedbackPanel {
 
     private Duration duration;
-	private IFeedbackMessageFilter SKIP_RENDERED_MESSAGES_FILTER = new IFeedbackMessageFilter()
+	private static final IFeedbackMessageFilter SKIP_RENDERED_MESSAGES_FILTER = new IFeedbackMessageFilter()
 	{
 		
 		@Override
