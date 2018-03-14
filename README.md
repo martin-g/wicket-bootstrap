@@ -3,14 +3,14 @@ WICKET COMPONENTS FOR BOOTSTRAP
 
 [![Join the chat at https://gitter.im/l0rdn1kk0n/wicket-bootstrap](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/l0rdn1kk0n/wicket-bootstrap?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-Wicket-Bootstrap is based on the Bootstrap toolkit and the [Apache Wicket Framework](http://wicket.apache.org/).
+Wicket-Bootstrap is based on the Bootstrap toolkit and the [Apache Wicket Framework](https://wicket.apache.org/).
 
 Current release version
 ------
-* [Wicket 8.x](http://wicket.apache.org/) and [Bootstrap 3.3.7](https://github.com/twbs/bootstrap/):  2.x
-* [Wicket 7.x](http://wicket.apache.org/) and [Bootstrap 3.3.7](https://github.com/twbs/bootstrap/):  0.10.x
-* [Wicket 6.x](http://wicket.apache.org/) and [Bootstrap 3.3.7](https://github.com/twbs/bootstrap/): 0.9.x
-* [Wicket 6.x](http://wicket.apache.org/) and [Bootstrap 2.*](https://github.com/twbs/bootstrap/): 0.8.4
+* [Wicket 8.x](https://wicket.apache.org/) and [Bootstrap 3.3.7](https://github.com/twbs/bootstrap/):  2.x
+* [Wicket 7.x](https://wicket.apache.org/) and [Bootstrap 3.3.7](https://github.com/twbs/bootstrap/):  0.10.x
+* [Wicket 6.x](https://wicket.apache.org/) and [Bootstrap 3.3.7](https://github.com/twbs/bootstrap/): 0.9.x
+* [Wicket 6.x](https://wicket.apache.org/) and [Bootstrap 2.*](https://github.com/twbs/bootstrap/): 0.8.4
 
 
 Build Status & Coverage
