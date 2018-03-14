@@ -3,20 +3,27 @@ WICKET COMPONENTS FOR BOOTSTRAP
 
 [![Join the chat at https://gitter.im/l0rdn1kk0n/wicket-bootstrap](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/l0rdn1kk0n/wicket-bootstrap?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-Wicket-Bootstrap is based on the Bootstrap toolkit and the Apache Wicket Framework.<br>
-Current build status: [![Build Status](https://buildhive.cloudbees.com/job/l0rdn1kk0n/job/wicket-bootstrap/badge/icon)](https://buildhive.cloudbees.com/job/l0rdn1kk0n/job/wicket-bootstrap/) [![Build Status](https://travis-ci.org/l0rdn1kk0n/wicket-bootstrap.png?branch=master)](https://travis-ci.org/l0rdn1kk0n/wicket-bootstrap)
+Wicket-Bootstrap is based on the Bootstrap toolkit and the [Apache Wicket Framework](http://wicket.apache.org/).
 
-[![Coverage Status](https://img.shields.io/coveralls/l0rdn1kk0n/wicket-bootstrap.svg)](https://coveralls.io/r/l0rdn1kk0n/wicket-bootstrap)
+Current release version
+------
+* [Wicket 8.x](http://wicket.apache.org/) and [Bootstrap 3.3.7](https://github.com/twbs/bootstrap/):  2.x
+* [Wicket 7.x](http://wicket.apache.org/) and [Bootstrap 3.3.7](https://github.com/twbs/bootstrap/):  0.10.x
+* [Wicket 6.x](http://wicket.apache.org/) and [Bootstrap 3.3.7](https://github.com/twbs/bootstrap/): 0.9.x
+* [Wicket 6.x](http://wicket.apache.org/) and [Bootstrap 2.*](https://github.com/twbs/bootstrap/): 0.8.4
+
+
+Build Status & Coverage
+------
+| Branch | Build | Coverage |
+| ------ | ----- | -------- |
+| wicket-8.x | [![Build Status](https://travis-ci.org/l0rdn1kk0n/wicket-bootstrap.png?branch=wicket-8.x)](https://travis-ci.org/l0rdn1kk0n/wicket-bootstrap/tree/wicket-8.x) | [![Coverage Status](https://coveralls.io/repos/github/l0rdn1kk0n/wicket-bootstrap/badge.svg?branch=wicket-8.x)](https://coveralls.io/github/l0rdn1kk0n/wicket-bootstrap?branch=wicket-8.x) |
+| wicket-7.x | [![Build Status](https://travis-ci.org/l0rdn1kk0n/wicket-bootstrap.png?branch=wicket-7.x)](https://travis-ci.org/l0rdn1kk0n/wicket-bootstrap/tree/wicket-7.x) | [![Coverage Status](https://coveralls.io/repos/github/l0rdn1kk0n/wicket-bootstrap/badge.svg?branch=wicket-7.x)](https://coveralls.io/github/l0rdn1kk0n/wicket-bootstrap?branch=wicket-7.x) |
+| master | [![Build Status](https://travis-ci.org/l0rdn1kk0n/wicket-bootstrap.png?branch=master)](https://travis-ci.org/l0rdn1kk0n/wicket-bootstrap/tree/master) | [![Coverage Status](https://coveralls.io/repos/github/l0rdn1kk0n/wicket-bootstrap/badge.svg?branch=master)](https://coveralls.io/github/l0rdn1kk0n/wicket-bootstrap?branch=master) |
 
 [![Issue Stats](http://www.issuestats.com/github/l0rdn1kk0n/wicket-bootstrap/badge/issue?style=flat)](http://www.issuestats.com/github/l0rdn1kk0n/wicket-bootstrap)
 [![Issue Stats](http://www.issuestats.com/github/l0rdn1kk0n/wicket-bootstrap/badge/pr?style=flat)](http://www.issuestats.com/github/l0rdn1kk0n/wicket-bootstrap)
 
-Current release version:
-
-* [Wicket 8.x](http://wicket.apache.org/) and [Bootstrap 3.3.7](https://github.com/twbs/bootstrap/):  2.x
-* [Wicket 7.x](http://wicket.apache.org/) and [Bootstrap 3.3.7](https://github.com/twbs/bootstrap/):  0.10.x
-* [Wicket 6.x](http://wicket.apache.org/) and [Bootstrap 3.3.7](https://github.com/twbs/bootstrap/): 0.9.x
-* Wicket 6.x and Bootstrap 2.*: 0.8.4
 
 Demo
 ------
