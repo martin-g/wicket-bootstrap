@@ -2,6 +2,10 @@ language: java
 jdk:
   - openjdk7
 
+cache:
+  directories:
+      - $HOME/.m2/repository
+
 after_failure:
   - "cat bootstrap-core/target/surefire-reports/de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.DropDownButtonTest.txt"
   - "cat bootstrap-core/target/surefire-reports/TEST-de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.DnTest.xml"
