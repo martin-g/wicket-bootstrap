@@ -7,4 +7,4 @@ after_failure:
   - "cat bootstrap-core/target/surefire-reports/TEST-de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.DnTest.xml"
 
 after_success:
-  - mvn clean cobertura:cobertura coveralls:cobertura
+  - mvn clean cobertura:cobertura coveralls:report
