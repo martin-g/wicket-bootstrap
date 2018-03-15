@@ -7,10 +7,10 @@ Wicket-Bootstrap is based on the Bootstrap toolkit and the [Apache Wicket Framew
 
 Current release version
 ------
-* [Wicket 8.x](https://wicket.apache.org/) and [Bootstrap 3.3.7](https://github.com/twbs/bootstrap/):  2.x
-* [Wicket 7.x](https://wicket.apache.org/) and [Bootstrap 3.3.7](https://github.com/twbs/bootstrap/):  0.10.x
-* [Wicket 6.x](https://wicket.apache.org/) and [Bootstrap 3.3.7](https://github.com/twbs/bootstrap/): 0.9.x
-* [Wicket 6.x](https://wicket.apache.org/) and [Bootstrap 2.*](https://github.com/twbs/bootstrap/): 0.8.4
+* [Wicket 8.x](https://wicket.apache.org/) and [Bootstrap 3.3.7](https://github.com/twbs/bootstrap/):  [2.x](http://repo1.maven.org/maven2/de/agilecoders/wicket/wicket-bootstrap-core/)
+* [Wicket 7.x](https://wicket.apache.org/) and [Bootstrap 3.3.7](https://github.com/twbs/bootstrap/):  [0.10.x](http://repo1.maven.org/maven2/de/agilecoders/wicket/wicket-bootstrap-core/)
+* [Wicket 6.x](https://wicket.apache.org/) and [Bootstrap 3.3.7](https://github.com/twbs/bootstrap/): [0.9.x](http://repo1.maven.org/maven2/de/agilecoders/wicket/wicket-bootstrap-core/)
+* [Wicket 6.x](https://wicket.apache.org/) and [Bootstrap 2.*](https://github.com/twbs/bootstrap/): [0.8.4](http://repo1.maven.org/maven2/de/agilecoders/wicket/wicket-bootstrap-core/)
 
 
 Build Status & Coverage
