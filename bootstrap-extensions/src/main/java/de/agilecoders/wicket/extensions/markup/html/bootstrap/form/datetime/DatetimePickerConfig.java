@@ -322,7 +322,7 @@ public class DatetimePickerConfig extends AbstractConfig {
      */
     private String[] convertDatesToStrings(Date[] dates) {
         String[] stringDates = new String[dates.length];
-        SimpleDateFormat formatter = customDateFormatter();
+        SimpleDateFormat formatter = defaultDateValueFormatter();
         int i = 0;
         for (Date date : dates) {
             stringDates[i++] = formatter.format(date);
