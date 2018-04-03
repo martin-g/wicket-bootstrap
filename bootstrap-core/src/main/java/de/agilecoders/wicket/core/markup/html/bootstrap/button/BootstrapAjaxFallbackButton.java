@@ -163,6 +163,18 @@ public abstract class BootstrapAjaxFallbackButton extends AjaxFallbackButton imp
 
         return this;
     }
+    
+    /**
+     * Sets whether this button should display inline or block
+     *
+     * @param block <code>true</code>, for block mode
+     * @return this instance for chaining
+     */
+    public BootstrapAjaxFallbackButton setBlock(boolean block) {
+    	this.buttonBehavior.setBlock(block);
+    	
+    	return this;
+    }
 
     /**
      * @param value whether to use splitter between the icon and the label or not

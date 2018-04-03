@@ -161,7 +161,6 @@ public abstract class BootstrapAjaxLink<T> extends AjaxLink<T> implements IBoots
      */
     public BootstrapAjaxLink<T> setType(Buttons.Type type) {
         this.buttonBehavior.setType(type);
-
         return this;
     }
 
@@ -173,4 +172,16 @@ public abstract class BootstrapAjaxLink<T> extends AjaxLink<T> implements IBoots
         this.useSplitter = value;
         return this;
     }
+    
+    /**
+     * Sets whether this button should display inline or block
+     *
+     * @param block <code>true</code>, for block mode
+     * @return this instance for chaining
+     */
+    public BootstrapAjaxLink<T> setBlock(boolean block) {
+    	this.buttonBehavior.setBlock(block);
+    	return this;
+    }
+
 }
