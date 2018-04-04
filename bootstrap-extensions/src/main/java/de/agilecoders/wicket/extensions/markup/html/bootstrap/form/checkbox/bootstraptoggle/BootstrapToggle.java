@@ -54,23 +54,23 @@ public class BootstrapToggle extends BootstrapCheckbox {
      * Constructor.
      *
      * @param id The component id
-     * @param model The model to keep the selection
-     * @param config The configuration of this Bootstrap widget
-     */
-    public BootstrapToggle(String id, IModel<Boolean> model, BootstrapToggleConfig config) {
-        super(id, model);
-
-        this.config = Args.notNull(config, "config");
-    }
-
-    /**
-     * Constructor.
-     *
-     * @param id The component id
      * @param config The configuration of this Bootstrap widget
      */
     public BootstrapToggle(String id, BootstrapToggleConfig config) {
         this(id, null, config);
+    }    
+    
+    /**
+     * Constructor.
+     *
+     * @param id The component id
+     * @param model The model to keep the selection
+     * @param config The configuration of this Bootstrap widget
+     */
+    public BootstrapToggle(String id, IModel<Boolean> model, BootstrapToggleConfig config) {
+        super(id, model, Model.of(""));
+
+        this.config = Args.notNull(config, "config");
     }
 
     @Override
