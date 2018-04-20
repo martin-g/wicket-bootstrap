@@ -149,6 +149,18 @@ public class BootstrapBookmarkablePageLink<T> extends BookmarkablePageLink<T> im
 
         return this;
     }
+    
+    /**
+     * Sets whether this button should display inline or block
+     *
+     * @param block <code>true</code>, for block mode
+     * @return this instance for chaining
+     */
+    public BootstrapBookmarkablePageLink<T> setBlock(boolean block) {
+    	this.buttonBehavior.setBlock(block);
+    	
+    	return this;
+    }
 
     /**
      * {@inheritDoc}
