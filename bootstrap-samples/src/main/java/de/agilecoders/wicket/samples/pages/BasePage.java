@@ -112,7 +112,8 @@ abstract class BasePage extends GenericWebPage<Void> {
                                 .setLabel(Model.of("Github"))
                                 .setTarget(BootstrapExternalLink.Target.blank)
                                 .setIconType(GlyphIconType.export),
-                        newAddonsDropDownButton())
+                        newAddonsDropDownButton(),
+                        newExamplesDropDownButton())
         );
         navbar.addComponents(new NavbarText(navbar.newExtraItemId(), "Plain text").position(Navbar.ComponentPosition.RIGHT));
 
@@ -145,6 +146,19 @@ abstract class BasePage extends GenericWebPage<Void> {
         navbar.addComponents(new ImmutableNavbarComponent(dropdown, Navbar.ComponentPosition.RIGHT));
 
         return navbar;
+    }
+
+    private Component newExamplesDropDownButton() {
+        return new NavbarDropDownButton(Model.of("Examples")) {
+            @Override
+            protected List<AbstractLink> newSubMenuButtons(String buttonMarkupId) {
+                final List<AbstractLink> subMenu = new ArrayList<>();
+
+                subMenu.add(new MenuBookmarkablePageLink<Void>(DataTablePage.class, Model.of("DataTable")));
+
+                return subMenu;
+            }
+        };
     }
 
     /**
