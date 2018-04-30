@@ -43,7 +43,7 @@
         <maven.java.source>${java.version}</maven.java.source>
         <maven.java.target>${java.version}</maven.java.target>
 
-        <bootstrap.version>3.3.7-1</bootstrap.version>
+        <bootstrap.version>4.1.0</bootstrap.version>
         <config.version>0.3.5</config.version>
         <wicket-webjars.version>2.0.7</wicket-webjars.version>
         <wicket-jquery-selectors.version>2.0.0</wicket-jquery-selectors.version>
