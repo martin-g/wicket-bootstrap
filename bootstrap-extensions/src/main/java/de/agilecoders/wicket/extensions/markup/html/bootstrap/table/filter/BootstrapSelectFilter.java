@@ -1,0 +1,116 @@
+package de.agilecoders.wicket.extensions.markup.html.bootstrap.table.filter;
+
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.select.BootstrapSelect;
+import org.apache.wicket.AttributeModifier;
+import org.apache.wicket.extensions.markup.html.repeater.data.table.filter.AbstractFilter;
+import org.apache.wicket.extensions.markup.html.repeater.data.table.filter.FilterForm;
+import org.apache.wicket.markup.html.form.ChoiceRenderer;
+import org.apache.wicket.markup.html.form.DropDownChoice;
+import org.apache.wicket.markup.html.form.IChoiceRenderer;
+import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.Model;
+
+import java.util.List;
+
+/**
+ * A filter that renders a bootstrap select. Clone of {@link org.apache.wicket.extensions.markup.html.repeater.data.table.filter.ChoiceFilter}.
+ *
+ * @author drummer
+ */
+public class BootstrapSelectFilter<T> extends AbstractFilter {
+
+    private final BootstrapSelect<T> choice;
+
+    /**
+     * Constructor.
+     *
+     * @param id         component id
+     * @param model      model for the drop down choice component
+     * @param form       filter form this component will be attached to
+     * @param choices    list of choices, see {@link DropDownChoice}
+     * @param autoSubmit if true this filter will submit the form on selection change
+     */
+    public BootstrapSelectFilter(final String id, final IModel<T> model, final FilterForm<?> form,
+                                 final IModel<? extends List<? extends T>> choices, final boolean autoSubmit) {
+        this(id, model, form, choices, new ChoiceRenderer<>(), autoSubmit);
+    }
+
+    /**
+     * Constructor
+     *
+     * @param id         component id
+     * @param model      model for the drop down choice component
+     * @param form       filter form this component will be attached to
+     * @param choices    list of choices, see {@link DropDownChoice}
+     * @param autoSubmit if true this filter will submit the form on selection change
+     */
+    public BootstrapSelectFilter(final String id, final IModel<T> model, final FilterForm<?> form,
+                                 final List<? extends T> choices, final boolean autoSubmit) {
+        this(id, model, form, Model.ofList(choices), new ChoiceRenderer<>(), autoSubmit);
+    }
+
+    /**
+     * Constructor
+     *
+     * @param id         component id
+     * @param model      model for the drop down choice component
+     * @param form       filter form this component will be attached to
+     * @param choices    list of choices, see {@link DropDownChoice}
+     * @param renderer   choice renderer, see {@link DropDownChoice}
+     * @param autoSubmit if true this filter will submit the form on selection change
+     */
+    public BootstrapSelectFilter(final String id, final IModel<T> model, final FilterForm<?> form,
+                                 final List<? extends T> choices, final IChoiceRenderer<? super T> renderer,
+                                 final boolean autoSubmit) {
+        this(id, model, form, Model.ofList(choices), renderer, autoSubmit);
+    }
+
+    /**
+     * @param id         component id
+     * @param model      model for the drop down choice component
+     * @param form       filter form this component will be attached to
+     * @param choices    list of choices, see {@link DropDownChoice}
+     * @param renderer   choice renderer, see {@link DropDownChoice}
+     * @param autoSubmit if true this filter will submit the form on selection change
+     * @see DropDownChoice
+     */
+    public BootstrapSelectFilter(final String id, final IModel<T> model, final FilterForm<?> form,
+                                 final IModel<? extends List<? extends T>> choices,
+                                 final IChoiceRenderer<? super T> renderer,
+                                 final boolean autoSubmit) {
+        super(id, form);
+
+        choice = newDropDownChoice("filter", model, choices, renderer);
+
+        if (autoSubmit) {
+            choice.add(AttributeModifier.replace("onchange", "this.form.submit();"));
+        }
+        enableFocusTracking(choice);
+
+        add(choice);
+    }
+
+    /**
+     * Factory method for the drop down choice component
+     *
+     * @param id       component id
+     * @param model    component model
+     * @param choices  choices model
+     * @param renderer choice renderer
+     * @return created drop down component
+     */
+    protected BootstrapSelect<T> newDropDownChoice(final String id, final IModel<T> model,
+                                                   final IModel<? extends List<? extends T>> choices, final IChoiceRenderer<? super T> renderer) {
+        BootstrapSelect<T> dropDownChoice = new BootstrapSelect<>(id, model, choices, renderer);
+        dropDownChoice.setNullValid(true);
+        return dropDownChoice;
+    }
+
+    /**
+     * @return the DropDownChoice form component created to represent this filter
+     */
+    public final BootstrapSelect<T> getChoice() {
+        return choice;
+    }
+
+}

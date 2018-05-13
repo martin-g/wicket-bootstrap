@@ -13,6 +13,8 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.form.radio.AjaxBootstrap
 import de.agilecoders.wicket.core.markup.html.bootstrap.form.radio.BooleanRadioGroup;
 import de.agilecoders.wicket.core.markup.html.bootstrap.form.radio.EnumRadioChoiceRenderer;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
+import de.agilecoders.wicket.core.markup.html.bootstrap.label.BootstrapLabel;
+import de.agilecoders.wicket.core.markup.html.bootstrap.label.Labels;
 import de.agilecoders.wicket.core.markup.html.bootstrap.tabs.AjaxBootstrapTabbedPanel;
 import de.agilecoders.wicket.core.markup.html.bootstrap.tabs.ClientSideBootstrapTabbedPanel;
 import de.agilecoders.wicket.samples.components.basecss.ButtonGroups;
@@ -66,6 +68,9 @@ public class ComponentsPage extends BasePage {
 
         // create radio buttons
         addRadioGroups();
+
+        // create bootstrap labels
+        addLabels();
 
         // add example for dropdown button with sub-menu
 //        add(newDropDownSubMenuExample());
@@ -161,6 +166,15 @@ public class ComponentsPage extends BasePage {
         enumAjax.setDefaultModel(enumAjaxSelectedModel);
         enumAjax.setChoiceRenderer(new EnumRadioChoiceRenderer<Status>(Buttons.Type.Success, enumAjax));
         add(enumAjax);
+    }
+
+    private void addLabels() {
+        add(new BootstrapLabel("defaultLabel", Model.of("Default"), Labels.Type.DEFAULT));
+        add(new BootstrapLabel("primaryLabel", Model.of("Primary"), Labels.Type.PRIMARY));
+        add(new BootstrapLabel("successLabel", Model.of("Success"), Labels.Type.SUCCESS));
+        add(new BootstrapLabel("warningLabel", Model.of("Warning"), Labels.Type.WARNING));
+        add(new BootstrapLabel("infoLabel", Model.of("Info"), Labels.Type.INFO));
+        add(new BootstrapLabel("dangerLabel", Model.of("Danger"), Labels.Type.DANGER));
     }
 
     private Component newTabs(String markupId) {
