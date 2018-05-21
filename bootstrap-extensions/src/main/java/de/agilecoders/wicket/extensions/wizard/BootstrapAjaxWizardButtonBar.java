@@ -28,6 +28,7 @@ import org.apache.wicket.extensions.wizard.Wizard;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.ButtonBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons.Type;
+import org.apache.wicket.extensions.wizard.WizardButton;
 
 
 /**
@@ -38,7 +39,7 @@ public class BootstrapAjaxWizardButtonBar extends AjaxWizardButtonBar
 
 	/**
 	 * Construct.
-	 * 
+	 *
 	 * @param id
 	 * @param wizard
 	 */
@@ -48,41 +49,41 @@ public class BootstrapAjaxWizardButtonBar extends AjaxWizardButtonBar
 	}
 
 	@Override
-	protected CancelButton newCancelButton(String id, IWizard wizard)
+	protected WizardButton newCancelButton(String id, IWizard wizard)
 	{
-		CancelButton button = super.newCancelButton(id, wizard);
+		WizardButton button = super.newCancelButton(id, wizard);
 		button.add(new ButtonBehavior(Type.Warning, Buttons.Size.Medium));
 		return button;
 	}
 
 	@Override
-	protected FinishButton newFinishButton(String id, IWizard wizard)
+	protected WizardButton newFinishButton(String id, IWizard wizard)
 	{
-		FinishButton button = super.newFinishButton(id, wizard);
+        WizardButton button = super.newFinishButton(id, wizard);
 		button.add(new ButtonBehavior(Type.Success, Buttons.Size.Medium));
 		return button;
 	}
 
 	@Override
-	protected LastButton newLastButton(String id, IWizard wizard)
+	protected WizardButton newLastButton(String id, IWizard wizard)
 	{
-		LastButton button = super.newLastButton(id, wizard);
+        WizardButton button = super.newLastButton(id, wizard);
 		button.add(new ButtonBehavior(Type.Default, Buttons.Size.Medium));
 		return button;
 	}
 
 	@Override
-	protected NextButton newNextButton(String id, IWizard wizard)
+	protected WizardButton newNextButton(String id, IWizard wizard)
 	{
-		NextButton button = super.newNextButton(id, wizard);
+        WizardButton button = super.newNextButton(id, wizard);
 		button.add(new ButtonBehavior(Type.Default, Buttons.Size.Medium));
 		return button;
 	}
 
 	@Override
-	protected PreviousButton newPreviousButton(String id, IWizard wizard)
+	protected WizardButton newPreviousButton(String id, IWizard wizard)
 	{
-		PreviousButton button = super.newPreviousButton(id, wizard);
+        WizardButton button = super.newPreviousButton(id, wizard);
 		button.add(new ButtonBehavior(Type.Default, Buttons.Size.Medium));
 		return button;
 	}
