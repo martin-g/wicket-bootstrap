@@ -7,6 +7,7 @@ import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
 import org.apache.wicket.markup.head.OnLoadHeaderItem;
+import org.apache.wicket.markup.head.ResourceAggregator;
 import org.apache.wicket.markup.head.filter.AbstractHeaderResponseFilter;
 import org.apache.wicket.markup.head.filter.FilteringHeaderResponse;
 import org.apache.wicket.markup.head.filter.OppositeHeaderResponseFilter;
@@ -78,6 +79,6 @@ public class RenderJavaScriptToFooterHeaderResponseDecorator implements IHeaderR
      * @return decorated {@link IHeaderResponse}
      */
     public IHeaderResponse decorate(final IHeaderResponse response) {
-        return new FilteringHeaderResponse(response, "headBucket", filters);
+        return new ResourceAggregator(new FilteringHeaderResponse(response, "headBucket", filters));
     }
 }
