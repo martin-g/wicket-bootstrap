@@ -16,18 +16,12 @@
  */
 package de.agilecoders.wicket.extensions.wizard;
 
-import org.apache.wicket.extensions.wizard.CancelButton;
-import org.apache.wicket.extensions.wizard.FinishButton;
-import org.apache.wicket.extensions.wizard.IWizard;
-import org.apache.wicket.extensions.wizard.LastButton;
-import org.apache.wicket.extensions.wizard.NextButton;
-import org.apache.wicket.extensions.wizard.PreviousButton;
-import org.apache.wicket.extensions.wizard.WizardButton;
-import org.apache.wicket.extensions.wizard.WizardButtonBar;
-
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.ButtonBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons.Type;
+import org.apache.wicket.extensions.wizard.IWizard;
+import org.apache.wicket.extensions.wizard.WizardButton;
+import org.apache.wicket.extensions.wizard.WizardButtonBar;
 
 
 /**
