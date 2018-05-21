@@ -87,17 +87,11 @@ public class WicketApplication extends WebApplication {
         setConfigurationType(RuntimeConfigurationType.valueOf(properties.getProperty("configuration.type")));
     }
 
-    /**
-     * @see org.apache.wicket.Application#getHomePage()
-     */
     @Override
     public Class<? extends Page> getHomePage() {
         return HomePage.class;
     }
 
-    /**
-     * @see org.apache.wicket.Application#init()
-     */
     @Override
     public void init() {
         super.init();
