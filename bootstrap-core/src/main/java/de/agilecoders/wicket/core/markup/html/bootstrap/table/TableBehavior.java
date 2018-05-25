@@ -1,7 +1,5 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.table;
 
-import com.google.common.base.Function;
-
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNameProvider;
 import de.agilecoders.wicket.core.util.Attributes;
@@ -70,7 +68,7 @@ public class TableBehavior extends BootstrapBaseBehavior {
     public TableBehavior hover() {
         return addType(Type.Hover);
     }
-    
+
     private TableBehavior addType(Type type) {
         if (!types.contains(type)) {
             types.add(type);
@@ -83,12 +81,7 @@ public class TableBehavior extends BootstrapBaseBehavior {
      * @return all needed css class names that were assigned to the type list
      */
     private Set<String> createCssClassNames() {
-        return Generics2.transform(types, new Function<Type, String>() {
-            @Override
-            public String apply(Type input) {
-                return input != null ? input.cssClassName() : "";
-            }
-        });
+        return Generics2.transform(types, input -> input != null ? input.cssClassName() : "");
     }
 
     @Override

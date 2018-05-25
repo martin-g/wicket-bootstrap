@@ -35,7 +35,6 @@ import org.apache.wicket.util.string.Strings;
 import java.util.ArrayList;
 import java.util.List;
 
-import static de.agilecoders.wicket.jquery.util.Generics2.filter;
 import static de.agilecoders.wicket.jquery.util.Generics2.transform;
 
 /**

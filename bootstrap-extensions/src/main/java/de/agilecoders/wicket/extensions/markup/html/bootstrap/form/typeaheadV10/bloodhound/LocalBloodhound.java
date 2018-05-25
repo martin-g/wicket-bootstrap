@@ -27,15 +27,12 @@ public class LocalBloodhound<T> extends Bloodhound<T> {
 
     private void initConfig(List<String> datasource) {
 
-        Function<String, String> createDatum = new Function<String, String>() {
-            @Override
-            public String apply(String s) {
-                // create a { value: element } datum
-                return String.format("{value: '%s'}", s);
-            }
+        Function<String, String> createDatum = s -> {
+            // create a { value: element } datum
+            return String.format("{value: '%s'}", s);
         };
 
-        String local = "[" + Joiner.on(",").join(Lists.transform(datasource, createDatum)) + "]";
+        String local = "[" + Joiner.on(',').join(Lists.transform(datasource, createDatum)) + "]";
         getConfig().withLocal(new Json.RawValue(local));
     }
 
