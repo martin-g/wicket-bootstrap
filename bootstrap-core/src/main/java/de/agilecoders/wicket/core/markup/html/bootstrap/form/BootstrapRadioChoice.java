@@ -58,7 +58,7 @@ public class BootstrapRadioChoice<T> extends RadioChoice<T> {
         super(id, model, choices, renderer);
 
         setInline(false);
-        setLabelPosition(LabelPosition.WRAP_AFTER);
+        setLabelPosition(LabelPosition.AFTER);
     }
 
     public boolean isInline() {
@@ -66,24 +66,28 @@ public class BootstrapRadioChoice<T> extends RadioChoice<T> {
     }
 
     public BootstrapRadioChoice<T> setInline(boolean inline) {
+        String cssClass = "form-check";
         if (inline) {
-            setPrefix("");
-            setSuffix("");
-        } else {
-            setPrefix("<div class=\"radio\">");
-            setSuffix("</div>");
+            cssClass += " form-check-inline";
         }
+        setPrefix("<div class=\"" + cssClass + "\">");
+        setSuffix("</div>");
+
         this.inline = inline;
         return this;
     }
 
     @Override
     protected IValueMap getAdditionalAttributesForLabel(int index, T choice) {
-        IValueMap attrs = null;
-        if (isInline()) {
-            attrs = new ValueMap();
-            attrs.put("class", "radio-inline");
-        }
+        IValueMap attrs = new ValueMap();
+        attrs.put("class", "form-check-label");
+        return attrs;
+    }
+
+    @Override
+    protected IValueMap getAdditionalAttributes(int index, T choice) {
+        IValueMap attrs = new ValueMap();
+        attrs.put("class", "form-check-input");
         return attrs;
     }
 }
