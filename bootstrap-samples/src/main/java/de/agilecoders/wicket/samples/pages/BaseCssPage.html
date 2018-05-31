@@ -1197,26 +1197,34 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 <form class="bs-docs-example">
     <div class="form-group">
         <div class="input-group">
-            <span class="input-group-addon">@</span>
+            <span class="input-group-prepend">
+                <span class="input-group-text">@</span>
+            </span>
             <input class="form-control" id="prependedInput" type="text" placeholder="Username">
         </div>
         <br>
 
         <div class="input-group">
             <input class="form-control" id="appendedInput" type="text">
-            <span class="input-group-addon">.00</span>
+            <span class="input-group-append">
+                <span class="input-group-text">.00</span>
+            </span>
         </div>
     </div>
 </form>
 <pre class="prettyprint linenums">
 &lt;div class="form-group"&gt;
     &lt;div class="input-group"&gt;
-        &lt;span class="input-group-addon"&gt;@&lt;/span&gt;
+        &lt;span class="input-group-prepend"&gt;
+            &lt;span class="input-group-text"&gt;@&lt;/span&gt;
+        &lt;/span&gt;
         &lt;input class="form-control" id="prependedInput" type="text" placeholder="Username"&gt;
     &lt;/div&gt;
     &lt;div class="input-group"&gt;
         &lt;input class="form-control" id="appendedInput" type="text"&gt;
-        &lt;span class="input-group-addon"&gt;.00&lt;/span&gt;
+        &lt;span class="input-group-append"&gt;
+            &lt;span class="input-group-text"&gt;.00&lt;/span&gt;
+        &lt;/span&gt;
     &lt;/div&gt;
 &lt;/div&gt;
 </pre>
@@ -1228,18 +1236,26 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 <form class="bs-docs-example">
     <div class="form-group">
         <div class="input-group">
-            <span class="input-group-addon">$</span>
+            <span class="input-group-prepend">
+                <span class="input-group-text">$</span>
+            </span>
             <input class="form-control" id="appendedPrependedInput" type="text">
-            <span class="input-group-addon">.00</span>
+            <span class="input-group-append">
+                <span class="input-group-text">.00</span>
+            </span>
         </div>
     </div>
 </form>
 <pre class="prettyprint linenums">
 &lt;div class="form-group"&gt;
     &lt;div class="input-group"&gt;
-        &lt;span class="input-group-addon"&gt;$&lt;/span&gt;
+        &lt;span class="input-group-prepend"&gt;
+            &lt;span class="input-group-text"&gt;$&lt;/span&gt;
+        &lt;/span&gt;&lt;span class="input-group-prepend"&gt;$&lt;/span&gt;
         &lt;input class="form-control" id="appendedPrependedInput" type="text"&gt;
-        &lt;span class="input-group-addon"&gt;.00&lt;/span&gt;
+        &lt;span class="input-group-append"&gt;
+            &lt;span class="input-group-text"&gt;.00&lt;/span&gt;
+        &lt;/span&gt;
     &lt;/div&gt;
 &lt;/div&gt;
 </pre>
@@ -1252,7 +1268,7 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
     <div class="form-group">
         <div class="input-group">
             <input class="form-control" id="appendedInputButton" type="text"/>
-            <span class="input-group-btn">
+            <span class="input-group-append">
                 <button class="btn" type="button">Go!</button>
             </span>
         </div>
@@ -1262,7 +1278,7 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 &lt;div class="form-group"&gt;
     &lt;div class="input-group"&gt;
         &lt;input class="form-control" id="appendedInputButton" type="text"/&gt;
-        &lt;span class="input-group-btn"&gt;
+        &lt;span class="input-group-append"&gt;
             &lt;button class="btn" type="button"&gt;Go!&lt;/button&gt;
         &lt;/span&gt;
     &lt;/div&gt;
@@ -1272,7 +1288,7 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
     <div class="form-group">
         <div class="input-group">
             <input class="form-control" id="appendedInputButtons" type="text">
-            <span class="input-group-btn">
+            <span class="input-group-append">
                 <button class="btn" type="button">Search</button>
             </span>
         </div>
@@ -1282,7 +1298,7 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 &lt;div class="form-group"&gt;
     &lt;div class="input-group"&gt;
         &lt;input class="form-control" id="appendedInputButtons" type="text"&gt;
-        &lt;span class="input-group-btn"&gt;
+        &lt;span class="input-group-append"&gt;
             &lt;button class="btn" type="button"&gt;Search&lt;/button&gt;
         &lt;/span&gt;
     &lt;/div&gt;
@@ -1300,15 +1316,15 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
                 <div class="input-group">
                     <input class="form-control" id="appendedDropdownButton" type="text">
 
-                    <div class="input-group-btn">
+                    <div class="input-group-append">
                         <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#">Separated link</a></li>
-                        </ul>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                            <div class="dropdown-divider" role="separator"></div>
+                            <a class="dropdown-item" href="#">Separated link</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1320,15 +1336,15 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
     &lt;div class="input-group"&gt;
         &lt;input class="form-control" id="appendedDropdownButton" type="text"&gt;
 
-        &lt;div class="input-group-btn"&gt;
+        &lt;div class="input-group-append"&gt;
             &lt;button class="btn dropdown-toggle" data-toggle="dropdown"&gt;Action &lt;span class="caret"&gt;&lt;/span&gt;&lt;/button&gt;
-            &lt;ul class="dropdown-menu"&gt;
-                &lt;li&gt;&lt;a href="#"&gt;Action&lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a href="#"&gt;Another action&lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a href="#"&gt;Something else here&lt;/a&gt;&lt;/li&gt;
-                &lt;li class="divider"&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a href="#"&gt;Separated link&lt;/a&gt;&lt;/li&gt;
-            &lt;/ul&gt;
+            &lt;div class="dropdown-menu"&gt;
+                &lt;a class="dropdown-item" href="#"&gt;Action&lt;/a&gt;&lt;/li&gt;
+                &lt;a class="dropdown-item" href="#"&gt;Another action&lt;/a&gt;&lt;/li&gt;
+                &lt;a class="dropdown-item" href="#"&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+                &lt;div class="dropdown-divider" role="separator"&gt;&lt;/div&gt;
+                &lt;a class="dropdown-item" href="#"&gt;Separated link&lt;/a&gt;
+            &lt;/div&gt;
         &lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;
@@ -1339,15 +1355,15 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
         <div class="col-lg-6">
             <div class="form-group">
                 <div class="input-group">
-                    <div class="input-group-btn">
+                    <div class="input-group-prepend">
                         <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#">Separated link</a></li>
-                        </ul>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                            <div class="dropdown-divider" role="separator"></div>
+                            <a class="dropdown-item" href="#">Separated link</a>
+                        </div>
                     </div>
                     <input class="form-control" id="prependedDropdownButton" type="text">
                 </div>
@@ -1358,15 +1374,15 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 <pre class="prettyprint linenums">
 &lt;div class="form-group"&gt;
     &lt;div class="input-group"&gt;
-        &lt;div class="input-group-btn"&gt;
+        &lt;div class="input-group-prepend"&gt;
             &lt;button class="btn dropdown-toggle" data-toggle="dropdown"&gt;Action &lt;span class="caret"&gt;&lt;/span&gt;&lt;/button&gt;
-            &lt;ul class="dropdown-menu"&gt;
-                &lt;li&gt;&lt;a href="#"&gt;Action&lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a href="#"&gt;Another action&lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a href="#"&gt;Something else here&lt;/a&gt;&lt;/li&gt;
-                &lt;li class="divider"&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a href="#"&gt;Separated link&lt;/a&gt;&lt;/li&gt;
-            &lt;/ul&gt;
+            &lt;div class="dropdown-menu"&gt;
+                &lt;a class="dropdown-item" href="#"&gt;Action&lt;/a&gt;&lt;/li&gt;
+                &lt;a class="dropdown-item" href="#"&gt;Another action&lt;/a&gt;&lt;/li&gt;
+                &lt;a class="dropdown-item" href="#"&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+                &lt;div class="divider" role="separator"&gt;&lt;/div&gt;
+                &lt;a class="dropdown-item" href="#"&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+            &lt;/div&gt;
         &lt;/div&gt;
         &lt;input class="form-control" id="prependedDropdownButton" type="text"&gt;
     &lt;/div&gt;
@@ -1376,28 +1392,28 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 <form class="bs-docs-example">
     <div class="form-group">
         <div class="input-group">
-            <div class="input-group-btn">
+            <div class="input-group-prepend">
                 <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>
-                <ul class="dropdown-menu">
-                    <li><a href="#">Action</a></li>
-                    <li><a href="#">Another action</a></li>
-                    <li><a href="#">Something else here</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">Separated link</a></li>
-                </ul>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                    <div class="dropdown-divider" role="separator"></div>
+                    <a class="dropdown-item" href="#">Separated link</a>
+                </div>
             </div>
 
             <input class="form-control" id="appendedPrependedDropdownButton" type="text">
 
-            <div class="input-group-btn">
+            <div class="input-group-append">
                 <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>
-                <ul class="dropdown-menu">
-                    <li><a href="#">Action</a></li>
-                    <li><a href="#">Another action</a></li>
-                    <li><a href="#">Something else here</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">Separated link</a></li>
-                </ul>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                    <div class="dropdown-divider" role="separator"></div>
+                    <a class="dropdown-item" href="#">Separated link</a>
+                </div>
             </div>
         </div>
     </div>
@@ -1405,28 +1421,28 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 <pre class="prettyprint linenums">
 &lt;div class="form-group"&gt;
     &lt;div class="input-group"&gt;
-        &lt;div class="input-group-btn"&gt;
+        &lt;div class="input-group-prepend"&gt;
             &lt;button class="btn dropdown-toggle" data-toggle="dropdown"&gt;Action &lt;span class="caret"&gt;&lt;/span&gt;&lt;/button&gt;
-            &lt;ul class="dropdown-menu"&gt;
-                &lt;li&gt;&lt;a href="#"&gt;Action&lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a href="#"&gt;Another action&lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a href="#"&gt;Something else here&lt;/a&gt;&lt;/li&gt;
-                &lt;li class="divider"&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a href="#"&gt;Separated link&lt;/a&gt;&lt;/li&gt;
-            &lt;/ul&gt;
+            &lt;div class="dropdown-menu"&gt;
+                &lt;a class="dropdown-item" href="#"&gt;Action&lt;/a&gt;&lt;/li&gt;
+                &lt;a class="dropdown-item" href="#"&gt;Another action&lt;/a&gt;&lt;/li&gt;
+                &lt;a class="dropdown-item" href="#"&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+                &lt;div class="divider" role="separator"&gt;&lt;/div&gt;
+                &lt;a class="dropdown-item" href="#"&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+            &lt;/div&gt;
         &lt;/div&gt;
 
         &lt;input class="form-control" id="appendedPrependedDropdownButton" type="text"&gt;
 
-        &lt;div class="input-group-btn"&gt;
+        &lt;div class="input-group-append"&gt;
             &lt;button class="btn dropdown-toggle" data-toggle="dropdown"&gt;Action &lt;span class="caret"&gt;&lt;/span&gt;&lt;/button&gt;
-            &lt;ul class="dropdown-menu"&gt;
-                &lt;li&gt;&lt;a href="#"&gt;Action&lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a href="#"&gt;Another action&lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a href="#"&gt;Something else here&lt;/a&gt;&lt;/li&gt;
-                &lt;li class="divider"&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a href="#"&gt;Separated link&lt;/a&gt;&lt;/li&gt;
-            &lt;/ul&gt;
+            &lt;div class="dropdown-menu"&gt;
+                &lt;a class="dropdown-item" href="#"&gt;Action&lt;/a&gt;&lt;/li&gt;
+                &lt;a class="dropdown-item" href="#"&gt;Another action&lt;/a&gt;&lt;/li&gt;
+                &lt;a class="dropdown-item" href="#"&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+                &lt;div class="dropdown-divider" role="separator"&gt;&lt;/div&gt;
+                &lt;a class="dropdown-item" href="#"&gt;Separated link&lt;/a&gt;
+            &lt;/div&gt;
         &lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;
@@ -2102,7 +2118,10 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 
         <div class="controls">
             <div class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span><input class="form-control" id="inputIcon" type="text">
+                <span class="input-group-prepend">
+                    <span class="input-group-text"><i class="glyphicon glyphicon-envelope"></i></span>
+                </span>
+                <input class="form-control" id="inputIcon" type="text">
             </div>
         </div>
     </div>
@@ -2113,7 +2132,12 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 
     &lt;div class="controls"&gt;
         &lt;div class="input-group"&gt;
-            &lt;span class="input-group-addon"&gt;&lt;i class="glyphicon glyphicon-envelope"&gt;&lt;/i&gt;&lt;/span&gt;&lt;input class="form-control" id="inputIcon" type="text"&gt;
+            &lt;span class="input-group-prepend"&gt;
+                &lt;span class="input-group-text"&gt;
+                    &lt;i class="glyphicon glyphicon-envelope"&gt;&lt;/i&gt;
+                &lt;/span&gt;
+            &lt;/span&gt;
+            &lt;input class="form-control" id="inputIcon" type="text"&gt;
         &lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;
