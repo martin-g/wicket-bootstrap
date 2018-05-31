@@ -32,7 +32,7 @@
         <module>bootstrap-core</module>
         <module>bootstrap-extensions</module>
         <module>bootstrap-themes</module>
-        <module>bootstrap-less</module>
+        <module>bootstrap-sass</module>
         <module>bootstrap-samples</module>
         <module>bootstrap-common-tests</module>
     </modules>
@@ -75,6 +75,7 @@
         <guava.version>23.0</guava.version>
         <junit.version>4.12</junit.version>
         <logback.version>1.2.3</logback.version>
+        <jsass.version>5.7.3</jsass.version>
     </properties>
 
     <dependencyManagement>
@@ -130,7 +131,7 @@
 
             <dependency>
                 <groupId>de.agilecoders.wicket</groupId>
-                <artifactId>wicket-bootstrap-less</artifactId>
+                <artifactId>wicket-bootstrap-sass</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
