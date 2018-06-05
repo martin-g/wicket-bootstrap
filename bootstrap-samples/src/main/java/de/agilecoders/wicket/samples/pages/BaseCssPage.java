@@ -19,6 +19,8 @@ import org.wicketstuff.annotation.mount.MountPath;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.Icon;
 import de.agilecoders.wicket.core.markup.html.bootstrap.navigation.BootstrapPagingNavigator;
 import de.agilecoders.wicket.core.markup.html.bootstrap.navigation.Breadcrumb;
+import de.agilecoders.wicket.core.markup.html.bootstrap.table.TableContextBehavior;
+import de.agilecoders.wicket.core.markup.html.bootstrap.table.TableContextType;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeIconType;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeIconTypeBuilder;
 
@@ -44,6 +46,8 @@ public class BaseCssPage extends BasePage {
         addForms();
 
         add(newIconsPanel("iconsPanel"));
+
+        add(newContextualTable("table-contextual"));
 /*
         add(new DateTextField("date"));
 
@@ -108,6 +112,19 @@ public class BaseCssPage extends BasePage {
             iconFragment.add(new Label("iconName", icon.cssClassName()));
             view.add(iconFragment);
         }
+        return view;
+    }
+
+    protected Component newContextualTable(String markup) {
+        RepeatingView view = new RepeatingView(markup);
+
+        for (TableContextType contextType : TableContextType.values()) {
+            Fragment contextualRow = new Fragment(view.newChildId(), "contextual-row", BaseCssPage.this);
+            contextualRow.add(new TableContextBehavior(contextType));
+            contextualRow.add(new Label("contextual-class", contextType.cssClassName()));
+            view.add(contextualRow);
+        }
+
         return view;
     }
 

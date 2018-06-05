@@ -261,8 +261,10 @@ public final class CssClassNames {
         public static final String striped = "table-striped";
         public static final String bordered = "table-bordered";
         public static final String hover = "table-hover";
-        public static final String condensed = "table-condensed";
+        public static final String sm = "table-sm";
         public static final String responsive = "table-responsive";
+        public static final String dark = "table-dark";
+        public static final String light = "table-light";
     }
 
     @SuppressWarnings("UnusedDeclaration")

@@ -644,12 +644,12 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 &lt;/table&gt;
 </pre>
 
-<h3><code>.table-condensed</code></h3>
+<h3><code>.table-sm</code></h3>
 
 <p>Makes tables more compact by cutting cell padding in half.</p>
 
 <div class="bs-docs-example">
-    <table class="table table-condensed">
+    <table class="table table-sm">
         <thead>
             <tr>
                 <th>#</th>
@@ -680,9 +680,50 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
     </table>
 </div>
 <pre class="prettyprint linenums" style="margin-bottom: 18px;">
-&lt;table class="table table-condensed"&gt;
+&lt;table class="table table-sm"&gt;
   ...
 &lt;/table&gt;
+</pre>
+
+<h3><code>.table-dark</code></h3>
+
+<p>Uses dark colors for rows and columns.</p>
+
+<div class="bs-docs-example">
+    <table class="table table-dark">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Username</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>1</td>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td colspan="2">Larry the Bird</td>
+            <td>@twitter</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<pre class="prettyprint linenums" style="margin-bottom: 18px;">
+    &lt;table class="table table-dark"&gt;
+      ...
+    &lt;/table&gt;
 </pre>
 
 
@@ -692,50 +733,27 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 <h2>Optional row classes</h2>
 
 <p>Use contextual classes to color table rows.</p>
+
+<wicket:fragment wicket:id="contextual-row">
+    <td wicket:id="contextual-class">.table-active</td>
+    <td>Cell</td>
+    <td>Cell</td>
+</wicket:fragment>
+
 <table class="table table-bordered table-striped">
-    <colgroup>
-        <col class="col-lg-1"/>
-        <col class="col-lg-7"/>
-    </colgroup>
     <thead>
         <tr>
             <th>Class</th>
-            <th>Description</th>
+            <th>Heading</th>
+            <th>Heading</th>
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>
-                <code>.active</code>
-            </td>
-            <td>Applies the hover color to a particular row or cell.</td>
-        </tr>
-        <tr>
-            <td>
-                <code>.success</code>
-            </td>
-            <td>Indicates a successful or positive action.</td>
-        </tr>
-        <tr>
-            <td>
-                <code>.info</code>
-            </td>
-            <td>Indicates a neutral informative change or action.</td>
-        </tr>
-        <tr>
-            <td>
-                <code>.warning</code>
-            </td>
-            <td>Indicates a warning that might need attention.</td>
-        </tr>
-        <tr>
-            <td>
-                <code>.danger</code>
-            </td>
-            <td>Indicates a dangerous or potentially negative action.</td>
-        </tr>
+        <tr wicket:id="table-contextual"></tr>
     </tbody>
 </table>
+
+
 <div class="bs-docs-example">
     <table class="table">
         <thead>
@@ -747,31 +765,31 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
             </tr>
         </thead>
         <tbody>
-            <tr class="info">
+            <tr class="table-info">
                 <td>1</td>
                 <td>TB - Monthly</td>
                 <td>01/04/2012</td>
                 <td>In Stock</td>
             </tr>
-            <tr class="success">
+            <tr class="table-success">
                 <td>1</td>
                 <td>TB - Monthly</td>
                 <td>02/04/2012</td>
                 <td>Approved</td>
             </tr>
-            <tr class="danger">
+            <tr class="table-danger">
                 <td>2</td>
                 <td>TB - Monthly</td>
                 <td>03/04/2012</td>
                 <td>Declined</td>
             </tr>
-            <tr class="warning">
+            <tr class="table-warning">
                 <td>3</td>
                 <td>TB - Monthly</td>
                 <td>04/04/2012</td>
                 <td>Pending</td>
             </tr>
-            <tr class="active">
+            <tr class="table-active">
                 <td>4</td>
                 <td>TB - Monthly</td>
                 <td>05/04/2012</td>
@@ -782,7 +800,7 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 </div>
 <pre class="prettyprint linenums">
 ...
-  &lt;tr class="success"&gt;
+  &lt;tr class="table-success"&gt;
     &lt;td&gt;1&lt;/td&gt;
     &lt;td&gt;TB - Monthly&lt;/td&gt;
     &lt;td&gt;01/04/2012&lt;/td&gt;

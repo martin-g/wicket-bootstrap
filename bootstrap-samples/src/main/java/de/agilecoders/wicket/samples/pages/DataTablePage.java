@@ -58,7 +58,7 @@ public class DataTablePage extends BasePage {
     }
 
     private BootstrapDefaultDataTable<ExampleFilterSortRowItem, String> createDataTable(final ExampleFilterSortDataProvider dataProvider) {
-        return new BootstrapDefaultDataTable<>("dataTable", createColumns(), dataProvider, ROWS_PER_PAGE).striped().bordered().condensed();
+        return new BootstrapDefaultDataTable<>("dataTable", createColumns(), dataProvider, ROWS_PER_PAGE).striped().bordered().sm();
     }
 
     private List<IColumn<ExampleFilterSortRowItem, String>> createColumns() {

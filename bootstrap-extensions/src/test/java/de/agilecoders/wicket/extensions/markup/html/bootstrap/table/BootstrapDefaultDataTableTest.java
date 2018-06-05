@@ -179,11 +179,11 @@ public class BootstrapDefaultDataTableTest extends WicketApplicationTest {
     }
 
     @Test
-    public void condensed() {
+    public void sm() {
         table = new BootstrapDefaultDataTable<>("table", columns, provider, 10);
-        table.condensed();
+        table.sm();
         tester().startComponentInPage(table, Markup.of(MARKUP));
-        assertTrue(tester().getTagByWicketId("table").getAttribute("class").contains("table-condensed"));
+        assertTrue(tester().getTagByWicketId("table").getAttribute("class").contains("table-sm"));
     }
 
     @Test
@@ -192,6 +192,22 @@ public class BootstrapDefaultDataTableTest extends WicketApplicationTest {
         table.hover();
         tester().startComponentInPage(table, Markup.of(MARKUP));
         assertTrue(tester().getTagByWicketId("table").getAttribute("class").contains("table-hover"));
+    }
+
+    @Test
+    public void dark() {
+        table = new BootstrapDefaultDataTable<>("table", columns, provider, 10);
+        table.dark();
+        tester().startComponentInPage(table, Markup.of(MARKUP));
+        assertTrue(tester().getTagByWicketId("table").getAttribute("class").contains("table-dark"));
+    }
+
+    @Test
+    public void light() {
+        table = new BootstrapDefaultDataTable<>("table", columns, provider, 10);
+        table.light();
+        tester().startComponentInPage(table, Markup.of(MARKUP));
+        assertTrue(tester().getTagByWicketId("table").getAttribute("class").contains("table-light"));
     }
 
 }
