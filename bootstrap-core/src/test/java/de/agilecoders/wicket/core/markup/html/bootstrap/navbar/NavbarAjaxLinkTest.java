@@ -1,7 +1,7 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.navbar;
 
 import de.agilecoders.wicket.core.WicketApplicationTest;
-import de.agilecoders.wicket.core.markup.html.bootstrap.image.GlyphIconType;
+import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
 
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.model.Model;
@@ -28,7 +28,12 @@ public class NavbarAjaxLinkTest extends WicketApplicationTest {
             @Override
             public void onClick(AjaxRequestTarget ajaxRequestTarget) {
             }
-        }.setIconType(GlyphIconType.adjust));
+        }.setIconType(new IconType("test-icon") {
+            @Override
+            public String cssClassName() {
+                return "test-icon";
+            }
+        }));
 
         tester().assertVisible("id:splitter");
         tester().assertContains("</i>&nbsp;label");

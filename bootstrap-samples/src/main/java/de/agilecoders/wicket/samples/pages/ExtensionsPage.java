@@ -9,7 +9,6 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.common.NotificationPanel
 import de.agilecoders.wicket.core.markup.html.bootstrap.components.TooltipConfig;
 import de.agilecoders.wicket.core.markup.html.bootstrap.dialog.Modal;
 import de.agilecoders.wicket.core.markup.html.bootstrap.dialog.TextContentModal;
-import de.agilecoders.wicket.core.markup.html.bootstrap.image.GlyphIconType;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.Icon;
 import de.agilecoders.wicket.extensions.javascript.jasny.InputMaskBehavior;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.behavior.AnimatedBehavior;
@@ -32,6 +31,7 @@ import de.agilecoders.wicket.extensions.markup.html.bootstrap.html5player.Html5P
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.html5player.Html5VideoConfig;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.html5player.Video;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeCssReference;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeIconType;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.OpenWebIconType;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.OpenWebIconsCssReference;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.jqueryui.JQueryUICssReference;
@@ -120,13 +120,13 @@ public class ExtensionsPage extends BasePage {
                 .<AbstractLink> newArrayList(
                         new MenuBookmarkablePageLink<Void>(
                                 DatePickerPage.class, Model.of("DatePicker"))
-                                .setIconType(GlyphIconType.time),
+                                .setIconType(FontAwesomeIconType.calendar),
                         new MenuBookmarkablePageLink<Void>(IssuesPage.class,
                                 Model.of("Github Issues"))
-                                .setIconType(GlyphIconType.book),
+                                .setIconType(FontAwesomeIconType.book),
                         new MenuBookmarkablePageLink<Void>(
                                 ExtensionsPage.class, Model.of("Extensions"))
-                                .setIconType(GlyphIconType.qrcode));
+                                .setIconType(FontAwesomeIconType.qrcode));
         final Component contextPanel = new TransparentWebMarkupContainer(
                 "context-panel");
         final ButtonListContextMenu contextMenu = new ButtonListContextMenu(
@@ -177,13 +177,13 @@ public class ExtensionsPage extends BasePage {
             protected List<AbstractLink> newSubMenuButtons(String buttonMarkupId) {
             return Lists.<AbstractLink> newArrayList(
                 new MenuBookmarkablePageLink<Void>(DatePickerPage.class, Model.of("DatePicker"))
-                    .setIconType(GlyphIconType.time),
+                    .setIconType(FontAwesomeIconType.calendar),
                     new MenuBookmarkablePageLink<Void>(SliderPage.class, Model.of("Slider"))
-                            .setIconType(GlyphIconType.screenshot),
+                            .setIconType(FontAwesomeIconType.picture_o),
                     new MenuBookmarkablePageLink<Void>(IssuesPage.class,
-                    Model.of("Github Issues")).setIconType(GlyphIconType.book),
+                    Model.of("Github Issues")).setIconType(FontAwesomeIconType.book),
                 new MenuBookmarkablePageLink<Void>(ExtensionsPage.class, Model.of("Extensions"))
-                    .setIconType(GlyphIconType.qrcode));
+                    .setIconType(FontAwesomeIconType.qrcode));
             }
         };
 

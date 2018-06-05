@@ -1,7 +1,7 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.navbar;
 
 import de.agilecoders.wicket.core.WicketApplicationTest;
-import de.agilecoders.wicket.core.markup.html.bootstrap.image.GlyphIconType;
+import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
 import de.agilecoders.wicket.core.test.IntegrationTest;
 import org.apache.wicket.Component;
 import org.apache.wicket.Page;
@@ -132,7 +132,13 @@ public class NavbarTest extends WicketApplicationTest {
         navbar.addComponents(new INavbarComponent() {
             @Override
             public Component create(String markupId) {
-                return new NavbarButton(Page.class, Model.of("Link Name")).setIconType(GlyphIconType.aligncenter);
+                return new NavbarButton(Page.class, Model.of("Link Name"))
+                        .setIconType(new IconType("test-icon") {
+                            @Override
+                            public String cssClassName() {
+                                return "test-icon";
+                            }
+                        });
             }
 
             @Override
@@ -144,7 +150,7 @@ public class NavbarTest extends WicketApplicationTest {
         tester().startComponentInPage(navbar);
 
         Assert.assertThat(tester().getTagByWicketId(Navbar.componentId()).hasChildTag("i"), is(equalTo(true)));
-        Assert.assertThat(tester().getTagByWicketId("icon").getAttribute("class"), containsString("icon-align-center"));
+        Assert.assertThat(tester().getTagByWicketId("icon").getAttribute("class"), containsString("test-icon"));
     }
 
     @Test

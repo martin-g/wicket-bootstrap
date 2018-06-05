@@ -16,7 +16,6 @@ import org.apache.wicket.resource.JQueryPluginResourceReference;
 import org.joda.time.LocalDate;
 import org.wicketstuff.annotation.mount.MountPath;
 
-import java.util.Date;
 
 /**
  * Example page of datetime picker usage

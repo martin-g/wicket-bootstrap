@@ -6,15 +6,21 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.form.BootstrapForm;
 import de.agilecoders.wicket.core.markup.html.bootstrap.form.BootstrapRadioChoice;
 import org.apache.wicket.Component;
 import org.apache.wicket.extensions.breadcrumb.panel.BreadCrumbPanel;
+import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.navigation.paging.IPageable;
+import org.apache.wicket.markup.html.panel.Fragment;
+import org.apache.wicket.markup.repeater.RepeatingView;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.wicketstuff.annotation.mount.MountPath;
 
+import de.agilecoders.wicket.core.markup.html.bootstrap.image.Icon;
 import de.agilecoders.wicket.core.markup.html.bootstrap.navigation.BootstrapPagingNavigator;
 import de.agilecoders.wicket.core.markup.html.bootstrap.navigation.Breadcrumb;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeIconType;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeIconTypeBuilder;
 
 /**
  * The {@code BaseCssPage}
@@ -36,6 +42,8 @@ public class BaseCssPage extends BasePage {
         super(parameters);
 
         addForms();
+
+        add(newIconsPanel("iconsPanel"));
 /*
         add(new DateTextField("date"));
 
@@ -87,6 +95,20 @@ public class BaseCssPage extends BasePage {
         };
 
         return new BootstrapPagingNavigator(markupId, pageable)/*.setPosition(BootstrapPagingNavigator.Position.Centered)*/;
+    }
+
+    protected Component newIconsPanel(String markupId) {
+        RepeatingView view = new RepeatingView(markupId);
+
+        for (FontAwesomeIconTypeBuilder.FontAwesomeGraphic graphic : FontAwesomeIconTypeBuilder.FontAwesomeGraphic.values()) {
+            Fragment iconFragment = new Fragment(view.newChildId(), "iconFragment", BaseCssPage.this);
+
+            FontAwesomeIconType icon = FontAwesomeIconTypeBuilder.on(graphic).fixedWidth().build();
+            iconFragment.add(new Icon("iconValue", Model.of(icon)));
+            iconFragment.add(new Label("iconName", icon.cssClassName()));
+            view.add(iconFragment);
+        }
+        return view;
     }
 
     @Override
