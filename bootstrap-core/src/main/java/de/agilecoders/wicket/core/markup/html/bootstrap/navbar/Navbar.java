@@ -1,7 +1,5 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.navbar;
 
-import com.google.common.base.Function;
-import com.google.common.base.Predicate;
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapResourcesBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.CssClassNameAppender;
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNameProvider;
@@ -34,6 +32,8 @@ import org.apache.wicket.util.string.Strings;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
 import static de.agilecoders.wicket.jquery.util.Generics2.transform;
 
@@ -512,9 +512,10 @@ public class Navbar extends Panel implements Invertible<Navbar> {
         }
 
         @Override
-        public boolean apply(final INavbarComponent navbarComponent) {
+        public boolean test(final INavbarComponent navbarComponent) {
             return navbarComponent != null && position.equals(navbarComponent.getPosition());
         }
+
     }
 
     /**
