@@ -295,6 +295,5 @@ public final class CssClassNames {
         public static final String textJustify = "text-justify";
         public static final String textNowrap = "text-nowrap";
         public static final String listInline = "list-inline";
-        public static final String dlHorizontal = "dl-horizontal";
     }
 }

@@ -397,22 +397,24 @@
 <p>Make terms and descriptions in <code>&lt;dl&gt;</code> line up side-by-side.</p>
 
 <div class="bs-docs-example">
-    <dl class="dl-horizontal">
-        <dt>Description lists</dt>
-        <dd>A description list is perfect for defining terms.</dd>
-        <dt>Euismod</dt>
-        <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
-        <dd>Donec id elit non mi porta gravida at eget metus.</dd>
-        <dt>Malesuada porta</dt>
-        <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
-        <dt>Felis euismod semper eget lacinia</dt>
-        <dd>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</dd>
+    <dl class="row">
+        <dt class="col-sm-3">Description lists</dt>
+        <dd class="col-sm-9">A description list is perfect for defining terms.</dd>
+        <dt class="col-sm-3">Euismod</dt>
+        <dd class="col-sm-9">
+            <p>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</p>
+            <p>Donec id elit non mi porta gravida at eget metus.</p>
+        </dd>
+        <dt class="col-sm-3">Malesuada porta</dt>
+        <dd class="col-sm-9">Etiam porta sem malesuada magna mollis euismod.</dd>
+        <dt class="col-sm-3">Felis euismod semper eget lacinia</dt>
+        <dd class="col-sm-9">Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</dd>
     </dl>
 </div>
 <pre class="prettyprint linenums">
-&lt;dl class="dl-horizontal"&gt;
-  &lt;dt&gt;...&lt;/dt&gt;
-  &lt;dd&gt;...&lt;/dd&gt;
+&lt;dl class="list-inline"&gt;
+  &lt;dt class="list-inline-item" &gt;...&lt;/dt&gt;
+  &lt;dd class="list-inline-item" &gt;...&lt;/dd&gt;
 &lt;/dl&gt;
 </pre>
 <p>
