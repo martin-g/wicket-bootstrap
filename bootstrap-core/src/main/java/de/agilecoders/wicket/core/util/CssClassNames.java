@@ -232,27 +232,25 @@ public final class CssClassNames {
     @SuppressWarnings("UnusedDeclaration")
     public static final class Form {
         public static final String form = "form";
+        public static final String formRow = "form-row";
         public static final String control = "form-control";
-        public static final String label = "control-label";
+        public static final String label = "col-form-label";
         public static final String staticControl = "form-control-static";
         public static final String feedbackControl = "form-control-feedback";
         public static final String group = "form-group";
-        public static final String groupLarge = "form-group-lg";
-        public static final String groupSmall = "form-group-sm";
+        public static final String groupLarge = "form-control-lg";
+        public static final String groupSmall = "form-control-sm";
         public static final String horizontal = "form-horizontal";
-        public static final String help = "help-block";
+        public static final String help = "form-text";
         public static final String inline = "form-inline";
         public static final String disabled = "disabled";
-        public static final String radio = "radio";
-        public static final String radioInline = "radio-inline";
-        public static final String checkbox = "checkbox";
-        public static final String checkboxInline = "checkbox-inline";
+        public static final String formCheck = "form-check";
         public static final String hasSuccess = "has-success";
         public static final String hasWarning = "has-warning";
         public static final String hasFeedback = "has-feedback";
         public static final String hasError = "has-error";
-        public static final String large = "input-lg";
-        public static final String small = "input-sm";
+        public static final String large = "form-control-lg";
+        public static final String small = "form-control-sm";
     }
 
     @SuppressWarnings("UnusedDeclaration")

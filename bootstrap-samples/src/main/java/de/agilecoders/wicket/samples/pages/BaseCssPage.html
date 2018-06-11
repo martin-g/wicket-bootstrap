@@ -925,9 +925,9 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
     <div class="form-group">
         <fieldset>
             <legend>Legend</legend>
-            <label>Label name</label>
+            <label class="col-form-label">Label name</label>
             <input type="text" class="form-control" placeholder="Type something...">
-            <span class="help-block">Example block-level help text here.</span>
+            <span class="form-text">Example block-level help text here.</span>
             <input type="checkbox" wicket:id="checkbox"/>
             <span wicket:id="radio"></span>
             <button type="submit" class="btn">Submit</button>
@@ -938,20 +938,20 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 &lt;form&gt;
   &lt;fieldset&gt;
     &lt;legend&gt;Legend&lt;/legend&gt;
-    &lt;label&gt;Label name&lt;/label&gt;
+    &lt;label class="col-form-label"&gt;Label name&lt;/label&gt;
     &lt;input type="text" class="form-control" placeholder="Type something..."&gt;
-    &lt;span class="help-block"&gt;Example block-level help text here.&lt;/span&gt;
+    &lt;span class="form-text"&gt;Example block-level help text here.&lt;/span&gt;
     &lt;div class="form-check"&gt;
         &lt;input type="checkbox" class="form-check-input"&gt;
-        &lt;label class="form-check-label"&gt;Check me out&lt;/label&gt;
+        &lt;label class="col-form-label"&gt;Check me out&lt;/label&gt;
     &lt;/div&gt;
     &lt;div class="form-check"&gt;
         &lt;input type="radio" class="form-check-input"&gt;
-        &lt;label class="form-check-label"&gt;Radio One&lt;/label&gt;
+        &lt;label class="col-form-label"&gt;Radio One&lt;/label&gt;
     &lt;/div&gt;
     &lt;div class="form-check"&gt;
         &lt;input type="radio" class="form-check-input"&gt;
-        &lt;label class="form-check-label"&gt;Radio Two&lt;/label&gt;
+        &lt;label class="col-form-label"&gt;Radio Two&lt;/label&gt;
     &lt;/div&gt;
     &lt;button type="submit" class="btn"&gt;Submit&lt;/button&gt;
   &lt;/fieldset&gt;
@@ -972,12 +972,12 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 
 <form class="bs-docs-example form-inline">
     <div class="form-group">
-        <input type="text" class="form-control input-sm" placeholder="Email">
-        <input type="password" class="form-control input-sm" placeholder="Password">
+        <input type="text" class="form-control form-control-sm" placeholder="Email">
+        <input type="password" class="form-control form-control-sm" placeholder="Password">
 
         <div class="form-check">
             <input type="checkbox" class="form-check-input">
-            <label class="form-check-label">Remember me</label>
+            <label class="col-form-label">Remember me</label>
         </div>
         <button type="submit" class="btn">Sign in</button>
     </div>
@@ -1007,17 +1007,17 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 </ul>
 <form class="bs-docs-example form-horizontal">
     <div class="form-group">
-        <label class="control-label" for="inputEmail">Email</label>
+        <label class="col-form-label" for="inputEmail">Email</label>
         <input type="text" class="form-control" id="inputEmail" placeholder="Email">
     </div>
     <div class="form-group">
-        <label class="control-label" for="inputPassword">Password</label>
+        <label class="col-form-label" for="inputPassword">Password</label>
         <input type="password" class="form-control"  id="inputPassword" placeholder="Password">
     </div>
     <div class="form-group">
         <div class="form-check">
             <input type="checkbox" class="form-check-input">
-            <label class="form-check-label">Remember me</label>
+            <label class="col-form-label">Remember me</label>
         </div>
         <button type="submit" class="btn">Sign in</button>
     </div>
@@ -1025,17 +1025,17 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 <pre class="prettyprint linenums">
 &lt;form class="form-horizontal"&gt;
   &lt;div class="form-group"&gt;
-    &lt;label class="control-label" for="inputEmail"&gt;Email&lt;/label&gt;
+    &lt;label class="col-form-label" for="inputEmail"&gt;Email&lt;/label&gt;
     &lt;input type="text" class="form-control" id="inputEmail" placeholder="Email"&gt;
   &lt;/div&gt;
   &lt;div class="form-group"&gt;
-    &lt;label class="control-label" for="inputPassword"&gt;Password&lt;/label&gt;
+    &lt;label class="col-form-label" for="inputPassword"&gt;Password&lt;/label&gt;
     &lt;input type="password" class="form-control" id="inputPassword" placeholder="Password"&gt;
   &lt;/div&gt;
   &lt;div class="form-group"&gt;
     &lt;div class="form-check"&gt;
-      &lt;input type="checbox" class="form-check-input &gt;
-          &lt;label class="form-check-label"&gt; Remember me &lt;/label&gt;
+      &lt;input type="checbox" class="form-check-input" &gt;
+      &lt;label class="col-form-label"&gt; Remember me &lt;/label&gt;
       &lt;button type="submit" class="btn"&gt;Sign in&lt;/button&gt;
     &lt;/div&gt;
   &lt;/div&gt;

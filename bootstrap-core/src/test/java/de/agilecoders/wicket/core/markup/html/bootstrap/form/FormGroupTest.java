@@ -163,7 +163,7 @@ public class FormGroupTest extends WicketApplicationTest {
         formTester.submit();
 
         tester().assertLabel("form:id:error", "&#039;value&#039; is required.");
-        tester().assertContains("class=\".*has-error.*\""); //assert error CSS class is present
+        tester().assertContains("class=\".*is-invalid.*\""); //assert error CSS class is present
     }
 
     private class FormData implements Serializable {
