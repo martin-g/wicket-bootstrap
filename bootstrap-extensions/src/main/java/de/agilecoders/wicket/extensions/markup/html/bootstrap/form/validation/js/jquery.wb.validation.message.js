@@ -14,7 +14,7 @@
      * @param message error message
      */
     $.wb_validation.showError = function ($element, $messageTarget, message) {
-        $messageTarget.after('<p class="validation validation-message text-danger">' + message + '</p>');
+        $messageTarget.after('<p class="validation validation-message invalid-feedback">' + message + '</p>');
     };
 
     /**

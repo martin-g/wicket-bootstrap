@@ -26,7 +26,6 @@ public class TooltipValidationPage extends BaseValidationPage {
         "    public MyWebPage(PageParameters parameters) {\n"
             + "        super(parameters);\n"
             + "        TooltipValidation validation = new TooltipValidation();\n"
-            + "        validation.getConfig().appendToParent(true);\n"
             + "        add(validation);\n"
             + "    }\n";
 
@@ -36,7 +35,6 @@ public class TooltipValidationPage extends BaseValidationPage {
     public TooltipValidationPage(PageParameters parameters) {
         super(parameters);
         TooltipValidation validation = new TooltipValidation();
-        validation.getConfig().appendToParent(true);
         add(validation);
         add(new Label("behavior", Model.of(TooltipValidation.class.getSimpleName())));
         add(new Label("behavior-other", Model.of(SimpleMessageValidation.class.getSimpleName())));
