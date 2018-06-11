@@ -1,7 +1,6 @@
 package de.agilecoders.wicket.samples.panels.validation;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.form.BootstrapForm;
-import de.agilecoders.wicket.core.markup.html.bootstrap.form.FormType;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.DateTextField;
 import de.agilecoders.wicket.samples.components.base.StateSelect;
 import org.apache.wicket.ajax.AjaxRequestTarget;
@@ -30,7 +29,6 @@ public class SimpleFormPanel extends Panel {
          */
         public SimpleForm(String componentId) {
             super(componentId);
-            type(FormType.Horizontal);
             add(new RequiredTextField<>("required", Model.of("")).setLabel(Model.of("Username")));
             add(new PasswordTextField("pass", Model.of("")).setLabel(Model.of("Password")));
             add(new DateTextField("date", Model.of()).setRequired(true).setLabel(Model.of("Date")));

@@ -1005,39 +1005,55 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
     <li>Add <code>.control-label</code> to the label</li>
     <li>Wrap any associated controls in <code>.controls</code> for proper alignment</li>
 </ul>
-<form class="bs-docs-example form-horizontal">
-    <div class="form-group">
-        <label class="col-form-label" for="inputEmail">Email</label>
-        <input type="text" class="form-control" id="inputEmail" placeholder="Email">
-    </div>
-    <div class="form-group">
-        <label class="col-form-label" for="inputPassword">Password</label>
-        <input type="password" class="form-control"  id="inputPassword" placeholder="Password">
-    </div>
-    <div class="form-group">
-        <div class="form-check">
-            <input type="checkbox" class="form-check-input">
-            <label class="col-form-label">Remember me</label>
+<form class="bs-docs-example">
+    <div class="form-group row">
+        <label class="col-form-label col-sm-2" for="inputEmail">Email</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputEmail" placeholder="Email">
         </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-form-label col-sm-2" for="inputPassword">Password</label>
+        <div class="col-sm-10">
+            <input type="password" class="form-control"  id="inputPassword" placeholder="Password">
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-10">
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input">
+                <label class="form-check-label">Remember me</label>
+            </div>
+        </div>
+    </div>
+    <div class="form-group row">
         <button type="submit" class="btn">Sign in</button>
     </div>
 </form>
 <pre class="prettyprint linenums">
-&lt;form class="form-horizontal"&gt;
-  &lt;div class="form-group"&gt;
-    &lt;label class="col-form-label" for="inputEmail"&gt;Email&lt;/label&gt;
-    &lt;input type="text" class="form-control" id="inputEmail" placeholder="Email"&gt;
-  &lt;/div&gt;
-  &lt;div class="form-group"&gt;
-    &lt;label class="col-form-label" for="inputPassword"&gt;Password&lt;/label&gt;
-    &lt;input type="password" class="form-control" id="inputPassword" placeholder="Password"&gt;
-  &lt;/div&gt;
-  &lt;div class="form-group"&gt;
-    &lt;div class="form-check"&gt;
-      &lt;input type="checbox" class="form-check-input" &gt;
-      &lt;label class="col-form-label"&gt; Remember me &lt;/label&gt;
-      &lt;button type="submit" class="btn"&gt;Sign in&lt;/button&gt;
+&lt;form&gt;
+  &lt;div class="form-group row"&gt;
+    &lt;label class="col-form-label col-sm-2" for="inputEmail"&gt;Email&lt;/label&gt;
+    &lt;div class="col-sm-10"&gt;
+        &lt;input type="text" class="form-control" id="inputEmail" placeholder="Email"&gt;
     &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="form-group row"&gt;
+    &lt;label class="col-form-label col-sm-2" for="inputPassword"&gt;Password&lt;/label&gt;
+    &lt;div class="col-sm-10"&gt;
+        &lt;input type="password" class="form-control" id="inputPassword" placeholder="Password"&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="form-group row"&gt;
+    &lt;div class="col-sm-10"&gt;
+        &lt;div class="form-check"&gt;
+            &lt;input type="checkbox" class="form-check-input" &gt;
+            &lt;label class="form-check-label"&gt; Remember me &lt;/label&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="form-group row"&gt;
+    &lt;button type="submit" class="btn"&gt;Sign in&lt;/button&gt;
   &lt;/div&gt;
 &lt;/form&gt;
 </pre>
