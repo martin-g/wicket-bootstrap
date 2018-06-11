@@ -1,0 +1,9 @@
+/* Import lots of files to trigger the problem */
+@import 'classpath!/de/agilecoders/wicket/sass/resources/root.scss';
+@import 'classpath!/de/agilecoders/wicket/sass/resources/timeParent.scss';
+@import 'classpath!/de/agilecoders/wicket/sass/resources/custom-functions.scss';
+@import "classpath!/de/agilecoders/wicket/sass/test/classpathImported.scss";
+
+.colorLess1 {
+  color: #FFF;
+}

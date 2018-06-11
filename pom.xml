@@ -32,7 +32,7 @@
         <module>bootstrap-core</module>
         <module>bootstrap-extensions</module>
         <module>bootstrap-themes</module>
-        <module>bootstrap-less</module>
+        <module>bootstrap-sass</module>
         <module>bootstrap-samples</module>
         <module>bootstrap-common-tests</module>
     </modules>
@@ -43,7 +43,7 @@
         <maven.java.source>${java.version}</maven.java.source>
         <maven.java.target>${java.version}</maven.java.target>
 
-        <bootstrap.version>3.3.7-1</bootstrap.version>
+        <bootstrap.version>4.1.0</bootstrap.version>
         <config.version>0.3.5</config.version>
         <wicket-webjars.version>2.0.7</wicket-webjars.version>
         <wicket-jquery-selectors.version>2.0.0</wicket-jquery-selectors.version>
@@ -75,6 +75,8 @@
         <guava.version>23.0</guava.version>
         <junit.version>4.12</junit.version>
         <logback.version>1.2.3</logback.version>
+        <jsass.version>5.7.3</jsass.version>
+        <popperjs.version>1.14.1</popperjs.version>
     </properties>
 
     <dependencyManagement>
@@ -117,6 +119,12 @@
             </dependency>
 
             <dependency>
+                <groupId>org.webjars</groupId>
+                <artifactId>popper.js</artifactId>
+                <version>${popperjs.version}</version>
+            </dependency>
+
+            <dependency>
                 <groupId>de.agilecoders.wicket</groupId>
                 <artifactId>wicket-bootstrap-core</artifactId>
                 <version>${project.version}</version>
@@ -130,7 +138,7 @@
 
             <dependency>
                 <groupId>de.agilecoders.wicket</groupId>
-                <artifactId>wicket-bootstrap-less</artifactId>
+                <artifactId>wicket-bootstrap-sass</artifactId>
                 <version>${project.version}</version>
             </dependency>
 

@@ -48,7 +48,7 @@ import de.agilecoders.wicket.extensions.markup.html.bootstrap.html5player.Html5P
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.OpenWebIconsCssReference;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.jqueryui.JQueryUIJavaScriptReference;
 import de.agilecoders.wicket.extensions.request.StaticResourceRewriteMapper;
-import de.agilecoders.wicket.less.BootstrapLess;
+import de.agilecoders.wicket.sass.BootstrapSass;
 import de.agilecoders.wicket.samples.assets.base.ApplicationJavaScript;
 import de.agilecoders.wicket.samples.assets.base.FixBootstrapStylesCssResourceReference;
 import de.agilecoders.wicket.samples.pages.HomePage;
@@ -208,7 +208,7 @@ public class WicketApplication extends WebApplication {
                 .setThemeProvider(themeProvider)
                 .setActiveThemeProvider(new CookieThemeProvider());
 
-        BootstrapLess.install(this);
+        BootstrapSass.install(this);
     }
 
     /**

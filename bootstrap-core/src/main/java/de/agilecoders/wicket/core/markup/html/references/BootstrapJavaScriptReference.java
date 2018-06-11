@@ -44,6 +44,7 @@ public class BootstrapJavaScriptReference extends WebjarsJavaScriptResourceRefer
     public List<HeaderItem> getDependencies() {
         return Dependencies.combine(super.getDependencies(),
                                     JavaScriptHeaderItem.forReference(Application.get().getJavaScriptLibrarySettings().getJQueryReference()),
-                                    JavaScriptHeaderItem.forReference(JQueryMigrateJavaScriptReference.instance()));
+                                    JavaScriptHeaderItem.forReference(JQueryMigrateJavaScriptReference.instance()),
+                                    JavaScriptHeaderItem.forReference(PopperJavaScriptReference.instance()));
     }
 }
