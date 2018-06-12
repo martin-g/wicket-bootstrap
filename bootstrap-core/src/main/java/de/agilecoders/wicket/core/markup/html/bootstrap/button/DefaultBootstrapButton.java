@@ -16,7 +16,7 @@ public class DefaultBootstrapButton extends BootstrapButton {
      * @param componentId the wicket component id
      */
     public DefaultBootstrapButton(final String componentId) {
-        super(componentId, Buttons.Type.Default);
+        super(componentId, Buttons.Type.Secondary);
     }
 
     /**
@@ -26,6 +26,6 @@ public class DefaultBootstrapButton extends BootstrapButton {
      * @param model       the component's label as model
      */
     public DefaultBootstrapButton(final String componentId, final IModel<String> model) {
-        super(componentId, model, Buttons.Type.Default);
+        super(componentId, model, Buttons.Type.Secondary);
     }
 }

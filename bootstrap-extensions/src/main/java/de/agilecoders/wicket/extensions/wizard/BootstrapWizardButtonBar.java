@@ -61,7 +61,7 @@ public class BootstrapWizardButtonBar extends WizardButtonBar
 	protected WizardButton newLastButton(String id, IWizard wizard)
 	{
         WizardButton button = super.newLastButton(id, wizard);
-		button.add(new ButtonBehavior(Type.Default, Buttons.Size.Medium));
+		button.add(new ButtonBehavior(Type.Secondary, Buttons.Size.Medium));
 		return button;
 	}
 
@@ -69,7 +69,7 @@ public class BootstrapWizardButtonBar extends WizardButtonBar
 	protected WizardButton newNextButton(String id, IWizard wizard)
 	{
         WizardButton button = super.newNextButton(id, wizard);
-		button.add(new ButtonBehavior(Type.Default, Buttons.Size.Medium));
+		button.add(new ButtonBehavior(Type.Secondary, Buttons.Size.Medium));
 		return button;
 	}
 
@@ -77,7 +77,7 @@ public class BootstrapWizardButtonBar extends WizardButtonBar
 	protected WizardButton newPreviousButton(String id, IWizard wizard)
 	{
         WizardButton button = super.newPreviousButton(id, wizard);
-		button.add(new ButtonBehavior(Type.Default, Buttons.Size.Medium));
+		button.add(new ButtonBehavior(Type.Secondary, Buttons.Size.Medium));
 		return button;
 	}
 }

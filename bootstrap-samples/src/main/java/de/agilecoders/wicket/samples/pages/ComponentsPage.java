@@ -214,12 +214,12 @@ public class ComponentsPage extends BasePage {
         return new SplitButton(markupId, Model.of("Action")) {
             @Override
             protected AbstractLink newBaseButton(String markupId, IModel<String> labelModel, IModel<IconType> iconTypeModel) {
-                return new BootstrapAjaxLink<String>(markupId, labelModel, Buttons.Type.Default) {
+                return new BootstrapAjaxLink<String>(markupId, labelModel, Buttons.Type.Secondary, labelModel) {
                     @Override
                     public void onClick(AjaxRequestTarget target) {
                         target.appendJavaScript("alert('clicked');");
                     }
-                };
+                }.setIconType(iconTypeModel.getObject());
             }
 
             @Override

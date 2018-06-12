@@ -59,7 +59,7 @@ public class DatePickerPage extends BasePage {
         modal.show(false);
         modal.size(Modal.Size.Small);
         modal.setUseKeyboard(true);
-        BootstrapButton modalButton = new BootstrapButton("modal-opener", Buttons.Type.Default);
+        BootstrapButton modalButton = new BootstrapButton("modal-opener", Buttons.Type.Secondary);
         modalButton.setLabel(Model.of("Open Modal Dialog"));
         modal.addOpenerAttributesTo(modalButton);
 
