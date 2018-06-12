@@ -21,7 +21,7 @@ public abstract class ButtonGroup extends Panel {
     private static final long serialVersionUID = 1L;
 
     public enum Size implements ICssClassNameProvider {
-        ExtraSmall("xs"), Small("sm"), Default(""), Large("lg");
+        Small("sm"), Default(""), Large("lg");
 
         private final String cssName;
 
