@@ -499,7 +499,8 @@
 <h2>Lightweight defaults
     <small>Same markup, different classes</small>
 </h2>
-<p>All nav components here&mdash;tabs, pills, and lists&mdash;<strong>share the same base markup and styles</strong> through the <code>.nav</code> class.</p>
+<p>All nav components here&mdash;tabs, pills, and lists&mdash;<strong>share the same base markup and styles</strong> through the <code>.nav</code>, <code>.nav-item</code> and <code>.nav-link</code> classes.</p>
+<p>The base .nav component does not include any .active state. The following examples include the class, mainly to demonstrate that this particular class does not trigger any special styling.</p>
 
 <h3>Basic tabs</h3>
 
@@ -507,18 +508,18 @@
 
 <div class="bs-docs-example">
     <ul class="nav nav-tabs">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">Profile</a></li>
-        <li><a href="#">Messages</a></li>
+        <li class="nav-item"><a href="#" class="nav-link active">Home</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">Profile</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">Messages</a></li>
     </ul>
 </div>
 <pre class="prettyprint linenums">
 &lt;ul class="nav nav-tabs"&gt;
-  &lt;li class="active"&gt;
-    &lt;a href="#"&gt;Home&lt;/a&gt;
+  &lt;li class="nav-item"&gt;
+    &lt;a href="#" class="nav-link active"&gt;Home&lt;/a&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;a href="#"&gt;...&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="#"&gt;...&lt;/a&gt;&lt;/li&gt;
+  &lt;li class="nav-item"&gt;&lt;a href="#" class="nav-link"&gt;...&lt;/a&gt;&lt;/li&gt;
+  &lt;li class="nav-item"&gt;&lt;a href="#" class="nav-link"&gt;...&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </pre>
 
@@ -528,18 +529,18 @@
 
 <div class="bs-docs-example">
     <ul class="nav nav-pills">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">Profile</a></li>
-        <li><a href="#">Messages</a></li>
+        <li class="nav-item"><a href="#" class="nav-link active">Home</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">Profile</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">Messages</a></li>
     </ul>
 </div>
 <pre class="prettyprint linenums">
 &lt;ul class="nav nav-pills"&gt;
-  &lt;li class="active"&gt;
-    &lt;a href="#"&gt;Home&lt;/a&gt;
+  &lt;li class="nav-item"&gt;
+    &lt;a href="#" class="nav-link active"&gt;Home&lt;/a&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;a href="#"&gt;...&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="#"&gt;...&lt;/a&gt;&lt;/li&gt;
+  &lt;li class="nav-item"&gt;&lt;a href="#" class="nav-link"&gt;...&lt;/a&gt;&lt;/li&gt;
+  &lt;li class="nav-item"&gt;&lt;a href="#" class="nav-link"&gt;...&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </pre>
 
@@ -549,42 +550,75 @@
 
 <div class="bs-docs-example">
     <ul class="nav nav-pills">
-        <li class="active"><a href="#">Clickable link</a></li>
-        <li><a href="#">Clickable link</a></li>
-        <li class="disabled"><a href="#">Disabled link</a></li>
+        <li class="nav-item"><a href="#" class="nav-link active">Clickable link</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">Clickable link</a></li>
+        <li class="nav-item"><a href="#" class="nav-link disabled">Disabled link</a></li>
     </ul>
 </div>
 <pre class="prettyprint linenums">
 &lt;ul class="nav nav-pills"&gt;
   ...
-  &lt;li class="disabled"&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
+  &lt;li class="nav-item"&gt;&lt;a href="#" class="nav-link disabled"&gt;Home&lt;/a&gt;&lt;/li&gt;
   ...
 &lt;/ul&gt;
 </pre>
 
 <h3>Component alignment</h3>
 
-<p>To align nav links, use the <code>.pull-left</code> or <code>.pull-right</code> utility classes. Both classes will add a CSS float in the specified direction.</p>
+<p>Change the horizontal alignment of your nav with <code>.justify-content-center</code> and <code>.justify-content-end</code> classes. By default, navs are left-aligned, but you can easily change them to center or right aligned</p>
 
+<ul class="nav justify-content-end">
+    <li class="nav-item">
+        <a class="nav-link active" href="#">Active</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link disabled" href="#">Disabled</a>
+    </li>
+</ul>
+
+<pre class="prettyprint linenums">
+&lt;ul class="nav justify-content-end"&gt;
+    &lt;li class="nav-item"&gt;
+        &lt;a class="nav-link active" href="#"&gt;Active&lt;/a&gt;
+    &lt;/li>
+    &lt;li class="nav-item">
+        &lt;a class="nav-link" href="#">Link&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li class="nav-item"&gt;
+        &lt;a class="nav-link" href="#">Link&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li class="nav-item"&gt;
+        &lt;a class="nav-link disabled" href="#">Disabled&lt;/a&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+</pre>
 
 <hr class="bs-docs-separator">
 
 
 <h2>Stackable</h2>
 
-<p>As tabs and pills are horizontal by default, just add a second class, <code>.nav-stacked</code>, to make them appear vertically stacked.</p>
+<p>As tabs and pills are horizontal by default, just add a second class, <code>.flex-column</code>, to make them appear vertically stacked.
+Need to stack them on some viewports but not others? Use the responsive versions (e.g., <code>.flex-sm-column</code>).
+</p>
 
 <h3>Stacked tabs</h3>
 
 <div class="bs-docs-example">
-    <ul class="nav nav-tabs nav-stacked">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">Profile</a></li>
-        <li><a href="#">Messages</a></li>
+    <ul class="nav nav-tabs .flex-column">
+        <li class="nav-item"><a href="#" class="nav-link active">Home</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">Profile</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">Messages</a></li>
     </ul>
 </div>
 <pre class="prettyprint linenums">
-&lt;ul class="nav nav-tabs nav-stacked"&gt;
+&lt;ul class="nav nav-tabs .flex-column"&gt;
   ...
 &lt;/ul&gt;
 </pre>
@@ -592,14 +626,14 @@
 <h3>Stacked pills</h3>
 
 <div class="bs-docs-example">
-    <ul class="nav nav-pills nav-stacked">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">Profile</a></li>
-        <li><a href="#">Messages</a></li>
+    <ul class="nav nav-pills .flex-column">
+        <li class="nav-item"><a href="#" class="nav-link active">Home</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">Profile</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">Messages</a></li>
     </ul>
 </div>
 <pre class="prettyprint linenums">
-&lt;ul class="nav nav-pills nav-stacked"&gt;
+&lt;ul class="nav nav-pills .flex-column"&gt;
   ...
 &lt;/ul&gt;
 </pre>
@@ -616,10 +650,11 @@
 
 <div class="bs-docs-example">
     <ul class="nav nav-tabs">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">Help</a></li>
-        <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Dropdown</a>
+        <li class="nav-item">
+            <a href="#" class="nav-link active">Active</a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Dropdown</a>
             <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="#">Action</a></li>
                 <li><a class="dropdown-item" href="#">Another action</a></li>
@@ -628,12 +663,18 @@
                 <li><a class="dropdown-item" href="#">Separated link</a></li>
             </ul>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled" href="#">Disabled</a>
+        </li>
     </ul>
 </div>
 <pre class="prettyprint linenums">
 &lt;ul class="nav nav-tabs"&gt;
-  &lt;li class="dropdown"&gt;
-    &lt;a class="dropdown-toggle"
+  &lt;li class="nav-item dropdown"&gt;
+    &lt;a class="nav-link dropdown-toggle"
        data-toggle="dropdown"
        href="#"&gt;
         Dropdown
@@ -649,10 +690,11 @@
 
 <div class="bs-docs-example">
     <ul class="nav nav-pills">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">Help</a></li>
-        <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Dropdown</a>
+        <li class="nav-item">
+            <a href="#" class="nav-link active">Home</a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Dropdown</a>
             <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="#">Action</a></li>
                 <li><a class="dropdown-item" href="#">Another action</a></li>
@@ -661,12 +703,18 @@
                 <li><a class="dropdown-item" href="#">Separated link</a></li>
             </ul>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled" href="#">Disabled</a>
+        </li>
     </ul>
 </div>
 <pre class="prettyprint linenums">
 &lt;ul class="nav nav-pills"&gt;
-  &lt;li class="dropdown"&gt;
-    &lt;a class="dropdown-toggle"
+  &lt;li class="nav-item dropdown"&gt;
+    &lt;a class="nav-link dropdown-toggle"
        data-toggle="dropdown"
        href="#"&gt;
         Dropdown
@@ -688,29 +736,29 @@
 
 <h3>Example nav list</h3>
 
-<p>Take a list of links and add <code>class="nav nav-list"</code>:</p>
+<p>Take a list of links and add <code>class="nav"</code>:</p>
 
 <div class="bs-docs-example">
     <div class="well" style="max-width: 340px; padding: 8px 0;">
-        <ul class="nav nav-list">
-            <li class="nav-header">List header</li>
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#">Library</a></li>
-            <li><a href="#">Applications</a></li>
-            <li class="nav-header">Another list header</li>
-            <li><a href="#">Profile</a></li>
-            <li><a href="#">Settings</a></li>
-            <li class="dropdown-divider"></li>
-            <li><a href="#">Help</a></li>
+        <ul class="nav flex-column">
+            <li class="nav-item">List header</li>
+            <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Library</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Applications</a></li>
+            <li class="nav-item">Another list header</li>
+            <li class="nav-item"><a href="#" class="nav-link">Profile</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Settings</a></li>
+            <li class="nav-item"></li>
+            <li class="nav-item"><a href="#" class="nav-link">Help</a></li>
         </ul>
     </div>
     <!-- /well -->
 </div>
 <pre class="prettyprint linenums">
-&lt;ul class="nav nav-list"&gt;
-  &lt;li class="nav-header"&gt;List header&lt;/li&gt;
-  &lt;li class="active"&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="#"&gt;Library&lt;/a&gt;&lt;/li&gt;
+&lt;ul class="nav flex-column"&gt;
+  &lt;li class="nav-item"&gt;List header&lt;/li&gt;
+  &lt;li class="nav-item"&gt;&lt;a class="nav-link active" href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
+  &lt;li class="nav-item"&gt;&lt;a href="#"&gt;Library&lt;/a&gt;&lt;/li&gt;
   ...
 &lt;/ul&gt;
 </pre>
@@ -723,7 +771,7 @@
 
 <p>Add a horizontal divider by creating an empty list item with the class <code>.dropdown-divider</code>, like so:</p>
 <pre class="prettyprint linenums">
-&lt;ul class="nav nav-list"&gt;
+&lt;ul class="nav flex-column"&gt;
   ...
   &lt;li class="dropdown-divider"&gt;&lt;/li&gt;
   ...
@@ -904,28 +952,27 @@
 <p>To start, navbars are static (not fixed to the top) and include support for a project name and basic navigation. Place one anywhere within a <code>.container</code>, which sets the width of your site and content.</p>
 
 <div class="bs-docs-example">
-    <div class="navbar navbar-default">
-        <div class="container">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">Title</a>
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#">Link</a></li>
-                <li><a href="#">Link</a></li>
+    <div class="navbar navbar-light navbar-expand-lg">
+        <a class="navbar-brand" href="#">Title</a>
+
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active"><a class="nav-link" href="#">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
             </ul>
-        </div>
         </div>
     </div>
 </div>
 <pre class="prettyprint linenums">
-&lt;div class="navbar"&gt;
-  &lt;div class="navbar-header"&gt;
+&lt;div class="navbar navbar-light navbar-expand-lg"&gt;
     &lt;a class="navbar-brand" href="#"&gt;Title&lt;/a&gt;
-    &lt;ul class="nav"&gt;
-      &lt;li class="active"&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href="#"&gt;Link&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href="#"&gt;Link&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
+    &lt;div class="collapse navbar-collapse"&gt;
+        &lt;ul class="navbar-nav mr-auto"&gt;
+          &lt;li class="nav-item active"&gt;&lt;a class="nav-link" href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
+          &lt;li class="nav-item"&gt;&lt;a class="nav-link" href="#"&gt;Link&lt;/a&gt;&lt;/li&gt;
+          &lt;li class="nav-item"&gt;&lt;a class="nav-link" href="#"&gt;Link&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 </pre>
@@ -941,12 +988,8 @@
 <p>A simple link to show your brand or project name only requires an anchor tag.</p>
 
 <div class="bs-docs-example">
-    <div class="navbar">
-        <div class="container">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">Title</a>
-        </div>
-        </div>
+    <div class="navbar navbar-light navbar-expand-lg">
+        <a class="navbar-brand" href="#">Title</a>
     </div>
 </div>
 <pre class="prettyprint linenums">
@@ -958,25 +1001,23 @@
 <p>Nav items are simple to add via unordered lists.</p>
 
 <div class="bs-docs-example">
-    <div class="navbar">
-        <div class="container">
-        <div class="navbar-header">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#">Link</a></li>
-                <li><a href="#">Link</a></li>
+    <div class="navbar navbar-light navbar-expand-lg">
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+                <li class="nav-item"><a href="#">Link</a></li>
+                <li class="nav-item"><a href="#">Link</a></li>
             </ul>
-        </div>
         </div>
     </div>
 </div>
 <pre class="prettyprint linenums">
-&lt;ul class="nav navbar-nav"&gt;
-  &lt;li class="active"&gt;
-    &lt;a href="#">Home&lt;/a&gt;
+&lt;ul class="navbar-nav"&gt;
+  &lt;li class="nav-item"&gt;
+    &lt;a class="nav-link active" href="#">Home&lt;/a&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;a href="#"&gt;Link&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="#"&gt;Link&lt;/a&gt;&lt;/li&gt;
+  &lt;li class="nav-item&gt;&lt;a class="nav-link" href="#"&gt;Link&lt;/a&gt;&lt;/li&gt;
+  &lt;li class="nav-item&gt;&lt;a class="nav-link" href="#"&gt;Link&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </pre>
 
@@ -985,19 +1026,17 @@
 <p>To properly style and position a form within the navbar, add the appropriate classes as shown below. For a default form, include <code>.navbar-form</code> and either <code>.pull-left</code> or <code>.pull-right</code> to properly align it.</p>
 
 <div class="bs-docs-example">
-    <div class="navbar">
-        <div class="container">
-        <div class="navbar-header">
-            <form class="navbar-form pull-left">
+    <div class="navbar navbar-light navbar-expand-lg">
+        <div class="collapse navbar-collapse">
+            <form class="form-inline pull-left">
                 <input type="text" class="form-control">
                 <button type="submit" class="btn">Submit</button>
             </form>
         </div>
-        </div>
     </div>
 </div>
 <pre class="prettyprint linenums">
-&lt;form class="navbar-form pull-left"&gt;
+&lt;form class="form-inline pull-left"&gt;
   &lt;input type="text" class="form-control"&gt;
   &lt;button type="submit" class="btn"&gt;Submit&lt;/button&gt;
 &lt;/form&gt;
@@ -1008,18 +1047,16 @@
 <p>For a more customized search form, add <code>.navbar-search</code> to the <code>form</code> and <code>.search-query</code> to the input for specialized styles in the navbar.</p>
 
 <div class="bs-docs-example">
-    <div class="navbar">
-        <div class="container">
-        <div class="navbar-header">
-            <form class="navbar-search pull-left">
+    <div class="navbar navbar-light navbar-expand-lg">
+        <div class="collapse navbar-collapse">
+            <form class="form-inline pull-left">
                 <input type="text" class="search-query" placeholder="Search">
             </form>
-        </div>
         </div>
     </div>
 </div>
 <pre class="prettyprint linenums">
-&lt;form class="navbar-search pull-left"&gt;
+&lt;form class="form-inline pull-left"&gt;
   &lt;input type="text" class="search-query" placeholder="Search"&gt;
 &lt;/form&gt;
 </pre>
@@ -1033,8 +1070,8 @@
 <p>Add dropdowns and dropups to the nav with a bit of markup and the <a href="./javascript.html#dropdowns">dropdowns JavaScript plugin</a>.</p>
 <pre class="prettyprint linenums">
 &lt;ul class="nav"&gt;
-  &lt;li class="dropdown"&gt;
-    &lt;a href="#" class="dropdown-toggle" data-toggle="dropdown">
+  &lt;li class="nav-item dropdown"&gt;
+    &lt;a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
       Account
     &lt;/a&gt;
     &lt;ul class="dropdown-menu"&gt;
@@ -1059,78 +1096,66 @@
 
 <h3>Fixed to top</h3>
 
-<p>Add <code>.navbar-fixed-top</code> and remember to account for the hidden area underneath it by adding at least 40px <code>padding</code> to the <code>&lt;body&gt;</code>. Be sure to add this after the core Bootstrap CSS and before the optional responsive CSS.</p>
+<p>Add <code>.fixed-top</code> and remember to account for the hidden area underneath it by adding at least 40px <code>padding</code> to the <code>&lt;body&gt;</code>. Be sure to add this after the core Bootstrap CSS and before the optional responsive CSS.</p>
 
 <div class="bs-docs-example bs-navbar-top-example">
-    <div class="navbar navbar-fixed-top" style="position: absolute;">
-        <div class="container">
-        <div class="navbar-header">
-            <div class="container" style="width: auto; padding: 0 20px;">
-                <a class="navbar-brand" href="#">Title</a>
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#">Link</a></li>
-                    <li><a href="#">Link</a></li>
-                </ul>
-            </div>
-        </div>
+    <div class="navbar navbar-light navbar-expand-lg fixed-top" style="position: absolute;">
+        <a class="navbar-brand" href="#">Title</a>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+            </ul>
         </div>
     </div>
 </div>
 <pre class="prettyprint linenums">
-&lt;div class="navbar navbar-fixed-top"&gt;
+&lt;div class="navbar navbar-light navbar-expand-lg fixed-top"&gt;
   ...
 &lt;/div&gt;
 </pre>
 
 <h3>Fixed to bottom</h3>
 
-<p>Add <code>.navbar-fixed-bottom</code> instead.</p>
+<p>Add <code>.fixed-bottom</code> instead.</p>
 
 <div class="bs-docs-example bs-navbar-bottom-example">
-    <div class="navbar navbar-fixed-bottom" style="position: absolute;">
-        <div class="container">
-        <div class="navbar-header">
-            <div class="container" style="width: auto; padding: 0 20px;">
-                <a class="navbar-brand" href="#">Title</a>
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#">Link</a></li>
-                    <li><a href="#">Link</a></li>
-                </ul>
-            </div>
-        </div>
+    <div class="navbar navbar-light navbar-expand-lg fixed-bottom" style="position: absolute;">
+        <a class="navbar-brand" href="#">Title</a>
+        <div class="collapse navbar-collapse" style="width: auto; padding: 0 20px;">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+            </ul>
         </div>
     </div>
 </div>
 <pre class="prettyprint linenums">
-&lt;div class="navbar navbar-fixed-bottom"&gt;
+&lt;div class="navbar navbar-light navbar-expand-lg fixed-bottom"&gt;
   ...
 &lt;/div&gt;
 </pre>
 
-<h3>Static top navbar</h3>
+<h3>Sticky top navbar</h3>
 
-<p>Create a full-width navbar that scrolls away with the page by adding <code>.navbar-static-top</code>. Unlike the <code>.navbar-fixed-top</code> class, you do not need to change any padding on the <code>body</code>.</p>
+<p>Create a full-width navbar that scrolls away with the page by adding <code>.navbar-static-top</code>. Unlike the <code>.sticky-top</code> class, you do not need to change any padding on the <code>body</code>.</p>
 
 <div class="bs-docs-example bs-navbar-top-example">
-    <div class="navbar navbar-static-top" style="margin: -1px -1px 0;">
-        <div class="container">
-        <div class="navbar-header">
-            <div class="container" style="width: auto; padding: 0 20px;">
-                <a class="navbar-brand" href="#">Title</a>
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#">Link</a></li>
-                    <li><a href="#">Link</a></li>
-                </ul>
-            </div>
-        </div>
+    <div class="navbar navbar-light navbar-expand-lg sticky-top" style="margin: -1px -1px 0;">
+        <a class="navbar-brand" href="#">Title</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+            </ul>
         </div>
     </div>
 </div>
 <pre class="prettyprint linenums">
-&lt;div class="navbar navbar-static-top"&gt;
+&lt;div class="navbar navbar-light navbar-expand-lg sticky-top"&gt;
   ...
 &lt;/div&gt;
 </pre>
@@ -1144,82 +1169,62 @@
 <p>To implement a collapsing responsive navbar, wrap your navbar content in a containing div, <code>.nav-collapse.collapse</code>, and add the navbar toggle button, <code>.navbar-toggle</code>.</p>
 
 <div class="bs-docs-example">
-    <div class="navbar">
-        <div class="container">
-        <div class="navbar-header">
-            <div class="container">
-                <button type="button" class="btn navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">Title</a>
+    <div class="navbar navbar-light navbar-expand-lg">
+        <button type="button" class="btn navbar-toggler" data-toggle="collapse" data-target=".navbar-responsive-collapse"></button>
+        <a class="navbar-brand" href="#">Title</a>
+        <div class="collapse navbar-collapse">
 
-                <div class="navbar-collapse collapse navbar-responsive-collapse">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Home</a></li>
-                        <li><a href="#">Link</a></li>
-                        <li><a href="#">Link</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                <li></li>
-                                <li class="nav-header">Nav header</li>
-                                <li><a class="dropdown-item" href="#">Separated link</a></li>
-                                <li><a class="dropdown-item" href="#">One more separated link</a></li>
-                            </ul>
-                        </li>
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Dropdown</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        <li></li>
+                        <li class="nav-header">Nav header</li>
+                        <li><a class="dropdown-item" href="#">Separated link</a></li>
+                        <li><a class="dropdown-item" href="#">One more separated link</a></li>
                     </ul>
-                    <form class="navbar-search pull-left" action="">
-                        <input type="text" class="search-query form-control" placeholder="Search">
-                    </form>
-                    <ul class="nav pull-right">
-                        <li><a href="#">Link</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                <li class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">Separated link</a></li>
-                            </ul>
-                        </li>
+                </li>
+            </ul>
+            <form class="form-inline pull-left" action="">
+                <input type="text" class="search-query form-control" placeholder="Search">
+            </form>
+
+            <ul class="navbar-nav navbar-right">
+                <li><a href="#">Link</a></li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Dropdown</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        <li class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Separated link</a></li>
                     </ul>
-                </div>
-                <!-- /.navbar-collapse -->
-            </div>
-        </div>
-        <!-- /navbar-header -->
+                </li>
+            </ul>
         </div>
     </div>
-    <!-- /navbar -->
 </div>
 <pre class="prettyprint linenums">
 &lt;div class="navbar"&gt;
-  &lt;div class="navbar-header"&gt;
-    &lt;div class="container"&gt;
 
       &lt;!-- .navbar-toggle is used as the toggle for collapsed navbar content --&gt;
-      &lt;a class="btn navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"&gt;
-        &lt;span class="icon-bar"&gt;&lt;/span&gt;
-        &lt;span class="icon-bar"&gt;&lt;/span&gt;
-        &lt;span class="icon-bar"&gt;&lt;/span&gt;
-      &lt;/a&gt;
+      &lt;a class="btn navbar-toggler" data-toggle="collapse" data-target=".navbar-collapse"&gt;&lt;/a&gt;
 
       &lt;!-- Be sure to leave the brand out there if you want it shown --&gt;
       &lt;a class="navbar-brand" href="#"&gt;Project name&lt;/a&gt;
 
       &lt;!-- Everything you want hidden at 940px or less, place within here --&gt;
-      &lt;div class="navbar-collapse collapse"&gt;
-        &lt;!-- .nav, .navbar-search, .navbar-form, etc --&gt;
+      &lt;div class="collapse navbar-collapse"&gt;
+        &lt;!-- .nav,  etc --&gt;
       &lt;/div&gt;
 
-    &lt;/div&gt;
-  &lt;/div&gt;
 &lt;/div&gt;
 </pre>
 <div class="alert alert-info">
@@ -1232,65 +1237,53 @@
 
 <h2>Inverted variation</h2>
 
-<p>Modify the look of the navbar by adding <code>.navbar-inverse</code>.</p>
+<p>Modify the look of the navbar by adding <code>.navbar-dark</code> and background utility class.</p>
 
 <div class="bs-docs-example">
-    <div class="navbar navbar-inverse" style="position: static;">
-        <div class="container">
-        <div class="navbar-header">
-            <div class="container">
-                <a class="btn navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </a>
-                <a class="navbar-brand" href="#">Title</a>
+    <div class="navbar navbar-expand-lg navbar-dark bg-dark" style="position: static;">
+        <a class="btn navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse"></a>
+        <a class="navbar-brand" href="#">Title</a>
 
-                <div class="navbar-collapse collapse navbar-inverse-collapse">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Home</a></li>
-                        <li><a class="dropdown-item" href="#">Link</a></li>
-                        <li><a class="dropdown-item" href="#">Link</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                <li class="dropdown-divider"></li>
-                                <li class="nav-header">Nav header</li>
-                                <li><a class="dropdown-item" href="#">Separated link</a></li>
-                                <li><a class="dropdown-item" href="#">One more separated link</a></li>
-                            </ul>
-                        </li>
+        <div class="navbar-collapse collapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Dropdown</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        <li class="dropdown-divider"></li>
+                        <li class="nav-header">Nav header</li>
+                        <li><a class="dropdown-item" href="#">Separated link</a></li>
+                        <li><a class="dropdown-item" href="#">One more separated link</a></li>
                     </ul>
-                    <form class="navbar-search pull-left" action="">
-                        <input type="text" class="search-query form-control" placeholder="Search">
-                    </form>
-                    <ul class="nav pull-right">
-                        <li><a href="#">Link</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                <li class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">Separated link</a></li>
-                            </ul>
-                        </li>
+                </li>
+            </ul>
+            <form class="navbar-search pull-left" action="">
+                <input type="text" class="search-query form-control" placeholder="Search">
+            </form>
+            <ul class="nav pull-right">
+                <li class="nav-item"><a href="#">Link</a></li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Dropdown</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        <li class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Separated link</a></li>
                     </ul>
-                </div>
-                <!-- /.navbar-collapse -->
-            </div>
-        </div>
-        <!-- /navbar-header -->
+                </li>
+            </ul>
         </div>
     </div>
     <!-- /navbar -->
 </div>
 <pre class="prettyprint linenums">
-&lt;div class="navbar navbar-inverse"&gt;
+&lt;div class="navbar navbar-expand-lg navbar-dark bg-dark"&gt;
   ...
 &lt;/div&gt;
 </pre>

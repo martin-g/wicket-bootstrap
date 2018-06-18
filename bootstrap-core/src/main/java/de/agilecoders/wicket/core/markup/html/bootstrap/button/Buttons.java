@@ -89,7 +89,7 @@ public final class Buttons {
     public enum Type implements ICssClassNameProvider {
         Default("btn-secondary"), // Alias for secondary. Kept for backwards compatibility.
         Secondary("btn-secondary"), // Standard gray button with gradient
-        Menu(""), // Menu button which has no default css class name
+        Menu("nav-link"), // Menu button which has no default css class name
         Primary("btn-primary"), // Provides extra visual weight and identifies the primary action in a set of buttons
         Info("btn-info"), // Used as an alternate to the default styles
         Success("btn-success"), // Indicates a successful or positive action

@@ -4,33 +4,28 @@
     </head>
     <body>
         <wicket:panel>
-            <div wicket:id="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" wicket:id="collapseButton">
-                        <span class="sr-only" wicket:id="toggleNavigationLabel">[[CONTENT]]</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a wicket:id="brandName" class="navbar-brand" href="#">
-                        <img wicket:id="brandImage"/>
-                        <span wicket:id="brandLabel"></span>
-                    </a>
-                </div>
+            <a wicket:id="brandName" class="navbar-brand" href="#">
+                <img wicket:id="brandImage"/>
+                <span wicket:id="brandLabel"></span>
+            </a>
 
-                <div class="collapse navbar-collapse" role="navigation" wicket:id="collapse">
-                    <ul wicket:id="navLeftListEnclosure" class="nav navbar-nav">
-                        <li wicket:id="navLeftList">
-                            <div wicket:id="component">[[CONTENT]]</div>
-                        </li>
-                    </ul>
-                    <ul wicket:id="navRightListEnclosure" class="nav navbar-nav navbar-right">
-                        <li wicket:id="navRightList">
-                            <div wicket:id="component">[[CONTENT]]</div>
-                        </li>
-                    </ul>
-                    <div wicket:id="extraItems"></div>
-                </div>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" wicket:id="collapseButton">
+                <span class="navbar-toggler-icon"></span>
+                <span wicket:id="toggleNavigationLabel" class="sr-only">[[CONTENT]]</span>
+            </button>
+
+            <div class="collapse navbar-collapse" role="navigation" wicket:id="collapse">
+                <ul wicket:id="navLeftListEnclosure" class="navbar-nav mr-auto">
+                    <li wicket:id="navLeftList">
+                        <div wicket:id="component">[[CONTENT]]</div>
+                    </li>
+                </ul>
+                <ul wicket:id="navRightListEnclosure" class="navbar-nav">
+                    <li wicket:id="navRightList">
+                        <div wicket:id="component">[[CONTENT]]</div>
+                    </li>
+                </ul>
+                <div wicket:id="extraItems"></div>
             </div>
         </wicket:panel>
     </body>

@@ -8,6 +8,7 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.DropDown
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.MenuBookmarkablePageLink;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.MenuDivider;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.MenuHeader;
+import de.agilecoders.wicket.core.markup.html.bootstrap.color.BackgroundColorBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.html.*;
 import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.*;
 import de.agilecoders.wicket.core.markup.html.references.BootlintHeaderItem;
@@ -97,10 +98,10 @@ abstract class BasePage extends GenericWebPage<Void> {
      * @return a new {@link Navbar} instance
      */
     protected Navbar newNavbar(String markupId) {
-        Navbar navbar = new Navbar(markupId);
-
-        navbar.setPosition(Navbar.Position.TOP);
-        navbar.setInverted(true);
+        Navbar navbar = new Navbar(markupId)
+                .setPosition(Navbar.Position.TOP)
+                .setInverted(true)
+                .setBackgroundColor(BackgroundColorBehavior.Color.Dark);
 
         // show brand name
         navbar.setBrandName(Model.of("Wicket Bootstrap"));
@@ -109,6 +110,7 @@ abstract class BasePage extends GenericWebPage<Void> {
                         new NavbarButton<Void>(HomePage.class, Model.of("Overview")).setIconType(FontAwesomeIconType.home),
                         new NavbarButton<Void>(BaseCssPage.class, Model.of("Base CSS")),
                         new NavbarButton<Void>(ComponentsPage.class, Model.of("Components")),
+                        new NavbarButton<Void>(UtilitiesPage.class, Model.of("Utilities")),
                         new NavbarExternalLink(Model.of("https://github.com/l0rdn1kk0n/wicket-bootstrap"))
                                 .setLabel(Model.of("Github"))
                                 .setTarget(BootstrapExternalLink.Target.blank)
