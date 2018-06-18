@@ -1,5 +1,6 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.navigation.ajax;
 
+import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.CssClassNameAppender;
 import de.agilecoders.wicket.core.markup.html.bootstrap.navigation.BootstrapPagingNavigator;
 
 import org.apache.wicket.AttributeModifier;
@@ -94,17 +95,20 @@ public class BootstrapAjaxPagingNavigator extends BootstrapPagingNavigator {
         return new AjaxPagingNavigation(id, pageable, labelProvider) {
             @Override
             protected Link<?> newPagingNavigationLink(String id, IPageable pageable, long pageIndex) {
-                return new AjaxPagingNavigationLink(id, pageable, pageIndex) {
+                Link<?> navigationLink = new AjaxPagingNavigationLink(id, pageable, pageIndex) {
                     @Override
                     protected AjaxPagingNavigationBehavior newAjaxPagingNavigationBehavior(IPageable pageable, String event) {
                         return new BootstrapAjaxPagingNavigationBehavior(this, pageable, event);
                     }
                 };
+                navigationLink.add(new CssClassNameAppender("page-link"));
+
+                return navigationLink;
             }
-            
+
             /** Attribute for active state */
             private final AttributeModifier activeAttribute = AttributeModifier.append("class", "active");
-            
+
             @Override
             protected void populateItem(final LoopItem loopItem) {
                 super.populateItem(loopItem);

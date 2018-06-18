@@ -1333,9 +1333,7 @@ Need to stack them on some viewports but not others? Use the responsive versions
 ================================================== -->
 <section id="pagination">
 <div class="pb-2 mt-4 mb-2 border-bottom">
-    <h1>Pagination
-        <small>Two options for paging through content</small>
-    </h1>
+    <h1>Pagination</h1>
 </div>
 
 <h2>Standard pagination</h2>
@@ -1344,23 +1342,23 @@ Need to stack them on some viewports but not others? Use the responsive versions
 
 <div class="bs-docs-example">
     <ul class="pagination">
-        <li><a href="#">&laquo;</a></li>
-        <li><a href="#">1</a></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li><a href="#">4</a></li>
-        <li><a href="#">5</a></li>
-        <li><a href="#">&raquo;</a></li>
+        <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item"><a class="page-link" href="#">4</a></li>
+        <li class="page-item"><a class="page-link" href="#">5</a></li>
+        <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
     </ul>
 </div>
 <pre class="prettyprint linenums">
 &lt;ul class="pagination"&gt;
-&lt;li&gt;&lt;a href="#"&gt;Prev&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#"&gt;1&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#"&gt;2&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#"&gt;3&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#"&gt;4&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#"&gt;Next&lt;/a&gt;&lt;/li&gt;
+&lt;li class="page-item" &gt;&lt;a class="page-link" href="#"&gt;Prev&lt;/a&gt;&lt;/li&gt;
+&lt;li class="page-item" &gt;&lt;a class="page-link" href="#"&gt;1&lt;/a&gt;&lt;/li&gt;
+&lt;li class="page-item" &gt;&lt;a class="page-link" href="#"&gt;2&lt;/a&gt;&lt;/li&gt;
+&lt;li class="page-item" &gt;&lt;a class="page-link" href="#"&gt;3&lt;/a&gt;&lt;/li&gt;
+&lt;li class="page-item" &gt;&lt;a class="page-link" href="#"&gt;4&lt;/a&gt;&lt;/li&gt;
+&lt;li class="page-item" &gt;&lt;a class="page-link" href="#"&gt;Next&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </pre>
 
@@ -1376,27 +1374,27 @@ Need to stack them on some viewports but not others? Use the responsive versions
 
 <div class="bs-docs-example">
     <ul class="pagination">
-        <li class="disabled"><a href="#">&laquo;</a></li>
-        <li class="active"><a href="#">1</a></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li><a href="#">4</a></li>
-        <li><a href="#">5</a></li>
-        <li><a href="#">&raquo;</a></li>
+        <li class="page-item disabled"><a class="page-link" href="#">&laquo;</a></li>
+        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item"><a class="page-link" href="#">4</a></li>
+        <li class="page-item"><a class="page-link" href="#">5</a></li>
+        <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
     </ul>
 </div>
 <pre class="prettyprint linenums">
 &lt;ul class="pagination"&gt;
-  &lt;li class="disabled"&gt;&lt;a href="#"&gt;Prev&lt;/a&gt;&lt;/li&gt;
-  &lt;li class="active"&gt;&lt;a href="#"&gt;1&lt;/a&gt;&lt;/li&gt;
+  &lt;li class="page-item disabled"&gt;&lt;a class="page-link" href="#"&gt;Prev&lt;/a&gt;&lt;/li&gt;
+  &lt;li class="page-item active"&gt;&lt;a class="page-link" href="#"&gt;1&lt;/a&gt;&lt;/li&gt;
   ...
 &lt;/ul&gt;
 </pre>
 <p>You can optionally swap out active or disabled anchors for spans to remove click functionality while retaining intended styles.</p>
 <pre class="prettyprint linenums">
 &lt;ul class="pagination"&gt;
-  &lt;li class="disabled"&gt;&lt;span&gt;Prev&lt;/span&gt;&lt;/li&gt;
-  &lt;li class="active"&gt;&lt;span&gt;1&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="page-item disabled"&gt;&lt;span class="page-link"&gt;Prev&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="page-item active"&gt;&lt;span class="page-link"&gt;1&lt;/span&gt;&lt;/li&gt;
   ...
 &lt;/ul&gt;
 </pre>
@@ -1408,35 +1406,35 @@ Need to stack them on some viewports but not others? Use the responsive versions
 <div class="bs-docs-example">
     <div>
         <ul class="pagination pagination-lg">
-            <li><a href="#">&laquo;</a></li>
-            <li><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
-            <li><a href="#">&raquo;</a></li>
+            <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">4</a></li>
+            <li class="page-item"><a class="page-link" href="#">5</a></li>
+            <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
         </ul>
     </div>
     <div >
         <ul class="pagination">
-            <li><a href="#">&laquo;</a></li>
-            <li><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
-            <li><a href="#">&raquo;</a></li>
+            <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">4</a></li>
+            <li class="page-item"><a class="page-link" href="#">5</a></li>
+            <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
         </ul>
     </div>
     <div>
         <ul class="pagination pagination-sm">
-            <li><a href="#">&laquo;</a></li>
-            <li><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
-            <li><a href="#">&raquo;</a></li>
+            <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">4</a></li>
+            <li class="page-item"><a class="page-link" href="#">5</a></li>
+            <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
         </ul>
     </div>
 </div>
@@ -1457,72 +1455,6 @@ Need to stack them on some viewports but not others? Use the responsive versions
   &lt;/ul&gt;
 &lt;/div&gt;
 </pre>
-
-
-<hr class="bs-docs-separator">
-
-
-<h2>Pager</h2>
-
-<p>Quick previous and next links for simple pagination implementations with light markup and styles. It's great for simple sites like blogs or magazines.</p>
-
-<h3>Default example</h3>
-
-<p>By default, the pager centers links.</p>
-
-<div class="bs-docs-example">
-    <ul class="pager">
-        <li><a href="#">Previous</a></li>
-        <li><a href="#">Next</a></li>
-    </ul>
-</div>
-<pre class="prettyprint linenums">
-&lt;ul class="pager"&gt;
-  &lt;li&gt;&lt;a href="#"&gt;Previous&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="#"&gt;Next&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</pre>
-
-<h3>Aligned links</h3>
-
-<p>Alternatively, you can align each link to the sides:</p>
-
-<div class="bs-docs-example">
-    <ul class="pager">
-        <li class="previous"><a href="#">&larr; Older</a></li>
-        <li class="next"><a href="#">Newer &rarr;</a></li>
-    </ul>
-</div>
-<pre class="prettyprint linenums">
-&lt;ul class="pager"&gt;
-  &lt;li class="previous"&gt;
-    &lt;a href="#"&gt;&amp;larr; Older&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li class="next"&gt;
-    &lt;a href="#"&gt;Newer &amp;rarr;&lt;/a&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-</pre>
-
-<h3>Optional disabled state</h3>
-
-<p>Pager links also use the general <code>.disabled</code> utility class from the pagination.</p>
-
-<div class="bs-docs-example">
-    <ul class="pager">
-        <li class="previous disabled"><a href="#">&larr; Older</a></li>
-        <li class="next"><a href="#">Newer &rarr;</a></li>
-    </ul>
-</div>
-<pre class="prettyprint linenums">
-&lt;ul class="pager"&gt;
-  &lt;li class="previous disabled"&gt;
-    &lt;a href="#"&gt;&amp;larr; Older&lt;/a&gt;
-  &lt;/li&gt;
-  ...
-&lt;/ul&gt;
-</pre>
-
 </section>
 
 
