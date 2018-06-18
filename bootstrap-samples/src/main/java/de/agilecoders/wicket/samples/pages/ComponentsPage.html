@@ -1305,25 +1305,33 @@ Need to stack them on some viewports but not others? Use the responsive versions
     <p>A single example shown as it might be displayed across multiple pages.</p>
 
     <div class="bs-docs-example">
-        <ul class="breadcrumb">
-            <li class="active">Home</li>
-        </ul>
-        <ul class="breadcrumb">
-            <li><a href="#">Home</a></li>
-            <li class="active">Library</li>
-        </ul>
-        <ul class="breadcrumb" style="margin-bottom: 5px;">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Library</a></li>
-            <li class="active">Data</li>
-        </ul>
+        <nav>
+            <ul class="breadcrumb">
+                <li class="breadcrumb-item active">Home</li>
+            </ul>
+        </nav>
+        <nav>
+            <ul class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item active">Library</li>
+            </ul>
+        </nav>
+        <nav>
+            <ul class="breadcrumb" style="margin-bottom: 5px;">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="#">Library</a></li>
+                <li class="breadcrumb-item active">Data</li>
+            </ul>
+        </nav>
     </div>
 <pre class="prettyprint linenums">
-&lt;ul class="breadcrumb"&gt;
-  &lt;li&gt;&lt;a href="#"&gt;Home&lt;/a&gt; &lt;span class="dropdown-divider"&gt;/&lt;/span&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="#"&gt;Library&lt;/a&gt; &lt;span class="dropdown-divider"&gt;/&lt;/span&gt;&lt;/li&gt;
-  &lt;li class="active"&gt;Data&lt;/li&gt;
-&lt;/ul&gt;
+&lt;nav&gt;
+    &lt;ul class="breadcrumb"&gt;
+      &lt;li class="breadcrumb-item"&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
+      &lt;li class="breadcrumb-item"&gt;&lt;a href="#"&gt;Library&lt;/a&gt;&lt;/li&gt;
+      &lt;li class="breadcrumb-item active"&gt;Data&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;
 </pre>
 
 </section>

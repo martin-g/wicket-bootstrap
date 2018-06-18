@@ -1,7 +1,6 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.navigation;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
-import de.agilecoders.wicket.core.util.Attributes;
 
 import org.apache.wicket.extensions.breadcrumb.BreadCrumbBar;
 import org.apache.wicket.markup.ComponentTag;
@@ -34,13 +33,12 @@ public class Breadcrumb extends BreadCrumbBar {
     protected void onComponentTag(ComponentTag tag) {
         super.onComponentTag(tag);
 
-        checkComponentTag(tag, "ul");
-        Attributes.addClass(tag, "breadcrumb");
+        checkComponentTag(tag, "nav");
     }
-    
+
 	/**
 	 * Overrides the method in the super class to remove the default / separator since bootstrap adds the separators via CSS.
-	 * 
+	 *
 	 * @see org.apache.wicket.extensions.breadcrumb.BreadCrumbBar#getSeparatorMarkup()
 	 */
 	@Override
