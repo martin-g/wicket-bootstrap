@@ -1,7 +1,13 @@
 package de.agilecoders.wicket.samples.pages;
 
 import com.google.common.collect.Lists;
+
+import de.agilecoders.wicket.core.markup.html.bootstrap.badge.BadgeBehavior;
+import de.agilecoders.wicket.core.markup.html.bootstrap.badge.BootstrapBadge;
+import de.agilecoders.wicket.core.markup.html.bootstrap.block.Code;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.BootstrapAjaxLink;
+import de.agilecoders.wicket.core.markup.html.bootstrap.button.BootstrapLink;
+import de.agilecoders.wicket.core.markup.html.bootstrap.button.ButtonBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.MenuBookmarkablePageLink;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.SplitButton;
@@ -13,8 +19,6 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.form.radio.AjaxBootstrap
 import de.agilecoders.wicket.core.markup.html.bootstrap.form.radio.BooleanRadioGroup;
 import de.agilecoders.wicket.core.markup.html.bootstrap.form.radio.EnumRadioChoiceRenderer;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
-import de.agilecoders.wicket.core.markup.html.bootstrap.label.BootstrapLabel;
-import de.agilecoders.wicket.core.markup.html.bootstrap.label.Labels;
 import de.agilecoders.wicket.core.markup.html.bootstrap.tabs.AjaxBootstrapTabbedPanel;
 import de.agilecoders.wicket.core.markup.html.bootstrap.tabs.ClientSideBootstrapTabbedPanel;
 import de.agilecoders.wicket.samples.components.basecss.ButtonGroups;
@@ -26,6 +30,9 @@ import org.apache.wicket.markup.MarkupStream;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.AbstractLink;
+import org.apache.wicket.markup.html.link.Link;
+import org.apache.wicket.markup.html.list.ListItem;
+import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
@@ -72,6 +79,8 @@ public class ComponentsPage extends BasePage {
         // create bootstrap labels
         addLabels();
 
+        addBadges();
+
         // add example for dropdown button with sub-menu
 //        add(newDropDownSubMenuExample());
 
@@ -99,7 +108,6 @@ public class ComponentsPage extends BasePage {
                 return () -> String.format("The progress is: %s%%", getModelObject());
             }
         };
-        labeledStack.labeled(true).type(ProgressBar.Type.SUCCESS);
         labeledProgressBar.addStacks(labeledStack);
         add(labeledProgressBar);
 
@@ -169,12 +177,50 @@ public class ComponentsPage extends BasePage {
     }
 
     private void addLabels() {
-        add(new BootstrapLabel("defaultLabel", Model.of("Default"), Labels.Type.DEFAULT));
-        add(new BootstrapLabel("primaryLabel", Model.of("Primary"), Labels.Type.PRIMARY));
-        add(new BootstrapLabel("successLabel", Model.of("Success"), Labels.Type.SUCCESS));
-        add(new BootstrapLabel("warningLabel", Model.of("Warning"), Labels.Type.WARNING));
-        add(new BootstrapLabel("infoLabel", Model.of("Info"), Labels.Type.INFO));
-        add(new BootstrapLabel("dangerLabel", Model.of("Danger"), Labels.Type.DANGER));
+        List<BadgeBehavior.Type> types = Lists.newArrayList(BadgeBehavior.Type.values());
+        add(new ListView<BadgeBehavior.Type>("badges", types) {
+            @Override
+            protected void populateItem(ListItem<BadgeBehavior.Type> item) {
+                BadgeBehavior.Type type = item.getModelObject();
+
+                item.add(new BootstrapBadge("badge", type.cssClassName(), type));
+
+                Code code = new Code(
+                        "code",
+                        Model.of(String.format("<span class='badge %1$s'>%1$s</span>", type.cssClassName()))
+                );
+                item.add(code);
+            }
+        });
+    }
+
+    private void addBadges() {
+        List<BadgeBehavior.Type> types = Lists.newArrayList(BadgeBehavior.Type.values());
+
+        add(new ListView<BadgeBehavior.Type>("badge-pills", types) {
+            @Override
+            protected void populateItem(ListItem<BadgeBehavior.Type> item) {
+                BadgeBehavior.Type type = item.getModelObject();
+
+                item.add(new Label("name", type.cssClassName()));
+
+                item.add(new BootstrapBadge("badge", 1, type).setPill(true));
+
+                item.add(new Code("code",
+                        Model.of(String.format("<span class='badge badge-pills %1$s'>%1$s</span>", type.cssClassName()))
+                ));
+            }
+        });
+
+        Link<Void> badgeButton = new Link<Void>("button-with-badge") {
+            @Override
+            public void onClick() {
+                //ok
+            }
+        };
+        badgeButton.add(new ButtonBehavior(Buttons.Type.Primary));
+        badgeButton.add(new BootstrapBadge("badge", Model.of(1), BadgeBehavior.Type.Light));
+        add(badgeButton);
     }
 
     private Component newTabs(String markupId) {
