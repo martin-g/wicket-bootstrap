@@ -1,4 +1,4 @@
-package de.agilecoders.wicket.core.markup.html.bootstrap.color;
+package de.agilecoders.wicket.core.markup.html.bootstrap.utilities;
 
 import org.apache.wicket.util.tester.TagTester;
 import org.junit.Test;

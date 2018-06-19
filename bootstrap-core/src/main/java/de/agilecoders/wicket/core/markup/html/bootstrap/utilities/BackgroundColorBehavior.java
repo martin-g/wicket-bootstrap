@@ -1,4 +1,4 @@
-package de.agilecoders.wicket.core.markup.html.bootstrap.color;
+package de.agilecoders.wicket.core.markup.html.bootstrap.utilities;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.ComponentTag;
@@ -46,7 +46,7 @@ public class BackgroundColorBehavior extends BootstrapBaseBehavior {
     /**
      * Background color that should be added to component.
      */
-    private final Color color;
+    private Color color;
 
 
     /**
@@ -64,6 +64,14 @@ public class BackgroundColorBehavior extends BootstrapBaseBehavior {
         Attributes.addClass(tag, color.cssClassName());
     }
 
+    public void color(Color color) {
+        this.color = color;
+    }
+
+    public Color getColor() {
+        return this.color;
+    }
+
     /**
      * Constructs new behavior that adds {@link BackgroundColorBehavior.Color#Primary} to component
      *
@@ -79,7 +87,7 @@ public class BackgroundColorBehavior extends BootstrapBaseBehavior {
      * @return behavior that adds secondary background color to component
      */
     public static BackgroundColorBehavior secondary() {
-        return new BackgroundColorBehavior(Color.Primary);
+        return new BackgroundColorBehavior(Color.Secondary);
     }
 
     /**

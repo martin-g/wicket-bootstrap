@@ -3,6 +3,7 @@ package de.agilecoders.wicket.samples.pages;
 import java.util.List;
 
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.image.ExternalImage;
 import org.apache.wicket.markup.html.link.AbstractLink;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.list.ListItem;
@@ -15,8 +16,9 @@ import com.google.common.collect.Lists;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.block.Code;
 import de.agilecoders.wicket.core.markup.html.bootstrap.block.CodeBehavior;
-import de.agilecoders.wicket.core.markup.html.bootstrap.color.BackgroundColorBehavior;
-import de.agilecoders.wicket.core.markup.html.bootstrap.color.ColorBehavior;
+import de.agilecoders.wicket.core.markup.html.bootstrap.utilities.BackgroundColorBehavior;
+import de.agilecoders.wicket.core.markup.html.bootstrap.utilities.BorderBehavior;
+import de.agilecoders.wicket.core.markup.html.bootstrap.utilities.ColorBehavior;
 
 /**
  * @author Jan Ferko
@@ -31,8 +33,121 @@ public class UtilitiesPage extends BasePage {
     public UtilitiesPage(PageParameters parameters) {
         super(parameters);
 
+        addBorderTypes();
+        addBorderColors();
+        addBorderRadius();
         addColors();
         addBackgroundColors();
+    }
+
+    private void addBorderTypes() {
+        List<BorderBehavior.Type> additiveTypes = Lists.newArrayList(
+                BorderBehavior.Type.All,
+                BorderBehavior.Type.Top,
+                BorderBehavior.Type.Right,
+                BorderBehavior.Type.Bottom,
+                BorderBehavior.Type.Left
+        );
+        add(new ListView<BorderBehavior.Type>("additive-border-types", additiveTypes) {
+
+            @Override
+            protected void populateItem(ListItem<BorderBehavior.Type> item) {
+                BorderBehavior.Type type = item.getModelObject();
+                Label label = new Label("border-type", "");
+                label.add(new BorderBehavior().type(type).color(BorderBehavior.Color.Dark));
+                item.add(label);
+            }
+        });
+
+        List<BorderBehavior.Type> subtractiveTypes = Lists.newArrayList(
+                BorderBehavior.Type.None,
+                BorderBehavior.Type.ExceptTop,
+                BorderBehavior.Type.ExceptRight,
+                BorderBehavior.Type.ExceptBottom,
+                BorderBehavior.Type.ExceptLeft
+        );
+        add(new ListView<BorderBehavior.Type>("subtractive-border-types", subtractiveTypes) {
+
+            @Override
+            protected void populateItem(ListItem<BorderBehavior.Type> item) {
+                BorderBehavior.Type type = item.getModelObject();
+                Label label = new Label("border-type", "");
+                label.add(new BorderBehavior().type(type).color(BorderBehavior.Color.Dark));
+                item.add(label);
+            }
+        });
+
+        add(new Code("border-type-code", Model.of(
+                "List<BorderBehavior.Type> additiveTypes = Lists.newArrayList(\n" +
+                "    BorderBehavior.Type.All,\n" +
+                "    BorderBehavior.Type.Top,\n" +
+                "    BorderBehavior.Type.Right,\n" +
+                "    BorderBehavior.Type.Bottom,\n" +
+                "    BorderBehavior.Type.Left\n" +
+                ");\n" +
+                "add(new ListView<BorderBehavior.Type>(\"additive-border-types\", additiveTypes) {\n\n" +
+                "    @Override\n" +
+                "    protected void populateItem(ListItem<BorderBehavior.Type> item) {\n" +
+                "       BorderBehavior.Type type = item.getModelObject();\n" +
+                "       Label label = new Label(\"border-type\", \"\");\n" +
+                "       label.add(new BorderBehavior().type(type).color(BorderBehavior.Color.Dark));\n" +
+                "       item.add(label);\n" +
+                "   }\n" +
+                "});"
+        )).setLanguage(CodeBehavior.Language.JAVA));
+    }
+
+    private void addBorderColors() {
+        List<BorderBehavior.Color> colors = Lists.newArrayList(BorderBehavior.Color.values());
+        add(new ListView<BorderBehavior.Color>("border-colors", colors) {
+
+            @Override
+            protected void populateItem(ListItem<BorderBehavior.Color> item) {
+                BorderBehavior.Color color = item.getModelObject();
+                Label label = new Label("border-color", "");
+                label.add(new BorderBehavior().color(color).type(BorderBehavior.Type.All));
+                item.add(label);
+            }
+        });
+
+        add(new Code("border-colors-code", Model.of(
+            "List<BorderBehavior.Color> colors = Lists.newArrayList(BorderBehavior.Color.values());\n" +
+            "add(new ListView<BorderBehavior.Color>(\"border-colors\", colors) {\n\n" +
+            "    @Override\n" +
+            "    protected void populateItem(ListItem<BorderBehavior.Color> item) {\n" +
+            "        BorderBehavior.Color color = item.getModelObject();\n" +
+            "        Label label = new Label(\"border-color\", \"\");\n" +
+            "        label.add(new BorderBehavior().color(color).type(BorderBehavior.Type.All));\n" +
+            "        item.add(label);\n" +
+            "    }\n" +
+            "});"
+        )).setLanguage(CodeBehavior.Language.JAVA));
+    }
+
+    private void addBorderRadius() {
+        List<BorderBehavior.Radius> radiuses = Lists.newArrayList(BorderBehavior.Radius.values());
+        add(new ListView<BorderBehavior.Radius>("border-radiuses", radiuses) {
+            @Override
+            protected void populateItem(ListItem<BorderBehavior.Radius> item) {
+                BorderBehavior.Radius radius = item.getModelObject();
+                ExternalImage img = new ExternalImage("border-radius", "http://placehold.it/260x180");
+                img.add(new BorderBehavior().radius(radius));
+                item.add(img);
+            }
+        });
+
+        add(new Code("border-radius-code", Model.of(
+            "List<BorderBehavior.Radius> radiuses = Lists.newArrayList(BorderBehavior.Radius.values());\n" +
+            "add(new ListView<BorderBehavior.Radius>(\"border-radiuses\", radiuses) {\n" +
+            "    @Override\n" +
+            "    protected void populateItem(ListItem<BorderBehavior.Radius> item) {\n" +
+            "        BorderBehavior.Radius radius = item.getModelObject();\n" +
+            "        ExternalImage img = new ExternalImage(\"border-radius\", \"http://placehold.it/260x180\");\n" +
+            "        img.add(new BorderBehavior().radius(radius));\n" +
+            "        item.add(img);\n" +
+            "    }\n" +
+            "});"
+        )).setLanguage(CodeBehavior.Language.JAVA));
     }
 
     private void addColors() {
