@@ -11,6 +11,8 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.button.ButtonBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.MenuBookmarkablePageLink;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.SplitButton;
+import de.agilecoders.wicket.core.markup.html.bootstrap.utilities.BorderBehavior;
+import de.agilecoders.wicket.core.markup.html.bootstrap.utilities.ColorBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.components.progress.ProgressBar;
 import de.agilecoders.wicket.core.markup.html.bootstrap.components.progress.Stack;
 import de.agilecoders.wicket.core.markup.html.bootstrap.components.progress.UpdatableProgressBar;
@@ -22,6 +24,8 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
 import de.agilecoders.wicket.core.markup.html.bootstrap.tabs.AjaxBootstrapTabbedPanel;
 import de.agilecoders.wicket.core.markup.html.bootstrap.tabs.ClientSideBootstrapTabbedPanel;
 import de.agilecoders.wicket.samples.components.basecss.ButtonGroups;
+import de.agilecoders.wicket.samples.panels.SimpleCard;
+
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.extensions.markup.html.tabs.AbstractTab;
@@ -89,6 +93,8 @@ public class ComponentsPage extends BasePage {
         add(newClientSideTabs("tabsClient"));
 
         addProgressBars();
+
+        add(newCard("card-demo"));
     }
 
     private void addProgressBars() {
@@ -108,6 +114,7 @@ public class ComponentsPage extends BasePage {
                 return () -> String.format("The progress is: %s%%", getModelObject());
             }
         };
+        labeledStack.labeled(true).type(ProgressBar.Type.SUCCESS);
         labeledProgressBar.addStacks(labeledStack);
         add(labeledProgressBar);
 
@@ -221,6 +228,15 @@ public class ComponentsPage extends BasePage {
         badgeButton.add(new ButtonBehavior(Buttons.Type.Primary));
         badgeButton.add(new BootstrapBadge("badge", Model.of(1), BadgeBehavior.Type.Light));
         add(badgeButton);
+    }
+
+        private Component newCard(String markupId) {
+        return new SimpleCard(markupId)
+                .add(new BorderBehavior()
+                        .type(BorderBehavior.Type.All)
+                        .color(BorderBehavior.Color.Dark)
+                        .radius(BorderBehavior.Radius.All))
+                .add(ColorBehavior.success());
     }
 
     private Component newTabs(String markupId) {
