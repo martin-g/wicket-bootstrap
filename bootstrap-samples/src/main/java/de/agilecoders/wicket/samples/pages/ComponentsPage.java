@@ -11,6 +11,7 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.button.ButtonBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.MenuBookmarkablePageLink;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.SplitButton;
+import de.agilecoders.wicket.core.markup.html.bootstrap.utilities.BackgroundColorBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.utilities.BorderBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.utilities.ColorBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.components.progress.ProgressBar;
@@ -114,28 +115,28 @@ public class ComponentsPage extends BasePage {
                 return () -> String.format("The progress is: %s%%", getModelObject());
             }
         };
-        labeledStack.labeled(true).type(ProgressBar.Type.SUCCESS);
+        labeledStack.labeled(true).color(BackgroundColorBehavior.Color.Success);
         labeledProgressBar.addStacks(labeledStack);
         add(labeledProgressBar);
 
 
         ProgressBar stacked = new ProgressBar("stacked");
         add(stacked);
-        Stack stackedStack1 = new Stack(stacked.getStackId(), Model.of(35)).type(ProgressBar.Type.SUCCESS);
-        Stack stackedStack2 = new Stack(stacked.getStackId(), Model.of(20)).type(ProgressBar.Type.WARNING);
-        Stack stackedStack3 = new Stack(stacked.getStackId(), Model.of(10)).type(ProgressBar.Type.DANGER);
+        Stack stackedStack1 = new Stack(stacked.getStackId(), Model.of(35)).color(BackgroundColorBehavior.Color.Success);
+        Stack stackedStack2 = new Stack(stacked.getStackId(), Model.of(20)).color(BackgroundColorBehavior.Color.Warning);
+        Stack stackedStack3 = new Stack(stacked.getStackId(), Model.of(10)).color(BackgroundColorBehavior.Color.Danger);
         stacked.addStacks(stackedStack1, stackedStack2, stackedStack3);
 
-        ProgressBar coloredInfo = new ProgressBar("coloredInfo", Model.of(20), ProgressBar.Type.INFO);
+        ProgressBar coloredInfo = new ProgressBar("coloredInfo", Model.of(20), BackgroundColorBehavior.Color.Info);
         add(coloredInfo);
 
-        ProgressBar coloredSuccess = new ProgressBar("coloredSuccess", Model.of(40), ProgressBar.Type.SUCCESS);
+        ProgressBar coloredSuccess = new ProgressBar("coloredSuccess", Model.of(40), BackgroundColorBehavior.Color.Success);
         add(coloredSuccess);
 
-        ProgressBar coloredWarning = new ProgressBar("coloredWarning", Model.of(60), ProgressBar.Type.WARNING);
+        ProgressBar coloredWarning = new ProgressBar("coloredWarning", Model.of(60), BackgroundColorBehavior.Color.Warning);
         add(coloredWarning);
 
-        ProgressBar coloredDanger = new ProgressBar("coloredDanger", Model.of(80), ProgressBar.Type.DANGER);
+        ProgressBar coloredDanger = new ProgressBar("coloredDanger", Model.of(80), BackgroundColorBehavior.Color.Danger);
         add(coloredDanger);
 
         UpdatableProgressBar updatableBar = new UpdatableProgressBar("updatable", Model.of(0)) {

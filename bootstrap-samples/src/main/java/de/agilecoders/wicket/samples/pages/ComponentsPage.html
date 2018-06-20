@@ -1884,23 +1884,23 @@ Need to stack them on some viewports but not others? Use the responsive versions
         <div wicket:id="striped"></div>
     </div>
 <pre class="prettyprint linenums">
-&lt;div class="progress progress-striped"&gt;
-  &lt;div class="progress-bar" style="width: 20%;"&gt;&lt;/div&gt;
+&lt;div class="progress"&gt;
+  &lt;div class="progress-bar progress-bar-striped" style="width: 20%;"&gt;&lt;/div&gt;
 &lt;/div&gt;
 </pre>
 
     <h3>Animated</h3>
 
-    <p>Add <code>.active</code> to <code>.progress-striped</code> to animate the stripes right to left. Not available in all versions of IE.</p>
+    <p>Add <code>.progress-bar-animated</code> to <code>.progress-bar-striped</code> to animate the stripes right to left. Not available in all versions of IE.</p>
 
     <div class="bs-docs-example">
         <div wicket:id="animated"></div>
     </div>
-<pre class="prettyprint linenums">
-&lt;div class="progress progress-striped active"&gt;
-  &lt;div class="progress-bar" style="width: 40%;"&gt;&lt;/div&gt;
+    <pre class="prettyprint linenums">
+&lt;div class="progress"&gt;
+  &lt;div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 40%;"&gt;&lt;/div&gt;
 &lt;/div&gt;
-</pre>
+    </pre>
 
     <h3>Labeled</h3>
 
@@ -1924,9 +1924,9 @@ Need to stack them on some viewports but not others? Use the responsive versions
     </div>
 <pre class="prettyprint linenums">
 &lt;div class="progress"&gt;
-  &lt;div class="progress-bar progress-bar-success" style="width: 35%;"&gt;&lt;/div&gt;
-  &lt;div class="progress-bar progress-bar-warning" style="width: 20%;"&gt;&lt;/div&gt;
-  &lt;div class="progress-bar progress-bar-danger" style="width: 10%;"&gt;&lt;/div&gt;
+  &lt;div class="progress-bar bg-success" style="width: 35%;"&gt;&lt;/div&gt;
+  &lt;div class="progress-bar bg-warning" style="width: 20%;"&gt;&lt;/div&gt;
+  &lt;div class="progress-bar bg-danger" style="width: 10%;"&gt;&lt;/div&gt;
 &lt;/div&gt;
 </pre>
 
@@ -1938,7 +1938,7 @@ Need to stack them on some viewports but not others? Use the responsive versions
 
     <h3>Additional colors</h3>
 
-    <p>Progress bars use some of the same button and alert classes for consistent styles.</p>
+    <p>Progress bars use background color utility classes for consistent styles.</p>
 
     <div class="bs-docs-example">
         <div wicket:id="coloredInfo" style="margin-bottom: 9px;"></div>
@@ -1948,16 +1948,16 @@ Need to stack them on some viewports but not others? Use the responsive versions
     </div>
 <pre class="prettyprint linenums">
 &lt;div class="progress"&gt;
-  &lt;div class="progress-bar progress-bar-info" style="width: 20%"&gt;&lt;/div&gt;
+  &lt;div class="progress-bar bg-info" style="width: 20%"&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="progress"&gt;
-  &lt;div class="progress-bar progress-bar-success" style="width: 40%"&gt;&lt;/div&gt;
+  &lt;div class="progress-bar bg-success" style="width: 40%"&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="progress"&gt;
-  &lt;div class="progress-bar progress-bar-warning" style="width: 60%"&gt;&lt;/div&gt;
+  &lt;div class="progress-bar bg-warning" style="width: 60%"&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="progress"&gt;
-  &lt;div class="progress-bar progress-bar-danger" style="width: 80%"&gt;&lt;/div&gt;
+  &lt;div class="progress-bar bg-danger" style="width: 80%"&gt;&lt;/div&gt;
 &lt;/div&gt;
 </pre>
 
@@ -1966,31 +1966,31 @@ Need to stack them on some viewports but not others? Use the responsive versions
     <p>Similar to the solid colors, we have varied striped progress bars.</p>
 
     <div class="bs-docs-example">
-        <div class="progress progress-striped" style="margin-bottom: 9px;">
-            <div class="progress-bar progress-bar-info " style="width: 20%"></div>
+        <div class="progress" style="margin-bottom: 9px;">
+            <div class="progress-bar progress-bar-striped bg-info " style="width: 20%"></div>
         </div>
-        <div class="progress progress-striped" style="margin-bottom: 9px;">
-            <div class="progress-bar progress-bar-success" style="width: 40%"></div>
+        <div class="progress" style="margin-bottom: 9px;">
+            <div class="progress-bar progress-bar-striped bg-success" style="width: 40%"></div>
         </div>
-        <div class="progress progress-striped" style="margin-bottom: 9px;">
-            <div class="progress-bar progress-bar-warning" style="width: 60%"></div>
+        <div class="progress" style="margin-bottom: 9px;">
+            <div class="progress-bar progress-bar-striped bg-warning" style="width: 60%"></div>
         </div>
-        <div class="progress progress-striped">
-            <div class="progress-bar progress-bar-danger" style="width: 80%"></div>
+        <div class="progress">
+            <div class="progress-bar progress-bar-striped bg-danger" style="width: 80%"></div>
         </div>
     </div>
 <pre class="prettyprint linenums">
-&lt;div class="progress progress-striped"&gt;
-  &lt;div class="progress-bar progress-bar-info" style="width: 20%"&gt;&lt;/div&gt;
+&lt;div class="progress"&gt;
+  &lt;div class="progress-bar progress-bar-striped bg-info" style="width: 20%"&gt;&lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="progress progress-striped"&gt;
-  &lt;div class="progress-bar progress-bar-success" style="width: 40%"&gt;&lt;/div&gt;
+&lt;div class="progress"&gt;
+  &lt;div class="progress-bar progress-bar-striped bg-success" style="width: 40%"&gt;&lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="progress progress-striped"&gt;
-  &lt;div class="progress-bar progress-bar-warning" style="width: 60%"&gt;&lt;/div&gt;
+&lt;div class="progress"&gt;
+  &lt;div class="progress-bar progress-bar-striped bg-warning" style="width: 60%"&gt;&lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="progress progress-striped"&gt;
-  &lt;div class="progress-bar progress-bar-danger" style="width: 80%"&gt;&lt;/div&gt;
+&lt;div class="progress"&gt;
+  &lt;div class="progress-bar progress-bar-striped bg-danger" style="width: 80%"&gt;&lt;/div&gt;
 &lt;/div&gt;
 </pre>
 
