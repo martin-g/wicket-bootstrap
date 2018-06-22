@@ -1,9 +1,9 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.layout.offset;
 
 /**
- * Offsets for phones.
+ * Offsets for large desktops.
  */
-public enum ExtraSmallOffsetType implements OffsetType {
+public enum LargeOffsetType implements OffsetType {
 
     OFFSET0,
     OFFSET1, OFFSET2, OFFSET3, OFFSET4,
@@ -15,13 +15,13 @@ public enum ExtraSmallOffsetType implements OffsetType {
     /**
      * Constructor.
      */
-    private ExtraSmallOffsetType() {
+    private LargeOffsetType() {
         this.cssClassName = name().toLowerCase();
     }
 
     @Override
     public String cssClassName() {
-        return equals(OFFSET0) ? "" : "offset-" + cssClassName.replace("offset", "");
+        return equals(OFFSET0) ? "" : "offset-lg-" + cssClassName.replace("offset", "");
     }
 
 }

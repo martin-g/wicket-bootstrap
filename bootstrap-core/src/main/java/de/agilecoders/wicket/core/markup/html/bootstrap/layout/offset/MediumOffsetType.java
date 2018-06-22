@@ -21,7 +21,7 @@ public enum MediumOffsetType implements OffsetType {
 
     @Override
     public String cssClassName() {
-        return equals(OFFSET0) ? "" : "col-md-offset-" + cssClassName.replace("offset", "");
+        return equals(OFFSET0) ? "" : "offset-md-" + cssClassName.replace("offset", "");
     }
 
 }

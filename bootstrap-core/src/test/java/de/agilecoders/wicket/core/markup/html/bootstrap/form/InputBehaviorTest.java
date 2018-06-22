@@ -70,7 +70,7 @@ public class InputBehaviorTest extends WicketApplicationTest {
         assertThat(cssClass, Matchers.containsString("form-control"));
         assertThat(cssClass, Matchers.not(Matchers.containsString("input-lg")));
 
-        assertThat(tester().getLastResponseAsString(), Matchers.containsString("<div class=\"col-xs-10\""));
+        assertThat(tester().getLastResponseAsString(), Matchers.containsString("<div class=\"col-10\""));
         assertThat(tester().getLastResponseAsString(), Matchers.containsString("</div"));
     }
 
