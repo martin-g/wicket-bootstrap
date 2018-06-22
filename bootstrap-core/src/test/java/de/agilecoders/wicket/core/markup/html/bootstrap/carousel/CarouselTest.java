@@ -81,6 +81,22 @@ public class CarouselTest extends WicketApplicationTest {
         }
     }
 
+    @Test
+    public void controlsAreRendered() {
+        List<ICarouselImage> images = newImageList();
+        Carousel carousel = new Carousel(id(), images);
+        startComponentInPage(carousel, MARKUP);
+
+        TagTester prevTag = tester().getTagByWicketId("prev");
+        assertCssClass(prevTag, "carousel-control-prev");
+        assertThat(prevTag.getValue(), is(equalTo(carousel.createPrevLabel().getObject())));
+
+        TagTester nextTag = tester().getTagByWicketId("next");
+        assertCssClass(nextTag, "carousel-control-next");
+        assertThat(nextTag.getValue(), is(equalTo(carousel.createNextLabel().getObject())));
+
+    }
+
     /**
      * @return a list of carousel images
      */
