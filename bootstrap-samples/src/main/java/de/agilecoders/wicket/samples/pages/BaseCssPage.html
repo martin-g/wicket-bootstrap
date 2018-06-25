@@ -236,12 +236,12 @@
 <p>Wrap <code>&lt;blockquote&gt;</code> around any <abbr title="HyperText Markup Language">HTML</abbr> as the quote. For straight quotes we recommend a <code>&lt;p&gt;</code>.</p>
 
 <div class="bs-docs-example">
-    <blockquote>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+    <blockquote wicket:id="quote">
+        <p wicket:id="quotation">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
     </blockquote>
 </div>
 <pre class="prettyprint linenums">
-&lt;blockquote&gt;
+&lt;blockquote class="blockquote"&gt;
   &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.&lt;/p&gt;
 &lt;/blockquote&gt;
 </pre>
@@ -255,13 +255,13 @@
 <p>Add <code>&lt;small&gt;</code> tag for identifying the source. Wrap the name of the source work in <code>&lt;cite&gt;</code>.</p>
 
 <div class="bs-docs-example">
-    <blockquote>
+    <blockquote class="blockquote">
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
         <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
     </blockquote>
 </div>
 <pre class="prettyprint linenums">
-&lt;blockquote&gt;
+&lt;blockquote class="blockquote"&gt;
   &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.&lt;/p&gt;
   &lt;small&gt;Someone famous &lt;cite title="Source Title"&gt;Source Title&lt;/cite&gt;&lt;/small&gt;
 &lt;/blockquote&gt;
@@ -272,13 +272,13 @@
 <p>Use <code>.pull-right</code> for a floated, right-aligned blockquote.</p>
 
 <div class="bs-docs-example" style="overflow: hidden;">
-    <blockquote class="pull-right">
+    <blockquote class="blockquote pull-right">
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
         <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
     </blockquote>
 </div>
 <pre class="prettyprint linenums">
-&lt;blockquote class="pull-right"&gt;
+&lt;blockquote class="blockquote pull-right"&gt;
   ...
 &lt;/blockquote&gt;
 </pre>
@@ -370,6 +370,28 @@
 &lt;/ul&gt;
 </pre>
 
+<h3>Inline</h3>
+
+<p>
+    Remove a list’s bullets and apply some light margin with a combination of two classes, <code>.list-inline</code> and <code>.list-inline-item</code>.
+</p>
+
+<div class="bs-docs-example">
+    <ul class="list-inline">
+        <li class="list-inline-item">Lorem ipsum</li>
+        <li class="list-inline-item">Phasellus iaculis</li>
+        <li class="list-inline-item">Nulla volutpat</li>
+    </ul>
+</div>
+<pre class="prettyprint linenums">
+&lt;ul class="list-inline"&gt;
+    &lt;li class="list-inline-item"&gt;Lorem ipsum&lt;/li&gt;
+    &lt;li class="list-inline-item"&gt;Phasellus iaculis&lt;/li&gt;
+    &lt;li class="list-inline-item"&gt;Nulla volutpat&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+
+
 <h3>Description</h3>
 
 <p>A list of terms with their associated descriptions.</p>
@@ -412,9 +434,9 @@
     </dl>
 </div>
 <pre class="prettyprint linenums">
-&lt;dl class="list-inline"&gt;
-  &lt;dt class="list-inline-item" &gt;...&lt;/dt&gt;
-  &lt;dd class="list-inline-item" &gt;...&lt;/dd&gt;
+&lt;dl class="row"&gt;
+  &lt;dt class="col-sm-3" &gt;...&lt;/dt&gt;
+  &lt;dd class="col-sm-9" &gt;...&lt;/dd&gt;
 &lt;/dl&gt;
 </pre>
 <p>

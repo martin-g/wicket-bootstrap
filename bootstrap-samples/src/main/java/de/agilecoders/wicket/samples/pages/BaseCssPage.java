@@ -1,6 +1,8 @@
 package de.agilecoders.wicket.samples.pages;
 
 import com.google.common.collect.Lists;
+
+import de.agilecoders.wicket.core.markup.html.bootstrap.block.Quote;
 import de.agilecoders.wicket.core.markup.html.bootstrap.form.BootstrapCheckbox;
 import de.agilecoders.wicket.core.markup.html.bootstrap.form.BootstrapForm;
 import de.agilecoders.wicket.core.markup.html.bootstrap.form.BootstrapRadioChoice;
@@ -48,6 +50,8 @@ public class BaseCssPage extends BasePage {
         add(newIconsPanel("iconsPanel"));
 
         add(newContextualTable("table-contextual"));
+
+        add(newQuote("quote"));
 /*
         add(new DateTextField("date"));
 
@@ -59,6 +63,11 @@ public class BaseCssPage extends BasePage {
         add(newPagination("pagination"));
         add(newBreadcrumb("breadcrumb"));
 */
+    }
+
+    protected Component newQuote(String markupId) {
+        return new Quote(markupId)
+            .add(new Label("quotation", Model.of("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.")));
     }
 
     private void addForms() {

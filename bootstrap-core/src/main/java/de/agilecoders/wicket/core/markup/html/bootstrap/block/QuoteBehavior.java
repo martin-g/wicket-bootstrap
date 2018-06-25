@@ -49,7 +49,7 @@ public class QuoteBehavior extends Behavior {
         super.onComponentTag(component, tag);
 
         Components.assertTag(component, tag, "blockquote");
-        Attributes.addClass(tag, pullRight.getObject());
+        Attributes.addClass(tag, "blockquote", pullRight.getObject());
     }
 
     /**
