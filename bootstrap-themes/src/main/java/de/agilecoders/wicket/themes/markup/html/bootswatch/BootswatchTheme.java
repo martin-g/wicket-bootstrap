@@ -22,8 +22,9 @@ import java.util.List;
  * @author miha
  */
 public enum BootswatchTheme implements ITheme {
-    Cerulean, Cosmo, Cyborg, Darkly, Flatly, Journal, Lumen, Paper, Readable,
-    Sandstone, Simplex, Slate, Spacelab, Superhero, United, Yeti;
+    Cerulean, Cosmo, Cyborg, Darkly, Flatly, Journal, Litera, Lumen, Lux, Materia,
+    Minty, Pulse, Sandstone, Simplex, Sketchy, Slate, Solar, Spacelab, Superhero,
+    United, Yeti;
 
     /**
      * The placeholders are:
