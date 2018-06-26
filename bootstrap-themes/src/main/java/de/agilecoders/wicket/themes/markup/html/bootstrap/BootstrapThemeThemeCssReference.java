@@ -5,16 +5,16 @@ import de.agilecoders.wicket.core.util.Dependencies;
 import de.agilecoders.wicket.webjars.request.resource.WebjarsCssResourceReference;
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.HeaderItem;
+import org.apache.wicket.request.resource.CssResourceReference;
 
 import java.util.List;
 
 /**
  * #### Description
  *
- * The BootstrapThemeThemeCssReference uses the latest version of bootstrap-theme.css from the `org.webjars.bootstrap`
- * dependency which is defined in `pom.xml`. This reference has a dependency to base bootstrap css reference, but there
- * will be no version conflicts between this reference and the `bootstrap.css` from `BootstrapCssReference` because both
- * will are loaded from same jar file.
+ * The BootstrapThemeThemeCssReference uses bootstrap stylesheet with enabled gradient and shadows
+ * to mimic Bootstrap 3 `bootstrap-theme.css` stylesheet. Stylesheet is manually compiled, so
+ * there may be version conflict with future versions.
  *
  * #### Usage
  *
@@ -31,7 +31,7 @@ import java.util.List;
  *
  * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
-public class BootstrapThemeThemeCssReference extends WebjarsCssResourceReference {
+public class BootstrapThemeThemeCssReference extends CssResourceReference {
     private static final long serialVersionUID = 1L;
 
     /**
@@ -52,7 +52,7 @@ public class BootstrapThemeThemeCssReference extends WebjarsCssResourceReference
      * Private constructor to prevent instantiation.
      */
     private BootstrapThemeThemeCssReference() {
-        super("/bootstrap/current/css/bootstrap-theme.css");
+        super(BootstrapThemeThemeCssReference.class, "css/bootstrap-theme.css");
     }
 
     @Override
