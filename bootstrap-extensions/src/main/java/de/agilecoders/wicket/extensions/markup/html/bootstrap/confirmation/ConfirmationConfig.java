@@ -18,15 +18,25 @@ public class ConfirmationConfig extends AbstractConfig {
     private static final IKey<Boolean> Singleton = new Key<Boolean>("singleton", Boolean.FALSE);
     private static final IKey<Boolean> Popout = new Key<Boolean>("popout", Boolean.FALSE);
     private static final IKey<String> BtnOkClass = new Key<String>("btnOkClass", "btn-xs btn-primary");
-    private static final IKey<String> BtnOkIcon = new Key<String>("btnOkIcon", "glyphicon glyphicon-ok");
+    private static final IKey<String> BtnOkIconClass = new Key<String>("btnOkIconClass", "glyphicon glyphicon-ok");
+    private static final IKey<String> BtnOkIconContent = new Key<String>("btnOkIconContent");
     private static final IKey<String> BtnOkLabel = new Key<String>("btnOkLabel", "Yes");
     private static final IKey<String> BtnCancelClass = new Key<String>("btnCancelClass", "btn-xs btn-default");
-    private static final IKey<String> BtnCancelIcon = new Key<String>("btnCancelIcon", "glyphicon glyphicon-remove");
+    private static final IKey<String> BtnCancelIconClass = new Key<String>("btnCancelIconClass", "glyphicon glyphicon-remove");
+    private static final IKey<String> BtnCancelIconContent = new Key<String>("btnCancelIconContent");
     private static final IKey<String> BtnCancelLabel = new Key<String>("btnCancelLabel", "No");
     private static final IKey<TooltipConfig.Placement> Placement = new Key<TooltipConfig.Placement>("placement", TooltipConfig.Placement.top);
+    private static final IKey<String> RootSelector = new Key<String>("rootSelector");
+
+
 
     public ConfirmationConfig withTitle(String title) {
         put(Title, title);
+        return this;
+    }
+
+    ConfirmationConfig withRootSelector(String rootSelector) {
+        put(RootSelector, rootSelector);
         return this;
     }
 
@@ -35,8 +45,13 @@ public class ConfirmationConfig extends AbstractConfig {
         return this;
     }
 
-    public ConfirmationConfig withBtnOkIcon(String btnOkIcon) {
-        put(BtnOkIcon, btnOkIcon);
+    public ConfirmationConfig withBtnOkIconClass(String btnOkIconClass) {
+        put(BtnOkIconClass, btnOkIconClass);
+        return this;
+    }
+
+    public ConfirmationConfig withBtnOkIconContent(String btnOkIconContent) {
+        put(BtnOkIconContent, btnOkIconContent);
         return this;
     }
 
@@ -50,8 +65,13 @@ public class ConfirmationConfig extends AbstractConfig {
         return this;
     }
 
-    public ConfirmationConfig withBtnCancelIcon(String btnCancelIcon) {
-        put(BtnCancelIcon, btnCancelIcon);
+    public ConfirmationConfig withBtnCancelIconClass(String btnCancelIconClass) {
+        put(BtnCancelIconClass, btnCancelIconClass);
+        return this;
+    }
+
+    public ConfirmationConfig withBtnCancelIconContent(String btnCancelIconContent) {
+        put(BtnCancelIconContent, btnCancelIconContent);
         return this;
     }
 
