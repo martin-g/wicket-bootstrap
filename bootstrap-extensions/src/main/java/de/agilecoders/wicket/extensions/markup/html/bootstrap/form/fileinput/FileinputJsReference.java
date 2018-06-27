@@ -17,7 +17,7 @@ public final class FileinputJsReference extends JavaScriptResourceReference impl
     public static final FileinputJsReference INSTANCE = new FileinputJsReference();
 
     private FileinputJsReference() {
-        super(FileinputJsReference.class, "res/fileinput.js");
+        super(FileinputJsReference.class, "res/js/fileinput.js");
     }
 
     @Override
