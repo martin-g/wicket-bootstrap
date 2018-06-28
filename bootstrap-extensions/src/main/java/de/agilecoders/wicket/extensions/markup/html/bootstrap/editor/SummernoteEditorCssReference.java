@@ -4,7 +4,7 @@ import de.agilecoders.wicket.webjars.request.resource.WebjarsCssResourceReferenc
 
 /**
  * The summernote css provided via webjars
- * 
+ *
  * @author Tobias Soloschenko
  *
  */
@@ -28,6 +28,6 @@ public class SummernoteEditorCssReference extends WebjarsCssResourceReference {
      * Private constructor.
      */
     private SummernoteEditorCssReference() {
-	super("summernote/current/dist/summernote.css");
+	super("summernote/current/dist/summernote-bs4.css");
     }
 }
