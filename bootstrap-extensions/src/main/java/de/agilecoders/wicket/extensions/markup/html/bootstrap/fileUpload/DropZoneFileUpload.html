@@ -8,15 +8,15 @@
                 <div class="col-lg-7">
                     <!-- The fileinput-button span is used to style the file input field as button -->
                     <button type="button" class="btn btn-success fileinput-button">
-                        <i class="glyphicon glyphicon-plus"></i>
+                        <i class="fa fa-plus"></i>
                         <span><wicket:message key="dropzonefileupload.addfiles"></wicket:message></span>
                     </button>
                     <button type="button" class="btn btn-primary start">
-                        <i class="glyphicon glyphicon-upload"></i>
+                        <i class="fa fa-upload"></i>
                         <span><wicket:message key="dropzonefileupload.startupload"></wicket:message></span>
                     </button>
                     <button type="reset" class="btn btn-warning cancel">
-                        <i class="glyphicon glyphicon-ban-circle"></i>
+                        <i class="fa fa-ban"></i>
                         <span><wicket:message key="dropzonefileupload.cancelupload"></wicket:message></span>
                     </button>
                 </div>
@@ -24,8 +24,8 @@
                 <div class="col-lg-5">
                     <!-- The global file processing state -->
                     <span class="fileupload-process">
-                        <div id="total-progress" class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-                            <div class="progress-bar progress-bar-success" style="width: 0%;" data-dz-uploadprogress></div>
+                        <div id="total-progress" class="progress active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                            <div class="progress-bar progress-bar-striped bg-success" style="width: 0%;" data-dz-uploadprogress></div>
                         </div>
                     </span>
                 </div>
@@ -34,30 +34,30 @@
             <div class="table table-striped files dropzone-previews">
                 <div id="template" class="file-row">
                     <!-- This is used as the file preview template -->
-                    <div>
+                    <div class="p-2 m-2">
                         <span class="preview">
                             <img data-dz-thumbnail />
                         </span>
                     </div>
-                    <div>
+                    <div class="p-2 m-2">
                         <p class="name" data-dz-name></p>
                         <strong class="error text-danger" data-dz-errormessage></strong>
                     </div>
-                    <div>
+                    <div class="p-2 m-2">
                         <p class="size" data-dz-size></p>
-                        <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-                            <div class="progress-bar progress-bar-success" style="width: 0%;" data-dz-uploadprogress></div>
+                        <div class="progress active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                            <div class="progress-bar progress-bar-striped bg-success" style="width: 0%;" data-dz-uploadprogress></div>
                         </div>
                     </div>
-                    <div>
+                    <div class="p-2 m-2">
                         <button type="button" class="btn btn-primary start">
-                            <i class="glyphicon glyphicon-upload"></i> <span><wicket:message key="dropzonefileupload.start"></wicket:message></span>
+                            <i class="fa fa-upload"></i> <span><wicket:message key="dropzonefileupload.start"></wicket:message></span>
                         </button>
                         <button type="button" data-dz-remove class="btn btn-warning cancel">
-                            <i class="glyphicon glyphicon-ban-circle"></i> <span><wicket:message key="dropzonefileupload.cancel"></wicket:message></span>
+                            <i class="fa fa-ban"></i> <span><wicket:message key="dropzonefileupload.cancel"></wicket:message></span>
                         </button>
                         <button type="button" data-dz-remove class="btn btn-danger delete">
-                            <i class="glyphicon glyphicon-trash"></i> <span><wicket:message key="dropzonefileupload.delete"></wicket:message></span>
+                            <i class="fa fa-trash"></i> <span><wicket:message key="dropzonefileupload.delete"></wicket:message></span>
                         </button>
                     </div>
                 </div>
