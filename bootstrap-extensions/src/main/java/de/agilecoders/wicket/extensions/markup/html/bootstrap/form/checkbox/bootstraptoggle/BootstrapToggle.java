@@ -58,8 +58,8 @@ public class BootstrapToggle extends BootstrapCheckbox {
      */
     public BootstrapToggle(String id, BootstrapToggleConfig config) {
         this(id, null, config);
-    }    
-    
+    }
+
     /**
      * Constructor.
      *
@@ -83,6 +83,7 @@ public class BootstrapToggle extends BootstrapCheckbox {
                 super.renderHead(component, response);
 
                 response.render(CssHeaderItem.forReference(new CssResourceReference(BootstrapToggle.class, "res/css/bootstrap-toggle.css")));
+                response.render(CssHeaderItem.forReference(new CssResourceReference(BootstrapToggle.class, "res/css/bootstrap-toggle-bs4.css")));
                 response.render(JavaScriptHeaderItem.forReference(new JQueryPluginResourceReference(BootstrapToggle.class, "res/js/bootstrap-toggle.js")));
                 response.render(OnDomReadyHeaderItem.forScript($(checkBox).chain("bootstrapToggle", getConfig()).get()));
             }
