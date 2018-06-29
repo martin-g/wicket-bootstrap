@@ -14,7 +14,7 @@ public class BootstrapCheckBoxPickerConfig extends AbstractConfig {
     private static final IKey<String> Style = newKey("style", null);
     private static final IKey<String> DefaultClass = newKey("defaultClass", "btn-secondary");
     private static final IKey<String> DisabledCursor = newKey("disabledCursor", "not-allowed");
-    private static final IKey<String> OffClass = newKey("offClass", "btn-danger ");
+    private static final IKey<String> OffClass = newKey("offClass", "btn-danger");
     private static final IKey<String> OnClass = newKey("onClass", "btn-success");
     private static final IKey<IconType> OffIconCLass = newKey("offIconClass", null);
     private static final IKey<IconType> OnIconCLass = newKey("onIconClass", null);
@@ -25,6 +25,7 @@ public class BootstrapCheckBoxPickerConfig extends AbstractConfig {
      * Default constructor
      */
     public BootstrapCheckBoxPickerConfig() {
+        withDefaultClass("btn-light");
     }
 
     public BootstrapCheckBoxPickerConfig withDefaultClass(final String value) {
