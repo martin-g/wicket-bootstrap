@@ -28,9 +28,10 @@ public class CheckBoxXConfig extends AbstractConfig {
     private static final IKey<Boolean> Inline = newKey("inline", true);
 
     /**
-     * The HTML markup for the glyph / icon to be displayed when the checkbox is checked. Defaults to &lt;i class="glyphicon glyphicon-ok"&gt;&lt;/i&gt;
+     * The HTML markup for the glyph / icon to be displayed when the checkbox is checked. Defaults to &lt;i class="fa fa-check"&gt;&lt;/i&gt;
+     * Is set in config constructor to override library default which uses glyphicons from Bootstrap 3.
      */
-    private static final IKey<String> IconChecked = newKey("iconChecked", "<i class=\"glyphicon glyphicon-ok\"></i>");
+    private static final IKey<String> IconChecked = newKey("iconChecked", null);
 
     /**
      * The HTML markup for the glyph / icon to be displayed when the checkbox is unchecked. Defaults to a blank character <em> </em>.
@@ -38,9 +39,10 @@ public class CheckBoxXConfig extends AbstractConfig {
     private static final IKey<String> IconUnchecked = newKey("iconUnchecked", " ");
 
     /**
-     * The html markup for the glyph / icon to be displayed when the checkbox is null. Defaults to &lt;i class="glyphicon glyphicon-stop"&gt;&lt;/i&gt;
+     * The html markup for the glyph / icon to be displayed when the checkbox is null. Defaults to &lt;i class="fa fa-stop"&gt;&lt;/i&gt;
+     * Is set in config constructor to override library default which uses glyphicons from Bootstrap 3.
      */
-    private static final IKey<String> IconNull = newKey("iconNull", "<i class=\"glyphicon glyphicon-stop\"></i>");
+    private static final IKey<String> IconNull = newKey("iconNull", null);
 
     /**
      * The size of the checkbox control. Should be one of xl (extra large), lg (large), md (medium), sm (small),
@@ -65,6 +67,8 @@ public class CheckBoxXConfig extends AbstractConfig {
      * Default constructor
      */
     public CheckBoxXConfig() {
+        withIconNull("<i class='fa fa-stop'></i>");
+        withIconChecked("<i class='fa fa-check'></i>");
     }
 
     /**
