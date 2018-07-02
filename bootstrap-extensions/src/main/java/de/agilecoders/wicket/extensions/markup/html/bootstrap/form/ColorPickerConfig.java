@@ -47,7 +47,7 @@ public class ColorPickerConfig extends AbstractConfig {
 
     /**
      * A flag indicating whether the color picker is used as a component
-     * See <a href="http://www.eyecon.ro/bootstrap-colorpicker/">Bootstrap Color Picker</a> for details
+     * See <a href="https://farbelous.io/bootstrap-colorpicker/v2/">Bootstrap Color Picker</a> for details
      */
     private boolean isComponent = false;
 
