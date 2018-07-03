@@ -1,5 +1,6 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.form.rating;
 
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeIconType;
 import de.agilecoders.wicket.jquery.AbstractConfig;
 import de.agilecoders.wicket.jquery.IKey;
 
@@ -25,6 +26,10 @@ public class RatingConfig extends AbstractConfig {
 
 	private static final IKey<String> filledSelected = newKey("filledSelected", null);
 
+	public RatingConfig() {
+		put(filled, FontAwesomeIconType.star.cssClassName());
+		put(empty, FontAwesomeIconType.star_o.cssClassName());
+	}
 
 	public RatingConfig withStart(Integer value) {
 		put(start, value);
