@@ -32,9 +32,9 @@ public class Spinner<T extends Number> extends TextField<T>{
     private static final Logger LOG = LoggerFactory.getLogger(Spinner.class);
 
     private static final CssResourceReference SPINNER_CSS = new CssResourceReference(Spinner.class,
-            "css/touchspin.min.css");
+            "css/touchspin.css");
     private static final JavaScriptResourceReference SPINNER_JS = new JavaScriptResourceReference(Spinner.class,
-            "js/touchspin.min.js");
+            "js/touchspin.js");
 
     private final SpinnerConfig config;
 
