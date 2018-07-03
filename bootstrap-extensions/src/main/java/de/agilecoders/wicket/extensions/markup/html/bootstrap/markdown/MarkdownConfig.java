@@ -33,6 +33,10 @@ public class MarkdownConfig extends AbstractConfig {
     static final IKey<IconLibrary> _IconLibrary = newKey("iconlibrary", IconLibrary.glyph);
     static final IKey<DropZoneConfig> DropZoneOptions = newKey("dropZoneOptions", null);
 
+    public MarkdownConfig() {
+        put(_IconLibrary, IconLibrary.fa);
+    }
+
     /**
      * @param autofocus
      *            Indicates that editor will focused after instantiated. Default to false.
