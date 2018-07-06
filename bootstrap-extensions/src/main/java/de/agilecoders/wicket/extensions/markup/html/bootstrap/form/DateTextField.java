@@ -57,7 +57,7 @@ public class DateTextField extends org.apache.wicket.extensions.markup.html.form
     /**
      * Abstract base class for events.
      */
-    public abstract class AbstractEventHandler implements Serializable {
+    public abstract static class AbstractEventHandler implements Serializable {
 
         protected abstract CharSequence getBody();
 
