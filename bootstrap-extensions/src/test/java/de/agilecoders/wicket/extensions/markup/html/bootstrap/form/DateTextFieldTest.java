@@ -4,7 +4,6 @@ import static org.hamcrest.Matchers.*;
 
 import java.util.Date;
 
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.WicketApplicationTest;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.markup.Markup;
 import org.apache.wicket.markup.MarkupException;
@@ -16,11 +15,17 @@ import org.junit.Test;
 /**
  * @author Urs Joss
  */
-public class DateTextFieldTest extends WicketApplicationTest {
+public class DateTextFieldTest extends AbstractDateTextFieldTest<DateTextFieldConfig, Date> {
 
-    private final DateTextFieldConfig defaultConfig = new DateTextFieldConfig();
+    @Override
+    DateTextFieldConfig newDefaultConfig() {
+        return new DateTextFieldConfig();
+    }
 
-    private final Date now = new Date();
+    @Override
+    Date getNow() {
+        return new Date();
+    }
 
     private final DateTextField.IAjaxEventHandler handler = new DateTextField.IAjaxEventHandler() {
 
@@ -30,20 +35,10 @@ public class DateTextFieldTest extends WicketApplicationTest {
     };
 
     @Test
-    public void assertDefaultDateTextFieldConfig_hasLanguageEnglish() {
-        assertThat(defaultConfig.getLanguage(), is(equalTo("en")));
-    }
-
-    @Test
-    public void assertDefaultDateTextFieldConfig_hasAmericanDateFormat() {
-        assertThat(defaultConfig.getFormat(), is(equalTo("MM/dd/yyyy")));
-    }
-
-    @Test
     public void constructing_withIdOnly_knowsIdAndDefaultConfig() {
-        DateTextField f = new DateTextField("id");
+        DateTextField f = new DateTextField("tf");
 
-        assertThat(f.getId(), is(equalTo("id")));
+        assertThat(f.getId(), is(equalTo("tf")));
         assertThat(f.getModelObject(), is(equalTo(null)));
 
         hasDefaultModel(f);
@@ -51,52 +46,54 @@ public class DateTextFieldTest extends WicketApplicationTest {
 
     private void hasDefaultModel(final DateTextField f) {
         DateTextFieldConfig config = f.getConfig();
-        assertThat(config.getFormat(), is(equalTo(defaultConfig.getFormat())));
-        assertThat(config.getLanguage(), is(equalTo(defaultConfig.getLanguage())));
+        assertThat(config.getFormat(), is(equalTo(newDefaultConfig().getFormat())));
+        assertThat(config.getLanguage(), is(equalTo(newDefaultConfig().getLanguage())));
     }
 
     @Test
     public void constuctingt_withIdAndDatePattern_knowsIdAndDatePattern() {
-        DateTextField f = new DateTextField("id", "dd.MM.yyyy");
+        DateTextField f = new DateTextField("tf", "dd.MM.yyyy");
 
-        assertThat(f.getId(), is(equalTo("id")));
+        assertThat(f.getId(), is(equalTo("tf")));
         assertThat(f.getModelObject(), is(equalTo(null)));
 
         DateTextFieldConfig config = f.getConfig();
         assertThat(config.getFormat(), is(equalTo("dd.MM.yyyy")));
-        assertThat(config.getLanguage(), is(equalTo(defaultConfig.getLanguage())));
+        assertThat(config.getLanguage(), is(equalTo(newDefaultConfig().getLanguage())));
     }
 
     @Test
     public void canConstruct_withIdAndDateModel_knowsIdAndDateModel() {
-        DateTextField f = new DateTextField("id", Model.of(now));
+        DateTextField f = new DateTextField("tf", Model.of(getNow()));
 
-        assertThat(f.getId(), is(equalTo("id")));
-        assertThat(f.getModelObject(), is(equalTo(now)));
+        assertThat(f.getId(), is(equalTo("tf")));
+        assertThat(f.getModelObject(), is(equalTo(getNow())));
 
         hasDefaultModel(f);
     }
 
     @Test
     public void constuctingt_withIdAndDateModelAndDatePattern_knowsIdAndDateModelAndDatePattern() {
-        DateTextField f = new DateTextField("id", Model.of(now), "dd.MM.yyyy");
+        DateTextField f = new DateTextField("tf", Model.of(getNow()), "dd.MM.yyyy");
 
-        assertThat(f.getId(), is(equalTo("id")));
-        assertThat(f.getModelObject(), is(equalTo(now)));
+        assertThat(f.getId(), is(equalTo("tf")));
+        assertThat(f.getModelObject(), is(equalTo(getNow())));
 
         DateTextFieldConfig config = f.getConfig();
         assertThat(config.getFormat(), is(equalTo("dd.MM.yyyy")));
-        assertThat(config.getLanguage(), is(equalTo(defaultConfig.getLanguage())));
+        assertThat(config.getLanguage(), is(equalTo(newDefaultConfig().getLanguage())));
     }
 
     @Test
     public void constuctingt_withIdAndDateModelAndConfig_knowsIdAndModelAndConfig() {
         DateTextFieldConfig cfg = new DateTextFieldConfig().withFormat("dd.MM.yyyy");
 
-        DateTextField f = new DateTextField("id", Model.of(now), cfg);
+        DateTextField f = new DateTextField("tf", Model.of(getNow()), cfg);
 
-        assertThat(f.getId(), is(equalTo("id")));
-        assertThat(f.getModelObject(), is(equalTo(now)));
+        assertThat(f.getId(), is(equalTo("tf")));
+        assertThat(f
+            .getModelObject()
+            .toString(), is(equalTo(getNow().toString())));
 
         DateTextFieldConfig config = f.getConfig();
         assertThat(config.getFormat(), is(equalTo("dd.MM.yyyy")));
@@ -106,18 +103,18 @@ public class DateTextFieldTest extends WicketApplicationTest {
     @Test(expected = NullPointerException.class)
     public void constructing_withIdAndDateModelAndNullConfig_throwsNPE() {
         // TODO should ideally throw IllegalArgumentException from Args.notNull
-        new DateTextField("id", Model.of(now), (DateTextFieldConfig) null);
+        new DateTextField("tf", Model.of(getNow()), (DateTextFieldConfig) null);
     }
 
     @Test(expected = NullPointerException.class)
     public void constructing_withIdAndNullConfig_throwsNPE() {
         // TODO should ideally throw IllegalArgumentException from Args.notNull
-        new DateTextField("id", (DateTextFieldConfig) null);
+        new DateTextField("tf", (DateTextFieldConfig) null);
     }
 
     @Test
     public void canReplaceConfig() {
-        DateTextField f = new DateTextField("id");
+        DateTextField f = new DateTextField("tf");
         assertThat(f
             .getConfig()
             .getFormat(), is(equalTo("MM/dd/yyyy")));
@@ -131,7 +128,7 @@ public class DateTextFieldTest extends WicketApplicationTest {
 
     @Test
     public void cannotReplaceConfig_withNullConfig() {
-        DateTextField f = new DateTextField("id");
+        DateTextField f = new DateTextField("tf");
         f.with(new DateTextFieldConfig().withFormat("dd.MM.yyyy"));
         f.with(null);
         assertThat(f
@@ -141,7 +138,7 @@ public class DateTextFieldTest extends WicketApplicationTest {
 
     @Test
     public void onInitialize_setsOutputMarkupId() {
-        DateTextField f = new DateTextField("id");
+        DateTextField f = new DateTextField("tf");
         assertThat(f.getOutputMarkupId(), is(false));
         f.onInitialize();
         assertThat(f.getOutputMarkupId(), is(true));
@@ -149,20 +146,20 @@ public class DateTextFieldTest extends WicketApplicationTest {
 
     @Test
     public void gettingDestroyScript() {
-        DateTextField f = new DateTextField("id");
-        assertThat(f.getDestroyScript(), is(equalTo("$('#id1').datepicker('destroy');")));
+        DateTextField f = new DateTextField("tf");
+        assertThat(f.getDestroyScript(), is(equalTo("$('#tf1').datepicker('destroy');")));
     }
 
     @Test
     public void startingComponent_withoutInputTagAttached_throwsMarkupException() {
-        DateTextField f = new DateTextField("id");
+        DateTextField f = new DateTextField("tf");
         try {
             tester().startComponentInPage(f);
             fail("should have thrown exception");
         } catch (Exception ex) {
             assertThat(ex.getClass(), is(equalTo(MarkupException.class)));
             assertThat(ex.getMessage(), is(equalTo(
-                "Component [id] (path = [0:id]) must be applied to a tag of type [input], not:  '<span wicket:id=\"id\">' (line 0, column 0)")));
+                "Component [tf] (path = [0:tf]) must be applied to a tag of type [input], not:  '<span wicket:id=\"tf\">' (line 0, column 0)")));
         }
     }
 
@@ -180,7 +177,7 @@ public class DateTextFieldTest extends WicketApplicationTest {
 
     @Test
     public void creatingScript_withDefaultConfig() {
-        CharSequence script = new DateTextField("ldtf").createScript(defaultConfig);
+        CharSequence script = new DateTextField("ldtf").createScript(newDefaultConfig());
         assertThat(script, is(equalTo("$('#ldtf1').datepicker();")));
     }
 
@@ -311,7 +308,7 @@ public class DateTextFieldTest extends WicketApplicationTest {
         };
         DateTextField f = new DateTextField("ldtf").addEvent(DateTextField.Event.clearDate, handler);
         String script = f
-            .createScript(defaultConfig)
+            .createScript(newDefaultConfig())
             .toString();
         assertThat(script.replaceAll("\\n", ""),
             is(equalTo("$('#ldtf1').datepicker().on('clearDate',function(e) {eventBody});")));
@@ -337,14 +334,14 @@ public class DateTextFieldTest extends WicketApplicationTest {
             .addEvent(DateTextField.Event.clearDate, handler1)
             .addEvent(DateTextField.Event.changeYear, handler2);
         String script = f
-            .createScript(defaultConfig)
+            .createScript(newDefaultConfig())
             .toString();
         assertThat(script.replaceAll("\\n", ""), startsWith("$('#ldtf1').datepicker()"));
         assertThat(script.replaceAll("\\n", ""), containsString(".on('clearDate',function(e) {eventBody1})"));
         assertThat(script.replaceAll("\\n", ""), containsString(".on('changeYear',function(e) {eventBody2})"));
         f.removeEvent(DateTextField.Event.clearDate);
         script = f
-            .createScript(defaultConfig)
+            .createScript(newDefaultConfig())
             .toString();
         assertThat(script.replaceAll("\\n", ""),
             is(equalTo("$('#ldtf1').datepicker().on('changeYear',function(e) {eventBody2});")));
@@ -370,7 +367,7 @@ public class DateTextFieldTest extends WicketApplicationTest {
         tester().startComponentInPage(f, Markup.of("<input wicket:id='ldtf'></input>"));
 
         String script = f
-            .createScript(defaultConfig)
+            .createScript(newDefaultConfig())
             .toString();
 
         assertThat(script, is(equalTo(expectedScript)));
@@ -381,6 +378,7 @@ public class DateTextFieldTest extends WicketApplicationTest {
         DateTextField f = new DateTextField("ldtf").addAjaxEvent(DateTextField.Event.clearDate, handler);
         tester().startComponentInPage(f, Markup.of("<input wicket:id='ldtf'></input>"));
         tester().executeAjaxEvent("ldtf", "clearDate");
+        // TODO need to find something to assert the ajax event
     }
 
 }

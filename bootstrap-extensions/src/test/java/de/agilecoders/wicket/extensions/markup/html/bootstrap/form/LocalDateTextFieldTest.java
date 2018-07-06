@@ -5,7 +5,6 @@ import static org.hamcrest.Matchers.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.WicketApplicationTest;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.markup.Markup;
 import org.apache.wicket.markup.MarkupException;
@@ -16,11 +15,21 @@ import org.junit.Test;
 /**
  * @author Urs Joss
  */
-public class LocalDateTextFieldTest extends WicketApplicationTest {
+public class LocalDateTextFieldTest extends AbstractDateTextFieldTest<LocalDateTextFieldConfig, LocalDate> {
 
-    private final LocalDateTextFieldConfig defaultConfig = new LocalDateTextFieldConfig();
+    @Override
+    LocalDateTextFieldConfig newDefaultConfig() {
+        return new LocalDateTextFieldConfig();
+    }
 
-    private final LocalDate now = LocalDate.now();
+    @Override
+    LocalDate getNow() {
+        return LocalDate.now();
+    }
+
+    LocalDateTextField newTextField() {
+        return new LocalDateTextField("tf");
+    }
 
     private final LocalDateTextField.IAjaxEventHandler handler = new LocalDateTextField.IAjaxEventHandler() {
 
@@ -31,20 +40,10 @@ public class LocalDateTextFieldTest extends WicketApplicationTest {
     };
 
     @Test
-    public void assertDefaultLocalDateTextFieldConfig_hasLanguageEnglish() {
-        assertThat(defaultConfig.getLanguage(), is(equalTo("en")));
-    }
-
-    @Test
-    public void assertDefaultLocalDateTextFieldConfig_hasAmericanDateFormat() {
-        assertThat(defaultConfig.getFormat(), is(equalTo("MM/dd/yyyy")));
-    }
-
-    @Test
     public void constructing_withIdOnly_knowsIdAndDefaultConfig() {
-        LocalDateTextField f = new LocalDateTextField("id");
+        LocalDateTextField f = newTextField();
 
-        assertThat(f.getId(), is(equalTo("id")));
+        assertThat(f.getId(), is(equalTo("tf")));
         assertThat(f.getModelObject(), is(equalTo(null)));
 
         hasDefaultModel(f);
@@ -52,52 +51,52 @@ public class LocalDateTextFieldTest extends WicketApplicationTest {
 
     private void hasDefaultModel(final LocalDateTextField f) {
         LocalDateTextFieldConfig config = f.getConfig();
-        assertThat(config.getFormat(), is(equalTo(defaultConfig.getFormat())));
-        assertThat(config.getLanguage(), is(equalTo(defaultConfig.getLanguage())));
+        assertThat(config.getFormat(), is(equalTo(newDefaultConfig().getFormat())));
+        assertThat(config.getLanguage(), is(equalTo(newDefaultConfig().getLanguage())));
     }
 
     @Test
     public void constuctingt_withIdAndDatePattern_knowsIdAndDatePattern() {
-        LocalDateTextField f = new LocalDateTextField("id", "dd.MM.yyyy");
+        LocalDateTextField f = new LocalDateTextField("tf", "dd.MM.yyyy");
 
-        assertThat(f.getId(), is(equalTo("id")));
+        assertThat(f.getId(), is(equalTo("tf")));
         assertThat(f.getModelObject(), is(equalTo(null)));
 
         LocalDateTextFieldConfig config = f.getConfig();
         assertThat(config.getFormat(), is(equalTo("dd.MM.yyyy")));
-        assertThat(config.getLanguage(), is(equalTo(defaultConfig.getLanguage())));
+        assertThat(config.getLanguage(), is(equalTo(newDefaultConfig().getLanguage())));
     }
 
     @Test
     public void canConstruct_withIdAndDateModel_knowsIdAndDateModel() {
-        LocalDateTextField f = new LocalDateTextField("id", Model.of(now));
+        LocalDateTextField f = new LocalDateTextField("tf", Model.of(getNow()));
 
-        assertThat(f.getId(), is(equalTo("id")));
-        assertThat(f.getModelObject(), is(equalTo(now)));
+        assertThat(f.getId(), is(equalTo("tf")));
+        assertThat(f.getModelObject(), is(equalTo(getNow())));
 
         hasDefaultModel(f);
     }
 
     @Test
     public void constuctingt_withIdAndDateModelAndDatePattern_knowsIdAndDateModelAndDatePattern() {
-        LocalDateTextField f = new LocalDateTextField("id", Model.of(now), "dd.MM.yyyy");
+        LocalDateTextField f = new LocalDateTextField("tf", Model.of(getNow()), "dd.MM.yyyy");
 
-        assertThat(f.getId(), is(equalTo("id")));
-        assertThat(f.getModelObject(), is(equalTo(now)));
+        assertThat(f.getId(), is(equalTo("tf")));
+        assertThat(f.getModelObject(), is(equalTo(getNow())));
 
         LocalDateTextFieldConfig config = f.getConfig();
         assertThat(config.getFormat(), is(equalTo("dd.MM.yyyy")));
-        assertThat(config.getLanguage(), is(equalTo(defaultConfig.getLanguage())));
+        assertThat(config.getLanguage(), is(equalTo(newDefaultConfig().getLanguage())));
     }
 
     @Test
     public void constuctingt_withIdAndDateModelAndConfig_knowsIdAndModelAndConfig() {
         LocalDateTextFieldConfig cfg = new LocalDateTextFieldConfig().withFormat("dd.MM.yyyy");
 
-        LocalDateTextField f = new LocalDateTextField("id", Model.of(now), cfg);
+        LocalDateTextField f = new LocalDateTextField("tf", Model.of(getNow()), cfg);
 
-        assertThat(f.getId(), is(equalTo("id")));
-        assertThat(f.getModelObject(), is(equalTo(now)));
+        assertThat(f.getId(), is(equalTo("tf")));
+        assertThat(f.getModelObject(), is(equalTo(getNow())));
 
         LocalDateTextFieldConfig config = f.getConfig();
         assertThat(config.getFormat(), is(equalTo("dd.MM.yyyy")));
@@ -107,18 +106,18 @@ public class LocalDateTextFieldTest extends WicketApplicationTest {
     @Test(expected = NullPointerException.class)
     public void constructing_withIdAndDateModelAndNullConfig_throwsNPE() {
         // TODO should ideally throw IllegalArgumentException from Args.notNull
-        new LocalDateTextField("id", Model.of(now), (LocalDateTextFieldConfig) null);
+        new LocalDateTextField("tf", Model.of(getNow()), (LocalDateTextFieldConfig) null);
     }
 
     @Test(expected = NullPointerException.class)
     public void constructing_withIdAndNullConfig_throwsNPE() {
         // TODO should ideally throw IllegalArgumentException from Args.notNull
-        new LocalDateTextField("id", (LocalDateTextFieldConfig) null);
+        new LocalDateTextField("tf", (LocalDateTextFieldConfig) null);
     }
 
     @Test
     public void canReplaceConfig() {
-        LocalDateTextField f = new LocalDateTextField("id");
+        LocalDateTextField f = newTextField();
         assertThat(f
             .getConfig()
             .getFormat(), is(equalTo("MM/dd/yyyy")));
@@ -132,7 +131,7 @@ public class LocalDateTextFieldTest extends WicketApplicationTest {
 
     @Test
     public void cannotReplaceConfig_withNullConfig() {
-        LocalDateTextField f = new LocalDateTextField("id");
+        LocalDateTextField f = newTextField();
         f.with(new LocalDateTextFieldConfig().withFormat("dd.MM.yyyy"));
         f.with(null);
         assertThat(f
@@ -142,7 +141,7 @@ public class LocalDateTextFieldTest extends WicketApplicationTest {
 
     @Test
     public void onInitialize_setsOutputMarkupId() {
-        LocalDateTextField f = new LocalDateTextField("id");
+        LocalDateTextField f = newTextField();
         assertThat(f.getOutputMarkupId(), is(false));
         f.onInitialize();
         assertThat(f.getOutputMarkupId(), is(true));
@@ -150,20 +149,20 @@ public class LocalDateTextFieldTest extends WicketApplicationTest {
 
     @Test
     public void gettingDestroyScript() {
-        LocalDateTextField f = new LocalDateTextField("id");
-        assertThat(f.getDestroyScript(), is(equalTo("$('#id1').datepicker('destroy');")));
+        LocalDateTextField f = newTextField();
+        assertThat(f.getDestroyScript(), is(equalTo("$('#tf1').datepicker('destroy');")));
     }
 
     @Test
     public void startingComponent_withoutInputTagAttached_throwsMarkupException() {
-        LocalDateTextField f = new LocalDateTextField("id");
+        LocalDateTextField f = newTextField();
         try {
             tester().startComponentInPage(f);
             fail("should have thrown exception");
         } catch (Exception ex) {
             assertThat(ex.getClass(), is(equalTo(MarkupException.class)));
             assertThat(ex.getMessage(), is(equalTo(
-                "Component [id] (path = [0:id]) must be applied to a tag of type [input], not:  '<span wicket:id=\"id\">' (line 0, column 0)")));
+                "Component [tf] (path = [0:tf]) must be applied to a tag of type [input], not:  '<span wicket:id=\"tf\">' (line 0, column 0)")));
         }
     }
 
@@ -181,15 +180,15 @@ public class LocalDateTextFieldTest extends WicketApplicationTest {
 
     @Test
     public void creatingScript_withDefaultConfig() {
-        CharSequence script = new LocalDateTextField("ldtf").createScript(defaultConfig);
-        assertThat(script, is(equalTo("$('#ldtf1').datepicker();")));
+        CharSequence script = newTextField().createScript(newDefaultConfig());
+        assertThat(script, is(equalTo("$('#tf1').datepicker();")));
     }
 
     @Test
     public void creatingScript_withExplicitConfig_withNonDefaultValues() {
         // @formatter:off
         final String expectedScript =
-            "$('#ldtf1').datepicker({"
+            "$('#tf1').datepicker({"
                 + "\"format\":\"dd.mm.yyyy\","
                 + "\"language\":\"de\","
                 + "\"startDate\":\"30.06.2018\","
@@ -223,7 +222,7 @@ public class LocalDateTextFieldTest extends WicketApplicationTest {
             .calendarWeeks(true)
             .autoClose(true)
             .withMulti(true);
-        CharSequence script = new LocalDateTextField("ldtf").createScript(config);
+        CharSequence script = newTextField().createScript(config);
         assertThat(script, is(equalTo(expectedScript)));
     }
 
@@ -231,7 +230,7 @@ public class LocalDateTextFieldTest extends WicketApplicationTest {
     public void creatingScript_withExplicitConfig_skipsDefaultValuesExcplicitlySet() {
         // @formatter:off
         final String expectedScript =
-            "$('#ldtf1').datepicker({"
+            "$('#tf1').datepicker({"
                 + "\"format\":\"yyyy-mm-dd\","
                 + "\"language\":\"fr\","
                 + "\"startDate\":\"2018-06-30\","
@@ -257,7 +256,7 @@ public class LocalDateTextFieldTest extends WicketApplicationTest {
             .calendarWeeks(false)
             .autoClose(false)
             .withMulti(false);
-        CharSequence script = new LocalDateTextField("ldtf").createScript(config);
+        CharSequence script = newTextField().createScript(config);
         assertThat(script, is(equalTo(expectedScript)));
     }
 
@@ -265,7 +264,7 @@ public class LocalDateTextFieldTest extends WicketApplicationTest {
     public void creatingScript_withExplicitConfigWithoutExplicitFormat_usesUsFormat() {
         // @formatter:off
         final String expectedScript =
-            "$('#ldtf1').datepicker({"
+            "$('#tf1').datepicker({"
                 + "\"language\":\"es\","
                 + "\"startDate\":\"06/30/2018\","
                 + "\"todayBtn\":true,"
@@ -277,7 +276,7 @@ public class LocalDateTextFieldTest extends WicketApplicationTest {
             .withStartDate(LocalDateTime.parse("2018-06-30T01:02:03.000"))
             .showTodayButton(LocalDateTextFieldConfig.TodayButton.TRUE)
             .withEndDate(LocalDateTime.parse("2018-07-13T04:05:06.000"));
-        CharSequence script = new LocalDateTextField("ldtf").createScript(config);
+        CharSequence script = newTextField().createScript(config);
         assertThat(script, is(equalTo(expectedScript)));
     }
 
@@ -285,7 +284,7 @@ public class LocalDateTextFieldTest extends WicketApplicationTest {
     public void creatingScript_withClearedFormat_usesUnprocessedDates() {
         // @formatter:off
         final String expectedScript =
-            "$('#ldtf1').datepicker({"
+            "$('#tf1').datepicker({"
                 + "\"language\":\"es\","
                 + "\"format\":\"\","
                 + "\"startDate\":\"2018-06-30T01:02:03\","
@@ -297,7 +296,7 @@ public class LocalDateTextFieldTest extends WicketApplicationTest {
             .withFormat(null)
             .withStartDate(LocalDateTime.parse("2018-06-30T01:02:03.000"))
             .withEndDate(LocalDateTime.parse("2018-07-13T04:05:06.000"));
-        CharSequence script = new LocalDateTextField("ldtf").createScript(config);
+        CharSequence script = newTextField().createScript(config);
         assertThat(script, is(equalTo(expectedScript)));
     }
 
@@ -310,12 +309,12 @@ public class LocalDateTextFieldTest extends WicketApplicationTest {
                 return "eventBody";
             }
         };
-        LocalDateTextField f = new LocalDateTextField("ldtf").addEvent(LocalDateTextField.Event.clearDate, handler);
+        LocalDateTextField f = newTextField().addEvent(LocalDateTextField.Event.clearDate, handler);
         String script = f
-            .createScript(defaultConfig)
+            .createScript(newDefaultConfig())
             .toString();
         assertThat(script.replaceAll("\\n", ""),
-            is(equalTo("$('#ldtf1').datepicker().on('clearDate',function(e) {eventBody});")));
+            is(equalTo("$('#tf1').datepicker().on('clearDate',function(e) {eventBody});")));
     }
 
     @Test
@@ -334,21 +333,21 @@ public class LocalDateTextFieldTest extends WicketApplicationTest {
                 return "eventBody2";
             }
         };
-        LocalDateTextField f = new LocalDateTextField("ldtf")
+        LocalDateTextField f = newTextField()
             .addEvent(LocalDateTextField.Event.clearDate, handler1)
             .addEvent(LocalDateTextField.Event.changeYear, handler2);
         String script = f
-            .createScript(defaultConfig)
+            .createScript(newDefaultConfig())
             .toString();
-        assertThat(script.replaceAll("\\n", ""), startsWith("$('#ldtf1').datepicker()"));
+        assertThat(script.replaceAll("\\n", ""), startsWith("$('#tf1').datepicker()"));
         assertThat(script.replaceAll("\\n", ""), containsString(".on('clearDate',function(e) {eventBody1})"));
         assertThat(script.replaceAll("\\n", ""), containsString(".on('changeYear',function(e) {eventBody2})"));
         f.removeEvent(LocalDateTextField.Event.clearDate);
         script = f
-            .createScript(defaultConfig)
+            .createScript(newDefaultConfig())
             .toString();
         assertThat(script.replaceAll("\\n", ""),
-            is(equalTo("$('#ldtf1').datepicker().on('changeYear',function(e) {eventBody2});")));
+            is(equalTo("$('#tf1').datepicker().on('changeYear',function(e) {eventBody2});")));
 
     }
 
@@ -356,22 +355,22 @@ public class LocalDateTextFieldTest extends WicketApplicationTest {
     public void addingAjaxEvent_addsToScript() {
         // @formatter:off
         final String expectedScript =
-            "$('#ldtf1').datepicker()"
+            "$('#tf1').datepicker()"
                 + ".on('clearDate',function(e) {\n"
                     + "Wicket.Ajax.ajax({"
-                        + "\"u\":\"./wicket/page?0-1.0-ldtf\","
-                        + "\"c\":\"ldtf1\","
+                        + "\"u\":\"./wicket/page?0-1.0-tf\","
+                        + "\"c\":\"tf1\","
                         + "\"ep\":[{\"name\":\"date\",\"value\":e.format()},{\"name\":\"datePickerEvent\",\"value\":\"clearDate\"}]"
                     + "});\n"
                 + "});";
         // @formatter:on
 
-        LocalDateTextField f = new LocalDateTextField("ldtf").addAjaxEvent(LocalDateTextField.Event.clearDate, handler);
+        LocalDateTextField f = newTextField().addAjaxEvent(LocalDateTextField.Event.clearDate, handler);
 
-        tester().startComponentInPage(f, Markup.of("<input wicket:id='ldtf'></input>"));
+        tester().startComponentInPage(f, Markup.of("<input wicket:id='tf'></input>"));
 
         String script = f
-            .createScript(defaultConfig)
+            .createScript(newDefaultConfig())
             .toString();
 
         assertThat(script, is(equalTo(expectedScript)));
@@ -379,9 +378,10 @@ public class LocalDateTextFieldTest extends WicketApplicationTest {
 
     @Test
     public void addingAjaxEvent1() {
-        LocalDateTextField f = new LocalDateTextField("ldtf").addAjaxEvent(LocalDateTextField.Event.clearDate, handler);
-        tester().startComponentInPage(f, Markup.of("<input wicket:id='ldtf'></input>"));
-        tester().executeAjaxEvent("ldtf", "clearDate");
+        LocalDateTextField f = newTextField().addAjaxEvent(LocalDateTextField.Event.clearDate, handler);
+        tester().startComponentInPage(f, Markup.of("<input wicket:id='tf'></input>"));
+        tester().executeAjaxEvent("tf", "clearDate");
+        // TODO need to find something to assert the ajax event
     }
 
 }
