@@ -45,3 +45,7 @@ target
 .project
 .classpath
 .settings
+
+# structure101 #
+################
+s101plugin.state
