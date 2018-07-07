@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.model.IModel;
+import org.apache.wicket.util.lang.Args;
 
 /**
  * A TextField that is mapped to a {@link java.time.LocalDate} object.
@@ -70,8 +71,9 @@ public class LocalDateTextField extends
      */
     public LocalDateTextField(final String markupId, final IModel<LocalDate> model,
         final LocalDateTextFieldConfig config) {
-        super(new org.apache.wicket.extensions.markup.html.form.datetime.LocalDateTextField(markupId, model,
-            config.getFormat()), LocalDate.class, config);
+        super(new org.apache.wicket.extensions.markup.html.form.datetime.LocalDateTextField(markupId, model, Args
+            .notNull(config, "config")
+            .getFormat()), LocalDate.class, config);
     }
 
     /**
@@ -81,9 +83,9 @@ public class LocalDateTextField extends
      *     The configuration of this field
      */
     public LocalDateTextField(final String markupId, final LocalDateTextFieldConfig config) {
-        super(
-            new org.apache.wicket.extensions.markup.html.form.datetime.LocalDateTextField(markupId, config.getFormat()),
-            LocalDate.class, config);
+        super(new org.apache.wicket.extensions.markup.html.form.datetime.LocalDateTextField(markupId, Args
+            .notNull(config, "config")
+            .getFormat()), LocalDate.class, config);
     }
 
     /**

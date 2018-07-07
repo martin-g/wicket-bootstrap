@@ -4,6 +4,7 @@ import java.util.Date;
 
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.model.IModel;
+import org.apache.wicket.util.lang.Args;
 import org.joda.time.DateTime;
 
 /**
@@ -69,8 +70,9 @@ public class DateTextField extends
      *     The configuration of this field
      */
     public DateTextField(final String markupId, final IModel<Date> model, final DateTextFieldConfig config) {
-        super(new org.apache.wicket.extensions.markup.html.form.DateTextField(markupId, model, config.getFormat()),
-            Date.class, config);
+        super(new org.apache.wicket.extensions.markup.html.form.DateTextField(markupId, model, Args
+            .notNull(config, "config")
+            .getFormat()), Date.class, config);
     }
 
     /**
@@ -80,8 +82,9 @@ public class DateTextField extends
      *     The configuration of this field
      */
     public DateTextField(final String markupId, final DateTextFieldConfig config) {
-        super(new org.apache.wicket.extensions.markup.html.form.DateTextField(markupId, config.getFormat()), Date.class,
-            config);
+        super(new org.apache.wicket.extensions.markup.html.form.DateTextField(markupId, Args
+            .notNull(config, "config")
+            .getFormat()), Date.class, config);
     }
 
     /**

@@ -41,15 +41,13 @@ public class LocalDateTextFieldTest extends
         return LocalDateTime.parse("2018-07-13T04:05:06.000");
     }
 
-    @Test(expected = NullPointerException.class)
+    @Test(expected = IllegalArgumentException.class)
     public void constructing_withIdAndDateModelAndNullConfig_throwsNPE() {
-        // TODO should ideally throw IllegalArgumentException from Args.notNull
         new LocalDateTextField("tf", Model.of(getNow()), (LocalDateTextFieldConfig) null);
     }
 
-    @Test(expected = NullPointerException.class)
+    @Test(expected = IllegalArgumentException.class)
     public void constructing_withIdAndNullConfig_throwsNPE() {
-        // TODO should ideally throw IllegalArgumentException from Args.notNull
         new LocalDateTextField("tf", (LocalDateTextFieldConfig) null);
     }
 
