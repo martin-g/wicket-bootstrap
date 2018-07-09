@@ -21,7 +21,7 @@ public enum ExtraSmallOffsetType implements OffsetType {
 
     @Override
     public String cssClassName() {
-        return equals(OFFSET0) ? "" : "col-xs-offset-" + cssClassName.replace("offset", "");
+        return equals(OFFSET0) ? "" : "offset-" + cssClassName.replace("offset", "");
     }
 
 }

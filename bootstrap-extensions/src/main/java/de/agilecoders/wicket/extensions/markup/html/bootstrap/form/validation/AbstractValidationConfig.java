@@ -12,7 +12,7 @@ import de.agilecoders.wicket.jquery.IKey;
  * Otherwise message will be append to input element. By default appendToParent is false
  * </p>
   * <p>
- * errorClass - is css validation class which appends to parent element in DOM. By default uses bootstrap "has-error" class.
+ * errorClass - is css validation class which appends to parent element in DOM. By default uses bootstrap "is-invalid" class.
  * </p>
  *
  * @author Alexey Volkov
@@ -23,7 +23,7 @@ public abstract class AbstractValidationConfig extends AbstractConfig {
     private static final long serialVersionUID = -4162710449437437516L;
 
     private static final IKey<Boolean> AppendToParent = newKey("appendToParent", false);
-    private static final IKey<String> ErrorClass = newKey("errorClass", "has-error");
+    private static final IKey<String> ErrorClass = newKey("errorClass", "is-invalid");
 
     /**
      * sets flag of append to parent to false

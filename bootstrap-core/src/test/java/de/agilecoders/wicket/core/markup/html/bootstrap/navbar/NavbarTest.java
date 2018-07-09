@@ -1,7 +1,8 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.navbar;
 
 import de.agilecoders.wicket.core.WicketApplicationTest;
-import de.agilecoders.wicket.core.markup.html.bootstrap.image.GlyphIconType;
+import de.agilecoders.wicket.core.markup.html.bootstrap.utilities.BackgroundColorBehavior;
+import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
 import de.agilecoders.wicket.core.test.IntegrationTest;
 import org.apache.wicket.Component;
 import org.apache.wicket.Page;
@@ -59,7 +60,7 @@ public class NavbarTest extends WicketApplicationTest {
         List<String> classes = extractClassNames(tester().getTagByWicketId("id"));
 
         Assert.assertThat(classes.contains("navbar"), is(equalTo(true)));
-        Assert.assertThat(classes.contains("navbar-fixed-top"), is(equalTo(true)));
+        Assert.assertThat(classes.contains("fixed-top"), is(equalTo(true)));
     }
 
     @Test
@@ -74,19 +75,22 @@ public class NavbarTest extends WicketApplicationTest {
         List<String> classes = extractClassNames(tester().getTagByWicketId("id"));
 
         Assert.assertThat(classes.contains("navbar"), is(equalTo(true)));
-        Assert.assertThat(classes.contains("navbar-fixed-bottom"), is(equalTo(true)));
+        Assert.assertThat(classes.contains("fixed-bottom"), is(equalTo(true)));
     }
 
     @Test
-    public void fluidClassIsRendered() {
+    public void stickyTopClassIsRendered() {
         Navbar navbar = new Navbar("id");
-        navbar.fluid();
+        navbar.setPosition(Navbar.Position.STICKY_TOP);
 
         tester().startComponentInPage(navbar);
-        TagTester tagTester = tester().getTagByWicketId("container");
 
-        Assert.assertThat(navbar.isFluid(), is(equalTo(true)));
-        Assert.assertThat(tagTester.getAttribute("class"), is(equalTo(("container-fluid"))));
+        Assert.assertThat(navbar.getPosition(), is(equalTo(Navbar.Position.STICKY_TOP)));
+
+        List<String> classes = extractClassNames(tester().getTagByWicketId("id"));
+
+        Assert.assertTrue(classes.contains("navbar"));
+        Assert.assertTrue(classes.contains("sticky-top"));
     }
 
     @Test
@@ -101,6 +105,30 @@ public class NavbarTest extends WicketApplicationTest {
 
         Assert.assertThat(ulTag.getValue(), is(equalTo("")));
         Assert.assertThat(ulTag.getName(), is(equalTo("ul")));
+    }
+
+    @Test
+    public void buttonIsAddedToRightNavigation() {
+        Navbar navbar = new Navbar("id");
+        navbar.addComponents(new INavbarComponent() {
+            @Override
+            public Component create(String markupId) {
+                return new NavbarButton<>(Page.class, Model.of("Right Link Name"));
+            }
+
+            @Override
+            public Navbar.ComponentPosition getPosition() {
+                return Navbar.ComponentPosition.RIGHT;
+            }
+        });
+
+        tester().startComponentInPage(navbar);
+
+        TagTester tagTester = tester().getTagByWicketId("navRightList");
+
+        Assert.assertThat(tagTester.hasChildTag("a"), is(equalTo(true)));
+        Assert.assertThat(tester().getTagByWicketId(Navbar.componentId()).hasAttribute("href"), is(equalTo(true)));
+        Assert.assertThat(tester().getTagByWicketId(Navbar.componentId()).getValue(), containsString("Right Link Name"));
     }
 
     @Test
@@ -132,7 +160,13 @@ public class NavbarTest extends WicketApplicationTest {
         navbar.addComponents(new INavbarComponent() {
             @Override
             public Component create(String markupId) {
-                return new NavbarButton(Page.class, Model.of("Link Name")).setIconType(GlyphIconType.aligncenter);
+                return new NavbarButton(Page.class, Model.of("Link Name"))
+                        .setIconType(new IconType("test-icon") {
+                            @Override
+                            public String cssClassName() {
+                                return "test-icon";
+                            }
+                        });
             }
 
             @Override
@@ -144,7 +178,7 @@ public class NavbarTest extends WicketApplicationTest {
         tester().startComponentInPage(navbar);
 
         Assert.assertThat(tester().getTagByWicketId(Navbar.componentId()).hasChildTag("i"), is(equalTo(true)));
-        Assert.assertThat(tester().getTagByWicketId("icon").getAttribute("class"), containsString("icon-align-center"));
+        Assert.assertThat(tester().getTagByWicketId("icon").getAttribute("class"), containsString("test-icon"));
     }
 
     @Test
@@ -161,5 +195,32 @@ public class NavbarTest extends WicketApplicationTest {
         });
 
         Assert.assertThat(statefulComponents.size(), is(equalTo(0)));
+    }
+
+    @Test
+    public void navbarBackgroundIsRendered() {
+        Navbar navbar = new Navbar("id")
+                .setBackgroundColor(BackgroundColorBehavior.Color.Success);
+
+        tester().startComponentInPage(navbar);
+
+        TagTester tag = tester().getTagByWicketId("id");
+        List<String> classes = extractClassNames(tag);
+
+        Assert.assertTrue(classes.contains("bg-success"));
+    }
+
+    @Test
+    public void navbarCollapseBreakpointIsRendered() {
+        Navbar navbar = new Navbar("id")
+                .setCollapseBreakdown(Navbar.CollapseBreakpoint.Small);
+
+        tester().startComponentInPage(navbar);
+
+        TagTester tag = tester().getTagByWicketId("id");
+        List<String> classes = extractClassNames(tag);
+
+        Assert.assertTrue(classes.contains("navbar"));
+        Assert.assertTrue(classes.contains("navbar-expand-sm"));
     }
 }

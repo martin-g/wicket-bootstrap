@@ -18,7 +18,7 @@ public class TableBehaviorTest extends WicketApplicationTest {
 
     @Test
     public void multipleTableStylesAreRendered() {
-        assertCssClass(startBehaviorInPage(new TableBehavior().striped().bordered().condensed(), MARKUP), "table", "table-striped", "table-bordered", "table-condensed");
+        assertCssClass(startBehaviorInPage(new TableBehavior().striped().bordered().sm(), MARKUP), "table", "table-striped", "table-bordered", "table-sm");
     }
 
     @Test
@@ -27,8 +27,8 @@ public class TableBehaviorTest extends WicketApplicationTest {
     }
 
     @Test
-    public void condensedCssIsRendered() {
-        assertCssClass(startBehaviorInPage(new TableBehavior().condensed(), MARKUP), "table", "table-condensed");
+    public void smCssIsRendered() {
+        assertCssClass(startBehaviorInPage(new TableBehavior().sm(), MARKUP), "table", "table-sm");
     }
 
     @Test
@@ -39,5 +39,15 @@ public class TableBehaviorTest extends WicketApplicationTest {
     @Test
     public void hoverCssIsRendered() {
         assertCssClass(startBehaviorInPage(new TableBehavior().hover(), MARKUP), "table", "table-hover");
+    }
+
+    @Test
+    public void darkCssIsRendered() {
+        assertCssClass(startBehaviorInPage(new TableBehavior().dark(), MARKUP), "table", "table-dark");
+    }
+
+    @Test
+    public void lightCssIsRendered() {
+        assertCssClass(startBehaviorInPage(new TableBehavior().light(), MARKUP), "table", "table-light");
     }
 }

@@ -12,7 +12,7 @@ import de.agilecoders.wicket.jquery.IKey;
 public class BootstrapCheckBoxPickerConfig extends AbstractConfig {
 
     private static final IKey<String> Style = newKey("style", null);
-    private static final IKey<String> DefaultClass = newKey("defaultClass", "btn-default");
+    private static final IKey<String> DefaultClass = newKey("defaultClass", "btn-secondary");
     private static final IKey<String> DisabledCursor = newKey("disabledCursor", "not-allowed");
     private static final IKey<String> OffClass = newKey("offClass", "btn-danger ");
     private static final IKey<String> OnClass = newKey("onClass", "btn-success");

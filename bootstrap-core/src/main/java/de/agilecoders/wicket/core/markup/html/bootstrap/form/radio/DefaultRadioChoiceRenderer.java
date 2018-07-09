@@ -15,7 +15,7 @@ public class DefaultRadioChoiceRenderer<T extends Serializable> implements IRadi
     private final String propertyLabel;
 
     public DefaultRadioChoiceRenderer(Buttons.Type type, String propertyLabel) {
-        this.type = type != null ? type : Buttons.Type.Default;
+        this.type = type != null ? type : Buttons.Type.Secondary;
         this.propertyLabel = propertyLabel;
     }
 

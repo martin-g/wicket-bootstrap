@@ -5,20 +5,20 @@ import org.apache.wicket.extensions.markup.html.repeater.data.table.DataTable;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.HeadersToolbar;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 
-import de.agilecoders.wicket.core.markup.html.bootstrap.image.GlyphIconType;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeIconType;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.table.sort.BootstrapOrderByBorder;
 
 /**
  * Toolbar that displays column headers. If the column is sortable a sortable header will be
  * displayed stylized with {@link IconType}
- * 
- * By default: 
- * ascending {@link GlyphIconType} -> chevronup
- * descending {@link GlyphIconType} -> chevrondown
- * unsorted  {@link GlyphIconType} -> unsorted
- * 
- * @author Eric Hamel <eric.hamel@me.com> 
+ *
+ * By default:
+ * ascending {@link FontAwesomeIconType#sort_asc}
+ * descending {@link FontAwesomeIconType#sort_desc}
+ * unsorted  {@link  FontAwesomeIconType#sort} -> unsorted
+ *
+ * @author Eric Hamel <eric.hamel@me.com>
  *
  * @param <S> the type of the sorting parameter
  */
@@ -34,18 +34,18 @@ public class BootstrapHeadersToolbar<S> extends HeadersToolbar<S>{
 
 			@Override
 			protected IconType ascendingIconType() {
-				return GlyphIconType.sortbyattributes;
+				return FontAwesomeIconType.sort_asc;
 			}
 
 			@Override
 			protected IconType descendingIconType() {
-				return GlyphIconType.sortbyattributesalt;
+				return FontAwesomeIconType.sort_desc;
 			}
 
 			@Override
 			protected IconType unsortedIconType() {
-				return GlyphIconType.sort;
+				return FontAwesomeIconType.sort;
 			}
-		}; 
+		};
 	}
 }

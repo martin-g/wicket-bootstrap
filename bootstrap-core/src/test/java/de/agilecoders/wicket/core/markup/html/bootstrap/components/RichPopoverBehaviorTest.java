@@ -48,6 +48,6 @@ public class RichPopoverBehaviorTest extends WicketApplicationTest {
         TagTester tag = tester().getTagByWicketId(id());
         assertThat(tag.getAttribute("data-content"), startsWith("<wicket:div wicket:id=\"compId\" class=\"progress\"><wicket:panel>"));
         assertThat(tag.getAttribute("data-content"), endsWith("</wicket:panel></wicket:div>"));
-        assertThat(tag.getAttribute("data-content"), containsString("<div wicket:id=\"bar\" class=\"progress-bar\" style=\"width: 50%\""));
+        assertThat(tag.getAttribute("data-content"), containsString("<div wicket:id=\"bar\" class=\"progress-bar bg-secondary\" style=\"width: 50%\""));
     }
 }

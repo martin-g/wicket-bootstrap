@@ -29,9 +29,9 @@ public class FileInputConfig extends AbstractConfig {
 
     public static final IKey<String> BrowseClass = newKey("browseClass", "btn btn-primary");
 
-    public static final IKey<String> RemoveClass = newKey("removeClass", "btn btn-default");
+    public static final IKey<String> RemoveClass = newKey("removeClass", "btn btn-secondary");
 
-    public static final IKey<String> UploadClass = newKey("uploadClass", "btn btn-default");
+    public static final IKey<String> UploadClass = newKey("uploadClass", "btn btn-secondary");
 
     public static final IKey<Integer> WrapTextLength = newKey("wrapTextLength", 250);
 
@@ -50,7 +50,7 @@ public class FileInputConfig extends AbstractConfig {
     public static final IKey<List<String>> AllowedFileExtensions = newKey("allowedFileExtensions", null);
 
     public static final IKey<List<String>> AllowedFileTypes = newKey("allowedFileTypes", null);
-    
+
     public static final IKey<String> Language = newKey("language", null);
 
     public FileInputConfig showCaption(boolean showCaption) {
@@ -155,10 +155,10 @@ public class FileInputConfig extends AbstractConfig {
         put(AllowedFileTypes, allowedFileTypes);
         return this;
     }
-    
+
     /**
      * Sets fileinput language. See {@link de.agilecoders.wicket.extensions.markup.html.bootstrap.form.fileinput.res.locales}
-     * 
+     *
      * @param language
      * @return config
      */
@@ -234,7 +234,7 @@ public class FileInputConfig extends AbstractConfig {
     public String previewFileType() {
         return get(PreviewFileType);
     }
-    
+
     public String language() {
     	return get(Language);
     }

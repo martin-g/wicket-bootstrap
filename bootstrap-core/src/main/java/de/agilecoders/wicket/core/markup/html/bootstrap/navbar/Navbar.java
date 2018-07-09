@@ -4,6 +4,7 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapResour
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.CssClassNameAppender;
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNameProvider;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.Activatable;
+import de.agilecoders.wicket.core.markup.html.bootstrap.utilities.BackgroundColorBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.common.Invertible;
 import de.agilecoders.wicket.core.util.Attributes;
 import de.agilecoders.wicket.core.util.Behaviors;
@@ -63,17 +64,17 @@ public class Navbar extends Panel implements Invertible<Navbar> {
         /**
          * fixate at the top of the screen
          */
-        TOP("navbar-fixed-top"),
+        TOP("fixed-top"),
 
         /**
          * Create a full-width navbar that scrolls away with the page
          */
-        STATIC_TOP("navbar-static-top"),
+        STICKY_TOP("sticky-top"),
 
         /**
          * fixate at the bottom of the screen
          */
-        BOTTOM("navbar-fixed-bottom"),
+        BOTTOM("fixed-bottom"),
 
         /**
          * do not fixate the position
@@ -105,15 +106,36 @@ public class Navbar extends Panel implements Invertible<Navbar> {
         LEFT, RIGHT
     }
 
+    /**
+     * indicates the breakpoint for collapsing navigation bar.
+     */
+    public enum CollapseBreakpoint {
+        Small("sm"),
+        Medium("md"),
+        Large("lg"),
+        ExtraLarge("xl");
+
+        private final String breakpoint;
+
+        private CollapseBreakpoint(String breakpoint) {
+            this.breakpoint = breakpoint;
+        }
+
+        public String cssClassName() {
+            return String.format("navbar-expand-%s", this.breakpoint);
+        }
+    }
+
     private static final NavbarComponentToComponentFunction NAVBAR_COMPONENT_TO_COMPONENT_FUNCTION = new NavbarComponentToComponentFunction(componentId());
     private static final PositionFilter POSITION_FILTER_LEFT = new PositionFilter(ComponentPosition.LEFT);
     private static final PositionFilter POSITION_FILTER_RIGHT = new PositionFilter(ComponentPosition.RIGHT);
 
-    private IModel<String> invertModel;
+    private final IModel<String> invertModel = Model.of("navbar-light");
+    private final IModel<BackgroundColorBehavior.Color> backgroundColor = Model.of(BackgroundColorBehavior.Color.Light);
     private CssClassNameAppender activeStateAppender;
 
+    private final IModel<CollapseBreakpoint> collapseBreakpoint = Model.of(CollapseBreakpoint.Large);
     private final IModel<Position> position = Model.of(Position.DEFAULT);
-    private final IModel<Boolean> fluid = Model.of(false);
     private final Component brandNameLink;
     private final List<INavbarComponent> components = new ArrayList<>();
     private final RepeatingView extraItems;
@@ -138,7 +160,6 @@ public class Navbar extends Panel implements Invertible<Navbar> {
 
         BootstrapResourcesBehavior.addTo(this);
 
-        final TransparentWebMarkupContainer container = newContainer("container");
         final TransparentWebMarkupContainer collapse = newCollapseContainer("collapse");
         final TransparentWebMarkupContainer collapseButton = newCollapseButton("collapseButton", "#" + collapse.getMarkupId());
 
@@ -150,7 +171,6 @@ public class Navbar extends Panel implements Invertible<Navbar> {
         collapse.add(extraItems);
 
         activeStateAppender = new CssClassNameAppender("active");
-        invertModel = Model.of("");
 
         EnclosureContainer navLeftListEnclosure = new EnclosureContainer("navLeftListEnclosure", leftAlignedComponentListView);
         navLeftListEnclosure.add(leftAlignedComponentListView);
@@ -161,16 +181,20 @@ public class Navbar extends Panel implements Invertible<Navbar> {
         navRightListEnclosure.setRenderBodyOnly(false).setOutputMarkupPlaceholderTag(true);
         collapse.add(navLeftListEnclosure, navRightListEnclosure);
 
-        container.add(collapse, collapseButton, brandNameLink);
+        add(collapse, collapseButton, brandNameLink);
         collapseButton.add(newToggleNavigationLabel("toggleNavigationLabel"));
-        add(container);
     }
 
     @Override
     protected void onComponentTag(ComponentTag tag) {
         super.onComponentTag(tag);
 
-        Attributes.addClass(tag, "navbar", "navbar-default", invertModel.getObject(), position.getObject().cssClassName());
+        Attributes.addClass(tag, "navbar",
+                collapseBreakpoint.getObject().cssClassName(),
+                invertModel.getObject(),
+                position.getObject().cssClassName(),
+                backgroundColor.getObject().cssClassName()
+        );
 
         Attributes.set(tag, "role", "navigation");
     }
@@ -203,6 +227,7 @@ public class Navbar extends Panel implements Invertible<Navbar> {
             @Override
             protected void populateItem(ListItem<Component> components) {
                 Component component = components.getModelObject();
+                components.add(new CssClassNameAppender("nav-item"));
                 components.add(component);
 
                 Behaviors.remove(components, activeStateAppender);
@@ -321,10 +346,17 @@ public class Navbar extends Panel implements Invertible<Navbar> {
     }
 
     /**
-     * @return true, if the navigation is rendered for a fluid page layout.
+     * @return background color of navbar
      */
-    public boolean isFluid() {
-        return fluid.getObject();
+    public BackgroundColorBehavior.Color getBackgroundColor() {
+        return backgroundColor.getObject();
+    }
+
+    /**
+     * @return the breakpoint when navigation bar is collapsed
+     */
+    public CollapseBreakpoint getCollapseBreakpoint() {
+        return collapseBreakpoint.getObject();
     }
 
     /**
@@ -372,30 +404,6 @@ public class Navbar extends Panel implements Invertible<Navbar> {
      */
     protected Label newToggleNavigationLabel(final String componentId) {
         return new Label(componentId, "Toggle Navigation");
-    }
-
-    /**
-     * creates a new transparent inner container which is used to append some
-     * css classes.
-     *
-     * @param componentId The non-null id of a new navigation component
-     * @return a new inner container of the navigation bar.
-     */
-    protected TransparentWebMarkupContainer newContainer(String componentId) {
-        return new TransparentWebMarkupContainer(componentId) {
-            @Override
-            protected void onComponentTag(ComponentTag tag) {
-                super.onComponentTag(tag);
-
-                Attributes.removeClass(tag, "container", "container-fluid");
-
-                if (isFluid()) {
-                    Attributes.addClass(tag, "container-fluid");
-                } else {
-                    Attributes.addClass(tag, "container");
-                }
-            }
-        };
     }
 
     /**
@@ -464,18 +472,19 @@ public class Navbar extends Panel implements Invertible<Navbar> {
      * @return the component's current instance
      */
     public Navbar setInverted(final boolean invert) {
-        this.invertModel.setObject(invert ? "navbar-inverse" : "");
+        this.invertModel.setObject(invert ? "navbar-dark" : "navbar-light");
 
         return this;
     }
 
     /**
-     * marks the navigation to be rendered inside a fluid page layout.
+     * Sets background color of navbar.
      *
-     * @return the component's current instance.
+     * @param color the background color
+     * @return the component's current instace
      */
-    public Navbar fluid() {
-        this.fluid.setObject(true);
+    public Navbar setBackgroundColor(final BackgroundColorBehavior.Color color) {
+        this.backgroundColor.setObject(color);
 
         return this;
     }
@@ -487,6 +496,18 @@ public class Navbar extends Panel implements Invertible<Navbar> {
      */
     public Navbar setPosition(final Position position) {
         this.position.setObject(position);
+
+        return this;
+    }
+
+    /**
+     * Sets the preferred responsive collapsing of navigation bar.
+     *
+     * @param breakpoint the breakpoint for collapsing navigation bar
+     * @return the component's current instance
+     */
+    public Navbar setCollapseBreakdown(final CollapseBreakpoint breakpoint) {
+        this.collapseBreakpoint.setObject(breakpoint);
 
         return this;
     }

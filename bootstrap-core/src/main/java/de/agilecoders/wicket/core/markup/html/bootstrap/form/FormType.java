@@ -9,8 +9,7 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNamePr
  */
 public enum FormType implements ICssClassNameProvider, ICssClassNameModifier {
     Default(""), // Stacked, left-aligned labels on top of form controls
-    Inline("form-inline"), // Left-aligned label and inline-block controls for compact style
-    Horizontal("form-horizontal"); // (default) Float left, right-aligned labels on same line as controls
+    Inline("form-inline"); // Left-aligned label and inline-block controls for compact style
 
     private final String cssClassName;
 

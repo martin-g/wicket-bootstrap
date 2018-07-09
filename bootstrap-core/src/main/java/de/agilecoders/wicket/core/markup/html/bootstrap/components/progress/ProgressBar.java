@@ -1,6 +1,6 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.components.progress;
 
-import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNameProvider;
+import de.agilecoders.wicket.core.markup.html.bootstrap.utilities.BackgroundColorBehavior;
 import de.agilecoders.wicket.core.util.Attributes;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.head.IHeaderResponse;
@@ -9,6 +9,7 @@ import org.apache.wicket.markup.html.panel.GenericPanel;
 import org.apache.wicket.markup.repeater.RepeatingView;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.util.lang.Args;
+import org.apache.wicket.util.lang.Objects;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -21,25 +22,7 @@ public class ProgressBar extends GenericPanel<Integer> {
     public static final int MIN = 0;
     public static final int MAX = 100;
 
-    public enum Type implements ICssClassNameProvider {
-        DEFAULT, INFO, SUCCESS, WARNING, DANGER;
-
-        public String cssClassName() {
-            return equals(DEFAULT) ? "" : "progress-bar-" + name().toLowerCase();
-        }
-    }
-
     private final RepeatingView stacks;
-
-    /**
-     * A flag indicating whether the progress bar is animated/active.
-     */
-    private boolean active = false;
-
-    /**
-     * A flag indicating whether the progress bar is striped.
-     */
-    private boolean striped = false;
 
     /**
      * Constructor.
@@ -49,7 +32,7 @@ public class ProgressBar extends GenericPanel<Integer> {
      * to add stacks to it
      *
      * @param id The component id
-     * @see #ProgressBar(String, org.apache.wicket.model.IModel, de.agilecoders.wicket.core.markup.html.bootstrap.components.progress.ProgressBar.Type, boolean)
+     * @see #ProgressBar(String, org.apache.wicket.model.IModel, de.agilecoders.wicket.core.markup.html.bootstrap.utilities.BackgroundColorBehavior.Color, boolean, boolean, boolean)
      * @see #addStacks(Stack...)
      */
     public ProgressBar(String id) {
@@ -66,7 +49,7 @@ public class ProgressBar extends GenericPanel<Integer> {
      * @see #ProgressBar(String)
      */
     public ProgressBar(String id, IModel<Integer> model) {
-        this(id, model, Type.DEFAULT, false);
+        this(id, model, BackgroundColorBehavior.Color.Secondary, false, false, false);
     }
 
     /**
@@ -76,11 +59,11 @@ public class ProgressBar extends GenericPanel<Integer> {
      *
      * @param id The component id
      * @param model The model that will be used for the default stack.
-     * @param type The type of the stack
+     * @param color The color of the stack
      * @see #ProgressBar(String)
      */
-    public ProgressBar(String id, IModel<Integer> model, Type type) {
-        this(id, model, type, false);
+    public ProgressBar(String id, IModel<Integer> model, BackgroundColorBehavior.Color color) {
+        this(id, model, color, false, false, false);
     }
 
     /**
@@ -94,7 +77,7 @@ public class ProgressBar extends GenericPanel<Integer> {
      * @see #ProgressBar(String)
      */
     public ProgressBar(String id, IModel<Integer> model, boolean labeled) {
-        this(id, model, Type.DEFAULT, labeled);
+        this(id, model, BackgroundColorBehavior.Color.Secondary, labeled, false, false);
     }
 
     /**
@@ -104,21 +87,39 @@ public class ProgressBar extends GenericPanel<Integer> {
      *
      * @param id The component id
      * @param model The model that will be used for the default stack.
-     * @param type The type of the stack
+     * @param color The color of the stack
      * @param labeled A flag whether the stack should be labeled or not
      * @see #ProgressBar(String)
      */
-    public ProgressBar(String id, IModel<Integer> model, Type type, boolean labeled) {
+    public ProgressBar(String id, IModel<Integer> model, BackgroundColorBehavior.Color color, boolean labeled) {
+        this(id, model, color, labeled, false, false);
+    }
+
+    /**
+     * Constructor.
+     *
+     * Creates a progress bar with a stack that uses the given model, type, is labeled or not, is animated or not,
+     * is striped or not.
+     *
+     * @param id The component id
+     * @param model The model that will be used for the default stack.
+     * @param color The color of the stack
+     * @param labeled A flag whether the stack should be labeled or not
+     * @param animated A flag indicating whether the stack is active/active.
+     * @param striped A flag indicating whether the stack is striped.
+     * @see #ProgressBar(String)
+     */
+    public ProgressBar(String id, IModel<Integer> model, BackgroundColorBehavior.Color color, boolean labeled, boolean animated, boolean striped) {
         super(id, model);
 
-        Args.notNull(type, "type");
+        Args.notNull(color, "color");
 
         stacks = new RepeatingView("stacks");
         add(stacks);
 
         if (model != null) {
             Stack defaultStack = new Stack(getStackId(), () -> ProgressBar.this.getModelObject());
-            defaultStack.type(type).labeled(labeled);
+            defaultStack.color(color).labeled(labeled).active(animated).striped(striped);
             addStacks(defaultStack);
         }
     }
@@ -148,23 +149,44 @@ public class ProgressBar extends GenericPanel<Integer> {
     }
 
     public boolean striped() {
-        return striped;
+        Boolean striped = stacks.visitChildren(Stack.class, (c, v) -> {
+            Stack stack = (Stack) c;
+            if (stack.striped()) {
+                v.stop(true);
+            }
+        });
+
+        return Objects.booleanValue(striped);
     }
 
     public ProgressBar striped(boolean value) {
-        striped = value;
+        stacks.visitChildren(Stack.class, (c, v) -> {
+            Stack stack = (Stack) c;
+            stack.striped(value);
+        });
         return this;
     }
 
     public boolean active() {
-        return active;
+        Boolean active = stacks.visitChildren(Stack.class, (c, v) -> {
+            Stack stack = (Stack) c;
+            if (stack.active()) {
+                v.stop(true);
+            }
+        });
+
+        return Objects.booleanValue(active);
     }
 
     public ProgressBar active(boolean value) {
-        active = value;
-        if (value) {
-            striped(true);
-        }
+        stacks.visitChildren(Stack.class, (c, v) -> {
+            Stack stack = (Stack) c;
+            stack.active(value);
+            if (value) {
+                stack.striped(true);
+            }
+        });
+
         return this;
     }
 
@@ -237,7 +259,7 @@ public class ProgressBar extends GenericPanel<Integer> {
     protected void onComponentTag(ComponentTag tag) {
         super.onComponentTag(tag);
 
-        internalOnComponentTag(tag, active(), striped());
+        internalOnComponentTag(tag);
     }
 
     /**
@@ -245,7 +267,7 @@ public class ProgressBar extends GenericPanel<Integer> {
      *
      * @param tag The component tag to check and manage
      */
-    static void internalOnComponentTag(ComponentTag tag, boolean isActive, boolean isStriped) {
+    static void internalOnComponentTag(ComponentTag tag) {
         if (!"div".equalsIgnoreCase(tag.getName())) {
             LOG.warn("You've added a progress bar component to a non 'div' tag: {}. Changing it to 'div'!",
                      tag.getName());
@@ -254,14 +276,6 @@ public class ProgressBar extends GenericPanel<Integer> {
         }
 
         Attributes.addClass(tag, "progress");
-
-        if (isActive) {
-            Attributes.addClass(tag, "active");
-        }
-
-        if (isStriped) {
-            Attributes.addClass(tag, "progress-striped");
-        }
     }
 
     @Override

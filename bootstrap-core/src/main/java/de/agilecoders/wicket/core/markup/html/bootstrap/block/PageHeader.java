@@ -17,7 +17,8 @@ import org.apache.wicket.model.Model;
  * of content on a page. It can utilize the h1's default small, element as
  * well most other components (with additional styles).
  *
- * documentation: http://getbootstrap.com/components/#page-header
+ * Page header css class was dropped in Bootstrap 4, but we can use set of utility classes to create same
+ * behaviour. See https://getbootstrap.com/docs/4.1/migration/#typography
  *
  * #### Usage
  *
@@ -66,7 +67,7 @@ public class PageHeader extends Panel {
         super.onComponentTag(tag);
 
         checkComponentTag(tag, "div");
-        Attributes.addClass(tag, "page-header");
+        Attributes.addClass(tag, "pb-2 mt-4 mb-2 border-bottom");
     }
 
     @Override

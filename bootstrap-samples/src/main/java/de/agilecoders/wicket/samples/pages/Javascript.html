@@ -23,7 +23,7 @@
 ================================================== -->
 <div class="row">
 <div class="col-lg-3 bs-docs-sidebar">
-    <ul wicket:id="navigation" class="nav nav-list bs-docs-sidenav">
+    <ul wicket:id="navigation" class="nav list-group bs-docs-sidenav">
         <li><a href="#overview"><i class="icon-chevron-right"></i> Overview</a></li>
         <li><a href="#transitions"><i class="icon-chevron-right"></i> Transitions</a></li>
         <li><a href="#modals"><i class="icon-chevron-right"></i> Modal</a></li>
@@ -47,7 +47,7 @@
 <!-- Overview
 ================================================== -->
 <section id="overview">
-    <div class="page-header">
+    <div class="pb-2 mt-4 mb-2 border-bottom">
         <h1>JavaScript in Bootstrap</h1>
     </div>
 
@@ -93,7 +93,7 @@ $('#myModal').on('show', function (e) {
 <!-- Transitions
 ================================================== -->
 <section id="transitions">
-    <div class="page-header">
+    <div class="pb-2 mt-4 mb-2 border-bottom">
         <h1>Transitions
             <small>bootstrap-transition.js</small>
         </h1>
@@ -118,7 +118,7 @@ $('#myModal').on('show', function (e) {
 <!-- Modal
 ================================================== -->
 <section id="modals">
-<div class="page-header">
+<div class="pb-2 mt-4 mb-2 border-bottom">
     <h1>Modals
         <small>bootstrap-modal.js</small>
     </h1>
@@ -138,8 +138,8 @@ $('#myModal').on('show', function (e) {
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     <h3 class="modal-title">Modal header</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 </div>
                 <div class="modal-body">
                     <p>One fine body&hellip;</p>
@@ -157,8 +157,8 @@ $('#myModal').on('show', function (e) {
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h3 class="modal-title">Modal header</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             </div>
             <div class="modal-body">
                 <p>One fine body&hellip;</p>
@@ -180,8 +180,8 @@ $('#myModal').on('show', function (e) {
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h3 id="myModalLabel" class="modal-title">Modal Heading</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             </div>
             <div class="modal-body">
                 <h4>Text in a modal</h4>
@@ -348,7 +348,7 @@ $('#myModal').on('hidden', function () {
 <!-- Dropdowns
 ================================================== -->
 <section id="dropdowns">
-    <div class="page-header">
+    <div class="pb-2 mt-4 mb-2 border-bottom">
         <h1>Dropdowns
             <small>bootstrap-dropdown.js</small>
         </h1>
@@ -369,21 +369,21 @@ $('#myModal').on('hidden', function () {
                     <li class="dropdown">
                         <button type="button" id="drop1" role="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></button>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
-                            <li><a tabindex="-1" href="http://google.com">Action</a></li>
-                            <li><a tabindex="-1" href="#anotherAction">Another action</a></li>
-                            <li><a tabindex="-1" href="#">Something else here</a></li>
-                            <li class="divider"></li>
-                            <li><a tabindex="-1" href="#">Separated link</a></li>
+                            <li><a class="dropdown-item" tabindex="-1" href="http://google.com">Action</a></li>
+                            <li><a class="dropdown-item" tabindex="-1" href="#anotherAction">Another action</a></li>
+                            <li><a class="dropdown-item" tabindex="-1" href="#">Something else here</a></li>
+                            <li class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" tabindex="-1" href="#">Separated link</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">
                         <button type="button" href="#" id="drop2" role="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Dropdown 2 <b class="caret"></b></button>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="drop2">
-                            <li><a tabindex="-1" href="#">Action</a></li>
-                            <li><a tabindex="-1" href="#">Another action</a></li>
-                            <li><a tabindex="-1" href="#">Something else here</a></li>
-                            <li class="divider"></li>
-                            <li><a tabindex="-1" href="#">Separated link</a></li>
+                            <li><a class="dropdown-item" tabindex="-1" href="#">Action</a></li>
+                            <li><a class="dropdown-item" tabindex="-1" href="#">Another action</a></li>
+                            <li><a class="dropdown-item" tabindex="-1" href="#">Something else here</a></li>
+                            <li class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" tabindex="-1" href="#">Separated link</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -391,11 +391,11 @@ $('#myModal').on('hidden', function () {
                     <li id="fat-menu" class="dropdown">
                         <button type="button" id="drop3" role="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Dropdown 3 <b class="caret"></b></button>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="drop3">
-                            <li><a tabindex="-1" href="#">Action</a></li>
-                            <li><a tabindex="-1" href="#">Another action</a></li>
-                            <li><a tabindex="-1" href="#">Something else here</a></li>
-                            <li class="divider"></li>
-                            <li><a tabindex="-1" href="#">Separated link</a></li>
+                            <li><a class="dropdown-item" tabindex="-1" href="#">Action</a></li>
+                            <li><a class="dropdown-item" tabindex="-1" href="#">Another action</a></li>
+                            <li><a class="dropdown-item" tabindex="-1" href="#">Something else here</a></li>
+                            <li class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" tabindex="-1" href="#">Separated link</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -415,31 +415,31 @@ $('#myModal').on('hidden', function () {
             <li class="dropdown">
                 <a class="btn btn-default dropdown-toggle" id="drop4" role="button" data-toggle="dropdown" href="#">Dropdown <b class="caret"></b></a>
                 <ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="drop4">
-                    <li><a tabindex="-1" href="#">Action</a></li>
-                    <li><a tabindex="-1" href="#">Another action</a></li>
-                    <li><a tabindex="-1" href="#">Something else here</a></li>
-                    <li class="divider"></li>
-                    <li><a tabindex="-1" href="#">Separated link</a></li>
+                    <li><a class="dropdown-item" tabindex="-1" href="#">Action</a></li>
+                    <li><a class="dropdown-item" tabindex="-1" href="#">Another action</a></li>
+                    <li><a class="dropdown-item" tabindex="-1" href="#">Something else here</a></li>
+                    <li class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" tabindex="-1" href="#">Separated link</a></li>
                 </ul>
             </li>
             <li class="dropdown">
                 <a class="btn btn-default dropdown-toggle" id="drop5" role="button" data-toggle="dropdown" href="#">Dropdown 2 <b class="caret"></b></a>
                 <ul id="menu2" class="dropdown-menu" role="menu" aria-labelledby="drop5">
-                    <li><a tabindex="-1" href="#">Action</a></li>
-                    <li><a tabindex="-1" href="#">Another action</a></li>
-                    <li><a tabindex="-1" href="#">Something else here</a></li>
-                    <li class="divider"></li>
-                    <li><a tabindex="-1" href="#">Separated link</a></li>
+                    <li><a class="dropdown-item" tabindex="-1" href="#">Action</a></li>
+                    <li><a class="dropdown-item" tabindex="-1" href="#">Another action</a></li>
+                    <li><a class="dropdown-item" tabindex="-1" href="#">Something else here</a></li>
+                    <li class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" tabindex="-1" href="#">Separated link</a></li>
                 </ul>
             </li>
             <li class="dropdown">
                 <a class="btn btn-default dropdown-toggle" id="drop6" role="button" data-toggle="dropdown" href="#">Dropdown 3 <b class="caret"></b></a>
                 <ul id="menu3" class="dropdown-menu" role="menu" aria-labelledby="drop5">
-                    <li><a tabindex="-1" href="#">Action</a></li>
-                    <li><a tabindex="-1" href="#">Another action</a></li>
-                    <li><a tabindex="-1" href="#">Something else here</a></li>
-                    <li class="divider"></li>
-                    <li><a tabindex="-1" href="#">Separated link</a></li>
+                    <li><a class="dropdown-item" tabindex="-1" href="#">Action</a></li>
+                    <li><a class="dropdown-item" tabindex="-1" href="#">Another action</a></li>
+                    <li><a class="dropdown-item" tabindex="-1" href="#">Something else here</a></li>
+                    <li class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" tabindex="-1" href="#">Separated link</a></li>
                 </ul>
             </li>
         </ul>
@@ -495,7 +495,7 @@ $('#myModal').on('hidden', function () {
 <!-- ScrollSpy
 ================================================== -->
 <section id="scrollspy">
-    <div class="page-header">
+    <div class="pb-2 mt-4 mb-2 border-bottom">
         <h1>ScrollSpy
             <small>bootstrap-scrollspy.js</small>
         </h1>
@@ -516,10 +516,10 @@ $('#myModal').on('hidden', function () {
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#one">one</a></li>
-                            <li><a href="#two">two</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#three">three</a></li>
+                            <li><a class="dropdown-item" href="#one">one</a></li>
+                            <li><a class="dropdown-item" href="#two">two</a></li>
+                            <li class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#three">three</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -621,7 +621,7 @@ $('[data-spy="scroll"]').each(function () {
 <!-- Tabs
 ================================================== -->
 <section id="tabs">
-    <div class="page-header">
+    <div class="pb-2 mt-4 mb-2 border-bottom">
         <h1>Togglable tabs
             <small>bootstrap-tab.js</small>
         </h1>
@@ -639,8 +639,8 @@ $('[data-spy="scroll"]').each(function () {
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                    <li><a href="#dropdown1" data-toggle="tab">@fat</a></li>
-                    <li><a href="#dropdown2" data-toggle="tab">@mdo</a></li>
+                    <li><a class="dropdown-item" href="#dropdown1" data-toggle="tab">@fat</a></li>
+                    <li><a class="dropdown-item" href="#dropdown2" data-toggle="tab">@mdo</a></li>
                 </ul>
             </li>
         </ul>
@@ -750,7 +750,7 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
 <!-- Tooltips
 ================================================== -->
 <section id="tooltips">
-    <div class="page-header">
+    <div class="pb-2 mt-4 mb-2 border-bottom">
         <h1>Tooltips
             <small>bootstrap-tooltip.js</small>
         </h1>
@@ -887,7 +887,7 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
 <!-- Popovers
 ================================================== -->
 <section id="popovers">
-    <div class="page-header">
+    <div class="pb-2 mt-4 mb-2 border-bottom">
         <h1>Popovers
             <small>bootstrap-popover.js</small>
         </h1>
@@ -1072,7 +1072,7 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
 <!-- Alert
 ================================================== -->
 <section id="alerts">
-    <div class="page-header">
+    <div class="pb-2 mt-4 mb-2 border-bottom">
         <h1>Alert messages
             <small>bootstrap-alert.js</small>
         </h1>
@@ -1159,7 +1159,7 @@ $('#my-alert').bind('closed', function () {
 <!-- Buttons
 ================================================== -->
 <section id="buttons">
-    <div class="page-header">
+    <div class="pb-2 mt-4 mb-2 border-bottom">
         <h1>Buttons
             <small>bootstrap-button.js</small>
         </h1>
@@ -1280,7 +1280,7 @@ $('#my-alert').bind('closed', function () {
 <!-- Collapse
 ================================================== -->
 <section id="collapse">
-    <div class="page-header">
+    <div class="pb-2 mt-4 mb-2 border-bottom">
         <h1>Collapse
             <small>bootstrap-collapse.js</small>
         </h1>
@@ -1443,7 +1443,7 @@ $('#myCollapsible').on('hidden', function () {
 <!-- Carousel
 ================================================== -->
 <section id="carousel">
-    <div class="page-header">
+    <div class="pb-2 mt-4 mb-2 border-bottom">
         <h1>Carousel
             <small>bootstrap-carousel.js</small>
         </h1>
@@ -1492,13 +1492,13 @@ $('#myCollapsible').on('hidden', function () {
 &lt;div id="myCarousel" class="carousel slide"&gt;
   &lt;!-- Carousel items --&gt;
   &lt;div class="carousel-inner"&gt;
-    &lt;div class="active item"&gt;...&lt;/div&gt;
-    &lt;div class="item"&gt;...&lt;/div&gt;
+    &lt;div class="active carousel-item"&gt;...&lt;/div&gt;
+    &lt;div class="carousel-item"&gt;...&lt;/div&gt;
     &lt;div class="item"&gt;...&lt;/div&gt;
   &lt;/div&gt;
   &lt;!-- Carousel nav --&gt;
-  &lt;a class="carousel-control left" href="#myCarousel" data-slide="prev"&gt;&amp;lsaquo;&lt;/a&gt;
-  &lt;a class="carousel-control right" href="#myCarousel" data-slide="next"&gt;&amp;rsaquo;&lt;/a&gt;
+  &lt;a class="carousel-control-prev" href="#myCarousel" data-slide="prev"&gt;&amp;lsaquo;&lt;/a&gt;
+  &lt;a class="carousel-control-next" href="#myCarousel" data-slide="next"&gt;&amp;rsaquo;&lt;/a&gt;
 &lt;/div&gt;
 </pre>
 
@@ -1602,7 +1602,7 @@ $('.carousel').carousel({
 <!-- Typeahead
 ================================================== -->
 <section id="typeahead">
-    <div class="page-header">
+    <div class="pb-2 mt-4 mb-2 border-bottom">
         <h1>Typeahead
             <a href="https://github.com/twitter/typeahead.js"><small>twitter-typeahead.js</small></a>
         </h1>
@@ -1674,7 +1674,7 @@ $('.carousel').carousel({
 <!-- Affix
 ================================================== -->
 <section id="affix">
-    <div class="page-header">
+    <div class="pb-2 mt-4 mb-2 border-bottom">
         <h1>Affix
             <small>bootstrap-affix.js</small>
         </h1>
@@ -1740,7 +1740,7 @@ $('[data-spy="affix"]').each(function () {
 <!-- Pagination
 ================================================== -->
 <section id="pagination">
-    <div class="page-header">
+    <div class="pb-2 mt-4 mb-2 border-bottom">
         <h1>Pagination
             <small>Two options for paging through content</small>
         </h1>

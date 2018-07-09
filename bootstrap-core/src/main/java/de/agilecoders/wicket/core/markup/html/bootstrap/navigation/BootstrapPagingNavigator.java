@@ -3,6 +3,7 @@ package de.agilecoders.wicket.core.markup.html.bootstrap.navigation;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.html.TransparentWebMarkupContainer;
+import org.apache.wicket.markup.html.link.AbstractLink;
 import org.apache.wicket.markup.html.list.LoopItem;
 import org.apache.wicket.markup.html.navigation.paging.IPageable;
 import org.apache.wicket.markup.html.navigation.paging.IPagingLabelProvider;
@@ -10,6 +11,7 @@ import org.apache.wicket.markup.html.navigation.paging.PagingNavigation;
 import org.apache.wicket.markup.html.navigation.paging.PagingNavigator;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
+import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.CssClassNameAppender;
 import de.agilecoders.wicket.core.util.Attributes;
 
 /**
@@ -108,6 +110,13 @@ public class BootstrapPagingNavigator extends PagingNavigator {
                     loopItem.add(activeAttribute);
                 }
             }
+
+            @Override
+            protected AbstractLink newPagingNavigationLink(String id, IPageable pageable, long pageIndex) {
+                final AbstractLink navigationLink = super.newPagingNavigationLink(id, pageable, pageIndex);
+                navigationLink.add(new CssClassNameAppender("page-link"));
+                return navigationLink;
+            }
         };
     }
 
@@ -140,6 +149,7 @@ public class BootstrapPagingNavigator extends PagingNavigator {
         protected void onComponentTag(ComponentTag tag) {
             super.onComponentTag(tag);
 
+            Attributes.addClass(tag, "page-item");
             if (!getParent().get(childId).isEnabled()) {
                 Attributes.addClass(tag, "disabled");
             }

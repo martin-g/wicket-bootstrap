@@ -311,10 +311,10 @@ public class FormGroup extends Border {
 
             switch (message.getLevel()) {
                 case FeedbackMessage.FATAL:
-                case FeedbackMessage.ERROR: return "has-error";
-                case FeedbackMessage.WARNING: return "has-warning";
+                case FeedbackMessage.ERROR:
+                case FeedbackMessage.WARNING: return "is-invalid";
                 case FeedbackMessage.INFO:
-                case FeedbackMessage.SUCCESS: return "has-success";
+                case FeedbackMessage.SUCCESS: return "is-valid";
                 default: return "";
             }
         }

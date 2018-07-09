@@ -6,8 +6,8 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.button.ButtonGroup;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.ButtonList;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.Toolbar;
-import de.agilecoders.wicket.core.markup.html.bootstrap.image.GlyphIconType;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.Icon;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeIconType;
 import de.agilecoders.wicket.jquery.util.Generics2;
 import de.agilecoders.wicket.samples.components.base.Section;
 import de.agilecoders.wicket.samples.pages.ComponentsPage;
@@ -51,10 +51,10 @@ public class ButtonGroups extends Section<Void> {
             @Override
             protected List<AbstractLink> newButtons(String buttonMarkupId) {
                 return Generics2.newArrayList(
-                        createIconButton(new Icon(GlyphIconType.alignleft)),
-                        createIconButton(new Icon(GlyphIconType.aligncenter)),
-                        createIconButton(new Icon(GlyphIconType.alignright)),
-                        createIconButton(new Icon(GlyphIconType.alignjustify)));
+                        createIconButton(new Icon(FontAwesomeIconType.align_left)),
+                        createIconButton(new Icon(FontAwesomeIconType.align_center)),
+                        createIconButton(new Icon(FontAwesomeIconType.align_right)),
+                        createIconButton(new Icon(FontAwesomeIconType.align_justify)));
             }
         };
         add(verticalButtonGroup);
@@ -67,7 +67,7 @@ public class ButtonGroups extends Section<Void> {
      * @return The new button instance
      */
     private AbstractLink createIconButton(Icon icon) {
-        BootstrapBookmarkablePageLink<Void> button = new BootstrapBookmarkablePageLink<>(ButtonList.getButtonMarkupId(), ComponentsPage.class, Buttons.Type.Default);
+        BootstrapBookmarkablePageLink<Void> button = new BootstrapBookmarkablePageLink<>(ButtonList.getButtonMarkupId(), ComponentsPage.class, Buttons.Type.Secondary);
         button.setLabel(Model.of(""));
         button.setIconType(icon.getType());
         return button;

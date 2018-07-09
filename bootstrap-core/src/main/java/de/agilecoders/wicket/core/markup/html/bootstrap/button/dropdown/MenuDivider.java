@@ -27,13 +27,13 @@ public class MenuDivider extends AbstractLink {
     protected void onInitialize() {
         super.onInitialize();
 
-        ListItemCssClassHelper.onInitialize(this, "divider");
+        ListItemCssClassHelper.onInitialize(this, "dropdown-divider");
     }
 
     @Override
     protected void onConfigure() {
         super.onConfigure();
 
-        ListItemCssClassHelper.onConfigure(this, "divider");
+        ListItemCssClassHelper.onConfigure(this, "dropdown-divider");
     }
 }

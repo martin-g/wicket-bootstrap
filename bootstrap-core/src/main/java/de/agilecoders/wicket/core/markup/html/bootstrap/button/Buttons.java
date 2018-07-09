@@ -47,7 +47,6 @@ public final class Buttons {
      * defines all possible sizes of a button element.
      */
     public enum Size implements ICssClassNameProvider {
-        Mini("btn-xs"),
         Small("btn-sm"),
         Medium(""), // default button size doesn't need any css class
         Large("btn-lg");
@@ -88,8 +87,9 @@ public final class Buttons {
      * @see <a href="http://getbootstrap.com/css/#buttons">Buttons</a>
      */
     public enum Type implements ICssClassNameProvider {
-        Default("btn-default"), // Standard gray button with gradient
-        Menu(""), // Menu button which has no default css class name
+        Default("btn-secondary"), // Alias for secondary. Kept for backwards compatibility.
+        Secondary("btn-secondary"), // Standard gray button with gradient
+        Menu("nav-link"), // Menu button which has no default css class name
         Primary("btn-primary"), // Provides extra visual weight and identifies the primary action in a set of buttons
         Info("btn-info"), // Used as an alternate to the default styles
         Success("btn-success"), // Indicates a successful or positive action

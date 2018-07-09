@@ -11,7 +11,6 @@ import org.junit.Test;
 
 import de.agilecoders.wicket.core.WicketApplicationTest;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.DropDownButton;
-import de.agilecoders.wicket.core.markup.html.bootstrap.image.GlyphIconType;
 import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.NavbarButton;
 
 /**
@@ -26,7 +25,7 @@ public class ButtonListTest extends WicketApplicationTest {
     public void hasNoActiveButton() {
 
         TestPage page = new TestPage();
-        NavbarButton<?> buttonUnderTest = new NavbarButton<Object>(TestPage.class, GlyphIconType.adjust);
+        NavbarButton<?> buttonUnderTest = new NavbarButton<>(TestPage.class, Model.of("Button"));
         page.add(buttonUnderTest);
 
         List<AbstractLink> buttons = new ArrayList<AbstractLink>();
@@ -49,7 +48,7 @@ public class ButtonListTest extends WicketApplicationTest {
     public void hasActiveButton() {
 
         TestPage page = new TestPage();
-        final NavbarButton<?> buttonUnderTest = new NavbarButton<Object>(TestPage.class, GlyphIconType.adjust);
+        final NavbarButton<?> buttonUnderTest = new NavbarButton<>(TestPage.class, Model.of("Button"));
         page.add(buttonUnderTest);
 
         List<AbstractLink> buttons = new ArrayList<AbstractLink>();

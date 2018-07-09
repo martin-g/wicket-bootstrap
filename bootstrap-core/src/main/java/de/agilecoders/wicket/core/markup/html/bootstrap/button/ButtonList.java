@@ -83,8 +83,9 @@ public class ButtonList extends ListView<AbstractLink> {
         item.add(link);
 
         link.configure();
+        link.add(new CssClassNameAppender("dropdown-item"));
         if (!link.isEnabled()) {
-            item.add(new CssClassNameAppender("disabled"));
+            link.add(new CssClassNameAppender("disabled"));
         }
     }
 }

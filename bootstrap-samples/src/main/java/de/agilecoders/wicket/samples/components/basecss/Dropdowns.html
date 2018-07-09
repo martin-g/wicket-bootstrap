@@ -4,7 +4,7 @@
     </head>
     <body>
         <wicket:panel>
-            <div class="page-header">
+            <div class="pb-2 mt-4 mb-2 border-bottom">
                 <h1>Dropdown menus</h1>
             </div>
 
@@ -15,21 +15,21 @@
             <div class="bs-docs-example">
                 <div class="dropdown clearfix">
                     <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display: block; position: static; margin-bottom: 5px; *width: 180px;">
-                        <li><a tabindex="-1" href="#">Action</a></li>
-                        <li><a tabindex="-1" href="#">Another action</a></li>
-                        <li><a tabindex="-1" href="#">Something else here</a></li>
-                        <li class="divider"></li>
-                        <li><a tabindex="-1" href="#">Separated link</a></li>
+                        <li class="dropdown-item"><a tabindex="-1" href="#">Action</a></li>
+                        <li class="dropdown-item"><a tabindex="-1" href="#">Another action</a></li>
+                        <li class="dropdown-item"><a tabindex="-1" href="#">Something else here</a></li>
+                        <li class="dropdown-divider"></li>
+                        <li class="dropdown-item"><a tabindex="-1" href="#">Separated link</a></li>
                     </ul>
                 </div>
             </div>
 <pre class="prettyprint linenums">
 &lt;ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu"&gt;
-  &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Action&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Another action&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Something else here&lt;/a&gt;&lt;/li&gt;
-  &lt;li class="divider"&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+  &lt;li class="dropdown-item"&gt;&lt;a tabindex="-1" href="#"&gt;Action&lt;/a&gt;&lt;/li&gt;
+  &lt;li class="dropdown-item"&gt;&lt;a tabindex="-1" href="#"&gt;Another action&lt;/a&gt;&lt;/li&gt;
+  &lt;li class="dropdown-item"&gt;&lt;a tabindex="-1" href="#"&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+  &lt;li class="dropdown-divider"&gt;&lt;/li&gt;
+  &lt;li class="dropdown-item"&gt;&lt;a tabindex="-1" href="#"&gt;Separated link&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </pre>
 
@@ -41,11 +41,11 @@
 &lt;div class="dropdown"&gt;
   &lt;!-- Link or button to toggle dropdown --&gt;
   &lt;ul class="dropdown-menu" role="menu" aria-labelledby="dLabel"&gt;
-    &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Something else here&lt;/a&gt;&lt;/li&gt;
-    &lt;li class="divider"&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="dropdown-item"&gt;&lt;a tabindex="-1" href="#"&gt;Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="dropdown-item"&gt;&lt;a tabindex="-1" href="#"&gt;Another action&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="dropdown-item"&gt;&lt;a tabindex="-1" href="#"&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="dropdown-divider"&gt;&lt;/li&gt;
+    &lt;li class="dropdown-item"&gt;&lt;a tabindex="-1" href="#"&gt;Separated link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 </pre>

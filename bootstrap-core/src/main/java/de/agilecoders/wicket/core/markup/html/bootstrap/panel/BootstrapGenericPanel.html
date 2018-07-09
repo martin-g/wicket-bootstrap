@@ -4,17 +4,17 @@
     </head>
     <body>
         <wicket:panel>
-        	
-        	<div class="panel-heading" wicket:enclosure child="panelTitle">
-        		<h3 class="panel-title"><span wicket:id="panelTitle"></span></h3>
+        	<div class="card-header" wicket:enclosure child="panelTitle">
+        		<h3 class="card-title"><span wicket:id="panelTitle"></span></h3>
         	</div>
-        	
-			<div class="panel-body" wicket:id="panelBody"></div>
-					
+
+            <img class="card-img-top" wicket:id="panelImageTop"/>
+
+			<div class="card-body" wicket:id="panelBody"></div>
+
 			<wicket:child/>
-		
-			<div class="panel-footer" wicket:id="panelFooter"></div>
-			
+
+			<div class="card-footer" wicket:id="panelFooter"></div>
         </wicket:panel>
     </body>
 </html>

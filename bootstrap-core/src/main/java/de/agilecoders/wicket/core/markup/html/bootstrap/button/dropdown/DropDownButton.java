@@ -40,7 +40,7 @@ public abstract class DropDownButton extends AbstractLink implements Activatable
 {
 
     private final IModel<Buttons.Size> buttonSize = Model.of(Buttons.Size.Medium);
-    private final IModel<Buttons.Type> buttonType = Model.of(Buttons.Type.Default);
+    private final IModel<Buttons.Type> buttonType = Model.of(Buttons.Type.Secondary);
     private final ButtonList buttonListView;
     private final WebMarkupContainer baseButton;
     private final Icon icon;

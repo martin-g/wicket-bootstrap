@@ -2,7 +2,7 @@ package de.agilecoders.wicket.core.markup.html.bootstrap.form;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.nullValue;
+import static org.hamcrest.Matchers.containsString;
 
 import org.apache.wicket.model.Model;
 import org.apache.wicket.util.tester.TagTester;
@@ -21,15 +21,13 @@ public class BootstrapCheckboxTest extends WicketApplicationTest {
         BootstrapCheckbox checkbox = new BootstrapCheckbox("id", Model.of(Boolean.FALSE), Model.of(labelContent));
 
         tester().startComponentInPage(checkbox);
-        TagTester labelContainerTester = tester().getTagByWicketId("label");
-        assertThat(labelContainerTester.getAttribute("class"), is(nullValue()));
 
         TagTester checkboxTester = tester().getTagByWicketId("checkbox");
         assertThat(checkboxTester.getName(), is(equalTo("input")));
         assertThat(checkboxTester.getAttribute("type"), is(equalTo("checkbox")));
 
-        TagTester postLabelTester = tester().getTagByWicketId("post-label");
-        assertThat(postLabelTester.getValue(), is(equalTo(labelContent)));
+        TagTester labelTester = tester().getTagByWicketId("label");
+        assertThat(labelTester.getValue(), is(equalTo(labelContent)));
     }
 
     @Test
@@ -37,7 +35,7 @@ public class BootstrapCheckboxTest extends WicketApplicationTest {
         BootstrapCheckbox checkbox = new BootstrapCheckbox("id", Model.of(Boolean.FALSE)).setInline(true);
 
         tester().startComponentInPage(checkbox);
-        TagTester labelContainerTester = tester().getTagByWicketId("label");
-        assertThat(labelContainerTester.getAttribute("class"), is(equalTo("checkbox-inline")));
+        TagTester container = tester().getTagByWicketId("wrapper");
+        assertThat(container.getAttribute("class"), is(containsString("form-check-inline")));
     }
 }

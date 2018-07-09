@@ -52,7 +52,7 @@ public class ModalCloseButton extends AjaxLink<String> {
         super(id, label);
 
         setBody(getDefaultModel());
-        buttonBehavior = new ButtonBehavior(Buttons.Type.Default);
+        buttonBehavior = new ButtonBehavior(Buttons.Type.Secondary);
 
         add(new AttributeModifier("data-dismiss", "modal"));
         add(buttonBehavior);

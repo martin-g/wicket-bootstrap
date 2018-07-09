@@ -1,5 +1,6 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.components.progress;
 
+import de.agilecoders.wicket.core.markup.html.bootstrap.utilities.BackgroundColorBehavior;
 import de.agilecoders.wicket.core.util.Attributes;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.html.basic.Label;
@@ -19,13 +20,23 @@ public class Stack extends GenericPanel<Integer> {
     /**
      * The color type of the stack
      */
-    private ProgressBar.Type type = ProgressBar.Type.DEFAULT;
+    private BackgroundColorBehavior backgroundColorBehavior = BackgroundColorBehavior.secondary();
 
     /**
      * A flag that is used to decide whether to show the label or not.
      * By default the label is not shown.
      */
     private boolean labeled = false;
+
+    /**
+     * A flag indicating whether the stack is active/active.
+     */
+    private boolean animated = false;
+
+    /**
+     * A flag indicating whether the stack is striped.
+     */
+    private boolean striped = false;
 
     /**
      * Constructor.
@@ -45,12 +56,13 @@ public class Stack extends GenericPanel<Integer> {
         add(srOnly);
     }
 
-    public ProgressBar.Type type() {
-        return type;
+    public BackgroundColorBehavior.Color color() {
+        return backgroundColorBehavior.getColor();
     }
 
-    public Stack type(ProgressBar.Type type) {
-        this.type = type;
+    public Stack color(BackgroundColorBehavior.Color color) {
+        this.backgroundColorBehavior.color(color);
+
         return this;
     }
 
@@ -60,6 +72,27 @@ public class Stack extends GenericPanel<Integer> {
 
     public Stack labeled(boolean labeled) {
         this.labeled = labeled;
+        return this;
+    }
+
+    public boolean striped() {
+        return striped;
+    }
+
+    public Stack striped(boolean value) {
+        striped = value;
+        return this;
+    }
+
+    public boolean active() {
+        return animated;
+    }
+
+    public Stack active(boolean value) {
+        animated = value;
+        if (value) {
+            striped(true);
+        }
         return this;
     }
 
@@ -82,9 +115,15 @@ public class Stack extends GenericPanel<Integer> {
         Attributes.set(tag, "aria-valuemin", String.valueOf(ProgressBar.MIN));
         Attributes.set(tag, "aria-valuemax", String.valueOf(ProgressBar.MAX));
 
-        if (!ProgressBar.Type.DEFAULT.equals(type)) {
-            Attributes.addClass(tag, type().cssClassName());
+        if (animated) {
+            Attributes.addClass(tag, "progress-bar-active");
         }
+
+        if (striped) {
+            Attributes.addClass(tag, "progress-bar-striped");
+        }
+
+        Attributes.addClass(tag, color().cssClassName());
     }
 
 

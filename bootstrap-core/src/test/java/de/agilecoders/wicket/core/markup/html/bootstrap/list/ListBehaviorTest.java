@@ -40,7 +40,7 @@ public class ListBehaviorTest extends WicketApplicationTest {
     public void horizontalDescriptionList() {
         startBehaviorInPage(ListBehavior.description().horizontal());
 
-        assertClassNamesPresent("dl-horizontal");
+        assertClassNamesPresent("row");
     }
 
     @Test

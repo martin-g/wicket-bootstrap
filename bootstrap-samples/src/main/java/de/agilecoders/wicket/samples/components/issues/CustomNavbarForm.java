@@ -22,7 +22,7 @@ public class CustomNavbarForm extends NavbarForm<Void> {
     }
 
     private Component newSubmitButton(String markupId) {
-        return new BootstrapButton(markupId, Model.of("Search"), Buttons.Type.Default);
+        return new BootstrapButton(markupId, Model.of("Search"), Buttons.Type.Secondary);
     }
 
     private Component newSearchField(String markupId) {

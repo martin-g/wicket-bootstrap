@@ -55,14 +55,11 @@ public class BootstrapCheckbox extends FormComponentPanel<Boolean> {
 
         setRenderBodyOnly(true);
 
-        wrapper = new WebMarkupContainer("wrapper");
+        wrapper = newCheckboxContainer("wrapper");
         add(wrapper);
-        MarkupContainer label = newLabelContainer("label");
-        wrapper.add(label);
-        label.add(newLabel("post-label", labelModel));
+        wrapper.add(newLabel("label", labelModel));
         checkbox = newCheckBox("checkbox", getModel());
-        label.add(checkbox);
-
+        wrapper.add(checkbox);
     }
 
 
@@ -82,14 +79,14 @@ public class BootstrapCheckbox extends FormComponentPanel<Boolean> {
         };
     }
 
-    protected MarkupContainer newLabelContainer(String id) {
+    protected WebMarkupContainer newCheckboxContainer(String id) {
         return new WebMarkupContainer(id) {
             @Override
             protected void onComponentTag(ComponentTag tag) {
                 super.onComponentTag(tag);
 
                 if (isInline()) {
-                    Attributes.addClass(tag, "checkbox-inline");
+                    Attributes.addClass(tag, "form-check-inline");
                 }
             }
         };
@@ -101,7 +98,6 @@ public class BootstrapCheckbox extends FormComponentPanel<Boolean> {
 
     public BootstrapCheckbox setInline(boolean inline) {
         this.inline = inline;
-        wrapper.setRenderBodyOnly(inline);
         return this;
     }
 

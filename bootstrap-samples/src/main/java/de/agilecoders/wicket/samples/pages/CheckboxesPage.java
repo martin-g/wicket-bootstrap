@@ -7,8 +7,6 @@ import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.checkbox.boot
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.checkbox.bootstraptoggle.BootstrapToggle;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.checkbox.bootstraptoggle.BootstrapToggleConfig;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.checkboxx.CheckBoxX;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeCssReference;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeIconType;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.form.AjaxFormComponentUpdatingBehavior;
 import org.apache.wicket.markup.head.CssHeaderItem;
@@ -20,6 +18,8 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.wicketstuff.annotation.mount.MountPath;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.common.NotificationPanel;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeCssReference;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeIconType;
 
 
 @MountPath(value = "/checkboxes")
@@ -54,7 +54,7 @@ public class CheckboxesPage extends BasePage {
             .withOnClass("btn-info").withOffClass("btn-warning")
             .withOnIcon(FontAwesomeIconType.thumbs_up).withOffIcon(FontAwesomeIconType.thumbs_down)
             .withReverse(true)
-            .withStyle(ButtonGroup.Size.ExtraSmall);
+            .withStyle(ButtonGroup.Size.Small);
 
         final BootstrapCheckBoxPicker checkBoxPicker = new BootstrapCheckBoxPicker("checkboxPicker", Model.of(true), config);
         checkBoxPicker.add(new AjaxFormComponentUpdatingBehavior("change") {

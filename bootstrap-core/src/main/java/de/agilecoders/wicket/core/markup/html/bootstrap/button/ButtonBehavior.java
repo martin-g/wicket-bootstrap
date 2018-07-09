@@ -26,19 +26,19 @@ public class ButtonBehavior extends BootstrapBaseBehavior {
     private final ICssClassNameProvider blockProvider;
 
     /**
-     * Construct. Uses {@link de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons.Size#Medium} and {@link de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons.Type#Default}.
+     * Construct. Uses {@link de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons.Size#Medium} and {@link de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons.Type#Secondary}.
      */
     public ButtonBehavior() {
-        this(Buttons.Type.Default, Buttons.Size.Medium);
+        this(Buttons.Type.Secondary, Buttons.Size.Medium);
     }
 
     /**
-     * Construct. Uses {@link de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons.Type#Default}.
+     * Construct. Uses {@link de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons.Type#Secondary}.
      *
      * @param size Size of button
      */
     public ButtonBehavior(final Buttons.Size size) {
-        this(Buttons.Type.Default, size);
+        this(Buttons.Type.Secondary, size);
     }
 
     /**
@@ -134,15 +134,15 @@ public class ButtonBehavior extends BootstrapBaseBehavior {
         if (!component.isEnabledInHierarchy()) {
             tag.put("disabled", "disabled");
         }
-        
+
         Components.assertTag(component, tag, "a", "button", "input");
 
         // a menu button has no css classes, inherits its styles from the menu
-        if (!Buttons.Type.Menu.equals(getType())) {
+//        if (!Buttons.Type.Menu.equals(getType())) {
             Buttons.onComponentTag(component, tag,
                                    buttonSize.getObject(),
                                    buttonType.getObject(),
                                    blockProvider);
-        }
+//        }
     }
 }

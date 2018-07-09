@@ -3,6 +3,8 @@ package de.agilecoders.wicket.core.markup.html.bootstrap.list;
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
 import de.agilecoders.wicket.core.util.Attributes;
 import de.agilecoders.wicket.core.util.Components;
+import de.agilecoders.wicket.core.util.ListItemCssClassHelper;
+
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.ComponentTag;
 
@@ -116,7 +118,7 @@ public class ListBehavior extends BootstrapBaseBehavior {
         }
 
         if (horizontal && Type.DL.equals(type)) {
-            Attributes.addClass(tag, "dl-horizontal");
+            Attributes.addClass(tag, "row");
         }
     }
 

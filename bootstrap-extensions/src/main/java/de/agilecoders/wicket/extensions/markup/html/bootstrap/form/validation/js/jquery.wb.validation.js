@@ -11,7 +11,7 @@
         config: null,
         defaultConfig: {
             appendToParent: false,
-            errorClass: "has-error"
+            errorClass: "is-invalid"
         },
 
         updateConfig: function (config) {
@@ -73,7 +73,7 @@
          */
         addErrorClass: function ($element, $messageTarget) {
             if (this.config.errorClass !== null) {
-                $messageTarget.parent().addClass(this.config.errorClass);
+                $messageTarget.addClass(this.config.errorClass);
             }
         },
 

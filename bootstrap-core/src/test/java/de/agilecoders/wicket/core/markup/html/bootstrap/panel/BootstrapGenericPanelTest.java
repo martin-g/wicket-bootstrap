@@ -8,7 +8,7 @@ import de.agilecoders.wicket.core.WicketApplicationTest;
 
 /**
  * Tests the {@link BootstrapGenericPanel} class
- * 
+ *
  * @author Eric Hamel <eric.hamel@me.com>
  *
  */
@@ -26,5 +26,4 @@ public class BootstrapGenericPanelTest extends WicketApplicationTest{
         tester().assertNoErrorMessage();
         tester().assertVisible(id());
     }
-	
 }

@@ -10,7 +10,7 @@ import java.io.Serializable;
 /**
  * A plain text navigation bar item
  *
- * @see <a href="http://getbootstrap.com/components/#navbar-text">Navbar Text</a>
+ * @see <a href="https://getbootstrap.com/docs/4.1/components/navbar/#text">Navbar Text</a>
  */
 public class NavbarText extends Label {
 
@@ -36,12 +36,8 @@ public class NavbarText extends Label {
     protected void onComponentTag(ComponentTag tag) {
         super.onComponentTag(tag);
 
-        tag.setName("p");
+        tag.setName("span");
         Attributes.addClass(tag, "navbar-text");
-
-        if (position == Navbar.ComponentPosition.RIGHT) {
-            Attributes.addClass(tag, "navbar-right");
-        }
     }
 
     public NavbarText position(Navbar.ComponentPosition position) {

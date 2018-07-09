@@ -1,20 +1,30 @@
 package de.agilecoders.wicket.samples.pages;
 
 import com.google.common.collect.Lists;
+
+import de.agilecoders.wicket.core.markup.html.bootstrap.block.Quote;
 import de.agilecoders.wicket.core.markup.html.bootstrap.form.BootstrapCheckbox;
 import de.agilecoders.wicket.core.markup.html.bootstrap.form.BootstrapForm;
 import de.agilecoders.wicket.core.markup.html.bootstrap.form.BootstrapRadioChoice;
 import org.apache.wicket.Component;
 import org.apache.wicket.extensions.breadcrumb.panel.BreadCrumbPanel;
+import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.navigation.paging.IPageable;
+import org.apache.wicket.markup.html.panel.Fragment;
+import org.apache.wicket.markup.repeater.RepeatingView;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.wicketstuff.annotation.mount.MountPath;
 
+import de.agilecoders.wicket.core.markup.html.bootstrap.image.Icon;
 import de.agilecoders.wicket.core.markup.html.bootstrap.navigation.BootstrapPagingNavigator;
 import de.agilecoders.wicket.core.markup.html.bootstrap.navigation.Breadcrumb;
+import de.agilecoders.wicket.core.markup.html.bootstrap.table.TableContextBehavior;
+import de.agilecoders.wicket.core.markup.html.bootstrap.table.TableContextType;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeIconType;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeIconTypeBuilder;
 
 /**
  * The {@code BaseCssPage}
@@ -36,6 +46,12 @@ public class BaseCssPage extends BasePage {
         super(parameters);
 
         addForms();
+
+        add(newIconsPanel("iconsPanel"));
+
+        add(newContextualTable("table-contextual"));
+
+        add(newQuote("quote"));
 /*
         add(new DateTextField("date"));
 
@@ -47,6 +63,11 @@ public class BaseCssPage extends BasePage {
         add(newPagination("pagination"));
         add(newBreadcrumb("breadcrumb"));
 */
+    }
+
+    protected Component newQuote(String markupId) {
+        return new Quote(markupId)
+            .add(new Label("quotation", Model.of("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.")));
     }
 
     private void addForms() {
@@ -87,6 +108,33 @@ public class BaseCssPage extends BasePage {
         };
 
         return new BootstrapPagingNavigator(markupId, pageable)/*.setPosition(BootstrapPagingNavigator.Position.Centered)*/;
+    }
+
+    protected Component newIconsPanel(String markupId) {
+        RepeatingView view = new RepeatingView(markupId);
+
+        for (FontAwesomeIconTypeBuilder.FontAwesomeGraphic graphic : FontAwesomeIconTypeBuilder.FontAwesomeGraphic.values()) {
+            Fragment iconFragment = new Fragment(view.newChildId(), "iconFragment", BaseCssPage.this);
+
+            FontAwesomeIconType icon = FontAwesomeIconTypeBuilder.on(graphic).fixedWidth().build();
+            iconFragment.add(new Icon("iconValue", Model.of(icon)));
+            iconFragment.add(new Label("iconName", icon.cssClassName()));
+            view.add(iconFragment);
+        }
+        return view;
+    }
+
+    protected Component newContextualTable(String markup) {
+        RepeatingView view = new RepeatingView(markup);
+
+        for (TableContextType contextType : TableContextType.values()) {
+            Fragment contextualRow = new Fragment(view.newChildId(), "contextual-row", BaseCssPage.this);
+            contextualRow.add(new TableContextBehavior(contextType));
+            contextualRow.add(new Label("contextual-class", contextType.cssClassName()));
+            view.add(contextualRow);
+        }
+
+        return view;
     }
 
     @Override

@@ -22,7 +22,7 @@ public class TableBehavior extends BootstrapBaseBehavior {
      * all possible table styles.
      */
     private static enum Type implements ICssClassNameProvider {
-        Basic, Bordered, Striped, Condensed, Hover;
+        Basic, Bordered, Striped, Sm, Hover, Dark, Light;
 
         @Override
         public String cssClassName() {
@@ -43,12 +43,12 @@ public class TableBehavior extends BootstrapBaseBehavior {
     }
 
     /**
-     * adds the "condensed" style to table
+     * adds the "sm" style to table
      *
      * @return this instance for chaining
      */
-    public TableBehavior condensed() {
-        return addType(Type.Condensed);
+    public TableBehavior sm() {
+        return addType(Type.Sm);
     }
 
     /**
@@ -67,6 +67,24 @@ public class TableBehavior extends BootstrapBaseBehavior {
      */
     public TableBehavior hover() {
         return addType(Type.Hover);
+    }
+
+    /**
+     * adds the "dark" flag to table
+     *
+     * @return this instance for chaining
+     */
+    public TableBehavior dark() {
+        return addType(Type.Dark);
+    }
+
+    /**
+     * add the "light" flag to table
+     *
+     * @return this instance for chaining
+     */
+    public TableBehavior light() {
+        return addType(Type.Light);
     }
 
     private TableBehavior addType(Type type) {

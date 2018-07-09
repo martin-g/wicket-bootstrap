@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>Javascript</title>
+</head>
+<body>
+<wicket:extend>
+
+    <!-- Subhead
+    ================================================== -->
+    <header class="jumbotron subhead">
+        <div class="container">
+            <h1>Bootstrap utility classes</h1>
+
+            <p class="lead">Use Bootstrap utility classes to set borders, colors, floats, positions and more...</p>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <!-- Docs nav
+        ================================================== -->
+        <div class="row">
+            <div class="col-lg-3 bs-docs-sidebar">
+                <ul wicket:id="navigation" class="nav nav-list bs-docs-sidenav">
+                    <li><a href="#borders"><i class="icon-chevron-right"></i> Borders</a></li>
+                    <li><a href="#colors"><i class="icon-chevron-right"></i> Colors</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-lg-9">
+            <section id="borders">
+                <div class="pb-2 mt-4 mb-2 border-bottom">
+                    <h1>Borders</h1>
+
+                    <p class="lead">
+                        Use border utilities to quickly style the border and border-radius of an element. Great for images, buttons, or any other element.
+                    </p>
+
+                    <h2>Border</h2>
+
+                    <p>
+                        Use border utilities to add or remove an element’s borders. Choose from all borders or one at a time.
+                    </p>
+
+                    <div class="bs-docs-example">
+                        <h3>Additive</h3>
+                        <div class="border rounded mb-5 p-2">
+                            <wicket:container wicket:id="additive-border-types">
+                                <span wicket:id="border-type" class="mb-2 p-2" style="display: inline-block; width: 5rem; height: 5rem; margin: .25rem; background-color: #f5f5f5;"></span>
+                            </wicket:container>
+                        </div>
+
+                        <div>
+                            <p>Java code:</p>
+                            <pre wicket:id="border-type-code"></pre>
+                        </div>
+
+                        <div>
+                            <p>HTML code:</p>
+                            <pre class="prettyprint linenums lang-html">
+&lt;wicket:container wicket:id="additive-border-types"&gt;
+    &lt;span wicket:id="border-type" class="mb-2 p-2"&gt;&lt;/span&gt;
+&lt;/wicket:container&gt;
+                            </pre>
+                        </div>
+                    </div>
+
+                    <div class="bs-docs-example">
+                        <h3>Subtractive</h3>
+                        <div class="border rounded mb-5 p-2">
+                            <wicket:container wicket:id="subtractive-border-types">
+                                <span wicket:id="border-type" class="mb-2 p-2" style="display: inline-block; width: 5rem; height: 5rem; margin: .25rem; background-color: #f5f5f5; border: 1px solid #000;"></span>
+                            </wicket:container>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bs-docs-example">
+                    <h3>Border color</h3>
+
+                    <p>Change the border color using utilities built on our theme colors.</p>
+
+                    <div class="border rounded mb-5 p-2">
+                        <wicket:container wicket:id="border-colors">
+                            <span wicket:id="border-color" class="mb-2 p-2" style="display: inline-block; width: 5rem; height: 5rem; margin: .25rem; background-color: #f5f5f5;"></span>
+                        </wicket:container>
+                    </div>
+
+                    <div>
+                        <p>Java code:</p>
+                        <pre wicket:id="border-colors-code"></pre>
+                    </div>
+
+                    <div>
+                        <p>HTML code:</p>
+                        <pre class="prettyprint linenums lang-html">
+&lt;div class="border rounded mb-5 p-2"&gt;
+    &lt;wicket:container wicket:id="border-colors"&gt;
+        &lt;div wicket:id="border-color"&gt;&lt;/div&gt;
+    &lt;/wicket:container&gt;
+&lt;/div>
+                        </pre>
+                    </div>
+                </div>
+
+                <div class="bs-docs-example">
+                    <h3>Border-radius</h3>
+
+                    <p>Add classes to an element to easily round its corners.</p>
+
+                    <div class="border rounded mb-5 p-2">
+                        <wicket:container wicket:id="border-radiuses">
+                            <img wicket:id="border-radius" class="mb-2 p-2" style="width: 75px; height: 75px;"/>
+                        </wicket:container>
+                    </div>
+
+                    <div>
+                        <p>Java code:</p>
+                        <pre wicket:id="border-radius-code"></pre>
+                    </div>
+
+                    <div>
+                        <p>HTML code:</p>
+                        <pre class="prettyprint linenums lang-html">
+&lt;div class="border rounded mb-5 p-2"&gt;
+    &lt;wicket:container wicket:id="border-radiuses"&gt;
+        &lt;div wicket:id="border-radius"&gt;&lt;/div&gt;
+    &lt;/wicket:container&gt;
+&lt;/div>
+                        </pre>
+                    </div>
+                </div>
+            </section>
+
+            <section id="colors">
+                <div class="pb-2 mt-4 mb-2 border-bottom">
+                    <h1>Colors</h1>
+
+                    <p class="lead">
+                        Convey meaning through color with a handful of color utility classes. Includes support for styling links with hover states, too.
+                    </p>
+
+                    <h3>Color</h3>
+
+                    <div class="bs-docs-example">
+                        <div class="border rounded mb-5 p-2">
+                            <wicket:container wicket:id="text-colors">
+                                <div wicket:id="color" class="mb-2 p-2"></div>
+                            </wicket:container>
+                        </div>
+
+                        <div>
+                            <p>Java code:</p>
+                            <pre wicket:id="text-colors-code"></pre>
+                        </div>
+
+                        <div>
+                            <p>HTML code:</p>
+                            <pre class="prettyprint linenums lang-html">
+&lt;div class="border rounded mb-5 p-2"&gt;
+    &lt;wicket:container wicket:id="text-colors"&gt;
+        &lt;div wicket:id="color" class="mb-2 p-2"&gt;&lt;/div&gt;
+    &lt;/wicket:container&gt;
+&lt;/div>
+                            </pre>
+                        </div>
+                    </div>
+
+                    <p>
+                        Contextual text classes also work well on anchors with the provided hover and focus states.
+                        Note that the <code>.text-white</code> and <code>.text-muted</code> class has no link styling.
+                    </p>
+
+
+                    <div class="bs-docs-example">
+                        <!-- link example -->
+                        <div class="border rounded mb-5 p-2">
+                            <p wicket:id="link-colors" class="mb-2 p-2">
+                                <a wicket:id="color" href="#"></a>
+                            </p>
+                        </div>
+                    </div>
+
+                    <h3>Background color</h3>
+
+                    <p>
+                        Similar to the contextual text color classes, easily set the background of an element to any contextual class.
+                        Anchor components will darken on hover, just like the text classes. Background utilities do not set color, so in some cases
+                        you’ll want to use .text-* utilities.
+                    </p>
+
+                    <div class="bs-docs-example">
+                        <div class="border rounded mb-5 p-2">
+                            <wicket:container wicket:id="background-colors">
+                                <div wicket:id="color" class="mb-2 p-2"></div>
+                            </wicket:container>
+                        </div>
+
+                        <div>
+                            <p>Java code:</p>
+                            <pre wicket:id="background-colors-code"></pre>
+                        </div>
+
+                        <div>
+                            <p>HTML code:</p>
+                            <pre class="prettyprint linenums lang-html">
+    &lt;div class="border rounded mb-5 p-2"&gt;
+        &lt;wicket:container wicket:id="background-colors"&gt;
+            &lt;div wicket:id="color" class="mb-2 p-2"&gt;&lt;/div&gt;
+        &lt;/wicket:container&gt;
+    &lt;/div&gt;
+                            </pre>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</wicket:extend>
+</body>
+</html>

@@ -23,12 +23,13 @@
         <li><a href="#dropdowns"><i class="icon-chevron-right"></i> Dropdowns</a></li>
         <li><a href="#buttonGroups"><i class="icon-chevron-right"></i> Button groups</a></li>
         <li><a href="#buttonDropdowns"><i class="icon-chevron-right"></i> Button dropdowns</a></li>
+        <li><a href="#cards"><i class="icon-chevron-right"></i> Cards</a></li>
         <li><a href="#radioChoices"><i class="icon-chevron-right"></i> Radio choices</a></li>
         <li><a href="#navs"><i class="icon-chevron-right"></i> Navs</a></li>
         <li><a href="#navbar"><i class="icon-chevron-right"></i> Navbar</a></li>
         <li><a href="#breadcrumbs"><i class="icon-chevron-right"></i> Breadcrumbs</a></li>
         <li><a href="#pagination"><i class="icon-chevron-right"></i> Pagination</a></li>
-        <li><a href="#labels-badges"><i class="icon-chevron-right"></i> Labels and badges</a></li>
+        <li><a href="#labels-badges"><i class="icon-chevron-right"></i> Badges</a></li>
         <li><a href="#typography"><i class="icon-chevron-right"></i> Typography</a></li>
         <li><a href="#thumbnails"><i class="icon-chevron-right"></i> Thumbnails</a></li>
         <li><a href="#alerts"><i class="icon-chevron-right"></i> Alerts</a></li>
@@ -43,7 +44,7 @@
 <!-- Dropdowns
 ================================================== -->
 <section id="dropdowns">
-    <div class="page-header">
+    <div class="pb-2 mt-4 mb-2 border-bottom">
         <h1>Dropdown menus</h1>
     </div>
 
@@ -54,21 +55,21 @@
     <div class="bs-docs-example">
         <div class="dropdown clearfix">
             <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display: block; position: static; margin-bottom: 5px; *width: 180px;">
-                <li><a tabindex="-1" href="#">Action</a></li>
-                <li><a tabindex="-1" href="#">Another action</a></li>
-                <li><a tabindex="-1" href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li><a tabindex="-1" href="#">Separated link</a></li>
+                <li><a class="dropdown-item" tabindex="-1" href="#">Action</a></li>
+                <li><a class="dropdown-item" tabindex="-1" href="#">Another action</a></li>
+                <li><a class="dropdown-item" tabindex="-1" href="#">Something else here</a></li>
+                <li class="dropdown-divider"></li>
+                <li><a class="dropdown-item" tabindex="-1" href="#">Separated link</a></li>
             </ul>
         </div>
     </div>
 <pre class="prettyprint linenums">
 &lt;ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu"&gt;
-  &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Action&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Another action&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Something else here&lt;/a&gt;&lt;/li&gt;
-  &lt;li class="divider"&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a class="dropdown-item" tabindex="-1" href="#"&gt;Action&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a class="dropdown-item" tabindex="-1" href="#"&gt;Another action&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a class="dropdown-item" tabindex="-1" href="#"&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+  &lt;li class="dropdown-divider"&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a class="dropdown-item" tabindex="-1" href="#"&gt;Separated link&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </pre>
 
@@ -80,11 +81,11 @@
 &lt;div class="dropdown"&gt;
   &lt;!-- Link or button to toggle dropdown --&gt;
   &lt;ul class="dropdown-menu" role="menu" aria-labelledby="dLabel"&gt;
-    &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Something else here&lt;/a&gt;&lt;/li&gt;
-    &lt;li class="divider"&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a class="dropdown-item" tabindex="-1" href="#"&gt;Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a class="dropdown-item" tabindex="-1" href="#"&gt;Another action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a class="dropdown-item" tabindex="-1" href="#"&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="dropdown-divider"&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a class="dropdown-item" tabindex="-1" href="#"&gt;Separated link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 </pre>
@@ -113,7 +114,7 @@
 <!-- Split button dropdowns
 ================================================== -->
 <section id="buttonDropdowns">
-<div class="page-header">
+<div class="pb-2 mt-4 mb-2 border-bottom">
     <h1>Button dropdown menus</h1>
 </div>
 
@@ -125,79 +126,79 @@
 <div class="bs-docs-example">
     <div class="btn-toolbar" style="margin: 0;">
         <div class="btn-group">
-            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Action</button>
             <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Separated link</a></li>
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                <li class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Separated link</a></li>
             </ul>
         </div>
         <!-- /btn-group -->
         <div class="btn-group">
-            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>
+            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Action</button>
             <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Separated link</a></li>
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                <li class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Separated link</a></li>
             </ul>
         </div>
         <!-- /btn-group -->
         <div class="btn-group">
-            <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">Danger <span class="caret"></span></button>
+            <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">Danger</button>
             <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Separated link</a></li>
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                <li class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Separated link</a></li>
             </ul>
         </div>
         <!-- /btn-group -->
         <div class="btn-group">
-            <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown">Warning <span class="caret"></span></button>
+            <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown">Warning</button>
             <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Separated link</a></li>
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                <li class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Separated link</a></li>
             </ul>
         </div>
         <!-- /btn-group -->
         <div class="btn-group">
-            <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">Success <span class="caret"></span></button>
+            <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">Success</button>
             <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Separated link</a></li>
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                <li class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Separated link</a></li>
             </ul>
         </div>
         <!-- /btn-group -->
         <div class="btn-group">
-            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">Info <span class="caret"></span></button>
+            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">Info</button>
             <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Separated link</a></li>
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                <li></li>
+                <li><a class="dropdown-item" href="#">Separated link</a></li>
             </ul>
         </div>
         <!-- /btn-group -->
         <div class="btn-group">
-            <button type="button" class="btn btn-inverse dropdown-toggle" data-toggle="dropdown">Inverse <span class="caret"></span></button>
+            <button type="button" class="btn btn-inverse dropdown-toggle" data-toggle="dropdown">Inverse</button>
             <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Separated link</a></li>
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                <li class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Separated link</a></li>
             </ul>
         </div>
         <!-- /btn-group -->
@@ -208,7 +209,6 @@
 &lt;div class="btn-group"&gt;
   &lt;a class="btn btn-default dropdown-toggle" data-toggle="dropdown" href="#"&gt;
     Action
-    &lt;span class="caret"&gt;&lt;/span&gt;
   &lt;/a&gt;
   &lt;ul class="dropdown-menu"&gt;
     &lt;!-- dropdown menu links --&gt;
@@ -218,40 +218,29 @@
 
 <h3>Works with all button sizes</h3>
 
-<p>Button dropdowns work at any size: <code>.btn-lg</code>, <code>.btn-sm</code>, or <code>.btn-xs</code>.</p>
+<p>Button dropdowns work at any size: <code>.btn-lg</code>, or <code>.btn-sm</code>.</p>
 
 <div class="bs-docs-example">
     <div class="btn-toolbar" style="margin: 0;">
         <div class="btn-group">
-            <button type="button" class="btn btn-lg dropdown-toggle" data-toggle="dropdown">Large button <span class="caret"></span></button>
+            <button type="button" class="btn btn-lg dropdown-toggle" data-toggle="dropdown">Large button</button>
             <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Separated link</a></li>
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                <li class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Separated link</a></li>
             </ul>
         </div>
         <!-- /btn-group -->
         <div class="btn-group">
-            <button type="button" class="btn btn-sm dropdown-toggle" data-toggle="dropdown">Small button <span class="caret"></span></button>
+            <button type="button" class="btn btn-sm dropdown-toggle" data-toggle="dropdown">Small button</button>
             <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Separated link</a></li>
-            </ul>
-        </div>
-        <!-- /btn-group -->
-        <div class="btn-group">
-            <button type="button" class="btn btn-xs dropdown-toggle" data-toggle="dropdown">Mini button <span class="caret"></span></button>
-            <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Separated link</a></li>
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                <li class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Separated link</a></li>
             </ul>
         </div>
         <!-- /btn-group -->
@@ -278,73 +267,73 @@
         <div wicket:id="splitbutton"></div>
         <div class="btn-group">
             <button type="button" class="btn btn-primary">Action</button>
-            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"></button>
             <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Separated link</a></li>
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                <li class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Separated link</a></li>
             </ul>
         </div>
         <!-- /btn-group -->
         <div class="btn-group">
             <button type="button" class="btn btn-danger">Danger</button>
-            <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+            <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown"></button>
             <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Separated link</a></li>
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                <li class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Separated link</a></li>
             </ul>
         </div>
         <!-- /btn-group -->
         <div class="btn-group">
             <button type="button" class="btn btn-warning">Warning</button>
-            <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+            <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown"></button>
             <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Separated link</a></li>
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                <li class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Separated link</a></li>
             </ul>
         </div>
         <!-- /btn-group -->
         <div class="btn-group">
             <button type="button" class="btn btn-success">Success</button>
-            <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+            <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown"></button>
             <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Separated link</a></li>
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                <li class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Separated link</a></li>
             </ul>
         </div>
         <!-- /btn-group -->
         <div class="btn-group">
             <button type="button" class="btn btn-info">Info</button>
-            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown"></button>
             <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Separated link</a></li>
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                <li class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Separated link</a></li>
             </ul>
         </div>
         <!-- /btn-group -->
         <div class="btn-group">
             <button type="button" class="btn btn-inverse">Inverse</button>
-            <button type="button" class="btn btn-inverse dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+            <button type="button" class="btn btn-inverse dropdown-toggle" data-toggle="dropdown"></button>
             <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Separated link</a></li>
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                <li class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Separated link</a></li>
             </ul>
         </div>
         <!-- /btn-group -->
@@ -354,9 +343,7 @@
 <pre class="prettyprint linenums">
 &lt;div class="btn-group"&gt;
   &lt;button class="btn"&gt;Action&lt;/button&gt;
-  &lt;button class="btn dropdown-toggle" data-toggle="dropdown"&gt;
-    &lt;span class="caret"&gt;&lt;/span&gt;
-  &lt;/button&gt;
+  &lt;button class="btn dropdown-toggle" data-toggle="dropdown"&gt;&lt;/button&gt;
   &lt;ul class="dropdown-menu"&gt;
     &lt;!-- dropdown menu links --&gt;
   &lt;/ul&gt;
@@ -371,13 +358,13 @@
     <div class="btn-toolbar">
         <div class="btn-group">
             <button type="button" class="btn btn-default btn-lg">Large action</button>
-            <button type="button" class="btn btn-default btn-lg dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+            <button type="button" class="btn btn-default btn-lg dropdown-toggle" data-toggle="dropdown"></button>
             <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Separated link</a></li>
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                <li class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Separated link</a></li>
             </ul>
         </div>
         <!-- /btn-group -->
@@ -386,13 +373,13 @@
     <div class="btn-toolbar">
         <div class="btn-group">
             <button type="button" class="btn btn-default btn-sm">Small action</button>
-            <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+            <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"></button>
             <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Separated link</a></li>
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                <li class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Separated link</a></li>
             </ul>
         </div>
         <!-- /btn-group -->
@@ -401,13 +388,13 @@
     <div class="btn-toolbar">
         <div class="btn-group">
             <button type="button" class="btn btn-default btn-xs">Mini action</button>
-            <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+            <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown"></button>
             <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Separated link</a></li>
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                <li class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Separated link</a></li>
             </ul>
         </div>
         <!-- /btn-group -->
@@ -417,9 +404,7 @@
 <pre class="prettyprint linenums">
 &lt;div class="btn-group"&gt;
   &lt;button class="btn btn-default btn-xs"&gt;Action&lt;/button&gt;
-  &lt;button class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown"&gt;
-    &lt;span class="caret"&gt;&lt;/span&gt;
-  &lt;/button&gt;
+  &lt;button class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown"&gt;&lt;/button&gt;
   &lt;ul class="dropdown-menu"&gt;
     &lt;!-- dropdown menu links --&gt;
   &lt;/ul&gt;
@@ -428,32 +413,32 @@
 
 <h3>Dropup menus</h3>
 
-<p>Dropdown menus can also be toggled from the bottom up by adding a single class to the immediate parent of <code>.dropdown-menu</code>. It will flip the direction of the <code>.caret</code> and reposition the menu itself to move from the bottom up instead of top down.</p>
+<p>Dropdown menus can also be toggled from the bottom up by adding a single class to the immediate parent of <code>.dropdown-menu</code>. It will flip the direction of the <code>caret</code> and reposition the menu itself to move from the bottom up instead of top down.</p>
 
 <div class="bs-docs-example">
     <div class="btn-toolbar" style="margin: 0;">
         <div class="form-group">
             <div class="btn-group dropup">
                 <button type="button" class="btn btn-default">Dropup</button>
-                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"></button>
                 <ul class="dropdown-menu" role="menu">
-                    <li><a href="#">Action</a></li>
-                    <li><a href="#">Another action</a></li>
-                    <li><a href="#">Something else here</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">Separated link</a></li>
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    <li class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#">Separated link</a></li>
                 </ul>
             </div>
             <!-- /btn-group -->
             <div class="btn-group dropup">
                 <button type="button" class="btn btn-default primary">Right dropup</button>
-                <button type="button" class="btn btn-default primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+                <button type="button" class="btn btn-default primary dropdown-toggle" data-toggle="dropdown"></button>
                 <ul class="dropdown-menu pull-right">
-                    <li><a href="#">Action</a></li>
-                    <li><a href="#">Another action</a></li>
-                    <li><a href="#">Something else here</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">Separated link</a></li>
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    <li class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#">Separated link</a></li>
                 </ul>
             </div>
             <!-- /btn-group -->
@@ -463,15 +448,23 @@
 <pre class="prettyprint linenums">
 &lt;div class="btn-group dropup"&gt;
   &lt;button class="btn btn-default"&gt;Dropup&lt;/button&gt;
-  &lt;button class="btn btn-default dropdown-toggle" data-toggle="dropdown"&gt;
-    &lt;span class="caret"&gt;&lt;/span&gt;
-  &lt;/button&gt;
+  &lt;button class="btn btn-default dropdown-toggle" data-toggle="dropdown"&gt;&lt;/button&gt;
   &lt;ul class="dropdown-menu" role="menu"&gt;
     &lt;!-- dropdown menu links --&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 </pre>
 
+</section>
+
+<section id="cards">
+    <h2>Cards</h2>
+
+    <p>Bootstrap’s cards provide a flexible and extensible content container with multiple variants and options.</p>
+
+    <div class="bs-docs-example">
+        <div wicket:id="card-demo" style="width: 18rem;"></div>
+    </div>
 </section>
 
 <section id="radioChoices">
@@ -510,14 +503,15 @@
 <!-- Nav, Tabs, & Pills
 ================================================== -->
 <section id="navs">
-<div class="page-header">
+<div class="pb-2 mt-4 mb-2 border-bottom">
     <h1>Nav: tabs, pills, and lists</h1>
 </div>
 
 <h2>Lightweight defaults
     <small>Same markup, different classes</small>
 </h2>
-<p>All nav components here&mdash;tabs, pills, and lists&mdash;<strong>share the same base markup and styles</strong> through the <code>.nav</code> class.</p>
+<p>All nav components here&mdash;tabs, pills, and lists&mdash;<strong>share the same base markup and styles</strong> through the <code>.nav</code>, <code>.nav-item</code> and <code>.nav-link</code> classes.</p>
+<p>The base .nav component does not include any .active state. The following examples include the class, mainly to demonstrate that this particular class does not trigger any special styling.</p>
 
 <h3>Basic tabs</h3>
 
@@ -525,18 +519,18 @@
 
 <div class="bs-docs-example">
     <ul class="nav nav-tabs">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">Profile</a></li>
-        <li><a href="#">Messages</a></li>
+        <li class="nav-item"><a href="#" class="nav-link active">Home</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">Profile</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">Messages</a></li>
     </ul>
 </div>
 <pre class="prettyprint linenums">
 &lt;ul class="nav nav-tabs"&gt;
-  &lt;li class="active"&gt;
-    &lt;a href="#"&gt;Home&lt;/a&gt;
+  &lt;li class="nav-item"&gt;
+    &lt;a href="#" class="nav-link active"&gt;Home&lt;/a&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;a href="#"&gt;...&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="#"&gt;...&lt;/a&gt;&lt;/li&gt;
+  &lt;li class="nav-item"&gt;&lt;a href="#" class="nav-link"&gt;...&lt;/a&gt;&lt;/li&gt;
+  &lt;li class="nav-item"&gt;&lt;a href="#" class="nav-link"&gt;...&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </pre>
 
@@ -546,18 +540,18 @@
 
 <div class="bs-docs-example">
     <ul class="nav nav-pills">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">Profile</a></li>
-        <li><a href="#">Messages</a></li>
+        <li class="nav-item"><a href="#" class="nav-link active">Home</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">Profile</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">Messages</a></li>
     </ul>
 </div>
 <pre class="prettyprint linenums">
 &lt;ul class="nav nav-pills"&gt;
-  &lt;li class="active"&gt;
-    &lt;a href="#"&gt;Home&lt;/a&gt;
+  &lt;li class="nav-item"&gt;
+    &lt;a href="#" class="nav-link active"&gt;Home&lt;/a&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;a href="#"&gt;...&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="#"&gt;...&lt;/a&gt;&lt;/li&gt;
+  &lt;li class="nav-item"&gt;&lt;a href="#" class="nav-link"&gt;...&lt;/a&gt;&lt;/li&gt;
+  &lt;li class="nav-item"&gt;&lt;a href="#" class="nav-link"&gt;...&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </pre>
 
@@ -567,42 +561,75 @@
 
 <div class="bs-docs-example">
     <ul class="nav nav-pills">
-        <li class="active"><a href="#">Clickable link</a></li>
-        <li><a href="#">Clickable link</a></li>
-        <li class="disabled"><a href="#">Disabled link</a></li>
+        <li class="nav-item"><a href="#" class="nav-link active">Clickable link</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">Clickable link</a></li>
+        <li class="nav-item"><a href="#" class="nav-link disabled">Disabled link</a></li>
     </ul>
 </div>
 <pre class="prettyprint linenums">
 &lt;ul class="nav nav-pills"&gt;
   ...
-  &lt;li class="disabled"&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
+  &lt;li class="nav-item"&gt;&lt;a href="#" class="nav-link disabled"&gt;Home&lt;/a&gt;&lt;/li&gt;
   ...
 &lt;/ul&gt;
 </pre>
 
 <h3>Component alignment</h3>
 
-<p>To align nav links, use the <code>.pull-left</code> or <code>.pull-right</code> utility classes. Both classes will add a CSS float in the specified direction.</p>
+<p>Change the horizontal alignment of your nav with <code>.justify-content-center</code> and <code>.justify-content-end</code> classes. By default, navs are left-aligned, but you can easily change them to center or right aligned</p>
 
+<ul class="nav justify-content-end">
+    <li class="nav-item">
+        <a class="nav-link active" href="#">Active</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link disabled" href="#">Disabled</a>
+    </li>
+</ul>
+
+<pre class="prettyprint linenums">
+&lt;ul class="nav justify-content-end"&gt;
+    &lt;li class="nav-item"&gt;
+        &lt;a class="nav-link active" href="#"&gt;Active&lt;/a&gt;
+    &lt;/li>
+    &lt;li class="nav-item">
+        &lt;a class="nav-link" href="#">Link&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li class="nav-item"&gt;
+        &lt;a class="nav-link" href="#">Link&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li class="nav-item"&gt;
+        &lt;a class="nav-link disabled" href="#">Disabled&lt;/a&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+</pre>
 
 <hr class="bs-docs-separator">
 
 
 <h2>Stackable</h2>
 
-<p>As tabs and pills are horizontal by default, just add a second class, <code>.nav-stacked</code>, to make them appear vertically stacked.</p>
+<p>As tabs and pills are horizontal by default, just add a second class, <code>.flex-column</code>, to make them appear vertically stacked.
+Need to stack them on some viewports but not others? Use the responsive versions (e.g., <code>.flex-sm-column</code>).
+</p>
 
 <h3>Stacked tabs</h3>
 
 <div class="bs-docs-example">
-    <ul class="nav nav-tabs nav-stacked">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">Profile</a></li>
-        <li><a href="#">Messages</a></li>
+    <ul class="nav nav-tabs .flex-column">
+        <li class="nav-item"><a href="#" class="nav-link active">Home</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">Profile</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">Messages</a></li>
     </ul>
 </div>
 <pre class="prettyprint linenums">
-&lt;ul class="nav nav-tabs nav-stacked"&gt;
+&lt;ul class="nav nav-tabs .flex-column"&gt;
   ...
 &lt;/ul&gt;
 </pre>
@@ -610,14 +637,14 @@
 <h3>Stacked pills</h3>
 
 <div class="bs-docs-example">
-    <ul class="nav nav-pills nav-stacked">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">Profile</a></li>
-        <li><a href="#">Messages</a></li>
+    <ul class="nav nav-pills .flex-column">
+        <li class="nav-item"><a href="#" class="nav-link active">Home</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">Profile</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">Messages</a></li>
     </ul>
 </div>
 <pre class="prettyprint linenums">
-&lt;ul class="nav nav-pills nav-stacked"&gt;
+&lt;ul class="nav nav-pills .flex-column"&gt;
   ...
 &lt;/ul&gt;
 </pre>
@@ -634,28 +661,34 @@
 
 <div class="bs-docs-example">
     <ul class="nav nav-tabs">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">Help</a></li>
-        <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Dropdown <b class="caret"></b></a>
+        <li class="nav-item">
+            <a href="#" class="nav-link active">Active</a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Dropdown</a>
             <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Separated link</a></li>
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                <li class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Separated link</a></li>
             </ul>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled" href="#">Disabled</a>
         </li>
     </ul>
 </div>
 <pre class="prettyprint linenums">
 &lt;ul class="nav nav-tabs"&gt;
-  &lt;li class="dropdown"&gt;
-    &lt;a class="dropdown-toggle"
+  &lt;li class="nav-item dropdown"&gt;
+    &lt;a class="nav-link dropdown-toggle"
        data-toggle="dropdown"
        href="#"&gt;
         Dropdown
-        &lt;b class="caret"&gt;&lt;/b&gt;
       &lt;/a&gt;
     &lt;ul class="dropdown-menu"&gt;
       &lt;!-- links --&gt;
@@ -668,28 +701,34 @@
 
 <div class="bs-docs-example">
     <ul class="nav nav-pills">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">Help</a></li>
-        <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Dropdown <b class="caret"></b></a>
+        <li class="nav-item">
+            <a href="#" class="nav-link active">Home</a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Dropdown</a>
             <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Separated link</a></li>
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                <li class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Separated link</a></li>
             </ul>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled" href="#">Disabled</a>
         </li>
     </ul>
 </div>
 <pre class="prettyprint linenums">
 &lt;ul class="nav nav-pills"&gt;
-  &lt;li class="dropdown"&gt;
-    &lt;a class="dropdown-toggle"
+  &lt;li class="nav-item dropdown"&gt;
+    &lt;a class="nav-link dropdown-toggle"
        data-toggle="dropdown"
        href="#"&gt;
         Dropdown
-        &lt;b class="caret"&gt;&lt;/b&gt;
       &lt;/a&gt;
     &lt;ul class="dropdown-menu"&gt;
       &lt;!-- links --&gt;
@@ -708,29 +747,29 @@
 
 <h3>Example nav list</h3>
 
-<p>Take a list of links and add <code>class="nav nav-list"</code>:</p>
+<p>Take a list of links and add <code>class="nav"</code>:</p>
 
 <div class="bs-docs-example">
     <div class="well" style="max-width: 340px; padding: 8px 0;">
-        <ul class="nav nav-list">
-            <li class="nav-header">List header</li>
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#">Library</a></li>
-            <li><a href="#">Applications</a></li>
-            <li class="nav-header">Another list header</li>
-            <li><a href="#">Profile</a></li>
-            <li><a href="#">Settings</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Help</a></li>
+        <ul class="nav flex-column">
+            <li class="nav-item">List header</li>
+            <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Library</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Applications</a></li>
+            <li class="nav-item">Another list header</li>
+            <li class="nav-item"><a href="#" class="nav-link">Profile</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Settings</a></li>
+            <li class="nav-item"></li>
+            <li class="nav-item"><a href="#" class="nav-link">Help</a></li>
         </ul>
     </div>
     <!-- /well -->
 </div>
 <pre class="prettyprint linenums">
-&lt;ul class="nav nav-list"&gt;
-  &lt;li class="nav-header"&gt;List header&lt;/li&gt;
-  &lt;li class="active"&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="#"&gt;Library&lt;/a&gt;&lt;/li&gt;
+&lt;ul class="nav flex-column"&gt;
+  &lt;li class="nav-item"&gt;List header&lt;/li&gt;
+  &lt;li class="nav-item"&gt;&lt;a class="nav-link active" href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
+  &lt;li class="nav-item"&gt;&lt;a href="#"&gt;Library&lt;/a&gt;&lt;/li&gt;
   ...
 &lt;/ul&gt;
 </pre>
@@ -741,11 +780,11 @@
 
 <h3>Horizontal dividers</h3>
 
-<p>Add a horizontal divider by creating an empty list item with the class <code>.divider</code>, like so:</p>
+<p>Add a horizontal divider by creating an empty list item with the class <code>.dropdown-divider</code>, like so:</p>
 <pre class="prettyprint linenums">
-&lt;ul class="nav nav-list"&gt;
+&lt;ul class="nav flex-column"&gt;
   ...
-  &lt;li class="divider"&gt;&lt;/li&gt;
+  &lt;li class="dropdown-divider"&gt;&lt;/li&gt;
   ...
 &lt;/ul&gt;
 </pre>
@@ -914,7 +953,7 @@
 <!-- Navbar
 ================================================== -->
 <section id="navbar">
-<div class="page-header">
+<div class="pb-2 mt-4 mb-2 border-bottom">
     <h1>Navbar</h1>
 </div>
 
@@ -924,28 +963,27 @@
 <p>To start, navbars are static (not fixed to the top) and include support for a project name and basic navigation. Place one anywhere within a <code>.container</code>, which sets the width of your site and content.</p>
 
 <div class="bs-docs-example">
-    <div class="navbar navbar-default">
-        <div class="container">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">Title</a>
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#">Link</a></li>
-                <li><a href="#">Link</a></li>
+    <div class="navbar navbar-light navbar-expand-lg">
+        <a class="navbar-brand" href="#">Title</a>
+
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active"><a class="nav-link" href="#">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
             </ul>
-        </div>
         </div>
     </div>
 </div>
 <pre class="prettyprint linenums">
-&lt;div class="navbar"&gt;
-  &lt;div class="navbar-header"&gt;
+&lt;div class="navbar navbar-light navbar-expand-lg"&gt;
     &lt;a class="navbar-brand" href="#"&gt;Title&lt;/a&gt;
-    &lt;ul class="nav"&gt;
-      &lt;li class="active"&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href="#"&gt;Link&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href="#"&gt;Link&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
+    &lt;div class="collapse navbar-collapse"&gt;
+        &lt;ul class="navbar-nav mr-auto"&gt;
+          &lt;li class="nav-item active"&gt;&lt;a class="nav-link" href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
+          &lt;li class="nav-item"&gt;&lt;a class="nav-link" href="#"&gt;Link&lt;/a&gt;&lt;/li&gt;
+          &lt;li class="nav-item"&gt;&lt;a class="nav-link" href="#"&gt;Link&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 </pre>
@@ -961,12 +999,8 @@
 <p>A simple link to show your brand or project name only requires an anchor tag.</p>
 
 <div class="bs-docs-example">
-    <div class="navbar">
-        <div class="container">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">Title</a>
-        </div>
-        </div>
+    <div class="navbar navbar-light navbar-expand-lg">
+        <a class="navbar-brand" href="#">Title</a>
     </div>
 </div>
 <pre class="prettyprint linenums">
@@ -978,25 +1012,23 @@
 <p>Nav items are simple to add via unordered lists.</p>
 
 <div class="bs-docs-example">
-    <div class="navbar">
-        <div class="container">
-        <div class="navbar-header">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#">Link</a></li>
-                <li><a href="#">Link</a></li>
+    <div class="navbar navbar-light navbar-expand-lg">
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+                <li class="nav-item"><a href="#">Link</a></li>
+                <li class="nav-item"><a href="#">Link</a></li>
             </ul>
-        </div>
         </div>
     </div>
 </div>
 <pre class="prettyprint linenums">
-&lt;ul class="nav navbar-nav"&gt;
-  &lt;li class="active"&gt;
-    &lt;a href="#">Home&lt;/a&gt;
+&lt;ul class="navbar-nav"&gt;
+  &lt;li class="nav-item"&gt;
+    &lt;a class="nav-link active" href="#">Home&lt;/a&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;a href="#"&gt;Link&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="#"&gt;Link&lt;/a&gt;&lt;/li&gt;
+  &lt;li class="nav-item&gt;&lt;a class="nav-link" href="#"&gt;Link&lt;/a&gt;&lt;/li&gt;
+  &lt;li class="nav-item&gt;&lt;a class="nav-link" href="#"&gt;Link&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </pre>
 
@@ -1005,19 +1037,17 @@
 <p>To properly style and position a form within the navbar, add the appropriate classes as shown below. For a default form, include <code>.navbar-form</code> and either <code>.pull-left</code> or <code>.pull-right</code> to properly align it.</p>
 
 <div class="bs-docs-example">
-    <div class="navbar">
-        <div class="container">
-        <div class="navbar-header">
-            <form class="navbar-form pull-left">
+    <div class="navbar navbar-light navbar-expand-lg">
+        <div class="collapse navbar-collapse">
+            <form class="form-inline pull-left">
                 <input type="text" class="form-control">
                 <button type="submit" class="btn">Submit</button>
             </form>
         </div>
-        </div>
     </div>
 </div>
 <pre class="prettyprint linenums">
-&lt;form class="navbar-form pull-left"&gt;
+&lt;form class="form-inline pull-left"&gt;
   &lt;input type="text" class="form-control"&gt;
   &lt;button type="submit" class="btn"&gt;Submit&lt;/button&gt;
 &lt;/form&gt;
@@ -1028,18 +1058,16 @@
 <p>For a more customized search form, add <code>.navbar-search</code> to the <code>form</code> and <code>.search-query</code> to the input for specialized styles in the navbar.</p>
 
 <div class="bs-docs-example">
-    <div class="navbar">
-        <div class="container">
-        <div class="navbar-header">
-            <form class="navbar-search pull-left">
+    <div class="navbar navbar-light navbar-expand-lg">
+        <div class="collapse navbar-collapse">
+            <form class="form-inline pull-left">
                 <input type="text" class="search-query" placeholder="Search">
             </form>
-        </div>
         </div>
     </div>
 </div>
 <pre class="prettyprint linenums">
-&lt;form class="navbar-search pull-left"&gt;
+&lt;form class="form-inline pull-left"&gt;
   &lt;input type="text" class="search-query" placeholder="Search"&gt;
 &lt;/form&gt;
 </pre>
@@ -1053,10 +1081,9 @@
 <p>Add dropdowns and dropups to the nav with a bit of markup and the <a href="./javascript.html#dropdowns">dropdowns JavaScript plugin</a>.</p>
 <pre class="prettyprint linenums">
 &lt;ul class="nav"&gt;
-  &lt;li class="dropdown"&gt;
-    &lt;a href="#" class="dropdown-toggle" data-toggle="dropdown">
+  &lt;li class="nav-item dropdown"&gt;
+    &lt;a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
       Account
-      &lt;b class="caret"&gt;&lt;/b&gt;
     &lt;/a&gt;
     &lt;ul class="dropdown-menu"&gt;
       ...
@@ -1074,84 +1101,72 @@
 <hr class="bs-docs-separator">
 
 
-<h2>Optional display variations</h2>
+<h2>Optional display types</h2>
 
 <p>Fix the navbar to the top or bottom of the viewport with an additional class on the outermost div, <code>.navbar</code>.</p>
 
 <h3>Fixed to top</h3>
 
-<p>Add <code>.navbar-fixed-top</code> and remember to account for the hidden area underneath it by adding at least 40px <code>padding</code> to the <code>&lt;body&gt;</code>. Be sure to add this after the core Bootstrap CSS and before the optional responsive CSS.</p>
+<p>Add <code>.fixed-top</code> and remember to account for the hidden area underneath it by adding at least 40px <code>padding</code> to the <code>&lt;body&gt;</code>. Be sure to add this after the core Bootstrap CSS and before the optional responsive CSS.</p>
 
 <div class="bs-docs-example bs-navbar-top-example">
-    <div class="navbar navbar-fixed-top" style="position: absolute;">
-        <div class="container">
-        <div class="navbar-header">
-            <div class="container" style="width: auto; padding: 0 20px;">
-                <a class="navbar-brand" href="#">Title</a>
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#">Link</a></li>
-                    <li><a href="#">Link</a></li>
-                </ul>
-            </div>
-        </div>
+    <div class="navbar navbar-light navbar-expand-lg fixed-top" style="position: absolute;">
+        <a class="navbar-brand" href="#">Title</a>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+            </ul>
         </div>
     </div>
 </div>
 <pre class="prettyprint linenums">
-&lt;div class="navbar navbar-fixed-top"&gt;
+&lt;div class="navbar navbar-light navbar-expand-lg fixed-top"&gt;
   ...
 &lt;/div&gt;
 </pre>
 
 <h3>Fixed to bottom</h3>
 
-<p>Add <code>.navbar-fixed-bottom</code> instead.</p>
+<p>Add <code>.fixed-bottom</code> instead.</p>
 
 <div class="bs-docs-example bs-navbar-bottom-example">
-    <div class="navbar navbar-fixed-bottom" style="position: absolute;">
-        <div class="container">
-        <div class="navbar-header">
-            <div class="container" style="width: auto; padding: 0 20px;">
-                <a class="navbar-brand" href="#">Title</a>
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#">Link</a></li>
-                    <li><a href="#">Link</a></li>
-                </ul>
-            </div>
-        </div>
+    <div class="navbar navbar-light navbar-expand-lg fixed-bottom" style="position: absolute;">
+        <a class="navbar-brand" href="#">Title</a>
+        <div class="collapse navbar-collapse" style="width: auto; padding: 0 20px;">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+            </ul>
         </div>
     </div>
 </div>
 <pre class="prettyprint linenums">
-&lt;div class="navbar navbar-fixed-bottom"&gt;
+&lt;div class="navbar navbar-light navbar-expand-lg fixed-bottom"&gt;
   ...
 &lt;/div&gt;
 </pre>
 
-<h3>Static top navbar</h3>
+<h3>Sticky top navbar</h3>
 
-<p>Create a full-width navbar that scrolls away with the page by adding <code>.navbar-static-top</code>. Unlike the <code>.navbar-fixed-top</code> class, you do not need to change any padding on the <code>body</code>.</p>
+<p>Create a full-width navbar that scrolls away with the page by adding <code>.navbar-static-top</code>. Unlike the <code>.sticky-top</code> class, you do not need to change any padding on the <code>body</code>.</p>
 
 <div class="bs-docs-example bs-navbar-top-example">
-    <div class="navbar navbar-static-top" style="margin: -1px -1px 0;">
-        <div class="container">
-        <div class="navbar-header">
-            <div class="container" style="width: auto; padding: 0 20px;">
-                <a class="navbar-brand" href="#">Title</a>
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#">Link</a></li>
-                    <li><a href="#">Link</a></li>
-                </ul>
-            </div>
-        </div>
+    <div class="navbar navbar-light navbar-expand-lg sticky-top" style="margin: -1px -1px 0;">
+        <a class="navbar-brand" href="#">Title</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+            </ul>
         </div>
     </div>
 </div>
 <pre class="prettyprint linenums">
-&lt;div class="navbar navbar-static-top"&gt;
+&lt;div class="navbar navbar-light navbar-expand-lg sticky-top"&gt;
   ...
 &lt;/div&gt;
 </pre>
@@ -1165,82 +1180,62 @@
 <p>To implement a collapsing responsive navbar, wrap your navbar content in a containing div, <code>.nav-collapse.collapse</code>, and add the navbar toggle button, <code>.navbar-toggle</code>.</p>
 
 <div class="bs-docs-example">
-    <div class="navbar">
-        <div class="container">
-        <div class="navbar-header">
-            <div class="container">
-                <button type="button" class="btn navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">Title</a>
+    <div class="navbar navbar-light navbar-expand-lg">
+        <button type="button" class="btn navbar-toggler" data-toggle="collapse" data-target=".navbar-responsive-collapse"></button>
+        <a class="navbar-brand" href="#">Title</a>
+        <div class="collapse navbar-collapse">
 
-                <div class="navbar-collapse collapse navbar-responsive-collapse">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Home</a></li>
-                        <li><a href="#">Link</a></li>
-                        <li><a href="#">Link</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
-                                <li class="divider"></li>
-                                <li class="nav-header">Nav header</li>
-                                <li><a href="#">Separated link</a></li>
-                                <li><a href="#">One more separated link</a></li>
-                            </ul>
-                        </li>
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Dropdown</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        <li></li>
+                        <li class="nav-header">Nav header</li>
+                        <li><a class="dropdown-item" href="#">Separated link</a></li>
+                        <li><a class="dropdown-item" href="#">One more separated link</a></li>
                     </ul>
-                    <form class="navbar-search pull-left" action="">
-                        <input type="text" class="search-query form-control" placeholder="Search">
-                    </form>
-                    <ul class="nav pull-right">
-                        <li><a href="#">Link</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
-                            </ul>
-                        </li>
+                </li>
+            </ul>
+            <form class="form-inline pull-left" action="">
+                <input type="text" class="search-query form-control" placeholder="Search">
+            </form>
+
+            <ul class="navbar-nav navbar-right">
+                <li><a href="#">Link</a></li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Dropdown</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        <li class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Separated link</a></li>
                     </ul>
-                </div>
-                <!-- /.navbar-collapse -->
-            </div>
-        </div>
-        <!-- /navbar-header -->
+                </li>
+            </ul>
         </div>
     </div>
-    <!-- /navbar -->
 </div>
 <pre class="prettyprint linenums">
 &lt;div class="navbar"&gt;
-  &lt;div class="navbar-header"&gt;
-    &lt;div class="container"&gt;
 
       &lt;!-- .navbar-toggle is used as the toggle for collapsed navbar content --&gt;
-      &lt;a class="btn navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"&gt;
-        &lt;span class="icon-bar"&gt;&lt;/span&gt;
-        &lt;span class="icon-bar"&gt;&lt;/span&gt;
-        &lt;span class="icon-bar"&gt;&lt;/span&gt;
-      &lt;/a&gt;
+      &lt;a class="btn navbar-toggler" data-toggle="collapse" data-target=".navbar-collapse"&gt;&lt;/a&gt;
 
       &lt;!-- Be sure to leave the brand out there if you want it shown --&gt;
       &lt;a class="navbar-brand" href="#"&gt;Project name&lt;/a&gt;
 
       &lt;!-- Everything you want hidden at 940px or less, place within here --&gt;
-      &lt;div class="navbar-collapse collapse"&gt;
-        &lt;!-- .nav, .navbar-search, .navbar-form, etc --&gt;
+      &lt;div class="collapse navbar-collapse"&gt;
+        &lt;!-- .nav,  etc --&gt;
       &lt;/div&gt;
 
-    &lt;/div&gt;
-  &lt;/div&gt;
 &lt;/div&gt;
 </pre>
 <div class="alert alert-info">
@@ -1251,67 +1246,55 @@
 <hr class="bs-docs-separator">
 
 
-<h2>Inverted variation</h2>
+<h2>Inverted type</h2>
 
-<p>Modify the look of the navbar by adding <code>.navbar-inverse</code>.</p>
+<p>Modify the look of the navbar by adding <code>.navbar-dark</code> and background utility class.</p>
 
 <div class="bs-docs-example">
-    <div class="navbar navbar-inverse" style="position: static;">
-        <div class="container">
-        <div class="navbar-header">
-            <div class="container">
-                <a class="btn navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </a>
-                <a class="navbar-brand" href="#">Title</a>
+    <div class="navbar navbar-expand-lg navbar-dark bg-dark" style="position: static;">
+        <a class="btn navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse"></a>
+        <a class="navbar-brand" href="#">Title</a>
 
-                <div class="navbar-collapse collapse navbar-inverse-collapse">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Home</a></li>
-                        <li><a href="#">Link</a></li>
-                        <li><a href="#">Link</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
-                                <li class="divider"></li>
-                                <li class="nav-header">Nav header</li>
-                                <li><a href="#">Separated link</a></li>
-                                <li><a href="#">One more separated link</a></li>
-                            </ul>
-                        </li>
+        <div class="navbar-collapse collapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Dropdown</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        <li class="dropdown-divider"></li>
+                        <li class="nav-header">Nav header</li>
+                        <li><a class="dropdown-item" href="#">Separated link</a></li>
+                        <li><a class="dropdown-item" href="#">One more separated link</a></li>
                     </ul>
-                    <form class="navbar-search pull-left" action="">
-                        <input type="text" class="search-query form-control" placeholder="Search">
-                    </form>
-                    <ul class="nav pull-right">
-                        <li><a href="#">Link</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
-                            </ul>
-                        </li>
+                </li>
+            </ul>
+            <form class="navbar-search pull-left" action="">
+                <input type="text" class="search-query form-control" placeholder="Search">
+            </form>
+            <ul class="nav pull-right">
+                <li class="nav-item"><a href="#">Link</a></li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Dropdown</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        <li class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Separated link</a></li>
                     </ul>
-                </div>
-                <!-- /.navbar-collapse -->
-            </div>
-        </div>
-        <!-- /navbar-header -->
+                </li>
+            </ul>
         </div>
     </div>
     <!-- /navbar -->
 </div>
 <pre class="prettyprint linenums">
-&lt;div class="navbar navbar-inverse"&gt;
+&lt;div class="navbar navbar-expand-lg navbar-dark bg-dark"&gt;
   ...
 &lt;/div&gt;
 </pre>
@@ -1322,7 +1305,7 @@
 <!-- Breadcrumbs
 ================================================== -->
 <section id="breadcrumbs">
-    <div class="page-header">
+    <div class="pb-2 mt-4 mb-2 border-bottom">
         <h1>Breadcrumbs
             <small></small>
         </h1>
@@ -1333,25 +1316,33 @@
     <p>A single example shown as it might be displayed across multiple pages.</p>
 
     <div class="bs-docs-example">
-        <ul class="breadcrumb">
-            <li class="active">Home</li>
-        </ul>
-        <ul class="breadcrumb">
-            <li><a href="#">Home</a></li>
-            <li class="active">Library</li>
-        </ul>
-        <ul class="breadcrumb" style="margin-bottom: 5px;">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Library</a></li>
-            <li class="active">Data</li>
-        </ul>
+        <nav>
+            <ul class="breadcrumb">
+                <li class="breadcrumb-item active">Home</li>
+            </ul>
+        </nav>
+        <nav>
+            <ul class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item active">Library</li>
+            </ul>
+        </nav>
+        <nav>
+            <ul class="breadcrumb" style="margin-bottom: 5px;">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="#">Library</a></li>
+                <li class="breadcrumb-item active">Data</li>
+            </ul>
+        </nav>
     </div>
 <pre class="prettyprint linenums">
-&lt;ul class="breadcrumb"&gt;
-  &lt;li&gt;&lt;a href="#"&gt;Home&lt;/a&gt; &lt;span class="divider"&gt;/&lt;/span&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="#"&gt;Library&lt;/a&gt; &lt;span class="divider"&gt;/&lt;/span&gt;&lt;/li&gt;
-  &lt;li class="active"&gt;Data&lt;/li&gt;
-&lt;/ul&gt;
+&lt;nav&gt;
+    &lt;ul class="breadcrumb"&gt;
+      &lt;li class="breadcrumb-item"&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
+      &lt;li class="breadcrumb-item"&gt;&lt;a href="#"&gt;Library&lt;/a&gt;&lt;/li&gt;
+      &lt;li class="breadcrumb-item active"&gt;Data&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;
 </pre>
 
 </section>
@@ -1360,10 +1351,8 @@
 <!-- Pagination
 ================================================== -->
 <section id="pagination">
-<div class="page-header">
-    <h1>Pagination
-        <small>Two options for paging through content</small>
-    </h1>
+<div class="pb-2 mt-4 mb-2 border-bottom">
+    <h1>Pagination</h1>
 </div>
 
 <h2>Standard pagination</h2>
@@ -1372,23 +1361,23 @@
 
 <div class="bs-docs-example">
     <ul class="pagination">
-        <li><a href="#">&laquo;</a></li>
-        <li><a href="#">1</a></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li><a href="#">4</a></li>
-        <li><a href="#">5</a></li>
-        <li><a href="#">&raquo;</a></li>
+        <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item"><a class="page-link" href="#">4</a></li>
+        <li class="page-item"><a class="page-link" href="#">5</a></li>
+        <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
     </ul>
 </div>
 <pre class="prettyprint linenums">
 &lt;ul class="pagination"&gt;
-&lt;li&gt;&lt;a href="#"&gt;Prev&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#"&gt;1&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#"&gt;2&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#"&gt;3&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#"&gt;4&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#"&gt;Next&lt;/a&gt;&lt;/li&gt;
+&lt;li class="page-item" &gt;&lt;a class="page-link" href="#"&gt;Prev&lt;/a&gt;&lt;/li&gt;
+&lt;li class="page-item" &gt;&lt;a class="page-link" href="#"&gt;1&lt;/a&gt;&lt;/li&gt;
+&lt;li class="page-item" &gt;&lt;a class="page-link" href="#"&gt;2&lt;/a&gt;&lt;/li&gt;
+&lt;li class="page-item" &gt;&lt;a class="page-link" href="#"&gt;3&lt;/a&gt;&lt;/li&gt;
+&lt;li class="page-item" &gt;&lt;a class="page-link" href="#"&gt;4&lt;/a&gt;&lt;/li&gt;
+&lt;li class="page-item" &gt;&lt;a class="page-link" href="#"&gt;Next&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </pre>
 
@@ -1404,27 +1393,27 @@
 
 <div class="bs-docs-example">
     <ul class="pagination">
-        <li class="disabled"><a href="#">&laquo;</a></li>
-        <li class="active"><a href="#">1</a></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li><a href="#">4</a></li>
-        <li><a href="#">5</a></li>
-        <li><a href="#">&raquo;</a></li>
+        <li class="page-item disabled"><a class="page-link" href="#">&laquo;</a></li>
+        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item"><a class="page-link" href="#">4</a></li>
+        <li class="page-item"><a class="page-link" href="#">5</a></li>
+        <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
     </ul>
 </div>
 <pre class="prettyprint linenums">
 &lt;ul class="pagination"&gt;
-  &lt;li class="disabled"&gt;&lt;a href="#"&gt;Prev&lt;/a&gt;&lt;/li&gt;
-  &lt;li class="active"&gt;&lt;a href="#"&gt;1&lt;/a&gt;&lt;/li&gt;
+  &lt;li class="page-item disabled"&gt;&lt;a class="page-link" href="#"&gt;Prev&lt;/a&gt;&lt;/li&gt;
+  &lt;li class="page-item active"&gt;&lt;a class="page-link" href="#"&gt;1&lt;/a&gt;&lt;/li&gt;
   ...
 &lt;/ul&gt;
 </pre>
 <p>You can optionally swap out active or disabled anchors for spans to remove click functionality while retaining intended styles.</p>
 <pre class="prettyprint linenums">
 &lt;ul class="pagination"&gt;
-  &lt;li class="disabled"&gt;&lt;span&gt;Prev&lt;/span&gt;&lt;/li&gt;
-  &lt;li class="active"&gt;&lt;span&gt;1&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="page-item disabled"&gt;&lt;span class="page-link"&gt;Prev&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="page-item active"&gt;&lt;span class="page-link"&gt;1&lt;/span&gt;&lt;/li&gt;
   ...
 &lt;/ul&gt;
 </pre>
@@ -1436,35 +1425,35 @@
 <div class="bs-docs-example">
     <div>
         <ul class="pagination pagination-lg">
-            <li><a href="#">&laquo;</a></li>
-            <li><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
-            <li><a href="#">&raquo;</a></li>
+            <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">4</a></li>
+            <li class="page-item"><a class="page-link" href="#">5</a></li>
+            <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
         </ul>
     </div>
     <div >
         <ul class="pagination">
-            <li><a href="#">&laquo;</a></li>
-            <li><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
-            <li><a href="#">&raquo;</a></li>
+            <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">4</a></li>
+            <li class="page-item"><a class="page-link" href="#">5</a></li>
+            <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
         </ul>
     </div>
     <div>
         <ul class="pagination pagination-sm">
-            <li><a href="#">&laquo;</a></li>
-            <li><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
-            <li><a href="#">&raquo;</a></li>
+            <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">4</a></li>
+            <li class="page-item"><a class="page-link" href="#">5</a></li>
+            <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
         </ul>
     </div>
 </div>
@@ -1485,219 +1474,81 @@
   &lt;/ul&gt;
 &lt;/div&gt;
 </pre>
-
-
-<hr class="bs-docs-separator">
-
-
-<h2>Pager</h2>
-
-<p>Quick previous and next links for simple pagination implementations with light markup and styles. It's great for simple sites like blogs or magazines.</p>
-
-<h3>Default example</h3>
-
-<p>By default, the pager centers links.</p>
-
-<div class="bs-docs-example">
-    <ul class="pager">
-        <li><a href="#">Previous</a></li>
-        <li><a href="#">Next</a></li>
-    </ul>
-</div>
-<pre class="prettyprint linenums">
-&lt;ul class="pager"&gt;
-  &lt;li&gt;&lt;a href="#"&gt;Previous&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="#"&gt;Next&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</pre>
-
-<h3>Aligned links</h3>
-
-<p>Alternatively, you can align each link to the sides:</p>
-
-<div class="bs-docs-example">
-    <ul class="pager">
-        <li class="previous"><a href="#">&larr; Older</a></li>
-        <li class="next"><a href="#">Newer &rarr;</a></li>
-    </ul>
-</div>
-<pre class="prettyprint linenums">
-&lt;ul class="pager"&gt;
-  &lt;li class="previous"&gt;
-    &lt;a href="#"&gt;&amp;larr; Older&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li class="next"&gt;
-    &lt;a href="#"&gt;Newer &amp;rarr;&lt;/a&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-</pre>
-
-<h3>Optional disabled state</h3>
-
-<p>Pager links also use the general <code>.disabled</code> utility class from the pagination.</p>
-
-<div class="bs-docs-example">
-    <ul class="pager">
-        <li class="previous disabled"><a href="#">&larr; Older</a></li>
-        <li class="next"><a href="#">Newer &rarr;</a></li>
-    </ul>
-</div>
-<pre class="prettyprint linenums">
-&lt;ul class="pager"&gt;
-  &lt;li class="previous disabled"&gt;
-    &lt;a href="#"&gt;&amp;larr; Older&lt;/a&gt;
-  &lt;/li&gt;
-  ...
-&lt;/ul&gt;
-</pre>
-
 </section>
 
 
 <!-- Labels and badges
 ================================================== -->
 <section id="labels-badges">
-    <div class="page-header">
-        <h1>Labels and badges</h1>
+    <div class="pb-2 mt-4 mb-2 border-bottom">
+        <h1>Badges</h1>
+        <p>Badges are our small count and labeling components.</p>
     </div>
-    <h3>Labels</h3>
+
     <table class="table table-bordered table-striped">
         <thead>
-            <tr>
-                <th>Labels</th>
-                <th>Markup</th>
-            </tr>
+        <tr>
+            <th>Example</th>
+            <th>Markup</th>
+        </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>
-                    <span wicket:id="defaultLabel">[Default]</span>
-                </td>
-                <td>
-                    <code>&lt;span class="label"&gt;Default&lt;/span&gt;</code>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span wicket:id="primaryLabel">[Primary]</span>
-                </td>
-                <td>
-                    <code>&lt;span class="label label-primary"&gt;Primary&lt;/span&gt;</code>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span wicket:id="successLabel">[Success]</span>
-                </td>
-                <td>
-                    <code>&lt;span class="label label-success"&gt;Success&lt;/span&gt;</code>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span wicket:id="warningLabel">[Warning]</span>
-                </td>
-                <td>
-                    <code>&lt;span class="label label-warning"&gt;Warning&lt;/span&gt;</code>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span wicket:id="infoLabel">[Info]</span>
-                </td>
-                <td>
-                    <code>&lt;span class="label label-info"&gt;Info&lt;/span&gt;</code>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span wicket:id="dangerLabel">[Danger]</span>
-                </td>
-                <td>
-                    <code>&lt;span class="label label-danger"&gt;Danger&lt;/span&gt;</code>
-                </td>
-            </tr>
+        <tr wicket:id="badges">
+            <td>
+                <span wicket:id="badge">1</span>
+            </td>
+            <td>
+                <code wicket:id="code">&lt;span class="badge"&gt;1&lt;/span&gt;</code>
+            </td>
+        </tr>
         </tbody>
     </table>
 
-    <h3>Badges</h3>
+    <h3>Pills</h3>
+
+    <p>
+        Use the <code>.badge-pill</code> modifier class to make badges more rounded (with a larger <code>border-radius</code> and additional horizontal <code>padding</code>).
+        Useful if you miss the badges from v3.
+    </p>
+
     <table class="table table-bordered table-striped">
         <thead>
-            <tr>
-                <th>Name</th>
-                <th>Example</th>
-                <th>Markup</th>
-            </tr>
+        <tr>
+            <th>Name</th>
+            <th>Example</th>
+            <th>Markup</th>
+        </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>
-                    Default
-                </td>
-                <td>
-                    <span class="badge">1</span>
-                </td>
-                <td>
-                    <code>&lt;span class="badge"&gt;1&lt;/span&gt;</code>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Success
-                </td>
-                <td>
-                    <span class="badge badge-success">2</span>
-                </td>
-                <td>
-                    <code>&lt;span class="badge badge-success"&gt;2&lt;/span&gt;</code>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Warning
-                </td>
-                <td>
-                    <span class="badge badge-warning">4</span>
-                </td>
-                <td>
-                    <code>&lt;span class="badge badge-warning"&gt;4&lt;/span&gt;</code>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Important
-                </td>
-                <td>
-                    <span class="badge badge-important">6</span>
-                </td>
-                <td>
-                    <code>&lt;span class="badge badge-important"&gt;6&lt;/span&gt;</code>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Info
-                </td>
-                <td>
-                    <span class="badge badge-info">8</span>
-                </td>
-                <td>
-                    <code>&lt;span class="badge badge-info"&gt;8&lt;/span&gt;</code>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Inverse
-                </td>
-                <td>
-                    <span class="badge badge-inverse">10</span>
-                </td>
-                <td>
-                    <code>&lt;span class="badge badge-inverse"&gt;10&lt;/span&gt;</code>
-                </td>
-            </tr>
+        <tr wicket:id="badge-pills">
+            <td wicket:id="name">Default</td>
+            <td>
+                <span wicket:id="badge">1</span>
+            </td>
+            <td>
+                <code wicket:id="code">&lt;span class="badge"&gt;1&lt;/span&gt;</code>
+            </td>
+        </tr>
         </tbody>
     </table>
+
+    <div class="bs-docs-example">
+        <p>Badges can be used as part of links or buttons to provide a counter.</p>
+
+        <div class="mb-2 p-2">
+            <a href="#" wicket:id="button-with-badge">
+                Submit <span wicket:id="badge"></span>
+                <span class="sr-only">unread messages</span>
+            </a>
+        </div>
+
+        <pre class="prettyprint linenum">
+            &lt;button wicket:id="badge-button"&gt;
+                Submit &lt;span wicket:id="button-count"&gt;&lt;/span&gt;
+                &lt;span class="sr-only"&gt;unread messages&lt;/span&gt;
+            &lt;/button&gt;
+        </pre>
+    </div>
 
 </section>
 
@@ -1705,7 +1556,7 @@
 <!-- Typographic components
 ================================================== -->
 <section id="typography">
-    <div class="page-header">
+    <div class="pb-2 mt-4 mb-2 border-bottom">
         <h1>Typographic components</h1>
     </div>
 
@@ -1739,14 +1590,14 @@
     <p>A simple shell for an <code>h1</code> to appropriately space out and segment sections of content on a page. It can utilize the <code>h1</code>'s default <code>small</code>, element as well most other components (with additional styles).</p>
 
     <div class="bs-docs-example">
-        <div class="page-header">
+        <div class="pb-2 mt-4 mb-2 border-bottom">
             <h1>Example page header
                 <small>Subtext for header</small>
             </h1>
         </div>
     </div>
 <pre class="prettyprint linenums">
-&lt;div class="page-header"&gt;
+&lt;div class="pb-2 mt-4 mb-2 border-bottom"&gt;
   &lt;h1&gt;Example page header &lt;small&gt;Subtext for header&lt;/small&gt;&lt;/h1&gt;
 &lt;/div&gt;
 </pre>
@@ -1757,7 +1608,7 @@
 <!-- Thumbnails
 ================================================== -->
 <section id="thumbnails">
-    <div class="page-header">
+    <div class="pb-2 mt-4 mb-2 border-bottom">
         <h1>Thumbnails
             <small>Grids of images, videos, text, and more</small>
         </h1>
@@ -1912,7 +1763,7 @@
 <!-- Alerts
 ================================================== -->
 <section id="alerts">
-    <div class="page-header">
+    <div class="pb-2 mt-4 mb-2 border-bottom">
         <h1>Alerts
             <small>Styles for success, warning, and error messages</small>
         </h1>
@@ -2004,7 +1855,7 @@
 <!-- Progress bars
 ================================================== -->
 <section id="progress">
-    <div class="page-header">
+    <div class="pb-2 mt-4 mb-2 border-bottom">
         <h1>Progress bars
             <small>For loading, redirecting, or action status</small>
         </h1>
@@ -2033,23 +1884,23 @@
         <div wicket:id="striped"></div>
     </div>
 <pre class="prettyprint linenums">
-&lt;div class="progress progress-striped"&gt;
-  &lt;div class="progress-bar" style="width: 20%;"&gt;&lt;/div&gt;
+&lt;div class="progress"&gt;
+  &lt;div class="progress-bar progress-bar-striped" style="width: 20%;"&gt;&lt;/div&gt;
 &lt;/div&gt;
 </pre>
 
     <h3>Animated</h3>
 
-    <p>Add <code>.active</code> to <code>.progress-striped</code> to animate the stripes right to left. Not available in all versions of IE.</p>
+    <p>Add <code>.progress-bar-animated</code> to <code>.progress-bar-striped</code> to animate the stripes right to left. Not available in all versions of IE.</p>
 
     <div class="bs-docs-example">
         <div wicket:id="animated"></div>
     </div>
-<pre class="prettyprint linenums">
-&lt;div class="progress progress-striped active"&gt;
-  &lt;div class="progress-bar" style="width: 40%;"&gt;&lt;/div&gt;
+    <pre class="prettyprint linenums">
+&lt;div class="progress"&gt;
+  &lt;div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 40%;"&gt;&lt;/div&gt;
 &lt;/div&gt;
-</pre>
+    </pre>
 
     <h3>Labeled</h3>
 
@@ -2073,9 +1924,9 @@
     </div>
 <pre class="prettyprint linenums">
 &lt;div class="progress"&gt;
-  &lt;div class="progress-bar progress-bar-success" style="width: 35%;"&gt;&lt;/div&gt;
-  &lt;div class="progress-bar progress-bar-warning" style="width: 20%;"&gt;&lt;/div&gt;
-  &lt;div class="progress-bar progress-bar-danger" style="width: 10%;"&gt;&lt;/div&gt;
+  &lt;div class="progress-bar bg-success" style="width: 35%;"&gt;&lt;/div&gt;
+  &lt;div class="progress-bar bg-warning" style="width: 20%;"&gt;&lt;/div&gt;
+  &lt;div class="progress-bar bg-danger" style="width: 10%;"&gt;&lt;/div&gt;
 &lt;/div&gt;
 </pre>
 
@@ -2087,7 +1938,7 @@
 
     <h3>Additional colors</h3>
 
-    <p>Progress bars use some of the same button and alert classes for consistent styles.</p>
+    <p>Progress bars use background color utility classes for consistent styles.</p>
 
     <div class="bs-docs-example">
         <div wicket:id="coloredInfo" style="margin-bottom: 9px;"></div>
@@ -2097,16 +1948,16 @@
     </div>
 <pre class="prettyprint linenums">
 &lt;div class="progress"&gt;
-  &lt;div class="progress-bar progress-bar-info" style="width: 20%"&gt;&lt;/div&gt;
+  &lt;div class="progress-bar bg-info" style="width: 20%"&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="progress"&gt;
-  &lt;div class="progress-bar progress-bar-success" style="width: 40%"&gt;&lt;/div&gt;
+  &lt;div class="progress-bar bg-success" style="width: 40%"&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="progress"&gt;
-  &lt;div class="progress-bar progress-bar-warning" style="width: 60%"&gt;&lt;/div&gt;
+  &lt;div class="progress-bar bg-warning" style="width: 60%"&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="progress"&gt;
-  &lt;div class="progress-bar progress-bar-danger" style="width: 80%"&gt;&lt;/div&gt;
+  &lt;div class="progress-bar bg-danger" style="width: 80%"&gt;&lt;/div&gt;
 &lt;/div&gt;
 </pre>
 
@@ -2115,31 +1966,31 @@
     <p>Similar to the solid colors, we have varied striped progress bars.</p>
 
     <div class="bs-docs-example">
-        <div class="progress progress-striped" style="margin-bottom: 9px;">
-            <div class="progress-bar progress-bar-info " style="width: 20%"></div>
+        <div class="progress" style="margin-bottom: 9px;">
+            <div class="progress-bar progress-bar-striped bg-info " style="width: 20%"></div>
         </div>
-        <div class="progress progress-striped" style="margin-bottom: 9px;">
-            <div class="progress-bar progress-bar-success" style="width: 40%"></div>
+        <div class="progress" style="margin-bottom: 9px;">
+            <div class="progress-bar progress-bar-striped bg-success" style="width: 40%"></div>
         </div>
-        <div class="progress progress-striped" style="margin-bottom: 9px;">
-            <div class="progress-bar progress-bar-warning" style="width: 60%"></div>
+        <div class="progress" style="margin-bottom: 9px;">
+            <div class="progress-bar progress-bar-striped bg-warning" style="width: 60%"></div>
         </div>
-        <div class="progress progress-striped">
-            <div class="progress-bar progress-bar-danger" style="width: 80%"></div>
+        <div class="progress">
+            <div class="progress-bar progress-bar-striped bg-danger" style="width: 80%"></div>
         </div>
     </div>
 <pre class="prettyprint linenums">
-&lt;div class="progress progress-striped"&gt;
-  &lt;div class="progress-bar progress-bar-info" style="width: 20%"&gt;&lt;/div&gt;
+&lt;div class="progress"&gt;
+  &lt;div class="progress-bar progress-bar-striped bg-info" style="width: 20%"&gt;&lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="progress progress-striped"&gt;
-  &lt;div class="progress-bar progress-bar-success" style="width: 40%"&gt;&lt;/div&gt;
+&lt;div class="progress"&gt;
+  &lt;div class="progress-bar progress-bar-striped bg-success" style="width: 40%"&gt;&lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="progress progress-striped"&gt;
-  &lt;div class="progress-bar progress-bar-warning" style="width: 60%"&gt;&lt;/div&gt;
+&lt;div class="progress"&gt;
+  &lt;div class="progress-bar progress-bar-striped bg-warning" style="width: 60%"&gt;&lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="progress progress-striped"&gt;
-  &lt;div class="progress-bar progress-bar-danger" style="width: 80%"&gt;&lt;/div&gt;
+&lt;div class="progress"&gt;
+  &lt;div class="progress-bar progress-bar-striped bg-danger" style="width: 80%"&gt;&lt;/div&gt;
 &lt;/div&gt;
 </pre>
 
@@ -2168,7 +2019,7 @@
 <!-- Media object
 ================================================== -->
 <section id="media">
-    <div class="page-header">
+    <div class="pb-2 mt-4 mb-2 border-bottom">
         <h1>Media object</h1>
     </div>
     <p class="lead">Abstract object styles for building various types of components (like blog comments, Tweets, etc) that feature a left- or right-aligned image alongside textual content.</p>
@@ -2317,7 +2168,7 @@
 <!-- Miscellaneous
 ================================================== -->
 <section id="misc">
-    <div class="page-header">
+    <div class="pb-2 mt-4 mb-2 border-bottom">
         <h1>Miscellaneous
             <small>Lightweight utility components</small>
         </h1>

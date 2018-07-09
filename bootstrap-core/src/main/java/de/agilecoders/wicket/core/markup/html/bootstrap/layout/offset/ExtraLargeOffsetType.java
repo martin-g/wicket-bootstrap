@@ -1,10 +1,9 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.layout.offset;
 
 /**
- * Offsets for large desktops.
+ * @author Jan Ferko
  */
 public enum ExtraLargeOffsetType implements OffsetType {
-
     OFFSET0,
     OFFSET1, OFFSET2, OFFSET3, OFFSET4,
     OFFSET5, OFFSET6, OFFSET7, OFFSET8,
@@ -21,7 +20,6 @@ public enum ExtraLargeOffsetType implements OffsetType {
 
     @Override
     public String cssClassName() {
-        return equals(OFFSET0) ? "" : "col-lg-offset-" + cssClassName.replace("offset", "");
+        return equals(OFFSET0) ? "" : "offset-xl-" + cssClassName.replace("offset", "");
     }
-
 }

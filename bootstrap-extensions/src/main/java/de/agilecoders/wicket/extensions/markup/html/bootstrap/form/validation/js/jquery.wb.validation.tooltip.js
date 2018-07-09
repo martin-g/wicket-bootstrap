@@ -13,10 +13,7 @@
      * @param message error message
      */
     $.wb_validation.showError = function ($element, $messageTarget, message) {
-        $messageTarget.tooltip($.extend(this.config, {
-            title: message,
-            trigger: 'manual'
-        })).tooltip('show');
+        $messageTarget.after('<p class="validation validation-message invalid-tooltip">' + message + '</p>');
     };
 
     /**
@@ -24,6 +21,6 @@
      * @param $messageTarget element for message
      */
     $.wb_validation.hideError = function ($element, $messageTarget) {
-        $messageTarget.tooltip('destroy');
+        $messageTarget.next().remove();
     };
 })(jQuery);

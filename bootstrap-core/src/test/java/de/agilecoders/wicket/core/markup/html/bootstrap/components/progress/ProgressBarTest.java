@@ -6,6 +6,7 @@ import org.apache.wicket.util.tester.TagTester;
 import org.junit.Test;
 
 import de.agilecoders.wicket.core.WicketApplicationTest;
+import de.agilecoders.wicket.core.markup.html.bootstrap.utilities.BackgroundColorBehavior;
 
 /**
  * Tests for ProgressBar
@@ -32,7 +33,7 @@ public class ProgressBarTest extends WicketApplicationTest {
 
     @Test
     public void animatedBarIsAlwaysStripped() {
-        ProgressBar progressBar = new ProgressBar(id());
+        ProgressBar progressBar = new ProgressBar(id(), Model.of(1));
         progressBar.active(true);
 
         assertTrue(progressBar.striped());
@@ -43,15 +44,15 @@ public class ProgressBarTest extends WicketApplicationTest {
         tester().getApplication().getMarkupSettings().setStripWicketTags(true);
         String markupId = "progressBar";
         int progress = 23;
-        ProgressBar progressBar = new ProgressBar(id(), Model.of(progress), ProgressBar.Type.DANGER);
+        ProgressBar progressBar = new ProgressBar(id(), Model.of(progress), BackgroundColorBehavior.Color.Danger);
         progressBar.setMarkupId(markupId);
         progressBar.active(true);
 
         startComponentInPage(progressBar);
 //        System.err.println("RES:\n" + tester().getLastResponseAsString());
         TagTester progressBarTester = tester().getTagById(markupId);
-        assertEquals("progress active progress-striped", progressBarTester.getAttribute("class"));
-        TagTester stackTester = progressBarTester.getChild("class", "progress-bar progress-bar-danger");
+        assertEquals("progress", progressBarTester.getAttribute("class"));
+        TagTester stackTester = progressBarTester.getChild("class", "progress-bar progress-bar-active progress-bar-striped bg-danger");
         assertEquals("progressbar", stackTester.getAttribute("role"));
         assertEquals("width: "+progress+"%", stackTester.getAttribute("style"));
         assertEquals("" + progress, stackTester.getAttribute("aria-valuenow"));

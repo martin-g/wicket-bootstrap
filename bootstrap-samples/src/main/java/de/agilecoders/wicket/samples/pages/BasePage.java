@@ -9,12 +9,14 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.MenuBook
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.MenuDivider;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.MenuHeader;
 import de.agilecoders.wicket.core.markup.html.bootstrap.html.*;
-import de.agilecoders.wicket.core.markup.html.bootstrap.image.GlyphIconType;
 import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.*;
+import de.agilecoders.wicket.core.markup.html.bootstrap.utilities.BackgroundColorBehavior;
 import de.agilecoders.wicket.core.markup.html.references.BootlintHeaderItem;
 import de.agilecoders.wicket.core.markup.html.references.RespondJavaScriptReference;
 import de.agilecoders.wicket.core.settings.IBootstrapSettings;
 import de.agilecoders.wicket.core.settings.ITheme;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeCssReference;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeIconType;
 import de.agilecoders.wicket.samples.WicketApplication;
 import de.agilecoders.wicket.samples.assets.base.ApplicationJavaScript;
 import de.agilecoders.wicket.samples.assets.base.DocsCssResourceReference;
@@ -96,22 +98,23 @@ abstract class BasePage extends GenericWebPage<Void> {
      * @return a new {@link Navbar} instance
      */
     protected Navbar newNavbar(String markupId) {
-        Navbar navbar = new Navbar(markupId);
-
-        navbar.setPosition(Navbar.Position.TOP);
-        navbar.setInverted(true);
+        Navbar navbar = new Navbar(markupId)
+                .setPosition(Navbar.Position.TOP)
+                .setInverted(true)
+                .setBackgroundColor(BackgroundColorBehavior.Color.Dark);
 
         // show brand name
         navbar.setBrandName(Model.of("Wicket Bootstrap"));
 
         navbar.addComponents(NavbarComponents.transform(Navbar.ComponentPosition.LEFT,
-                        new NavbarButton<Void>(HomePage.class, Model.of("Overview")).setIconType(GlyphIconType.home),
+                        new NavbarButton<Void>(HomePage.class, Model.of("Overview")).setIconType(FontAwesomeIconType.home),
                         new NavbarButton<Void>(BaseCssPage.class, Model.of("Base CSS")),
                         new NavbarButton<Void>(ComponentsPage.class, Model.of("Components")),
+                        new NavbarButton<Void>(UtilitiesPage.class, Model.of("Utilities")),
                         new NavbarExternalLink(Model.of("https://github.com/l0rdn1kk0n/wicket-bootstrap"))
                                 .setLabel(Model.of("Github"))
                                 .setTarget(BootstrapExternalLink.Target.blank)
-                                .setIconType(GlyphIconType.export),
+                                .setIconType(FontAwesomeIconType.upload),
                         newAddonsDropDownButton(),
                         newExamplesDropDownButton())
         );
@@ -141,7 +144,7 @@ abstract class BasePage extends GenericWebPage<Void> {
 
                 return subMenu;
             }
-        }.setIconType(GlyphIconType.book);
+        }.setIconType(FontAwesomeIconType.book);
 
         navbar.addComponents(new ImmutableNavbarComponent(dropdown, Navbar.ComponentPosition.RIGHT));
 
@@ -173,23 +176,23 @@ abstract class BasePage extends GenericWebPage<Void> {
             protected List<AbstractLink> newSubMenuButtons(String buttonMarkupId) {
                 final List<AbstractLink> subMenu = new ArrayList<>();
 
-                subMenu.add(new MenuBookmarkablePageLink<Void>(Javascript.class, Model.of("Javascript")).setIconType(GlyphIconType.refresh));
-                subMenu.add(new MenuBookmarkablePageLink<Void>(DatePickerPage.class, Model.of("DatePicker")).setIconType(GlyphIconType.time));
-                subMenu.add(new MenuBookmarkablePageLink<Void>(SliderPage.class, Model.of("Slider")).setIconType(GlyphIconType.screenshot));
-                subMenu.add(new MenuBookmarkablePageLink<Void>(DatetimePickerPage.class, Model.of("DateTimePicker")).setIconType(GlyphIconType.time));
-                subMenu.add(new MenuBookmarkablePageLink<Void>(SelectPage.class, Model.of("SelectPicker")).setIconType(GlyphIconType.search));
-                subMenu.add(new MenuBookmarkablePageLink<Void>(IssuesPage.class, Model.of("Github Issues")).setIconType(GlyphIconType.book));
-                subMenu.add(new MenuBookmarkablePageLink<Void>(ExtensionsPage.class, Model.of("Extensions")).setIconType(GlyphIconType.alignjustify));
-                subMenu.add(new MenuBookmarkablePageLink<Void>(ExtensionsBootstrapFileInputPage.class, Model.of("Extensions - Bootstrap FileInput")).setIconType(GlyphIconType.alignjustify));
-                subMenu.add(new MenuBookmarkablePageLink<Void>(FontAwesomePage.class, Model.of("Font Awesome")).setIconType(GlyphIconType.font));
-                subMenu.add(new MenuBookmarkablePageLink<Void>(XEditablePage.class, Model.of("X-Editable")).setIconType(GlyphIconType.pencil));
-                subMenu.add(new MenuBookmarkablePageLink<Void>(TooltipValidationPage.class, Model.of("Validation")).setIconType(GlyphIconType.okcircle));
-                subMenu.add(new MenuBookmarkablePageLink<Void>(SummernotePage.class, Model.of("Summernote")).setIconType(GlyphIconType.edit));
-                subMenu.add(new MenuBookmarkablePageLink<Void>(MarkdownPage.class, Model.of("Markdown")).setIconType(GlyphIconType.edit));
-                subMenu.add(new MenuBookmarkablePageLink<Void>(CheckboxesPage.class, Model.of("Checkboxes and Toggles")).setIconType(GlyphIconType.check));
+                subMenu.add(new MenuBookmarkablePageLink<Void>(Javascript.class, Model.of("Javascript")).setIconType(FontAwesomeIconType.refresh));
+                subMenu.add(new MenuBookmarkablePageLink<Void>(DatePickerPage.class, Model.of("DatePicker")).setIconType(FontAwesomeIconType.clock_o));
+                subMenu.add(new MenuBookmarkablePageLink<Void>(SliderPage.class, Model.of("Slider")).setIconType(FontAwesomeIconType.picture_o));
+                subMenu.add(new MenuBookmarkablePageLink<Void>(DatetimePickerPage.class, Model.of("DateTimePicker")).setIconType(FontAwesomeIconType.clock_o));
+                subMenu.add(new MenuBookmarkablePageLink<Void>(SelectPage.class, Model.of("SelectPicker")).setIconType(FontAwesomeIconType.search));
+                subMenu.add(new MenuBookmarkablePageLink<Void>(IssuesPage.class, Model.of("Github Issues")).setIconType(FontAwesomeIconType.book));
+                subMenu.add(new MenuBookmarkablePageLink<Void>(ExtensionsPage.class, Model.of("Extensions")).setIconType(FontAwesomeIconType.align_justify));
+                subMenu.add(new MenuBookmarkablePageLink<Void>(ExtensionsBootstrapFileInputPage.class, Model.of("Extensions - Bootstrap FileInput")).setIconType(FontAwesomeIconType.align_justify));
+                subMenu.add(new MenuBookmarkablePageLink<Void>(FontAwesomePage.class, Model.of("Font Awesome")).setIconType(FontAwesomeIconType.font));
+                subMenu.add(new MenuBookmarkablePageLink<Void>(XEditablePage.class, Model.of("X-Editable")).setIconType(FontAwesomeIconType.pencil));
+                subMenu.add(new MenuBookmarkablePageLink<Void>(TooltipValidationPage.class, Model.of("Validation")).setIconType(FontAwesomeIconType.check_circle));
+                subMenu.add(new MenuBookmarkablePageLink<Void>(SummernotePage.class, Model.of("Summernote")).setIconType(FontAwesomeIconType.edit));
+                subMenu.add(new MenuBookmarkablePageLink<Void>(MarkdownPage.class, Model.of("Markdown")).setIconType(FontAwesomeIconType.edit));
+                subMenu.add(new MenuBookmarkablePageLink<Void>(CheckboxesPage.class, Model.of("Checkboxes and Toggles")).setIconType(FontAwesomeIconType.check));
                 return subMenu;
             }
-        }.setIconType(GlyphIconType.thlarge);
+        }.setIconType(FontAwesomeIconType.th_large);
     }
 
     /**
@@ -226,6 +229,7 @@ abstract class BasePage extends GenericWebPage<Void> {
 //        response.render(CssHeaderItem.forReference(FixBootstrapStylesCssResourceReference.INSTANCE));
         response.render(new FilteredHeaderItem(JavaScriptHeaderItem.forReference(ApplicationJavaScript.INSTANCE), "footer-container"));
         response.render(RespondJavaScriptReference.headerItem());
+        response.render(CssHeaderItem.forReference(FontAwesomeCssReference.instance()));
 
         if ("google".equalsIgnoreCase(activeTheme().name())) {
             response.render(CssHeaderItem.forReference(DocsCssResourceReference.GOOGLE));

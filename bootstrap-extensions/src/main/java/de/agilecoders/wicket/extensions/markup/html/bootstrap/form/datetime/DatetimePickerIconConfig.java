@@ -1,7 +1,7 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.form.datetime;
 
-import de.agilecoders.wicket.core.markup.html.bootstrap.image.GlyphIconType;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeIconType;
 import de.agilecoders.wicket.jquery.AbstractConfig;
 import de.agilecoders.wicket.jquery.IKey;
 
@@ -15,10 +15,10 @@ public class DatetimePickerIconConfig extends AbstractConfig {
 
     private static final long serialVersionUID = 1L;
 
-    private static final IKey<String> Up = newKey("up", GlyphIconType.arrowup.cssClassName());
-    private static final IKey<String> Down = newKey("down", GlyphIconType.arrowdown.cssClassName());
-    private static final IKey<String> Date = newKey("date", GlyphIconType.calendar.cssClassName());
-    private static final IKey<String> Time = newKey("time", GlyphIconType.time.cssClassName());
+    private static final IKey<String> Up = newKey("up", FontAwesomeIconType.arrow_up.cssClassName());
+    private static final IKey<String> Down = newKey("down", FontAwesomeIconType.arrow_down.cssClassName());
+    private static final IKey<String> Date = newKey("date", FontAwesomeIconType.calendar.cssClassName());
+    private static final IKey<String> Time = newKey("time", FontAwesomeIconType.times.cssClassName());
 
     /**
      * @param up up icon type

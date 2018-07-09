@@ -19,11 +19,17 @@ public class ImageBehavior extends BootstrapBaseBehavior {
      * Holder class for all possible border types
      */
     public enum Type implements ICssClassNameProvider {
-        Rounded, Circle, Polaroid, Default;
+        Rounded("rounded"), Circle("rounded-circle"), Thumbnail("img-thumbnail"), Responsive("img-fluid"), Default("");
+
+        private final String cssClass;
+
+        private Type(String cssClass) {
+            this.cssClass = cssClass;
+        }
 
         @Override
         public String cssClassName() {
-            return equals(Default) ? "" : "img-" + name().toLowerCase();
+            return cssClass;
         }
 
     }

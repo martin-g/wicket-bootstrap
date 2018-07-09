@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
+import de.agilecoders.wicket.core.settings.DefaultThemeProvider;
 import net.ftlines.wicketsource.WicketSource;
 
 import org.apache.wicket.Application;

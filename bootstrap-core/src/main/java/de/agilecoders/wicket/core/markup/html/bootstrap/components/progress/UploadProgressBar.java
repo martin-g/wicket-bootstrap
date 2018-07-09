@@ -11,6 +11,7 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.resource.ResourceReference;
 
+import de.agilecoders.wicket.core.markup.html.bootstrap.utilities.BackgroundColorBehavior;
 import de.agilecoders.wicket.core.util.Attributes;
 
 /**
@@ -20,12 +21,12 @@ import de.agilecoders.wicket.core.util.Attributes;
 public class UploadProgressBar extends org.apache.wicket.extensions.ajax.markup.html.form.upload.UploadProgressBar {
 
     /**
-     * The color type of the stack
+     * The color of the stack
      */
-    private ProgressBar.Type type = ProgressBar.Type.DEFAULT;
+    private BackgroundColorBehavior backgroundColorBehavior = BackgroundColorBehavior.secondary();
 
     /**
-     * A flag indicating whether the progress bar is animated/active.
+     * A flag indicating whether the progress bar is active/active.
      */
     private boolean active = false;
 
@@ -98,12 +99,12 @@ public class UploadProgressBar extends org.apache.wicket.extensions.ajax.markup.
         return this;
     }
 
-    public ProgressBar.Type type() {
-        return type;
+    public BackgroundColorBehavior.Color color() {
+        return backgroundColorBehavior.getColor();
     }
 
-    public UploadProgressBar type(ProgressBar.Type type) {
-        this.type = type;
+    public UploadProgressBar color(BackgroundColorBehavior.Color color) {
+        this.backgroundColorBehavior.color(color);
         return this;
     }
 
@@ -114,9 +115,15 @@ public class UploadProgressBar extends org.apache.wicket.extensions.ajax.markup.
             protected void onComponentTag(ComponentTag tag) {
                 super.onComponentTag(tag);
 
-                if (!ProgressBar.Type.DEFAULT.equals(type)) {
-                    Attributes.addClass(tag, type().cssClassName());
+                if (striped()) {
+                    Attributes.addClass(tag, "progress-bar-striped");
                 }
+
+                if (active()) {
+                    Attributes.addClass(tag, "progress-bar-active");
+                }
+
+                Attributes.addClass(tag, color().cssClassName());
 
                 tag.put("style", createStyleValue().getObject());
             }
@@ -176,8 +183,10 @@ public class UploadProgressBar extends org.apache.wicket.extensions.ajax.markup.
     protected void onComponentTag(ComponentTag tag) {
         super.onComponentTag(tag);
 
-        ProgressBar.internalOnComponentTag(tag, active(), striped());
+        ProgressBar.internalOnComponentTag(tag);
     }
+
+
 
     @Override
     public void renderHead(IHeaderResponse response) {

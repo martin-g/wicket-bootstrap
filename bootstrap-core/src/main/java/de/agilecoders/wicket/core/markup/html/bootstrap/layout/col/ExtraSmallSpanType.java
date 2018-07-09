@@ -14,7 +14,7 @@ public enum ExtraSmallSpanType implements SpanType {
      * Constructor.
      */
     private ExtraSmallSpanType() {
-        this.cssClassName = "col-xs-" + name().toLowerCase().replace("span", "");
+        this.cssClassName = "col-" + name().toLowerCase().replace("span", "");
     }
 
     @Override
