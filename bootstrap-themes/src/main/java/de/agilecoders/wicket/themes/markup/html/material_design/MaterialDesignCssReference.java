@@ -27,7 +27,6 @@ public class MaterialDesignCssReference extends CssResourceReference {
     public List<HeaderItem> getDependencies() {
         List<HeaderItem> dependencies = new ArrayList<HeaderItem>();
         dependencies.add(CssHeaderItem.forReference(Bootstrap.getSettings().getCssResourceReference()));
-        dependencies.add(CssHeaderItem.forReference(new CssResourceReference(MaterialDesignCssReference.class, "css/ripples.css")));
         return dependencies;
     }
 }
