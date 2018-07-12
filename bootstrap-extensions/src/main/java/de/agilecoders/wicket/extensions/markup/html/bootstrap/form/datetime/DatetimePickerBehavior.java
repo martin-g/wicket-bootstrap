@@ -8,8 +8,10 @@ import org.apache.wicket.behavior.Behavior;
 import org.apache.wicket.core.request.handler.IPartialPageRequestHandler;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.event.IEvent;
+import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.head.IHeaderResponse;
 
+import de.agilecoders.wicket.core.util.Attributes;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.references.DatetimePickerCssReference;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.references.DatetimePickerJsReference;
 import de.agilecoders.wicket.jquery.function.AbstractFunction;
@@ -54,6 +56,13 @@ public class DatetimePickerBehavior extends BootstrapJavascriptBehavior {
         response.render(DatetimePickerCssReference.asHeaderItem());
         response.render(DatetimePickerJsReference.asHeaderItem());
         response.render($(component).chain("datetimepicker", config).asDomReadyScript());
+    }
+
+    @Override
+    public void onComponentTag(Component component, ComponentTag tag) {
+        super.onComponentTag(component, tag);
+        Attributes.set(tag, "data-target", "#" + component.getMarkupId());
+        Attributes.set(tag, "data-toggle", "datetimepicker");
     }
 
     @Override

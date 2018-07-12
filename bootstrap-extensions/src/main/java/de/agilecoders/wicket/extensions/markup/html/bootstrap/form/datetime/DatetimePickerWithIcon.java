@@ -1,10 +1,14 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.form.datetime;
 
+import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.CssClassNameAppender;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.Icon;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
+import de.agilecoders.wicket.core.util.Attributes;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeIconType;
 
 import org.apache.wicket.Component;
+import org.apache.wicket.MarkupContainer;
+import org.apache.wicket.behavior.AttributeAppender;
 import org.apache.wicket.extensions.markup.html.form.DateTextField;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.panel.Panel;
@@ -51,14 +55,16 @@ public class DatetimePickerWithIcon extends Panel {
     @Override
     protected void onInitialize() {
         super.onInitialize();
+        Component input = newInput("date", config.getFormat()).add(new DatetimePickerBehavior(config));
+        Component iconContainer = newIconContainer("iconContainer")
+                .add(newIcon("icon"))
+                .add(
+                    new AttributeAppender("data-target", "#" + input.getMarkupId())
+                );
+
+
         add(new WebMarkupContainer("dateWrapper")
-                .add(
-                    newInput("date", config.getFormat()),
-                    newIcon("icon")
-                )
-                .add(
-                    new DatetimePickerBehavior(config)
-                )
+                .add(input, iconContainer)
         );
     }
 
@@ -84,6 +90,16 @@ public class DatetimePickerWithIcon extends Panel {
             field.add(config.newMaskBehavior());
         }
         return field;
+    }
+
+    /**
+     * Creates new container for icon.
+     *
+     * @param wicketId wicket component id
+     * @return container for icon component
+     */
+    protected MarkupContainer newIconContainer(String wicketId) {
+        return new WebMarkupContainer(wicketId);
     }
 
     /**
