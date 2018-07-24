@@ -16,10 +16,11 @@
     <properties>
         <jqueryui.version>1.11.4</jqueryui.version>
         <typeaheadjs.version>0.10.4</typeaheadjs.version>
-        <x-editable.version>1.5.1</x-editable.version>
+        <inputmask.version>4.0.0</inputmask.version>
         <spin-js.version>2.1.0</spin-js.version>
         <animate.css.version>3.3.0</animate.css.version>
         <summernote.version>0.8.9</summernote.version>
+
     </properties>
 
     <dependencies>
@@ -104,9 +105,9 @@
         </dependency>
 
         <dependency>
-            <groupId>org.webjars</groupId>
-            <artifactId>x-editable-bootstrap</artifactId>
-            <version>${x-editable.version}</version>
+            <groupId>org.webjars.npm</groupId>
+            <artifactId>inputmask</artifactId>
+            <version>${inputmask.version}</version>
         </dependency>
 
         <dependency>

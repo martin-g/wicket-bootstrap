@@ -180,12 +180,10 @@ abstract class BasePage extends GenericWebPage<Void> {
                 subMenu.add(new MenuBookmarkablePageLink<Void>(DatePickerPage.class, Model.of("DatePicker")).setIconType(FontAwesomeIconType.clock_o));
                 subMenu.add(new MenuBookmarkablePageLink<Void>(SliderPage.class, Model.of("Slider")).setIconType(FontAwesomeIconType.picture_o));
                 subMenu.add(new MenuBookmarkablePageLink<Void>(DatetimePickerPage.class, Model.of("DateTimePicker")).setIconType(FontAwesomeIconType.clock_o));
-                subMenu.add(new MenuBookmarkablePageLink<Void>(SelectPage.class, Model.of("SelectPicker")).setIconType(FontAwesomeIconType.search));
                 subMenu.add(new MenuBookmarkablePageLink<Void>(IssuesPage.class, Model.of("Github Issues")).setIconType(FontAwesomeIconType.book));
                 subMenu.add(new MenuBookmarkablePageLink<Void>(ExtensionsPage.class, Model.of("Extensions")).setIconType(FontAwesomeIconType.align_justify));
                 subMenu.add(new MenuBookmarkablePageLink<Void>(ExtensionsBootstrapFileInputPage.class, Model.of("Extensions - Bootstrap FileInput")).setIconType(FontAwesomeIconType.align_justify));
                 subMenu.add(new MenuBookmarkablePageLink<Void>(FontAwesomePage.class, Model.of("Font Awesome")).setIconType(FontAwesomeIconType.font));
-                subMenu.add(new MenuBookmarkablePageLink<Void>(XEditablePage.class, Model.of("X-Editable")).setIconType(FontAwesomeIconType.pencil));
                 subMenu.add(new MenuBookmarkablePageLink<Void>(TooltipValidationPage.class, Model.of("Validation")).setIconType(FontAwesomeIconType.check_circle));
                 subMenu.add(new MenuBookmarkablePageLink<Void>(SummernotePage.class, Model.of("Summernote")).setIconType(FontAwesomeIconType.edit));
                 subMenu.add(new MenuBookmarkablePageLink<Void>(MarkdownPage.class, Model.of("Markdown")).setIconType(FontAwesomeIconType.edit));
@@ -252,7 +250,7 @@ abstract class BasePage extends GenericWebPage<Void> {
      */
     private Component newNavigation(String markupId) {
         WebMarkupContainer navigation = new WebMarkupContainer(markupId);
-        navigation.add(new AffixBehavior("200"));
+        //navigation.add(new AffixBehavior("200"));
         navigation.setVisible(hasNavigation());
 
         return navigation;

@@ -1,6 +1,5 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.markdown;
 
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.fileUpload.DropZoneConfig;
 import de.agilecoders.wicket.jquery.AbstractConfig;
 import de.agilecoders.wicket.jquery.IKey;
 
@@ -31,7 +30,6 @@ public class MarkdownConfig extends AbstractConfig {
     static final IKey<String> Height = newKey("height", null);
     static final IKey<Resize> _Resize = newKey("resize", Resize.none);
     static final IKey<IconLibrary> _IconLibrary = newKey("iconlibrary", IconLibrary.glyph);
-    static final IKey<DropZoneConfig> DropZoneOptions = newKey("dropZoneOptions", null);
 
     public MarkdownConfig() {
         put(_IconLibrary, IconLibrary.fa);
@@ -96,17 +94,6 @@ public class MarkdownConfig extends AbstractConfig {
      */
     public MarkdownConfig withIconLibrary(IconLibrary iconLibrary) {
         put(_IconLibrary, iconLibrary);
-        return this;
-    }
-
-    /**
-     * @param dropZoneOptions
-     *            Enables integration with DropZone for allowing file upload/linking via drag&drop.
-     *            The options are directly passed to the DropZone library. Valid options are described {@link DropZoneConfig here}.
-     * @return current instance
-     */
-    public MarkdownConfig withDropZoneOptions(DropZoneConfig dropZoneOptions) {
-        put(DropZoneOptions, dropZoneOptions);
         return this;
     }
 }

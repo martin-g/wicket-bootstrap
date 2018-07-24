@@ -94,8 +94,8 @@ public class DataTablePage extends BasePage {
                 final Component component = super.getFilter(componentId, form);
                 if (component instanceof BootstrapSelectFilter) {
                     final BootstrapSelectFilter selectFilter = (BootstrapSelectFilter) component;
+                    selectFilter.getChoice().setNullValid(true);
                     // change none selected to an empty string
-                    selectFilter.getChoice().config().withNoneSelectedText("");
                 }
                 return component;
             }

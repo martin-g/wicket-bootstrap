@@ -44,7 +44,7 @@ public class TooltipValidationPage extends BaseValidationPage {
 
     @Override
     protected SimpleFormPanel newSimpleFormPanel(String wicketId) {
-        return super.newSimpleFormPanel(wicketId).withSelect();
+        return super.newSimpleFormPanel(wicketId);
     }
 
 
