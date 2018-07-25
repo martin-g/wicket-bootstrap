@@ -1,7 +1,6 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.tabs;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
-import de.agilecoders.wicket.core.util.Attributes;
 
 import org.apache.wicket.extensions.markup.html.tabs.ITab;
 import org.apache.wicket.extensions.markup.html.tabs.TabbedPanel;
@@ -17,16 +16,10 @@ import java.util.List;
  */
 public class BootstrapTabbedPanel<T extends ITab> extends TabbedPanel<T> {
 
-    /**
-     * {@inheritDoc}
-     */
     public BootstrapTabbedPanel(String id, List<T> tabs) {
         this(id, tabs, null);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public BootstrapTabbedPanel(String id, List<T> tabs, IModel<Integer> model) {
         super(id, tabs, model);
 
@@ -38,7 +31,6 @@ public class BootstrapTabbedPanel<T extends ITab> extends TabbedPanel<T> {
         super.onComponentTag(tag);
 
         checkComponentTag(tag, "div");
-        Attributes.addClass(tag, "tabbable");
     }
 
     @Override
