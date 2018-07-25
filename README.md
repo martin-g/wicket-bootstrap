@@ -4,9 +4,14 @@ WICKET COMPONENTS FOR BOOTSTRAP
 [![Join the chat at https://gitter.im/l0rdn1kk0n/wicket-bootstrap](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/l0rdn1kk0n/wicket-bootstrap?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 Wicket-Bootstrap is based on the Bootstrap toolkit and the Apache Wicket Framework.<br>
-Current build status: [![Build Status](https://buildhive.cloudbees.com/job/l0rdn1kk0n/job/wicket-bootstrap/badge/icon)](https://buildhive.cloudbees.com/job/l0rdn1kk0n/job/wicket-bootstrap/) [![Build Status](https://travis-ci.org/l0rdn1kk0n/wicket-bootstrap.png?branch=master)](https://travis-ci.org/l0rdn1kk0n/wicket-bootstrap)
+Current build status: [![Build Status](https://buildhive.cloudbees.com/job/l0rdn1kk0n/job/wicket-bootstrap/badge/icon)](https://buildhive.cloudbees.com/job/l0rdn1kk0n/job/wicket-bootstrap/) [![Build Status](https://travis-ci.org/l0rdn1kk0n/wicket-bootstrap.png?branch=wicket-8.x-bootstrap-4.x)](https://travis-ci.org/l0rdn1kk0n/wicket-bootstrap)
 
-[![Coverage Status](https://img.shields.io/coveralls/l0rdn1kk0n/wicket-bootstrap.svg)](https://coveralls.io/r/l0rdn1kk0n/wicket-bootstrap)
+| Branch | Build | Coverage |
+| ------ | ----- | -------- |
+| wicket-8.x-bootstrap-4.x | [![Build Status](https://travis-ci.org/l0rdn1kk0n/wicket-bootstrap.png?branch=wicket-8.x-bootstrap-4.x)](https://travis-ci.org/l0rdn1kk0n/wicket-bootstrap/tree/wicket-8.x-bootstrap-4.x) | [![Coverage Status](https://coveralls.io/repos/github/l0rdn1kk0n/wicket-bootstrap/badge.svg?branch=wicket-8.x-bootstrap-4.x)](https://coveralls.io/github/l0rdn1kk0n/wicket-bootstrap?branch=wicket-8.x-bootstrap-4.x) |
+| wicket-8.x | [![Build Status](https://travis-ci.org/l0rdn1kk0n/wicket-bootstrap.png?branch=wicket-8.x)](https://travis-ci.org/l0rdn1kk0n/wicket-bootstrap/tree/wicket-8.x) | [![Coverage Status](https://coveralls.io/repos/github/l0rdn1kk0n/wicket-bootstrap/badge.svg?branch=wicket-8.x)](https://coveralls.io/github/l0rdn1kk0n/wicket-bootstrap?branch=wicket-8.x) |
+| wicket-7.x | [![Build Status](https://travis-ci.org/l0rdn1kk0n/wicket-bootstrap.png?branch=wicket-7.x)](https://travis-ci.org/l0rdn1kk0n/wicket-bootstrap/tree/wicket-7.x) | [![Coverage Status](https://coveralls.io/repos/github/l0rdn1kk0n/wicket-bootstrap/badge.svg?branch=wicket-7.x)](https://coveralls.io/github/l0rdn1kk0n/wicket-bootstrap?branch=wicket-7.x) |
+| master | [![Build Status](https://travis-ci.org/l0rdn1kk0n/wicket-bootstrap.png?branch=master)](https://travis-ci.org/l0rdn1kk0n/wicket-bootstrap/tree/master) | [![Coverage Status](https://coveralls.io/repos/github/l0rdn1kk0n/wicket-bootstrap/badge.svg?branch=master)](https://coveralls.io/github/l0rdn1kk0n/wicket-bootstrap?branch=master) |
 
 [![Issue Stats](http://www.issuestats.com/github/l0rdn1kk0n/wicket-bootstrap/badge/issue?style=flat)](http://www.issuestats.com/github/l0rdn1kk0n/wicket-bootstrap)
 [![Issue Stats](http://www.issuestats.com/github/l0rdn1kk0n/wicket-bootstrap/badge/pr?style=flat)](http://www.issuestats.com/github/l0rdn1kk0n/wicket-bootstrap)
