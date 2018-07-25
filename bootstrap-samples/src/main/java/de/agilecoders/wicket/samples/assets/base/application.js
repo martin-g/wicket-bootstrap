@@ -14,16 +14,6 @@
             e.preventDefault()
         });
 
-        // side bar
-        $('.bs-docs-sidenav').affix({
-            offset:{
-                top:function () {
-                    return $window.width() <= 980 ? 290 : 210
-                },
-                bottom:270
-            }
-        });
-
         // add-ons
         $('.add-on :checkbox').on('click', function () {
             var $this = $(this),
