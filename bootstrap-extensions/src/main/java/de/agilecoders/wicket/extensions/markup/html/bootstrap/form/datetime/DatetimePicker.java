@@ -64,11 +64,11 @@ public class DatetimePicker extends DateTextField {
         this(id, model, config.getFormat());
         this.config = config;
     }
-    
+
     @Override
     public void renderHead(IHeaderResponse response) {
     	super.renderHead(response);
-    	String scriptTemplate = "$('#%1$s').on('dp.change', function(){ $('#%1$s').trigger('change'); })";
+    	String scriptTemplate = "$('#%1$s').on('change.datetimepicker', function(){ $('#%1$s').trigger('change'); })";
     	CharSequence markupId = Strings2.getMarkupId(this);
     	response.render(OnDomReadyHeaderItem.forScript(String.format(scriptTemplate, markupId)));
     }

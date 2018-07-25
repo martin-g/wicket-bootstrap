@@ -42,6 +42,7 @@ import org.wicketstuff.annotation.mount.MountPath;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * The {@code BaseCssPage}
@@ -163,7 +164,9 @@ public class Javascript extends BasePage {
         Bloodhound<String> bloodhound = new Bloodhound<String>("remote") {
             @Override
             public Iterable<String> getChoices(String input) {
-                return dataSource;
+                return dataSource.stream()
+                        .filter(state -> state.toLowerCase().contains(input.toLowerCase()))
+                        .collect(Collectors.toList());
             }
 
             @Override

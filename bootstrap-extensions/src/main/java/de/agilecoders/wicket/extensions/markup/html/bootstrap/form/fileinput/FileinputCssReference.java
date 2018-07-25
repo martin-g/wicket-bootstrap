@@ -7,6 +7,6 @@ class FileinputCssReference extends CssResourceReference {
     public static final FileinputCssReference INSTANCE = new FileinputCssReference();
 
     private FileinputCssReference() {
-        super(FileinputCssReference.class, "res/fileinput.css");
+        super(FileinputCssReference.class, "res/css/fileinput.css");
     }
 }

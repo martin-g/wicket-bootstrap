@@ -3,24 +3,18 @@ package de.agilecoders.wicket.samples.pages;
 import com.google.common.collect.Lists;
 import de.agilecoders.wicket.core.markup.html.bootstrap.block.Code;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons;
-import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.DropDownButton;
-import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.MenuBookmarkablePageLink;
 import de.agilecoders.wicket.core.markup.html.bootstrap.common.NotificationPanel;
 import de.agilecoders.wicket.core.markup.html.bootstrap.components.TooltipConfig;
 import de.agilecoders.wicket.core.markup.html.bootstrap.dialog.Modal;
 import de.agilecoders.wicket.core.markup.html.bootstrap.dialog.TextContentModal;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.Icon;
-import de.agilecoders.wicket.extensions.javascript.jasny.InputMaskBehavior;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.behavior.AnimatedBehavior;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.behavior.AnimatedBehavior.Animation;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.behavior.Draggable;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.behavior.DraggableConfig;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.behavior.Resizable;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.button.DropDownAutoOpen;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.confirmation.ConfirmationBehavior;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.confirmation.ConfirmationConfig;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.contextmenu.ButtonListContextMenu;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.fileUpload.DropZoneFileUpload;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.password.strength.PasswordStrengthBehavior;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.password.strength.PasswordStrengthConfig;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.rating.RatingConfig;
@@ -31,23 +25,20 @@ import de.agilecoders.wicket.extensions.markup.html.bootstrap.html5player.Html5P
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.html5player.Html5VideoConfig;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.html5player.Video;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeCssReference;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeIconType;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.OpenWebIconType;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.OpenWebIconsCssReference;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.inputmask.InputMaskBehavior;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.jqueryui.JQueryUICssReference;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.ladda.LaddaAjaxButton;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.ladda.LaddaAjaxLink;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.ladda.LaddaBehavior;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.tour.TourBehavior;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.tour.TourStep;
-import org.apache.commons.fileupload.FileItem;
-import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
-import org.apache.wicket.markup.html.TransparentWebMarkupContainer;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Form;
@@ -55,7 +46,6 @@ import org.apache.wicket.markup.html.form.PasswordTextField;
 import org.apache.wicket.markup.html.form.RequiredTextField;
 import org.apache.wicket.markup.html.form.StatelessForm;
 import org.apache.wicket.markup.html.form.TextField;
-import org.apache.wicket.markup.html.link.AbstractLink;
 import org.apache.wicket.markup.repeater.RepeatingView;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.model.ResourceModel;
@@ -67,7 +57,6 @@ import org.slf4j.LoggerFactory;
 import org.wicketstuff.annotation.mount.MountPath;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * The {@code ExtensionsPage}
@@ -116,38 +105,6 @@ public class ExtensionsPage extends BasePage {
                         + "\tnew Html5VideoConfig().showProgressBar(false).autoHideControlBar(false))\n"
                         + "\t\t.setWidth(680).setHeight(360));")));
 
-        final List<AbstractLink> buttons = Lists
-                .<AbstractLink> newArrayList(
-                        new MenuBookmarkablePageLink<Void>(
-                                DatePickerPage.class, Model.of("DatePicker"))
-                                .setIconType(FontAwesomeIconType.calendar),
-                        new MenuBookmarkablePageLink<Void>(IssuesPage.class,
-                                Model.of("Github Issues"))
-                                .setIconType(FontAwesomeIconType.book),
-                        new MenuBookmarkablePageLink<Void>(
-                                ExtensionsPage.class, Model.of("Extensions"))
-                                .setIconType(FontAwesomeIconType.qrcode));
-        final Component contextPanel = new TransparentWebMarkupContainer(
-                "context-panel");
-        final ButtonListContextMenu contextMenu = new ButtonListContextMenu(
-                "contextmenu", Model.ofList(buttons));
-
-        contextMenu.assignTo(contextPanel);
-        add(contextMenu,
-                contextPanel,
-                new Code(
-                        "context-code",
-                        Model.of(""
-                                + "final List<? extends AbstractLink> buttons = Lists.<AbstractLink>newArrayList(\n"
-                                + "\tnew MenuBookmarkablePageLink<>(...),\n"
-                                + "\t[...]\n"
-                                + ");\n"
-                                + "final Component contextPanel = new TransparentWebMarkupContainer(\"context-panel\");\n"
-                                + "final ButtonListContextMenu contextMenu = new ButtonListContextMenu(\"contextmenu\", \n"
-                                + "\t\tModel.ofList(buttons));\n"
-                                + "contextMenu.assignTo(contextPanel);\n"
-                                + "add(contextMenu, contextPanel,")));
-
         Modal<String> draggableModal = new TextContentModal(
                 "draggable-modal",
                 Model.of("Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.")) {
@@ -172,24 +129,6 @@ public class ExtensionsPage extends BasePage {
         draggableModal.addOpenerAttributesTo(draggableButton);
         add(draggableModal, draggableButton, new Code("draggable-code", Model.of("")));
 
-        DropDownButton dropDownButton = new DropDownButton("dropdown", Model.of("open-on-hover")) {
-            @Override
-            protected List<AbstractLink> newSubMenuButtons(String buttonMarkupId) {
-            return Lists.<AbstractLink> newArrayList(
-                new MenuBookmarkablePageLink<Void>(DatePickerPage.class, Model.of("DatePicker"))
-                    .setIconType(FontAwesomeIconType.calendar),
-                    new MenuBookmarkablePageLink<Void>(SliderPage.class, Model.of("Slider"))
-                            .setIconType(FontAwesomeIconType.picture_o),
-                    new MenuBookmarkablePageLink<Void>(IssuesPage.class,
-                    Model.of("Github Issues")).setIconType(FontAwesomeIconType.book),
-                new MenuBookmarkablePageLink<Void>(ExtensionsPage.class, Model.of("Extensions"))
-                    .setIconType(FontAwesomeIconType.qrcode));
-            }
-        };
-
-        dropDownButton.add(new DropDownAutoOpen());
-        add(dropDownButton, new Code("dropdown-code", Model.of("dropDownButton.add(new DropDownAutoOpen());")));
-
         addTour();
         add(new Icon("html5-colored", OpenWebIconType.html5_colored), new Icon("apml", OpenWebIconType.apml), new Icon(
             "feed", OpenWebIconType.feed_colored));
@@ -198,8 +137,7 @@ public class ExtensionsPage extends BasePage {
                 "openwebicon-code",
                 Model.of("response.render(JavaScriptHeaderItem.forReference(OpenWebIconsCssReference.instance()));\n\nadd(new Icon(\"html5\", OpenWebIconType.html5));")));
 
-//        addJasnyFileUploadDemo();
-        addJasnyInputMaskDemo();
+        addInputMaskDemo();
 
         laddaButton();
         confirmationButton();
@@ -208,33 +146,7 @@ public class ExtensionsPage extends BasePage {
         ratingSample();
         animationSample();
 
-        dropzoneFileUpload();
         pwstrengthSample();
-    }
-
-    private void dropzoneFileUpload() {
-        final Label label = new Label("dropzonelabel","This is a label changed by dropzone");
-        label.setOutputMarkupId(true);
-        add(label);
-
-        DropZoneFileUpload dropZoneFileUpload = new DropZoneFileUpload("dropzone") {
-            private static final long serialVersionUID = 1L;
-
-            @Override
-            protected void onUpload(AjaxRequestTarget target, Map<String, List<FileItem>> fileMap) {
-                // Handle files
-                LOG.info("Successfully Uploaded: '{}'", fileMap);
-                label.setDefaultModelObject("This is a label changed by dropzone - file uploaded");
-                target.add(label);
-            }
-        };
-        dropZoneFileUpload.getConfig()
-            .withMaxFileSize(1)
-            .withThumbnailHeight(80)
-            .withThumbnailWidth(80)
-            .withPreviewsContainer(".dropzone-previews")
-            .withParallelUploads(2);
-        add(dropZoneFileUpload);
     }
 
     private void pwstrengthSample() {
@@ -411,16 +323,10 @@ public class ExtensionsPage extends BasePage {
 
     }
 
-    private void addJasnyInputMaskDemo() {
+    private void addInputMaskDemo() {
         TextField<String> textField = new TextField<>("inputMask",
                 Model.of("l0rdn1kk0n"));
-        InputMaskBehavior inputMask = new InputMaskBehavior() {
-            @Override
-            protected String getMask() {
-                // Allow entering l0rdn1kk0n
-                return "a9aaa9aa9a";
-            }
-        };
+        InputMaskBehavior inputMask = new InputMaskBehavior("a9aaa9aa9a");
         textField.add(inputMask);
         add(textField);
     }

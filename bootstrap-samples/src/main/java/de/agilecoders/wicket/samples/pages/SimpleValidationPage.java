@@ -40,7 +40,7 @@ public class SimpleValidationPage extends BaseValidationPage {
 
     @Override
     protected SimpleFormPanel newSimpleFormPanel(String wicketId) {
-        return super.newSimpleFormPanel(wicketId).withSelect();
+        return super.newSimpleFormPanel(wicketId);
     }
 
     @Override

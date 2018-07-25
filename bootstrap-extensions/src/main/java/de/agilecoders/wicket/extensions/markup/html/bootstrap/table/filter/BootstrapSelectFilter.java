@@ -1,6 +1,5 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.table.filter;
 
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.select.BootstrapSelect;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.filter.AbstractFilter;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.filter.FilterForm;
@@ -19,7 +18,7 @@ import java.util.List;
  */
 public class BootstrapSelectFilter<T> extends AbstractFilter {
 
-    private final BootstrapSelect<T> choice;
+    private final DropDownChoice<T> choice;
 
     /**
      * Constructor.
@@ -99,9 +98,9 @@ public class BootstrapSelectFilter<T> extends AbstractFilter {
      * @param renderer choice renderer
      * @return created drop down component
      */
-    protected BootstrapSelect<T> newDropDownChoice(final String id, final IModel<T> model,
+    protected DropDownChoice<T> newDropDownChoice(final String id, final IModel<T> model,
                                                    final IModel<? extends List<? extends T>> choices, final IChoiceRenderer<? super T> renderer) {
-        BootstrapSelect<T> dropDownChoice = new BootstrapSelect<>(id, model, choices, renderer);
+        DropDownChoice<T> dropDownChoice = new DropDownChoice<>(id, model, choices, renderer);
         dropDownChoice.setNullValid(true);
         return dropDownChoice;
     }
@@ -109,7 +108,7 @@ public class BootstrapSelectFilter<T> extends AbstractFilter {
     /**
      * @return the DropDownChoice form component created to represent this filter
      */
-    public final BootstrapSelect<T> getChoice() {
+    public final DropDownChoice<T> getChoice() {
         return choice;
     }
 

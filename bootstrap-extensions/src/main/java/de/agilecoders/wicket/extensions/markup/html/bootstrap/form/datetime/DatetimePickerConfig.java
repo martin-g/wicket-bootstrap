@@ -1,9 +1,19 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.form.datetime;
 
-import de.agilecoders.wicket.extensions.javascript.jasny.InputMaskBehavior;
+import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapJavascriptBehavior;
+import de.agilecoders.wicket.core.util.Attributes;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.inputmask.InputMaskBehavior;
 import de.agilecoders.wicket.jquery.AbstractConfig;
 import de.agilecoders.wicket.jquery.IKey;
+import de.agilecoders.wicket.webjars.request.resource.WebjarsCssResourceReference;
+import de.agilecoders.wicket.webjars.request.resource.WebjarsJavaScriptResourceReference;
+
+import org.apache.wicket.Component;
 import org.apache.wicket.behavior.Behavior;
+import org.apache.wicket.markup.ComponentTag;
+import org.apache.wicket.markup.head.CssHeaderItem;
+import org.apache.wicket.markup.head.IHeaderResponse;
+import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -365,14 +375,7 @@ public class DatetimePickerConfig extends AbstractConfig {
      * @return new input mask behavior
      */
     public Behavior newMaskBehavior() {
-        return new InputMaskBehavior() {
-
-            private static final long serialVersionUID = 5414514378068933745L;
-
-            @Override
-            protected String getMask() {
-                return getFormat().replaceAll(DIGITS_PATTERN, "9");
-            }
-        };
+        final String mask = getFormat().replaceAll(DIGITS_PATTERN, "9");
+        return new InputMaskBehavior(mask);
     }
 }

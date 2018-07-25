@@ -111,6 +111,8 @@ public class BootstrapCheckBoxPicker extends CheckBox {
 
         response.render(JavaScriptHeaderItem.forReference(new JQueryPluginResourceReference(BootstrapCheckBoxPicker.class, "js/bootstrap-checkbox.js")));
         response.render(OnDomReadyHeaderItem.forScript($(this).chain("checkboxpicker", getConfig()).get()));
+        // Bootstrap4 dropped hidden for invisible, so we have to hide input manually.
+        response.render(OnDomReadyHeaderItem.forScript(String.format("$(%s).addClass('invisible');", getMarkupId())));
     }
 
     /*

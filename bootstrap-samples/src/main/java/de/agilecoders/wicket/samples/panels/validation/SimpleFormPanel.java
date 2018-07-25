@@ -2,11 +2,10 @@ package de.agilecoders.wicket.samples.panels.validation;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.form.BootstrapForm;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.DateTextField;
-import de.agilecoders.wicket.samples.components.base.StateSelect;
+
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.form.AjaxFormSubmitBehavior;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
-import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.form.PasswordTextField;
 import org.apache.wicket.markup.html.form.RequiredTextField;
 import org.apache.wicket.markup.html.panel.Panel;
@@ -57,18 +56,6 @@ public class SimpleFormPanel extends Panel {
         super(componentId);
         form = new SimpleForm("form");
         add(form);
-    }
-
-    /**
-     * with ajax
-     *
-     * @return current instance
-     */
-    public SimpleFormPanel withSelect() {
-        WebMarkupContainer select = new WebMarkupContainer("select");
-        select.add(new StateSelect("state").setRequired(true));
-        form.add(select);
-        return this;
     }
 
     /**

@@ -11,7 +11,7 @@ public class RatingConfigTest extends Assert{
     @Test
     public void empty() {
         RatingConfig config = new RatingConfig();
-        assertThat(config.toJsonString(), is(equalTo("{}")));
+        assertThat(config.toJsonString(), is(equalTo("{\"filled\":\"fa fa-star\",\"empty\":\"fa fa-star-o\"}")));
     }
 
     @Test
@@ -20,6 +20,6 @@ public class RatingConfigTest extends Assert{
         config.withFractions(3);
         config.withStart(3);
         config.withStop(7);
-        assertThat(config.toJsonString(), is(equalTo("{\"fractions\":3,\"start\":3,\"stop\":7}")));
+        assertThat(config.toJsonString(), is(equalTo("{\"filled\":\"fa fa-star\",\"empty\":\"fa fa-star-o\",\"fractions\":3,\"start\":3,\"stop\":7}")));
     }
 }

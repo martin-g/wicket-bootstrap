@@ -19,16 +19,12 @@
 
                 <div class="row">
                     <div class="col-lg-3 bs-docs-sidebar">
-                        <ul wicket:id="navigation" class="nav nav-list bs-docs-sidenav">
-                            <li><a href="#dropzonefileupload"><i class="icon-chevron-right"></i> Dropzone File Upload</a></li>
+                        <ul wicket:id="navigation" class="nav list-group bs-docs-sidenav">
                             <li><a href="#video"><i class="icon-chevron-right"></i> Html5Video player</a></li>
-                            <li><a href="#contextmenu"><i class="icon-chevron-right"></i> ContextMenu</a></li>
                             <li><a href="#issue97"><i class="icon-chevron-right"></i> Draggable/Resizable Behavior</a></li>
-                            <li><a href="#issue112"><i class="icon-chevron-right"></i> open-on-hover Behavior</a></li>
                             <li><a href="#openwebicon"><i class="icon-chevron-right"></i> OpenWebIcon</a></li>
                             <li><a href="#issue116"><i class="icon-chevron-right"></i> Tour Behavior</a></li>
-                            <li><a href="#issue130-1"><i class="icon-chevron-right"></i> Jasny FileUpload</a></li>
-                            <li><a href="#issue130-2"><i class="icon-chevron-right"></i> Jasny InputMask</a></li>
+                            <li><a href="#issue130-2"><i class="icon-chevron-right"></i> InputMask</a></li>
                             <li><a href="#ladda"><i class="icon-chevron-right"></i> Ladda buttons</a></li>
                             <li><a href="#confirmation"><i class="icon-chevron-right"></i> Confirmation</a></li>
                             <li><a href="#spinner"><i class="icon-chevron-right"></i> Spinner - a number text field with a spinner</a></li>
@@ -38,10 +34,6 @@
                         </ul>
                     </div>
                     <div class="col-lg-9">
-                        <section id="dropzonefileupload">
-                        	<div wicket:id="dropzonelabel"></div>
-                            <div wicket:id="dropzone"></div>
-                        </section>
                         <section id="video">
                             <div class="pb-2 mt-4 mb-2 border-bottom">
                                 <h1>Html5Video player</h1>
@@ -66,24 +58,6 @@
                             <pre wicket:id="video-custom-code"></pre>
                         </section>
 
-                        <section id="contextmenu">
-                            <div class="pb-2 mt-4 mb-2 border-bottom">
-                                <h1>ContextMenu</h1>
-                            </div>
-
-                            <h2>Example</h2>
-
-                            <h3>Default</h3>
-
-                            <p>A context menu extension of Bootstrap made for everyone's convenience.</p>
-
-                            <div class="bs-docs-example">
-                                <div wicket:id="context-panel">Just right click here...</div>
-                                <div wicket:id="contextmenu"></div>
-                            </div>
-                            <pre wicket:id="context-code"></pre>
-                        </section>
-
                         <section id="issue97">
                             <div class="pb-2 mt-4 mb-2 border-bottom">
                                 <h1>Draggable/Resizable Behavior</h1>
@@ -97,19 +71,6 @@
                                 <div wicket:id="draggable-modal"></div>
                             </div>
                             <pre wicket:id="draggable-code"></pre>
-                        </section>
-
-                        <section id="issue112">
-                            <div class="pb-2 mt-4 mb-2 border-bottom">
-                                <h1>open-on-hover Behavior</h1>
-                            </div>
-
-                            <p>see <a href="https://github.com/l0rdn1kk0n/wicket-bootstrap/issues/112">issue #112</a>.</p>
-
-                            <div class="bs-docs-example">
-                                <div wicket:id="dropdown"></div>
-                            </div>
-                            <pre wicket:id="dropdown-code"></pre>
                         </section>
 
                         <section id="openwebicon">
@@ -149,10 +110,10 @@
 
                         <section id="issue130-2">
                             <div class="pb-2 mt-4 mb-2 border-bottom">
-                                <h1>Jasny InputMask</h1>
+                                <h1>InputMask</h1>
                             </div>
 
-                            <p>An input mask by <a target="_blank" href="http://jasny.github.com/bootstrap/javascript.html#inputmask">Jasny Bootstrap extensions</a>. See issue #<a href="https://github.com/l0rdn1kk0n/wicket-bootstrap/issues/130">130</a>.</p>
+                            <p>An input mask by <a target="_blank" href="http://robinherbots.github.io/Inputmask/">Robin Herbots</a>.</p>
 
                             <div class="bs-docs-example">
                                 <input type="text" wicket:id="inputMask" class="form-control"/>

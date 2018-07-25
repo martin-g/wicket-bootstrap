@@ -37,7 +37,7 @@ public class DatetimePickerJsReference extends WebjarsJavaScriptResourceReferenc
      * Private constructor.
      */
     private DatetimePickerJsReference() {
-        super("Eonasdan-bootstrap-datetimepicker/current/js/bootstrap-datetimepicker.js");
+        super("tempusdominus-bootstrap-4/current/js/tempusdominus-bootstrap-4.js");
     }
 
     @Override

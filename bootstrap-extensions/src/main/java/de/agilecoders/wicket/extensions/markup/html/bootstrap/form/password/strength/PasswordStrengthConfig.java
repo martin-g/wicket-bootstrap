@@ -3,6 +3,8 @@ package de.agilecoders.wicket.extensions.markup.html.bootstrap.form.password.str
 import org.apache.wicket.Component;
 import org.apache.wicket.util.lang.Args;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
+
 import de.agilecoders.wicket.jquery.AbstractConfig;
 import de.agilecoders.wicket.jquery.IKey;
 import de.agilecoders.wicket.jquery.Key;
@@ -29,6 +31,7 @@ public class PasswordStrengthConfig extends AbstractConfig {
 
         this.uiConfig = new UiConfig();
         put(UI_CONFIG, uiConfig);
+        uiConfig.put(UiConfig.UseBootstrap4, true);
     }
 
     public PasswordStrengthConfig withMinChar(int minChar) {
@@ -139,6 +142,7 @@ public class PasswordStrengthConfig extends AbstractConfig {
         private static final IKey<int[]> Scores = new Key<int[]>("scores", new int[]{17, 26, 40, 50});
         private static final IKey<PasswordStrengthErrorMessages> ErrorMessages =
             new Key<PasswordStrengthErrorMessages>("errorMessages", new PasswordStrengthErrorMessages());
+        private static final IKey<Boolean> UseBootstrap4 = new Key<>("bootstrap4", false);
     }
 
     private static class RulesConfig extends AbstractConfig {

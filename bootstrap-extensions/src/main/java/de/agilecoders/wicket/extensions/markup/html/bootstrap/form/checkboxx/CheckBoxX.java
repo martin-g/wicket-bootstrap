@@ -19,6 +19,8 @@ import org.apache.wicket.util.string.StringValue;
 
 import java.util.Locale;
 
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeCssReference;
+
 import static de.agilecoders.wicket.jquery.JQuery.$;
 
 /**
@@ -129,6 +131,7 @@ public class CheckBoxX extends CheckBox {
     public void renderHead(IHeaderResponse response) {
         super.renderHead(response);
 
+        response.render(CssHeaderItem.forReference(FontAwesomeCssReference.instance()));
         response.render(CssHeaderItem.forReference(new CssResourceReference(CheckBoxX.class, "css/checkbox-x.css")));
         response.render(JavaScriptHeaderItem.forReference(new JQueryPluginResourceReference(CheckBoxX.class, "js/checkbox-x.js")));
 

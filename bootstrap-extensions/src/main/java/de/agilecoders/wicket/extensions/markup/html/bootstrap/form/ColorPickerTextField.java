@@ -26,7 +26,7 @@ import java.util.Map;
 import static de.agilecoders.wicket.jquery.JQuery.*;
 
 /**
- * Bootstrap ColorPicker from http://mjaalnir.github.io/bootstrap-colorpicker/
+ * Bootstrap ColorPicker from https://farbelous.io/bootstrap-colorpicker/v2/
  */
 public class ColorPickerTextField extends TextField<String> {
 
@@ -112,7 +112,7 @@ public class ColorPickerTextField extends TextField<String> {
     @Override
     protected void onComponentTag(ComponentTag tag) {
         super.onComponentTag(tag);
-        Attributes.addClass(tag, "bootstrap-colorpicker");
+        Attributes.addClass(tag, "colorpicker-component");
     }
 
     @Override

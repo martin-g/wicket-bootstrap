@@ -60,6 +60,6 @@ public class PasswordStrengthBehavior extends BootstrapJavascriptBehavior {
     }
 
     protected JavaScriptHeaderItem getHeaderItem() {
-        return JavaScriptHeaderItem.forReference(new JQueryPluginResourceReference(PasswordStrengthBehavior.class, "res/pwstrength-bootstrap-1.2.5.js"));
+        return JavaScriptHeaderItem.forReference(new JQueryPluginResourceReference(PasswordStrengthBehavior.class, "res/pwstrength-bootstrap.js"));
     }
 }
