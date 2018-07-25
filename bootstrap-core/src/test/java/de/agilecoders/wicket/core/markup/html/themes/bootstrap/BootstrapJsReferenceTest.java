@@ -29,7 +29,7 @@ public class BootstrapJsReferenceTest extends WicketApplicationTest {
         Assert.assertThat(url.toString(), is(equalTo(
                 String.format("./wicket/resource/de.agilecoders.wicket.webjars.request.resource.WebjarsJavaScriptResourceReference/webjars/bootstrap/%s/js/bootstrap.js",
 //                              IBootstrapSettings.VERSION))));
-                              "4.1.0"))));
+                              "4.1.2"))));
 
         settings.useCdnResources(true);
         jsResourceReference = settings.getJsResourceReference();
