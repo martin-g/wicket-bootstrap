@@ -134,6 +134,11 @@ Bootstrap.install(this, settings);
 
 then you are able to use all wicket-bootstrap components.
 
+Noteworthy
+----------
+
+In order to mitigate the effect of wicket tags interfering with Bootstraps CSS selectors, it is recommended to set Wickets `MarkupSettings::setStripWicketTags` to `true` even in development mode. (The `Bootstrap` class is applying this setting, but other libraries might unset it.)
+
 Authors
 -------
 
