@@ -148,7 +148,7 @@ public class BootstrapSelectConfig extends AbstractConfig {
      * 
      * @see BootstrapSelectConfig#withActionsBox(Boolean)
      * 
-     * @param actionsBox is Actions box
+     * @param selectAllText text displayed on selectAll button
      * @return current instance
      */
     public BootstrapSelectConfig withSelectAllText(String selectAllText) {
@@ -162,7 +162,7 @@ public class BootstrapSelectConfig extends AbstractConfig {
      * 
      * @see BootstrapSelectConfig#withActionsBox(Boolean)
      * 
-     * @param actionsBox is Actions box
+     * @param deselectAllText text displayed on deselectAll button
      * @return current instance
      */
     public BootstrapSelectConfig withDeselectAllText(String deselectAllText) {
