@@ -15,6 +15,7 @@ import java.util.Arrays;
 public class BootstrapSelectConfig extends AbstractConfig {
 
     private static final IKey<Boolean> LiveSearch = newKey("liveSearch", false);
+    private static final IKey<String> LiveSearchStyle = newKey("liveSearchStyle", "contains");
     private static final IKey<Boolean> Multiple = newKey("multiple", false);
     private static final IKey<Integer> MaxOptions = newKey("maxOptions", null);
     private static final IKey<Object[]> MaxOptionsText = newKey("maxOptionsText", new Object[] {
@@ -41,6 +42,15 @@ public class BootstrapSelectConfig extends AbstractConfig {
      */
     public BootstrapSelectConfig withLiveSearch(Boolean liveSearch) {
         put(LiveSearch, liveSearch);
+        return this;
+    }
+
+    /**
+     * @param liveSearchStyle search style (contains or startsWith/begins)
+     * @return current instance
+     */
+    public BootstrapSelectConfig withLiveSearchStyle(String liveSearchStyle) {
+        put(LiveSearchStyle, liveSearchStyle);
         return this;
     }
 
@@ -138,7 +148,7 @@ public class BootstrapSelectConfig extends AbstractConfig {
      * 
      * @see BootstrapSelectConfig#withActionsBox(Boolean)
      * 
-     * @param actionsBox is Actions box
+     * @param selectAllText text displayed on selectAll button
      * @return current instance
      */
     public BootstrapSelectConfig withSelectAllText(String selectAllText) {
@@ -152,7 +162,7 @@ public class BootstrapSelectConfig extends AbstractConfig {
      * 
      * @see BootstrapSelectConfig#withActionsBox(Boolean)
      * 
-     * @param actionsBox is Actions box
+     * @param deselectAllText text displayed on deselectAll button
      * @return current instance
      */
     public BootstrapSelectConfig withDeselectAllText(String deselectAllText) {
