@@ -35,7 +35,7 @@ Current release version:
 
 Demo
 ------
-http://coding.teliclab.info/wicket-7.x (courtesy hosted by [Shengche Hsiao](https://github.com/Shengche))
+https://wb7.teliclab.info (courtesy hosted by [Shengche Hsiao](https://github.com/Shengche))
 
 
 Themes
