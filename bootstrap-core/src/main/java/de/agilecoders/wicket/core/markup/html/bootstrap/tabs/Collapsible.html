@@ -4,14 +4,14 @@
     </head>
     <body>
         <wicket:panel>
-            <div class="panel" wicket:id="tabs">
-                <div class="panel-heading">
-                    <h3 class="panel-title">
-                        <a wicket:id="title" class="accordion-toggle" data-toggle="collapse">Title</a>
-                    </h3>
+            <div class="card" wicket:id="tabs">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" type="button" wicket:id="title" data-toggle="collapse">Title</button>
+                    </h5>
                 </div>
-                <div wicket:id="body" class="panel-collapse collapse">
-                    <div class="panel-body">
+                <div wicket:id="body" class="collapse">
+                    <div class="card-body">
                         <div wicket:id="content">Content</div>
                     </div>
                 </div>
