@@ -26,7 +26,7 @@ Current release version:
 
 Demo
 ------
-http://coding.teliclab.info/wicket-8.x (courtesy hosted by [Shengche Hsiao](https://github.com/Shengche))
+https://wb.teliclab.info (courtesy hosted by [Shengche Hsiao](https://github.com/Shengche))
 
 
 Themes
