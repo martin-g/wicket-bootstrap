@@ -11,6 +11,13 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapBaseBe
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNameProvider;
 import de.agilecoders.wicket.core.util.Attributes;
 
+/**
+* Behavior for DropDownButton and Splitbutton to enable "dropping"
+* to the right, left and up
+* 
+* @author helmut
+**/
+
 public class DropDownVariationBehavior extends BootstrapBaseBehavior {
 
 	/**
