@@ -44,7 +44,7 @@ public class DropDownVariationBehavior extends BootstrapBaseBehavior {
 		}
 	}
 
-	private IModel<Variation> alignment;
+	private final IModel<Variation> alignment;
 
 	/**
 	 * Construct.
