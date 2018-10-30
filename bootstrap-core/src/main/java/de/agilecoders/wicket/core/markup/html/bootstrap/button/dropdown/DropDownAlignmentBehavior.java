@@ -11,14 +11,20 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNamePr
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.AlignmentBehavior.Alignment;
 import de.agilecoders.wicket.core.util.Attributes;
 
+/**
+* Behavior for alignment of the DropDownButton and SplitButton to align 
+* the DropDown menu to the right.
+*
+* @author helmut
+**/
+
 public class DropDownAlignmentBehavior extends BootstrapBaseBehavior {
 
 	 /**
-     * Alignment for the dropdown of a Dropdownbutton
+     * Alignment for the dropdown of a DropDownButton
      */
     public enum Alignment implements ICssClassNameProvider {
         RIGHT("dropdown-menu-right"),
-        LEFT("dropdown-menu-left"),
         NONE("");
         private String className;
 
@@ -62,12 +68,11 @@ public class DropDownAlignmentBehavior extends BootstrapBaseBehavior {
         super.onComponentTag(component, tag);
 
         // remove existing alignment class names to allow switching alignment during ajax updates
-        Attributes.removeClass(tag, Alignment.RIGHT.cssClassName(), Alignment.LEFT.cssClassName());
+        Attributes.removeClass(tag, Alignment.RIGHT.cssClassName());
 
         Alignment value = alignment.getObject();
         switch (value) {
             case RIGHT:
-            case LEFT:
             	Attributes.addClass(tag, value.cssClassName());
             default:
                 break;
