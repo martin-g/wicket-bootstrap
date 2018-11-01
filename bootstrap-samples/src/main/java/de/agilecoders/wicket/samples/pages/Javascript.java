@@ -5,7 +5,6 @@ import com.google.common.collect.Lists;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.BootstrapAjaxLink;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.ButtonBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons;
-import de.agilecoders.wicket.core.markup.html.bootstrap.button.LoadingBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.DropDownButton;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.MenuBookmarkablePageLink;
 import de.agilecoders.wicket.core.markup.html.bootstrap.carousel.Carousel;
@@ -86,28 +85,6 @@ public class Javascript extends BasePage {
                 // nothing to do.
             }
         }.setLabel(Model.of("click here")));
-
-        add(new AjaxLink<Void>("loading") {
-
-            @Override
-            protected void onInitialize() {
-                super.onInitialize();
-
-                add(new ButtonBehavior(Buttons.Type.Primary));
-                add(new LoadingBehavior(Model.of("loading...")));
-            }
-
-            @Override
-            public void onClick(AjaxRequestTarget target) {
-                try {
-                    Thread.sleep(Duration.seconds(2).getMilliseconds());
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-
-                LoadingBehavior.reset(this, target);
-            }
-        });
 
         // issue #89
         add(newDropDown("dropdown"));

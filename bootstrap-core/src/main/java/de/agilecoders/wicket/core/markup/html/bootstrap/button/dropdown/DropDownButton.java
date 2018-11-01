@@ -1,6 +1,5 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown;
 
-import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.AlignmentBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapResourcesBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.Activatable;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.ButtonBehavior;
@@ -11,6 +10,7 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
 import de.agilecoders.wicket.core.util.Attributes;
 import de.agilecoders.wicket.core.util.Components;
 import de.agilecoders.wicket.jquery.JQuery;
+import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.Behavior;
 import org.apache.wicket.core.request.handler.IPartialPageRequestHandler;
@@ -74,13 +74,7 @@ public abstract class DropDownButton extends AbstractLink implements Activatable
         add(new DropDownVariationBehavior(variation));
         
         WebMarkupContainer dropdownMenu = new WebMarkupContainer("dropdown-menu");
-        dropdownMenu.add(new AttributeModifier("aria-labelledby", new IModel<String>() {
-
-			@Override
-			public String getObject() {
-				return baseButton.getMarkupId(true);
-			}
-		}));
+        dropdownMenu.add(new AttributeModifier("aria-labelledby", (IModel<String>) () -> baseButton.getMarkupId(true)));
         add(dropdownMenu);
         dropdownMenu.add(buttonListView = newButtonList("buttons"));
         dropdownMenu.add(new DropDownAlignmentBehavior(alignment));
@@ -273,7 +267,7 @@ public abstract class DropDownButton extends AbstractLink implements Activatable
 	 *            The "drop" variant of the button
 	 * @return this instance for chaining
 	 */
-	public B4DropDownButton setVariation(final DropDownVariationBehavior.Variation variation) {
+	public DropDownButton setVariation(final DropDownVariationBehavior.Variation variation) {
 		this.variation.setObject(variation);
 		return this;
 	}
