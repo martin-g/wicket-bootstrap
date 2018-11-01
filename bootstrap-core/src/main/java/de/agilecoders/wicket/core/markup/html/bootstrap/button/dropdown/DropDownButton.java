@@ -44,11 +44,11 @@ public abstract class DropDownButton extends AbstractLink implements Activatable
     private final ButtonList buttonListView;
     private final WebMarkupContainer baseButton;
     private final Icon icon;
-   
+  
     private final IModel<DropDownAlignmentBehavior.Alignment> alignment = Model
-			.of(DropDownAlignmentBehavior.Alignment.NONE);
-	private final IModel<DropDownVariationBehavior.Variation> variation = Model
-			.of(DropDownVariationBehavior.Variation.DROPDOWN);
+        .of(DropDownAlignmentBehavior.Alignment.NONE);
+    private final IModel<DropDownVariationBehavior.Variation> variation = Model
+        .of(DropDownVariationBehavior.Variation.DROPDOWN);
 
     /**
      * Construct.
