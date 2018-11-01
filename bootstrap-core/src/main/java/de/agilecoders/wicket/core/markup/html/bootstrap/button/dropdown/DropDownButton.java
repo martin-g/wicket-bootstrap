@@ -44,9 +44,11 @@ public abstract class DropDownButton extends AbstractLink implements Activatable
     private final ButtonList buttonListView;
     private final WebMarkupContainer baseButton;
     private final Icon icon;
-    private final IModel<AlignmentBehavior.Alignment> alignment = Model.of(AlignmentBehavior.Alignment.NONE);
-
-    private boolean dropUp = false;
+  
+    private final IModel<DropDownAlignmentBehavior.Alignment> alignment = Model
+        .of(DropDownAlignmentBehavior.Alignment.NONE);
+    private final IModel<DropDownVariationBehavior.Variation> variation = Model
+        .of(DropDownVariationBehavior.Variation.DROPDOWN);
 
     /**
      * Construct.
@@ -69,10 +71,19 @@ public abstract class DropDownButton extends AbstractLink implements Activatable
         super(markupId, model);
 
         add(baseButton = newButton("btn", model, iconTypeModel));
+        add(new DropDownVariationBehavior(variation));
+        
         WebMarkupContainer dropdownMenu = new WebMarkupContainer("dropdown-menu");
-        dropdownMenu.add(new AlignmentBehavior(alignment));
+        dropdownMenu.add(new AttributeModifier("aria-labelledby", new IModel<String>() {
+
+			@Override
+			public String getObject() {
+				return baseButton.getMarkupId(true);
+			}
+		}));
         add(dropdownMenu);
         dropdownMenu.add(buttonListView = newButtonList("buttons"));
+        dropdownMenu.add(new DropDownAlignmentBehavior(alignment));
 
         this.icon = newButtonIcon("icon", iconTypeModel);
 
@@ -86,7 +97,7 @@ public abstract class DropDownButton extends AbstractLink implements Activatable
      * @return base css class name of button container element
      */
     protected String createCssClassName() {
-        return "dropdown";
+        return "btn-group";
     }
 
     /**
@@ -216,21 +227,10 @@ public abstract class DropDownButton extends AbstractLink implements Activatable
      */
     protected ButtonList newButtonList(final String markupId) {
         final ButtonList buttonList = new ButtonList(markupId, newSubMenuButtons(ButtonList.getButtonMarkupId()));
-        buttonList.setRenderBodyOnly(true);
+		buttonList.setRenderBodyOnly(true);
+		buttonList.setOutputMarkupId(false);
 
         return buttonList;
-    }
-
-    /**
-     * whether to use default dropdown behavior (default value is false which means default behavior)
-     * or to open the dropdown menu at the top of dropdown button, also the button icon will be rotated.
-     *
-     * @param dropUp true, to use a 180deg rotated button and open menu on top
-     * @return this instance for chaining
-     */
-    public DropDownButton setDropUp(final boolean dropUp) {
-        this.dropUp = dropUp;
-        return this;
     }
 
     /**
@@ -261,10 +261,22 @@ public abstract class DropDownButton extends AbstractLink implements Activatable
      * @param alignment The alignment of the button
      * @return this instance for chaining
      */
-    public DropDownButton setAlignment(final AlignmentBehavior.Alignment alignment) {
+    public DropDownButton setAlignment(final DropDownAlignmentBehavior.Alignment alignment) {
         this.alignment.setObject(alignment);
         return this;
     }
+    
+    /**
+	 * Sets the dropdown menu "drop" variation
+	 *
+	 * @param variation
+	 *            The "drop" variant of the button
+	 * @return this instance for chaining
+	 */
+	public B4DropDownButton setVariation(final DropDownVariationBehavior.Variation variation) {
+		this.variation.setObject(variation);
+		return this;
+	}
 
     @Override
     protected final IMarkupSourcingStrategy newMarkupSourcingStrategy() {
@@ -278,10 +290,6 @@ public abstract class DropDownButton extends AbstractLink implements Activatable
         }
 
         super.onComponentTag(tag);
-
-        if (dropUp) {
-            Attributes.addClass(tag, "dropup");
-        }
 
         Attributes.addClass(tag, createCssClassName());
     }
