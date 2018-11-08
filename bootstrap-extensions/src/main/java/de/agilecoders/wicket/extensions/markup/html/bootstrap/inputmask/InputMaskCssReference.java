@@ -20,7 +20,7 @@ public final class InputMaskCssReference extends WebjarsCssResourceReference {
      * Construct resource reference.
      */
     private InputMaskCssReference() {
-        super("inputmask/current/dist/inputmask.css");
+        super("inputmask/current/css/inputmask.css");
     }
 
     /**

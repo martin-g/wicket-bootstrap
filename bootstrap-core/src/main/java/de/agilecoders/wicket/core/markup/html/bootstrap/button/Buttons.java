@@ -84,7 +84,7 @@ public final class Buttons {
 
     /**
      * Defines all possible button types.
-     * @see <a href="http://getbootstrap.com/css/#buttons">Buttons</a>
+     * @see <a href="https://getbootstrap.com/docs/4.1/components/buttons/">Buttons</a>
      */
     public enum Type implements ICssClassNameProvider {
         Default("btn-secondary"), // Alias for secondary. Kept for backwards compatibility.
@@ -95,7 +95,9 @@ public final class Buttons {
         Success("btn-success"), // Indicates a successful or positive action
         Warning("btn-warning"), // Indicates caution should be taken with this action
         Danger("btn-danger"), // Indicates a dangerous or potentially negative action
-        Link("btn-link"); // Deemphasize a button by making it look like a link while maintaining button behavior
+        Link("btn-link"), // Deemphasize a button by making it look like a link while maintaining button behavior
+        Light("btn-light"),
+        Dark("btn-dark");
 
         private final String cssClassName;
 
