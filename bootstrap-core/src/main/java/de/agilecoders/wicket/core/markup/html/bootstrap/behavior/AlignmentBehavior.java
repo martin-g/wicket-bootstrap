@@ -57,7 +57,7 @@ public class AlignmentBehavior extends BootstrapBaseBehavior {
         }
     }
 
-    private final IModel<Alignment> alignment;
+    private IModel<Alignment> alignment;
 
     /**
      * Construct.
