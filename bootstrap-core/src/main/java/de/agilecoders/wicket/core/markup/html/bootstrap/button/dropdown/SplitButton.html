@@ -1,19 +1,16 @@
 <html xmlns:wicket="http://wicket.apache.org">
     <head>
-        <title>SplitButton</title>
+        <title>DropDownButton</title>
     </head>
     <body>
         <wicket:panel>
-            <button type="button" class="btn" wicket:id="btn"></button>
-            <button type="button" class="btn dropdown-toggle dropdown-toggle-split" wicket:id="caret" 
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="sr-only">Toggle Dropdown</span>
-            </button>
-            <div wicket:id="dropdown-menu" class="dropdown-menu">
-                <wicket:container wicket:id="buttons">
-                    <a wicket:id="button" class="dropdown-item" href="javascript:;"></a>
-                </wicket:container>
-            </div>
+            <button type="button" class="btn" wicket:id="button"></button>
+            <button type="button" class="btn dropdown-toggle" wicket:id="caret" data-toggle="dropdown"></button>
+            <ul wicket:id="dropdown-menu" class="dropdown-menu">
+                <li wicket:id="buttons">
+                    <a wicket:id="button"></a>
+                </li>
+            </ul>
         </wicket:panel>
     </body>
 </html>
