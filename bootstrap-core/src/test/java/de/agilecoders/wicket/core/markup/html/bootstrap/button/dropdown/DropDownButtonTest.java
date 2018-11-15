@@ -1,7 +1,6 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown;
 
 import de.agilecoders.wicket.core.WicketApplicationTest;
-import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.AlignmentBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.BootstrapLink;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
@@ -28,26 +27,26 @@ public class DropDownButtonTest extends WicketApplicationTest {
 
     @Test
     public void rightAlignmentDropDownButton() {
-        tester().startComponentInPage(newDropDownButton().setAlignment(AlignmentBehavior.Alignment.RIGHT));
+        tester().startComponentInPage(newDropDownButton().setAlignment(DropDownAlignmentBehavior.Alignment.RIGHT));
         final TagTester tag = tester().getTagByWicketId("dropdown-menu");
 
-        assertCssClass(tag, "dropdown-menu", "pull-right");
+        assertCssClass(tag, "dropdown-menu", "dropdown-menu-right");
     }
 
     @Test
     public void leftAlignmentDropDownButton() {
-        tester().startComponentInPage(newDropDownButton().setAlignment(AlignmentBehavior.Alignment.LEFT));
+        tester().startComponentInPage(newDropDownButton().setAlignment(DropDownAlignmentBehavior.Alignment.NONE));
         final TagTester tag = tester().getTagByWicketId("dropdown-menu");
 
-        assertCssClass(tag, "dropdown-menu", "pull-left");
+        assertCssClass(tag, "dropdown-menu");
     }
 
     @Test
     public void rightAlignmentSplitButton() {
-        tester().startComponentInPage(newSplitButton().setAlignment(AlignmentBehavior.Alignment.RIGHT));
+        tester().startComponentInPage(newSplitButton().setAlignment(DropDownAlignmentBehavior.Alignment.RIGHT));
         final TagTester tag = tester().getTagByWicketId("dropdown-menu");
 
-        assertCssClass(tag, "dropdown-menu", "pull-right");
+        assertCssClass(tag, "dropdown-menu", "dropdown-menu-right");
     }
 
     private DropDownButton newSplitButton() {
@@ -60,7 +59,7 @@ public class DropDownButtonTest extends WicketApplicationTest {
 
             @Override
             protected List<AbstractLink> newSubMenuButtons(final String buttonMarkupId) {
-                return Arrays.<AbstractLink>asList(getDummyLink(buttonMarkupId));
+                return Arrays.asList(getDummyLink(buttonMarkupId));
             }
         };
     }
@@ -70,13 +69,13 @@ public class DropDownButtonTest extends WicketApplicationTest {
         return new DropDownButton("id", Model.of("label")) {
             @Override
             protected List<AbstractLink> newSubMenuButtons(final String buttonMarkupId) {
-                return Arrays.<AbstractLink>asList(getDummyLink(buttonMarkupId));
+                return Arrays.asList(getDummyLink(buttonMarkupId));
             }
         };
     }
 
     private BootstrapLink getDummyLink(final String buttonMarkupId) {
-        return new BootstrapLink(buttonMarkupId, Buttons.Type.Menu) {
+        return new BootstrapLink<Void>(buttonMarkupId, Buttons.Type.Menu) {
 
             @Override
             public void onClick() {
