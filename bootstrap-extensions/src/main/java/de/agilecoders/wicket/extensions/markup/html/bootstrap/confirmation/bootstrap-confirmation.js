@@ -1,5 +1,5 @@
 /*!
- * Bootstrap Confirmation (v4.0.0)
+ * Bootstrap Confirmation (v4.0.2)
  * @copyright 2013 Nimit Suwannagate <ethaizone@hotmail.com>
  * @copyright 2014-2018 Damien "Mistic" Sorel <contact@git.strangeplanet.fr>
  * @licence Apache License, Version 2.0
@@ -81,7 +81,7 @@
    */
 
   var NAME = 'confirmation';
-  var VERSION = '4.0.0';
+  var VERSION = '4.0.2';
   var DATA_KEY = "bs." + NAME;
   var EVENT_KEY = "." + DATA_KEY;
   var JQUERY_NO_CONFLICT = $.fn[NAME];
@@ -110,6 +110,7 @@
     placement: 'top',
     title: 'Are you sure?',
     trigger: 'click',
+    confirmationEvent: undefined,
     content: '',
     singleton: false,
     popout: false,
@@ -239,6 +240,10 @@
       } else {
         // standalone
         _this.config._selector = config.rootSelector;
+      }
+
+      if (_this.config.confirmationEvent === undefined) {
+        _this.config.confirmationEvent = _this.config.trigger;
       }
 
       if (!_this.config.selector) {
@@ -372,7 +377,7 @@
               $(self.config._selector).filter(function () {
                 return $(this).data(DATA_KEY) !== undefined;
               }).confirmation('hide');
-              $('body').off(Event.SHOWN + "." + self.uid);
+              $('body').off(Event.CLICK + "." + self.uid);
               self.eventBody = false;
             });
           }
@@ -401,7 +406,7 @@
 
         self.config.onConfirm.call(self.element);
         $(self.element).trigger(Event.CONFIRMED);
-        $(self.element).trigger(self.config.trigger, [true]);
+        $(self.element).trigger(self.config.confirmationEvent, [true]);
         self.hide();
       });
       var btnDismiss = $tip.find(Selector.BTN_DISMISS).addClass(this.config.btnCancelClass).html(this.config.btnCancelLabel);
