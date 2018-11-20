@@ -9,7 +9,7 @@
 
     <groupId>de.agilecoders.wicket</groupId>
     <artifactId>bootstrap-parent</artifactId>
-    <version>3.0.0-M7</version>
+    <version>3.0.0-M8-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>bootstrap-parent</name>
 
@@ -20,7 +20,7 @@
         <url>git@github.com:l0rdn1kk0n/wicket-bootstrap.git</url>
         <connection>scm:git:git@github.com/l0rdn1kk0n/wicket-bootstrap.git</connection>
         <developerConnection>scm:git:ssh://git@github.com/l0rdn1kk0n/wicket-bootstrap.git</developerConnection>
-        <tag>bootstrap-parent-3.0.0-M7</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <issueManagement>
@@ -81,7 +81,7 @@
 
         <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
         <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
-        <cobertura-maven-plugin.version>2.7.0</cobertura-maven-plugin.version>
+        <cobertura-maven-plugin.version>2.7</cobertura-maven-plugin.version>
         <maven-surefire-plugin.version>2.22.1</maven-surefire-plugin.version>
         <maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
         <maven-javadoc-plugin.version>3.0.1</maven-javadoc-plugin.version>
