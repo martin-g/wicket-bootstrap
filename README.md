@@ -26,7 +26,7 @@ Current release version:
 
 Demo
 ------
-https://wb.teliclab.info (courtesy hosted by [Shengche Hsiao](https://github.com/Shengche))
+https://wb8.teliclab.info (courtesy hosted by [Shengche Hsiao](https://github.com/Shengche))
 
 
 Themes

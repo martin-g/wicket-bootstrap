@@ -51,14 +51,9 @@
             <artifactId>javax.servlet-api</artifactId>
         </dependency>
 
-        <!-- HAMCREST DEPENDENCIES -->
         <dependency>
             <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest-library</artifactId>
+            <artifactId>hamcrest-all</artifactId>
         </dependency>
     </dependencies>
 
