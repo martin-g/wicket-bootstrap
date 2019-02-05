@@ -52,9 +52,9 @@
         </dependency>
 
         <dependency>
-            <groupId>org.webjars</groupId>
+            <groupId>org.webjars.bower</groupId>
             <artifactId>momentjs</artifactId>
-            <version>2.14.1</version>
+            <version>2.24.0</version>
         </dependency>
 
         <dependency>
