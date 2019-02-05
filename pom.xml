@@ -73,7 +73,7 @@
         <wicketstuff.version>8.3.0</wicketstuff.version>
         <yuicompressor.version>2.4.8</yuicompressor.version>
         <maven-javadoc-plugin.version>2.10.4</maven-javadoc-plugin.version>
-        <guava.version>23.0</guava.version>
+        <guava.version>27.0.1</guava.version>
         <junit.version>4.12</junit.version>
         <logback.version>1.2.3</logback.version>
         <jsass.version>5.7.3</jsass.version>
@@ -234,7 +234,7 @@
             <dependency>
                 <groupId>com.google.guava</groupId>
                 <artifactId>guava</artifactId>
-                <version>24.0-jre</version>
+                <version>${guava.version}-jre</version>
             </dependency>
 
             <dependency>
