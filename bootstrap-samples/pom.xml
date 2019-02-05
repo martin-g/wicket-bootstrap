@@ -160,7 +160,7 @@
                 </configuration>
             </plugin>
 
-            <!-- BD - Allows for jar to be built with an OSGi compatiable manifest -->
+            <!-- BD - Allows for jar to be built with an OSGi compatible manifest -->
             <plugin>
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-bundle-plugin</artifactId>
