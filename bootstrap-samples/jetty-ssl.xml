@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE Configure PUBLIC "-//Jetty//Configure//EN" "http://www.eclipse.org/jetty/configure_9_3.dtd">
+<!-- ============================================================= -->
+<!-- Configure a TLS (SSL) Context Factory                         -->
+<!-- This configuration must be used in conjunction with jetty.xml -->
+<!-- and either jetty-https.xml or jetty-spdy.xml (but not both)   -->
+<!-- ============================================================= -->
+<Configure id="sslContextFactory" class="org.eclipse.jetty.util.ssl.SslContextFactory">
+    <Set name="KeyStorePath"><Property name="jetty.base" default="." />/<Property name="jetty.keystore" default="target/test-classes/keystore"/></Set>
+    <Set name="KeyStorePassword"><Property name="jetty.keystore.password" default="wicket"/></Set>
+    <Set name="KeyManagerPassword"><Property name="jetty.keymanager.password" default="wicket"/></Set>
+    <Set name="EndpointIdentificationAlgorithm">HTTPS</Set>
+    <!-- =========================================================== -->
+    <!-- Create a TLS specific HttpConfiguration based on the        -->
+    <!-- common HttpConfiguration defined in jetty.xml               -->
+    <!-- Add a SecureRequestCustomizer to extract certificate and    -->
+    <!-- session information                                         -->
+    <!-- =========================================================== -->
+    <New id="sslHttpConfig" class="org.eclipse.jetty.server.HttpConfiguration">
+        <Arg><Ref refid="httpConfig"/></Arg>
+        <Call name="addCustomizer">
+            <Arg><New class="org.eclipse.jetty.server.SecureRequestCustomizer"/></Arg>
+        </Call>
+    </New>
+</Configure>
