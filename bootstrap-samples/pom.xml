@@ -147,7 +147,7 @@
                 <artifactId>jetty-maven-plugin</artifactId>
                 <version>${jetty.version}</version>
                 <configuration>
-                    <jettyXml>jetty.xml,jetty-http.xml,jetty-ssl.xml,jetty-https.xml</jettyXml>
+                    <jettyXml>src/test/jetty/jetty.xml,src/test/jetty/jetty-http.xml,src/test/jetty/jetty-ssl.xml,src/test/jetty/jetty-https.xml</jettyXml>
                     <stopKey />
                     <stopPort />
                 </configuration>
