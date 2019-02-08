@@ -71,11 +71,16 @@
         </dependency>
 
         <dependency>
-            <groupId>org.eclipse.jetty.aggregate</groupId>
-            <artifactId>jetty-all-server</artifactId>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-server</artifactId>
             <version>${jetty.version}</version>
-            <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-webapp</artifactId>
+            <version>${jetty.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>com.google.javascript</groupId>
             <artifactId>closure-compiler</artifactId>
@@ -84,7 +89,7 @@
         <dependency>
             <groupId>commons-logging</groupId>
             <artifactId>commons-logging</artifactId>
-            <version>1.1.3</version>
+            <version>1.2</version>
             <scope>runtime</scope>
         </dependency>
 
@@ -138,29 +143,17 @@
         </testResources>
         <plugins>
             <plugin>
-                <groupId>org.mortbay.jetty</groupId>
+                <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
                 <version>${jetty.version}</version>
                 <configuration>
-                    <connectors>
-                        <connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
-                            <port>8080</port>
-                            <maxIdleTime>3600000</maxIdleTime>
-                        </connector>
-                        <connector implementation="org.eclipse.jetty.server.ssl.SslSocketConnector">
-                            <port>8443</port>
-                            <maxIdleTime>3600000</maxIdleTime>
-                            <keystore>${project.build.directory}/test-classes/keystore</keystore>
-                            <password>wicket</password>
-                            <keyPassword>wicket</keyPassword>
-                        </connector>
-                    </connectors>
+                    <jettyXml>src/test/jetty/jetty.xml,src/test/jetty/jetty-http.xml,src/test/jetty/jetty-ssl.xml,src/test/jetty/jetty-https.xml</jettyXml>
                     <stopKey />
                     <stopPort />
                 </configuration>
             </plugin>
 
-            <!-- BD - Allows for jar to be built with an OSGi compatiable manifest -->
+            <!-- BD - Allows for jar to be built with an OSGi compatible manifest -->
             <plugin>
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-bundle-plugin</artifactId>

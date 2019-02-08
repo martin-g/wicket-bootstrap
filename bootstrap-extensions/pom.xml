@@ -14,13 +14,13 @@
     <name>bootstrap-extensions</name>
 
     <properties>
-        <jqueryui.version>1.11.4</jqueryui.version>
-        <typeaheadjs.version>0.10.4</typeaheadjs.version>
         <inputmask.version>4.0.0</inputmask.version>
+        <jqueryui.version>1.12.1</jqueryui.version>
+        <typeaheadjs.version>0.10.5</typeaheadjs.version>
+        <x-editable.version>1.5.1-1</x-editable.version>
         <spin-js.version>2.1.0</spin-js.version>
-        <animate.css.version>3.3.0</animate.css.version>
+        <animate.css.version>3.5.2</animate.css.version>
         <summernote.version>0.8.9</summernote.version>
-
     </properties>
 
     <dependencies>
@@ -49,13 +49,13 @@
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>tempusdominus-bootstrap-4</artifactId>
-            <version>5.0.0</version>
+            <version>5.1.2</version>
         </dependency>
 
         <dependency>
-            <groupId>org.webjars</groupId>
+            <groupId>org.webjars.bower</groupId>
             <artifactId>momentjs</artifactId>
-            <version>2.22.1</version>
+            <version>2.24.0</version>
         </dependency>
 
         <dependency>
