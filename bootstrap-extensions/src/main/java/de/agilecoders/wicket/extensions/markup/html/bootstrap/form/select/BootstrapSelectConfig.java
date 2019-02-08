@@ -33,6 +33,7 @@ public class BootstrapSelectConfig extends AbstractConfig {
     private static final IKey<Boolean> ActionsBox = newKey("actionsBox", false);
     private static final IKey<String> SelectAllText = newKey("selectAllText", null);
     private static final IKey<String> DeselectAllText = newKey("deselectAllText", null);
+    private static final IKey<String> Container = newKey("container", null);
 
     private static final long serialVersionUID = -1083532309683379273L;
 
@@ -171,6 +172,17 @@ public class BootstrapSelectConfig extends AbstractConfig {
     }
 
     /**
+     * When set to a string, appends the select to a specific element or selector, e.g., container: 'body' | '.main-body'.
+     *
+     * @param container the parent container
+     * @return current instance
+     */
+    public BootstrapSelectConfig withContainer(String container) {
+        put(Container, container);
+        return this;
+    }
+
+    /**
      * @return selected title
      */
     public String getSelectedTitle() {
@@ -238,6 +250,10 @@ public class BootstrapSelectConfig extends AbstractConfig {
      */
     public String getDeselectAllText() {
     	return get(DeselectAllText);
+    }
+
+    public String getContainer() {
+        return get(Container);
     }
 
     /**
