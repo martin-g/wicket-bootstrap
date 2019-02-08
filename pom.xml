@@ -63,7 +63,6 @@
         <less4j.version>1.17.2</less4j.version>
         <modernizr.version>2.8.3-1</modernizr.version>
         <jetty.version>9.4.14.v20181114</jetty.version>
-        <newrelic.version>3.30.0</newrelic.version>
         <google-closure.version>v20140814</google-closure.version>
         <contiperf.version>2.3.4</contiperf.version>
         <jquerypp.version>1.0.1</jquerypp.version>

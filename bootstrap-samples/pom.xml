@@ -31,12 +31,6 @@
             </exclusions>
         </dependency>
 
-        <dependency>
-            <groupId>com.newrelic.agent.java</groupId>
-            <artifactId>newrelic-api</artifactId>
-            <version>${newrelic.version}</version>
-        </dependency>
-
         <!-- WICKET-BOOTSTRAP -->
         <dependency>
             <groupId>de.agilecoders.wicket</groupId>
