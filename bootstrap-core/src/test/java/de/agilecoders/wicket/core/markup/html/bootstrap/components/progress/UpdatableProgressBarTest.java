@@ -4,15 +4,15 @@ import de.agilecoders.wicket.core.WicketApplicationTest;
 import org.apache.wicket.ajax.AjaxSelfUpdatingTimerBehavior;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * @author sschrader, t8y.com
  */
-public class UpdatableProgressBarTest extends WicketApplicationTest {
+class UpdatableProgressBarTest extends WicketApplicationTest {
 
     @Test
-    public void progressInitialized() {
+    void progressInitialized() {
         final IModel<Integer> model = Model.of(ProgressBar.MIN);
         UpdatableProgressBar progressBar = new UpdatableProgressBar(id(), model) {
             @Override

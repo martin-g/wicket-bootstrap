@@ -3,13 +3,13 @@ package de.agilecoders.wicket.less;
 import org.apache.wicket.util.io.IOUtils;
 import org.apache.wicket.util.string.Strings;
 import org.apache.wicket.util.tester.WicketTester;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
 
-public class LessResourceTest extends Assert {
+public class LessResourceTest extends Assertions {
 
     /**
      * Tests the compilation of Less resources to Css.

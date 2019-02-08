@@ -1,13 +1,14 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.html;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.parser.XmlTag;
-import org.junit.Test;
 
 import de.agilecoders.wicket.core.WicketApplicationTest;
+import org.junit.jupiter.api.Test;
 
 import java.util.Locale;
 

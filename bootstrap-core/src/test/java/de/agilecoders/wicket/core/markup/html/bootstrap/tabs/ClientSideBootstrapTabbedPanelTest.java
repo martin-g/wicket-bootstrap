@@ -8,11 +8,11 @@ import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.util.tester.TagTester;
-import org.junit.Test;
 
 import com.google.common.collect.Lists;
 
 import de.agilecoders.wicket.core.WicketApplicationTest;
+import org.junit.jupiter.api.Test;
 
 public class ClientSideBootstrapTabbedPanelTest extends WicketApplicationTest {
 
@@ -25,7 +25,7 @@ public class ClientSideBootstrapTabbedPanelTest extends WicketApplicationTest {
         assertTrue(root.hasChildTag("div"));
         //test tabs
         TagTester tabs = root.getChild("class", "nav nav-tabs");
-        assertEquals("nav nav-tabs is the class of UL", tabs.getName(), "ul");
+        assertEquals(tabs.getName(), "ul", "nav nav-tabs is the class of UL");
         assertLi(tabs,0, true);
         assertLi(tabs,1, false);
         assertLi(tabs,2, false);
@@ -34,7 +34,7 @@ public class ClientSideBootstrapTabbedPanelTest extends WicketApplicationTest {
         assertNull(li3);
         //test main panel container.
         TagTester panelContainer = root.getChild("class", "tab-content");
-        assertEquals("tab-content is the attribute of panelContainer", panelContainer.getName(), "div");
+        assertEquals(panelContainer.getName(), "div", "tab-content is the attribute of panelContainer");
         assertContentTabPanel(panelContainer, 0, true);
         assertContentTabPanel(panelContainer, 1, false);
         assertContentTabPanel(panelContainer, 2, false);
@@ -47,7 +47,7 @@ public class ClientSideBootstrapTabbedPanelTest extends WicketApplicationTest {
         assertTrue(root.hasChildTag("div"));
         //test tabs
         TagTester tabs = root.getChild("class", "nav nav-tabs");
-        assertEquals("nav nav-tabs is the class of UL", tabs.getName(), "ul");
+        assertEquals(tabs.getName(), "ul", "nav nav-tabs is the class of UL");
         assertLi(tabs,0, true);
         assertLi(tabs,1, false);
         assertLi(tabs,2, false);
@@ -56,7 +56,7 @@ public class ClientSideBootstrapTabbedPanelTest extends WicketApplicationTest {
         assertNull(li3);
         //test main panel container.
         TagTester panelContainer = root.getChild("class", "tab-content");
-        assertEquals("tab-content is the attribute of panelContainer", panelContainer.getName(), "div");
+        assertEquals(panelContainer.getName(), "div", "tab-content is the attribute of panelContainer");
         assertContentTabPanel(panelContainer, 0, true);
         assertContentTabPanel(panelContainer, 1, false);
         assertContentTabPanel(panelContainer, 2, false);
@@ -69,7 +69,7 @@ public class ClientSideBootstrapTabbedPanelTest extends WicketApplicationTest {
         assertTrue(root.hasChildTag("div"));
         //test tabs
         TagTester tabs = root.getChild("class", "nav nav-tabs");
-        assertEquals("nav nav-tabs is the class of UL", tabs.getName(), "ul");
+        assertEquals(tabs.getName(), "ul", "nav nav-tabs is the class of UL");
         assertLi(tabs,0, false);
         assertLi(tabs,1, true);
         assertLi(tabs,2, false);
@@ -78,7 +78,7 @@ public class ClientSideBootstrapTabbedPanelTest extends WicketApplicationTest {
         assertNull(li3);
         //test main panel container.
         TagTester panelContainer = root.getChild("class", "tab-content");
-        assertEquals("tab-content is the attribute of panelContainer", panelContainer.getName(), "div");
+        assertEquals(panelContainer.getName(), "div", "tab-content is the attribute of panelContainer");
         assertContentTabPanel(panelContainer, 0, false);
         assertContentTabPanel(panelContainer, 1, true);
         assertContentTabPanel(panelContainer, 2, false);
@@ -91,7 +91,7 @@ public class ClientSideBootstrapTabbedPanelTest extends WicketApplicationTest {
         assertTrue(root.hasChildTag("div"));
         //test tabs
         TagTester tabs = root.getChild("class", "nav nav-tabs");
-        assertEquals("nav nav-tabs is the class of UL", tabs.getName(), "ul");
+        assertEquals(tabs.getName(), "ul", "nav nav-tabs is the class of UL");
         assertLi(tabs,0, false);
         assertLi(tabs,1, false);
         assertLi(tabs,2, true);
@@ -100,7 +100,7 @@ public class ClientSideBootstrapTabbedPanelTest extends WicketApplicationTest {
         assertNull(li3);
         //test main panel container.
         TagTester panelContainer = root.getChild("class", "tab-content");
-        assertEquals("tab-content is the attribute of panelContainer", panelContainer.getName(), "div");
+        assertEquals(panelContainer.getName(), "div", "tab-content is the attribute of panelContainer");
         assertContentTabPanel(panelContainer, 0, false);
         assertContentTabPanel(panelContainer, 1, false);
         assertContentTabPanel(panelContainer, 2, true);
@@ -109,17 +109,17 @@ public class ClientSideBootstrapTabbedPanelTest extends WicketApplicationTest {
     private void assertLi(TagTester tabs, int index, boolean active) {
         String className = "tab"+ index +(active?" active":"");
         TagTester li = tabs.getChild("class", className);
-        assertEquals(className+ " is the class of " + index +" <LI>", li.getName(), "li");
+        assertEquals(li.getName(), "li", className+ " is the class of " + index +" <li>");
     }
 
     private void assertContentTabPanel(TagTester panelContainer, int index, boolean active) {
         String className = "tab" + index + (active?" tab-pane fade in active":" tab-pane fade");
         TagTester div = panelContainer.getChild("class", className);
-        assertEquals(className+ " is the class of " + index +" <div>", div.getName(), "div");
+        assertEquals(div.getName(), "div", className+ " is the class of " + index +" <div>");
     }
 
     private Component newClientSideTabs(String markupId, IModel<Integer> activeTab) {
-        return new ClientSideBootstrapTabbedPanel<AbstractTab>(markupId, Lists.<AbstractTab>newArrayList(
+        return new ClientSideBootstrapTabbedPanel<>(markupId, Lists.newArrayList(
                 createTab("Section 1"), createTab("Section 2"), createTab("Section 3")
         ), activeTab);
     }

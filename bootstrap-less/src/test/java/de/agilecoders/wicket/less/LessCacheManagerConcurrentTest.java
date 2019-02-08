@@ -9,23 +9,24 @@ import org.apache.wicket.request.resource.CssPackageResource;
 import org.apache.wicket.util.io.IOUtils;
 import org.apache.wicket.util.resource.IResourceStream;
 import org.apache.wicket.util.tester.WicketTester;
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class LessCacheManagerConcurrentTest
 {
     public static final int MAX_RETRIES = 200;
     private WicketTester tester;
 
-    @Before
+    @BeforeEach
     public void before()
     {
         tester = new WicketTester(new TestApplication());
     }
 
-    @After
+    @AfterEach
     public void after()
     {
         tester.destroy();
@@ -72,7 +73,7 @@ public class LessCacheManagerConcurrentTest
                 failed = failed || runnables[i].hasFailed();
             }
 
-            Assert.assertFalse("At least one thread reported error", failed);
+            assertFalse(failed, "At least one thread reported error");
         }
     }
 

@@ -4,7 +4,7 @@ import de.agilecoders.wicket.core.WicketApplicationTest;
 import org.apache.wicket.markup.html.link.AbstractLink;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.util.tester.TagTester;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Tests for ButtonBehavior

@@ -1,8 +1,6 @@
 package de.agilecoders.wicket.core.util;
 
-import de.agilecoders.wicket.core.test.TestCategory;
-import org.junit.Test;
-import org.junit.experimental.categories.Category;
+import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
@@ -13,7 +11,6 @@ import static org.hamcrest.Matchers.is;
  *
  * @author miha
  */
-@Category(TestCategory.UnitTest.class)
 public class DatesTest {
 
     @Test

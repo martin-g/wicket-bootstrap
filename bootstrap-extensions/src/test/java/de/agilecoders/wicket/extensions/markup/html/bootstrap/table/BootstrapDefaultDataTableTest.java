@@ -19,12 +19,12 @@ import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.markup.repeater.RefreshingView;
 import org.apache.wicket.markup.repeater.RepeatingView;
 import org.apache.wicket.model.Model;
-import org.junit.Test;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.navigation.BootstrapPagingNavigator;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.WicketApplicationTest;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.table.toolbars.BootstrapHeadersToolbar;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.table.toolbars.BootstrapNavigationToolbar;
+import org.junit.jupiter.api.Test;
 
 public class BootstrapDefaultDataTableTest extends WicketApplicationTest {
 
@@ -36,8 +36,8 @@ public class BootstrapDefaultDataTableTest extends WicketApplicationTest {
 
     @Override
     protected void onBefore() {
-        columns.add(new PropertyColumn<DemoType, String>(Model.of("id"), "id", "id"));
-        columns.add(new PropertyColumn<DemoType, String>(Model.of("name"), "name", "name"));
+        columns.add(new PropertyColumn<>(Model.of("id"), "id", "id"));
+        columns.add(new PropertyColumn<>(Model.of("name"), "name", "name"));
     }
 
     @Test

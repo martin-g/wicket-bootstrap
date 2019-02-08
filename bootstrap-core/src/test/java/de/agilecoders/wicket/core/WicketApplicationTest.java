@@ -15,9 +15,10 @@ import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.tester.TagTester;
 import org.apache.wicket.util.tester.WicketTester;
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
+import org.hamcrest.MatcherAssert;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,12 +33,12 @@ import static org.hamcrest.Matchers.is;
  *
  * @author miha
  */
-public class WicketApplicationTest extends Assert {
+public class WicketApplicationTest extends Assertions {
 
     private WebApplication application;
     private WicketTester tester;
 
-    @Before
+    @BeforeEach
     public final void before() {
         application = newWebApplication();
 
@@ -45,7 +46,7 @@ public class WicketApplicationTest extends Assert {
         onBefore();
     }
 
-    @After
+    @AfterEach
     public final void tearDown() throws Exception {
         if (tester != null) {
             tester.destroy();
@@ -135,7 +136,7 @@ public class WicketApplicationTest extends Assert {
         final CssClassNames.Builder cssClasses = CssClassNames.parse(tag.getAttribute("class"));
 
         for (String cssClassName : cssClassNames) {
-            assertThat("contains css class name: " + cssClassName + "; current: " + cssClasses.asString(), cssClasses.contains(cssClassName), is(equalTo(true)));
+            MatcherAssert.assertThat("contains css class name: " + cssClassName + "; current: " + cssClasses.asString(), cssClasses.contains(cssClassName), is(equalTo(true)));
         }
         return tag;
     }
@@ -147,7 +148,7 @@ public class WicketApplicationTest extends Assert {
         final CssClassNames.Builder cssClasses = CssClassNames.parse(tag.getAttribute("class"));
 
         for (String cssClassName : cssClassNames) {
-            assertThat("not contains css class name: " + cssClassName + "; current: " + cssClasses.asString(), cssClasses.contains(cssClassName), is(equalTo(false)));
+            MatcherAssert.assertThat("not contains css class name: " + cssClassName + "; current: " + cssClasses.asString(), cssClasses.contains(cssClassName), is(equalTo(false)));
         }
         return tag;
     }

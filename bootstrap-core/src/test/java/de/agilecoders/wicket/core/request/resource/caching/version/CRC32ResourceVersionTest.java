@@ -1,8 +1,7 @@
 package de.agilecoders.wicket.core.request.resource.caching.version;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.AbstractMap;
 import java.util.Arrays;
@@ -14,29 +13,22 @@ import java.util.Map;
  *
  * @author miha
  */
-@RunWith(value = Parameterized.class)
 public class CRC32ResourceVersionTest extends ChecksumResourceVersionTest {
 
-    private final Map.Entry<String, String> content;
-
-    public CRC32ResourceVersionTest(final Map.Entry<String, String> content) {
-        this.content = content;
-    }
-
-    @Parameterized.Parameters
     public static Collection<Object[]> data() {
         Object[][] data = new Object[][] {
-                { new AbstractMap.SimpleEntry<String, String>("a", "e8b7be43") },
-                { new AbstractMap.SimpleEntry<String, String>("a1", "6ce14823") },
-                { new AbstractMap.SimpleEntry<String, String>("a1b", "d3b57fc3") },
-                { new AbstractMap.SimpleEntry<String, String>("a1bX", "b50c103e") },
-                { new AbstractMap.SimpleEntry<String, String>("a1bXl", "57d2d345") }
+                { new AbstractMap.SimpleEntry<>("a", "e8b7be43") },
+                { new AbstractMap.SimpleEntry<>("a1", "6ce14823") },
+                { new AbstractMap.SimpleEntry<>("a1b", "d3b57fc3") },
+                { new AbstractMap.SimpleEntry<>("a1bX", "b50c103e") },
+                { new AbstractMap.SimpleEntry<>("a1bXl", "57d2d345") }
         };
         return Arrays.asList(data);
     }
 
-    @Test
-    public void checkChecksum() {
+    @ParameterizedTest
+    @MethodSource("data")
+    public void checkChecksum(final Map.Entry<String, String> content) {
         check(content.getKey(), content.getValue());
     }
 

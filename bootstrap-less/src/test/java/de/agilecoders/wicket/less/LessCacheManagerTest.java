@@ -1,8 +1,5 @@
 package de.agilecoders.wicket.less;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -10,12 +7,15 @@ import java.net.URL;
 import org.apache.wicket.util.file.Files;
 import org.apache.wicket.util.io.Connections;
 import org.apache.wicket.util.time.Time;
-import org.junit.Before;
-import org.junit.Test;
 
 import com.github.sommeri.less4j.LessCompiler.Configuration;
 import com.github.sommeri.less4j.LessSource;
 import com.github.sommeri.less4j.LessSource.URLSource;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 public class LessCacheManagerTest {
@@ -23,7 +23,7 @@ public class LessCacheManagerTest {
     private int invocationOfGetContent;
     private int invocationOfNewConfiguration;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         invocationOfGetContent = 0;
         invocationOfNewConfiguration = 0;
@@ -143,8 +143,7 @@ public class LessCacheManagerTest {
         cacheManager.clearCache();
         URLSource urlSourceAfter = cacheManager.getLessSource(resourceUrl, scopeClass);
 
-        assertTrue("We should get different instances of URLSource",
-                urlSourceBefore != urlSourceAfter);
+        assertTrue(urlSourceBefore != urlSourceAfter, "We should get different instances of URLSource");
     }
 
     @Test

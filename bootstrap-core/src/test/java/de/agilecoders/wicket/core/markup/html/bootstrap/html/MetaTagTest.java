@@ -3,12 +3,13 @@ package de.agilecoders.wicket.core.markup.html.bootstrap.html;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.nullValue;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 import de.agilecoders.wicket.core.WicketApplicationTest;
 import org.apache.wicket.WicketRuntimeException;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.util.tester.TagTester;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Tests the {@link MetaTag} component
@@ -18,9 +19,10 @@ import org.junit.Test;
 public class MetaTagTest extends WicketApplicationTest {
     static final String MARKUP = "<meta wicket:id=\"id\"/>";
 
-    @Test(expected = WicketRuntimeException.class)
+    @Test
     public void tagNameIsAsserted() throws Exception {
-        startComponentInPage(new MetaTag(id(), Model.of("name"), Model.of("")));
+        assertThrows(WicketRuntimeException.class, () ->
+            startComponentInPage(new MetaTag(id(), Model.of("name"), Model.of(""))));
     }
 
     @Test

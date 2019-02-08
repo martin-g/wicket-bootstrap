@@ -5,11 +5,12 @@ import java.util.List;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.util.tester.TagTester;
 import org.hamcrest.Matchers;
-import org.junit.Assert;
-import org.junit.Test;
 
 import com.google.common.collect.Lists;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.WicketApplicationTest;
+import org.junit.jupiter.api.Test;
+
+import static org.hamcrest.MatcherAssert.assertThat;
 
 /**
  * Tests the {@link Html5Player} class
@@ -28,12 +29,12 @@ public class Html5PlayerTest extends WicketApplicationTest {
         tester().startComponentInPage(player);
 
         TagTester video = tester().getTagById("video1");
-        Assert.assertThat("video", Matchers.equalTo(video.getName()));
+        assertThat("video", Matchers.equalTo(video.getName()));
         video.getAttributeIs("width", "370");
         video.getAttributeIs("height", "215");
 
         TagTester source = tester().getTagByWicketId("element");
-        Assert.assertThat("source", Matchers.equalTo(source.getName()));
+        assertThat("source", Matchers.equalTo(source.getName()));
 
         tester().assertContains("Your browser does not support the video tag");
     }

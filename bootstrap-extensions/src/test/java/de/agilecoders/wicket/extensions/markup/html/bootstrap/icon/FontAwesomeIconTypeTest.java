@@ -1,25 +1,24 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.icon;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeIconTypeBuilder.on;
 import static de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeIconTypeBuilder.FontAwesomeGraphic.align_center;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * Tests for FontAwesomeIconType
  */
-public class FontAwesomeIconTypeTest extends Assert {
+public class FontAwesomeIconTypeTest {
 
     @Test
     public void cssClassName() {
-        assertEquals("FontAwesome should use 'fa fa-NAME", "fa fa-adjust", FontAwesomeIconType.adjust.cssClassName());
+        assertEquals("fa fa-adjust", FontAwesomeIconType.adjust.cssClassName(), "FontAwesome should use 'fa fa-NAME");
     }
 
     @Test
     public void cssClassNameFixedWidth() {
         FontAwesomeIconType fontAwesomeIcon = on(align_center).fw().build();
-        assertEquals("FontAwesome should use 'fa fa-NAME fa-fw", "fa fa-align-center fa-fw",
-                     fontAwesomeIcon.cssClassName());
+        assertEquals("fa fa-align-center fa-fw", fontAwesomeIcon.cssClassName(), "FontAwesome should use 'fa fa-NAME fa-fw");
     }
 }

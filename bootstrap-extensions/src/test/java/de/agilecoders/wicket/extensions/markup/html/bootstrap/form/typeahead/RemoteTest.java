@@ -1,13 +1,10 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.form.typeahead;
 
 import de.agilecoders.wicket.jquery.IKey;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
-/**
- *
- */
-public class RemoteTest extends Assert {
+public class RemoteTest extends Assertions {
 
     @Test
     public void wildcardIsAutomaticallyAdded() {

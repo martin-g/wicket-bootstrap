@@ -1,20 +1,17 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.heading;
 
 import de.agilecoders.wicket.core.WicketApplicationTest;
-import de.agilecoders.wicket.core.markup.html.bootstrap.heading.Heading;
 import de.agilecoders.wicket.core.test.IntegrationTest;
-
 import org.apache.wicket.markup.Markup;
 import org.apache.wicket.markup.MarkupException;
-import org.junit.Test;
-import org.junit.experimental.categories.Category;
+import org.junit.jupiter.api.Test;
 
 /**
  * Tests the {@code Heading} and {@code HeadingBehavior}
  *
  * @author miha
  */
-@Category(IntegrationTest.class)
+@IntegrationTest
 public class HeadingTest extends WicketApplicationTest {
 
     @Test
@@ -27,11 +24,12 @@ public class HeadingTest extends WicketApplicationTest {
         }
     }
 
-    @Test(expected = MarkupException.class)
+    @Test
     public void tagNameIsAsserted() {
         Heading heading = new Heading("id");
 
-        tester().startComponentInPage(heading, Markup.of("<span wicket:id='id'>Heading</span>"));
+        assertThrows(MarkupException.class, () ->
+            tester().startComponentInPage(heading, Markup.of("<span wicket:id='id'>Heading</span>")));
     }
 
 }

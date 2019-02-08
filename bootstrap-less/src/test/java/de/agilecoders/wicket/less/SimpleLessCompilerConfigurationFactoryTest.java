@@ -1,11 +1,11 @@
 package de.agilecoders.wicket.less;
 
-import static org.junit.Assert.*;
-import static org.hamcrest.Matchers.*;
-
-import org.junit.Test;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.empty;
+import static org.hamcrest.Matchers.instanceOf;
 
 import com.github.sommeri.less4j.LessCompiler;
+import org.junit.jupiter.api.Test;
 
 
 public class SimpleLessCompilerConfigurationFactoryTest {

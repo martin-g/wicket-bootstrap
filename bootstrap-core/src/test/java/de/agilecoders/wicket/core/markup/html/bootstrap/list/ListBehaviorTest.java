@@ -2,7 +2,7 @@ package de.agilecoders.wicket.core.markup.html.bootstrap.list;
 
 import de.agilecoders.wicket.core.WicketApplicationTest;
 import org.apache.wicket.util.tester.TagTester;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;

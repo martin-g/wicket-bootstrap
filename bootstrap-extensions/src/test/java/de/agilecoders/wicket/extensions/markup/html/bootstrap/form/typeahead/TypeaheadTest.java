@@ -2,7 +2,7 @@ package de.agilecoders.wicket.extensions.markup.html.bootstrap.form.typeahead;
 
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.WicketApplicationTest;
 import org.apache.wicket.markup.Markup;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Tests the {@link Typeahead} class

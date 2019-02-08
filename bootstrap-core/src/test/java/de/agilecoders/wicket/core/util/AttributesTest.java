@@ -5,7 +5,7 @@ import org.apache.wicket.Component;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.parser.XmlTag;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
@@ -40,9 +40,9 @@ public class AttributesTest extends WicketApplicationTest {
         assertThat(tester().getTagByWicketId(id()).getAttribute("class"), is(nullValue()));
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void nullClassNameThrowsException() {
-        startComponentInPage(createComponentWithCssClassNames((String[]) null));
+        assertThrows(IllegalArgumentException.class, () -> startComponentInPage(createComponentWithCssClassNames((String[]) null)));
     }
 
     @Test

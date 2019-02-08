@@ -1,11 +1,9 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.block;
 
 import de.agilecoders.wicket.core.WicketApplicationTest;
-import de.agilecoders.wicket.core.markup.html.bootstrap.block.Cite;
-
 import org.apache.wicket.markup.Markup;
 import org.apache.wicket.markup.MarkupException;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Tests the {@link Cite} class
@@ -14,9 +12,9 @@ import org.junit.Test;
  */
 public class CiteTest extends WicketApplicationTest {
 
-    @Test(expected = MarkupException.class)
+    @Test
     public void tagNameIsAsserted() {
-        startComponentInPage(new Cite(id()));
+        assertThrows(MarkupException.class, () -> startComponentInPage(new Cite(id())));
     }
 
     @Test

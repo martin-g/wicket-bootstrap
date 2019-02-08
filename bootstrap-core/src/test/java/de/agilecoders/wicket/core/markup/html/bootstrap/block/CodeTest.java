@@ -1,12 +1,9 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.block;
 
 import de.agilecoders.wicket.core.WicketApplicationTest;
-import de.agilecoders.wicket.core.markup.html.bootstrap.block.Code;
-import de.agilecoders.wicket.core.markup.html.bootstrap.block.CodeBehavior;
-
 import org.apache.wicket.markup.Markup;
 import org.apache.wicket.markup.MarkupException;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Tests the {@link Code} class
@@ -15,9 +12,9 @@ import org.junit.Test;
  */
 public class CodeTest extends WicketApplicationTest {
 
-    @Test(expected = MarkupException.class)
-    public void tagNameWasAsserted() {
-        tester().startComponentInPage(new Code(id()));
+    @Test
+    void tagNameWasAsserted() {
+        assertThrows(MarkupException.class, () -> tester().startComponentInPage(new Code(id())));
     }
 
     @Test

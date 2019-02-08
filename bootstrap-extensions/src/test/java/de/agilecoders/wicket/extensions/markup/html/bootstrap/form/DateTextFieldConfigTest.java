@@ -2,13 +2,14 @@ package de.agilecoders.wicket.extensions.markup.html.bootstrap.form;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * Tests for DateTextFieldConfig
  */
-public class DateTextFieldConfigTest extends Assert {
+public class DateTextFieldConfigTest {
 
     @Test
     public void serializeTodayButton() throws JsonProcessingException {

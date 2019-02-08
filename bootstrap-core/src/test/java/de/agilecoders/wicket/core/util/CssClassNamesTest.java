@@ -1,9 +1,7 @@
 package de.agilecoders.wicket.core.util;
 
-import de.agilecoders.wicket.core.test.TestCategory;
 import de.agilecoders.wicket.jquery.util.Generics2;
-import org.junit.Test;
-import org.junit.experimental.categories.Category;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
@@ -16,7 +14,6 @@ import static org.hamcrest.Matchers.is;
  *
  * @author miha
  */
-@Category(TestCategory.UnitTest.class)
 public class CssClassNamesTest {
 
     @Test

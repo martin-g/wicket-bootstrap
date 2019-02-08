@@ -1,7 +1,7 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.block;
 
 import de.agilecoders.wicket.core.WicketApplicationTest;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Tests the {@link BadgeBehavior}
@@ -11,7 +11,7 @@ import org.junit.Test;
 public class BadgeBehaviorTest extends WicketApplicationTest {
 
     @Test
-    public void classNameWasAdded() {
+    void classNameWasAdded() {
         assertCssClass(new BadgeBehavior(), "badge");
     }
 

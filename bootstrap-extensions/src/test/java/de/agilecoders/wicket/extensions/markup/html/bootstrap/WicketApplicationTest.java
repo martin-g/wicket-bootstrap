@@ -11,26 +11,25 @@ import org.apache.wicket.Page;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.util.tester.TagTester;
 import org.apache.wicket.util.tester.WicketTester;
-import org.junit.Assert;
-import org.junit.Before;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 
 import java.util.List;
 
 import static com.google.common.base.Strings.nullToEmpty;
 import static com.google.common.collect.Lists.newArrayList;
-import static de.agilecoders.wicket.core.Bootstrap.install;
 
 /**
  * Base integration test class
  *
  * @author miha
  */
-public class WicketApplicationTest extends Assert {
+public class WicketApplicationTest extends Assertions {
 
     private WebApplication application;
     private WicketTester tester;
 
-    @Before
+    @BeforeEach
     public final void before() {
         application = new WebApplication() {
 
