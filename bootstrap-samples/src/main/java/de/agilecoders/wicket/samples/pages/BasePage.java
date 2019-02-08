@@ -1,6 +1,5 @@
 package de.agilecoders.wicket.samples.pages;
 
-import com.newrelic.api.agent.NewRelic;
 import de.agilecoders.wicket.core.Bootstrap;
 import de.agilecoders.wicket.core.markup.html.bootstrap.block.Code;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.BootstrapExternalLink;
@@ -72,16 +71,6 @@ abstract class BasePage extends GenericWebPage<Void> {
         add(new Code("code-internal"));
 
         add(new HeaderResponseContainer("footer-container", "footer-container"));
-
-        // add new relic RUM scripts.
-        add(new Label("newrelic", Model.of(NewRelic.getBrowserTimingHeader()))
-                .setEscapeModelStrings(false)
-                .setRenderBodyOnly(true)
-                .add(new AttributeModifier("id", "newrelic-rum-header")));
-        add(new Label("newrelic-footer", Model.of(NewRelic.getBrowserTimingFooter()))
-                .setEscapeModelStrings(false)
-                .setRenderBodyOnly(true)
-                .add(new AttributeModifier("id", "newrelic-rum-footer")));
     }
 
     /**
