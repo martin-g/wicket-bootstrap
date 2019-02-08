@@ -24,7 +24,7 @@ public class Start {
         final WebAppContext bb = new WebAppContext();
         bb.setServer(server);
         bb.setContextPath("/");
-        bb.setWar("bootstrap-samples/src/main/webapp");
+        bb.setWar("src/main/webapp");
         server.setHandler(bb);
 
         try {
