@@ -19,7 +19,7 @@ Current build status: [![Build Status](https://buildhive.cloudbees.com/job/l0rdn
 Current release version:
 
 * [Wicket 8.x](http://wicket.apache.org/) and [Bootstrap 4.x](https://github.com/twbs/bootstrap/):  3.x
-* [Wicket 8.x](http://wicket.apache.org/) and [Bootstrap 3.3.7](https://github.com/twbs/bootstrap/):  2.x
+* [Wicket 8.x](http://wicket.apache.org/) and [Bootstrap 3.4.0](https://github.com/twbs/bootstrap/):  2.x
 * [Wicket 7.x](http://wicket.apache.org/) and [Bootstrap 3.3.7](https://github.com/twbs/bootstrap/):  0.10.x
 * [Wicket 6.x](http://wicket.apache.org/) and [Bootstrap 3.3.7](https://github.com/twbs/bootstrap/): 0.9.x
 * Wicket 6.x and Bootstrap 2.*: 0.8.4
@@ -32,8 +32,8 @@ https://wb8.teliclab.info (courtesy hosted by [Shengche Hsiao](https://github.co
 Themes
 ------
 
-* Bootstrap (3.3.7): http://getbootstrap.com/
-* Bootswatch (3.3.7): http://bootswatch.com/
+* Bootstrap (3.4.0): http://getbootstrap.com/
+* Bootswatch (3.4.0): http://bootswatch.com/
 * Material Design by FezVrasta (0.3.0): https://github.com/FezVrasta/bootstrap-material-design
 * todc-bootstrap, google styled theme (3.3.7): https://todc.github.io/todc-bootstrap
 * metro-bootstrap (3.3.7): https://github.com/idleberg/m8tro-bootstrap

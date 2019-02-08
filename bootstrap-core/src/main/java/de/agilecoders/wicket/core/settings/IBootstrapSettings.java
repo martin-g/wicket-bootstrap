@@ -14,12 +14,12 @@ public interface IBootstrapSettings {
     /**
      * The version of Bootstrap
      */
-    String VERSION = "3.3.7";
+    String VERSION = "3.4.0";
 
     /**
      * The version of modernizr
      */
-    String MODERNIZR_VERSION = "2.8.3";
+    String MODERNIZR_VERSION = "2.8.3-1";
 
     /**
      * The url to the JavaScript resource at a CDN network
