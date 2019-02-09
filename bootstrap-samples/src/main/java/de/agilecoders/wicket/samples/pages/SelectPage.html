@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>ComponentsPage</title>
+</head>
+<body>
+<wicket:extend>
+    <header class="jumbotron subhead" id="overview">
+        <div class="container">
+            <h1>SelectPicker</h1>
+
+            <p class="lead">A selectpicker for @twitter bootstrap forked from <a
+                    href="http://silviomoreto.github.io/bootstrap-select">silviomoreto repository</a></p>
+        </div>
+    </header>
+
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-3 bs-docs-sidebar">
+                <ul wicket:id="navigation" class="nav list-group bs-docs-sidenav">
+                    <li><a href="#select"><i class="icon-chevron-right"></i> Select picker</a></li>
+                    <li><a href="#select-language"><i class="icon-chevron-right"></i> Select picker i18n</a></li>
+                    <li><a href="#select-modal"><i class="icon-chevron-right"></i> Select picker (modal)</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-9">
+
+                <section id="select">
+                    <div class="page-header">
+                        <h1>Select</h1>
+                    </div>
+
+                    <h2>Example</h2>
+
+                    <p>Simple usage of select picker.</p>
+
+                    <div class="bs-docs-example" wicket:id="form">
+                    </div>
+                    Form markup
+                    <pre wicket:id="default-html-code"></pre>
+                    Form code
+                    <pre wicket:id="default-java-code"></pre>
+                </section>
+
+                <section id="select-language">
+                    <div class="page-header">
+                        <h1>Select (i18n)</h1>
+                    </div>
+
+                    <h2>Example</h2>
+
+                    <p>Config of select picker provides internationalization (i18n).</p>
+
+                    <div class="bs-docs-example" wicket:id="form-internationalization">
+                    </div>
+                    internationalization configuration example
+                    <pre wicket:id="language-html-code"></pre>
+                </section>
+
+                <section id="select-modal">
+                    <div class="page-header">
+                        <h1>Select modal</h1>
+                    </div>
+
+                    <h2>Example</h2>
+
+                    <p>Select picker able to work in modal window.</p>
+
+                    <div class="bs-docs-example">
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+                            Open modal
+                        </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                             aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal"><span
+                                                aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div wicket:id="form-modal">
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <wicket:fragment wicket:id="typical-form">
+        <form class="form-horizontal">
+            <label wicket:for="default">
+                Default select
+            </label>
+
+            <div class="controls">
+                <select wicket:id="default">
+                </select>
+            </div>
+            <label wicket:for="default">
+                Select with live search
+            </label>
+
+            <div class="controls">
+                <select wicket:id="default-live-search">
+                </select>
+            </div>
+            <label wicket:for="default">
+                Default multi select
+            </label>
+
+            <div class="controls">
+                <select wicket:id="multi">
+                </select>
+            </div>
+            <label wicket:for="default">
+                Multi select with live search
+            </label>
+            <div class="controls">
+                <select wicket:id="multi-live-search">
+                </select>
+            </div>
+            <label wicket:for="default">
+                Multi select with limited selection
+            </label>
+            <div class="controls">
+                <select wicket:id="multi-max-count-2">
+                </select>
+            </div>
+            <button class="btn-primary" wicket:id="update-default" type="button">Refresh first select</button>
+        </form>
+    </wicket:fragment>
+</wicket:extend>
+</body>
+</html>
