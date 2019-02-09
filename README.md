@@ -5,30 +5,17 @@ WICKET COMPONENTS FOR BOOTSTRAP
 
 Wicket-Bootstrap is based on the Bootstrap toolkit and the [Apache Wicket Framework](https://wicket.apache.org/).
 
-Current release version
-------
-* [Wicket 8.x](https://wicket.apache.org/) and [Bootstrap 3.3.7](https://github.com/twbs/bootstrap/):  [2.x](http://repo1.maven.org/maven2/de/agilecoders/wicket/wicket-bootstrap-core/)
-* [Wicket 7.x](https://wicket.apache.org/) and [Bootstrap 3.3.7](https://github.com/twbs/bootstrap/):  [0.10.x](http://repo1.maven.org/maven2/de/agilecoders/wicket/wicket-bootstrap-core/)
-* [Wicket 6.x](https://wicket.apache.org/) and [Bootstrap 3.3.7](https://github.com/twbs/bootstrap/): [0.9.x](http://repo1.maven.org/maven2/de/agilecoders/wicket/wicket-bootstrap-core/)
-* [Wicket 6.x](https://wicket.apache.org/) and [Bootstrap 2.*](https://github.com/twbs/bootstrap/): [0.8.4](http://repo1.maven.org/maven2/de/agilecoders/wicket/wicket-bootstrap-core/)
-
-
-Build Status & Coverage
-------
 | Branch | Build | Coverage |
 | ------ | ----- | -------- |
-| wicket-8.x-bootstrap-4.x | [![Build Status](https://travis-ci.org/l0rdn1kk0n/wicket-bootstrap.png?branch=wicket-8.x-bootstrap-4.x)](https://travis-ci.org/l0rdn1kk0n/wicket-bootstrap/tree/wicket-8.x-bootstrap-4.x) | [![Coverage Status](https://coveralls.io/repos/github/l0rdn1kk0n/wicket-bootstrap/badge.svg?branch=wicket-8.x-bootstrap-4.x)](https://coveralls.io/github/l0rdn1kk0n/wicket-bootstrap?branch=wicket-8.x-bootstrap-4.x) |
-| wicket-8.x | [![Build Status](https://travis-ci.org/l0rdn1kk0n/wicket-bootstrap.png?branch=wicket-8.x)](https://travis-ci.org/l0rdn1kk0n/wicket-bootstrap/tree/wicket-8.x) | [![Coverage Status](https://coveralls.io/repos/github/l0rdn1kk0n/wicket-bootstrap/badge.svg?branch=wicket-8.x)](https://coveralls.io/github/l0rdn1kk0n/wicket-bootstrap?branch=wicket-8.x) |
-| wicket-7.x | [![Build Status](https://travis-ci.org/l0rdn1kk0n/wicket-bootstrap.png?branch=wicket-7.x)](https://travis-ci.org/l0rdn1kk0n/wicket-bootstrap/tree/wicket-7.x) | [![Coverage Status](https://coveralls.io/repos/github/l0rdn1kk0n/wicket-bootstrap/badge.svg?branch=wicket-7.x)](https://coveralls.io/github/l0rdn1kk0n/wicket-bootstrap?branch=wicket-7.x) |
-| master | [![Build Status](https://travis-ci.org/l0rdn1kk0n/wicket-bootstrap.png?branch=master)](https://travis-ci.org/l0rdn1kk0n/wicket-bootstrap/tree/master) | [![Coverage Status](https://coveralls.io/repos/github/l0rdn1kk0n/wicket-bootstrap/badge.svg?branch=master)](https://coveralls.io/github/l0rdn1kk0n/wicket-bootstrap?branch=master) |
-
-[![Issue Stats](http://www.issuestats.com/github/l0rdn1kk0n/wicket-bootstrap/badge/issue?style=flat)](http://www.issuestats.com/github/l0rdn1kk0n/wicket-bootstrap)
-[![Issue Stats](http://www.issuestats.com/github/l0rdn1kk0n/wicket-bootstrap/badge/pr?style=flat)](http://www.issuestats.com/github/l0rdn1kk0n/wicket-bootstrap)
+| wicket-8.x-bootstrap-4.x | [![Build Status](https://travis-ci.org/l0rdn1kk0n/wicket-bootstrap.svg?branch=wicket-8.x-bootstrap-4.x)](https://travis-ci.org/l0rdn1kk0n/wicket-bootstrap/branches) | [![Coverage Status](https://coveralls.io/repos/github/l0rdn1kk0n/wicket-bootstrap/badge.svg?branch=wicket-8.x-bootstrap-4.x)](https://coveralls.io/github/l0rdn1kk0n/wicket-bootstrap?branch=wicket-8.x-bootstrap-4.x) |
+| wicket-8.x | [![Build Status](https://travis-ci.org/l0rdn1kk0n/wicket-bootstrap.svg?branch=wicket-8.x)](https://travis-ci.org/l0rdn1kk0n/wicket-bootstrap/branches) | [![Coverage Status](https://coveralls.io/repos/github/l0rdn1kk0n/wicket-bootstrap/badge.svg?branch=wicket-8.x)](https://coveralls.io/github/l0rdn1kk0n/wicket-bootstrap?branch=wicket-8.x) |
+| wicket-7.x | [![Build Status](https://travis-ci.org/l0rdn1kk0n/wicket-bootstrap.svg?branch=wicket-7.x)](https://travis-ci.org/l0rdn1kk0n/wicket-bootstrap/branches) | [![Coverage Status](https://coveralls.io/repos/github/l0rdn1kk0n/wicket-bootstrap/badge.svg?branch=wicket-7.x)](https://coveralls.io/github/l0rdn1kk0n/wicket-bootstrap?branch=wicket-7.x) |
+| master | [![Build Status](https://travis-ci.org/l0rdn1kk0n/wicket-bootstrap.svg?branch=master)](https://travis-ci.org/l0rdn1kk0n/wicket-bootstrap/branches) | [![Coverage Status](https://coveralls.io/repos/github/l0rdn1kk0n/wicket-bootstrap/badge.svg?branch=master)](https://coveralls.io/github/l0rdn1kk0n/wicket-bootstrap?branch=master) |
 
 Current release version:
 
 * [Wicket 8.x](http://wicket.apache.org/) and [Bootstrap 4.x](https://github.com/twbs/bootstrap/):  3.x
-* [Wicket 8.x](http://wicket.apache.org/) and [Bootstrap 3.3.7](https://github.com/twbs/bootstrap/):  2.x
+* [Wicket 8.x](http://wicket.apache.org/) and [Bootstrap 3.4.0](https://github.com/twbs/bootstrap/):  2.x
 * [Wicket 7.x](http://wicket.apache.org/) and [Bootstrap 3.3.7](https://github.com/twbs/bootstrap/):  0.10.x
 * [Wicket 6.x](http://wicket.apache.org/) and [Bootstrap 3.3.7](https://github.com/twbs/bootstrap/): 0.9.x
 * Wicket 6.x and Bootstrap 2.*: 0.8.4
@@ -69,7 +56,7 @@ How to get help and news
 
 * Keep up to date on announcements and more by following me [@l0rdn1kk0n](http://twitter.com/l0rdn1kk0n) on Twitter or use the [#WicketBootstrap](https://twitter.com/search?q=%23WicketBootstrap&src=typd) hashtag
 * use the [google group](https://groups.google.com/d/forum/wicket-bootstrap) (wicket-bootstrap (at) googlegroups.com)
-* you can see wicket-bootstrap in action: http://wb.agilecoders.de/
+* you can see wicket-bootstrap in action: https://wb7.teliclab.info
 * how to use wicket-bootstrap? Read the documentation on https://github.com/l0rdn1kk0n/wicket-bootstrap/wiki.
 * read more on my [blog](http://blog.agilecoders.de/).
 
@@ -82,7 +69,7 @@ core maven dependency:
 <dependency>
     <groupId>de.agilecoders.wicket</groupId>
     <artifactId>wicket-bootstrap-core</artifactId>
-    <version>0.10.17</version>
+    <version>0.10.18</version>
 </dependency>
 ```
 
@@ -92,7 +79,7 @@ for all extensions:
 <dependency>
     <groupId>de.agilecoders.wicket</groupId>
     <artifactId>wicket-bootstrap-extensions</artifactId>
-    <version>0.10.17</version>
+    <version>0.10.18</version>
 </dependency>
 ```
 
@@ -102,7 +89,7 @@ for all themes:
 <dependency>
     <groupId>de.agilecoders.wicket</groupId>
     <artifactId>wicket-bootstrap-themes</artifactId>
-    <version>0.10.17</version>
+    <version>0.10.18</version>
 </dependency>
 ```
 
@@ -112,7 +99,7 @@ if you want to use a less compiler:
 <dependency>
     <groupId>de.agilecoders.wicket</groupId>
     <artifactId>wicket-bootstrap-less</artifactId>
-    <version>0.10.17</version>
+    <version>0.10.18</version>
 </dependency>
 ```
 
@@ -122,7 +109,7 @@ all samples can be used with this dependency:
 <dependency>
     <groupId>de.agilecoders.wicket</groupId>
     <artifactId>wicket-bootstrap-samples</artifactId>
-    <version>0.10.6</version>
+    <version>0.10.18</version>
 </dependency>
 ```
 
