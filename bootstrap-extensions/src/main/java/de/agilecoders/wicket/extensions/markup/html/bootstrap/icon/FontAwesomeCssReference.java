@@ -27,6 +27,6 @@ public class FontAwesomeCssReference extends WebjarsCssResourceReference {
      * Private constructor.
      */
     private FontAwesomeCssReference() {
-        super("font-awesome/current/css/font-awesome.css");
+        super("font-awesome/current/css/all.css");
     }
 }
