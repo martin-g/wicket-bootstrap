@@ -113,8 +113,13 @@ public class FontAwesomeIconTypeBuilder {
      * Sizes on an icon.
      */
     public enum Size {
-        two, three, four, five, large
-    }
+        two("2x"), three("3x"), four("4x"), five("5x"), large("lg");
+
+        private String style;
+
+        Size(final String factor) {
+            this.style = "fa-" + factor;
+        }}
 
     /**
      * @param fontAwesomeGraphic icon to use in the builder
@@ -154,7 +159,7 @@ public class FontAwesomeIconTypeBuilder {
      * @return build the icon
      */
     public FontAwesomeIconType build() {
-        final List<String> styles = new ArrayList<String>();
+        final List<String> styles = new ArrayList<>();
 
         // replace all underscore to dashes
         styles.add(underscoresToDashes(fontAwesomeGraphic.name()));
@@ -175,26 +180,10 @@ public class FontAwesomeIconTypeBuilder {
 
         // add size class
         if (size != null) {
-            switch (size) {
-                case two:
-                    styles.add("fa-2x");
-                    break;
-                case three:
-                    styles.add("fa-3x");
-                    break;
-                case four:
-                    styles.add("fa-4x");
-                    break;
-                case five:
-                    styles.add("fa-5x");
-                    break;
-                case large:
-                    styles.add("fa-lg");
-                    break;
-            }
+            styles.add(size.style);
         }
 
-        return new FontAwesomeIconType(styles.toArray(new String[styles.size()]));
+        return new FontAwesomeIconType(styles.toArray(new String[0]));
     }
 
     /**
