@@ -1,6 +1,5 @@
 package de.agilecoders.wicket.samples.pages;
 
-import com.google.common.collect.Lists;
 import de.agilecoders.wicket.core.markup.html.bootstrap.block.Code;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.select.BootstrapMultiSelect;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.select.BootstrapSelect;
@@ -13,8 +12,6 @@ import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.wicketstuff.annotation.mount.MountPath;
 
-import java.util.List;
-
 /**
  * select page
  *
@@ -25,23 +22,6 @@ import java.util.List;
 public class SelectPage extends BasePage {
 
     private static final long serialVersionUID = -7206242562056511774L;
-
-    private static final List<String> data = Lists.newArrayList(
-            "Alabama", "Alaska", "Arizona", "Arkansas",
-            "California", "Colorado", "Connecticut",
-            "Delaware", "Florida", "Georgia", "Hawaii",
-            "Idaho", "Illinois", "Indiana", "Iowa", "Kansas",
-            "Kentucky", "Louisiana", "Maine", "Maryland",
-            "Massachusetts", "Michigan", "Minnesota",
-            "Mississippi", "Missouri", "Montana", "Nebraska",
-            "Nevada", "New Hampshire", "New Jersey",
-            "New Mexico", "New York", "North Dakota",
-            "North Carolina", "Ohio", "Oklahoma", "Oregon",
-            "Pennsylvania", "Rhode Island", "South Carolina",
-            "South Dakota", "Tennessee", "Texas", "Utah",
-            "Vermont", "Virginia", "Washington",
-            "West Virginia", "Wisconsin", "Wyoming"
-    );
 
     private final String formHtmlCode = "Default select\n"
             + "<select wicket:id=\"default\">\n"
