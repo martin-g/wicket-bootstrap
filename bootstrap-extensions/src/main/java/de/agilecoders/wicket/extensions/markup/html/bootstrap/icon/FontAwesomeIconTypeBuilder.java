@@ -219,7 +219,8 @@ public class FontAwesomeIconTypeBuilder {
      * Rotation that can be done on an icon.
      */
     public enum Rotation {
-        flip_horizontal, flip_vertical, normal, rotate_180, rotate_270, rotate_90}
+        flip_horizontal, flip_vertical, normal, rotate_180, rotate_270, rotate_90
+    }
 
     /**
      * Sizes on an icon.
