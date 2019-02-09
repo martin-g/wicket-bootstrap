@@ -3,13 +3,14 @@ package de.agilecoders.wicket.sass;
 import org.apache.wicket.request.resource.ResourceReference;
 import org.apache.wicket.request.resource.ResourceReferenceRegistry;
 import org.apache.wicket.util.tester.WicketTester;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.instanceOf;
 import static org.hamcrest.Matchers.is;
 
-public class SassResourceReferenceFactoryTest extends Assert {
+public class SassResourceReferenceFactoryTest extends Assertions {
 
     @Test
     public void createSassResourceReference() {

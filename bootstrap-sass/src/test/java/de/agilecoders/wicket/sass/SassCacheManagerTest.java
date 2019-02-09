@@ -11,10 +11,10 @@ import java.util.Collection;
 import org.apache.wicket.util.file.Files;
 import org.apache.wicket.util.io.Connections;
 import org.apache.wicket.util.time.Time;
-import org.junit.Before;
-import org.junit.Test;
 
 import io.bit3.jsass.Options;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 
 public class SassCacheManagerTest {
@@ -22,7 +22,7 @@ public class SassCacheManagerTest {
     private int invocationOfAddImportedSources;
     private int invocationOfNewConfiguration;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         invocationOfAddImportedSources = 0;
         invocationOfNewConfiguration = 0;

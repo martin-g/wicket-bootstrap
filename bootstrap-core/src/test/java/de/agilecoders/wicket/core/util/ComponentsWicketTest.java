@@ -1,14 +1,11 @@
 package de.agilecoders.wicket.core.util;
 
 import de.agilecoders.wicket.core.WicketApplicationTest;
-import de.agilecoders.wicket.core.test.IntegrationTest;
-import de.agilecoders.wicket.core.util.Components;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.model.Model;
-import org.junit.Test;
-import org.junit.experimental.categories.Category;
+import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
@@ -19,7 +16,6 @@ import static org.hamcrest.Matchers.is;
  *
  * @author miha
  */
-@Category(IntegrationTest.class)
 public class ComponentsWicketTest extends WicketApplicationTest {
 
     @Test

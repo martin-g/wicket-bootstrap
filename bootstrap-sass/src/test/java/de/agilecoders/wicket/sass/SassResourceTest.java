@@ -3,13 +3,13 @@ package de.agilecoders.wicket.sass;
 import org.apache.wicket.util.io.IOUtils;
 import org.apache.wicket.util.string.Strings;
 import org.apache.wicket.util.tester.WicketTester;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
 
-public class SassResourceTest extends Assert {
+public class SassResourceTest extends Assertions {
 
     /**
      * Tests the compilation of Sass resources to Css.

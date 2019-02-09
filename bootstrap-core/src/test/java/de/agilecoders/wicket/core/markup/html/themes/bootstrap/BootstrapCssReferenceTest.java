@@ -3,13 +3,13 @@ package de.agilecoders.wicket.core.markup.html.themes.bootstrap;
 import de.agilecoders.wicket.core.WicketApplicationTest;
 import org.apache.wicket.util.io.IOUtils;
 import org.apache.wicket.util.resource.ResourceStreamNotFoundException;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 /**
  * Tests the {@link BootstrapCssReference} class.
@@ -43,6 +43,6 @@ public class BootstrapCssReferenceTest extends WicketApplicationTest {
         BootstrapCssReference ref = BootstrapCssReference.instance();
 
         tester().startResourceReference(ref);
-        Assert.assertThat(tester().getLastResponseAsString(), is(equalTo(cssContent)));
+        assertThat(tester().getLastResponseAsString(), is(equalTo(cssContent)));
     }
 }

@@ -1,12 +1,12 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.form.rating;
 
+import org.junit.jupiter.api.Test;
+
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 
-import org.junit.Assert;
-import org.junit.Test;
-
-public class RatingConfigTest extends Assert{
+public class RatingConfigTest {
 
     @Test
     public void empty() {

@@ -1,7 +1,7 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.table;
 
 import de.agilecoders.wicket.core.WicketApplicationTest;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Tests the {@link TableBehavior}

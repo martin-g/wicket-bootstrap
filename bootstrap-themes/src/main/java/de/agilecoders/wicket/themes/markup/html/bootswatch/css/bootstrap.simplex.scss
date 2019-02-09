@@ -2,7 +2,7 @@
 @import "bootstrap.simplex.variables.scss";
 
 
-// Simplex 4.1.1
+// Simplex 4.2.1
 // Bootswatch
 
 
@@ -105,6 +105,10 @@ $web-font-path: "https://fonts.googleapis.com/css?family=Open+Sans:400,700" !def
 }
 
 // Typography ==================================================================
+
+.text-secondary {
+  color: $gray-700 !important;
+}
 
 // Tables ======================================================================
 

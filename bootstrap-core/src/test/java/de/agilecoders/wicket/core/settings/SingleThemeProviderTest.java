@@ -1,7 +1,7 @@
 package de.agilecoders.wicket.core.settings;
 
 import de.agilecoders.wicket.core.markup.html.themes.bootstrap.BootstrapTheme;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.CoreMatchers.hasItem;
 import static org.hamcrest.CoreMatchers.is;

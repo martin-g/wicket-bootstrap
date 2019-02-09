@@ -1,16 +1,15 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.behavior;
 
 import de.agilecoders.wicket.core.WicketApplicationTest;
-import de.agilecoders.wicket.core.test.IntegrationTest;
 import de.agilecoders.wicket.jquery.util.Generics2;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.util.tester.TagTester;
-import org.junit.Test;
-import org.junit.experimental.categories.Category;
+import org.junit.jupiter.api.Test;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 
@@ -21,7 +20,6 @@ import static org.hamcrest.Matchers.is;
  * @author miha
  * @version 1.0
  */
-@Category(IntegrationTest.class)
 public class CssClassNameModifierTest extends WicketApplicationTest {
 
     private Component component;

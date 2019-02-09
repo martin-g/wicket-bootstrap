@@ -1,5 +1,6 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.form;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.WicketApplicationTest;
@@ -9,7 +10,7 @@ import org.apache.wicket.markup.MarkupException;
 import org.apache.wicket.markup.html.form.AbstractTextComponent;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.util.tester.TagTester;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Abstract base class for the DateTextField tests.

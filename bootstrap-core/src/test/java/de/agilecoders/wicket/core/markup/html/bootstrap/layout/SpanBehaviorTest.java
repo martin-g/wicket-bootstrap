@@ -11,7 +11,7 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.layout.order.MediumOrder
 import de.agilecoders.wicket.core.markup.html.bootstrap.layout.order.OrderType;
 
 import org.apache.wicket.util.tester.TagTester;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Tests the {@link SpanBehavior}

@@ -3,10 +3,10 @@ package de.agilecoders.wicket.core.markup.html.bootstrap.components.progress;
 import org.apache.wicket.markup.repeater.RepeatingView;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.util.tester.TagTester;
-import org.junit.Test;
 
 import de.agilecoders.wicket.core.WicketApplicationTest;
 import de.agilecoders.wicket.core.markup.html.bootstrap.utilities.BackgroundColorBehavior;
+import org.junit.jupiter.api.Test;
 
 /**
  * Tests for ProgressBar
@@ -18,8 +18,8 @@ public class ProgressBarTest extends WicketApplicationTest {
         ProgressBar progressBar = new ProgressBar(id());
 
         RepeatingView stacks = (RepeatingView) progressBar.get("stacks");
-        assertNotNull("The progress bar has no repeater for the stacks!", stacks);
-        assertFalse("The progress bar should not have default stack", stacks.iterator().hasNext());
+        assertNotNull(stacks, "The progress bar has no repeater for the stacks!");
+        assertFalse(stacks.iterator().hasNext(), "The progress bar should not have default stack");
     }
 
     @Test
@@ -27,8 +27,8 @@ public class ProgressBarTest extends WicketApplicationTest {
         ProgressBar progressBar = new ProgressBar(id(), Model.of(23));
 
         RepeatingView stacks = (RepeatingView) progressBar.get("stacks");
-        assertNotNull("The progress bar has no repeater for the stacks!", stacks);
-        assertTrue("The progress bar must have default stack", stacks.iterator().hasNext());
+        assertNotNull(stacks, "The progress bar has no repeater for the stacks!");
+        assertTrue(stacks.iterator().hasNext(), "The progress bar must have default stack");
     }
 
     @Test

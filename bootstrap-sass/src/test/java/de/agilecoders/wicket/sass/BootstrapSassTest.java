@@ -1,7 +1,9 @@
 package de.agilecoders.wicket.sass;
 
 import de.agilecoders.wicket.webjars.WicketWebjars;
-
+import io.bit3.jsass.Options;
+import io.bit3.jsass.type.SassString;
+import io.bit3.jsass.type.SassValue;
 import org.apache.wicket.Application;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.protocol.http.mock.MockServletContext;
@@ -9,16 +11,12 @@ import org.apache.wicket.request.resource.IResourceReferenceFactory;
 import org.apache.wicket.request.resource.ResourceReferenceRegistry;
 import org.apache.wicket.util.file.File;
 import org.apache.wicket.util.tester.WicketTester;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.net.URI;
 import java.net.URL;
-
-import io.bit3.jsass.Options;
-import io.bit3.jsass.type.SassString;
-import io.bit3.jsass.type.SassValue;
 
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.equalTo;
@@ -35,7 +33,7 @@ public class BootstrapSassTest {
 
     private WicketTester tester;
 
-    @Before
+    @BeforeEach
     public void before() {
         tester = new WicketTester(new TestApplication() {
             @Override
@@ -48,7 +46,7 @@ public class BootstrapSassTest {
         });
     }
 
-    @After
+    @AfterEach
     public void after() {
         tester.destroy();
     }

@@ -4,9 +4,10 @@ import de.agilecoders.wicket.extensions.markup.html.bootstrap.WicketApplicationT
 import org.apache.wicket.ajax.form.AjaxFormSubmitBehavior;
 import org.apache.wicket.markup.Markup;
 import org.apache.wicket.markup.html.form.Form;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class BootstrapFileInputFieldTest extends WicketApplicationTest {
 

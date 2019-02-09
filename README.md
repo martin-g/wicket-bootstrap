@@ -28,8 +28,13 @@ https://wb8.teliclab.info (courtesy hosted by [Shengche Hsiao](https://github.co
 Themes
 ------
 
+<<<<<<< HEAD
 * Bootstrap (4.1.2): http://getbootstrap.com/
 * Bootswatch (4.1.2): http://bootswatch.com/
+=======
+* Bootstrap (3.4.0): http://getbootstrap.com/
+* Bootswatch (3.4.0): http://bootswatch.com/
+>>>>>>> wicket-8.x
 * Material Design by FezVrasta (0.3.0): https://github.com/FezVrasta/bootstrap-material-design
 * todc-bootstrap, google styled theme (3.3.7): https://todc.github.io/todc-bootstrap
 * metro-bootstrap (3.3.7): https://github.com/idleberg/m8tro-bootstrap

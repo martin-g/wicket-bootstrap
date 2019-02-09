@@ -63,7 +63,6 @@
         <modernizr.version>2.8.3-1</modernizr.version>
         <jetty.version>9.4.14.v20181114</jetty.version>
         <google-closure.version>v20190121</google-closure.version>
-        <contiperf.version>2.3.4</contiperf.version>
         <jquerypp.version>1.0.1</jquerypp.version>
         <jquery.version>3.3.1</jquery.version>
         <maven-bundle-plugin.version>4.1.0</maven-bundle-plugin.version>
@@ -72,7 +71,7 @@
         <yuicompressor.version>2.4.8</yuicompressor.version>
         <maven-javadoc-plugin.version>2.10.4</maven-javadoc-plugin.version>
         <guava.version>27.0.1</guava.version>
-        <junit.version>4.12</junit.version>
+        <junit5.version>5.4.0</junit5.version>
         <logback.version>1.2.3</logback.version>
         <jsass.version>5.7.3</jsass.version>
         <popperjs.version>1.14.1</popperjs.version>
@@ -258,7 +257,8 @@
             <dependency>
                 <groupId>org.mockito</groupId>
                 <artifactId>mockito-core</artifactId>
-                <version>1.10.19</version>
+                <version>2.24.0</version>
+                <scope>test</scope>
             </dependency>
 
             <dependency>
@@ -274,15 +274,17 @@
             </dependency>
 
             <dependency>
-                <groupId>junit</groupId>
-                <artifactId>junit</artifactId>
-                <version>${junit.version}</version>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter</artifactId>
+                <version>${junit5.version}</version>
+                <scope>test</scope>
             </dependency>
 
             <dependency>
                 <groupId>org.hamcrest</groupId>
-                <artifactId>hamcrest-all</artifactId>
-                <version>1.3</version>
+                <artifactId>hamcrest</artifactId>
+                <version>2.1</version>
+                <scope>test</scope>
             </dependency>
 
         </dependencies>

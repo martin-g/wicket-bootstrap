@@ -1,5 +1,6 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.form;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 
@@ -7,7 +8,7 @@ import java.util.Date;
 
 import org.apache.wicket.model.Model;
 import org.joda.time.DateTime;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * @author Urs Joss
@@ -41,14 +42,14 @@ public class DateTextFieldTest extends
         return DateTime.parse("2018-07-13T04:05:06.000");
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void constructing_withIdAndDateModelAndNullConfig_throwsNPE() {
-        new DateTextField("tf", Model.of(getNow()), (DateTextFieldConfig) null);
+        assertThrows(IllegalArgumentException.class, () -> new DateTextField("tf", Model.of(getNow()), (DateTextFieldConfig) null));
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void constructing_withIdAndNullConfig_throwsNPE() {
-        new DateTextField("tf", (DateTextFieldConfig) null);
+        assertThrows(IllegalArgumentException.class, () -> new DateTextField("tf", (DateTextFieldConfig) null));
     }
 
     @Test

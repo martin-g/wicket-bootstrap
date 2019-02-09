@@ -1,11 +1,11 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.navbar;
 
-import de.agilecoders.wicket.core.test.TestCategory;
 import org.apache.wicket.ajax.AjaxRequestTarget;
-import org.junit.Test;
-import org.junit.experimental.categories.Category;
+import org.junit.jupiter.api.Test;
 
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 
 /**
  * Tests the {@link ScrollSpyBehavior} class
@@ -13,7 +13,6 @@ import static org.mockito.Mockito.*;
  * @author miha
  * @version 1.0
  */
-@Category(TestCategory.UnitTest.class)
 public class ScrollSpyBehaviorTest {
 
     @Test

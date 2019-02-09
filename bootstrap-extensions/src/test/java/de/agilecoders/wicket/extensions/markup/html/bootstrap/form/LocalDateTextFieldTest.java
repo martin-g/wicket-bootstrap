@@ -1,5 +1,6 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.form;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 
@@ -7,7 +8,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import org.apache.wicket.model.Model;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * @author Urs Joss
@@ -41,14 +42,16 @@ public class LocalDateTextFieldTest extends
         return LocalDateTime.parse("2018-07-13T04:05:06.000");
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void constructing_withIdAndDateModelAndNullConfig_throwsNPE() {
-        new LocalDateTextField("tf", Model.of(getNow()), (LocalDateTextFieldConfig) null);
+        assertThrows(IllegalArgumentException.class, () ->
+            new LocalDateTextField("tf", Model.of(getNow()), (LocalDateTextFieldConfig) null));
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void constructing_withIdAndNullConfig_throwsNPE() {
-        new LocalDateTextField("tf", (LocalDateTextFieldConfig) null);
+        assertThrows(IllegalArgumentException.class, () ->
+            new LocalDateTextField("tf", (LocalDateTextFieldConfig) null));
     }
 
     @Test

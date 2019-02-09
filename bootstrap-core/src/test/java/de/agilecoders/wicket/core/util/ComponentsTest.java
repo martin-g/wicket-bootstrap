@@ -1,7 +1,6 @@
 package de.agilecoders.wicket.core.util;
 
 import de.agilecoders.wicket.core.WicketApplicationTest;
-import de.agilecoders.wicket.core.test.TestCategory;
 import de.agilecoders.wicket.jquery.util.Generics2;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.ComponentTag;
@@ -11,10 +10,10 @@ import org.apache.wicket.markup.MarkupResourceStream;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.parser.XmlTag;
 import org.apache.wicket.util.resource.StringResourceStream;
-import org.junit.Test;
-import org.junit.experimental.categories.Category;
+import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 import static org.mockito.Mockito.mock;
@@ -25,7 +24,6 @@ import static org.mockito.Mockito.when;
  *
  * @author miha
  */
-@Category(TestCategory.UnitTest.class)
 public class ComponentsTest extends WicketApplicationTest {
 
     @Test
@@ -35,9 +33,9 @@ public class ComponentsTest extends WicketApplicationTest {
         assertThat(Components.hasTagName(tag, (String) null), is(equalTo(false)));
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void hasTagNameThrowsExceptionIfNullTagIsGiven() {
-        Components.hasTagName(null, "div");
+        assertThrows(IllegalArgumentException.class, () -> Components.hasTagName(null, "div"));
     }
 
     @Test
@@ -83,14 +81,16 @@ public class ComponentsTest extends WicketApplicationTest {
         Components.assertTag(createComponentMock(), new ComponentTag("a", XmlTag.TagType.OPEN_CLOSE), Generics2.newHashSet("a", "li"));
     }
 
-    @Test(expected = MarkupException.class)
+    @Test
     public void assertTagDoesThrowExceptionIfTagIsNotOkWithSet() {
-        Components.assertTag(createComponentMock(), new ComponentTag("div", XmlTag.TagType.OPEN_CLOSE), Generics2.newHashSet("a", "li"));
+        assertThrows(MarkupException.class, () ->
+            Components.assertTag(createComponentMock(), new ComponentTag("div", XmlTag.TagType.OPEN_CLOSE), Generics2.newHashSet("a", "li")));
     }
 
-    @Test(expected = MarkupException.class)
+    @Test
     public void assertTagDoesThrowExceptionIfTagIsNotOk() {
-        Components.assertTag(createComponentMock(), new ComponentTag("div", XmlTag.TagType.OPEN_CLOSE), "a", "li");
+        assertThrows(MarkupException.class, () ->
+            Components.assertTag(createComponentMock(), new ComponentTag("div", XmlTag.TagType.OPEN_CLOSE), "a", "li"));
     }
 
     @Test

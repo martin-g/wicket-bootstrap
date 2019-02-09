@@ -1,8 +1,8 @@
 package de.agilecoders.wicket.testing.osgi;
 
 import org.apache.wicket.util.string.Strings;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.net.URL;
@@ -23,7 +23,7 @@ import java.util.jar.JarFile;
  * <p/>
  * Based on https://gist.github.com/1977817, contributed by Andreas Pieber
  */
-public class OsgiClashingPackagesTest extends Assert {
+public class OsgiClashingPackagesTest extends Assertions {
 
     @Test
     public void collectProjectPackages() throws IOException {

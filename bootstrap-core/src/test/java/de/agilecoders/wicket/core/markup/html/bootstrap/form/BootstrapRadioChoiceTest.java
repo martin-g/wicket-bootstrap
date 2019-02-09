@@ -1,18 +1,18 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.form;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.endsWith;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 
 import com.google.common.collect.Lists;
 import org.apache.wicket.util.tester.TagTester;
-import org.junit.Test;
-import org.junit.experimental.categories.Category;
 
 import de.agilecoders.wicket.core.WicketApplicationTest;
 import de.agilecoders.wicket.core.test.IntegrationTest;
+import org.junit.jupiter.api.Test;
 
-@Category(IntegrationTest.class)
+@IntegrationTest
 public class BootstrapRadioChoiceTest extends WicketApplicationTest {
 
     @Test

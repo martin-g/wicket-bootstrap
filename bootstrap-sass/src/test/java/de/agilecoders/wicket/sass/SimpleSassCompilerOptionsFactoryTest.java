@@ -3,10 +3,8 @@ package de.agilecoders.wicket.sass;
 import static org.junit.Assert.*;
 import static org.hamcrest.Matchers.*;
 
-import org.junit.Test;
-
 import io.bit3.jsass.Options;
-
+import org.junit.jupiter.api.Test;
 
 public class SimpleSassCompilerOptionsFactoryTest {
 

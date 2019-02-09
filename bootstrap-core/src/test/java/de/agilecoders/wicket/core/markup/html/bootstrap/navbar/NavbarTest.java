@@ -3,16 +3,13 @@ package de.agilecoders.wicket.core.markup.html.bootstrap.navbar;
 import de.agilecoders.wicket.core.WicketApplicationTest;
 import de.agilecoders.wicket.core.markup.html.bootstrap.utilities.BackgroundColorBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
-import de.agilecoders.wicket.core.test.IntegrationTest;
 import org.apache.wicket.Component;
 import org.apache.wicket.Page;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.util.tester.TagTester;
 import org.apache.wicket.util.visit.IVisit;
 import org.apache.wicket.util.visit.IVisitor;
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.experimental.categories.Category;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,13 +17,13 @@ import java.util.List;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 /**
  * Tests the {@code Navbar de.agilecoders.wicket.core.markup.html.bootstrap.navbar.Navbar}.
  *
  * @author miha
  */
-@Category(IntegrationTest.class)
 public class NavbarTest extends WicketApplicationTest {
 
     @Test
@@ -45,7 +42,7 @@ public class NavbarTest extends WicketApplicationTest {
         tester().startComponentInPage(navbar);
         TagTester tagTester = tester().getTagByWicketId("brandLabel");
 
-        Assert.assertThat(tagTester.getValue(), is(equalTo("Brand Name")));
+        assertThat(tagTester.getValue(), is(equalTo("Brand Name")));
     }
 
     @Test
@@ -55,12 +52,12 @@ public class NavbarTest extends WicketApplicationTest {
 
         tester().startComponentInPage(navbar);
 
-        Assert.assertThat(navbar.getPosition(), is(equalTo(Navbar.Position.TOP)));
+        assertThat(navbar.getPosition(), is(equalTo(Navbar.Position.TOP)));
 
         List<String> classes = extractClassNames(tester().getTagByWicketId("id"));
 
-        Assert.assertThat(classes.contains("navbar"), is(equalTo(true)));
-        Assert.assertThat(classes.contains("fixed-top"), is(equalTo(true)));
+        assertThat(classes.contains("navbar"), is(equalTo(true)));
+        assertThat(classes.contains("fixed-top"), is(equalTo(true)));
     }
 
     @Test
@@ -70,12 +67,12 @@ public class NavbarTest extends WicketApplicationTest {
 
         tester().startComponentInPage(navbar);
 
-        Assert.assertThat(navbar.getPosition(), is(equalTo(Navbar.Position.BOTTOM)));
+        assertThat(navbar.getPosition(), is(equalTo(Navbar.Position.BOTTOM)));
 
         List<String> classes = extractClassNames(tester().getTagByWicketId("id"));
 
-        Assert.assertThat(classes.contains("navbar"), is(equalTo(true)));
-        Assert.assertThat(classes.contains("fixed-bottom"), is(equalTo(true)));
+        assertThat(classes.contains("navbar"), is(equalTo(true)));
+        assertThat(classes.contains("fixed-bottom"), is(equalTo(true)));
     }
 
     @Test
@@ -85,12 +82,12 @@ public class NavbarTest extends WicketApplicationTest {
 
         tester().startComponentInPage(navbar);
 
-        Assert.assertThat(navbar.getPosition(), is(equalTo(Navbar.Position.STICKY_TOP)));
+        assertThat(navbar.getPosition(), is(equalTo(Navbar.Position.STICKY_TOP)));
 
         List<String> classes = extractClassNames(tester().getTagByWicketId("id"));
 
-        Assert.assertTrue(classes.contains("navbar"));
-        Assert.assertTrue(classes.contains("sticky-top"));
+        assertTrue(classes.contains("navbar"));
+        assertTrue(classes.contains("sticky-top"));
     }
 
     @Test
@@ -103,8 +100,8 @@ public class NavbarTest extends WicketApplicationTest {
         TagTester tagTester = tester().getTagByWicketId("collapse");
         TagTester ulTag = tagTester.getChild("style", "display:none");
 
-        Assert.assertThat(ulTag.getValue(), is(equalTo("")));
-        Assert.assertThat(ulTag.getName(), is(equalTo("ul")));
+        assertThat(ulTag.getValue(), is(equalTo("")));
+        assertThat(ulTag.getName(), is(equalTo("ul")));
     }
 
     @Test
@@ -126,9 +123,9 @@ public class NavbarTest extends WicketApplicationTest {
 
         TagTester tagTester = tester().getTagByWicketId("navRightList");
 
-        Assert.assertThat(tagTester.hasChildTag("a"), is(equalTo(true)));
-        Assert.assertThat(tester().getTagByWicketId(Navbar.componentId()).hasAttribute("href"), is(equalTo(true)));
-        Assert.assertThat(tester().getTagByWicketId(Navbar.componentId()).getValue(), containsString("Right Link Name"));
+        assertThat(tagTester.hasChildTag("a"), is(equalTo(true)));
+        assertThat(tester().getTagByWicketId(Navbar.componentId()).hasAttribute("href"), is(equalTo(true)));
+        assertThat(tester().getTagByWicketId(Navbar.componentId()).getValue(), containsString("Right Link Name"));
     }
 
     @Test
@@ -149,9 +146,9 @@ public class NavbarTest extends WicketApplicationTest {
         tester().startComponentInPage(navbar);
         TagTester tagTester = tester().getTagByWicketId("navLeftList");
 
-        Assert.assertThat(tagTester.hasChildTag("a"), is(equalTo(true)));
-        Assert.assertThat(tester().getTagByWicketId(Navbar.componentId()).hasAttribute("href"), is(equalTo(true)));
-        Assert.assertThat(tester().getTagByWicketId(Navbar.componentId()).getValue(), containsString("Link Name"));
+        assertThat(tagTester.hasChildTag("a"), is(equalTo(true)));
+        assertThat(tester().getTagByWicketId(Navbar.componentId()).hasAttribute("href"), is(equalTo(true)));
+        assertThat(tester().getTagByWicketId(Navbar.componentId()).getValue(), containsString("Link Name"));
     }
 
     @Test
@@ -177,8 +174,8 @@ public class NavbarTest extends WicketApplicationTest {
 
         tester().startComponentInPage(navbar);
 
-        Assert.assertThat(tester().getTagByWicketId(Navbar.componentId()).hasChildTag("i"), is(equalTo(true)));
-        Assert.assertThat(tester().getTagByWicketId("icon").getAttribute("class"), containsString("test-icon"));
+        assertThat(tester().getTagByWicketId(Navbar.componentId()).hasChildTag("i"), is(equalTo(true)));
+        assertThat(tester().getTagByWicketId("icon").getAttribute("class"), containsString("test-icon"));
     }
 
     @Test
@@ -194,7 +191,7 @@ public class NavbarTest extends WicketApplicationTest {
             }
         });
 
-        Assert.assertThat(statefulComponents.size(), is(equalTo(0)));
+        assertThat(statefulComponents.size(), is(equalTo(0)));
     }
 
     @Test
@@ -207,7 +204,7 @@ public class NavbarTest extends WicketApplicationTest {
         TagTester tag = tester().getTagByWicketId("id");
         List<String> classes = extractClassNames(tag);
 
-        Assert.assertTrue(classes.contains("bg-success"));
+        assertTrue(classes.contains("bg-success"));
     }
 
     @Test
@@ -220,7 +217,7 @@ public class NavbarTest extends WicketApplicationTest {
         TagTester tag = tester().getTagByWicketId("id");
         List<String> classes = extractClassNames(tag);
 
-        Assert.assertTrue(classes.contains("navbar"));
-        Assert.assertTrue(classes.contains("navbar-expand-sm"));
+        assertTrue(classes.contains("navbar"));
+        assertTrue(classes.contains("navbar-expand-sm"));
     }
 }

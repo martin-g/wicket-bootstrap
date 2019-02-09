@@ -17,25 +17,20 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.behavior;
 
 import de.agilecoders.wicket.core.WicketApplicationTest;
-import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.CssClassNameAppender;
-import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.CssClassNameRemover;
 import de.agilecoders.wicket.core.test.IntegrationTest;
-
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.util.tester.TagTester;
-import org.junit.Test;
-import org.junit.experimental.categories.Category;
+import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertNull;
 
 /**
  * Tests for CssClassNameRemover
  */
-@Category(IntegrationTest.class)
+@IntegrationTest
 public class CssClassNameRemoverTest extends WicketApplicationTest {
 
     private Component component;
@@ -80,7 +75,6 @@ public class CssClassNameRemoverTest extends WicketApplicationTest {
         TagTester tester = tester().getTagByWicketId("id");
 
         // make sure the removed one is not here at all
-        assertNull("The removed CSS class should not be set if the old value of 'class' is null",
-                tester.getAttribute("class"));
+        assertNull(tester.getAttribute("class"), "The removed CSS class should not be set if the old value of 'class' is null");
     }
 }

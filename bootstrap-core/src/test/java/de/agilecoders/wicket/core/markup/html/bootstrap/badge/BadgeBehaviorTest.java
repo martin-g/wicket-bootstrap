@@ -1,8 +1,8 @@
-package de.agilecoders.wicket.core.markup.html.bootstrap.badge;
+package de.agilecoders.wicket.core.markup.html.bootstrap.block;
 
 import de.agilecoders.wicket.core.WicketApplicationTest;
-
-import org.junit.Test;
+import de.agilecoders.wicket.core.markup.html.bootstrap.badge.BadgeBehavior;
+import org.junit.jupiter.api.Test;
 
 /**
  * Tests the {@link BadgeBehavior}
@@ -12,20 +12,8 @@ import org.junit.Test;
 public class BadgeBehaviorTest extends WicketApplicationTest {
 
     @Test
-    public void classNameWasAdded() {
+    void classNameWasAdded() {
         assertCssClass(new BadgeBehavior(), "badge");
-    }
-
-    @Test
-    public void rendersContextualClassCorrectly() {
-        for (BadgeBehavior.Type type : BadgeBehavior.Type.values()) {
-            assertCssClass(new BadgeBehavior(type), type.cssClassName());
-        }
-    }
-
-    @Test
-    public void rendersPillClassCorrectly() {
-        assertCssClass(new BadgeBehavior(BadgeBehavior.Type.Light, true), "badge-pill");
     }
 
 }

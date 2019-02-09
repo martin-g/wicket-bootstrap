@@ -1,20 +1,14 @@
 package de.agilecoders.wicket.extensions.javascript;
 
 import org.apache.wicket.util.io.IOUtils;
-import org.databene.contiperf.PerfTest;
-import org.databene.contiperf.Required;
-import org.databene.contiperf.junit.ContiPerfRule;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.Ignore;
-import org.junit.Rule;
-import org.junit.Test;
-
-import de.agilecoders.wicket.extensions.javascript.YuiCssCompressor;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 /**
  * Tests the {@link YuiCssCompressor} class.
@@ -23,27 +17,27 @@ import static org.junit.Assert.assertNotNull;
  */
 public class YuiCssCompressorTest {
 
-    @Rule
-    public ContiPerfRule i = new ContiPerfRule();
+//    @Rule
+//    public ContiPerfRule i = new ContiPerfRule();
 
     private static String content;
     private static YuiCssCompressor compressor;
 
-    @BeforeClass
+    @BeforeAll
     public static void before() throws IOException {
         content = IOUtils.toString(YuiCssCompressorTest.class.getResourceAsStream("test.css"));
         compressor = new YuiCssCompressor();
     }
 
     @Test
-    @PerfTest(threads = 2, duration = 10000, rampUp = 1000, warmUp = 5000)
-    @Required(max = 600, average = 500)
-    @Ignore
-    public void test1() throws Exception {
+//    @PerfTest(threads = 2, duration = 10000, rampUp = 1000, warmUp = 5000)
+//    @Required(max = 600, average = 500)
+    @Disabled
+    public void test1() {
         assertNotNull(compressor.compress(content));
     }
 
-    @AfterClass
+    @AfterAll
     public static void after() {
         content = "";
         compressor = null;

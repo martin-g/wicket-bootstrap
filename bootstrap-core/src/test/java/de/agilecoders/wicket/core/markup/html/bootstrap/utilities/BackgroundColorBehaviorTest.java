@@ -1,9 +1,9 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.utilities;
 
 import org.apache.wicket.util.tester.TagTester;
-import org.junit.Test;
 
 import de.agilecoders.wicket.core.WicketApplicationTest;
+import org.junit.jupiter.api.Test;
 
 /**
  * @author Jan Ferko

@@ -1,4 +1,4 @@
-// Cyborg 4.1.1
+// Cyborg 4.2.1
 // Bootswatch
 
 //
@@ -34,8 +34,10 @@ $success:       $green !default;
 $info:          $cyan !default;
 $warning:       $yellow !default;
 $danger:        $red !default;
-$light:         $gray-100 !default;
-$dark:          $gray-800 !default;
+$light:         $gray-800 !default;
+$dark:          $gray-400 !default;
+
+$yiq-contrasted-threshold:  175 !default;
 
 
 // Body
@@ -64,8 +66,6 @@ $table-hover-bg:                rgba($white,.075) !default;
 
 $table-border-color:            $gray-700 !default;
 
-$table-head-color:              $white !default;
-
 $table-dark-bg:               $gray-500 !default;
 $table-dark-border-color:     darken($gray-500, 7.5%) !default;
 $table-dark-color:            $body-bg !default;
@@ -80,7 +80,11 @@ $input-disabled-bg:              $gray-400 !default;
 
 $input-border-color:             transparent !default;
 
-$input-group-addon-bg:           $gray-700 !default;
+$input-group-addon-color:           $white !default;
+$input-group-addon-bg:              $gray-700 !default;
+
+$custom-file-color:                 $white !default;
+$custom-file-border-color:          $gray-700 !default;
 
 // Dropdowns
 

@@ -1,9 +1,12 @@
 package de.agilecoders.wicket.core.test;
 
+import org.junit.jupiter.api.Tag;
+
 /**
  * marker interface for integration tests
  *
  * @author miha
  */
-public interface IntegrationTest {
+@Tag("it-test")
+public @interface IntegrationTest {
 }

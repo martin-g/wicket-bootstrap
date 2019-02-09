@@ -18,7 +18,8 @@ import org.apache.wicket.model.Model;
 import org.apache.wicket.util.resource.IResourceStream;
 import org.apache.wicket.util.resource.StringResourceStream;
 import org.apache.wicket.util.tester.TagTester;
-import org.junit.Test;
+import org.hamcrest.MatcherAssert;
+import org.junit.jupiter.api.Test;
 
 /**
  * Tests the {@link NotificationPanel} component
@@ -96,7 +97,7 @@ public class NotificationPanelTest  extends WicketApplicationTest{
         TagTester t = tester().getTagByWicketId("close");
 
         assertCssClass(t, "close");
-        assertThat(t.getAttribute("data-dismiss"), is(equalTo("alert")));
+        MatcherAssert.assertThat(t.getAttribute("data-dismiss"), is(equalTo("alert")));
     }
 
     @Test

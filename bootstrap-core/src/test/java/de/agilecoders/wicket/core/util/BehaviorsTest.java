@@ -3,13 +3,10 @@ package de.agilecoders.wicket.core.util;
 import de.agilecoders.wicket.core.WicketApplicationTest;
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.CssClassNameAppender;
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.CssClassNameModifier;
-import de.agilecoders.wicket.core.test.IntegrationTest;
-import de.agilecoders.wicket.core.util.Behaviors;
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.Behavior;
 import org.apache.wicket.markup.html.WebMarkupContainer;
-import org.junit.Test;
-import org.junit.experimental.categories.Category;
+import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
@@ -20,7 +17,6 @@ import static org.hamcrest.Matchers.is;
  *
  * @author miha
  */
-@Category(IntegrationTest.class)
 public class BehaviorsTest extends WicketApplicationTest {
 
     @Test

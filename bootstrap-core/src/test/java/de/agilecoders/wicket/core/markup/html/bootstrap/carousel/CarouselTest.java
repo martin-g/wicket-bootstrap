@@ -4,7 +4,7 @@ import com.google.common.collect.Lists;
 import de.agilecoders.wicket.core.WicketApplicationTest;
 import org.apache.wicket.util.string.Strings;
 import org.apache.wicket.util.tester.TagTester;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
@@ -12,13 +12,14 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.CoreMatchers.nullValue;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 /**
  * Tests the {@link Carousel} component
  *
  * @author miha
  */
-public class CarouselTest extends WicketApplicationTest {
+class CarouselTest extends WicketApplicationTest {
     private static final String MARKUP = "<div wicket:id=\"id\"></div>";
 
     @Test

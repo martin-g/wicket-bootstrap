@@ -10,17 +10,17 @@ import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.util.tester.FormTester;
 import org.apache.wicket.util.tester.TagTester;
-import org.junit.Test;
-import org.junit.experimental.categories.Category;
+import org.junit.jupiter.api.Test;
 
 import java.io.Serializable;
 import java.util.Locale;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 
-@Category(IntegrationTest.class)
+@IntegrationTest
 public class FormGroupTest extends WicketApplicationTest {
 
     @Test
@@ -32,12 +32,13 @@ public class FormGroupTest extends WicketApplicationTest {
         tester().assertNoErrorMessage();
     }
 
-    @Test(expected = MarkupException.class)
+    @Test
     public void tagNameIsAsserted() {
 
         FormGroup group = new FormGroup("id");
 
-        tester().startComponentInPage(group, Markup.of("<span wicket:id='id'>Group</span>"));
+        assertThrows(MarkupException.class, () ->
+            tester().startComponentInPage(group, Markup.of("<span wicket:id='id'>Group</span>")));
     }
 
     @Test

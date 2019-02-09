@@ -10,15 +10,14 @@ import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.PageableListView;
 import org.apache.wicket.markup.html.navigation.paging.IPageable;
-import org.junit.Test;
-import org.junit.experimental.categories.Category;
+import org.junit.jupiter.api.Test;
 
 /**
  * Tests the {@link BootstrapPagingNavigator} component
  *
  * @author miha
  */
-@Category(IntegrationTest.class)
+@IntegrationTest
 public class BootstrapPagingNavigatorTest extends WicketApplicationTest {
 
     @Test
@@ -38,11 +37,11 @@ public class BootstrapPagingNavigatorTest extends WicketApplicationTest {
     }
 
 
-    @Test(expected = MarkupException.class)
+    @Test
     public void correctTagNameIsAsserted() {
         BootstrapPagingNavigator navigator = createWithTagName("a");
 
-        tester().startComponentInPage(navigator);
+        assertThrows(MarkupException.class, () -> tester().startComponentInPage(navigator));
     }
 
     /**

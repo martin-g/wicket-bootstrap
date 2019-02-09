@@ -1,4 +1,4 @@
-// Materia 4.1.1
+// Materia 4.2.1
 // Bootswatch
 
 //
@@ -37,6 +37,10 @@ $danger:        $red !default;
 $light:         $white !default;
 $dark:          $gray-800 !default;
 
+$yiq-contrasted-threshold:  170 !default;
+
+$enable-gradients: true;
+
 // Body
 
 $body-color:    $gray-700 !default;
@@ -51,7 +55,7 @@ $font-weight-base: 400 !default;
 
 // Buttons
 
-$input-btn-padding-y:       1rem !default;
+$input-btn-padding-y:       0.8rem !default;
 $input-btn-padding-x:       1rem !default;
 
 // Forms

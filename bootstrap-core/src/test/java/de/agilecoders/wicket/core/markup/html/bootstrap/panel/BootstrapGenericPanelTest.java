@@ -2,9 +2,9 @@ package de.agilecoders.wicket.core.markup.html.bootstrap.panel;
 
 import org.apache.wicket.markup.Markup;
 import org.apache.wicket.markup.MarkupException;
-import org.junit.Test;
 
 import de.agilecoders.wicket.core.WicketApplicationTest;
+import org.junit.jupiter.api.Test;
 
 /**
  * Tests the {@link BootstrapGenericPanel} class
@@ -14,13 +14,13 @@ import de.agilecoders.wicket.core.WicketApplicationTest;
  */
 public class BootstrapGenericPanelTest extends WicketApplicationTest{
 
-    @Test(expected = MarkupException.class)
-    public void tagNameIsAsserted() {
-        startComponentInPage(new BootstrapGenericPanel<String>(id()));
+    @Test
+    void tagNameIsAsserted() {
+        assertThrows(MarkupException.class, () -> startComponentInPage(new BootstrapGenericPanel<String>(id())));
     }
 
     @Test
-    public void isRenderedWithoutException() {
+    void isRenderedWithoutException() {
         tester().startComponentInPage(new BootstrapGenericPanel<String>(id()), Markup.of("<div wicket:id='id'>panel</div>"));
 
         tester().assertNoErrorMessage();

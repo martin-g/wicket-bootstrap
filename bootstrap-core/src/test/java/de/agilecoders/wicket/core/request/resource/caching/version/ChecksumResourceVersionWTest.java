@@ -2,7 +2,7 @@ package de.agilecoders.wicket.core.request.resource.caching.version;
 
 import com.google.common.base.Charsets;
 import de.agilecoders.wicket.core.WicketApplicationTest;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;

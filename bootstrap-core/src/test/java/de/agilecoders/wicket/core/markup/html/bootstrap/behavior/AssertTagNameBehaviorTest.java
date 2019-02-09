@@ -8,23 +8,22 @@ import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.Markup;
 import org.apache.wicket.markup.MarkupException;
 import org.apache.wicket.markup.html.WebMarkupContainer;
-import org.junit.Test;
-import org.junit.experimental.categories.Category;
+import org.junit.jupiter.api.Test;
 
 /**
  * Tests the {@link AssertTagNameBehavior} class
  *
  * @author miha
  */
-@Category(IntegrationTest.class)
+@IntegrationTest
 public class AssertTagNameBehaviorTest extends WicketApplicationTest {
 
-    @Test(expected = MarkupException.class)
+    @Test
     public void tagNameIsAsserted() {
         final Component component = new TestDivContainerComponent();
         component.add(new AssertTagNameBehavior("li"));
 
-        tester().startComponentInPage(component);
+        assertThrows(MarkupException.class, () -> tester().startComponentInPage(component));
     }
 
     @Test

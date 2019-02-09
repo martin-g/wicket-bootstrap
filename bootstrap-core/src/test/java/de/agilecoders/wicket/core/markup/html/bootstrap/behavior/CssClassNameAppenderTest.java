@@ -7,9 +7,9 @@ import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.util.tester.TagTester;
-import org.junit.Test;
-import org.junit.experimental.categories.Category;
+import org.junit.jupiter.api.Test;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 
@@ -19,7 +19,7 @@ import static org.hamcrest.Matchers.is;
  *
  * @author miha
  */
-@Category(IntegrationTest.class)
+@IntegrationTest
 public class CssClassNameAppenderTest extends WicketApplicationTest {
 
     private Component component;
