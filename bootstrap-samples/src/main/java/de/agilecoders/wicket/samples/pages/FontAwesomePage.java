@@ -23,7 +23,7 @@ public class FontAwesomePage extends BasePage {
 		super(varParameters);
 
 		// inline icon
-		add(new Icon("inline-fa", FontAwesomeIconType.camera_retro));
+		add(new Icon("inline-fa", FontAwesomeIconType.camera_retro_s));
 
 		// larger icons
 		add(new Icon("large-fa", FontAwesomeIconTypeBuilder.on(FontAwesomeSolid.camera_retro).size(Size.large).build()));
@@ -38,7 +38,7 @@ public class FontAwesomePage extends BasePage {
 		add(new Icon("cog-spin-fa", FontAwesomeIconTypeBuilder.on(FontAwesomeSolid.cog).spin().build()));
 
 		// rotate
-		add(new Icon("shield-rotate-normal", FontAwesomeIconType.shield_alt));
+		add(new Icon("shield-rotate-normal", FontAwesomeIconType.shield_alt_s));
 		add(new Icon("shield-rotate-90", FontAwesomeIconTypeBuilder.on(FontAwesomeSolid.shield_alt)
 		        .rotate(Rotation.rotate_90).build()));
 		add(new Icon("shield-rotate-180", FontAwesomeIconTypeBuilder.on(FontAwesomeSolid.shield_alt)

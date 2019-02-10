@@ -58,10 +58,10 @@ public class DatetimePickerPage extends BasePage {
         DatetimePickerConfig iconsConfig = new DatetimePickerConfig()
             .withFormat("dd/MM/yyyy HH:mm:ss").with(
                 new DatetimePickerIconConfig()
-                    .useDateIcon(FontAwesomeIconType.calendar)
-                    .useTimeIcon(FontAwesomeIconType.clock)
-                    .useUpIcon(FontAwesomeIconType.arrow_up)
-                    .useDownIcon(FontAwesomeIconType.arrow_down)
+                    .useDateIcon(FontAwesomeIconType.calendar_s)
+                    .useTimeIcon(FontAwesomeIconType.clock_s)
+                    .useUpIcon(FontAwesomeIconType.arrow_up_s)
+                    .useDownIcon(FontAwesomeIconType.arrow_down_s)
             );
 
         form.add(

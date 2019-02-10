@@ -16,7 +16,7 @@ class FontAwesomeIconTypeTest {
 
     @Test
     void cssClassName() {
-        assertEquals("fas fa-adjust", FontAwesomeIconType.adjust.cssClassName(), "FontAwesome should use 'fas fa-NAME");
+        assertEquals("fas fa-adjust", FontAwesomeIconType.adjust_s.cssClassName(), "FontAwesome should use 'fas fa-NAME");
     }
 
     @Test

@@ -52,7 +52,7 @@ public class CheckboxesPage extends BasePage {
         BootstrapCheckBoxPickerConfig config = new BootstrapCheckBoxPickerConfig();
         config
             .withOnClass("btn-info").withOffClass("btn-warning")
-            .withOnIcon(FontAwesomeIconType.thumbs_up).withOffIcon(FontAwesomeIconType.thumbs_down)
+            .withOnIcon(FontAwesomeIconType.thumbs_up_s).withOffIcon(FontAwesomeIconType.thumbs_down_s)
             .withReverse(true)
             .withStyle(ButtonGroup.Size.ExtraSmall);
 
