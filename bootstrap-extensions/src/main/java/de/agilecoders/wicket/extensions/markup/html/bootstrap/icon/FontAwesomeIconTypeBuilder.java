@@ -20,10 +20,7 @@ import java.util.List;
  * <code>FontAwesomeIconTypeBuilder.on(FontAwesomeGraphic.key).size(Size.four).spin().rotate(Rotation.rotate_90).build()</code>
  * </li>
  * </ul>
- *
- * @deprecated use {@link FontAwesome5IconTypeBuilder} if possible
  */
-@Deprecated
 public class FontAwesomeIconTypeBuilder {
     /**
      * All the icons available in Font Awesome.

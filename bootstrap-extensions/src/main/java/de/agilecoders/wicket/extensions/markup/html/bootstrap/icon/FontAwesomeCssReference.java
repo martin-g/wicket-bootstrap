@@ -4,10 +4,7 @@ import de.agilecoders.wicket.webjars.request.resource.WebjarsCssResourceReferenc
 
 /**
  * reference for font awesome css
- *
- * @deprecated use {@link FontAwesome5CssReference} if possible
  */
-@Deprecated
 public class FontAwesomeCssReference extends WebjarsCssResourceReference {
     private static final long serialVersionUID = 1L;
 

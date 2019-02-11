@@ -5,10 +5,7 @@ import org.apache.wicket.request.resource.UrlResourceReference;
 
 /**
  * reference for font awesome css via CDN
- *
- * @deprecated use {@link FontAwesome5CDNCSSReference} if possible
  */
-@Deprecated
 public class FontAwesomeCDNCSSReference extends UrlResourceReference{
     private static final long serialVersionUID = 1L;
     private static final String CDNURL = "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css";
