@@ -42,6 +42,6 @@ public class StateSelect extends BootstrapSelect<String> {
      * @param id See Component
      */
     public StateSelect(String id) {
-        super(id, Model.<>of(), DATA);
+        super(id, Model.<String>of(), DATA);
     }
 }
