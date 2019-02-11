@@ -9,6 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 /**
  * Tests for FontAwesomeIconType
  */
+@Deprecated
 public class FontAwesomeIconTypeTest {
 
     @Test

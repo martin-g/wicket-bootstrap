@@ -8,8 +8,11 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeIconTypeBuilder.FontAwesomeGraphic;
 
 /**
- * All the icon types.
+ * All the icon types of font-awesome 4.7
+ *
+ * @deprecated use {@link FontAwesome5IconType} if possible
  */
+@Deprecated
 public class FontAwesomeIconType extends IconType {
     /** serialVersionUID. */
     private static final long serialVersionUID = 1L;
