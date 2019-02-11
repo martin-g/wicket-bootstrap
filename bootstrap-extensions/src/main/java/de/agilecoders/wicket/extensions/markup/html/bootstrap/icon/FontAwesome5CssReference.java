@@ -3,9 +3,9 @@ package de.agilecoders.wicket.extensions.markup.html.bootstrap.icon;
 import de.agilecoders.wicket.webjars.request.resource.WebjarsCssResourceReference;
 
 /**
- * reference for font awesome css
+ * reference for font awesome 5.x css
  */
-public class FontAwesomeCssReference extends WebjarsCssResourceReference {
+public class FontAwesome5CssReference extends WebjarsCssResourceReference {
     private static final long serialVersionUID = 1L;
 
     /**
@@ -13,20 +13,20 @@ public class FontAwesomeCssReference extends WebjarsCssResourceReference {
      */
     private static final class Holder {
 
-        private static final FontAwesomeCssReference INSTANCE = new FontAwesomeCssReference();
+        private static final FontAwesome5CssReference INSTANCE = new FontAwesome5CssReference();
     }
 
     /**
      * @return the single instance of the resource reference
      */
-    public static FontAwesomeCssReference instance() {
+    public static FontAwesome5CssReference instance() {
         return Holder.INSTANCE;
     }
 
     /**
      * Private constructor.
      */
-    private FontAwesomeCssReference() {
+    private FontAwesome5CssReference() {
         super("font-awesome/current/css/all.css");
     }
 }

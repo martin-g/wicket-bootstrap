@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * A builder to build {@link FontAwesomeIconType} <br />
+ * A builder to build {@link FontAwesome5IconType} <br />
  * <br />
  * <b>Examples :</b>
  * <ul>
@@ -21,9 +21,9 @@ import java.util.List;
  * </li>
  * </ul>
  */
-public class FontAwesomeIconTypeBuilder {
+public class FontAwesome5IconTypeBuilder {
 
-    interface FontAwesomeGraphic {
+    interface FontAwesome5Graphic {
         String getPrefix();
 
         String getIconName();
@@ -32,7 +32,7 @@ public class FontAwesomeIconTypeBuilder {
     /**
      * All icons of style 'solid' available for free in Font Awesome.
      */
-    public enum FontAwesomeSolid implements FontAwesomeGraphic {
+    public enum FontAwesome5Solid implements FontAwesome5Graphic {
         ad, address_book, address_card, adjust, air_freshener, align_center, align_justify, align_left, align_right,
         allergies, ambulance, american_sign_language_interpreting, anchor, angle_double_down, angle_double_left,
         angle_double_right, angle_double_up, angle_down, angle_left, angle_right, angle_up, angry, ankh, apple_alt,
@@ -149,7 +149,7 @@ public class FontAwesomeIconTypeBuilder {
     /**
      * All icons of style 'regular' available for free in Font Awesome.
      */
-    public enum FontAwesomeRegular implements FontAwesomeGraphic {
+    public enum FontAwesome5Regular implements FontAwesome5Graphic {
         address_book, address_card, angry, arrow_alt_circle_down, arrow_alt_circle_left, arrow_alt_circle_right,
         arrow_alt_circle_up, bell, bell_slash, bookmark, building, calendar, calendar_alt, calendar_check,
         calendar_minus, calendar_plus, calendar_times, caret_square_down, caret_square_left, caret_square_right,
@@ -182,7 +182,7 @@ public class FontAwesomeIconTypeBuilder {
     /**
      * All icons of style 'brand' available for free in Font Awesome.
      */
-    public enum FontAwesomeBrand implements FontAwesomeGraphic {
+    public enum FontAwesome5Brand implements FontAwesome5Graphic {
         _500px, accessible_icon, accusoft, acquisitions_incorporated, adn, adobe, adversal, affiliatetheme, algolia,
         alipay, amazon, amazon_pay, amilia, android, angellist, angrycreative, angular, app_store, app_store_ios, apper,
         apple, apple_pay, artstation, asymmetrik, atlassian, audible, autoprefixer, avianex, aviato, aws, bandcamp,
@@ -238,14 +238,14 @@ public class FontAwesomeIconTypeBuilder {
      * @param fontAwesomeGraphic icon to use in the builder
      * @return a builder for this icon
      */
-    public static FontAwesomeIconTypeBuilder on(final FontAwesomeGraphic fontAwesomeGraphic) {
-        return new FontAwesomeIconTypeBuilder(fontAwesomeGraphic);
+    public static FontAwesome5IconTypeBuilder on(final FontAwesome5Graphic fontAwesomeGraphic) {
+        return new FontAwesome5IconTypeBuilder(fontAwesomeGraphic);
     }
 
     /**
      * Icon used in the builder.
      */
-    private final FontAwesomeGraphic fontAwesomeGraphic;
+    private final FontAwesome5Graphic fontAwesomeGraphic;
     /**
      * rotation to apply to the icon (default none).
      */
@@ -264,14 +264,14 @@ public class FontAwesomeIconTypeBuilder {
     /**
      * @param fontAwesomeGraphic icon to use in the builder
      */
-    private FontAwesomeIconTypeBuilder(final FontAwesomeGraphic fontAwesomeGraphic) {
+    private FontAwesome5IconTypeBuilder(final FontAwesome5Graphic fontAwesomeGraphic) {
         this.fontAwesomeGraphic = fontAwesomeGraphic;
     }
 
     /**
      * @return build the icon
      */
-    public FontAwesomeIconType build() {
+    public FontAwesome5IconType build() {
         final List<String> styles = new ArrayList<>();
 
         styles.add(fontAwesomeGraphic.getPrefix());
@@ -298,14 +298,14 @@ public class FontAwesomeIconTypeBuilder {
             styles.add(size.style);
         }
 
-        return new FontAwesomeIconType(styles.toArray(new String[0]));
+        return new FontAwesome5IconType(styles.toArray(new String[0]));
     }
 
     /**
      * @param rotation rotation to apply to the icon
      * @return the builder
      */
-    public FontAwesomeIconTypeBuilder rotate(final Rotation rotation) {
+    public FontAwesome5IconTypeBuilder rotate(final Rotation rotation) {
         this.rotation = rotation;
         return this;
     }
@@ -314,7 +314,7 @@ public class FontAwesomeIconTypeBuilder {
      * @param size size to apply to the icon
      * @return the builder
      */
-    public FontAwesomeIconTypeBuilder size(final Size size) {
+    public FontAwesome5IconTypeBuilder size(final Size size) {
         this.size = size;
         return this;
     }
@@ -324,7 +324,7 @@ public class FontAwesomeIconTypeBuilder {
      *
      * @return the builder
      */
-    public FontAwesomeIconTypeBuilder spin() {
+    public FontAwesome5IconTypeBuilder spin() {
         this.spin = true;
         return this;
     }
@@ -334,7 +334,7 @@ public class FontAwesomeIconTypeBuilder {
      *
      * @return the builder
      */
-    public FontAwesomeIconTypeBuilder fixedWidth() {
+    public FontAwesome5IconTypeBuilder fixedWidth() {
         this.fixedWidth = true;
         return this;
     }
@@ -344,7 +344,7 @@ public class FontAwesomeIconTypeBuilder {
      *
      * @return the builder
      */
-    public FontAwesomeIconTypeBuilder fw() {
+    public FontAwesome5IconTypeBuilder fw() {
         return fixedWidth();
     }
 
