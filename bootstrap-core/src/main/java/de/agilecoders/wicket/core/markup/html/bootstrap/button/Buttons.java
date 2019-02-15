@@ -95,8 +95,16 @@ public final class Buttons {
         Success("btn-success"), // Indicates a successful or positive action
         Warning("btn-warning"), // Indicates caution should be taken with this action
         Danger("btn-danger"), // Indicates a dangerous or potentially negative action
-        Link("btn-link"); // Deemphasize a button by making it look like a link while maintaining button behavior
-
+        Link("btn-link"), // Deemphasize a button by making it look like a link while maintaining button behavior
+        Outline_Primary("btn-outline-primary"),
+        Outline_Secondary("btn-outline-secondary"),
+        Outline_Success("btn-outline-success"),
+        Outline_Danger("btn-outline-danger"),
+        Outline_Warning("btn-outline-warning"),
+        Outline_Info("btn-outline-info"),
+        Outline_Light("btn-outline-light"),
+        Outline_Dark("btn-outline-dark");
+        
         private final String cssClassName;
 
         /**
