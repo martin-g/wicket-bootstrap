@@ -15,10 +15,10 @@ import static org.hamcrest.MatcherAssert.assertThat;
 /**
  * Tests for {@link de.agilecoders.wicket.core.settings.IBootstrapSettings#getJsResourceReference()}
  */
-public class BootstrapJsReferenceTest extends WicketApplicationTest {
+class BootstrapJsReferenceTest extends WicketApplicationTest {
 
     @Test
-    public void cdnResources() {
+    void cdnResources() {
         WebApplication application = tester().getApplication();
         application.getResourceSettings().setCachingStrategy(new NoOpResourceCachingStrategy());
 
@@ -28,8 +28,7 @@ public class BootstrapJsReferenceTest extends WicketApplicationTest {
         CharSequence url = tester().getRequestCycle().urlFor(jsResourceReference, null);
         assertThat(url.toString(), is(equalTo(
                 String.format("./wicket/resource/de.agilecoders.wicket.webjars.request.resource.WebjarsJavaScriptResourceReference/webjars/bootstrap/%s/js/bootstrap.js",
-//                              IBootstrapSettings.VERSION))));
-                              "4.1.2"))));
+                              IBootstrapSettings.VERSION))));
 
         settings.useCdnResources(true);
         jsResourceReference = settings.getJsResourceReference();
