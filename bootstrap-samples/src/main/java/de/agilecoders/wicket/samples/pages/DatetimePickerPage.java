@@ -3,8 +3,8 @@ package de.agilecoders.wicket.samples.pages;
 import de.agilecoders.wicket.core.markup.html.bootstrap.block.Code;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.datetime.DatetimePickerConfig;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.datetime.DatetimePickerIconConfig;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeCssReference;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeIconType;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesome5CssReference;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesome5IconType;
 import de.agilecoders.wicket.samples.panels.DatetimePickerPanel;
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
@@ -15,7 +15,6 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.resource.JQueryPluginResourceReference;
 import org.joda.time.LocalDate;
 import org.wicketstuff.annotation.mount.MountPath;
-
 
 /**
  * Example page of datetime picker usage
@@ -57,10 +56,10 @@ public class DatetimePickerPage extends BasePage {
         DatetimePickerConfig iconsConfig = new DatetimePickerConfig()
             .withFormat("dd/MM/yyyy HH:mm:ss").with(
                 new DatetimePickerIconConfig()
-                    .useDateIcon(FontAwesomeIconType.calendar)
-                    .useTimeIcon(FontAwesomeIconType.clock_o)
-                    .useUpIcon(FontAwesomeIconType.arrow_up)
-                    .useDownIcon(FontAwesomeIconType.arrow_down)
+                    .useDateIcon(FontAwesome5IconType.calendar_s)
+                    .useTimeIcon(FontAwesome5IconType.clock_s)
+                    .useUpIcon(FontAwesome5IconType.arrow_up_s)
+                    .useDownIcon(FontAwesome5IconType.arrow_down_s)
             );
 
         form.add(
@@ -96,7 +95,7 @@ public class DatetimePickerPage extends BasePage {
     @Override
     public void renderHead(IHeaderResponse response) {
         super.renderHead(response);
-        response.render(CssHeaderItem.forReference(FontAwesomeCssReference.instance()));
+        response.render(CssHeaderItem.forReference(FontAwesome5CssReference.instance()));
 
         // Use JS to show/hide the demo <section>s because otherwise DateTimePicker JS widget confuses which <input> is being clicked
         response.render(JavaScriptHeaderItem.forReference(new JQueryPluginResourceReference(DatetimePickerPage.class, "DatetimePickerPage.js")));
