@@ -60,6 +60,11 @@
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>font-awesome</artifactId>
+            <version>5.7.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>font-awesome</artifactId>
             <version>4.7.0</version>
         </dependency>
 
@@ -134,10 +139,6 @@
                     <groupId>org.webjars.bower</groupId>
                     <artifactId>bootstrap</artifactId>
                 </exclusion>
-                <exclusion>
-                    <groupId>org.webjars.bower</groupId>
-                    <artifactId>font-awesome</artifactId>
-                </exclusion>
             </exclusions>
         </dependency>
 
@@ -152,13 +153,13 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
-            <version>5.4.0</version>
+            <version>${junit5.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.junit.vintage</groupId>
             <artifactId>junit-vintage-engine</artifactId>
-            <version>5.4.0</version>
+            <version>${junit5.version}</version>
             <scope>test</scope>
         </dependency>
 
