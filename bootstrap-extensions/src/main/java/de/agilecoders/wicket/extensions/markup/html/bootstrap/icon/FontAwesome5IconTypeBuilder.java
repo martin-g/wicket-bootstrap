@@ -4,17 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * <strong>Important</strong>: To use font-awesome 5.x you need to declare the Maven/Gradle dependency
- * in your application pom.xml/build.gradle, for example:
- *
- * <br/>
- *  &lt;dependency&gt;<br/>
- *      &lt;groupId&gt;org.webjars&lt;/groupId&gt;<br/>
- *      &lt;artifactId&gt;font-awesome&lt;/artifactId&gt;<br/>
- *      &lt;version&gt;5.7.1&lt;/version&gt;<br/>
- *  &lt;/dependency&gt;<br/>
- *
- *
  * A builder to build {@link FontAwesome5IconType} <br />
  * <br />
  * <b>Examples :</b>

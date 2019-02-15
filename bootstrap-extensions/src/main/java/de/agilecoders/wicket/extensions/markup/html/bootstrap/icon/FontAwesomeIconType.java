@@ -8,6 +8,16 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeIconTypeBuilder.FontAwesomeGraphic;
 
 /**
+ * <strong>Important</strong>: To use font-awesome 4.x you need to declare the Maven/Gradle dependency
+ * in your application pom.xml/build.gradle, for example:
+ *
+ * <br/>
+ *  &lt;dependency&gt;<br/>
+ *      &lt;groupId&gt;org.webjars&lt;/groupId&gt;<br/>
+ *      &lt;artifactId&gt;font-awesome&lt;/artifactId&gt;<br/>
+ *      &lt;version&gt;4.7.0&lt;/version&gt;<br/>
+ *  &lt;/dependency&gt;<br/>
+ *
  * All the icon types.
  */
 public class FontAwesomeIconType extends IconType {

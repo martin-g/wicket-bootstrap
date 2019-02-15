@@ -4,6 +4,16 @@ import org.apache.wicket.request.Url;
 import org.apache.wicket.request.resource.UrlResourceReference;
 
 /**
+ * <strong>Important</strong>: To use font-awesome 4.x you need to declare the Maven/Gradle dependency
+ * in your application pom.xml/build.gradle, for example:
+ *
+ * <br/>
+ *  &lt;dependency&gt;<br/>
+ *      &lt;groupId&gt;org.webjars&lt;/groupId&gt;<br/>
+ *      &lt;artifactId&gt;font-awesome&lt;/artifactId&gt;<br/>
+ *      &lt;version&gt;4.7.0&lt;/version&gt;<br/>
+ *  &lt;/dependency&gt;<br/>
+ *
  * reference for font awesome css via CDN
  */
 public class FontAwesomeCDNCSSReference extends UrlResourceReference{
