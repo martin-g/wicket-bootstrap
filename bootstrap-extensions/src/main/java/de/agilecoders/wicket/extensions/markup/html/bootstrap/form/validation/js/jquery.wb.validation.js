@@ -85,7 +85,7 @@
          */
         removeErrorClass: function ($element, $messageTarget) {
             if (this.config.errorClass !== null) {
-                $messageTarget.parent().removeClass(this.config.errorClass);
+                $messageTarget.removeClass(this.config.errorClass);
             }
         }
     };
