@@ -9,7 +9,7 @@
 
     <groupId>de.agilecoders.wicket</groupId>
     <artifactId>bootstrap-parent</artifactId>
-    <version>2.0.8-SNAPSHOT</version>
+    <version>4.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>bootstrap-parent</name>
 
@@ -39,15 +39,15 @@
 
     <properties>
         <github.global.server>github</github.global.server>
-        <java.version>1.8</java.version>
+        <java.version>11</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.java.source>${java.version}</maven.java.source>
         <maven.java.target>${java.version}</maven.java.target>
 
         <bootstrap.version>3.4.0</bootstrap.version>
         <config.version>0.3.5</config.version>
-        <wicket-webjars.version>2.0.11</wicket-webjars.version>
-        <wicket-jquery-selectors.version>2.0.4</wicket-jquery-selectors.version>
+        <wicket-webjars.version>3.0.0-SNAPSHOT</wicket-webjars.version>
+        <wicket-jquery-selectors.version>3.0.0-SNAPSHOT</wicket-jquery-selectors.version>
 
         <enforcer.disable>true</enforcer.disable>
         <pmd.disable>true</pmd.disable>
@@ -58,21 +58,20 @@
         <!-- TODO -->
         <servlet-api.version>3.1.0</servlet-api.version>
         <javax.javaee-web-api.version>7.0</javax.javaee-web-api.version>
-        <versions-maven-plugin.version>2.5</versions-maven-plugin.version>
+        <versions-maven-plugin.version>2.7</versions-maven-plugin.version>
         <doxia.version>1.0</doxia.version>
         <less4j.version>1.17.2</less4j.version>
         <modernizr.version>2.8.3-1</modernizr.version>
-        <jetty.version>9.4.14.v20181114</jetty.version>
+        <jetty.version>9.4.15.v20190215</jetty.version>
         <google-closure.version>v20140814</google-closure.version>
         <contiperf.version>2.4.3</contiperf.version>
         <jquerypp.version>1.0.1</jquerypp.version>
         <jquery.version>2.2.4</jquery.version>
         <maven-bundle-plugin.version>3.5.0</maven-bundle-plugin.version>
-        <wicket.version>8.3.0</wicket.version>
-        <wicketstuff.version>8.3.0</wicketstuff.version>
+        <wicket.version>9.0.0-SNAPSHOT</wicket.version>
+        <wicketstuff.version>9.0.0-SNAPSHOT</wicketstuff.version>
         <yuicompressor.version>2.4.8</yuicompressor.version>
-        <maven-javadoc-plugin.version>2.10.4</maven-javadoc-plugin.version>
-        <guava.version>27.0.1</guava.version>
+        <guava.version>27.1-jre</guava.version>
         <junit5.version>5.4.0</junit5.version>
         <logback.version>1.2.3</logback.version>
         <jsass.version>5.7.3</jsass.version>
@@ -83,7 +82,6 @@
         <cobertura-maven-plugin.version>2.7</cobertura-maven-plugin.version>
         <maven-surefire-plugin.version>2.22.1</maven-surefire-plugin.version>
         <maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
-        <maven-javadoc-plugin.version>3.0.1</maven-javadoc-plugin.version>
         <maven-antrun-plugin.version>1.8</maven-antrun-plugin.version>
         <maven-assembly-plugin.version>3.1.0</maven-assembly-plugin.version>
         <maven-changelog-plugin.version>2.3</maven-changelog-plugin.version>
@@ -98,6 +96,7 @@
         <maven-failsafe-plugin.version>2.22.1</maven-failsafe-plugin.version>
         <maven-invoker-plugin.version>3.1.0</maven-invoker-plugin.version>
         <maven-install-plugin.version>2.5.2</maven-install-plugin.version>
+        <maven-javadoc-plugin.version>3.1.0</maven-javadoc-plugin.version>
         <maven-pmd-plugin.version>3.11.0</maven-pmd-plugin.version>
         <maven-plugin-plugin.version>3.6.0</maven-plugin-plugin.version>
         <maven-jar-plugin.version>3.1.0</maven-jar-plugin.version>
@@ -233,7 +232,7 @@
             <dependency>
                 <groupId>com.google.guava</groupId>
                 <artifactId>guava</artifactId>
-                <version>${guava.version}-jre</version>
+                <version>${guava.version}</version>
             </dependency>
 
             <dependency>
@@ -327,129 +326,127 @@
             </testResource>
         </testResources>
 
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-deploy-plugin</artifactId>
-                    <version>${maven-deploy-plugin.version}</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-javadoc-plugin</artifactId>
-                    <version>${maven-javadoc-plugin.version}</version>
-                    <configuration>
-                        <skip>true</skip>
-                        <quiet>true</quiet>
-                        <links>
-                            <link>http://docs.oracle.com/javase/6/docs/api/</link>
-                            <link>http://junit-team.github.io/junit/javadoc/latest/</link>
-                            <link>http://www.slf4j.org/apidocs/</link>
-                        </links>
-                        <additionalJOptions>
-                            <additionalJOption>-J-Xmx32m</additionalJOption>
-                        </additionalJOptions>
-                        <doclet>ch.raffael.doclets.pegdown.PegdownDoclet</doclet>
-                        <docletArtifact>
-                            <groupId>ch.raffael.pegdown-doclet</groupId>
-                            <artifactId>pegdown-doclet</artifactId>
-                            <version>1.1</version>
-                        </docletArtifact>
-                        <useStandardDocletOptions>true</useStandardDocletOptions>
-                    </configuration>
-                    <executions>
-                        <execution>
-                            <id>default-jar</id>
-                            <goals>
-                                <goal>jar</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-surefire-plugin</artifactId>
-                    <version>${maven-surefire-plugin.version}</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <version>${maven-compiler-plugin.version}</version>
-                    <configuration>
-                        <source>${maven.java.source}</source>
-                        <target>${maven.java.target}</target>
-                        <compilerVersion>${maven.java.source}</compilerVersion>
-                        <encoding>${project.build.sourceEncoding}</encoding>
-                        <showDeprecation>true</showDeprecation>
-                        <showWarnings>true</showWarnings>
-                        <optimize>true</optimize>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>versions-maven-plugin</artifactId>
-                    <version>${versions-maven-plugin.version}</version>
-                    <inherited>true</inherited>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-source-plugin</artifactId>
-                    <version>2.4</version>
-                    <executions>
-                        <execution>
-                            <goals>
-                                <goal>jar</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-jar-plugin</artifactId>
-                    <version>3.0.2</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>cobertura-maven-plugin</artifactId>
-                    <version>${cobertura-maven-plugin.version}</version>
-                    <configuration>
-                        <format>xml</format>
-                        <maxmem>256m</maxmem>
-                        <!-- aggregated reports for multi-module projects -->
-                        <aggregate>true</aggregate>
-                        <check />
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.eluder.coveralls</groupId>
-                    <artifactId>coveralls-maven-plugin</artifactId>
-                    <version>4.3.0</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-release-plugin</artifactId>
-                    <version>2.5.2</version>
-                    <configuration>
-                        <goals>deploy</goals>
-                        <mavenExecutorId>forked-path</mavenExecutorId>
-                        <useReleaseProfile>false</useReleaseProfile>
-                        <arguments>-Psonatype-oss-release</arguments>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.felix</groupId>
-                    <artifactId>maven-bundle-plugin</artifactId>
-                    <version>${maven-bundle-plugin.version}</version>
-                    <extensions>true</extensions>
-                    <configuration>
-                        <instructions>
-                            <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
-                            <Bundle-Version>${project.version}</Bundle-Version>
-                        </instructions>
-                    </configuration>
-                </plugin>
-            </plugins>
-        </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>${maven-deploy-plugin.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>${maven-javadoc-plugin.version}</version>
+                <configuration>
+                    <skip>true</skip>
+                    <quiet>true</quiet>
+                    <links>
+                        <link>https://docs.oracle.com/en/java/javase/11/docs/api/index.html</link>
+                        <link>http://junit-team.github.io/junit/javadoc/latest/</link>
+                        <link>http://www.slf4j.org/apidocs/</link>
+                    </links>
+                    <additionalJOptions>
+                        <additionalJOption>-J-Xmx32m</additionalJOption>
+                    </additionalJOptions>
+                    <doclet>ch.raffael.doclets.pegdown.PegdownDoclet</doclet>
+                    <docletArtifact>
+                        <groupId>ch.raffael.pegdown-doclet</groupId>
+                        <artifactId>pegdown-doclet</artifactId>
+                        <version>1.1</version>
+                    </docletArtifact>
+                    <useStandardDocletOptions>true</useStandardDocletOptions>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>default-jar</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <source>${maven.java.source}</source>
+                    <target>${maven.java.target}</target>
+                    <compilerVersion>${maven.java.source}</compilerVersion>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                    <showDeprecation>true</showDeprecation>
+                    <showWarnings>true</showWarnings>
+                    <optimize>true</optimize>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>versions-maven-plugin</artifactId>
+                <version>${versions-maven-plugin.version}</version>
+                <inherited>true</inherited>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>${maven-source-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>${maven-jar-plugin.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>cobertura-maven-plugin</artifactId>
+                <version>${cobertura-maven-plugin.version}</version>
+                <configuration>
+                    <format>xml</format>
+                    <maxmem>256m</maxmem>
+                    <!-- aggregated reports for multi-module projects -->
+                    <aggregate>true</aggregate>
+                    <check />
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.eluder.coveralls</groupId>
+                <artifactId>coveralls-maven-plugin</artifactId>
+                <version>4.3.0</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.5.3</version>
+                <configuration>
+                    <goals>deploy</goals>
+                    <mavenExecutorId>forked-path</mavenExecutorId>
+                    <useReleaseProfile>false</useReleaseProfile>
+                    <arguments>-Psonatype-oss-release</arguments>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <version>${maven-bundle-plugin.version}</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions>
+                        <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
+                        <Bundle-Version>${project.version}</Bundle-Version>
+                    </instructions>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
 
     <profiles>

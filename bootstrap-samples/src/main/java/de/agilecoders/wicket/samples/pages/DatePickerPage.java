@@ -8,9 +8,8 @@ import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.DateTextField
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.DateTextFieldConfig;
 import de.agilecoders.wicket.samples.components.basecss.DatePickerModal;
 import org.apache.wicket.Component;
-import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.model.AbstractReadOnlyModel;
+import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.joda.time.DateTime;
@@ -65,21 +64,13 @@ public class DatePickerPage extends BasePage {
 
         add(modal, modalButton);
 
-        final Label selectedDate = new Label("selectedDate", new AbstractReadOnlyModel<String>() {
-            @Override
-            public String getObject() {
-                return date != null? date.toString() : "--NO SELECTED DATE--";
-            }
-        });
+        final Label selectedDate = new Label("selectedDate", (IModel<String>) () -> date != null? date.toString() : "--NO SELECTED DATE--");
         selectedDate.setOutputMarkupId(true);
 
         add(selectedDate);
-        add(new DateTextField("ajax-default").addAjaxEvent(DateTextField.Event.changeDate, new DateTextField.IAjaxEventHandler() {
-            @Override
-            public void onAjaxEvent(AjaxRequestTarget target, Date date, DateTextField.Event event) {
-                DatePickerPage.this.date = date;
-                target.add(selectedDate);
-            }
+        add(new DateTextField("ajax-default").addAjaxEvent(DateTextField.Event.changeDate, (DateTextField.IAjaxEventHandler) (target, date, event) -> {
+            DatePickerPage.this.date = date;
+            target.add(selectedDate);
         }));
 
 

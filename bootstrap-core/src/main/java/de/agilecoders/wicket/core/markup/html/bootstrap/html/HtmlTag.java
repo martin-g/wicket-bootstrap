@@ -11,9 +11,7 @@ import org.apache.wicket.markup.html.TransparentWebMarkupContainer;
 import org.apache.wicket.protocol.http.ClientProperties;
 import org.apache.wicket.protocol.http.request.WebClientInfo;
 
-import java.util.HashSet;
 import java.util.Locale;
-import java.util.Set;
 
 /**
  * A {@link HtmlTag} is a {@link TransparentWebMarkupContainer} that adds some attributes
@@ -131,36 +129,9 @@ public class HtmlTag extends TransparentWebMarkupContainer {
             cssClassNames.add("no-js");
         }
 
-        cssClassNames.add(createBrowserShortcut(clientProperties));
         cssClassNames.add("theme-" + Bootstrap.getSettings().getActiveThemeProvider().getActiveTheme().name());
 
         tag.put("class", cssClassNames.asString());
-    }
-
-    /**
-     * creates a browser shortcuts to identify old IE versions.
-     *
-     * @param clientProperties current client properties
-     * @return a set of browser shortcuts
-     */
-    private Set<String> createBrowserShortcut(final ClientProperties clientProperties) {
-        Set<String> shortcut = new HashSet<>();
-
-        if (clientProperties.isBrowserInternetExplorer()) {
-            if (clientProperties.getBrowserVersionMajor() < 9) {
-                shortcut.add("lt-ie9");
-
-                if (clientProperties.getBrowserVersionMajor() < 8) {
-                    shortcut.add("lt-ie8");
-
-                    if (clientProperties.getBrowserVersionMajor() < 7) {
-                        shortcut.add("lt-ie7");
-                    }
-                }
-            }
-        }
-
-        return shortcut;
     }
 
     @Override
