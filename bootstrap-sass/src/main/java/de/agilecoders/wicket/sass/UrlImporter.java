@@ -1,5 +1,9 @@
 package de.agilecoders.wicket.sass;
 
+import de.agilecoders.wicket.webjars.WicketWebjars;
+import de.agilecoders.wicket.webjars.util.WebJarAssetLocator;
+import io.bit3.jsass.importer.Import;
+import io.bit3.jsass.importer.Importer;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -13,9 +17,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Optional;
 import java.util.stream.Stream;
-
 import javax.servlet.ServletContext;
-
 import org.apache.commons.lang3.StringUtils;
 import org.apache.wicket.Application;
 import org.apache.wicket.WicketRuntimeException;
@@ -26,11 +28,9 @@ import org.apache.wicket.util.string.Strings;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import io.bit3.jsass.importer.Import;
-import io.bit3.jsass.importer.Importer;
 
-import de.agilecoders.wicket.webjars.WicketWebjars;
-import de.agilecoders.wicket.webjars.util.WebJarAssetLocator;
+
+
 
 /**
  * SASS importer that knows how to load dependencies (imports) from:
@@ -96,11 +96,7 @@ class UrlImporter implements Importer {
         } else if (scopeClass != null && StringUtils.startsWith(url, PACKAGE_SCHEME)) {
             newImport = resolvePackageDependency(url);
         } else {
-            String importUrl = getAbsolutePath(base, url);
-            Optional<Import> localImport = resolveLocalDependency(importUrl);
-
-            // local resource maybe inside jar, webjar
-            newImport = localImport.isPresent() ? localImport : resolveJarDependency(importUrl);
+            newImport = resolveLocalDependency(base, url);
         }
 
         return newImport;
@@ -187,7 +183,19 @@ class UrlImporter implements Importer {
 
     }
 
+    private Optional<Import> resolveLocalDependency(URI base, String url) {
+        LOG.debug("Going to resolve an import from local dependency: {}", url);
+        String importUrl = getAbsolutePath(base, url);
+        Optional<Import> localImport = resolveLocalFileDependency(importUrl);
+
+        // local resource maybe inside jar, webjar
+        return localImport.isPresent() 
+            ? localImport
+            : resolveJarDependency(importUrl);
+    }
+
     private Optional<Import> resolveJarDependency(String url) {
+        LOG.debug("Going to resolve an import from jar file: {}", url);
         int jarSchemeIndex = url.indexOf(JAR_SCHEME);
         if (jarSchemeIndex == -1) {
             return Optional.empty();
@@ -203,7 +211,7 @@ class UrlImporter implements Importer {
         return Optional.ofNullable(importUrl).map(this::buildImport);
     }
 
-    private Optional<Import> resolveLocalDependency(String url) {
+    private Optional<Import> resolveLocalFileDependency(String url) {
         LOG.debug("Going to resolve an import from local file: {}", url);
         File file = new File(url);
 
