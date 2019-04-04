@@ -7,6 +7,8 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Optional;
@@ -57,6 +59,7 @@ class UrlImporter implements Importer {
     public static final String PACKAGE_SCHEME = "package!";
     public static final String WEBJARS_SCHEME = "webjars!";
     public static final String WEB_CONTEXT_SCHEME = "webcontext!";
+    public static final String JAR_SCHEME = "jar!";
 
     /**
      * The scope class used with SassResourceReference.
@@ -65,7 +68,6 @@ class UrlImporter implements Importer {
     private final String scopeClass;
 
     /**
-     *
      * @param scopeClass The scope class used with SassResourceReference.
      */
     public UrlImporter(String scopeClass) {
@@ -94,7 +96,11 @@ class UrlImporter implements Importer {
         } else if (scopeClass != null && StringUtils.startsWith(url, PACKAGE_SCHEME)) {
             newImport = resolvePackageDependency(url);
         } else {
-            newImport = resolveLocalDependency(base.resolve(url).toString());
+            String importUrl = getAbsolutePath(base, url);
+            Optional<Import> localImport = resolveLocalDependency(importUrl);
+
+            // local resource maybe inside jar, webjar
+            newImport = localImport.isPresent() ? localImport : resolveJarDependency(importUrl);
         }
 
         return newImport;
@@ -181,6 +187,22 @@ class UrlImporter implements Importer {
 
     }
 
+    private Optional<Import> resolveJarDependency(String url) {
+        int jarSchemeIndex = url.indexOf(JAR_SCHEME);
+        if (jarSchemeIndex == -1) {
+            return Optional.empty();
+        }
+
+        int resourceNameIndex = jarSchemeIndex + JAR_SCHEME.length();
+        String resourceName = url.substring(resourceNameIndex);
+        if (!resourceName.startsWith("/")) {
+            resourceName = "/" + resourceName;
+        }
+
+        URL importUrl = SassCacheManager.class.getResource(resourceName);
+        return Optional.ofNullable(importUrl).map(this::buildImport);
+    }
+
     private Optional<Import> resolveLocalDependency(String url) {
         LOG.debug("Going to resolve an import from local file: {}", url);
         File file = new File(url);
@@ -195,6 +217,12 @@ class UrlImporter implements Importer {
         }
 
         return Optional.empty();
+    }
+
+    private String getAbsolutePath(URI base, String url) {
+        String basePath = base.toString();
+        Path parentBasePath = Paths.get(basePath).getParent();
+        return parentBasePath.resolve(url).toString();
     }
 
     private Import buildImport(URL importUri) {
