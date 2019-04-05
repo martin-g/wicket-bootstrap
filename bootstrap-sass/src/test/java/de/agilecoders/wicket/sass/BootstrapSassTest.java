@@ -70,8 +70,9 @@ public class BootstrapSassTest {
 
     /**
      * Tests with {@link ContextRelativeSassResourceReference}
-     *
+     * <p>
      * https://github.com/l0rdn1kk0n/wicket-bootstrap/issues/524
+     *
      * @throws Exception
      */
     @Test
@@ -129,6 +130,17 @@ public class BootstrapSassTest {
         String css = sass.getCss(sassSource);
         assertThat(css, containsString("root-cls"));
         assertThat(css, containsString("partial"));
+    }
+
+    @Test
+    public void importLocalJarPath() {
+        // test case for issue #794
+        SassCacheManager sass = SassCacheManager.get();
+        URL res = Thread.currentThread().getContextClassLoader().getResource("importRelativeLocalPath.scss");
+
+        SassSource sassSource = sass.getSassContext(res, null);
+        String css = sass.getCss(sassSource);
+        assertThat(css, containsString("* Bootstrap"));
     }
 
     @Test
