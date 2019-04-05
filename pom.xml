@@ -44,7 +44,7 @@
         <maven.java.source>${java.version}</maven.java.source>
         <maven.java.target>${java.version}</maven.java.target>
 
-        <bootstrap.version>4.1.2</bootstrap.version>
+        <bootstrap.version>4.3.1</bootstrap.version>
         <config.version>0.3.5</config.version>
         <wicket-webjars.version>2.0.11</wicket-webjars.version>
         <wicket-jquery-selectors.version>2.0.4</wicket-jquery-selectors.version>
@@ -73,7 +73,7 @@
         <guava.version>27.0.1</guava.version>
         <junit5.version>5.4.0</junit5.version>
         <logback.version>1.2.3</logback.version>
-        <jsass.version>5.7.3</jsass.version>
+        <jsass.version>5.8.0</jsass.version>
         <popperjs.version>1.14.1</popperjs.version>
 
         <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>

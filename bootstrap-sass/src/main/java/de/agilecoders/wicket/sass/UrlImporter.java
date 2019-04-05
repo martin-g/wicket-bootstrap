@@ -242,7 +242,7 @@ class UrlImporter implements Importer {
         }
     }
 
-    private static String read(URL url) {
+    private String read(URL url) {
         try {
             return IOUtils.toString(url.openStream(), StandardCharsets.UTF_8.name());
         } catch (IOException ex) {

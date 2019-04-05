@@ -1,13 +1,9 @@
 package de.agilecoders.wicket.sass;
 
 import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
-
-import org.apache.wicket.core.util.lang.WicketObjects;
 
 /**
  * Represents information required to load Sass source from:
