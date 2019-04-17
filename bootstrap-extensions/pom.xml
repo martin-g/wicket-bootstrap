@@ -70,7 +70,7 @@
 
         <dependency>
             <groupId>com.google.javascript</groupId>
-            <artifactId>closure-compiler</artifactId>
+            <artifactId>closure-compiler-unshaded</artifactId>
             <version>${google-closure.version}</version>
             <exclusions>
                 <exclusion>
