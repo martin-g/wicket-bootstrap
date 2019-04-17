@@ -20,7 +20,7 @@
     <parent>
         <groupId>de.agilecoders.wicket</groupId>
         <artifactId>bootstrap-parent</artifactId>
-        <version>3.0.0-M9</version>
+        <version>3.0.0-M10-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
