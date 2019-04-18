@@ -11,7 +11,7 @@ import java.util.List;
  *  &lt;dependency&gt;<br/>
  *      &lt;groupId&gt;org.webjars&lt;/groupId&gt;<br/>
  *      &lt;artifactId&gt;font-awesome&lt;/artifactId&gt;<br/>
- *      &lt;version&gt;5.7.1&lt;/version&gt;<br/>
+ *      &lt;version&gt;5.8.1&lt;/version&gt;<br/>
  *  &lt;/dependency&gt;<br/>
  *
  *
@@ -142,7 +142,7 @@ public class FontAwesome5IconTypeBuilder {
         user_minus, user_ninja, user_nurse, user_plus, user_secret, user_shield, user_slash, user_tag, user_tie,
         user_times, users, users_cog, utensil_spoon, utensils, vector_square, venus, venus_double, venus_mars, vial,
         vials, video, video_slash, vihara, volleyball_ball, volume_down, volume_mute, volume_off, volume_up, vote_yea,
-        vr_cardboard, walking, wallet, warehouse, water, weight, weight_hanging, wheelchair, wifi, wind, window_close,
+        vr_cardboard, walking, wallet, warehouse, water, wave_square, weight, weight_hanging, wheelchair, wifi, wind, window_close,
         window_maximize, window_minimize, window_restore, wine_bottle, wine_glass, wine_glass_alt, won_sign, wrench,
         x_ray, yen_sign, yin_yang;
 
@@ -194,23 +194,50 @@ public class FontAwesome5IconTypeBuilder {
      * All icons of style 'brand' available for free in Font Awesome.
      */
     public enum FontAwesome5Brand implements FontAwesome5Graphic {
-        _500px, accessible_icon, accusoft, acquisitions_incorporated, adn, adobe, adversal, affiliatetheme, algolia,
+        _500px, accessible_icon, accusoft, acquisitions_incorporated, adn, adobe, adversal, affiliatetheme, airbnb, algolia,
         alipay, amazon, amazon_pay, amilia, android, angellist, angrycreative, angular, app_store, app_store_ios, apper,
         apple, apple_pay, artstation, asymmetrik, atlassian, audible, autoprefixer, avianex, aviato, aws, bandcamp,
-        behance, behance_square, bimobject, bitbucket, bitcoin, bity, black_tie, blackberry, blogger, blogger_b,
-        bluetooth, bluetooth_b, btc, buromobelexperte, buysellads, canadian_maple_leaf, cc_amazon_pay, cc_amex,
+        battle_net, behance, behance_square, bimobject, bitbucket, bitcoin, bity, black_tie, blackberry, blogger, blogger_b,
+        bluetooth, bluetooth_b, bootstrap, btc, buffer, buromobelexperte, buysellads, canadian_maple_leaf, cc_amazon_pay, cc_amex,
         cc_apple_pay, cc_diners_club, cc_discover, cc_jcb, cc_mastercard, cc_paypal, cc_stripe, cc_visa, centercode,
-        centos, chrome, cloudscale, cloudsmith, cloudversify, codepen, codiepie, confluence, connectdevelop, contao,
+        centos, chrome, chromecast, cloudscale, cloudsmith, cloudversify, codepen, codiepie, confluence, connectdevelop, contao,
         cpanel, creative_commons, creative_commons_by, creative_commons_nc, creative_commons_nc_eu,
         creative_commons_nc_jp, creative_commons_nd, creative_commons_pd, creative_commons_pd_alt,
         creative_commons_remix, creative_commons_sa, creative_commons_sampling, creative_commons_sampling_plus,
         creative_commons_share, creative_commons_zero, critical_role, css3, css3_alt, cuttlefish, d_and_d,
         d_and_d_beyond, dashcube, delicious, deploydog, deskpro, dev, deviantart, dhl, diaspora, digg, digital_ocean,
         discord, discourse, dochub, docker, draft2digital, dribbble, dribbble_square, dropbox, drupal, dyalog,
-        earlybirds, ebay, edge, elementor, ello, ember, empire, envira, erlang, ethereum, etsy, expeditedssl, facebook,
+        earlybirds, ebay, edge, elementor, ello, ember, empire, envira, erlang, ethereum, etsy, evernote, expeditedssl, facebook,
         facebook_f, facebook_messenger, facebook_square, fantasy_flight_games, fedex, fedora, figma, firefox,
         first_order, first_order_alt, firstdraft, flickr, flipboard, fly, font_awesome, font_awesome_alt,
-        font_awesome_flag, fonticons, fonticons_fi, fort_awesome, fort_awesome_alt, forumbee;
+        font_awesome_flag, fonticons, fonticons_fi, fort_awesome, fort_awesome_alt, forumbee,
+        foursquare, free_code_camp, freebsd, fulcrum, galactic_republic, galactic_senate, get_pocket, gg, gg_circle,
+        git, git_square, github, github_alt, github_square, gitkraken, gitlab, gitter, glide, glide_g, gofore,
+        goodreads, goodreads_g, google, google_drive, google_play, google_plus, google_plus_g, google_plus_square,
+        google_wallet, gratipay, grav, gripfire, grunt, gulp, hacker_news, hacker_news_square, hackerrank, hips,
+        hire_a_helper, hooli, hornbill, hotjar, houzz, html5, hubspot, imdb, instagram, intercom, internet_explorer,
+        invision, ioxhost, itch_io, itunes, itunes_note, java, jedi_order, jenkins, jira, joget, joomla, js, js_square,
+        jsfiddle, kaggle, keybase, keycdn, kickstarter, kickstarter_k, korvue, laravel, lastfm, lastfm_square, leanpub,
+        less, line, linkedin, linkedin_in, linode, linux, lyft, magento, mailchimp, mandalorian, markdown, mastodon,
+        maxcdn, medapps, medium, medium_m, medrt, meetup, megaport, mendeley, microsoft, mix, mixcloud, mizuni, modx,
+        monero, napster, neos, nimblr, nintendo_switch, node, node_js, npm, ns8, nutritionix, odnoklassniki,
+        odnoklassniki_square, old_republic, opencart, openid, opera, optin_monster, osi, page4, pagelines, palfed,
+        patreon, paypal, penny_arcade, periscope, phabricator, phoenix_framework, phoenix_squadron, php, pied_piper,
+        pied_piper_alt, pied_piper_hat, pied_piper_pp, pinterest, pinterest_p, pinterest_square, playstation,
+        product_hunt, pushed, python, qq, quinscape, quora, r_project, raspberry_pi, ravelry, react, reacteurope,
+        readme, rebel, red_river, reddit, reddit_alien, reddit_square, redhat, renren, replyd, researchgate, resolving,
+        rev, rocketchat, rockrms, safari, salesforce, sass, schlix, scribd, searchengin, sellcast, sellsy, servicestack,
+        shirtsinbulk, shopware, simplybuilt, sistrix, sith, sketch, skyatlas, skype, slack, slack_hash, slideshare,
+        snapchat, snapchat_ghost, snapchat_square, soundcloud, sourcetree, speakap, speaker_deck, spotify, squarespace,
+        stack_exchange, stack_overflow, staylinked, steam, steam_square, steam_symbol, sticker_mule, strava, stripe,
+        stripe_s, studiovinari, stumbleupon, stumbleupon_circle, superpowers, supple, suse, symfony, teamspeak,
+        telegram, telegram_plane, tencent_weibo, the_red_yeti, themeco, themeisle, think_peaks, trade_federation,
+        trello, tripadvisor, tumblr, tumblr_square, twitch, twitter, twitter_square, typo3, uber, ubuntu, uikit,
+        uniregistry, untappd, ups, usb, usps, ussunnah, vaadin, viacoin, viadeo, viadeo_square, viber, vimeo,
+        vimeo_square, vimeo_v, vine, vk, vnv, vuejs, waze, weebly, weibo, weixin, whatsapp, whatsapp_square, whmcs,
+        wikipedia_w, windows, wix, wizards_of_the_coast, wolf_pack_battalion, wordpress, wordpress_simple, wpbeginner,
+        wpexplorer, wpforms, wpressr, xbox, xing, xing_square, y_combinator, yahoo, yammer, yandex,
+        yandex_international, yarn, yelp, yoast, youtube, youtube_square, zhihu;
 
         @Override
         public String getPrefix() {
