@@ -3,7 +3,7 @@ package de.agilecoders.wicket.extensions.markup.html.bootstrap.form.password.str
 import org.apache.wicket.Component;
 import org.apache.wicket.util.lang.Args;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
+
 
 import de.agilecoders.wicket.jquery.AbstractConfig;
 import de.agilecoders.wicket.jquery.IKey;
