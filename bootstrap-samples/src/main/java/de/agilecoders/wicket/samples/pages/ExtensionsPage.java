@@ -15,6 +15,8 @@ import de.agilecoders.wicket.extensions.markup.html.bootstrap.behavior.Draggable
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.behavior.Resizable;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.confirmation.ConfirmationBehavior;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.confirmation.ConfirmationConfig;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.clockpicker.ClockPickerBehavior;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.clockpicker.ClockPickerConfig;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.password.strength.PasswordStrengthBehavior;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.password.strength.PasswordStrengthConfig;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.rating.RatingConfig;
@@ -142,11 +144,27 @@ public class ExtensionsPage extends BasePage {
         laddaButton();
         confirmationButton();
 
+        clockPickerSample();
+
         spinnerSample();
         ratingSample();
         animationSample();
 
         pwstrengthSample();
+    }
+
+    private void clockPickerSample() {
+
+        Form form = new Form("clockpickerForm");
+        TextField textField=new TextField("clockPickerInput");
+        textField.add(new ClockPickerBehavior());
+        form.add(textField);
+        form.add(new Code(
+            "linkCode",
+            Model.of("textField = new TextField(\"clockPickerInput\");\n"
+                + "textField.add(new ClockPickerBehavior());\n"
+            )));
+        add(form);
     }
 
     private void pwstrengthSample() {
