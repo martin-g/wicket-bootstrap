@@ -2,8 +2,6 @@ package de.agilecoders.wicket.extensions.markup.html.bootstrap.form.clockpicker;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapJavascriptBehavior;
 import de.agilecoders.wicket.core.util.References;
-import de.agilecoders.wicket.jquery.Config;
-import de.agilecoders.wicket.jquery.JQuery;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
@@ -14,10 +12,7 @@ import org.apache.wicket.util.lang.Args;
 
 import static de.agilecoders.wicket.jquery.JQuery.$;
 
-/**
- * A behavior that shows a popover with OK/Cancel buttons to confirm an action.
- * @since 0.9.12
- */
+
 public class ClockPickerBehavior extends BootstrapJavascriptBehavior {
     /** serialVersionUID. */
     private static final long serialVersionUID = 1L;

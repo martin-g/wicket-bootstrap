@@ -12,18 +12,27 @@ public class ClockPickerConfig extends AbstractConfig {
     private static final IKey<String> Align = new Key<String>("align");
 
     public ClockPickerConfig() {
-
         put(DoneText, "Ok");
         put(AutoClose, false);
         put(Placement, Direction.bottom.value());
         put(Align, Direction.top.value());
     }
 
+    /**
+     * Done button text
+     * @param doneText
+     * @return
+     */
     public ClockPickerConfig withDoneText(String doneText) {
         put(DoneText, doneText);
         return this;
     }
 
+    /**
+     * If clock should autoclose after minute pick - removes done button
+     * @param autoClose
+     * @return
+     */
     public ClockPickerConfig withAutoClose(Boolean autoClose) {
         put(AutoClose, autoClose);
         return this;
