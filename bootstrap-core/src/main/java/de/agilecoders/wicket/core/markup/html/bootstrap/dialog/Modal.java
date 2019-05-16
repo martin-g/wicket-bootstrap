@@ -531,7 +531,7 @@ public class Modal<T> extends GenericPanel<T> {
      */
     private String addCloseHandlerScript(final String markupId, final String script) {
         if (closeBehavior != null) {
-            return script + ";$('#" + markupId + "').on('hidden', function () { "
+            return script + ";$('#" + markupId + "').on('hidden.bs.modal', function () { "
                    + "  Wicket.Ajax.ajax({'u':'" + closeBehavior.getCallbackUrl() + "','c':'" + markupId + "'});"
                    + "})";
         }
