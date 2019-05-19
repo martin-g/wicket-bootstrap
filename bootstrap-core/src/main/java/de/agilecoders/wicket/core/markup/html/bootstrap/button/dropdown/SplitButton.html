@@ -4,13 +4,16 @@
     </head>
     <body>
         <wicket:panel>
-            <button type="button" class="btn" wicket:id="button"></button>
-            <button type="button" class="btn dropdown-toggle" wicket:id="caret" data-toggle="dropdown"></button>
-            <ul wicket:id="dropdown-menu" class="dropdown-menu">
-                <li wicket:id="buttons">
-                    <a wicket:id="button"></a>
-                </li>
-            </ul>
+            <button type="button" wicket:id="button"></button>
+            <button type="button" class="dropdown-toggle dropdown-toggle-split" wicket:id="caret" 
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <div wicket:id="dropdown-menu" class="dropdown-menu">
+                <wicket:container wicket:id="buttons">
+                    <a wicket:id="button" class="dropdown-item" href="javascript:;"></a>
+                </wicket:container>
+            </div>
         </wicket:panel>
     </body>
 </html>
