@@ -2,6 +2,7 @@ package de.agilecoders.wicket.less;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.Instant;
 import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
@@ -11,7 +12,6 @@ import org.apache.wicket.Application;
 import org.apache.wicket.MetaDataKey;
 import org.apache.wicket.WicketRuntimeException;
 import org.apache.wicket.util.io.Connections;
-import org.apache.wicket.util.time.Time;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -41,7 +41,7 @@ public class LessCacheManager {
     /**
      * A cache that keeps the generated CSS content per root LessSource
      */
-    private final ConcurrentMap<LessSource.URLSource, ConcurrentMap<Time, String>> contentCache =
+    private final ConcurrentMap<LessSource.URLSource, ConcurrentMap<Instant, String>> contentCache =
             new ConcurrentHashMap<>();
 
     /**
@@ -96,16 +96,16 @@ public class LessCacheManager {
      */
     public String getCss(LessSource.URLSource lessSource) {
 
-        ConcurrentMap<Time, String> timeToContentMap = contentCache.get(lessSource);
+        ConcurrentMap<Instant, String> timeToContentMap = contentCache.get(lessSource);
         if (timeToContentMap == null) {
             timeToContentMap = new ConcurrentHashMap<>();
-            ConcurrentMap<Time, String> old = contentCache.putIfAbsent(lessSource, timeToContentMap);
+            ConcurrentMap<Instant, String> old = contentCache.putIfAbsent(lessSource, timeToContentMap);
             if (old != null) {
                 timeToContentMap = old;
             }
         }
 
-        Time lastModifiedTime = getLastModifiedTime(lessSource);
+        Instant lastModifiedTime = getLastModifiedTime(lessSource);
         String cssContent = timeToContentMap.get(lastModifiedTime);
 
         if (cssContent == null) {
@@ -162,8 +162,8 @@ public class LessCacheManager {
      * @param lessSource The root LessSource which last modification time should be calculated
      * @return The time when either the root LessSource or any of the imported resources has been last modified
      */
-    public Time getLastModifiedTime(LessSource.URLSource lessSource) {
-        Time modified = Time.START_OF_UNIX_TIME;
+    public Instant getLastModifiedTime(LessSource.URLSource lessSource) {
+        Instant modified = Instant.EPOCH;
         return findLastModified(lessSource, modified);
     }
 
@@ -175,11 +175,15 @@ public class LessCacheManager {
      * @param time   The last modification time of the parent resource
      * @return The latest modified time of the root LessSource and its imported resources
      */
-    private Time findLastModified(LessSource.URLSource source, Time time) {
-        Time max = time;
+    private Instant findLastModified(LessSource.URLSource source, Instant time) {
+        Instant max = time;
         try {
-            Time lastModified = Connections.getLastModified(source.getInputURL());
-            max = Time.maxNullSafe(time, lastModified);
+            Instant lastModified = Connections.getLastModified(source.getInputURL());
+            if (max == null) {
+                max = lastModified;
+            } else if (max.compareTo(lastModified) < 0) {
+                max = lastModified;
+            }
 
             Collection<LessSource> importedSources = source.getImportedSources();
             if (importedSources != null) {

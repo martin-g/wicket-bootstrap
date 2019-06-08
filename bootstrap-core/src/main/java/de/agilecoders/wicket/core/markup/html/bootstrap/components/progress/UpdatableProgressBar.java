@@ -4,7 +4,8 @@ import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.AjaxSelfUpdatingTimerBehavior;
 import org.apache.wicket.core.request.handler.IPartialPageRequestHandler;
 import org.apache.wicket.model.IModel;
-import org.apache.wicket.util.time.Duration;
+
+import java.time.Duration;
 
 /**
  * A {@link de.agilecoders.wicket.core.markup.html.bootstrap.components.progress.ProgressBar} with
@@ -15,8 +16,8 @@ import org.apache.wicket.util.time.Duration;
  */
 public abstract class UpdatableProgressBar extends ProgressBar {
 
-    Duration updateInterval = Duration.seconds(5);
-    private UpdateBehavior behavior;
+    Duration updateInterval = Duration.ofSeconds(5);
+    private final UpdateBehavior behavior;
 
     public UpdatableProgressBar(String id) {
         this(id, null);

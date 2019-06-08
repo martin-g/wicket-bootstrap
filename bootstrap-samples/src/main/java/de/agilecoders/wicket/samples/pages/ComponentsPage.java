@@ -29,9 +29,9 @@ import org.apache.wicket.markup.html.link.AbstractLink;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
-import org.apache.wicket.util.time.Duration;
 import org.wicketstuff.annotation.mount.MountPath;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -130,7 +130,7 @@ public class ComponentsPage extends BasePage {
                 return Model.of(newValue);
             }
         };
-        updatableBar.updateInterval(Duration.seconds(80));
+        updatableBar.updateInterval(Duration.ofSeconds(80));
         add(updatableBar);
 
 

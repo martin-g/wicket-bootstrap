@@ -3,10 +3,10 @@ package de.agilecoders.wicket.less;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.time.Instant;
 
 import org.apache.wicket.util.file.Files;
 import org.apache.wicket.util.io.Connections;
-import org.apache.wicket.util.time.Time;
 
 import com.github.sommeri.less4j.LessCompiler.Configuration;
 import com.github.sommeri.less4j.LessSource;
@@ -117,14 +117,14 @@ public class LessCacheManagerTest {
         URL parentUrl = getClass().getResource("resources/timeParent.less");
         File parentFile = Files.getLocalFileFromUrl(parentUrl);
         parentFile.setLastModified(currentTimeMillis);
-        Time expectedTimeBeforeCompile = Connections.getLastModified(parentUrl);
+        Instant expectedTimeBeforeCompile = Connections.getLastModified(parentUrl);
         URLSource urlSource = new LessSource.URLSource(parentUrl);
 
         // Make sure that the imported file time stamp is newer than timeRoots
         URL childUrl = getClass().getResource("resources/timeChild.less");
         File childFile = Files.getLocalFileFromUrl(childUrl);
         childFile.setLastModified(currentTimeMillis + 60000);
-        Time expectedTimeAfterCompile = Connections.getLastModified(childUrl);
+        Instant expectedTimeAfterCompile = Connections.getLastModified(childUrl);
 
         assertEquals(expectedTimeBeforeCompile, cacheManager.getLastModifiedTime(urlSource));
 

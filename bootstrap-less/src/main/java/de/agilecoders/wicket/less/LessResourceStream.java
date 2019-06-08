@@ -1,6 +1,7 @@
 package de.agilecoders.wicket.less;
 
 import java.net.URL;
+import java.time.Instant;
 
 import org.apache.wicket.WicketRuntimeException;
 import org.apache.wicket.core.util.resource.UrlResourceStream;
@@ -8,7 +9,6 @@ import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.resource.AbstractStringResourceStream;
 import org.apache.wicket.util.resource.IResourceStream;
 import org.apache.wicket.util.resource.ResourceStreamWrapper;
-import org.apache.wicket.util.time.Time;
 
 import com.github.sommeri.less4j.LessSource;
 
@@ -60,7 +60,7 @@ public class LessResourceStream extends AbstractStringResourceStream {
     }
 
     @Override
-    public Time lastModifiedTime() {
+    public Instant lastModifiedTime() {
         LessCacheManager cacheManager = LessCacheManager.get();
         return cacheManager.getLastModifiedTime(lessSource);
     }
