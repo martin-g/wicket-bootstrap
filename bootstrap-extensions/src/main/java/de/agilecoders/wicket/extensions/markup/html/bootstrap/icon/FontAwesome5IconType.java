@@ -1281,8 +1281,6 @@ public class FontAwesome5IconType extends IconType {
     public static final FontAwesome5IconType fort_awesome = on(FontAwesome5Brand.fort_awesome).build();
     public static final FontAwesome5IconType fort_awesome_alt = on(FontAwesome5Brand.fort_awesome_alt).build();
     public static final FontAwesome5IconType forumbee = on(FontAwesome5Brand.forumbee).build();
-<<<<<<< HEAD
-=======
     public static final FontAwesome5IconType foursquare = on(FontAwesome5Brand.foursquare).build();
     public static final FontAwesome5IconType free_code_camp = on(FontAwesome5Brand.free_code_camp).build();
     public static final FontAwesome5IconType freebsd = on(FontAwesome5Brand.freebsd).build();
@@ -1560,7 +1558,6 @@ public class FontAwesome5IconType extends IconType {
     public static final FontAwesome5IconType youtube = on(FontAwesome5Brand.youtube).build();
     public static final FontAwesome5IconType youtube_square = on(FontAwesome5Brand.youtube_square).build();
     public static final FontAwesome5IconType zhihu = on(FontAwesome5Brand.zhihu).build();
->>>>>>> ae04b748... Bump font-awesome from 5.8.1 to 5.9.0 (#809)
 
     /**
      * Constructor.
