@@ -15,7 +15,10 @@ import static de.agilecoders.wicket.jquery.JQuery.$;
  * loading message.
  *
  * @author miha
+ *
+ * @deprecated since BS 3.3.5, removed in BS4 (https://github.com/l0rdn1kk0n/wicket-bootstrap/pull/764)
  */
+@Deprecated
 public class LoadingBehavior extends BootstrapJavascriptBehavior {
 
     private final IModel<String> model;
