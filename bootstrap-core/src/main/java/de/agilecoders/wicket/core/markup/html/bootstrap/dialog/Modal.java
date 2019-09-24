@@ -497,17 +497,7 @@ public class Modal<T> extends GenericPanel<T> {
     public void renderHead(IHeaderResponse response) {
         super.renderHead(response);
 
-        response.render(OnDomReadyHeaderItem.forScript(createInitializerScript(getMarkupId(true))));
-    }
-
-    /**
-     * creates the initializer script of the modal dialog.
-     *
-     * @param markupId The component's markup id
-     * @return initializer script
-     */
-    private String createInitializerScript(final String markupId) {
-        return addCloseHandlerScript(markupId, createBasicInitializerScript(markupId));
+        response.render(OnDomReadyHeaderItem.forScript(createBasicInitializerScript(getMarkupId(true))));
     }
 
     /**
@@ -520,23 +510,6 @@ public class Modal<T> extends GenericPanel<T> {
      */
     protected String createBasicInitializerScript(final String markupId) {
         return "$('#" + markupId + "').modal({keyboard:" + useKeyboard() + ", show:" + showImmediately() + "})";
-    }
-
-    /**
-     * adds close handler to initializer script, if use of close handler has been defined.
-     *
-     * @param markupId markup id
-     * @param script   base script to prepend
-     * @return close handler script
-     */
-    private String addCloseHandlerScript(final String markupId, final String script) {
-        if (closeBehavior != null) {
-            return script + ";$('#" + markupId + "').on('hidden.bs.modal', function () { "
-                   + "  Wicket.Ajax.ajax({'u':'" + closeBehavior.getCallbackUrl() + "','c':'" + markupId + "'});"
-                   + "})";
-        }
-
-        return script;
     }
 
     /**
