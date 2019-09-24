@@ -38,13 +38,13 @@ public class Modal<T> extends GenericPanel<T> {
     public static final String BUTTON_MARKUP_ID = "button";
 
     /**
-     * @see <a href="http://getbootstrap.com/javascript/#modals-sizes">Modal Sizes</a>
+     * @see <a href="https://getbootstrap.com/docs/4.3/components/modal/#optional-sizes">Modal Sizes</a>
      */
     public enum Size implements ICssClassNameProvider {
-        Default(""),
         Small("sm"),
-        Medium("md"),
-        Large("lg");
+        Default(""),
+        Large("lg"),
+        Extra_large("xl");
 
         private final String cssClassName;
 
