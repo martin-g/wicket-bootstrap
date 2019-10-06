@@ -13,10 +13,11 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Collections;
 
-public class TypeaheadConfigTest extends WicketApplicationTest {
+@SuppressWarnings({"SpellCheckingInspection", "unchecked"})
+class TypeaheadConfigTest extends WicketApplicationTest {
 
     @Test
-    public void assertValidHeaderScript() {
+    void assertValidHeaderScript() {
 
         WicketTester tester = tester();
 
@@ -46,7 +47,7 @@ public class TypeaheadConfigTest extends WicketApplicationTest {
     }
 
     @Test
-    public void testComplexRemote() {
+    void testComplexRemote() {
 
         Remote remote = new Remote();
         remote.withUrl("foo").withWildcard("%FOO");
@@ -59,7 +60,7 @@ public class TypeaheadConfigTest extends WicketApplicationTest {
 
     }
     @Test
-    public void testSimpleRemote() {
+    void testSimpleRemote() {
 
         Remote remote = new Remote("foo");
 

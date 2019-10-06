@@ -18,10 +18,10 @@ import org.junit.jupiter.api.Test;
 /**
  * @author daniel.jipa
  */
-public class AnimateBehaviorTest extends WicketApplicationTest {
+class AnimateBehaviorTest extends WicketApplicationTest {
 
     @Test
-    public void classNameWasAdded() {
+    void classNameWasAdded() {
         TagTester tag = startBehaviorInPage(new AnimatedBehavior(Animation.bounce));
         Args.notNull(tag, "tag");
         final CssClassNames.Builder cssClasses = CssClassNames.parse(tag.getAttribute("class"));
@@ -29,7 +29,7 @@ public class AnimateBehaviorTest extends WicketApplicationTest {
                         && cssClasses.contains("bounce"), is(equalTo(true)));
     }
 
-    protected TagTester startBehaviorInPage(final Behavior behavior) {
+    TagTester startBehaviorInPage(final Behavior behavior) {
         Component component = new WebMarkupContainer("id");
         component.add(behavior);
         tester().startComponentInPage(component);

@@ -2,9 +2,9 @@ package de.agilecoders.wicket.core.markup.html.bootstrap.components;
 
 import org.apache.wicket.markup.html.WebMarkupContainer;
 
-public class MyContainer extends WebMarkupContainer{
+class MyContainer extends WebMarkupContainer{
 
-    public MyContainer(String id) {
+    MyContainer(String id) {
         super(id);
     }
 

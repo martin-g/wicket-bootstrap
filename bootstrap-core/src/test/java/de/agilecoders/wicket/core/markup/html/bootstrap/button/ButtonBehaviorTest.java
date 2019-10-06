@@ -9,10 +9,10 @@ import org.junit.jupiter.api.Test;
 /**
  * Tests for ButtonBehavior
  */
-public class ButtonBehaviorTest extends WicketApplicationTest {
+class ButtonBehaviorTest extends WicketApplicationTest {
 
     @Test
-    public void fixDisabledButtonMarkup() {
+    void fixDisabledButtonMarkup() {
         AbstractLink link = newLink(id());
         link.setEnabled(false);
         link.add(new ButtonBehavior());
@@ -24,7 +24,7 @@ public class ButtonBehaviorTest extends WicketApplicationTest {
     }
 
     private AbstractLink newLink(String id) {
-        return new Link(id) {
+        return new Link<Void>(id) {
             @Override
             public void onClick() {
             }

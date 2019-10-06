@@ -78,7 +78,7 @@ class FontAwesome5IconTypeTest {
 
 
     @Test
-    void withRecularStyle_allAttributes() {
+    void withRegularStyle_allAttributes() {
         FontAwesome5IconType fontAwesomeIcon = on(envelope_open)
             .spin()
             .fw()

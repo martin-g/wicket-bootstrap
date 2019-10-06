@@ -14,17 +14,16 @@ import com.github.sommeri.less4j.LessSource.URLSource;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 
-public class LessCacheManagerTest {
+class LessCacheManagerTest {
 
     private int invocationOfGetContent;
     private int invocationOfNewConfiguration;
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         invocationOfGetContent = 0;
         invocationOfNewConfiguration = 0;
     }
@@ -32,7 +31,7 @@ public class LessCacheManagerTest {
     /**
      * Create a URLSource that keeps track of "getContent()" invocations.
      */
-    protected URLSource createSampleURLSource() {
+    URLSource createSampleURLSource() {
         return new LessSource.URLSource(getClass().getResource("resources/root.less")) {
             @Override
             public String getContent() throws FileNotFound, CannotReadFile {
@@ -43,7 +42,7 @@ public class LessCacheManagerTest {
     }
 
     @Test
-    public void cachesCssResult() {
+    void cachesCssResult() {
         LessCacheManager cacheManager = new LessCacheManager();
 
         URLSource urlSource = createSampleURLSource();
@@ -59,7 +58,7 @@ public class LessCacheManagerTest {
     }
 
     @Test
-    public void clearCacheForcesRecompile() {
+    void clearCacheForcesRecompile() {
         LessCacheManager cacheManager = new LessCacheManager();
 
         URLSource urlSource = createSampleURLSource();
@@ -77,13 +76,10 @@ public class LessCacheManagerTest {
     }
 
     @Test
-    public void usesLessCompilerConfigurationFactoryProvidedToCreateANewLesCompilerConfiguration() {
-        LessCacheManager cacheManager = new LessCacheManager(new LessCompilerConfigurationFactory() {
-            @Override
-            public Configuration newConfiguration() {
-                invocationOfNewConfiguration++;
-                return new Configuration();
-            }
+    void usesLessCompilerConfigurationFactoryProvidedToCreateANewLesCompilerConfiguration() {
+        LessCacheManager cacheManager = new LessCacheManager(() -> {
+            invocationOfNewConfiguration++;
+            return new Configuration();
         });
 
         URLSource urlSource = createSampleURLSource();
@@ -98,7 +94,7 @@ public class LessCacheManagerTest {
     }
 
     @Test
-    public void usesDefaultConfigurationFactoryWhenProvidingNull() {
+    void usesDefaultConfigurationFactoryWhenProvidingNull() {
         LessCacheManager cacheManager = new LessCacheManager(null);
 
         URLSource urlSource = createSampleURLSource();
@@ -108,8 +104,9 @@ public class LessCacheManagerTest {
         // no NullPointerException
     }
 
+    @SuppressWarnings("ResultOfMethodCallIgnored")
     @Test
-    public void timestampBeforeAndAfterCompile() throws IOException
+    void timestampBeforeAndAfterCompile() throws IOException
     {
         long currentTimeMillis = System.currentTimeMillis();
         LessCacheManager cacheManager = new LessCacheManager();
@@ -133,7 +130,7 @@ public class LessCacheManagerTest {
     }
 
     @Test
-    public void clearCacheCreatesNewUrlSource()
+    void clearCacheCreatesNewUrlSource()
     {
         LessCacheManager cacheManager = new LessCacheManager();
 
@@ -143,11 +140,11 @@ public class LessCacheManagerTest {
         cacheManager.clearCache();
         URLSource urlSourceAfter = cacheManager.getLessSource(resourceUrl, scopeClass);
 
-        assertTrue(urlSourceBefore != urlSourceAfter, "We should get different instances of URLSource");
+        assertNotSame(urlSourceBefore, urlSourceAfter, "We should get different instances of URLSource");
     }
 
     @Test
-    public void clearCacheImportedSourcesSize()
+    void clearCacheImportedSourcesSize()
     {
         LessCacheManager cacheManager = new LessCacheManager();
 

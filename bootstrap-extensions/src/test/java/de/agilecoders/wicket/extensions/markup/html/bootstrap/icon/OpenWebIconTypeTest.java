@@ -6,10 +6,10 @@ import org.junit.jupiter.api.Test;
 /**
  * Tests for FontAwesomeIconType
  */
-public class OpenWebIconTypeTest extends Assertions {
+class OpenWebIconTypeTest extends Assertions {
 
     @Test
-    public void cssClassName() {
+    void cssClassName() {
         assertEquals("icon-apml", OpenWebIconType.apml.cssClassName(), "OpenWebIcon should use 'icon-NAME");
     }
 }

@@ -13,10 +13,10 @@ import static org.mockito.Mockito.verify;
  * @author miha
  * @version 1.0
  */
-public class ScrollSpyBehaviorTest {
+class ScrollSpyBehaviorTest {
 
     @Test
-    public void refreshScriptIsCorrect() {
+    void refreshScriptIsCorrect() {
         AjaxRequestTarget target = mock(AjaxRequestTarget.class);
         ScrollSpyBehavior.refresh(target);
 

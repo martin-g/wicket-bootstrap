@@ -5,10 +5,10 @@ import org.junit.jupiter.api.Test;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class ButtonJqueryFunctionTest {
+class ButtonJqueryFunctionTest {
 
     @Test
-    public void initializeFunction() throws Exception {
+    void initializeFunction() throws Exception {
         assertThat(ButtonJqueryFunction.button("customAction").build(), is("button('customAction')"));
     }
 

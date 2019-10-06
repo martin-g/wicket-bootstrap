@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class LessResourceTest extends Assertions {
+class LessResourceTest extends Assertions {
 
     /**
      * Tests the compilation of Less resources to Css.
@@ -18,7 +18,7 @@ public class LessResourceTest extends Assertions {
      * The Less resource imports another one via "@import 'some.less'"
      */
     @Test
-    public void request() throws IOException {
+    void request() throws IOException {
 
         WicketTester tester = new WicketTester(new TestApplication());
         tester.startResourceReference(new LessResourceReference(HomePage.class, "resources/root.less"));

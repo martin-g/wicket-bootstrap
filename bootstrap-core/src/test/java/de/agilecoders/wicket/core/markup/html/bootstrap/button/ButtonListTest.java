@@ -17,23 +17,23 @@ import org.junit.jupiter.api.Test;
 /**
  * Tests for ButtonList
  */
-public class ButtonListTest extends WicketApplicationTest {
+class ButtonListTest extends WicketApplicationTest {
 
     /**
      * Issue https://github.com/l0rdn1kk0n/wicket-bootstrap/issues/316
      */
     @Test
-    public void hasNoActiveButton() {
+    void hasNoActiveButton() {
 
         TestPage page = new TestPage();
-        NavbarButton<?> buttonUnderTest = new NavbarButton<Object>(TestPage.class, GlyphIconType.adjust);
+        NavbarButton<?> buttonUnderTest = new NavbarButton<>(TestPage.class, GlyphIconType.adjust);
         page.add(buttonUnderTest);
 
-        List<AbstractLink> buttons = new ArrayList<AbstractLink>();
+        List<AbstractLink> buttons = new ArrayList<>();
         DropDownButton dropDownButton1 = new DropDownButton("dropDown", Model.of("")) {
             @Override
             protected List<AbstractLink> newSubMenuButtons(String buttonMarkupId) {
-                return new ArrayList<AbstractLink>();
+                return new ArrayList<>();
             }
         };
         buttons.add(dropDownButton1);
@@ -46,17 +46,17 @@ public class ButtonListTest extends WicketApplicationTest {
      * Issue https://github.com/l0rdn1kk0n/wicket-bootstrap/issues/316
      */
     @Test
-    public void hasActiveButton() {
+    void hasActiveButton() {
 
         TestPage page = new TestPage();
-        final NavbarButton<?> buttonUnderTest = new NavbarButton<Object>(TestPage.class, GlyphIconType.adjust);
+        final NavbarButton<?> buttonUnderTest = new NavbarButton<>(TestPage.class, GlyphIconType.adjust);
         page.add(buttonUnderTest);
 
-        List<AbstractLink> buttons = new ArrayList<AbstractLink>();
+        List<AbstractLink> buttons = new ArrayList<>();
         DropDownButton dropDownButton1 = new DropDownButton("dropDown", Model.of("")) {
             @Override
             protected List<AbstractLink> newSubMenuButtons(String buttonMarkupId) {
-                return Collections.<AbstractLink>singletonList(buttonUnderTest);
+                return Collections.singletonList(buttonUnderTest);
             }
         };
         buttons.add(dropDownButton1);

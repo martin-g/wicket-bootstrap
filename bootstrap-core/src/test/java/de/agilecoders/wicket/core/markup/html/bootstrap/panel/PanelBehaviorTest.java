@@ -4,44 +4,44 @@ import de.agilecoders.wicket.core.WicketApplicationTest;
 import org.junit.jupiter.api.Test;
 
 /**
- * Tests the {@link PanelBehavior} 
- * 
+ * Tests the {@link PanelBehavior}
+ *
  * @author Eric Hamel <eric.hamel@me.com>
  *
  */
-public class PanelBehaviorTest extends WicketApplicationTest{
+class PanelBehaviorTest extends WicketApplicationTest{
 
 	private static final String MARKUP = "<div wicket:id=\"id\"></div>";
-	
+
     @Test
-    public void panelBehaviorDefaultCssIsRendered() {
+    void panelBehaviorDefaultCssIsRendered() {
         assertCssClass(startBehaviorInPage(new PanelBehavior(), MARKUP), "panel", "panel-default");
     }
-    
+
     @Test
-    public void panelBehaviorDPrimaryCssIsRendered() {
+    void panelBehaviorDPrimaryCssIsRendered() {
         assertCssClass(startBehaviorInPage(new PanelBehavior(PanelType.Primary), MARKUP), "panel", "panel-primary");
     }
-    
+
     @Test
-    public void panelBehaviorSuccessCssIsRendered() {
+    void panelBehaviorSuccessCssIsRendered() {
         assertCssClass(startBehaviorInPage(new PanelBehavior(PanelType.Success), MARKUP), "panel", "panel-success");
     }
-    
+
     @Test
-    public void panelBehaviorInfoCssIsRendered() {
+    void panelBehaviorInfoCssIsRendered() {
         assertCssClass(startBehaviorInPage(new PanelBehavior(PanelType.Info), MARKUP), "panel", "panel-info");
     }
-    
+
     @Test
-    public void panelBehaviorWarningCssIsRendered() {
+    void panelBehaviorWarningCssIsRendered() {
         assertCssClass(startBehaviorInPage(new PanelBehavior(PanelType.Warning), MARKUP), "panel", "panel-warning");
     }
-    
+
     @Test
-    public void panelBehaviorDangerCssIsRendered() {
+    void panelBehaviorDangerCssIsRendered() {
         assertCssClass(startBehaviorInPage(new PanelBehavior(PanelType.Danger), MARKUP), "panel", "panel-danger");
     }
-    
-	
+
+
 }

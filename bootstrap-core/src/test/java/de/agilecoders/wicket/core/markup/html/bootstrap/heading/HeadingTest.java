@@ -12,10 +12,10 @@ import org.junit.jupiter.api.Test;
  * @author miha
  */
 @IntegrationTest
-public class HeadingTest extends WicketApplicationTest {
+class HeadingTest extends WicketApplicationTest {
 
     @Test
-    public void isInstantiableWithoutError() {
+    void isInstantiableWithoutError() {
         Heading heading = new Heading("id");
 
         for (int i = 1; i <= 6; ++i) {
@@ -25,7 +25,7 @@ public class HeadingTest extends WicketApplicationTest {
     }
 
     @Test
-    public void tagNameIsAsserted() {
+    void tagNameIsAsserted() {
         Heading heading = new Heading("id");
 
         assertThrows(MarkupException.class, () ->

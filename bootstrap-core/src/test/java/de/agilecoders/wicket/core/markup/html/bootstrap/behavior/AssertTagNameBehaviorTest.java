@@ -16,10 +16,10 @@ import org.junit.jupiter.api.Test;
  * @author miha
  */
 @IntegrationTest
-public class AssertTagNameBehaviorTest extends WicketApplicationTest {
+class AssertTagNameBehaviorTest extends WicketApplicationTest {
 
     @Test
-    public void tagNameIsAsserted() {
+    void tagNameIsAsserted() {
         final Component component = new TestDivContainerComponent();
         component.add(new AssertTagNameBehavior("li"));
 
@@ -27,7 +27,7 @@ public class AssertTagNameBehaviorTest extends WicketApplicationTest {
     }
 
     @Test
-    public void tagNameIsAssertedButNoExceptionWillBeThrownForCorrectTagName() {
+    void tagNameIsAssertedButNoExceptionWillBeThrownForCorrectTagName() {
         final Component component = new TestDivContainerComponent();
         component.add(new AssertTagNameBehavior("div", "ul"));
 
@@ -42,7 +42,7 @@ public class AssertTagNameBehaviorTest extends WicketApplicationTest {
         /**
          * Construct.
          */
-        public TestDivContainerComponent() {
+        TestDivContainerComponent() {
             super("container");
         }
 

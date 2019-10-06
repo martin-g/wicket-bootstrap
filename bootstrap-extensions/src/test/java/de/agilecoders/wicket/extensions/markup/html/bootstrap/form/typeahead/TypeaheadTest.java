@@ -9,10 +9,10 @@ import org.junit.jupiter.api.Test;
  *
  * @author miha
  */
-public class TypeaheadTest extends WicketApplicationTest {
+class TypeaheadTest extends WicketApplicationTest {
 
     @Test
-    public void componentCanBeRendered() {
+    void componentCanBeRendered() {
         tester().startComponentInPage(new Typeahead<String>("typeahead", new Dataset("test")),
             Markup.of("<html><head></head><body><input type='text' wicket:id='typeahead'/></body></html>"));
 

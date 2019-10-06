@@ -13,10 +13,10 @@ import static org.hamcrest.MatcherAssert.assertThat;
  *
  * @author miha
  */
-public class MobileViewportMetaTagTest extends WicketApplicationTest {
+class MobileViewportMetaTagTest extends WicketApplicationTest {
 
     @Test
-    public void metaTagIsRenderedWithDeviceWidth() throws Exception {
+    void metaTagIsRenderedWithDeviceWidth() {
         MobileViewportMetaTag mobileViewportMetaTag = new MobileViewportMetaTag(id());
         mobileViewportMetaTag.setWidth("device-width");
 
@@ -27,7 +27,7 @@ public class MobileViewportMetaTagTest extends WicketApplicationTest {
     }
 
     @Test
-    public void metaTagRenderedWithDeviceAndInitialScale() throws Exception {
+    void metaTagRenderedWithDeviceAndInitialScale() {
         MobileViewportMetaTag mobileViewportMetaTag = new MobileViewportMetaTag(id());
         mobileViewportMetaTag.setWidth("device-width");
         mobileViewportMetaTag.setInitialScale("1");
@@ -39,7 +39,7 @@ public class MobileViewportMetaTagTest extends WicketApplicationTest {
     }
 
     @Test
-    public void metaTagRenderedWithNoZoom() throws Exception {
+    void metaTagRenderedWithNoZoom() {
         MobileViewportMetaTag mobileViewportMetaTag = new MobileViewportMetaTag(id());
         mobileViewportMetaTag.setWidth("device-width")
                 .setInitialScale("1")
@@ -53,7 +53,7 @@ public class MobileViewportMetaTagTest extends WicketApplicationTest {
     }
 
     @Test
-    public void metaTagRenderedWithMinimalScale() throws Exception {
+    void metaTagRenderedWithMinimalScale() {
         MobileViewportMetaTag mobileViewportMetaTag = new MobileViewportMetaTag(id());
         mobileViewportMetaTag.setHeight("device-height")
             .setInitialScale("1")
@@ -66,7 +66,7 @@ public class MobileViewportMetaTagTest extends WicketApplicationTest {
     }
 
     @Test
-    public void metaTagRenderedWithNoScaling() throws Exception {
+    void metaTagRenderedWithNoScaling() {
         MobileViewportMetaTag mobileViewportMetaTag = new MobileViewportMetaTag(id());
         mobileViewportMetaTag.setUserScalable(false);
 

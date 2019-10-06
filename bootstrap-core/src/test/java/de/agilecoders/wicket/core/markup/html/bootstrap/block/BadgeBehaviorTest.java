@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
  *
  * @author miha
  */
-public class BadgeBehaviorTest extends WicketApplicationTest {
+class BadgeBehaviorTest extends WicketApplicationTest {
 
     @Test
     void classNameWasAdded() {

@@ -15,25 +15,25 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
-public class LessCacheManagerConcurrentTest
+class LessCacheManagerConcurrentTest
 {
-    public static final int MAX_RETRIES = 200;
+    private static final int MAX_RETRIES = 200;
     private WicketTester tester;
 
     @BeforeEach
-    public void before()
+    void before()
     {
         tester = new WicketTester(new TestApplication());
     }
 
     @AfterEach
-    public void after()
+    void after()
     {
         tester.destroy();
     }
 
     @Test
-    public void concurrentModificationIssueInImportedSources() throws Exception
+    void concurrentModificationIssueInImportedSources() throws Exception
     {
         LessResourceReference lessResRef = new LessResourceReference(getClass(),
                 "resources/concurrent.less");
@@ -55,7 +55,7 @@ public class LessCacheManagerConcurrentTest
             for (int i = 0; i < internalThreadCount; i++)
             {
                 TestRunnable runner = new TestRunnable(tester.getApplication(), latch,
-                        resourceStream, scope.getName());
+                    resourceStream, scope.getName());
                 runnables[i] = runner;
 
                 threads[i] = new Thread(runner, "LessTest_" + i + "_" + retries);
@@ -77,7 +77,7 @@ public class LessCacheManagerConcurrentTest
         }
     }
 
-    private class TestRunnable implements Runnable
+    private static class TestRunnable implements Runnable
     {
         private WebApplication mApplication;
         private CountDownLatch mLatch;
@@ -85,8 +85,8 @@ public class LessCacheManagerConcurrentTest
         private IResourceStream mResourceStream;
         private String mScopeName;
 
-        public TestRunnable(WebApplication application, CountDownLatch latch,
-                IResourceStream resourceStream, String scopeName)
+        TestRunnable(WebApplication application, CountDownLatch latch,
+                     IResourceStream resourceStream, String scopeName)
         {
             mApplication = application;
             mLatch = latch;
@@ -124,7 +124,7 @@ public class LessCacheManagerConcurrentTest
             }
         }
 
-        public boolean hasFailed()
+        boolean hasFailed()
         {
             return mHasFailed;
         }

@@ -17,10 +17,10 @@ import static org.hamcrest.Matchers.is;
  *
  * @author miha
  */
-public class BehaviorsTest extends WicketApplicationTest {
+class BehaviorsTest extends WicketApplicationTest {
 
     @Test
-    public void removeRemovesBehavior() {
+    void removeRemovesBehavior() {
         final Behavior behavior = new CssClassNameAppender("classname");
         final Component component = new WebMarkupContainer("container");
         component.add(behavior);
@@ -30,7 +30,7 @@ public class BehaviorsTest extends WicketApplicationTest {
     }
 
     @Test
-    public void containsClassReturnsFalseForNotAddedBehavior() {
+    void containsClassReturnsFalseForNotAddedBehavior() {
         final Behavior behavior = new CssClassNameAppender("classname");
         final Component component = new WebMarkupContainer("container");
         component.add(behavior);
@@ -39,7 +39,7 @@ public class BehaviorsTest extends WicketApplicationTest {
     }
 
     @Test
-    public void containsClassReturnsTrueForAddedBehavior() {
+    void containsClassReturnsTrueForAddedBehavior() {
         final Behavior behavior = new CssClassNameAppender("classname");
         final Component component = new WebMarkupContainer("container");
         component.add(behavior);
@@ -48,7 +48,7 @@ public class BehaviorsTest extends WicketApplicationTest {
     }
 
     @Test
-    public void containsReturnsTrueForAddedBehavior() {
+    void containsReturnsTrueForAddedBehavior() {
         final Behavior behavior = new CssClassNameAppender("classname");
         final Component component = new WebMarkupContainer("container");
         component.add(behavior);
@@ -57,7 +57,7 @@ public class BehaviorsTest extends WicketApplicationTest {
     }
 
     @Test
-    public void containsReturnsFalseForNotAddedBehavior() {
+    void containsReturnsFalseForNotAddedBehavior() {
         final Behavior behavior = new CssClassNameAppender("classname");
         final Behavior behavior2 = new CssClassNameAppender("classname2");
         final Component component = new WebMarkupContainer("container");
@@ -67,7 +67,7 @@ public class BehaviorsTest extends WicketApplicationTest {
     }
 
     @Test
-    public void removeReturnsFalseForNotAddedBehavior() {
+    void removeReturnsFalseForNotAddedBehavior() {
         final Behavior behavior = new CssClassNameAppender("classname");
         final Behavior behavior2 = new CssClassNameAppender("classname2");
         final Component component = new WebMarkupContainer("container");

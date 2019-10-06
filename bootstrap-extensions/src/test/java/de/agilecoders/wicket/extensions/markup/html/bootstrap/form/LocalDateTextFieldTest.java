@@ -13,7 +13,7 @@ import org.junit.jupiter.api.Test;
 /**
  * @author Urs Joss
  */
-public class LocalDateTextFieldTest extends
+class LocalDateTextFieldTest extends
     AbstractDateTextFieldTest<LocalDate, org.apache.wicket.extensions.markup.html.form.datetime.LocalDateTextField, LocalDateTime, LocalDateTextFieldConfig, LocalDateTextField> {
 
     private final LocalDate now = LocalDate.now();
@@ -43,19 +43,19 @@ public class LocalDateTextFieldTest extends
     }
 
     @Test
-    public void constructing_withIdAndDateModelAndNullConfig_throwsNPE() {
+    void constructing_withIdAndDateModelAndNullConfig_throwsNPE() {
         assertThrows(IllegalArgumentException.class, () ->
             new LocalDateTextField("tf", Model.of(getNow()), (LocalDateTextFieldConfig) null));
     }
 
     @Test
-    public void constructing_withIdAndNullConfig_throwsNPE() {
+    void constructing_withIdAndNullConfig_throwsNPE() {
         assertThrows(IllegalArgumentException.class, () ->
             new LocalDateTextField("tf", (LocalDateTextFieldConfig) null));
     }
 
     @Test
-    public void constructing_withIdAndDatePattern_knowsIdAndDatePattern() {
+    void constructing_withIdAndDatePattern_knowsIdAndDatePattern() {
         LocalDateTextField f = new LocalDateTextField("tf", "dd.MM.yyyy");
 
         assertThat(f.getId(), is(equalTo("tf")));
@@ -67,7 +67,7 @@ public class LocalDateTextFieldTest extends
     }
 
     @Test
-    public void constructing_withIdAndDateModel_knowsIdAndDateModel() {
+    void constructing_withIdAndDateModel_knowsIdAndDateModel() {
         LocalDateTextField f = new LocalDateTextField("tf", Model.of(getNow()));
 
         assertThat(f.getId(), is(equalTo("tf")));
@@ -77,7 +77,7 @@ public class LocalDateTextFieldTest extends
     }
 
     @Test
-    public void constructing_withIdAndDateModelAndDatePattern_knowsIdAndDateModelAndDatePattern() {
+    void constructing_withIdAndDateModelAndDatePattern_knowsIdAndDateModelAndDatePattern() {
         LocalDateTextField f = new LocalDateTextField("tf", Model.of(getNow()), "dd.MM.yyyy");
 
         assertThat(f.getId(), is(equalTo("tf")));
@@ -89,7 +89,7 @@ public class LocalDateTextFieldTest extends
     }
 
     @Test
-    public void constructing_withIdAndDateModelAndConfig_knowsIdAndModelAndConfig() {
+    void constructing_withIdAndDateModelAndConfig_knowsIdAndModelAndConfig() {
         LocalDateTextFieldConfig cfg = new LocalDateTextFieldConfig().withFormat("dd.MM.yyyy");
 
         LocalDateTextField f = new LocalDateTextField("tf", Model.of(getNow()), cfg);

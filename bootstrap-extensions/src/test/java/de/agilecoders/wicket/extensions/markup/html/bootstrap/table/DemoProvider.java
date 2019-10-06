@@ -12,7 +12,7 @@ class DemoProvider extends SortableDataProvider<DemoType, String> {
 
     private static final long serialVersionUID = 1L;
 
-    final List<DemoType> list = Arrays.asList(new DemoType(1, "foo"), new DemoType(2, "bar"), new DemoType(3, "baz"));
+    private final List<DemoType> list = Arrays.asList(new DemoType(1, "foo"), new DemoType(2, "bar"), new DemoType(3, "baz"));
 
     // ignoring first/count
     @Override

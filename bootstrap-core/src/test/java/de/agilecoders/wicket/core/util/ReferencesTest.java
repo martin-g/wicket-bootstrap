@@ -13,29 +13,29 @@ import static org.hamcrest.MatcherAssert.assertThat;
  *
  * @author miha
  */
-public class ReferencesTest extends WicketApplicationTest {
+class ReferencesTest extends WicketApplicationTest {
 
     @Test
-    public void minificationIdentifierWasAppended() {
+    void minificationIdentifierWasAppended() {
         Application.get().getResourceSettings().setUseMinifiedResources(true);
 
         assertThat(References.appendMinificationIdentifier("file.ext"), is(equalTo("file.min.ext")));
     }
 
     @Test
-    public void minificationIdentifierWasntAppended() {
+    void minificationIdentifierWasntAppended() {
         Application.get().getResourceSettings().setUseMinifiedResources(false);
 
         assertThat(References.appendMinificationIdentifier("file.ext"), is(equalTo("file.ext")));
     }
 
     @Test
-    public void nameWithoutDotReturnsSameName() {
+    void nameWithoutDotReturnsSameName() {
         assertThat(References.appendMinificationIdentifier("file"), is(equalTo("file")));
     }
 
     @Test
-    public void nullNameReturnsEmptyString() {
+    void nullNameReturnsEmptyString() {
         assertThat(References.appendMinificationIdentifier(null), is(equalTo("")));
     }
 }

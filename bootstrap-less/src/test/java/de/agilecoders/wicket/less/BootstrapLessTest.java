@@ -36,12 +36,13 @@ import static org.hamcrest.Matchers.is;
  *
  * @author miha
  */
-public class BootstrapLessTest {
+@SuppressWarnings("SpellCheckingInspection")
+class BootstrapLessTest {
 
     private WicketTester tester;
 
     @BeforeEach
-    public void before() {
+    void before() {
         tester = new WicketTester(new TestApplication() {
             @Override
             public void init() {
@@ -54,12 +55,12 @@ public class BootstrapLessTest {
     }
 
     @AfterEach
-    public void after() {
+    void after() {
         tester.destroy();
     }
 
     @Test
-    public void importWebContext() throws Exception {
+    void importWebContext() throws Exception {
         WebApplication application = tester.getApplication();
         URI uri = getClass().getResource("/de/agilecoders/wicket/less/test/webContextImported.less").toURI();
         File file = new File(uri);
@@ -79,10 +80,9 @@ public class BootstrapLessTest {
      * Tests with {@link ContextRelativeLessResourceReference}
      *
      * https://github.com/l0rdn1kk0n/wicket-bootstrap/issues/524
-     * @throws Exception
      */
     @Test
-    public void importServletContextRelative() throws Exception {
+    void importServletContextRelative() throws Exception {
         WebApplication application = tester.getApplication();
         URI uri = getClass().getResource("/servlet/context/root/").toURI();
         File contextRoot = new File(uri);
@@ -96,7 +96,7 @@ public class BootstrapLessTest {
     }
 
     @Test
-    public void importWebJars() throws Exception {
+    void importWebJars() {
         LessCacheManager less = LessCacheManager.get();
         URL res = Thread.currentThread().getContextClassLoader().getResource("import.less");
 
@@ -106,7 +106,7 @@ public class BootstrapLessTest {
     }
 
     @Test
-    public void importClasspath() throws Exception {
+    void importClasspath() {
         LessCacheManager less = LessCacheManager.get();
         URL res = Thread.currentThread().getContextClassLoader().getResource("importClasspath.less");
 
@@ -116,7 +116,7 @@ public class BootstrapLessTest {
     }
 
     @Test
-    public void importPackage() throws Exception {
+    void importPackage() {
         LessCacheManager less = LessCacheManager.get();
         URL res = BootstrapLessTest.class.getResource("package-dependency-1.less");
 
@@ -128,33 +128,30 @@ public class BootstrapLessTest {
     }
 
     @Test
-    public void lessResourceReferenceFactoryIsInstalled() {
+    void lessResourceReferenceFactoryIsInstalled() {
         ResourceReferenceRegistry registry = tester.getApplication().getResourceReferenceRegistry();
         IResourceReferenceFactory referenceFactory = registry.getResourceReferenceFactory();
         assertThat(referenceFactory, is(instanceOf(LessResourceReferenceFactory.class)));
     }
 
     @Test
-    public void usesCustomLessCompilerConfigurationFactoryWhenProvided() {
+    void usesCustomLessCompilerConfigurationFactoryWhenProvided() {
         // tests the invocation of a custom less function that will be registered within the configuration factory
-        BootstrapLess.install(Application.get(), new LessCompilerConfigurationFactory() {
-            @Override
-            public Configuration newConfiguration() {
-                Configuration config = new Configuration();
-                config.addCustomFunction(new LessFunction() {
-                    @Override
-                    public Expression evaluate(FunctionExpression input, List<Expression> parameters, Expression evaluatedParameter,
-                            LessProblems problems) {
-                        return new IdentifierExpression(input.getUnderlyingStructure(), "blue");
-                    }
+        BootstrapLess.install(Application.get(), () -> {
+            Configuration config = new Configuration();
+            config.addCustomFunction(new LessFunction() {
+                @Override
+                public Expression evaluate(FunctionExpression input, List<Expression> parameters, Expression evaluatedParameter,
+                        LessProblems problems) {
+                    return new IdentifierExpression(input.getUnderlyingStructure(), "blue");
+                }
 
-                    @Override
-                    public boolean canEvaluate(FunctionExpression input, List<Expression> parameters) {
-                        return "myFancyFunction".equals(input.getName());
-                    }
-                });
-                return config;
-            }
+                @Override
+                public boolean canEvaluate(FunctionExpression input, List<Expression> parameters) {
+                    return "myFancyFunction".equals(input.getName());
+                }
+            });
+            return config;
         });
 
         LessCacheManager less = LessCacheManager.get();
