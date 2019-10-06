@@ -7,10 +7,10 @@ import org.junit.jupiter.api.Test;
 /**
  * Tests the {@link de.agilecoders.wicket.core.markup.html.bootstrap.layout.ContainerBehavior}
  */
-public class RowBehaviorTest extends WicketApplicationTest {
+class RowBehaviorTest extends WicketApplicationTest {
 
     @Test
-    public void cssClassNameIsSet() {
+    void cssClassNameIsSet() {
         startBehaviorInPage(new RowBehavior());
 
         TagTester tagTester = tester().getTagByWicketId(id());

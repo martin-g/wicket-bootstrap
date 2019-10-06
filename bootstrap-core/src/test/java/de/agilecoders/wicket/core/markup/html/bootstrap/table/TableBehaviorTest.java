@@ -8,36 +8,36 @@ import org.junit.jupiter.api.Test;
  *
  * @author miha
  */
-public class TableBehaviorTest extends WicketApplicationTest {
+class TableBehaviorTest extends WicketApplicationTest {
     private static final String MARKUP = "<table wicket:id=\"id\"></table>";
 
     @Test
-    public void tableCssIsRendered() {
+    void tableCssIsRendered() {
         assertCssClass(startBehaviorInPage(new TableBehavior(), MARKUP), "table");
     }
 
     @Test
-    public void multipleTableStylesAreRendered() {
+    void multipleTableStylesAreRendered() {
         assertCssClass(startBehaviorInPage(new TableBehavior().striped().bordered().condensed(), MARKUP), "table", "table-striped", "table-bordered", "table-condensed");
     }
 
     @Test
-    public void stripedCssIsRendered() {
+    void stripedCssIsRendered() {
         assertCssClass(startBehaviorInPage(new TableBehavior().striped(), MARKUP), "table", "table-striped");
     }
 
     @Test
-    public void condensedCssIsRendered() {
+    void condensedCssIsRendered() {
         assertCssClass(startBehaviorInPage(new TableBehavior().condensed(), MARKUP), "table", "table-condensed");
     }
 
     @Test
-    public void borderedCssIsRendered() {
+    void borderedCssIsRendered() {
         assertCssClass(startBehaviorInPage(new TableBehavior().bordered(), MARKUP), "table", "table-bordered");
     }
 
     @Test
-    public void hoverCssIsRendered() {
+    void hoverCssIsRendered() {
         assertCssClass(startBehaviorInPage(new TableBehavior().hover(), MARKUP), "table", "table-hover");
     }
 }

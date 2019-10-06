@@ -53,7 +53,7 @@ public class WicketApplicationTest extends Assertions {
         }
     }
 
-    protected WebApplication newWebApplication() {
+    WebApplication newWebApplication() {
         return new WebApplication() {
 
             @Override
@@ -83,11 +83,11 @@ public class WicketApplicationTest extends Assertions {
     protected void onBefore() {
     }
 
-    protected Class<? extends Page> getHomePage() {
+    private Class<? extends Page> getHomePage() {
         return Page.class;
     }
 
-    protected IBootstrapSettings createBootstrapSettings() {
+    private IBootstrapSettings createBootstrapSettings() {
         return new BootstrapSettings();
     }
 

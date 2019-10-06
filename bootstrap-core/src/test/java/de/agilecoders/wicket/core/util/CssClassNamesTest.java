@@ -14,20 +14,20 @@ import static org.hamcrest.Matchers.is;
  *
  * @author miha
  */
-public class CssClassNamesTest {
+class CssClassNamesTest {
 
     @Test
-    public void splitSplitsStringCorrect() {
+    void splitSplitsStringCorrect() {
         assertThat(CssClassNames.split("class1 class2 class3"), is(equalTo(Generics2.newHashSet("class1", "class2", "class3"))));
     }
 
     @Test
-    public void joinJoinsClassNamesCorrect() {
+    void joinJoinsClassNamesCorrect() {
         assertThat(CssClassNames.join(Generics2.newLinkedHashSet(Arrays.asList("class1", "class2", "class3"))), is(equalTo("class1 class2 class3")));
     }
 
     @Test
-    public void containsReturnsFalseForNonExistingClassName() {
+    void containsReturnsFalseForNonExistingClassName() {
         CssClassNames.Builder builder = CssClassNames.parse("class1 class2 class3");
 
         assertThat(builder.contains("class"), is(equalTo(false)));
@@ -35,7 +35,7 @@ public class CssClassNamesTest {
     }
 
     @Test
-    public void containsReturnsTrueForExistingClassName() {
+    void containsReturnsTrueForExistingClassName() {
         CssClassNames.Builder builder = CssClassNames.parse("class1 class2 class3");
 
         assertThat(builder.contains("class1"), is(equalTo(true)));
@@ -44,14 +44,14 @@ public class CssClassNamesTest {
     }
 
     @Test
-    public void parseReturnsBuilderWithAllGivenClassNames() {
+    void parseReturnsBuilderWithAllGivenClassNames() {
         CssClassNames.Builder builder = CssClassNames.parse("class1 class2 class3");
 
         assertThat(builder.asSet(), is(equalTo(Generics2.newHashSet("class1", "class2", "class3"))));
     }
 
     @Test
-    public void addClassNameAsStringToBuilderWorks() {
+    void addClassNameAsStringToBuilderWorks() {
         CssClassNames.Builder builder = CssClassNames.parse("class1 class2 class3");
         builder.add("class4", "class5");
 
@@ -59,7 +59,7 @@ public class CssClassNamesTest {
     }
 
     @Test
-    public void addClassNameAsSetToBuilderWorks() {
+    void addClassNameAsSetToBuilderWorks() {
         CssClassNames.Builder builder = CssClassNames.parse("class1 class2 class3");
         builder.add(Generics2.newHashSet("class4", "class5"));
 
@@ -67,7 +67,7 @@ public class CssClassNamesTest {
     }
 
     @Test
-    public void addClassNameAsBuilderToBuilderWorks() {
+    void addClassNameAsBuilderToBuilderWorks() {
         CssClassNames.Builder builder = CssClassNames.parse("class1 class2 class3");
         builder.add(CssClassNames.newBuilder().add("class4", "class5"));
 
@@ -75,7 +75,7 @@ public class CssClassNamesTest {
     }
 
     @Test
-    public void removeClassNameAsStringFromBuilderWorks() {
+    void removeClassNameAsStringFromBuilderWorks() {
         CssClassNames.Builder builder = CssClassNames.parse("class1 class2 class3");
         builder.remove("class2", "class3");
 
@@ -83,7 +83,7 @@ public class CssClassNamesTest {
     }
 
     @Test
-    public void removeClassNameAsSetFromBuilderWorks() {
+    void removeClassNameAsSetFromBuilderWorks() {
         CssClassNames.Builder builder = CssClassNames.parse("class1 class2 class3");
         builder.remove(Generics2.newHashSet("class2", "class3"));
 
@@ -91,7 +91,7 @@ public class CssClassNamesTest {
     }
 
     @Test
-    public void removeClassNameAsBuilderFromBuilderWorks() {
+    void removeClassNameAsBuilderFromBuilderWorks() {
         CssClassNames.Builder builder = CssClassNames.parse("class1 class2 class3");
         builder.remove(CssClassNames.newBuilder().add("class3", "class2"));
 

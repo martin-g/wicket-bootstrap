@@ -11,10 +11,10 @@ import static org.hamcrest.Matchers.is;
  *
  * @author miha
  */
-public class DatesTest {
+class DatesTest {
 
     @Test
-    public void toJavaScriptWorks() {
+    void toJavaScriptWorks() {
         assertThat(Dates.toJavaScriptDateFormat("M"), is(equalTo("m")));
         assertThat(Dates.toJavaScriptDateFormat(".M"), is(equalTo(".m")));
         assertThat(Dates.toJavaScriptDateFormat("M."), is(equalTo("m.")));
@@ -67,7 +67,7 @@ public class DatesTest {
     }
 
     @Test
-    public void toJavaWorks() {
+    void toJavaWorks() {
         assertThat(Dates.toJavaDateFormat("m"), is(equalTo("M")));
         assertThat(Dates.toJavaDateFormat(".m"), is(equalTo(".M")));
         assertThat(Dates.toJavaDateFormat("m."), is(equalTo("M.")));

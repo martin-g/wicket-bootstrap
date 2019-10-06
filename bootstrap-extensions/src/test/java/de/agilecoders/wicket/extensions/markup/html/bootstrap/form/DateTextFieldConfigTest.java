@@ -9,10 +9,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 /**
  * Tests for DateTextFieldConfig
  */
-public class DateTextFieldConfigTest {
+class DateTextFieldConfigTest {
 
     @Test
-    public void serializeTodayButton() throws JsonProcessingException {
+    void serializeTodayButton() throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();
         assertEquals("false", mapper.writeValueAsString(DateTextFieldConfig.TodayButton.FALSE));
         assertEquals("true", mapper.writeValueAsString(DateTextFieldConfig.TodayButton.TRUE));

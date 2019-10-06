@@ -23,14 +23,14 @@ class CarouselTest extends WicketApplicationTest {
     private static final String MARKUP = "<div wicket:id=\"id\"></div>";
 
     @Test
-    public void renderingCarouselWorks() {
+    void renderingCarouselWorks() {
         startComponentInPage(new Carousel(id(), newImageList()), MARKUP);
 
         tester().assertNoErrorMessage();
     }
 
     @Test
-    public void imageUrlsAreRendered() {
+    void imageUrlsAreRendered() {
         List<ICarouselImage> images = newImageList();
         startComponentInPage(new Carousel(id(), images), MARKUP);
 
@@ -51,7 +51,7 @@ class CarouselTest extends WicketApplicationTest {
     }
 
     @Test
-    public void headersAreRendered() {
+    void headersAreRendered() {
         List<ICarouselImage> images = newImageList();
         startComponentInPage(new Carousel(id(), images), MARKUP);
 
@@ -67,7 +67,7 @@ class CarouselTest extends WicketApplicationTest {
     }
 
     @Test
-    public void descriptionsAreRendered() {
+    void descriptionsAreRendered() {
         List<ICarouselImage> images = newImageList();
         startComponentInPage(new Carousel(id(), images), MARKUP);
 
@@ -86,7 +86,7 @@ class CarouselTest extends WicketApplicationTest {
      * @return a list of carousel images
      */
     private List<ICarouselImage> newImageList() {
-        return Lists.<ICarouselImage>newArrayList(
+        return Lists.newArrayList(
                 new CarouselImage("http://wb.agilecoders.de/image1.png"),
                 new CarouselImage("http://wb.agilecoders.de/image2.png", "header text"),
                 new CarouselImage("http://wb.agilecoders.de/image3.png", "header text", "description")

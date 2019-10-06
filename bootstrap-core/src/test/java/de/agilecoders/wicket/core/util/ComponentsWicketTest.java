@@ -16,10 +16,10 @@ import static org.hamcrest.Matchers.is;
  *
  * @author miha
  */
-public class ComponentsWicketTest extends WicketApplicationTest {
+class ComponentsWicketTest extends WicketApplicationTest {
 
     @Test
-    public void showMakesComponentVisible() {
+    void showMakesComponentVisible() {
         Component componentA = new WebMarkupContainer("containerA").setVisible(false);
         Component componentB = new WebMarkupContainer("containerA").setVisible(false);
 
@@ -30,7 +30,7 @@ public class ComponentsWicketTest extends WicketApplicationTest {
     }
 
     @Test
-    public void componentWillBeInvisibleIfModelIsNotSet() {
+    void componentWillBeInvisibleIfModelIsNotSet() {
         Component componentA = new Label("containerA");
 
         Components.hideIfModelIsEmpty(componentA);
@@ -39,7 +39,7 @@ public class ComponentsWicketTest extends WicketApplicationTest {
     }
 
     @Test
-    public void componentWillBeInvisibleIfModelIsEmpty() {
+    void componentWillBeInvisibleIfModelIsEmpty() {
         Component componentA = new Label("containerA", Model.of(""));
 
         Components.hideIfModelIsEmpty(componentA);
@@ -48,7 +48,7 @@ public class ComponentsWicketTest extends WicketApplicationTest {
     }
 
     @Test
-    public void componentWillBeInvisibleIfModelIsNull() {
+    void componentWillBeInvisibleIfModelIsNull() {
         Component componentA = new Label("containerA", Model.of((String) null));
 
         Components.hideIfModelIsEmpty(componentA);

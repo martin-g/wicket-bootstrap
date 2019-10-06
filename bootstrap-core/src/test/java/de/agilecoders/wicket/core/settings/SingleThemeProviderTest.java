@@ -12,10 +12,10 @@ import static org.hamcrest.MatcherAssert.assertThat;
  *
  * @author miha
  */
-public class SingleThemeProviderTest {
+class SingleThemeProviderTest {
 
     @Test
-    public void availableThemesReturnsSingleTheme() throws Exception {
+    void availableThemesReturnsSingleTheme() throws Exception {
         ITheme theme = new BootstrapTheme();
         ThemeProvider provider = new SingleThemeProvider(theme);
 
@@ -24,7 +24,7 @@ public class SingleThemeProviderTest {
     }
 
     @Test
-    public void defaultThemeReturnsSingleTheme() throws Exception {
+    void defaultThemeReturnsSingleTheme() throws Exception {
         ITheme theme = new BootstrapTheme();
         ThemeProvider provider = new SingleThemeProvider(theme);
 
@@ -32,7 +32,7 @@ public class SingleThemeProviderTest {
     }
 
     @Test
-    public void byNameReturnsSingleTheme() throws Exception {
+    void byNameReturnsSingleTheme() throws Exception {
         ITheme theme = new BootstrapTheme();
         ThemeProvider provider = new SingleThemeProvider(theme);
 

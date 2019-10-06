@@ -5,10 +5,10 @@ import org.junit.jupiter.api.Test;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class DropDownJqueryFunctionTest {
+class DropDownJqueryFunctionTest {
 
     @Test
-    public void initializeFunction() throws Exception {
+    void initializeFunction() throws Exception {
         assertThat(DropDownJqueryFunction.dropdown().build(), is("dropdown()"));
         assertThat(DropDownJqueryFunction.dropdown("customAction").build(), is("dropdown('customAction')"));
     }
