@@ -21,10 +21,10 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 
 @IntegrationTest
-public class FormGroupTest extends WicketApplicationTest {
+class FormGroupTest extends WicketApplicationTest {
 
     @Test
-    public void isInstantiableWithoutError() {
+    void isInstantiableWithoutError() {
 
         FormGroup group = new FormGroup("id");
 
@@ -33,7 +33,7 @@ public class FormGroupTest extends WicketApplicationTest {
     }
 
     @Test
-    public void tagNameIsAsserted() {
+    void tagNameIsAsserted() {
 
         FormGroup group = new FormGroup("id");
 
@@ -42,10 +42,10 @@ public class FormGroupTest extends WicketApplicationTest {
     }
 
     @Test
-    public void formGroupWithInput() {
+    void formGroupWithInput() {
 
         FormGroup group = new FormGroup("id");
-        TextField<String> input = new TextField<String>("value");
+        TextField<String> input = new TextField<>("value");
         group.add(input);
 
         tester().startComponentInPage(group,
@@ -54,13 +54,13 @@ public class FormGroupTest extends WicketApplicationTest {
     }
 
     @Test
-    public void formGroupSubmit() {
+    void formGroupSubmit() {
         final AtomicInteger updateModelCounter = new AtomicInteger(0);
 
         Model<FormData> model = Model.of(new FormData());
         model.getObject();
 
-        Form<FormData> form = new Form<FormData>("form", new CompoundPropertyModel<FormData>(model));
+        Form<FormData> form = new Form<>("form", new CompoundPropertyModel<>(model));
 
         FormGroup group = new FormGroup("id");
         form.add(group);
@@ -94,18 +94,18 @@ public class FormGroupTest extends WicketApplicationTest {
     }
 
     @Test
-    public void formGroupLarge() {
+    void formGroupLarge() {
 
         Model<FormData> model = Model.of(new FormData());
         model.getObject();
 
-        Form<FormData> form = new Form<FormData>("form", new CompoundPropertyModel<FormData>(model));
+        Form<FormData> form = new Form<>("form", new CompoundPropertyModel<>(model));
 
         FormGroup group = new FormGroup("formGroup");
         group.size(FormGroup.Size.Large);
         form.add(group);
 
-        TextField<String> input = new TextField<String>("value");
+        TextField<String> input = new TextField<>("value");
         input.setRequired(true);
         group.add(input);
 
@@ -117,18 +117,18 @@ public class FormGroupTest extends WicketApplicationTest {
     }
 
     @Test
-    public void formGroupSmall() {
+    void formGroupSmall() {
 
         Model<FormData> model = Model.of(new FormData());
         model.getObject();
 
-        Form<FormData> form = new Form<FormData>("form", new CompoundPropertyModel<FormData>(model));
+        Form<FormData> form = new Form<>("form", new CompoundPropertyModel<>(model));
 
         FormGroup group = new FormGroup("formGroup");
         group.size(FormGroup.Size.Small);
         form.add(group);
 
-        TextField<String> input = new TextField<String>("value");
+        TextField<String> input = new TextField<>("value");
         input.setRequired(true);
         group.add(input);
 
@@ -140,19 +140,19 @@ public class FormGroupTest extends WicketApplicationTest {
     }
 
     @Test
-    public void formGroupSubmitValidation() {
+    void formGroupSubmitValidation() {
 
         tester().getSession().setLocale(Locale.ENGLISH); // for the validation message
 
         Model<FormData> model = Model.of(new FormData());
         model.getObject();
 
-        Form<FormData> form = new Form<FormData>("form", new CompoundPropertyModel<FormData>(model));
+        Form<FormData> form = new Form<>("form", new CompoundPropertyModel<>(model));
 
         FormGroup group = new FormGroup("id");
         form.add(group);
 
-        TextField<String> input = new TextField<String>("value");
+        TextField<String> input = new TextField<>("value");
         input.setRequired(true);
         group.add(input);
 
@@ -167,26 +167,12 @@ public class FormGroupTest extends WicketApplicationTest {
         tester().assertContains("class=\".*has-error.*\""); //assert error CSS class is present
     }
 
-    private class FormData implements Serializable {
+    private static class FormData implements Serializable {
 
         private static final long serialVersionUID = 1L;
 
+        @SuppressWarnings("unused")
         private String value;
 
-        /**
-         * @return Returns the value.
-         */
-        public String getValue() {
-
-            return value;
-        }
-
-        /**
-         * @param value The value to set.
-         */
-        public void setValue(String value) {
-
-            this.value = value;
-        }
     }
 }

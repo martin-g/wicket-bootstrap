@@ -15,7 +15,7 @@ import java.util.Map;
  */
 public class CRC32ResourceVersionTest extends ChecksumResourceVersionTest {
 
-    public static Collection<Object[]> data() {
+    static Collection<Object[]> data() {
         Object[][] data = new Object[][] {
                 { new AbstractMap.SimpleEntry<>("a", "e8b7be43") },
                 { new AbstractMap.SimpleEntry<>("a1", "6ce14823") },
@@ -28,7 +28,7 @@ public class CRC32ResourceVersionTest extends ChecksumResourceVersionTest {
 
     @ParameterizedTest
     @MethodSource("data")
-    public void checkChecksum(final Map.Entry<String, String> content) {
+    void checkChecksum(final Map.Entry<String, String> content) {
         check(content.getKey(), content.getValue());
     }
 

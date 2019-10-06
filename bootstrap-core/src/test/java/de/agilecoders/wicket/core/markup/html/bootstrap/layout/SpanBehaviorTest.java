@@ -11,10 +11,10 @@ import org.junit.jupiter.api.Test;
  *
  * @author miha
  */
-public class SpanBehaviorTest extends WicketApplicationTest {
+class SpanBehaviorTest extends WicketApplicationTest {
 
     @Test
-    public void defaultSpanWidthIs12() {
+    void defaultSpanWidthIs12() {
         startBehaviorInPage(new SpanBehavior());
 
         TagTester tagTester = tester().getTagByWicketId(id());
@@ -23,7 +23,7 @@ public class SpanBehaviorTest extends WicketApplicationTest {
     }
 
     @Test
-    public void offset0DoesntNeedAClassName() {
+    void offset0DoesntNeedAClassName() {
         startBehaviorInPage(new SpanBehavior(LargeScreenSpanType.SPAN1, ExtraSmallOffsetType.OFFSET0));
 
         TagTester tagTester = tester().getTagByWicketId(id());
@@ -31,7 +31,7 @@ public class SpanBehaviorTest extends WicketApplicationTest {
     }
 
     @Test
-    public void spanWidthCanBeChanged() {
+    void spanWidthCanBeChanged() {
         for (int i = 1; i <= 12; i++) {
             startBehaviorInPage(new SpanBehavior(LargeScreenSpanType.valueOf("SPAN" + i)));
 
@@ -41,7 +41,7 @@ public class SpanBehaviorTest extends WicketApplicationTest {
     }
 
     @Test
-    public void offsetCanBeChanged() {
+    void offsetCanBeChanged() {
         for (int i = 1; i <= 12; i++) {
             startBehaviorInPage(new SpanBehavior(LargeScreenSpanType.SPAN1, ExtraSmallOffsetType.valueOf("OFFSET" + i)));
 

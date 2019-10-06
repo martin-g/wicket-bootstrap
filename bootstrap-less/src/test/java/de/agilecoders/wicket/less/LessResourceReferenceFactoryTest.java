@@ -10,10 +10,10 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.instanceOf;
 import static org.hamcrest.Matchers.is;
 
-public class LessResourceReferenceFactoryTest extends Assertions {
+class LessResourceReferenceFactoryTest extends Assertions {
 
     @Test
-    public void createLessResourceReference() {
+    void createLessResourceReference() {
         TestApplication application = new TestApplication();
         WicketTester tester = new WicketTester(application);
         try {

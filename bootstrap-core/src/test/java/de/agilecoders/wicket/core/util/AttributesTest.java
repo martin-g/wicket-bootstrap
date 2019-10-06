@@ -17,36 +17,36 @@ import static org.hamcrest.Matchers.nullValue;
  *
  * @author miha
  */
-public class AttributesTest extends WicketApplicationTest {
+class AttributesTest extends WicketApplicationTest {
 
     @Test
-    public void singleClassNameIsAddedToMarkup() {
+    void singleClassNameIsAddedToMarkup() {
         startComponentInPage(createComponentWithCssClassNames("classname"));
 
         assertClassNamesPresent("classname");
     }
 
     @Test
-    public void multipleClassNameIsAddedToMarkup() {
+    void multipleClassNameIsAddedToMarkup() {
         startComponentInPage(createComponentWithCssClassNames("classname-a", "classname-b"));
 
         assertClassNamesPresent("classname-a", "classname-b");
     }
 
     @Test
-    public void emptyClassNameIsIgnored() {
+    void emptyClassNameIsIgnored() {
         startComponentInPage(createComponentWithCssClassNames(""));
 
         assertThat(tester().getTagByWicketId(id()).getAttribute("class"), is(nullValue()));
     }
 
     @Test
-    public void nullClassNameThrowsException() {
+    void nullClassNameThrowsException() {
         assertThrows(IllegalArgumentException.class, () -> startComponentInPage(createComponentWithCssClassNames((String[]) null)));
     }
 
     @Test
-    public void removeClass() {
+    void removeClass() {
         ComponentTag tag = new ComponentTag("span", XmlTag.TagType.OPEN_CLOSE);
         tag.put("class", "class1 pull-right class2");
 

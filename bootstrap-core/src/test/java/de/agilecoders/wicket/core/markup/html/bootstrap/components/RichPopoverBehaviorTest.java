@@ -22,10 +22,10 @@ import org.junit.jupiter.api.Test;
  *
  * @author miha
  */
-public class RichPopoverBehaviorTest extends WicketApplicationTest {
+class RichPopoverBehaviorTest extends WicketApplicationTest {
 
     @Test
-    public void simpleBodyComponentIsRendered() {
+    void simpleBodyComponentIsRendered() {
         startBehaviorInPage(new RichPopoverBehavior(Model.of("header")) {
             @Override
             public Component newBodyComponent(String markupId) {
@@ -38,7 +38,7 @@ public class RichPopoverBehaviorTest extends WicketApplicationTest {
     }
 
     @Test
-    public void complexBodyComponentIsRendered() {
+    void complexBodyComponentIsRendered() {
         startBehaviorInPage(new RichPopoverBehavior(Model.of("header")) {
             @Override
             public Component newBodyComponent(String markupId) {

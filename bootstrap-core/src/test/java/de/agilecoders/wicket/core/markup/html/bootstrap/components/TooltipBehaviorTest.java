@@ -18,10 +18,10 @@ import static org.hamcrest.MatcherAssert.assertThat;
  *
  * @author miha
  */
-public class TooltipBehaviorTest extends WicketApplicationTest {
+class TooltipBehaviorTest extends WicketApplicationTest {
 
     @Test
-    public void relIsSet() {
+    void relIsSet() {
         tester().startComponentInPage(newTooltip("text"));
         final TagTester tag = tester().getTagByWicketId(id());
 
@@ -29,7 +29,7 @@ public class TooltipBehaviorTest extends WicketApplicationTest {
     }
 
     @Test
-    public void titleIsSet() {
+    void titleIsSet() {
         tester().startComponentInPage(newTooltip("text"));
         final TagTester tag = tester().getTagByWicketId(id());
 
@@ -37,15 +37,15 @@ public class TooltipBehaviorTest extends WicketApplicationTest {
     }
 
     @Test
-    public void isRenderedWithoutException() {
+    void isRenderedWithoutException() {
         tester().startComponentInPage(newTooltip("text"));
 
         tester().assertNoErrorMessage();
         tester().assertVisible(id());
     }
-    
+
     @Test
-    public void labelIsLocalized() {
+    void labelIsLocalized() {
         tester().startComponentInPage(new MyContainer(id()).add(new TooltipBehavior(new ResourceModel("label"))));
         final TagTester tag = tester().getTagByWicketId(id());
         assertThat(tag.getAttribute("title"), is(equalTo("bar")));
@@ -57,6 +57,7 @@ public class TooltipBehaviorTest extends WicketApplicationTest {
      * @param tooltip the tooltip content
      * @return new component that has a tooltip behavior
      */
+    @SuppressWarnings("SameParameterValue")
     private Component newTooltip(final String tooltip) {
         return new WebMarkupContainer(id()).add(new TooltipBehavior(Model.of(tooltip)));
     }

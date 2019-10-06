@@ -18,10 +18,10 @@ import org.junit.jupiter.api.Test;
  * @author miha
  */
 @IntegrationTest
-public class BootstrapPagingNavigatorTest extends WicketApplicationTest {
+class BootstrapPagingNavigatorTest extends WicketApplicationTest {
 
     @Test
-    public void correctClassNameIsSet() {
+    void correctClassNameIsSet() {
         BootstrapPagingNavigator navigator = createDefault();
         tester().startComponentInPage(navigator);
 
@@ -29,7 +29,7 @@ public class BootstrapPagingNavigatorTest extends WicketApplicationTest {
     }
 
     @Test
-    public void correctClassName() {
+    void correctClassName() {
         BootstrapPagingNavigator navigator = createDefault();
         tester().startComponentInPage(navigator);
 
@@ -38,7 +38,7 @@ public class BootstrapPagingNavigatorTest extends WicketApplicationTest {
 
 
     @Test
-    public void correctTagNameIsAsserted() {
+    void correctTagNameIsAsserted() {
         BootstrapPagingNavigator navigator = createWithTagName("a");
 
         assertThrows(MarkupException.class, () -> tester().startComponentInPage(navigator));
@@ -70,7 +70,7 @@ public class BootstrapPagingNavigatorTest extends WicketApplicationTest {
      * @return new {@link IPageable} instance
      */
     private IPageable createPageable() {
-        return new PageableListView<String>("pageable", Generics2.newArrayList("item1", "item2", "item3", "item2"), 1) {
+        return new PageableListView<>("pageable", Generics2.newArrayList("item1", "item2", "item3", "item2"), 1) {
             @Override
             protected void populateItem(ListItem<String> item) {
                 item.add(new Label("item", item.getModelObject()));

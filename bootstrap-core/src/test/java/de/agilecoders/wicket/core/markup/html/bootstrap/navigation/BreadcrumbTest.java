@@ -14,10 +14,10 @@ import org.junit.jupiter.api.Test;
  * @author miha
  */
 @IntegrationTest
-public class BreadcrumbTest extends WicketApplicationTest {
+class BreadcrumbTest extends WicketApplicationTest {
 
     @Test
-    public void correctTagNameIsAsserted() {
+    void correctTagNameIsAsserted() {
         final Breadcrumb breadcrumb = new Breadcrumb("breadcrumb") {
             @Override
             protected void onComponentTag(ComponentTag tag) {
@@ -30,7 +30,7 @@ public class BreadcrumbTest extends WicketApplicationTest {
     }
 
     @Test
-    public void correctClassNameIsSet() {
+    void correctClassNameIsSet() {
         final Breadcrumb breadcrumb = new Breadcrumb("breadcrumb") {
             @Override
             protected void onComponentTag(ComponentTag tag) {

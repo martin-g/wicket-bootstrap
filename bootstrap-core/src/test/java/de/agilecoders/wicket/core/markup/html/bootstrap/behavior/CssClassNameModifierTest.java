@@ -2,7 +2,6 @@ package de.agilecoders.wicket.core.markup.html.bootstrap.behavior;
 
 import de.agilecoders.wicket.core.WicketApplicationTest;
 import de.agilecoders.wicket.jquery.util.Generics2;
-import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.model.Model;
@@ -33,52 +32,42 @@ public class CssClassNameModifierTest extends WicketApplicationTest {
     }
 
     @Test
-    public void classFromProviderIsAdded() {
-        component.add(new CssClassNameModifier(new ICssClassNameProvider() {
-            @Override
-            public String cssClassName() {
-                return "classX classY classZ";
-            }
-        }));
+    void classFromProviderIsAdded() {
+        component.add(new CssClassNameModifier((ICssClassNameProvider) () -> "classX classY classZ"));
 
         startPageAndAssertClassNames("classX classY classZ");
     }
 
     @Test
-    public void classFromModifierIsAdded() {
-        component.add(new ICssClassNameModifier() {
-            @Override
-            public AttributeModifier newCssClassNameModifier() {
-                return new CssClassNameAppender("classX classY classZ");
-            }
-        }.newCssClassNameModifier());
+    void classFromModifierIsAdded() {
+        component.add(new CssClassNameAppender("classX classY classZ"));
 
         startPageAndAssertClassNames("classX classY classZ");
     }
 
     @Test
-    public void classFromModelIsAdded() {
+    void classFromModelIsAdded() {
         component.add(new CssClassNameModifier(Model.of("classX classY classZ")));
 
         startPageAndAssertClassNames("classX classY classZ");
     }
 
     @Test
-    public void classFromArrayIsAdded() {
+    void classFromArrayIsAdded() {
         component.add(new CssClassNameModifier("classX", "classY", "classZ"));
 
         startPageAndAssertClassNames("classX classY classZ");
     }
 
     @Test
-    public void classFromListIsAdded() {
+    void classFromListIsAdded() {
         component.add(new CssClassNameModifier(Generics2.newArrayList("classX", "classY", "classZ")));
 
         startPageAndAssertClassNames("classX classY classZ");
     }
 
     @Test
-    public void allCssClassNamesBeforeWillBeRemoved() {
+    void allCssClassNamesBeforeWillBeRemoved() {
         component.add(new CssClassNameModifier("classX classY classZ"));
         component.add(new CssClassNameModifier("classU classV"));
 
