@@ -11,16 +11,17 @@ import org.junit.jupiter.api.Test;
  *
  * @author miha
  */
-public class CodeBehaviorTest extends WicketApplicationTest {
+@SuppressWarnings("SpellCheckingInspection")
+class CodeBehaviorTest extends WicketApplicationTest {
 
     @Test
-    public void tagNameWasAsserted() {
+    void tagNameWasAsserted() {
         assertThrows(MarkupException.class, () ->
             tester().startComponentInPage(new WebMarkupContainer(id()).add(new CodeBehavior())));
     }
 
     @Test
-    public void codeTagIsAllowed() {
+    void codeTagIsAllowed() {
         tester().startComponentInPage(new WebMarkupContainer(id()).add(new CodeBehavior()), createMarkup("code"));
 
         tester().assertNoErrorMessage();
@@ -28,7 +29,7 @@ public class CodeBehaviorTest extends WicketApplicationTest {
     }
 
     @Test
-    public void preTagIsAllowed() {
+    void preTagIsAllowed() {
         tester().startComponentInPage(new WebMarkupContainer(id()).add(new CodeBehavior()), createMarkup("pre"));
 
         tester().assertNoErrorMessage();
@@ -36,35 +37,35 @@ public class CodeBehaviorTest extends WicketApplicationTest {
     }
 
     @Test
-    public void linenumberWithStartCssClassNameWasSet() {
+    void linenumberWithStartCssClassNameWasSet() {
         tester().startComponentInPage(new WebMarkupContainer(id()).add(new CodeBehavior().setStartFromLine(5)), createMarkup("pre"));
 
         assertCssClass(tester().getTagByWicketId(id()), "linenums:5");
     }
 
     @Test
-    public void linenumberCssClassNameWasSet() {
+    void linenumberCssClassNameWasSet() {
         tester().startComponentInPage(new WebMarkupContainer(id()).add(new CodeBehavior().setShowLineNumbers(true)), createMarkup("pre"));
 
         assertCssClass(tester().getTagByWicketId(id()), "linenums");
     }
 
     @Test
-    public void languageCssClassNameWasSet() {
+    void languageCssClassNameWasSet() {
         tester().startComponentInPage(new WebMarkupContainer(id()).add(new CodeBehavior().setLanguage(CodeBehavior.Language.XHTML)), createMarkup("pre"));
 
         assertCssClass(tester().getTagByWicketId(id()), "lang-xhtml");
     }
 
     @Test
-    public void combinationOfCssClassNamesAreSet() {
+    void combinationOfCssClassNamesAreSet() {
         tester().startComponentInPage(new WebMarkupContainer(id()).add(new CodeBehavior().setLanguage(CodeBehavior.Language.XHTML).setStartFromLine(5)), createMarkup("pre"));
 
         assertCssClass(tester().getTagByWicketId(id()), "lang-xhtml", "linenums:5", "prettyprint");
     }
 
     @Test
-    public void defaultCssClassNamesAreSet() {
+    void defaultCssClassNamesAreSet() {
         tester().startComponentInPage(new WebMarkupContainer(id()).add(new CodeBehavior()), createMarkup("pre"));
 
         assertCssClass(tester().getTagByWicketId(id()), "prettyprint");

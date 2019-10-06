@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
  * @author Eric Hamel <eric.hamel@me.com>
  *
  */
-public class BootstrapGenericPanelTest extends WicketApplicationTest{
+class BootstrapGenericPanelTest extends WicketApplicationTest{
 
     @Test
     void tagNameIsAsserted() {

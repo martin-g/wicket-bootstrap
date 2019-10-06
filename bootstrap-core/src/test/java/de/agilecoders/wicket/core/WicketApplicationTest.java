@@ -53,7 +53,7 @@ public abstract class WicketApplicationTest extends Assertions {
         }
     }
 
-    protected WebApplication newWebApplication() {
+    WebApplication newWebApplication() {
         return new WebApplication() {
 
             @Override
@@ -83,10 +83,11 @@ public abstract class WicketApplicationTest extends Assertions {
     protected void onBefore() {
     }
 
-    protected Class<? extends Page> getHomePage() {
+    private Class<? extends Page> getHomePage() {
         return Page.class;
     }
 
+    @SuppressWarnings("WeakerAccess")
     protected IBootstrapSettings createBootstrapSettings() {
         return new BootstrapSettings();
     }
@@ -105,7 +106,7 @@ public abstract class WicketApplicationTest extends Assertions {
 
     protected List<String> extractClassNames(TagTester tagTester) {
         return tagTester != null ? newArrayList(Generics2.split(nullToEmpty(tagTester.getAttribute("class")), " "))
-                                 : new ArrayList<String>();
+                                 : new ArrayList<>();
     }
 
     /**

@@ -18,7 +18,7 @@ abstract class ChecksumResourceVersionTest {
 
     protected abstract ChecksumResourceVersion newChecksumResourceVersion();
 
-    protected void check(final String input, final String expected) {
+    void check(final String input, final String expected) {
         final ChecksumResourceVersion version = newChecksumResourceVersion();
 
         try {

@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class SassResourceTest extends Assertions {
+class SassResourceTest extends Assertions {
 
     /**
      * Tests the compilation of Sass resources to Css.
@@ -21,7 +21,7 @@ public class SassResourceTest extends Assertions {
      * https://github.com/sass/libsass/issues/2294
      */
     @Test
-    public void request() throws IOException {
+    void request() throws IOException {
 
         WicketTester tester = new WicketTester(new TestApplication());
         tester.startResourceReference(new SassResourceReference(HomePage.class, "resources/root.scss"));

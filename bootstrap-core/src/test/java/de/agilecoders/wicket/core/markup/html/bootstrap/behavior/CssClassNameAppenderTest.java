@@ -33,40 +33,35 @@ public class CssClassNameAppenderTest extends WicketApplicationTest {
     }
 
     @Test
-    public void classFromProviderIsAdded() {
-        component.add(new CssClassNameAppender(new ICssClassNameProvider() {
-            @Override
-            public String cssClassName() {
-                return "classX classY classZ";
-            }
-        }));
+    void classFromProviderIsAdded() {
+        component.add(new CssClassNameAppender((ICssClassNameProvider) () -> "classX classY classZ"));
 
         startPageAndAssertClassNames("classX classY classZ");
     }
 
     @Test
-    public void classFromModelIsAdded() {
+    void classFromModelIsAdded() {
         component.add(new CssClassNameAppender(Model.of("classX classY classZ")));
 
         startPageAndAssertClassNames("classX classY classZ");
     }
 
     @Test
-    public void classFromArrayIsAdded() {
+    void classFromArrayIsAdded() {
         component.add(new CssClassNameAppender("classX", "classY", "classZ"));
 
         startPageAndAssertClassNames("classX classY classZ");
     }
 
     @Test
-    public void classFromListIsAdded() {
+    void classFromListIsAdded() {
         component.add(new CssClassNameAppender(Generics2.newArrayList("classX", "classY", "classZ")));
 
         startPageAndAssertClassNames("classX classY classZ");
     }
 
     @Test
-    public void duplicatedCssClassNamesWillBeRemoved() {
+    void duplicatedCssClassNamesWillBeRemoved() {
         component.add(new CssClassNameAppender("classX classY classZ"));
         component.add(new CssClassNameAppender("classZ"));
         component.add(new CssClassNameAppender("classX classY"));
@@ -75,6 +70,7 @@ public class CssClassNameAppenderTest extends WicketApplicationTest {
         startPageAndAssertClassNames("classX classY classZ");
     }
 
+    @SuppressWarnings("SameParameterValue")
     private void startPageAndAssertClassNames(final String classNames) {
         tester().startComponentInPage(component);
         TagTester tester = tester().getTagByWicketId("id");

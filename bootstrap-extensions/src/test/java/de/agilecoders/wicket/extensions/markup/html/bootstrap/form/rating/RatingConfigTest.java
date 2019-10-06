@@ -6,16 +6,16 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 
-public class RatingConfigTest {
+class RatingConfigTest {
 
     @Test
-    public void empty() {
+    void empty() {
         RatingConfig config = new RatingConfig();
         assertThat(config.toJsonString(), is(equalTo("{\"filled\":\"fa fa-star\",\"empty\":\"fa fa-star-o\"}")));
     }
 
     @Test
-    public void initval() {
+    void initval() {
     	RatingConfig config = new RatingConfig();
         config.withFractions(3);
         config.withStart(3);

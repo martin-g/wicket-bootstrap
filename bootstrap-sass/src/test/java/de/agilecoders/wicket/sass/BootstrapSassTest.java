@@ -29,12 +29,13 @@ import static org.junit.Assert.assertThat;
  *
  * @author miha
  */
-public class BootstrapSassTest {
+@SuppressWarnings("SpellCheckingInspection")
+class BootstrapSassTest {
 
     private WicketTester tester;
 
     @BeforeEach
-    public void before() {
+    void before() {
         tester = new WicketTester(new TestApplication() {
             @Override
             public void init() {
@@ -47,12 +48,12 @@ public class BootstrapSassTest {
     }
 
     @AfterEach
-    public void after() {
+    void after() {
         tester.destroy();
     }
 
     @Test
-    public void importWebContext() throws Exception {
+    void importWebContext() throws Exception {
         WebApplication application = tester.getApplication();
         URI uri = getClass().getResource("/de/agilecoders/wicket/sass/test/webContextImported.scss").toURI();
         File file = new File(uri);
@@ -72,11 +73,9 @@ public class BootstrapSassTest {
      * Tests with {@link ContextRelativeSassResourceReference}
      * <p>
      * https://github.com/l0rdn1kk0n/wicket-bootstrap/issues/524
-     *
-     * @throws Exception
      */
     @Test
-    public void importServletContextRelative() throws Exception {
+    void importServletContextRelative() throws Exception {
         WebApplication application = tester.getApplication();
         URI uri = getClass().getResource("/servlet/context/root/").toURI();
         File contextRoot = new File(uri);
@@ -90,7 +89,7 @@ public class BootstrapSassTest {
     }
 
     @Test
-    public void importWebJars() throws Exception {
+    void importWebJars() {
         SassCacheManager sass = SassCacheManager.get();
         URL res = Thread.currentThread().getContextClassLoader().getResource("import.scss");
 
@@ -100,7 +99,7 @@ public class BootstrapSassTest {
     }
 
     @Test
-    public void importClasspath() {
+    void importClasspath() {
         SassCacheManager sass = SassCacheManager.get();
         URL res = Thread.currentThread().getContextClassLoader().getResource("importClasspath.scss");
 
@@ -110,7 +109,7 @@ public class BootstrapSassTest {
     }
 
     @Test
-    public void importPackage() {
+    void importPackage() {
         SassCacheManager sass = SassCacheManager.get();
         URL res = BootstrapSassTest.class.getResource("package-dependency-1.scss");
 
@@ -122,7 +121,7 @@ public class BootstrapSassTest {
     }
 
     @Test
-    public void importPartials() {
+    void importPartials() {
         SassCacheManager sass = SassCacheManager.get();
         URL res = BootstrapSassTest.class.getResource("partial-root.scss");
 
@@ -133,7 +132,7 @@ public class BootstrapSassTest {
     }
 
     @Test
-    public void importLocalJarPath() {
+    void importLocalJarPath() {
         // test case for issue #794
         SassCacheManager sass = SassCacheManager.get();
         URL res = Thread.currentThread().getContextClassLoader().getResource("importRelativeLocalPath.scss");
@@ -144,14 +143,14 @@ public class BootstrapSassTest {
     }
 
     @Test
-    public void sassResourceReferenceFactoryIsInstalled() {
+    void sassResourceReferenceFactoryIsInstalled() {
         ResourceReferenceRegistry registry = tester.getApplication().getResourceReferenceRegistry();
         IResourceReferenceFactory referenceFactory = registry.getResourceReferenceFactory();
         assertThat(referenceFactory, is(instanceOf(SassResourceReferenceFactory.class)));
     }
 
     @Test
-    public void usesCustomSassCompilerConfigurationFactoryWhenProvided() {
+    void usesCustomSassCompilerConfigurationFactoryWhenProvided() {
         // tests the invocation of a custom sass function that will be registered within the configuration factory
         BootstrapSass.install(Application.get(), () -> {
             Options config = new Options();

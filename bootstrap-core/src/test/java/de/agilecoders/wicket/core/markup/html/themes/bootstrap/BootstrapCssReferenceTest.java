@@ -23,15 +23,13 @@ public class BootstrapCssReferenceTest extends WicketApplicationTest {
     protected void onBefore() {
         try {
             cssContent = IOUtils.toString(BootstrapCssReference.instance().getResource().getResourceStream().getInputStream());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (ResourceStreamNotFoundException e) {
+        } catch (IOException | ResourceStreamNotFoundException e) {
             throw new RuntimeException(e);
         }
     }
 
     @Test
-    public void lessFileWasGeneratedWithoutError() {
+    void lessFileWasGeneratedWithoutError() {
         BootstrapCssReference ref = BootstrapCssReference.instance();
 
         tester().startResourceReference(ref);
@@ -39,7 +37,7 @@ public class BootstrapCssReferenceTest extends WicketApplicationTest {
     }
 
     @Test
-    public void lessFileWasGeneratedWithCorrectContent() {
+    void lessFileWasGeneratedWithCorrectContent() {
         BootstrapCssReference ref = BootstrapCssReference.instance();
 
         tester().startResourceReference(ref);

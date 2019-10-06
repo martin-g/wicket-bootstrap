@@ -10,15 +10,15 @@ import org.junit.jupiter.api.Test;
  *
  * @author miha
  */
-public class CiteTest extends WicketApplicationTest {
+class CiteTest extends WicketApplicationTest {
 
     @Test
-    public void tagNameIsAsserted() {
+    void tagNameIsAsserted() {
         assertThrows(MarkupException.class, () -> startComponentInPage(new Cite(id())));
     }
 
     @Test
-    public void isRenderedWithoutException() {
+    void isRenderedWithoutException() {
         tester().startComponentInPage(new Cite(id()), Markup.of("<cite wicket:id='id'>Cite</cite>"));
 
         tester().assertNoErrorMessage();

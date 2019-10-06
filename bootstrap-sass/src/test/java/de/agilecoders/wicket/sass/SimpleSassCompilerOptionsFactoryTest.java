@@ -6,10 +6,10 @@ import static org.hamcrest.Matchers.*;
 import io.bit3.jsass.Options;
 import org.junit.jupiter.api.Test;
 
-public class SimpleSassCompilerOptionsFactoryTest {
+class SimpleSassCompilerOptionsFactoryTest {
 
     @Test
-    public void createsASimplePlainSassCompilerConfiguration() {
+    void createsASimplePlainSassCompilerConfiguration() {
         SimpleSassCompilerOptionsFactory factory = new SimpleSassCompilerOptionsFactory();
         Options options = factory.newOptions();
 

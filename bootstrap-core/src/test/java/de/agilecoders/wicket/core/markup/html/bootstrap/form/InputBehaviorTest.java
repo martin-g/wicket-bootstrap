@@ -19,10 +19,10 @@ import static org.hamcrest.MatcherAssert.assertThat;
 /**
  * Tests for InputBehavior
  */
-public class InputBehaviorTest extends WicketApplicationTest {
+class InputBehaviorTest extends WicketApplicationTest {
 
     @Test
-    public void withoutHeightSizeWithoutColumnSize() {
+    void withoutHeightSizeWithoutColumnSize() {
         InputBehaviorPage page = new InputBehaviorPage();
         tester().startPage(page);
 
@@ -33,7 +33,7 @@ public class InputBehaviorTest extends WicketApplicationTest {
     }
 
     @Test
-    public void withHeightSizeWithoutColumnSize() {
+    void withHeightSizeWithoutColumnSize() {
         InputBehaviorPage page = new InputBehaviorPage();
         page.inputBehavior.size(InputBehavior.Size.Large);
         tester().startPage(page);
@@ -46,7 +46,7 @@ public class InputBehaviorTest extends WicketApplicationTest {
     }
 
     @Test
-    public void withoutHeightSizeWithColumnSize() {
+    void withoutHeightSizeWithColumnSize() {
         InputBehaviorPage page = new InputBehaviorPage();
         page.inputBehavior.size(InputBehavior.Size.Small);
         page.inputBehavior.size(LargeScreenSpanType.SPAN11);
@@ -62,7 +62,7 @@ public class InputBehaviorTest extends WicketApplicationTest {
     }
 
     @Test
-    public void withHeightSizeWithColumnSize() {
+    void withHeightSizeWithColumnSize() {
         InputBehaviorPage page = new InputBehaviorPage();
         page.inputBehavior.size(ExtraSmallSpanType.SPAN10);
         tester().startPage(page);
@@ -81,7 +81,7 @@ public class InputBehaviorTest extends WicketApplicationTest {
      * Invisible input should not render the surrounding markup
      */
     @Test
-    public void invisibleInput() {
+    void invisibleInput() {
         InputBehaviorPage page = new InputBehaviorPage();
         page.textField.setVisible(false);
         tester().startPage(page);
@@ -97,7 +97,7 @@ public class InputBehaviorTest extends WicketApplicationTest {
         private final TextField<String> textField;
 
         private InputBehaviorPage() {
-            this.textField = new TextField<String>("id", Model.of("data"));
+            this.textField = new TextField<>("id", Model.of("data"));
             add(textField);
             textField.setMarkupId("input");
             textField.add(inputBehavior);

@@ -13,11 +13,11 @@ import de.agilecoders.wicket.core.test.IntegrationTest;
 import org.junit.jupiter.api.Test;
 
 @IntegrationTest
-public class BootstrapRadioChoiceTest extends WicketApplicationTest {
+class BootstrapRadioChoiceTest extends WicketApplicationTest {
 
     @Test
-    public void radioChoice() {
-        BootstrapRadioChoice<String> radio = new BootstrapRadioChoice<String>("id", Lists.newArrayList("One", "Two"));
+    void radioChoice() {
+        BootstrapRadioChoice<String> radio = new BootstrapRadioChoice<>("id", Lists.newArrayList("One", "Two"));
 
         tester().startComponentInPage(radio);
         TagTester spanTester = tester().getTagByWicketId("id");
@@ -37,8 +37,8 @@ public class BootstrapRadioChoiceTest extends WicketApplicationTest {
     }
 
     @Test
-    public void inlineRadioChoice() {
-        BootstrapRadioChoice<String> radio = new BootstrapRadioChoice<String>("id", Lists.newArrayList("One", "Two"));
+    void inlineRadioChoice() {
+        BootstrapRadioChoice<String> radio = new BootstrapRadioChoice<>("id", Lists.newArrayList("One", "Two"));
         radio.setInline(true);
 
         tester().startComponentInPage(radio);

@@ -15,7 +15,7 @@ import java.util.Map;
  */
 public class Adler32ResourceVersionTest extends ChecksumResourceVersionTest {
 
-    public static Collection<Object[]> data() {
+    static Collection<Object[]> data() {
         Object[][] data = new Object[][] {
                 { new AbstractMap.SimpleEntry<>("a", "620062") },
                 { new AbstractMap.SimpleEntry<>("a1", "f50093") },
@@ -28,7 +28,7 @@ public class Adler32ResourceVersionTest extends ChecksumResourceVersionTest {
 
     @ParameterizedTest
     @MethodSource("data")
-    public void checkChecksum(final Map.Entry<String, String> content) {
+    void checkChecksum(final Map.Entry<String, String> content) {
         check(content.getKey(), content.getValue());
     }
 

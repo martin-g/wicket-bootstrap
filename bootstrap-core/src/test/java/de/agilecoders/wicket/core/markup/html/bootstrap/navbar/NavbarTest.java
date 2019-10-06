@@ -7,7 +7,6 @@ import org.apache.wicket.Component;
 import org.apache.wicket.Page;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.util.tester.TagTester;
-import org.apache.wicket.util.visit.IVisit;
 import org.apache.wicket.util.visit.IVisitor;
 import org.junit.jupiter.api.Test;
 
@@ -24,10 +23,11 @@ import static org.hamcrest.MatcherAssert.assertThat;
  *
  * @author miha
  */
-public class NavbarTest extends WicketApplicationTest {
+@SuppressWarnings("SpellCheckingInspection")
+class NavbarTest extends WicketApplicationTest {
 
     @Test
-    public void isInstantiableWithoutError() {
+    void isInstantiableWithoutError() {
         Navbar navbar = new Navbar("id");
 
         tester().startComponentInPage(navbar);
@@ -35,7 +35,7 @@ public class NavbarTest extends WicketApplicationTest {
     }
 
     @Test
-    public void brandNameIsRendered() {
+    void brandNameIsRendered() {
         Navbar navbar = new Navbar("id");
         navbar.setBrandName(Model.of("Brand Name"));
 
@@ -46,7 +46,7 @@ public class NavbarTest extends WicketApplicationTest {
     }
 
     @Test
-    public void fixedTopClassIsRendered() {
+    void fixedTopClassIsRendered() {
         Navbar navbar = new Navbar("id");
         navbar.setPosition(Navbar.Position.TOP);
 
@@ -61,7 +61,7 @@ public class NavbarTest extends WicketApplicationTest {
     }
 
     @Test
-    public void fixedBottomClassIsRendered() {
+    void fixedBottomClassIsRendered() {
         Navbar navbar = new Navbar("id");
         navbar.setPosition(Navbar.Position.BOTTOM);
 
@@ -76,7 +76,7 @@ public class NavbarTest extends WicketApplicationTest {
     }
 
     @Test
-    public void stickyTopClassIsRendered() {
+    void stickyTopClassIsRendered() {
         Navbar navbar = new Navbar("id");
         navbar.setPosition(Navbar.Position.STICKY_TOP);
 
@@ -91,7 +91,7 @@ public class NavbarTest extends WicketApplicationTest {
     }
 
     @Test
-    public void initialLeftNavigationIsEmpty() {
+    void initialLeftNavigationIsEmpty() {
         Navbar navbar = new Navbar("id");
 
         tester().startComponentInPage(navbar);
@@ -105,7 +105,7 @@ public class NavbarTest extends WicketApplicationTest {
     }
 
     @Test
-    public void buttonIsAddedToRightNavigation() {
+    void buttonIsAddedToRightNavigation() {
         Navbar navbar = new Navbar("id");
         navbar.addComponents(new INavbarComponent() {
             @Override
@@ -129,7 +129,7 @@ public class NavbarTest extends WicketApplicationTest {
     }
 
     @Test
-    public void buttonIsAddedToLeftNavigation() {
+    void buttonIsAddedToLeftNavigation() {
         Navbar navbar = new Navbar("id");
         navbar.addComponents(new INavbarComponent() {
             @Override
@@ -152,7 +152,7 @@ public class NavbarTest extends WicketApplicationTest {
     }
 
     @Test
-    public void buttonWithIconIsAddedToLeftNavigation() {
+    void buttonWithIconIsAddedToLeftNavigation() {
         Navbar navbar = new Navbar("id");
         navbar.addComponents(new INavbarComponent() {
             @Override
@@ -179,23 +179,20 @@ public class NavbarTest extends WicketApplicationTest {
     }
 
     @Test
-    public void allComponents_areStateless() {
+    void allComponents_areStateless() {
         final List<String> statefulComponents = new ArrayList<>();
 
         Navbar navbar = new Navbar("id");
-        navbar.visitChildren(new IVisitor<Component, Void>() {
-            @Override
-            public void component(Component component, IVisit<Void> arg1) {
-                if (!component.isStateless())
-                    statefulComponents.add(component.getId());
-            }
+        navbar.visitChildren((IVisitor<Component, Void>) (component, arg1) -> {
+            if (!component.isStateless())
+                statefulComponents.add(component.getId());
         });
 
         assertThat(statefulComponents.size(), is(equalTo(0)));
     }
 
     @Test
-    public void navbarBackgroundIsRendered() {
+    void navbarBackgroundIsRendered() {
         Navbar navbar = new Navbar("id")
                 .setBackgroundColor(BackgroundColorBehavior.Color.Success);
 
@@ -208,7 +205,7 @@ public class NavbarTest extends WicketApplicationTest {
     }
 
     @Test
-    public void navbarCollapseBreakpointIsRendered() {
+    void navbarCollapseBreakpointIsRendered() {
         Navbar navbar = new Navbar("id")
                 .setCollapseBreakdown(Navbar.CollapseBreakpoint.Small);
 

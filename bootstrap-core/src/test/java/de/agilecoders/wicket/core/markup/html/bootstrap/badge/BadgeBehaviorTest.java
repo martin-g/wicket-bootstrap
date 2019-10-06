@@ -1,4 +1,4 @@
-package de.agilecoders.wicket.core.markup.html.bootstrap.block;
+package de.agilecoders.wicket.core.markup.html.bootstrap.badge;
 
 import de.agilecoders.wicket.core.WicketApplicationTest;
 import de.agilecoders.wicket.core.markup.html.bootstrap.badge.BadgeBehavior;
@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
  *
  * @author miha
  */
-public class BadgeBehaviorTest extends WicketApplicationTest {
+class BadgeBehaviorTest extends WicketApplicationTest {
 
     @Test
     void classNameWasAdded() {

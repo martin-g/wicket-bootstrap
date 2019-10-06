@@ -13,45 +13,45 @@ import static org.hamcrest.MatcherAssert.assertThat;
  *
  * @author miha
  */
-public class ListBehaviorTest extends WicketApplicationTest {
+class ListBehaviorTest extends WicketApplicationTest {
 
     @Test
-    public void orderedList() {
+    void orderedList() {
         TagTester tag = startBehaviorInPage(ListBehavior.ordered());
 
         assertThat(tag.getName(), is(equalTo("ol")));
     }
 
     @Test
-    public void unorderedList() {
+    void unorderedList() {
         TagTester tag = startBehaviorInPage(ListBehavior.unordered());
 
         assertThat(tag.getName(), is(equalTo("ul")));
     }
 
     @Test
-    public void descriptionList() {
+    void descriptionList() {
         TagTester tag = startBehaviorInPage(ListBehavior.description());
 
         assertThat(tag.getName(), is(equalTo("dl")));
     }
 
     @Test
-    public void horizontalDescriptionList() {
+    void horizontalDescriptionList() {
         startBehaviorInPage(ListBehavior.description().horizontal());
 
         assertClassNamesPresent("row");
     }
 
     @Test
-    public void unstyledUnorderedList() {
+    void unstyledUnorderedList() {
         startBehaviorInPage(ListBehavior.unordered().unstyled());
 
         assertClassNamesPresent("list-unstyled");
     }
 
     @Test
-    public void inlineUnorderedList() {
+    void inlineUnorderedList() {
         startBehaviorInPage(ListBehavior.unordered().inline());
 
         assertClassNamesPresent("list-inline");

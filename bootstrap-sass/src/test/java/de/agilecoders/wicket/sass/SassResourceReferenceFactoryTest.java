@@ -10,10 +10,10 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.instanceOf;
 import static org.hamcrest.Matchers.is;
 
-public class SassResourceReferenceFactoryTest extends Assertions {
+class SassResourceReferenceFactoryTest extends Assertions {
 
     @Test
-    public void createSassResourceReference() {
+    void createSassResourceReference() {
         TestApplication application = new TestApplication();
         WicketTester tester = new WicketTester(application);
         try {

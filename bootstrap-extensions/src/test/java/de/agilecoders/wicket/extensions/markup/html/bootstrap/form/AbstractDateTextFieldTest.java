@@ -4,7 +4,6 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.WicketApplicationTest;
-import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.markup.Markup;
 import org.apache.wicket.markup.MarkupException;
 import org.apache.wicket.markup.html.form.AbstractTextComponent;
@@ -26,13 +25,10 @@ import org.junit.jupiter.api.Test;
  * @param <F>
  *     the concrete implementation type of this abstract class
  */
-public abstract class AbstractDateTextFieldTest<T, P extends TextField<T> & AbstractTextComponent.ITextFormatProvider, I, C extends AbstractDateTextFieldConfig<C, I>, F extends AbstractDateTextField<T, P, I, C, F>>
+abstract class AbstractDateTextFieldTest<T, P extends TextField<T> & AbstractTextComponent.ITextFormatProvider, I, C extends AbstractDateTextFieldConfig<C, I>, F extends AbstractDateTextField<T, P, I, C, F>>
     extends WicketApplicationTest {
 
-    private final AbstractDateTextField.IParentAjaxEventHandler handler = new AbstractDateTextField.IParentAjaxEventHandler() {
-        @Override
-        public void onAjaxEvent(final AjaxRequestTarget target, final Object date, final DateTextField.Event event) {
-        }
+    private final AbstractDateTextField.IParentAjaxEventHandler handler = (AbstractDateTextField.IParentAjaxEventHandler) (target, date, event) -> {
     };
 
     /**
@@ -46,17 +42,17 @@ public abstract class AbstractDateTextFieldTest<T, P extends TextField<T> & Abst
     abstract T getNow();
 
     @Test
-    public void assertDefaultLocalDateTextFieldConfig_hasLanguageEnglish() {
+    void assertDefaultLocalDateTextFieldConfig_hasLanguageEnglish() {
         assertThat(newDefaultConfig().getLanguage(), is(equalTo("en")));
     }
 
     @Test
-    public void assertDefaultLocalDateTextFieldConfig_hasAmericanDateFormat() {
+    void assertDefaultLocalDateTextFieldConfig_hasAmericanDateFormat() {
         assertThat(newDefaultConfig().getFormat(), is(equalTo("MM/dd/yyyy")));
     }
 
     @Test
-    public void constructing_withIdOnly_knowsIdAndDefaultConfig() {
+    void constructing_withIdOnly_knowsIdAndDefaultConfig() {
         F f = newTextField();
 
         assertThat(f.getId(), is(equalTo("tf")));
@@ -74,7 +70,7 @@ public abstract class AbstractDateTextFieldTest<T, P extends TextField<T> & Abst
     }
 
     @Test
-    public void canReplaceConfig() {
+    void canReplaceConfig() {
         F f = newTextField();
         assertThat(f
             .getConfig()
@@ -88,7 +84,7 @@ public abstract class AbstractDateTextFieldTest<T, P extends TextField<T> & Abst
     }
 
     @Test
-    public void cannotReplaceConfig_withNullConfig() {
+    void cannotReplaceConfig_withNullConfig() {
         F f = newTextField();
         f.with(newDefaultConfig().withFormat("dd.MM.yyyy"));
         f.with(null);
@@ -98,7 +94,7 @@ public abstract class AbstractDateTextFieldTest<T, P extends TextField<T> & Abst
     }
 
     @Test
-    public void onInitialize_setsOutputMarkupId() {
+    void onInitialize_setsOutputMarkupId() {
         F f = newTextField();
         assertThat(f.getOutputMarkupId(), is(false));
         f.onInitialize();
@@ -106,13 +102,13 @@ public abstract class AbstractDateTextFieldTest<T, P extends TextField<T> & Abst
     }
 
     @Test
-    public void gettingDestroyScript() {
+    void gettingDestroyScript() {
         F f = newTextField();
         assertThat(f.getDestroyScript(), is(equalTo("$('#tf1').datepicker('destroy');")));
     }
 
     @Test
-    public void startingComponent_withoutInputTagAttached_throwsMarkupException() {
+    void startingComponent_withoutInputTagAttached_throwsMarkupException() {
         F f = newTextField();
         try {
             tester().startComponentInPage(f);
@@ -125,7 +121,7 @@ public abstract class AbstractDateTextFieldTest<T, P extends TextField<T> & Abst
     }
 
     @Test
-    public void startingComponent_withFieldAssignedToInput_succeedsAndHasTypeText() {
+    void startingComponent_withFieldAssignedToInput_succeedsAndHasTypeText() {
         LocalDateTextField f = new LocalDateTextField("myId");
         tester().startComponentInPage(f, Markup.of("<input wicket:id='myId'></input>"));
 
@@ -137,13 +133,14 @@ public abstract class AbstractDateTextFieldTest<T, P extends TextField<T> & Abst
     }
 
     @Test
-    public void creatingScript_withDefaultConfig() {
+    void creatingScript_withDefaultConfig() {
         CharSequence script = newTextField().createScript(newDefaultConfig());
         assertThat(script, is(equalTo("$('#tf1').datepicker();")));
     }
 
+    @SuppressWarnings("SpellCheckingInspection")
     @Test
-    public void creatingScript_withExplicitConfig_withNonDefaultValues() {
+    void creatingScript_withExplicitConfig_withNonDefaultValues() {
         // @formatter:off
         final String expectedScript =
             "$('#tf1').datepicker({"
@@ -189,7 +186,7 @@ public abstract class AbstractDateTextFieldTest<T, P extends TextField<T> & Abst
     abstract I getEndDate();
 
     @Test
-    public void creatingScript_withExplicitConfig_skipsDefaultValuesExcplicitlySet() {
+    void creatingScript_withExplicitConfig_skipsDefaultValuesExplicitlySet() {
         // @formatter:off
         final String expectedScript =
             "$('#tf1').datepicker({"
@@ -223,7 +220,7 @@ public abstract class AbstractDateTextFieldTest<T, P extends TextField<T> & Abst
     }
 
     @Test
-    public void creatingScript_withExplicitConfigWithoutExplicitFormat_usesUsFormat() {
+    void creatingScript_withExplicitConfigWithoutExplicitFormat_usesUsFormat() {
         // @formatter:off
         final String expectedScript =
             "$('#tf1').datepicker({"
@@ -243,7 +240,7 @@ public abstract class AbstractDateTextFieldTest<T, P extends TextField<T> & Abst
     }
 
     @Test
-    public void addingEvent_addsToScript() {
+    void addingEvent_addsToScript() {
         LocalDateTextField.AbstractEventHandler handler = new LocalDateTextField.AbstractEventHandler() {
 
             @Override
@@ -260,7 +257,7 @@ public abstract class AbstractDateTextFieldTest<T, P extends TextField<T> & Abst
     }
 
     @Test
-    public void canAddAndRemoveEvent() {
+    void canAddAndRemoveEvent() {
         LocalDateTextField.AbstractEventHandler handler1 = new LocalDateTextField.AbstractEventHandler() {
 
             @Override
@@ -294,7 +291,7 @@ public abstract class AbstractDateTextFieldTest<T, P extends TextField<T> & Abst
     }
 
     @Test
-    public void addingAjaxEvent_addsToScript() {
+    void addingAjaxEvent_addsToScript() {
         // @formatter:off
         final String expectedScript =
             "$('#tf1').datepicker()"
@@ -319,7 +316,7 @@ public abstract class AbstractDateTextFieldTest<T, P extends TextField<T> & Abst
     }
 
     @Test
-    public void addingAjaxEvent1() {
+    void addingAjaxEvent1() {
         F f = newTextField().addAjaxEvent(LocalDateTextField.Event.clearDate, handler);
         tester().startComponentInPage(f, Markup.of("<input wicket:id='tf'></input>"));
         tester().executeAjaxEvent("tf", "clearDate");

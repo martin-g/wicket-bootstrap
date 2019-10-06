@@ -1,8 +1,5 @@
 package de.agilecoders.wicket.sass;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -16,14 +13,17 @@ import io.bit3.jsass.Options;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.Assert.*;
 
-public class SassCacheManagerTest {
+
+@SuppressWarnings("ResultOfMethodCallIgnored")
+class SassCacheManagerTest {
 
     private int invocationOfAddImportedSources;
     private int invocationOfNewConfiguration;
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         invocationOfAddImportedSources = 0;
         invocationOfNewConfiguration = 0;
     }
@@ -33,7 +33,7 @@ public class SassCacheManagerTest {
      * Imported sources are added only if Sass resource was compiled, so we can use it to track
      * number of times resource was compiled.
      */
-    protected SassSource createSampleURLSource() {
+    SassSource createSampleURLSource() {
         return new SassSource(getClass().getResource("resources/root.scss").toExternalForm(), SassCacheManagerTest.class.getName()) {
             @Override
             public void addImportedSources(Collection<SassSource> sources) {
@@ -44,7 +44,7 @@ public class SassCacheManagerTest {
     }
 
     @Test
-    public void cachesCssResult() {
+    void cachesCssResult() {
         SassCacheManager cacheManager = new SassCacheManager();
 
         SassSource urlSource = createSampleURLSource();
@@ -60,7 +60,7 @@ public class SassCacheManagerTest {
     }
 
     @Test
-    public void clearCacheForcesRecompile() {
+    void clearCacheForcesRecompile() {
         SassCacheManager cacheManager = new SassCacheManager();
 
         SassSource urlSource = createSampleURLSource();
@@ -78,7 +78,7 @@ public class SassCacheManagerTest {
     }
 
     @Test
-    public void usesSassCompilerOptionsFactoryProvidedToCreateANewSassCompilerOptions() {
+    void usesSassCompilerOptionsFactoryProvidedToCreateANewSassCompilerOptions() {
         SassCacheManager cacheManager = new SassCacheManager(() -> {
             invocationOfNewConfiguration++;
             return new Options();
@@ -96,7 +96,7 @@ public class SassCacheManagerTest {
     }
 
     @Test
-    public void usesDefaultOptionsFactoryWhenProvidingNull() {
+    void usesDefaultOptionsFactoryWhenProvidingNull() {
         SassCacheManager cacheManager = new SassCacheManager(null);
 
         SassSource urlSource = createSampleURLSource();
@@ -107,7 +107,7 @@ public class SassCacheManagerTest {
     }
 
     @Test
-    public void timestampBeforeAndAfterCompile() throws IOException
+    void timestampBeforeAndAfterCompile() throws IOException
     {
         long currentTimeMillis = System.currentTimeMillis();
         SassCacheManager cacheManager = new SassCacheManager();
@@ -131,7 +131,7 @@ public class SassCacheManagerTest {
     }
 
     @Test
-    public void clearCacheCreatesNewUrlSource()
+    void clearCacheCreatesNewUrlSource()
     {
         SassCacheManager cacheManager = new SassCacheManager();
 
@@ -141,7 +141,6 @@ public class SassCacheManagerTest {
         cacheManager.clearCache();
         SassSource urlSourceAfter = cacheManager.getSassContext(resourceUrl, scopeClass);
 
-        assertTrue("We should get different instances of URLSource",
-                urlSourceBefore != urlSourceAfter);
+        assertNotSame("We should get different instances of URLSource", urlSourceBefore, urlSourceAfter);
     }
 }

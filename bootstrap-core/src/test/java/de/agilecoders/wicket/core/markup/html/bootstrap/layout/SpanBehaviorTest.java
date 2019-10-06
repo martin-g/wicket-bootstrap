@@ -8,7 +8,6 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.layout.col.LargeScreenSp
 import de.agilecoders.wicket.core.markup.html.bootstrap.layout.offset.ExtraSmallOffsetType;
 import de.agilecoders.wicket.core.markup.html.bootstrap.layout.order.LargeOrderType;
 import de.agilecoders.wicket.core.markup.html.bootstrap.layout.order.MediumOrderType;
-import de.agilecoders.wicket.core.markup.html.bootstrap.layout.order.OrderType;
 
 import org.apache.wicket.util.tester.TagTester;
 import org.junit.jupiter.api.Test;
@@ -18,10 +17,10 @@ import org.junit.jupiter.api.Test;
  *
  * @author miha
  */
-public class SpanBehaviorTest extends WicketApplicationTest {
+class SpanBehaviorTest extends WicketApplicationTest {
 
     @Test
-    public void defaultSpanWidthIs12() {
+    void defaultSpanWidthIs12() {
         startBehaviorInPage(new SpanBehavior());
 
         TagTester tagTester = tester().getTagByWicketId(id());
@@ -30,7 +29,7 @@ public class SpanBehaviorTest extends WicketApplicationTest {
     }
 
     @Test
-    public void offset0DoesntNeedAClassName() {
+    void offset0DoesntNeedAClassName() {
         startBehaviorInPage(new SpanBehavior(LargeScreenSpanType.SPAN1, ExtraSmallOffsetType.OFFSET0));
 
         TagTester tagTester = tester().getTagByWicketId(id());
@@ -38,7 +37,7 @@ public class SpanBehaviorTest extends WicketApplicationTest {
     }
 
     @Test
-    public void spanWidthCanBeChanged() {
+    void spanWidthCanBeChanged() {
         for (int i = 1; i <= 12; i++) {
             startBehaviorInPage(new SpanBehavior(LargeScreenSpanType.valueOf("SPAN" + i)));
 
@@ -48,7 +47,7 @@ public class SpanBehaviorTest extends WicketApplicationTest {
     }
 
     @Test
-    public void offsetCanBeChanged() {
+    void offsetCanBeChanged() {
         for (int i = 1; i <= 12; i++) {
             startBehaviorInPage(new SpanBehavior(LargeScreenSpanType.SPAN1, ExtraSmallOffsetType.valueOf("OFFSET" + i)));
 
@@ -58,7 +57,7 @@ public class SpanBehaviorTest extends WicketApplicationTest {
     }
 
     @Test
-    public void order0DoesntNeedAClassName() {
+    void order0DoesntNeedAClassName() {
         startBehaviorInPage(new SpanBehavior(LargeScreenSpanType.SPAN1, MediumOrderType.ORDER0));
 
         TagTester tagTester = tester().getTagByWicketId(id());
@@ -66,7 +65,7 @@ public class SpanBehaviorTest extends WicketApplicationTest {
     }
 
     @Test
-    public void orderCanBeChanged() {
+    void orderCanBeChanged() {
         List<LargeOrderType> orderTypes = Arrays.asList(
                 LargeOrderType.ORDER1, LargeOrderType.ORDER2, LargeOrderType.ORDER3,
                 LargeOrderType.ORDER4, LargeOrderType.ORDER5, LargeOrderType.ORDER6,
