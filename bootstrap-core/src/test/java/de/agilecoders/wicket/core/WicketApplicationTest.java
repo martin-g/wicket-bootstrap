@@ -87,7 +87,8 @@ public class WicketApplicationTest extends Assertions {
         return Page.class;
     }
 
-    private IBootstrapSettings createBootstrapSettings() {
+    @SuppressWarnings("WeakerAccess")
+    protected IBootstrapSettings createBootstrapSettings() {
         return new BootstrapSettings();
     }
 
