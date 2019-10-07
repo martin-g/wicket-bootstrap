@@ -14,12 +14,12 @@ import com.google.common.collect.Lists;
 import de.agilecoders.wicket.core.WicketApplicationTest;
 import org.junit.jupiter.api.Test;
 
-public class ClientSideBootstrapTabbedPanelTest extends WicketApplicationTest {
+class ClientSideBootstrapTabbedPanelTest extends WicketApplicationTest {
 
     private static final String MARKUP = "<div wicket:id=\"id\"></div>";
 
     @Test
-    public void testClientSideMarkupIsCreated_DefaultTabSelected() {
+    void testClientSideMarkupIsCreated_DefaultTabSelected() {
         TagTester root = startComponentInPage(newClientSideTabs("id", null), MARKUP);
         assertTrue(root.hasChildTag("ul"));
         assertTrue(root.hasChildTag("div"));
@@ -41,7 +41,7 @@ public class ClientSideBootstrapTabbedPanelTest extends WicketApplicationTest {
     }
 
     @Test
-    public void testClientSideMarkupIsCreated_FirstTabSelected() {
+    void testClientSideMarkupIsCreated_FirstTabSelected() {
         TagTester root = startComponentInPage(newClientSideTabs("id",  Model.of(0)), MARKUP);
         assertTrue(root.hasChildTag("ul"));
         assertTrue(root.hasChildTag("div"));
@@ -63,7 +63,7 @@ public class ClientSideBootstrapTabbedPanelTest extends WicketApplicationTest {
     }
 
     @Test
-    public void testClientSideMarkupIsCreated_SecondTabSelected() {
+    void testClientSideMarkupIsCreated_SecondTabSelected() {
         TagTester root = startComponentInPage(newClientSideTabs("id", Model.of(1)), MARKUP);
         assertTrue(root.hasChildTag("ul"));
         assertTrue(root.hasChildTag("div"));
@@ -85,7 +85,7 @@ public class ClientSideBootstrapTabbedPanelTest extends WicketApplicationTest {
     }
 
     @Test
-    public void testClientSideMarkupIsCreated_ThirdTabSelected() {
+    void testClientSideMarkupIsCreated_ThirdTabSelected() {
         TagTester root = startComponentInPage(newClientSideTabs("id", Model.of(2)), MARKUP);
         assertTrue(root.hasChildTag("ul"));
         assertTrue(root.hasChildTag("div"));
@@ -123,7 +123,7 @@ public class ClientSideBootstrapTabbedPanelTest extends WicketApplicationTest {
                 createTab("Section 1"), createTab("Section 2"), createTab("Section 3")
         ), activeTab);
     }
-    
+
     private AbstractTab createTab(final String title) {
         return new AbstractTab(Model.of(title)) {
             @Override

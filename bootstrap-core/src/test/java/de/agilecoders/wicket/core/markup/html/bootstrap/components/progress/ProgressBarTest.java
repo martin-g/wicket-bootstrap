@@ -10,10 +10,10 @@ import org.junit.jupiter.api.Test;
 /**
  * Tests for ProgressBar
  */
-public class ProgressBarTest extends WicketApplicationTest {
+class ProgressBarTest extends WicketApplicationTest {
 
     @Test
-    public void progressBarWithoutModelHasNoDefaultStack() {
+    void progressBarWithoutModelHasNoDefaultStack() {
         ProgressBar progressBar = new ProgressBar(id());
 
         RepeatingView stacks = (RepeatingView) progressBar.get("stacks");
@@ -22,7 +22,7 @@ public class ProgressBarTest extends WicketApplicationTest {
     }
 
     @Test
-    public void progressBarWithModelHasADefaultStack() {
+    void progressBarWithModelHasADefaultStack() {
         ProgressBar progressBar = new ProgressBar(id(), Model.of(23));
 
         RepeatingView stacks = (RepeatingView) progressBar.get("stacks");
@@ -31,7 +31,7 @@ public class ProgressBarTest extends WicketApplicationTest {
     }
 
     @Test
-    public void animatedBarIsAlwaysStripped() {
+    void animatedBarIsAlwaysStripped() {
         ProgressBar progressBar = new ProgressBar(id());
         progressBar.active(true);
 
@@ -39,7 +39,7 @@ public class ProgressBarTest extends WicketApplicationTest {
     }
 
     @Test
-    public void progressBarWithDefaultStackMarkup() {
+    void progressBarWithDefaultStackMarkup() {
         tester().getApplication().getMarkupSettings().setStripWicketTags(true);
         String markupId = "progressBar";
         int progress = 23;

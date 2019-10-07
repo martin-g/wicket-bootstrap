@@ -47,7 +47,7 @@ public class CssClassNameRemoverTest extends WicketApplicationTest {
      * Tests removing a value for a list
      */
     @Test
-    public void removeCssClasses() {
+    void removeCssClasses() {
         // add 3 classes
         component.add(new CssClassNameAppender("classX classY classZ"));
 
@@ -65,7 +65,7 @@ public class CssClassNameRemoverTest extends WicketApplicationTest {
      * Tests removing a value for tag that has no 'class' attribute at all.
      */
     @Test
-    public void removeNonExistingCssClasses() {
+    void removeNonExistingCssClasses() {
         // the component has no CSS classes
 
         // try to remove a class

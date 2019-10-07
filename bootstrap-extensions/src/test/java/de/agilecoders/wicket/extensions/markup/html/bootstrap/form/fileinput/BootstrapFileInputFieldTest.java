@@ -9,13 +9,13 @@ import org.junit.jupiter.api.Test;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class BootstrapFileInputFieldTest extends WicketApplicationTest {
+class BootstrapFileInputFieldTest extends WicketApplicationTest {
 
     /**
      * A test case for https://github.com/l0rdn1kk0n/wicket-bootstrap/pull/406
      */
     @Test
-    public void showUploadAjaxFormSubmitBehavior() {
+    void showUploadAjaxFormSubmitBehavior() {
         Form form = new Form("form");
         BootstrapFileInputField inputField = new BootstrapFileInputField("field");
         inputField.getConfig().showUpload(false);

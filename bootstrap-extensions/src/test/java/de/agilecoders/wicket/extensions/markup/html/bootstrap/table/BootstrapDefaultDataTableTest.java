@@ -26,6 +26,7 @@ import de.agilecoders.wicket.extensions.markup.html.bootstrap.table.toolbars.Boo
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.table.toolbars.BootstrapNavigationToolbar;
 import org.junit.jupiter.api.Test;
 
+@SuppressWarnings({"SameParameterValue", "SpellCheckingInspection"})
 public class BootstrapDefaultDataTableTest extends WicketApplicationTest {
 
     private static final String MARKUP = "<html><head></head><body><table class='dataview' wicket:id='table'/></body></html>";
@@ -41,7 +42,7 @@ public class BootstrapDefaultDataTableTest extends WicketApplicationTest {
     }
 
     @Test
-    public void canStartComponentInPage() {
+    void canStartComponentInPage() {
         startComponentWithRowsPerPage(10);
         tester().assertComponent("table", BootstrapDefaultDataTable.class);
         tester().assertComponent("table:caption", Label.class);
@@ -53,7 +54,7 @@ public class BootstrapDefaultDataTableTest extends WicketApplicationTest {
     }
 
     @Test
-    public void canShowModelValues() {
+    void canShowModelValues() {
         startComponentWithRowsPerPage(10);
         assertTableBody("table:body");
     }
@@ -82,13 +83,13 @@ public class BootstrapDefaultDataTableTest extends WicketApplicationTest {
     }
 
     @Test
-    public void hasInvisibleBottomToolbar() {
+    void hasInvisibleBottomToolbar() {
         startComponentWithRowsPerPage(10);
         tester().assertInvisible("table:bottomToolbars");
     }
 
     @Test
-    public void hasVisibleHeaderTopToolbar() {
+    void hasVisibleHeaderTopToolbar() {
         startComponentWithRowsPerPage(10);
         tester().assertComponent("table:topToolbars", WebMarkupContainer.class);
         tester().debugComponentTrees();
@@ -108,7 +109,7 @@ public class BootstrapDefaultDataTableTest extends WicketApplicationTest {
     }
 
     @Test
-    public void assertInvisibleNavigationToolbars_withFewerRowsThanRowsPerPage() {
+    void assertInvisibleNavigationToolbars_withFewerRowsThanRowsPerPage() {
         int rowsPerPage = 10;
         assertTrue(provider.size() <= rowsPerPage);
 
@@ -132,7 +133,7 @@ public class BootstrapDefaultDataTableTest extends WicketApplicationTest {
     }
 
     @Test
-    public void assertVisibleNavigationToolbars_withMoreRowsThanRowsPerPage() {
+    void assertVisibleNavigationToolbars_withMoreRowsThanRowsPerPage() {
         int rowsPerPage = 2;
         assertTrue(provider.size() > rowsPerPage);
         startComponentWithRowsPerPage(rowsPerPage);
@@ -156,14 +157,14 @@ public class BootstrapDefaultDataTableTest extends WicketApplicationTest {
     }
 
     @Test
-    public void basic() {
+    void basic() {
         table = new BootstrapDefaultDataTable<>("table", columns, provider, 10);
         tester().startComponentInPage(table, Markup.of(MARKUP));
         assertEquals("dataview table", tester().getTagByWicketId("table").getAttribute("class"));
     }
 
     @Test
-    public void striped() {
+    void striped() {
         table = new BootstrapDefaultDataTable<>("table", columns, provider, 10);
         table.striped();
         tester().startComponentInPage(table, Markup.of(MARKUP));
@@ -171,7 +172,7 @@ public class BootstrapDefaultDataTableTest extends WicketApplicationTest {
     }
 
     @Test
-    public void bordered() {
+    void bordered() {
         table = new BootstrapDefaultDataTable<>("table", columns, provider, 10);
         table.bordered();
         tester().startComponentInPage(table, Markup.of(MARKUP));
@@ -179,7 +180,7 @@ public class BootstrapDefaultDataTableTest extends WicketApplicationTest {
     }
 
     @Test
-    public void condensed() {
+    void condensed() {
         table = new BootstrapDefaultDataTable<>("table", columns, provider, 10);
         table.condensed();
         tester().startComponentInPage(table, Markup.of(MARKUP));
@@ -187,7 +188,7 @@ public class BootstrapDefaultDataTableTest extends WicketApplicationTest {
     }
 
     @Test
-    public void hover() {
+    void hover() {
         table = new BootstrapDefaultDataTable<>("table", columns, provider, 10);
         table.hover();
         tester().startComponentInPage(table, Markup.of(MARKUP));

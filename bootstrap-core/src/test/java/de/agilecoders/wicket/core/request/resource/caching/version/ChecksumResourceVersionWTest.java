@@ -13,10 +13,10 @@ import static org.hamcrest.MatcherAssert.assertThat;
  *
  * @author miha
  */
-public class ChecksumResourceVersionWTest extends WicketApplicationTest {
+class ChecksumResourceVersionWTest extends WicketApplicationTest {
 
     @Test
-    public void bufferSizeIsEditable() {
+    void bufferSizeIsEditable() {
         ChecksumResourceVersion version = new Adler32ResourceVersion() {
             @Override
             protected int bufferSize() {
@@ -28,14 +28,14 @@ public class ChecksumResourceVersionWTest extends WicketApplicationTest {
     }
 
     @Test
-    public void defaultMarkupEncodingIsUsed() {
+    void defaultMarkupEncodingIsUsed() {
         application().getMarkupSettings().setDefaultMarkupEncoding(Charsets.UTF_16.name());
 
         assertThat(new Adler32ResourceVersion().charset(), is(equalTo(Charsets.UTF_16)));
     }
 
     @Test
-    public void fallbackIsUsedIfThereIsNoDefaultMarkupEncoding() {
+    void fallbackIsUsedIfThereIsNoDefaultMarkupEncoding() {
         application().getMarkupSettings().setDefaultMarkupEncoding(null);
 
         assertThat(new Adler32ResourceVersion().charset(), is(equalTo(Charsets.UTF_8)));

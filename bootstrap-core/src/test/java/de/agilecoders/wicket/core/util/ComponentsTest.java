@@ -24,77 +24,77 @@ import static org.mockito.Mockito.when;
  *
  * @author miha
  */
-public class ComponentsTest extends WicketApplicationTest {
+class ComponentsTest extends WicketApplicationTest {
 
     @Test
-    public void hasTagNameReturnsFalseIfNullValueIsGiven() {
+    void hasTagNameReturnsFalseIfNullValueIsGiven() {
         final ComponentTag tag = new ComponentTag("div", XmlTag.TagType.OPEN_CLOSE);
 
         assertThat(Components.hasTagName(tag, (String) null), is(equalTo(false)));
     }
 
     @Test
-    public void hasTagNameThrowsExceptionIfNullTagIsGiven() {
+    void hasTagNameThrowsExceptionIfNullTagIsGiven() {
         assertThrows(IllegalArgumentException.class, () -> Components.hasTagName(null, "div"));
     }
 
     @Test
-    public void hasTagNameReturnsTrueIfIsInListOfTagNames() {
+    void hasTagNameReturnsTrueIfIsInListOfTagNames() {
         final ComponentTag tag = new ComponentTag("div", XmlTag.TagType.OPEN_CLOSE);
 
         assertThat(Components.hasTagName(tag, "div", "li", "hr"), is(equalTo(true)));
     }
 
     @Test
-    public void hasTagNameReturnsTrueIfIsSameTagName() {
+    void hasTagNameReturnsTrueIfIsSameTagName() {
         final ComponentTag tag = new ComponentTag("div", XmlTag.TagType.OPEN_CLOSE);
 
         assertThat(Components.hasTagName(tag, "div"), is(equalTo(true)));
     }
 
     @Test
-    public void hasTagNameReturnsFalseIfIsNotInListOfTagNames() {
+    void hasTagNameReturnsFalseIfIsNotInListOfTagNames() {
         final ComponentTag tag = new ComponentTag("a", XmlTag.TagType.OPEN_CLOSE);
 
         assertThat(Components.hasTagName(tag, "div", "li", "hr"), is(equalTo(false)));
     }
 
     @Test
-    public void hasTagNameReturnsFalseIfIsNotSameTagName() {
+    void hasTagNameReturnsFalseIfIsNotSameTagName() {
         final ComponentTag tag = new ComponentTag("a", XmlTag.TagType.OPEN_CLOSE);
 
         assertThat(Components.hasTagName(tag, "div"), is(equalTo(false)));
     }
 
     @Test
-    public void showMakesNothingWithNullValue() {
+    void showMakesNothingWithNullValue() {
         Components.show((Component[]) null);
     }
 
     @Test
-    public void assertTagDoesNothingIfTagIsOk() {
+    void assertTagDoesNothingIfTagIsOk() {
         Components.assertTag(createComponentMock(), new ComponentTag("a", XmlTag.TagType.OPEN_CLOSE), "a");
     }
 
     @Test
-    public void assertTagDoesNothingIfTagIsOkWithSet() {
+    void assertTagDoesNothingIfTagIsOkWithSet() {
         Components.assertTag(createComponentMock(), new ComponentTag("a", XmlTag.TagType.OPEN_CLOSE), Generics2.newHashSet("a", "li"));
     }
 
     @Test
-    public void assertTagDoesThrowExceptionIfTagIsNotOkWithSet() {
+    void assertTagDoesThrowExceptionIfTagIsNotOkWithSet() {
         assertThrows(MarkupException.class, () ->
             Components.assertTag(createComponentMock(), new ComponentTag("div", XmlTag.TagType.OPEN_CLOSE), Generics2.newHashSet("a", "li")));
     }
 
     @Test
-    public void assertTagDoesThrowExceptionIfTagIsNotOk() {
+    void assertTagDoesThrowExceptionIfTagIsNotOk() {
         assertThrows(MarkupException.class, () ->
             Components.assertTag(createComponentMock(), new ComponentTag("div", XmlTag.TagType.OPEN_CLOSE), "a", "li"));
     }
 
     @Test
-    public void removeCssClassName() throws Exception {
+    void removeCssClassName() {
         final ComponentTag tag = new ComponentTag("div", XmlTag.TagType.OPEN_CLOSE);
         tag.put("class", "class-a class-b class-c");
 
@@ -104,7 +104,7 @@ public class ComponentsTest extends WicketApplicationTest {
     }
 
     @Test
-    public void removeCssClassNameWithEmptyClassAttribute() throws Exception {
+    void removeCssClassNameWithEmptyClassAttribute() {
         final ComponentTag tag = new ComponentTag("div", XmlTag.TagType.OPEN_CLOSE);
         tag.put("class", "");
         Attributes.removeClass(tag, "class-a", "class-c");

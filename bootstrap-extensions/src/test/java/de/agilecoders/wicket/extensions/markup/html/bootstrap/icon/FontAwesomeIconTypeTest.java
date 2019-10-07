@@ -9,15 +9,15 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 /**
  * Tests for FontAwesomeIconType
  */
-public class FontAwesomeIconTypeTest {
+class FontAwesomeIconTypeTest {
 
     @Test
-    public void cssClassName() {
+    void cssClassName() {
         assertEquals("fa fa-adjust", FontAwesomeIconType.adjust.cssClassName(), "FontAwesome should use 'fa fa-NAME");
     }
 
     @Test
-    public void cssClassNameFixedWidth() {
+    void cssClassNameFixedWidth() {
         FontAwesomeIconType fontAwesomeIcon = on(align_center).fw().build();
         assertEquals("fa fa-align-center fa-fw", fontAwesomeIcon.cssClassName(), "FontAwesome should use 'fa fa-NAME fa-fw");
     }

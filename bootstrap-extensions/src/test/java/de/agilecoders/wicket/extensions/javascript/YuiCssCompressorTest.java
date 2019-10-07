@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
  *
  * @author miha
  */
-public class YuiCssCompressorTest {
+class YuiCssCompressorTest {
 
 //    @Rule
 //    public ContiPerfRule i = new ContiPerfRule();
@@ -24,7 +24,7 @@ public class YuiCssCompressorTest {
     private static YuiCssCompressor compressor;
 
     @BeforeAll
-    public static void before() throws IOException {
+    static void before() throws IOException {
         content = IOUtils.toString(YuiCssCompressorTest.class.getResourceAsStream("test.css"));
         compressor = new YuiCssCompressor();
     }
@@ -33,12 +33,12 @@ public class YuiCssCompressorTest {
 //    @PerfTest(threads = 2, duration = 10000, rampUp = 1000, warmUp = 5000)
 //    @Required(max = 600, average = 500)
     @Disabled
-    public void test1() {
+    void test1() {
         assertNotNull(compressor.compress(content));
     }
 
     @AfterAll
-    public static void after() {
+    static void after() {
         content = "";
         compressor = null;
     }

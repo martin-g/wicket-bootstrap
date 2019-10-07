@@ -13,10 +13,10 @@ import de.agilecoders.wicket.core.test.IntegrationTest;
 import org.junit.jupiter.api.Test;
 
 @IntegrationTest
-public class BootstrapCheckboxTest extends WicketApplicationTest {
+class BootstrapCheckboxTest extends WicketApplicationTest {
 
     @Test
-    public void checkbox() {
+    void checkbox() {
         String labelContent = "Label";
         BootstrapCheckbox checkbox = new BootstrapCheckbox("id", Model.of(Boolean.FALSE), Model.of(labelContent));
 
@@ -33,7 +33,7 @@ public class BootstrapCheckboxTest extends WicketApplicationTest {
     }
 
     @Test
-    public void inlineCheckbox() {
+    void inlineCheckbox() {
         BootstrapCheckbox checkbox = new BootstrapCheckbox("id", Model.of(Boolean.FALSE)).setInline(true);
 
         tester().startComponentInPage(checkbox);

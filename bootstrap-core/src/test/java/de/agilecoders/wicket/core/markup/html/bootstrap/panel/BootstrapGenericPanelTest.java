@@ -8,11 +8,11 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Tests the {@link BootstrapGenericPanel} class
- * 
+ *
  * @author Eric Hamel <eric.hamel@me.com>
  *
  */
-public class BootstrapGenericPanelTest extends WicketApplicationTest{
+class BootstrapGenericPanelTest extends WicketApplicationTest{
 
     @Test
     void tagNameIsAsserted() {
@@ -26,5 +26,5 @@ public class BootstrapGenericPanelTest extends WicketApplicationTest{
         tester().assertNoErrorMessage();
         tester().assertVisible(id());
     }
-	
+
 }

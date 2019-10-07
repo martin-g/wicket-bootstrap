@@ -10,10 +10,10 @@ import static org.hamcrest.MatcherAssert.assertThat;
  *
  * @author miha
  */
-public class ButtonsTest {
+class ButtonsTest {
 
     @Test
-    public void mediumSizeButtonHasntACssClass() {
+    void mediumSizeButtonHasntACssClass() {
         assertThat(Buttons.Size.Medium.cssClassName(), is(""));
     }
 

@@ -8,15 +8,15 @@ import com.github.sommeri.less4j.LessCompiler;
 import org.junit.jupiter.api.Test;
 
 
-public class SimpleLessCompilerConfigurationFactoryTest {
+class SimpleLessCompilerConfigurationFactoryTest {
 
     @Test
-    public void createsASimplePlainLessCompilerConfiguration() {
+    void createsASimplePlainLessCompilerConfiguration() {
         SimpleLessCompilerConfigurationFactory factory = new SimpleLessCompilerConfigurationFactory();
         LessCompiler.Configuration configuration = factory.newConfiguration();
-        
+
         assertThat(configuration, instanceOf(LessCompiler.Configuration.class));
         assertThat(configuration.getCustomFunctions(), empty());
     }
-    
+
 }
