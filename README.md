@@ -69,7 +69,7 @@ core maven dependency:
 <dependency>
     <groupId>de.agilecoders.wicket</groupId>
     <artifactId>wicket-bootstrap-core</artifactId>
-    <version>2.0.7</version>
+    <version>4.0.0-M3</version>
 </dependency>
 ```
 
@@ -79,7 +79,7 @@ for all extensions:
 <dependency>
     <groupId>de.agilecoders.wicket</groupId>
     <artifactId>wicket-bootstrap-extensions</artifactId>
-    <version>2.0.7</version>
+    <version>4.0.0-M3</version>
 </dependency>
 ```
 
@@ -89,7 +89,7 @@ for all themes:
 <dependency>
     <groupId>de.agilecoders.wicket</groupId>
     <artifactId>wicket-bootstrap-themes</artifactId>
-    <version>2.0.7</version>
+    <version>4.0.0-M3</version>
 </dependency>
 ```
 
@@ -99,7 +99,7 @@ if you want to use a less compiler:
 <dependency>
     <groupId>de.agilecoders.wicket</groupId>
     <artifactId>wicket-bootstrap-less</artifactId>
-    <version>2.0.7</version>
+    <version>4.0.0-M3</version>
 </dependency>
 ```
 
@@ -109,7 +109,7 @@ all samples can be used with this dependency:
 <dependency>
     <groupId>de.agilecoders.wicket</groupId>
     <artifactId>wicket-bootstrap-samples</artifactId>
-    <version>2.0.7</version>
+    <version>4.0.0-M3</version>
 </dependency>
 ```
 
