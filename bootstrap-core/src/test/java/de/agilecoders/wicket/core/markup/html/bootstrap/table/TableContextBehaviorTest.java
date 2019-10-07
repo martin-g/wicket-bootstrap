@@ -8,52 +8,52 @@ import org.junit.jupiter.api.Test;
  *
  * @author Eric Hamel <eric.hamel@me.com>
  */
-public class TableContextBehaviorTest extends WicketApplicationTest{
+class TableContextBehaviorTest extends WicketApplicationTest{
 
 	private static final String MARKUP = "<tr wicket:id=\"id\"></tr>";
 
     @Test
-    public void tableContextActiveCssIsRendered() {
+    void tableContextActiveCssIsRendered() {
         assertCssClass(startBehaviorInPage(new TableContextBehavior(), MARKUP), "table-active");
     }
 
     @Test
-    public void tableContextInfoCssIsRendered() {
+    void tableContextInfoCssIsRendered() {
         assertCssClass(startBehaviorInPage(new TableContextBehavior(TableContextType.Info), MARKUP), "table-info");
     }
 
     @Test
-    public void tableContextSuccessCssIsRendered() {
+    void tableContextSuccessCssIsRendered() {
         assertCssClass(startBehaviorInPage(new TableContextBehavior(TableContextType.Success), MARKUP), "table-success");
     }
 
     @Test
-    public void tableContextWarningCssIsRendered() {
+    void tableContextWarningCssIsRendered() {
         assertCssClass(startBehaviorInPage(new TableContextBehavior(TableContextType.Warning), MARKUP), "table-warning");
     }
 
     @Test
-    public void tableContextDangerCssIsRendered() {
+    void tableContextDangerCssIsRendered() {
         assertCssClass(startBehaviorInPage(new TableContextBehavior(TableContextType.Danger), MARKUP), "table-danger");
     }
 
     @Test
-    public void tableContextPrimaryCssIsRendered() {
+    void tableContextPrimaryCssIsRendered() {
         assertCssClass(startBehaviorInPage(new TableContextBehavior(TableContextType.Primary), MARKUP), "table-primary");
     }
 
     @Test
-    public void tableContextSecondaryCssIsRendered() {
+    void tableContextSecondaryCssIsRendered() {
         assertCssClass(startBehaviorInPage(new TableContextBehavior(TableContextType.Secondary), MARKUP), "table-secondary");
     }
 
     @Test
-    public void tableContextDarkCssIsRendered() {
+    void tableContextDarkCssIsRendered() {
         assertCssClass(startBehaviorInPage(new TableContextBehavior(TableContextType.Dark), MARKUP), "table-dark");
     }
 
     @Test
-    public void tableContextLightCssIsRendered() {
+    void tableContextLightCssIsRendered() {
         assertCssClass(startBehaviorInPage(new TableContextBehavior(TableContextType.Light), MARKUP), "table-light");
     }
 }

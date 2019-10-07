@@ -26,10 +26,10 @@ import org.junit.jupiter.api.Test;
  *
  * @author miha
  */
-public class NotificationPanelTest  extends WicketApplicationTest{
+class NotificationPanelTest  extends WicketApplicationTest{
 
     @Test
-    public void infoMessageIsRendered() throws Exception {
+    void infoMessageIsRendered() {
         NotificationPanel panel = new NotificationPanel(id());
         panel.info("test");
 
@@ -39,7 +39,7 @@ public class NotificationPanelTest  extends WicketApplicationTest{
     }
 
     @Test
-    public void errorMessageIsRendered() throws Exception {
+    void errorMessageIsRendered() {
         NotificationPanel panel = new NotificationPanel(id());
         panel.error("test");
 
@@ -48,7 +48,7 @@ public class NotificationPanelTest  extends WicketApplicationTest{
     }
 
     @Test
-    public void notificationMessageIsRendered() {
+    void notificationMessageIsRendered() {
         NotificationPanel panel = new NotificationPanel(id());
         NotificationMessage notificationMessage = new NotificationMessage(Model.of("test"));
         panel.error(notificationMessage);
@@ -58,7 +58,7 @@ public class NotificationPanelTest  extends WicketApplicationTest{
     }
 
     @Test
-    public void notificationMessageHeaderIsRendered() {
+    void notificationMessageHeaderIsRendered() {
         NotificationPanel panel = new NotificationPanel(id());
         panel.error(new NotificationMessage(Model.of("test"), Model.of("header message")));
 
@@ -67,7 +67,7 @@ public class NotificationPanelTest  extends WicketApplicationTest{
     }
 
     @Test
-    public void infoCssIsRendered() {
+    void infoCssIsRendered() {
         NotificationPanel panel = new NotificationPanel(id());
         panel.info(new NotificationMessage(Model.of("test")));
 
@@ -78,7 +78,7 @@ public class NotificationPanelTest  extends WicketApplicationTest{
     }
 
     @Test
-    public void errorCssIsRendered() {
+    void errorCssIsRendered() {
         NotificationPanel panel = new NotificationPanel(id());
         panel.error(new NotificationMessage(Model.of("test")));
 
@@ -89,7 +89,7 @@ public class NotificationPanelTest  extends WicketApplicationTest{
     }
 
     @Test
-    public void closeButtonIsPresent() {
+    void closeButtonIsPresent() {
         NotificationPanel panel = new NotificationPanel(id());
         panel.error(new NotificationMessage(Model.of("test")));
 
@@ -101,7 +101,7 @@ public class NotificationPanelTest  extends WicketApplicationTest{
     }
 
     @Test
-    public void fencing()
+    void fencing()
     {
         TestPage page = tester().startPage(TestPage.class);
         page.containerInput.error("error");
@@ -145,7 +145,7 @@ public class NotificationPanelTest  extends WicketApplicationTest{
     }
 
     @Test
-    public void filtering()
+    void filtering()
     {
         TestPage page = tester().startPage(TestPage.class);
 
@@ -190,7 +190,7 @@ public class NotificationPanelTest  extends WicketApplicationTest{
     }
 
     @Test
-    public void moving()
+    void moving()
     {
         TestPage page = tester().startPage(TestPage.class);
         page.containerInput.error("error");

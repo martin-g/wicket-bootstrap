@@ -23,7 +23,7 @@ public class NavbarAjaxLinkTest extends WicketApplicationTest {
     }
 
     @Test
-    public void splitterIsVisibleIfIconIs() {
+    void splitterIsVisibleIfIconIs() {
         startComponentInPage(new NavbarAjaxLink<String>(id(), Model.of("label")) {
             @Override
             public void onClick(AjaxRequestTarget ajaxRequestTarget) {
@@ -40,7 +40,7 @@ public class NavbarAjaxLinkTest extends WicketApplicationTest {
     }
 
     @Test
-    public void splitterIsHiddenIfIconIs() {
+    void splitterIsHiddenIfIconIs() {
         startComponentInPage(new NavbarAjaxLink<String>(id(), Model.of("label")) {
             @Override
             public void onClick(AjaxRequestTarget ajaxRequestTarget) {

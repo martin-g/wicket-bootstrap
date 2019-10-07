@@ -12,25 +12,25 @@ import static org.hamcrest.Matchers.is;
  *
  * @author miha
  */
-public class ModelsTest {
+class ModelsTest {
 
     @Test
-    public void isNullOrEmptyReturnsTrueForEmptyModel() {
+    void isNullOrEmptyReturnsTrueForEmptyModel() {
         assertThat(Models.isNullOrEmpty(Model.of("")), is(equalTo(true)));
     }
 
     @Test
-    public void isNullOrEmptyReturnsTrueForNullValueModel() {
+    void isNullOrEmptyReturnsTrueForNullValueModel() {
         assertThat(Models.isNullOrEmpty(Model.of((String)null)), is(equalTo(true)));
     }
 
     @Test
-    public void isNullOrEmptyReturnsTrueForNullModel() {
+    void isNullOrEmptyReturnsTrueForNullModel() {
         assertThat(Models.isNullOrEmpty(null), is(equalTo(true)));
     }
 
     @Test
-    public void isNullOrEmptyReturnsFalseForFilledModel() {
+    void isNullOrEmptyReturnsFalseForFilledModel() {
         assertThat(Models.isNullOrEmpty(Model.of("value")), is(equalTo(false)));
     }
 

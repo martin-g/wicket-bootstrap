@@ -17,11 +17,11 @@ import static org.hamcrest.MatcherAssert.assertThat;
  *
  * @author miha
  */
-public class BootstrapListViewTest extends WicketApplicationTest {
+class BootstrapListViewTest extends WicketApplicationTest {
     private static final String MARKUP = "<ol wicket:id=\"id\"><li wicket:id=\"sub\"></li></ol>";
 
     @Test
-    public void listViewIsRendered() {
+    void listViewIsRendered() {
         TagTester tag = startComponentInPage(new BootstrapListView<String>(id(), Lists.newArrayList("item1")) {
             @Override
             protected void populateItem(ListItem<String> components) {
@@ -34,7 +34,7 @@ public class BootstrapListViewTest extends WicketApplicationTest {
     }
 
     @Test
-    public void listViewWithModelIsRendered() {
+    void listViewWithModelIsRendered() {
         TagTester tag = startComponentInPage(new BootstrapListView<String>(id(), Model.ofList(Lists.newArrayList("item1"))) {
             @Override
             protected void populateItem(ListItem<String> components) {

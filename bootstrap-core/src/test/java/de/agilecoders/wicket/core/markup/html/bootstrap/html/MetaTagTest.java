@@ -16,38 +16,38 @@ import org.junit.jupiter.api.Test;
  *
  * @author miha
  */
-public class MetaTagTest extends WicketApplicationTest {
+class MetaTagTest extends WicketApplicationTest {
     static final String MARKUP = "<meta wicket:id=\"id\"/>";
 
     @Test
-    public void tagNameIsAsserted() throws Exception {
+    void tagNameIsAsserted() {
         assertThrows(WicketRuntimeException.class, () ->
             startComponentInPage(new MetaTag(id(), Model.of("name"), Model.of(""))));
     }
 
     @Test
-    public void nameIsRendered() throws Exception {
+    void nameIsRendered() {
         TagTester tag = startComponentInPage(new MetaTag(id(), Model.of("name-of-meta-tag"), Model.of("")), MARKUP);
 
         assertThat(tag.getAttribute("name"), is(equalTo("name-of-meta-tag")));
     }
 
     @Test
-    public void contentIsRendered() throws Exception {
+    void contentIsRendered() {
         TagTester tag = startComponentInPage(new MetaTag(id(), "name-of-meta-tag", "content-of-meta-tag"), MARKUP);
 
         assertThat(tag.getAttribute("content"), is(equalTo("content-of-meta-tag")));
     }
 
     @Test
-    public void httpEquivNamesAreUsed() throws Exception {
+    void httpEquivNamesAreUsed() {
         TagTester tag = startComponentInPage(new MetaTag(id(), "content-type", "text/html"), MARKUP);
 
         assertThat(tag.getAttribute("http-equiv"), is(equalTo("content-type")));
     }
 
     @Test
-    public void typeSetterWillBeUsed() throws Exception {
+    void typeSetterWillBeUsed() {
         TagTester tag = startComponentInPage(new MetaTag(id(), "name-of-meta-tag", "text/html").type(MetaTag.Type.HttpEquiv), MARKUP);
 
         assertThat(tag.getAttribute("http-equiv"), is(equalTo("name-of-meta-tag")));
@@ -57,7 +57,7 @@ public class MetaTagTest extends WicketApplicationTest {
      * https://github.com/l0rdn1kk0n/wicket-bootstrap/issues/478
      */
     @Test
-    public void openGraphProperty() {
+    void openGraphProperty() {
         String nameValue = "og:title";
         String content = "The Rock";
         TagTester tag = startComponentInPage(new MetaTag(id(), Model.of(nameValue), Model.of(content)).type(MetaTag.Type.Property), MARKUP);
@@ -68,7 +68,7 @@ public class MetaTagTest extends WicketApplicationTest {
     }
 
     @Test
-    public void propertyOgNamesAreUsed() throws Exception {
+    void propertyOgNamesAreUsed() {
         String ogTitle = "og:title";
         String value = "value";
         TagTester tag = startComponentInPage(new MetaTag(id(), ogTitle, value), MARKUP);
@@ -78,7 +78,7 @@ public class MetaTagTest extends WicketApplicationTest {
     }
 
     @Test
-    public void propertyMusicNamesAreUsed() throws Exception {
+    void propertyMusicNamesAreUsed() {
         String property = "music:song";
         String value = "value";
         TagTester tag = startComponentInPage(new MetaTag(id(), property, value), MARKUP);
@@ -88,7 +88,7 @@ public class MetaTagTest extends WicketApplicationTest {
     }
 
     @Test
-    public void propertyVideoNamesAreUsed() throws Exception {
+    void propertyVideoNamesAreUsed() {
         String ogTitle = "video:actor";
         String value = "value";
         TagTester tag = startComponentInPage(new MetaTag(id(), ogTitle, value), MARKUP);
@@ -98,7 +98,7 @@ public class MetaTagTest extends WicketApplicationTest {
     }
 
     @Test
-    public void propertyArticleNamesAreUsed() throws Exception {
+    void propertyArticleNamesAreUsed() {
         String ogTitle = "article:author";
         String value = "value";
         TagTester tag = startComponentInPage(new MetaTag(id(), ogTitle, value), MARKUP);
@@ -108,7 +108,7 @@ public class MetaTagTest extends WicketApplicationTest {
     }
 
     @Test
-    public void propertyBookNamesAreUsed() throws Exception {
+    void propertyBookNamesAreUsed() {
         String ogTitle = "book:author";
         String value = "value";
         TagTester tag = startComponentInPage(new MetaTag(id(), ogTitle, value), MARKUP);
@@ -118,7 +118,7 @@ public class MetaTagTest extends WicketApplicationTest {
     }
 
     @Test
-    public void propertyProfileNamesAreUsed() throws Exception {
+    void propertyProfileNamesAreUsed() {
         String ogTitle = "profile:first_name";
         String value = "value";
         TagTester tag = startComponentInPage(new MetaTag(id(), ogTitle, value), MARKUP);

@@ -12,19 +12,19 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Locale;
 
-public class HtmlTagTest extends WicketApplicationTest {
+class HtmlTagTest extends WicketApplicationTest {
 
     private final ComponentTag tag = new ComponentTag("html", XmlTag.TagType.OPEN);
 
     @Test
-    public void onComponentTagDefaultLocale() throws Exception {
+    void onComponentTagDefaultLocale() {
         HtmlTag htmlTag = new HtmlTag("id");
         htmlTag.onComponentTag(tag);
         assertThat(tag.getAttribute("lang"), is(equalTo("en")));
     }
 
     @Test
-    public void onComponentTagEnUsLocale() throws Exception {
+    void onComponentTagEnUsLocale() {
         HtmlTag htmlTag = new HtmlTag("id", Locale.US);
         htmlTag.onComponentTag(tag);
         assertThat(tag.getAttribute("lang"), is(equalTo("en-US")));

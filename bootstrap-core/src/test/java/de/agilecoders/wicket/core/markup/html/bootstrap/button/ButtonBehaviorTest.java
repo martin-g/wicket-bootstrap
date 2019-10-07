@@ -6,16 +6,13 @@ import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.util.tester.TagTester;
 import org.junit.jupiter.api.Test;
 
-import static org.hamcrest.Matchers.empty;
-import static org.hamcrest.Matchers.is;
-
 /**
  * Tests for ButtonBehavior
  */
-public class ButtonBehaviorTest extends WicketApplicationTest {
+class ButtonBehaviorTest extends WicketApplicationTest {
 
     @Test
-    public void fixDisabledButtonMarkup() {
+    void fixDisabledButtonMarkup() {
         AbstractLink link = newLink(id());
         link.setEnabled(false);
         link.add(new ButtonBehavior());
@@ -27,7 +24,7 @@ public class ButtonBehaviorTest extends WicketApplicationTest {
     }
 
     @Test
-    public void testRenderButtonTypeClass() {
+    void testRenderButtonTypeClass() {
         for (Buttons.Type type : Buttons.Type.values()) {
             AbstractLink link = newLink(id());
             link.add(new ButtonBehavior(type));
@@ -43,7 +40,7 @@ public class ButtonBehaviorTest extends WicketApplicationTest {
     }
 
     private AbstractLink newLink(String id) {
-        return new Link(id) {
+        return new Link<Void>(id) {
             @Override
             public void onClick() {
             }

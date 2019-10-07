@@ -23,10 +23,10 @@ import java.util.jar.JarFile;
  * <p/>
  * Based on https://gist.github.com/1977817, contributed by Andreas Pieber
  */
-public class OsgiClashingPackagesTest extends Assertions {
+class OsgiClashingPackagesTest extends Assertions {
 
     @Test
-    public void collectProjectPackages() throws IOException {
+    void collectProjectPackages() throws IOException {
         char pathSeparator = System.getProperty("path.separator").charAt(0);
         String classpath = System.getProperty("java.class.path");
         String[] dependencies = Strings.split(classpath, pathSeparator);
@@ -82,7 +82,7 @@ public class OsgiClashingPackagesTest extends Assertions {
         // the name of the dependency
         private final String name;
 
-        public Project(String name, JarFile jarFile) {
+        Project(String name, JarFile jarFile) {
             this.name = name;
             collectPackageNames(jarFile);
         }
@@ -92,10 +92,10 @@ public class OsgiClashingPackagesTest extends Assertions {
          *
          * @param projectBuckets the global map
          */
-        public void addTo(Map<String, List<Project>> projectBuckets) {
+        void addTo(Map<String, List<Project>> projectBuckets) {
             for (String packageWithContent : packagesWithContent) {
                 if (!projectBuckets.containsKey(packageWithContent)) {
-                    projectBuckets.put(packageWithContent, new ArrayList<OsgiClashingPackagesTest.Project>());
+                    projectBuckets.put(packageWithContent, new ArrayList<>());
                 }
                 projectBuckets.get(packageWithContent).add(this);
             }
@@ -118,7 +118,7 @@ public class OsgiClashingPackagesTest extends Assertions {
             }
         }
 
-        public String getName() {
+        String getName() {
             return name;
         }
 

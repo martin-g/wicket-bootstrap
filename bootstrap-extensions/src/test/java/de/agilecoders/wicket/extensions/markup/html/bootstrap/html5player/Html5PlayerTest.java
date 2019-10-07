@@ -17,11 +17,11 @@ import static org.hamcrest.MatcherAssert.assertThat;
  *
  * @author miha
  */
-public class Html5PlayerTest extends WicketApplicationTest {
+class Html5PlayerTest extends WicketApplicationTest {
 
     @Test
-    public void componentIsRendered() {
-        List<Html5Player.IVideo> videoList = Lists.<Html5Player.IVideo>newArrayList(
+    void componentIsRendered() {
+        List<Html5Player.IVideo> videoList = Lists.newArrayList(
                 new Video("url", "type")
         );
         Html5Player player = new Html5Player("video", Model.ofList(videoList));

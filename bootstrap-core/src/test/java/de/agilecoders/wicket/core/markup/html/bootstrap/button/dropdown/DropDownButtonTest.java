@@ -10,15 +10,15 @@ import org.apache.wicket.model.Model;
 import org.apache.wicket.util.tester.TagTester;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
  * User: bcousin
  */
-public class DropDownButtonTest extends WicketApplicationTest {
+class DropDownButtonTest extends WicketApplicationTest {
     @Test
-    public void normalAlignmentDropDownButton() {
+    void normalAlignmentDropDownButton() {
         tester().startComponentInPage(newDropDownButton());
         final TagTester tag = tester().getTagByWicketId("dropdown-menu");
 
@@ -26,7 +26,7 @@ public class DropDownButtonTest extends WicketApplicationTest {
     }
 
     @Test
-    public void rightAlignmentDropDownButton() {
+    void rightAlignmentDropDownButton() {
         tester().startComponentInPage(newDropDownButton().setAlignment(DropDownAlignmentBehavior.Alignment.RIGHT));
         final TagTester tag = tester().getTagByWicketId("dropdown-menu");
 
@@ -34,7 +34,7 @@ public class DropDownButtonTest extends WicketApplicationTest {
     }
 
     @Test
-    public void leftAlignmentDropDownButton() {
+    void leftAlignmentDropDownButton() {
         tester().startComponentInPage(newDropDownButton().setAlignment(DropDownAlignmentBehavior.Alignment.NONE));
         final TagTester tag = tester().getTagByWicketId("dropdown-menu");
 
@@ -42,7 +42,7 @@ public class DropDownButtonTest extends WicketApplicationTest {
     }
 
     @Test
-    public void rightAlignmentSplitButton() {
+    void rightAlignmentSplitButton() {
         tester().startComponentInPage(newSplitButton().setAlignment(DropDownAlignmentBehavior.Alignment.RIGHT));
         final TagTester tag = tester().getTagByWicketId("dropdown-menu");
 
@@ -59,7 +59,7 @@ public class DropDownButtonTest extends WicketApplicationTest {
 
             @Override
             protected List<AbstractLink> newSubMenuButtons(final String buttonMarkupId) {
-                return Arrays.asList(getDummyLink(buttonMarkupId));
+                return Collections.singletonList(getDummyLink(buttonMarkupId));
             }
         };
     }
@@ -69,7 +69,7 @@ public class DropDownButtonTest extends WicketApplicationTest {
         return new DropDownButton("id", Model.of("label")) {
             @Override
             protected List<AbstractLink> newSubMenuButtons(final String buttonMarkupId) {
-                return Arrays.asList(getDummyLink(buttonMarkupId));
+                return Collections.singletonList(getDummyLink(buttonMarkupId));
             }
         };
     }

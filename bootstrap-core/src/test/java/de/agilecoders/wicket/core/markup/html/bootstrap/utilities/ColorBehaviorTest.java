@@ -8,10 +8,10 @@ import org.junit.jupiter.api.Test;
 /**
  * @author Jan Ferko
  */
-public class ColorBehaviorTest extends WicketApplicationTest {
+class ColorBehaviorTest extends WicketApplicationTest {
 
     @Test
-    public void testRendersCorrectCssClass() {
+    void testRendersCorrectCssClass() {
         for (ColorBehavior.Color color : ColorBehavior.Color.values()) {
             String markup = "<span wicket:id='" + id() + "'></span>";
 
@@ -21,7 +21,7 @@ public class ColorBehaviorTest extends WicketApplicationTest {
     }
 
     @Test
-    public void testPreserveOtherCssClasses() {
+    void testPreserveOtherCssClasses() {
         String markup = "<span class='my-class' wicket:id='" + id() + "'></span>";
         ColorBehavior behavior = ColorBehavior.info();
 
