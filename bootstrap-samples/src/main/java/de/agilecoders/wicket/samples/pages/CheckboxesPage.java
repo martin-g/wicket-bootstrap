@@ -4,6 +4,7 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.block.Code;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.ButtonGroup;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.checkbox.bootstrapcheckbox.BootstrapCheckBoxPicker;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.checkbox.bootstrapcheckbox.BootstrapCheckBoxPickerConfig;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.checkbox.bootstrapcheckbox.BootstrapCheckBoxPickerConfig.Size;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.checkbox.bootstraptoggle.BootstrapToggle;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.checkbox.bootstraptoggle.BootstrapToggleConfig;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.checkboxx.CheckBoxX;
@@ -54,7 +55,7 @@ public class CheckboxesPage extends BasePage {
             .withOnClass("btn-info").withOffClass("btn-warning")
             .withOnIcon(FontAwesome5IconType.thumbs_up_s).withOffIcon(FontAwesome5IconType.thumbs_down_s)
             .withReverse(true)
-            .withStyle(ButtonGroup.Size.ExtraSmall);
+            .withSize(Size.Small);
 
         final BootstrapCheckBoxPicker checkBoxPicker = new BootstrapCheckBoxPicker("checkboxPicker", Model.of(true), config);
         checkBoxPicker.add(new AjaxFormComponentUpdatingBehavior("change") {
