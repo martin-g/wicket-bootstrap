@@ -31,7 +31,7 @@ public class ModernizrJavaScriptReference extends WebjarsJavaScriptResourceRefer
      * Private constructor.
      */
     private ModernizrJavaScriptReference() {
-        super("/modernizr/current/modernizr.js");
+        super("/modernizr/current/modernizr.min.js");
     }
 
 }
