@@ -19,7 +19,7 @@ public interface IBootstrapSettings {
     /**
      * The version of modernizr
      */
-    String MODERNIZR_VERSION = "2.8.3-1";
+    String MODERNIZR_VERSION = "2.8.3";
 
     /**
      * The version of Popper.js
