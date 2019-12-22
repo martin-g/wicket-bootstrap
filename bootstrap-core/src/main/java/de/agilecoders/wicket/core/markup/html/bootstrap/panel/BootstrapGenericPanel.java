@@ -5,6 +5,7 @@ import org.apache.wicket.markup.html.panel.EmptyPanel;
 import org.apache.wicket.markup.html.panel.GenericPanel;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.Model;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.CssClassNameModifier;
 import de.agilecoders.wicket.core.util.Components;
@@ -146,7 +147,7 @@ public class BootstrapGenericPanel<T> extends GenericPanel<T>{
 	protected Panel newBodyPanel(String id, IModel<T> model){
 		
 		Panel emptyPanel = new EmptyPanel(id);
-		emptyPanel.setDefaultModel(null);
+		emptyPanel.setDefaultModel(new Model<>());
 		
 		return emptyPanel;
 
@@ -161,7 +162,7 @@ public class BootstrapGenericPanel<T> extends GenericPanel<T>{
 	protected Panel newFooterPanel(String id, IModel<T> model){
 		
 		Panel emptyPanel = new EmptyPanel(id);
-		emptyPanel.setDefaultModel(null);
+		emptyPanel.setDefaultModel(new Model<>());
 		
 		return emptyPanel;
 	}
