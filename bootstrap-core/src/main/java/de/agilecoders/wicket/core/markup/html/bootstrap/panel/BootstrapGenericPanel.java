@@ -69,7 +69,13 @@ public class BootstrapGenericPanel<T> extends GenericPanel<T>{
 		this.titleModel = panelTitleModel;
 		
 		add(this.panelBehavior = new PanelBehavior(panelType));
-		
+	}
+	
+	@Override
+	protected void onInitialize()
+	{
+		super.onInitialize();
+
 		//Panel Title
 		Label panelTitle = newTitleLabel(_PANEL_TITLE_ID, getModel(), getTitleModel());
 		add(panelTitle);
@@ -85,7 +91,6 @@ public class BootstrapGenericPanel<T> extends GenericPanel<T>{
 		Panel panelFooter = newFooterPanel(_PANEL_FOOTER_ID, getModel());
 		add(panelFooter);
 		Components.hideIfModelIsEmpty(panelFooter);
-		
 	}
 	
 	/**
