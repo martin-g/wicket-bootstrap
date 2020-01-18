@@ -34,12 +34,12 @@ public class BootlintHeaderItem extends JavaScriptContentHeaderItem {
      * @param javascript The JavaScript to execute once bootlint.js is loaded
      */
     public BootlintHeaderItem(String javascript) {
-        super(javascript, "bootlint", null);
+        super(javascript, "bootlint");
     }
 
     @Override
     public List<HeaderItem> getDependencies() {
 
-        return Arrays.<HeaderItem>asList(JavaScriptHeaderItem.forReference(new JQueryPluginResourceReference(BootlintHeaderItem.class, "js/bootlint.js")));
+        return Arrays.asList(JavaScriptHeaderItem.forReference(new JQueryPluginResourceReference(BootlintHeaderItem.class, "js/bootlint.js")));
     }
 }

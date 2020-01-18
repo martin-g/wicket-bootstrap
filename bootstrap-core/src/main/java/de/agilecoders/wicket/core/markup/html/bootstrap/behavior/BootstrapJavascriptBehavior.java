@@ -30,7 +30,10 @@ public class BootstrapJavascriptBehavior extends BootstrapBaseBehavior {
     public void renderHead(IBootstrapSettings settings, IHeaderResponse headerResponse) {
         super.renderHead(settings, headerResponse);
 
-        final JavaScriptReferenceHeaderItem jsReference = JavaScriptHeaderItem.forReference(settings.getJsResourceReference(), new PageParameters(), "bootstrap-js", settings.deferJavascript());
+        final JavaScriptReferenceHeaderItem jsReference = JavaScriptHeaderItem.forReference(settings.getJsResourceReference(),
+                                                                                            new PageParameters(),
+                                                                                            "bootstrap-js");
+        jsReference.setDefer( settings.deferJavascript());
         References.renderWithFilter(settings, headerResponse, jsReference);
     }
 }
