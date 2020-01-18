@@ -58,10 +58,8 @@ public class BootstrapGenericPanel<T> extends GenericPanel<T>{
 		super(id, model);
 
 		this.titleModel = panelTitleModel;
-		
-		add(this.panelBehavior = new PanelBehavior(panelType));
 	}
-	
+
 	@Override
 	protected void onInitialize()
 	{
@@ -87,15 +85,6 @@ public class BootstrapGenericPanel<T> extends GenericPanel<T>{
 		Panel panelFooter = newFooterPanel(_PANEL_FOOTER_ID, getModel());
 		add(panelFooter);
 		Components.hideIfModelIsEmpty(panelFooter);
-	}
-	
-	/**
-	 * Getter for Panel Type.
-	 * 
-	 * @return the panelType
-	 */
-	public PanelType getPanelType() {
-		return this.panelBehavior.getType();
 	}
 
 	@Override
@@ -138,7 +127,7 @@ public class BootstrapGenericPanel<T> extends GenericPanel<T>{
 
 		Panel emptyPanel = new EmptyPanel(id);
 		emptyPanel.setDefaultModel(new Model<>());
-		
+
 		return emptyPanel;
 
 	}
@@ -153,7 +142,7 @@ public class BootstrapGenericPanel<T> extends GenericPanel<T>{
 
 		Panel emptyPanel = new EmptyPanel(id);
 		emptyPanel.setDefaultModel(new Model<>());
-		
+
 		return emptyPanel;
 	}
 

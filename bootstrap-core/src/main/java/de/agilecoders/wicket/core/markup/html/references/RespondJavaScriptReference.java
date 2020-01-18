@@ -6,7 +6,10 @@ import org.apache.wicket.request.resource.JavaScriptResourceReference;
 /**
  * A resource reference for <a href="https://github.com/scottjehl/Respond">respond.js</a>
  * Used to polyfill for min/max-width CSS3 Media Queries (for IE 6-8, and more)
+ *
+ * @deprecated Versions older than IE11 are not supported anymore
  */
+@Deprecated
 public class RespondJavaScriptReference extends JavaScriptResourceReference {
     private static final long serialVersionUID = 1L;
 
