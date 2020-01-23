@@ -19,6 +19,7 @@ import de.agilecoders.wicket.core.util.Attributes;
  * that uses Bootstrap markup and styles.
  */
 public class UploadProgressBar extends org.apache.wicket.extensions.ajax.markup.html.form.upload.UploadProgressBar {
+    private static final long serialVersionUID = 1L;
 
     /**
      * The color of the stack
@@ -111,6 +112,8 @@ public class UploadProgressBar extends org.apache.wicket.extensions.ajax.markup.
     @Override
     protected MarkupContainer newBarComponent(String id) {
         return new WebMarkupContainer(id) {
+            private static final long serialVersionUID = 1L;
+
             @Override
             protected void onComponentTag(ComponentTag tag) {
                 super.onComponentTag(tag);

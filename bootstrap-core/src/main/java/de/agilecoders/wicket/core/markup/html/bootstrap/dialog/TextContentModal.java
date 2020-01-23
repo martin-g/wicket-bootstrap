@@ -10,6 +10,7 @@ import org.apache.wicket.model.IModel;
  * @version 1.0
  */
 public class TextContentModal extends Modal<String> {
+    private static final long serialVersionUID = 1L;
 
     /**
      * Construct.

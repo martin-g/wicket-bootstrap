@@ -35,7 +35,7 @@ public class DatetimePickerPage extends BasePage {
     public DatetimePickerPage(PageParameters parameters) {
         super(parameters);
 
-        Form<Object> form = new Form<Object>("form");
+        Form<Object> form = new Form<>("form");
         add(form);
 
         LocalDate max = LocalDate.now();

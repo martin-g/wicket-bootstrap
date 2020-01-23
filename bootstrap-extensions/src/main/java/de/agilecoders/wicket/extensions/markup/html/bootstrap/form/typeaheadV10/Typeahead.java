@@ -35,6 +35,7 @@ import static de.agilecoders.wicket.jquery.JQuery.$;
  * change in typeahead.js 0.10.0</a>
  */
 public class Typeahead<T> extends TextField<T> {
+    private static final long serialVersionUID = 1L;
 
     private static final Logger LOG = LoggerFactory.getLogger(Typeahead.class);
 
@@ -113,7 +114,7 @@ public class Typeahead<T> extends TextField<T> {
     }
 
     private static class TypeaheadBehavior extends AbstractDefaultAjaxBehavior {
-
+        private static final long serialVersionUID = 1L;
         private final TypeaheadEvent.Type type;
 
         public TypeaheadBehavior(TypeaheadEvent.Type type) {

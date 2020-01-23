@@ -34,7 +34,7 @@ import java.util.List;
  * @author miha
  */
 public class Modal<T> extends GenericPanel<T> {
-
+    private static final long serialVersionUID = 1L;
     public static final String BUTTON_MARKUP_ID = "button";
 
     /**
@@ -86,7 +86,7 @@ public class Modal<T> extends GenericPanel<T> {
 
     private Component headerLabel;
     private Component headerCloseButton;
-    private final List<Component> buttons = new ArrayList<Component>();
+    private final List<Component> buttons = new ArrayList<>();
     private MarkupContainer footer;
     private MarkupContainer header;
     private AjaxEventBehavior closeBehavior;
@@ -120,7 +120,9 @@ public class Modal<T> extends GenericPanel<T> {
         header.add(headerCloseButton = createHeaderCloseButton("header-close-button"));
         headerCloseButton.setOutputMarkupId(true);
 
-        footer.add(new ListView<Component>("buttons", buttons) {
+        footer.add(new ListView<>("buttons", buttons) {
+            private static final long serialVersionUID = 1L;
+
             @Override
             protected void populateItem(ListItem<Component> item) {
                 item.add(item.getModelObject());
@@ -184,6 +186,8 @@ public class Modal<T> extends GenericPanel<T> {
      */
     protected WebMarkupContainer createDialog(String id) {
         return new TransparentWebMarkupContainer(id) {
+            private static final long serialVersionUID = 1L;
+
             @Override
             protected void onComponentTag(ComponentTag tag) {
                 super.onComponentTag(tag);
@@ -567,6 +571,7 @@ public class Modal<T> extends GenericPanel<T> {
     }
 
     private class ModalCloseBehavior extends AjaxEventBehavior {
+        private static final long serialVersionUID = 1L;
 
         /**
          * Constructor.

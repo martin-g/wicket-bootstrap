@@ -6,7 +6,6 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.badge.BadgeBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.badge.BootstrapBadge;
 import de.agilecoders.wicket.core.markup.html.bootstrap.block.Code;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.BootstrapAjaxLink;
-import de.agilecoders.wicket.core.markup.html.bootstrap.button.BootstrapLink;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.ButtonBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.MenuBookmarkablePageLink;
@@ -111,6 +110,8 @@ public class ComponentsPage extends BasePage {
 
         ProgressBar labeledProgressBar = new ProgressBar("labeled");
         Stack labeledStack = new Stack(labeledProgressBar.getStackId(), Model.of(45)) {
+            private static final long serialVersionUID = 1L;
+
             @Override
             protected IModel<String> createLabelModel() {
                 return () -> String.format("The progress is: %s%%", getModelObject());
@@ -141,6 +142,8 @@ public class ComponentsPage extends BasePage {
         add(coloredDanger);
 
         UpdatableProgressBar updatableBar = new UpdatableProgressBar("updatable", Model.of(0)) {
+            private static final long serialVersionUID = 1L;
+
             @Override
             protected IModel<Integer> newValue() {
                 int newValue = (value() + 1) % ProgressBar.MAX;
@@ -154,7 +157,7 @@ public class ComponentsPage extends BasePage {
     }
 
     private void addRadioGroups() {
-        add(new BooleanRadioGroup("boolean", new Model<Boolean>(Boolean.FALSE)));
+        add(new BooleanRadioGroup("boolean", new Model<>(Boolean.FALSE)));
 
         IModel<Boolean> booleanAjaxSelectedModel = Model.of(true);
         booleanAjaxSelected = new Label("booleanAjaxSelected", booleanAjaxSelectedModel);
@@ -162,6 +165,8 @@ public class ComponentsPage extends BasePage {
         add(booleanAjaxSelected);
 
         add(new AjaxBooleanRadioGroup("booleanAjax", booleanAjaxSelectedModel) {
+            private static final long serialVersionUID = 1L;
+
             @Override
             protected void onSelectionChanged(AjaxRequestTarget target, Boolean value) {
                 target.add(booleanAjaxSelected);
@@ -174,7 +179,9 @@ public class ComponentsPage extends BasePage {
         enumAjaxSelected.setOutputMarkupId(true);
         add(enumAjaxSelected);
 
-        AjaxBootstrapRadioGroup<Status> enumAjax = new AjaxBootstrapRadioGroup<Status>("enumAjax", Arrays.asList(Status.values())) {
+        AjaxBootstrapRadioGroup<Status> enumAjax = new AjaxBootstrapRadioGroup<>("enumAjax", Arrays.asList(Status.values())) {
+            private static final long serialVersionUID = 1L;
+
             @Override
             protected void onSelectionChanged(AjaxRequestTarget target, Status value) {
                 target.add(enumAjaxSelected);
@@ -187,7 +194,9 @@ public class ComponentsPage extends BasePage {
 
     private void addLabels() {
         List<BadgeBehavior.Type> types = Lists.newArrayList(BadgeBehavior.Type.values());
-        add(new ListView<BadgeBehavior.Type>("badges", types) {
+        add(new ListView<>("badges", types) {
+            private static final long serialVersionUID = 1L;
+
             @Override
             protected void populateItem(ListItem<BadgeBehavior.Type> item) {
                 BadgeBehavior.Type type = item.getModelObject();
@@ -206,7 +215,9 @@ public class ComponentsPage extends BasePage {
     private void addBadges() {
         List<BadgeBehavior.Type> types = Lists.newArrayList(BadgeBehavior.Type.values());
 
-        add(new ListView<BadgeBehavior.Type>("badge-pills", types) {
+        add(new ListView<>("badge-pills", types) {
+            private static final long serialVersionUID = 1L;
+
             @Override
             protected void populateItem(ListItem<BadgeBehavior.Type> item) {
                 BadgeBehavior.Type type = item.getModelObject();
@@ -221,7 +232,9 @@ public class ComponentsPage extends BasePage {
             }
         });
 
-        Link<Void> badgeButton = new Link<Void>("button-with-badge") {
+        Link<Void> badgeButton = new Link<>("button-with-badge") {
+            private static final long serialVersionUID = 1L;
+
             @Override
             public void onClick() {
                 //ok
@@ -255,9 +268,13 @@ public class ComponentsPage extends BasePage {
 
     private AbstractTab createTab(final String title) {
         return new AbstractTab(Model.of(title)) {
+            private static final long serialVersionUID = 1L;
+
             @Override
             public WebMarkupContainer getPanel(String panelId) {
                 return new WebMarkupContainer(panelId) {
+                    private static final long serialVersionUID = 1L;
+
                     @Override
                     public void onComponentTagBody(MarkupStream markupStream, ComponentTag openTag) {
                         replaceComponentTagBody(markupStream, openTag, "<br/>I'm in " + title);
@@ -276,9 +293,13 @@ public class ComponentsPage extends BasePage {
      */
     private Component newSplitButton(final String markupId) {
         return new SplitButton(markupId, Model.of("Action")) {
+            private static final long serialVersionUID = 1L;
+
             @Override
             protected AbstractLink newBaseButton(String markupId, IModel<String> labelModel, IModel<IconType> iconTypeModel) {
-                return new BootstrapAjaxLink<String>(markupId, labelModel, Buttons.Type.Secondary, labelModel) {
+                return new BootstrapAjaxLink<>(markupId, labelModel, Buttons.Type.Secondary, labelModel) {
+                    private static final long serialVersionUID = 1L;
+
                     @Override
                     public void onClick(AjaxRequestTarget target) {
                         target.appendJavaScript("alert('clicked');");

@@ -14,7 +14,7 @@ import java.util.List;
 
 @MountPath(value = "/extensions/BootstrapFileInput")
 public class ExtensionsBootstrapFileInputPage extends BasePage {
-
+    private static final long serialVersionUID = 1L;
     private final NotificationPanel feedback;
 
     public ExtensionsBootstrapFileInputPage(PageParameters parameters) {
@@ -26,8 +26,10 @@ public class ExtensionsBootstrapFileInputPage extends BasePage {
         add(feedback);
     }
     private void addBootstrapFileUploadDemo() {
-        final IModel<List<FileUpload>> model = new ListModel<FileUpload>();
-        Form<Void> bootstrapFileUploadForm = new Form<Void>("bootstrapFileUploadForm") {
+        final IModel<List<FileUpload>> model = new ListModel<>();
+        Form<Void> bootstrapFileUploadForm = new Form<>("bootstrapFileUploadForm") {
+            private static final long serialVersionUID = 1L;
+
             @Override
             protected void onSubmit() {
                 super.onSubmit();
@@ -44,6 +46,8 @@ public class ExtensionsBootstrapFileInputPage extends BasePage {
         add(bootstrapFileUploadForm);
 
         BootstrapFileInput bootstrapFileInput = new BootstrapFileInput("bootstrapFileinput", model) {
+            private static final long serialVersionUID = 1L;
+
             @Override
             protected void onSubmit(AjaxRequestTarget target) {
                 super.onSubmit(target);

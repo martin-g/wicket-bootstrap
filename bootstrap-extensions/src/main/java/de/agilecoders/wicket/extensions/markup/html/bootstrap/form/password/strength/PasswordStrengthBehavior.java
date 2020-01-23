@@ -15,7 +15,7 @@ import org.apache.wicket.util.lang.Args;
  * to add client-side password strength checks
  */
 public class PasswordStrengthBehavior extends BootstrapJavascriptBehavior {
-
+    private static final long serialVersionUID = 1L;
     private final PasswordStrengthConfig config;
 
     /**

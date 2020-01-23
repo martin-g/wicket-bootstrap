@@ -14,7 +14,7 @@ import com.google.common.collect.Lists;
 import de.agilecoders.wicket.jquery.AbstractConfig;
 import de.agilecoders.wicket.jquery.IKey;
 import org.apache.wicket.util.lang.Bytes;
-import org.apache.wicket.util.time.Duration;
+import java.time.Duration;
 
 /**
  * Provides config information for the summernote editor
@@ -26,7 +26,7 @@ public class SummernoteConfig extends AbstractConfig {
 
     private static final long serialVersionUID = 1L;
 
-    private static final int DEFAULT_OVERLAY_TIMEOUT = (int)Duration.seconds(2).getMilliseconds();
+    private static final int DEFAULT_OVERLAY_TIMEOUT = (int)Duration.ofSeconds(2L).toMillis();
     private static final int DEFAULT_MAX_SIZE = (int)Bytes.megabytes(2).bytes();
 
     public static final IKey<String> Id = newKey("summernoteEditorId", null);
@@ -46,7 +46,7 @@ public class SummernoteConfig extends AbstractConfig {
      * A set of storages used by the *StoredImageResourceReference and the
      * *Editor
      */
-    private static Set<SummernoteStorage> storages = new HashSet<SummernoteStorage>();
+    private static Set<SummernoteStorage> storages = new HashSet<>();
 
     /**
      * The storage id of the storage the editor should use
@@ -56,7 +56,9 @@ public class SummernoteConfig extends AbstractConfig {
     private static final IKey<Map<String, List<String>>> ToolbarOptions = newKey("ToolbarOptions", null);
 
 
-    private Map<String, List<String>> toolbarOptions = new LinkedHashMap<String, List<String>>() {
+    private Map<String, List<String>> toolbarOptions = new LinkedHashMap<>() {
+        private static final long serialVersionUID = 1L;
+
         {
             put("Style", Lists.newArrayList("style", "fontname", "fontsize", "color", "bold", "italic", "underline", "strikethrough", "clear"));
             put("Layout", Lists.newArrayList("ul", "ol", "paragraph", "height"));

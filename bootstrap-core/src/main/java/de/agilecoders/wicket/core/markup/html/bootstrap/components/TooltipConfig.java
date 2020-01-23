@@ -2,7 +2,7 @@ package de.agilecoders.wicket.core.markup.html.bootstrap.components;
 
 import de.agilecoders.wicket.jquery.AbstractConfig;
 import de.agilecoders.wicket.jquery.IKey;
-import org.apache.wicket.util.time.Duration;
+import java.time.Duration;
 
 /**
  * {@link TooltipBehavior} configuration
@@ -10,6 +10,7 @@ import org.apache.wicket.util.time.Duration;
  * @author miha
  */
 public class TooltipConfig extends AbstractConfig {
+    private static final long serialVersionUID = 1L;
 
     /**
      * apply a css fade transition to the tooltip
@@ -166,7 +167,7 @@ public class TooltipConfig extends AbstractConfig {
      * @return this instance for chaining.
      */
     public TooltipConfig withDelay(final Duration value) {
-        put(Delay, value.getMilliseconds());
+        put(Delay, value.toMillis());
         return this;
     }
 

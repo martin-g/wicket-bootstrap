@@ -28,7 +28,7 @@ import org.apache.wicket.markup.html.TransparentWebMarkupContainer;
  * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public class TransparentCodeContainer extends TransparentWebMarkupContainer {
-
+    private static final long serialVersionUID = 1L;
     private final CodeBehavior behavior;
 
     /**

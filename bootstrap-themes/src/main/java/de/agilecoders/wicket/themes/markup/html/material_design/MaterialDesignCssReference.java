@@ -25,7 +25,7 @@ public class MaterialDesignCssReference extends CssResourceReference {
 
     @Override
     public List<HeaderItem> getDependencies() {
-        List<HeaderItem> dependencies = new ArrayList<HeaderItem>();
+        List<HeaderItem> dependencies = new ArrayList<>();
         dependencies.add(CssHeaderItem.forReference(Bootstrap.getSettings().getCssResourceReference()));
         return dependencies;
     }

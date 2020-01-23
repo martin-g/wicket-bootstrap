@@ -14,6 +14,7 @@ import java.util.List;
  * methods with ones which are more suitable for Bootstrap Progress component
  */
 public class UploadProgressBarJavaScriptReference extends JQueryPluginResourceReference {
+    private static final long serialVersionUID = 1L;
 
     public UploadProgressBarJavaScriptReference() {
         super(UploadProgressBarJavaScriptReference.class, "progressbar.js");

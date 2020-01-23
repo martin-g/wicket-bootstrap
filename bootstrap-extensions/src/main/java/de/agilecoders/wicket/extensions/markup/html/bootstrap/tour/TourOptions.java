@@ -14,17 +14,18 @@ import java.io.IOException;
 
 
 public class TourOptions extends AbstractConfig {
+    private static final long serialVersionUID = 1L;
 
     /**
      * This option is used to build the name of the storage item where the tour state is stored.
      * You can initialize several tours with different names in the same page and application.
      */
-    private static final IKey<IModel> Name = newKey("name", (IModel) Model.of("tour"));
+    private static final IKey<IModel<String>> Name = newKey("name", Model.of("tour"));
 
     /**
      * Appends the step popover to a specific element.
      */
-    private static final IKey<IModel> Container = newKey("container", (IModel) Model.of("body"));
+    private static final IKey<IModel<String>> Container = newKey("container", Model.of("body"));
 
     /**
      * This option set the left and right arrow navigation.
@@ -68,12 +69,12 @@ public class TourOptions extends AbstractConfig {
      * Specify a default base path prepended to the  path option of every single step.
      * Very useful if you need to reuse the same tour on different environments or sub-projects.
      */
-    private static final IKey<IModel> BasePath = newKey("basePath", (IModel) Model.of(""));
+    private static final IKey<IModel<String>> BasePath = newKey("basePath", Model.of(""));
 
     /**
      * String or function that returns a string of the HTML template for the popovers.
      */
-    private static final IKey<IModel> Template = newKey("template", (IModel) Model.of(
+    private static final IKey<IModel<String>> Template = newKey("template", Model.of(
         "<div class='popover tour'>" +
         "  <div class='arrow'></div>" +
         "  <h3 class='popover-title'></h3>" +

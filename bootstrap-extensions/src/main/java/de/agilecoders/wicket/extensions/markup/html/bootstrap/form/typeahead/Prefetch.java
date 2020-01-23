@@ -4,17 +4,18 @@ import de.agilecoders.wicket.jquery.AbstractConfig;
 import de.agilecoders.wicket.jquery.IKey;
 import de.agilecoders.wicket.jquery.util.Json;
 import org.apache.wicket.util.lang.Args;
-import org.apache.wicket.util.time.Duration;
+import java.time.Duration;
 
 /**
  * Configuration for Twitter Typeahead's
  * <a href="https://github.com/twitter/typeahead.js#prefetch">prefetch</a> setting.
  */
 public class Prefetch extends AbstractConfig {
+    private static final long serialVersionUID = 1L;
 
     private static final IKey<CharSequence> Url = newKey("url", null);
 
-    private static final IKey<Long> Ttl = newKey("ttl", Duration.days(1).getMilliseconds());
+    private static final IKey<Long> Ttl = newKey("ttl", Duration.ofDays(1L).toMillis());
 
     private static final IKey<Json.RawValue> Filter = newKey("filter", null);
 

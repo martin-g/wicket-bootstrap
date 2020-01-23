@@ -48,6 +48,7 @@ import org.apache.wicket.util.string.Strings;
 public abstract class AbstractDateTextField<T, P extends TextField<T> & AbstractTextComponent.ITextFormatProvider, I, C extends AbstractDateTextFieldConfig<C, I>, F extends AbstractDateTextField<T, P, I, C, F>>
     extends TextField<T> implements AbstractTextComponent.ITextFormatProvider {
 
+    private static final long serialVersionUID = 1L;
     private static final String EVENT_PARAM = "datePickerEvent";
     private static final String DATE        = "date";
 
@@ -151,7 +152,7 @@ public abstract class AbstractDateTextField<T, P extends TextField<T> & Abstract
     }
 
     private abstract class AbstractAjaxEvent extends AbstractEventHandler {
-
+        private static final long serialVersionUID = 1L;
         private final Event                   event;
         private final IParentAjaxEventHandler handler;
         private final boolean                 updateModel;
@@ -194,7 +195,7 @@ public abstract class AbstractDateTextField<T, P extends TextField<T> & Abstract
     }
 
     private class DatePickerAbstractDefaultAjaxBehavior extends AbstractDefaultAjaxBehavior {
-
+        private static final long serialVersionUID = 1L;
         private final AbstractAjaxEvent abstractAjaxEvent;
 
         public DatePickerAbstractDefaultAjaxBehavior(Event event, IParentAjaxEventHandler handler,
@@ -206,6 +207,8 @@ public abstract class AbstractDateTextField<T, P extends TextField<T> & Abstract
 
         protected AbstractAjaxEvent createNew(Event event, IParentAjaxEventHandler handler, boolean updateModel) {
             return new AbstractAjaxEvent(event, handler, updateModel) {
+                private static final long serialVersionUID = 1L;
+
                 @Override
                 protected CharSequence getBody() {
                     return AbstractDateTextField.DatePickerAbstractDefaultAjaxBehavior.this
@@ -226,7 +229,7 @@ public abstract class AbstractDateTextField<T, P extends TextField<T> & Abstract
         }
     }
 
-    private final Map<Event, AbstractEventHandler> eventMap = new HashMap<Event, AbstractEventHandler>();
+    private final Map<Event, AbstractEventHandler> eventMap = new HashMap<>();
 
     @Override
     protected void onInitialize() {

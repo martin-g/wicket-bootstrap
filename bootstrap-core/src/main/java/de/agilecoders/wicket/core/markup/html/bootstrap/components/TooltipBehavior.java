@@ -20,7 +20,7 @@ import static de.agilecoders.wicket.jquery.JQuery.$;
  * @author miha
  */
 public class TooltipBehavior extends BootstrapJavascriptBehavior {
-
+    private static final long serialVersionUID = 1L;
     private final IModel<String> label;
     private final TooltipConfig config;
     private IModel<String> labelResolved;

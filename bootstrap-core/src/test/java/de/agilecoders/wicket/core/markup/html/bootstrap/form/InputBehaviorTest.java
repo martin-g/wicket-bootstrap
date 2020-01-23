@@ -91,6 +91,7 @@ class InputBehaviorTest extends WicketApplicationTest {
     }
 
     private static class InputBehaviorPage extends WebPage implements IMarkupResourceStreamProvider {
+        private static final long serialVersionUID = 1L;
 
         private final InputBehavior inputBehavior = new InputBehavior();
 

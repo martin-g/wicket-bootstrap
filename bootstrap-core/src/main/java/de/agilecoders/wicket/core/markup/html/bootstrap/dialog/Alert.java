@@ -14,7 +14,7 @@ import org.apache.wicket.markup.html.panel.GenericPanel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.util.string.Strings;
-import org.apache.wicket.util.time.Duration;
+import java.time.Duration;
 
 /**
  * A bootstrap styled panel for success, warning, and error messages
@@ -27,6 +27,7 @@ import org.apache.wicket.util.time.Duration;
  * @author miha
  */
 public class Alert extends GenericPanel<String> {
+    private static final long serialVersionUID = 1L;
 
     /**
      * The {@code Type} enum defines all possible alert types.
@@ -89,6 +90,8 @@ public class Alert extends GenericPanel<String> {
         this.blockHeader = new Label("block", header);
         this.message = createMessage("message", getModel());
         this.closeButton = new WebMarkupContainer("close") {
+            private static final long serialVersionUID = 1L;
+
             @Override
             protected void onConfigure() {
                 super.onConfigure();
@@ -143,9 +146,9 @@ public class Alert extends GenericPanel<String> {
     public void renderHead(IHeaderResponse response) {
         super.renderHead(response);
 
-        if (duration != null && duration.seconds() > 0) {
+        if (duration != null && duration.toSeconds() > 0) {
             response.render(OnDomReadyHeaderItem.forScript("window.setTimeout(function(){ $('#" + getMarkupId() + "').alert('close');}," +
-                                                           duration.getMilliseconds() + ");"));
+                                                           duration.toMillis() + ");"));
         }
     }
 

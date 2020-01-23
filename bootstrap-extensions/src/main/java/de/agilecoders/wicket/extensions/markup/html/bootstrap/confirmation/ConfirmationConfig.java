@@ -13,20 +13,20 @@ import org.apache.wicket.util.lang.Args;
  * for all possible options and their meaning.
  */
 public class ConfirmationConfig extends AbstractConfig {
-
-    private static final IKey<String> Title = new Key<String>("title", "Are you sure?");
-    private static final IKey<Boolean> Singleton = new Key<Boolean>("singleton", Boolean.FALSE);
-    private static final IKey<Boolean> Popout = new Key<Boolean>("popout", Boolean.FALSE);
-    private static final IKey<String> BtnOkClass = new Key<String>("btnOkClass", "btn-xs btn-primary");
-    private static final IKey<String> BtnOkIconClass = new Key<String>("btnOkIconClass", "glyphicon glyphicon-ok");
-    private static final IKey<String> BtnOkIconContent = new Key<String>("btnOkIconContent");
-    private static final IKey<String> BtnOkLabel = new Key<String>("btnOkLabel", "Yes");
-    private static final IKey<String> BtnCancelClass = new Key<String>("btnCancelClass", "btn-xs btn-default");
-    private static final IKey<String> BtnCancelIconClass = new Key<String>("btnCancelIconClass", "glyphicon glyphicon-remove");
-    private static final IKey<String> BtnCancelIconContent = new Key<String>("btnCancelIconContent");
-    private static final IKey<String> BtnCancelLabel = new Key<String>("btnCancelLabel", "No");
-    private static final IKey<TooltipConfig.Placement> Placement = new Key<TooltipConfig.Placement>("placement", TooltipConfig.Placement.top);
-    private static final IKey<String> RootSelector = new Key<String>("rootSelector");
+    private static final long serialVersionUID = 1L;
+    private static final IKey<String> Title = new Key<>("title", "Are you sure?");
+    private static final IKey<Boolean> Singleton = new Key<>("singleton", Boolean.FALSE);
+    private static final IKey<Boolean> Popout = new Key<>("popout", Boolean.FALSE);
+    private static final IKey<String> BtnOkClass = new Key<>("btnOkClass", "btn-xs btn-primary");
+    private static final IKey<String> BtnOkIconClass = new Key<>("btnOkIconClass", "glyphicon glyphicon-ok");
+    private static final IKey<String> BtnOkIconContent = new Key<>("btnOkIconContent");
+    private static final IKey<String> BtnOkLabel = new Key<>("btnOkLabel", "Yes");
+    private static final IKey<String> BtnCancelClass = new Key<>("btnCancelClass", "btn-xs btn-default");
+    private static final IKey<String> BtnCancelIconClass = new Key<>("btnCancelIconClass", "glyphicon glyphicon-remove");
+    private static final IKey<String> BtnCancelIconContent = new Key<>("btnCancelIconContent");
+    private static final IKey<String> BtnCancelLabel = new Key<>("btnCancelLabel", "No");
+    private static final IKey<TooltipConfig.Placement> Placement = new Key<>("placement", TooltipConfig.Placement.top);
+    private static final IKey<String> RootSelector = new Key<>("rootSelector");
 
 
 

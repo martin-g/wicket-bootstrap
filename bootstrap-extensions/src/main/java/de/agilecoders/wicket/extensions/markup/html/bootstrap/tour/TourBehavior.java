@@ -15,7 +15,7 @@ import java.util.List;
  * <a href="http://sorich87.github.com/bootstrap-tour/">Bootstrap Tour</a>.
  */
 public class TourBehavior extends BootstrapJavascriptBehavior {
-
+    private static final long serialVersionUID = 1L;
     private final List<TourStep> steps = new ArrayList<>();
 
     /**

@@ -2,7 +2,7 @@ package de.agilecoders.wicket.core.markup.html.bootstrap.common;
 
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.util.io.IClusterable;
-import org.apache.wicket.util.time.Duration;
+import java.time.Duration;
 
 /**
  * Represents a bootstrap styled feedback message.

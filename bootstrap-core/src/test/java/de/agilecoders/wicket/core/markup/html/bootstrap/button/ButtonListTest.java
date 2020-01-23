@@ -30,6 +30,8 @@ class ButtonListTest extends WicketApplicationTest {
 
         List<AbstractLink> buttons = new ArrayList<>();
         DropDownButton dropDownButton1 = new DropDownButton("dropDown", Model.of("")) {
+            private static final long serialVersionUID = 1L;
+
             @Override
             protected List<AbstractLink> newSubMenuButtons(String buttonMarkupId) {
                 return new ArrayList<>();
@@ -53,6 +55,8 @@ class ButtonListTest extends WicketApplicationTest {
 
         List<AbstractLink> buttons = new ArrayList<>();
         DropDownButton dropDownButton1 = new DropDownButton("dropDown", Model.of("")) {
+            private static final long serialVersionUID = 1L;
+
             @Override
             protected List<AbstractLink> newSubMenuButtons(String buttonMarkupId) {
                 return Collections.singletonList(buttonUnderTest);
@@ -65,5 +69,6 @@ class ButtonListTest extends WicketApplicationTest {
     }
 
     private static class TestPage extends WebPage {
+        private static final long serialVersionUID = 1L;
     }
 }

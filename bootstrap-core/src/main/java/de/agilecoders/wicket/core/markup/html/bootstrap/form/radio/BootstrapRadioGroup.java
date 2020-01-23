@@ -31,6 +31,7 @@ import org.apache.wicket.util.lang.Args;
  *
  */
 public class BootstrapRadioGroup<T extends Serializable> extends GenericPanel<T> {
+    private static final long serialVersionUID = 1L;
 
     private final List<IModel<T>> options;
 
@@ -101,6 +102,7 @@ public class BootstrapRadioGroup<T extends Serializable> extends GenericPanel<T>
         add(radioGroup);
         if (changeHandler != null) {
             radioGroup.add(new AjaxFormChoiceComponentUpdatingBehavior() {
+                private static final long serialVersionUID = 1L;
 
                 @Override
                 protected void onUpdate(AjaxRequestTarget target) {
@@ -119,6 +121,8 @@ public class BootstrapRadioGroup<T extends Serializable> extends GenericPanel<T>
         radioGroup.add(radios);
         for (final IModel<T> model: options) {
             WebMarkupContainer wm = new WebMarkupContainer(radios.newChildId()) {
+                private static final long serialVersionUID = 1L;
+
                 @Override
                 protected void onComponentTag(ComponentTag tag) {
                     super.onComponentTag(tag);
@@ -140,11 +144,11 @@ public class BootstrapRadioGroup<T extends Serializable> extends GenericPanel<T>
     }
 
     protected RadioGroup<T> newRadioGroup(String id, IModel<T> model) {
-        return new RadioGroup<T>(id, model);
+        return new RadioGroup<>(id, model);
     }
 
     protected  Radio<T> newRadio(String id, IModel<T> model, RadioGroup<T> radioGroup) {
-        return  new Radio<T>(id, model, radioGroup);
+        return new Radio<>(id, model, radioGroup);
     }
 
     public void setChoiceRenderer(IRadioChoiceRenderer<T> choiceRenderer) {

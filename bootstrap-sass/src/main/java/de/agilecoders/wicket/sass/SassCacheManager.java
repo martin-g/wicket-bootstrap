@@ -27,7 +27,7 @@ public class SassCacheManager {
 
     private static final Logger LOG = LoggerFactory.getLogger(SassCacheManager.class);
 
-    private static final MetaDataKey<SassCacheManager> KEY = new MetaDataKey<SassCacheManager>() {
+    private static final MetaDataKey<SassCacheManager> KEY = new MetaDataKey<>() {
         private static final long serialVersionUID = 1L;
     };
 

@@ -106,7 +106,7 @@ public class SummernoteEditor extends FormComponent<String> {
             config.getButtons("Insert").remove("picture");
             }
             String jsonConfig = config.toJsonString();
-            Map<String, Object> variables = new HashMap<String, Object>();
+            Map<String, Object> variables = new HashMap<>();
             variables.put("summernoteconfig", jsonConfig);
             String summernoteTemplateJavaScript = summernoteTemplate.asString(variables);
             response.render(OnDomReadyHeaderItem.forScript(summernoteTemplateJavaScript));
@@ -180,7 +180,7 @@ public class SummernoteEditor extends FormComponent<String> {
          *             if an exception occurred while reading / writing any file
          */
         private Map<String,FileItem> storeFile(AjaxRequestTarget target, MultipartServletWebRequest multiPartRequest) {
-            Map<String,FileItem> fileItemsMap = new LinkedHashMap<String, FileItem>();
+            Map<String,FileItem> fileItemsMap = new LinkedHashMap<>();
             Map<String, List<FileItem>> fileMap = multiPartRequest.getFiles();
             Iterator<List<FileItem>> fileItemListIterator = fileMap.values().iterator();
             while (fileItemListIterator.hasNext()) {

@@ -33,7 +33,7 @@ import java.util.List;
  */
 @MountPath(value = "/datatable")
 public class DataTablePage extends BasePage {
-
+    private static final long serialVersionUID = 1L;
     private static final int ROWS_PER_PAGE = 10;
 
     /**
@@ -73,6 +73,8 @@ public class DataTablePage extends BasePage {
             ExampleFilterSortRowItem.PROPERTY_GENDER, ExampleFilterSortRowItem.SORTPARAM_GENDER,
             Model.ofList(Arrays.asList(GenderType.values())), ExampleFilter.FILTER_GENDER_TYPE) {
 
+            private static final long serialVersionUID = 1L;
+
             @Override
             public void populateItem(Item<ICellPopulator<ExampleFilterSortRowItem>> item, String componentId, IModel<ExampleFilterSortRowItem> rowModel) {
                 item.add(new Label(componentId, Model.of(rowModel.getObject().gender.getDisplayValue())));
@@ -80,7 +82,8 @@ public class DataTablePage extends BasePage {
 
             @Override
             protected IChoiceRenderer<GenderType> getChoiceRenderer() {
-                return new ChoiceRenderer<GenderType>() {
+                return new ChoiceRenderer<>() {
+                    private static final long serialVersionUID = 1L;
 
                     @Override
                     public Object getDisplayValue(GenderType object) {

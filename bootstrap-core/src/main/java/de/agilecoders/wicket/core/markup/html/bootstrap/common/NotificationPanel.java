@@ -6,7 +6,7 @@ import org.apache.wicket.feedback.FeedbackMessage;
 import org.apache.wicket.feedback.FeedbackMessagesModel;
 import org.apache.wicket.feedback.FencedFeedbackPanel;
 import org.apache.wicket.feedback.IFeedbackMessageFilter;
-import org.apache.wicket.util.time.Duration;
+import java.time.Duration;
 
 /**
  * A panel that displays {@link NotificationMessage}s or {@link FeedbackMessage}s

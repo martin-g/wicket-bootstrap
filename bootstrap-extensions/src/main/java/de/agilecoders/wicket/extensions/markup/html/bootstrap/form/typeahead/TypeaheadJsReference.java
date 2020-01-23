@@ -1,7 +1,6 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.form.typeahead;
 
 import de.agilecoders.wicket.core.Bootstrap;
-import de.agilecoders.wicket.webjars.request.resource.WebjarsJavaScriptResourceReference;
 import org.apache.wicket.markup.head.HeaderItem;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.request.resource.JavaScriptResourceReference;
@@ -13,6 +12,7 @@ import java.util.List;
  * typeahead javascript library
  */
 public class TypeaheadJsReference extends JavaScriptResourceReference {
+    private static final long serialVersionUID = 1L;
 
     /**
      * Singleton instance of this reference

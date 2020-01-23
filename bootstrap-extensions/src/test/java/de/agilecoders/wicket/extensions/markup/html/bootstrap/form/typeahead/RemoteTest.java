@@ -18,6 +18,8 @@ class RemoteTest extends Assertions {
      * Simple extension just to make #get(IKey) visible for the tests
      */
     private static class TestRemote extends Remote {
+        private static final long serialVersionUID = 1L;
+
         private <T> T getValue(final IKey<T> key) {
             return get(key);
         }

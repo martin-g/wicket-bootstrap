@@ -25,6 +25,8 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.utilities.ColorBehavior;
  */
 @MountPath("/utilities")
 public class UtilitiesPage extends BasePage {
+    private static final long serialVersionUID = 1L;
+
     /**
      * Construct.
      *
@@ -48,7 +50,8 @@ public class UtilitiesPage extends BasePage {
                 BorderBehavior.Type.Bottom,
                 BorderBehavior.Type.Left
         );
-        add(new ListView<BorderBehavior.Type>("additive-border-types", additiveTypes) {
+        add(new ListView<>("additive-border-types", additiveTypes) {
+            private static final long serialVersionUID = 1L;
 
             @Override
             protected void populateItem(ListItem<BorderBehavior.Type> item) {
@@ -66,7 +69,8 @@ public class UtilitiesPage extends BasePage {
                 BorderBehavior.Type.ExceptBottom,
                 BorderBehavior.Type.ExceptLeft
         );
-        add(new ListView<BorderBehavior.Type>("subtractive-border-types", subtractiveTypes) {
+        add(new ListView<>("subtractive-border-types", subtractiveTypes) {
+            private static final long serialVersionUID = 1L;
 
             @Override
             protected void populateItem(ListItem<BorderBehavior.Type> item) {
@@ -99,7 +103,8 @@ public class UtilitiesPage extends BasePage {
 
     private void addBorderColors() {
         List<BorderBehavior.Color> colors = Lists.newArrayList(BorderBehavior.Color.values());
-        add(new ListView<BorderBehavior.Color>("border-colors", colors) {
+        add(new ListView<>("border-colors", colors) {
+            private static final long serialVersionUID = 1L;
 
             @Override
             protected void populateItem(ListItem<BorderBehavior.Color> item) {
@@ -126,7 +131,9 @@ public class UtilitiesPage extends BasePage {
 
     private void addBorderRadius() {
         List<BorderBehavior.Radius> radiuses = Lists.newArrayList(BorderBehavior.Radius.values());
-        add(new ListView<BorderBehavior.Radius>("border-radiuses", radiuses) {
+        add(new ListView<>("border-radiuses", radiuses) {
+            private static final long serialVersionUID = 1L;
+
             @Override
             protected void populateItem(ListItem<BorderBehavior.Radius> item) {
                 BorderBehavior.Radius radius = item.getModelObject();
@@ -152,7 +159,9 @@ public class UtilitiesPage extends BasePage {
 
     private void addColors() {
         List<ColorBehavior.Color> colors = Lists.newArrayList(ColorBehavior.Color.values());
-        add(new ListView<ColorBehavior.Color>("text-colors", colors) {
+        add(new ListView<>("text-colors", colors) {
+            private static final long serialVersionUID = 1L;
+
             @Override
             protected void populateItem(ListItem<ColorBehavior.Color> item) {
                 ColorBehavior.Color color = item.getModelObject();
@@ -193,11 +202,15 @@ public class UtilitiesPage extends BasePage {
                 "});"
         )).setLanguage(CodeBehavior.Language.JAVA));
 
-        add(new ListView<ColorBehavior.Color>("link-colors", colors) {
+        add(new ListView<>("link-colors", colors) {
+            private static final long serialVersionUID = 1L;
+
             @Override
             protected void populateItem(ListItem<ColorBehavior.Color> item) {
                 ColorBehavior.Color color = item.getModelObject();
                 AbstractLink link = new Link<Void>("color") {
+                    private static final long serialVersionUID = 1L;
+
                     @Override
                     public void onClick() {
                     }
@@ -222,7 +235,9 @@ public class UtilitiesPage extends BasePage {
     private void addBackgroundColors() {
         List<BackgroundColorBehavior.Color> colors = Lists.newArrayList(BackgroundColorBehavior.Color.values());
 
-        add(new ListView<BackgroundColorBehavior.Color>("background-colors", colors) {
+        add(new ListView<>("background-colors", colors) {
+            private static final long serialVersionUID = 1L;
+
             @Override
             protected void populateItem(ListItem<BackgroundColorBehavior.Color> item) {
                 BackgroundColorBehavior.Color color = item.getModelObject();

@@ -17,7 +17,7 @@ import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
-import org.apache.wicket.util.time.Duration;
+import java.time.Duration;
 
 import java.util.List;
 
@@ -28,8 +28,8 @@ import java.util.List;
  * @author miha
  */
 public class Carousel extends Panel {
-
-    private Duration interval = Duration.seconds(5);
+    private static final long serialVersionUID = 1L;
+    private Duration interval = Duration.ofSeconds(5L);
     private final IModel<List<ICarouselImage>> model;
 
     /**
@@ -110,7 +110,8 @@ public class Carousel extends Panel {
      * @return new list view.
      */
     protected Component newImageList(String wicketId) {
-        return new ListView<ICarouselImage>(wicketId, model) {
+        return new ListView<>(wicketId, model) {
+            private static final long serialVersionUID = 1L;
 
             @Override
             protected void populateItem(ListItem<ICarouselImage> item) {
@@ -187,7 +188,7 @@ public class Carousel extends Panel {
         super.renderHead(response);
 
         response.render(OnDomReadyHeaderItem.forScript("$('#" + Strings2.getMarkupId(this) + "').carousel({\n"
-                                                       + "  interval: " + getInterval().getMilliseconds() + "\n"
+                                                       + "  interval: " + getInterval().toMillis() + "\n"
                                                        + "})"));
     }
 

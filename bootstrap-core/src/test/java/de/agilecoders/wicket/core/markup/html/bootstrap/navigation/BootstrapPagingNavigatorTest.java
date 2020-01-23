@@ -70,7 +70,9 @@ class BootstrapPagingNavigatorTest extends WicketApplicationTest {
      * @return new {@link IPageable} instance
      */
     private IPageable createPageable() {
-        return new PageableListView<String>("pageable", Generics2.newArrayList("item1", "item2", "item3", "item2"), 1) {
+        return new PageableListView<>("pageable", Generics2.newArrayList("item1", "item2", "item3", "item2"), 1) {
+            private static final long serialVersionUID = 1L;
+
             @Override
             protected void populateItem(ListItem<String> item) {
                 item.add(new Label("item", item.getModelObject()));

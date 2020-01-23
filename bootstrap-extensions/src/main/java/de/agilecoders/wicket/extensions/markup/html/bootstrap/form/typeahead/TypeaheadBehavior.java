@@ -12,6 +12,8 @@ import org.apache.wicket.util.string.StringValue;
  */
 public abstract class TypeaheadBehavior<T> extends AbstractAjaxBehavior
 {
+    private static final long serialVersionUID = 1L;
+
     public void onRequest() {
 
         RequestCycle requestCycle = getComponent().getRequestCycle();

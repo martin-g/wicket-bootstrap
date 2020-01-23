@@ -10,7 +10,6 @@ import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.util.lang.Args;
-import org.apache.wicket.util.visit.IVisit;
 import org.apache.wicket.util.visit.IVisitor;
 
 import java.util.ArrayList;
@@ -96,14 +95,8 @@ public abstract class ValidationBehavior<T extends AbstractValidationConfig> ext
     }
 
     private <T extends Component> List<T> getChildren(MarkupContainer container, final Class<T> clazz) {
-        final List<T> result = new ArrayList<T>();
-        IVisitor<Component, T> visitor = new IVisitor<Component, T>() {
-
-            @Override
-            public void component(Component object, IVisit<T> visit) {
-                result.add(clazz.cast(object));
-            }
-        };
+        final List<T> result = new ArrayList<>();
+        IVisitor<Component, T> visitor = (object, visit) -> result.add(clazz.cast(object));
         container.visitChildren(clazz, visitor);
         return result;
     }

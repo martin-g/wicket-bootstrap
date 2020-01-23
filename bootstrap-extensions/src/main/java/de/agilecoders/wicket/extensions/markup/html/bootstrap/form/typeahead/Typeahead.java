@@ -19,6 +19,7 @@ import static de.agilecoders.wicket.jquery.JQuery.$;
  * An integration with <a href="https://github.com/twitter/typeahead.js">Twitter Typeahead</a> plugin.
  */
 public class Typeahead<T> extends TextField<T> {
+    private static final long serialVersionUID = 1L;
 
     /**
      * The configuration for the JavaScript plugin.
@@ -104,7 +105,9 @@ public class Typeahead<T> extends TextField<T> {
     }
 
     protected TypeaheadBehavior<T> createTypeaheadBehavior() {
-        return new TypeaheadBehavior<T>() {
+        return new TypeaheadBehavior<>() {
+            private static final long serialVersionUID = 1L;
+
             @Override
             protected Iterable<T> getChoices(String input) {
                 return Typeahead.this.getChoices(input);

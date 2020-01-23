@@ -16,7 +16,6 @@ import de.agilecoders.wicket.extensions.markup.html.bootstrap.behavior.Resizable
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.confirmation.ConfirmationBehavior;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.confirmation.ConfirmationConfig;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.clockpicker.ClockPickerBehavior;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.clockpicker.ClockPickerConfig;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.password.strength.PasswordStrengthBehavior;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.password.strength.PasswordStrengthConfig;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.rating.RatingConfig;
@@ -53,7 +52,7 @@ import org.apache.wicket.model.Model;
 import org.apache.wicket.model.ResourceModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.request.resource.CssResourceReference;
-import org.apache.wicket.util.time.Duration;
+import java.time.Duration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.wicketstuff.annotation.mount.MountPath;
@@ -67,6 +66,7 @@ import java.util.List;
  */
 @MountPath(value = "/extensions")
 public class ExtensionsPage extends BasePage {
+    private static final long serialVersionUID = 1L;
 
     private static final Logger LOG = LoggerFactory.getLogger(ExtensionsPage.class);
 
@@ -110,6 +110,8 @@ public class ExtensionsPage extends BasePage {
         Modal<String> draggableModal = new TextContentModal(
                 "draggable-modal",
                 Model.of("Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.")) {
+                    private static final long serialVersionUID = 1L;
+
             @Override
             protected WebMarkupContainer createDialog(String id) {
                 WebMarkupContainer dialog = super.createDialog(id);
@@ -168,9 +170,9 @@ public class ExtensionsPage extends BasePage {
     }
 
     private void pwstrengthSample() {
-        StatelessForm<Void> pwstrengthForm = new StatelessForm<Void>("pwstrengthForm");
+        StatelessForm<Void> pwstrengthForm = new StatelessForm<>("pwstrengthForm");
 
-        RequiredTextField<String> username = new RequiredTextField<String>("username", Model.of(""));
+        RequiredTextField<String> username = new RequiredTextField<>("username", Model.of(""));
         PasswordTextField password = new PasswordTextField("password", Model.of(""));
         PasswordStrengthConfig config = new PasswordStrengthConfig();
         config.withDebug(true).withMinChar(3).withUsernameField(username)
@@ -199,7 +201,9 @@ public class ExtensionsPage extends BasePage {
             .withVerticalbuttons(true)
             .withBootstap(2)
             .withInitVal(24);
-        Spinner<Double> spinner = new Spinner<Double>("spinner", config) {
+        Spinner<Double> spinner = new Spinner<>("spinner", config) {
+            private static final long serialVersionUID = 1L;
+
             @Override
             protected boolean wantMinNotification() {
                 return true;
@@ -220,8 +224,7 @@ public class ExtensionsPage extends BasePage {
         feedback.setOutputMarkupId(true);
         RatingConfig config = new RatingConfig();
         config.withStart(0).withStop(10).withStep(2).withFilled("fa fa-star fa-3x").withEmpty("fa fa-star-o fa-3x");
-        RatingField<String> rating = new RatingField<String>("rating", Model.of(""), config) {
-
+        RatingField<String> rating = new RatingField<>("rating", Model.of(""), config) {
             private static final long serialVersionUID = 1L;
 
             @Override
@@ -242,7 +245,7 @@ public class ExtensionsPage extends BasePage {
         final NotificationPanel feedback = new NotificationPanel("animationFeedback");
         feedback.setOutputMarkupId(true).add(new AnimatedBehavior(Animation.bounceInLeft));
 
-        AjaxLink<Void> animate = new AjaxLink<Void>("startAnimation") {
+        AjaxLink<Void> animate = new AjaxLink<>("startAnimation") {
 
             private static final long serialVersionUID = 1L;
 
@@ -260,20 +263,24 @@ public class ExtensionsPage extends BasePage {
         add(form);
 
         LaddaAjaxButton laddaButton = new LaddaAjaxButton("laddaButton", Model.of("Button, 3secs"), form, Buttons.Type.Info) {
+            private static final long serialVersionUID = 1L;
+
             @Override
             protected void onSubmit(AjaxRequestTarget target) {
                 super.onSubmit(target);
 
-                Duration.seconds(3).sleep();
+                sleep(3L);
             }
         };
         laddaButton.setSize(Buttons.Size.Small);
 
-        LaddaAjaxLink<String> laddaLink = new LaddaAjaxLink<String>("laddaLink", null,
+        LaddaAjaxLink<String> laddaLink = new LaddaAjaxLink<>("laddaLink", null,
             Buttons.Type.Success, Model.of("Link, 2secs")) {
+                private static final long serialVersionUID = 1L;
+
             @Override
             public void onClick(AjaxRequestTarget target) {
-                Duration.seconds(2).sleep();
+                sleep(3L);
             }
         };
         laddaLink.setEffect(LaddaBehavior.Effect.EXPAND_LEFT).setSize(Buttons.Size.Medium);
@@ -288,6 +295,14 @@ public class ExtensionsPage extends BasePage {
         form.add(laddaButton, laddaLink);
     }
 
+    private static void sleep(long seconds) {
+        try {
+            Thread.sleep(Duration.ofSeconds(seconds).toMillis());
+        } catch (InterruptedException e) {
+            LOG.error("Sleep interrupted", e);
+        }
+    }
+
     private void confirmationButton() {
         Form form = new Form("confirmationForm");
         add(form);
@@ -297,6 +312,8 @@ public class ExtensionsPage extends BasePage {
         add(feedback);
 
         AjaxButton confirmationButton = new AjaxButton("confirmationButton", Model.of("Button")) {
+            private static final long serialVersionUID = 1L;
+
             @Override
             protected void onSubmit(AjaxRequestTarget target) {
                 super.onSubmit(target);
@@ -309,7 +326,9 @@ public class ExtensionsPage extends BasePage {
             .withTitle("My title?").withSingleton(true).withPopout(true).withBtnOkLabel("Confirm")
         ));
 
-        AjaxLink<String> confirmationLink = new AjaxLink<String>("confirmationLink", Model.of("Link")) {
+        AjaxLink<String> confirmationLink = new AjaxLink<>("confirmationLink", Model.of("Link")) {
+            private static final long serialVersionUID = 1L;
+
             @Override
             public void onClick(AjaxRequestTarget target) {
                 info("Invoked link's #onClick()!");
@@ -366,6 +385,8 @@ public class ExtensionsPage extends BasePage {
         view.add(stepThree);
 
         TourBehavior tourBehavior = new TourBehavior() {
+            private static final long serialVersionUID = 1L;
+
             @Override
             protected CharSequence createExtraConfig() {
             return

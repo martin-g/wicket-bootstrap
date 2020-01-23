@@ -36,7 +36,7 @@ import java.util.List;
 public class Theme implements ITheme {
 
     private final String name;
-    private final List<HeaderItem> headerItems = new ArrayList<HeaderItem>();
+    private final List<HeaderItem> headerItems = new ArrayList<>();
 
     /**
      * Construct.

@@ -14,6 +14,8 @@ import org.apache.wicket.model.Model;
  * @author miha
  */
 public class CustomNavbarForm extends NavbarForm<Void> {
+    private static final long serialVersionUID = 1L;
+
     public CustomNavbarForm(String componentId) {
         super(componentId);
 
@@ -26,6 +28,6 @@ public class CustomNavbarForm extends NavbarForm<Void> {
     }
 
     private Component newSearchField(String markupId) {
-        return new TextField<String>(markupId, Model.of(""));
+        return new TextField<>(markupId, Model.of(""));
     }
 }

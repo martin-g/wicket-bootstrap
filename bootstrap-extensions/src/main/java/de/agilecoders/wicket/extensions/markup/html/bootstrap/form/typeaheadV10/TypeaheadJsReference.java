@@ -13,6 +13,7 @@ import java.util.List;
  * typeahead javascript library
  */
 public class TypeaheadJsReference extends WebjarsJavaScriptResourceReference {
+    private static final long serialVersionUID = 1L;
 
     /**
      * Singleton instance of this reference
@@ -34,7 +35,7 @@ public class TypeaheadJsReference extends WebjarsJavaScriptResourceReference {
 
     @Override
     public List<HeaderItem> getDependencies() {
-        List<HeaderItem> dependencies = new ArrayList<HeaderItem>();
+        List<HeaderItem> dependencies = new ArrayList<>();
 
         dependencies.add(JavaScriptHeaderItem.forReference(Bootstrap.getSettings().getJsResourceReference()));
         return dependencies;

@@ -1,13 +1,13 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.table.sort;
 
 
+import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.extensions.markup.html.repeater.data.sort.ISortStateLocator;
 import org.apache.wicket.extensions.markup.html.repeater.data.sort.OrderByLink;
 import org.apache.wicket.extensions.markup.html.repeater.data.sort.SortOrder;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.border.Border;
 
-import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.CssClassNameModifier;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
 
@@ -40,7 +40,7 @@ public abstract class BootstrapOrderByBorder<S> extends Border {
 		super(id);
 
 		OrderByLink<S> link = newOrderByLink("orderByLink", property, stateLocator);
-		link.add(CssClassNameModifier.append("class", "show"));
+		link.add(AttributeModifier.append("class", "show"));
 
 		addToBorder(link);
 
@@ -76,7 +76,7 @@ public abstract class BootstrapOrderByBorder<S> extends Border {
 	 * @return link
 	 */
 	protected OrderByLink<S> newOrderByLink(final String id, final S property, final ISortStateLocator<S> stateLocator) {
-		return new OrderByLink<S>(id, property, stateLocator)
+		return new OrderByLink<>(id, property, stateLocator)
 		{
 			private static final long serialVersionUID = 1L;
 
