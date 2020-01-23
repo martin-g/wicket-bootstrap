@@ -56,6 +56,7 @@
         <findbugs.disable>true</findbugs.disable>
 
         <!-- TODO -->
+        <apiguardian-api.version>1.1.0</apiguardian-api.version>
         <servlet-api.version>3.1.0</servlet-api.version>
         <javax.javaee-web-api.version>7.0</javax.javaee-web-api.version>
         <doxia.version>1.0</doxia.version>
@@ -69,7 +70,8 @@
         <wicketstuff.version>9.0.0-M4</wicketstuff.version>
         <yuicompressor.version>2.4.8</yuicompressor.version>
         <guava.version>27.1</guava.version>
-        <junit5.version>5.6.0</junit5.version>
+        <junit-jupiter.version>5.6.0</junit-jupiter.version>
+        <junit-platform.version>1.6.0</junit-platform.version>
         <logback.version>1.2.3</logback.version>
         <jsass.version>5.8.0</jsass.version>
         <popperjs.version>1.14.1</popperjs.version>
@@ -274,11 +276,42 @@
             </dependency>
 
             <dependency>
-                <groupId>org.junit.jupiter</groupId>
-                <artifactId>junit-jupiter</artifactId>
-                <version>${junit5.version}</version>
+                <groupId>org.apiguardian</groupId>
+                <artifactId>apiguardian-api</artifactId>
+                <version>${apiguardian-api.version}</version>
                 <scope>test</scope>
             </dependency>
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter-api</artifactId>
+                <scope>test</scope>
+                <version>${junit-jupiter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.junit.platform</groupId>
+                <artifactId>junit-platform-commons</artifactId>
+                <scope>test</scope>
+                <version>${junit-platform.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.junit.platform</groupId>
+                <artifactId>junit-platform-engine</artifactId>
+                <scope>test</scope>
+                <version>${junit-platform.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter-engine</artifactId>
+                <scope>test</scope>
+                <version>${junit-jupiter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.junit.vintage</groupId>
+                <artifactId>junit-vintage-engine</artifactId>
+                <scope>test</scope>
+                <version>${junit-jupiter.version}</version>
+            </dependency>
+
 
             <dependency>
                 <groupId>org.hamcrest</groupId>
