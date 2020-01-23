@@ -53,6 +53,15 @@ public class FileInputConfig extends AbstractConfig {
     
     public static final IKey<String> Language = newKey("language", null);
 
+    public static final IKey<Boolean> DropZoneEnabled = newKey("dropZoneEnabled", null);
+
+    public static final IKey<String> DropZoneTitle = newKey("dropZoneTitle", null);
+    
+    public static final IKey<String> DropZoneTitleClass = newKey("dropZoneTitleClass", null);
+    
+    public static final IKey<String> DropZoneClickTitle = newKey("dropZoneClickTitle", null);
+
+    
     public FileInputConfig showCaption(boolean showCaption) {
         put(ShowCaption, showCaption);
         return this;
@@ -167,6 +176,26 @@ public class FileInputConfig extends AbstractConfig {
     	return this;
     }
 
+    public FileInputConfig withDropZoneEnabled(boolean dropZoneEnabled) {
+    	put(DropZoneEnabled, dropZoneEnabled);
+    	return this;
+    }
+    
+    public FileInputConfig withDropZoneTitle(String dropZoneTitle) {
+    	put(DropZoneTitle, dropZoneTitle);
+    	return this;
+    }
+    
+    public FileInputConfig withDropZoneTitleClass(String dropZoneTitleClass) {
+    	put(DropZoneTitleClass, dropZoneTitleClass);
+    	return this;
+    }
+    
+    public FileInputConfig withDropZoneClickTitle(String dropZoneClickTitle) {
+    	put(DropZoneClickTitle, dropZoneClickTitle);
+    	return this;
+    }
+    
     public List<String> allowedFileTypes() {
         return get(AllowedFileTypes);
     }
@@ -238,4 +267,21 @@ public class FileInputConfig extends AbstractConfig {
     public String language() {
     	return get(Language);
     }
+    
+    public boolean dropZoneEnabled(){
+    	return get(DropZoneEnabled);
+    }
+    
+    public String dropZoneTitle(){
+    	return get(DropZoneTitle);
+    }
+    
+    public String dropZoneTitleClass(){
+    	return get(DropZoneTitleClass);
+    }
+
+    public String dropZoneClickTitle(){
+    	return get(DropZoneClickTitle);
+    }
+    
 }
