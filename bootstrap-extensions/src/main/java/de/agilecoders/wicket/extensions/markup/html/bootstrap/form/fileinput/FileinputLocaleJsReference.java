@@ -14,7 +14,7 @@ import java.util.List;
 public final class FileinputLocaleJsReference extends JavaScriptResourceReference implements IHeaderContributor {
 
     FileinputLocaleJsReference(String locale) {
-        super(FileinputLocaleJsReference.class, "res/locales/" + locale + ".js");
+        super(FileinputLocaleJsReference.class, "res/js/locales/" + locale + ".js");
     }
 
     @Override
