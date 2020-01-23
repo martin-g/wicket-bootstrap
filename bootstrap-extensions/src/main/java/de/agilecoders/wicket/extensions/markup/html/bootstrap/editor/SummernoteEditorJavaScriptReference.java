@@ -7,7 +7,7 @@ import java.util.List;
 import org.apache.wicket.Application;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.request.resource.ResourceReference;
-import org.apache.wicket.resource.DynamicJQueryResourceReference;
+import org.apache.wicket.resource.JQueryResourceReference;
 
 import de.agilecoders.wicket.webjars.request.resource.WebjarsJavaScriptResourceReference;
 
@@ -47,7 +47,7 @@ public class SummernoteEditorJavaScriptReference extends WebjarsJavaScriptResour
         if (Application.exists()) {
             jQueryResourceReference = Application.get().getJavaScriptLibrarySettings().getJQueryReference();
         } else {
-            jQueryResourceReference = DynamicJQueryResourceReference.getV2();
+            jQueryResourceReference = JQueryResourceReference.getV3();
         }
         dependencies.add(JavaScriptHeaderItem.forReference(jQueryResourceReference));
         return dependencies;

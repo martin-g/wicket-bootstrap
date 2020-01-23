@@ -1,7 +1,6 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.behavior;
 
 import org.apache.wicket.markup.head.IHeaderResponse;
-import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.head.JavaScriptReferenceHeaderItem;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 
@@ -18,6 +17,7 @@ import de.agilecoders.wicket.core.util.References;
  * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public class BootstrapJavascriptBehavior extends BootstrapBaseBehavior {
+    private static final long serialVersionUID = 1L;
 
     /**
      * render the {@link de.agilecoders.wicket.core.markup.html.references.BootstrapJavaScriptReference}  to
@@ -30,7 +30,8 @@ public class BootstrapJavascriptBehavior extends BootstrapBaseBehavior {
     public void renderHead(IBootstrapSettings settings, IHeaderResponse headerResponse) {
         super.renderHead(settings, headerResponse);
 
-        final JavaScriptReferenceHeaderItem jsReference = JavaScriptHeaderItem.forReference(settings.getJsResourceReference(), new PageParameters(), "bootstrap-js", settings.deferJavascript());
+        final JavaScriptReferenceHeaderItem jsReference = new JavaScriptReferenceHeaderItem(settings.getJsResourceReference(), new PageParameters(), "bootstrap-js");
+        jsReference.setDefer(settings.deferJavascript());
         References.renderWithFilter(settings, headerResponse, jsReference);
     }
 }

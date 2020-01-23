@@ -8,13 +8,13 @@ import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.resource.AbstractStringResourceStream;
 import org.apache.wicket.util.resource.IResourceStream;
 import org.apache.wicket.util.resource.ResourceStreamWrapper;
-import org.apache.wicket.util.time.Time;
+import java.time.Instant;
 
 /**
  * A IResourceStream that loads the generated CSS content for Sass resources
  */
 public class SassResourceStream extends AbstractStringResourceStream {
-
+    private static final long serialVersionUID = 1L;
     /**
      * The LessSource for the root Sass resource.
      * Any LessSource can have children resources - imported resources
@@ -58,7 +58,7 @@ public class SassResourceStream extends AbstractStringResourceStream {
     }
 
     @Override
-    public Time lastModifiedTime() {
+    public Instant lastModifiedTime() {
         SassCacheManager cacheManager = SassCacheManager.get();
         return cacheManager.getLastModifiedTime(sassSource);
     }

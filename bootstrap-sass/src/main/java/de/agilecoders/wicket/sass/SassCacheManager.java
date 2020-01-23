@@ -11,7 +11,7 @@ import org.apache.wicket.Application;
 import org.apache.wicket.MetaDataKey;
 import org.apache.wicket.WicketRuntimeException;
 import org.apache.wicket.util.io.Connections;
-import org.apache.wicket.util.time.Time;
+import java.time.Instant;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -40,7 +40,7 @@ public class SassCacheManager {
     /**
      * A cache that keeps the generated CSS content per root SassSource
      */
-    private final ConcurrentMap<SassSource, ConcurrentMap<Time, String>> contentCache =
+    private final ConcurrentMap<SassSource, ConcurrentMap<Instant, String>> contentCache =
             new ConcurrentHashMap<>();
 
     /**
@@ -94,16 +94,16 @@ public class SassCacheManager {
      * @return The generated CSS content
      */
     public String getCss(SassSource sassSource) {
-        ConcurrentMap<Time, String> timeToContentMap = contentCache.get(sassSource);
+        ConcurrentMap<Instant, String> timeToContentMap = contentCache.get(sassSource);
         if (timeToContentMap == null) {
             timeToContentMap = new ConcurrentHashMap<>();
-            ConcurrentMap<Time, String> old = contentCache.putIfAbsent(sassSource, timeToContentMap);
+            ConcurrentMap<Instant, String> old = contentCache.putIfAbsent(sassSource, timeToContentMap);
             if (old != null) {
                 timeToContentMap = old;
             }
         }
 
-        Time lastModifiedTime = getLastModifiedTime(sassSource);
+        Instant lastModifiedTime = getLastModifiedTime(sassSource);
         String cssContent = timeToContentMap.get(lastModifiedTime);
 
         if (cssContent == null) {
@@ -157,8 +157,8 @@ public class SassCacheManager {
      * @param sassSource The root SassSource which last modification time should be calculated
      * @return The time when either the root LessSource or any of the imported resources has been last modified
      */
-    public Time getLastModifiedTime(SassSource sassSource) {
-        Time modified = Time.START_OF_UNIX_TIME;
+    public Instant getLastModifiedTime(SassSource sassSource) {
+        Instant modified = Instant.EPOCH;
         return findLastModified(sassSource, modified);
     }
 
@@ -170,11 +170,11 @@ public class SassCacheManager {
      * @param time   The last modification time of the parent resource
      * @return The latest modified time of the root LessSource and its imported resources
      */
-    private Time findLastModified(SassSource source, Time time) {
-        Time max = time;
+    private Instant findLastModified(SassSource source, Instant time) {
+        Instant max = time;
         try {
-            Time lastModified = Connections.getLastModified(source.getURL());
-            max = Time.maxNullSafe(time, lastModified);
+            Instant lastModified = Connections.getLastModified(source.getURL());
+            max = maxNullSafe(time, lastModified);
 
             Collection<SassSource> importedSources = source.getImportedSources();
             if (importedSources != null) {
@@ -192,6 +192,16 @@ public class SassCacheManager {
         return max;
     }
 
+    private static Instant maxNullSafe(Instant lhs, Instant rhs) {
+        if (lhs == rhs) {
+            return lhs;
+        } else if (lhs == null) {
+            return rhs;
+        } else if (rhs == null) {
+            return lhs;
+        }
+        return lhs.compareTo(rhs) > 0 ? lhs : rhs;
+    }
     /**
      * Registers this instance as the one which should be used in this application.
      *

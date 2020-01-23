@@ -41,7 +41,7 @@ import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
-import org.apache.wicket.util.time.Duration;
+import java.time.Duration;
 import org.wicketstuff.annotation.mount.MountPath;
 
 import java.util.ArrayList;
@@ -55,6 +55,7 @@ import java.util.List;
  */
 @MountPath(value = "/components")
 public class ComponentsPage extends BasePage {
+    private static final long serialVersionUID = 1L;
 
     private static enum Status {
         submitted,
@@ -146,7 +147,7 @@ public class ComponentsPage extends BasePage {
                 return Model.of(newValue);
             }
         };
-        updatableBar.updateInterval(Duration.seconds(80));
+        updatableBar.updateInterval(Duration.ofSeconds(80L));
         add(updatableBar);
 
 

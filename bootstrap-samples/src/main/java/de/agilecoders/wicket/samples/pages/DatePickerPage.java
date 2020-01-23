@@ -10,7 +10,7 @@ import de.agilecoders.wicket.samples.components.basecss.DatePickerModal;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.model.AbstractReadOnlyModel;
+import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.joda.time.DateTime;
@@ -26,7 +26,7 @@ import java.util.Date;
  */
 @MountPath(value = "/datepicker")
 public class DatePickerPage extends BasePage {
-
+    private static final long serialVersionUID = 1L;
     private Date date = null;
     /**
      * Construct.
@@ -65,7 +65,9 @@ public class DatePickerPage extends BasePage {
 
         add(modal, modalButton);
 
-        final Label selectedDate = new Label("selectedDate", new AbstractReadOnlyModel<String>() {
+        final Label selectedDate = new Label("selectedDate", new IModel<String>() {
+            private static final long serialVersionUID = 1L;
+
             @Override
             public String getObject() {
                 return date != null? date.toString() : "--NO SELECTED DATE--";
@@ -75,6 +77,8 @@ public class DatePickerPage extends BasePage {
 
         add(selectedDate);
         add(new DateTextField("ajax-default").addAjaxEvent(DateTextField.Event.changeDate, new DateTextField.IAjaxEventHandler() {
+            private static final long serialVersionUID = 1L;
+
             @Override
             public void onAjaxEvent(AjaxRequestTarget target, Date date, DateTextField.Event event) {
                 DatePickerPage.this.date = date;

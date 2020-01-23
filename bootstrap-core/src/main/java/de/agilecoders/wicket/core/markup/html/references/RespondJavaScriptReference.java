@@ -35,6 +35,6 @@ public class RespondJavaScriptReference extends JavaScriptResourceReference {
      * @return a JavaScript header item ready to be contributed
      */
     public static JavaScriptHeaderItem headerItem() {
-        return JavaScriptHeaderItem.forReference(instance(), null, null, false, null, "lt IE 9");
+        return JavaScriptHeaderItem.forReference(instance());
     }
 }

@@ -34,7 +34,7 @@ public class BootlintHeaderItem extends JavaScriptContentHeaderItem {
      * @param javascript The JavaScript to execute once bootlint.js is loaded
      */
     public BootlintHeaderItem(String javascript) {
-        super(javascript, "bootlint", null);
+        super(javascript, "bootlint");
     }
 
     @Override
