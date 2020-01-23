@@ -1,19 +1,16 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.html;
 
-import de.agilecoders.wicket.core.Bootstrap;
-import de.agilecoders.wicket.core.markup.html.references.ModernizrJavaScriptReference;
-import de.agilecoders.wicket.core.util.CssClassNames;
+import java.util.Locale;
+
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.head.HeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.html.TransparentWebMarkupContainer;
-import org.apache.wicket.protocol.http.ClientProperties;
-import org.apache.wicket.protocol.http.request.WebClientInfo;
 
-import java.util.HashSet;
-import java.util.Locale;
-import java.util.Set;
+import de.agilecoders.wicket.core.Bootstrap;
+import de.agilecoders.wicket.core.markup.html.references.ModernizrJavaScriptReference;
+import de.agilecoders.wicket.core.util.CssClassNames;
 
 /**
  * A {@link HtmlTag} is a {@link TransparentWebMarkupContainer} that adds some attributes
@@ -48,9 +45,9 @@ import java.util.Set;
  * @author miha
  */
 public class HtmlTag extends TransparentWebMarkupContainer {
+    private static final long serialVersionUID = 1L;
     private final boolean useModernizr;
     private final Locale locale;
-    private final ClientProperties clientProperties;
 
     /**
      * Construct.
@@ -64,7 +61,6 @@ public class HtmlTag extends TransparentWebMarkupContainer {
 
         this.locale = locale;
         this.useModernizr = useModernizr;
-        this.clientProperties = newWebClientInfo();
     }
 
     /**
@@ -100,13 +96,6 @@ public class HtmlTag extends TransparentWebMarkupContainer {
     }
 
     /**
-     * @return new {@link WebClientInfo} instance
-     */
-    protected ClientProperties newWebClientInfo() {
-        return new WebClientInfo(getRequestCycle()).getProperties();
-    }
-
-    /**
      * transforms a locale to an attribute value
      *
      * @param locale current locale
@@ -131,36 +120,9 @@ public class HtmlTag extends TransparentWebMarkupContainer {
             cssClassNames.add("no-js");
         }
 
-        cssClassNames.add(createBrowserShortcut(clientProperties));
         cssClassNames.add("theme-" + Bootstrap.getSettings().getActiveThemeProvider().getActiveTheme().name());
 
         tag.put("class", cssClassNames.asString());
-    }
-
-    /**
-     * creates a browser shortcuts to identify old IE versions.
-     *
-     * @param clientProperties current client properties
-     * @return a set of browser shortcuts
-     */
-    private Set<String> createBrowserShortcut(final ClientProperties clientProperties) {
-        Set<String> shortcut = new HashSet<>();
-
-        if (clientProperties.isBrowserInternetExplorer()) {
-            if (clientProperties.getBrowserVersionMajor() < 9) {
-                shortcut.add("lt-ie9");
-
-                if (clientProperties.getBrowserVersionMajor() < 8) {
-                    shortcut.add("lt-ie8");
-
-                    if (clientProperties.getBrowserVersionMajor() < 7) {
-                        shortcut.add("lt-ie7");
-                    }
-                }
-            }
-        }
-
-        return shortcut;
     }
 
     @Override

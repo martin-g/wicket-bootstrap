@@ -7,7 +7,7 @@ import java.util.Collection;
 
 import org.apache.wicket.util.file.Files;
 import org.apache.wicket.util.io.Connections;
-import org.apache.wicket.util.time.Time;
+import java.time.Instant;
 
 import io.bit3.jsass.Options;
 import org.junit.jupiter.api.BeforeEach;
@@ -115,14 +115,14 @@ class SassCacheManagerTest {
         URL parentUrl = getClass().getResource("resources/timeParent.scss");
         File parentFile = Files.getLocalFileFromUrl(parentUrl);
         parentFile.setLastModified(currentTimeMillis);
-        Time expectedTimeBeforeCompile = Connections.getLastModified(parentUrl);
+        Instant expectedTimeBeforeCompile = Connections.getLastModified(parentUrl);
         SassSource urlSource = new SassSource(parentUrl.toExternalForm(), null);
 
         // Make sure that the imported file time stamp is newer than timeRoots
         URL childUrl = getClass().getResource("resources/timeChild.scss");
         File childFile = Files.getLocalFileFromUrl(childUrl);
         childFile.setLastModified(currentTimeMillis + 60000);
-        Time expectedTimeAfterCompile = Connections.getLastModified(childUrl);
+        Instant expectedTimeAfterCompile = Connections.getLastModified(childUrl);
 
         assertEquals(expectedTimeBeforeCompile, cacheManager.getLastModifiedTime(urlSource));
 

@@ -3,6 +3,7 @@ package de.agilecoders.wicket.extensions.markup.html.bootstrap.editor;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesome5CssReference;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.references.SpinJsReference;
 import java.io.IOException;
+import java.util.Base64;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -27,7 +28,6 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.protocol.http.servlet.MultipartServletWebRequest;
 import org.apache.wicket.protocol.http.servlet.ServletWebRequest;
 import org.apache.wicket.request.http.WebResponse;
-import org.apache.wicket.util.crypt.Base64;
 import org.apache.wicket.util.io.IOUtils;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.lang.Bytes;
@@ -193,7 +193,7 @@ public class SummernoteEditor extends FormComponent<String> {
                         storage.writeContent(imageName, fileItem.getInputStream());
                         WebResponse response = (WebResponse) target.getHeaderResponse().getResponse();
                         response.setHeader("imageUrl", SummernoteStoredImageResourceReference.SUMMERNOTE_MOUNT_PATH
-                                                       + "?image=" + Base64.encodeBase64String(imageName.getBytes()));
+                                                       + "?image=" + Base64.getEncoder().encodeToString(imageName.getBytes()));
                         fileItemsMap.put(imageName, fileItem);
                     } catch (IOException e) {
                         throw new WicketRuntimeException("Error while writing image: " + imageName, e);
