@@ -23,6 +23,7 @@ import de.agilecoders.wicket.extensions.markup.html.bootstrap.table.sort.Bootstr
  * @param <S> the type of the sorting parameter
  */
 public class BootstrapHeadersToolbar<S> extends HeadersToolbar<S>{
+	private static final long serialVersionUID = 1L;
 
 	public <T> BootstrapHeadersToolbar(DataTable<T, S> table, ISortStateLocator<S> stateLocator) {
 		super(table, stateLocator);
@@ -30,7 +31,8 @@ public class BootstrapHeadersToolbar<S> extends HeadersToolbar<S>{
 
 	@Override
 	protected WebMarkupContainer newSortableHeader(String headerId, S property, ISortStateLocator<S> locator) {
-		return new BootstrapOrderByBorder<S>(headerId, property, locator) {
+		return new BootstrapOrderByBorder<>(headerId, property, locator) {
+			private static final long serialVersionUID = 1L;
 
 			@Override
 			protected IconType ascendingIconType() {

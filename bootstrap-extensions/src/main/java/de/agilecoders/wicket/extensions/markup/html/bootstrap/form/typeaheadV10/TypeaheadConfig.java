@@ -10,6 +10,7 @@ import de.agilecoders.wicket.jquery.IKey;
  * Basic configuration for <a href="https://github.com/twitter/typeahead.js/blob/master/doc/jquery_typeahead.md">typeahead.js</a>
  */
 public class TypeaheadConfig<T> extends AbstractConfig {
+    private static final long serialVersionUID = 1L;
 
     private final DataSet<T>[] datasets;
 
@@ -70,6 +71,6 @@ public class TypeaheadConfig<T> extends AbstractConfig {
      * configuration
      */
     public static <T> TypeaheadConfig<T> forRemote(Bloodhound<T> bloodhound) {
-        return new TypeaheadConfig<T>(new DataSet<T>(bloodhound));
+        return new TypeaheadConfig<>(new DataSet<>(bloodhound));
     }
 }

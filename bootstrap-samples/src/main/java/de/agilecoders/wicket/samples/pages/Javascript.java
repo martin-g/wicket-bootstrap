@@ -36,7 +36,7 @@ import org.apache.wicket.markup.html.link.AbstractLink;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.request.resource.CssResourceReference;
-import org.apache.wicket.util.time.Duration;
+import java.time.Duration;
 import org.wicketstuff.annotation.mount.MountPath;
 
 import java.util.ArrayList;
@@ -51,6 +51,8 @@ import java.util.stream.Collectors;
  */
 @MountPath(value = "/javascript", alt = "/js")
 public class Javascript extends BasePage {
+    private static final long serialVersionUID = 1L;
+
 
     /**
      * Construct.
@@ -71,6 +73,7 @@ public class Javascript extends BasePage {
         add(new Label("tooltip-top", Model.of("Tooltip on top")).add(new TooltipBehavior(Model.of("Tooltip on top"))));
 
         add(new BootstrapAjaxLink<Void>("popover", Buttons.Type.Danger) {
+            private static final long serialVersionUID = 1L;
 
             @Override
             protected void onInitialize() {
@@ -138,7 +141,9 @@ public class Javascript extends BasePage {
             "West Virginia", "Wisconsin", "Wyoming"
         );
 
-        Bloodhound<String> bloodhound = new Bloodhound<String>("remote") {
+        Bloodhound<String> bloodhound = new Bloodhound<>("remote") {
+            private static final long serialVersionUID = 1L;
+
             @Override
             public Iterable<String> getChoices(String input) {
                 return dataSource.stream()
@@ -183,11 +188,15 @@ public class Javascript extends BasePage {
 
     private Component newDropDown(String markupId) {
         return new DropDownButton(markupId, Model.of("Dropdown (#89)"), Model.of(FontAwesomeIconType.bookmark)) {
+            private static final long serialVersionUID = 1L;
+
             @Override
             protected List<AbstractLink> newSubMenuButtons(String buttonMarkupId) {
                 List<AbstractLink> subMenu = new ArrayList<>();
                 subMenu.add(new MenuBookmarkablePageLink<Void>(Javascript.class).setLabel(Model.of("Link")));
                 subMenu.add(new NavbarAjaxLink<String>("button", Model.of("Ajax Link")) {
+                    private static final long serialVersionUID = 1L;
+
                     @Override
                     public void onClick(AjaxRequestTarget target) {
                         ((DropDownButton) getParent()).appendToggleMenuScript(target);

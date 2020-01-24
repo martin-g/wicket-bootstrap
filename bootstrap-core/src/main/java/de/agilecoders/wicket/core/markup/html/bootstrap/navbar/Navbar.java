@@ -47,7 +47,7 @@ import static de.agilecoders.wicket.jquery.util.Generics2.transform;
  * @author miha
  */
 public class Navbar extends Panel implements Invertible<Navbar> {
-
+    private static final long serialVersionUID = 1L;
     private static final String COMPONENT_ID = "component";
 
     /**
@@ -207,7 +207,9 @@ public class Navbar extends Panel implements Invertible<Navbar> {
      * @return new model
      */
     private IModel<List<Component>> newPositionDependedComponentModel(final List<INavbarComponent> components, final PositionFilter withPosition) {
-        return new LoadableDetachableModel<List<Component>>() {
+        return new LoadableDetachableModel<>() {
+            private static final long serialVersionUID = 1L;
+
             @Override
             public List<Component> load() {
                 return transform(Generics2.filter(components, withPosition), NAVBAR_COMPONENT_TO_COMPONENT_FUNCTION);
@@ -223,7 +225,9 @@ public class Navbar extends Panel implements Invertible<Navbar> {
      * @return a new navigation list view instance
      */
     protected Component newNavigation(String componentId, IModel<List<Component>> listModel) {
-        return new ListView<Component>(componentId, listModel) {
+        return new ListView<>(componentId, listModel) {
+            private static final long serialVersionUID = 1L;
+
             @Override
             protected void populateItem(ListItem<Component> components) {
                 Component component = components.getModelObject();
@@ -261,7 +265,9 @@ public class Navbar extends Panel implements Invertible<Navbar> {
      * @return a new brand name page link instance
      */
     protected Component newBrandNameLink(String componentId) {
-        BookmarkablePageLink<Page> link = new BookmarkablePageLink<Page>(componentId, getHomePage()) {
+        BookmarkablePageLink<Page> link = new BookmarkablePageLink<>(componentId, getHomePage()) {
+            private static final long serialVersionUID = 1L;
+
             @Override
             protected void onConfigure() {
                 super.onConfigure();
@@ -518,7 +524,7 @@ public class Navbar extends Panel implements Invertible<Navbar> {
      * match the given {@link ComponentPosition}.
      */
     private static final class PositionFilter implements Predicate<INavbarComponent>, IClusterable {
-
+        private static final long serialVersionUID = 1L;
         private final ComponentPosition position;
 
         /**
@@ -543,7 +549,7 @@ public class Navbar extends Panel implements Invertible<Navbar> {
      * A {@link Function} that maps a {@link INavbarComponent} to a {@link Component}
      */
     private static final class NavbarComponentToComponentFunction implements Function<INavbarComponent, Component>, IClusterable {
-
+        private static final long serialVersionUID = 1L;
         private final String markupId;
 
         /**

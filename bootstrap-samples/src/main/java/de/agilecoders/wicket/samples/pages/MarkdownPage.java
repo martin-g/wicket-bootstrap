@@ -33,7 +33,7 @@ public class MarkdownPage extends BasePage {
         final NotificationPanel feedback = new NotificationPanel("feedback" + idSuffix);
         feedback.setOutputMarkupId(true);
 
-        Form<Void> form = new Form<Void>("form" + idSuffix);
+        Form<Void> form = new Form<>("form" + idSuffix);
 
         final IModel<String> model = Model.of("###Lorem \n\n _ipsum_ **dolor** sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam \r\nnvoluptua.");
 

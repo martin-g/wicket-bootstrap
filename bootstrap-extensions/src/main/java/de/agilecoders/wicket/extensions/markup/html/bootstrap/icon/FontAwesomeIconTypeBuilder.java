@@ -165,7 +165,7 @@ public class FontAwesomeIconTypeBuilder {
      * @return build the icon
      */
     public FontAwesomeIconType build() {
-        final List<String> styles = new ArrayList<String>();
+        final List<String> styles = new ArrayList<>();
 
         // replace all underscore to dashes
         styles.add(underscoresToDashes(fontAwesomeGraphic.name()));

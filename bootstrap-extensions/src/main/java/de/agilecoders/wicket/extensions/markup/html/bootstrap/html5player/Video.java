@@ -9,7 +9,7 @@ import org.apache.wicket.model.Model;
  * @author miha
  */
 public class Video implements Html5Player.IVideo {
-
+    private static final long serialVersionUID = 1L;
     private final IModel<String> url;
     private final IModel<String> type;
 

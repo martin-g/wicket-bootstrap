@@ -65,7 +65,9 @@ class FormGroupTest extends WicketApplicationTest {
         FormGroup group = new FormGroup("id");
         form.add(group);
 
-        TextField<String> input = new TextField<String>("value") {
+        TextField<String> input = new TextField<>("value") {
+            private static final long serialVersionUID = 1L;
+
             @Override
             public void updateModel() {
                 super.updateModel();

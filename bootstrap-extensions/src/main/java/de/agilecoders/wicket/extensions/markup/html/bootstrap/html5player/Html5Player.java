@@ -7,9 +7,9 @@ import de.agilecoders.wicket.core.util.References;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.ComponentTag;
-import org.apache.wicket.markup.head.CssReferenceHeaderItem;
+import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
-import org.apache.wicket.markup.head.JavaScriptReferenceHeaderItem;
+import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.list.ListItem;
@@ -31,7 +31,7 @@ import static de.agilecoders.wicket.jquery.JQuery.$;
  * @author miha
  */
 public class Html5Player extends Panel {
-
+    private static final long serialVersionUID = 1L;
     private final IModel<List<IVideo>> resources;
     private final Html5VideoConfig config;
     private final WebMarkupContainer container;
@@ -121,7 +121,8 @@ public class Html5Player extends Panel {
      * @return new list view
      */
     private Component newVideoList(String markupId) {
-        return new ListView<IVideo>(markupId, resources) {
+        return new ListView<>(markupId, resources) {
+            private static final long serialVersionUID = 1L;
 
             @Override
             protected void onInitialize() {
@@ -149,6 +150,8 @@ public class Html5Player extends Panel {
      */
     private WebMarkupContainer newVideoTag(String markupId) {
         return new WebMarkupContainer(markupId) {
+            private static final long serialVersionUID = 1L;
+
             @Override
             protected void onComponentTag(ComponentTag tag) {
                 super.onComponentTag(tag);
@@ -166,9 +169,9 @@ public class Html5Player extends Panel {
     public void renderHead(final IHeaderResponse response) {
         super.renderHead(response);
 
-        response.render(CssReferenceHeaderItem.forReference(Html5PlayerCssReference.instance()));
+        response.render(CssHeaderItem.forReference(Html5PlayerCssReference.instance()));
         References.renderWithFilter(Bootstrap.getSettings(), response,
-                                    JavaScriptReferenceHeaderItem.forReference(Html5PlayerJavaScriptReference.instance()));
+                                    JavaScriptHeaderItem.forReference(Html5PlayerJavaScriptReference.instance()));
 
         response.render($(container).chain("videoUI", config).asDomReadyScript());
     }

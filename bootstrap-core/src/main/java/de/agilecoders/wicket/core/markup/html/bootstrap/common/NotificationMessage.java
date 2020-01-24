@@ -3,7 +3,7 @@ package de.agilecoders.wicket.core.markup.html.bootstrap.common;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.util.string.Strings;
-import org.apache.wicket.util.time.Duration;
+import java.time.Duration;
 
 /**
  * Default implementation of {@link INotificationMessage}.

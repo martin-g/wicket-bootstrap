@@ -1,6 +1,6 @@
 package de.agilecoders.wicket;
 
-import org.apache.wicket.util.time.Duration;
+import java.time.Duration;
 import org.eclipse.jetty.server.HttpConfiguration;
 import org.eclipse.jetty.server.HttpConnectionFactory;
 import org.eclipse.jetty.server.Server;
@@ -9,7 +9,7 @@ import org.eclipse.jetty.webapp.WebAppContext;
 
 public class Start {
     public static void main(final String[] args) {
-        final int timeout = (int) Duration.ONE_HOUR.getMilliseconds();
+        final int timeout = (int) Duration.ofHours(1L).toMillis();
 
         final Server server = new Server();
 

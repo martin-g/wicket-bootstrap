@@ -11,6 +11,8 @@ import org.apache.wicket.model.IModel;
  * @version 1.0
  */
 public class TextPanel extends GenericPanel<String> {
+    private static final long serialVersionUID = 1L;
+
     public TextPanel(String id, IModel<String> model) {
         super(id, model);
 

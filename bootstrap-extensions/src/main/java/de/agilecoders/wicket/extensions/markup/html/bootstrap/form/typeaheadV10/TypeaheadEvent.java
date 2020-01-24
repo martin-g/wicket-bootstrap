@@ -9,6 +9,7 @@ import org.apache.wicket.util.io.IClusterable;
  * selectEvent is set to true.
  */
 public class TypeaheadEvent implements IClusterable {
+    private static final long serialVersionUID = 1L;
 
     private final Type type;
 

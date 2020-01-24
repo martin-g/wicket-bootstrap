@@ -84,7 +84,6 @@
         <dependency>
             <groupId>com.yahoo.platform.yui</groupId>
             <artifactId>yuicompressor</artifactId>
-            <version>${yuicompressor.version}</version>
             <optional>true</optional>
         </dependency>
 
@@ -164,7 +163,6 @@
         <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest</artifactId>
-            <version>2.1</version>
             <scope>test</scope>
         </dependency>
 

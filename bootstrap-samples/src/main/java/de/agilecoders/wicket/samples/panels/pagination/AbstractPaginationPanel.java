@@ -13,7 +13,7 @@ import java.util.List;
  * A base panel for demos of paging navigators
  */
 public abstract class AbstractPaginationPanel extends Panel {
-
+    private static final long serialVersionUID = 1L;
     protected final PageableListView<String> pageable;
 
     public AbstractPaginationPanel(String id) {
@@ -21,7 +21,9 @@ public abstract class AbstractPaginationPanel extends Panel {
 
         List<String> data = createData();
 
-        pageable = new PageableListView<String>("pageable", data, pageSize()) {
+        pageable = new PageableListView<>("pageable", data, pageSize()) {
+            private static final long serialVersionUID = 1L;
+
             @Override
             protected void populateItem(ListItem<String> item) {
                 item.add(new Label("item", item.getModelObject()));

@@ -22,7 +22,7 @@ import org.apache.wicket.util.string.Strings;
  * @author miha
  */
 public class ThumbnailBorder extends Border {
-
+    private static final long serialVersionUID = 1L;
     private final Component title;
     private final Component image;
 

@@ -9,6 +9,7 @@ import org.apache.wicket.model.IModel;
  * @author miha
  */
 public class Toolbar extends WebMarkupContainer {
+    private static final long serialVersionUID = 1L;
 
     /**
      * Construct.

@@ -13,10 +13,10 @@ import de.agilecoders.wicket.jquery.Key;
  * The configuration for <a href="https://github.com/ablanco/jquery.pwstrength.bootstrap/blob/master/OPTIONS.md">pwstrength</em>.
  */
 public class PasswordStrengthConfig extends AbstractConfig {
-
-    private static final IKey<CommonConfig> COMMON_CONFIG = new Key<PasswordStrengthConfig.CommonConfig>("common", new CommonConfig());
-    private static final IKey<UiConfig> UI_CONFIG = new Key<PasswordStrengthConfig.UiConfig>("ui", new UiConfig());
-    private static final IKey<RulesConfig> RULES_CONFIG = new Key<PasswordStrengthConfig.RulesConfig>("rules", new RulesConfig());
+    private static final long serialVersionUID = 1L;
+    private static final IKey<CommonConfig> COMMON_CONFIG = new Key<>("common", new CommonConfig());
+    private static final IKey<UiConfig> UI_CONFIG = new Key<>("ui", new UiConfig());
+    private static final IKey<RulesConfig> RULES_CONFIG = new Key<>("rules", new RulesConfig());
 
     private final CommonConfig commonConfig;
     private final RulesConfig rulesConfig;
@@ -124,30 +124,33 @@ public class PasswordStrengthConfig extends AbstractConfig {
     }
 
     private static class CommonConfig extends AbstractConfig {
-        private static final IKey<Integer> MinChar = new Key<Integer>("minChar", 6);
-        private static final IKey<String> UsernameField = new Key<String>("usernameField", "#username");
-        private static final IKey<Boolean> Zxcvbn = new Key<Boolean>("zxcvbn", false);
-        private static final IKey<Boolean> Debug = new Key<Boolean>("debug", false);
+        private static final long serialVersionUID = 1L;
+        private static final IKey<Integer> MinChar = new Key<>("minChar", 6);
+        private static final IKey<String> UsernameField = new Key<>("usernameField", "#username");
+        private static final IKey<Boolean> Zxcvbn = new Key<>("zxcvbn", false);
+        private static final IKey<Boolean> Debug = new Key<>("debug", false);
     }
 
     private static class UiConfig extends AbstractConfig {
-        private static final IKey<Boolean> ShowProgressBar = new Key<Boolean>("showProgressBar", true);
-        private static final IKey<Boolean> ShowPopover = new Key<Boolean>("showPopover", false);
-        private static final IKey<Boolean> ShowStatus = new Key<Boolean>("showStatus", false);
-        private static final IKey<Boolean> UseVerdictCssClass = new Key<Boolean>("useVerdictCssClass", false);
-        private static final IKey<Boolean> ShowVerdicts = new Key<Boolean>("showVerdicts", true);
-        private static final IKey<Boolean> ShowErrors = new Key<Boolean>("showErrors", false);
-        private static final IKey<Boolean> ShowVerdictsInsideProgressBar = new Key<Boolean>("showVerdictsInsideProgressBar", false);
-        private static final IKey<String[]> Verdicts = new Key<String[]>("verdicts", new String[]{"Weak", "Normal", "Medium", "Strong", "Very Strong"});
-        private static final IKey<int[]> Scores = new Key<int[]>("scores", new int[]{17, 26, 40, 50});
+        private static final long serialVersionUID = 1L;
+        private static final IKey<Boolean> ShowProgressBar = new Key<>("showProgressBar", true);
+        private static final IKey<Boolean> ShowPopover = new Key<>("showPopover", false);
+        private static final IKey<Boolean> ShowStatus = new Key<>("showStatus", false);
+        private static final IKey<Boolean> UseVerdictCssClass = new Key<>("useVerdictCssClass", false);
+        private static final IKey<Boolean> ShowVerdicts = new Key<>("showVerdicts", true);
+        private static final IKey<Boolean> ShowErrors = new Key<>("showErrors", false);
+        private static final IKey<Boolean> ShowVerdictsInsideProgressBar = new Key<>("showVerdictsInsideProgressBar", false);
+        private static final IKey<String[]> Verdicts = new Key<>("verdicts", new String[]{"Weak", "Normal", "Medium", "Strong", "Very Strong"});
+        private static final IKey<int[]> Scores = new Key<>("scores", new int[]{17, 26, 40, 50});
         private static final IKey<PasswordStrengthErrorMessages> ErrorMessages =
-            new Key<PasswordStrengthErrorMessages>("errorMessages", new PasswordStrengthErrorMessages());
+            new Key<>("errorMessages", new PasswordStrengthErrorMessages());
         private static final IKey<Boolean> UseBootstrap4 = new Key<>("bootstrap4", false);
     }
 
     private static class RulesConfig extends AbstractConfig {
-        private static final IKey<PasswordStrengthScores> Scores = new Key<PasswordStrengthScores>("scores", new PasswordStrengthScores());
-        private static final IKey<PasswordStrengthActivated> Activated = new Key<PasswordStrengthActivated>("activated", new PasswordStrengthActivated());
-        private static final IKey<Double> RaisePower = new Key<Double>("raisePower", 1.4d);
+        private static final long serialVersionUID = 1L;
+        private static final IKey<PasswordStrengthScores> Scores = new Key<>("scores", new PasswordStrengthScores());
+        private static final IKey<PasswordStrengthActivated> Activated = new Key<>("activated", new PasswordStrengthActivated());
+        private static final IKey<Double> RaisePower = new Key<>("raisePower", 1.4d);
     }
 }

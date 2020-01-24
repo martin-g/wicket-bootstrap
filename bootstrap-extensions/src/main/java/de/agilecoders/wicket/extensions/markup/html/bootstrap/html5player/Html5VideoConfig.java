@@ -10,6 +10,7 @@ import de.agilecoders.wicket.jquery.IKey;
  * @author miha
  */
 public class Html5VideoConfig extends AbstractConfig {
+    private static final long serialVersionUID = 1L;
 
     /**
      * enable auto play

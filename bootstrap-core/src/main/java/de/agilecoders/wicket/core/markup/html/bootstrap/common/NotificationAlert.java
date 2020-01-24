@@ -6,7 +6,7 @@ import org.apache.wicket.Component;
 import org.apache.wicket.feedback.FeedbackMessage;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
-import org.apache.wicket.util.time.Duration;
+import java.time.Duration;
 
 /**
  * An {@link Alert} implementation that shows an {@link INotificationMessage}.
@@ -14,7 +14,7 @@ import org.apache.wicket.util.time.Duration;
  * @author miha
  */
 public class NotificationAlert extends Alert {
-
+    private static final long serialVersionUID = 1L;
     private final IModel<INotificationMessage> notificationModel;
     private final Duration duration;
     private Component message;
@@ -26,7 +26,7 @@ public class NotificationAlert extends Alert {
      * @param message  The feedback message
      */
     public NotificationAlert(final String markupId, final FeedbackMessage message) {
-        this(markupId, message, Duration.NONE);
+        this(markupId, message, Duration.ZERO);
     }
 
     /**

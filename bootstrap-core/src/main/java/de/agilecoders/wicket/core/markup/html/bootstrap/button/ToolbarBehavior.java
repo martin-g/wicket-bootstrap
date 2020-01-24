@@ -14,6 +14,7 @@ import org.apache.wicket.markup.ComponentTag;
  * @author miha
  */
 public final class ToolbarBehavior extends Behavior {
+    private static final long serialVersionUID = 1L;
 
     @Override
     public void onComponentTag(final Component component, final ComponentTag tag) {

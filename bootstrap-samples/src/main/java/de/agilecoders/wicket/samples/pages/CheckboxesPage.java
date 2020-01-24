@@ -24,6 +24,7 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.common.NotificationPanel
 
 @MountPath(value = "/checkboxes")
 public class CheckboxesPage extends BasePage {
+    private static final long serialVersionUID = 1L;
 
     /**
      * Construct.
@@ -58,6 +59,8 @@ public class CheckboxesPage extends BasePage {
 
         final BootstrapCheckBoxPicker checkBoxPicker = new BootstrapCheckBoxPicker("checkboxPicker", Model.of(true), config);
         checkBoxPicker.add(new AjaxFormComponentUpdatingBehavior("change") {
+            private static final long serialVersionUID = 1L;
+
             @Override
             protected void onUpdate(AjaxRequestTarget target) {
                 info("Selected: " + checkBoxPicker.getModelObject());
@@ -77,10 +80,14 @@ public class CheckboxesPage extends BasePage {
             .withStyle("customCssClass");
 
         final BootstrapToggle checkBoxToggle = new BootstrapToggle("checkboxToggle", Model.of(true), config) {
+            private static final long serialVersionUID = 1L;
+
             @Override
             protected CheckBox newCheckBox(String id, IModel<Boolean> model) {
                 final CheckBox checkBox = super.newCheckBox(id, model);
                 checkBox.add(new AjaxFormComponentUpdatingBehavior("change") {
+                    private static final long serialVersionUID = 1L;
+
                     @Override
                     protected void onUpdate(AjaxRequestTarget target) {
                         info("Selected: " + checkBox.getModelObject());
@@ -97,7 +104,9 @@ public class CheckboxesPage extends BasePage {
         final NotificationPanel feedback = new NotificationPanel("checkBoxXFeedback");
         feedback.setOutputMarkupId(true);
 
-        CheckBoxX checkBoxX = new CheckBoxX("checkboxX", new Model<Boolean>(true)) {
+        CheckBoxX checkBoxX = new CheckBoxX("checkboxX", new Model<>(true)) {
+            private static final long serialVersionUID = 1L;
+
             @Override
             protected void onChange(Boolean value, AjaxRequestTarget target) {
                 super.onChange(value, target);

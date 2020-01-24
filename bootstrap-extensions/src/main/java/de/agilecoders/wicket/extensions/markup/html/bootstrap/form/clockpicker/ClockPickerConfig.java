@@ -5,11 +5,11 @@ import de.agilecoders.wicket.jquery.IKey;
 import de.agilecoders.wicket.jquery.Key;
 
 public class ClockPickerConfig extends AbstractConfig {
-
-    private static final IKey<String> DoneText = new Key<String>("donetext");
-    private static final IKey<Boolean> AutoClose = new Key<Boolean>("autoclose");
-    private static final IKey<String> Placement = new Key<String>("placement");
-    private static final IKey<String> Align = new Key<String>("align");
+    private static final long serialVersionUID = 1L;
+    private static final IKey<String> DoneText = new Key<>("donetext");
+    private static final IKey<Boolean> AutoClose = new Key<>("autoclose");
+    private static final IKey<String> Placement = new Key<>("placement");
+    private static final IKey<String> Align = new Key<>("align");
 
     public ClockPickerConfig() {
         put(DoneText, "Ok");

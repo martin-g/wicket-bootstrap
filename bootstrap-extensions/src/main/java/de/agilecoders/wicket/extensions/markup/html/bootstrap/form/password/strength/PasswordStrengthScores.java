@@ -8,22 +8,22 @@ import de.agilecoders.wicket.jquery.Key;
  * A configuration for pwstrength's rules' scores
  */
 public class PasswordStrengthScores extends AbstractConfig {
-
-    private static final IKey<Integer> wordNotEmail = new Key<Integer>("wordNotEmail", -100);
-    private static final IKey<Integer> wordLength = new Key<Integer>("wordLength", -50);
-    private static final IKey<Integer> wordSimilarToUsername = new Key<Integer>("wordSimilarToUsername", -50);
-    private static final IKey<Integer> wordSequences = new Key<Integer>("wordSequences", -50);
-    private static final IKey<Integer> wordTwoCharacterClasses = new Key<Integer>("wordTwoCharacterClasses", 2);
-    private static final IKey<Integer> wordRepetitions = new Key<Integer>("wordRepetitions", -25);
-    private static final IKey<Integer> wordLowercase = new Key<Integer>("wordLowercase", 1);
-    private static final IKey<Integer> wordUppercase = new Key<Integer>("wordUppercase", 3);
-    private static final IKey<Integer> wordOneNumber = new Key<Integer>("wordOneNumber", 3);
-    private static final IKey<Integer> wordThreeNumbers = new Key<Integer>("wordThreeNumbers", 5);
-    private static final IKey<Integer> wordOneSpecialChar = new Key<Integer>("wordOneSpecialChar", 3);
-    private static final IKey<Integer> wordTwoSpecialChar = new Key<Integer>("wordTwoSpecialChar", 5);
-    private static final IKey<Integer> wordUpperLowerCombo = new Key<Integer>("wordUpperLowerCombo", 2);
-    private static final IKey<Integer> wordLetterNumberCombo = new Key<Integer>("wordLetterNumberCombo", 2);
-    private static final IKey<Integer> wordLetterNumberCharCombo = new Key<Integer>("wordLetterNumberCharCombo", 2);
+    private static final long serialVersionUID = 1L;
+    private static final IKey<Integer> wordNotEmail = new Key<>("wordNotEmail", -100);
+    private static final IKey<Integer> wordLength = new Key<>("wordLength", -50);
+    private static final IKey<Integer> wordSimilarToUsername = new Key<>("wordSimilarToUsername", -50);
+    private static final IKey<Integer> wordSequences = new Key<>("wordSequences", -50);
+    private static final IKey<Integer> wordTwoCharacterClasses = new Key<>("wordTwoCharacterClasses", 2);
+    private static final IKey<Integer> wordRepetitions = new Key<>("wordRepetitions", -25);
+    private static final IKey<Integer> wordLowercase = new Key<>("wordLowercase", 1);
+    private static final IKey<Integer> wordUppercase = new Key<>("wordUppercase", 3);
+    private static final IKey<Integer> wordOneNumber = new Key<>("wordOneNumber", 3);
+    private static final IKey<Integer> wordThreeNumbers = new Key<>("wordThreeNumbers", 5);
+    private static final IKey<Integer> wordOneSpecialChar = new Key<>("wordOneSpecialChar", 3);
+    private static final IKey<Integer> wordTwoSpecialChar = new Key<>("wordTwoSpecialChar", 5);
+    private static final IKey<Integer> wordUpperLowerCombo = new Key<>("wordUpperLowerCombo", 2);
+    private static final IKey<Integer> wordLetterNumberCombo = new Key<>("wordLetterNumberCombo", 2);
+    private static final IKey<Integer> wordLetterNumberCharCombo = new Key<>("wordLetterNumberCharCombo", 2);
 
     public PasswordStrengthScores wordNotEmailScore(int score) {
         put(wordNotEmail, score);

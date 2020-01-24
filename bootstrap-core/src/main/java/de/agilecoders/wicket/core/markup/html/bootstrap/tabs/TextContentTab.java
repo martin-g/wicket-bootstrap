@@ -11,6 +11,7 @@ import org.apache.wicket.model.IModel;
  * @version 1.0
  */
 public class TextContentTab extends AbstractTab {
+    private static final long serialVersionUID = 1L;
     private final IModel<String> text;
 
     /**

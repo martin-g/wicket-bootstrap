@@ -15,6 +15,7 @@ import java.util.List;
  * with {@link de.agilecoders.wicket.extensions.markup.html.bootstrap.form.fileinput.BootstrapFileInputField}
  */
 public class BootstrapFileInput extends GenericPanel<List<FileUpload>> {
+    private static final long serialVersionUID = 1L;
 
     private final FileInputConfig config;
 
@@ -58,7 +59,7 @@ public class BootstrapFileInput extends GenericPanel<List<FileUpload>> {
     protected void onInitialize() {
         super.onInitialize();
 
-        Form<Void> form = new Form<Void>("fileInputForm");
+        Form<Void> form = new Form<>("fileInputForm");
         add(form);
 
         this.fileInput = newBootstrapFileInputField("fileInput", getModel(), config);
@@ -68,6 +69,8 @@ public class BootstrapFileInput extends GenericPanel<List<FileUpload>> {
 
     private BootstrapFileInputField newBootstrapFileInputField(String id, IModel<List<FileUpload>> model, FileInputConfig config) {
         return new BootstrapFileInputField(id, model, config) {
+            private static final long serialVersionUID = 1L;
+
             @Override
             protected void onSubmit(AjaxRequestTarget target) {
                 BootstrapFileInput.this.onSubmit(target);

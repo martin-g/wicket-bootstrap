@@ -7,7 +7,6 @@ import org.apache.wicket.extensions.markup.html.repeater.data.table.IColumn;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.ISortableDataProvider;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.NoRecordsToolbar;
 
-import de.agilecoders.wicket.core.Bootstrap;
 import de.agilecoders.wicket.core.markup.html.bootstrap.table.TableBehavior;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.table.toolbars.BootstrapHeadersToolbar;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.table.toolbars.BootstrapNavigationToolbar;
@@ -30,8 +29,8 @@ import de.agilecoders.wicket.extensions.markup.html.bootstrap.table.toolbars.Boo
  * @param <S> the type of the sorting parameter
  */
 public class BootstrapDefaultDataTable<T,S> extends DataTable<T, S> {
-
-	private final TableBehavior tableBehavior;
+	private static final long serialVersionUID = 1L;
+    private final TableBehavior tableBehavior;
 
 	/**
 	 * Construct.
@@ -47,7 +46,7 @@ public class BootstrapDefaultDataTable<T,S> extends DataTable<T, S> {
 		add(tableBehavior = new TableBehavior());
 
 		addTopToolbar(new BootstrapNavigationToolbar(this));
-		addTopToolbar(new BootstrapHeadersToolbar<S>(this, dataProvider));
+		addTopToolbar(new BootstrapHeadersToolbar<>(this, dataProvider));
 		addBottomToolbar(new NoRecordsToolbar(this));
 	}
 

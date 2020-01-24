@@ -22,7 +22,9 @@ class BootstrapListViewTest extends WicketApplicationTest {
 
     @Test
     void listViewIsRendered() {
-        TagTester tag = startComponentInPage(new BootstrapListView<String>(id(), Lists.newArrayList("item1")) {
+        TagTester tag = startComponentInPage(new BootstrapListView<>(id(), Lists.newArrayList("item1")) {
+            private static final long serialVersionUID = 1L;
+
             @Override
             protected void populateItem(ListItem<String> components) {
                 components.add(new Label("sub", components.getModelObject()));
@@ -35,7 +37,9 @@ class BootstrapListViewTest extends WicketApplicationTest {
 
     @Test
     void listViewWithModelIsRendered() {
-        TagTester tag = startComponentInPage(new BootstrapListView<String>(id(), Model.ofList(Lists.newArrayList("item1"))) {
+        TagTester tag = startComponentInPage(new BootstrapListView<>(id(), Model.ofList(Lists.newArrayList("item1"))) {
+            private static final long serialVersionUID = 1L;
+
             @Override
             protected void populateItem(ListItem<String> components) {
                 components.add(new Label("sub", components.getModelObject()));

@@ -8,22 +8,22 @@ import de.agilecoders.wicket.jquery.Key;
  * A configuration for the activated password strength check rules
  */
 public class PasswordStrengthActivated extends AbstractConfig {
-
-    private static final IKey<Boolean> wordNotEmail = new Key<Boolean>("wordNotEmail", true);
-    private static final IKey<Boolean> wordLength = new Key<Boolean>("wordLength", true);
-    private static final IKey<Boolean> wordSimilarToUsername = new Key<Boolean>("wordSimilarToUsername", true);
-    private static final IKey<Boolean> wordSequences = new Key<Boolean>("wordSequences", true);
-    private static final IKey<Boolean> wordTwoCharacterClasses = new Key<Boolean>("wordTwoCharacterClasses", false);
-    private static final IKey<Boolean> wordRepetitions = new Key<Boolean>("wordRepetitions", false);
-    private static final IKey<Boolean> wordLowercase = new Key<Boolean>("wordLowercase", true);
-    private static final IKey<Boolean> wordUppercase = new Key<Boolean>("wordUppercase", true);
-    private static final IKey<Boolean> wordOneNumber = new Key<Boolean>("wordOneNumber", true);
-    private static final IKey<Boolean> wordThreeNumbers = new Key<Boolean>("wordThreeNumbers", true);
-    private static final IKey<Boolean> wordOneSpecialChar = new Key<Boolean>("wordOneSpecialChar", true);
-    private static final IKey<Boolean> wordTwoSpecialChar = new Key<Boolean>("wordTwoSpecialChar", true);
-    private static final IKey<Boolean> wordUpperLowerCombo = new Key<Boolean>("wordUpperLowerCombo", true);
-    private static final IKey<Boolean> wordLetterNumberCombo = new Key<Boolean>("wordLetterNumberCombo", true);
-    private static final IKey<Boolean> wordLetterNumberCharCombo = new Key<Boolean>("wordLetterNumberCharCombo", true);
+    private static final long serialVersionUID = 1L;
+    private static final IKey<Boolean> wordNotEmail = new Key<>("wordNotEmail", true);
+    private static final IKey<Boolean> wordLength = new Key<>("wordLength", true);
+    private static final IKey<Boolean> wordSimilarToUsername = new Key<>("wordSimilarToUsername", true);
+    private static final IKey<Boolean> wordSequences = new Key<>("wordSequences", true);
+    private static final IKey<Boolean> wordTwoCharacterClasses = new Key<>("wordTwoCharacterClasses", false);
+    private static final IKey<Boolean> wordRepetitions = new Key<>("wordRepetitions", false);
+    private static final IKey<Boolean> wordLowercase = new Key<>("wordLowercase", true);
+    private static final IKey<Boolean> wordUppercase = new Key<>("wordUppercase", true);
+    private static final IKey<Boolean> wordOneNumber = new Key<>("wordOneNumber", true);
+    private static final IKey<Boolean> wordThreeNumbers = new Key<>("wordThreeNumbers", true);
+    private static final IKey<Boolean> wordOneSpecialChar = new Key<>("wordOneSpecialChar", true);
+    private static final IKey<Boolean> wordTwoSpecialChar = new Key<>("wordTwoSpecialChar", true);
+    private static final IKey<Boolean> wordUpperLowerCombo = new Key<>("wordUpperLowerCombo", true);
+    private static final IKey<Boolean> wordLetterNumberCombo = new Key<>("wordLetterNumberCombo", true);
+    private static final IKey<Boolean> wordLetterNumberCharCombo = new Key<>("wordLetterNumberCharCombo", true);
 
     public PasswordStrengthActivated wordNotEmailScore(boolean activated) {
         put(wordNotEmail, activated);

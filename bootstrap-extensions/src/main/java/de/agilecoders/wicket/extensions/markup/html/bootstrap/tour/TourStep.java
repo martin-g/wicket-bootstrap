@@ -12,6 +12,7 @@ import org.apache.wicket.model.Model;
  * An configuration object representing a step in a tour
  */
 public class TourStep extends AbstractConfig {
+    private static final long serialVersionUID = 1L;
 
     /**
      * Path to the page on which the step should be shown. this allows you to build tours that span several pages!.

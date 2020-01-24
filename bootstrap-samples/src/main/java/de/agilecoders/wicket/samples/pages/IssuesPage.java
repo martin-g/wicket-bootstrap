@@ -34,7 +34,7 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
-import org.apache.wicket.util.time.Duration;
+import java.time.Duration;
 import org.wicketstuff.annotation.mount.MountPath;
 
 import java.io.Serializable;
@@ -48,6 +48,7 @@ import java.util.Date;
  */
 @MountPath(value = "/issues")
 public class IssuesPage extends BasePage {
+    private static final long serialVersionUID = 1L;
 
     /**
      * Construct.
@@ -58,7 +59,7 @@ public class IssuesPage extends BasePage {
         super(parameters);
 
 
-        add(new NotificationPanel("feedback").hideAfter(Duration.seconds(5)));
+        add(new NotificationPanel("feedback").hideAfter(Duration.ofSeconds(5L)));
 
         // issue #80
         add(new ParentNavbar("navbar-parent"),
@@ -69,6 +70,8 @@ public class IssuesPage extends BasePage {
 
         // issue #-1
         add(new Navbar("navbar-form").addComponents(new AbstractNavbarComponent(Navbar.ComponentPosition.LEFT) {
+            private static final long serialVersionUID = 1L;
+
             @Override
             public Component create(String markupId) {
                 return new CustomNavbarForm(markupId);
@@ -92,6 +95,7 @@ public class IssuesPage extends BasePage {
                 Model.of("title"),
                 new PopoverConfig().withHoverTrigger().withPlacement(TooltipConfig.Placement.top)
         ) {
+            private static final long serialVersionUID = 1L;
 
             @Override
             public Component newBodyComponent(String markupId) {
@@ -103,14 +107,18 @@ public class IssuesPage extends BasePage {
         }));
 
         // issue #102
-        add(new BootstrapLink<Page>("link", Model.<Page>of(this)) {
+        add(new BootstrapLink<>("link", Model.<Page>of(this)) {
+            private static final long serialVersionUID = 1L;
+
             @Override
             public void onClick() {
                 getSession().success(new NotificationMessage(Model.of("link 1 clicked"), Model.of("issue #102:"), true));
                 setResponsePage(getModelObject());
             }
         }.setLabel(Model.of("Link 1")));
-        add(new BootstrapLink<Page>("link-danger", Model.<Page>of(this), Buttons.Type.Danger) {
+        add(new BootstrapLink<>("link-danger", Model.<Page>of(this), Buttons.Type.Danger) {
+            private static final long serialVersionUID = 1L;
+
             @Override
             public void onClick() {
                 getSession().success(new NotificationMessage(Model.of("link 2 <u>clicked</u>"), Model.of("issue #102:"), true).escapeModelStrings(false));
@@ -181,6 +189,8 @@ public class IssuesPage extends BasePage {
         config.setComponent(true);
         config.setAjaxUpdate(true);
         final ColorPickerTextField colorPicker = new ColorPickerTextField("colorPicker", Model.of(""), config) {
+            private static final long serialVersionUID = 1L;
+
             @Override
             protected void onChange(AjaxRequestTarget target, String color) {
                 super.onChange(target, color);
@@ -249,7 +259,7 @@ public class IssuesPage extends BasePage {
     }
 
     private static final class SubNavbar extends Navbar {
-
+        private static final long serialVersionUID = 1L;
         private final IModel<SubNavGroup> group = Model.of(SubNavGroup.NONE);
 
         public SubNavbar(final String componentId) {
@@ -260,6 +270,8 @@ public class IssuesPage extends BasePage {
 
             addComponents(
                     new ImmutableNavbarComponent(new NavbarAjaxLink<String>(Model.of("button a")) {
+                        private static final long serialVersionUID = 1L;
+
                         @Override
                         public void onClick(AjaxRequestTarget target) {
                             target.appendJavaScript("alert('button A clicked');");
@@ -271,6 +283,8 @@ public class IssuesPage extends BasePage {
                         }
                     }, ComponentPosition.LEFT),
                     new ImmutableNavbarComponent(new NavbarAjaxLink<String>(Model.of("button b")) {
+                        private static final long serialVersionUID = 1L;
+
                         @Override
                         public void onClick(AjaxRequestTarget target) {
                             target.appendJavaScript("alert('button B clicked');");
@@ -302,6 +316,8 @@ public class IssuesPage extends BasePage {
     }
 
     private static final class ParentNavbar extends Navbar {
+        private static final long serialVersionUID = 1L;
+
         public ParentNavbar(final String componentId) {
             super(componentId);
 
@@ -310,12 +326,16 @@ public class IssuesPage extends BasePage {
 
             addComponents(
                     new ImmutableNavbarComponent(new NavbarAjaxLink<String>(Model.of("button group a")) {
+                        private static final long serialVersionUID = 1L;
+
                         @Override
                         public void onClick(AjaxRequestTarget target) {
                             send(getPage(), Broadcast.BREADTH, new ToggleSubNavbarState(target, SubNavGroup.A));
                         }
                     }, ComponentPosition.LEFT),
                     new ImmutableNavbarComponent(new NavbarAjaxLink<String>(Model.of("button group b")) {
+                        private static final long serialVersionUID = 1L;
+
                         @Override
                         public void onClick(AjaxRequestTarget target) {
                             send(getPage(), Broadcast.BREADTH, new ToggleSubNavbarState(target, SubNavGroup.B));
