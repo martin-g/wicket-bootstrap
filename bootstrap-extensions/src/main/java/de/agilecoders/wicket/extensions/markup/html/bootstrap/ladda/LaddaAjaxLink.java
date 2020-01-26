@@ -15,7 +15,7 @@ import java.io.Serializable;
  * that disables itself during the Ajax call and shows a loading spinner
  */
 public abstract class LaddaAjaxLink<T> extends BootstrapAjaxLink<T> {
-
+    private static final long serialVersionUID = 1L;
     /**
      * The behavior that sets the Ladda UI specific CSS classes and attributes
      */
@@ -78,22 +78,10 @@ public abstract class LaddaAjaxLink<T> extends BootstrapAjaxLink<T> {
      * @param color The color for the spinner
      * @return {@code this}, for chaining
      */
-    public LaddaAjaxLink<T> setSpinnerColor(String color) {
+    public LaddaAjaxLink<T> setSpinnerColor(LaddaBehavior.Color color) {
         this.laddaBehavior.withSpinnerColor(color);
         return this;
     }
-
-    /**
-     * Sets the size of the spinner in pixels
-     *
-     * @param size The size of the spinner in pixels
-     * @return {@code this}, for chaining
-     */
-    public LaddaAjaxLink<T> setSpinnerSize(int size) {
-        this.laddaBehavior.withSpinnerSize(size);
-        return this;
-    }
-
 
     @Override
     protected void updateAjaxAttributes(AjaxRequestAttributes attributes) {
@@ -105,7 +93,9 @@ public abstract class LaddaAjaxLink<T> extends BootstrapAjaxLink<T> {
     protected <L extends Serializable> Component newLabel(String markupId, IModel<L> model) {
         Component label = super.newLabel(markupId, model);
         label.setRenderBodyOnly(false);
-        label.add(AttributeModifier.append("class", "ladda-label"));
+        if (model.getObject() == null || "".equals(model.getObject())) {
+            label.add(AttributeModifier.append("class", "sr-only"));
+        }
         return label;
     }
 }

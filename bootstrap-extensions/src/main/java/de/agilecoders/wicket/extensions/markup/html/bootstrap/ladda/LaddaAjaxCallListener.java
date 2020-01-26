@@ -7,6 +7,7 @@ import org.apache.wicket.ajax.attributes.AjaxCallListener;
  * duration of the Ajax call
  */
 public class LaddaAjaxCallListener extends AjaxCallListener {
+    private static final long serialVersionUID = 1L;
 
     /**
      * Constructor

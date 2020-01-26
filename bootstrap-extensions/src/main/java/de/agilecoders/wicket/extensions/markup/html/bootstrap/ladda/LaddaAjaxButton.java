@@ -16,7 +16,7 @@ import java.io.Serializable;
  * that disables itself during the Ajax call and shows a loading spinner
  */
 public class LaddaAjaxButton extends BootstrapAjaxButton {
-
+    private static final long serialVersionUID = 1L;
     /**
      * The behavior that sets the Ladda UI specific CSS classes and attributes
      */
@@ -90,19 +90,8 @@ public class LaddaAjaxButton extends BootstrapAjaxButton {
      * @param color The color for the spinner
      * @return {@code this}, for chaining
      */
-    public LaddaAjaxButton setSpinnerColor(String color) {
+    public LaddaAjaxButton setSpinnerColor(LaddaBehavior.Color color) {
         this.laddaBehavior.withSpinnerColor(color);
-        return this;
-    }
-
-    /**
-     * Sets the size of the spinner in pixels
-     *
-     * @param size The size of the spinner in pixels
-     * @return {@code this}, for chaining
-     */
-    public LaddaAjaxButton setSpinnerSize(int size) {
-        this.laddaBehavior.withSpinnerSize(size);
         return this;
     }
 
@@ -115,7 +104,9 @@ public class LaddaAjaxButton extends BootstrapAjaxButton {
     @Override
     protected <L extends Serializable> Component newLabel(String markupId, IModel<L> model) {
         Component label = super.newLabel(markupId, model);
-        label.add(AttributeModifier.append("class", "ladda-label"));
+        if (model.getObject() == null || "".equals(model.getObject())) {
+            label.add(AttributeModifier.append("class", "sr-only"));
+        }
         return label;
     }
 }
