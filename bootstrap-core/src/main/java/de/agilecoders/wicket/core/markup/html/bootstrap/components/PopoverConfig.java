@@ -65,4 +65,9 @@ public class PopoverConfig extends TooltipConfig {
     public PopoverConfig withHtml(boolean value) {
         return (PopoverConfig) super.withHtml(value);
     }
+    
+    @Override
+    public PopoverConfig withSanitizer(boolean value) {
+    	return (PopoverConfig) super.withSanitizer(value);
+    }
 }
