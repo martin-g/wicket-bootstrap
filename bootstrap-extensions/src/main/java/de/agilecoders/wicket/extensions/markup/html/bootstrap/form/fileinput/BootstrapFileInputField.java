@@ -8,6 +8,7 @@ import java.util.Map;
 
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.form.AjaxFormSubmitBehavior;
+import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
 import org.apache.wicket.markup.html.form.Form;
@@ -16,6 +17,7 @@ import org.apache.wicket.markup.html.form.upload.FileUploadField;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.template.PackageTextTemplate;
+import org.apache.wicket.util.value.IValueMap;
 
 import de.agilecoders.wicket.jquery.JQuery;
 import de.agilecoders.wicket.jquery.util.Strings2;
@@ -109,7 +111,21 @@ public class BootstrapFileInputField extends FileUploadField {
             ajaxUploadBehavior = null;
         }
     }
-
+    
+    @Override
+    protected void onComponentTag(ComponentTag tag)
+    {
+    	super.onComponentTag(tag);
+    	
+    	IValueMap attrs = tag.getAttributes();
+    	
+    	if(getConfig().get(FileInputConfig.MaxFileCount) == 1) {
+    		attrs.remove("multiple");
+		} else {
+			attrs.put("multiple", "multiple");
+		}
+    }
+    
     /**
      * Creates the special Ajax behavior that is used to upload the file(s)
      * with Ajax by using the <em>Upload</em> button
