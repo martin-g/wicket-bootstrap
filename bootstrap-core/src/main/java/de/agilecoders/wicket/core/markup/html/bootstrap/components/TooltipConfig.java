@@ -56,6 +56,13 @@ public class TooltipConfig extends AbstractConfig {
      * will be used to insert content into the dom. Use text if you're worried about XSS attacks.
      */
     private static final IKey<Boolean> Html = newKey("html", false);
+    
+    /**
+     * Allows controlling Bootstrap's internal sanitizer that is present to prevent XSS 
+     * but in certain scenarios strips wanted elements from the content.
+     * @see https://getbootstrap.com/docs/3.4/javascript/#js-sanitizer
+     */
+    private static final IKey<Boolean> Sanitize = newKey("sanitize", true);
 
     /**
      * holds all possible tooltip positions
@@ -181,6 +188,17 @@ public class TooltipConfig extends AbstractConfig {
     public TooltipConfig withHtml(final boolean value) {
         put(Html, value);
         return this;
+    }
+    
+    /**
+     * Controls Bootstrap's internal sanitizer.
+     * 
+     * @param value mandatory parameter
+     * @return this instance for chaining.
+     */
+    public TooltipConfig withSanitizer(final boolean value) {
+    	put(Sanitize, value);
+    	return this;
     }
 
 }
