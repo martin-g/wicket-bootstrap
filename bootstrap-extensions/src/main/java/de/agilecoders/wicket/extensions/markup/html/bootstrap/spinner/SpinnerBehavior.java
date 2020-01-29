@@ -1,4 +1,4 @@
-package de.agilecoders.wicket.extensions.markup.html.bootstrap.ladda;
+package de.agilecoders.wicket.extensions.markup.html.bootstrap.spinner;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.Behavior;
@@ -13,7 +13,7 @@ import de.agilecoders.wicket.core.util.Attributes;
 /**
  * A behavior that applies the CSS classes required by <a href="http://msurguy.github.io/ladda-bootstrap/">Ladda UI</a>.
  */
-public class LaddaBehavior extends Behavior {
+public class SpinnerBehavior extends Behavior {
     private static final long serialVersionUID = 1L;
 
     /**
@@ -63,7 +63,7 @@ public class LaddaBehavior extends Behavior {
      * @param effect The effect to use
      * @return {@code this}, for chaining
      */
-    public LaddaBehavior withEffect(Effect effect) {
+    public SpinnerBehavior withEffect(Effect effect) {
         this.effect = Args.notNull(effect, "effect");
         return this;
     }
@@ -74,7 +74,7 @@ public class LaddaBehavior extends Behavior {
      * @param color The color for the spinner
      * @return {@code this}, for chaining
      */
-    public LaddaBehavior withSpinnerColor(Color color) {
+    public SpinnerBehavior withSpinnerColor(Color color) {
         this.spinnerColor = color;
         return this;
     }
@@ -85,7 +85,7 @@ public class LaddaBehavior extends Behavior {
      * @param small The effect to use
      * @return {@code this}, for chaining
      */
-    public LaddaBehavior withSmall(boolean small) {
+    public SpinnerBehavior withSmall(boolean small) {
         this.small = small;
         return this;
     }
@@ -109,6 +109,6 @@ public class LaddaBehavior extends Behavior {
     public void renderHead(Component component, IHeaderResponse response) {
         super.renderHead(component, response);
 
-        response.render(JavaScriptHeaderItem.forReference(LaddaJsReference.INSTANCE));
+        response.render(JavaScriptHeaderItem.forReference(SpinnerJsReference.INSTANCE));
     }
 }

@@ -1,6 +1,31 @@
 package de.agilecoders.wicket.samples.pages;
 
+import java.time.Duration;
+import java.util.List;
+
+import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.ajax.markup.html.AjaxLink;
+import org.apache.wicket.ajax.markup.html.form.AjaxButton;
+import org.apache.wicket.markup.head.CssHeaderItem;
+import org.apache.wicket.markup.head.IHeaderResponse;
+import org.apache.wicket.markup.html.WebMarkupContainer;
+import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.form.Form;
+import org.apache.wicket.markup.html.form.PasswordTextField;
+import org.apache.wicket.markup.html.form.RequiredTextField;
+import org.apache.wicket.markup.html.form.StatelessForm;
+import org.apache.wicket.markup.html.form.TextField;
+import org.apache.wicket.markup.repeater.RepeatingView;
+import org.apache.wicket.model.Model;
+import org.apache.wicket.model.ResourceModel;
+import org.apache.wicket.request.mapper.parameter.PageParameters;
+import org.apache.wicket.request.resource.CssResourceReference;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.wicketstuff.annotation.mount.MountPath;
+
 import com.google.common.collect.Lists;
+
 import de.agilecoders.wicket.core.markup.html.bootstrap.block.Code;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons;
 import de.agilecoders.wicket.core.markup.html.bootstrap.common.NotificationPanel;
@@ -30,34 +55,11 @@ import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.OpenWebIconTy
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.OpenWebIconsCssReference;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.inputmask.InputMaskBehavior;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.jqueryui.JQueryUICssReference;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.ladda.LaddaAjaxButton;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.ladda.LaddaAjaxLink;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.ladda.LaddaBehavior;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.spinner.SpinnerAjaxButton;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.spinner.SpinnerAjaxLink;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.spinner.SpinnerBehavior;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.tour.TourBehavior;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.tour.TourStep;
-import org.apache.wicket.ajax.AjaxRequestTarget;
-import org.apache.wicket.ajax.markup.html.AjaxLink;
-import org.apache.wicket.ajax.markup.html.form.AjaxButton;
-import org.apache.wicket.markup.head.CssHeaderItem;
-import org.apache.wicket.markup.head.IHeaderResponse;
-import org.apache.wicket.markup.html.WebMarkupContainer;
-import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.markup.html.form.Form;
-import org.apache.wicket.markup.html.form.PasswordTextField;
-import org.apache.wicket.markup.html.form.RequiredTextField;
-import org.apache.wicket.markup.html.form.StatelessForm;
-import org.apache.wicket.markup.html.form.TextField;
-import org.apache.wicket.markup.repeater.RepeatingView;
-import org.apache.wicket.model.Model;
-import org.apache.wicket.model.ResourceModel;
-import org.apache.wicket.request.mapper.parameter.PageParameters;
-import org.apache.wicket.request.resource.CssResourceReference;
-import java.time.Duration;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.wicketstuff.annotation.mount.MountPath;
-
-import java.util.List;
 
 /**
  * The {@code ExtensionsPage}
@@ -143,7 +145,7 @@ public class ExtensionsPage extends BasePage {
 
         addInputMaskDemo();
 
-        laddaButton();
+        spinnerButton();
         confirmationButton();
 
         clockPickerSample();
@@ -258,11 +260,11 @@ public class ExtensionsPage extends BasePage {
         add(animate, feedback);
     }
 
-    private void laddaButton() {
-        Form form = new Form("laddaForm");
+    private void spinnerButton() {
+        Form<?> form = new Form<>("spinnerForm");
         add(form);
 
-        LaddaAjaxButton laddaButton = new LaddaAjaxButton("laddaButton", Model.of("Button, 3secs"), form, Buttons.Type.Info) {
+        SpinnerAjaxButton spinnerButton = new SpinnerAjaxButton("spinnerButton", Model.of("Button, 3secs"), form, Buttons.Type.Info) {
             private static final long serialVersionUID = 1L;
 
             @Override
@@ -272,27 +274,31 @@ public class ExtensionsPage extends BasePage {
                 sleep(3L);
             }
         };
-        laddaButton.setSize(Buttons.Size.Small);
+        spinnerButton.setSize(Buttons.Size.Small);
 
-        LaddaAjaxLink<String> laddaLink = new LaddaAjaxLink<>("laddaLink", null,
+        SpinnerAjaxLink<String> spinnerLink = new SpinnerAjaxLink<>("spinnerLink", null,
             Buttons.Type.Success, Model.of("Link, 2secs")) {
                 private static final long serialVersionUID = 1L;
 
             @Override
             public void onClick(AjaxRequestTarget target) {
-                sleep(3L);
+                sleep(2L);
             }
         };
-        laddaLink.setEffect(LaddaBehavior.Effect.SPINNER_BORDER).setSize(Buttons.Size.Medium);
+        spinnerLink.setEffect(SpinnerBehavior.Effect.SPINNER_BORDER).setSize(Buttons.Size.Medium);
 
-        form.add(new Code("linkCode", Model.of("laddaLink = new LaddaAjaxLink<String>(\"laddaLink\", Model.of(\"Link, 2secs\"), Buttons.Type.Success) {\n"
+        form.add(new Code("linkCode", Model.of("spinnerLink = new SpinnerAjaxLink<String>(\"spinnerLink\", null, Buttons.Type.Success, Model.of(\"Link, 2secs\")) {\n"
                                                + "    @Override public void onClick(AjaxRequestTarget target) {\n"
-                                               + "        Duration.seconds(2).sleep();\n"
+                                               + "        try {\n"
+                                               + "            Thread.sleep(Duration.ofSeconds(seconds).toMillis());\n"
+                                               + "        } catch (InterruptedException e) {\n"
+                                               + "            LOG.error(\"Sleep interrupted\", e);\n"
+                                               + "        }\n"
                                                + "    }\n"
                                                + "};\n"
-                                               + "laddaLink.setEffect(LaddaBehavior.Effect.EXPAND_LEFT).setSize(Buttons.Size.Medium);")));
+                                               + "spinnerLink.setEffect(SpinnerBehavior.Effect.SPINNER_BORDER).setSize(Buttons.Size.Medium);")));
 
-        form.add(laddaButton, laddaLink);
+        form.add(spinnerButton, spinnerLink);
     }
 
     private static void sleep(long seconds) {
