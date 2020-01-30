@@ -1,25 +1,27 @@
-package de.agilecoders.wicket.extensions.markup.html.bootstrap.ladda;
+package de.agilecoders.wicket.extensions.markup.html.bootstrap.spinner;
+
+import java.io.Serializable;
 
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.attributes.AjaxRequestAttributes;
+import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.model.IModel;
+import org.apache.wicket.util.string.Strings;
 
-import de.agilecoders.wicket.core.markup.html.bootstrap.button.BootstrapAjaxLink;
+import de.agilecoders.wicket.core.markup.html.bootstrap.button.BootstrapAjaxButton;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons;
 
-import java.io.Serializable;
-
 /**
- * A specialization of {@link de.agilecoders.wicket.core.markup.html.bootstrap.button.BootstrapAjaxLink}
+ * A specialization of {@link de.agilecoders.wicket.core.markup.html.bootstrap.button.BootstrapAjaxButton}
  * that disables itself during the Ajax call and shows a loading spinner
  */
-public abstract class LaddaAjaxLink<T> extends BootstrapAjaxLink<T> {
-
+public class SpinnerAjaxButton extends BootstrapAjaxButton {
+    private static final long serialVersionUID = 1L;
     /**
      * The behavior that sets the Ladda UI specific CSS classes and attributes
      */
-    private final LaddaBehavior laddaBehavior = new LaddaBehavior();
+    private final SpinnerBehavior spinnerBehavior = new SpinnerBehavior();
 
     /**
      * Constructor.
@@ -27,7 +29,7 @@ public abstract class LaddaAjaxLink<T> extends BootstrapAjaxLink<T> {
      * @param id The component id
      * @param type The Bootstrap type of the button
      */
-    public LaddaAjaxLink(String id, Buttons.Type type) {
+    public SpinnerAjaxButton(String id, Buttons.Type type) {
         super(id, type);
     }
 
@@ -38,7 +40,7 @@ public abstract class LaddaAjaxLink<T> extends BootstrapAjaxLink<T> {
      * @param model The model to use for the label
      * @param type The Bootstrap type of the button
      */
-    public LaddaAjaxLink(String id, IModel<T> model, Buttons.Type type) {
+    public SpinnerAjaxButton(String id, IModel<String> model, Buttons.Type type) {
         super(id, model, type);
     }
 
@@ -46,19 +48,30 @@ public abstract class LaddaAjaxLink<T> extends BootstrapAjaxLink<T> {
      * Constructor.
      *
      * @param id The component id
-     * @param model The model to use for the label
+     * @param form The form that this button will submit
      * @param type The Bootstrap type of the button
-     * @param labelModel The model for the link's label
      */
-    public <L extends Serializable> LaddaAjaxLink(String id, IModel<T> model, Buttons.Type type, IModel<L> labelModel) {
-        super(id, model, type, labelModel);
+    public SpinnerAjaxButton(String id, Form<?> form, Buttons.Type type) {
+        super(id, form, type);
+    }
+
+    /**
+     * Constructor.
+     *
+     * @param id The component id
+     * @param model The model to use for the label
+     * @param form The form that this button will submit
+     * @param type The Bootstrap type of the button
+     */
+    public SpinnerAjaxButton(String id, IModel<String> model, Form<?> form, Buttons.Type type) {
+        super(id, model, form, type);
     }
 
     @Override
     protected void onInitialize() {
         super.onInitialize();
 
-        add(laddaBehavior);
+        add(spinnerBehavior);
     }
 
     /**
@@ -67,8 +80,8 @@ public abstract class LaddaAjaxLink<T> extends BootstrapAjaxLink<T> {
      * @param effect The effect to use
      * @return {@code this}, for chaining
      */
-    public LaddaAjaxLink<T> setEffect(LaddaBehavior.Effect effect) {
-        this.laddaBehavior.withEffect(effect);
+    public SpinnerAjaxButton setEffect(SpinnerBehavior.Effect effect) {
+        this.spinnerBehavior.withEffect(effect);
         return this;
     }
 
@@ -78,34 +91,23 @@ public abstract class LaddaAjaxLink<T> extends BootstrapAjaxLink<T> {
      * @param color The color for the spinner
      * @return {@code this}, for chaining
      */
-    public LaddaAjaxLink<T> setSpinnerColor(String color) {
-        this.laddaBehavior.withSpinnerColor(color);
+    public SpinnerAjaxButton setSpinnerColor(SpinnerBehavior.Color color) {
+        this.spinnerBehavior.withSpinnerColor(color);
         return this;
     }
-
-    /**
-     * Sets the size of the spinner in pixels
-     *
-     * @param size The size of the spinner in pixels
-     * @return {@code this}, for chaining
-     */
-    public LaddaAjaxLink<T> setSpinnerSize(int size) {
-        this.laddaBehavior.withSpinnerSize(size);
-        return this;
-    }
-
 
     @Override
     protected void updateAjaxAttributes(AjaxRequestAttributes attributes) {
         super.updateAjaxAttributes(attributes);
-        attributes.getAjaxCallListeners().add(new LaddaAjaxCallListener());
+        attributes.getAjaxCallListeners().add(new SpinnerAjaxCallListener());
     }
 
     @Override
     protected <L extends Serializable> Component newLabel(String markupId, IModel<L> model) {
         Component label = super.newLabel(markupId, model);
-        label.setRenderBodyOnly(false);
-        label.add(AttributeModifier.append("class", "ladda-label"));
+        if (Strings.isEmpty(label.getDefaultModelObjectAsString())) {
+            label.add(AttributeModifier.append("class", "sr-only"));
+        }
         return label;
     }
 }

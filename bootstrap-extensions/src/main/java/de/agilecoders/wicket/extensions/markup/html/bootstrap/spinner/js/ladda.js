@@ -18,17 +18,13 @@
             button.innerHTML = '<span class="ladda-label">' + button.innerHTML + "</span>";
         }
         var spinner = createSpinner(button);
-        var spinnerWrapper = document.createElement("span");
-        spinnerWrapper.className = "ladda-spinner";
-        button.appendChild(spinnerWrapper);
         var timer;
         var instance = {
             start: function() {
                 button.setAttribute("disabled", "");
                 button.setAttribute("data-loading", "");
                 clearTimeout(timer);
-                spinner.spin(spinnerWrapper);
-                this.setProgress(0);
+                spinner.classList.remove('d-none');
                 return this;
             },
             startAfter: function(delay) {
@@ -43,7 +39,7 @@
                 button.removeAttribute("data-loading");
                 clearTimeout(timer);
                 timer = setTimeout(function() {
-                    spinner.stop();
+                    spinner.classList.add('d-none');
                 }, 1e3);
                 return this;
             },
@@ -54,20 +50,6 @@
                     this.start();
                 }
                 return this;
-            },
-            setProgress: function(progress) {
-                progress = Math.max(Math.min(progress, 1), 0);
-                var progressElement = button.querySelector(".ladda-progress");
-                if (progress === 0 && progressElement && progressElement.parentNode) {
-                    progressElement.parentNode.removeChild(progressElement);
-                } else {
-                    if (!progressElement) {
-                        progressElement = document.createElement("div");
-                        progressElement.className = "ladda-progress";
-                        button.appendChild(progressElement);
-                    }
-                    progressElement.style.width = (progress || 0) * button.offsetWidth + "px";
-                }
             },
             enable: function() {
                 this.stop();
@@ -122,28 +104,20 @@
         }
     }
     function createSpinner(button) {
-        var height = button.offsetHeight, spinnerColor;
-        if (height > 32) {
-            height *= .8;
+        var spinner = button.querySelector('.ladda-spinner');
+        if (spinner) {
+            return spinner;
         }
-        if (button.hasAttribute("data-spinner-size")) {
-            height = parseInt(button.getAttribute("data-spinner-size"), 10);
+        var clazz = ['ladda-spinner', button.getAttribute('data-style')];
+        if (button.getAttribute('data-spinner-small')) {
+            clazz.push(button.getAttribute('data-style') + '-sm');
         }
-        if (button.hasAttribute("data-spinner-color")) {
-            spinnerColor = button.getAttribute("data-spinner-color");
+        clazz.push('d-none');
+        if (button.hasAttribute('data-spinner-color')) {
+            clazz.push(button.getAttribute('data-spinner-color'));
         }
-        var lines = 12, radius = height * .2, length = radius * .6, width = radius < 7 ? 2 : 3;
-        return new Spinner({
-            color: spinnerColor || "#fff",
-            lines: lines,
-            radius: radius,
-            length: length,
-            width: width,
-            zIndex: "auto",
-            top: "50%",
-            left: "50%",
-            className: ""
-        });
+        button.insertAdjacentHTML('afterbegin', '<span class="' + clazz.join(' ') + '" role="status" aria-hidden="true"></span>');
+        return button.firstChild;
     }
     function toArray(nodes) {
         var a = [];

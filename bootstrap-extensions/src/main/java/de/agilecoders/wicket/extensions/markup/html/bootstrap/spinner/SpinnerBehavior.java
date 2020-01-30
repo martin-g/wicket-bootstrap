@@ -1,31 +1,40 @@
-package de.agilecoders.wicket.extensions.markup.html.bootstrap.ladda;
+package de.agilecoders.wicket.extensions.markup.html.bootstrap.spinner;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.Behavior;
 import org.apache.wicket.markup.ComponentTag;
-import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.util.lang.Args;
-import org.apache.wicket.util.string.Strings;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNameProvider;
 import de.agilecoders.wicket.core.util.Attributes;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.references.SpinJsReference;
 
 /**
  * A behavior that applies the CSS classes required by <a href="http://msurguy.github.io/ladda-bootstrap/">Ladda UI</a>.
  */
-public class LaddaBehavior extends Behavior {
+public class SpinnerBehavior extends Behavior {
+    private static final long serialVersionUID = 1L;
 
     /**
      * The available UI effects
      */
     public enum Effect implements ICssClassNameProvider {
-        EXPAND_LEFT, EXPAND_RIGHT, EXPAND_UP, EXPAND_DOWN,
-        ZOOM_IN, ZOOM_OUT,
-        SLIDE_LEFT, SLIDE_RIGHT, SLIDE_UP, SLIDE_DOWN,
-        CONTRACT;
+        SPINNER_BORDER, SPINNER_GROW;
+
+        @Override
+        public String cssClassName() {
+            return name().toLowerCase().replace('_', '-');
+        }
+    }
+
+    /**
+     * The available colors
+     */
+    public enum Color implements ICssClassNameProvider {
+        TEXT_PRIMARY, TEXT_SECONDARY, TEXT_SUCCESS,
+        TEXT_DANGER, TEXT_WARNING, TEXT_INFO, TEXT_LIGHT,
+        TEXT_DARK;
 
         @Override
         public String cssClassName() {
@@ -36,17 +45,17 @@ public class LaddaBehavior extends Behavior {
     /**
      * The effect to use
      */
-    private Effect effect = Effect.ZOOM_OUT;
+    private Effect effect = Effect.SPINNER_BORDER;
 
     /**
      * The color of the spinner. E.g. "#003366"
      */
-    private String spinnerColor;
+    private Color spinnerColor;
 
     /**
-     * The size of the spinner in pixels
+     * smaller spinner that can quickly be used within other components.
      */
-    private int spinnerSize;
+    private boolean small = true;
 
     /**
      * Sets the effect to use
@@ -54,7 +63,7 @@ public class LaddaBehavior extends Behavior {
      * @param effect The effect to use
      * @return {@code this}, for chaining
      */
-    public LaddaBehavior withEffect(Effect effect) {
+    public SpinnerBehavior withEffect(Effect effect) {
         this.effect = Args.notNull(effect, "effect");
         return this;
     }
@@ -65,19 +74,19 @@ public class LaddaBehavior extends Behavior {
      * @param color The color for the spinner
      * @return {@code this}, for chaining
      */
-    public LaddaBehavior withSpinnerColor(String color) {
+    public SpinnerBehavior withSpinnerColor(Color color) {
         this.spinnerColor = color;
         return this;
     }
 
     /**
-     * Sets the size of the spinner in pixels
+     * Sets if spinner will be small or not
      *
-     * @param size The size of the spinner in pixels
+     * @param small The effect to use
      * @return {@code this}, for chaining
      */
-    public LaddaBehavior withSpinnerSize(int size) {
-        this.spinnerSize = size;
+    public SpinnerBehavior withSmall(boolean small) {
+        this.small = small;
         return this;
     }
 
@@ -87,13 +96,12 @@ public class LaddaBehavior extends Behavior {
 
         Attributes.addClass(tag, "ladda-button");
         Attributes.set(tag, "data-style", effect.cssClassName());
-
-        if (!Strings.isEmpty(spinnerColor)) {
-            Attributes.set(tag, "data-spinner-color", spinnerColor);
+        if (small) {
+            Attributes.set(tag, "data-spinner-small", "" + small);
         }
 
-        if (spinnerSize > 0) {
-            Attributes.set(tag, "data-spinner-size", String.valueOf(spinnerSize));
+        if (spinnerColor != null) {
+            Attributes.set(tag, "data-spinner-color", spinnerColor.cssClassName());
         }
     }
 
@@ -101,9 +109,6 @@ public class LaddaBehavior extends Behavior {
     public void renderHead(Component component, IHeaderResponse response) {
         super.renderHead(component, response);
 
-        response.render(CssHeaderItem.forReference(LaddaCssReference.INSTANCE));
-
-        response.render(JavaScriptHeaderItem.forReference(SpinJsReference.INSTANCE));
-        response.render(JavaScriptHeaderItem.forReference(LaddaJsReference.INSTANCE));
+        response.render(JavaScriptHeaderItem.forReference(SpinnerJsReference.INSTANCE));
     }
 }
