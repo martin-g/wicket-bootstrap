@@ -6,6 +6,7 @@ import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.attributes.AjaxRequestAttributes;
 import org.apache.wicket.model.IModel;
+import org.apache.wicket.util.string.Strings;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.BootstrapAjaxLink;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons;
@@ -20,7 +21,6 @@ public abstract class SpinnerAjaxLink<T> extends BootstrapAjaxLink<T> {
      * The behavior that sets the Ladda UI specific CSS classes and attributes
      */
     private final SpinnerBehavior laddaBehavior = new SpinnerBehavior();
-    private boolean noLabel;
 
     /**
      * Constructor.
@@ -84,17 +84,6 @@ public abstract class SpinnerAjaxLink<T> extends BootstrapAjaxLink<T> {
         return this;
     }
 
-    /**
-     * Sets if label should be hidden
-     *
-     * @param noLabel <code>true</code> if label should be hidden
-     * @return {@code this}, for chaining
-     */
-    public SpinnerAjaxLink<T> setEffect(boolean noLabel) {
-        this.noLabel = noLabel;
-        return this;
-    }
-
     @Override
     protected void updateAjaxAttributes(AjaxRequestAttributes attributes) {
         super.updateAjaxAttributes(attributes);
@@ -105,7 +94,7 @@ public abstract class SpinnerAjaxLink<T> extends BootstrapAjaxLink<T> {
     protected <L extends Serializable> Component newLabel(String markupId, IModel<L> model) {
         Component label = super.newLabel(markupId, model);
         label.setRenderBodyOnly(false);
-        if (noLabel) {
+        if (Strings.isEmpty(label.getDefaultModelObjectAsString())) {
             label.add(AttributeModifier.append("class", "sr-only"));
         }
         return label;

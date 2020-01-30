@@ -292,6 +292,7 @@ public class ExtensionsPage extends BasePage {
                                                + "        try {\n"
                                                + "            Thread.sleep(Duration.ofSeconds(seconds).toMillis());\n"
                                                + "        } catch (InterruptedException e) {\n"
+                                               + "            Thread.currentThread().interrupt();  // set interrupt flag\n"
                                                + "            LOG.error(\"Sleep interrupted\", e);\n"
                                                + "        }\n"
                                                + "    }\n"
@@ -305,6 +306,7 @@ public class ExtensionsPage extends BasePage {
         try {
             Thread.sleep(Duration.ofSeconds(seconds).toMillis());
         } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();  // set interrupt flag
             LOG.error("Sleep interrupted", e);
         }
     }
