@@ -19,10 +19,14 @@
         <div class="row">
             <div class="col-lg-3 bs-docs-sidebar">
                 <ul wicket:id="navigation" class="nav list-group bs-docs-sidenav">
-                    <li><a href="#datepicker" data-sample="datetimepicker"><i class="icon-chevron-right"></i>DatetimePicker</a></li>
-                    <li><a href="#datepicker-birthday" data-sample="datetimepicker"><i class="icon-chevron-right"></i>BirthdayPicker</a></li>
-                    <li><a href="#datepicker-masked" data-sample="datetimepicker"><i class="icon-chevron-right"></i>DatetimePicker with mask</a></li>
-                    <li><a href="#datepicker-icons" data-sample="datetimepicker"><i class="icon-chevron-right"></i>DatetimePicker with icons</a></li>
+                    <li><a href="#datepicker" data-sample="datetimepicker"><i class="fas fa-chevron-right"></i>&nbsp;DatetimePicker</a></li>
+                    <li><a href="#datepicker-birthday" data-sample="datetimepicker"><i class="fas fa-chevron-right"></i>&nbsp;BirthdayPicker</a></li>
+                    <li><a href="#datepicker-masked" data-sample="datetimepicker"><i class="fas fa-chevron-right"></i>&nbsp;DatetimePicker with mask</a></li>
+                    <li><a href="#datepicker-icons" data-sample="datetimepicker"><i class="fas fa-chevron-right"></i>&nbsp;DatetimePicker with icons</a></li>
+                    <li><a href="#localdatepicker" data-sample="datetimepicker"><i class="fas fa-chevron-right"></i>&nbsp;LocalDateTimePicker</a></li>
+                    <li><a href="#localdatepicker-birthday" data-sample="datetimepicker"><i class="fas fa-chevron-right"></i>&nbsp;Local BirthdayPicker</a></li>
+                    <li><a href="#localdatepicker-masked" data-sample="datetimepicker"><i class="fas fa-chevron-right"></i>&nbsp;LocalDateTimePicker with mask</a></li>
+                    <li><a href="#localdatepicker-icons" data-sample="datetimepicker"><i class="fas fa-chevron-right"></i>&nbsp;LocalDateTimePicker with icons</a></li>
                 </ul>
             </div>
 
@@ -39,9 +43,7 @@
 
                     <p>Simple datetime picker.</p>
 
-                    <div class="bs-docs-example" wicket:id="simple">
-
-                    </div>
+                    <div class="bs-docs-example" wicket:id="simple"></div>
                     Configuration code:
                     <pre wicket:id="default-java-code"></pre>
                 </section>
@@ -55,8 +57,7 @@
 
                     <p>Birthday picker</p>
 
-                    <div class="bs-docs-example" wicket:id="birthday">
-                    </div>
+                    <div class="bs-docs-example" wicket:id="birthday"></div>
                     Configuration code:
                     <pre wicket:id="birthday-java-code"></pre>
                 </section>
@@ -70,8 +71,7 @@
 
                     <p>Datetime picker with masks</p>
 
-                    <div class="bs-docs-example" wicket:id="masked">
-                    </div>
+                    <div class="bs-docs-example" wicket:id="masked"></div>
                     Configuration code:
                     <pre wicket:id="masked-java-code"></pre>
                 </section>
@@ -85,10 +85,65 @@
 
                     <p>Datetime picker with FontAwesome icons</p>
 
-                    <div class="bs-docs-example" wicket:id="icons">
-                    </div>
+                    <div class="bs-docs-example" wicket:id="icons"></div>
                     Configuration code:
                     <pre wicket:id="icons-java-code"></pre>
+                </section>
+
+                <section id="localdatepicker">
+                    <div class="pb-2 mt-4 mb-2 border-bottom">
+                        <h1>Local Datetime Picker</h1>
+                    </div>
+
+                    <h2>Example</h2>
+
+                    <p>Simple local datetime picker.</p>
+
+                    <div class="bs-docs-example" wicket:id="localsimple"></div>
+                    Configuration code:
+                    <pre wicket:id="localdefault-java-code"></pre>
+                </section>
+
+                <section id="localdatepicker-birthday" style="display: none">
+                    <div class="pb-2 mt-4 mb-2 border-bottom">
+                        <h1>Local BirthdayPicker</h1>
+                    </div>
+
+                    <h2>Example</h2>
+
+                    <p>Birthday picker</p>
+
+                    <div class="bs-docs-example" wicket:id="localbirthday"></div>
+                    Configuration code:
+                    <pre wicket:id="localbirthday-java-code"></pre>
+                </section>
+
+                <section id="localdatepicker-masked" style="display: none">
+                    <div class="pb-2 mt-4 mb-2 border-bottom">
+                        <h1>Local DatetimePicker with mask</h1>
+                    </div>
+
+                    <h2>Example</h2>
+
+                    <p>Local Datetime picker with masks</p>
+
+                    <div class="bs-docs-example" wicket:id="localmasked"></div>
+                    Configuration code:
+                    <pre wicket:id="localmasked-java-code"></pre>
+                </section>
+
+                <section id="localdatepicker-icons" style="display: none">
+                    <div class="pb-2 mt-4 mb-2 border-bottom">
+                        <h1>Local DatetimePicker with icons</h1>
+                    </div>
+
+                    <h2>Example</h2>
+
+                    <p>Local Datetime picker with FontAwesome icons</p>
+
+                    <div class="bs-docs-example" wicket:id="localicons"></div>
+                    Configuration code:
+                    <pre wicket:id="localicons-java-code"></pre>
                 </section>
             </form>
             </div>

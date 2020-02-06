@@ -1,14 +1,22 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.form.datetime;
 
-import de.agilecoders.wicket.extensions.javascript.jasny.InputMaskBehavior;
-import de.agilecoders.wicket.jquery.AbstractConfig;
-import de.agilecoders.wicket.jquery.IKey;
-import org.apache.wicket.behavior.Behavior;
+import static de.agilecoders.wicket.jquery.util.Strings2.nullToEmpty;
+import static java.time.format.DateTimeFormatter.ISO_LOCAL_DATE;
+import static java.time.format.DateTimeFormatter.ISO_LOCAL_DATE_TIME;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.Map;
+import java.util.stream.Stream;
 
-import static de.agilecoders.wicket.jquery.util.Strings2.nullToEmpty;
+import de.agilecoders.wicket.extensions.javascript.jasny.InputMaskBehavior;
+import org.apache.wicket.behavior.Behavior;
+
+import de.agilecoders.wicket.jquery.AbstractConfig;
+import de.agilecoders.wicket.jquery.IKey;
 
 /**
  * Config of datetime picker plugin.
@@ -47,6 +55,10 @@ public class DatetimePickerConfig extends AbstractConfig {
     private static final long serialVersionUID = 1L;
 
     private static final String DIGITS_PATTERN = "(?i)(y|m|d|h|s)";
+    private static final String ISO_DATE_TIME_FORMAT = "yyyy-MM-dd'T'HH:mm:ss";
+    public static final String BTN_SHOW_TODAY = "showToday";
+    public static final String BTN_SHOW_CLEAR = "showClear";
+    public static final String BTN_SHOW_CLOSE = "showClose";
 
     private static final IKey<String> Format = newKey("format", null);
     private static final IKey<Boolean> UseCurrent = newKey("useCurrent", true);
@@ -66,9 +78,12 @@ public class DatetimePickerConfig extends AbstractConfig {
 
     private static final IKey<String[]> DisabledDates = newKey("disabledDates", null);
     private static final IKey<String[]> EnabledDates = newKey("enabledDates", null);
+    private static final IKey<String[]> ExtraFormats = newKey("extraFormats", null);
+    private static final IKey<Map<String, Boolean>> Buttons = newKey("buttons"
+            , Map.of(BTN_SHOW_TODAY, false, BTN_SHOW_CLEAR, false, BTN_SHOW_CLOSE, false));
     private static final IKey<DatetimePickerIconConfig> Icons = newKey("icons", null);
 
-    private Boolean maskInput = false;
+    private boolean maskInput = false;
 
     /**
      * Construct config
@@ -76,6 +91,7 @@ public class DatetimePickerConfig extends AbstractConfig {
     public DatetimePickerConfig() {
         useLocale("en-gb");
         withFormat("MM/dd/yyyy");
+        withExtraFormats();
     }
 
     /**
@@ -99,7 +115,7 @@ public class DatetimePickerConfig extends AbstractConfig {
     /**
      * @return mask input
      */
-    public Boolean getMaskInput() {
+    public boolean getMaskInput() {
         return maskInput;
     }
 
@@ -111,6 +127,34 @@ public class DatetimePickerConfig extends AbstractConfig {
      */
     public DatetimePickerConfig withFormat(String format) {
         put(Format, toJavaScriptDateFormat(format));
+        return this;
+    }
+
+    /**
+     * Sets extra date formats.
+     * NOTE: ISO date format will be added automatically
+     *
+     * @param formats date format
+     * @return config instance
+     */
+    public DatetimePickerConfig withExtraFormats(String... formats) {
+        put(ExtraFormats, Stream.concat(Arrays.stream(formats), Stream.of(ISO_DATE_TIME_FORMAT))
+                .map(DatetimePickerConfig::toJavaScriptDateFormat)
+                .toArray(String[]::new));
+        return this;
+    }
+
+
+    /**
+     * Sets buttons.
+     *
+     * @param buttons buttons to show/hide
+     * @return config instance
+     */
+    public DatetimePickerConfig withButtons(Map<String, Boolean> buttons) {
+        put(Buttons, Map.of(BTN_SHOW_TODAY, Boolean.TRUE.equals(buttons.get(BTN_SHOW_TODAY))
+                , BTN_SHOW_CLEAR, Boolean.TRUE.equals(buttons.get(BTN_SHOW_CLEAR))
+                , BTN_SHOW_CLOSE, Boolean.TRUE.equals(buttons.get(BTN_SHOW_CLOSE))));
         return this;
     }
 
@@ -202,6 +246,28 @@ public class DatetimePickerConfig extends AbstractConfig {
     }
 
     /**
+     * Set minimum date.
+     *
+     * @param minDate minimum date
+     * @return config instance
+     */
+    public DatetimePickerConfig withMinDate(LocalDate minDate) {
+        put(MinDate, ISO_LOCAL_DATE.format(minDate));
+        return this;
+    }
+
+    /**
+     * Set minimum date.
+     *
+     * @param minDate minimum date
+     * @return config instance
+     */
+    public DatetimePickerConfig withMinDate(LocalDateTime minDate) {
+        put(MinDate, ISO_LOCAL_DATE_TIME.format(minDate));
+        return this;
+    }
+
+    /**
      * Set maximum date.
      *
      * @param maxDate maximum date
@@ -209,6 +275,28 @@ public class DatetimePickerConfig extends AbstractConfig {
      */
     public DatetimePickerConfig withMaxDate(Date maxDate) {
         put(MaxDate, defaultDateValueFormatter().format(maxDate));
+        return this;
+    }
+
+    /**
+     * Set maximum date.
+     *
+     * @param maxDate maximum date
+     * @return config instance
+     */
+    public DatetimePickerConfig withMaxDate(LocalDate maxDate) {
+        put(MaxDate, ISO_LOCAL_DATE.format(maxDate));
+        return this;
+    }
+
+    /**
+     * Set maximum date.
+     *
+     * @param maxDate maximum date
+     * @return config instance
+     */
+    public DatetimePickerConfig withMaxDate(LocalDateTime maxDate) {
+        put(MaxDate, ISO_LOCAL_DATE_TIME.format(maxDate));
         return this;
     }
 
@@ -224,12 +312,34 @@ public class DatetimePickerConfig extends AbstractConfig {
     }
 
     /**
+     * Set the default date.
+     *
+     * @param defaultDate  the default date
+     * @return config instance
+     */
+    public DatetimePickerConfig withDefaultDate(LocalDate defaultDate) {
+        put(DefaultDate, ISO_LOCAL_DATE.format(defaultDate));
+        return this;
+    }
+
+    /**
+     * Set the default date.
+     *
+     * @param defaultDate  the default date
+     * @return config instance
+     */
+    public DatetimePickerConfig withDefaultDate(LocalDateTime defaultDate) {
+        put(DefaultDate, ISO_LOCAL_DATE_TIME.format(defaultDate));
+        return this;
+    }
+
+    /**
      * Get date formatter based config format.
      *
      * @return date formatter
      */
     private SimpleDateFormat defaultDateValueFormatter() {
-        return new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+        return new SimpleDateFormat(ISO_DATE_TIME_FORMAT);
     }
 
     /**
@@ -328,15 +438,6 @@ public class DatetimePickerConfig extends AbstractConfig {
             stringDates[i++] = formatter.format(date);
         }
         return stringDates;
-    }
-
-    /**
-     * Get date formatter based config format.
-     *
-     * @return date formatter
-     */
-    private SimpleDateFormat customDateFormatter() {
-        return new SimpleDateFormat(getFormat());
     }
 
     /**
