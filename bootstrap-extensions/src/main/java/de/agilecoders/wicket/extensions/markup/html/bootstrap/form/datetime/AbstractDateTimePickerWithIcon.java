@@ -4,9 +4,7 @@ import org.apache.wicket.Component;
 import org.apache.wicket.MarkupContainer;
 import org.apache.wicket.behavior.AttributeAppender;
 import org.apache.wicket.markup.html.WebMarkupContainer;
-import org.apache.wicket.markup.html.form.FormComponent;
-import org.apache.wicket.markup.html.panel.IMarkupSourcingStrategy;
-import org.apache.wicket.markup.html.panel.PanelMarkupSourcingStrategy;
+import org.apache.wicket.markup.html.form.FormComponentPanel;
 import org.apache.wicket.model.IModel;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.Icon;
@@ -19,7 +17,7 @@ import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeIc
  * @author Alexey Volkov
  * @since 01.02.2015
  */
-public abstract class AbstractDateTimePickerWithIcon<T> extends FormComponent<T> {
+public abstract class AbstractDateTimePickerWithIcon<T> extends FormComponentPanel<T> {
 
     private static final long serialVersionUID = 1L;
 
@@ -117,10 +115,5 @@ public abstract class AbstractDateTimePickerWithIcon<T> extends FormComponent<T>
      */
     protected IconType newIconType() {
         return FontAwesomeIconType.calendar;
-    }
-
-    @Override
-    protected IMarkupSourcingStrategy newMarkupSourcingStrategy() {
-        return new PanelMarkupSourcingStrategy(false);
     }
 }
