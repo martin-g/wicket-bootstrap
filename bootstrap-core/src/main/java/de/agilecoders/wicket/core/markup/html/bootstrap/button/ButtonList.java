@@ -1,5 +1,7 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.button;
 
+import java.util.List;
+
 import org.apache.wicket.Component;
 import org.apache.wicket.Page;
 import org.apache.wicket.markup.html.link.AbstractLink;
@@ -10,8 +12,7 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.util.lang.Args;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.CssClassNameAppender;
-
-import java.util.List;
+import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.MenuDivider;
 
 /**
  * A {@link ListView} of {@link AbstractLink}.
@@ -19,6 +20,7 @@ import java.util.List;
  * @author miha
  */
 public class ButtonList extends ListView<AbstractLink> {
+    private static final long serialVersionUID = 1L;
 
     /**
      * @return the markup id that is used for buttons in the list
@@ -83,7 +85,9 @@ public class ButtonList extends ListView<AbstractLink> {
         item.add(link);
 
         link.configure();
-        link.add(new CssClassNameAppender("dropdown-item"));
+        if (!(link instanceof MenuDivider)) {
+            link.add(new CssClassNameAppender("dropdown-item"));
+        }
         if (!link.isEnabled()) {
             link.add(new CssClassNameAppender("disabled"));
         }
