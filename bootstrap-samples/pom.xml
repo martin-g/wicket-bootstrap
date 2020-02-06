@@ -51,6 +51,12 @@
             <groupId>de.agilecoders.wicket</groupId>
             <artifactId>wicket-bootstrap-themes</artifactId>
         </dependency>
+        <!-- icons -->
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>font-awesome</artifactId>
+            <version>5.9.0</version>
+        </dependency>
 
         <dependency>
             <groupId>com.yahoo.platform.yui</groupId>

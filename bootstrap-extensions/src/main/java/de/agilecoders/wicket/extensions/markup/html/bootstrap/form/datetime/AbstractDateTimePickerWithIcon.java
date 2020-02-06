@@ -1,20 +1,17 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.form.datetime;
 
-import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.CssClassNameAppender;
-import de.agilecoders.wicket.core.markup.html.bootstrap.image.Icon;
-import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
-import de.agilecoders.wicket.core.util.Attributes;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeIconType;
-
 import org.apache.wicket.Component;
 import org.apache.wicket.MarkupContainer;
 import org.apache.wicket.behavior.AttributeAppender;
-import org.apache.wicket.extensions.markup.html.form.DateTextField;
 import org.apache.wicket.markup.html.WebMarkupContainer;
-import org.apache.wicket.markup.html.panel.Panel;
+import org.apache.wicket.markup.html.form.FormComponent;
+import org.apache.wicket.markup.html.panel.IMarkupSourcingStrategy;
+import org.apache.wicket.markup.html.panel.PanelMarkupSourcingStrategy;
 import org.apache.wicket.model.IModel;
 
-import java.util.Date;
+import de.agilecoders.wicket.core.markup.html.bootstrap.image.Icon;
+import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeIconType;
 
 /**
  * Datetime-picker with calendar icon.
@@ -22,7 +19,7 @@ import java.util.Date;
  * @author Alexey Volkov
  * @since 01.02.2015
  */
-public class DatetimePickerWithIcon extends Panel {
+public abstract class AbstractDateTimePickerWithIcon<T> extends FormComponent<T> {
 
     private static final long serialVersionUID = 1L;
 
@@ -34,7 +31,7 @@ public class DatetimePickerWithIcon extends Panel {
      * @param markupId markup id
      * @param config   DateTimePicker config
      */
-    public DatetimePickerWithIcon(String markupId, DatetimePickerConfig config) {
+    public AbstractDateTimePickerWithIcon(String markupId, DatetimePickerConfig config) {
         this(markupId, null, config);
     }
 
@@ -45,9 +42,8 @@ public class DatetimePickerWithIcon extends Panel {
      * @param model    model
      * @param config   DateTimePicker config
      */
-    public DatetimePickerWithIcon(String markupId, IModel<Date> model, DatetimePickerConfig config) {
+    public AbstractDateTimePickerWithIcon(String markupId, IModel<T> model, DatetimePickerConfig config) {
         super(markupId, model);
-        setDefaultModel(model);
         setRenderBodyOnly(true);
         this.config = config;
     }
@@ -56,6 +52,9 @@ public class DatetimePickerWithIcon extends Panel {
     protected void onInitialize() {
         super.onInitialize();
         Component input = newInput("date", config.getFormat()).add(new DatetimePickerBehavior(config));
+        if (config.getMaskInput()) {
+            input.add(config.newMaskBehavior());
+        }
         Component iconContainer = newIconContainer("iconContainer")
                 .add(newIcon("icon"))
                 .add(
@@ -74,9 +73,18 @@ public class DatetimePickerWithIcon extends Panel {
      * @param config config to use
      * @return current instance
      */
-    public DatetimePickerWithIcon with(DatetimePickerConfig config) {
+    public AbstractDateTimePickerWithIcon<T> with(DatetimePickerConfig config) {
         this.config = config;
         return this;
+    }
+
+    /**
+     * get current config for tweaking
+     *
+     * @return current config
+     */
+    public DatetimePickerConfig getConfig() {
+        return config;
     }
 
     /**
@@ -84,13 +92,7 @@ public class DatetimePickerWithIcon extends Panel {
      * @param dateFormat datetime format
      * @return new input text field
      */
-    protected DateTextField newInput(String wicketId, String dateFormat) {
-        DateTextField field = new DateTextField(wicketId, (IModel<Date>) getDefaultModel(), dateFormat);
-        if (config.getMaskInput()) {
-            field.add(config.newMaskBehavior());
-        }
-        return field;
-    }
+    abstract protected Component newInput(String wicketId, String dateFormat);
 
     /**
      * Creates new container for icon.
@@ -115,5 +117,10 @@ public class DatetimePickerWithIcon extends Panel {
      */
     protected IconType newIconType() {
         return FontAwesomeIconType.calendar;
+    }
+
+    @Override
+    protected IMarkupSourcingStrategy newMarkupSourcingStrategy() {
+        return new PanelMarkupSourcingStrategy(false);
     }
 }
