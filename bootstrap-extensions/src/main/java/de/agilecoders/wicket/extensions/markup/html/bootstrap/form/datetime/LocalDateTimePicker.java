@@ -1,8 +1,8 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.form.datetime;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
-import org.apache.wicket.extensions.markup.html.form.DateTextField;
+import org.apache.wicket.extensions.markup.html.form.datetime.LocalDateTimeTextField;
 import org.apache.wicket.model.IModel;
 
 /**
@@ -11,7 +11,7 @@ import org.apache.wicket.model.IModel;
  * @author Alexey Volkov
  * @since 01.02.2015
  */
-public class DatetimePicker extends DateTextField {
+public class LocalDateTimePicker extends LocalDateTimeTextField {
 
     private static final long serialVersionUID = 1L;
     private DatetimePickerConfig config;
@@ -22,7 +22,7 @@ public class DatetimePicker extends DateTextField {
      * @param id          wicket id
      * @param datePattern datetime pattern
      */
-    public DatetimePicker(String id, String datePattern) {
+    public LocalDateTimePicker(String id, String datePattern) {
         this(id, null, datePattern);
     }
 
@@ -33,7 +33,7 @@ public class DatetimePicker extends DateTextField {
      * @param model       model
      * @param datePattern datetime pattern
      */
-    public DatetimePicker(String id, IModel<Date> model, String datePattern) {
+    public LocalDateTimePicker(String id, IModel<LocalDateTime> model, String datePattern) {
         super(id, model, datePattern);
         config = new DatetimePickerConfig().withFormat(datePattern);
     }
@@ -44,7 +44,7 @@ public class DatetimePicker extends DateTextField {
      * @param id     wicket id
      * @param config config
      */
-    public DatetimePicker(String id, DatetimePickerConfig config) {
+    public LocalDateTimePicker(String id, DatetimePickerConfig config) {
         this(id, null, config.getFormat());
         this.config = config;
     }
@@ -56,7 +56,7 @@ public class DatetimePicker extends DateTextField {
      * @param model  model
      * @param config config
      */
-    public DatetimePicker(String id, IModel<Date> model, DatetimePickerConfig config) {
+    public LocalDateTimePicker(String id, IModel<LocalDateTime> model, DatetimePickerConfig config) {
         this(id, model, config.getFormat());
         this.config = config;
     }
@@ -69,5 +69,4 @@ public class DatetimePicker extends DateTextField {
             add(config.newMaskBehavior());
         }
     }
-
 }

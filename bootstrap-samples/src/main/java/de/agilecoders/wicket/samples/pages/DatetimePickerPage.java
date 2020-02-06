@@ -1,11 +1,11 @@
 package de.agilecoders.wicket.samples.pages;
 
-import de.agilecoders.wicket.core.markup.html.bootstrap.block.Code;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.datetime.DatetimePickerConfig;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.datetime.DatetimePickerIconConfig;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesome5CssReference;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesome5IconType;
-import de.agilecoders.wicket.samples.panels.DatetimePickerPanel;
+import static de.agilecoders.wicket.extensions.markup.html.bootstrap.form.datetime.DatetimePickerConfig.BTN_SHOW_CLEAR;
+import static de.agilecoders.wicket.extensions.markup.html.bootstrap.form.datetime.DatetimePickerConfig.BTN_SHOW_CLOSE;
+import static de.agilecoders.wicket.extensions.markup.html.bootstrap.form.datetime.DatetimePickerConfig.BTN_SHOW_TODAY;
+
+import java.util.Map;
+
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
@@ -15,6 +15,14 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.resource.JQueryPluginResourceReference;
 import org.joda.time.LocalDate;
 import org.wicketstuff.annotation.mount.MountPath;
+
+import de.agilecoders.wicket.core.markup.html.bootstrap.block.Code;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.datetime.DatetimePickerConfig;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.datetime.DatetimePickerIconConfig;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesome5CssReference;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesome5IconType;
+import de.agilecoders.wicket.samples.panels.DatetimePickerPanel;
+import de.agilecoders.wicket.samples.panels.LocalDateTimePickerPanel;
 
 /**
  * Example page of datetime picker usage
@@ -54,17 +62,26 @@ public class DatetimePickerPage extends BasePage {
             .withFormat("dd/MM/yyyy HH:mm:ss")
             .useMaskInput(true);
         DatetimePickerConfig iconsConfig = new DatetimePickerConfig()
-            .withFormat("dd/MM/yyyy HH:mm:ss").with(
+            .withFormat("dd/MM/yyyy HH:mm:ss")
+            .withButtons(Map.of(BTN_SHOW_TODAY, true, BTN_SHOW_CLEAR, true, BTN_SHOW_CLOSE, true))
+            .with(
                 new DatetimePickerIconConfig()
                     .useDateIcon(FontAwesome5IconType.calendar_s)
                     .useTimeIcon(FontAwesome5IconType.clock_s)
                     .useUpIcon(FontAwesome5IconType.arrow_up_s)
                     .useDownIcon(FontAwesome5IconType.arrow_down_s)
+                    .usePreviousIcon(FontAwesome5IconType.arrow_left_s)
+                    .useNextIcon(FontAwesome5IconType.arrow_right_s)
+                    .useTodayIcon(FontAwesome5IconType.calendar_check_s)
+                    .useClearIcon(FontAwesome5IconType.eraser_s)
+                    .useCloseIcon(FontAwesome5IconType.times_s)
             );
 
         form.add(
             new DatetimePickerPanel("simple", simpleConfig),
             new Code("default-java-code", Model.of("new DatetimePickerConfig()\n"
+                                                   + "            .withMinDate(min.toDate())\n"
+                                                   + "            .withMaxDate(max.toDate())\n"
                                                    + "            .withFormat(\"dd/MM/yyyy HH:mm:ss\");")),
             new DatetimePickerPanel("birthday", birthDayConfig),
             new Code("birthday-java-code", Model.of("new DatetimePickerConfig()\n"
@@ -77,13 +94,48 @@ public class DatetimePickerPage extends BasePage {
                                                   + "            .useMaskInput(true);")),
             new DatetimePickerPanel("icons", iconsConfig),
             new Code("icons-java-code", Model.of("new DatetimePickerConfig()\n"
-                                                 + "            .withFormat(\"dd/MM/yyyy HH:mm:ss\").with(\n"
+                                                 + "            .withFormat(\"dd/MM/yyyy HH:mm:ss\")\n"
+                                                 + "            .withButtons(Map.of(BTN_SHOW_TODAY, true, BTN_SHOW_CLEAR, true, BTN_SHOW_CLOSE, true))\n"
+                                                 + "            .with(\n"
                                                  + "                new DatetimePickerIconConfig()\n"
                                                  + "                    .useDateIcon(FontAwesomeIconType.calendar)\n"
                                                  + "                    .useTimeIcon(FontAwesomeIconType.clock_o)\n"
                                                  + "                    .useUpIcon(FontAwesomeIconType.arrow_up)\n"
                                                  + "                    .useDownIcon(FontAwesomeIconType.arrow_down)\n"
-                                                 + "            );"))
+                                                 + "                    .usePreviousIcon(FontAwesome5IconType.arrow_left_s)\n"
+                                                 + "                    .useNextIcon(FontAwesome5IconType.arrow_right_s)\n"
+                                                 + "                    .useTodayIcon(FontAwesome5IconType.calendar_check_s)\n"
+                                                 + "                    .useClearIcon(FontAwesome5IconType.eraser_s)\n"
+                                                 + "                    .useCloseIcon(FontAwesome5IconType.times_s)\n"
+                                                 + "            );")),
+            new LocalDateTimePickerPanel("localsimple", simpleConfig),
+            new Code("localdefault-java-code", Model.of("new DatetimePickerConfig()\n"
+                                                   + "            .withFormat(\"dd/MM/yyyy HH:mm:ss\");")),
+            new LocalDateTimePickerPanel("localbirthday", birthDayConfig),
+            new Code("localbirthday-java-code", Model.of("new DatetimePickerConfig()\n"
+                                                    + "            .useView(DatetimePickerConfig.ViewModeType.YEARS)\n"
+                                                    + "            .withFormat(\"dd/MM/yyyy\")\n"
+                                                    + "            .withMaxDate(new Date());")),
+            new LocalDateTimePickerPanel("localmasked", maskedConfig),
+            new Code("localmasked-java-code", Model.of("new DatetimePickerConfig()\n"
+                                                  + "            .withFormat(\"dd/MM/yyyy HH:mm:ss\")\n"
+                                                  + "            .useMaskInput(true);")),
+            new DatetimePickerPanel("localicons", iconsConfig),
+            new Code("localicons-java-code", Model.of("new DatetimePickerConfig()\n"
+                    + "            .withFormat(\"dd/MM/yyyy HH:mm:ss\")\n"
+                    + "            .withButtons(Map.of(BTN_SHOW_TODAY, true, BTN_SHOW_CLEAR, true, BTN_SHOW_CLOSE, true))\n"
+                    + "            .with(\n"
+                    + "                new DatetimePickerIconConfig()\n"
+                    + "                    .useDateIcon(FontAwesomeIconType.calendar)\n"
+                    + "                    .useTimeIcon(FontAwesomeIconType.clock_o)\n"
+                    + "                    .useUpIcon(FontAwesomeIconType.arrow_up)\n"
+                    + "                    .useDownIcon(FontAwesomeIconType.arrow_down)\n"
+                    + "                    .usePreviousIcon(FontAwesome5IconType.arrow_left_s)\n"
+                    + "                    .useNextIcon(FontAwesome5IconType.arrow_right_s)\n"
+                    + "                    .useTodayIcon(FontAwesome5IconType.calendar_check_s)\n"
+                    + "                    .useClearIcon(FontAwesome5IconType.eraser_s)\n"
+                    + "                    .useCloseIcon(FontAwesome5IconType.times_s)\n"
+                    + "            );"))
         );
     }
 
