@@ -83,7 +83,7 @@ public class DatetimePickerConfig extends AbstractConfig {
             , Map.of(BTN_SHOW_TODAY, false, BTN_SHOW_CLEAR, false, BTN_SHOW_CLOSE, false));
     private static final IKey<DatetimePickerIconConfig> Icons = newKey("icons", null);
 
-    private Boolean maskInput = false;
+    private boolean maskInput = false;
 
     /**
      * Construct config
@@ -115,7 +115,7 @@ public class DatetimePickerConfig extends AbstractConfig {
     /**
      * @return mask input
      */
-    public Boolean getMaskInput() {
+    public boolean getMaskInput() {
         return maskInput;
     }
 
@@ -134,7 +134,7 @@ public class DatetimePickerConfig extends AbstractConfig {
      * Sets extra date formats.
      * NOTE: ISO date format will be added automatically
      *
-     * @param format date format
+     * @param formats date format
      * @return config instance
      */
     public DatetimePickerConfig withExtraFormats(String... formats) {
@@ -148,7 +148,7 @@ public class DatetimePickerConfig extends AbstractConfig {
     /**
      * Sets buttons.
      *
-     * @param Buttons buttons to show/hide
+     * @param buttons buttons to show/hide
      * @return config instance
      */
     public DatetimePickerConfig withButtons(Map<String, Boolean> buttons) {
