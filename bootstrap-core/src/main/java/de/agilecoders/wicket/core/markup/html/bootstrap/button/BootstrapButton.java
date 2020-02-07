@@ -18,14 +18,15 @@ import org.apache.wicket.model.IModel;
  */
 public class BootstrapButton extends Button implements IBootstrapButton<BootstrapButton> {
     private static final long serialVersionUID = 1L;
+    private final Buttons.Type type;
     /** The icon of the button. */
-    private final Icon icon;
+    private Icon icon;
     /** The label of the button. */
-    private final Component label;
+    private Component label;
     /** The splitter (space between the icon and the label. */
-    private final Component splitter;
+    private Component splitter;
     /** The button behavior. */
-    private final ButtonBehavior buttonBehavior;
+    private ButtonBehavior buttonBehavior;
     /** To use the splitter or not (true by default). */
     private boolean useSplitter = true;
 
@@ -49,18 +50,47 @@ public class BootstrapButton extends Button implements IBootstrapButton<Bootstra
     public BootstrapButton(final String componentId, final IModel<String> model, final Buttons.Type type) {
         super(componentId, model);
 
-        buttonBehavior = new ButtonBehavior(type, Buttons.Size.Medium);
-
-        icon = newIcon("icon");
-        splitter = newSplitter("splitter");
-        label = newLabel("label", model);
+        this.type = type;
     }
 
     @Override
     protected void onInitialize() {
         super.onInitialize();
+        buttonBehavior = getButtonBehavior();
+
+        icon = getIcon();
+        splitter = getSplitter();
+        label = getButtonLabel();
         add(buttonBehavior);
         add(icon, splitter, label);
+    }
+
+    private ButtonBehavior getButtonBehavior() {
+        if (buttonBehavior == null) {
+            buttonBehavior = new ButtonBehavior(type, Buttons.Size.Medium);
+        }
+        return buttonBehavior;
+    }
+
+    private Icon getIcon() {
+        if (icon == null) {
+            icon = newIcon("icon");
+        }
+        return icon;
+    }
+
+    private Component getSplitter() {
+        if (splitter == null) {
+            splitter = newSplitter("splitter");
+        }
+        return splitter;
+    }
+
+    private Component getButtonLabel() {
+        if (label == null) {
+            label = newLabel("label", getModel());
+        }
+        return label;
     }
 
     /**
@@ -103,13 +133,10 @@ public class BootstrapButton extends Button implements IBootstrapButton<Bootstra
         super.onConfigure();
 
         if (useSplitter) {
-            splitter.setVisible(icon.hasIconType() && StringUtils.isNotEmpty(getModelObject()));
+            getSplitter().setVisible(getIcon().hasIconType() && StringUtils.isNotEmpty(getModelObject()));
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected IMarkupSourcingStrategy newMarkupSourcingStrategy() {
         return new PanelMarkupSourcingStrategy(true);
@@ -123,10 +150,9 @@ public class BootstrapButton extends Button implements IBootstrapButton<Bootstra
      */
     @Override
     public BootstrapButton setLabel(IModel<String> label) {
-        this.label.setDefaultModel(label);
+        getButtonLabel().setDefaultModel(label);
         //the label is also store in the button's model
         setModel(label);
-
         return this;
     }
 
@@ -137,22 +163,19 @@ public class BootstrapButton extends Button implements IBootstrapButton<Bootstra
      * @return reference to the current instance
      */
     public BootstrapButton setIconType(final IconType iconType) {
-        this.icon.setType(iconType);
-
+        getIcon().setType(iconType);
         return this;
     }
 
     @Override
     public BootstrapButton setSize(Buttons.Size size) {
-        this.buttonBehavior.setSize(size);
-
+        getButtonBehavior().setSize(size);
         return this;
     }
 
     @Override
     public BootstrapButton setType(Buttons.Type type) {
-        this.buttonBehavior.setType(type);
-
+        getButtonBehavior().setType(type);
         return this;
     }
 
@@ -163,8 +186,7 @@ public class BootstrapButton extends Button implements IBootstrapButton<Bootstra
      * @return this instance for chaining
      */
     public BootstrapButton setBlock(boolean block) {
-        this.buttonBehavior.setBlock(block);
-
+        getButtonBehavior().setBlock(block);
         return this;
     }
 
