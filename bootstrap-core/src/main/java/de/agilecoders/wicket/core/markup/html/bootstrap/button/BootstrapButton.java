@@ -17,6 +17,7 @@ import org.apache.wicket.model.IModel;
  * @author miha
  */
 public class BootstrapButton extends Button implements IBootstrapButton<BootstrapButton> {
+    private static final long serialVersionUID = 1L;
     /** The icon of the button. */
     private final Icon icon;
     /** The label of the button. */
@@ -27,7 +28,6 @@ public class BootstrapButton extends Button implements IBootstrapButton<Bootstra
     private final ButtonBehavior buttonBehavior;
     /** To use the splitter or not (true by default). */
     private boolean useSplitter = true;
-
 
     /**
      * Construct.
@@ -49,11 +49,18 @@ public class BootstrapButton extends Button implements IBootstrapButton<Bootstra
     public BootstrapButton(final String componentId, final IModel<String> model, final Buttons.Type type) {
         super(componentId, model);
 
-        add(buttonBehavior = new ButtonBehavior(type, Buttons.Size.Medium));
+        buttonBehavior = new ButtonBehavior(type, Buttons.Size.Medium);
 
-        add(icon = newIcon("icon"));
-        add(splitter = newSplitter("splitter"));
-        add(label = newLabel("label", model));
+        icon = newIcon("icon");
+        splitter = newSplitter("splitter");
+        label = newLabel("label", model);
+    }
+
+    @Override
+    protected void onInitialize() {
+        super.onInitialize();
+        add(buttonBehavior);
+        add(icon, splitter, label);
     }
 
     /**
@@ -135,6 +142,7 @@ public class BootstrapButton extends Button implements IBootstrapButton<Bootstra
         return this;
     }
 
+    @Override
     public BootstrapButton setSize(Buttons.Size size) {
         this.buttonBehavior.setSize(size);
 
@@ -147,8 +155,7 @@ public class BootstrapButton extends Button implements IBootstrapButton<Bootstra
 
         return this;
     }
-    
-    
+
     /**
      * Sets whether this button should display inline or block
      *
@@ -156,9 +163,9 @@ public class BootstrapButton extends Button implements IBootstrapButton<Bootstra
      * @return this instance for chaining
      */
     public BootstrapButton setBlock(boolean block) {
-    	this.buttonBehavior.setBlock(block);
-    	
-    	return this;
+        this.buttonBehavior.setBlock(block);
+
+        return this;
     }
 
     /**
