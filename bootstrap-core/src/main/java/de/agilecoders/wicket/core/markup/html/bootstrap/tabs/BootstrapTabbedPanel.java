@@ -1,6 +1,6 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.tabs;
 
-import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
+import java.util.List;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.Behavior;
@@ -10,7 +10,7 @@ import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.model.IModel;
 
-import java.util.List;
+import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
 
 /**
  * Styled version of {@link TabbedPanel}.
@@ -18,6 +18,7 @@ import java.util.List;
  * @author miha
  */
 public class BootstrapTabbedPanel<T extends ITab> extends TabbedPanel<T> {
+    private static final long serialVersionUID = 1L;
 
     public BootstrapTabbedPanel(String id, List<T> tabs) {
         this(id, tabs, null);
@@ -52,10 +53,10 @@ public class BootstrapTabbedPanel<T extends ITab> extends TabbedPanel<T> {
 		return "nav nav-tabs";
 	}
 
-    @Override
-    protected WebMarkupContainer newLink(String linkId, int index) {
-        final WebMarkupContainer link = super.newLink(linkId, index);
+    protected WebMarkupContainer addSelectedTabBehavior(WebMarkupContainer link, int index) {
         link.add(new Behavior() {
+            private static final long serialVersionUID = 1L;
+
             @Override
             public void onComponentTag(Component component, ComponentTag tag) {
                 super.onComponentTag(component, tag);
@@ -71,5 +72,11 @@ public class BootstrapTabbedPanel<T extends ITab> extends TabbedPanel<T> {
             }
         });
         return link;
+    }
+
+    @Override
+    protected WebMarkupContainer newLink(String linkId, int index) {
+        final WebMarkupContainer link = super.newLink(linkId, index);
+        return addSelectedTabBehavior(link, index);
     }
 }

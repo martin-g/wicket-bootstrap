@@ -5,7 +5,6 @@ import java.util.Optional;
 
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxFallbackLink;
-import org.apache.wicket.behavior.Behavior;
 import org.apache.wicket.extensions.ajax.markup.html.tabs.AjaxTabbedPanel;
 import org.apache.wicket.extensions.markup.html.tabs.ITab;
 import org.apache.wicket.markup.html.WebMarkupContainer;
@@ -46,8 +45,7 @@ public class AjaxBootstrapTabbedPanel<T extends ITab> extends BootstrapTabbedPan
 				onAjaxUpdate(targetOptional);
 			}
 		};
-		link.add(Behavior.onAttribute("class", old -> old + (index == getSelectedTab() ? " " + getSelectedTabCssClass() : "")));
-		return link;
+		return addSelectedTabBehavior(link, index);
 	}
 
 	/**
