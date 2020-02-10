@@ -1,5 +1,8 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.tabs;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxFallbackLink;
 import org.apache.wicket.extensions.ajax.markup.html.tabs.AjaxTabbedPanel;
@@ -7,13 +10,11 @@ import org.apache.wicket.extensions.markup.html.tabs.ITab;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.model.IModel;
 
-import java.util.List;
-import java.util.Optional;
-
 /**
  * Styled version of {@link AjaxTabbedPanel}.
  */
 public class AjaxBootstrapTabbedPanel<T extends ITab> extends BootstrapTabbedPanel<T> {
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * {@inheritDoc}
@@ -34,8 +35,7 @@ public class AjaxBootstrapTabbedPanel<T extends ITab> extends BootstrapTabbedPan
 
 	@Override
 	protected WebMarkupContainer newLink(final String linkId, final int index) {
-		return new AjaxFallbackLink<Void>(linkId) {
-
+		final WebMarkupContainer link = new AjaxFallbackLink<Void>(linkId) {
 			private static final long serialVersionUID = 1L;
 
 			@Override
@@ -44,8 +44,8 @@ public class AjaxBootstrapTabbedPanel<T extends ITab> extends BootstrapTabbedPan
 				targetOptional.ifPresent(target -> target.add(AjaxBootstrapTabbedPanel.this));
 				onAjaxUpdate(targetOptional);
 			}
-
 		};
+		return addSelectedTabBehavior(link, index);
 	}
 
 	/**
