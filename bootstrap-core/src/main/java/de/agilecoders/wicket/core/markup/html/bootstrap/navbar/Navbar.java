@@ -1,15 +1,12 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.navbar;
 
-import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapResourcesBehavior;
-import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.CssClassNameAppender;
-import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNameProvider;
-import de.agilecoders.wicket.core.markup.html.bootstrap.button.Activatable;
-import de.agilecoders.wicket.core.markup.html.bootstrap.utilities.BackgroundColorBehavior;
-import de.agilecoders.wicket.core.markup.html.bootstrap.common.Invertible;
-import de.agilecoders.wicket.core.util.Attributes;
-import de.agilecoders.wicket.core.util.Behaviors;
-import de.agilecoders.wicket.core.util.Models;
-import de.agilecoders.wicket.jquery.util.Generics2;
+import static de.agilecoders.wicket.jquery.util.Generics2.transform;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Function;
+import java.util.function.Predicate;
+
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.Page;
@@ -31,12 +28,16 @@ import org.apache.wicket.util.io.IClusterable;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.string.Strings;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Function;
-import java.util.function.Predicate;
-
-import static de.agilecoders.wicket.jquery.util.Generics2.transform;
+import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapResourcesBehavior;
+import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.CssClassNameAppender;
+import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNameProvider;
+import de.agilecoders.wicket.core.markup.html.bootstrap.button.Activatable;
+import de.agilecoders.wicket.core.markup.html.bootstrap.common.Invertible;
+import de.agilecoders.wicket.core.markup.html.bootstrap.utilities.BackgroundColorBehavior;
+import de.agilecoders.wicket.core.util.Attributes;
+import de.agilecoders.wicket.core.util.Behaviors;
+import de.agilecoders.wicket.core.util.Models;
+import de.agilecoders.wicket.jquery.util.Generics2;
 
 /**
  * A {@link Navbar} is a navigation component that holds a list of elements,
@@ -132,13 +133,13 @@ public class Navbar extends Panel implements Invertible<Navbar> {
 
     private final IModel<String> invertModel = Model.of("navbar-light");
     private final IModel<BackgroundColorBehavior.Color> backgroundColor = Model.of(BackgroundColorBehavior.Color.Light);
-    private CssClassNameAppender activeStateAppender;
+    private final CssClassNameAppender activeStateAppender = new CssClassNameAppender("active");
 
     private final IModel<CollapseBreakpoint> collapseBreakpoint = Model.of(CollapseBreakpoint.Large);
     private final IModel<Position> position = Model.of(Position.DEFAULT);
-    private final Component brandNameLink;
+    private Component brandNameLink;
     private final List<INavbarComponent> components = new ArrayList<>();
-    private final RepeatingView extraItems;
+    private final RepeatingView extraItems = new RepeatingView("extraItems");
 
     /**
      * Construct.
@@ -157,20 +158,19 @@ public class Navbar extends Panel implements Invertible<Navbar> {
      */
     public Navbar(final String componentId, final IModel<?> model) {
         super(componentId, model);
+    }
 
+    @Override
+    protected void onInitialize() {
+        super.onInitialize();
         BootstrapResourcesBehavior.addTo(this);
 
         final TransparentWebMarkupContainer collapse = newCollapseContainer("collapse");
         final TransparentWebMarkupContainer collapseButton = newCollapseButton("collapseButton", "#" + collapse.getMarkupId());
 
-        this.brandNameLink = newBrandNameLink("brandName");
-
         final Component leftAlignedComponentListView = newNavigation("navLeftList", newPositionDependedComponentModel(components, POSITION_FILTER_LEFT));
         final Component rightAlignedComponentListView = newNavigation("navRightList", newPositionDependedComponentModel(components, POSITION_FILTER_RIGHT));
-        extraItems = new RepeatingView("extraItems");
         collapse.add(extraItems);
-
-        activeStateAppender = new CssClassNameAppender("active");
 
         EnclosureContainer navLeftListEnclosure = new EnclosureContainer("navLeftListEnclosure", leftAlignedComponentListView);
         navLeftListEnclosure.add(leftAlignedComponentListView);
@@ -181,8 +181,15 @@ public class Navbar extends Panel implements Invertible<Navbar> {
         navRightListEnclosure.setRenderBodyOnly(false).setOutputMarkupPlaceholderTag(true);
         collapse.add(navLeftListEnclosure, navRightListEnclosure);
 
-        add(collapse, collapseButton, brandNameLink);
+        add(collapse, collapseButton, getBrandNameLink());
         collapseButton.add(newToggleNavigationLabel("toggleNavigationLabel"));
+    }
+
+    private Component getBrandNameLink() {
+        if (brandNameLink == null) {
+            brandNameLink = newBrandNameLink("brandName");
+        }
+        return brandNameLink;
     }
 
     @Override
@@ -446,7 +453,7 @@ public class Navbar extends Panel implements Invertible<Navbar> {
      * @return the component's current instance
      */
     public Navbar setBrandName(final IModel<String> brandName) {
-        Component name = brandNameLink.get("brandLabel");
+        Component name = getBrandNameLink().get("brandLabel");
         name.setDefaultModel(brandName);
 
         return this;
@@ -460,7 +467,7 @@ public class Navbar extends Panel implements Invertible<Navbar> {
      * @return this instance for chaining
      */
     public Navbar setBrandImage(final ResourceReference imageResourceReference, final IModel<String> imageAltAttrModel) {
-        Image brandImage = (Image) brandNameLink.get("brandImage");
+        Image brandImage = (Image) getBrandNameLink().get("brandImage");
 
         brandImage.setImageResourceReference(imageResourceReference);
 
@@ -477,7 +484,8 @@ public class Navbar extends Panel implements Invertible<Navbar> {
      * @param invert whether to invert the color or not
      * @return the component's current instance
      */
-    public Navbar setInverted(final boolean invert) {
+    @Override
+	public Navbar setInverted(final boolean invert) {
         this.invertModel.setObject(invert ? "navbar-dark" : "navbar-light");
 
         return this;
@@ -518,6 +526,14 @@ public class Navbar extends Panel implements Invertible<Navbar> {
         return this;
     }
 
+    @Override
+    protected void detachModel() {
+        super.detachModel();
+        invertModel.detach();
+        backgroundColor.detach();
+        collapseBreakpoint.detach();
+        position.detach();
+    }
 
     /**
      * A {@link Predicate} that filters out all {@link INavbarComponent}s that don't

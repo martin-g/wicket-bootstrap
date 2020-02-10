@@ -1,7 +1,5 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.button;
 
-import de.agilecoders.wicket.core.markup.html.bootstrap.image.Icon;
-import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.WebMarkupContainer;
@@ -12,13 +10,16 @@ import org.apache.wicket.markup.html.panel.PanelMarkupSourcingStrategy;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
+import de.agilecoders.wicket.core.markup.html.bootstrap.image.Icon;
+import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
+
 /**
  * Default {@link Link} which is styled by bootstrap.
  * <p/>
  * <p>
  * You can use a link like:
  * <p/>
- * 
+ *
  * <pre>
  * add(new BootstrapLink(&quot;myLink&quot;)
  * {
@@ -31,7 +32,7 @@ import org.apache.wicket.model.Model;
  * <p/>
  * and in your HTML file:
  * <p/>
- * 
+ *
  * <pre>
  *  &lt;a href=&quot;#&quot; wicket:id=&quot;myLink&quot;&gt;click here&lt;/a&gt;
  * </pre>
@@ -40,7 +41,7 @@ import org.apache.wicket.model.Model;
  * The following snippet shows how to pass a parameter from the Page creating the Page to the Page
  * responded by the Link.
  * <p/>
- * 
+ *
  * <pre>
  * add(new BootstrapLink&lt;MyObject&gt;(&quot;link&quot;, listItem.getModel(), Type.Primary )
  * {
@@ -54,13 +55,14 @@ import org.apache.wicket.model.Model;
  * @author miha
  */
 public abstract class BootstrapLink<T> extends Link<T> implements IBootstrapButton<BootstrapLink<T>> {
-
-    private final Icon icon;
-    private final Component label;
-    private final Component splitter;
-    private final ButtonBehavior buttonBehavior;
+    private static final long serialVersionUID = 1L;
+    private Icon icon;
+    private Component label;
+    private Component splitter;
+    private ButtonBehavior buttonBehavior;
     /** To use the splitter or not (true by default). */
     private boolean useSplitter = true;
+    private final Buttons.Type type;
 
     /**
      * Construct.
@@ -91,12 +93,43 @@ public abstract class BootstrapLink<T> extends Link<T> implements IBootstrapButt
      */
     public BootstrapLink(final String id, final IModel<T> model, final Buttons.Type type) {
         super(id, model);
+        this.type = type;
+    }
 
-        add(buttonBehavior = new ButtonBehavior(type, Buttons.Size.Medium));
+    @Override
+    protected void onInitialize() {
+        super.onInitialize();
+        add(getButtonBehavior());
 
-        add(icon = newIcon("icon"));
-        add(splitter = newSplitter("splitter"));
-        add(label = newLabel("label"));
+        add(getIcon(), getSplitter(), getLinkLabel());
+    }
+
+    private ButtonBehavior getButtonBehavior() {
+        if (buttonBehavior == null) {
+            buttonBehavior = new ButtonBehavior(type, Buttons.Size.Medium);
+        }
+        return buttonBehavior;
+    }
+
+    private Icon getIcon() {
+        if (icon == null) {
+            icon = newIcon("icon");
+        }
+        return icon;
+    }
+
+    private Component getSplitter() {
+        if (splitter == null) {
+            splitter = newSplitter("splitter");
+        }
+        return splitter;
+    }
+
+    private Component getLinkLabel() {
+        if (label == null) {
+            label = newLabel("label");
+        }
+        return label;
     }
 
     /**
@@ -143,7 +176,7 @@ public abstract class BootstrapLink<T> extends Link<T> implements IBootstrapButt
         super.onConfigure();
 
         if (useSplitter) {
-            splitter.setVisible(icon.hasIconType() && StringUtils.isNotEmpty(label.getDefaultModelObjectAsString()));
+            getSplitter().setVisible(getIcon().hasIconType() && StringUtils.isNotEmpty(getLinkLabel().getDefaultModelObjectAsString()));
         }
     }
 
@@ -154,7 +187,7 @@ public abstract class BootstrapLink<T> extends Link<T> implements IBootstrapButt
      * @return reference to the current instance
      */
     public BootstrapLink<T> setLabel(IModel<?> label) {
-        this.label.setDefaultModel(label);
+        getLinkLabel().setDefaultModel(label);
         return this;
     }
 
@@ -165,7 +198,7 @@ public abstract class BootstrapLink<T> extends Link<T> implements IBootstrapButt
      * @return reference to the current instance
      */
     public BootstrapLink<T> setIconType(IconType iconType) {
-        icon.setType(iconType);
+        getIcon().setType(iconType);
         return this;
     }
 
@@ -175,8 +208,9 @@ public abstract class BootstrapLink<T> extends Link<T> implements IBootstrapButt
      * @param size The button size
      * @return this instance for chaining
      */
+    @Override
     public BootstrapLink<T> setSize(Buttons.Size size) {
-        buttonBehavior.setSize(size);
+        getButtonBehavior().setSize(size);
         return this;
     }
 
@@ -186,8 +220,9 @@ public abstract class BootstrapLink<T> extends Link<T> implements IBootstrapButt
      * @param type The type of the button
      * @return this instance for chaining
      */
+    @Override
     public BootstrapLink<T> setType(Buttons.Type type) {
-        this.buttonBehavior.setType(type);
+        getButtonBehavior().setType(type);
         return this;
     }
 
@@ -198,7 +233,7 @@ public abstract class BootstrapLink<T> extends Link<T> implements IBootstrapButt
      * @return this instance for chaining
      */
     public BootstrapLink<T> setBlock(boolean block) {
-        this.buttonBehavior.setBlock(block);
+        getButtonBehavior().setBlock(block);
         return this;
     }
 

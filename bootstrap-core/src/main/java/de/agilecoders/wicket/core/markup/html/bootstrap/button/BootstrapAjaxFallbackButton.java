@@ -1,8 +1,5 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.button;
 
-import de.agilecoders.wicket.core.markup.html.bootstrap.image.Icon;
-import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
-
 import java.io.Serializable;
 
 import org.apache.commons.lang3.StringUtils;
@@ -16,20 +13,24 @@ import org.apache.wicket.markup.html.panel.PanelMarkupSourcingStrategy;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
+import de.agilecoders.wicket.core.markup.html.bootstrap.image.Icon;
+import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
+
 /**
  * a bootstrap styled {@link AjaxFallbackButton}
  *
  * @author miha
  */
 public abstract class BootstrapAjaxFallbackButton extends AjaxFallbackButton implements IBootstrapButton<BootstrapAjaxFallbackButton> {
-
-    private final Icon icon;
-    private final Component label;
-    private final Component splitter;
-    private final ButtonBehavior buttonBehavior;
+    private static final long serialVersionUID = 1L;
+    private Icon icon;
+    private Component label;
+    private Component splitter;
+    private ButtonBehavior buttonBehavior;
     /** To use the splitter or not (true by default). */
     private boolean useSplitter = true;
-    
+    private final Buttons.Type type;
+
     /**
      * Construct.
      *
@@ -51,14 +52,43 @@ public abstract class BootstrapAjaxFallbackButton extends AjaxFallbackButton imp
      */
     public BootstrapAjaxFallbackButton(String id, IModel<String> model, Form<?> form, Buttons.Type type) {
         super(id, model, form);
+        this.type = type;
+    }
 
-        add(buttonBehavior = new ButtonBehavior(type, Buttons.Size.Medium));
-        add(icon = newIcon("icon"));
-        add(splitter = newSplitter("splitter"));
+    @Override
+    protected void onInitialize() {
+        super.onInitialize();
+        add(getButtonBehavior());
 
-        this.label = newLabel("label", model);
-        this.label.setRenderBodyOnly(true);
-        add(label);
+        add(getIcon(), getSplitter(), getButtonLabel());
+    }
+
+    private ButtonBehavior getButtonBehavior() {
+        if (buttonBehavior == null) {
+            buttonBehavior = new ButtonBehavior(type, Buttons.Size.Medium);
+        }
+        return buttonBehavior;
+    }
+
+    private Icon getIcon() {
+        if (icon == null) {
+            icon = newIcon("icon");
+        }
+        return icon;
+    }
+
+    private Component getSplitter() {
+        if (splitter == null) {
+            splitter = newSplitter("splitter");
+        }
+        return splitter;
+    }
+
+    private Component getButtonLabel() {
+        if (label == null) {
+            label = newLabel("label", getModel());
+        }
+        return label;
     }
 
     /**
@@ -68,8 +98,8 @@ public abstract class BootstrapAjaxFallbackButton extends AjaxFallbackButton imp
     protected IMarkupSourcingStrategy newMarkupSourcingStrategy() {
         return new PanelMarkupSourcingStrategy(true);
     }
-    
-    
+
+
     /**
      * creates a new icon component
      *
@@ -79,7 +109,7 @@ public abstract class BootstrapAjaxFallbackButton extends AjaxFallbackButton imp
     protected Icon newIcon(final String markupId) {
         return new Icon(markupId, (IconType) null);
     }
-    
+
     /**
      * creates a new label component
      *
@@ -90,7 +120,7 @@ public abstract class BootstrapAjaxFallbackButton extends AjaxFallbackButton imp
         return new Label(markupId, model)
                 .setRenderBodyOnly(true);
     }
-    
+
     /**
      * creates a new splitter component. The splitter is visible only
      * if icon is visible and useSplitter is true.
@@ -109,8 +139,8 @@ public abstract class BootstrapAjaxFallbackButton extends AjaxFallbackButton imp
     protected void onConfigure() {
         super.onConfigure();
 
-        if(useSplitter) {
-            splitter.setVisible(icon.hasIconType() && StringUtils.isNotEmpty(getModelObject()));
+        if (useSplitter) {
+            getSplitter().setVisible(getIcon().hasIconType() && StringUtils.isNotEmpty(getModelObject()));
         }
     }
 
@@ -122,7 +152,7 @@ public abstract class BootstrapAjaxFallbackButton extends AjaxFallbackButton imp
      */
     @Override
     public BootstrapAjaxFallbackButton setLabel(IModel<String> label) {
-        this.label.setDefaultModel(label);
+        getButtonLabel().setDefaultModel(label);
         //the label is also in the button model
         setModel(label);
         return this;
@@ -135,7 +165,7 @@ public abstract class BootstrapAjaxFallbackButton extends AjaxFallbackButton imp
      * @return reference to the current instance
      */
     public BootstrapAjaxFallbackButton setIconType(IconType iconType) {
-        icon.setType(iconType);
+        getIcon().setType(iconType);
 
         return this;
     }
@@ -146,9 +176,9 @@ public abstract class BootstrapAjaxFallbackButton extends AjaxFallbackButton imp
      * @param size The button size
      * @return this instance for chaining
      */
-    public BootstrapAjaxFallbackButton setSize(Buttons.Size size) {
-        buttonBehavior.setSize(size);
-
+    @Override
+	public BootstrapAjaxFallbackButton setSize(Buttons.Size size) {
+        getButtonBehavior().setSize(size);
         return this;
     }
 
@@ -158,12 +188,12 @@ public abstract class BootstrapAjaxFallbackButton extends AjaxFallbackButton imp
      * @param type The type of the button
      * @return this instance for chaining
      */
-    public BootstrapAjaxFallbackButton setType(Buttons.Type type) {
-        this.buttonBehavior.setType(type);
-
+    @Override
+	public BootstrapAjaxFallbackButton setType(Buttons.Type type) {
+        getButtonBehavior().setType(type);
         return this;
     }
-    
+
     /**
      * Sets whether this button should display inline or block
      *
@@ -171,9 +201,8 @@ public abstract class BootstrapAjaxFallbackButton extends AjaxFallbackButton imp
      * @return this instance for chaining
      */
     public BootstrapAjaxFallbackButton setBlock(boolean block) {
-    	this.buttonBehavior.setBlock(block);
-    	
-    	return this;
+        getButtonBehavior().setBlock(block);
+        return this;
     }
 
     /**

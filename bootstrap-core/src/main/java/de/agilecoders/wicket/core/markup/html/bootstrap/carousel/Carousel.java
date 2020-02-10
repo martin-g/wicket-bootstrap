@@ -1,10 +1,8 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.carousel;
 
-import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapResourcesBehavior;
-import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.CssClassNameAppender;
-import de.agilecoders.wicket.core.util.Attributes;
+import java.time.Duration;
+import java.util.List;
 
-import de.agilecoders.wicket.jquery.util.Strings2;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.ComponentTag;
@@ -17,9 +15,11 @@ import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
-import java.time.Duration;
 
-import java.util.List;
+import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapResourcesBehavior;
+import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.CssClassNameAppender;
+import de.agilecoders.wicket.core.util.Attributes;
+import de.agilecoders.wicket.jquery.util.Strings2;
 
 /**
  * A generic plugin and component for cycling through images (with description and header text)
@@ -53,7 +53,11 @@ public class Carousel extends Panel {
         this.model = model;
 
         setOutputMarkupId(true);
+    }
 
+    @Override
+    protected void onInitialize() {
+        super.onInitialize();
         BootstrapResourcesBehavior.addTo(this);
 
         add(newImageList("images"),
@@ -212,4 +216,9 @@ public class Carousel extends Panel {
         return this;
     }
 
+    @Override
+    protected void detachModel() {
+        super.detachModel();
+        model.detach();
+    }
 }

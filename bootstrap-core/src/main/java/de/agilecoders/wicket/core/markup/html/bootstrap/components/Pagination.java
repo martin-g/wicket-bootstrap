@@ -19,24 +19,8 @@ import de.agilecoders.wicket.core.util.Attributes;
  * @author miha
  */
 public abstract class Pagination extends Panel {
-
+    private static final long serialVersionUID = 1L;
     private final WebMarkupContainer paginationUl;
-
-    /**
-     * Add one of two optional classes to change the alignment of pagination links: .pagination-centered and .pagination-right.
-     * @deprecated Leftover from Bootstrap 2.x. It is ignored by Bootstrap 3.x
-     */
-    @Deprecated
-    public enum Alignment implements ICssClassNameProvider {
-        Centered,
-        Right,
-        Left;
-
-        @Override
-        public String cssClassName() {
-            return equals(Left) ? "" : "pagination-" + name().toLowerCase();
-        }
-    }
 
     public enum Size implements ICssClassNameProvider {
         Large("lg"),
@@ -60,17 +44,7 @@ public abstract class Pagination extends Panel {
      * @param markupId The component id.
      */
     public Pagination(final String markupId) {
-        this(markupId, Alignment.Left, Size.Default);
-    }
-
-    /**
-     * Construct.
-     *
-     * @param markupId  The component id.
-     * @param alignment The alignment of the buttons
-     */
-    public Pagination(final String markupId, final Alignment alignment) {
-        this(markupId, alignment, Size.Default);
+        this(markupId, Size.Default);
     }
 
     /**
@@ -79,14 +53,12 @@ public abstract class Pagination extends Panel {
      * @param markupId  The component id.
      * @param size The size of the pagination
      */
-    public Pagination(final String markupId, final Size size) {
-        this(markupId, Alignment.Left, size);
-    }
-
-    public Pagination(String markupId, Alignment ignored, final Size size) {
+    public Pagination(String markupId, final Size size) {
         super(markupId);
 
         paginationUl = new WebMarkupContainer("paginationUl") {
+            private static final long serialVersionUID = 1L;
+
             @Override
             protected void onComponentTag(ComponentTag tag) {
                 super.onComponentTag(tag);
@@ -94,6 +66,11 @@ public abstract class Pagination extends Panel {
                 Attributes.addClass(tag, "pagination", size.cssClassName());
             }
         };
+    }
+
+    @Override
+    protected void onInitialize() {
+        super.onInitialize();
 
         add(paginationUl);
 
@@ -118,5 +95,4 @@ public abstract class Pagination extends Panel {
      * @return a list of buttons
      */
     protected abstract List<AbstractLink> newPaginationButtons(String buttonMarkupId);
-
 }

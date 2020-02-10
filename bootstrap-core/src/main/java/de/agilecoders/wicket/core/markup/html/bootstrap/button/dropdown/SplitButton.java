@@ -1,13 +1,13 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown;
 
-import de.agilecoders.wicket.core.markup.html.bootstrap.button.ButtonBehavior;
-import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons;
-import de.agilecoders.wicket.core.markup.html.bootstrap.image.Icon;
-import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.link.AbstractLink;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.util.lang.Args;
+
+import de.agilecoders.wicket.core.markup.html.bootstrap.button.ButtonBehavior;
+import de.agilecoders.wicket.core.markup.html.bootstrap.image.Icon;
+import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
 
 /**
  * Use any button to trigger a dropdown menu by placing it within a .btn-group and providing the proper menu markup.
@@ -15,7 +15,7 @@ import org.apache.wicket.util.lang.Args;
  * @author miha
  */
 public abstract class SplitButton extends DropDownButton {
-
+    private static final long serialVersionUID = 1L;
     private AbstractLink btn;
     private WebMarkupContainer caret;
 
@@ -82,9 +82,7 @@ public abstract class SplitButton extends DropDownButton {
     }
 
     @Override
-    protected void addButtonBehavior(final IModel<Buttons.Type> buttonType, final IModel<Buttons.Size> buttonSize) {
-        final ButtonBehavior buttonBehavior = new ButtonBehavior(buttonType, buttonSize);
-
+    protected void addButtonBehavior(final ButtonBehavior buttonBehavior) {
         btn.add(buttonBehavior);
         caret.add(buttonBehavior);
     }
