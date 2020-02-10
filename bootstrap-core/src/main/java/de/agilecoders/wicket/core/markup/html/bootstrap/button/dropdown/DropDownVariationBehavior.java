@@ -13,11 +13,12 @@ import de.agilecoders.wicket.core.util.Attributes;
 /**
 * Behavior for DropDownButton and Splitbutton to enable "dropping"
 * to the right, left and up
-* 
+*
 * @author helmut
 **/
 
 public class DropDownVariationBehavior extends BootstrapBaseBehavior {
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * Variant for DropdownButton defines if "drop" is done up, right, left or
@@ -43,26 +44,26 @@ public class DropDownVariationBehavior extends BootstrapBaseBehavior {
 		}
 	}
 
-	private final IModel<Variation> alignment;
+	private final IModel<Variation> variation;
 
 	/**
 	 * Construct.
 	 *
-	 * @param alignment
+	 * @param variation
 	 *            the alignment to use
 	 */
-	public DropDownVariationBehavior(final IModel<Variation> alignment) {
-		this.alignment = Args.notNull(alignment, "alignment");
+	public DropDownVariationBehavior(final IModel<Variation> variation) {
+		this.variation = Args.notNull(variation, "variation");
 	}
 
 	/**
 	 * Construct.
 	 *
-	 * @param alignment
+	 * @param variation
 	 *            the alignment to use
 	 */
-	public DropDownVariationBehavior(final Variation alignment) {
-		this(Model.of(Args.notNull(alignment, "alignment")));
+	public DropDownVariationBehavior(final Variation variation) {
+		this(Model.of(Args.notNull(variation, "variation")));
 	}
 
 	@Override
@@ -74,7 +75,7 @@ public class DropDownVariationBehavior extends BootstrapBaseBehavior {
 		Attributes.removeClass(tag, Variation.DROPLEFT.cssClassName(), Variation.DROPRIGHT.cssClassName(),
 				Variation.DROPUP.cssClassName());
 
-		Variation value = alignment.getObject();
+		Variation value = variation.getObject();
 		switch (value) {
 		case DROPLEFT:
 		case DROPRIGHT:
@@ -85,4 +86,14 @@ public class DropDownVariationBehavior extends BootstrapBaseBehavior {
 		}
 	}
 
+	public DropDownVariationBehavior setVariation(final Variation variation) {
+		this.variation.setObject(variation);
+		return this;
+	}
+
+	@Override
+	public void detach(Component component) {
+		super.detach(component);
+		variation.detach();
+	}
 }

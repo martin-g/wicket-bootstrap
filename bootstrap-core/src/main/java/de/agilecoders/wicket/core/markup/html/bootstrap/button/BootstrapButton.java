@@ -1,7 +1,5 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.button;
 
-import de.agilecoders.wicket.core.markup.html.bootstrap.image.Icon;
-import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.WebMarkupContainer;
@@ -10,6 +8,9 @@ import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.panel.IMarkupSourcingStrategy;
 import org.apache.wicket.markup.html.panel.PanelMarkupSourcingStrategy;
 import org.apache.wicket.model.IModel;
+
+import de.agilecoders.wicket.core.markup.html.bootstrap.image.Icon;
+import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
 
 /**
  * A bootstrap styled {@link Button}
@@ -56,13 +57,9 @@ public class BootstrapButton extends Button implements IBootstrapButton<Bootstra
     @Override
     protected void onInitialize() {
         super.onInitialize();
-        buttonBehavior = getButtonBehavior();
+        add(getButtonBehavior());
 
-        icon = getIcon();
-        splitter = getSplitter();
-        label = getButtonLabel();
-        add(buttonBehavior);
-        add(icon, splitter, label);
+        add(getIcon(), getSplitter(), getButtonLabel());
     }
 
     private ButtonBehavior getButtonBehavior() {

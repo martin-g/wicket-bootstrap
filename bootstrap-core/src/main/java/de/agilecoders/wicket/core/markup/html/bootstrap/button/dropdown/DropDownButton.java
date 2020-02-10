@@ -1,15 +1,10 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown;
 
-import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapResourcesBehavior;
-import de.agilecoders.wicket.core.markup.html.bootstrap.button.Activatable;
-import de.agilecoders.wicket.core.markup.html.bootstrap.button.ButtonBehavior;
-import de.agilecoders.wicket.core.markup.html.bootstrap.button.ButtonList;
-import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons;
-import de.agilecoders.wicket.core.markup.html.bootstrap.image.Icon;
-import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
-import de.agilecoders.wicket.core.util.Attributes;
-import de.agilecoders.wicket.core.util.Components;
-import de.agilecoders.wicket.jquery.JQuery;
+import static de.agilecoders.wicket.core.markup.html.bootstrap.button.DropDownJqueryFunction.dropdown;
+import static de.agilecoders.wicket.jquery.JQuery.$;
+
+import java.util.List;
+
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.Behavior;
@@ -26,10 +21,16 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.util.string.Strings;
 
-import java.util.List;
-
-import static de.agilecoders.wicket.core.markup.html.bootstrap.button.DropDownJqueryFunction.dropdown;
-import static de.agilecoders.wicket.jquery.JQuery.$;
+import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapResourcesBehavior;
+import de.agilecoders.wicket.core.markup.html.bootstrap.button.Activatable;
+import de.agilecoders.wicket.core.markup.html.bootstrap.button.ButtonBehavior;
+import de.agilecoders.wicket.core.markup.html.bootstrap.button.ButtonList;
+import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons;
+import de.agilecoders.wicket.core.markup.html.bootstrap.image.Icon;
+import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
+import de.agilecoders.wicket.core.util.Attributes;
+import de.agilecoders.wicket.core.util.Components;
+import de.agilecoders.wicket.jquery.JQuery;
 
 /**
  * Use any button to trigger a dropdown menu by placing it within a .btn-group and providing the proper menu markup.
@@ -38,17 +39,14 @@ import static de.agilecoders.wicket.jquery.JQuery.$;
  */
 public abstract class DropDownButton extends AbstractLink implements Activatable
 {
-
-    private final IModel<Buttons.Size> buttonSize = Model.of(Buttons.Size.Medium);
-    private final IModel<Buttons.Type> buttonType = Model.of(Buttons.Type.Secondary);
-    private final ButtonList buttonListView;
-    private final WebMarkupContainer baseButton;
-    private final Icon icon;
-  
-    private final IModel<DropDownAlignmentBehavior.Alignment> alignment = Model
-        .of(DropDownAlignmentBehavior.Alignment.NONE);
-    private final IModel<DropDownVariationBehavior.Variation> variation = Model
-        .of(DropDownVariationBehavior.Variation.DROPDOWN);
+    private static final long serialVersionUID = 1L;
+    private ButtonList buttonListView;
+    private WebMarkupContainer baseButton;
+    private Icon icon;
+    private final IModel<IconType> iconType;
+    private ButtonBehavior buttonBehavior;
+    private DropDownVariationBehavior dropDownVariation;
+    private DropDownAlignmentBehavior dropDownAlignment;
 
     /**
      * Construct.
@@ -67,24 +65,74 @@ public abstract class DropDownButton extends AbstractLink implements Activatable
      * @param model         The label of the main button
      * @param iconTypeModel the type of the icon
      */
-    public DropDownButton(final String markupId, final IModel<String> model, final IModel<IconType> iconTypeModel) {
+    public DropDownButton(final String markupId, final IModel<String> model, final IModel<IconType> iconType) {
         super(markupId, model);
+        this.iconType = iconType;
+    }
 
-        add(baseButton = newButton("btn", model, iconTypeModel));
-        add(new DropDownVariationBehavior(variation));
-        
+    @Override
+    protected void onInitialize() {
+        super.onInitialize();
+        add(getButton());
+        add(getDropDownVariation());
+
         WebMarkupContainer dropdownMenu = new WebMarkupContainer("dropdown-menu");
-        dropdownMenu.add(new AttributeModifier("aria-labelledby", (IModel<String>) () -> baseButton.getMarkupId(true)));
+        dropdownMenu.add(new AttributeModifier("aria-labelledby", (IModel<String>) () -> getButton().getMarkupId(true)));
         add(dropdownMenu);
-        dropdownMenu.add(buttonListView = newButtonList("buttons"));
-        dropdownMenu.add(new DropDownAlignmentBehavior(alignment));
-
-        this.icon = newButtonIcon("icon", iconTypeModel);
+        dropdownMenu.add(getButtonList());
+        dropdownMenu.add(getDropDownAlignment());
 
         BootstrapResourcesBehavior.addTo(this);
 
-        addIconToBaseButton(icon);
-        addButtonBehavior(buttonType, buttonSize);
+        addIconToBaseButton(getIcon());
+        addButtonBehavior(getButtonBehavior());
+    }
+
+    @SuppressWarnings("unchecked")
+	public IModel<String> getModel() {
+        return (IModel<String>)getDefaultModel();
+    }
+
+    private WebMarkupContainer getButton() {
+        if (baseButton == null) {
+            baseButton = newButton("btn", getModel(), iconType);
+        }
+        return baseButton;
+    }
+
+    private ButtonList getButtonList() {
+        if (buttonListView == null ) {
+            buttonListView = newButtonList("buttons");
+        }
+        return buttonListView;
+    }
+
+    public Icon getIcon() {
+        if (icon == null) {
+            icon = newButtonIcon("icon", iconType);
+        }
+        return icon;
+    }
+
+    private ButtonBehavior getButtonBehavior() {
+        if (buttonBehavior == null) {
+            buttonBehavior = new ButtonBehavior(Buttons.Type.Secondary, Buttons.Size.Medium);
+        }
+        return buttonBehavior;
+    }
+
+    private DropDownVariationBehavior getDropDownVariation() {
+        if (dropDownVariation == null) {
+            dropDownVariation = new DropDownVariationBehavior(DropDownVariationBehavior.Variation.DROPDOWN);
+        }
+        return dropDownVariation;
+    }
+
+    private DropDownAlignmentBehavior getDropDownAlignment() {
+        if (dropDownAlignment == null) {
+            dropDownAlignment = new DropDownAlignmentBehavior(DropDownAlignmentBehavior.Alignment.NONE);
+        }
+        return dropDownAlignment;
     }
 
     /**
@@ -100,7 +148,7 @@ public abstract class DropDownButton extends AbstractLink implements Activatable
      * @param icon The icon to add
      */
     protected void addIconToBaseButton(final Icon icon) {
-        baseButton.add(icon);
+        getButton().add(getIcon());
     }
 
     /**
@@ -110,7 +158,7 @@ public abstract class DropDownButton extends AbstractLink implements Activatable
      * @return this instance for chaining
      */
     public final DropDownButton addToButton(final Behavior behavior) {
-        baseButton.add(behavior);
+        getButton().add(behavior);
         return this;
     }
 
@@ -118,7 +166,7 @@ public abstract class DropDownButton extends AbstractLink implements Activatable
      * @return new initializer script
      */
     protected String newInitializerScript() {
-        JQuery jQuery = $(baseButton);
+        JQuery jQuery = $(getButton());
 
         return jQuery.chain(dropdown()).get();
     }
@@ -139,7 +187,7 @@ public abstract class DropDownButton extends AbstractLink implements Activatable
      * @return this element instance
      */
     public final DropDownButton setIconType(final IconType iconType) {
-        icon.setType(iconType);
+        getIcon().setType(iconType);
         return this;
     }
 
@@ -198,11 +246,10 @@ public abstract class DropDownButton extends AbstractLink implements Activatable
     /**
      * adds the button behavior to the base button of this dropdown component
      *
-     * @param buttonType mandatory parameter
-     * @param buttonSize mandatory parameter
+     * @param buttonBehavior - behavior to add
      */
-    protected void addButtonBehavior(final IModel<Buttons.Type> buttonType, final IModel<Buttons.Size> buttonSize) {
-        baseButton.add(new ButtonBehavior(buttonType, buttonSize));
+    protected void addButtonBehavior(ButtonBehavior buttonBehavior) {
+        getButton().add(buttonBehavior);
     }
 
     /**
@@ -221,8 +268,8 @@ public abstract class DropDownButton extends AbstractLink implements Activatable
      */
     protected ButtonList newButtonList(final String markupId) {
         final ButtonList buttonList = new ButtonList(markupId, newSubMenuButtons(ButtonList.getButtonMarkupId()));
-		buttonList.setRenderBodyOnly(true);
-		buttonList.setOutputMarkupId(false);
+        buttonList.setRenderBodyOnly(true);
+        buttonList.setOutputMarkupId(false);
 
         return buttonList;
     }
@@ -234,7 +281,7 @@ public abstract class DropDownButton extends AbstractLink implements Activatable
      * @return this instance for chaining
      */
     public DropDownButton setSize(final Buttons.Size size) {
-        this.buttonSize.setObject(size);
+        getButtonBehavior().setSize(size);
         return this;
     }
 
@@ -245,7 +292,7 @@ public abstract class DropDownButton extends AbstractLink implements Activatable
      * @return this instance for chaining
      */
     public DropDownButton setType(final Buttons.Type type) {
-        this.buttonType.setObject(type);
+        getButtonBehavior().setType(type);
         return this;
     }
 
@@ -256,21 +303,21 @@ public abstract class DropDownButton extends AbstractLink implements Activatable
      * @return this instance for chaining
      */
     public DropDownButton setAlignment(final DropDownAlignmentBehavior.Alignment alignment) {
-        this.alignment.setObject(alignment);
+        getDropDownAlignment().setAlignment(alignment);
         return this;
     }
-    
+
     /**
-	 * Sets the dropdown menu "drop" variation
-	 *
-	 * @param variation
-	 *            The "drop" variant of the button
-	 * @return this instance for chaining
-	 */
-	public DropDownButton setVariation(final DropDownVariationBehavior.Variation variation) {
-		this.variation.setObject(variation);
-		return this;
-	}
+     * Sets the dropdown menu "drop" variation
+     *
+     * @param variation
+     *            The "drop" variant of the button
+     * @return this instance for chaining
+     */
+    public DropDownButton setVariation(final DropDownVariationBehavior.Variation variation) {
+        getDropDownVariation().setVariation(variation);
+        return this;
+    }
 
     @Override
     protected final IMarkupSourcingStrategy newMarkupSourcingStrategy() {
@@ -290,7 +337,6 @@ public abstract class DropDownButton extends AbstractLink implements Activatable
 
     @Override
     public boolean isActive(final Component item) {
-        return buttonListView.hasActiveButton(item);
+        return getButtonList().hasActiveButton(item);
     }
-
 }

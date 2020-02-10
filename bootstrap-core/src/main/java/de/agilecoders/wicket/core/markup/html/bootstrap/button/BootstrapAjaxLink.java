@@ -1,7 +1,6 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.button;
 
-import de.agilecoders.wicket.core.markup.html.bootstrap.image.Icon;
-import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
+import java.io.Serializable;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.wicket.Component;
@@ -13,7 +12,8 @@ import org.apache.wicket.markup.html.panel.PanelMarkupSourcingStrategy;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
-import java.io.Serializable;
+import de.agilecoders.wicket.core.markup.html.bootstrap.image.Icon;
+import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
 
 /**
  * Default {@link AjaxLink} which is styled by bootstrap
@@ -21,14 +21,15 @@ import java.io.Serializable;
  * @author miha
  */
 public abstract class BootstrapAjaxLink<T> extends AjaxLink<T> implements IBootstrapButton<BootstrapAjaxLink<T>> {
-
-    private final Icon icon;
-    private final Component label;
-    private final Component splitter;
-    private final ButtonBehavior buttonBehavior;
+    private static final long serialVersionUID = 1L;
+    private Icon icon;
+    private Component label;
+    private Component splitter;
+    private ButtonBehavior buttonBehavior;
     /** To use the splitter or not (true by default). */
     private boolean useSplitter = true;
-
+    private final Buttons.Type type;
+    private final IModel<? extends Serializable> labelModel;
     /**
      * Construct.
      *
@@ -60,13 +61,44 @@ public abstract class BootstrapAjaxLink<T> extends AjaxLink<T> implements IBoots
      */
     public <L extends Serializable> BootstrapAjaxLink(String id, IModel<T> model, Buttons.Type type, IModel<L> labelModel) {
         super(id, model);
+        this.type = type;
+        this.labelModel = labelModel;
+    }
 
-        add(buttonBehavior = new ButtonBehavior(type, Buttons.Size.Medium));
-        add(icon = newIcon("icon"));
-        add(splitter = newSplitter("splitter"));
+    @Override
+    protected void onInitialize() {
+        super.onInitialize();
+        add(getButtonBehavior());
 
-        this.label = newLabel("label", wrap(labelModel));
-        add(label);
+        add(getIcon(), getSplitter(), getLinkLabel());
+    }
+
+    private ButtonBehavior getButtonBehavior() {
+        if (buttonBehavior == null) {
+            buttonBehavior = new ButtonBehavior(type, Buttons.Size.Medium);
+        }
+        return buttonBehavior;
+    }
+
+    private Icon getIcon() {
+        if (icon == null) {
+            icon = newIcon("icon");
+        }
+        return icon;
+    }
+
+    private Component getSplitter() {
+        if (splitter == null) {
+            splitter = newSplitter("splitter");
+        }
+        return splitter;
+    }
+
+    private Component getLinkLabel() {
+        if (label == null) {
+            label = newLabel("label", labelModel);
+        }
+        return label;
     }
 
     /**
@@ -118,8 +150,8 @@ public abstract class BootstrapAjaxLink<T> extends AjaxLink<T> implements IBoots
     protected void onConfigure() {
         super.onConfigure();
 
-        if(useSplitter) {
-            splitter.setVisible(icon.hasIconType() && StringUtils.isNotEmpty(label.getDefaultModelObjectAsString()));
+        if (useSplitter) {
+            getSplitter().setVisible(getIcon().hasIconType() && StringUtils.isNotEmpty(getLinkLabel().getDefaultModelObjectAsString()));
         }
     }
 
@@ -130,8 +162,7 @@ public abstract class BootstrapAjaxLink<T> extends AjaxLink<T> implements IBoots
      * @return reference to the current instance
      */
     public <L extends Serializable> BootstrapAjaxLink<T> setLabel(IModel<L> label) {
-        this.label.setDefaultModel(label);
-
+        getLinkLabel().setDefaultModel(label);
         return this;
     }
 
@@ -142,25 +173,25 @@ public abstract class BootstrapAjaxLink<T> extends AjaxLink<T> implements IBoots
      * @return reference to the current instance
      */
     public BootstrapAjaxLink<T> setIconType(IconType iconType) {
-        icon.setType(iconType);
-
+        getIcon().setType(iconType);
         return this;
     }
 
     /**
      * Sets the size.
      */
+    @Override
     public BootstrapAjaxLink<T> setSize(Buttons.Size size) {
-        buttonBehavior.setSize(size);
-
+        getButtonBehavior().setSize(size);
         return this;
     }
 
     /**
      * Sets the type.
      */
+    @Override
     public BootstrapAjaxLink<T> setType(Buttons.Type type) {
-        this.buttonBehavior.setType(type);
+        getButtonBehavior().setType(type);
         return this;
     }
 
@@ -172,7 +203,7 @@ public abstract class BootstrapAjaxLink<T> extends AjaxLink<T> implements IBoots
         this.useSplitter = value;
         return this;
     }
-    
+
     /**
      * Sets whether this button should display inline or block
      *
@@ -180,8 +211,13 @@ public abstract class BootstrapAjaxLink<T> extends AjaxLink<T> implements IBoots
      * @return this instance for chaining
      */
     public BootstrapAjaxLink<T> setBlock(boolean block) {
-    	this.buttonBehavior.setBlock(block);
-    	return this;
+        getButtonBehavior().setBlock(block);
+        return this;
     }
 
+    @Override
+    protected void detachModel() {
+        super.detachModel();
+        labelModel.detach();
+    }
 }

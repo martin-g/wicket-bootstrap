@@ -1,9 +1,7 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.tabs;
 
-import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapResourcesBehavior;
-import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.CssClassNameAppender;
-import de.agilecoders.wicket.core.util.Attributes;
-import de.agilecoders.wicket.jquery.util.Strings2;
+import java.util.List;
+
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.extensions.markup.html.tabs.ITab;
@@ -16,7 +14,10 @@ import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
-import java.util.List;
+import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapResourcesBehavior;
+import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.CssClassNameAppender;
+import de.agilecoders.wicket.core.util.Attributes;
+import de.agilecoders.wicket.jquery.util.Strings2;
 
 /**
  * A {@link Collapsible} panel contains a list of {@link ITab} implementations that
@@ -83,7 +84,11 @@ public class Collapsible extends Panel {
         this.activeTab = activeTab;
 
         setOutputMarkupId(true);
+    }
 
+    @Override
+    protected void onInitialize() {
+        super.onInitialize();
         add(newTabList("tabs", tabs));
 
         BootstrapResourcesBehavior.addTo(this);
@@ -124,7 +129,7 @@ public class Collapsible extends Panel {
 
                 container.add(new AttributeModifier("data-parent", "#" + parentMarkupId));
                 container.add(new AttributeModifier("aria-labelledby", "#" + title.getMarkupId(true)));
-                
+
                 loopItem.add(title);
                 loopItem.add(container);
             }

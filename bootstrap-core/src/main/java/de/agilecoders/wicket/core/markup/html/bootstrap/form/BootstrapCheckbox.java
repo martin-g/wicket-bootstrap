@@ -1,9 +1,6 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.form;
 
-import de.agilecoders.wicket.core.util.Attributes;
-
 import org.apache.wicket.Component;
-import org.apache.wicket.MarkupContainer;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
@@ -11,16 +8,19 @@ import org.apache.wicket.markup.html.form.CheckBox;
 import org.apache.wicket.markup.html.form.FormComponentPanel;
 import org.apache.wicket.model.IModel;
 
+import de.agilecoders.wicket.core.util.Attributes;
+
 /**
  * A specialization of a Checkbox with Bootstrap styling
  *
  * @see <a href="http://getbootstrap.com/css/#forms">Bootstrap forms</a>
  */
 public class BootstrapCheckbox extends FormComponentPanel<Boolean> {
-
-    private final WebMarkupContainer wrapper;
+    private static final long serialVersionUID = 1L;
+    private WebMarkupContainer wrapper;
     private boolean inline = false;
     private CheckBox checkbox;
+    private final IModel<?> labelModel;
 
     /**
      * Constructor.
@@ -50,18 +50,36 @@ public class BootstrapCheckbox extends FormComponentPanel<Boolean> {
      */
     public BootstrapCheckbox(String id, IModel<Boolean> model, IModel<?> labelModel) {
         super(id, model);
+        this.labelModel = labelModel;
 
         setType(Boolean.class);
 
         setRenderBodyOnly(true);
-
-        wrapper = newCheckboxContainer("wrapper");
-        add(wrapper);
-        wrapper.add(newLabel("label", labelModel));
-        checkbox = newCheckBox("checkbox", getModel());
-        wrapper.add(checkbox);
     }
 
+    @Override
+    protected void onInitialize() {
+        super.onInitialize();
+
+        add(getWrapper()
+                .add(newLabel("label", labelModel))
+                .add(getCheckbox())
+                );
+    }
+
+    private WebMarkupContainer getWrapper() {
+        if (wrapper == null) {
+            wrapper = newCheckboxContainer("wrapper");
+        }
+        return wrapper;
+    }
+
+    private CheckBox getCheckbox() {
+        if (checkbox == null) {
+            checkbox = newCheckBox("checkbox", getModel());
+        }
+        return checkbox;
+    }
 
     protected CheckBox newCheckBox(String id, IModel<Boolean> model) {
         return new CheckBox(id, model);
@@ -69,6 +87,8 @@ public class BootstrapCheckbox extends FormComponentPanel<Boolean> {
 
     protected Component newLabel(String id, IModel<?> labelModel) {
         return new Label(id, labelModel) {
+            private static final long serialVersionUID = 1L;
+
             @Override
             protected void onConfigure() {
                 super.onConfigure();
@@ -81,6 +101,8 @@ public class BootstrapCheckbox extends FormComponentPanel<Boolean> {
 
     protected WebMarkupContainer newCheckboxContainer(String id) {
         return new WebMarkupContainer(id) {
+            private static final long serialVersionUID = 1L;
+
             @Override
             protected void onComponentTag(ComponentTag tag) {
                 super.onComponentTag(tag);
@@ -103,17 +125,25 @@ public class BootstrapCheckbox extends FormComponentPanel<Boolean> {
 
     @Override
     public BootstrapCheckbox setLabel(IModel<String> label) {
-        checkbox.setLabel(label);
+        getCheckbox().setLabel(label);
         return this;
     }
 
     @Override
     public IModel<String> getLabel() {
-        return checkbox.getLabel();
+        return getCheckbox().getLabel();
     }
 
     @Override
     public void convertInput() {
-        setConvertedInput(checkbox.getConvertedInput());
+        setConvertedInput(getCheckbox().getConvertedInput());
+    }
+
+    @Override
+    protected void detachModel() {
+        super.detachModel();
+        if (labelModel != null) {
+            labelModel.detach();
+        }
     }
 }

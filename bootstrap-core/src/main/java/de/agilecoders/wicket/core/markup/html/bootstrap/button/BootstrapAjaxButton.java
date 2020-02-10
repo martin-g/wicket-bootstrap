@@ -1,7 +1,7 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.button;
 
-import de.agilecoders.wicket.core.markup.html.bootstrap.image.Icon;
-import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
+import java.io.Serializable;
+
 import org.apache.commons.lang3.StringUtils;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
@@ -13,7 +13,8 @@ import org.apache.wicket.markup.html.panel.PanelMarkupSourcingStrategy;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
-import java.io.Serializable;
+import de.agilecoders.wicket.core.markup.html.bootstrap.image.Icon;
+import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
 
 /**
  * Default {@link AjaxButton} which is styled by bootstrap.
@@ -21,13 +22,14 @@ import java.io.Serializable;
  * @author miha
  */
 public abstract class BootstrapAjaxButton extends AjaxButton implements IBootstrapButton<BootstrapAjaxButton> {
-
-    private final Icon icon;
-    private final Component label;
-    private final Component splitter;
-    private final ButtonBehavior buttonBehavior;
+    private static final long serialVersionUID = 1L;
+    private Icon icon;
+    private Component label;
+    private Component splitter;
+    private ButtonBehavior buttonBehavior;
     /** To use the splitter or not (true by default). */
     private boolean useSplitter = true;
+    private final Buttons.Type type;
 
     /**
      * Construct.
@@ -71,12 +73,43 @@ public abstract class BootstrapAjaxButton extends AjaxButton implements IBootstr
      */
     public BootstrapAjaxButton(String id, IModel<String> model, Form<?> form, Buttons.Type type) {
         super(id, model, form);
+        this.type = type;
+    }
 
-        add(buttonBehavior = new ButtonBehavior(type, Buttons.Size.Medium));
+    @Override
+    protected void onInitialize() {
+        super.onInitialize();
+        add(getButtonBehavior());
 
-        add(icon = newIcon("icon"));
-        add(splitter = newSplitter("splitter"));
-        add(label = newLabel("label", model));
+        add(getIcon(), getSplitter(), getButtonLabel());
+    }
+
+    private ButtonBehavior getButtonBehavior() {
+        if (buttonBehavior == null) {
+            buttonBehavior = new ButtonBehavior(type, Buttons.Size.Medium);
+        }
+        return buttonBehavior;
+    }
+
+    private Icon getIcon() {
+        if (icon == null) {
+            icon = newIcon("icon");
+        }
+        return icon;
+    }
+
+    private Component getSplitter() {
+        if (splitter == null) {
+            splitter = newSplitter("splitter");
+        }
+        return splitter;
+    }
+
+    private Component getButtonLabel() {
+        if (label == null) {
+            label = newLabel("label", getModel());
+        }
+        return label;
     }
 
     /**
@@ -126,8 +159,8 @@ public abstract class BootstrapAjaxButton extends AjaxButton implements IBootstr
     protected void onConfigure() {
         super.onConfigure();
 
-        if(useSplitter) {
-            splitter.setVisible(icon.hasIconType() && StringUtils.isNotEmpty(label.getDefaultModelObjectAsString()));
+        if (useSplitter) {
+            getSplitter().setVisible(getIcon().hasIconType() && StringUtils.isNotEmpty(getModelObject()));
         }
     }
 
@@ -139,7 +172,9 @@ public abstract class BootstrapAjaxButton extends AjaxButton implements IBootstr
      */
     @Override
     public BootstrapAjaxButton setLabel(IModel<String> label) {
-        this.label.setDefaultModel(label);
+        getButtonLabel().setDefaultModel(label);
+        //the label is also store in the button's model
+        setModel(label);
         return this;
     }
 
@@ -150,7 +185,7 @@ public abstract class BootstrapAjaxButton extends AjaxButton implements IBootstr
      * @return reference to the current instance
      */
     public BootstrapAjaxButton setIconType(IconType iconType) {
-        icon.setType(iconType);
+        getIcon().setType(iconType);
         return this;
     }
 
@@ -160,8 +195,9 @@ public abstract class BootstrapAjaxButton extends AjaxButton implements IBootstr
      * @param size The button size
      * @return this instance for chaining
      */
-    public BootstrapAjaxButton setSize(Buttons.Size size) {
-        buttonBehavior.setSize(size);
+    @Override
+	public BootstrapAjaxButton setSize(Buttons.Size size) {
+        getButtonBehavior().setSize(size);
         return this;
     }
 
@@ -171,8 +207,9 @@ public abstract class BootstrapAjaxButton extends AjaxButton implements IBootstr
      * @param type The type of the button
      * @return this instance for chaining
      */
-    public BootstrapAjaxButton setType(Buttons.Type type) {
-        this.buttonBehavior.setType(type);
+    @Override
+	public BootstrapAjaxButton setType(Buttons.Type type) {
+    	getButtonBehavior().setType(type);
         return this;
     }
 
@@ -184,7 +221,7 @@ public abstract class BootstrapAjaxButton extends AjaxButton implements IBootstr
         this.useSplitter = value;
         return this;
     }
-    
+
     /**
      * Sets whether this button should display inline or block
      *
@@ -192,7 +229,7 @@ public abstract class BootstrapAjaxButton extends AjaxButton implements IBootstr
      * @return this instance for chaining
      */
     public BootstrapAjaxButton setBlock(boolean block) {
-    	this.buttonBehavior.setBlock(block);
-    	return this;
+        getButtonBehavior().setBlock(block);
+        return this;
     }
 }

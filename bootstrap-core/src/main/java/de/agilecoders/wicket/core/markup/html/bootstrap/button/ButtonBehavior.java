@@ -1,16 +1,16 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.button;
 
+import org.apache.wicket.Component;
+import org.apache.wicket.markup.ComponentTag;
+import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.Model;
+
 import com.google.common.base.Strings;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNameProvider;
 import de.agilecoders.wicket.core.util.Components;
 import de.agilecoders.wicket.core.util.CssClassNames;
-
-import org.apache.wicket.Component;
-import org.apache.wicket.markup.ComponentTag;
-import org.apache.wicket.model.IModel;
-import org.apache.wicket.model.Model;
 
 /**
  * Default button behavior that controls the size and type
@@ -19,7 +19,7 @@ import org.apache.wicket.model.Model;
  * @author miha
  */
 public class ButtonBehavior extends BootstrapBaseBehavior {
-
+    private static final long serialVersionUID = 1L;
     private final IModel<Buttons.Type> buttonType;
     private final IModel<Buttons.Size> buttonSize;
     private final IModel<String> block;
@@ -144,5 +144,13 @@ public class ButtonBehavior extends BootstrapBaseBehavior {
                                    buttonType.getObject(),
                                    blockProvider);
 //        }
+    }
+
+    @Override
+    public void detach(Component component) {
+        super.detach(component);
+        buttonType.detach();
+        buttonSize.detach();
+        block.detach();
     }
 }

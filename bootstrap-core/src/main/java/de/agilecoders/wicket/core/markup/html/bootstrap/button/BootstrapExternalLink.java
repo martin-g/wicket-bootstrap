@@ -1,8 +1,5 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.button;
 
-import de.agilecoders.wicket.core.markup.html.bootstrap.image.Icon;
-import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
-import de.agilecoders.wicket.core.util.Models;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.ComponentTag;
@@ -14,12 +11,17 @@ import org.apache.wicket.markup.html.panel.PanelMarkupSourcingStrategy;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
+import de.agilecoders.wicket.core.markup.html.bootstrap.image.Icon;
+import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
+import de.agilecoders.wicket.core.util.Models;
+
 /**
  * Default {@link org.apache.wicket.markup.html.link.ExternalLink} which is styled by bootstrap.
  *
  * @author miha
  */
 public abstract class BootstrapExternalLink extends ExternalLink implements IBootstrapButton<BootstrapExternalLink> {
+    private static final long serialVersionUID = 1L;
 
     /**
      * The target attribute specifies where to open the linked document.
@@ -38,11 +40,12 @@ public abstract class BootstrapExternalLink extends ExternalLink implements IBoo
         none
     }
 
-    private final Icon icon;
-    private final Component label;
-    private final Component splitter;
-    private final ButtonBehavior buttonBehavior;
-    private final IModel<String> target;
+    private Icon icon;
+    private Component label;
+    private Component splitter;
+    private ButtonBehavior buttonBehavior;
+    private final IModel<String> target = Model.of("");
+    private final Buttons.Type type;
 
     /**
      * Construct.
@@ -64,13 +67,43 @@ public abstract class BootstrapExternalLink extends ExternalLink implements IBoo
     public BootstrapExternalLink(final String id, final IModel<String> model, final Buttons.Type type) {
         super(id, model);
 
-        this.target = Model.of("");
+        this.type = type;
+    }
 
-        add(buttonBehavior = new ButtonBehavior(type, Buttons.Size.Medium));
+    @Override
+    protected void onInitialize() {
+        super.onInitialize();
+        add(getButtonBehavior());
 
-        add(icon = newIcon("icon"));
-        add(splitter = newSplitter("splitter"));
-        add(label = newLabel("label"));
+        add(getIcon(), getSplitter(), getLinkLabel());
+    }
+
+    private ButtonBehavior getButtonBehavior() {
+        if (buttonBehavior == null) {
+            buttonBehavior = new ButtonBehavior(type, Buttons.Size.Medium);
+        }
+        return buttonBehavior;
+    }
+
+    private Icon getIcon() {
+        if (icon == null) {
+            icon = newIcon("icon");
+        }
+        return icon;
+    }
+
+    private Component getSplitter() {
+        if (splitter == null) {
+            splitter = newSplitter("splitter");
+        }
+        return splitter;
+    }
+
+    private Component getLinkLabel() {
+        if (label == null) {
+            label = newLabel("label");
+        }
+        return label;
     }
 
     /**
@@ -128,7 +161,7 @@ public abstract class BootstrapExternalLink extends ExternalLink implements IBoo
     protected void onConfigure() {
         super.onConfigure();
 
-        splitter.setVisible(icon.hasIconType() && StringUtils.isNotEmpty(label.getDefaultModelObjectAsString()));
+        getSplitter().setVisible(getIcon().hasIconType() && StringUtils.isNotEmpty(getLinkLabel().getDefaultModelObjectAsString()));
     }
 
     /**
@@ -138,7 +171,7 @@ public abstract class BootstrapExternalLink extends ExternalLink implements IBoo
      * @return reference to the current instance
      */
     public BootstrapExternalLink setLabel(IModel<?> label) {
-        this.label.setDefaultModel(label);
+        getLinkLabel().setDefaultModel(label);
         return this;
     }
 
@@ -149,7 +182,7 @@ public abstract class BootstrapExternalLink extends ExternalLink implements IBoo
      * @return reference to the current instance
      */
     public BootstrapExternalLink setIconType(IconType iconType) {
-        icon.setType(iconType);
+        getIcon().setType(iconType);
         return this;
     }
 
@@ -159,8 +192,9 @@ public abstract class BootstrapExternalLink extends ExternalLink implements IBoo
      * @param size The button size
      * @return this instance for chaining
      */
+    @Override
     public BootstrapExternalLink setSize(Buttons.Size size) {
-        buttonBehavior.setSize(size);
+        getButtonBehavior().setSize(size);
         return this;
     }
 
@@ -170,11 +204,12 @@ public abstract class BootstrapExternalLink extends ExternalLink implements IBoo
      * @param type The type of the button
      * @return this instance for chaining
      */
+    @Override
     public BootstrapExternalLink setType(Buttons.Type type) {
-        this.buttonBehavior.setType(type);
+        getButtonBehavior().setType(type);
         return this;
     }
-    
+
     /**
      * Sets whether this button should display inline or block
      *
@@ -182,11 +217,10 @@ public abstract class BootstrapExternalLink extends ExternalLink implements IBoo
      * @return this instance for chaining
      */
     public BootstrapExternalLink setBlock(boolean block) {
-    	this.buttonBehavior.setBlock(block);
-    	
-    	return this;
+        getButtonBehavior().setBlock(block);
+        return this;
     }
-    
+
     /**
      * Sets the target of the link
      *
@@ -202,4 +236,9 @@ public abstract class BootstrapExternalLink extends ExternalLink implements IBoo
         return this;
     }
 
+    @Override
+    protected void detachModel() {
+        super.detachModel();
+        target.detach();
+    }
 }

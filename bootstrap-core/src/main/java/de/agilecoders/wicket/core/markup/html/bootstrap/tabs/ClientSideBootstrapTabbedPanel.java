@@ -1,5 +1,7 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.tabs;
 
+import java.util.List;
+
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.extensions.markup.html.tabs.ITab;
@@ -12,8 +14,6 @@ import org.apache.wicket.markup.repeater.RepeatingView;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.util.lang.Args;
 
-import java.util.List;
-
 /**
  * <p>
  * 	A "pure" client side stateless tabs component. You use it as you would use {@link TabbedPanel},
@@ -24,6 +24,8 @@ import java.util.List;
  * @author Ernesto Reinaldo Barreiro (reiern70@gmailcom)
  */
 public class ClientSideBootstrapTabbedPanel<T extends ITab> extends GenericPanel<Integer> {
+    private static final long serialVersionUID = 1L;
+    private final List<T> tabs;
 
     /**
      * Constructor.
@@ -46,7 +48,12 @@ public class ClientSideBootstrapTabbedPanel<T extends ITab> extends GenericPanel
         super(id, activeTabIndexModel);
 
         Args.notEmpty(tabs, "tabs");
+        this.tabs = tabs;
+    }
 
+    @Override
+    protected void onInitialize() {
+        super.onInitialize();
         WebMarkupContainer panelsContainer = newTabsContentsContainer("panelsContainer");
         add(panelsContainer);
         RepeatingView panels = new RepeatingView("panels");
@@ -58,9 +65,9 @@ public class ClientSideBootstrapTabbedPanel<T extends ITab> extends GenericPanel
         int tabIndex = 0;
         for (T tab: tabs) {
             if (tab.isVisible()) {
-                WebMarkupContainer panel = createContentPanel(panels.newChildId(), tab, tabIndex, activeTabIndexModel);
+                WebMarkupContainer panel = createContentPanel(panels.newChildId(), tab, tabIndex, getModel());
                 panels.add(panel);
-                WebMarkupContainer tabPanel = createTabPanel(panels.newChildId(), tab, tabIndex, activeTabIndexModel, panel.getMarkupId());
+                WebMarkupContainer tabPanel = createTabPanel(panels.newChildId(), tab, tabIndex, getModel(), panel.getMarkupId());
                 tabsView.add(tabPanel);
                 tabIndex++;
             }
