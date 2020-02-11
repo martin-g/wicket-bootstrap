@@ -68,13 +68,12 @@ public abstract class BootstrapExternalLink extends ExternalLink implements IBoo
         super(id, model);
 
         this.type = type;
+        add(getButtonBehavior());
     }
 
     @Override
     protected void onInitialize() {
         super.onInitialize();
-        add(getButtonBehavior());
-
         add(getIcon(), getSplitter(), getLinkLabel());
     }
 

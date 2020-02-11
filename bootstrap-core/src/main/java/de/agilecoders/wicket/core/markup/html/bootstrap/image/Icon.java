@@ -16,7 +16,8 @@ public class Icon extends WebMarkupContainer {
     /** serialVersionUID. */
     private static final long serialVersionUID = 1L;
     /** Icon behavior. */
-    private final IconBehavior iconBehavior;
+    private IconBehavior iconBehavior;
+    final IModel<IconType> type;
 
     /**
      * @param componentId The non-null id of a new component
@@ -24,10 +25,21 @@ public class Icon extends WebMarkupContainer {
      */
     public Icon(final String componentId, final IModel<IconType> type) {
         super(componentId);
-
-        add(iconBehavior = new IconBehavior(type));
+        this.type = type;
     }
 
+    @Override
+    protected void onInitialize() {
+        super.onInitialize();
+        add(getIconBehavior());
+    }
+
+    private IconBehavior getIconBehavior() {
+        if (iconBehavior == null) {
+            iconBehavior = new IconBehavior(type);
+        }
+        return iconBehavior;
+    }
     /**
      * @param typeModel the model containing the icon type
      */
@@ -44,7 +56,7 @@ public class Icon extends WebMarkupContainer {
     }
 
     /**
-     * 
+     *
      * @param type the icon type
      */
     public Icon(final IconType type) {
@@ -58,7 +70,7 @@ public class Icon extends WebMarkupContainer {
      * @return this instance for chaining
      */
     public final Icon setType(final IconType iconType) {
-        iconBehavior.setType(iconType);
+        getIconBehavior().setType(iconType);
         return this;
     }
 
@@ -66,22 +78,14 @@ public class Icon extends WebMarkupContainer {
      * @return true, if an {@link IconType} is set and it's not equal to IconType.Null
      */
     public final boolean hasIconType() {
-        return iconBehavior.hasIconType();
+        return getIconBehavior().hasIconType();
     }
 
     /**
      * @return current icon type
      */
     public IconType getType() {
-        return iconBehavior.type();
-    }
-
-    /**
-     * @deprecated please use {@link #getType()} instead.
-     * @return current icon type
-     */
-    public IconType type() {
-        return getType();
+        return getIconBehavior().type();
     }
 
     @Override
@@ -92,5 +96,10 @@ public class Icon extends WebMarkupContainer {
             super.onComponentTagBody(markupStream, openTag);
         }
     }
-}
 
+    @Override
+    protected void onDetach() {
+        super.onDetach();
+        type.detach();
+    }
+}

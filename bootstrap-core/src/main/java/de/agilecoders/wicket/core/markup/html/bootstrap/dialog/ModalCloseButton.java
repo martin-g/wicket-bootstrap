@@ -1,8 +1,5 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.dialog;
 
-import de.agilecoders.wicket.core.markup.html.bootstrap.button.ButtonBehavior;
-import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons;
-
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
@@ -13,14 +10,18 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.util.string.Strings;
 
+import de.agilecoders.wicket.core.markup.html.bootstrap.button.ButtonBehavior;
+import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons;
+
 /**
  * A simple close button for the {@link Modal} component.
  *
  * @author miha
  */
 public class ModalCloseButton extends AjaxLink<String> {
+    private static final long serialVersionUID = 1L;
 
-    private final ButtonBehavior buttonBehavior;
+    private final ButtonBehavior buttonBehavior = new ButtonBehavior(Buttons.Type.Secondary);;
 
     private Modal<?> anchor;
 
@@ -52,8 +53,11 @@ public class ModalCloseButton extends AjaxLink<String> {
         super(id, label);
 
         setBody(getDefaultModel());
-        buttonBehavior = new ButtonBehavior(Buttons.Type.Secondary);
+    }
 
+    @Override
+    protected void onInitialize() {
+        super.onInitialize();
         add(new AttributeModifier("data-dismiss", "modal"));
         add(buttonBehavior);
     }

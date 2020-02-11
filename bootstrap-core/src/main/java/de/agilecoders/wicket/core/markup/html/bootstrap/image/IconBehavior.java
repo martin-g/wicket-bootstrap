@@ -15,7 +15,7 @@ import org.apache.wicket.model.Model;
  * @author miha
  */
 public class IconBehavior extends Behavior {
-
+    private static final long serialVersionUID = 1L;
     private final IModel<IconType> type;
     private final IModel<String> value;
 

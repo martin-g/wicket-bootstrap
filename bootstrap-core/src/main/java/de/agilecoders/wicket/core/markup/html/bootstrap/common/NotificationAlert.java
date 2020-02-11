@@ -1,12 +1,12 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.common;
 
-import de.agilecoders.wicket.core.markup.html.bootstrap.dialog.Alert;
+import java.time.Duration;
 
-import org.apache.wicket.Component;
 import org.apache.wicket.feedback.FeedbackMessage;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
-import java.time.Duration;
+
+import de.agilecoders.wicket.core.markup.html.bootstrap.dialog.Alert;
 
 /**
  * An {@link Alert} implementation that shows an {@link INotificationMessage}.
@@ -17,7 +17,6 @@ public class NotificationAlert extends Alert {
     private static final long serialVersionUID = 1L;
     private final IModel<INotificationMessage> notificationModel;
     private final Duration duration;
-    private Component message;
 
     /**
      * Construct.
@@ -66,15 +65,9 @@ public class NotificationAlert extends Alert {
         withHeader(notificationMessage.header());
         withMessage(notificationMessage.message());
 
-        this.message.setEscapeModelStrings(notificationMessage.escapeModelStrings());
+        getMessage().setEscapeModelStrings(notificationMessage.escapeModelStrings());
 
         return this;
-    }
-
-    @Override
-    protected Component createMessage(String markupId, IModel<String> message) {
-        this.message = super.createMessage(markupId, message);
-        return this.message;
     }
 
     @Override

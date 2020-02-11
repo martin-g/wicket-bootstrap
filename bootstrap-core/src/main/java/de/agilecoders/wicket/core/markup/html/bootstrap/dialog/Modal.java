@@ -1,9 +1,8 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.dialog;
 
-import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapResourcesBehavior;
-import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNameProvider;
-import de.agilecoders.wicket.core.util.Attributes;
-import de.agilecoders.wicket.jquery.util.Strings2;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.MarkupContainer;
@@ -24,8 +23,10 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.util.string.Strings;
 
-import java.util.ArrayList;
-import java.util.List;
+import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapResourcesBehavior;
+import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNameProvider;
+import de.agilecoders.wicket.core.util.Attributes;
+import de.agilecoders.wicket.jquery.util.Strings2;
 
 /**
  * The {@code Modal} dialog is a simple component with header,
@@ -85,7 +86,6 @@ public class Modal<T> extends GenericPanel<T> {
     private final IModel<Boolean> disableEnforceFocus = Model.of(false);
 
     private Component headerLabel;
-    private Component headerCloseButton;
     private final List<Component> buttons = new ArrayList<>();
     private MarkupContainer footer;
     private MarkupContainer header;
@@ -115,9 +115,22 @@ public class Modal<T> extends GenericPanel<T> {
 
         footer = createFooter("footer");
         header = createHeader("header");
-        header.add(headerLabel = createHeaderLabel("header-label", ""));
+    }
+
+    private Component getHeaderLabel() {
+        if (headerLabel == null) {
+            headerLabel = createHeaderLabel("header-label", "");
+        }
+        return headerLabel;
+    }
+
+    @Override
+    protected void onInitialize() {
+        super.onInitialize();
+        header.add(getHeaderLabel());
         headerLabel.setOutputMarkupId(true);
-        header.add(headerCloseButton = createHeaderCloseButton("header-close-button"));
+        Component headerCloseButton = createHeaderCloseButton("header-close-button");
+        header.add(headerCloseButton);
         headerCloseButton.setOutputMarkupId(true);
 
         footer.add(new ListView<>("buttons", buttons) {
@@ -214,7 +227,7 @@ public class Modal<T> extends GenericPanel<T> {
      * @param size The size of the modal dialog.
      * @return {@code this}, for method chaining
      */
-    public Modal size(Size size) {
+    public Modal<T> size(Size size) {
         this.size = size;
         return this;
     }
@@ -242,7 +255,7 @@ public class Modal<T> extends GenericPanel<T> {
 
         // ARIA
         Attributes.set(tag, "role", "dialog");
-        Attributes.set(tag, "aria-labelledby", headerLabel.getMarkupId());
+        Attributes.set(tag, "aria-labelledby", getHeaderLabel().getMarkupId());
         Attributes.set(tag, "aria-hidden", "true");
     }
 
@@ -260,7 +273,7 @@ public class Modal<T> extends GenericPanel<T> {
      * @return This
      */
     public Modal<T> header(IModel<String> label) {
-        headerLabel.setDefaultModel(label);
+        getHeaderLabel().setDefaultModel(label);
         setHeaderVisible(true);
         return this;
     }
@@ -273,8 +286,8 @@ public class Modal<T> extends GenericPanel<T> {
      * @return This
      */
     public Modal<T> header(final IModel<String> label, final boolean escapeMarkup) {
-        headerLabel.setDefaultModel(label);
-        headerLabel.setEscapeModelStrings(escapeMarkup);
+        getHeaderLabel().setDefaultModel(label)
+                .setEscapeModelStrings(escapeMarkup);
         return this;
     }
 
@@ -487,7 +500,7 @@ public class Modal<T> extends GenericPanel<T> {
     protected void onConfigure() {
         super.onConfigure();
 
-        if (Strings.isEmpty(headerLabel.getDefaultModelObjectAsString())) {
+        if (Strings.isEmpty(getHeaderLabel().getDefaultModelObjectAsString())) {
             // there must be at least on character inside the header to prevent
             // layout problems.
             headerLabel.setDefaultModelObject("&nbsp;");
