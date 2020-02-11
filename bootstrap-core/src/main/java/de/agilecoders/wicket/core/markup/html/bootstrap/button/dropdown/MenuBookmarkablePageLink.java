@@ -1,13 +1,14 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown;
 
-import de.agilecoders.wicket.core.markup.html.bootstrap.button.BootstrapBookmarkablePageLink;
-import de.agilecoders.wicket.core.markup.html.bootstrap.button.ButtonList;
-import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons;
 import org.apache.wicket.Component;
 import org.apache.wicket.Page;
 import org.apache.wicket.markup.html.link.BookmarkablePageLink;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
+
+import de.agilecoders.wicket.core.markup.html.bootstrap.button.BootstrapBookmarkablePageLink;
+import de.agilecoders.wicket.core.markup.html.bootstrap.button.ButtonList;
+import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons;
 
 /**
  * A bootstrap style {@link BookmarkablePageLink}
@@ -16,6 +17,7 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
  * @author miha
  */
 public class MenuBookmarkablePageLink<T> extends BootstrapBookmarkablePageLink<T>  {
+    private static final long serialVersionUID = 1L;
 
     /**
      * Constructor.

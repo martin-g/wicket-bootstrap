@@ -20,7 +20,11 @@ public class TextContentModal extends Modal<String> {
      */
     public TextContentModal(String markupId, IModel<String> model) {
         super(markupId, model);
+    }
 
-        add(new Label("content", model));
+    @Override
+    protected void onInitialize() {
+        super.onInitialize();
+        add(new Label("content", getModel()));
     }
 }

@@ -52,13 +52,12 @@ public class BootstrapButton extends Button implements IBootstrapButton<Bootstra
         super(componentId, model);
 
         this.type = type;
+        add(getButtonBehavior());
     }
 
     @Override
     protected void onInitialize() {
         super.onInitialize();
-        add(getButtonBehavior());
-
         add(getIcon(), getSplitter(), getButtonLabel());
     }
 

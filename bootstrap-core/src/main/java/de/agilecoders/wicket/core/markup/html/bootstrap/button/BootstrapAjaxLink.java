@@ -63,13 +63,12 @@ public abstract class BootstrapAjaxLink<T> extends AjaxLink<T> implements IBoots
         super(id, model);
         this.type = type;
         this.labelModel = labelModel;
+        add(getButtonBehavior());
     }
 
     @Override
     protected void onInitialize() {
         super.onInitialize();
-        add(getButtonBehavior());
-
         add(getIcon(), getSplitter(), getLinkLabel());
     }
 

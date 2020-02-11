@@ -53,13 +53,12 @@ public abstract class BootstrapAjaxFallbackButton extends AjaxFallbackButton imp
     public BootstrapAjaxFallbackButton(String id, IModel<String> model, Form<?> form, Buttons.Type type) {
         super(id, model, form);
         this.type = type;
+        add(getButtonBehavior());
     }
 
     @Override
     protected void onInitialize() {
         super.onInitialize();
-        add(getButtonBehavior());
-
         add(getIcon(), getSplitter(), getButtonLabel());
     }
 

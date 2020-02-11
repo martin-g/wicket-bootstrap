@@ -60,12 +60,12 @@ public class BootstrapBookmarkablePageLink<T> extends BookmarkablePageLink<T> im
     public <P extends Page> BootstrapBookmarkablePageLink(final String componentId, final Class<P> pageClass, final PageParameters parameters, final Buttons.Type type) {
         super(componentId, pageClass, parameters);
         this.type = type;
+        add(getButtonBehavior());
     }
 
     @Override
     protected void onInitialize() {
         super.onInitialize();
-        add(getButtonBehavior());
 
         add(getIcon(), getSplitter(), getPageLabel());
     }

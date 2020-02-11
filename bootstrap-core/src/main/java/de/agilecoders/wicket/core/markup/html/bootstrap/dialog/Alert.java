@@ -1,8 +1,6 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.dialog;
 
-import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapResourcesBehavior;
-import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNameProvider;
-import de.agilecoders.wicket.core.util.Attributes;
+import java.time.Duration;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.ComponentTag;
@@ -14,7 +12,10 @@ import org.apache.wicket.markup.html.panel.GenericPanel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.util.string.Strings;
-import java.time.Duration;
+
+import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapResourcesBehavior;
+import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNameProvider;
+import de.agilecoders.wicket.core.util.Attributes;
 
 /**
  * A bootstrap styled panel for success, warning, and error messages
@@ -54,10 +55,11 @@ public class Alert extends GenericPanel<String> {
 
     }
 
-    private final WebMarkupContainer closeButton;
-    private final Component message;
-    private final Label blockHeader;
-    private final Label inlineHeader;
+    private final IModel<String> header;
+    private WebMarkupContainer closeButton;
+    private Component message;
+    private Label blockHeader;
+    private Label inlineHeader;
     private Type type;
     private boolean dismissable;
     private Duration duration;
@@ -85,21 +87,50 @@ public class Alert extends GenericPanel<String> {
 
         type = Type.Info;
         dismissable = false;
+        this.header = header;
+    }
 
-        this.inlineHeader = new Label("inline", header);
-        this.blockHeader = new Label("block", header);
-        this.message = createMessage("message", getModel());
-        this.closeButton = new WebMarkupContainer("close") {
-            private static final long serialVersionUID = 1L;
+    private Label getInlineHeader() {
+        if (inlineHeader == null) {
+            inlineHeader = new Label("inline", header);
+        }
+        return inlineHeader;
+    }
 
-            @Override
-            protected void onConfigure() {
-                super.onConfigure();
-                setVisible(dismissable);
-            }
-        };
+    private Label getBlockHeader() {
+        if (blockHeader == null) {
+            blockHeader = new Label("block", header);
+        }
+        return blockHeader;
+    }
 
-        add(this.inlineHeader, this.blockHeader, this.message, this.closeButton);
+    protected Component getMessage() {
+        if (message == null) {
+            message = createMessage("message", getModel());
+        }
+        return message;
+    }
+
+    private WebMarkupContainer getCloseButton() {
+        if (closeButton == null) {
+            closeButton = new WebMarkupContainer("close") {
+                private static final long serialVersionUID = 1L;
+
+                @Override
+                protected void onConfigure() {
+                    super.onConfigure();
+                    setVisible(dismissable);
+                }
+            };
+        }
+        return closeButton;
+    }
+
+    @Override
+    protected void onInitialize() {
+        super.onInitialize();
+
+        add(getInlineHeader(), getBlockHeader(), getMessage(), getCloseButton());
 
         add(BootstrapResourcesBehavior.instance());
     }
@@ -138,7 +169,7 @@ public class Alert extends GenericPanel<String> {
      */
     public Alert setCloseButtonVisible(boolean visible) {
         this.dismissable = visible;
-        this.closeButton.setVisible(visible);
+        getCloseButton().setVisible(visible);
         return this;
     }
 
@@ -171,8 +202,8 @@ public class Alert extends GenericPanel<String> {
      * @return This instance for chaining.
      */
     public Alert withHeader(IModel<String> header) {
-        this.blockHeader.setDefaultModel(header);
-        this.inlineHeader.setDefaultModel(header);
+        getBlockHeader().setDefaultModel(header);
+        getInlineHeader().setDefaultModel(header);
 
         return this;
     }
@@ -215,14 +246,20 @@ public class Alert extends GenericPanel<String> {
     protected void onConfigure() {
         super.onConfigure();
 
-        if (Strings.isEmpty(inlineHeader.getDefaultModelObjectAsString())) {
-            this.inlineHeader.setVisible(false);
-            this.blockHeader.setVisible(false);
+        if (Strings.isEmpty(getInlineHeader().getDefaultModelObjectAsString())) {
+            getInlineHeader().setVisible(false);
+            getBlockHeader().setVisible(false);
         } else {
-            this.inlineHeader.setVisible(useInlineHeader);
-            this.blockHeader.setVisible(!useInlineHeader);
+            getInlineHeader().setVisible(useInlineHeader);
+            getBlockHeader().setVisible(!useInlineHeader);
         }
 
-        this.message.setDefaultModel(getDefaultModel());
+        getMessage().setDefaultModel(getDefaultModel());
+    }
+
+    @Override
+    protected void detachModel() {
+        super.detachModel();
+        header.detach();
     }
 }

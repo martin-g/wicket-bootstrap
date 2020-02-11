@@ -94,13 +94,12 @@ public abstract class BootstrapLink<T> extends Link<T> implements IBootstrapButt
     public BootstrapLink(final String id, final IModel<T> model, final Buttons.Type type) {
         super(id, model);
         this.type = type;
+        add(getButtonBehavior());
     }
 
     @Override
     protected void onInitialize() {
         super.onInitialize();
-        add(getButtonBehavior());
-
         add(getIcon(), getSplitter(), getLinkLabel());
     }
 
