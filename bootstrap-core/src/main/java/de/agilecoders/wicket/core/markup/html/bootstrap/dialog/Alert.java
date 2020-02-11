@@ -104,7 +104,7 @@ public class Alert extends GenericPanel<String> {
         return blockHeader;
     }
 
-    protected Component getMessage() {
+    protected final Component getMessage() {
         if (message == null) {
             message = createMessage("message", getModel());
         }

@@ -2,7 +2,6 @@ package de.agilecoders.wicket.core.markup.html.bootstrap.common;
 
 import java.time.Duration;
 
-import org.apache.wicket.Component;
 import org.apache.wicket.feedback.FeedbackMessage;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
@@ -18,7 +17,6 @@ public class NotificationAlert extends Alert {
     private static final long serialVersionUID = 1L;
     private final IModel<INotificationMessage> notificationModel;
     private final Duration duration;
-    private Component message;
 
     /**
      * Construct.
