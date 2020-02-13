@@ -1,16 +1,20 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.components.progress;
 
-import de.agilecoders.wicket.core.markup.html.bootstrap.utilities.BackgroundColorBehavior;
-import de.agilecoders.wicket.core.util.Attributes;
 import org.apache.wicket.markup.ComponentTag;
+import org.apache.wicket.markup.head.IHeaderResponse;
+import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.panel.GenericPanel;
 import org.apache.wicket.model.IModel;
+
+import de.agilecoders.wicket.core.markup.html.bootstrap.utilities.BackgroundColorBehavior;
+import de.agilecoders.wicket.core.util.Attributes;
 
 /**
  * Represents a stack of the progress bar.
  */
 public class Stack extends GenericPanel<Integer> {
+    private static final long serialVersionUID = 1L;
 
     /**
      * A label for the stack's progress
@@ -110,7 +114,6 @@ public class Stack extends GenericPanel<Integer> {
         super.onComponentTag(tag);
 
         Integer value = getModelObject();
-        Attributes.set(tag, "style", String.format("width: %s%%", value));
         Attributes.set(tag, "aria-valuenow", String.valueOf(value));
         Attributes.set(tag, "aria-valuemin", String.valueOf(ProgressBar.MIN));
         Attributes.set(tag, "aria-valuemax", String.valueOf(ProgressBar.MAX));
@@ -126,6 +129,11 @@ public class Stack extends GenericPanel<Integer> {
         Attributes.addClass(tag, color().cssClassName());
     }
 
+    @Override
+    public void renderHead(IHeaderResponse response) {
+        super.renderHead(response);
+        response.render(OnDomReadyHeaderItem.forScript("Wicket.WUPB.prototype.setPercent(" + getDefaultModelObject() + ", '" + getMarkupId(true) + "');"));
+    }
 
     /**
      * Creates a model that is used for the stack's label

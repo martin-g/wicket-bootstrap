@@ -4,6 +4,7 @@ import org.apache.wicket.MarkupContainer;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
+import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.upload.FileUploadField;
@@ -35,6 +36,8 @@ public class UploadProgressBar extends org.apache.wicket.extensions.ajax.markup.
      * A flag indicating whether the progress bar is striped.
      */
     private boolean striped = false;
+
+    private String barMarkupId;
 
     /**
      * Constructor that will display the upload progress bar for every submit of the given form.
@@ -111,7 +114,7 @@ public class UploadProgressBar extends org.apache.wicket.extensions.ajax.markup.
 
     @Override
     protected MarkupContainer newBarComponent(String id) {
-        return new WebMarkupContainer(id) {
+        WebMarkupContainer bar = new WebMarkupContainer(id) {
             private static final long serialVersionUID = 1L;
 
             @Override
@@ -127,10 +130,10 @@ public class UploadProgressBar extends org.apache.wicket.extensions.ajax.markup.
                 }
 
                 Attributes.addClass(tag, color().cssClassName());
-
-                tag.put("style", createStyleValue().getObject());
             }
         };
+        barMarkupId = bar.getMarkupId(true);
+        return bar;
     }
 
     @Override
@@ -138,10 +141,6 @@ public class UploadProgressBar extends org.apache.wicket.extensions.ajax.markup.
         MarkupContainer status = super.newStatusComponent(id);
         status.setVisible(false);
         return status;
-    }
-
-    private IModel<String> createStyleValue() {
-        return Model.of(String.format("width: %s%%", value()));
     }
 
     /**
@@ -197,5 +196,6 @@ public class UploadProgressBar extends org.apache.wicket.extensions.ajax.markup.
 
         // monkey patches the JavaScript provided by super.renderHead(response)
         response.render(JavaScriptHeaderItem.forReference(new UploadProgressBarJavaScriptReference()));
+        response.render(OnDomReadyHeaderItem.forScript("Wicket.WUPB.prototype.setPercent(" + getDefaultModelObject() + ", '" + barMarkupId + "');"));
     }
 }

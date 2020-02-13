@@ -12,10 +12,10 @@ import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.util.tester.TagTester;
+import org.junit.jupiter.api.Test;
 
 import de.agilecoders.wicket.core.WicketApplicationTest;
 import de.agilecoders.wicket.core.markup.html.bootstrap.components.progress.UploadProgressBar;
-import org.junit.jupiter.api.Test;
 
 /**
  * Tests the {@link RichPopoverBehavior}
@@ -49,6 +49,6 @@ class RichPopoverBehaviorTest extends WicketApplicationTest {
         TagTester tag = tester().getTagByWicketId(id());
         assertThat(tag.getAttribute("data-content"), startsWith("<wicket:div wicket:id=\"compId\" class=\"progress\"><wicket:panel>"));
         assertThat(tag.getAttribute("data-content"), endsWith("</wicket:panel></wicket:div>"));
-        assertThat(tag.getAttribute("data-content"), containsString("<div wicket:id=\"bar\" class=\"progress-bar bg-secondary\" style=\"width: 50%\""));
+        assertThat(tag.getAttribute("data-content"), containsString("<div wicket:id=\"bar\" class=\"progress-bar bg-secondary\" "));
     }
 }
