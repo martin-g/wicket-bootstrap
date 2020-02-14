@@ -1,7 +1,5 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.components.progress;
 
-import de.agilecoders.wicket.core.markup.html.bootstrap.utilities.BackgroundColorBehavior;
-import de.agilecoders.wicket.core.util.Attributes;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
@@ -13,10 +11,15 @@ import org.apache.wicket.util.lang.Objects;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import de.agilecoders.wicket.core.markup.html.bootstrap.utilities.BackgroundColorBehavior;
+import de.agilecoders.wicket.core.util.Attributes;
+
 /**
- * A component for <a href="http://getbootstrap.com/components/#progress">Progress bars</a>
+ * A component for <a href="https://getbootstrap.com/docs/4.4/components/progress/">Progress bars</a>
  */
 public class ProgressBar extends GenericPanel<Integer> {
+    private static final long serialVersionUID = 1L;
+
     private static final Logger LOG = LoggerFactory.getLogger(ProgressBar.class);
 
     public static final int MIN = 0;

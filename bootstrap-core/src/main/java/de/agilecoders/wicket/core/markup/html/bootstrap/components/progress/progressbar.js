@@ -14,8 +14,8 @@
 //        console.log('setStatus', status);
     }
 
-    Wicket.WUPB.prototype.setPercent = function(percent) {
-        var tab = $('#' + this.barid);
+    Wicket.WUPB.prototype.setPercent = function(percent, customId) {
+        var tab = $('#' + (customId || this.barid));
         tab.css({width: percent + '%'});
     }
 

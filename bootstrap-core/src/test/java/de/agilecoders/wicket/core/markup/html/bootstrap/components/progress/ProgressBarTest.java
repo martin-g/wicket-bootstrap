@@ -3,10 +3,10 @@ package de.agilecoders.wicket.core.markup.html.bootstrap.components.progress;
 import org.apache.wicket.markup.repeater.RepeatingView;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.util.tester.TagTester;
+import org.junit.jupiter.api.Test;
 
 import de.agilecoders.wicket.core.WicketApplicationTest;
 import de.agilecoders.wicket.core.markup.html.bootstrap.utilities.BackgroundColorBehavior;
-import org.junit.jupiter.api.Test;
 
 /**
  * Tests for ProgressBar
@@ -54,7 +54,6 @@ class ProgressBarTest extends WicketApplicationTest {
         assertEquals("progress", progressBarTester.getAttribute("class"));
         TagTester stackTester = progressBarTester.getChild("class", "progress-bar progress-bar-active progress-bar-striped bg-danger");
         assertEquals("progressbar", stackTester.getAttribute("role"));
-        assertEquals("width: "+progress+"%", stackTester.getAttribute("style"));
         assertEquals("" + progress, stackTester.getAttribute("aria-valuenow"));
         assertEquals("" + ProgressBar.MIN, stackTester.getAttribute("aria-valuemin"));
         assertEquals("" + ProgressBar.MAX, stackTester.getAttribute("aria-valuemax"));

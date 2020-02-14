@@ -1,10 +1,13 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.components.progress;
 
+import java.time.Duration;
+
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.AjaxSelfUpdatingTimerBehavior;
 import org.apache.wicket.core.request.handler.IPartialPageRequestHandler;
 import org.apache.wicket.model.IModel;
-import java.time.Duration;
+
+import de.agilecoders.wicket.core.markup.html.bootstrap.utilities.BackgroundColorBehavior;
 
 /**
  * A {@link de.agilecoders.wicket.core.markup.html.bootstrap.components.progress.ProgressBar} with
@@ -23,12 +26,18 @@ public abstract class UpdatableProgressBar extends ProgressBar {
     }
 
     public UpdatableProgressBar(String id, IModel<Integer> model) {
-        super(id, model);
+        this(id, model, BackgroundColorBehavior.Color.Secondary, false);
+    }
+
+    public UpdatableProgressBar(String id, IModel<Integer> model, BackgroundColorBehavior.Color color, boolean labeled) {
+        super(id, model, color, labeled);
 
         setOutputMarkupId(true);
         active(true);
 
         behavior = new UpdateBehavior(updateInterval) {
+            private static final long serialVersionUID = 1L;
+
             @Override
             protected void onPostProcessTarget(AjaxRequestTarget target) {
                 super.onPostProcessTarget(target);
@@ -46,6 +55,16 @@ public abstract class UpdatableProgressBar extends ProgressBar {
 
     public UpdatableProgressBar updateInterval(Duration updateInterval) {
         behavior.updateInterval(updateInterval);
+        return this;
+    }
+
+    public UpdatableProgressBar stop(IPartialPageRequestHandler target) {
+        behavior.stop(target);
+        return this;
+    }
+
+    public UpdatableProgressBar restart(IPartialPageRequestHandler target) {
+        behavior.restart(target);
         return this;
     }
 
