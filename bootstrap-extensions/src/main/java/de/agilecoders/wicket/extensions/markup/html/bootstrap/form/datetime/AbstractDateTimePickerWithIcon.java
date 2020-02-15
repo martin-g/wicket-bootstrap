@@ -4,6 +4,7 @@ import org.apache.wicket.Component;
 import org.apache.wicket.MarkupContainer;
 import org.apache.wicket.behavior.AttributeAppender;
 import org.apache.wicket.markup.html.WebMarkupContainer;
+import org.apache.wicket.markup.html.form.FormComponent;
 import org.apache.wicket.markup.html.form.FormComponentPanel;
 import org.apache.wicket.model.IModel;
 
@@ -22,6 +23,7 @@ public abstract class AbstractDateTimePickerWithIcon<T> extends FormComponentPan
     private static final long serialVersionUID = 1L;
 
     private DatetimePickerConfig config;
+    private FormComponent<T> dateInput;
 
     /**
      * Construct.
@@ -46,10 +48,24 @@ public abstract class AbstractDateTimePickerWithIcon<T> extends FormComponentPan
         this.config = config;
     }
 
+	private FormComponent<T> getDateInput() {
+        if (dateInput == null) {
+            dateInput = newInput("date", config.getFormat());
+            dateInput.setModel(getModel());
+            dateInput.add(new DatetimePickerBehavior(config));
+        }
+        return dateInput;
+    }
+
+    @Override
+    public void convertInput() {
+        setConvertedInput(getDateInput().getConvertedInput());
+    }
+
     @Override
     protected void onInitialize() {
         super.onInitialize();
-        Component input = newInput("date", config.getFormat()).add(new DatetimePickerBehavior(config));
+        Component input = getDateInput();
         if (config.getMaskInput()) {
             input.add(config.newMaskBehavior());
         }
@@ -90,7 +106,7 @@ public abstract class AbstractDateTimePickerWithIcon<T> extends FormComponentPan
      * @param dateFormat datetime format
      * @return new input text field
      */
-    abstract protected Component newInput(String wicketId, String dateFormat);
+    abstract protected FormComponent<T> newInput(String wicketId, String dateFormat);
 
     /**
      * Creates new container for icon.
@@ -115,5 +131,11 @@ public abstract class AbstractDateTimePickerWithIcon<T> extends FormComponentPan
      */
     protected IconType newIconType() {
         return FontAwesomeIconType.calendar;
+    }
+
+    @Override
+    public FormComponent<T> setLabel(IModel<String> labelModel) {
+        getDateInput().setLabel(labelModel);
+        return super.setLabel(labelModel);
     }
 }

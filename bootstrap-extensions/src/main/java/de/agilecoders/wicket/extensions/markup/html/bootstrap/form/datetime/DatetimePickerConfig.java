@@ -447,7 +447,7 @@ public class DatetimePickerConfig extends AbstractConfig {
      * @return java date format
      */
     public static String toJavaDateFormat(final String javaScriptDateFormat) {
-        return nullToEmpty(javaScriptDateFormat).replace('D', 'd').replace('Y', 'y');
+        return nullToEmpty(javaScriptDateFormat).replace('D', 'd').replace('Y', 'y').replace('A', 'a');
     }
 
     /**
@@ -457,7 +457,7 @@ public class DatetimePickerConfig extends AbstractConfig {
      * @return java script date format
      */
     public static String toJavaScriptDateFormat(final String javaDateFormat) {
-        return nullToEmpty(javaDateFormat).replace('d', 'D').replace('y', 'Y');
+        return nullToEmpty(javaDateFormat).replace('d', 'D').replace('y', 'Y').replace('a', 'A');
     }
 
     /**

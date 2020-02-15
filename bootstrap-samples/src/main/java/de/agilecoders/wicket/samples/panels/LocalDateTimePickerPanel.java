@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.extensions.markup.html.form.datetime.LocalDateTimeTextField;
+import org.apache.wicket.markup.html.form.FormComponent;
 import org.apache.wicket.model.IModel;
 
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.datetime.AbstractDateTimePickerWithIcon;
@@ -36,7 +37,7 @@ public class LocalDateTimePickerPanel extends AbstractDatetimePickerPanel<LocalD
             private static final long serialVersionUID = 1L;
 
             @Override
-            protected Component newInput(String wicketId, String dateFormat) {
+            protected FormComponent<LocalDateTime> newInput(String wicketId, String dateFormat) {
                 return new LocalDateTimeTextField(wicketId, getModel(), dateFormat);
             }
         };

@@ -4,6 +4,7 @@ import java.util.Date;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.extensions.markup.html.form.DateTextField;
+import org.apache.wicket.markup.html.form.FormComponent;
 import org.apache.wicket.model.IModel;
 
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.datetime.AbstractDateTimePickerWithIcon;
@@ -36,7 +37,7 @@ public class DatetimePickerPanel extends AbstractDatetimePickerPanel<Date> {
             private static final long serialVersionUID = 1L;
 
             @Override
-            protected Component newInput(String wicketId, String dateFormat) {
+            protected FormComponent<Date> newInput(String wicketId, String dateFormat) {
                 return new DateTextField(wicketId, getModel(), dateFormat);
             }
         };
