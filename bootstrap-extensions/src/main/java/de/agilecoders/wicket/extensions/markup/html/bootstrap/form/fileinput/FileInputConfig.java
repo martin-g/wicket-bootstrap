@@ -41,9 +41,11 @@ public class FileInputConfig extends AbstractConfig {
 
     public static final IKey<String> BrowseIcon = newKey("browseIcon", "<i class=\"glyphicon glyphicon-folder-open\"></i> &nbsp;");
 
-    public static final IKey<String> RemoveIcon = newKey("removeIcon", "<i class=\"glyphicon glyphicon-ban-circle\"></i> &nbsp;");
+    public static final IKey<String> RemoveIcon = newKey("removeIcon", "<i class=\"glyphicon glyphicon-trash\"></i> &nbsp;");
 
     public static final IKey<String> UploadIcon = newKey("uploadIcon", "<i class=\"glyphicon glyphicon-upload\"></i> &nbsp;");
+
+    public static final IKey<String> CancelIcon = newKey("cancelIcon", "<i class=\"glyphicon glyphicon-ban-circle\"></i> &nbsp;");
 
     public static final IKey<String> PreviewFileType = newKey("previewFileType", "image");
 
@@ -137,6 +139,11 @@ public class FileInputConfig extends AbstractConfig {
 
     public FileInputConfig browseIcon(String browseIcon) {
         put(BrowseIcon, browseIcon);
+        return this;
+    }
+
+    public FileInputConfig cancelIcon(String cancelIcon) {
+        put(CancelIcon, cancelIcon);
         return this;
     }
 
