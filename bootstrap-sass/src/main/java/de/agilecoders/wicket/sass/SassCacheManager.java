@@ -144,14 +144,14 @@ public class SassCacheManager {
                             // one the file system, e.g. when it is loaded from a JAR.
                             // In this execution path, local imports are not supported, but they
                             // should usually be substitutable by package imports.
-                            String scssConcent;
+                            String scssContent;
                             try (InputStream is = sassSource.getURL().openStream()) {
-                                scssConcent = IOUtils.toString(is, StandardCharsets.UTF_8);
+                                scssContent = IOUtils.toString(is, StandardCharsets.UTF_8);
                             } catch (IOException e) {
                                 throw new WicketRuntimeException("Cannot read SASS resource "
                                         + sassSource.getURL().toExternalForm() + ". ", e);
                             }
-                            result = compiler.compileString(scssConcent, options);
+                            result = compiler.compileString(scssContent, options);
                         }
                         sassSource.addImportedSources(trackingImporter.getImportedSources());
                         cssContent = result.getCss();
