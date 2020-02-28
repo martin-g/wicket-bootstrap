@@ -46,8 +46,8 @@
 
         <bootstrap.version>4.3.1</bootstrap.version>
         <config.version>0.3.5</config.version>
-        <wicket-webjars.version>2.0.16</wicket-webjars.version>
-        <wicket-jquery-selectors.version>2.0.7</wicket-jquery-selectors.version>
+        <wicket-webjars.version>3.0.0-M4</wicket-webjars.version>
+        <wicket-jquery-selectors.version>3.0.0-M4</wicket-jquery-selectors.version>
 
         <enforcer.disable>true</enforcer.disable>
         <pmd.disable>true</pmd.disable>
