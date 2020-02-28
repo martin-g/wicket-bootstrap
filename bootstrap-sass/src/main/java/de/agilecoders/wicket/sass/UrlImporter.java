@@ -196,7 +196,9 @@ class UrlImporter implements Importer {
 
     private Optional<Import> resolveJarDependency(String url) {
         LOG.debug("Going to resolve an import from jar file: {}", url);
-        int jarSchemeIndex = url.indexOf(JAR_SCHEME);
+        // Using the last index here because in FAT JARs (e.g Spring Boot), there can be multiple
+        // nested JARs
+        int jarSchemeIndex = url.lastIndexOf(JAR_SCHEME);
         if (jarSchemeIndex == -1) {
             return Optional.empty();
         }
