@@ -1,12 +1,15 @@
 package de.agilecoders.wicket.sass;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.Collection;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
+import org.apache.commons.io.IOUtils;
 import org.apache.wicket.Application;
 import org.apache.wicket.MetaDataKey;
 import org.apache.wicket.WicketRuntimeException;
@@ -130,7 +133,26 @@ public class SassCacheManager {
                     options.setOmitSourceMapUrl(false);
 
                     try {
-                        Output result = compiler.compileFile(sassSource.getURL().toURI(), null, options);
+                        Output result;
+                        if (sassSource.getURL().toURI().toString().startsWith("file:")) {
+                            // In this execution path, all types of imports including local imports
+                            // are supported
+                            result = compiler.compileFile(sassSource.getURL().toURI(), null, options);
+                        }
+                        else {
+                            // This execution path is used when the SCSS resource does not reside
+                            // one the file system, e.g. when it is loaded from a JAR.
+                            // In this execution path, local imports are not supported, but they
+                            // should usually be substitutable by package imports.
+                            String scssConcent;
+                            try (InputStream is = sassSource.getURL().openStream()) {
+                                scssConcent = IOUtils.toString(is, StandardCharsets.UTF_8);
+                            } catch (IOException e) {
+                                throw new WicketRuntimeException("Cannot read SASS resource "
+                                        + sassSource.getURL().toExternalForm() + ". ", e);
+                            }
+                            result = compiler.compileString(scssConcent, options);
+                        }
                         sassSource.addImportedSources(trackingImporter.getImportedSources());
                         cssContent = result.getCss();
 
@@ -143,7 +165,7 @@ public class SassCacheManager {
                         throw new WicketRuntimeException("Cannot create URI for resource.", ex);
                     } catch (CompilationException x) {
                         throw new WicketRuntimeException(
-                                "An error occurred while compiling Less resource " +
+                                "An error occurred while compiling SASS resource " +
                                 sassSource.getURL().toExternalForm() + ". " + x.getErrorJson(), x);
                     }
                 }
