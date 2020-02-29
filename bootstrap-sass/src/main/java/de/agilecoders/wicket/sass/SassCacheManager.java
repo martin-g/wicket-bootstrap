@@ -2,6 +2,7 @@ package de.agilecoders.wicket.sass;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
@@ -37,7 +38,7 @@ public class SassCacheManager {
     /**
      * A cache that keeps the root SassSource instance per URL.
      */
-    private final ConcurrentMap<URL, SassSource> urlSourceCache =
+    private final ConcurrentMap<String, SassSource> urlSourceCache =
             new ConcurrentHashMap<>();
 
     /**
@@ -79,13 +80,7 @@ public class SassCacheManager {
      * @return The SassSource for the Sass resource file
      */
     public SassSource getSassContext(URL sassUrl, String scopeClass) {
-        SassSource sassSource = new SassSource(sassUrl.toExternalForm(), scopeClass);
-        SassSource oldValue = urlSourceCache.putIfAbsent(sassUrl, sassSource);
-        if (oldValue != null) {
-            sassSource = oldValue;
-        }
-
-        return sassSource;
+        return urlSourceCache.computeIfAbsent(sassUrl.toExternalForm(), externalForm -> new SassSource(externalForm, scopeClass));
     }
 
     /**
@@ -115,6 +110,7 @@ public class SassCacheManager {
             // more.
             // Recompile the cached sassSource will append imports once more and we will end up with
             // multiple import references, if there are any in the Sass file.
+            final URL sassSourceURL = sassSource.getURL();
             synchronized (sassSource) {
                 lastModifiedTime = getLastModifiedTime(sassSource);
                 cssContent = timeToContentMap.get(lastModifiedTime);
@@ -134,10 +130,11 @@ public class SassCacheManager {
 
                     try {
                         Output result;
-                        if (sassSource.getURL().toURI().toString().startsWith("file:")) {
+                        final URI sassSourceURI = sassSourceURL.toURI();
+                        if (sassSourceURI.toString().startsWith("file:")) {
                             // In this execution path, all types of imports including local imports
                             // are supported
-                            result = compiler.compileFile(sassSource.getURL().toURI(), null, options);
+                            result = compiler.compileFile(sassSourceURI, null, options);
                         }
                         else {
                             // This execution path is used when the SCSS resource does not reside
@@ -145,11 +142,11 @@ public class SassCacheManager {
                             // In this execution path, local imports are not supported, but they
                             // should usually be substitutable by package imports.
                             String scssContent;
-                            try (InputStream is = sassSource.getURL().openStream()) {
+                            try (InputStream is = sassSourceURL.openStream()) {
                                 scssContent = IOUtils.toString(is, StandardCharsets.UTF_8);
                             } catch (IOException e) {
                                 throw new WicketRuntimeException("Cannot read SASS resource "
-                                        + sassSource.getURL().toExternalForm() + ". ", e);
+                                                                 + sassSourceURL.toExternalForm() + ".", e);
                             }
                             result = compiler.compileString(scssContent, options);
                         }
@@ -165,8 +162,8 @@ public class SassCacheManager {
                         throw new WicketRuntimeException("Cannot create URI for resource.", ex);
                     } catch (CompilationException x) {
                         throw new WicketRuntimeException(
-                                "An error occurred while compiling SASS resource " +
-                                sassSource.getURL().toExternalForm() + ". " + x.getErrorJson(), x);
+                            "An error occurred while compiling SASS resource " +
+                            sassSourceURL.toExternalForm() + ". " + x.getErrorJson(), x);
                     }
                 }
             }
@@ -202,10 +199,9 @@ public class SassCacheManager {
             if (importedSources != null) {
 
                 SassSource[] importedSourcesArray = importedSources.toArray(new SassSource[0]);
-                int size = importedSourcesArray.length;
 
-                for (int i = 0; i < size; i++) {
-                    max = findLastModified(importedSourcesArray[i], max);
+                for (SassSource sassSource : importedSourcesArray) {
+                    max = findLastModified(sassSource, max);
                 }
             }
         } catch (IOException iox) {
