@@ -2,6 +2,7 @@ package de.agilecoders.wicket.sass;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
@@ -15,6 +16,7 @@ import org.apache.wicket.MetaDataKey;
 import org.apache.wicket.WicketRuntimeException;
 import org.apache.wicket.util.io.Connections;
 import org.apache.wicket.util.time.Time;
+import org.apache.wicket.util.value.LongValue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -115,6 +117,7 @@ public class SassCacheManager {
             // more.
             // Recompile the cached sassSource will append imports once more and we will end up with
             // multiple import references, if there are any in the Sass file.
+            final URL sassSourceURL = sassSource.getURL();
             synchronized (sassSource) {
                 lastModifiedTime = getLastModifiedTime(sassSource);
                 cssContent = timeToContentMap.get(lastModifiedTime);
@@ -134,10 +137,11 @@ public class SassCacheManager {
 
                     try {
                         Output result;
-                        if (sassSource.getURL().toURI().toString().startsWith("file:")) {
+                        final URI sassSourceURI = sassSourceURL.toURI();
+                        if (sassSourceURI.toString().startsWith("file:")) {
                             // In this execution path, all types of imports including local imports
                             // are supported
-                            result = compiler.compileFile(sassSource.getURL().toURI(), null, options);
+                            result = compiler.compileFile(sassSourceURI, null, options);
                         }
                         else {
                             // This execution path is used when the SCSS resource does not reside
@@ -145,11 +149,11 @@ public class SassCacheManager {
                             // In this execution path, local imports are not supported, but they
                             // should usually be substitutable by package imports.
                             String scssContent;
-                            try (InputStream is = sassSource.getURL().openStream()) {
+                            try (InputStream is = sassSourceURL.openStream()) {
                                 scssContent = IOUtils.toString(is, StandardCharsets.UTF_8);
                             } catch (IOException e) {
                                 throw new WicketRuntimeException("Cannot read SASS resource "
-                                        + sassSource.getURL().toExternalForm() + ". ", e);
+                                                                 + sassSourceURL.toExternalForm() + ".", e);
                             }
                             result = compiler.compileString(scssContent, options);
                         }
@@ -165,8 +169,8 @@ public class SassCacheManager {
                         throw new WicketRuntimeException("Cannot create URI for resource.", ex);
                     } catch (CompilationException x) {
                         throw new WicketRuntimeException(
-                                "An error occurred while compiling SASS resource " +
-                                sassSource.getURL().toExternalForm() + ". " + x.getErrorJson(), x);
+                            "An error occurred while compiling SASS resource " +
+                            sassSourceURL.toExternalForm() + ". " + x.getErrorJson(), x);
                     }
                 }
             }
@@ -196,16 +200,15 @@ public class SassCacheManager {
         Time max = time;
         try {
             Time lastModified = Connections.getLastModified(source.getURL());
-            max = Time.maxNullSafe(time, lastModified);
+            max = LongValue.maxNullSafe(time, lastModified);
 
             Collection<SassSource> importedSources = source.getImportedSources();
             if (importedSources != null) {
 
                 SassSource[] importedSourcesArray = importedSources.toArray(new SassSource[0]);
-                int size = importedSourcesArray.length;
 
-                for (int i = 0; i < size; i++) {
-                    max = findLastModified(importedSourcesArray[i], max);
+                for (SassSource sassSource : importedSourcesArray) {
+                    max = findLastModified(sassSource, max);
                 }
             }
         } catch (IOException iox) {
