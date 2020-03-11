@@ -35,16 +35,6 @@ public class AjaxBootstrapTabbedPanel<T extends ITab> extends BootstrapTabbedPan
 		setVersioned(false);
 	}
 
-    @Override
-    protected LoopItem newTabContainer(int tabIndex) {
-        final LoopItem tabContainer = super.newTabContainer(tabIndex);
-
-        // Remove the .active class added by Wicket from the wrapping <li>
-        tabContainer.add(new CssClassNameRemover("active"));
-
-        return tabContainer;
-    }
-
 	@Override
 	protected WebMarkupContainer newLink(final String linkId, final int index) {
 		return new AjaxFallbackLink<Void>(linkId) {
