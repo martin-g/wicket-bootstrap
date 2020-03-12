@@ -9,6 +9,7 @@ import com.google.common.base.Strings;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNameProvider;
+import de.agilecoders.wicket.core.util.Attributes;
 import de.agilecoders.wicket.core.util.Components;
 import de.agilecoders.wicket.core.util.CssClassNames;
 
@@ -137,13 +138,15 @@ public class ButtonBehavior extends BootstrapBaseBehavior {
 
         Components.assertTag(component, tag, "a", "button", "input");
 
-        // a menu button has no css classes, inherits its styles from the menu
-//        if (!Buttons.Type.Menu.equals(getType())) {
+        // a menu button has no button-related css classes, inherits its styles from the menu
+        if (!Buttons.Type.Menu.equals(getType())) {
             Buttons.onComponentTag(component, tag,
                                    buttonSize.getObject(),
                                    buttonType.getObject(),
                                    blockProvider);
-//        }
+        } else {
+            Attributes.addClass(tag, buttonType.getObject());
+        }
     }
 
     @Override
