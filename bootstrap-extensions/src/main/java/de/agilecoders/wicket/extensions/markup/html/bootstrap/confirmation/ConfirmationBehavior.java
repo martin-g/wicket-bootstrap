@@ -46,15 +46,21 @@ public class ConfirmationBehavior extends BootstrapJavascriptBehavior {
         this.config = Args.notNull(config, "config");
         this.selector = selector;
     }
-    
+
     @Override
     public void renderHead(Component component, IHeaderResponse response) {
         super.renderHead(component, response);
 
         References.renderWithFilter(response, JavaScriptHeaderItem.forReference(new JQueryPluginResourceReference(ConfirmationBehavior.class, "bootstrap-confirmation.js")));
         if (selector == null) {
+            if (config.isSingleton() || config.isPopout()) {
+                config.withRootSelector("#" + component.getMarkupId());
+            }
             response.render($(component).chain("confirmation", config).asDomReadyScript());
         } else {
+            if (config.isSingleton() || config.isPopout()) {
+                config.withRootSelector(selector);
+            }
             response.render($(selector).chain("confirmation", config).asDomReadyScript());
         }
     }

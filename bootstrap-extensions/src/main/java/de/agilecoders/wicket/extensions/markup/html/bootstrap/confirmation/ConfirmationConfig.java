@@ -14,16 +14,22 @@ import org.apache.wicket.util.lang.Args;
  */
 public class ConfirmationConfig extends AbstractConfig {
 
-    private static final IKey<String> Title = new Key<String>("title", "Are you sure?");
-    private static final IKey<Boolean> Singleton = new Key<Boolean>("singleton", Boolean.FALSE);
-    private static final IKey<Boolean> Popout = new Key<Boolean>("popout", Boolean.FALSE);
-    private static final IKey<String> BtnOkClass = new Key<String>("btnOkClass", "btn-xs btn-primary");
-    private static final IKey<String> BtnOkIcon = new Key<String>("btnOkIcon", "glyphicon glyphicon-ok");
-    private static final IKey<String> BtnOkLabel = new Key<String>("btnOkLabel", "Yes");
-    private static final IKey<String> BtnCancelClass = new Key<String>("btnCancelClass", "btn-xs btn-default");
-    private static final IKey<String> BtnCancelIcon = new Key<String>("btnCancelIcon", "glyphicon glyphicon-remove");
-    private static final IKey<String> BtnCancelLabel = new Key<String>("btnCancelLabel", "No");
-    private static final IKey<TooltipConfig.Placement> Placement = new Key<TooltipConfig.Placement>("placement", TooltipConfig.Placement.top);
+    private static final IKey<String> Title = new Key<>("title", "Are you sure?");
+    private static final IKey<Boolean> Singleton = new Key<>("singleton", Boolean.FALSE);
+    private static final IKey<Boolean> Popout = new Key<>("popout", Boolean.FALSE);
+    private static final IKey<String> BtnOkClass = new Key<>("btnOkClass", "btn-xs btn-primary");
+    private static final IKey<String> BtnOkIcon = new Key<>("btnOkIcon", "glyphicon glyphicon-ok");
+    private static final IKey<String> BtnOkLabel = new Key<>("btnOkLabel", "Yes");
+    private static final IKey<String> BtnCancelClass = new Key<>("btnCancelClass", "btn-xs btn-default");
+    private static final IKey<String> BtnCancelIcon = new Key<>("btnCancelIcon", "glyphicon glyphicon-remove");
+    private static final IKey<String> BtnCancelLabel = new Key<>("btnCancelLabel", "No");
+    private static final IKey<TooltipConfig.Placement> Placement = new Key<>("placement", TooltipConfig.Placement.top);
+    private static final IKey<String> RootSelector = new Key<>("rootSelector", null);
+
+    public ConfirmationConfig withRootSelector(String rootSelector) {
+        put(RootSelector, rootSelector);
+        return this;
+    }
 
     public ConfirmationConfig withTitle(String title) {
         put(Title, title);
@@ -65,9 +71,17 @@ public class ConfirmationConfig extends AbstractConfig {
         return this;
     }
 
+    public boolean isSingleton() {
+        return get(Singleton);
+    }
+
     public ConfirmationConfig withPopout(boolean popout) {
         put(Popout, popout);
         return this;
+    }
+
+    public boolean isPopout() {
+        return get(Popout);
     }
 
     public ConfirmationConfig withPlacement(TooltipConfig.Placement placement) {
