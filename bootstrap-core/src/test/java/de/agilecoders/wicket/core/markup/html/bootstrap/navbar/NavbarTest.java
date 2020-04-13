@@ -7,6 +7,7 @@ import org.apache.wicket.Page;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.util.tester.TagTester;
 import org.apache.wicket.util.visit.IVisitor;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -86,6 +87,7 @@ class NavbarTest extends WicketApplicationTest {
         assertThat(tagTester.getAttribute("class"), is(equalTo(("container-fluid"))));
     }
 
+    @Disabled // until Wicket 9.0.0-M5+
     @Test
     void initialLeftNavigationIsEmpty() {
         Navbar navbar = new Navbar("id");
@@ -94,7 +96,7 @@ class NavbarTest extends WicketApplicationTest {
         System.err.println(tester().getLastResponseAsString());
 
         TagTester tagTester = tester().getTagByWicketId("collapse");
-        TagTester ulTag = tagTester.getChild("style", "display:none");
+        TagTester ulTag = tagTester.getChild("hidden", "");
 
         assertThat(ulTag.getValue(), is(equalTo("")));
         assertThat(ulTag.getName(), is(equalTo("ul")));
