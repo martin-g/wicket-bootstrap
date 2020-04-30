@@ -219,7 +219,7 @@ public class ExtensionsPage extends BasePage {
         final NotificationPanel feedback = new NotificationPanel("ratingFeedback");
         feedback.setOutputMarkupId(true);
         RatingConfig config = new RatingConfig();
-        config.withStart(0).withStop(10).withStep(2).withFilled("fa fa-star fa-3x").withEmpty("fa fa-star-o fa-3x");
+        config.withStart(0).withStop(10).withStep(2).withFilled("fas fa-star fa-3x").withEmpty("far fa-star fa-3x");
         RatingField<String> rating = new RatingField<String>("rating", Model.of(""), config) {
 
             private static final long serialVersionUID = 1L;
