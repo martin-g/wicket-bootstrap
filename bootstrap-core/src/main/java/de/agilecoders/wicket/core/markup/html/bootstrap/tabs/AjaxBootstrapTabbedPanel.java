@@ -1,6 +1,5 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.tabs;
 
-import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.CssClassNameAppender;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxFallbackLink;
 import org.apache.wicket.extensions.ajax.markup.html.tabs.AjaxTabbedPanel;
@@ -35,21 +34,9 @@ public class AjaxBootstrapTabbedPanel<T extends ITab> extends BootstrapTabbedPan
 
 	@Override
 	protected WebMarkupContainer newLink(final String linkId, final int index) {
-		return new AjaxFallbackLink<Void>(linkId) {
+		final WebMarkupContainer link =  new AjaxFallbackLink<Void>(linkId) {
 
 			private static final long serialVersionUID = 1L;
-
-            @Override
-            protected void onConfigure() {
-                super.onConfigure();
-
-                final int currentlyActiveTab = AjaxBootstrapTabbedPanel.this.getSelectedTab();
-
-                if (index == currentlyActiveTab) {
-                    // Add the .active class to the <a>
-                    add(new CssClassNameAppender("active"));
-                }
-            }
 
 			@Override
 			public void onClick(final Optional<AjaxRequestTarget> targetOptional) {
@@ -57,8 +44,9 @@ public class AjaxBootstrapTabbedPanel<T extends ITab> extends BootstrapTabbedPan
 				targetOptional.ifPresent(target -> target.add(AjaxBootstrapTabbedPanel.this));
 				onAjaxUpdate(targetOptional);
 			}
-
 		};
+
+		return addSelectedTabBehavior(link, index);
 	}
 
 	/**
