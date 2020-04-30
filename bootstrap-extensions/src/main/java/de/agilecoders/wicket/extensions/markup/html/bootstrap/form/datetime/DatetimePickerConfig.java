@@ -64,6 +64,7 @@ public class DatetimePickerConfig extends AbstractConfig {
     private static final IKey<Boolean> UseCurrent = newKey("useCurrent", true);
     private static final IKey<Boolean> CalendarWeeks = newKey("calendarWeeks", false);
     private static final IKey<Integer> MinuteStepping = newKey("stepping", 1);
+    private static final IKey<String> Date = newKey("date", null);
     private static final IKey<String> MinDate = newKey("minDate", null);
     private static final IKey<String> MaxDate = newKey("maxDate", null);
     private static final IKey<String> DefaultDate = newKey("defaultDate", null);
@@ -297,6 +298,39 @@ public class DatetimePickerConfig extends AbstractConfig {
      */
     public DatetimePickerConfig withMaxDate(LocalDateTime maxDate) {
         put(MaxDate, ISO_LOCAL_DATE_TIME.format(maxDate));
+        return this;
+    }
+
+    /**
+     * Set date.
+     *
+     * @param date date
+     * @return config instance
+     */
+    public DatetimePickerConfig withDate(Date date) {
+        put(Date, defaultDateValueFormatter().format(date));
+        return this;
+    }
+
+    /**
+     * Set date.
+     *
+     * @param date date
+     * @return config instance
+     */
+    public DatetimePickerConfig withDate(LocalDate date) {
+        put(Date, ISO_LOCAL_DATE.format(date));
+        return this;
+    }
+
+    /**
+     * Set date.
+     *
+     * @param date date
+     * @return config instance
+     */
+    public DatetimePickerConfig withDate(LocalDateTime date) {
+        put(Date, ISO_LOCAL_DATE_TIME.format(date));
         return this;
     }
 
