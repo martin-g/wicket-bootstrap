@@ -67,8 +67,8 @@ public class CheckBoxXConfig extends AbstractConfig {
      * Default constructor
      */
     public CheckBoxXConfig() {
-        withIconNull("<i class='fa fa-stop'></i>");
-        withIconChecked("<i class='fa fa-check'></i>");
+        withIconNull("<i class='fas fa-stop'></i>");
+        withIconChecked("<i class='fas fa-check'></i>");
     }
 
     /**

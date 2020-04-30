@@ -1,5 +1,6 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.form.checkboxx;
 
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesome5CssReference;
 import org.apache.wicket.ajax.AjaxEventBehavior;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.attributes.AjaxRequestAttributes;
@@ -18,8 +19,6 @@ import org.apache.wicket.util.convert.IConverter;
 import org.apache.wicket.util.string.StringValue;
 
 import java.util.Locale;
-
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeCssReference;
 
 import static de.agilecoders.wicket.jquery.JQuery.$;
 
@@ -131,7 +130,7 @@ public class CheckBoxX extends CheckBox {
     public void renderHead(IHeaderResponse response) {
         super.renderHead(response);
 
-        response.render(CssHeaderItem.forReference(FontAwesomeCssReference.instance()));
+        response.render(CssHeaderItem.forReference(FontAwesome5CssReference.instance()));
         response.render(CssHeaderItem.forReference(new CssResourceReference(CheckBoxX.class, "css/checkbox-x.css")));
         response.render(JavaScriptHeaderItem.forReference(new JQueryPluginResourceReference(CheckBoxX.class, "js/checkbox-x.js")));
 
