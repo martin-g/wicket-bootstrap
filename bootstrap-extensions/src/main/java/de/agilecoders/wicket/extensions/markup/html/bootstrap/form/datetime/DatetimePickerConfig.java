@@ -1,24 +1,18 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.form.datetime;
 
-import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapJavascriptBehavior;
-import de.agilecoders.wicket.core.util.Attributes;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.inputmask.InputMaskBehavior;
 import de.agilecoders.wicket.jquery.AbstractConfig;
 import de.agilecoders.wicket.jquery.IKey;
-import de.agilecoders.wicket.webjars.request.resource.WebjarsCssResourceReference;
-import de.agilecoders.wicket.webjars.request.resource.WebjarsJavaScriptResourceReference;
-
-import org.apache.wicket.Component;
 import org.apache.wicket.behavior.Behavior;
-import org.apache.wicket.markup.ComponentTag;
-import org.apache.wicket.markup.head.CssHeaderItem;
-import org.apache.wicket.markup.head.IHeaderResponse;
-import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 import static de.agilecoders.wicket.jquery.util.Strings2.nullToEmpty;
+import static java.time.format.DateTimeFormatter.ISO_LOCAL_DATE;
+import static java.time.format.DateTimeFormatter.ISO_LOCAL_DATE_TIME;
 
 /**
  * Config of datetime picker plugin.
@@ -62,6 +56,7 @@ public class DatetimePickerConfig extends AbstractConfig {
     private static final IKey<Boolean> UseCurrent = newKey("useCurrent", true);
     private static final IKey<Boolean> CalendarWeeks = newKey("calendarWeeks", false);
     private static final IKey<Integer> MinuteStepping = newKey("stepping", 1);
+    private static final IKey<String> Date = newKey("date", null);
     private static final IKey<String> MinDate = newKey("minDate", null);
     private static final IKey<String> MaxDate = newKey("maxDate", null);
     private static final IKey<String> DefaultDate = newKey("defaultDate", null);
@@ -219,6 +214,61 @@ public class DatetimePickerConfig extends AbstractConfig {
      */
     public DatetimePickerConfig withMaxDate(Date maxDate) {
         put(MaxDate, defaultDateValueFormatter().format(maxDate));
+        return this;
+    }
+
+    /**
+     * Set maximum date.
+     *
+     * @param maxDate maximum date
+     * @return config instance
+     */
+    public DatetimePickerConfig withMaxDate(LocalDate maxDate) {
+        put(MaxDate, ISO_LOCAL_DATE.format(maxDate));
+        return this;
+    }
+
+    /**
+     * Set maximum date.
+     *
+     * @param maxDate maximum date
+     * @return config instance
+     */
+    public DatetimePickerConfig withMaxDate(LocalDateTime maxDate) {
+        put(MaxDate, ISO_LOCAL_DATE_TIME.format(maxDate));
+        return this;
+    }
+
+    /**
+     * Set date.
+     *
+     * @param date date
+     * @return config instance
+     */
+    public DatetimePickerConfig withDate(Date date) {
+        put(Date, defaultDateValueFormatter().format(date));
+        return this;
+    }
+
+    /**
+     * Set date.
+     *
+     * @param date date
+     * @return config instance
+     */
+    public DatetimePickerConfig withDate(LocalDate date) {
+        put(Date, ISO_LOCAL_DATE.format(date));
+        return this;
+    }
+
+    /**
+     * Set date.
+     *
+     * @param date date
+     * @return config instance
+     */
+    public DatetimePickerConfig withDate(LocalDateTime date) {
+        put(Date, ISO_LOCAL_DATE_TIME.format(date));
         return this;
     }
 
