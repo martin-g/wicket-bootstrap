@@ -1,6 +1,7 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapResourcesBehavior;
+import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.CssClassNameAppender;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.Activatable;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.ButtonBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.ButtonList;
@@ -44,7 +45,7 @@ public abstract class DropDownButton extends AbstractLink implements Activatable
     private final ButtonList buttonListView;
     private final WebMarkupContainer baseButton;
     private final Icon icon;
-  
+
     private final IModel<DropDownAlignmentBehavior.Alignment> alignment = Model
         .of(DropDownAlignmentBehavior.Alignment.NONE);
     private final IModel<DropDownVariationBehavior.Variation> variation = Model
@@ -72,7 +73,7 @@ public abstract class DropDownButton extends AbstractLink implements Activatable
 
         add(baseButton = newButton("btn", model, iconTypeModel));
         add(new DropDownVariationBehavior(variation));
-        
+
         WebMarkupContainer dropdownMenu = new WebMarkupContainer("dropdown-menu");
         dropdownMenu.add(new AttributeModifier("aria-labelledby", (IModel<String>) () -> baseButton.getMarkupId(true)));
         add(dropdownMenu);
@@ -220,12 +221,22 @@ public abstract class DropDownButton extends AbstractLink implements Activatable
      * @return new {@link ButtonList} instance
      */
     protected ButtonList newButtonList(final String markupId) {
-        final ButtonList buttonList = new ButtonList(markupId, newSubMenuButtons(ButtonList.getButtonMarkupId()));
-		buttonList.setRenderBodyOnly(true);
-		buttonList.setOutputMarkupId(false);
+        final ButtonList buttonList = new ButtonList(markupId, newSubMenuButtons(ButtonList.getButtonMarkupId())) {
+            @Override
+            protected void configureLink(AbstractLink link) {
+                super.configureLink(link);
+
+                if (!(link instanceof MenuDivider)) {
+                    link.add(new CssClassNameAppender("dropdown-item"));
+                }
+            }
+        };
+        buttonList.setRenderBodyOnly(true);
+        buttonList.setOutputMarkupId(false);
 
         return buttonList;
     }
+
 
     /**
      * sets the size of the button
@@ -259,7 +270,7 @@ public abstract class DropDownButton extends AbstractLink implements Activatable
         this.alignment.setObject(alignment);
         return this;
     }
-    
+
     /**
 	 * Sets the dropdown menu "drop" variation
 	 *

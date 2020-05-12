@@ -82,10 +82,15 @@ public class ButtonList extends ListView<AbstractLink> {
 
         item.add(link);
 
+        configureLink(link);
+    }
+
+    protected void configureLink(AbstractLink link) {
         link.configure();
-        
         if (!link.isEnabled()) {
             link.add(new CssClassNameAppender("disabled"));
         }
     }
+
+
 }
