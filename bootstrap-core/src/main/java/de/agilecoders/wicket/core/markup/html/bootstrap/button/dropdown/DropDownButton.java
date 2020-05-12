@@ -5,6 +5,7 @@ import static de.agilecoders.wicket.jquery.JQuery.$;
 
 import java.util.List;
 
+import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.CssClassNameAppender;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.Behavior;
@@ -63,7 +64,7 @@ public abstract class DropDownButton extends AbstractLink implements Activatable
      *
      * @param markupId      The markup id
      * @param model         The label of the main button
-     * @param iconTypeModel the type of the icon
+     * @param iconType      The type of the icon
      */
     public DropDownButton(final String markupId, final IModel<String> model, final IModel<IconType> iconType) {
         super(markupId, model);
@@ -267,7 +268,16 @@ public abstract class DropDownButton extends AbstractLink implements Activatable
      * @return new {@link ButtonList} instance
      */
     protected ButtonList newButtonList(final String markupId) {
-        final ButtonList buttonList = new ButtonList(markupId, newSubMenuButtons(ButtonList.getButtonMarkupId()));
+        final ButtonList buttonList = new ButtonList(markupId, newSubMenuButtons(ButtonList.getButtonMarkupId())) {
+            @Override
+            protected void configureLink(AbstractLink link) {
+                super.configureLink(link);
+
+                if (!(link instanceof MenuDivider)) {
+                    link.add(new CssClassNameAppender("dropdown-item"));
+                }
+            }
+        };
         buttonList.setRenderBodyOnly(true);
         buttonList.setOutputMarkupId(false);
 

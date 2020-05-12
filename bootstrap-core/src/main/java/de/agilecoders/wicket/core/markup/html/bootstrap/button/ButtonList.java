@@ -84,10 +84,11 @@ public class ButtonList extends ListView<AbstractLink> {
 
         item.add(link);
 
+        configureLink(link);
+    }
+
+    protected void configureLink(AbstractLink link) {
         link.configure();
-        if (!(link instanceof MenuDivider)) {
-            link.add(new CssClassNameAppender("dropdown-item"));
-        }
         if (!link.isEnabled()) {
             link.add(new CssClassNameAppender("disabled"));
         }
