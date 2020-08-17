@@ -18,17 +18,12 @@ import org.junit.jupiter.api.Test;
 import java.net.URI;
 import java.net.URL;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.instanceOf;
 import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
 
-/**
- * TODO miha: document class purpose
- *
- * @author miha
- */
 @SuppressWarnings("SpellCheckingInspection")
 class BootstrapSassTest {
 
@@ -82,7 +77,6 @@ class BootstrapSassTest {
         // setup folder /.../bootstrap-sass/src/test/resources/servlet/context/root as a root for the ServletContext
         application.setServletContext(new MockServletContext(application, contextRoot.getAbsolutePath()));
 
-//        tester.startPage(HomePage.class);
         tester.executeUrl("./wicket/resource/org.apache.wicket.Application/relative.scss?--" + ContextRelativeSassResourceReference.CONTEXT_RELATIVE_SASS_REFERENCE_VARIATION);
         tester.assertContains("sass-servlet-relative-cls");
         tester.assertContains("color: #333;");

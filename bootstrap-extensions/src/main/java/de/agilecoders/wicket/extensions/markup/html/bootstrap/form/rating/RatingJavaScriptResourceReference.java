@@ -22,7 +22,7 @@ public class RatingJavaScriptResourceReference extends JQueryPluginResourceRefer
      * Instantiates a new rating java script resource reference.
      */
     private RatingJavaScriptResourceReference() {
-        super(RatingJavaScriptResourceReference.class, "js/bootstrap-rating.min.js");
+        super(RatingJavaScriptResourceReference.class, "js/bootstrap-rating.js");
     }
-	
+
 }

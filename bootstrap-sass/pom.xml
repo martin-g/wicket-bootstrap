@@ -5,7 +5,7 @@
     <parent>
         <groupId>de.agilecoders.wicket</groupId>
         <artifactId>bootstrap-parent</artifactId>
-        <version>5.0.0-M3-SNAPSHOT</version>
+        <version>5.0.1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
@@ -58,7 +58,6 @@
         <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest</artifactId>
-            <scope>test</scope>
         </dependency>
     </dependencies>
 

@@ -13,7 +13,7 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.utilities.BackgroundColo
 import de.agilecoders.wicket.core.markup.html.references.BootlintHeaderItem;
 import de.agilecoders.wicket.core.settings.IBootstrapSettings;
 import de.agilecoders.wicket.core.settings.ITheme;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeCssReference;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesome5CssReference;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeIconType;
 import de.agilecoders.wicket.samples.WicketApplication;
 import de.agilecoders.wicket.samples.assets.base.ApplicationJavaScript;
@@ -217,7 +217,7 @@ abstract class BasePage extends GenericWebPage<Void> {
 
 //        response.render(CssHeaderItem.forReference(FixBootstrapStylesCssResourceReference.INSTANCE));
         response.render(new FilteredHeaderItem(JavaScriptHeaderItem.forReference(ApplicationJavaScript.INSTANCE), "footer-container"));
-        response.render(CssHeaderItem.forReference(FontAwesomeCssReference.instance()));
+        response.render(CssHeaderItem.forReference(FontAwesome5CssReference.instance()));
 
         if ("google".equalsIgnoreCase(activeTheme().name())) {
             response.render(CssHeaderItem.forReference(DocsCssResourceReference.GOOGLE));

@@ -17,4 +17,9 @@ class ButtonsTest {
         assertThat(Buttons.Size.Medium.cssClassName(), is(""));
     }
 
+    @Test
+    void menuButtonHasNoCssClass() {
+        assertThat(Buttons.Type.Menu.cssClassName(), is(""));
+    }
+
 }

@@ -20,7 +20,7 @@
     <parent>
         <groupId>de.agilecoders.wicket</groupId>
         <artifactId>bootstrap-parent</artifactId>
-        <version>5.0.0-M3-SNAPSHOT</version>
+        <version>5.0.1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
@@ -52,10 +52,8 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter</artifactId>
-            <version>5.4.0</version>
-            <scope>test</scope>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-engine</artifactId>
         </dependency>
     </dependencies>
     <build>

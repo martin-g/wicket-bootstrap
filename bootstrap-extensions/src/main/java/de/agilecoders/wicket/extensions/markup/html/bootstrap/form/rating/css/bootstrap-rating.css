@@ -1,15 +1,15 @@
 .symbol {
-  display: inline-block;
-  border-radius: 50%;
-  border: 5px double white;
-  width: 30px;
-  height: 30px;
+    display: inline-block;
+    border-radius: 50%;
+    border: 5px double white;
+    width: 30px;
+    height: 30px;
 }
 
 .symbol-empty {
-  background-color: #ccc;
+    background-color: #ccc;
 }
 
 .symbol-filled {
-  background-color: black;
+    background-color: black;
 }
