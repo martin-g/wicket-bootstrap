@@ -139,7 +139,7 @@ public class ButtonBehavior extends BootstrapBaseBehavior {
         Components.assertTag(component, tag, "a", "button", "input");
 
         // a menu button has no button-related css classes, inherits its styles from the menu
-        if (!Buttons.Type.Menu.equals(getType())) {
+        if (Buttons.Type.Menu != getType()) {
             Buttons.onComponentTag(component, tag,
                                    buttonSize.getObject(),
                                    buttonType.getObject(),

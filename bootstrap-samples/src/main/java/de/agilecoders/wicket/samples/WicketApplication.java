@@ -97,6 +97,7 @@ public class WicketApplication extends WebApplication {
     public void init() {
         super.init();
 
+        getCspSettings().blocking().disabled();
         getApplicationSettings().setUploadProgressUpdatesEnabled(true);
 
         // deactivate ajax debug mode

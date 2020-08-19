@@ -105,7 +105,8 @@ public final class Buttons {
         Outline_Warning("btn-outline-warning"),
         Outline_Info("btn-outline-info"),
         Outline_Light("btn-outline-light"),
-        Outline_Dark("btn-outline-dark");
+        Outline_Dark("btn-outline-dark"),
+        NavLink("nav-link"); // NavBar button
 
         private final String cssClassName;
 

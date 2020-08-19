@@ -40,13 +40,13 @@ class ButtonBehaviorTest extends WicketApplicationTest {
     }
 
     @Test
-    void testRenderMenuButtonWithoutBtnClass() {
+    void testRenderNavLinkButtonWithoutBtnClass() {
         AbstractLink link = newLink(id());
-        link.add(new ButtonBehavior(Buttons.Type.Menu));
+        link.add(new ButtonBehavior(Buttons.Type.NavLink));
 
         TagTester tag = startComponentInPage(link, "<a wicket:id='" + id() + "'>Link</a>");
 
-        assertNotContainsCssClass(tag, "btn");
+        assertCssClass(tag, "btn");
     }
 
     private AbstractLink newLink(String id) {

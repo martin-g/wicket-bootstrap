@@ -75,7 +75,7 @@ class DropDownButtonTest extends WicketApplicationTest {
     }
 
     private BootstrapLink getDummyLink(final String buttonMarkupId) {
-        return new BootstrapLink<Void>(buttonMarkupId, Buttons.Type.Menu) {
+        return new BootstrapLink<Void>(buttonMarkupId, Buttons.Type.NavLink) {
 
             @Override
             public void onClick() {

@@ -268,16 +268,7 @@ public abstract class DropDownButton extends AbstractLink implements Activatable
      * @return new {@link ButtonList} instance
      */
     protected ButtonList newButtonList(final String markupId) {
-        final ButtonList buttonList = new ButtonList(markupId, newSubMenuButtons(ButtonList.getButtonMarkupId())) {
-            @Override
-            protected void configureLink(AbstractLink link) {
-                super.configureLink(link);
-
-                if (!(link instanceof MenuDivider)) {
-                    link.add(new CssClassNameAppender("dropdown-item"));
-                }
-            }
-        };
+        final ButtonList buttonList = new ButtonList(markupId, newSubMenuButtons(ButtonList.getButtonMarkupId()));
         buttonList.setRenderBodyOnly(true);
         buttonList.setOutputMarkupId(false);
 

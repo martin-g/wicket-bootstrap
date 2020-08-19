@@ -12,6 +12,7 @@ import org.apache.wicket.model.IModel;
  * @author miha
  */
 public class NavbarExternalLink extends BootstrapExternalLink {
+    private static final long serialVersionUID = 1L;
 
     /**
      * Construct.
@@ -19,7 +20,7 @@ public class NavbarExternalLink extends BootstrapExternalLink {
      * @param href the link destination
      */
     public NavbarExternalLink(IModel<String> href) {
-        this(href, Buttons.Type.Menu);
+        this(href, Buttons.Type.NavLink);
     }
 
     /**

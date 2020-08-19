@@ -67,7 +67,7 @@ public abstract class NavbarDropDownButton extends DropDownButton {
     protected WebMarkupContainer newButton(String markupId, IModel<String> labelModel, final IModel<IconType> iconTypeModel) {
         WebMarkupContainer button = super.newButton(markupId, labelModel, iconTypeModel);
         button.add(new CssClassNameRemover("btn"));
-        button.add(new CssClassNameAppender(Buttons.Type.Menu.cssClassName()));
+        button.add(new CssClassNameAppender(Buttons.Type.NavLink.cssClassName()));
         return button;
     }
 
@@ -77,7 +77,7 @@ public abstract class NavbarDropDownButton extends DropDownButton {
         // we don't want nav-link classes in navbar dropdowns, because they inherit color from navbar-dark
         // and result is white text on white background.
         for (AbstractLink button : buttons) {
-            button.add(new CssClassNameRemover(Buttons.Type.Menu.cssClassName()));
+            button.add(new CssClassNameRemover(Buttons.Type.NavLink.cssClassName()));
         }
 
         ButtonList buttonList = new ButtonList(markupId, buttons);

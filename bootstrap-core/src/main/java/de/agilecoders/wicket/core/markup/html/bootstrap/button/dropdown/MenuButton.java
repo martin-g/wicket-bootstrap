@@ -13,6 +13,7 @@ import org.apache.wicket.model.IModel;
  * @author miha
  */
 public class MenuButton extends BootstrapButton {
+    private static final long serialVersionUID = 1L;
 
     /**
      * Construct.

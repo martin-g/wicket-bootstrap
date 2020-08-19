@@ -19,6 +19,7 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
  * @author miha
  */
 public class NavbarButton<T> extends BootstrapBookmarkablePageLink<T> {
+    private static final long serialVersionUID = 1L;
 
     /**
      * Constructor.
@@ -29,7 +30,7 @@ public class NavbarButton<T> extends BootstrapBookmarkablePageLink<T> {
      * @param <P>        type of the page class
      */
     public <P extends Page> NavbarButton(final Class<P> pageClass, final PageParameters parameters, final IModel<String> label) {
-        super(Navbar.componentId(), pageClass, parameters, Buttons.Type.Menu);
+        super(Navbar.componentId(), pageClass, parameters, Buttons.Type.NavLink);
 
         setLabel(label);
     }
