@@ -19,7 +19,7 @@ public class NavbarExternalLink extends BootstrapExternalLink {
      * @param href the link destination
      */
     public NavbarExternalLink(IModel<String> href) {
-        this(href, Buttons.Type.Menu);
+        this(href, Buttons.Type.NavLink);
     }
 
     /**
