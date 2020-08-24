@@ -1,15 +1,10 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.navbar;
 
-import java.util.List;
-
 import org.apache.wicket.markup.html.WebMarkupContainer;
-import org.apache.wicket.markup.html.link.AbstractLink;
 import org.apache.wicket.model.IModel;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.CssClassNameAppender;
-import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.CssClassNameRemover;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.ButtonBehavior;
-import de.agilecoders.wicket.core.markup.html.bootstrap.button.ButtonList;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.DropDownButton;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
@@ -66,23 +61,7 @@ public abstract class NavbarDropDownButton extends DropDownButton {
     @Override
     protected WebMarkupContainer newButton(String markupId, IModel<String> labelModel, final IModel<IconType> iconTypeModel) {
         WebMarkupContainer button = super.newButton(markupId, labelModel, iconTypeModel);
-        button.add(new CssClassNameRemover("btn"));
-        button.add(new CssClassNameAppender(Buttons.Type.Menu.cssClassName()));
+        button.add(new CssClassNameAppender(Buttons.Type.NavLink.cssClassName()));
         return button;
-    }
-
-    @Override
-    protected ButtonList newButtonList(String markupId) {
-        List<AbstractLink> buttons = newSubMenuButtons(ButtonList.getButtonMarkupId());
-        // we don't want nav-link classes in navbar dropdowns, because they inherit color from navbar-dark
-        // and result is white text on white background.
-        for (AbstractLink button : buttons) {
-            button.add(new CssClassNameRemover(Buttons.Type.Menu.cssClassName()));
-        }
-
-        ButtonList buttonList = new ButtonList(markupId, buttons);
-        buttonList.setRenderBodyOnly(true);
-
-        return buttonList;
     }
 }
