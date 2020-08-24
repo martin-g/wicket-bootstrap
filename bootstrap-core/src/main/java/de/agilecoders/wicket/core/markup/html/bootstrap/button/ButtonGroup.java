@@ -81,7 +81,7 @@ public abstract class ButtonGroup extends Panel {
     protected void onComponentTag(ComponentTag tag) {
         super.onComponentTag(tag);
 
-        Attributes.addClass(tag, orientation.cssClassName(), "btn-group");
+        Attributes.addClass(tag, orientation.cssClassName());
 
         if (!Size.Default.equals(size)) {
             Attributes.addClass(tag, size.cssClassName());
