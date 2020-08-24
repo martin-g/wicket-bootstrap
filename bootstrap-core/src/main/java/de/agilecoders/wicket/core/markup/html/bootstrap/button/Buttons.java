@@ -78,7 +78,7 @@ public final class Buttons {
 
         @Override
         public String cssClassName() {
-            return equals(Horizontal) ? "" : "btn-group-" + name().toLowerCase();
+            return equals(Horizontal) ? "btn-group" : "btn-group-vertical";
         }
     }
 
