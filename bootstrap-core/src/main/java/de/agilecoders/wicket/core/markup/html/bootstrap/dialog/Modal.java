@@ -214,6 +214,9 @@ public class Modal<T> extends GenericPanel<T> {
                     case Small:
                         Attributes.addClass(tag, Size.Small.cssClassName());
                         break;
+                    case Extra_large:
+                        Attributes.addClass(tag, Size.Extra_large.cssClassName());
+                        break;
                     default:
                         // do nothing. the CSS classes are removed before the switch
                 }
