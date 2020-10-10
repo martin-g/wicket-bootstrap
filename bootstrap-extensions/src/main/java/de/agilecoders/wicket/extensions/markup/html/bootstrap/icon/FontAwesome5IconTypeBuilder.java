@@ -34,7 +34,7 @@ import java.util.List;
  */
 public class FontAwesome5IconTypeBuilder {
 
-    interface FontAwesome5Graphic {
+    public interface FontAwesome5Graphic {
         String getPrefix();
 
         String getIconName();
