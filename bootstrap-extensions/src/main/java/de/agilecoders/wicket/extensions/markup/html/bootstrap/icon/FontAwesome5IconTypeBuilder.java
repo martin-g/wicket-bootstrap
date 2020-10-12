@@ -144,7 +144,7 @@ public class FontAwesome5IconTypeBuilder {
         university, unlink, unlock, unlock_alt, upload, user, user_alt, user_alt_slash, user_astronaut, user_check,
         user_circle, user_clock, user_cog, user_edit, user_friends, user_graduate, user_injured, user_lock, user_md,
         user_minus, user_ninja, user_nurse, user_plus, user_secret, user_shield, user_slash, user_tag, user_tie,
-        user_times, users, users_cog, users_slash, utensil_spoon, utensils, vector_square, venus, vest_patches, vest, venus_double, venus_mars, vial,
+        user_times, users, users_cog, users_slash, utensil_spoon, utensils, vector_square, venus, venus_double, venus_mars, vial,
         vials, video, video_slash, virus, virus_slash, viruses, vihara, voicemail, volleyball_ball, volume_down, volume_mute, volume_off, volume_up, vote_yea,
         vr_cardboard, walking, wallet, warehouse, water, wave_square, weight, weight_hanging, wheelchair, wifi, wind, window_close,
         window_maximize, window_minimize, window_restore, wine_bottle, wine_glass, wine_glass_alt, won_sign, wrench,
@@ -198,7 +198,7 @@ public class FontAwesome5IconTypeBuilder {
      * All icons of style 'brand' available for free in Font Awesome.
      */
     public enum FontAwesome5Brand implements FontAwesome5Graphic {
-        _500px, accessible_icon, accusoft, acquisitions_incorporated, adn, adobe, adversal, affiliatetheme, airbnb, algolia,
+        _500px, accessible_icon, accusoft, acquisitions_incorporated, adn, adversal, affiliatetheme, airbnb, algolia,
         alipay, amazon, amazon_pay, amilia, android, angellist, angrycreative, angular, app_store, app_store_ios, apper,
         apple, apple_pay, artstation, asymmetrik, atlassian, audible, autoprefixer, avianex, aviato, aws, bandcamp, battle_net,
         behance, behance_square, bimobject, bitbucket, bitcoin, bity, black_tie, blackberry, blogger, blogger_b,
@@ -228,7 +228,7 @@ public class FontAwesome5IconTypeBuilder {
         odnoklassniki_square, old_republic, opencart, openid, opera, optin_monster, orcid, osi, page4, pagelines, palfed,
         patreon, paypal, penny_arcade, perbyte, periscope, phabricator, phoenix_framework, phoenix_squadron, php, pied_piper,
         pied_piper_alt, pied_piper_hat, pied_piper_pp, pied_piper_square, pinterest, pinterest_p, pinterest_square, playstation,
-        product_hunt, pushed, python, qq, quinscape, quora, r_project, raspberry_pi, ravelry, react, reacteurope,
+        product_hunt, pushed, python, qq, quinscape, quora, r_project, raspberry_pi, react, reacteurope,
         readme, rebel, red_river, reddit, reddit_alien, reddit_square, redhat, renren, replyd, researchgate, resolving,
         rev, rocketchat, rockrms, rust, safari, salesforce, sass, schlix, scribd, searchengin, sellcast, sellsy, servicestack,
         shirtsinbulk, shopify, shopware, simplybuilt, sistrix, sith, sketch, skyatlas, skype, slack, slack_hash, slideshare,
