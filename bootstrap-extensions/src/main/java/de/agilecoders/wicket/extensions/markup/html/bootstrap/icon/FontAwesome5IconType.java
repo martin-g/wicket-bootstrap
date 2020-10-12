@@ -562,6 +562,8 @@ public class FontAwesome5IconType extends IconType {
     public static final FontAwesome5IconType hanukiah_s = on(FontAwesome5Solid.hanukiah).build();
     public static final FontAwesome5IconType hard_hat_s = on(FontAwesome5Solid.hard_hat).build();
     public static final FontAwesome5IconType hashtag_s = on(FontAwesome5Solid.hashtag).build();
+    public static final FontAwesome5IconType hat_cowboy_s = on(FontAwesome5Solid.hat_cowboy).build();
+    public static final FontAwesome5IconType hat_cowboy_side_s = on(FontAwesome5Solid.hat_cowboy_side).build();
     public static final FontAwesome5IconType hat_wizard_s = on(FontAwesome5Solid.hat_wizard).build();
     public static final FontAwesome5IconType hdd_r = on(FontAwesome5Regular.hdd).build();
     public static final FontAwesome5IconType hdd_s = on(FontAwesome5Solid.hdd).build();
@@ -742,6 +744,7 @@ public class FontAwesome5IconType extends IconType {
     public static final FontAwesome5IconType motorcycle_s = on(FontAwesome5Solid.motorcycle).build();
     public static final FontAwesome5IconType mountain_s = on(FontAwesome5Solid.mountain).build();
     public static final FontAwesome5IconType mouse_pointer_s = on(FontAwesome5Solid.mouse_pointer).build();
+    public static final FontAwesome5IconType mouse_s = on(FontAwesome5Solid.mouse).build();
     public static final FontAwesome5IconType mug_hot_s = on(FontAwesome5Solid.mug_hot).build();
     public static final FontAwesome5IconType music_s = on(FontAwesome5Solid.music).build();
     public static final FontAwesome5IconType network_wired_s = on(FontAwesome5Solid.network_wired).build();
@@ -846,6 +849,7 @@ public class FontAwesome5IconType extends IconType {
     public static final FontAwesome5IconType rainbow_s = on(FontAwesome5Solid.rainbow).build();
     public static final FontAwesome5IconType random_s = on(FontAwesome5Solid.random).build();
     public static final FontAwesome5IconType receipt_s = on(FontAwesome5Solid.receipt).build();
+    public static final FontAwesome5IconType record_vinyl_s = on(FontAwesome5Solid.record_vinyl).build();
     public static final FontAwesome5IconType recycle_s = on(FontAwesome5Solid.recycle).build();
     public static final FontAwesome5IconType redo_alt_s = on(FontAwesome5Solid.redo_alt).build();
     public static final FontAwesome5IconType redo_s = on(FontAwesome5Solid.redo).build();
@@ -1133,6 +1137,8 @@ public class FontAwesome5IconType extends IconType {
     public static final FontAwesome5IconType venus_double_s = on(FontAwesome5Solid.venus_double).build();
     public static final FontAwesome5IconType venus_mars_s = on(FontAwesome5Solid.venus_mars).build();
     public static final FontAwesome5IconType venus_s = on(FontAwesome5Solid.venus).build();
+    public static final FontAwesome5IconType vest_patches_s = on(FontAwesome5Solid.vest_patches).build();
+    public static final FontAwesome5IconType vest_s = on(FontAwesome5Solid.vest).build();
     public static final FontAwesome5IconType vial_s = on(FontAwesome5Solid.vial).build();
     public static final FontAwesome5IconType vials_s = on(FontAwesome5Solid.vials).build();
     public static final FontAwesome5IconType video_s = on(FontAwesome5Solid.video).build();
@@ -1153,6 +1159,7 @@ public class FontAwesome5IconType extends IconType {
     public static final FontAwesome5IconType wallet_s = on(FontAwesome5Solid.wallet).build();
     public static final FontAwesome5IconType warehouse_s = on(FontAwesome5Solid.warehouse).build();
     public static final FontAwesome5IconType water_s = on(FontAwesome5Solid.water).build();
+    public static final FontAwesome5IconType wave_square_s = on(FontAwesome5Solid.wave_square).build();
     public static final FontAwesome5IconType weight_hanging_s = on(FontAwesome5Solid.weight_hanging).build();
     public static final FontAwesome5IconType weight_s = on(FontAwesome5Solid.weight).build();
     public static final FontAwesome5IconType wheelchair_s = on(FontAwesome5Solid.wheelchair).build();
@@ -1184,6 +1191,7 @@ public class FontAwesome5IconType extends IconType {
     public static final FontAwesome5IconType adobe = on(FontAwesome5Brand.adobe).build();
     public static final FontAwesome5IconType adversal = on(FontAwesome5Brand.adversal).build();
     public static final FontAwesome5IconType affiliatetheme = on(FontAwesome5Brand.affiliatetheme).build();
+    public static final FontAwesome5IconType airbnb = on(FontAwesome5Brand.airbnb).build();
     public static final FontAwesome5IconType algolia = on(FontAwesome5Brand.algolia).build();
     public static final FontAwesome5IconType alipay = on(FontAwesome5Brand.alipay).build();
     public static final FontAwesome5IconType amazon = on(FontAwesome5Brand.amazon).build();
@@ -1207,6 +1215,7 @@ public class FontAwesome5IconType extends IconType {
     public static final FontAwesome5IconType aviato = on(FontAwesome5Brand.aviato).build();
     public static final FontAwesome5IconType aws = on(FontAwesome5Brand.aws).build();
     public static final FontAwesome5IconType bandcamp = on(FontAwesome5Brand.bandcamp).build();
+    public static final FontAwesome5IconType battle_net = on(FontAwesome5Brand.battle_net).build();
     public static final FontAwesome5IconType behance = on(FontAwesome5Brand.behance).build();
     public static final FontAwesome5IconType behance_square = on(FontAwesome5Brand.behance_square).build();
     public static final FontAwesome5IconType bimobject = on(FontAwesome5Brand.bimobject).build();
@@ -1219,8 +1228,11 @@ public class FontAwesome5IconType extends IconType {
     public static final FontAwesome5IconType blogger_b = on(FontAwesome5Brand.blogger_b).build();
     public static final FontAwesome5IconType bluetooth = on(FontAwesome5Brand.bluetooth).build();
     public static final FontAwesome5IconType bluetooth_b = on(FontAwesome5Brand.bluetooth_b).build();
+    public static final FontAwesome5IconType bootstrap = on(FontAwesome5Brand.bootstrap).build();
     public static final FontAwesome5IconType btc = on(FontAwesome5Brand.btc).build();
+    public static final FontAwesome5IconType buffer = on(FontAwesome5Brand.buffer).build();
     public static final FontAwesome5IconType buromobelexperte = on(FontAwesome5Brand.buromobelexperte).build();
+    public static final FontAwesome5IconType buy_n_large = on(FontAwesome5Brand.buy_n_large).build();
     public static final FontAwesome5IconType buysellads = on(FontAwesome5Brand.buysellads).build();
     public static final FontAwesome5IconType canadian_maple_leaf = on(FontAwesome5Brand.canadian_maple_leaf).build();
     public static final FontAwesome5IconType cc_amazon_pay = on(FontAwesome5Brand.cc_amazon_pay).build();
@@ -1236,6 +1248,8 @@ public class FontAwesome5IconType extends IconType {
     public static final FontAwesome5IconType centercode = on(FontAwesome5Brand.centercode).build();
     public static final FontAwesome5IconType centos = on(FontAwesome5Brand.centos).build();
     public static final FontAwesome5IconType chrome = on(FontAwesome5Brand.chrome).build();
+    public static final FontAwesome5IconType chromecast = on(FontAwesome5Brand.chromecast).build();
+    public static final FontAwesome5IconType cloudflare = on(FontAwesome5Brand.cloudflare).build();
     public static final FontAwesome5IconType cloudscale = on(FontAwesome5Brand.cloudscale).build();
     public static final FontAwesome5IconType cloudsmith = on(FontAwesome5Brand.cloudsmith).build();
     public static final FontAwesome5IconType cloudversify = on(FontAwesome5Brand.cloudversify).build();
@@ -1244,6 +1258,7 @@ public class FontAwesome5IconType extends IconType {
     public static final FontAwesome5IconType confluence = on(FontAwesome5Brand.confluence).build();
     public static final FontAwesome5IconType connectdevelop = on(FontAwesome5Brand.connectdevelop).build();
     public static final FontAwesome5IconType contao = on(FontAwesome5Brand.contao).build();
+    public static final FontAwesome5IconType cotton_bureau = on(FontAwesome5Brand.cotton_bureau).build();
     public static final FontAwesome5IconType cpanel = on(FontAwesome5Brand.cpanel).build();
     public static final FontAwesome5IconType creative_commons = on(FontAwesome5Brand.creative_commons).build();
     public static final FontAwesome5IconType creative_commons_by = on(FontAwesome5Brand.creative_commons_by).build();
@@ -1299,6 +1314,7 @@ public class FontAwesome5IconType extends IconType {
     public static final FontAwesome5IconType erlang = on(FontAwesome5Brand.erlang).build();
     public static final FontAwesome5IconType ethereum = on(FontAwesome5Brand.ethereum).build();
     public static final FontAwesome5IconType etsy = on(FontAwesome5Brand.etsy).build();
+    public static final FontAwesome5IconType evernote = on(FontAwesome5Brand.evernote).build();
     public static final FontAwesome5IconType expeditedssl = on(FontAwesome5Brand.expeditedssl).build();
     public static final FontAwesome5IconType facebook = on(FontAwesome5Brand.facebook).build();
     public static final FontAwesome5IconType facebook_f = on(FontAwesome5Brand.facebook_f).build();
@@ -1359,12 +1375,14 @@ public class FontAwesome5IconType extends IconType {
     public static final FontAwesome5IconType grav = on(FontAwesome5Brand.grav).build();
     public static final FontAwesome5IconType gripfire = on(FontAwesome5Brand.gripfire).build();
     public static final FontAwesome5IconType grunt = on(FontAwesome5Brand.grunt).build();
+    public static final FontAwesome5IconType guilded = on(FontAwesome5Brand.guilded).build();
     public static final FontAwesome5IconType gulp = on(FontAwesome5Brand.gulp).build();
     public static final FontAwesome5IconType hacker_news = on(FontAwesome5Brand.hacker_news).build();
     public static final FontAwesome5IconType hacker_news_square = on(FontAwesome5Brand.hacker_news_square).build();
     public static final FontAwesome5IconType hackerrank = on(FontAwesome5Brand.hackerrank).build();
     public static final FontAwesome5IconType hips = on(FontAwesome5Brand.hips).build();
     public static final FontAwesome5IconType hire_a_helper = on(FontAwesome5Brand.hire_a_helper).build();
+    public static final FontAwesome5IconType hive = on(FontAwesome5Brand.hive).build();
     public static final FontAwesome5IconType hooli = on(FontAwesome5Brand.hooli).build();
     public static final FontAwesome5IconType hornbill = on(FontAwesome5Brand.hornbill).build();
     public static final FontAwesome5IconType hotjar = on(FontAwesome5Brand.hotjar).build();
@@ -1373,8 +1391,10 @@ public class FontAwesome5IconType extends IconType {
     public static final FontAwesome5IconType hubspot = on(FontAwesome5Brand.hubspot).build();
     public static final FontAwesome5IconType ideal = on(FontAwesome5Brand.ideal).build();
     public static final FontAwesome5IconType imdb = on(FontAwesome5Brand.imdb).build();
+    public static final FontAwesome5IconType innosoft = on(FontAwesome5Brand.innosoft).build();
     public static final FontAwesome5IconType instagram = on(FontAwesome5Brand.instagram).build();
     public static final FontAwesome5IconType instagram_square = on(FontAwesome5Brand.instagram_square).build();
+    public static final FontAwesome5IconType instalod = on(FontAwesome5Brand.instalod).build();
     public static final FontAwesome5IconType intercom = on(FontAwesome5Brand.intercom).build();
     public static final FontAwesome5IconType internet_explorer = on(FontAwesome5Brand.internet_explorer).build();
     public static final FontAwesome5IconType invision = on(FontAwesome5Brand.invision).build();
@@ -1414,6 +1434,7 @@ public class FontAwesome5IconType extends IconType {
     public static final FontAwesome5IconType markdown = on(FontAwesome5Brand.markdown).build();
     public static final FontAwesome5IconType mastodon = on(FontAwesome5Brand.mastodon).build();
     public static final FontAwesome5IconType maxcdn = on(FontAwesome5Brand.maxcdn).build();
+    public static final FontAwesome5IconType mdb = on(FontAwesome5Brand.mdb).build();
     public static final FontAwesome5IconType medapps = on(FontAwesome5Brand.medapps).build();
     public static final FontAwesome5IconType medium = on(FontAwesome5Brand.medium).build();
     public static final FontAwesome5IconType medium_m = on(FontAwesome5Brand.medium_m).build();
@@ -1437,6 +1458,7 @@ public class FontAwesome5IconType extends IconType {
     public static final FontAwesome5IconType npm = on(FontAwesome5Brand.npm).build();
     public static final FontAwesome5IconType ns8 = on(FontAwesome5Brand.ns8).build();
     public static final FontAwesome5IconType nutritionix = on(FontAwesome5Brand.nutritionix).build();
+    public static final FontAwesome5IconType octopus_deploy = on(FontAwesome5Brand.octopus_deploy).build();
     public static final FontAwesome5IconType odnoklassniki = on(FontAwesome5Brand.odnoklassniki).build();
     public static final FontAwesome5IconType odnoklassniki_square = on(FontAwesome5Brand.odnoklassniki_square).build();
     public static final FontAwesome5IconType old_republic = on(FontAwesome5Brand.old_republic).build();
@@ -1444,6 +1466,7 @@ public class FontAwesome5IconType extends IconType {
     public static final FontAwesome5IconType openid = on(FontAwesome5Brand.openid).build();
     public static final FontAwesome5IconType opera = on(FontAwesome5Brand.opera).build();
     public static final FontAwesome5IconType optin_monster = on(FontAwesome5Brand.optin_monster).build();
+    public static final FontAwesome5IconType orcid = on(FontAwesome5Brand.orcid).build();
     public static final FontAwesome5IconType osi = on(FontAwesome5Brand.osi).build();
     public static final FontAwesome5IconType page4 = on(FontAwesome5Brand.page4).build();
     public static final FontAwesome5IconType pagelines = on(FontAwesome5Brand.pagelines).build();
@@ -1451,6 +1474,7 @@ public class FontAwesome5IconType extends IconType {
     public static final FontAwesome5IconType patreon = on(FontAwesome5Brand.patreon).build();
     public static final FontAwesome5IconType paypal = on(FontAwesome5Brand.paypal).build();
     public static final FontAwesome5IconType penny_arcade = on(FontAwesome5Brand.penny_arcade).build();
+    public static final FontAwesome5IconType perbyte = on(FontAwesome5Brand.perbyte).build();
     public static final FontAwesome5IconType periscope = on(FontAwesome5Brand.periscope).build();
     public static final FontAwesome5IconType phabricator = on(FontAwesome5Brand.phabricator).build();
     public static final FontAwesome5IconType phoenix_framework = on(FontAwesome5Brand.phoenix_framework).build();
@@ -1538,6 +1562,7 @@ public class FontAwesome5IconType extends IconType {
     public static final FontAwesome5IconType superpowers = on(FontAwesome5Brand.superpowers).build();
     public static final FontAwesome5IconType supple = on(FontAwesome5Brand.supple).build();
     public static final FontAwesome5IconType suse = on(FontAwesome5Brand.suse).build();
+    public static final FontAwesome5IconType swift = on(FontAwesome5Brand.swift).build();
     public static final FontAwesome5IconType symfony = on(FontAwesome5Brand.symfony).build();
     public static final FontAwesome5IconType teamspeak = on(FontAwesome5Brand.teamspeak).build();
     public static final FontAwesome5IconType telegram = on(FontAwesome5Brand.telegram).build();
@@ -1560,6 +1585,8 @@ public class FontAwesome5IconType extends IconType {
     public static final FontAwesome5IconType uber = on(FontAwesome5Brand.uber).build();
     public static final FontAwesome5IconType ubuntu = on(FontAwesome5Brand.ubuntu).build();
     public static final FontAwesome5IconType uikit = on(FontAwesome5Brand.uikit).build();
+    public static final FontAwesome5IconType umbraco = on(FontAwesome5Brand.umbraco).build();
+    public static final FontAwesome5IconType uncharted = on(FontAwesome5Brand.uncharted).build();
     public static final FontAwesome5IconType uniregistry = on(FontAwesome5Brand.uniregistry).build();
     public static final FontAwesome5IconType unity = on(FontAwesome5Brand.unity).build();
     public static final FontAwesome5IconType unsplash = on(FontAwesome5Brand.unsplash).build();
@@ -1580,6 +1607,7 @@ public class FontAwesome5IconType extends IconType {
     public static final FontAwesome5IconType vk = on(FontAwesome5Brand.vk).build();
     public static final FontAwesome5IconType vnv = on(FontAwesome5Brand.vnv).build();
     public static final FontAwesome5IconType vuejs = on(FontAwesome5Brand.vuejs).build();
+    public static final FontAwesome5IconType watchman_monitoring = on(FontAwesome5Brand.watchman_monitoring).build();
     public static final FontAwesome5IconType waze = on(FontAwesome5Brand.waze).build();
     public static final FontAwesome5IconType weebly = on(FontAwesome5Brand.weebly).build();
     public static final FontAwesome5IconType weibo = on(FontAwesome5Brand.weibo).build();
@@ -1591,6 +1619,7 @@ public class FontAwesome5IconType extends IconType {
     public static final FontAwesome5IconType windows = on(FontAwesome5Brand.windows).build();
     public static final FontAwesome5IconType wix = on(FontAwesome5Brand.wix).build();
     public static final FontAwesome5IconType wizards_of_the_coast = on(FontAwesome5Brand.wizards_of_the_coast).build();
+    public static final FontAwesome5IconType wodu = on(FontAwesome5Brand.wodu).build();
     public static final FontAwesome5IconType wolf_pack_battalion = on(FontAwesome5Brand.wolf_pack_battalion).build();
     public static final FontAwesome5IconType wordpress = on(FontAwesome5Brand.wordpress).build();
     public static final FontAwesome5IconType wordpress_simple = on(FontAwesome5Brand.wordpress_simple).build();
