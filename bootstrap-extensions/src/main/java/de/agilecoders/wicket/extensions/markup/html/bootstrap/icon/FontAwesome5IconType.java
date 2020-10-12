@@ -1189,7 +1189,6 @@ public class FontAwesome5IconType extends IconType {
     public static final FontAwesome5IconType adversal = on(FontAwesome5Brand.adversal).build();
     public static final FontAwesome5IconType airbnb = on(FontAwesome5Brand.airbnb).build();
     public static final FontAwesome5IconType affiliatetheme = on(FontAwesome5Brand.affiliatetheme).build();
-    public static final FontAwesome5IconType airbnb = on(FontAwesome5Brand.airbnb).build();
     public static final FontAwesome5IconType algolia = on(FontAwesome5Brand.algolia).build();
     public static final FontAwesome5IconType alipay = on(FontAwesome5Brand.alipay).build();
     public static final FontAwesome5IconType amazon = on(FontAwesome5Brand.amazon).build();
