@@ -16,6 +16,8 @@ Wicket-Bootstrap is based on the Bootstrap toolkit and the [Apache Wicket Framew
 
 Current release version:
 
+* [Wicket 9.x](http://wicket.apache.org/) and [Bootstrap 4.x](https://github.com/twbs/bootstrap/):  5.x
+* [Wicket 9.x](http://wicket.apache.org/) and [Bootstrap 3.4.0](https://github.com/twbs/bootstrap/):  4.x
 * [Wicket 8.x](http://wicket.apache.org/) and [Bootstrap 4.x](https://github.com/twbs/bootstrap/):  3.x
 * [Wicket 8.x](http://wicket.apache.org/) and [Bootstrap 3.4.0](https://github.com/twbs/bootstrap/):  2.x
 * [Wicket 7.x](http://wicket.apache.org/) and [Bootstrap 3.3.7](https://github.com/twbs/bootstrap/):  0.10.x
@@ -71,7 +73,7 @@ core maven dependency:
 <dependency>
     <groupId>de.agilecoders.wicket</groupId>
     <artifactId>wicket-bootstrap-core</artifactId>
-    <version>4.0.0-M3</version>
+    <version>4.0.0</version>
 </dependency>
 ```
 
@@ -81,7 +83,7 @@ for all extensions:
 <dependency>
     <groupId>de.agilecoders.wicket</groupId>
     <artifactId>wicket-bootstrap-extensions</artifactId>
-    <version>4.0.0-M3</version>
+    <version>4.0.0</version>
 </dependency>
 ```
 
@@ -91,7 +93,7 @@ for all themes:
 <dependency>
     <groupId>de.agilecoders.wicket</groupId>
     <artifactId>wicket-bootstrap-themes</artifactId>
-    <version>4.0.0-M3</version>
+    <version>4.0.0</version>
 </dependency>
 ```
 
@@ -101,7 +103,7 @@ if you want to use a less compiler:
 <dependency>
     <groupId>de.agilecoders.wicket</groupId>
     <artifactId>wicket-bootstrap-less</artifactId>
-    <version>4.0.0-M3</version>
+    <version>4.0.0</version>
 </dependency>
 ```
 
@@ -111,7 +113,7 @@ all samples can be used with this dependency:
 <dependency>
     <groupId>de.agilecoders.wicket</groupId>
     <artifactId>wicket-bootstrap-samples</artifactId>
-    <version>4.0.0-M3</version>
+    <version>4.0.0</version>
 </dependency>
 ```
 
