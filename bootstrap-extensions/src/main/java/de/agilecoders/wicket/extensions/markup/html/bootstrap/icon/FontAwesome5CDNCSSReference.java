@@ -11,7 +11,7 @@ import org.apache.wicket.request.resource.UrlResourceReference;
  *  &lt;dependency&gt;<br/>
  *      &lt;groupId&gt;org.webjars&lt;/groupId&gt;<br/>
  *      &lt;artifactId&gt;font-awesome&lt;/artifactId&gt;<br/>
- *      &lt;version&gt;5.14.0&lt;/version&gt;<br/>
+ *      &lt;version&gt;5.15.1&lt;/version&gt;<br/>
  *  &lt;/dependency&gt;<br/>
  *
  * reference for font awesome 5.x css via CDN
