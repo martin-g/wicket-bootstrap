@@ -53,9 +53,7 @@
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter</artifactId>
-            <version>5.4.0</version>
-            <scope>test</scope>
+            <artifactId>junit-jupiter-api</artifactId>
         </dependency>
     </dependencies>
     <build>
