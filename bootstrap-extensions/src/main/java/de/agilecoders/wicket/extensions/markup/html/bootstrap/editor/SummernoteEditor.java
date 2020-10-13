@@ -114,7 +114,7 @@ public class SummernoteEditor extends FormComponent<String> {
             IOUtils.closeQuietly(summernoteTemplate);
         }
 
-        String modelObject = getModelObject();
+        String modelObject = getInput();
         if (!config.isAirMode() && !Strings.isEmpty(modelObject)) {
             modelObject = NEW_LINE_PATTERN.matcher(modelObject).replaceAll("<br/>");
             CharSequence safeModelObject = JavaScriptUtils.escapeQuotes(modelObject);
