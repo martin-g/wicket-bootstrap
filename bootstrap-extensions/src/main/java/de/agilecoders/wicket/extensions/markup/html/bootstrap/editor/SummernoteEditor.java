@@ -114,10 +114,10 @@ public class SummernoteEditor extends FormComponent<String> {
             IOUtils.closeQuietly(summernoteTemplate);
         }
 
-        String modelObject = getInput();
-        if (!config.isAirMode() && !Strings.isEmpty(modelObject)) {
-            modelObject = NEW_LINE_PATTERN.matcher(modelObject).replaceAll("<br/>");
-            CharSequence safeModelObject = JavaScriptUtils.escapeQuotes(modelObject);
+        String value = getValue();
+        if (!config.isAirMode() && !Strings.isEmpty(value)) {
+            value = NEW_LINE_PATTERN.matcher(value).replaceAll("<br/>");
+            CharSequence safeModelObject = JavaScriptUtils.escapeQuotes(value);
             response.render(OnDomReadyHeaderItem.forScript(String.format("$('#%s').summernote('code', '%s')",
                                                                          getMarkupId(), safeModelObject)));
         }
