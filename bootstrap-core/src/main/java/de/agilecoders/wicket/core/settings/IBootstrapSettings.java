@@ -14,7 +14,7 @@ public interface IBootstrapSettings {
     /**
      * The version of Bootstrap
      */
-    String VERSION = "4.4.1-1";
+    String VERSION = "4.5.0";
 
     /**
      * The version of modernizr
