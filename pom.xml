@@ -46,8 +46,8 @@
 
         <bootstrap.version>3.4.1</bootstrap.version>
         <config.version>0.3.5</config.version>
-        <wicket-webjars.version>2.0.17</wicket-webjars.version>
-        <wicket-jquery-selectors.version>2.0.8</wicket-jquery-selectors.version>
+        <wicket-webjars.version>2.0.19</wicket-webjars.version>
+        <wicket-jquery-selectors.version>2.0.10</wicket-jquery-selectors.version>
 
         <enforcer.disable>true</enforcer.disable>
         <pmd.disable>true</pmd.disable>
@@ -68,10 +68,9 @@
         <jquerypp.version>1.0.1</jquerypp.version>
         <jquery.version>2.2.4</jquery.version>
         <maven-bundle-plugin.version>3.5.0</maven-bundle-plugin.version>
-        <wicket.version>8.7.0</wicket.version>
-        <wicketstuff.version>8.7.0</wicketstuff.version>
+        <wicket.version>8.9.0</wicket.version>
+        <wicketstuff.version>8.9.0</wicketstuff.version>
         <yuicompressor.version>2.4.8</yuicompressor.version>
-        <maven-javadoc-plugin.version>2.10.4</maven-javadoc-plugin.version>
         <guava.version>27.1</guava.version>
         <junit5.version>5.4.2</junit5.version>
         <logback.version>1.2.3</logback.version>
@@ -82,7 +81,7 @@
         <cobertura-maven-plugin.version>2.7</cobertura-maven-plugin.version>
         <maven-surefire-plugin.version>2.22.1</maven-surefire-plugin.version>
         <maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
-        <maven-javadoc-plugin.version>3.0.1</maven-javadoc-plugin.version>
+        <maven-javadoc-plugin.version>3.2.0</maven-javadoc-plugin.version>
         <maven-antrun-plugin.version>1.8</maven-antrun-plugin.version>
         <maven-assembly-plugin.version>3.1.0</maven-assembly-plugin.version>
         <maven-changelog-plugin.version>2.3</maven-changelog-plugin.version>
@@ -326,6 +325,14 @@
             </testResource>
         </testResources>
 
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-javadoc-plugin</artifactId>
+            <version>${maven-javadoc-plugin.version}</version>
+          </plugin>
+        </plugins>
+        
         <pluginManagement>
             <plugins>
                 <plugin>
