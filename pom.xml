@@ -55,27 +55,26 @@
         <findbugs.disable>true</findbugs.disable>
 
         <!-- TODO -->
-        <commons-lang3.version>3.10</commons-lang3.version>
+        <commons-lang3.version>3.11</commons-lang3.version>
         <servlet-api.version>3.1.0</servlet-api.version>
         <javax.javaee-web-api.version>7.0</javax.javaee-web-api.version>
-        <versions-maven-plugin.version>2.5</versions-maven-plugin.version>
+        <versions-maven-plugin.version>2.8.1</versions-maven-plugin.version>
         <doxia.version>1.0</doxia.version>
         <modernizr.version>2.8.3</modernizr.version>
-        <jetty.version>9.4.28.v20200408</jetty.version>
+        <jetty.version>9.4.33.v20201020</jetty.version>
         <google-closure.version>v20200406</google-closure.version>
         <contiperf.version>2.4.3</contiperf.version>
-        <joda-time.version>2.10.6</joda-time.version>
+        <joda-time.version>2.10.8</joda-time.version>
         <jquerypp.version>1.0.1</jquerypp.version>
         <jquery.version>3.4.0</jquery.version>
         <hamcrest.version>2.1</hamcrest.version>
-        <mockito.version>3.3.3</mockito.version>
+        <mockito.version>3.6.0</mockito.version>
         <yuicompressor.version>2.4.8</yuicompressor.version>
         <maven-javadoc-plugin.version>3.2.0</maven-javadoc-plugin.version>
-        <guava.version>29.0</guava.version>
-        <junit5.version>5.6.2</junit5.version>
+        <guava.version>30.0</guava.version>
+        <junit5.version>5.7.0</junit5.version>
         <wicket.version>8.9.0</wicket.version>
         <wicketstuff.version>8.9.0</wicketstuff.version>
-        <yuicompressor.version>2.4.8</yuicompressor.version>
         <logback.version>1.2.3</logback.version>
         <jsass.version>5.10.3</jsass.version>
         <popperjs.version>1.14.1</popperjs.version>
