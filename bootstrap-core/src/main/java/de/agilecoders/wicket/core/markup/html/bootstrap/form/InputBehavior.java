@@ -28,7 +28,7 @@ public class InputBehavior extends BootstrapBaseBehavior {
 
         @Override
         public String cssClassName() {
-            return this == Medium ? "" : "input-" + cssName;
+            return this == Medium ? "" : "form-control-" + cssName;
         }
 
     }
