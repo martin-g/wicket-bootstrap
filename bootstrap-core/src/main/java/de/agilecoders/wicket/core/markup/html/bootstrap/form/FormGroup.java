@@ -18,6 +18,8 @@ import org.apache.wicket.model.Model;
 import org.apache.wicket.util.string.Strings;
 import org.apache.wicket.util.visit.IVisit;
 import org.apache.wicket.util.visit.IVisitor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -52,6 +54,8 @@ public class FormGroup extends Border {
         }
 
     }
+
+    private static final Logger LOG = LoggerFactory.getLogger(FormGroup.class);
 
     private Component label;
     private Component help;
@@ -112,6 +116,7 @@ public class FormGroup extends Border {
      * {@link InputBehavior#size(InputBehavior.Size)} on the {@link FormComponent} instead.
      */
     public FormGroup size(final Size size) {
+        LOG.warn("Ignore form group resizing as it is not supported by Bootstrap 4.");
         return this;
     }
 
