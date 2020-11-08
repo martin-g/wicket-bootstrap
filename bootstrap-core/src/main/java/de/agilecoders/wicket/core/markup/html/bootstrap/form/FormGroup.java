@@ -1,6 +1,7 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.form;
 
 import com.google.common.base.Function;
+import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNameProvider;
 import de.agilecoders.wicket.core.util.Attributes;
 import de.agilecoders.wicket.core.util.Components;
 import org.apache.wicket.AttributeModifier;
@@ -29,6 +30,28 @@ import java.util.List;
  * @author miha
  */
 public class FormGroup extends Border {
+
+    /**
+     * Holder class for all possible form group sizes
+     *
+     * @deprecated Not supported by Bootstrap 4. Use {@link InputBehavior.Size}
+     * on the {@link FormComponent} instead.
+     */
+    public enum Size implements ICssClassNameProvider {
+        Small("sm"), Large("lg");
+
+        private final String cssName;
+
+        Size(String cssName) {
+            this.cssName = cssName;
+        }
+
+        @Override
+        public String cssClassName() {
+            return "form-group-" + cssName;
+        }
+
+    }
 
     private Component label;
     private Component help;
@@ -77,6 +100,18 @@ public class FormGroup extends Border {
      */
     public FormGroup useFormComponentLabel(boolean value) {
         this.useFormComponentLabel = value;
+        return this;
+    }
+
+    /**
+     * sets the size of form-group
+     *
+     * @param size the size to use
+     * @return this instance for chaining
+     * @deprecated Not supported by Bootstrap 4. Use
+     * {@link InputBehavior#size(InputBehavior.Size)} on the {@link FormComponent} instead.
+     */
+    public FormGroup size(final Size size) {
         return this;
     }
 
