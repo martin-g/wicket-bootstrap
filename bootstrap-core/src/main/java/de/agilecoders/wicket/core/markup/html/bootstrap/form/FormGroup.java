@@ -6,6 +6,7 @@ import de.agilecoders.wicket.core.util.Attributes;
 import de.agilecoders.wicket.core.util.Components;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
+import org.apache.wicket.behavior.AttributeAppender;
 import org.apache.wicket.feedback.FeedbackMessage;
 import org.apache.wicket.feedback.FeedbackMessages;
 import org.apache.wicket.markup.ComponentTag;
@@ -157,7 +158,7 @@ public class FormGroup extends Border {
         super.onComponentTag(tag);
 
         checkComponentTag(tag, "div");
-        Attributes.addClass(tag, "form-group", stateClassName);
+        Attributes.addClass(tag, "form-group");
         if (size != null) {
             Attributes.addClass(tag, size.cssClassName());
         }
@@ -170,6 +171,12 @@ public class FormGroup extends Border {
         this.label = newLabel("label", labelModel);
         this.help = newHelpLabel("help", helpModel);
         this.feedback = newFeedbackMessageContainer("error");
+        this.feedback.add(new AttributeAppender("class", new Model<String>(){
+            @Override
+            public String getObject() {
+                return stateClassName;
+            }
+        }, " "));
         addToBorder(this.label, this.help, this.feedback);
 
 
@@ -312,9 +319,9 @@ public class FormGroup extends Border {
             switch (message.getLevel()) {
                 case FeedbackMessage.FATAL:
                 case FeedbackMessage.ERROR:
-                case FeedbackMessage.WARNING: return "is-invalid";
+                case FeedbackMessage.WARNING: return "invalid-feedback";
                 case FeedbackMessage.INFO:
-                case FeedbackMessage.SUCCESS: return "is-valid";
+                case FeedbackMessage.SUCCESS: return "valid-feedback";
                 default: return "";
             }
         }

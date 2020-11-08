@@ -166,7 +166,39 @@ class FormGroupTest extends WicketApplicationTest {
         formTester.submit();
 
         tester().assertLabel("form:id:error", "&#039;value&#039; is required.");
-        tester().assertContains("class=\".*is-invalid.*\""); //assert error CSS class is present
+        tester().assertContains("class=\"invalid-feedback\""); //assert error CSS class is present
+    }
+
+    @Test
+    void formGroupSubmitValidationSuccess() {
+
+        Model<FormData> model = Model.of(new FormData("test"));
+        model.getObject();
+
+        Form<FormData> form = new Form<>("form", new CompoundPropertyModel<>(model));
+
+        FormGroup group = new FormGroup("id");
+        form.add(group);
+
+        TextField<String> input = new TextField<>("value") {
+            @Override
+            protected void onValid() {
+                super.onValid();
+                success("Value is valid.");
+            }
+        };
+        input.setRequired(true);
+        group.add(input);
+
+        tester().startComponentInPage(
+                form,
+                Markup.of("<form wicket:id='form'><div wicket:id='id'><input type='text' wicket:id='value'/></div></form>"));
+        FormTester formTester = tester().newFormTester("form", false);
+
+        formTester.submit();
+
+        tester().assertLabel("form:id:error", "Value is valid.");
+        tester().assertContains("class=\"valid-feedback\""); //assert error CSS class is present
     }
 
     private static class FormData implements Serializable {
@@ -176,5 +208,13 @@ class FormGroupTest extends WicketApplicationTest {
         @SuppressWarnings("unused")
         private String value;
 
+
+        private FormData() {
+            this(null);
+        }
+
+        private FormData(String value) {
+            this.value = value;
+        }
     }
 }
