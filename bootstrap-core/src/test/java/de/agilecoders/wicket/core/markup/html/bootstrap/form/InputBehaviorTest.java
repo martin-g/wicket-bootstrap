@@ -42,7 +42,7 @@ class InputBehaviorTest extends WicketApplicationTest {
         TagTester tagTester = tester().getTagById("input");
         String cssClass = tagTester.getAttribute("class");
         assertThat(cssClass, Matchers.containsString("form-control"));
-        assertThat(cssClass, Matchers.containsString("input-lg"));
+        assertThat(cssClass, Matchers.containsString("form-control-lg"));
     }
 
     @Test
@@ -55,7 +55,7 @@ class InputBehaviorTest extends WicketApplicationTest {
         TagTester tagTester = tester().getTagById("input");
         String cssClass = tagTester.getAttribute("class");
         assertThat(cssClass, Matchers.containsString("form-control"));
-        assertThat(cssClass, Matchers.containsString("input-sm"));
+        assertThat(cssClass, Matchers.containsString("form-control-sm"));
 
         assertThat(tester().getLastResponseAsString(), Matchers.containsString("<div class=\"col-lg-11\""));
         assertThat(tester().getLastResponseAsString(), Matchers.containsString("</div"));
@@ -70,7 +70,7 @@ class InputBehaviorTest extends WicketApplicationTest {
         TagTester tagTester = tester().getTagById("input");
         String cssClass = tagTester.getAttribute("class");
         assertThat(cssClass, Matchers.containsString("form-control"));
-        assertThat(cssClass, Matchers.not(Matchers.containsString("input-lg")));
+        assertThat(cssClass, Matchers.not(Matchers.containsString("form-control-lg")));
 
         assertThat(tester().getLastResponseAsString(), Matchers.containsString("<div class=\"col-10\""));
         assertThat(tester().getLastResponseAsString(), Matchers.containsString("</div"));
