@@ -10,7 +10,8 @@ import org.apache.wicket.model.IComponentAssignedModel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.util.string.Strings;
 
-import static com.google.common.base.Preconditions.checkNotNull;
+import java.util.Objects;
+
 import static de.agilecoders.wicket.jquery.JQuery.$;
 
 /**
@@ -75,7 +76,7 @@ public class TooltipBehavior extends BootstrapJavascriptBehavior {
     private IModel<String> wrapOnAssignment(IModel<String> label, Component component) {
         if (label != null && label instanceof IComponentAssignedModel) {
             IComponentAssignedModel<String> cam = (IComponentAssignedModel<String>) label;
-            return cam.wrapOnAssignment(checkNotNull(component));
+            return cam.wrapOnAssignment(Objects.requireNonNull(component));
         }
         return label;
     }

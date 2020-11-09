@@ -1,6 +1,5 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.form;
 
-import com.google.common.base.Function;
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNameProvider;
 import de.agilecoders.wicket.core.util.Attributes;
 import de.agilecoders.wicket.core.util.Components;
@@ -24,6 +23,7 @@ import org.slf4j.LoggerFactory;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Function;
 
 /**
  * Simple form control group that is able to show a label, help text and feedback

@@ -1,7 +1,7 @@
 package de.agilecoders.wicket.core.request.resource.caching.version;
 
-import com.google.common.base.Charsets;
 import de.agilecoders.wicket.core.WicketApplicationTest;
+import java.nio.charset.StandardCharsets;
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -29,16 +29,16 @@ class ChecksumResourceVersionWTest extends WicketApplicationTest {
 
     @Test
     void defaultMarkupEncodingIsUsed() {
-        application().getMarkupSettings().setDefaultMarkupEncoding(Charsets.UTF_16.name());
+        application().getMarkupSettings().setDefaultMarkupEncoding(StandardCharsets.UTF_16.name());
 
-        assertThat(new Adler32ResourceVersion().charset(), is(equalTo(Charsets.UTF_16)));
+        assertThat(new Adler32ResourceVersion().charset(), is(equalTo(StandardCharsets.UTF_16)));
     }
 
     @Test
     void fallbackIsUsedIfThereIsNoDefaultMarkupEncoding() {
         application().getMarkupSettings().setDefaultMarkupEncoding(null);
 
-        assertThat(new Adler32ResourceVersion().charset(), is(equalTo(Charsets.UTF_8)));
+        assertThat(new Adler32ResourceVersion().charset(), is(equalTo(StandardCharsets.UTF_8)));
     }
 
 }
