@@ -39,6 +39,7 @@ public class FormGroup extends Border {
      * @deprecated Not supported by Bootstrap 4. Use {@link InputBehavior.Size}
      * on the {@link FormComponent} instead.
      */
+    @Deprecated
     public enum Size implements ICssClassNameProvider {
         Small("sm"), Large("lg");
 
@@ -115,6 +116,7 @@ public class FormGroup extends Border {
      * @deprecated Not supported by Bootstrap 4. Use
      * {@link InputBehavior#size(InputBehavior.Size)} on the {@link FormComponent} instead.
      */
+    @Deprecated
     public FormGroup size(final Size size) {
         LOG.warn("Ignore form group resizing as it is not supported by Bootstrap 4.");
         return this;
