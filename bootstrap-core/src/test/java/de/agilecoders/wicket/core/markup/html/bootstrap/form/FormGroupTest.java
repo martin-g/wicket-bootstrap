@@ -147,8 +147,6 @@ class FormGroupTest extends WicketApplicationTest {
         tester().getSession().setLocale(Locale.ENGLISH); // for the validation message
 
         Model<FormData> model = Model.of(new FormData());
-        model.getObject();
-
         Form<FormData> form = new Form<>("form", new CompoundPropertyModel<>(model));
 
         FormGroup group = new FormGroup("id");
@@ -166,15 +164,13 @@ class FormGroupTest extends WicketApplicationTest {
         formTester.submit();
 
         tester().assertLabel("form:id:error", "&#039;value&#039; is required.");
-        tester().assertContains("class=\"invalid-feedback\""); //assert error CSS class is present
+        tester().assertContains("class=\"invalid-feedback\""); //assert invalid-feedback CSS class is present
     }
 
     @Test
     void formGroupSubmitValidationSuccess() {
 
         Model<FormData> model = Model.of(new FormData("test"));
-        model.getObject();
-
         Form<FormData> form = new Form<>("form", new CompoundPropertyModel<>(model));
 
         FormGroup group = new FormGroup("id");
@@ -198,7 +194,7 @@ class FormGroupTest extends WicketApplicationTest {
         formTester.submit();
 
         tester().assertLabel("form:id:error", "Value is valid.");
-        tester().assertContains("class=\"valid-feedback\""); //assert error CSS class is present
+        tester().assertContains("class=\"valid-feedback\""); //assert valid-feedback CSS class is present
     }
 
     private static class FormData implements Serializable {
