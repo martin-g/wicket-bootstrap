@@ -1,12 +1,13 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.list;
 
-import com.google.common.collect.Lists;
 import de.agilecoders.wicket.core.WicketApplicationTest;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.util.tester.TagTester;
 import org.junit.jupiter.api.Test;
+
+import java.util.Collections;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
@@ -22,7 +23,7 @@ class BootstrapListViewTest extends WicketApplicationTest {
 
     @Test
     void listViewIsRendered() {
-        TagTester tag = startComponentInPage(new BootstrapListView<String>(id(), Lists.newArrayList("item1")) {
+        TagTester tag = startComponentInPage(new BootstrapListView<String>(id(), Collections.singletonList("item1")) {
             @Override
             protected void populateItem(ListItem<String> components) {
                 components.add(new Label("sub", components.getModelObject()));
@@ -35,7 +36,7 @@ class BootstrapListViewTest extends WicketApplicationTest {
 
     @Test
     void listViewWithModelIsRendered() {
-        TagTester tag = startComponentInPage(new BootstrapListView<String>(id(), Model.ofList(Lists.newArrayList("item1"))) {
+        TagTester tag = startComponentInPage(new BootstrapListView<String>(id(), Model.ofList(Collections.singletonList("item1"))) {
             @Override
             protected void populateItem(ListItem<String> components) {
                 components.add(new Label("sub", components.getModelObject()));

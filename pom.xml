@@ -71,7 +71,6 @@
         <mockito.version>3.6.0</mockito.version>
         <yuicompressor.version>2.4.8</yuicompressor.version>
         <maven-javadoc-plugin.version>3.2.0</maven-javadoc-plugin.version>
-        <guava.version>30.0</guava.version>
         <junit5.version>5.7.0</junit5.version>
         <wicket.version>8.9.0</wicket.version>
         <wicketstuff.version>8.9.0</wicketstuff.version>
@@ -237,12 +236,6 @@
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-lang3</artifactId>
                 <version>${commons-lang3.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.google.guava</groupId>
-                <artifactId>guava</artifactId>
-                <version>${guava.version}-jre</version>
             </dependency>
 
             <dependency>

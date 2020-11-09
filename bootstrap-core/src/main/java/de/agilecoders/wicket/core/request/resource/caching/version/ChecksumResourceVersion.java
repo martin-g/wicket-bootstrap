@@ -1,7 +1,6 @@
 package de.agilecoders.wicket.core.request.resource.caching.version;
 
-import com.google.common.base.Charsets;
-import com.google.common.base.Strings;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.wicket.Application;
 import org.apache.wicket.request.resource.caching.version.MessageDigestResourceVersion;
 import org.apache.wicket.util.io.IOUtils;
@@ -9,6 +8,7 @@ import org.apache.wicket.util.io.IOUtils;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.regex.Pattern;
 import java.util.zip.Checksum;
 
@@ -38,12 +38,12 @@ public abstract class ChecksumResourceVersion extends MessageDigestResourceVersi
         if (Application.exists()) {
             final String charset = Application.get().getMarkupSettings().getDefaultMarkupEncoding();
 
-            if (!Strings.isNullOrEmpty(charset)) {
+            if (StringUtils.isNotBlank(charset)) {
                 return Charset.forName(charset);
             }
         }
 
-        return Charsets.UTF_8;
+        return StandardCharsets.UTF_8;
     }
 
     /**

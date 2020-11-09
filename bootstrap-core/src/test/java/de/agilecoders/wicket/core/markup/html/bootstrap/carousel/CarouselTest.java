@@ -1,11 +1,11 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.carousel;
 
-import com.google.common.collect.Lists;
 import de.agilecoders.wicket.core.WicketApplicationTest;
 import org.apache.wicket.util.string.Strings;
 import org.apache.wicket.util.tester.TagTester;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -102,7 +102,7 @@ class CarouselTest extends WicketApplicationTest {
      * @return a list of carousel images
      */
     private List<ICarouselImage> newImageList() {
-        return Lists.newArrayList(
+        return Arrays.asList(
                 new CarouselImage("http://wb.agilecoders.de/image1.png"),
                 new CarouselImage("http://wb.agilecoders.de/image2.png", "header text"),
                 new CarouselImage("http://wb.agilecoders.de/image3.png", "header text", "description")

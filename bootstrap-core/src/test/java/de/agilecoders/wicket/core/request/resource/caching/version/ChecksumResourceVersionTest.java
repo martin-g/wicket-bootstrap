@@ -1,9 +1,8 @@
 package de.agilecoders.wicket.core.request.resource.caching.version;
 
-import com.google.common.base.Charsets;
-
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
@@ -22,11 +21,11 @@ abstract class ChecksumResourceVersionTest {
         final ChecksumResourceVersion version = newChecksumResourceVersion();
 
         try {
-            final byte[] versionAsByteArray = version.computeDigest(new ByteArrayInputStream(input.getBytes(Charsets.UTF_8)));
+            final byte[] versionAsByteArray = version.computeDigest(new ByteArrayInputStream(input.getBytes(StandardCharsets.UTF_8)));
 
             assertThat("checksum(" + input + "): " + expected + "; is: " + new String(versionAsByteArray),
                        versionAsByteArray,
-                       is(equalTo(expected.getBytes(Charsets.UTF_8))));
+                       is(equalTo(expected.getBytes(StandardCharsets.UTF_8))));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
