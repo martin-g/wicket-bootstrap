@@ -1,6 +1,5 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.form;
 
-import com.google.common.base.Function;
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNameProvider;
 import de.agilecoders.wicket.core.markup.html.bootstrap.layout.col.SpanType;
@@ -12,6 +11,7 @@ import org.apache.wicket.markup.ComponentTag;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Function;
 
 /**
  * An {@link InputBehavior} controls the size of an input tag.
