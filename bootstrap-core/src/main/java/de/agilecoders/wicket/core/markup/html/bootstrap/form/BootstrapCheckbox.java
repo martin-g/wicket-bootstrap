@@ -67,7 +67,7 @@ public class BootstrapCheckbox extends FormComponentPanel<Boolean> {
                 }
             }))
         );
-        checkbox = getCheckBox("checkbox", getModel());
+        checkbox = getCheckbox();
         wrapper.add(checkbox);
     }
 
