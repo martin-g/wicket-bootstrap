@@ -90,6 +90,28 @@ class InputBehaviorTest extends WicketApplicationTest {
         assertThat(tester().getLastResponseAsString(), Matchers.not(Matchers.containsString("</div")));
     }
 
+    @Test
+    void invalidInput() {
+        InputBehaviorPage page = new InputBehaviorPage();
+        page.textField.error("Invalid input.");
+        tester().startPage(page);
+
+        TagTester tagTester = tester().getTagById("input");
+        String cssClass = tagTester.getAttribute("class");
+        assertThat(cssClass, Matchers.containsString("is-invalid"));
+    }
+
+    @Test
+    void validInput() {
+        InputBehaviorPage page = new InputBehaviorPage();
+        page.textField.success("Valid input.");
+        tester().startPage(page);
+
+        TagTester tagTester = tester().getTagById("input");
+        String cssClass = tagTester.getAttribute("class");
+        assertThat(cssClass, Matchers.containsString("is-valid"));
+    }
+
     private static class InputBehaviorPage extends WebPage implements IMarkupResourceStreamProvider {
 
         private final InputBehavior inputBehavior = new InputBehavior();
