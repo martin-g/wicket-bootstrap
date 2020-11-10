@@ -1,5 +1,6 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.form;
 
+import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.html.WebMarkupContainer;
@@ -9,6 +10,7 @@ import org.apache.wicket.markup.html.form.FormComponentPanel;
 import org.apache.wicket.model.IModel;
 
 import de.agilecoders.wicket.core.util.Attributes;
+import org.apache.wicket.model.Model;
 
 /**
  * A specialization of a Checkbox with Bootstrap styling
@@ -62,7 +64,14 @@ public class BootstrapCheckbox extends FormComponentPanel<Boolean> {
         super.onInitialize();
 
         add(getWrapper()
-                .add(newLabel("label", labelModel))
+                .add(newLabel("label", labelModel)
+                    .add(new AttributeModifier("for", new Model<String>() {
+                        @Override
+                        public String getObject() {
+                            return getCheckbox().getMarkupId(true);
+                        }
+                    }))
+                )
                 .add(getCheckbox())
                 );
     }
@@ -77,6 +86,7 @@ public class BootstrapCheckbox extends FormComponentPanel<Boolean> {
     private CheckBox getCheckbox() {
         if (checkbox == null) {
             checkbox = newCheckBox("checkbox", getModel());
+            checkbox.setOutputMarkupId(true);
         }
         return checkbox;
     }
