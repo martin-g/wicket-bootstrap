@@ -1,6 +1,5 @@
 package de.agilecoders.wicket.core;
 
-import com.google.common.base.Charsets;
 import de.agilecoders.wicket.core.settings.BootstrapSettings;
 import de.agilecoders.wicket.core.settings.IBootstrapSettings;
 import de.agilecoders.wicket.core.test.Attributes;
@@ -20,6 +19,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -65,7 +65,7 @@ public abstract class WicketApplicationTest extends Assertions {
                     .install(this);
 
                 getMarkupSettings().setStripWicketTags(false);
-                getMarkupSettings().setDefaultMarkupEncoding(Charsets.UTF_8.name());
+                getMarkupSettings().setDefaultMarkupEncoding(StandardCharsets.UTF_8.name());
 
                 WicketApplicationTest.this.init(this);
             }

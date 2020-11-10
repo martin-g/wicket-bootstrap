@@ -1,12 +1,13 @@
 package de.agilecoders.wicket.themes.markup.html.bootswatch;
 
-import com.google.common.collect.ImmutableList;
 import de.agilecoders.wicket.core.settings.ITheme;
 import de.agilecoders.wicket.core.settings.ThemeProvider;
 import org.apache.wicket.WicketRuntimeException;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.string.Strings;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -31,7 +32,7 @@ public class BootswatchThemeProvider implements ThemeProvider {
      * Constructor.
      */
     public BootswatchThemeProvider(final BootswatchTheme defaultTheme) {
-        this.themes = ImmutableList.<ITheme>builder().add(BootswatchTheme.values()).build();
+        this.themes = Collections.unmodifiableList(Arrays.asList(BootswatchTheme.values()));
         this.defaultTheme = Args.notNull(defaultTheme, "defaultTheme");
     }
 

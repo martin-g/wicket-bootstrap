@@ -18,6 +18,8 @@ import org.apache.wicket.model.Model;
 import org.apache.wicket.util.string.Strings;
 import org.apache.wicket.util.visit.IVisit;
 import org.apache.wicket.util.visit.IVisitor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -34,7 +36,11 @@ public class FormGroup extends Border {
 
     /**
      * Holder class for all possible form group sizes
+     *
+     * @deprecated Not supported by Bootstrap 4. Use {@link InputBehavior.Size}
+     * on the {@link FormComponent} instead.
      */
+    @Deprecated
     public enum Size implements ICssClassNameProvider {
         Small("sm"), Large("lg");
 
@@ -51,12 +57,13 @@ public class FormGroup extends Border {
 
     }
 
+    private static final Logger LOG = LoggerFactory.getLogger(FormGroup.class);
+
     private Component label;
     private Component help;
     private Component feedback;
     private String stateClassName;
     private boolean useFormComponentLabel = true;
-    private Size size;
     private final IModel<String> labelModel;
     private final IModel<String> helpModel;
 
@@ -107,9 +114,12 @@ public class FormGroup extends Border {
      *
      * @param size the size to use
      * @return this instance for chaining
+     * @deprecated Not supported by Bootstrap 4. Use
+     * {@link InputBehavior#size(InputBehavior.Size)} on the {@link FormComponent} instead.
      */
+    @Deprecated
     public FormGroup size(final Size size) {
-        this.size = size;
+        LOG.warn("Ignore form group resizing as it is not supported by Bootstrap 4.");
         return this;
     }
 
@@ -159,9 +169,6 @@ public class FormGroup extends Border {
 
         checkComponentTag(tag, "div");
         Attributes.addClass(tag, "form-group");
-        if (size != null) {
-            Attributes.addClass(tag, size.cssClassName());
-        }
     }
 
     @Override

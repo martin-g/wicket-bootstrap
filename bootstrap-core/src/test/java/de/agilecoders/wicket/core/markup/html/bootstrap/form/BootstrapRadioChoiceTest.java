@@ -5,7 +5,7 @@ import static org.hamcrest.Matchers.endsWith;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 
-import com.google.common.collect.Lists;
+import java.util.Arrays;
 import org.apache.wicket.util.tester.TagTester;
 
 import de.agilecoders.wicket.core.WicketApplicationTest;
@@ -17,7 +17,7 @@ class BootstrapRadioChoiceTest extends WicketApplicationTest {
 
     @Test
     void radioChoice() {
-        BootstrapRadioChoice<String> radio = new BootstrapRadioChoice<>("id", Lists.newArrayList("One", "Two"));
+        BootstrapRadioChoice<String> radio = new BootstrapRadioChoice<>("id", Arrays.asList("One", "Two"));
 
         tester().startComponentInPage(radio);
         TagTester spanTester = tester().getTagByWicketId("id");
@@ -38,7 +38,7 @@ class BootstrapRadioChoiceTest extends WicketApplicationTest {
 
     @Test
     void inlineRadioChoice() {
-        BootstrapRadioChoice<String> radio = new BootstrapRadioChoice<>("id", Lists.newArrayList("One", "Two"));
+        BootstrapRadioChoice<String> radio = new BootstrapRadioChoice<>("id", Arrays.asList("One", "Two"));
         radio.setInline(true);
 
         tester().startComponentInPage(radio);

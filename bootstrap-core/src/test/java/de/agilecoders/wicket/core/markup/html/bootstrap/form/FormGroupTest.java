@@ -96,52 +96,6 @@ class FormGroupTest extends WicketApplicationTest {
     }
 
     @Test
-    void formGroupLarge() {
-
-        Model<FormData> model = Model.of(new FormData());
-        model.getObject();
-
-        Form<FormData> form = new Form<>("form", new CompoundPropertyModel<>(model));
-
-        FormGroup group = new FormGroup("formGroup");
-        group.size(FormGroup.Size.Large);
-        form.add(group);
-
-        TextField<String> input = new TextField<>("value");
-        input.setRequired(true);
-        group.add(input);
-
-        tester().startComponentInPage(
-                form,
-                Markup.of("<form wicket:id='form'><div wicket:id='formGroup'><input type='text' wicket:id='value'/></div></form>"));
-        TagTester formGroupTester = tester().getTagByWicketId("formGroup");
-        assertThat(formGroupTester.getAttribute("class"), containsString("form-group-lg"));
-    }
-
-    @Test
-    void formGroupSmall() {
-
-        Model<FormData> model = Model.of(new FormData());
-        model.getObject();
-
-        Form<FormData> form = new Form<>("form", new CompoundPropertyModel<>(model));
-
-        FormGroup group = new FormGroup("formGroup");
-        group.size(FormGroup.Size.Small);
-        form.add(group);
-
-        TextField<String> input = new TextField<>("value");
-        input.setRequired(true);
-        group.add(input);
-
-        tester().startComponentInPage(
-                form,
-                Markup.of("<form wicket:id='form'><div wicket:id='formGroup'><input type='text' wicket:id='value'/></div></form>"));
-        TagTester formGroupTester = tester().getTagByWicketId("formGroup");
-        assertThat(formGroupTester.getAttribute("class"), containsString("form-group-sm"));
-    }
-
-    @Test
     void formGroupSubmitValidation() {
 
         tester().getSession().setLocale(Locale.ENGLISH); // for the validation message

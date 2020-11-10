@@ -1,15 +1,15 @@
 package de.agilecoders.wicket.core.util;
 
-import com.google.common.base.Joiner;
-import com.google.common.base.Splitter;
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNameProvider;
 import de.agilecoders.wicket.jquery.util.Generics2;
 import de.agilecoders.wicket.jquery.util.Strings2;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.util.lang.Args;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -21,8 +21,6 @@ import java.util.Set;
  * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public final class CssClassNames {
-    private static final Splitter SPLITTER = Splitter.on(' ').trimResults().omitEmptyStrings();
-    private static final Joiner JOINER = Joiner.on(' ').skipNulls();
 
     /**
      * creates a new {@link ICssClassNameProvider} from a given model.
@@ -55,7 +53,7 @@ public final class CssClassNames {
      * @return the joined class names.
      */
     public static String join(Iterable<String> classNames) {
-        return JOINER.join(classNames);
+        return StringUtils.join(classNames, " ");
     }
 
     /**
@@ -65,7 +63,19 @@ public final class CssClassNames {
      * @return a new set of css class names.
      */
     public static Set<String> split(final CharSequence classValue) {
-        return Generics2.newLinkedHashSet(SPLITTER.split(classValue));
+        final Set<String> result = new LinkedHashSet<>();
+        final String clazzes = (classValue != null) ? classValue.toString() : null;
+
+        if (StringUtils.isNotBlank(clazzes)) {
+            for (String clazz : StringUtils.split(clazzes, " ")) {
+                clazz = StringUtils.trimToNull(clazz);
+                if (clazz != null) {
+                    result.add(clazz);
+                }
+            }
+        }
+
+        return result;
     }
 
     /**

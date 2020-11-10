@@ -9,9 +9,8 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.util.tester.TagTester;
 
-import com.google.common.collect.Lists;
-
 import de.agilecoders.wicket.core.WicketApplicationTest;
+import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 
 class ClientSideBootstrapTabbedPanelTest extends WicketApplicationTest {
@@ -119,7 +118,7 @@ class ClientSideBootstrapTabbedPanelTest extends WicketApplicationTest {
     }
 
     private Component newClientSideTabs(String markupId, IModel<Integer> activeTab) {
-        return new ClientSideBootstrapTabbedPanel<>(markupId, Lists.newArrayList(
+        return new ClientSideBootstrapTabbedPanel<>(markupId, Arrays.asList(
                 createTab("Section 1"), createTab("Section 2"), createTab("Section 3")
         ), activeTab);
     }
