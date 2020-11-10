@@ -128,7 +128,7 @@ class FormGroupTest extends WicketApplicationTest {
         FormGroup group = new FormGroup("id");
         form.add(group);
 
-        TextField<String> input = new TextField<>("value") {
+        TextField<String> input = new TextField<String>("value") {
             @Override
             protected void onValid() {
                 super.onValid();
