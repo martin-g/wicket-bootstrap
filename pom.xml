@@ -60,7 +60,6 @@
         <contiperf.version>2.4.3</contiperf.version>
         <doxia.version>1.0</doxia.version>
         <google-closure.version>v20200406</google-closure.version>
-        <guava.version>29.0</guava.version>
         <javax.javaee-web-api.version>7.0</javax.javaee-web-api.version>
         <jetty.version>9.4.30.v20200611</jetty.version>
         <joda-time.version>2.10.6</joda-time.version>
@@ -239,12 +238,6 @@
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-lang3</artifactId>
                 <version>${commons-lang3.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.google.guava</groupId>
-                <artifactId>guava</artifactId>
-                <version>${guava.version}-jre</version>
             </dependency>
 
             <dependency>

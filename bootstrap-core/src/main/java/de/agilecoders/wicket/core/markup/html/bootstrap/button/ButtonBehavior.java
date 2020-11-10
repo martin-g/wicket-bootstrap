@@ -1,11 +1,10 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.button;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
-
-import com.google.common.base.Strings;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNameProvider;
@@ -92,7 +91,7 @@ public class ButtonBehavior extends BootstrapBaseBehavior {
      * @return whether this button is a block level element
      */
     public boolean isBlock() {
-        return !Strings.isNullOrEmpty(block.getObject());
+        return StringUtils.isNotBlank(block.getObject());
     }
 
     /**
