@@ -185,6 +185,7 @@ class UrlImporter implements Importer {
 
     private Optional<Import> resolveLocalDependency(URI base, String url) {
         LOG.debug("Going to resolve an import from local dependency: {}", url);
+
         String importUrl = getAbsolutePath(base, url);
         Optional<Import> localImport = resolveLocalFileDependency(importUrl);
 
@@ -231,8 +232,8 @@ class UrlImporter implements Importer {
 
     private String getAbsolutePath(URI base, String url) {
         String basePath = base.toString();
-        Path parentBasePath = Paths.get(basePath).getParent();
-        return parentBasePath.resolve(url).toString();
+        String parentBasePath = basePath.substring(0, basePath.lastIndexOf('/'));
+        return parentBasePath + '/' + url;
     }
 
     private Import buildImport(URL importUri) {

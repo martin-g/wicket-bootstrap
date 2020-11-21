@@ -18,6 +18,7 @@ import org.junit.jupiter.api.Test;
 import java.net.URI;
 import java.net.URL;
 
+import static java.lang.System.lineSeparator;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.equalTo;
@@ -61,7 +62,7 @@ class BootstrapSassTest {
 
         SassSource sassSource = sass.getSassContext(res, null);
         String css = sass.getCss(sassSource);
-        assertThat(css, is(equalTo(".rule {\n  background: #999; }\n")));
+        assertThat(css, is(equalTo(".rule {" + lineSeparator() + "  background: #999; }" + lineSeparator())));
     }
 
     /**
@@ -89,7 +90,7 @@ class BootstrapSassTest {
 
         SassSource sassSource = sass.getSassContext(res, null);
         String css = sass.getCss(sassSource);
-        assertThat(css, is(equalTo(".rule {\n  background: #007bff; }\n")));
+        assertThat(css, is(equalTo(".rule {" + lineSeparator() + "  background: #007bff; }" + lineSeparator())));
     }
 
     @Test
@@ -99,7 +100,7 @@ class BootstrapSassTest {
 
         SassSource sassSource = sass.getSassContext(res, null);
         String css = sass.getCss(sassSource);
-        assertThat(css, is(equalTo(".classPathImported {\n  color: #333; }\n")));
+        assertThat(css, is(equalTo(".classPathImported {" + lineSeparator() + "  color: #333; }" + lineSeparator())));
     }
 
     @Test
@@ -157,7 +158,7 @@ class BootstrapSassTest {
 
         SassSource sassSource = sass.getSassContext(res, null);
         String css = sass.getCss(sassSource);
-        assertThat(css, is(".my-class {\n  color: blue; }\n"));
+        assertThat(css, is(".my-class {" + lineSeparator() + "  color: blue; }" + lineSeparator()));
     }
 
     public static class TestFunctions {
