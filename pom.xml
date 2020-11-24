@@ -45,8 +45,8 @@
         <maven.java.target>${java.version}</maven.java.target>
 
         <bootstrap.version>4.5.2</bootstrap.version>
-        <wicket-webjars.version>3.0.1</wicket-webjars.version>
-        <wicket-jquery-selectors.version>3.0.1</wicket-jquery-selectors.version>
+        <wicket-webjars.version>3.0.2</wicket-webjars.version>
+        <wicket-jquery-selectors.version>3.0.2</wicket-jquery-selectors.version>
 
         <enforcer.disable>true</enforcer.disable>
         <pmd.disable>true</pmd.disable>
@@ -75,8 +75,8 @@
         <popperjs.version>1.14.1</popperjs.version>
         <servlet-api.version>3.1.0</servlet-api.version>
         <slf4j.version>1.7.25</slf4j.version>
-        <wicket.version>9.1.0</wicket.version>
-        <wicketstuff.version>9.1.0</wicketstuff.version>
+        <wicket.version>9.2.0</wicket.version>
+        <wicketstuff.version>9.2.0</wicketstuff.version>
         <yuicompressor.version>2.4.8</yuicompressor.version>
 
         <maven-bundle-plugin.version>5.1.1</maven-bundle-plugin.version>
