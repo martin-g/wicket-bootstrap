@@ -6,6 +6,7 @@ import io.bit3.jsass.importer.Import;
 import io.bit3.jsass.importer.Importer;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -115,9 +116,9 @@ class UrlImporter implements Importer {
     }
 
     private String addUnderscore(String url) {
-        int lastSlash = url.lastIndexOf("/");
+        int lastSlash = url.lastIndexOf('/');
         return new StringBuilder(url)
-                .insert(lastSlash + 1, "_")
+                .insert(lastSlash + 1, '_')
                 .toString();
     }
 
@@ -129,7 +130,7 @@ class UrlImporter implements Importer {
             URL importUrl = Thread.currentThread().getContextClassLoader().getResource(file);
             return Optional.ofNullable(importUrl).map(this::buildImport);
         } catch (WebJarAssetLocator.ResourceException e) {
-            LOG.debug("Webjar resource [" + url + "] wasn't found");
+            LOG.debug("Webjar resource [{}] wasn't found", url);
         } catch (RuntimeException e) {
             throw new WicketRuntimeException(e);
         }
@@ -230,8 +231,7 @@ class UrlImporter implements Importer {
     }
 
     private String getAbsolutePath(URI base, String url) {
-        String basePath = base.toString();
-        Path parentBasePath = Paths.get(basePath).getParent();
+        Path parentBasePath = Paths.get(base).getParent();
         return parentBasePath.resolve(url).toString();
     }
 
@@ -245,8 +245,8 @@ class UrlImporter implements Importer {
     }
 
     private String read(URL url) {
-        try {
-            return IOUtils.toString(url.openStream(), StandardCharsets.UTF_8.name());
+        try (InputStream is = url.openStream()) {
+            return IOUtils.toString(is, StandardCharsets.UTF_8.name());
         } catch (IOException ex) {
             throw new WicketRuntimeException(ex);
         }
