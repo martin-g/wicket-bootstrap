@@ -231,7 +231,8 @@ class UrlImporter implements Importer {
     }
 
     private String getAbsolutePath(URI base, String url) {
-        Path parentBasePath = Paths.get(base).getParent();
+        String basePath = base.toString();
+        Path parentBasePath = Paths.get(basePath).getParent();
         return parentBasePath.resolve(url).toString();
     }
 
