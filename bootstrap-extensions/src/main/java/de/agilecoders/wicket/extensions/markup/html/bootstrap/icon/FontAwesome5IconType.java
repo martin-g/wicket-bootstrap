@@ -1137,6 +1137,8 @@ public class FontAwesome5IconType extends IconType {
     public static final FontAwesome5IconType venus_double_s = on(FontAwesome5Solid.venus_double).build();
     public static final FontAwesome5IconType venus_mars_s = on(FontAwesome5Solid.venus_mars).build();
     public static final FontAwesome5IconType venus_s = on(FontAwesome5Solid.venus).build();
+    public static final FontAwesome5IconType vest_patches_s = on(FontAwesome5Solid.vest_patches).build();
+    public static final FontAwesome5IconType vest_s = on(FontAwesome5Solid.vest).build();
     public static final FontAwesome5IconType vial_s = on(FontAwesome5Solid.vial).build();
     public static final FontAwesome5IconType vials_s = on(FontAwesome5Solid.vials).build();
     public static final FontAwesome5IconType video_s = on(FontAwesome5Solid.video).build();
@@ -1494,6 +1496,7 @@ public class FontAwesome5IconType extends IconType {
     public static final FontAwesome5IconType quora = on(FontAwesome5Brand.quora).build();
     public static final FontAwesome5IconType r_project = on(FontAwesome5Brand.r_project).build();
     public static final FontAwesome5IconType raspberry_pi = on(FontAwesome5Brand.raspberry_pi).build();
+    public static final FontAwesome5IconType ravelry = on(FontAwesome5Brand.ravelry).build();
     public static final FontAwesome5IconType react = on(FontAwesome5Brand.react).build();
     public static final FontAwesome5IconType reacteurope = on(FontAwesome5Brand.reacteurope).build();
     public static final FontAwesome5IconType readme = on(FontAwesome5Brand.readme).build();
