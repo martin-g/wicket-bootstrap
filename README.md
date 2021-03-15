@@ -22,7 +22,7 @@ Current release version:
 
 Demo
 ------
-https://wb8.teliclab.info (courtesy hosted by [Shengche Hsiao](https://github.com/Shengche))
+https://wicketbootstrap.teliclab.info/ (courtesy hosted by [Shengche Hsiao](https://github.com/Shengche))
 
 
 Themes
