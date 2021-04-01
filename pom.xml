@@ -44,9 +44,9 @@
         <maven.java.source>${java.version}</maven.java.source>
         <maven.java.target>${java.version}</maven.java.target>
 
-        <bootstrap.version>4.5.2</bootstrap.version>
-        <wicket-webjars.version>3.0.2</wicket-webjars.version>
-        <wicket-jquery-selectors.version>3.0.2</wicket-jquery-selectors.version>
+        <bootstrap.version>4.6.0-1</bootstrap.version>
+        <wicket-webjars.version>3.0.3</wicket-webjars.version>
+        <wicket-jquery-selectors.version>3.0.3</wicket-jquery-selectors.version>
 
         <enforcer.disable>true</enforcer.disable>
         <pmd.disable>true</pmd.disable>
@@ -61,25 +61,25 @@
         <doxia.version>1.0</doxia.version>
         <google-closure.version>v20200406</google-closure.version>
         <javax.javaee-web-api.version>7.0</javax.javaee-web-api.version>
-        <jetty.version>9.4.30.v20200611</jetty.version>
+        <jetty.version>9.4.39.v20210325</jetty.version>
         <joda-time.version>2.10.6</joda-time.version>
         <jquerypp.version>1.0.1</jquerypp.version>
         <jquery.version>3.5.1</jquery.version>
-        <junit-jupiter.version>5.7.0</junit-jupiter.version>
-        <junit-platform.version>1.7.0</junit-platform.version>
-        <jsass.version>5.10.3</jsass.version>
+        <junit-jupiter.version>5.7.1</junit-jupiter.version>
+        <junit-platform.version>1.7.1</junit-platform.version>
+        <jsass.version>5.10.4</jsass.version>
         <hamcrest.version>2.2</hamcrest.version>
         <logback.version>1.2.3</logback.version>
         <modernizr.version>2.8.3</modernizr.version>
-        <mockito.version>3.5.13</mockito.version>
+        <mockito.version>3.8.0</mockito.version>
         <popperjs.version>1.14.1</popperjs.version>
         <servlet-api.version>3.1.0</servlet-api.version>
         <slf4j.version>1.7.25</slf4j.version>
-        <wicket.version>9.2.0</wicket.version>
-        <wicketstuff.version>9.2.0</wicketstuff.version>
+        <wicket.version>9.3.0</wicket.version>
+        <wicketstuff.version>9.3.0</wicketstuff.version>
         <yuicompressor.version>2.4.8</yuicompressor.version>
 
-        <maven-bundle-plugin.version>5.1.1</maven-bundle-plugin.version>
+        <maven-bundle-plugin.version>5.1.2</maven-bundle-plugin.version>
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
         <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
         <cobertura-maven-plugin.version>2.7</cobertura-maven-plugin.version>
