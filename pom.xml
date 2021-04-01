@@ -45,8 +45,8 @@
         <maven.java.target>${java.version}</maven.java.target>
 
         <bootstrap.version>3.4.1</bootstrap.version>
-        <wicket-webjars.version>3.0.2</wicket-webjars.version>
-        <wicket-jquery-selectors.version>3.0.2</wicket-jquery-selectors.version>
+        <wicket-webjars.version>3.0.3</wicket-webjars.version>
+        <wicket-jquery-selectors.version>3.0.3</wicket-jquery-selectors.version>
 
         <enforcer.disable>true</enforcer.disable>
         <pmd.disable>true</pmd.disable>
@@ -61,8 +61,8 @@
         <doxia.version>1.0</doxia.version>
         <less4j.version>1.17.2</less4j.version>
         <modernizr.version>2.8.3</modernizr.version>
-        <guava.version>30.0</guava.version>
-        <jetty.version>9.4.37.v20210219</jetty.version>
+        <guava.version>30.1.1</guava.version>
+        <jetty.version>9.4.39.v20210325</jetty.version>
         <google-closure.version>v20200406</google-closure.version>
         <contiperf.version>2.4.3</contiperf.version>
         <jquerypp.version>1.0.1</jquerypp.version>
@@ -80,12 +80,12 @@
         <popperjs.version>1.14.1</popperjs.version>
         <servlet-api.version>3.1.0</servlet-api.version>
         <slf4j.version>1.7.25</slf4j.version>
-        <wicket.version>9.2.0</wicket.version>
-        <wicketstuff.version>9.2.0</wicketstuff.version>
+        <wicket.version>9.3.0</wicket.version>
+        <wicketstuff.version>9.3.0</wicketstuff.version>
         <yuicompressor.version>2.4.8</yuicompressor.version>
 
         <cobertura-maven-plugin.version>2.7</cobertura-maven-plugin.version>
-        <maven-bundle-plugin.version>5.1.1</maven-bundle-plugin.version>
+        <maven-bundle-plugin.version>5.1.2</maven-bundle-plugin.version>
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
         <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
         <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
