@@ -14,7 +14,7 @@ public interface IBootstrapSettings {
     /**
      * The version of Bootstrap
      */
-    String VERSION = "4.5.0";
+    String VERSION = "4.6.0-1";
 
     /**
      * The version of modernizr
@@ -24,7 +24,7 @@ public interface IBootstrapSettings {
     /**
      * The version of Popper.js
      */
-    String POPPER_VERSION = "1.14.1";
+    String POPPER_VERSION = "1.16.1-lts";
 
     /**
      * The url to the JavaScript resource at a CDN network
