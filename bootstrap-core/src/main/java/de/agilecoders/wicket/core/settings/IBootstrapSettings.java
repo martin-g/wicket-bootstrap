@@ -10,11 +10,6 @@ import org.apache.wicket.request.resource.ResourceReference;
  * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public interface IBootstrapSettings {
-
-    /**
-     * The version of Bootstrap for Webjars
-     */
-    String BOOTSTRAP_WEBJARS_VERSION = "4.6.0-1";
     
     /**
      * The version of Bootstrap
