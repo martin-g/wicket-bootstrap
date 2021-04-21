@@ -32,7 +32,7 @@ public enum BootswatchTheme implements ITheme {
      * - the theme name
      * Example: //netdna.bootstrapcdn.com/bootswatch/3.1.1/cosmo/bootstrap.min.css
      */
-    private static final String CDN_PATTERN = "//maxcdn.bootstrapcdn.com/bootswatch/%s/%s/bootstrap.min.css";
+    private static final String CDN_PATTERN = "//cdn.jsdelivr.net/npm/bootswatch@%s/dist/%s/bootstrap.min.css";
 
     private String cdnUrl;
     private final ResourceReference reference;
@@ -58,7 +58,7 @@ public enum BootswatchTheme implements ITheme {
     public void renderHead(IHeaderResponse response) {
         if (useCdnResources()) {
             if (cdnUrl == null) {
-                cdnUrl = String.format(CDN_PATTERN, getVersion(), name().toLowerCase());
+                cdnUrl = String.format(CDN_PATTERN, getBoostrapVersion(), name().toLowerCase());
             }
             response.render(CssHeaderItem.forReference(new UrlResourceReference(Url.parse(cdnUrl))));
         }
@@ -88,7 +88,7 @@ public enum BootswatchTheme implements ITheme {
     /**
      * @return The configured version of Bootstrap
      */
-    private String getVersion() {
+    private String getBoostrapVersion() {
         String version = IBootstrapSettings.VERSION;
         if (Application.exists()) {
             IBootstrapSettings settings = Bootstrap.getSettings();
