@@ -19,7 +19,7 @@ public interface IBootstrapSettings {
     /**
      * The version of Bootstrap
      */
-    String BOOTSTRAP_VERSION = "4.6.0";
+    String VERSION = "4.6.0";
 
     /**
      * The version of modernizr
@@ -55,7 +55,7 @@ public interface IBootstrapSettings {
      * @param version The version of Bootstrap. CDN resources use it to construct their urls
      * @return same instance for chaining
      */
-    IBootstrapSettings setBootstrapVersion(String version);
+    IBootstrapSettings setVersion(String version);
 
     /**
      * @param version The version of modernizr. CDN resources use it to construct their urls
@@ -77,7 +77,7 @@ public interface IBootstrapSettings {
     /**
      * @return The version of Bootstrap. CDN resources use it to construct their urls
      */
-    String getBootstrapVersion();
+    String getVersion();
 
     /**
      * @return The version of modernizr. CDN resources use it to construct their urls

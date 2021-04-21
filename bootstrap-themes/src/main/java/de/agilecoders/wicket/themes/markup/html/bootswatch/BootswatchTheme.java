@@ -89,11 +89,11 @@ public enum BootswatchTheme implements ITheme {
      * @return The configured version of Bootstrap
      */
     private String getBoostrapVersion() {
-        String version = IBootstrapSettings.BOOTSTRAP_VERSION;
+        String version = IBootstrapSettings.VERSION;
         if (Application.exists()) {
             IBootstrapSettings settings = Bootstrap.getSettings();
             if (settings != null) {
-                version = settings.getBootstrapVersion();
+                version = settings.getVersion();
             }
         }
 

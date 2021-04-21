@@ -110,9 +110,9 @@ public class Theme implements ITheme {
      * @return The configured version of Bootstrap
      */
     protected String getVersion() {
-        String version = IBootstrapSettings.BOOTSTRAP_VERSION;
+        String version = IBootstrapSettings.VERSION;
         if (Application.exists()) {
-            version = Bootstrap.getSettings().getBootstrapVersion();
+            version = Bootstrap.getSettings().getVersion();
         }
 
         return version;

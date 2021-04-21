@@ -33,7 +33,7 @@ class BootstrapJsReferenceTest extends WicketApplicationTest {
         settings.useCdnResources(true);
         jsResourceReference = settings.getJsResourceReference();
         CharSequence cdnUrl = tester().getRequestCycle().urlFor(jsResourceReference, null);
-        assertThat(cdnUrl.toString(), is(equalTo(String.format(IBootstrapSettings.JS_CDN_PATTERN, settings.getBootstrapVersion()))));
+        assertThat(cdnUrl.toString(), is(equalTo(String.format(IBootstrapSettings.JS_CDN_PATTERN, settings.getVersion()))));
     }
 
 }
