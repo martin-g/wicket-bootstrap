@@ -39,7 +39,8 @@ public class BootstrapSettings implements IBootstrapSettings {
     private boolean useCdnResources;
 
     private boolean deferJavascript;
-    private String version = VERSION;
+    private String boostrapVersion = BOOTSTRAP_VERSION;
+    private String boostrapWenJarsVersion = BOOTSTRAP_WEBJARS_VERSION;
     private String modernizrVersion = MODERNIZR_VERSION;
     private String popperVersion = POPPER_VERSION;
 
@@ -57,8 +58,8 @@ public class BootstrapSettings implements IBootstrapSettings {
     }
 
     @Override
-    public IBootstrapSettings setVersion(String version) {
-        this.version = version;
+    public IBootstrapSettings setBootstrapVersion(String boostrapVersion) {
+        this.boostrapVersion = boostrapVersion;
         return this;
     }
 
@@ -75,8 +76,8 @@ public class BootstrapSettings implements IBootstrapSettings {
     }
 
     @Override
-    public String getVersion() {
-        return version;
+    public String getBootstrapVersion() {
+        return boostrapVersion;
     }
 
     @Override
@@ -104,7 +105,7 @@ public class BootstrapSettings implements IBootstrapSettings {
         ResourceReference ref;
 
         if (useCdnResources()) {
-            String cdnUrl = String.format(CSS_CDN_PATTERN, getVersion());
+            String cdnUrl = String.format(CSS_CDN_PATTERN, getBootstrapVersion());
             ref = new UrlResourceReference(Url.parse(cdnUrl));
         } else {
             ref = bootstrapCssReference;
@@ -118,7 +119,7 @@ public class BootstrapSettings implements IBootstrapSettings {
         ResourceReference jsReference;
 
         if (useCdnResources()) {
-            String cdnUrl = String.format(JS_CDN_PATTERN, getVersion());
+            String cdnUrl = String.format(JS_CDN_PATTERN, getBootstrapVersion());
             jsReference = new PopperPluginUrlResourceReference(Url.parse(cdnUrl));
         } else {
             jsReference = bootstrapJavaScriptReference;

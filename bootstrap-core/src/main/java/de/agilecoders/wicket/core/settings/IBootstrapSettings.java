@@ -12,9 +12,14 @@ import org.apache.wicket.request.resource.ResourceReference;
 public interface IBootstrapSettings {
 
     /**
+     * The version of Bootstrap for Webjars
+     */
+    String BOOTSTRAP_WEBJARS_VERSION = "4.6.0-1";
+    
+    /**
      * The version of Bootstrap
      */
-    String VERSION = "4.6.0-1";
+    String BOOTSTRAP_VERSION = "4.6.0";
 
     /**
      * The version of modernizr
@@ -50,7 +55,7 @@ public interface IBootstrapSettings {
      * @param version The version of Bootstrap. CDN resources use it to construct their urls
      * @return same instance for chaining
      */
-    IBootstrapSettings setVersion(String version);
+    IBootstrapSettings setBootstrapVersion(String version);
 
     /**
      * @param version The version of modernizr. CDN resources use it to construct their urls
@@ -72,7 +77,7 @@ public interface IBootstrapSettings {
     /**
      * @return The version of Bootstrap. CDN resources use it to construct their urls
      */
-    String getVersion();
+    String getBootstrapVersion();
 
     /**
      * @return The version of modernizr. CDN resources use it to construct their urls

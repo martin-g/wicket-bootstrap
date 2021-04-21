@@ -28,12 +28,12 @@ class BootstrapJsReferenceTest extends WicketApplicationTest {
         CharSequence url = tester().getRequestCycle().urlFor(jsResourceReference, null);
         assertThat(url.toString(), is(equalTo(
                 String.format("./wicket/resource/de.agilecoders.wicket.webjars.request.resource.WebjarsJavaScriptResourceReference/webjars/bootstrap/%s/js/bootstrap.js",
-                              IBootstrapSettings.VERSION))));
+                              IBootstrapSettings.BOOTSTRAP_WEBJARS_VERSION))));
 
         settings.useCdnResources(true);
         jsResourceReference = settings.getJsResourceReference();
         CharSequence cdnUrl = tester().getRequestCycle().urlFor(jsResourceReference, null);
-        assertThat(cdnUrl.toString(), is(equalTo(String.format(IBootstrapSettings.JS_CDN_PATTERN, settings.getVersion()))));
+        assertThat(cdnUrl.toString(), is(equalTo(String.format(IBootstrapSettings.JS_CDN_PATTERN, settings.getBootstrapVersion()))));
     }
 
 }
