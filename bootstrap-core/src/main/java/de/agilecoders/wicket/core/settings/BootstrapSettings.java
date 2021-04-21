@@ -40,7 +40,6 @@ public class BootstrapSettings implements IBootstrapSettings {
 
     private boolean deferJavascript;
     private String boostrapVersion = BOOTSTRAP_VERSION;
-    private String boostrapWenJarsVersion = BOOTSTRAP_WEBJARS_VERSION;
     private String modernizrVersion = MODERNIZR_VERSION;
     private String popperVersion = POPPER_VERSION;
 
@@ -58,8 +57,8 @@ public class BootstrapSettings implements IBootstrapSettings {
     }
 
     @Override
-    public IBootstrapSettings setBootstrapVersion(String boostrapVersion) {
-        this.boostrapVersion = boostrapVersion;
+    public IBootstrapSettings setBootstrapVersion(String version) {
+        this.boostrapVersion = version;
         return this;
     }
 
