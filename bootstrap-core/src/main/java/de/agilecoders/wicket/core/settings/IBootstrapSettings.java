@@ -34,7 +34,7 @@ public interface IBootstrapSettings {
     /**
      * The url to the JavaScript resource at a CDN network
      */
-    String JS_CDN_PATTERN = "//maxcdn.bootstrapcdn.com/bootstrap/%s/js/bootstrap.min.js";
+    String JS_CDN_PATTERN = "//stackpath.bootstrapcdn.com/bootstrap/%s/js/bootstrap.min.js";
 
     /**
      * The url to the modernizr JavaScript resource at a CDN network
@@ -44,7 +44,7 @@ public interface IBootstrapSettings {
     /**
      * The url to the css resource at a CDN network
      */
-    String CSS_CDN_PATTERN = "//maxcdn.bootstrapcdn.com/bootstrap/%s/css/bootstrap.min.css";
+    String CSS_CDN_PATTERN = "//stackpath.bootstrapcdn.com/bootstrap/%s/css/bootstrap.min.css";
 
     /**
      * The url to the Popper.js Javascript resource at a CDN network
