@@ -11,7 +11,6 @@ import org.apache.wicket.request.Url;
 import org.apache.wicket.request.resource.ResourceReference;
 import org.apache.wicket.request.resource.UrlResourceReference;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -30,9 +29,9 @@ public enum BootswatchTheme implements ITheme {
      * The placeholders are:
      * - the version
      * - the theme name
-     * Example: //netdna.bootstrapcdn.com/bootswatch/3.1.1/cosmo/bootstrap.min.css
+     * Example: ////cdn.jsdelivr.net/npm/bootswatch@4.6.0/dist/cosmos/bootstrap.min.css
      */
-    private static final String CDN_PATTERN = "//maxcdn.bootstrapcdn.com/bootswatch/%s/%s/bootstrap.min.css";
+    private static final String CDN_PATTERN = "////cdn.jsdelivr.net/npm/bootswatch@%s/dist/%s/bootstrap.min.css";
 
     private String cdnUrl;
     private final ResourceReference reference;
@@ -40,25 +39,25 @@ public enum BootswatchTheme implements ITheme {
     /**
      * Construct.
      */
-    private BootswatchTheme() {
+    BootswatchTheme() {
         this.reference = new BootswatchCssReference(name().toLowerCase());
     }
 
     @Override
     public Iterable<String> getCdnUrls() {
-        return Arrays.asList(cdnUrl);
+        return Collections.singletonList(cdnUrl);
     }
 
     @Override
     public List<HeaderItem> getDependencies() {
-        return Collections.<HeaderItem>singletonList(CssHeaderItem.forReference(reference).setId(BOOTSTRAP_THEME_MARKUP_ID));
+        return Collections.singletonList(CssHeaderItem.forReference(reference).setId(BOOTSTRAP_THEME_MARKUP_ID));
     }
 
     @Override
     public void renderHead(IHeaderResponse response) {
         if (useCdnResources()) {
             if (cdnUrl == null) {
-                cdnUrl = String.format(CDN_PATTERN, getVersion(), name().toLowerCase());
+                cdnUrl = String.format(CDN_PATTERN, getBootstrapVersion(), name().toLowerCase());
             }
             response.render(CssHeaderItem.forReference(new UrlResourceReference(Url.parse(cdnUrl))));
         }
@@ -88,7 +87,7 @@ public enum BootswatchTheme implements ITheme {
     /**
      * @return The configured version of Bootstrap
      */
-    private String getVersion() {
+    private String getBootstrapVersion() {
         String version = IBootstrapSettings.VERSION;
         if (Application.exists()) {
             IBootstrapSettings settings = Bootstrap.getSettings();

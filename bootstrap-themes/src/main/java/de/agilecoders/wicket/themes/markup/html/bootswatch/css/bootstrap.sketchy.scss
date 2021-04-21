@@ -2,14 +2,20 @@
 @import "bootstrap.sketchy.variables.scss";
 
 
-// Sketchy 4.2.1
+// Sketchy 4.6.0
 // Bootswatch
 
 
 // Variables ===================================================================
 
-$web-font-path: "https://fonts.googleapis.com/css?family=Neucha|Cabin+Sketch" !default;
+$web-font-path: "https://fonts.googleapis.com/css?family=Neucha|Cabin+Sketch&display=swap" !default;
 @import url($web-font-path);
+
+// stylelint-disable scss/dollar-variable-default
+$border-radius-sketchy:    255px 25px 225px 25px / 25px 225px 25px 255px;
+$border-radius-lg-sketchy: 555px 25px 15px 25px / 25px 5px 35px 555px;
+$border-radius-sm-sketchy: 255px 25px 225px 25px / 25px 225px 25px 255px;
+// style-enable scss/dollar-variable-default
 
 // Navbar ======================================================================
 
@@ -24,17 +30,17 @@ $web-font-path: "https://fonts.googleapis.com/css?family=Neucha|Cabin+Sketch" !d
 
   &.fixed-top {
     border-radius: 0 25px 225px 0/25px 0 25px 255px;
-    border-width: 0 0 2px 0;
+    border-width: 0 0 2px;
   }
 
   &.fixed-bottom {
     border-radius: 255px 25px 0 25px/25px 225px 25px 0;
-    border-width: 2px 0 0 0;
+    border-width: 2px 0 0;
   }
 
   &-brand {
     font-family: $headings-font-family;
-    font-weight: normal;
+    font-weight: 400;
     text-decoration: none;
   }
 }
@@ -42,13 +48,25 @@ $web-font-path: "https://fonts.googleapis.com/css?family=Neucha|Cabin+Sketch" !d
 // Buttons =====================================================================
 
 .btn {
-  border-radius: $border-radius;
+  border-radius: $border-radius-sketchy;
   text-decoration: none;
+
+  &-lg {
+    border-radius: $border-radius-lg-sketchy;
+  }
+
+  &-sm {
+    border-radius: $border-radius-sm-sketchy;
+  }
 }
 
 // Typography ==================================================================
 
-button, input, optgroup, select, textarea {
+button,
+input,
+optgroup,
+select,
+textarea {
   font-family: $font-family-sans-serif;
 }
 
@@ -61,7 +79,7 @@ blockquote {
 table {
   th,
   td {
-    background-color: #fff;
+    background-color: $white;
   }
 }
 
@@ -79,7 +97,8 @@ table {
 
   .table-success,
   .table-success:hover {
-    td, th {
+    td,
+    th {
       background-color: $success;
       color: $white;
     }
@@ -87,7 +106,8 @@ table {
 
   .table-info,
   .table-info:hover {
-    td, th {
+    td,
+    th {
       background-color: $info;
       color: $white;
     }
@@ -95,7 +115,8 @@ table {
 
   .table-warning,
   .table-warning:hover {
-    td, th {
+    td,
+    th {
       background-color: $warning;
       color: $white;
     }
@@ -103,7 +124,8 @@ table {
 
   .table-danger,
   .table-danger:hover {
-    td, th {
+    td,
+    th {
       background-color: $danger;
       color: $white;
     }
@@ -117,34 +139,38 @@ table {
   &.table-hover .table-active:hover > td {
     background-color: $gray-800;
   }
-  
 }
 
 
 // Forms =======================================================================
 
 input,
-.form-control {
-  border-radius: $border-radius;
+.form-control,
+.input-group-text,
+.custom-file-label {
+  border-radius: $border-radius-sketchy;
 }
 
 textarea,
 textarea.form-control,
 select,
 select.form-control {
-  border-radius: $border-radius-lg !important;
+  border-radius: $border-radius-lg-sketchy !important;
 }
 
 [type="checkbox"] {
   position: relative;
   appearance: none;
+  width: 0;
+  height: 0;
+  border: none;
   cursor: pointer;
 
-  &:before {
+  &::before {
     content: "";
     position: absolute;
     left: -1.2em;
-    top: -0.9em;
+    top: -.9em;
     display: inline-block;
     width: 15px;
     height: 16px;
@@ -152,18 +178,18 @@ select.form-control {
     border-radius: 2px 8px 2px 4px / 5px 3px 5px 3px;
   }
 
-  &:checked:after {
+  &:checked::after {
     content: "x";
     position: absolute;
-    left: -0.64em;
-    top: -0.48em;
+    left: -.64em;
+    top: -.48em;
     font-size: 1.5rem;
-    line-height: 0.5;
+    line-height: .5;
     color: $gray-800;
   }
 
   &:disabled {
-    &:before {
+    &::before {
       border: 2px solid $gray-500;
     }
   }
@@ -172,13 +198,16 @@ select.form-control {
 [type="radio"] {
   position: relative;
   appearance: none;
+  width: 0;
+  height: 0;
+  border: none;
   cursor: pointer;
 
-  &:before {
+  &::before {
     content: "";
     position: absolute;
     left: -1.2em;
-    top: -0.9em;
+    top: -.9em;
     display: inline-block;
     width: 16px;
     height: 16px;
@@ -186,12 +215,12 @@ select.form-control {
     border-radius: 50% 45% 40% 50% / 40% 50% 50% 45%;
   }
 
-  &:checked:before {
+  &:checked::before {
     background-color: $gray-800;
   }
 
   &:disabled {
-    &:before {
+    &::before {
       border: 2px solid $gray-500;
     }
   }
@@ -199,6 +228,32 @@ select.form-control {
 
 .form-check-label {
   padding-left: 2.5rem;
+}
+
+.form-check-inline {
+  [type="checkbox"] {
+    &::before {
+      left: 0;
+      top: 0;
+    }
+
+    &::after {
+      left: .14em;
+      top: .12em;
+    }
+  }
+
+  [type="radio"] {
+    &::before {
+      left: 0;
+      top: 0;
+    }
+  }
+
+  .form-check-label {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
 }
 
 // Navs ========================================================================
@@ -234,6 +289,10 @@ select.form-control {
   }
 }
 
+.nav-pills .nav-link, {
+  border-radius: $border-radius-sketchy;
+}
+
 .nav-link,
 .page-link,
 .list-group-item,
@@ -249,6 +308,7 @@ select.form-control {
 
 .breadcrumb {
   border: 2px solid $gray-800;
+  border-radius: $border-radius-sketchy;
 }
 
 .pagination {
@@ -259,11 +319,9 @@ select.form-control {
 
 // Indicators ==================================================================
 
-.progress {
-  border: 2px solid $gray-800;
-}
-
 .badge {
+  border-radius: $border-radius-sm-sketchy;
+
   &-pill {
     border-radius: 7rem 8rem 8rem 8rem / 4rem 5rem 6rem 6rem;
   }
@@ -274,13 +332,15 @@ select.form-control {
 }
 
 .alert {
+  border-radius: $border-radius-sketchy;
+
   &-dismissible {
     .close {
       color: transparent;
 
-      &:before {
+      &::before {
         right: 1rem;
-        top: 0.8rem;
+        top: .8rem;
       }
     }
 
@@ -289,7 +349,7 @@ select.form-control {
 
       &,
       .alert-link,
-      .close:before {
+      .close::before {
         color: $success;
       }
     }
@@ -299,7 +359,7 @@ select.form-control {
 
       &,
       .alert-link,
-      .close:before {
+      .close::before {
         color: $info;
       }
     }
@@ -309,7 +369,7 @@ select.form-control {
 
       &,
       .alert-link,
-      .close:before {
+      .close::before {
         color: $warning;
       }
     }
@@ -319,7 +379,7 @@ select.form-control {
 
       &,
       .alert-link,
-      .close:before {
+      .close::before {
         color: $danger;
       }
     }
@@ -327,6 +387,11 @@ select.form-control {
 }
 
 // Progress bars ===============================================================
+
+.progress {
+  border: 2px solid $gray-800;
+  border-radius: $border-radius-sm-sketchy;
+}
 
 // Containers ==================================================================
 
@@ -359,6 +424,15 @@ select.form-control {
 
 .jumbotron {
   border: 2px solid $gray-800;
+  border-radius: $border-radius-lg-sketchy;
+}
+
+.toast {
+  border-radius: 10px 10px 15px 5px/5px 15px 5px 15px;
+
+  &-header {
+    font-family: $headings-font-family;
+  }
 }
 
 .modal {
@@ -396,6 +470,12 @@ select.form-control {
   }
 }
 
+.tooltip {
+  &-inner {
+    border-radius: $border-radius-sm-sketchy;
+  }
+}
+
 pre {
   border: 2px solid $gray-800;
   border-radius: 15px 5px 5px 25px/5px 25px 25px 5px;
@@ -407,9 +487,15 @@ pre {
 .close:active {
   opacity: 1;
 
-  &:before {
+  &::before {
     position: absolute;
     content: "X";
     color: $gray-800;
+  }
+}
+
+.img {
+  &-thumbnail {
+    border-radius: $border-radius-sketchy;
   }
 }
