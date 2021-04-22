@@ -46,8 +46,8 @@
 
         <bootstrap.version>3.4.1</bootstrap.version>
         <config.version>0.3.5</config.version>
-        <wicket-webjars.version>2.0.19</wicket-webjars.version>
-        <wicket-jquery-selectors.version>2.0.10</wicket-jquery-selectors.version>
+        <wicket-webjars.version>2.0.20</wicket-webjars.version>
+        <wicket-jquery-selectors.version>2.0.11</wicket-jquery-selectors.version>
 
         <enforcer.disable>true</enforcer.disable>
         <pmd.disable>true</pmd.disable>
@@ -72,11 +72,11 @@
         <jquerypp.version>1.0.1</jquerypp.version>
         <jquery.version>2.2.4</jquery.version>
         <hamcrest.version>2.2</hamcrest.version>
-        <mockito.version>3.6.0</mockito.version>
+        <mockito.version>3.9.0</mockito.version>
         <popperjs.version>1.14.1</popperjs.version>
         <yuicompressor.version>2.4.8</yuicompressor.version>
-        <wicket.version>8.9.0</wicket.version>
-        <wicketstuff.version>8.9.0</wicketstuff.version>
+        <wicket.version>8.12.0</wicket.version>
+        <wicketstuff.version>8.12.0</wicketstuff.version>
 
         <cobertura-maven-plugin.version>2.7</cobertura-maven-plugin.version>
         <maven-bundle-plugin.version>3.5.0</maven-bundle-plugin.version>
