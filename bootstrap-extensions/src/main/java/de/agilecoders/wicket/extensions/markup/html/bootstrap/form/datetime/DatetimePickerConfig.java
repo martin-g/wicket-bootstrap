@@ -1,18 +1,20 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.form.datetime;
 
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.inputmask.InputMaskBehavior;
-import de.agilecoders.wicket.jquery.AbstractConfig;
-import de.agilecoders.wicket.jquery.IKey;
-import org.apache.wicket.behavior.Behavior;
+import static de.agilecoders.wicket.jquery.util.Strings2.nullToEmpty;
+import static java.time.format.DateTimeFormatter.ISO_LOCAL_DATE;
+import static java.time.format.DateTimeFormatter.ISO_LOCAL_DATE_TIME;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
 
-import static de.agilecoders.wicket.jquery.util.Strings2.nullToEmpty;
-import static java.time.format.DateTimeFormatter.ISO_LOCAL_DATE;
-import static java.time.format.DateTimeFormatter.ISO_LOCAL_DATE_TIME;
+import org.apache.wicket.behavior.Behavior;
+
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.inputmask.InputMaskBehavior;
+import de.agilecoders.wicket.jquery.AbstractConfig;
+import de.agilecoders.wicket.jquery.IKey;
+import de.agilecoders.wicket.jquery.util.Json.RawValue;
 
 /**
  * Config of datetime picker plugin.
@@ -72,6 +74,8 @@ public class DatetimePickerConfig extends AbstractConfig {
     private static final IKey<String[]> DisabledDates = newKey("disabledDates", null);
     private static final IKey<String[]> EnabledDates = newKey("enabledDates", null);
     private static final IKey<DatetimePickerIconConfig> Icons = newKey("icons", null);
+    private static final IKey<Boolean> KeepInvalid = newKey("keepInvalid", false);
+    private static final IKey<RawValue> ParseInputDate = newKey("parseInputDate", null);
 
     private Boolean maskInput = false;
 
@@ -344,6 +348,28 @@ public class DatetimePickerConfig extends AbstractConfig {
      */
     public DatetimePickerConfig withEnabledDates(Date[] enabledDates) {
         put(EnabledDates, convertDatesToStrings(enabledDates));
+        return this;
+    }
+
+    /**
+     * Allows custom input formatting For example: the user can enter 'yesterday' or '30 days ago.
+     *
+     * @param func reference to JS function or inline function
+     * @return config instance
+     */
+    public DatetimePickerConfig withParseInputDate(String func) {
+        put(ParseInputDate, new RawValue(func));
+        return this;
+    }
+
+    /**
+     * Will cause the date picker to not revert or overwrite invalid dates.
+     *
+     * @param keep flag
+     * @return config instance
+     */
+    public DatetimePickerConfig withKeepInvalid(boolean keep) {
+        put(KeepInvalid, keep);
         return this;
     }
 
