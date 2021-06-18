@@ -439,7 +439,7 @@ public class Modal<T> extends GenericPanel<T> {
     }
 
     public Modal<T> addOpenerAttributesTo(final Component component) {
-        component.add(new AttributeModifier("data-toggle", "modal"));
+        component.add(new AttributeModifier("data-bs-toggle", "modal"));
         component.add(new AttributeModifier("href", "#" + getMarkupId(true)));
         return this;
     }

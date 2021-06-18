@@ -1,13 +1,12 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.behavior;
 
-import de.agilecoders.wicket.core.util.CssClassNames;
+import java.util.List;
 
-import de.agilecoders.wicket.jquery.util.Generics2;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
-import java.util.List;
+import de.agilecoders.wicket.core.util.CssClassNames;
 
 /**
  * #### Description
@@ -36,6 +35,7 @@ import java.util.List;
  * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public class CssClassNameModifier extends AttributeModifier {
+    private static final long serialVersionUID = 1L;
 
     /**
      * The name of the html class attribute name.
@@ -58,7 +58,7 @@ public class CssClassNameModifier extends AttributeModifier {
      * @param appendValue one or more values to append
      */
     public CssClassNameModifier(String... appendValue) {
-        this(Generics2.newArrayList(appendValue));
+        this(List.of(appendValue));
     }
 
     /**

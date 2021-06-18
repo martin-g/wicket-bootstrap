@@ -1,13 +1,13 @@
 package de.agilecoders.wicket.core.settings;
 
-import de.agilecoders.wicket.core.Bootstrap;
-import de.agilecoders.wicket.jquery.util.Generics2;
+import java.util.Collections;
+import java.util.List;
+
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.HeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
 
-import java.util.Collections;
-import java.util.List;
+import de.agilecoders.wicket.core.Bootstrap;
 
 /**
  * #### Description
@@ -27,7 +27,7 @@ public class NoopThemeProvider implements ThemeProvider {
 
     @Override
     public List<ITheme> available() {
-        return Generics2.newArrayList(theme);
+        return List.of(theme);
     }
 
     @Override

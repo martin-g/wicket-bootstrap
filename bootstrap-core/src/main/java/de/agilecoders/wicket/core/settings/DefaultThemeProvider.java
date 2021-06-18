@@ -1,12 +1,13 @@
 package de.agilecoders.wicket.core.settings;
 
-import de.agilecoders.wicket.core.markup.html.themes.bootstrap.BootstrapTheme;
-import de.agilecoders.wicket.jquery.util.Generics2;
+import java.util.Collections;
+import java.util.List;
+
 import org.apache.wicket.WicketRuntimeException;
 import org.apache.wicket.util.string.Strings;
 
-import java.util.Collections;
-import java.util.List;
+import de.agilecoders.wicket.core.markup.html.themes.bootstrap.BootstrapTheme;
+import de.agilecoders.wicket.jquery.util.Generics2;
 
 /**
  * #### Description
@@ -43,7 +44,7 @@ public class DefaultThemeProvider implements ThemeProvider {
     public DefaultThemeProvider add(final ITheme... themes) {
         assertNoDuplicateNames(themes);
 
-        this.themes.addAll(Generics2.newArrayList(themes));
+        this.themes.addAll(List.of(themes));
         return this;
     }
 

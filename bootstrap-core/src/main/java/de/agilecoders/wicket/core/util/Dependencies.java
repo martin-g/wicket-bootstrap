@@ -1,10 +1,11 @@
 package de.agilecoders.wicket.core.util;
 
-import de.agilecoders.wicket.jquery.util.Generics2;
+import java.util.List;
+
 import org.apache.wicket.markup.head.HeaderItem;
 import org.apache.wicket.util.lang.Args;
 
-import java.util.List;
+import de.agilecoders.wicket.jquery.util.Generics2;
 
 /**
  * #### Description
@@ -39,7 +40,7 @@ public final class Dependencies {
         Args.notNull(additional, "additional");
 
         final List<HeaderItem> elements = Generics2.newArrayList(headerItems);
-        elements.addAll(Generics2.newArrayList(additional));
+        elements.addAll(List.of(additional));
 
         return elements;
     }

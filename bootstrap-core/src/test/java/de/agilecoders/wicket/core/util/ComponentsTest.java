@@ -1,7 +1,13 @@
 package de.agilecoders.wicket.core.util;
 
-import de.agilecoders.wicket.core.WicketApplicationTest;
-import de.agilecoders.wicket.jquery.util.Generics2;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.is;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
+import java.util.Set;
+
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.IMarkupFragment;
@@ -13,11 +19,7 @@ import org.apache.wicket.util.resource.StringResourceStream;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.is;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import de.agilecoders.wicket.core.WicketApplicationTest;
 
 /**
  * Tests the {@link Components} class
@@ -78,13 +80,13 @@ class ComponentsTest extends WicketApplicationTest {
 
     @Test
     void assertTagDoesNothingIfTagIsOkWithSet() {
-        Components.assertTag(createComponentMock(), new ComponentTag("a", XmlTag.TagType.OPEN_CLOSE), Generics2.newHashSet("a", "li"));
+        Components.assertTag(createComponentMock(), new ComponentTag("a", XmlTag.TagType.OPEN_CLOSE), Set.of("a", "li"));
     }
 
     @Test
     void assertTagDoesThrowExceptionIfTagIsNotOkWithSet() {
         assertThrows(MarkupException.class, () ->
-            Components.assertTag(createComponentMock(), new ComponentTag("div", XmlTag.TagType.OPEN_CLOSE), Generics2.newHashSet("a", "li")));
+            Components.assertTag(createComponentMock(), new ComponentTag("div", XmlTag.TagType.OPEN_CLOSE), Set.of("a", "li")));
     }
 
     @Test

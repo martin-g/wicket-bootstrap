@@ -139,13 +139,13 @@ $('#myModal').on('show', function (e) {
             <div class="modal-content">
                 <div class="modal-header">
                     <h3 class="modal-title">Modal header</h3>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
                 </div>
                 <div class="modal-body">
                     <p>One fine body&hellip;</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-default" data-bs-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-primary">Save changes</button>
                 </div>
             </div>
@@ -158,13 +158,13 @@ $('#myModal').on('show', function (e) {
         <div class="modal-content">
             <div class="modal-header">
                 <h3 class="modal-title">Modal header</h3>
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
             </div>
             <div class="modal-body">
                 <p>One fine body&hellip;</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default" data-bs-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-primary">Save changes</button>
             </div>
         </div>
@@ -181,7 +181,7 @@ $('#myModal').on('show', function (e) {
         <div class="modal-content">
             <div class="modal-header">
                 <h3 id="myModalLabel" class="modal-title">Modal Heading</h3>
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
             </div>
             <div class="modal-body">
                 <h4>Text in a modal</h4>
@@ -215,18 +215,18 @@ $('#myModal').on('show', function (e) {
                 <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn" data-dismiss="modal">Close</button>
+                <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-primary">Save changes</button>
             </div>
         </div>
     </div>
 </div>
 <div class="bs-docs-example" style="padding-bottom: 24px;">
-    <a data-toggle="modal" href="#myModal" class="btn btn-primary btn-lg">Launch demo modal</a>
+    <a data-bs-toggle="modal" href="#myModal" class="btn btn-primary btn-lg">Launch demo modal</a>
 </div>
 <pre class="prettyprint linenums">
 &lt!-- Button to trigger modal --&gt;
-&lt;a href="#myModal" role="button" class="btn" data-toggle="modal"&gt;Launch demo modal&lt;/a&gt;
+&lt;a href="#myModal" role="button" class="btn" data-bs-toggle="modal"&gt;Launch demo modal&lt;/a&gt;
 
 </pre>
 
@@ -237,8 +237,8 @@ $('#myModal').on('show', function (e) {
 
 <h3>Via data attributes</h3>
 
-<p>Activate a modal without writing JavaScript. Set <code>data-toggle="modal"</code> on a controller element, like a button, along with a <code>data-target="#foo"</code> or <code>href="#foo"</code> to target a specific modal to toggle.</p>
-<pre class="prettyprint linenums">&lt;button type="button" data-toggle="modal" data-target="#myModal"&gt;Launch modal&lt;/button&gt;</pre>
+<p>Activate a modal without writing JavaScript. Set <code>data-bs-toggle="modal"</code> on a controller element, like a button, along with a <code>data-target="#foo"</code> or <code>href="#foo"</code> to target a specific modal to toggle.</p>
+<pre class="prettyprint linenums">&lt;button type="button" data-bs-toggle="modal" data-target="#myModal"&gt;Launch modal&lt;/button&gt;</pre>
 
 <h3>Via JavaScript</h3>
 
@@ -281,7 +281,7 @@ $('#myModal').on('show', function (e) {
             <td>path</td>
             <td>false</td>
             <td><p>If a remote url is provided, content will be loaded via jQuery's <code>load</code> method and injected into the <code>.modal-body</code>. If you're using the data api, you may alternatively use the <code>href</code> tag to specify the remote source. An example of this is shown below:</p>
-                <pre class="prettyprint linenums"><code>&lt;a data-toggle="modal" href="remote.html" data-target="#modal"&gt;click me&lt;/a&gt;</code></pre>
+                <pre class="prettyprint linenums"><code>&lt;a data-bs-toggle="modal" href="remote.html" data-target="#modal"&gt;click me&lt;/a&gt;</code></pre>
             </td>
         </tr>
     </tbody>
@@ -367,7 +367,7 @@ $('#myModal').on('hidden', function () {
                 <a class="navbar-brand" href="#">Project Name</a>
                 <ul class="nav navbar-nav" role="navigation">
                     <li class="dropdown">
-                        <button type="button" id="drop1" role="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></button>
+                        <button type="button" id="drop1" role="button" class="btn btn-default dropdown-toggle" data-bs-toggle="dropdown">Dropdown <b class="caret"></b></button>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
                             <li><a class="dropdown-item" tabindex="-1" href="http://google.com">Action</a></li>
                             <li><a class="dropdown-item" tabindex="-1" href="#anotherAction">Another action</a></li>
@@ -377,7 +377,7 @@ $('#myModal').on('hidden', function () {
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <button type="button" href="#" id="drop2" role="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Dropdown 2 <b class="caret"></b></button>
+                        <button type="button" href="#" id="drop2" role="button" class="btn btn-default dropdown-toggle" data-bs-toggle="dropdown">Dropdown 2 <b class="caret"></b></button>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="drop2">
                             <li><a class="dropdown-item" tabindex="-1" href="#">Action</a></li>
                             <li><a class="dropdown-item" tabindex="-1" href="#">Another action</a></li>
@@ -389,7 +389,7 @@ $('#myModal').on('hidden', function () {
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li id="fat-menu" class="dropdown">
-                        <button type="button" id="drop3" role="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Dropdown 3 <b class="caret"></b></button>
+                        <button type="button" id="drop3" role="button" class="btn btn-default dropdown-toggle" data-bs-toggle="dropdown">Dropdown 3 <b class="caret"></b></button>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="drop3">
                             <li><a class="dropdown-item" tabindex="-1" href="#">Action</a></li>
                             <li><a class="dropdown-item" tabindex="-1" href="#">Another action</a></li>
@@ -413,7 +413,7 @@ $('#myModal').on('hidden', function () {
                 [[CONTENT]]
             </li>
             <li class="dropdown">
-                <a class="btn btn-default dropdown-toggle" id="drop4" role="button" data-toggle="dropdown" href="#">Dropdown <b class="caret"></b></a>
+                <a class="btn btn-default dropdown-toggle" id="drop4" role="button" data-bs-toggle="dropdown" href="#">Dropdown <b class="caret"></b></a>
                 <ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="drop4">
                     <li><a class="dropdown-item" tabindex="-1" href="#">Action</a></li>
                     <li><a class="dropdown-item" tabindex="-1" href="#">Another action</a></li>
@@ -423,7 +423,7 @@ $('#myModal').on('hidden', function () {
                 </ul>
             </li>
             <li class="dropdown">
-                <a class="btn btn-default dropdown-toggle" id="drop5" role="button" data-toggle="dropdown" href="#">Dropdown 2 <b class="caret"></b></a>
+                <a class="btn btn-default dropdown-toggle" id="drop5" role="button" data-bs-toggle="dropdown" href="#">Dropdown 2 <b class="caret"></b></a>
                 <ul id="menu2" class="dropdown-menu" role="menu" aria-labelledby="drop5">
                     <li><a class="dropdown-item" tabindex="-1" href="#">Action</a></li>
                     <li><a class="dropdown-item" tabindex="-1" href="#">Another action</a></li>
@@ -433,7 +433,7 @@ $('#myModal').on('hidden', function () {
                 </ul>
             </li>
             <li class="dropdown">
-                <a class="btn btn-default dropdown-toggle" id="drop6" role="button" data-toggle="dropdown" href="#">Dropdown 3 <b class="caret"></b></a>
+                <a class="btn btn-default dropdown-toggle" id="drop6" role="button" data-bs-toggle="dropdown" href="#">Dropdown 3 <b class="caret"></b></a>
                 <ul id="menu3" class="dropdown-menu" role="menu" aria-labelledby="drop5">
                     <li><a class="dropdown-item" tabindex="-1" href="#">Action</a></li>
                     <li><a class="dropdown-item" tabindex="-1" href="#">Another action</a></li>
@@ -454,10 +454,10 @@ $('#myModal').on('hidden', function () {
 
     <h3>Via data attributes</h3>
 
-    <p>Add <code>data-toggle="dropdown"</code> to a link or button to toggle a dropdown.</p>
+    <p>Add <code>data-bs-toggle="dropdown"</code> to a link or button to toggle a dropdown.</p>
 <pre class="prettyprint linenums">
 &lt;div class="dropdown"&gt;
-  &lt;a class="dropdown-toggle" data-toggle="dropdown" href="#"&gt;Dropdown trigger&lt;/a&gt;
+  &lt;a class="dropdown-toggle" data-bs-toggle="dropdown" href="#"&gt;Dropdown trigger&lt;/a&gt;
   &lt;ul class="dropdown-menu" role="menu" aria-labelledby="dLabel"&gt;
     ...
   &lt;/ul&gt;
@@ -466,7 +466,7 @@ $('#myModal').on('hidden', function () {
     <p>To keep URLs intact, use the <code>data-target</code> attribute instead of <code>href="#"</code>.</p>
 <pre class="prettyprint linenums">
 &lt;div class="dropdown"&gt;
-  &lt;a class="dropdown-toggle" id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="/page.html"&gt;
+  &lt;a class="dropdown-toggle" id="dLabel" role="button" data-bs-toggle="dropdown" data-target="#" href="/page.html"&gt;
     Dropdown
     &lt;b class="caret"&gt;&lt;/b&gt;
   &lt;/a&gt;
@@ -514,7 +514,7 @@ $('#myModal').on('hidden', function () {
                     <li><a href="#fat">@fat</a></li>
                     <li><a href="#mdo">@mdo</a></li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown">Dropdown <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="#one">one</a></li>
                             <li><a class="dropdown-item" href="#two">two</a></li>
@@ -634,13 +634,13 @@ $('[data-spy="scroll"]').each(function () {
 
     <div class="bs-docs-example">
         <ul id="myTab" class="nav nav-tabs">
-            <li class="active"><a href="#home" data-toggle="tab">Home</a></li>
-            <li><a href="#profile" data-toggle="tab">Profile</a></li>
+            <li class="active"><a href="#home" data-bs-toggle="tab">Home</a></li>
+            <li><a href="#profile" data-bs-toggle="tab">Profile</a></li>
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown">Dropdown <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#dropdown1" data-toggle="tab">@fat</a></li>
-                    <li><a class="dropdown-item" href="#dropdown2" data-toggle="tab">@mdo</a></li>
+                    <li><a class="dropdown-item" href="#dropdown1" data-bs-toggle="tab">@fat</a></li>
+                    <li><a class="dropdown-item" href="#dropdown2" data-bs-toggle="tab">@mdo</a></li>
                 </ul>
             </li>
         </ul>
@@ -682,13 +682,13 @@ $('#myTab li:eq(2) a').tab('show'); // Select third tab (0-indexed)
 
     <h3>Markup</h3>
 
-    <p>You can activate a tab or pill navigation without writing any JavaScript by simply specifying <code>data-toggle="tab"</code> or <code>data-toggle="pill"</code> on an element. Adding the <code>nav</code> and <code>nav-tabs</code> classes to the tab <code>ul</code> will apply the Bootstrap tab styling.</p>
+    <p>You can activate a tab or pill navigation without writing any JavaScript by simply specifying <code>data-bs-toggle="tab"</code> or <code>data-bs-toggle="pill"</code> on an element. Adding the <code>nav</code> and <code>nav-tabs</code> classes to the tab <code>ul</code> will apply the Bootstrap tab styling.</p>
 <pre class="prettyprint linenums">
 &lt;ul class="nav nav-tabs"&gt;
-  &lt;li&gt;&lt;a href="#home" data-toggle="tab"&gt;Home&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="#profile" data-toggle="tab"&gt;Profile&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="#messages" data-toggle="tab"&gt;Messages&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="#settings" data-toggle="tab"&gt;Settings&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#home" data-bs-toggle="tab"&gt;Home&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#profile" data-bs-toggle="tab"&gt;Profile&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#messages" data-bs-toggle="tab"&gt;Messages&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#settings" data-bs-toggle="tab"&gt;Settings&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</pre>
 
     <h3>Methods</h3>
@@ -739,7 +739,7 @@ $('#myTab li:eq(2) a').tab('show'); // Select third tab (0-indexed)
         </tbody>
     </table>
 <pre class="prettyprint linenums">
-$('a[data-toggle="tab"]').on('shown', function (e) {
+$('a[data-bs-toggle="tab"]').on('shown', function (e) {
   e.target // activated tab
   e.relatedTarget // previous tab
 })
@@ -1085,14 +1085,14 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
 
     <div class="bs-docs-example">
         <div class="alert fade in alert-dismissible">
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <button type="button" class="close" data-bs-dismiss="alert">&times;</button>
             <strong>Holy guacamole!</strong> Best check yo self, you're not looking too good.
         </div>
     </div>
 
     <div class="bs-docs-example">
         <div class="alert alert-error alert-dismissible fade in">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <button type="button" class="close" data-bs-dismiss="alert" aria-hidden="true">&times;</button>
             <h4 class="alert-heading">Oh snap! You got an error!</h4>
 
             <p>Change this and that and try again. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum.</p>
@@ -1114,8 +1114,8 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
 
     <h3>Markup</h3>
 
-    <p>Just add <code>data-dismiss="alert"</code> to your close button to automatically give an alert close functionality.</p>
-    <pre class="prettyprint linenums">&lt;a class="close" data-dismiss="alert" href="#"&gt;&amp;times;&lt;/a&gt;</pre>
+    <p>Just add <code>data-bs-dismiss="alert"</code> to your close button to automatically give an alert close functionality.</p>
+    <pre class="prettyprint linenums">&lt;a class="close" data-bs-dismiss="alert" href="#"&gt;&amp;times;&lt;/a&gt;</pre>
 
     <h3>Methods</h3>
     <h4>$().alert()</h4>
@@ -1171,26 +1171,26 @@ $('#my-alert').bind('closed', function () {
 
     <h4>Single toggle</h4>
 
-    <p>Add data-toggle="button" to activate toggling on a single button.</p>
+    <p>Add data-bs-toggle="button" to activate toggling on a single button.</p>
 
     <div class="bs-docs-example" style="padding-bottom: 24px;">
-        <button type="button" class="btn btn-primary" data-toggle="button">Single Toggle</button>
+        <button type="button" class="btn btn-primary" data-bs-toggle="button">Single Toggle</button>
     </div>
-    <pre class="prettyprint linenums">&lt;button type="button" class="btn" data-toggle="button"&gt;Single Toggle&lt;/button&gt;</pre>
+    <pre class="prettyprint linenums">&lt;button type="button" class="btn" data-bs-toggle="button"&gt;Single Toggle&lt;/button&gt;</pre>
 
     <h4>Checkbox</h4>
 
-    <p>Add data-toggle="buttons-checkbox" for checkbox style toggling on btn-group.</p>
+    <p>Add data-bs-toggle="buttons-checkbox" for checkbox style toggling on btn-group.</p>
 
     <div class="bs-docs-example" style="padding-bottom: 24px;">
-        <div class="btn-group" data-toggle="buttons-checkbox">
+        <div class="btn-group" data-bs-toggle="buttons-checkbox">
             <button type="button" class="btn btn-primary">Left</button>
             <button type="button" class="btn btn-primary">Middle</button>
             <button type="button" class="btn btn-primary">Right</button>
         </div>
     </div>
 <pre class="prettyprint linenums">
-&lt;div class="btn-group" data-toggle="buttons-checkbox"&gt;
+&lt;div class="btn-group" data-bs-toggle="buttons-checkbox"&gt;
   &lt;button type="button" class="btn"&gt;Left&lt;/button&gt;
   &lt;button type="button" class="btn"&gt;Middle&lt;/button&gt;
   &lt;button type="button" class="btn"&gt;Right&lt;/button&gt;
@@ -1199,17 +1199,17 @@ $('#my-alert').bind('closed', function () {
 
     <h4>Radio</h4>
 
-    <p>Add data-toggle="buttons-radio" for radio style toggling on btn-group.</p>
+    <p>Add data-bs-toggle="buttons-radio" for radio style toggling on btn-group.</p>
 
     <div class="bs-docs-example" style="padding-bottom: 24px;">
-        <div class="btn-group" data-toggle="buttons-radio">
+        <div class="btn-group" data-bs-toggle="buttons-radio">
             <button type="button" class="btn btn-primary">Left</button>
             <button type="button" class="btn btn-primary">Middle</button>
             <button type="button" class="btn btn-primary">Right</button>
         </div>
     </div>
 <pre class="prettyprint linenums">
-&lt;div class="btn-group" data-toggle="buttons-radio"&gt;
+&lt;div class="btn-group" data-bs-toggle="buttons-radio"&gt;
   &lt;button type="button" class="btn"&gt;Left&lt;/button&gt;
   &lt;button type="button" class="btn"&gt;Middle&lt;/button&gt;
   &lt;button type="button" class="btn"&gt;Right&lt;/button&gt;
@@ -1240,9 +1240,9 @@ $('#my-alert').bind('closed', function () {
 
     <div class="alert alert-info">
         <strong>Heads up!</strong>
-        You can enable auto toggling of a button by using the <code>data-toggle</code> attribute.
+        You can enable auto toggling of a button by using the <code>data-bs-toggle</code> attribute.
     </div>
-    <pre class="prettyprint linenums">&lt;button type="button" class="btn" data-toggle="button" &gt;...&lt;/button&gt;</pre>
+    <pre class="prettyprint linenums">&lt;button type="button" class="btn" data-bs-toggle="button" &gt;...&lt;/button&gt;</pre>
     <h4>$().button('loading')</h4>
 
     <p>Sets button state to loading - disables button and swaps text to loading text. Loading text should be defined on the button element using the data attribute <code>data-loading-text</code>.
@@ -1292,7 +1292,7 @@ $('#my-alert').bind('closed', function () {
 &lt;div class="panel-group in" id="accordion2"&gt;
   &lt;div class="panel"&gt;
     &lt;div class="panel-heading"&gt;
-      &lt;a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne"&gt;
+      &lt;a class="accordion-toggle" data-bs-toggle="collapse" data-parent="#accordion2" href="#collapseOne"&gt;
         Collapsible Group Item #1
       &lt;/a&gt;
     &lt;/div&gt;
@@ -1304,7 +1304,7 @@ $('#my-alert').bind('closed', function () {
   &lt;/div&gt;
   &lt;div class="panel"&gt;
     &lt;div class="panel-heading"&gt;
-      &lt;a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo"&gt;
+      &lt;a class="accordion-toggle" data-bs-toggle="collapse" data-parent="#accordion2" href="#collapseTwo"&gt;
         Collapsible Group Item #2
       &lt;/a&gt;
     &lt;/div&gt;
@@ -1319,7 +1319,7 @@ $('#my-alert').bind('closed', function () {
 </pre>
     <p>You can also use the plugin without the accordion markup. Make a button toggle the expanding and collapsing of another element.</p>
 <pre class="prettyprint linenums">
-&lt;button type="button" class="btn btn-danger" data-toggle="collapse" data-target="#demo"&gt;
+&lt;button type="button" class="btn btn-danger" data-bs-toggle="collapse" data-target="#demo"&gt;
   simple collapsible
 &lt;/button&gt;
 
@@ -1334,7 +1334,7 @@ $('#my-alert').bind('closed', function () {
 
     <h3>Via data attributes</h3>
 
-    <p>Just add <code>data-toggle="collapse"</code> and a <code>data-target</code> to element to automatically assign control of a collapsible element. The <code>data-target</code> attribute accepts a css selector to apply the collapse to. Be sure to add the class <code>collapse</code> to the collapsible element. If you'd like it to default open, add the additional class <code>in</code>.</p>
+    <p>Just add <code>data-bs-toggle="collapse"</code> and a <code>data-target</code> to element to automatically assign control of a collapsible element. The <code>data-target</code> attribute accepts a css selector to apply the collapse to. Be sure to add the class <code>collapse</code> to the collapsible element. If you'd like it to default open, add the additional class <code>in</code>.</p>
 
     <p>To add accordion-like group management to a collapsible control, add the data attribute <code>data-parent="#selector"</code>. Refer to the demo to see this in action.</p>
 

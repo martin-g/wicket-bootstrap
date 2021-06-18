@@ -1,17 +1,17 @@
 package de.agilecoders.wicket.core.util;
 
-import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNameProvider;
-import de.agilecoders.wicket.jquery.util.Generics2;
-import de.agilecoders.wicket.jquery.util.Strings2;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.wicket.model.IModel;
-import org.apache.wicket.util.lang.Args;
-
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
+
+import org.apache.commons.lang3.StringUtils;
+import org.apache.wicket.model.IModel;
+import org.apache.wicket.util.lang.Args;
+
+import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNameProvider;
+import de.agilecoders.wicket.jquery.util.Generics2;
+import de.agilecoders.wicket.jquery.util.Strings2;
 
 /**
  * #### Description
@@ -148,7 +148,7 @@ public final class CssClassNames {
         public Builder remove(final String... classNames) {
             Args.notNull(classNames, "classNames");
 
-            return remove(Generics2.newHashSet(classNames));
+            return remove(Set.of(classNames));
         }
 
         /**
@@ -185,7 +185,7 @@ public final class CssClassNames {
         public Builder add(final String... classNames) {
             Args.notNull(classNames, "classNames");
 
-            return add(Generics2.newLinkedHashSet(Arrays.asList(classNames)));
+            return add(Generics2.newLinkedHashSet(List.of(classNames)));
         }
 
         /**

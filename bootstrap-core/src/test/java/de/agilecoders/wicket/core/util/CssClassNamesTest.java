@@ -1,13 +1,15 @@
 package de.agilecoders.wicket.core.util;
 
-import de.agilecoders.wicket.jquery.util.Generics2;
-import org.junit.jupiter.api.Test;
-
-import java.util.Arrays;
-
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
+
+import java.util.List;
+import java.util.Set;
+
+import org.junit.jupiter.api.Test;
+
+import de.agilecoders.wicket.jquery.util.Generics2;
 
 /**
  * Tests the {@link CssClassNames} class
@@ -18,12 +20,12 @@ class CssClassNamesTest {
 
     @Test
     void splitSplitsStringCorrect() {
-        assertThat(CssClassNames.split("class1 class2 class3"), is(equalTo(Generics2.newHashSet("class1", "class2", "class3"))));
+        assertThat(CssClassNames.split("class1 class2 class3"), is(equalTo(Set.of("class1", "class2", "class3"))));
     }
 
     @Test
     void joinJoinsClassNamesCorrect() {
-        assertThat(CssClassNames.join(Generics2.newLinkedHashSet(Arrays.asList("class1", "class2", "class3"))), is(equalTo("class1 class2 class3")));
+        assertThat(CssClassNames.join(Generics2.newLinkedHashSet(List.of("class1", "class2", "class3"))), is(equalTo("class1 class2 class3")));
     }
 
     @Test
@@ -47,7 +49,7 @@ class CssClassNamesTest {
     void parseReturnsBuilderWithAllGivenClassNames() {
         CssClassNames.Builder builder = CssClassNames.parse("class1 class2 class3");
 
-        assertThat(builder.asSet(), is(equalTo(Generics2.newHashSet("class1", "class2", "class3"))));
+        assertThat(builder.asSet(), is(equalTo(Set.of("class1", "class2", "class3"))));
     }
 
     @Test
@@ -55,15 +57,15 @@ class CssClassNamesTest {
         CssClassNames.Builder builder = CssClassNames.parse("class1 class2 class3");
         builder.add("class4", "class5");
 
-        assertThat(builder.asSet(), is(equalTo(Generics2.newHashSet("class1", "class2", "class3", "class4", "class5"))));
+        assertThat(builder.asSet(), is(equalTo(Set.of("class1", "class2", "class3", "class4", "class5"))));
     }
 
     @Test
     void addClassNameAsSetToBuilderWorks() {
         CssClassNames.Builder builder = CssClassNames.parse("class1 class2 class3");
-        builder.add(Generics2.newHashSet("class4", "class5"));
+        builder.add(Set.of("class4", "class5"));
 
-        assertThat(builder.asSet(), is(equalTo(Generics2.newHashSet("class1", "class2", "class3", "class4", "class5"))));
+        assertThat(builder.asSet(), is(equalTo(Set.of("class1", "class2", "class3", "class4", "class5"))));
     }
 
     @Test
@@ -85,9 +87,9 @@ class CssClassNamesTest {
     @Test
     void removeClassNameAsSetFromBuilderWorks() {
         CssClassNames.Builder builder = CssClassNames.parse("class1 class2 class3");
-        builder.remove(Generics2.newHashSet("class2", "class3"));
+        builder.remove(Set.of("class2", "class3"));
 
-        assertThat(builder.asSet(), is(equalTo(Generics2.newHashSet("class1"))));
+        assertThat(builder.asSet(), is(equalTo(Set.of("class1"))));
     }
 
     @Test

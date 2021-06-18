@@ -1,6 +1,5 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.block;
 
-import de.agilecoders.wicket.core.markup.html.bootstrap.block.prettyprint.PrettifyCssResourceReference;
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.Behavior;
 import org.apache.wicket.markup.ComponentTag;
@@ -15,6 +14,7 @@ import de.agilecoders.wicket.core.Bootstrap;
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.CssClassNameAppender;
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNameProvider;
+import de.agilecoders.wicket.core.markup.html.bootstrap.block.prettyprint.PrettifyCssResourceReference;
 import de.agilecoders.wicket.core.markup.html.bootstrap.block.prettyprint.PrettifyJavaScriptReference;
 import de.agilecoders.wicket.core.util.Components;
 import de.agilecoders.wicket.core.util.CssClassNames;
@@ -45,8 +45,9 @@ import de.agilecoders.wicket.jquery.util.Strings2;
  * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public class CodeBehavior extends Behavior {
+    private static final long serialVersionUID = 1L;
 
-    /**
+	/**
      * enum that holds all possible languages
      */
     public enum Language implements ICssClassNameProvider {

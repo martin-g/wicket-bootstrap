@@ -1,9 +1,15 @@
 package de.agilecoders.wicket.sass;
 
-import de.agilecoders.wicket.webjars.WicketWebjars;
-import io.bit3.jsass.Options;
-import io.bit3.jsass.type.SassString;
-import io.bit3.jsass.type.SassValue;
+import static java.lang.System.lineSeparator;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.containsString;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.instanceOf;
+import static org.hamcrest.Matchers.is;
+
+import java.net.URI;
+import java.net.URL;
+
 import org.apache.wicket.Application;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.protocol.http.mock.MockServletContext;
@@ -15,15 +21,10 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.net.URI;
-import java.net.URL;
-
-import static java.lang.System.lineSeparator;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.containsString;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.instanceOf;
-import static org.hamcrest.Matchers.is;
+import de.agilecoders.wicket.webjars.WicketWebjars;
+import io.bit3.jsass.Options;
+import io.bit3.jsass.type.SassString;
+import io.bit3.jsass.type.SassValue;
 
 @SuppressWarnings("SpellCheckingInspection")
 class BootstrapSassTest {
@@ -90,7 +91,7 @@ class BootstrapSassTest {
 
         SassSource sassSource = sass.getSassContext(res, null);
         String css = sass.getCss(sassSource);
-        assertThat(css, is(equalTo(".rule {" + lineSeparator() + "  background: #007bff; }" + lineSeparator())));
+        assertThat(css, is(equalTo(".rule {" + lineSeparator() + "  background: #0d6efd; }" + lineSeparator())));
     }
 
     @Test

@@ -379,7 +379,7 @@ public class Navbar extends Panel implements Invertible<Navbar> {
      * @return this component instance for chaining
      */
     public final Navbar addComponents(final INavbarComponent... components) {
-        return addComponents(Generics2.newArrayList(components));
+        return addComponents(List.of(components));
     }
 
     /**
