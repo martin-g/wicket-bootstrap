@@ -451,6 +451,8 @@ public class FontAwesome5IconType extends IconType {
     public static final FontAwesome5IconType folder_plus_s = on(FontAwesome5Solid.folder_plus).build();
     public static final FontAwesome5IconType folder_r = on(FontAwesome5Regular.folder).build();
     public static final FontAwesome5IconType folder_s = on(FontAwesome5Solid.folder).build();
+    public static final FontAwesome5IconType font_awesome_logo_full_r = on(FontAwesome5Regular.font_awesome_logo_full).build();
+    public static final FontAwesome5IconType font_awesome_logo_full_s = on(FontAwesome5Solid.font_awesome_logo_full).build();
     public static final FontAwesome5IconType font_s = on(FontAwesome5Solid.font).build();
     public static final FontAwesome5IconType football_ball_s = on(FontAwesome5Solid.football_ball).build();
     public static final FontAwesome5IconType forward_s = on(FontAwesome5Solid.forward).build();
@@ -1334,6 +1336,7 @@ public class FontAwesome5IconType extends IconType {
     public static final FontAwesome5IconType font_awesome = on(FontAwesome5Brand.font_awesome).build();
     public static final FontAwesome5IconType font_awesome_alt = on(FontAwesome5Brand.font_awesome_alt).build();
     public static final FontAwesome5IconType font_awesome_flag = on(FontAwesome5Brand.font_awesome_flag).build();
+    public static final FontAwesome5IconType font_awesome_logo_full = on(FontAwesome5Brand.font_awesome_logo_full).build();
     public static final FontAwesome5IconType fonticons = on(FontAwesome5Brand.fonticons).build();
     public static final FontAwesome5IconType fonticons_fi = on(FontAwesome5Brand.fonticons_fi).build();
     public static final FontAwesome5IconType fort_awesome = on(FontAwesome5Brand.fort_awesome).build();
