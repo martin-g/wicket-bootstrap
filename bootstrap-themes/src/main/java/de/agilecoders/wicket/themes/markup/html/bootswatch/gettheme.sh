@@ -14,8 +14,8 @@ downloadTheme() {
     echo -e "@import \"../../bootstrap/css/bootstrap.scss\";\n@import \"bootstrap.$theme.variables.scss\";\n\n" | cat - css/bootstrap.$theme.scss > tmp.$theme.out && mv tmp.$theme.out css/bootstrap.$theme.scss
 }
 
-for theme in cerulean cosmo cyborg darkly flatly journal litera lumen lux materia minty pulse sandstone simplex sketchy slate solar spacelab superhero united yeti
+for theme in cerulean cosmo cyborg darkly flatly journal litera lumen lux materia minty morth pulse quartz sandstone simplex sketchy slate solar spacelab superhero united vapor yeti zephyr
 do
-    downloadTheme $theme 'v4.6.0' 2>&1 & >/dev/null
+    downloadTheme $theme 'v5.0.1' 2>&1 & >/dev/null
 done
 

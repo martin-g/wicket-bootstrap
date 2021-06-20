@@ -1,8 +1,8 @@
 package de.agilecoders.wicket.themes.markup.html.bootswatch;
 
-import de.agilecoders.wicket.core.Bootstrap;
-import de.agilecoders.wicket.core.settings.IBootstrapSettings;
-import de.agilecoders.wicket.core.settings.ITheme;
+import java.util.Collections;
+import java.util.List;
+
 import org.apache.wicket.Application;
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.HeaderItem;
@@ -11,8 +11,9 @@ import org.apache.wicket.request.Url;
 import org.apache.wicket.request.resource.ResourceReference;
 import org.apache.wicket.request.resource.UrlResourceReference;
 
-import java.util.Collections;
-import java.util.List;
+import de.agilecoders.wicket.core.Bootstrap;
+import de.agilecoders.wicket.core.settings.IBootstrapSettings;
+import de.agilecoders.wicket.core.settings.ITheme;
 
 /**
  * A {@link de.agilecoders.wicket.core.settings.ITheme theme} for Bootstrap
@@ -22,8 +23,8 @@ import java.util.List;
  */
 public enum BootswatchTheme implements ITheme {
     Cerulean, Cosmo, Cyborg, Darkly, Flatly, Journal, Litera, Lumen, Lux, Materia,
-    Minty, Pulse, Sandstone, Simplex, Sketchy, Slate, Solar, Spacelab, Superhero,
-    United, Yeti;
+    Minty, Morth, Pulse, Quartz, Sandstone, Simplex, Sketchy, Slate, Solar, Spacelab,
+    Superhero, United, Vapor, Yeti, Zephyr;
 
     /**
      * The placeholders are:

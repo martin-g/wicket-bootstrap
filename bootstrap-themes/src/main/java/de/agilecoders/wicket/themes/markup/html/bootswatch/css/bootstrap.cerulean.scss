@@ -2,28 +2,28 @@
 @import "bootstrap.cerulean.variables.scss";
 
 
-// Cerulean 4.6.0
+// Cerulean 5.0.1
 // Bootswatch
 
 
-// Variables ===================================================================
+// Variables
 
 $text-shadow: 0 1px 0 rgba(0, 0, 0, .05) !default;
 
-// Mixins ======================================================================
+// Mixins
 
 @mixin btn-shadow($color){
   @include gradient-y-three-colors(lighten($color, 8%), $color, 60%, darken($color, 4%));
 }
 
-// Navbar ======================================================================
+// Navbar
 
 .bg-primary {
   @include btn-shadow($primary);
 }
 
 .bg-dark {
-  @include btn-shadow($blue);
+  @include btn-shadow($dark);
 }
 
 .bg-light {
@@ -35,7 +35,7 @@ $text-shadow: 0 1px 0 rgba(0, 0, 0, .05) !default;
   text-shadow: $text-shadow;
 }
 
-// Buttons =====================================================================
+// Buttons
 
 .btn {
   text-shadow: $text-shadow;
@@ -74,8 +74,7 @@ $text-shadow: 0 1px 0 rgba(0, 0, 0, .05) !default;
   @include btn-shadow($dark);
 }
 
-
-// Typography ==================================================================
+// Typography
 
 .text-secondary {
   color: $gray-500 !important;
@@ -97,10 +96,19 @@ $text-shadow: 0 1px 0 rgba(0, 0, 0, .05) !default;
   }
 }
 
-// Navs ========================================================================
+// Navs
 
 .dropdown-menu {
   .dropdown-header {
     color: $gray-600;
+  }
+}
+
+// Indicators
+
+.badge {
+  &.bg-secondary,
+  &.bg-light {
+    color: $dark;
   }
 }
