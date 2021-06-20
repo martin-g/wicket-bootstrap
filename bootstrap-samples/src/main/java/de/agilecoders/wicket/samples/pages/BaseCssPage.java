@@ -1,11 +1,7 @@
 package de.agilecoders.wicket.samples.pages;
 
-import com.google.common.collect.Lists;
+import java.util.stream.Stream;
 
-import de.agilecoders.wicket.core.markup.html.bootstrap.block.Quote;
-import de.agilecoders.wicket.core.markup.html.bootstrap.form.BootstrapCheckbox;
-import de.agilecoders.wicket.core.markup.html.bootstrap.form.BootstrapForm;
-import de.agilecoders.wicket.core.markup.html.bootstrap.form.BootstrapRadioChoice;
 import org.apache.wicket.Component;
 import org.apache.wicket.extensions.breadcrumb.panel.BreadCrumbPanel;
 import org.apache.wicket.markup.html.basic.Label;
@@ -18,6 +14,12 @@ import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.wicketstuff.annotation.mount.MountPath;
 
+import com.google.common.collect.Lists;
+
+import de.agilecoders.wicket.core.markup.html.bootstrap.block.Quote;
+import de.agilecoders.wicket.core.markup.html.bootstrap.form.BootstrapCheckbox;
+import de.agilecoders.wicket.core.markup.html.bootstrap.form.BootstrapForm;
+import de.agilecoders.wicket.core.markup.html.bootstrap.form.BootstrapRadioChoice;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.Icon;
 import de.agilecoders.wicket.core.markup.html.bootstrap.navigation.BootstrapPagingNavigator;
 import de.agilecoders.wicket.core.markup.html.bootstrap.navigation.Breadcrumb;
@@ -25,6 +27,9 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.table.TableContextBehavi
 import de.agilecoders.wicket.core.markup.html.bootstrap.table.TableContextType;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeIconType;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeIconTypeBuilder;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeIconTypeBuilder.FontAwesomeBrand;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeIconTypeBuilder.FontAwesomeRegular;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeIconTypeBuilder.FontAwesomeSolid;
 
 /**
  * The {@code BaseCssPage}
@@ -34,8 +39,7 @@ import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeIc
  */
 @MountPath(value = "/basecss", alt = "/css")
 public class BaseCssPage extends BasePage {
-
-    //private final DatePickerModal modal;
+    private static final long serialVersionUID = 1L;
 
     /**
      * Construct.
@@ -81,6 +85,8 @@ public class BaseCssPage extends BasePage {
     protected Component newBreadcrumb(String markupId) {
         Breadcrumb breadcrumb = new Breadcrumb(markupId);
         breadcrumb.setActive(new BreadCrumbPanel("breadcrumbid", breadcrumb) {
+            private static final long serialVersionUID = 1L;
+
             @Override
             public IModel<String> getTitle() {
                 return Model.of("Title");
@@ -91,6 +97,8 @@ public class BaseCssPage extends BasePage {
 
     protected Component newPagination(String markupId) {
         IPageable pageable = new IPageable() {
+            private static final long serialVersionUID = 1L;
+
             @Override
             public long getCurrentPage() {
                 return 1;
@@ -113,14 +121,18 @@ public class BaseCssPage extends BasePage {
     protected Component newIconsPanel(String markupId) {
         RepeatingView view = new RepeatingView(markupId);
 
-        for (FontAwesomeIconTypeBuilder.FontAwesomeGraphic graphic : FontAwesomeIconTypeBuilder.FontAwesomeGraphic.values()) {
-            Fragment iconFragment = new Fragment(view.newChildId(), "iconFragment", BaseCssPage.this);
+        Stream.of(Stream.of(FontAwesomeSolid.values()),
+                    Stream.of(FontAwesomeRegular.values()),
+                    Stream.of(FontAwesomeBrand.values()))
+        .flatMap(i -> i)
+        .forEach(graphic -> {
+                Fragment iconFragment = new Fragment(view.newChildId(), "iconFragment", BaseCssPage.this);
 
-            FontAwesomeIconType icon = FontAwesomeIconTypeBuilder.on(graphic).fixedWidth().build();
-            iconFragment.add(new Icon("iconValue", Model.of(icon)));
-            iconFragment.add(new Label("iconName", icon.cssClassName()));
-            view.add(iconFragment);
-        }
+                FontAwesomeIconType icon = FontAwesomeIconTypeBuilder.on(graphic).fixedWidth().build();
+                iconFragment.add(new Icon("iconValue", Model.of(icon)));
+                iconFragment.add(new Label("iconName", icon.cssClassName()));
+                view.add(iconFragment);
+            });
         return view;
     }
 

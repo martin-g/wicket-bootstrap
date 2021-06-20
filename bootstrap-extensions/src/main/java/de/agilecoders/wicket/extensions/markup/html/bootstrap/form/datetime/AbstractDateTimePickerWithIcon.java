@@ -130,7 +130,7 @@ public abstract class AbstractDateTimePickerWithIcon<T> extends FormComponentPan
      * @return icon type
      */
     protected IconType newIconType() {
-        return FontAwesomeIconType.calendar;
+        return FontAwesomeIconType.calendar_alt_r;
     }
 
     @Override

@@ -15,15 +15,15 @@ public class DatetimePickerIconConfig extends AbstractConfig {
 
     private static final long serialVersionUID = 1L;
 
-    private static final IKey<String> Up = newKey("up", FontAwesomeIconType.arrow_up.cssClassName());
-    private static final IKey<String> Down = newKey("down", FontAwesomeIconType.arrow_down.cssClassName());
-    private static final IKey<String> Date = newKey("date", FontAwesomeIconType.calendar.cssClassName());
-    private static final IKey<String> Time = newKey("time", FontAwesomeIconType.clock_o.cssClassName());
-    private static final IKey<String> Previous = newKey("previous", FontAwesomeIconType.arrow_left.cssClassName());
-    private static final IKey<String> Next = newKey("next", FontAwesomeIconType.arrow_right.cssClassName());
-    private static final IKey<String> Today = newKey("today", FontAwesomeIconType.calendar_check_o.cssClassName());
-    private static final IKey<String> Clear = newKey("clear", FontAwesomeIconType.eraser.cssClassName());
-    private static final IKey<String> Close = newKey("close", FontAwesomeIconType.times.cssClassName());
+    private static final IKey<String> Up = newKey("up", FontAwesomeIconType.arrow_up_s.cssClassName());
+    private static final IKey<String> Down = newKey("down", FontAwesomeIconType.arrow_down_s.cssClassName());
+    private static final IKey<String> Date = newKey("date", FontAwesomeIconType.calendar_alt_r.cssClassName());
+    private static final IKey<String> Time = newKey("time", FontAwesomeIconType.clock_r.cssClassName());
+    private static final IKey<String> Previous = newKey("previous", FontAwesomeIconType.arrow_left_s.cssClassName());
+    private static final IKey<String> Next = newKey("next", FontAwesomeIconType.arrow_right_s.cssClassName());
+    private static final IKey<String> Today = newKey("today", FontAwesomeIconType.calendar_check_r.cssClassName());
+    private static final IKey<String> Clear = newKey("clear", FontAwesomeIconType.eraser_s.cssClassName());
+    private static final IKey<String> Close = newKey("close", FontAwesomeIconType.times_s.cssClassName());
 
     /**
      * @param up up icon type

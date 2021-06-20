@@ -36,17 +36,17 @@ public class BootstrapHeadersToolbar<S> extends HeadersToolbar<S>{
 
 			@Override
 			protected IconType ascendingIconType() {
-				return FontAwesomeIconType.sort_asc;
+				return FontAwesomeIconType.sort_up_s;
 			}
 
 			@Override
 			protected IconType descendingIconType() {
-				return FontAwesomeIconType.sort_desc;
+				return FontAwesomeIconType.sort_down_s;
 			}
 
 			@Override
 			protected IconType unsortedIconType() {
-				return FontAwesomeIconType.sort;
+				return FontAwesomeIconType.sort_s;
 			}
 		};
 	}

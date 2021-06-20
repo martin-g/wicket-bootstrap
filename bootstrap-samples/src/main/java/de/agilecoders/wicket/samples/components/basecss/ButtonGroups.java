@@ -56,10 +56,10 @@ public class ButtonGroups extends Section<Void> {
             @Override
             protected List<AbstractLink> newButtons(String buttonMarkupId) {
                 return List.of(
-                        createIconButton(new Icon(FontAwesomeIconType.align_left)),
-                        createIconButton(new Icon(FontAwesomeIconType.align_center)),
-                        createIconButton(new Icon(FontAwesomeIconType.align_right)),
-                        createIconButton(new Icon(FontAwesomeIconType.align_justify)));
+                        createIconButton(new Icon(FontAwesomeIconType.align_left_s)),
+                        createIconButton(new Icon(FontAwesomeIconType.align_center_s)),
+                        createIconButton(new Icon(FontAwesomeIconType.align_right_s)),
+                        createIconButton(new Icon(FontAwesomeIconType.align_justify_s)));
             }
         };
         add(verticalButtonGroup);
