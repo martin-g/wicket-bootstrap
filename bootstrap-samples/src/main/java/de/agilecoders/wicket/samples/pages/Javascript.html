@@ -139,7 +139,7 @@ $('#myModal').on('show', function (e) {
             <div class="modal-content">
                 <div class="modal-header">
                     <h3 class="modal-title">Modal header</h3>
-                    <button type="button" class="close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
                 </div>
                 <div class="modal-body">
                     <p>One fine body&hellip;</p>
@@ -158,7 +158,7 @@ $('#myModal').on('show', function (e) {
         <div class="modal-content">
             <div class="modal-header">
                 <h3 class="modal-title">Modal header</h3>
-                <button type="button" class="close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
             </div>
             <div class="modal-body">
                 <p>One fine body&hellip;</p>
@@ -181,7 +181,7 @@ $('#myModal').on('show', function (e) {
         <div class="modal-content">
             <div class="modal-header">
                 <h3 id="myModalLabel" class="modal-title">Modal Heading</h3>
-                <button type="button" class="close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
             </div>
             <div class="modal-body">
                 <h4>Text in a modal</h4>
@@ -773,9 +773,9 @@ $('a[data-bs-toggle="tab"]').on('shown', function (e) {
     <div class="bs-docs-example tooltip-demo">
         <ul class="bs-docs-tooltip-examples">
             <li><a wicket:id="tooltip-top" href="#">Tooltip on top</a></li>
-            <li><a href="#" rel="tooltip" data-placement="right" title="Tooltip on right">Tooltip on right</a></li>
-            <li><a href="#" rel="tooltip" data-placement="bottom" title="Tooltip on bottom">Tooltip on bottom</a></li>
-            <li><a href="#" rel="tooltip" data-placement="left" title="Tooltip on left">Tooltip on left</a></li>
+            <li><a href="#" rel="tooltip" data-bs-toggle="popover" data-bs-placement="right" title="Tooltip on right">Tooltip on right</a></li>
+            <li><a href="#" rel="tooltip" data-bs-toggle="popover" data-bs-placement="bottom" title="Tooltip on bottom">Tooltip on bottom</a></li>
+            <li><a href="#" rel="tooltip" data-bs-toggle="popover" data-bs-placement="left" title="Tooltip on left">Tooltip on left</a></li>
         </ul>
     </div>
 
@@ -952,10 +952,10 @@ $('a[data-bs-toggle="tab"]').on('shown', function (e) {
 
     <div class="bs-docs-example tooltip-demo">
         <ul class="bs-docs-tooltip-examples">
-            <li><a href="#" class="btn popover-default" rel="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." title="Popover on top">Popover on top</a></li>
-            <li><a href="#" class="btn popover-default" rel="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." title="Popover on right">Popover on right</a></li>
-            <li><a href="#" class="btn popover-default" rel="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." title="Popover on bottom">Popover on bottom</a></li>
-            <li><a href="#" class="btn popover-default" rel="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." title="Popover on left">Popover on left</a></li>
+            <li><a href="#" class="btn popover-default" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." title="Popover on top">Popover on top</a></li>
+            <li><a href="#" class="btn popover-default" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." title="Popover on right">Popover on right</a></li>
+            <li><a href="#" class="btn popover-default" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." title="Popover on bottom">Popover on bottom</a></li>
+            <li><a href="#" class="btn popover-default" data-bs-toggle="popover" data-bs-placement="left" data-bs-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." title="Popover on left">Popover on left</a></li>
         </ul>
     </div>
 
@@ -1021,7 +1021,7 @@ $('a[data-bs-toggle="tab"]').on('shown', function (e) {
                 <td>content</td>
                 <td>string | function</td>
                 <td>''</td>
-                <td>default content value if `data-content` attribute isn't present</td>
+                <td>default content value if `data-bs-content` attribute isn't present</td>
             </tr>
             <tr>
                 <td>delay</td>
