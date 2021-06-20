@@ -1085,14 +1085,14 @@ $('a[data-bs-toggle="tab"]').on('shown', function (e) {
 
     <div class="bs-docs-example">
         <div class="alert fade in alert-dismissible">
-            <button type="button" class="close" data-bs-dismiss="alert">&times;</button>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
             <strong>Holy guacamole!</strong> Best check yo self, you're not looking too good.
         </div>
     </div>
 
     <div class="bs-docs-example">
         <div class="alert alert-error alert-dismissible fade in">
-            <button type="button" class="close" data-bs-dismiss="alert" aria-hidden="true">&times;</button>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-hidden="true"></button>
             <h4 class="alert-heading">Oh snap! You got an error!</h4>
 
             <p>Change this and that and try again. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum.</p>
@@ -1115,16 +1115,18 @@ $('a[data-bs-toggle="tab"]').on('shown', function (e) {
     <h3>Markup</h3>
 
     <p>Just add <code>data-bs-dismiss="alert"</code> to your close button to automatically give an alert close functionality.</p>
-    <pre class="prettyprint linenums">&lt;a class="close" data-bs-dismiss="alert" href="#"&gt;&amp;times;&lt;/a&gt;</pre>
+    <pre class="prettyprint linenums">&lt;a class="btn-close" data-bs-dismiss="alert" href="#"&gt;&lt;/a&gt;</pre>
 
     <h3>Methods</h3>
-    <h4>$().alert()</h4>
+    <h4>bootstrap.Alert.getInstance(alertNode)</h4>
 
     <p>Wraps all alerts with close functionality. To have your alerts animate out when closed, make sure they have the <code>.fade</code> and <code>.in</code> class already applied to them.</p>
-    <h4>.alert('close')</h4>
+    <h4>alert.close()</h4>
 
     <p>Closes an alert.</p>
-    <pre class="prettyprint linenums">$(".alert").alert('close')</pre>
+    <pre class="prettyprint linenums">var alertNode = document.querySelector('.alert')
+var alert = bootstrap.Alert.getInstance(alertNode)
+alert.close()</pre>
 
 
     <h3>Events</h3>

@@ -97,7 +97,7 @@ class NotificationPanelTest  extends WicketApplicationTest{
         startComponentInPage(panel);
         TagTester t = tester().getTagByWicketId("close");
 
-        assertCssClass(t, "close");
+        assertCssClass(t, "btn-close");
         MatcherAssert.assertThat(t.getAttribute("data-bs-dismiss"), is(equalTo("alert")));
     }
 
