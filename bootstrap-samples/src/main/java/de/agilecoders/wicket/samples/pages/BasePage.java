@@ -39,8 +39,8 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.utilities.BackgroundColo
 import de.agilecoders.wicket.core.markup.html.references.BootlintHeaderItem;
 import de.agilecoders.wicket.core.settings.IBootstrapSettings;
 import de.agilecoders.wicket.core.settings.ITheme;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeCssReference;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeIconType;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesome5CssReference;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesome5IconType;
 import de.agilecoders.wicket.samples.WicketApplication;
 import de.agilecoders.wicket.samples.assets.base.ApplicationJavaScript;
 import de.agilecoders.wicket.samples.assets.base.DocsCssResourceReference;
@@ -104,14 +104,14 @@ abstract class BasePage extends GenericWebPage<Void> {
         navbar.setBrandName(Model.of("Wicket Bootstrap"));
 
         navbar.addComponents(NavbarComponents.transform(Navbar.ComponentPosition.LEFT,
-                        new NavbarButton<Void>(HomePage.class, Model.of("Overview")).setIconType(FontAwesomeIconType.home_s),
+                        new NavbarButton<Void>(HomePage.class, Model.of("Overview")).setIconType(FontAwesome5IconType.home_s),
                         new NavbarButton<Void>(BaseCssPage.class, Model.of("Base CSS")),
                         new NavbarButton<Void>(ComponentsPage.class, Model.of("Components")),
                         new NavbarButton<Void>(UtilitiesPage.class, Model.of("Utilities")),
                         new NavbarExternalLink(Model.of("https://github.com/l0rdn1kk0n/wicket-bootstrap"))
                                 .setLabel(Model.of("Github"))
                                 .setTarget(BootstrapExternalLink.Target.blank)
-                                .setIconType(FontAwesomeIconType.upload_s),
+                                .setIconType(FontAwesome5IconType.upload_s),
                         newAddonsDropDownButton(),
                         newExamplesDropDownButton())
         );
@@ -143,7 +143,7 @@ abstract class BasePage extends GenericWebPage<Void> {
 
                 return subMenu;
             }
-        }.setIconType(FontAwesomeIconType.book_s);
+        }.setIconType(FontAwesome5IconType.book_s);
 
         navbar.addComponents(new ImmutableNavbarComponent(dropdown, Navbar.ComponentPosition.RIGHT));
 
@@ -177,21 +177,21 @@ abstract class BasePage extends GenericWebPage<Void> {
             protected List<AbstractLink> newSubMenuButtons(String buttonMarkupId) {
                 final List<AbstractLink> subMenu = new ArrayList<>();
 
-                subMenu.add(new MenuBookmarkablePageLink<Void>(Javascript.class, Model.of("Javascript")).setIconType(FontAwesomeIconType.sync_alt_s));
-                subMenu.add(new MenuBookmarkablePageLink<Void>(DatePickerPage.class, Model.of("DatePicker")).setIconType(FontAwesomeIconType.clock_r));
-                subMenu.add(new MenuBookmarkablePageLink<Void>(DatetimePickerPage.class, Model.of("DateTimePicker")).setIconType(FontAwesomeIconType.clock_r));
-                subMenu.add(new MenuBookmarkablePageLink<Void>(IssuesPage.class, Model.of("Github Issues")).setIconType(FontAwesomeIconType.book_s));
-                subMenu.add(new MenuBookmarkablePageLink<Void>(ExtensionsPage.class, Model.of("Extensions")).setIconType(FontAwesomeIconType.align_justify_s));
-                subMenu.add(new MenuBookmarkablePageLink<Void>(SelectPage.class, Model.of("SelectPicker")).setIconType(FontAwesomeIconType.search_s));
-                subMenu.add(new MenuBookmarkablePageLink<Void>(ExtensionsBootstrapFileInputPage.class, Model.of("Extensions - Bootstrap FileInput")).setIconType(FontAwesomeIconType.align_justify_s));
-                subMenu.add(new MenuBookmarkablePageLink<Void>(FontAwesomePage.class, Model.of("Font Awesome")).setIconType(FontAwesomeIconType.font_s));
-                subMenu.add(new MenuBookmarkablePageLink<Void>(TooltipValidationPage.class, Model.of("Validation")).setIconType(FontAwesomeIconType.check_circle_r));
-                subMenu.add(new MenuBookmarkablePageLink<Void>(SummernotePage.class, Model.of("Summernote")).setIconType(FontAwesomeIconType.edit_r));
-                subMenu.add(new MenuBookmarkablePageLink<Void>(MarkdownPage.class, Model.of("Markdown")).setIconType(FontAwesomeIconType.edit_r));
-                subMenu.add(new MenuBookmarkablePageLink<Void>(CheckboxesPage.class, Model.of("Checkboxes and Toggles")).setIconType(FontAwesomeIconType.check_s));
+                subMenu.add(new MenuBookmarkablePageLink<Void>(Javascript.class, Model.of("Javascript")).setIconType(FontAwesome5IconType.sync_alt_s));
+                subMenu.add(new MenuBookmarkablePageLink<Void>(DatePickerPage.class, Model.of("DatePicker")).setIconType(FontAwesome5IconType.clock_r));
+                subMenu.add(new MenuBookmarkablePageLink<Void>(DatetimePickerPage.class, Model.of("DateTimePicker")).setIconType(FontAwesome5IconType.clock_r));
+                subMenu.add(new MenuBookmarkablePageLink<Void>(IssuesPage.class, Model.of("Github Issues")).setIconType(FontAwesome5IconType.book_s));
+                subMenu.add(new MenuBookmarkablePageLink<Void>(ExtensionsPage.class, Model.of("Extensions")).setIconType(FontAwesome5IconType.align_justify_s));
+                subMenu.add(new MenuBookmarkablePageLink<Void>(SelectPage.class, Model.of("SelectPicker")).setIconType(FontAwesome5IconType.search_s));
+                subMenu.add(new MenuBookmarkablePageLink<Void>(ExtensionsBootstrapFileInputPage.class, Model.of("Extensions - Bootstrap FileInput")).setIconType(FontAwesome5IconType.align_justify_s));
+                subMenu.add(new MenuBookmarkablePageLink<Void>(FontAwesomePage.class, Model.of("Font Awesome")).setIconType(FontAwesome5IconType.font_s));
+                subMenu.add(new MenuBookmarkablePageLink<Void>(TooltipValidationPage.class, Model.of("Validation")).setIconType(FontAwesome5IconType.check_circle_r));
+                subMenu.add(new MenuBookmarkablePageLink<Void>(SummernotePage.class, Model.of("Summernote")).setIconType(FontAwesome5IconType.edit_r));
+                subMenu.add(new MenuBookmarkablePageLink<Void>(MarkdownPage.class, Model.of("Markdown")).setIconType(FontAwesome5IconType.edit_r));
+                subMenu.add(new MenuBookmarkablePageLink<Void>(CheckboxesPage.class, Model.of("Checkboxes and Toggles")).setIconType(FontAwesome5IconType.check_s));
                 return subMenu;
             }
-        }.setIconType(FontAwesomeIconType.th_large_s);
+        }.setIconType(FontAwesome5IconType.th_large_s);
     }
 
     /**
@@ -227,7 +227,7 @@ abstract class BasePage extends GenericWebPage<Void> {
 
 //        response.render(CssHeaderItem.forReference(FixBootstrapStylesCssResourceReference.INSTANCE));
         response.render(new FilteredHeaderItem(JavaScriptHeaderItem.forReference(ApplicationJavaScript.INSTANCE), "footer-container"));
-        response.render(CssHeaderItem.forReference(FontAwesomeCssReference.instance()));
+        response.render(CssHeaderItem.forReference(FontAwesome5CssReference.instance()));
 
         if ("google".equalsIgnoreCase(activeTheme().name())) {
             response.render(CssHeaderItem.forReference(DocsCssResourceReference.GOOGLE));

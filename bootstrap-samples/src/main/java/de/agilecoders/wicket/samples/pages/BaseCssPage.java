@@ -25,11 +25,11 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.navigation.BootstrapPagi
 import de.agilecoders.wicket.core.markup.html.bootstrap.navigation.Breadcrumb;
 import de.agilecoders.wicket.core.markup.html.bootstrap.table.TableContextBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.table.TableContextType;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeIconType;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeIconTypeBuilder;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeIconTypeBuilder.FontAwesomeBrand;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeIconTypeBuilder.FontAwesomeRegular;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeIconTypeBuilder.FontAwesomeSolid;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesome5IconType;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesome5IconTypeBuilder;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesome5IconTypeBuilder.FontAwesome5Brand;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesome5IconTypeBuilder.FontAwesome5Regular;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesome5IconTypeBuilder.FontAwesome5Solid;
 
 /**
  * The {@code BaseCssPage}
@@ -121,14 +121,14 @@ public class BaseCssPage extends BasePage {
     protected Component newIconsPanel(String markupId) {
         RepeatingView view = new RepeatingView(markupId);
 
-        Stream.of(Stream.of(FontAwesomeSolid.values()),
-                    Stream.of(FontAwesomeRegular.values()),
-                    Stream.of(FontAwesomeBrand.values()))
+        Stream.of(Stream.of(FontAwesome5Solid.values()),
+                    Stream.of(FontAwesome5Regular.values()),
+                    Stream.of(FontAwesome5Brand.values()))
         .flatMap(i -> i)
         .forEach(graphic -> {
                 Fragment iconFragment = new Fragment(view.newChildId(), "iconFragment", BaseCssPage.this);
 
-                FontAwesomeIconType icon = FontAwesomeIconTypeBuilder.on(graphic).fixedWidth().build();
+                FontAwesome5IconType icon = FontAwesome5IconTypeBuilder.on(graphic).fixedWidth().build();
                 iconFragment.add(new Icon("iconValue", Model.of(icon)));
                 iconFragment.add(new Label("iconName", icon.cssClassName()));
                 view.add(iconFragment);
