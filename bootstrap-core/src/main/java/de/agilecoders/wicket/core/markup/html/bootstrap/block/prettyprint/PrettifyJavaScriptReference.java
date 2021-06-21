@@ -2,7 +2,6 @@ package de.agilecoders.wicket.core.markup.html.bootstrap.block.prettyprint;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.HeaderItem;
@@ -35,7 +34,7 @@ public class PrettifyJavaScriptReference extends JavaScriptResourceReference {
 
     @Override
     public List<HeaderItem> getDependencies() {
-        List<HeaderItem> dependencies = super.getDependencies().stream().collect(Collectors.toCollection(ArrayList::new));
+        List<HeaderItem> dependencies = new ArrayList<>(super.getDependencies());
         dependencies.add(JavaScriptHeaderItem.forReference(Bootstrap.getSettings().getJsResourceReference()));
         dependencies.add(CssHeaderItem.forReference(PrettifyCssResourceReference.INSTANCE));
 
