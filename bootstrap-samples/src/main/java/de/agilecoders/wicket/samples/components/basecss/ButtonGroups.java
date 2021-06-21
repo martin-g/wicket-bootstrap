@@ -1,5 +1,12 @@
 package de.agilecoders.wicket.samples.components.basecss;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.wicket.markup.html.link.AbstractLink;
+import org.apache.wicket.markup.html.link.BookmarkablePageLink;
+import org.apache.wicket.model.Model;
+
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.BootstrapBookmarkablePageLink;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.ButtonBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.ButtonGroup;
@@ -8,15 +15,8 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.Toolbar;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.Icon;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeIconType;
-import de.agilecoders.wicket.jquery.util.Generics2;
 import de.agilecoders.wicket.samples.components.base.Section;
 import de.agilecoders.wicket.samples.pages.ComponentsPage;
-import org.apache.wicket.markup.html.link.AbstractLink;
-import org.apache.wicket.markup.html.link.BookmarkablePageLink;
-import org.apache.wicket.model.Model;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Panel that shows the usage of button groups.
@@ -24,6 +24,7 @@ import java.util.List;
  * @author miha
  */
 public class ButtonGroups extends Section<Void> {
+    private static final long serialVersionUID = 1L;
 
     /**
      * Construct.
@@ -34,9 +35,11 @@ public class ButtonGroups extends Section<Void> {
         super(markupId);
 
         ButtonGroup buttonGroup = new ButtonGroup("buttonGroup") {
+            private static final long serialVersionUID = 1L;
+
             @Override
             protected List<AbstractLink> newButtons(String buttonMarkupId) {
-                return Generics2.newArrayList(createButton("Left"), createButton("Center"), createButton("Right"));
+                return List.of(createButton("Left"), createButton("Center"), createButton("Right"));
             }
         };
         add(buttonGroup);
@@ -48,13 +51,15 @@ public class ButtonGroups extends Section<Void> {
         add(toolbar);
 
         ButtonGroup verticalButtonGroup = new ButtonGroup("verticalButtonGroup", Buttons.Orientation.Vertical) {
+            private static final long serialVersionUID = 1L;
+
             @Override
             protected List<AbstractLink> newButtons(String buttonMarkupId) {
-                return Generics2.newArrayList(
-                        createIconButton(new Icon(FontAwesomeIconType.align_left)),
-                        createIconButton(new Icon(FontAwesomeIconType.align_center)),
-                        createIconButton(new Icon(FontAwesomeIconType.align_right)),
-                        createIconButton(new Icon(FontAwesomeIconType.align_justify)));
+                return List.of(
+                        createIconButton(new Icon(FontAwesomeIconType.align_left_s)),
+                        createIconButton(new Icon(FontAwesomeIconType.align_center_s)),
+                        createIconButton(new Icon(FontAwesomeIconType.align_right_s)),
+                        createIconButton(new Icon(FontAwesomeIconType.align_justify_s)));
             }
         };
         add(verticalButtonGroup);
@@ -82,6 +87,8 @@ public class ButtonGroups extends Section<Void> {
      */
     private ButtonGroup newButtonGroup(final String markupId, final int noOfButtons) {
         return new ButtonGroup(markupId) {
+            private static final long serialVersionUID = 1L;
+
             @Override
             protected List<AbstractLink> newButtons(String buttonMarkupId) {
                 final List<AbstractLink> buttons = new ArrayList<>();

@@ -3,7 +3,6 @@ package de.agilecoders.wicket.core.markup.html.bootstrap.common;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 
-import de.agilecoders.wicket.core.WicketApplicationTest;
 import org.apache.wicket.Component;
 import org.apache.wicket.MarkupContainer;
 import org.apache.wicket.feedback.ErrorLevelFeedbackMessageFilter;
@@ -20,6 +19,8 @@ import org.apache.wicket.util.resource.StringResourceStream;
 import org.apache.wicket.util.tester.TagTester;
 import org.hamcrest.MatcherAssert;
 import org.junit.jupiter.api.Test;
+
+import de.agilecoders.wicket.core.WicketApplicationTest;
 
 /**
  * Tests the {@link NotificationPanel} component
@@ -96,8 +97,8 @@ class NotificationPanelTest  extends WicketApplicationTest{
         startComponentInPage(panel);
         TagTester t = tester().getTagByWicketId("close");
 
-        assertCssClass(t, "close");
-        MatcherAssert.assertThat(t.getAttribute("data-dismiss"), is(equalTo("alert")));
+        assertCssClass(t, "btn-close");
+        MatcherAssert.assertThat(t.getAttribute("data-bs-dismiss"), is(equalTo("alert")));
     }
 
     @Test

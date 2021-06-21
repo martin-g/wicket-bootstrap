@@ -3,17 +3,17 @@ package de.agilecoders.wicket.extensions.markup.html.bootstrap.icon;
 import de.agilecoders.wicket.webjars.request.resource.WebjarsCssResourceReference;
 
 /**
- * <strong>Important</strong>: To use font-awesome 4.x you need to declare the Maven/Gradle dependency
+ * <strong>Important</strong>: To use font-awesome 5.x you need to declare the Maven/Gradle dependency
  * in your application pom.xml/build.gradle, for example:
  *
  * <br/>
  *  &lt;dependency&gt;<br/>
  *      &lt;groupId&gt;org.webjars&lt;/groupId&gt;<br/>
  *      &lt;artifactId&gt;font-awesome&lt;/artifactId&gt;<br/>
- *      &lt;version&gt;4.7.0&lt;/version&gt;<br/>
+ *      &lt;version&gt;5.15.3&lt;/version&gt;<br/>
  *  &lt;/dependency&gt;<br/>
  *
- * reference for font awesome css
+ * reference for font awesome 5.x css
  */
 public class FontAwesomeCssReference extends WebjarsCssResourceReference {
     private static final long serialVersionUID = 1L;
@@ -37,6 +37,6 @@ public class FontAwesomeCssReference extends WebjarsCssResourceReference {
      * Private constructor.
      */
     private FontAwesomeCssReference() {
-        super("font-awesome/current/css/font-awesome.css");
+        super("font-awesome/current/css/all.css");
     }
 }

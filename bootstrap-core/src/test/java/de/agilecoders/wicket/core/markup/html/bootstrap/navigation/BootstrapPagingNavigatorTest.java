@@ -1,9 +1,7 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.navigation;
 
-import de.agilecoders.wicket.core.WicketApplicationTest;
-import de.agilecoders.wicket.core.test.Attributes;
-import de.agilecoders.wicket.core.test.IntegrationTest;
-import de.agilecoders.wicket.jquery.util.Generics2;
+import java.util.List;
+
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.MarkupException;
 import org.apache.wicket.markup.html.basic.Label;
@@ -11,6 +9,10 @@ import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.PageableListView;
 import org.apache.wicket.markup.html.navigation.paging.IPageable;
 import org.junit.jupiter.api.Test;
+
+import de.agilecoders.wicket.core.WicketApplicationTest;
+import de.agilecoders.wicket.core.test.Attributes;
+import de.agilecoders.wicket.core.test.IntegrationTest;
 
 /**
  * Tests the {@link BootstrapPagingNavigator} component
@@ -49,6 +51,8 @@ class BootstrapPagingNavigatorTest extends WicketApplicationTest {
      */
     private BootstrapPagingNavigator createWithTagName(final String tagName) {
         return new BootstrapPagingNavigator("pagination", createPageable()) {
+            private static final long serialVersionUID = 1L;
+
             @Override
             protected void onComponentTag(ComponentTag tag) {
                 tag.setName(tagName);
@@ -70,7 +74,7 @@ class BootstrapPagingNavigatorTest extends WicketApplicationTest {
      * @return new {@link IPageable} instance
      */
     private IPageable createPageable() {
-        return new PageableListView<>("pageable", Generics2.newArrayList("item1", "item2", "item3", "item2"), 1) {
+        return new PageableListView<>("pageable", List.of("item1", "item2", "item3", "item2"), 1) {
             private static final long serialVersionUID = 1L;
 
             @Override

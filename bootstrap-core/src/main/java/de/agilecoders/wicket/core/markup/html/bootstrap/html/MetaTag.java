@@ -1,17 +1,17 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.html;
 
-import de.agilecoders.wicket.core.util.Components;
-import de.agilecoders.wicket.jquery.util.Generics2;
+import static de.agilecoders.wicket.jquery.util.Strings2.nullToEmpty;
+
+import java.util.List;
+import java.util.regex.Pattern;
+
 import org.apache.wicket.IGenericComponent;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
-import java.util.List;
-import java.util.regex.Pattern;
-
-import static de.agilecoders.wicket.jquery.util.Strings2.nullToEmpty;
+import de.agilecoders.wicket.core.util.Components;
 
 /**
  * A simple meta tag component.
@@ -21,8 +21,10 @@ import static de.agilecoders.wicket.jquery.util.Strings2.nullToEmpty;
  * @author miha
  */
 public class MetaTag extends WebMarkupContainer implements IGenericComponent<String, MetaTag> {
+    private static final long serialVersionUID = 1L;
+
     // @see http://www.w3schools.com/tags/att_meta_http_equiv.asp
-    private static final List<String> HTTP_EQUIV_NAMES = Generics2.newArrayList(
+    private static final List<String> HTTP_EQUIV_NAMES = List.of(
             "content-type", "expires", "refresh", "pragma", "cache-control",
             "content-language", "set-cookie", "PICS-Label", "content-script-type",
             "content-style-type", "last-modified", "date", "location",

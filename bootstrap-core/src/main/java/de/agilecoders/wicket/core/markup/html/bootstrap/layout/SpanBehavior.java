@@ -19,7 +19,7 @@ import de.agilecoders.wicket.core.util.Attributes;
  * @author miha
  */
 public class SpanBehavior extends BootstrapBaseBehavior {
-
+    private static final long serialVersionUID = 1L;
     private final SpanType type;
     private final OffsetType offsetType;
     private final OrderType orderType;

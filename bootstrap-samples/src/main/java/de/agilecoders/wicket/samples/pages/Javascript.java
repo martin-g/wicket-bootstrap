@@ -1,9 +1,24 @@
 package de.agilecoders.wicket.samples.pages;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.apache.wicket.Component;
+import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.extensions.markup.html.tabs.ITab;
+import org.apache.wicket.markup.head.CssHeaderItem;
+import org.apache.wicket.markup.head.IHeaderResponse;
+import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.link.AbstractLink;
+import org.apache.wicket.model.Model;
+import org.apache.wicket.request.mapper.parameter.PageParameters;
+import org.apache.wicket.request.resource.CssResourceReference;
+import org.wicketstuff.annotation.mount.MountPath;
+
 import com.google.common.collect.Lists;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.BootstrapAjaxLink;
-import de.agilecoders.wicket.core.markup.html.bootstrap.button.ButtonBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.DropDownButton;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.MenuBookmarkablePageLink;
@@ -24,24 +39,6 @@ import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.typeaheadV10.
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeIconType;
 import de.agilecoders.wicket.samples.panels.pagination.AjaxPaginationPanel;
 import de.agilecoders.wicket.samples.panels.pagination.PaginationPanel;
-
-import org.apache.wicket.Component;
-import org.apache.wicket.ajax.AjaxRequestTarget;
-import org.apache.wicket.ajax.markup.html.AjaxLink;
-import org.apache.wicket.extensions.markup.html.tabs.ITab;
-import org.apache.wicket.markup.head.CssHeaderItem;
-import org.apache.wicket.markup.head.IHeaderResponse;
-import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.markup.html.link.AbstractLink;
-import org.apache.wicket.model.Model;
-import org.apache.wicket.request.mapper.parameter.PageParameters;
-import org.apache.wicket.request.resource.CssResourceReference;
-import java.time.Duration;
-import org.wicketstuff.annotation.mount.MountPath;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * The {@code BaseCssPage}
@@ -187,7 +184,7 @@ public class Javascript extends BasePage {
     }
 
     private Component newDropDown(String markupId) {
-        return new DropDownButton(markupId, Model.of("Dropdown (#89)"), Model.of(FontAwesomeIconType.bookmark)) {
+        return new DropDownButton(markupId, Model.of("Dropdown (#89)"), Model.of(FontAwesomeIconType.bookmark_r)) {
             private static final long serialVersionUID = 1L;
 
             @Override

@@ -128,7 +128,7 @@ public class ClientSideBootstrapTabbedPanel<T extends ITab> extends GenericPanel
             @Override
             protected void onComponentTag(final ComponentTag tag) {
                 super.onComponentTag(tag);
-                tag.put("data-toggle", "tab");
+                tag.put("data-bs-toggle", "tab");
                 tag.put("href", "#" + href);
             }
         };

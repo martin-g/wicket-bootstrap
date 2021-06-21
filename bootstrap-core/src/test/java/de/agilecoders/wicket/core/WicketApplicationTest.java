@@ -1,10 +1,12 @@
 package de.agilecoders.wicket.core;
 
-import de.agilecoders.wicket.core.settings.BootstrapSettings;
-import de.agilecoders.wicket.core.settings.IBootstrapSettings;
-import de.agilecoders.wicket.core.test.Attributes;
-import de.agilecoders.wicket.core.util.CssClassNames;
-import de.agilecoders.wicket.jquery.util.Generics2;
+import static de.agilecoders.wicket.jquery.util.Strings2.nullToEmpty;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.is;
+
+import java.nio.charset.StandardCharsets;
+import java.util.List;
+
 import org.apache.wicket.Component;
 import org.apache.wicket.Page;
 import org.apache.wicket.behavior.Behavior;
@@ -19,14 +21,11 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 
-import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.List;
-
-import static de.agilecoders.wicket.jquery.util.Generics2.newArrayList;
-import static de.agilecoders.wicket.jquery.util.Strings2.nullToEmpty;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.is;
+import de.agilecoders.wicket.core.settings.BootstrapSettings;
+import de.agilecoders.wicket.core.settings.IBootstrapSettings;
+import de.agilecoders.wicket.core.test.Attributes;
+import de.agilecoders.wicket.core.util.CssClassNames;
+import de.agilecoders.wicket.jquery.util.Generics2;
 
 /**
  * Base integration test class
@@ -105,8 +104,8 @@ public abstract class WicketApplicationTest extends Assertions {
     }
 
     protected List<String> extractClassNames(TagTester tagTester) {
-        return tagTester != null ? newArrayList(Generics2.split(nullToEmpty(tagTester.getAttribute("class")), " "))
-                                 : new ArrayList<>();
+        return tagTester != null ? Generics2.split(nullToEmpty(tagTester.getAttribute("class")), " ")
+                                 : List.of();
     }
 
     /**

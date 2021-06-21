@@ -27,8 +27,8 @@ public class RatingConfig extends AbstractConfig {
 	private static final IKey<String> filledSelected = newKey("filledSelected", null);
 
 	public RatingConfig() {
-		put(filled, FontAwesomeIconType.star.cssClassName());
-		put(empty, FontAwesomeIconType.star_o.cssClassName());
+		put(filled, FontAwesomeIconType.star_s.cssClassName());
+		put(empty, FontAwesomeIconType.star_r.cssClassName());
 	}
 
 	public RatingConfig withStart(Integer value) {

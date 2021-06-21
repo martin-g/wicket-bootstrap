@@ -58,7 +58,7 @@ public class ModalCloseButton extends AjaxLink<String> {
     @Override
     protected void onInitialize() {
         super.onInitialize();
-        add(new AttributeModifier("data-dismiss", "modal"));
+        add(new AttributeModifier("data-bs-dismiss", "modal"));
         add(buttonBehavior);
     }
 

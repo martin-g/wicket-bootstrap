@@ -1,12 +1,13 @@
 package de.agilecoders.wicket.core.util;
 
-import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNameProvider;
-import de.agilecoders.wicket.jquery.util.Generics2;
+import java.util.Set;
+
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.string.Strings;
 
-import java.util.Set;
+import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNameProvider;
+import de.agilecoders.wicket.jquery.util.Generics2;
 
 /**
  * #### Description
@@ -130,7 +131,7 @@ public final class Attributes {
     public static void removeClass(final ComponentTag tag, final String... classNames) {
         Args.notNull(classNames, "classNames");
 
-        removeClass(tag, Generics2.newHashSet(classNames));
+        removeClass(tag, Set.of(classNames));
     }
 
     /**

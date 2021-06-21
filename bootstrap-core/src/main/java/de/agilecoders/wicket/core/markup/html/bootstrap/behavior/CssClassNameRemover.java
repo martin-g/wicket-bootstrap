@@ -16,14 +16,13 @@
  */
 package de.agilecoders.wicket.core.markup.html.bootstrap.behavior;
 
-import de.agilecoders.wicket.core.util.CssClassNames;
+import java.util.List;
 
-import de.agilecoders.wicket.jquery.util.Generics2;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.util.string.Strings;
 
-import java.util.List;
+import de.agilecoders.wicket.core.util.CssClassNames;
 
 /**
  * #### Description
@@ -41,6 +40,7 @@ import java.util.List;
  * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public class CssClassNameRemover extends CssClassNameAppender {
+    private static final long serialVersionUID = 1L;
 
     /**
      * Creates an AttributeModifier that appends the removeModel's value to the current value of the
@@ -59,7 +59,7 @@ public class CssClassNameRemover extends CssClassNameAppender {
      * @param removeValue one or more values to append
      */
     public CssClassNameRemover(String... removeValue) {
-        this(Generics2.newArrayList(removeValue));
+        this(List.of(removeValue));
     }
 
     /**

@@ -1,17 +1,19 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.behavior;
 
-import de.agilecoders.wicket.core.WicketApplicationTest;
-import de.agilecoders.wicket.core.test.IntegrationTest;
-import de.agilecoders.wicket.jquery.util.Generics2;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.is;
+
+import java.util.List;
+
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.util.tester.TagTester;
 import org.junit.jupiter.api.Test;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.is;
+import de.agilecoders.wicket.core.WicketApplicationTest;
+import de.agilecoders.wicket.core.test.IntegrationTest;
 
 
 /**
@@ -55,7 +57,7 @@ public class CssClassNameAppenderTest extends WicketApplicationTest {
 
     @Test
     void classFromListIsAdded() {
-        component.add(new CssClassNameAppender(Generics2.newArrayList("classX", "classY", "classZ")));
+        component.add(new CssClassNameAppender(List.of("classX", "classY", "classZ")));
 
         startPageAndAssertClassNames("classX classY classZ");
     }

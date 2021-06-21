@@ -1,8 +1,8 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.behavior;
 
-import de.agilecoders.wicket.core.settings.IBootstrapSettings;
-
 import org.apache.wicket.markup.head.IHeaderResponse;
+
+import de.agilecoders.wicket.core.settings.IBootstrapSettings;
 
 /**
  * #### Description
@@ -19,6 +19,7 @@ import org.apache.wicket.markup.head.IHeaderResponse;
  * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public class BootstrapResourcesBehavior extends BootstrapJavascriptBehavior {
+    private static final long serialVersionUID = 1L;
 
     /**
      * holder for singleton instance of {@link BootstrapResourcesBehavior}
