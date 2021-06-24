@@ -59,7 +59,7 @@ public class DatetimePickerBehavior extends BootstrapJavascriptBehavior {
     @Override
     public void onComponentTag(Component component, ComponentTag tag) {
         super.onComponentTag(component, tag);
-        Attributes.set(tag, "data-target", "#" + component.getMarkupId());
+        Attributes.set(tag, "data-bs-target", "#" + component.getMarkupId());
         Attributes.set(tag, "data-bs-toggle", "datetimepicker");
     }
 

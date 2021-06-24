@@ -1,21 +1,23 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.tour;
 
-import de.agilecoders.wicket.core.Bootstrap;
-import de.agilecoders.wicket.core.util.Dependencies;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.references.JQueryCookieJsReference;
+import java.util.List;
+import java.util.Locale;
+
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.HeaderItem;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.resource.JQueryPluginResourceReference;
 
-import java.util.List;
-import java.util.Locale;
+import de.agilecoders.wicket.core.Bootstrap;
+import de.agilecoders.wicket.core.util.Dependencies;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.references.JQueryCookieJsReference;
 
 /**
  * A JavaScript resource reference that contributes the bootstrap-tour.js and
  * its dependencies.
  */
 public class BootstrapTourJsReference extends JQueryPluginResourceReference {
+    private static final long serialVersionUID = 1L;
     public static final BootstrapTourJsReference INSTANCE = new BootstrapTourJsReference();
 
     public BootstrapTourJsReference() {
