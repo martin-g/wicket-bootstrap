@@ -1,12 +1,12 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.tour;
 
-import de.agilecoders.wicket.core.markup.html.bootstrap.components.TooltipConfig;
-
-import de.agilecoders.wicket.jquery.AbstractConfig;
-import de.agilecoders.wicket.jquery.IKey;
 import org.apache.wicket.Component;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
+
+import de.agilecoders.wicket.core.markup.html.bootstrap.components.TooltipConfig;
+import de.agilecoders.wicket.jquery.AbstractConfig;
+import de.agilecoders.wicket.jquery.IKey;
 
 /**
  * An configuration object representing a step in a tour
@@ -32,7 +32,7 @@ public class TourStep extends AbstractConfig {
     /**
      * The step's title
      */
-    private static final IKey<IModel> Title = newKey("title", (IModel) Model.of("Step"));
+    private static final IKey<IModel<String>> Title = newKey("title", Model.of("Step"));
 
     /**
      * A flag indicating whether to apply a css fade transition to the tooltip.
@@ -42,7 +42,7 @@ public class TourStep extends AbstractConfig {
     /**
      * The step's content
      */
-    private static final IKey<IModel> Content = newKey("content", (IModel) Model.of(""));
+    private static final IKey<IModel<String>> Content = newKey("content", Model.of(""));
 
     /**
      * The step's content

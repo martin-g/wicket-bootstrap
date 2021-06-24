@@ -49,6 +49,7 @@ import de.agilecoders.wicket.jquery.util.Strings2;
  * @author miha
  */
 public class Collapsible extends Panel {
+    private static final long serialVersionUID = 1L;
 
     /**
      * whether a tab is active or not
@@ -123,11 +124,11 @@ public class Collapsible extends Panel {
                 final String containerMarkupId = container.getMarkupId(true);
                 final Component title = newTitle("title", tab, state);
 
-                title.add(new AttributeModifier("data-parent", "#" + parentMarkupId));
-                title.add(new AttributeModifier("data-target", "#" + containerMarkupId));
+                title.add(new AttributeModifier("data-bs-parent", "#" + parentMarkupId));
+                title.add(new AttributeModifier("data-bs-target", "#" + containerMarkupId));
                 title.add(new AttributeModifier("aria-controls", containerMarkupId));
 
-                container.add(new AttributeModifier("data-parent", "#" + parentMarkupId));
+                container.add(new AttributeModifier("data-bs-parent", "#" + parentMarkupId));
                 container.add(new AttributeModifier("aria-labelledby", "#" + title.getMarkupId(true)));
 
                 loopItem.add(title);

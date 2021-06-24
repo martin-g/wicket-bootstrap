@@ -237,8 +237,8 @@ $('#myModal').on('show', function (e) {
 
 <h3>Via data attributes</h3>
 
-<p>Activate a modal without writing JavaScript. Set <code>data-bs-toggle="modal"</code> on a controller element, like a button, along with a <code>data-target="#foo"</code> or <code>href="#foo"</code> to target a specific modal to toggle.</p>
-<pre class="prettyprint linenums">&lt;button type="button" data-bs-toggle="modal" data-target="#myModal"&gt;Launch modal&lt;/button&gt;</pre>
+<p>Activate a modal without writing JavaScript. Set <code>data-bs-toggle="modal"</code> on a controller element, like a button, along with a <code>data-bs-target="#foo"</code> or <code>href="#foo"</code> to target a specific modal to toggle.</p>
+<pre class="prettyprint linenums">&lt;button type="button" data-bs-toggle="modal" data-bs-target="#myModal"&gt;Launch modal&lt;/button&gt;</pre>
 
 <h3>Via JavaScript</h3>
 
@@ -281,7 +281,7 @@ $('#myModal').on('show', function (e) {
             <td>path</td>
             <td>false</td>
             <td><p>If a remote url is provided, content will be loaded via jQuery's <code>load</code> method and injected into the <code>.modal-body</code>. If you're using the data api, you may alternatively use the <code>href</code> tag to specify the remote source. An example of this is shown below:</p>
-                <pre class="prettyprint linenums"><code>&lt;a data-bs-toggle="modal" href="remote.html" data-target="#modal"&gt;click me&lt;/a&gt;</code></pre>
+                <pre class="prettyprint linenums"><code>&lt;a data-bs-toggle="modal" href="remote.html" data-bs-target="#modal"&gt;click me&lt;/a&gt;</code></pre>
             </td>
         </tr>
     </tbody>
@@ -463,10 +463,10 @@ $('#myModal').on('hidden', function () {
   &lt;/ul&gt;
 &lt;/div&gt;
 </pre>
-    <p>To keep URLs intact, use the <code>data-target</code> attribute instead of <code>href="#"</code>.</p>
+    <p>To keep URLs intact, use the <code>data-bs-target</code> attribute instead of <code>href="#"</code>.</p>
 <pre class="prettyprint linenums">
 &lt;div class="dropdown"&gt;
-  &lt;a class="dropdown-toggle" id="dLabel" role="button" data-bs-toggle="dropdown" data-target="#" href="/page.html"&gt;
+  &lt;a class="dropdown-toggle" id="dLabel" role="button" data-bs-toggle="dropdown" data-bs-target="#" href="/page.html"&gt;
     Dropdown
     &lt;b class="caret"&gt;&lt;/b&gt;
   &lt;/a&gt;
@@ -525,7 +525,7 @@ $('#myModal').on('hidden', function () {
                 </ul>
             </div>
         </div>
-        <div data-spy="scroll" data-target="#navbarExample" data-offset="0" class="scrollspy-example">
+        <div data-spy="scroll" data-bs-target="#navbarExample" data-offset="0" class="scrollspy-example">
             <h4 id="fat">@fat</h4>
 
             <p>Ad leggings keytar, brunch id art party dolor labore. Pitchfork yr enim lo-fi before they sold out qui. Tumblr farm-to-table bicycle rights whatever. Anim keffiyeh carles cardigan. Velit seitan mcsweeney's photo booth 3 wolf moon irure. Cosby sweater lomo jean shorts, williamsburg hoodie minim qui you probably haven't heard of them et cardigan trust fund culpa biodiesel wes anderson aesthetic. Nihil tattooed accusamus, cred irony biodiesel keffiyeh artisan ullamco consequat.</p>
@@ -555,8 +555,8 @@ $('#myModal').on('hidden', function () {
 
     <h3>Via data attributes</h3>
 
-    <p>To easily add scrollspy behavior to your topbar navigation, just add <code>data-spy="scroll"</code> to the element you want to spy on (most typically this would be the body) and <code>data-target=".navbar"</code> to select which nav to use. You'll want to use scrollspy with a <code>.nav</code> component.</p>
-    <pre class="prettyprint linenums">&lt;body data-spy="scroll" data-target=".navbar"&gt;...&lt;/body&gt;</pre>
+    <p>To easily add scrollspy behavior to your topbar navigation, just add <code>data-spy="scroll"</code> to the element you want to spy on (most typically this would be the body) and <code>data-bs-target=".navbar"</code> to select which nav to use. You'll want to use scrollspy with a <code>.nav</code> component.</p>
+    <pre class="prettyprint linenums">&lt;body data-spy="scroll" data-bs-target=".navbar"&gt;...&lt;/body&gt;</pre>
 
     <h3>Via JavaScript</h3>
 
@@ -695,7 +695,7 @@ $('#myTab li:eq(2) a').tab('show'); // Select third tab (0-indexed)
     <h4>$().tab</h4>
 
     <p>
-        Activates a tab element and content container. Tab should have either a <code>data-target</code> or an <code>href</code> targeting a container node in the DOM.
+        Activates a tab element and content container. Tab should have either a <code>data-bs-target</code> or an <code>href</code> targeting a container node in the DOM.
     </p>
 <pre class="prettyprint linenums">
 &lt;ul class="nav nav-tabs" id="myTab"&gt;
@@ -896,51 +896,6 @@ $('a[data-bs-toggle="tab"]').on('shown', function (e) {
     <h2>Examples</h2>
 
     <p>Add small overlays of content, like those on the iPad, to any element for housing secondary information. Hover over the button to trigger the popover. <strong>Requires <a href="#tooltips">Tooltip</a> to be included.</strong></p>
-
-    <h3>Static popover</h3>
-
-    <p>Four options are available: top, right, bottom, and left aligned.</p>
-
-    <div class="bs-docs-example bs-docs-example-popover">
-        <div class="popover top">
-            <div class="arrow"></div>
-            <h3 class="popover-title">Popover top</h3>
-
-            <div class="popover-content">
-                <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
-            </div>
-        </div>
-
-        <div class="popover right">
-            <div class="arrow"></div>
-            <h3 class="popover-title">Popover right</h3>
-
-            <div class="popover-content">
-                <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
-            </div>
-        </div>
-
-        <div class="popover bottom">
-            <div class="arrow"></div>
-            <h3 class="popover-title">Popover bottom</h3>
-
-            <div class="popover-content">
-                <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
-            </div>
-        </div>
-
-        <div class="popover left">
-            <div class="arrow"></div>
-            <h3 class="popover-title">Popover left</h3>
-
-            <div class="popover-content">
-                <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
-            </div>
-        </div>
-
-        <div class="clearfix"></div>
-    </div>
-    <p>No markup shown as popovers are generated from JavaScript and content within a <code>data</code> attribute.</p>
 
     <h3>Live demo</h3>
 
@@ -1294,7 +1249,7 @@ $('#my-alert').bind('closed', function () {
 &lt;div class="panel-group in" id="accordion2"&gt;
   &lt;div class="panel"&gt;
     &lt;div class="panel-heading"&gt;
-      &lt;a class="accordion-toggle" data-bs-toggle="collapse" data-parent="#accordion2" href="#collapseOne"&gt;
+      &lt;a class="accordion-toggle" data-bs-toggle="collapse" data-bs-parent="#accordion2" href="#collapseOne"&gt;
         Collapsible Group Item #1
       &lt;/a&gt;
     &lt;/div&gt;
@@ -1306,7 +1261,7 @@ $('#my-alert').bind('closed', function () {
   &lt;/div&gt;
   &lt;div class="panel"&gt;
     &lt;div class="panel-heading"&gt;
-      &lt;a class="accordion-toggle" data-bs-toggle="collapse" data-parent="#accordion2" href="#collapseTwo"&gt;
+      &lt;a class="accordion-toggle" data-bs-toggle="collapse" data-bs-parent="#accordion2" href="#collapseTwo"&gt;
         Collapsible Group Item #2
       &lt;/a&gt;
     &lt;/div&gt;
@@ -1321,7 +1276,7 @@ $('#my-alert').bind('closed', function () {
 </pre>
     <p>You can also use the plugin without the accordion markup. Make a button toggle the expanding and collapsing of another element.</p>
 <pre class="prettyprint linenums">
-&lt;button type="button" class="btn btn-danger" data-bs-toggle="collapse" data-target="#demo"&gt;
+&lt;button type="button" class="btn btn-danger" data-bs-toggle="collapse" data-bs-target="#demo"&gt;
   simple collapsible
 &lt;/button&gt;
 
@@ -1336,9 +1291,9 @@ $('#my-alert').bind('closed', function () {
 
     <h3>Via data attributes</h3>
 
-    <p>Just add <code>data-bs-toggle="collapse"</code> and a <code>data-target</code> to element to automatically assign control of a collapsible element. The <code>data-target</code> attribute accepts a css selector to apply the collapse to. Be sure to add the class <code>collapse</code> to the collapsible element. If you'd like it to default open, add the additional class <code>in</code>.</p>
+    <p>Just add <code>data-bs-toggle="collapse"</code> and a <code>data-bs-target</code> to element to automatically assign control of a collapsible element. The <code>data-bs-target</code> attribute accepts a css selector to apply the collapse to. Be sure to add the class <code>collapse</code> to the collapsible element. If you'd like it to default open, add the additional class <code>in</code>.</p>
 
-    <p>To add accordion-like group management to a collapsible control, add the data attribute <code>data-parent="#selector"</code>. Refer to the demo to see this in action.</p>
+    <p>To add accordion-like group management to a collapsible control, add the data attribute <code>data-bs-parent="#selector"</code>. Refer to the demo to see this in action.</p>
 
     <h3>Via JavaScript</h3>
 
@@ -1347,7 +1302,7 @@ $('#my-alert').bind('closed', function () {
 
     <h3>Options</h3>
 
-    <p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-parent=""</code>.</p>
+    <p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-bs-parent=""</code>.</p>
     <table class="table table-bordered table-striped">
         <thead>
             <tr>

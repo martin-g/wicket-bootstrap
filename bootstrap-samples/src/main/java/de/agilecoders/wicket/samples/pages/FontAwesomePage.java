@@ -40,15 +40,15 @@ public class FontAwesomePage extends BasePage {
 		// rotate
 		add(new Icon("shield-rotate-normal", FontAwesome5IconType.shield_alt_s));
 		add(new Icon("shield-rotate-90", FontAwesome5IconTypeBuilder.on(FontAwesome5Solid.shield_alt)
-		        .rotate(Rotation.rotate_90).build()));
+				.rotate(Rotation.rotate_90).build()));
 		add(new Icon("shield-rotate-180", FontAwesome5IconTypeBuilder.on(FontAwesome5Solid.shield_alt)
-		        .rotate(Rotation.rotate_180).build()));
+				.rotate(Rotation.rotate_180).build()));
 		add(new Icon("shield-rotate-270", FontAwesome5IconTypeBuilder.on(FontAwesome5Solid.shield_alt)
-		        .rotate(Rotation.rotate_270).build()));
+				.rotate(Rotation.rotate_270).build()));
 		add(new Icon("shield-rotate-flip-horizontal", FontAwesome5IconTypeBuilder.on(FontAwesome5Solid.shield_alt)
-		        .rotate(Rotation.flip_horizontal).build()));
+				.rotate(Rotation.flip_horizontal).build()));
 		add(new Icon("shield-rotate-flip-vertical", FontAwesome5IconTypeBuilder.on(FontAwesome5Solid.shield_alt)
-		        .rotate(Rotation.flip_vertical).build()));
+				.rotate(Rotation.flip_vertical).build()));
 
 	}
 
