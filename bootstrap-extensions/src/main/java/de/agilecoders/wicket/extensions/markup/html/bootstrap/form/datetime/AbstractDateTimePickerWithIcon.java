@@ -10,7 +10,7 @@ import org.apache.wicket.model.IModel;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.Icon;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeIconType;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesome5IconType;
 
 /**
  * Datetime-picker with calendar icon.
@@ -72,7 +72,7 @@ public abstract class AbstractDateTimePickerWithIcon<T> extends FormComponentPan
         Component iconContainer = newIconContainer("iconContainer")
                 .add(newIcon("icon"))
                 .add(
-                    new AttributeAppender("data-target", "#" + input.getMarkupId())
+                    new AttributeAppender("data-bs-target", "#" + input.getMarkupId())
                 );
 
 
@@ -130,7 +130,7 @@ public abstract class AbstractDateTimePickerWithIcon<T> extends FormComponentPan
      * @return icon type
      */
     protected IconType newIconType() {
-        return FontAwesomeIconType.calendar_alt_r;
+        return FontAwesome5IconType.calendar_alt_r;
     }
 
     @Override

@@ -1,7 +1,6 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.icon;
 
-import org.apache.wicket.request.Url;
-import org.apache.wicket.request.resource.UrlResourceReference;
+import de.agilecoders.wicket.webjars.request.resource.WebjarsCssResourceReference;
 
 /**
  * <strong>Important</strong>: To use font-awesome 5.x you need to declare the Maven/Gradle dependency
@@ -14,26 +13,30 @@ import org.apache.wicket.request.resource.UrlResourceReference;
  *      &lt;version&gt;5.15.3&lt;/version&gt;<br/>
  *  &lt;/dependency&gt;<br/>
  *
- * reference for font awesome 5.x css via CDN
+ * reference for font awesome 5.x css
  */
-public class FontAwesomeCDNCSSReference extends UrlResourceReference{
+public class FontAwesome5CssReference extends WebjarsCssResourceReference {
     private static final long serialVersionUID = 1L;
-    private static final String CDNURL = "https://use.fontawesome.com/releases/v5.15.2/css/all.css";
 
     /**
      * Singleton instance of this reference
      */
-    private static final FontAwesomeCDNCSSReference INSTANCE = new FontAwesomeCDNCSSReference();
+    private static final class Holder {
+
+        private static final FontAwesome5CssReference INSTANCE = new FontAwesome5CssReference();
+    }
 
     /**
      * @return the single instance of the resource reference
      */
-    public static FontAwesomeCDNCSSReference instance() {
-        return INSTANCE;
+    public static FontAwesome5CssReference instance() {
+        return Holder.INSTANCE;
     }
 
-    private FontAwesomeCDNCSSReference() {
-        super(Url.parse(CDNURL));
+    /**
+     * Private constructor.
+     */
+    private FontAwesome5CssReference() {
+        super("font-awesome/current/css/all.css");
     }
-
 }

@@ -1,16 +1,18 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.tour;
 
+import java.io.IOException;
+
+import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.Model;
+
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 import de.agilecoders.wicket.jquery.AbstractConfig;
 import de.agilecoders.wicket.jquery.IKey;
 import de.agilecoders.wicket.jquery.util.Json;
-import org.apache.wicket.model.IModel;
-import org.apache.wicket.model.Model;
-
-import java.io.IOException;
 
 
 public class TourOptions extends AbstractConfig {
@@ -76,9 +78,9 @@ public class TourOptions extends AbstractConfig {
      */
     private static final IKey<IModel<String>> Template = newKey("template", Model.of(
         "<div class='popover tour'>" +
-        "  <div class='arrow'></div>" +
-        "  <h3 class='popover-title'></h3>" +
-        "  <div class='popover-content'></div>" +
+        "  <div class='popover-arrow'></div>" +
+        "  <h3 class='popover-header'></h3>" +
+        "  <div class='popover-body'></div>" +
         "  <nav class='popover-navigation'>" +
         "    <div class='btn-group'>" +
         "      <button class='btn btn-default' data-role='prev'>« Prev</button>" +

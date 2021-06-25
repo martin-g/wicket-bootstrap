@@ -50,7 +50,7 @@ import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.spinner.Spinn
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.html5player.Html5Player;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.html5player.Html5VideoConfig;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.html5player.Video;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeCssReference;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesome5CssReference;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.OpenWebIconType;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.OpenWebIconsCssReference;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.inputmask.InputMaskBehavior;
@@ -365,7 +365,7 @@ public class ExtensionsPage extends BasePage {
         super.renderHead(response);
 
         response.render(CssHeaderItem.forReference(OpenWebIconsCssReference.instance()));
-		response.render(CssHeaderItem.forReference(FontAwesomeCssReference.instance()));
+		response.render(CssHeaderItem.forReference(FontAwesome5CssReference.instance()));
 
     }
 
@@ -400,7 +400,7 @@ public class ExtensionsPage extends BasePage {
             protected CharSequence createExtraConfig() {
             return
                   "    $('<div class=\"alert alert-info\">\\\n"
-                + "      <button type=\"button\" class=\"close\" data-bs-dismiss=\"alert\">&times;</button>\\\n"
+                + "      <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"alert\"></button>\\\n"
                 + "      <a href=\"\" class=\"restart\" style=\"color:white\">Start the demo tour.</a>\\\n"
                 + "      </div>').prependTo(\".tourContent\").alert();\n" + "  \n" + "\n"
                 + "  $(\".restart\").click(function (e) {\n" + "    e.preventDefault();\n"
