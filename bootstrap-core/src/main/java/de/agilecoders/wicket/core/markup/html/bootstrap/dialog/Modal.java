@@ -248,12 +248,11 @@ public class Modal<T> extends GenericPanel<T> {
             Attributes.removeClass(tag, "fade");
         }
 
-        if (closeOnEscapeKey) {
-            Attributes.set(tag, "tabindex", "-1");
-        }
+        Attributes.set(tag, "data-bs-keyboard", "" + closeOnEscapeKey);
+        Attributes.set(tag, "data-bs-focus", "" + !disableEnforceFocus.getObject());
 
         if (backdrop != Backdrop.TRUE) {
-            Attributes.set(tag, "data-backdrop", backdrop.name().toLowerCase() );
+            Attributes.set(tag, "data-bs-backdrop", backdrop.name().toLowerCase() );
         }
 
         // ARIA
@@ -400,21 +399,7 @@ public class Modal<T> extends GenericPanel<T> {
      */
     public Modal<T> appendShowDialogJavaScript(final IPartialPageRequestHandler target) {
         target.appendJavaScript(createActionScript(getMarkupId(true), "show"));
-        appendDisableEnforceFocus(target);
 
-        return this;
-    }
-
-    /**
-     * Appends JavaScript snippet that disables the modal's enforceFocus functionality
-     *
-     * @param target current ajax request target
-     * @return this instance for chaining
-     */
-    protected Modal<T> appendDisableEnforceFocus(IPartialPageRequestHandler target) {
-        if (disableEnforceFocus.getObject()) {
-            target.appendJavaScript("$.fn.modal.Constructor.prototype.enforceFocus = function () {};");
-        }
         return this;
     }
 
@@ -435,7 +420,7 @@ public class Modal<T> extends GenericPanel<T> {
      * @return new script.
      */
     protected String createActionScript(final String markupId, final String action) {
-        return "$('#" + Strings2.escapeMarkupId(markupId) + "').modal('" + action + "');";
+        return "bootstrap.Modal.getInstance(document.getElementById('" + Strings2.escapeMarkupId(markupId) + "'))." + action + "();";
     }
 
     public Modal<T> addOpenerAttributesTo(final Component component) {
@@ -529,7 +514,10 @@ public class Modal<T> extends GenericPanel<T> {
      * @see #createInitializerScript
      */
     protected String createBasicInitializerScript(final String markupId) {
-        return "$('#" + markupId + "').modal({keyboard:" + useKeyboard() + ", show:" + showImmediately() + "})";
+        return "{" //scope
+                + "const myModal = new bootstrap.Modal(document.getElementById('" + markupId + "'));" // options are added as data-attributes
+                + (showImmediately() ? "myModal.show();" : "")
+                + "}";
     }
 
     /**
