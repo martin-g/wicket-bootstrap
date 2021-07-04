@@ -1,8 +1,8 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.badge;
 
-import de.agilecoders.wicket.core.WicketApplicationTest;
-import de.agilecoders.wicket.core.markup.html.bootstrap.badge.BadgeBehavior;
 import org.junit.jupiter.api.Test;
+
+import de.agilecoders.wicket.core.WicketApplicationTest;
 
 /**
  * Tests the {@link BadgeBehavior}

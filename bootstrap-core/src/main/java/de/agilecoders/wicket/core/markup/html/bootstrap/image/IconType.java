@@ -1,11 +1,10 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.image;
 
+import org.apache.wicket.util.lang.Args;
+
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.CssClassNameAppender;
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNameModifier;
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNameProvider;
-
-import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.util.lang.Args;
 
 /**
  * References all available icons inside the icon sprite.
@@ -28,7 +27,7 @@ public abstract class IconType implements ICssClassNameProvider, ICssClassNameMo
         this.cssClassName = cssClassName.toLowerCase();
         tagBody = null;
     }
-    
+
     /**
      * Constructor.
      *
@@ -39,7 +38,7 @@ public abstract class IconType implements ICssClassNameProvider, ICssClassNameMo
         Args.notEmpty(cssClassName, "cssClassName");
         Args.notEmpty(tagBody, "tagContent");
         this.cssClassName = cssClassName.toLowerCase();
-        this.tagBody = tagBody.toLowerCase();        
+        this.tagBody = tagBody.toLowerCase();
     }
 
 	/**
@@ -48,7 +47,7 @@ public abstract class IconType implements ICssClassNameProvider, ICssClassNameMo
 	protected String getCssClassName() {
 		return cssClassName;
 	}
-    
+
     @Override
     public CssClassNameAppender newCssClassNameModifier() {
         return new CssClassNameAppender(getCssClassName());
