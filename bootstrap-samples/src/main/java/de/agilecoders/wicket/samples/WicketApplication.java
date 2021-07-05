@@ -4,9 +4,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-import de.agilecoders.wicket.core.settings.DefaultThemeProvider;
-import net.ftlines.wicketsource.WicketSource;
-
 import org.apache.wicket.Application;
 import org.apache.wicket.Page;
 import org.apache.wicket.ResourceBundles;
@@ -49,12 +46,13 @@ import de.agilecoders.wicket.extensions.markup.html.bootstrap.html5player.Html5P
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.OpenWebIconsCssReference;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.jqueryui.JQueryUIJavaScriptReference;
 import de.agilecoders.wicket.extensions.request.StaticResourceRewriteMapper;
-import de.agilecoders.wicket.sass.BootstrapSass;
 import de.agilecoders.wicket.samples.assets.base.ApplicationJavaScript;
 import de.agilecoders.wicket.samples.assets.base.FixBootstrapStylesCssResourceReference;
 import de.agilecoders.wicket.samples.pages.HomePage;
+import de.agilecoders.wicket.sass.BootstrapSass;
 import de.agilecoders.wicket.themes.markup.html.bootswatch.BootswatchTheme;
 import de.agilecoders.wicket.themes.markup.html.bootswatch.BootswatchThemeProvider;
+import net.ftlines.wicketsource.WicketSource;
 
 /**
  * Demo Application instance.

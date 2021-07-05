@@ -1,15 +1,16 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.form.fileinput;
 
+import java.util.List;
+
 import de.agilecoders.wicket.jquery.AbstractConfig;
 import de.agilecoders.wicket.jquery.IKey;
-
-import java.util.List;
 
 /**
  * See <a href="http://plugins.krajee.com/file-input#options">File Input
  * Options</a>
  */
 public class FileInputConfig extends AbstractConfig {
+    private static final long serialVersionUID = 1L;
 
     public static final IKey<Boolean> ShowCaption = newKey("showCaption", Boolean.TRUE);
 
@@ -58,12 +59,12 @@ public class FileInputConfig extends AbstractConfig {
     public static final IKey<Boolean> DropZoneEnabled = newKey("dropZoneEnabled", null);
 
     public static final IKey<String> DropZoneTitle = newKey("dropZoneTitle", null);
-    
+
     public static final IKey<String> DropZoneTitleClass = newKey("dropZoneTitleClass", null);
-    
+
     public static final IKey<String> DropZoneClickTitle = newKey("dropZoneClickTitle", null);
 
-    
+
     public FileInputConfig showCaption(boolean showCaption) {
         put(ShowCaption, showCaption);
         return this;
@@ -187,22 +188,22 @@ public class FileInputConfig extends AbstractConfig {
     	put(DropZoneEnabled, dropZoneEnabled);
     	return this;
     }
-    
+
     public FileInputConfig withDropZoneTitle(String dropZoneTitle) {
     	put(DropZoneTitle, dropZoneTitle);
     	return this;
     }
-    
+
     public FileInputConfig withDropZoneTitleClass(String dropZoneTitleClass) {
     	put(DropZoneTitleClass, dropZoneTitleClass);
     	return this;
     }
-    
+
     public FileInputConfig withDropZoneClickTitle(String dropZoneClickTitle) {
     	put(DropZoneClickTitle, dropZoneClickTitle);
     	return this;
     }
-    
+
     public List<String> allowedFileTypes() {
         return get(AllowedFileTypes);
     }
@@ -274,15 +275,15 @@ public class FileInputConfig extends AbstractConfig {
     public String language() {
     	return get(Language);
     }
-    
+
     public boolean dropZoneEnabled(){
     	return get(DropZoneEnabled);
     }
-    
+
     public String dropZoneTitle(){
     	return get(DropZoneTitle);
     }
-    
+
     public String dropZoneTitleClass(){
     	return get(DropZoneTitleClass);
     }
@@ -290,5 +291,5 @@ public class FileInputConfig extends AbstractConfig {
     public String dropZoneClickTitle(){
     	return get(DropZoneClickTitle);
     }
-    
+
 }

@@ -1,12 +1,11 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.list;
 
+import org.apache.wicket.Component;
+import org.apache.wicket.markup.ComponentTag;
+
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
 import de.agilecoders.wicket.core.util.Attributes;
 import de.agilecoders.wicket.core.util.Components;
-import de.agilecoders.wicket.core.util.ListItemCssClassHelper;
-
-import org.apache.wicket.Component;
-import org.apache.wicket.markup.ComponentTag;
 
 /**
  * A bootstrap styled list of elements. (ol/ul/dl tag)
@@ -14,6 +13,7 @@ import org.apache.wicket.markup.ComponentTag;
  * @author miha
  */
 public class ListBehavior extends BootstrapBaseBehavior {
+    private static final long serialVersionUID = 1L;
 
     /**
      * @return a new description list behavior

@@ -1,13 +1,13 @@
 package de.agilecoders.wicket.themes.markup.html.bootstrap;
 
-import de.agilecoders.wicket.core.Bootstrap;
-import de.agilecoders.wicket.core.util.Dependencies;
-import de.agilecoders.wicket.webjars.request.resource.WebjarsCssResourceReference;
+import java.util.List;
+
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.HeaderItem;
 import org.apache.wicket.request.resource.CssResourceReference;
 
-import java.util.List;
+import de.agilecoders.wicket.core.Bootstrap;
+import de.agilecoders.wicket.core.util.Dependencies;
 
 /**
  * #### Description

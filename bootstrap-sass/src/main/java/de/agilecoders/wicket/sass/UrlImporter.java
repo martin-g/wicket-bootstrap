@@ -1,9 +1,5 @@
 package de.agilecoders.wicket.sass;
 
-import de.agilecoders.wicket.webjars.WicketWebjars;
-import de.agilecoders.wicket.webjars.util.WebJarAssetLocator;
-import io.bit3.jsass.importer.Import;
-import io.bit3.jsass.importer.Importer;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -12,13 +8,13 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Optional;
 import java.util.stream.Stream;
+
 import javax.servlet.ServletContext;
+
 import org.apache.commons.lang3.StringUtils;
 import org.apache.wicket.Application;
 import org.apache.wicket.WicketRuntimeException;
@@ -28,6 +24,11 @@ import org.apache.wicket.util.io.IOUtils;
 import org.apache.wicket.util.string.Strings;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import de.agilecoders.wicket.webjars.WicketWebjars;
+import de.agilecoders.wicket.webjars.util.WebJarAssetLocator;
+import io.bit3.jsass.importer.Import;
+import io.bit3.jsass.importer.Importer;
 
 
 
@@ -191,7 +192,7 @@ class UrlImporter implements Importer {
         Optional<Import> localImport = resolveLocalFileDependency(importUrl);
 
         // local resource maybe inside jar, webjar
-        return localImport.isPresent() 
+        return localImport.isPresent()
             ? localImport
             : resolveJarDependency(importUrl);
     }

@@ -15,6 +15,7 @@ import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.upload.FileUpload;
 import org.apache.wicket.markup.html.form.upload.FileUploadField;
 import org.apache.wicket.model.IModel;
+import org.apache.wicket.util.io.IOUtils;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.template.PackageTextTemplate;
 import org.apache.wicket.util.value.IValueMap;
@@ -26,6 +27,7 @@ import de.agilecoders.wicket.jquery.util.Strings2;
  * Integration with <a href="https://github.com/kartik-v/bootstrap-fileinput">Bootstrap FileInput</a>
  */
 public class BootstrapFileInputField extends FileUploadField {
+    private static final long serialVersionUID = 1L;
 
     /**
      * Make sure that this class is inside the uploadClass config, otherwise the ajax behavior will not work!
@@ -111,21 +113,21 @@ public class BootstrapFileInputField extends FileUploadField {
             ajaxUploadBehavior = null;
         }
     }
-    
+
     @Override
     protected void onComponentTag(ComponentTag tag)
     {
-    	super.onComponentTag(tag);
-    	
-    	IValueMap attrs = tag.getAttributes();
-    	
-    	if(getConfig().get(FileInputConfig.MaxFileCount) == 1) {
-    		attrs.remove("multiple");
-		} else {
-			attrs.put("multiple", "multiple");
-		}
+        super.onComponentTag(tag);
+
+        IValueMap attrs = tag.getAttributes();
+
+        if (getConfig().get(FileInputConfig.MaxFileCount) == 1) {
+            attrs.remove("multiple");
+        } else {
+            attrs.put("multiple", "multiple");
+        }
     }
-    
+
     /**
      * Creates the special Ajax behavior that is used to upload the file(s)
      * with Ajax by using the <em>Upload</em> button
@@ -135,16 +137,20 @@ public class BootstrapFileInputField extends FileUploadField {
      */
     protected AjaxFormSubmitBehavior newAjaxFormSubmitBehavior(String event) {
         return new AjaxFormSubmitBehavior(form, event) {
+            private static final long serialVersionUID = 1L;
+
             @Override
             protected void onSubmit(AjaxRequestTarget target) {
                 target.add(getForm());
                 BootstrapFileInputField.this.onSubmit(target);
             }
+
             @Override
             protected void onAfterSubmit(AjaxRequestTarget target) {
             	super.onAfterSubmit(target);
             	BootstrapFileInputField.this.onAfterSubmit(target);
             }
+
             @Override
             protected void onError(AjaxRequestTarget target) {
             	BootstrapFileInputField.this.onError(target);
@@ -169,36 +175,42 @@ public class BootstrapFileInputField extends FileUploadField {
      */
     protected void onSubmit(AjaxRequestTarget target) {
     }
-    
+
     /**
-	 * A callback method that is called after successful file upload triggered
-	 * by the usage of the <em>Upload</em> button.
-	 * 
-	 * @param target the {@link AjaxRequestTarget}
-	 */
+     * A callback method that is called after successful file upload triggered
+     * by the usage of the <em>Upload</em> button.
+     *
+     * @param target the {@link AjaxRequestTarget}
+     */
     protected void onAfterSubmit(AjaxRequestTarget target) {
     }
 
     @Override
     public void renderHead(final IHeaderResponse response) {
         FileinputJsReference.INSTANCE.renderHead(response);
-        
-        if(config.language() != null)
-        	new FileinputLocaleJsReference(config.language()).renderHead(response);
+
+        if (config.language() != null) {
+            new FileinputLocaleJsReference(config.language()).renderHead(response);
+        }
 
         JQuery fileinputJS = $(this).chain("fileinput", config);
 
         String ajaxUpload = "";
         if (ajaxUploadBehavior != null) {
-            PackageTextTemplate tmpl = new PackageTextTemplate(BootstrapFileInputField.class, "res/fileinput.tmpl.js");
-            Map<String, Object> variables = new HashMap<>();
-            variables.put("markupId", Strings2.getMarkupId(this));
-            for (String label : LABELS) {
-                variables.put(label, getString(label));
-            }
-            variables.put("eventName", ajaxUploadBehavior.getEvent());
+            PackageTextTemplate tmpl = null;
+            try {
+                tmpl = new PackageTextTemplate(BootstrapFileInputField.class, "res/fileinput.tmpl.js");
+                Map<String, Object> variables = new HashMap<>();
+                variables.put("markupId", Strings2.getMarkupId(this));
+                for (String label : LABELS) {
+                    variables.put(label, getString(label));
+                }
+                variables.put("eventName", ajaxUploadBehavior.getEvent());
 
-            ajaxUpload = tmpl.asString(variables);
+                ajaxUpload = tmpl.asString(variables);
+            } finally {
+                IOUtils.closeQuietly(tmpl);
+            }
         }
 
         response.render(OnDomReadyHeaderItem.forScript(fileinputJS.get() + ajaxUpload));

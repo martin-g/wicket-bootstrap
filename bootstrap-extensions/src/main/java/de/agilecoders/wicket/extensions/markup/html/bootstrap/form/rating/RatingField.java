@@ -2,7 +2,6 @@ package de.agilecoders.wicket.extensions.markup.html.bootstrap.form.rating;
 
 import static de.agilecoders.wicket.jquery.JQuery.$;
 
-import org.apache.wicket.ajax.AjaxEventBehavior;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.form.AjaxFormComponentUpdatingBehavior;
 import org.apache.wicket.markup.head.CssHeaderItem;
