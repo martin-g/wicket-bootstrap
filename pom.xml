@@ -55,13 +55,13 @@
         <findbugs.disable>true</findbugs.disable>
 
         <!-- TODO -->
-        <apiguardian-api.version>1.1.1</apiguardian-api.version>
+        <apiguardian-api.version>1.1.2</apiguardian-api.version>
         <commons-lang3.version>3.12.0</commons-lang3.version>
         <contiperf.version>2.4.3</contiperf.version>
         <doxia.version>1.0</doxia.version>
         <google-closure.version>v20210601</google-closure.version>
         <javax.javaee-web-api.version>7.0</javax.javaee-web-api.version>
-        <jetty.version>9.4.42.v20210604</jetty.version>
+        <jetty.version>9.4.43.v20210629</jetty.version>
         <joda-time.version>2.10.10</joda-time.version>
         <jquerypp.version>1.0.1</jquerypp.version>
         <jquery.version>3.6.0</jquery.version>
@@ -71,11 +71,11 @@
         <hamcrest.version>2.2</hamcrest.version>
         <logback.version>1.2.3</logback.version>
         <modernizr.version>2.8.3-1</modernizr.version>
-        <mockito.version>3.11.1</mockito.version>
+        <mockito.version>3.11.2</mockito.version>
         <popperjs.version>1.14.1</popperjs.version>
         <servlet-api.version>3.1.0</servlet-api.version>
         <slf4j.version>1.7.25</slf4j.version>
-        <wicket.version>9.3.0</wicket.version>
+        <wicket.version>9.4.0</wicket.version>
         <wicketstuff.version>9.3.0</wicketstuff.version>
         <yuicompressor.version>2.4.8</yuicompressor.version>
 
