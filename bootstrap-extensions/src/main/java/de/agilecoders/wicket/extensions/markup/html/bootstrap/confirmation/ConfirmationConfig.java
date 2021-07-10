@@ -1,10 +1,11 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.confirmation;
 
+import org.apache.wicket.util.lang.Args;
+
 import de.agilecoders.wicket.core.markup.html.bootstrap.components.TooltipConfig;
 import de.agilecoders.wicket.jquery.AbstractConfig;
 import de.agilecoders.wicket.jquery.IKey;
 import de.agilecoders.wicket.jquery.Key;
-import org.apache.wicket.util.lang.Args;
 
 /**
  * The configuration of {@link ConfirmationBehavior}.
@@ -15,6 +16,7 @@ import org.apache.wicket.util.lang.Args;
 public class ConfirmationConfig extends AbstractConfig {
     private static final long serialVersionUID = 1L;
     private static final IKey<String> Title = new Key<>("title", "Are you sure?");
+    private static final IKey<String> Content = new Key<>("content", "");
     private static final IKey<Boolean> Singleton = new Key<>("singleton", Boolean.FALSE);
     private static final IKey<Boolean> Popout = new Key<>("popout", Boolean.FALSE);
     private static final IKey<String> BtnOkClass = new Key<>("btnOkClass", "btn-xs btn-primary");
@@ -32,6 +34,11 @@ public class ConfirmationConfig extends AbstractConfig {
 
     public ConfirmationConfig withTitle(String title) {
         put(Title, title);
+        return this;
+    }
+
+    public ConfirmationConfig withContent(String content) {
+        put(Content, content);
         return this;
     }
 

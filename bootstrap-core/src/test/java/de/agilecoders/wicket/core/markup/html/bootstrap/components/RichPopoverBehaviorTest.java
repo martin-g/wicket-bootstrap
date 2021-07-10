@@ -27,6 +27,8 @@ class RichPopoverBehaviorTest extends WicketApplicationTest {
     @Test
     void simpleBodyComponentIsRendered() {
         startBehaviorInPage(new RichPopoverBehavior(Model.of("header")) {
+            private static final long serialVersionUID = 1L;
+
             @Override
             public Component newBodyComponent(String markupId) {
                 return new Label(markupId, "content");
@@ -34,12 +36,14 @@ class RichPopoverBehaviorTest extends WicketApplicationTest {
         });
 
         TagTester tag = tester().getTagByWicketId(id());
-        assertThat(tag.getAttribute("data-content"), is(equalTo("<wicket:container wicket:id=\"compId\">content</wicket:container>")));
+        assertThat(tag.getAttribute("data-bs-content"), is(equalTo("<wicket:container wicket:id=\"compId\">content</wicket:container>")));
     }
 
     @Test
     void complexBodyComponentIsRendered() {
         startBehaviorInPage(new RichPopoverBehavior(Model.of("header")) {
+            private static final long serialVersionUID = 1L;
+
             @Override
             public Component newBodyComponent(String markupId) {
                 return new UploadProgressBar(markupId, new Form("dummy"), Model.of(50));
@@ -47,8 +51,8 @@ class RichPopoverBehaviorTest extends WicketApplicationTest {
         });
 
         TagTester tag = tester().getTagByWicketId(id());
-        assertThat(tag.getAttribute("data-content"), startsWith("<wicket:div wicket:id=\"compId\" class=\"progress\"><wicket:panel>"));
-        assertThat(tag.getAttribute("data-content"), endsWith("</wicket:panel></wicket:div>"));
-        assertThat(tag.getAttribute("data-content"), containsString("<div wicket:id=\"bar\" class=\"progress-bar bg-secondary\" "));
+        assertThat(tag.getAttribute("data-bs-content"), startsWith("<wicket:div wicket:id=\"compId\" class=\"progress\"><wicket:panel>"));
+        assertThat(tag.getAttribute("data-bs-content"), endsWith("</wicket:panel></wicket:div>"));
+        assertThat(tag.getAttribute("data-bs-content"), containsString("<div wicket:id=\"bar\" class=\"progress-bar bg-secondary\" "));
     }
 }

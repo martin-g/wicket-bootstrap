@@ -514,10 +514,9 @@ public class Modal<T> extends GenericPanel<T> {
      * @see #createInitializerScript
      */
     protected String createBasicInitializerScript(final String markupId) {
-        return "{" //scope
-                + "const myModal = new bootstrap.Modal(document.getElementById('" + markupId + "'));" // options are added as data-attributes
-                + (showImmediately() ? "myModal.show();" : "")
-                + "}";
+        return "new bootstrap.Modal(document.getElementById('" + markupId + "'))" // options are added as data-attributes
+                + (showImmediately() ? ".show()" : "")
+                + ";";
     }
 
     /**

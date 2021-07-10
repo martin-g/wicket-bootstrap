@@ -1,8 +1,9 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.components;
 
+import java.time.Duration;
+
 import de.agilecoders.wicket.jquery.AbstractConfig;
 import de.agilecoders.wicket.jquery.IKey;
-import java.time.Duration;
 
 /**
  * {@link TooltipBehavior} configuration
@@ -28,7 +29,7 @@ public class TooltipConfig extends AbstractConfig {
     private static final IKey<String> Selector = newKey("selector", "false");
 
     /**
-     * default content value if `data-content` attribute isn't present
+     * default content value if `data-bs-content` attribute isn't present
      */
     private static final IKey<String> Content = newKey("content", "");
 
@@ -56,9 +57,9 @@ public class TooltipConfig extends AbstractConfig {
      * will be used to insert content into the dom. Use text if you're worried about XSS attacks.
      */
     private static final IKey<Boolean> Html = newKey("html", false);
-    
+
     /**
-     * Allows controlling Bootstrap's internal sanitizer that is present to prevent XSS 
+     * Allows controlling Bootstrap's internal sanitizer that is present to prevent XSS
      * but in certain scenarios strips wanted elements from the content.
      * @see https://getbootstrap.com/docs/3.4/javascript/#js-sanitizer
      */
@@ -142,7 +143,7 @@ public class TooltipConfig extends AbstractConfig {
     }
 
     /**
-     * default content value if `data-content` attribute isn't present
+     * default content value if `data-bs-content` attribute isn't present
      *
      * @param value mandatory parameter
      * @return this instance for chaining.
@@ -189,10 +190,10 @@ public class TooltipConfig extends AbstractConfig {
         put(Html, value);
         return this;
     }
-    
+
     /**
      * Controls Bootstrap's internal sanitizer.
-     * 
+     *
      * @param value mandatory parameter
      * @return this instance for chaining.
      */

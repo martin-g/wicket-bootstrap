@@ -176,17 +176,6 @@ public class BootstrapButton extends Button implements IBootstrapButton<Bootstra
     }
 
     /**
-     * Sets whether this button should display inline or block
-     *
-     * @param block <code>true</code>, for block mode
-     * @return this instance for chaining
-     */
-    public BootstrapButton setBlock(boolean block) {
-        getButtonBehavior().setBlock(block);
-        return this;
-    }
-
-    /**
      * @param value whether to use splitter between the icon and the label or not
      * @return this instance for chaining
      */

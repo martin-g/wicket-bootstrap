@@ -203,17 +203,6 @@ public abstract class BootstrapAjaxLink<T> extends AjaxLink<T> implements IBoots
         return this;
     }
 
-    /**
-     * Sets whether this button should display inline or block
-     *
-     * @param block <code>true</code>, for block mode
-     * @return this instance for chaining
-     */
-    public BootstrapAjaxLink<T> setBlock(boolean block) {
-        getButtonBehavior().setBlock(block);
-        return this;
-    }
-
     @Override
     protected void detachModel() {
         super.detachModel();
