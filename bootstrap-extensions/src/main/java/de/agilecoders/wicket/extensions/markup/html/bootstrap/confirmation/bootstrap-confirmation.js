@@ -4,27 +4,129 @@
  * @copyright 2014-2021 Damien "Mistic" Sorel <contact@git.strangeplanet.fr>
  * @licence Apache License, Version 2.0
  */
+// monkey patched version by solomax
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(require('jquery'), require('bootstrap')) :
   typeof define === 'function' && define.amd ? define(['jquery', 'bootstrap'], factory) :
   (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.jQuery));
 }(this, (function ($) { 'use strict';
 
-  function _defineProperties(target, props) {
-    for (var i = 0; i < props.length; i++) {
-      var descriptor = props[i];
-      descriptor.enumerable = descriptor.enumerable || false;
-      descriptor.configurable = true;
-      if ("value" in descriptor) descriptor.writable = true;
-      Object.defineProperty(target, descriptor.key, descriptor);
-    }
-  }
+/**
+ * --------------------------------------------------------------------------
+ * Bootstrap (v5.0.2): dom/manipulator.js
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+ * --------------------------------------------------------------------------
+ */
+	const DISALLOWED_ATTRIBUTES = new Set(['sanitize', 'allowList', 'sanitizeFn'])
+	const Manipulator = (function() {
+		function normalizeData(val) {
+			if (val === 'true') {
+				return true
+			}
 
-  function _createClass(Constructor, protoProps, staticProps) {
-    if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-    if (staticProps) _defineProperties(Constructor, staticProps);
-    return Constructor;
-  }
+			if (val === 'false') {
+				return false
+			}
+
+			if (val === Number(val).toString()) {
+				return Number(val)
+			}
+
+			if (val === '' || val === 'null') {
+				return null
+			}
+
+			return val
+		}
+
+		function normalizeDataKey(key) {
+			return key.replace(/[A-Z]/g, chr => `-${chr.toLowerCase()}`)
+		}
+
+		const Manipulator = {
+			setDataAttribute(element, key, value) {
+				element.setAttribute(`data-bs-${normalizeDataKey(key)}`, value)
+			},
+
+			removeDataAttribute(element, key) {
+				element.removeAttribute(`data-bs-${normalizeDataKey(key)}`)
+			},
+
+			getDataAttributes(element) {
+				if (!element) {
+					return {}
+				}
+
+				const attributes = {}
+
+				Object.keys(element.dataset)
+					.filter(key => key.startsWith('bs'))
+					.forEach(key => {
+						let pureKey = key.replace(/^bs/, '')
+						pureKey = pureKey.charAt(0).toLowerCase() + pureKey.slice(1, pureKey.length)
+						attributes[pureKey] = normalizeData(element.dataset[key])
+					})
+
+				return attributes
+			},
+
+			getDataAttribute(element, key) {
+				return normalizeData(element.getAttribute(`data-bs-${normalizeDataKey(key)}`))
+			},
+
+			offset(element) {
+				const rect = element.getBoundingClientRect()
+
+				return {
+					top: rect.top + document.body.scrollTop,
+					left: rect.left + document.body.scrollLeft
+				}
+			},
+
+			position(element) {
+				return {
+					top: element.offsetTop,
+					left: element.offsetLeft
+				}
+			}
+		}
+		return Manipulator;
+	})();
+	// Shoutout AngusCroll (https://goo.gl/pxwQGp)
+	const toType = obj => {
+		if (obj === null || obj === undefined) {
+			return `${obj}`
+		}
+
+		return {}.toString.call(obj).match(/\s([a-z]+)/i)[1].toLowerCase()
+	};
+	const typeCheckConfig = (componentName, config, configTypes) => {
+		Object.keys(configTypes).forEach(property => {
+			const expectedTypes = configTypes[property]
+			const value = config[property]
+			const valueType = value && isElement(value) ? 'element' : toType(value)
+
+			if (!new RegExp(expectedTypes).test(valueType)) {
+				throw new TypeError(
+					`${componentName.toUpperCase()}: Option "${property}" provided type "${valueType}" but expected type "${expectedTypes}".`
+				)
+			}
+		})
+	};
+	const isElement = obj => {
+		if (!obj || typeof obj !== 'object') {
+			return false
+		}
+
+		if (typeof obj.jquery !== 'undefined') {
+			obj = obj[0]
+		}
+
+		return typeof obj.nodeType !== 'undefined'
+	};
+	const sanitizeHtml = tmpl => {
+		return tmpl; //FIXME TODO dumb stub
+	};
 
   function _extends() {
     _extends = Object.assign || function (target) {
@@ -44,28 +146,6 @@
     return _extends.apply(this, arguments);
   }
 
-  function _inheritsLoose(subClass, superClass) {
-    subClass.prototype = Object.create(superClass.prototype);
-    subClass.prototype.constructor = subClass;
-
-    _setPrototypeOf(subClass, superClass);
-  }
-
-  function _setPrototypeOf(o, p) {
-    _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
-      o.__proto__ = p;
-      return o;
-    };
-
-    return _setPrototypeOf(o, p);
-  }
-
-  if (typeof $.fn.popover === 'undefined' || $.fn.popover.Constructor.VERSION.split('.').shift() !== '4') {
-    throw new Error('Bootstrap Confirmation 4 requires Bootstrap Popover 4');
-  }
-
-  var Popover = $.fn.popover.Constructor;
-
   /**
    * ------------------------------------------------------------------------
    * Constants
@@ -80,7 +160,7 @@
   var BTN_CLASS_BASE = 'h-100 d-flex align-items-center';
   var BTN_CLASS_DEFAULT = 'btn btn-sm';
 
-  var DefaultType = _extends({}, Popover.DefaultType, {
+  var DefaultType = _extends({}, bootstrap.Popover.DefaultType, {
     singleton: 'boolean',
     popout: 'boolean',
     copyAttributes: '(string|array)',
@@ -97,7 +177,7 @@
     buttons: 'array'
   });
 
-  var Default = _extends({}, Popover.Default, {
+  var Default = _extends({}, bootstrap.Popover.Default, {
     _attributes: {},
     _selector: null,
     placement: 'top',
@@ -167,69 +247,62 @@
 
   var activeConfirmation;
 
-  var Confirmation = /*#__PURE__*/function (_Popover) {
-    _inheritsLoose(Confirmation, _Popover);
+  class Confirmation extends bootstrap.Popover {
+    constructor(element, config) {
+      super(element, config);
 
-    // Constructor
-    function Confirmation(element, config) {
-      var _this;
-
-      _this = _Popover.call(this, element, config) || this;
-
-      if ((_this.config.popout || _this.config.singleton) && !_this.config.rootSelector) {
+      if ((this.config.popout || this.config.singleton) && !this.config.rootSelector) {
         throw new Error('The rootSelector option is required to use popout and singleton features since jQuery 3.');
       } // keep trace of selectors
+      element.setAttribute('title', element.getAttribute('data-bs-original-title'));
+      element.setAttribute('data-bs-original-title', '');
 
 
-      _this._isDelegate = false;
+      this._isDelegate = false;
 
       if (config.selector) {
         // container of buttons
         config._selector = config.rootSelector + " " + config.selector;
-        _this.config._selector = config._selector;
+        this.config._selector = config._selector;
       } else if (config._selector) {
         // children of container
-        _this.config._selector = config._selector;
-        _this._isDelegate = true;
+        this.config._selector = config._selector;
+        this._isDelegate = true;
       } else {
         // standalone
-        _this.config._selector = config.rootSelector;
+        this.config._selector = config.rootSelector;
       }
 
-      if (_this.config.confirmationEvent === undefined) {
-        _this.config.confirmationEvent = _this.config.trigger;
+      if (this.config.confirmationEvent === undefined) {
+        this.config.confirmationEvent = this.config.trigger;
       }
 
-      if (!_this.config.selector) {
-        _this._copyAttributes();
+      if (!this.config.selector) {
+        this._copyAttributes();
       }
 
-      _this._setConfirmationListeners();
+      this._setConfirmationListeners();
+    }
 
-      return _this;
-    } // Overrides
-
-
-    var _proto = Confirmation.prototype;
-
-    _proto.isWithContent = function isWithContent() {
+    // Overrides
+    isWithContent() {
       return true;
-    };
+    }
 
-    _proto.setContent = function setContent() {
+    setContent() {
       var $tip = $(this.getTipElement());
 
       var content = this._getContent();
 
       if (typeof content === 'function') {
-        content = content.call(this.element);
+        content = content.call(this._element);
       }
 
-      this.setElementContent($tip.find(Selector.TITLE), this.getTitle());
+      this.setElementContent($tip.find(Selector.TITLE).get(0), this.getTitle());
       $tip.find(Selector.CONTENT).toggle(!!content);
 
       if (content) {
-        this.setElementContent($tip.find(Selector.CONTENT), content);
+        this.setElementContent($tip.find(Selector.CONTENT).get(0), content);
       }
 
       if (this.config.buttons.length > 0) {
@@ -241,23 +314,24 @@
       $tip.removeClass(ClassName.FADE + " " + ClassName.SHOW);
 
       this._setupKeyupEvent();
-    };
+    }
 
-    _proto.dispose = function dispose() {
+    dispose() {
       $('body').off(Event.CLICK + "." + this.uid);
       this.eventBody = false;
 
       this._cleanKeyupEvent();
 
-      _Popover.prototype.dispose.call(this);
-    };
+      super.dispose();
+    }
 
-    _proto.hide = function hide(callback) {
+    hide(callback) {
       this._cleanKeyupEvent();
 
-      _Popover.prototype.hide.call(this, callback);
-    } // Private
+      super.hide(callback);
+    }
 
+    // Private
     /**
      * Build configuration object
      * Bootstrap standard is to give priority to JS config over data attributes,
@@ -266,25 +340,59 @@
      * @return {*}
      * @private
      */
-    ;
+    _getConfig(config) {
+      const dataAttributes = Manipulator.getDataAttributes(this._element)
 
-    _proto._getConfig = function _getConfig(config) {
-      config = _Popover.prototype._getConfig.call(this, config);
-      var dataAttributes = $(this.element).data();
-      Object.keys(dataAttributes).forEach(function (dataAttr) {
+      Object.keys(dataAttributes).forEach(dataAttr => {
+        if (DISALLOWED_ATTRIBUTES.has(dataAttr)) {
+          delete dataAttributes[dataAttr]
+        }
+      })
+
+      config = {
+        ...this.constructor.Default,
+        ...dataAttributes,
+        ...(typeof config === 'object' && config ? config : {})
+      }
+
+      config.container = config.container === false ? document.body : getElement(config.container)
+
+      if (typeof config.delay === 'number') {
+        config.delay = {
+          show: config.delay,
+          hide: config.delay
+        }
+      }
+
+      if (typeof config.title === 'number') {
+        config.title = config.title.toString()
+      }
+
+      if (typeof config.content === 'number') {
+        config.content = config.content.toString()
+      }
+
+      typeCheckConfig(NAME, config, this.constructor.DefaultType)
+
+      if (config.sanitize) {
+        config.template = sanitizeHtml(config.template, config.allowList, config.sanitizeFn)
+      }
+
+      const dataAttrs = $(this._element).data();
+      Object.keys(dataAttrs).forEach(function (dataAttr) {
         if (dataAttr.indexOf('btn') !== 0) {
-          delete dataAttributes[dataAttr];
+          delete dataAttrs[dataAttr];
         }
       });
-      return _extends({}, config, dataAttributes);
+      this.config = _extends({}, config, dataAttrs);
+      return this.config;
     }
+
     /**
      * Copy the value of `copyAttributes` on the config object
      * @private
      */
-    ;
-
-    _proto._copyAttributes = function _copyAttributes() {
+     _copyAttributes() {
       var _this2 = this;
 
       this.config._attributes = {};
@@ -298,21 +406,20 @@
       }
 
       this.config.copyAttributes.forEach(function (attr) {
-        _this2.config._attributes[attr] = $(_this2.element).attr(attr);
+        _this2.config._attributes[attr] = $(_this2._element).attr(attr);
       });
     }
+
     /**
      * Custom event listeners for popouts and singletons
      * @private
      */
-    ;
-
-    _proto._setConfirmationListeners = function _setConfirmationListeners() {
+    _setConfirmationListeners() {
       var self = this;
 
       if (!this.config.selector) {
         // cancel original event
-        $(this.element).on(this.config.trigger, function (e, ack) {
+        $(this._element).on(this.config.trigger, function (e, ack) {
           if (!ack) {
             e.preventDefault();
             e.stopPropagation();
@@ -320,7 +427,7 @@
           }
         }); // manage singleton
 
-        $(this.element).on(Event.SHOWN, function () {
+        $(this._element).on(Event.SHOWN, function () {
           if (self.config.singleton) {
             // close all other popover already initialized
             $(self.config._selector).not($(this)).filter(function () {
@@ -330,7 +437,7 @@
         });
       } else {
         // cancel original event
-        $(this.element).on(this.config.trigger, this.config.selector, function (e, ack) {
+        $(this._element).on(this.config.trigger, this.config.selector, function (e, ack) {
           if (!ack) {
             e.preventDefault();
             e.stopPropagation();
@@ -342,8 +449,8 @@
       if (!this._isDelegate) {
         // manage popout
         this.eventBody = false;
-        this.uid = this.element.id || Confirmation.getUID(NAME + "_group");
-        $(this.element).on(Event.SHOWN, function () {
+        this.uid = this._element.id || Confirmation.getUID(NAME + "_group");
+        $(this._element).on(Event.SHOWN, function () {
           if (self.config.popout && !self.eventBody) {
             self.eventBody = $('body').on(Event.CLICK + "." + self.uid, function (e) {
               if ($(self.config._selector).is(e.target) || $(self.config._selector).has(e.target).length > 0) {
@@ -361,14 +468,13 @@
         });
       }
     }
+
     /**
      * Init the standard ok/cancel buttons
      * @param $tip
      * @private
      */
-    ;
-
-    _proto._setStandardButtons = function _setStandardButtons($tip) {
+    _setStandardButtons($tip) {
       var buttons = [{
         "class": this.config.btnOkClass,
         label: this.config.btnOkLabel,
@@ -385,15 +491,14 @@
 
       this._setButtons($tip, buttons);
     }
+
     /**
      * Init the buttons
      * @param $tip
      * @param buttons
      * @private
      */
-    ;
-
-    _proto._setButtons = function _setButtons($tip, buttons) {
+    _setButtons($tip, buttons) {
       var self = this;
       var $group = $tip.find(Selector.BUTTONS).empty();
       buttons.forEach(function (button) {
@@ -409,16 +514,16 @@
           }
 
           if (button.onClick) {
-            button.onClick.call($(self.element));
+            button.onClick.call($(self._element));
           }
 
           if (button.cancel) {
-            self.config.onCancel.call(self.element, button.value);
-            $(self.element).trigger(Event.CANCELED, [button.value]);
+            self.config.onCancel.call(self._element, button.value);
+            $(self._element).trigger(Event.CANCELED, [button.value]);
           } else {
-            self.config.onConfirm.call(self.element, button.value);
-            $(self.element).trigger(Event.CONFIRMED, [button.value]);
-            $(self.element).trigger(self.config.confirmationEvent, [true]);
+            self.config.onConfirm.call(self._element, button.value);
+            $(self._element).trigger(Event.CONFIRMED, [button.value]);
+            $(self._element).trigger(self.config.confirmationEvent, [true]);
           }
 
           self.hide();
@@ -426,36 +531,33 @@
         $group.append(btn);
       });
     }
+
     /**
      * Install the keyboatd event handler
      * @private
      */
-    ;
-
-    _proto._setupKeyupEvent = function _setupKeyupEvent() {
+    _setupKeyupEvent() {
       activeConfirmation = this;
       $(window).off(Event.KEYUP).on(Event.KEYUP, this._onKeyup.bind(this));
     }
+
     /**
      * Remove the keyboard event handler
      * @private
      */
-    ;
-
-    _proto._cleanKeyupEvent = function _cleanKeyupEvent() {
+    _cleanKeyupEvent() {
       if (activeConfirmation === this) {
         activeConfirmation = undefined;
         $(window).off(Event.KEYUP);
       }
     }
+
     /**
      * Event handler for keyboard navigation
      * @param event
      * @private
      */
-    ;
-
-    _proto._onKeyup = function _onKeyup(event) {
+    _onKeyup(event) {
       if (!this.tip) {
         this._cleanKeyupEvent();
 
@@ -495,16 +597,15 @@
           $next.addClass('active').focus();
           break;
       }
-    } // Static
+    }
 
+    // Static
     /**
      * Generates an uui, copied from Bootrap's utils
      * @param {string} prefix
      * @returns {string}
      */
-    ;
-
-    Confirmation.getUID = function getUID(prefix) {
+    static getUID(prefix) {
       var uid = prefix;
 
       do {
@@ -513,9 +614,9 @@
       } while (document.getElementById(uid));
 
       return uid;
-    };
+    }
 
-    Confirmation._jQueryInterface = function _jQueryInterface(config) {
+    static _jQueryInterface(config) {
       return this.each(function () {
         var data = $(this).data(DATA_KEY);
 
@@ -540,48 +641,37 @@
           data[config]();
         }
       });
-    };
+    }
 
-    _createClass(Confirmation, null, [{
-      key: "VERSION",
-      get: // Getters
-      function get() {
-        return VERSION;
-      }
-    }, {
-      key: "Default",
-      get: function get() {
-        return Default;
-      }
-    }, {
-      key: "NAME",
-      get: function get() {
-        return NAME;
-      }
-    }, {
-      key: "DATA_KEY",
-      get: function get() {
-        return DATA_KEY;
-      }
-    }, {
-      key: "Event",
-      get: function get() {
-        return Event;
-      }
-    }, {
-      key: "EVENT_KEY",
-      get: function get() {
-        return EVENT_KEY;
-      }
-    }, {
-      key: "DefaultType",
-      get: function get() {
-        return DefaultType;
-      }
-    }]);
+    static get VERSION() {
+      return VERSION;
+    }
 
-    return Confirmation;
-  }(Popover);
+    static get Default() {
+      return Default;
+    }
+
+    static get NAME() {
+      return NAME;
+    }
+
+    static get DATA_KEY() {
+      return DATA_KEY;
+    }
+
+    static get Event() {
+      return Event;
+    }
+
+    static get EVENT_KEY() {
+      return EVENT_KEY;
+    }
+
+    static get DefaultType() {
+      return DefaultType;
+    }
+  }
+
   /**
    * ------------------------------------------------------------------------
    * jQuery
@@ -598,4 +688,3 @@
   };
 
 })));
-//# sourceMappingURL=bootstrap-confirmation.js.map

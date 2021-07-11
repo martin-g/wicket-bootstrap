@@ -1,31 +1,9 @@
 package de.agilecoders.wicket.samples.pages;
 
-import com.google.common.collect.Lists;
-
-import de.agilecoders.wicket.core.markup.html.bootstrap.badge.BadgeBehavior;
-import de.agilecoders.wicket.core.markup.html.bootstrap.badge.BootstrapBadge;
-import de.agilecoders.wicket.core.markup.html.bootstrap.block.Code;
-import de.agilecoders.wicket.core.markup.html.bootstrap.button.BootstrapAjaxLink;
-import de.agilecoders.wicket.core.markup.html.bootstrap.button.ButtonBehavior;
-import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons;
-import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.MenuBookmarkablePageLink;
-import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.MenuDivider;
-import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.SplitButton;
-import de.agilecoders.wicket.core.markup.html.bootstrap.utilities.BackgroundColorBehavior;
-import de.agilecoders.wicket.core.markup.html.bootstrap.utilities.BorderBehavior;
-import de.agilecoders.wicket.core.markup.html.bootstrap.utilities.ColorBehavior;
-import de.agilecoders.wicket.core.markup.html.bootstrap.components.progress.ProgressBar;
-import de.agilecoders.wicket.core.markup.html.bootstrap.components.progress.Stack;
-import de.agilecoders.wicket.core.markup.html.bootstrap.components.progress.UpdatableProgressBar;
-import de.agilecoders.wicket.core.markup.html.bootstrap.form.radio.AjaxBooleanRadioGroup;
-import de.agilecoders.wicket.core.markup.html.bootstrap.form.radio.AjaxBootstrapRadioGroup;
-import de.agilecoders.wicket.core.markup.html.bootstrap.form.radio.BooleanRadioGroup;
-import de.agilecoders.wicket.core.markup.html.bootstrap.form.radio.EnumRadioChoiceRenderer;
-import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
-import de.agilecoders.wicket.core.markup.html.bootstrap.tabs.AjaxBootstrapTabbedPanel;
-import de.agilecoders.wicket.core.markup.html.bootstrap.tabs.ClientSideBootstrapTabbedPanel;
-import de.agilecoders.wicket.samples.components.basecss.ButtonGroups;
-import de.agilecoders.wicket.samples.panels.SimpleCard;
+import java.time.Duration;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
@@ -41,12 +19,33 @@ import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
-import java.time.Duration;
 import org.wicketstuff.annotation.mount.MountPath;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import com.google.common.collect.Lists;
+
+import de.agilecoders.wicket.core.markup.html.bootstrap.badge.BootstrapBadge;
+import de.agilecoders.wicket.core.markup.html.bootstrap.block.Code;
+import de.agilecoders.wicket.core.markup.html.bootstrap.button.BootstrapAjaxLink;
+import de.agilecoders.wicket.core.markup.html.bootstrap.button.ButtonBehavior;
+import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons;
+import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.MenuBookmarkablePageLink;
+import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.MenuDivider;
+import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.SplitButton;
+import de.agilecoders.wicket.core.markup.html.bootstrap.components.progress.ProgressBar;
+import de.agilecoders.wicket.core.markup.html.bootstrap.components.progress.Stack;
+import de.agilecoders.wicket.core.markup.html.bootstrap.components.progress.UpdatableProgressBar;
+import de.agilecoders.wicket.core.markup.html.bootstrap.form.radio.AjaxBooleanRadioGroup;
+import de.agilecoders.wicket.core.markup.html.bootstrap.form.radio.AjaxBootstrapRadioGroup;
+import de.agilecoders.wicket.core.markup.html.bootstrap.form.radio.BooleanRadioGroup;
+import de.agilecoders.wicket.core.markup.html.bootstrap.form.radio.EnumRadioChoiceRenderer;
+import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
+import de.agilecoders.wicket.core.markup.html.bootstrap.tabs.AjaxBootstrapTabbedPanel;
+import de.agilecoders.wicket.core.markup.html.bootstrap.tabs.ClientSideBootstrapTabbedPanel;
+import de.agilecoders.wicket.core.markup.html.bootstrap.utilities.BackgroundColorBehavior;
+import de.agilecoders.wicket.core.markup.html.bootstrap.utilities.BorderBehavior;
+import de.agilecoders.wicket.core.markup.html.bootstrap.utilities.ColorBehavior;
+import de.agilecoders.wicket.samples.components.basecss.ButtonGroups;
+import de.agilecoders.wicket.samples.panels.SimpleCard;
 
 /**
  * The {@code ComponentsPage}
@@ -194,19 +193,19 @@ public class ComponentsPage extends BasePage {
     }
 
     private void addLabels() {
-        List<BadgeBehavior.Type> types = Lists.newArrayList(BadgeBehavior.Type.values());
-        add(new ListView<>("badges", types) {
+        List<BackgroundColorBehavior.Color> colors = Lists.newArrayList(BackgroundColorBehavior.Color.values());
+        add(new ListView<>("badges", colors) {
             private static final long serialVersionUID = 1L;
 
             @Override
-            protected void populateItem(ListItem<BadgeBehavior.Type> item) {
-                BadgeBehavior.Type type = item.getModelObject();
+            protected void populateItem(ListItem<BackgroundColorBehavior.Color> item) {
+                BackgroundColorBehavior.Color color = item.getModelObject();
 
-                item.add(new BootstrapBadge("badge", type.cssClassName(), type));
+                item.add(new BootstrapBadge("badge", color.cssClassName(), color));
 
                 Code code = new Code(
                         "code",
-                        Model.of(String.format("<span class='badge %1$s'>%1$s</span>", type.cssClassName()))
+                        Model.of(String.format("<span class='badge %1$s'>%1$s</span>", color.cssClassName()))
                 );
                 item.add(code);
             }
@@ -214,21 +213,21 @@ public class ComponentsPage extends BasePage {
     }
 
     private void addBadges() {
-        List<BadgeBehavior.Type> types = Lists.newArrayList(BadgeBehavior.Type.values());
+        List<BackgroundColorBehavior.Color> colors = Lists.newArrayList(BackgroundColorBehavior.Color.values());
 
-        add(new ListView<>("badge-pills", types) {
+        add(new ListView<>("badge-pills", colors) {
             private static final long serialVersionUID = 1L;
 
             @Override
-            protected void populateItem(ListItem<BadgeBehavior.Type> item) {
-                BadgeBehavior.Type type = item.getModelObject();
+            protected void populateItem(ListItem<BackgroundColorBehavior.Color> item) {
+                BackgroundColorBehavior.Color color = item.getModelObject();
 
-                item.add(new Label("name", type.cssClassName()));
+                item.add(new Label("name", color.cssClassName()));
 
-                item.add(new BootstrapBadge("badge", 1, type).setPill(true));
+                item.add(new BootstrapBadge("badge", 1, color).setPill(true));
 
                 item.add(new Code("code",
-                        Model.of(String.format("<span class='badge badge-pills %1$s'>%1$s</span>", type.cssClassName()))
+                        Model.of(String.format("<span class='badge badge-pills %1$s'>%1$s</span>", color.cssClassName()))
                 ));
             }
         });
@@ -242,7 +241,7 @@ public class ComponentsPage extends BasePage {
             }
         };
         badgeButton.add(new ButtonBehavior(Buttons.Type.Primary));
-        badgeButton.add(new BootstrapBadge("badge", Model.of(1), BadgeBehavior.Type.Light));
+        badgeButton.add(new BootstrapBadge("badge", Model.of(1), BackgroundColorBehavior.Color.Light));
         add(badgeButton);
     }
 

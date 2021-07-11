@@ -210,17 +210,6 @@ public abstract class BootstrapExternalLink extends ExternalLink implements IBoo
     }
 
     /**
-     * Sets whether this button should display inline or block
-     *
-     * @param block <code>true</code>, for block mode
-     * @return this instance for chaining
-     */
-    public BootstrapExternalLink setBlock(boolean block) {
-        getButtonBehavior().setBlock(block);
-        return this;
-    }
-
-    /**
      * Sets the target of the link
      *
      * @param target The link target

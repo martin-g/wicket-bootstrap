@@ -1,11 +1,13 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.badge;
 
-import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
-import de.agilecoders.wicket.core.util.Attributes;
-import de.agilecoders.wicket.core.util.Components;
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.Behavior;
 import org.apache.wicket.markup.ComponentTag;
+
+import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
+import de.agilecoders.wicket.core.markup.html.bootstrap.utilities.BackgroundColorBehavior;
+import de.agilecoders.wicket.core.util.Attributes;
+import de.agilecoders.wicket.core.util.Components;
 
 /**
  * A Badge is a unread counter or label with rounded corners.
@@ -13,21 +15,22 @@ import org.apache.wicket.markup.ComponentTag;
  * @author miha
  */
 public class BadgeBehavior extends Behavior {
+    private static final long serialVersionUID = 1L;
 
-    private Type type;
+    private BackgroundColorBehavior.Color color;
 
     private boolean isPill;
 
     public BadgeBehavior() {
-        this(Type.Secondary, false);
+        this(BackgroundColorBehavior.Color.Secondary, false);
     }
 
-    public BadgeBehavior(Type type) {
-        this(type, false);
+    public BadgeBehavior(BackgroundColorBehavior.Color color) {
+        this(color, false);
     }
 
-    public BadgeBehavior(Type type, boolean isPill) {
-        this.type = type;
+    public BadgeBehavior(BackgroundColorBehavior.Color color, boolean isPill) {
+        this.color = color;
         this.isPill = isPill;
     }
 
@@ -36,7 +39,7 @@ public class BadgeBehavior extends Behavior {
         super.onComponentTag(component, tag);
 
         Components.assertTag(component, tag, "span", "a");
-        Attributes.addClass(tag, className(), type.cssClassName());
+        Attributes.addClass(tag, className(), color.cssClassName());
         if (isPill) {
             Attributes.addClass(tag, pillClassName());
         }
@@ -57,7 +60,7 @@ public class BadgeBehavior extends Behavior {
     }
 
     protected String pillClassName() {
-        return  "badge-pill";
+        return  "rounded-pill";
     }
 
     protected String className() {
@@ -70,30 +73,9 @@ public class BadgeBehavior extends Behavior {
         return this;
     }
 
-    public BadgeBehavior type(Type type) {
-        this.type = type;
+    public BadgeBehavior color(BackgroundColorBehavior.Color color) {
+        this.color = color;
 
         return this;
-    }
-
-    public enum Type {
-        Primary("primary"),
-        Secondary("secondary"),
-        Success("success"),
-        Danger("danger"),
-        Warning("warning"),
-        Info("info"),
-        Light("light"),
-        Dark("dark");
-
-        private final String value;
-
-        Type(String value) {
-            this.value = value;
-        }
-
-        public String cssClassName() {
-            return String.format("badge-%s", value);
-        }
     }
 }

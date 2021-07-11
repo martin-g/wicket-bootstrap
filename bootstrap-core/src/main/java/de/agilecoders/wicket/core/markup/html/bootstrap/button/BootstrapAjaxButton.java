@@ -220,15 +220,4 @@ public abstract class BootstrapAjaxButton extends AjaxButton implements IBootstr
         this.useSplitter = value;
         return this;
     }
-
-    /**
-     * Sets whether this button should display inline or block
-     *
-     * @param block <code>true</code>, for block mode
-     * @return this instance for chaining
-     */
-    public BootstrapAjaxButton setBlock(boolean block) {
-        getButtonBehavior().setBlock(block);
-        return this;
-    }
 }
