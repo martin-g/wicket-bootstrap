@@ -65,18 +65,18 @@
         <joda-time.version>2.10.10</joda-time.version>
         <jquerypp.version>1.0.1</jquerypp.version>
         <jquery.version>3.6.0</jquery.version>
-        <junit-jupiter.version>5.7.1</junit-jupiter.version>
+        <junit-jupiter.version>5.7.2</junit-jupiter.version>
         <junit-platform.version>1.7.1</junit-platform.version>
         <jsass.version>5.10.4</jsass.version>
         <hamcrest.version>2.2</hamcrest.version>
-        <logback.version>1.2.3</logback.version>
+        <logback.version>1.2.5</logback.version>
         <modernizr.version>2.8.3-1</modernizr.version>
-        <mockito.version>3.11.1</mockito.version>
+        <mockito.version>3.11.2</mockito.version>
         <popperjs.version>2.9.2</popperjs.version>
         <servlet-api.version>3.1.0</servlet-api.version>
         <slf4j.version>1.7.25</slf4j.version>
-        <wicket.version>9.3.0</wicket.version>
-        <wicketstuff.version>9.3.0</wicketstuff.version>
+        <wicket.version>9.4.0</wicket.version>
+        <wicketstuff.version>9.4.0</wicketstuff.version>
         <yuicompressor.version>2.4.8</yuicompressor.version>
 
         <maven-bundle-plugin.version>5.1.2</maven-bundle-plugin.version>
