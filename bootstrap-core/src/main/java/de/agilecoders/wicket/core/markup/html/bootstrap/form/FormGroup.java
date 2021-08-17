@@ -168,7 +168,7 @@ public class FormGroup extends Border {
         super.onComponentTag(tag);
 
         checkComponentTag(tag, "div");
-        Attributes.addClass(tag, "form-group");
+        Attributes.addClass(tag, "form-group", "row");
     }
 
     @Override
