@@ -2,7 +2,7 @@
 @import "bootstrap.superhero.variables.scss";
 
 
-// Superhero 5.0.1
+// Superhero 5.1.0
 // Bootswatch
 
 
@@ -71,6 +71,12 @@ label,
 .checkbox label,
 .help-block {
   font-size: $font-size-sm;
+}
+
+.form-floating {
+  label {
+    color: $input-placeholder-color;
+  }
 }
 
 // Navs
