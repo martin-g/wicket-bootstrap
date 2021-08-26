@@ -16,11 +16,12 @@
     <properties>
         <inputmask.version>4.0.0</inputmask.version>
         <jqueryui.version>1.12.1</jqueryui.version>
-        <typeaheadjs.version>0.10.5</typeaheadjs.version>
+        <typeaheadjs.version>0.11.1</typeaheadjs.version>
         <x-editable.version>1.5.1-1</x-editable.version>
         <spin-js.version>2.1.0</spin-js.version>
         <animate.css.version>3.7.2</animate.css.version>
         <summernote.version>0.8.12</summernote.version>
+        <font-awesome.version>5.15.3</font-awesome.version>
     </properties>
 
     <dependencies>
@@ -61,7 +62,7 @@
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>font-awesome</artifactId>
-            <version>5.15.3</version>
+            <version>${font-awesome.version}</version>
         </dependency>
 
         <dependency>

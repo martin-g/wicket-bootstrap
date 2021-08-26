@@ -96,8 +96,8 @@ public class ModalCloseButton extends AjaxLink<String> {
             String anchorMarkupId = _anchor.getMarkupId();
             if (!Strings.isEmpty(anchorMarkupId)) {
                 AjaxCallListener listener = new AjaxCallListener();
-                listener.onBeforeSend(String.format("document.location.hash='%s';", anchorMarkupId));
-                listener.onBeforeSend(String.format("$('#%s').modal('hide');", anchorMarkupId));
+                listener.onBeforeSend("bootstrap.Modal.getInstance(document.getElementById('"
+                        + anchorMarkupId + "')).hide();");
                 attributes.getAjaxCallListeners().add(listener);
             }
         }

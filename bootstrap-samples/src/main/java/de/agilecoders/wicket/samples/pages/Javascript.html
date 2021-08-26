@@ -71,9 +71,9 @@
     <pre class="prettyprint linenums">$(".btn.danger").button("toggle").addClass("fat")</pre>
     <p>All methods should accept an optional options object, a string which targets a particular method, or nothing (which initiates a plugin with default behavior):</p>
 <pre class="prettyprint linenums">
-$("#myModal").modal()                       // initialized with defaults
-$("#myModal").modal({ keyboard: false })   // initialized with no keyboard
-$("#myModal").modal('show')                // initializes and invokes show immediately
+new bootstrap.Modal(document.getElementById('myModal'))                       // initialized with defaults
+new bootstrap.Modal(document.getElementById('myModal'), { keyboard: false })   // initialized with no keyboard
+new bootstrap.Modal(document.getElementById('myModal')).show()                // initializes and invokes show immediately
 </pre>
     <p>Each plugin also exposes its raw constructor on a `Constructor` property: <code>$.fn.popover.Constructor</code>. If you'd like to get a particular plugin instance, retrieve it directly from an element: <code>$('[rel=popover]').data('popover')</code>.</p>
 
@@ -83,7 +83,7 @@ $("#myModal").modal('show')                // initializes and invokes show immed
 
     <p>All infinitive events provide preventDefault functionality. This provides the abililty to stop the execution of an action before it starts.</p>
 <pre class="prettyprint linenums">
-$('#myModal').on('show', function (e) {
+document.getElementById('myModal').addEventListener('show.bs.modal', function (e) {
     if (!data) return e.preventDefault() // stops modal from being shown
 })
 </pre>
@@ -243,7 +243,7 @@ $('#myModal').on('show', function (e) {
 <h3>Via JavaScript</h3>
 
 <p>Call a modal with id <code>myModal</code> with a single line of JavaScript:</p>
-<pre class="prettyprint linenums">$('#myModal').modal(options)</pre>
+<pre class="prettyprint linenums">new bootstrap.Modal(document.getElementById('myModal'), options)</pre>
 
 <h3>Options</h3>
 
@@ -271,43 +271,35 @@ $('#myModal').on('show', function (e) {
             <td>Closes the modal when escape key is pressed</td>
         </tr>
         <tr>
-            <td>show</td>
+            <td>focus</td>
             <td>boolean</td>
             <td>true</td>
-            <td>Shows the modal when initialized.</td>
-        </tr>
-        <tr>
-            <td>remote</td>
-            <td>path</td>
-            <td>false</td>
-            <td><p>If a remote url is provided, content will be loaded via jQuery's <code>load</code> method and injected into the <code>.modal-body</code>. If you're using the data api, you may alternatively use the <code>href</code> tag to specify the remote source. An example of this is shown below:</p>
-                <pre class="prettyprint linenums"><code>&lt;a data-bs-toggle="modal" href="remote.html" data-bs-target="#modal"&gt;click me&lt;/a&gt;</code></pre>
-            </td>
+            <td>Puts the focus on the modal when initialized.</td>
         </tr>
     </tbody>
 </table>
 
 <h3>Methods</h3>
-<h4>.modal(options)</h4>
+<h4>init with options</h4>
 
 <p>Activates your content as a modal. Accepts an optional options <code>object</code>.</p>
 <pre class="prettyprint linenums">
-$('#myModal').modal({
+new bootstrap.Modal(document.getElementById('myModal'), {
   keyboard: false
 })
 </pre>
-<h4>.modal('toggle')</h4>
+<h4>.toggle()</h4>
 
 <p>Manually toggles a modal.</p>
-<pre class="prettyprint linenums">$('#myModal').modal('toggle')</pre>
-<h4>.modal('show')</h4>
+<pre class="prettyprint linenums">bootstrap.Modal.getInstance(document.getElementById('myModal')).toggle()</pre>
+<h4>.show()</h4>
 
 <p>Manually opens a modal.</p>
-<pre class="prettyprint linenums">$('#myModal').modal('show')</pre>
-<h4>.modal('hide')</h4>
+<pre class="prettyprint linenums">bootstrap.Modal.getInstance(document.getElementById('myModal')).show()</pre>
+<h4>.hide()</h4>
 
 <p>Manually hides a modal.</p>
-<pre class="prettyprint linenums">$('#myModal').modal('hide')</pre>
+<pre class="prettyprint linenums">bootstrap.Modal.getInstance(document.getElementById('myModal')).hide()</pre>
 <h3>Events</h3>
 
 <p>Bootstrap's modal class exposes a few events for hooking into modal functionality.</p>

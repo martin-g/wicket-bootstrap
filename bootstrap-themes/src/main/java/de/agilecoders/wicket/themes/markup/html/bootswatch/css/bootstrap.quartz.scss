@@ -2,13 +2,13 @@
 @import "bootstrap.quartz.variables.scss";
 
 
-// Quartz 5.0.1
+// Quartz 5.1.0
 // Bootswatch
 
 
 // Variables
 
-$body-bg-image: linear-gradient(90deg, darken($cyan, 10%), darken($purple, 10%), darken($pink, 5%)) !default;
+$body-bg-image: linear-gradient(90deg, shade-color($cyan, 10%), shade-color($purple, 10%), shade-color($pink, 5%)) !default;
 $frosted-opacity: .3 !default;
 
 @mixin glass($opacity: $frosted-opacity, $bg: $white) {
@@ -99,8 +99,12 @@ body {
   border-right: none;
 }
 
-.form-select {
+.form-select:not([multiple]) {
   transition: border-color .15s ease-in-out;
+
+  option {
+    color: $black;
+  }
 }
 
 .bg-light .form-control {
@@ -122,8 +126,10 @@ body {
   .nav-link {
     transition: none;
 
-    &:hover {
+    &:hover,
+    &:focus {
       color: $white;
+      isolation: auto;
     }
 
     &,
@@ -146,13 +152,26 @@ body {
     border-radius: $border-radius;
     transform: scale(1.1);
 
-    &:hover {
+    &:hover,
+    &:focus {
       color: $gray-800;
     }
   }
 
   .dropdown-menu {
     border-radius: $border-radius;
+  }
+}
+
+.nav-pills {
+  .nav-link {
+    transition: none;
+
+    &:hover,
+    &:focus {
+      color: $white;
+      isolation: auto;
+    }
   }
 }
 
