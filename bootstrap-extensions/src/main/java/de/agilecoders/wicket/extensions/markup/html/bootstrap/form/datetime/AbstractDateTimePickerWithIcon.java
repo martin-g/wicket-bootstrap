@@ -72,7 +72,7 @@ public abstract class AbstractDateTimePickerWithIcon<T> extends FormComponentPan
         Component iconContainer = newIconContainer("iconContainer")
                 .add(newIcon("icon"))
                 .add(
-                    new AttributeAppender("data-bs-target", "#" + input.getMarkupId())
+                    new AttributeAppender("data-target", "#" + input.getMarkupId())
                 );
 
 
