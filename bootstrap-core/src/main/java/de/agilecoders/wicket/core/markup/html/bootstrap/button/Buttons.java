@@ -1,13 +1,15 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.button;
 
-import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNameProvider;
-import de.agilecoders.wicket.core.util.Attributes;
-import de.agilecoders.wicket.core.util.CssClassNames;
+import java.util.Set;
+
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.ComponentTag;
-import org.apache.wicket.markup.html.form.Button;
-import org.apache.wicket.markup.html.link.AbstractLink;
 import org.apache.wicket.util.lang.Args;
+
+import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNameProvider;
+import de.agilecoders.wicket.core.util.Attributes;
+import de.agilecoders.wicket.core.util.Components;
+import de.agilecoders.wicket.core.util.CssClassNames;
 
 /**
  * Helper class that holds all special style modification
@@ -16,33 +18,6 @@ import org.apache.wicket.util.lang.Args;
  * @author miha
  */
 public final class Buttons {
-
-    /**
-     * HACK issue #79: wicket changes tag name if component wasn't enabled
-     *
-     * @param component the component to fix
-     * @param tag       the component tag
-     * @deprecated Not used by the library because Wicket 7.0 doesn't mangle the link/button's markup anymore
-     */
-    @Deprecated
-    public static void fixDisabledState(Component component, ComponentTag tag) {
-        if (!component.isEnabledInHierarchy()) {
-            if (component instanceof AbstractLink) {
-                tag.setName("a");
-            } else if (component instanceof Button) {
-                tag.setName("button");
-            } else {
-                if (tag.getAttribute("value") != null) {
-                    tag.setName("input");
-                } else {
-                    tag.setName("button");
-                }
-            }
-
-            tag.put("disabled", "disabled");
-        }
-    }
-
     /**
      * defines all possible sizes of a button element.
      */
@@ -84,7 +59,7 @@ public final class Buttons {
 
     /**
      * Defines all possible button types.
-     * @see <a href="https://getbootstrap.com/docs/4.1/components/buttons/">Buttons</a>
+     * @see <a href="https://getbootstrap.com/docs/5.1/components/buttons/">Buttons</a>
      */
     public enum Type implements ICssClassNameProvider {
         Default("btn-secondary"), // Alias for secondary. Kept for backwards compatibility.
@@ -139,9 +114,12 @@ public final class Buttons {
     public static void onComponentTag(final Component component, final ComponentTag tag, final ICssClassNameProvider... classNameProviders) {
         Args.notNull(classNameProviders, "classNameProviders");
 
-        final CssClassNames.Builder builder = CssClassNames.newBuilder().add(
-                "btn", (component.isEnabled() ? "" : "btn-disabled"));
+        final CssClassNames.Builder builder = CssClassNames.newBuilder().add("btn");
 
+        if (!component.isEnabled() && Components.hasTagName(tag, Set.of("a"))) {
+            builder.add("disabled");
+            Attributes.set(tag, "aria-disabled", "true");
+        }
         for (final ICssClassNameProvider provider : classNameProviders) {
             builder.add(provider.cssClassName());
         }

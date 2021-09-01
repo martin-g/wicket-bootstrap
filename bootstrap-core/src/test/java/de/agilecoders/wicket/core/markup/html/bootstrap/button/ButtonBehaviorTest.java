@@ -1,10 +1,11 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.button;
 
-import de.agilecoders.wicket.core.WicketApplicationTest;
 import org.apache.wicket.markup.html.link.AbstractLink;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.util.tester.TagTester;
 import org.junit.jupiter.api.Test;
+
+import de.agilecoders.wicket.core.WicketApplicationTest;
 
 /**
  * Tests for ButtonBehavior
@@ -17,8 +18,8 @@ class ButtonBehaviorTest extends WicketApplicationTest {
         link.setEnabled(false);
         link.add(new ButtonBehavior());
 
-        TagTester tagTester = startComponentInPage(link, "<a wicket:id='"+id()+"'>text</a>");
-        assertCssClass(tagTester, "btn-disabled");
+        TagTester tagTester = startComponentInPage(link, "<a wicket:id='" + id() + "'>text</a>");
+        assertCssClass(tagTester, "disabled");
         String disabledAttr = tagTester.getAttribute("disabled");
         assertEquals("disabled", disabledAttr);
     }
@@ -51,6 +52,8 @@ class ButtonBehaviorTest extends WicketApplicationTest {
 
     private AbstractLink newLink(String id) {
         return new Link<Void>(id) {
+            private static final long serialVersionUID = 1L;
+
             @Override
             public void onClick() {
             }
