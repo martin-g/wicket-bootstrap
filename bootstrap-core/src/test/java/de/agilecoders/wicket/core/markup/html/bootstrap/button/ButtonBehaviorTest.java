@@ -18,7 +18,7 @@ class ButtonBehaviorTest extends WicketApplicationTest {
         link.add(new ButtonBehavior());
 
         TagTester tagTester = startComponentInPage(link, "<a wicket:id='"+id()+"'>text</a>");
-        assertCssClass(tagTester, "btn-disabled");
+        assertCssClass(tagTester, "disabled");
         String disabledAttr = tagTester.getAttribute("disabled");
         assertEquals("disabled", disabledAttr);
     }
