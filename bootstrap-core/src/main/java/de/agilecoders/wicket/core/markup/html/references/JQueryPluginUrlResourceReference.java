@@ -1,5 +1,7 @@
 package de.agilecoders.wicket.core.markup.html.references;
 
+import java.util.List;
+
 import org.apache.wicket.Application;
 import org.apache.wicket.markup.head.HeaderItem;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
@@ -10,14 +12,13 @@ import org.apache.wicket.resource.JQueryResourceReference;
 
 import de.agilecoders.wicket.core.util.Dependencies;
 
-import java.util.List;
-
 /**
  * A specialization of UrlResourceReference that depends on JQuery
  *
  * @see org.apache.wicket.settings.JavaScriptLibrarySettings#getJQueryReference()
  */
 public class JQueryPluginUrlResourceReference extends UrlResourceReference {
+    private static final long serialVersionUID = 1L;
 
     /**
      * Constructor.

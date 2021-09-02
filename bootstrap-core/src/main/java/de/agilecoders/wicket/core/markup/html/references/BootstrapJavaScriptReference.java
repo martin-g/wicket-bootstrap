@@ -1,13 +1,14 @@
 package de.agilecoders.wicket.core.markup.html.references;
 
-import de.agilecoders.wicket.core.Bootstrap;
-import de.agilecoders.wicket.core.util.Dependencies;
-import de.agilecoders.wicket.webjars.request.resource.WebjarsJavaScriptResourceReference;
+import java.util.List;
+
 import org.apache.wicket.Application;
 import org.apache.wicket.markup.head.HeaderItem;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 
-import java.util.List;
+import de.agilecoders.wicket.core.Bootstrap;
+import de.agilecoders.wicket.core.util.Dependencies;
+import de.agilecoders.wicket.webjars.request.resource.WebjarsJavaScriptResourceReference;
 
 /**
  * represents the bootstrap js library
@@ -45,7 +46,6 @@ public class BootstrapJavaScriptReference extends WebjarsJavaScriptResourceRefer
     public List<HeaderItem> getDependencies() {
         return Dependencies.combine(super.getDependencies(),
                                     JavaScriptHeaderItem.forReference(Application.get().getJavaScriptLibrarySettings().getJQueryReference()),
-                                    JavaScriptHeaderItem.forReference(JQueryMigrateJavaScriptReference.instance()),
                                     JavaScriptHeaderItem.forReference(Bootstrap.getSettings().getPopperJsResourceReference()));
     }
 }

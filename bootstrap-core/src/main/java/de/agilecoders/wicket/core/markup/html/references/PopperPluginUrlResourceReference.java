@@ -17,6 +17,8 @@ import de.agilecoders.wicket.core.util.Dependencies;
  * @author Jan Ferko
  */
 public class PopperPluginUrlResourceReference extends JQueryPluginUrlResourceReference {
+    private static final long serialVersionUID = 1L;
+
     /**
      * Constructor.
      *

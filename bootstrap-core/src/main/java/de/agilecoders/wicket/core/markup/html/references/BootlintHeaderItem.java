@@ -1,12 +1,12 @@
 package de.agilecoders.wicket.core.markup.html.references;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.apache.wicket.markup.head.HeaderItem;
 import org.apache.wicket.markup.head.JavaScriptContentHeaderItem;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.resource.JQueryPluginResourceReference;
-
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * A JavaScript header item that could be used to check whether the markup of the page
@@ -15,7 +15,7 @@ import java.util.List;
  * @see <a href="https://github.com/twbs/bootlint">bootlint</a>
  */
 public class BootlintHeaderItem extends JavaScriptContentHeaderItem {
-
+    private static final long serialVersionUID = 1L;
     public static final BootlintHeaderItem INSTANCE = new BootlintHeaderItem();
 
     /**

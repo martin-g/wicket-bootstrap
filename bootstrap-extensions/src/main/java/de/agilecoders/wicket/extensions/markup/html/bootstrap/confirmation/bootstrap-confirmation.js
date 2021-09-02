@@ -368,8 +368,8 @@ function sanitizeHtml(unsafeHtml, allowList, sanitizeFn) {
       return true;
     }
 
-    setContent() {
-      var $tip = $(this.getTipElement());
+    setContent(__tip) {
+      var $tip = $(__tip);
 
       var content = this._getContent();
 
