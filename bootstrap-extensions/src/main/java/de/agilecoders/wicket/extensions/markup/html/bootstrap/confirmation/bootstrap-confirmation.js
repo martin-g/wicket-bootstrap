@@ -368,6 +368,23 @@ function sanitizeHtml(unsafeHtml, allowList, sanitizeFn) {
       return true;
     }
 
+    getTipElement() {
+        if (this.tip) {
+            this.setContent(this.tip)
+            return this.tip
+        }
+
+        const element = document.createElement('div')
+        element.innerHTML = this._config.template
+
+        const tip = element.children[0]
+        this.setContent(tip)
+        tip.classList.remove(ClassName.FADE, ClassName.SHOW)
+
+        this.tip = tip
+        return this.tip
+    }
+
     setContent(__tip) {
       var $tip = $(__tip);
 
@@ -578,10 +595,15 @@ function sanitizeHtml(unsafeHtml, allowList, sanitizeFn) {
      * @private
      */
     _setButtons($tip, buttons) {
-      var self = this;
-      var $group = $tip.find(Selector.BUTTONS).empty();
+      const self = this
+        , $group = $tip.find(Selector.BUTTONS).empty();
       buttons.forEach(function (button) {
-        var btn = $('<a href="#"></a>').addClass(BTN_CLASS_BASE).addClass(button["class"] || BTN_CLASS_DEFAULT + " btn-secondary").html(button.label || '').attr(button.attr || (button.cancel ? {} : self.config._attributes));
+        const btn = $('<a href="#"></a>')
+          .addClass(BTN_CLASS_BASE)
+          .addClass(button["class"] || BTN_CLASS_DEFAULT + " btn-secondary")
+          .html(button.label || '')
+          .data('buttons-set', true)
+          .attr(button.attr || (button.cancel ? {} : self.config._attributes));
 
         if (button.iconClass || button.iconContent) {
           btn.prepend($('<i></i>').addClass(button.iconClass || '').text(button.iconContent || ''));
