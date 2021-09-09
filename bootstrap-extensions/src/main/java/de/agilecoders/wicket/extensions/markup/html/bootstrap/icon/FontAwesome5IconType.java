@@ -1575,7 +1575,6 @@ public class FontAwesome5IconType extends IconType {
     public static final FontAwesome5IconType tiktok = on(FontAwesome5Brand.tiktok).build();
     public static final FontAwesome5IconType trade_federation = on(FontAwesome5Brand.trade_federation).build();
     public static final FontAwesome5IconType trello = on(FontAwesome5Brand.trello).build();
-    public static final FontAwesome5IconType tripadvisor = on(FontAwesome5Brand.tripadvisor).build();
     public static final FontAwesome5IconType tumblr = on(FontAwesome5Brand.tumblr).build();
     public static final FontAwesome5IconType tumblr_square = on(FontAwesome5Brand.tumblr_square).build();
     public static final FontAwesome5IconType twitch = on(FontAwesome5Brand.twitch).build();
