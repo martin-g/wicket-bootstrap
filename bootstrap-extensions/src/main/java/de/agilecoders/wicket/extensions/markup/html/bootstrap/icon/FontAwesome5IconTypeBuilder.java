@@ -11,7 +11,7 @@ import java.util.List;
  *  &lt;dependency&gt;<br/>
  *      &lt;groupId&gt;org.webjars&lt;/groupId&gt;<br/>
  *      &lt;artifactId&gt;font-awesome&lt;/artifactId&gt;<br/>
- *      &lt;version&gt;5.9.0&lt;/version&gt;<br/>
+ *      &lt;version&gt;5.15.4&lt;/version&gt;<br/>
  *  &lt;/dependency&gt;<br/>
  *
  *
@@ -236,7 +236,7 @@ public class FontAwesome5IconTypeBuilder {
         stack_exchange, stack_overflow, stackpath, staylinked, steam, steam_square, steam_symbol, sticker_mule, strava, stripe,
         stripe_s, studiovinari, stumbleupon, stumbleupon_circle, superpowers, supple, suse, swift, symfony, teamspeak,
         telegram, telegram_plane, tencent_weibo, the_red_yeti, themeco, themeisle, think_peaks, tiktok, trade_federation,
-        trello, tripadvisor, tumblr, tumblr_square, twitch, twitter, twitter_square, typo3, uber, ubuntu, uikit, umbraco, uncharted,
+        trello, tumblr, tumblr_square, twitch, twitter, twitter_square, typo3, uber, ubuntu, uikit, umbraco, uncharted,
         uniregistry, unity, unsplash, untappd, ups, usb, usps, ussunnah, vaadin, viacoin, viadeo, viadeo_square, viber, vimeo,
         vimeo_square, vimeo_v, vine, vk, vnv, vuejs, watchman_monitoring, waze, weebly, weibo, weixin, whatsapp, whatsapp_square, whmcs,
         wikipedia_w, windows, wix, wizards_of_the_coast, wodu, wolf_pack_battalion, wordpress, wordpress_simple, wpbeginner,
