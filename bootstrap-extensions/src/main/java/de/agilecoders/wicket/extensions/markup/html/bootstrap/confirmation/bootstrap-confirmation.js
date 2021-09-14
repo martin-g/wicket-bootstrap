@@ -418,7 +418,9 @@ function sanitizeHtml(unsafeHtml, allowList, sanitizeFn) {
 
       this._cleanKeyupEvent();
 
-      super.dispose();
+      if (this._element) {
+        super.dispose();
+      }
     }
 
     hide(callback) {
