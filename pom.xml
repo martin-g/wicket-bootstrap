@@ -59,7 +59,7 @@
         <commons-lang3.version>3.12.0</commons-lang3.version>
         <contiperf.version>2.4.3</contiperf.version>
         <doxia.version>1.0</doxia.version>
-        <google-closure.version>v20210601</google-closure.version>
+        <google-closure.version>v20200830</google-closure.version>
         <javax.javaee-web-api.version>7.0</javax.javaee-web-api.version>
         <jetty.version>9.4.43.v20210629</jetty.version>
         <joda-time.version>2.10.10</joda-time.version>
