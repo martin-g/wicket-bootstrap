@@ -63,7 +63,8 @@
         <modernizr.version>2.8.3</modernizr.version>
         <guava.version>30.1.1</guava.version>
         <jetty.version>9.4.39.v20210325</jetty.version>
-        <google-closure.version>v20200406</google-closure.version>
+        <!-- Note: closure-compiler-unshaded v20200920 (until at least v20210907) contains gson -->
+        <google-closure.version>v20200830</google-closure.version>
         <contiperf.version>2.4.3</contiperf.version>
         <jquerypp.version>1.0.1</jquerypp.version>
         <jquery.version>2.2.4</jquery.version>
