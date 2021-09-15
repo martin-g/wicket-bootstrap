@@ -1,12 +1,13 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.components;
 
-import static de.agilecoders.wicket.jquery.JQuery.$;
+import static de.agilecoders.wicket.jquery.JQuery.markupId;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.model.IModel;
 
 import de.agilecoders.wicket.jquery.Config;
+import de.agilecoders.wicket.jquery.function.Function;
 
 /**
  * Add small overlays of content, like those on the iPad, to any element for housing secondary information.
@@ -71,7 +72,7 @@ public class PopoverBehavior extends TooltipBehavior {
 
     @Override
     protected CharSequence createInitializerScript(final Component component, final Config config) {
-        return $(component).chain("popover", config).get();
+        return new Function("new bootstrap.Popover", markupId(component).quoted(), config).build();
     }
 
 }
