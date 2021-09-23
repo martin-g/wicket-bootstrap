@@ -1,6 +1,8 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.form.checkbox.bootstrapcheckbox;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.ButtonGroup;
+import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons.Orientation;
+import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons.Type;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
 import de.agilecoders.wicket.jquery.AbstractConfig;
 import de.agilecoders.wicket.jquery.IKey;
@@ -11,14 +13,14 @@ import de.agilecoders.wicket.jquery.IKey;
  */
 public class BootstrapCheckBoxPickerConfig extends AbstractConfig {
 
-    private static final IKey<String> 	BaseGroupCls = 		newKey("baseGroupCls", "btn-group");
-    private static final IKey<String> 	BaseCls = 			newKey("baseCls", "btn");
-    private static final IKey<String> 	GroupCls = 			newKey("groupCls", null);
+    private static final IKey<Orientation> 	BaseGroupCls = 		newKey("baseGroupCls", Orientation.Horizontal);
+    private static final IKey<Type> 	BaseCls = 			newKey("baseCls", null);
+    private static final IKey<ButtonGroup.Size> GroupCls = 			newKey("groupCls", null);
     private static final IKey<String> 	Cls = 				newKey("cls", null);
-    private static final IKey<String> 	OffCls = 			newKey("offClass", "btn-default");
-    private static final IKey<String> 	OnCls = 			newKey("onClass", "btn-default");
-    private static final IKey<String> 	OffActiveCls = 		newKey("offActiveCls", "btn-danger");
-    private static final IKey<String> 	OnActiveCls = 		newKey("onActiveCls", "btn-success");
+    private static final IKey<Type> 	OffCls = 			newKey("offClass", null);
+    private static final IKey<Type> 	OnCls = 			newKey("onClass", null);
+    private static final IKey<Type> 	OffActiveCls = 		newKey("offActiveCls", null);
+    private static final IKey<Type> 	OnActiveCls = 		newKey("onActiveCls", null);
     private static final IKey<String> 	OffLabel= 			newKey("offLabel", "No");
     private static final IKey<String> 	OnLabel= 			newKey("onLabel", "Yes");
     private static final IKey<String> 	DisabledCursor = 	newKey("disabledCursor", "not-allowed");
@@ -37,20 +39,20 @@ public class BootstrapCheckBoxPickerConfig extends AbstractConfig {
      * Default constructor
      */
     public BootstrapCheckBoxPickerConfig() {
-    	withBaseCls("btn-light");
+    	withBaseCls(Type.Light);
     }
     
-    public BootstrapCheckBoxPickerConfig withBaseGroupCls(final String value) {
+    public BootstrapCheckBoxPickerConfig withBaseGroupCls(final Orientation value) {
     	put(BaseGroupCls, value);
     	return this;
     }
     
-    public BootstrapCheckBoxPickerConfig withBaseCls(final String value) {
+    public BootstrapCheckBoxPickerConfig withBaseCls(final Type value) {
     	put(BaseCls, value);
     	return this;
     }
     
-    public BootstrapCheckBoxPickerConfig withGroupCls(final String value) {
+    public BootstrapCheckBoxPickerConfig withGroupCls(final ButtonGroup.Size value) {
     	put(GroupCls, value);
     	return this;
     }
@@ -60,22 +62,22 @@ public class BootstrapCheckBoxPickerConfig extends AbstractConfig {
     	return this;
     }
     
-    public BootstrapCheckBoxPickerConfig withOffCls(final String value) {
+    public BootstrapCheckBoxPickerConfig withOffCls(final Type value) {
     	put(OffCls, value);
     	return this;
     }
     
-    public BootstrapCheckBoxPickerConfig withOnCls(final String value) {
+    public BootstrapCheckBoxPickerConfig withOnCls(final Type value) {
     	put(OnCls, value);
     	return this;
     }
     
-    public BootstrapCheckBoxPickerConfig withOffActiveCls(final String value) {
+    public BootstrapCheckBoxPickerConfig withOffActiveCls(final Type value) {
     	put(OffActiveCls, value);
     	return this;
     }
     
-    public BootstrapCheckBoxPickerConfig withOnActiveCls(final String value) {
+    public BootstrapCheckBoxPickerConfig withOnActiveCls(final Type value) {
     	put(OnActiveCls, value);
     	return this;
     }
