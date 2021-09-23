@@ -140,4 +140,48 @@ public class BootstrapCheckBoxPickerConfig extends AbstractConfig {
     	return this;
     }
     
+    // ****************************************************
+	// * Old v1.x methods, used for backwards compatibility
+	// ****************************************************
+    
+
+    @Deprecated
+    public BootstrapCheckBoxPickerConfig withDefaultClass(final String value) {
+        put(Cls, value);
+        return this;
+    }
+
+    @Deprecated
+    public BootstrapCheckBoxPickerConfig withOffClass(final String value) {
+        put(OffCls, value);
+        return this;
+    }
+
+    @Deprecated
+    public BootstrapCheckBoxPickerConfig withOnClass(final String value) {
+        put(OnCls, value);
+        return this;
+    }
+
+    @Deprecated
+    public BootstrapCheckBoxPickerConfig withOffIcon(final IconType value) {
+        return withOffIconCls(value);
+    }
+
+    @Deprecated
+    public BootstrapCheckBoxPickerConfig withOnIcon(final IconType value) {
+    	return withOnIconCls(value);
+    }
+
+    @Deprecated
+    public BootstrapCheckBoxPickerConfig withStyle(final ButtonGroup.Size value) {
+    	return withGroupCls(value);
+    }
+
+    private String cssClassOrNull(ICssClassNameProvider provider) {
+    	if(provider == null)
+    		return null;
+    	
+    	return provider.cssClassName();
+    }
 }
