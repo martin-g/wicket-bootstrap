@@ -114,7 +114,8 @@ public final class Buttons {
     public static void onComponentTag(final Component component, final ComponentTag tag, final ICssClassNameProvider... classNameProviders) {
         Args.notNull(classNameProviders, "classNameProviders");
 
-        final CssClassNames.Builder builder = CssClassNames.newBuilder().add("btn");
+        final CssClassNames.Builder builder = CssClassNames.newBuilder().add(
+                "btn", (component.isEnabledInHierarchy() ? "" : "disabled"));
 
         if (!component.isEnabled() && Components.hasTagName(tag, Set.of("a"))) {
             builder.add("disabled");
