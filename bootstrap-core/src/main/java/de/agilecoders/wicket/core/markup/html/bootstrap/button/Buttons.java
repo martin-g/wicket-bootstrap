@@ -140,7 +140,7 @@ public final class Buttons {
         Args.notNull(classNameProviders, "classNameProviders");
 
         final CssClassNames.Builder builder = CssClassNames.newBuilder().add(
-                "btn", (component.isEnabled() ? "" : "disabled"));
+                "btn", (component.isEnabledInHierarchy() ? "" : "disabled"));
 
         for (final ICssClassNameProvider provider : classNameProviders) {
             builder.add(provider.cssClassName());
