@@ -155,7 +155,7 @@ public class BootstrapGenericPanel<T> extends GenericPanel<T>{
      */
 	protected Component newTopImage(String id, IModel<T> model) {
 	    Panel emptyTopImage = new EmptyPanel(id);
-	    emptyTopImage.setDefaultModel(null);
+	    emptyTopImage.setDefaultModel(new Model<>());
 
 	    return emptyTopImage;
     }
