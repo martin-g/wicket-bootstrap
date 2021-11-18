@@ -22,13 +22,6 @@
         <dependency>
             <groupId>org.wicketstuff</groupId>
             <artifactId>wicketstuff-annotation</artifactId>
-            <version>${wicketstuff.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.apache.wicket</groupId>
-                    <artifactId>wicket</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
 
         <!-- WICKET-BOOTSTRAP -->
