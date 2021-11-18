@@ -57,17 +57,8 @@ Extensions
 * [Twitter Typeahead (0.9.3)](https://github.com/l0rdn1kk0n/wicket-bootstrap/tree/master/bootstrap-extensions/src/main/java/de/agilecoders/wicket/extensions/markup/html/bootstrap/form/typeahead): http://twitter.github.io/typeahead.js/
 * [Twitter Typeahead (0.10.x)](https://github.com/l0rdn1kk0n/wicket-bootstrap/tree/master/bootstrap-extensions/src/main/java/de/agilecoders/wicket/extensions/markup/html/bootstrap/form/typeaheadv10): http://twitter.github.io/typeahead.js/
 
-How to get help and news
-------------------------
-
-* Keep up to date on announcements and more by following me [@l0rdn1kk0n](http://twitter.com/l0rdn1kk0n) on Twitter or use the [#WicketBootstrap](https://twitter.com/search?q=%23WicketBootstrap&src=typd) hashtag
-* use the [google group](https://groups.google.com/d/forum/wicket-bootstrap) (wicket-bootstrap (at) googlegroups.com)
-* you can see wicket-bootstrap in action: http://wb.agilecoders.de/
-* how to use wicket-bootstrap? Read the documentation on https://github.com/l0rdn1kk0n/wicket-bootstrap/wiki.
-* read more on my [blog](http://blog.agilecoders.de/).
-
 ## Maven
-wicket-bootstrap is [available](http://search.maven.org/#artifactdetails|de.agilecoders.wicket|wicket-bootstrap-core|0.9.5|jar) in Maven central repository.
+wicket-bootstrap is [available](https://search.maven.org/artifact/de.agilecoders.wicket/wicket-bootstrap-core) in Maven central repository.
 
 core maven dependency:
 
@@ -75,7 +66,7 @@ core maven dependency:
 <dependency>
     <groupId>de.agilecoders.wicket</groupId>
     <artifactId>wicket-bootstrap-core</artifactId>
-    <version>4.0.0</version>
+    <version>6.y.z</version>
 </dependency>
 ```
 
@@ -85,7 +76,7 @@ for all extensions:
 <dependency>
     <groupId>de.agilecoders.wicket</groupId>
     <artifactId>wicket-bootstrap-extensions</artifactId>
-    <version>4.0.0</version>
+    <version>6.y.z</version>
 </dependency>
 ```
 
@@ -95,7 +86,7 @@ for all themes:
 <dependency>
     <groupId>de.agilecoders.wicket</groupId>
     <artifactId>wicket-bootstrap-themes</artifactId>
-    <version>4.0.0</version>
+    <version>6.y.z</version>
 </dependency>
 ```
 
@@ -105,7 +96,7 @@ if you want to use a less compiler:
 <dependency>
     <groupId>de.agilecoders.wicket</groupId>
     <artifactId>wicket-bootstrap-less</artifactId>
-    <version>4.0.0</version>
+    <version>6.y.z</version>
 </dependency>
 ```
 
@@ -115,7 +106,7 @@ all samples can be used with this dependency:
 <dependency>
     <groupId>de.agilecoders.wicket</groupId>
     <artifactId>wicket-bootstrap-samples</artifactId>
-    <version>4.0.0</version>
+    <version>6.y.z</version>
 </dependency>
 ```
 
