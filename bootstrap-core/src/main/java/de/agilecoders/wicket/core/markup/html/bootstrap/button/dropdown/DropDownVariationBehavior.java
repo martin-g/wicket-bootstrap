@@ -25,7 +25,7 @@ public class DropDownVariationBehavior extends BootstrapBaseBehavior {
 	 * default down
 	 */
 	public enum Variation implements ICssClassNameProvider {
-		DROPRIGHT("dropright"), DROPLEFT("dropleft"), DROPUP("dropup"), DROPDOWN("");
+		DROPEND("dropend"), DROPSTART("dropstart"), DROPUP("dropup"), DROPDOWN("");
 		private String className;
 
 		/**
@@ -72,13 +72,13 @@ public class DropDownVariationBehavior extends BootstrapBaseBehavior {
 
 		// remove existing alignment class names to allow switching alignment during
 		// ajax updates
-		Attributes.removeClass(tag, Variation.DROPLEFT.cssClassName(), Variation.DROPRIGHT.cssClassName(),
+		Attributes.removeClass(tag, Variation.DROPSTART.cssClassName(), Variation.DROPEND.cssClassName(),
 				Variation.DROPUP.cssClassName());
 
 		Variation value = variation.getObject();
 		switch (value) {
-		case DROPLEFT:
-		case DROPRIGHT:
+		case DROPSTART:
+		case DROPEND:
 		case DROPUP:
 			Attributes.addClass(tag, value.cssClassName());
 		default:
