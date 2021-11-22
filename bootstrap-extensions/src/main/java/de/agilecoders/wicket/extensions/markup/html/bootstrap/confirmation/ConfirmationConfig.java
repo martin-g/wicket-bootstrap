@@ -29,6 +29,7 @@ public class ConfirmationConfig extends AbstractConfig {
     private static final IKey<String> BtnCancelLabel = new Key<>("btnCancelLabel", "No");
     private static final IKey<TooltipConfig.Placement> Placement = new Key<>("placement", TooltipConfig.Placement.top);
     private static final IKey<String> RootSelector = new Key<>("rootSelector");
+    private static final IKey<String> CustomClass = new Key<>("customClass");
 
 
 
@@ -99,6 +100,11 @@ public class ConfirmationConfig extends AbstractConfig {
 
     public ConfirmationConfig withPlacement(TooltipConfig.Placement placement) {
         put(Placement, Args.notNull(placement, "placement"));
+        return this;
+    }
+
+    public ConfirmationConfig withCustomClass(String cssClass) {
+        put(CustomClass, cssClass);
         return this;
     }
 }
