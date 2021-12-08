@@ -39,7 +39,6 @@ import de.agilecoders.wicket.core.settings.BootstrapSettings;
 import de.agilecoders.wicket.core.settings.CookieThemeProvider;
 import de.agilecoders.wicket.core.settings.IBootstrapSettings;
 import de.agilecoders.wicket.core.settings.ThemeProvider;
-import de.agilecoders.wicket.extensions.javascript.GoogleClosureJavaScriptCompressor;
 import de.agilecoders.wicket.extensions.javascript.YuiCssCompressor;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.editor.SummernoteConfig;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.editor.SummernoteFileStorage;
@@ -152,7 +151,6 @@ public class WicketApplication extends WebApplication {
                     new CachingResourceVersion(new Adler32ResourceVersion())
             ));
 
-            getResourceSettings().setJavaScriptCompressor(new GoogleClosureJavaScriptCompressor(CompilationLevel.SIMPLE_OPTIMIZATIONS));
             getResourceSettings().setCssCompressor(new YuiCssCompressor());
 
             getFrameworkSettings().setSerializer(new DeflatedJavaSerializer(getApplicationKey()));
