@@ -20,7 +20,7 @@
         <x-editable.version>1.5.1-1</x-editable.version>
         <spin-js.version>2.1.0</spin-js.version>
         <animate.css.version>3.7.2</animate.css.version>
-        <summernote.version>0.8.12</summernote.version>
+        <summernote.version>0.8.11</summernote.version>
     </properties>
 
     <dependencies>
