@@ -28,6 +28,6 @@ public class SummernoteEditorCssReference extends WebjarsCssResourceReference {
      * Private constructor.
      */
     private SummernoteEditorCssReference() {
-	super("summernote/current/dist/summernote-bs4.css");
+	super("summernote/current/dist/summernote-bs5.css");
     }
 }

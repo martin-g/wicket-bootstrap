@@ -37,7 +37,7 @@ public class SummernoteEditorJavaScriptReference extends WebjarsJavaScriptResour
      * Private constructor.
      */
     private SummernoteEditorJavaScriptReference() {
-	super("summernote/current/dist/summernote-bs4.js");
+	super("summernote/current/dist/summernote-bs5.js");
     }
 
     @Override
