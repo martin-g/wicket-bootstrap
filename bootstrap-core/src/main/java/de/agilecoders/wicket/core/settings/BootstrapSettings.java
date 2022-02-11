@@ -22,11 +22,13 @@ public class BootstrapSettings implements IBootstrapSettings {
         private static ResourceReference bootstrapJavaScriptReference = BootstrapJavaScriptReference.instance();
         private static ResourceReference modernizrJavaScriptReference = ModernizrJavaScriptReference.instance();
         private static ResourceReference bootstrapCssReference = BootstrapCssReference.instance();
+        private static ResourceReference bootstrapCssRtlReference = BootstrapCssRtlReference.instance();
     }
 
     private ResourceReference bootstrapJavaScriptReference = null;
     private ResourceReference modernizrJavaScriptReference = null;
     private ResourceReference bootstrapCssReference = null;
+    private ResourceReference bootstrapCssRtlReference = null;
 
     private ThemeProvider themeProvider;
     private ActiveThemeProvider activeThemeProvider;
@@ -88,14 +90,19 @@ public class BootstrapSettings implements IBootstrapSettings {
     public ResourceReference getCssResourceReference() {
         ResourceReference ref;
 
+        final boolean isRtl = WebSession.exists() && WebSession.get().isRtlLocale();
+
         if (useCdnResources()) {
-            String cdnUrl = String.format(CSS_CDN_PATTERN, getVersion());
+            String cdnUrl = String.format(isRtl ? CSS_RTL_CDN_PATTERN : CSS_CDN_PATTERN, getVersion());
             ref = new UrlResourceReference(Url.parse(cdnUrl));
         } else {
-            ref = bootstrapCssReference;
+            ref = isRtl ? bootstrapCssRtlReference : bootstrapCssReference;
+        }
+        if (ref == null) {
+            ref = isRtl ? Holder.bootstrapCssRtlReference : Holder.bootstrapCssReference;
         }
 
-        return ref != null ? ref : Holder.bootstrapCssReference;
+        return ref;
     }
 
     @Override
@@ -157,6 +164,12 @@ public class BootstrapSettings implements IBootstrapSettings {
     @Override
     public IBootstrapSettings setCssResourceReference(ResourceReference reference) {
         bootstrapCssReference = reference;
+        return this;
+    }
+
+    @Override
+    public IBootstrapSettings setCssRtlResourceReference(ResourceReference reference) {
+        bootstrapCssRtlReference = reference;
         return this;
     }
 
