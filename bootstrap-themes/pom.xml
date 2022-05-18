@@ -34,6 +34,24 @@
             <artifactId>wicket-webjars</artifactId>
         </dependency>
 
+        <dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>bootstrap-italia</artifactId>
+			<version>1.6.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>splide</artifactId>
+			<version>3.6.12</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>popper.js</artifactId>
+			<version>1.16.1-lts</version>
+		</dependency>
+
     </dependencies>
 
     <build>
