@@ -8,8 +8,6 @@ import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.HeaderItem;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.head.PriorityHeaderItem;
-import org.apache.wicket.request.resource.CssResourceReference;
-import org.apache.wicket.resource.JQueryPluginResourceReference;
 
 import de.agilecoders.wicket.core.settings.Theme;
 import de.agilecoders.wicket.webjars.request.resource.WebjarsCssResourceReference;
