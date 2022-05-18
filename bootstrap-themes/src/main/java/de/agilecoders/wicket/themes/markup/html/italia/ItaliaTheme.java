@@ -14,19 +14,14 @@ import de.agilecoders.wicket.webjars.request.resource.WebjarsCssResourceReferenc
 import de.agilecoders.wicket.webjars.request.resource.WebjarsJavaScriptResourceReference;
 
 /**
- * #### Description
- *
- * java representation of Bootstrap Italia.
- *
- * #### Usage
- *
- * ```java
- * settings.setThemeProvider(new SingleThemeProvider(new ItaliaTheme()));
- * ```
+ * A {@link de.agilecoders.wicket.core.settings.ITheme theme} for Bootstrap
+ * provided by <a href="https://developers.italia.it/">developers.italia.it</a>.
+ * 
+ * <h2>Usage</h2>
+ * <pre>settings.setThemeProvider(new SingleThemeProvider(new ItaliaTheme()));</pre>
  *
  * @author Erik Geletti
  */
-
 public class ItaliaTheme extends Theme {
 
 	/**
