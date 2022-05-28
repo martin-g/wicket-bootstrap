@@ -216,14 +216,6 @@ public class FileInputConfig extends AbstractConfig {
     	put(DropZoneClickTitle, dropZoneClickTitle);
     	return this;
     }
-    
-    public List<String> allowedFileTypes() {
-        return get(AllowedFileTypes);
-    }
-
-    public List<String> allowedFileExtensions() {
-        return get(AllowedFileExtensions);
-    }
 
     public boolean showCaption() {
         return get(ShowCaption);
@@ -243,6 +235,10 @@ public class FileInputConfig extends AbstractConfig {
 
     public String captionClass() {
         return getString(CaptionClass);
+    }
+
+    public String previewClass() {
+        return getString(PreviewClass);
     }
 
     public String mainClass() {
@@ -269,6 +265,14 @@ public class FileInputConfig extends AbstractConfig {
         return get(WrapTextLength);
     }
 
+    public int maxFileCount() {
+        return get(MaxFileCount);
+    }
+
+    public int minFileCount() {
+        return get(MinFileCount);
+    }
+
     public int maxFileSize() {
         return get(MaxFileSize);
     }
@@ -289,8 +293,20 @@ public class FileInputConfig extends AbstractConfig {
         return get(UploadIcon);
     }
 
+    public String cancelIcon() {
+        return get(CancelIcon);
+    }
+
     public String previewFileType() {
         return get(PreviewFileType);
+    }
+
+    public List<String> allowedFileExtensions() {
+        return get(AllowedFileExtensions);
+    }
+
+    public List<String> allowedFileTypes() {
+        return get(AllowedFileTypes);
     }
 
     public String language() {
