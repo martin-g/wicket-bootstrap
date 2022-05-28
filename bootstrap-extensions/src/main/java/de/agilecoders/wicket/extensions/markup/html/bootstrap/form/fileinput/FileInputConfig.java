@@ -39,6 +39,10 @@ public class FileInputConfig extends AbstractConfig {
 
     public static final IKey<Integer> MinFileCount = newKey("minFileCount", 0);
 
+    public static final IKey<Integer> MaxFileSize = newKey("maxFileSize", 0);
+
+    public static final IKey<Integer> MinFileSize = newKey("minFileSize", 0);
+
     public static final IKey<String> BrowseIcon = newKey("browseIcon", "<i class=\"glyphicon glyphicon-folder-open\"></i> &nbsp;");
 
     public static final IKey<String> RemoveIcon = newKey("removeIcon", "<i class=\"glyphicon glyphicon-trash\"></i> &nbsp;");
@@ -134,6 +138,18 @@ public class FileInputConfig extends AbstractConfig {
 
     public FileInputConfig maxFileCount(int maxFileCount) {
         put(MaxFileCount, maxFileCount);
+        return this;
+    }
+
+    /** Maximum file size for upload in KB - 0 (default) for no restriction on maximum file size */
+    public FileInputConfig maxFileSize(int maxFileSize) {
+        put(MaxFileSize, maxFileSize);
+        return this;
+    }
+
+    /** Minimum file size for upload in KB - 0 (default) for no restriction on minimum file size */
+    public FileInputConfig minFileSize(int minFileSize) {
+        put(MinFileSize, minFileSize);
         return this;
     }
 
@@ -253,6 +269,14 @@ public class FileInputConfig extends AbstractConfig {
 
     public int wrapTextLength() {
         return get(WrapTextLength);
+    }
+
+    public int maxFileSize() {
+        return get(MaxFileSize);
+    }
+
+    public int minFileSize() {
+        return get(MinFileSize);
     }
 
     public String browseIcon() {
