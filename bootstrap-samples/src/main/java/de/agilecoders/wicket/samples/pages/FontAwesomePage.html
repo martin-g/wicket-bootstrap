@@ -37,7 +37,7 @@
 								HTML : <br /><code>&lt;i wicket:id="inline-fa"&gt;&lt;/i&gt; fa-camera-retro</code>
 							</p>
 							<p>
-								Java : <br /><code> add(new Icon("inline-fa", FontAwesomeIconType.camera_retro));</code>
+								Java : <br /><code> add(new Icon("inline-fa", FontAwesome6IconType.camera_retro_s));</code>
 							</p>
 						</div>
 					</div>
@@ -92,11 +92,11 @@
 							<p>
 								JAVA :<br />
 								<code>
-									add(new Icon("large-fa", FontAwesomeIconTypeBuilder.on(FontAwesomeGraphic.camera_retro).size(Size.large).build())); <br />
-									add(new Icon("2x-fa", FontAwesomeIconTypeBuilder.on(FontAwesomeGraphic.camera_retro).size(Size.two).build())); <br />
-									add(new Icon("3x-fa", FontAwesomeIconTypeBuilder.on(FontAwesomeGraphic.camera_retro).size(Size.three).build())); <br />
-									add(new Icon("4x-fa", FontAwesomeIconTypeBuilder.on(FontAwesomeGraphic.camera_retro).size(Size.four).build()));<br />
-									add(new Icon("5x-fa", FontAwesomeIconTypeBuilder.on(FontAwesomeGraphic.camera_retro).size(Size.five).build())); <br />
+									add(new Icon("large-fa", FontAwesome6IconTypeBuilder.on(FontAwesome6Solid.camera_retro).size(Size.large).build())); <br />
+									add(new Icon("2x-fa", FontAwesome6IconTypeBuilder.on(FontAwesome6Solid.camera_retro).size(Size.two).build())); <br />
+									add(new Icon("3x-fa", FontAwesome6IconTypeBuilder.on(FontAwesome6Solid.camera_retro).size(Size.three).build())); <br />
+									add(new Icon("4x-fa", FontAwesome6IconTypeBuilder.on(FontAwesome6Solid.camera_retro).size(Size.four).build()));<br />
+									add(new Icon("5x-fa", FontAwesome6IconTypeBuilder.on(FontAwesome6Solid.camera_retro).size(Size.five).build())); <br />
 								</code>
 							</p>
 						</div>
@@ -116,10 +116,10 @@
 								<i wicket:id="spinner-spin-fa"></i>
 							</button>
 							<button type="button" class="btn btn-default btn-lg">
-								<i wicket:id="refresh-spin-fa"></i>
+								<i wicket:id="rotate-spin-fa"></i>
 							</button>
 							<button type="button" class="btn btn-default btn-lg">
-								<i wicket:id="cog-spin-fa"></i>
+								<i wicket:id="gear-spin-fa"></i>
 							</button>
 						</p>
 					</div>
@@ -130,9 +130,9 @@
 							class to get any icon to rotate. Works well with
 							<code>fa-spinner</code>
 							,
-							<code>fa-refresh</code>
+							<code>fa-rotate</code>
 							, and
-							<code>fa-cog</code>
+							<code>fa-gear</code>
 							.
 						</p>
 						<div class="highlight">
@@ -143,19 +143,19 @@
 										&nbsp;&nbsp;&nbsp;&nbsp;&lt;i wicket:id="spinner-spin-fa"&gt;&lt;/i&gt;<br />
 									&lt;/button&gt;<br />
 									&lt;button class="btn btn-default btn-lg"&gt;<br />
-										&nbsp;&nbsp;&nbsp;&nbsp;&lt;i wicket:id="refresh-spin-fa"&gt;&lt;/i&gt;<br />
+										&nbsp;&nbsp;&nbsp;&nbsp;&lt;i wicket:id="rotate-spin-fa"&gt;&lt;/i&gt;<br />
 									&lt;/button&gt;<br />
 									&lt;button class="btn btn-default btn-lg"&gt;<br />
-										&nbsp;&nbsp;&nbsp;&nbsp;&lt;i wicket:id="cog-spin-fa"&gt;&lt;/i&gt;<br />
+										&nbsp;&nbsp;&nbsp;&nbsp;&lt;i wicket:id="gear-spin-fa"&gt;&lt;/i&gt;<br />
 									&lt;/button&gt;<br />
 								</code>
 							</p>
 							<p>
 								JAVA : <br />
 								<code>
-									add(new Icon("spinner-spin-fa", FontAwesomeIconTypeBuilder.on(FontAwsomeGraphic.spinner).spin().build()));<br />
-									add(new Icon("refresh-spin-fa", FontAwesomeIconTypeBuilder.on(FontAwsomeGraphic.refresh).spin().build()));<br />
-									add(new Icon("cog-spin-fa", FontAwesomeIconTypeBuilder.on(FontAwsomeGraphic.cog).spin().build())); <br />
+									add(new Icon("spinner-spin-fa", FontAwesome6IconTypeBuilder.on(FontAwesome6Solid.spinner).spin().build()));<br />
+									add(new Icon("rotate-spin-fa", FontAwesome6IconTypeBuilder.on(FontAwesome6Solid.rotate).spin().build()));<br />
+									add(new Icon("gear-spin-fa", FontAwesome6IconTypeBuilder.on(FontAwesome6Solid.gear).spin().build())); <br />
 								</code>
 							</p>
 						</div>
@@ -202,16 +202,16 @@
 							<p>
 								JAVA :<br/>
 								<code>
-									add(new Icon("shield-rotate-normal", FontAwesomeIconType.shield)); <br />
-									add(new Icon("shield-rotate-90", FontAwesomeIconTypeBuilder.on(FontAwsomeGraphic.shield)<br />
+									add(new Icon("shield-rotate-normal", FontAwesome6IconType.shield_halved_s)); <br />
+									add(new Icon("shield-rotate-90", FontAwesome6IconTypeBuilder.on(FontAwesome6Solid.shield_halved)<br />
 										&nbsp;&nbsp;&nbsp;&nbsp;.rotate(Rotation.rotate_90).build()));<br />
-									add(new Icon("shield-rotate-180", FontAwesomeIconTypeBuilder.on(FontAwsomeGraphic.shield)<br />
+									add(new Icon("shield-rotate-180", FontAwesome6IconTypeBuilder.on(FontAwesome6Solid.shield_halved)<br />
 										&nbsp;&nbsp;&nbsp;&nbsp;.rotate(Rotation.rotate_180).build()));<br />
-									add(new Icon("shield-rotate-270", FontAwesomeIconTypeBuilder.on(FontAwsomeGraphic.shield)<br />
+									add(new Icon("shield-rotate-270", FontAwesome6IconTypeBuilder.on(FontAwesome6Solid.shield_halved)<br />
 										&nbsp;&nbsp;&nbsp;&nbsp;.rotate(Rotation.rotate_270).build()));<br />
-									add(new Icon("shield-rotate-flip-horizontal", FontAwesomeIconTypeBuilder.on(FontAwsomeGraphic.shield)<br />
+									add(new Icon("shield-rotate-flip-horizontal", FontAwesome6IconTypeBuilder.on(FontAwesome6Solid.shield_halved)<br />
 										&nbsp;&nbsp;&nbsp;&nbsp;.rotate(Rotation.flip_horizontal).build()));<br />
-									add(new Icon("shield-rotate-flip-vertical", FontAwesomeIconTypeBuilder.on(FontAwsomeGraphic.shield)<br />
+									add(new Icon("shield-rotate-flip-vertical", FontAwesome6IconTypeBuilder.on(FontAwesome6Solid.shield_halved)<br />
 										&nbsp;&nbsp;&nbsp;&nbsp;.rotate(Rotation.flip_vertical).build()));<br />
 								</code>
 							</p>

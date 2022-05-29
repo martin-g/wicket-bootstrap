@@ -34,8 +34,8 @@ public class FontAwesomePage extends BasePage {
 
 		// spin icons
 		add(new Icon("spinner-spin-fa", FontAwesome6IconTypeBuilder.on(FontAwesome6Solid.spinner).spin().build()));
-		add(new Icon("refresh-spin-fa", FontAwesome6IconTypeBuilder.on(FontAwesome6Solid.rotate).spin().build()));
-		add(new Icon("cog-spin-fa", FontAwesome6IconTypeBuilder .on(FontAwesome6Solid.gear).spin().build()));
+		add(new Icon("rotate-spin-fa", FontAwesome6IconTypeBuilder.on(FontAwesome6Solid.rotate).spin().build()));
+		add(new Icon("gear-spin-fa", FontAwesome6IconTypeBuilder .on(FontAwesome6Solid.gear).spin().build()));
 
 		// rotate
 		add(new Icon("shield-rotate-normal", FontAwesome6IconType.shield_halved_s));
