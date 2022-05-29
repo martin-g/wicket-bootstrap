@@ -74,7 +74,7 @@ public class DatetimePickerPage extends BasePage {
                     .useNextIcon(FontAwesome5IconType.arrow_right_s)
                     .useTodayIcon(FontAwesome5IconType.calendar_check_s)
                     .useClearIcon(FontAwesome5IconType.eraser_s)
-                    .useCloseIcon(FontAwesome5IconType.times_s)
+                    .useCloseIcon(FontAwesome5IconType.circle_xmark_s)
             );
 
         form.add(
