@@ -1,6 +1,6 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.editor;
 
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesome5CssReference;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesome6CssReference;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.references.SpinJsReference;
 import java.io.IOException;
 import java.util.Base64;
@@ -90,7 +90,7 @@ public class SummernoteEditor extends FormComponent<String> {
     @Override
     public void renderHead(IHeaderResponse response) {
         response.render(CssHeaderItem.forReference(SummernoteEditorCssReference.instance()));
-        response.render(CssHeaderItem.forReference(FontAwesome5CssReference.instance()));
+        response.render(CssHeaderItem.forReference(FontAwesome6CssReference.instance()));
         response.render(CssHeaderItem.forReference(SummernoteEditorOverlayCssReference.instance()));
         response.render(JavaScriptHeaderItem.forReference(SummernoteEditorJavaScriptReference.instance()));
         response.render(JavaScriptHeaderItem.forReference(SummernoteEditorFormDataReference.instance()));

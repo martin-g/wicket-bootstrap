@@ -1,6 +1,6 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.markdown;
 
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesome5CssReference;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesome6CssReference;
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.Behavior;
 import org.apache.wicket.markup.head.CssHeaderItem;
@@ -27,7 +27,7 @@ public class MarkDownBehavior extends Behavior {
 
         response.render(CssHeaderItem.forReference(new MarkdownCssResourceReference()));
         if (config.contains(MarkdownConfig._IconLibrary)) {
-            response.render(CssHeaderItem.forReference(FontAwesome5CssReference.instance()));
+            response.render(CssHeaderItem.forReference(FontAwesome6CssReference.instance()));
         }
 
         response.render(JavaScriptHeaderItem.forReference(new MarkdownJsResourceReference()));

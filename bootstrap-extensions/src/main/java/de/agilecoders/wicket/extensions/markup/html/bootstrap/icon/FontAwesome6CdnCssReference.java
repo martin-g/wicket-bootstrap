@@ -16,23 +16,23 @@ import org.apache.wicket.request.resource.UrlResourceReference;
  *
  * reference for font awesome 6.x css via CDN
  */
-public class FontAwesome5CDNCSSReference extends UrlResourceReference{
+public class FontAwesome6CdnCssReference extends UrlResourceReference{
     private static final long serialVersionUID = 1L;
     private static final String CDNURL = "https://use.fontawesome.com/releases/v6.1.1/css/all.css";
 
     /**
      * Singleton instance of this reference
      */
-    private static final FontAwesome5CDNCSSReference INSTANCE = new FontAwesome5CDNCSSReference();
+    private static final FontAwesome6CdnCssReference INSTANCE = new FontAwesome6CdnCssReference();
 
     /**
      * @return the single instance of the resource reference
      */
-    public static FontAwesome5CDNCSSReference instance() {
+    public static FontAwesome6CdnCssReference instance() {
         return INSTANCE;
     }
 
-    private FontAwesome5CDNCSSReference() {
+    private FontAwesome6CdnCssReference() {
         super(Url.parse(CDNURL));
     }
 

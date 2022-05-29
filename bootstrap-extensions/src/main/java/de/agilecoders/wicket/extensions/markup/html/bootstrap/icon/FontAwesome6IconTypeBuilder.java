@@ -15,26 +15,26 @@ import java.util.List;
  *  &lt;/dependency&gt;<br/>
  *
  *
- * A builder to build {@link FontAwesome5IconType} <br />
+ * A builder to build {@link FontAwesome6IconType} <br />
  * <br />
  * <b>Examples :</b>
  * <ul>
  * <li>
  * To rotate an icon 90° :
- * <code>	FontAwesomeIconTypeBuilder.on(FontAwesomeGraphic.key).rotate(Rotation.rotate_90).build()</code></li>
+ * <code>	FontAwesome6IconTypeBuilder.on(FontAwesome6Graphic.key).rotate(Rotation.rotate_90).build()</code></li>
  * <li>
- * To spin an icon : <code>	FontAwesomeIconTypeBuilder.on(FontAwesomeGraphic.key).spin().build()</code></li>
+ * To spin an icon : <code>	FontAwesome6IconTypeBuilder.on(FontAwesome6Graphic.key).spin().build()</code></li>
  * <li>To resize an icon 4 times :
- * <code>	FontAwesomeIconTypeBuilder.on(FontAwesomeGraphic.key).size(Size.four).build()</code></li>
+ * <code>	FontAwesome6IconTypeBuilder.on(FontAwesome6Graphic.key).size(Size.four).build()</code></li>
  * <li>
  * All together :
- * <code>FontAwesomeIconTypeBuilder.on(FontAwesomeGraphic.key).size(Size.four).spin().rotate(Rotation.rotate_90).build()</code>
+ * <code>FontAwesome6IconTypeBuilder.on(FontAwesome6Graphic.key).size(Size.four).spin().rotate(Rotation.rotate_90).build()</code>
  * </li>
  * </ul>
  */
-public class FontAwesome5IconTypeBuilder {
+public class FontAwesome6IconTypeBuilder {
 
-    public interface FontAwesome5Graphic {
+    public interface FontAwesome6Graphic {
         String getPrefix();
 
         String getIconName();
@@ -43,7 +43,7 @@ public class FontAwesome5IconTypeBuilder {
     /**
      * All icons of style 'solid' available for free in Font Awesome.
      */
-    public enum FontAwesome5Solid implements FontAwesome5Graphic {
+    public enum FontAwesome6Solid implements FontAwesome6Graphic {
         _0, _1, _2, _3, _4, _5, _6, _7, _8, _9, a, address_book, address_card, align_center, align_justify, align_left,
         align_right, anchor_circle_check, anchor_circle_exclamation, anchor_circle_xmark, anchor_lock, anchor,
         angle_down, angle_left, angle_right, angle_up, angles_down, angles_left, angles_right, angles_up, ankh,
@@ -221,7 +221,7 @@ public class FontAwesome5IconTypeBuilder {
 
         @Override
         public String getPrefix() {
-            return "fas";
+            return "fa-solid";
         }
 
         @Override
@@ -233,7 +233,7 @@ public class FontAwesome5IconTypeBuilder {
     /**
      * All icons of style 'regular' available for free in Font Awesome.
      */
-    public enum FontAwesome5Regular implements FontAwesome5Graphic {
+    public enum FontAwesome6Regular implements FontAwesome6Graphic {
         address_book, address_card, bell, bell_slash, bookmark, building, calendar, calendar_check, calendar_days,
         calendar_minus, calendar_plus, calendar_xmark, chart_bar, chart_simple, check_to_slot, chess_bishop, chess_king,
         chess_knight, chess_pawn, chess_queen, chess_rook, circle, circle_check, circle_dot, circle_down, circle_left,
@@ -257,7 +257,7 @@ public class FontAwesome5IconTypeBuilder {
 
         @Override
         public String getPrefix() {
-            return "far";
+            return "fa-regular";
         }
 
         @Override
@@ -269,7 +269,7 @@ public class FontAwesome5IconTypeBuilder {
     /**
      * All icons of style 'brand' available for free in Font Awesome.
      */
-    public enum FontAwesome5Brand implements FontAwesome5Graphic {
+    public enum FontAwesome6Brand implements FontAwesome6Graphic {
         _42_group, _500px, accessible_icon, accusoft, adn, adversal, affiliatetheme, airbnb, algolia, alipay, amazon,
         amazon_pay, amilia, android, angellist, angrycreative, angular, app_store, app_store_ios, apper, apple,
         apple_pay, artstation, asymmetrik, atlassian, audible, autoprefixer, avianex, aviato, aws, bandcamp, battle_net,
@@ -320,13 +320,15 @@ public class FontAwesome5IconTypeBuilder {
 
         @Override
         public String getPrefix() {
-            return "fab";
+            return "fa-brands";
         }
 
         @Override
         public String getIconName() {
             if (this == _500px)
                 return "fa-500px";
+            else if (this == _42_group)
+                return "fa-42_group";
             else
                 return "fa-" + name();
         }
@@ -355,18 +357,18 @@ public class FontAwesome5IconTypeBuilder {
      * @param fontAwesomeGraphic icon to use in the builder
      * @return a builder for this icon
      */
-    public static FontAwesome5IconTypeBuilder on(final FontAwesome5Graphic fontAwesomeGraphic) {
-        return new FontAwesome5IconTypeBuilder(fontAwesomeGraphic);
+    public static FontAwesome6IconTypeBuilder on(final FontAwesome6Graphic fontAwesomeGraphic) {
+        return new FontAwesome6IconTypeBuilder(fontAwesomeGraphic);
     }
 
     /**
      * Icon used in the builder.
      */
-    private final FontAwesome5Graphic fontAwesomeGraphic;
+    private final FontAwesome6Graphic fontAwesomeGraphic;
     /**
      * rotation to apply to the icon (default none).
      */
-    private Rotation rotation;
+    private       Rotation            rotation;
     /**
      * size to apply to the icon (by default *1).
      */
@@ -381,14 +383,14 @@ public class FontAwesome5IconTypeBuilder {
     /**
      * @param fontAwesomeGraphic icon to use in the builder
      */
-    private FontAwesome5IconTypeBuilder(final FontAwesome5Graphic fontAwesomeGraphic) {
+    private FontAwesome6IconTypeBuilder(final FontAwesome6Graphic fontAwesomeGraphic) {
         this.fontAwesomeGraphic = fontAwesomeGraphic;
     }
 
     /**
      * @return build the icon
      */
-    public FontAwesome5IconType build() {
+    public FontAwesome6IconType build() {
         final List<String> styles = new ArrayList<>();
 
         styles.add(fontAwesomeGraphic.getPrefix());
@@ -415,14 +417,14 @@ public class FontAwesome5IconTypeBuilder {
             styles.add(size.style);
         }
 
-        return new FontAwesome5IconType(styles.toArray(new String[0]));
+        return new FontAwesome6IconType(styles.toArray(new String[0]));
     }
 
     /**
      * @param rotation rotation to apply to the icon
      * @return the builder
      */
-    public FontAwesome5IconTypeBuilder rotate(final Rotation rotation) {
+    public FontAwesome6IconTypeBuilder rotate(final Rotation rotation) {
         this.rotation = rotation;
         return this;
     }
@@ -431,7 +433,7 @@ public class FontAwesome5IconTypeBuilder {
      * @param size size to apply to the icon
      * @return the builder
      */
-    public FontAwesome5IconTypeBuilder size(final Size size) {
+    public FontAwesome6IconTypeBuilder size(final Size size) {
         this.size = size;
         return this;
     }
@@ -441,7 +443,7 @@ public class FontAwesome5IconTypeBuilder {
      *
      * @return the builder
      */
-    public FontAwesome5IconTypeBuilder spin() {
+    public FontAwesome6IconTypeBuilder spin() {
         this.spin = true;
         return this;
     }
@@ -451,7 +453,7 @@ public class FontAwesome5IconTypeBuilder {
      *
      * @return the builder
      */
-    public FontAwesome5IconTypeBuilder fixedWidth() {
+    public FontAwesome6IconTypeBuilder fixedWidth() {
         this.fixedWidth = true;
         return this;
     }
@@ -461,7 +463,7 @@ public class FontAwesome5IconTypeBuilder {
      *
      * @return the builder
      */
-    public FontAwesome5IconTypeBuilder fw() {
+    public FontAwesome6IconTypeBuilder fw() {
         return fixedWidth();
     }
 

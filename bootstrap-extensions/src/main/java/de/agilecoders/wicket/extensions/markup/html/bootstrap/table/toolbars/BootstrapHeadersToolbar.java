@@ -6,7 +6,7 @@ import org.apache.wicket.extensions.markup.html.repeater.data.table.HeadersToolb
 import org.apache.wicket.markup.html.WebMarkupContainer;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesome5IconType;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesome6IconType;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.table.sort.BootstrapOrderByBorder;
 
 /**
@@ -14,9 +14,9 @@ import de.agilecoders.wicket.extensions.markup.html.bootstrap.table.sort.Bootstr
  * displayed stylized with {@link IconType}
  *
  * By default:
- * ascending {@link FontAwesome5IconType#sort_asc}
- * descending {@link FontAwesome5IconType#sort_desc}
- * unsorted  {@link  FontAwesome5IconType#sort} -> unsorted
+ * ascending {@link FontAwesome6IconType#sort_asc}
+ * descending {@link FontAwesome6IconType#sort_desc}
+ * unsorted  {@link  FontAwesome6IconType#sort} -> unsorted
  *
  * @author Eric Hamel <eric.hamel@me.com>
  *
@@ -36,17 +36,17 @@ public class BootstrapHeadersToolbar<S> extends HeadersToolbar<S>{
 
 			@Override
 			protected IconType ascendingIconType() {
-				return FontAwesome5IconType.sort_up_s;
+				return FontAwesome6IconType.sort_up_s;
 			}
 
 			@Override
 			protected IconType descendingIconType() {
-				return FontAwesome5IconType.sort_down_s;
+				return FontAwesome6IconType.sort_down_s;
 			}
 
 			@Override
 			protected IconType unsortedIconType() {
-				return FontAwesome5IconType.sort_s;
+				return FontAwesome6IconType.sort_s;
 			}
 		};
 	}
