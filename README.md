@@ -53,7 +53,7 @@ Extensions
    * Resizable: http://api.jqueryui.com/resizable
 * jsass: (5.7.3) https://github.com/bit3/jsass
 * bootstrap-tour (0.10.3): http://sorich87.github.com/bootstrap-tour
-* OpenWebIcons (2014-09-29): http://pfefferle.github.com/openwebicons/
+* OpenWebIcons (2014-09-29): https://pfefferle.dev/openwebicons/
 * [Twitter Typeahead (0.9.3)](https://github.com/l0rdn1kk0n/wicket-bootstrap/tree/master/bootstrap-extensions/src/main/java/de/agilecoders/wicket/extensions/markup/html/bootstrap/form/typeahead): http://twitter.github.io/typeahead.js/
 * [Twitter Typeahead (0.10.x)](https://github.com/l0rdn1kk0n/wicket-bootstrap/tree/master/bootstrap-extensions/src/main/java/de/agilecoders/wicket/extensions/markup/html/bootstrap/form/typeaheadv10): http://twitter.github.io/typeahead.js/
 
