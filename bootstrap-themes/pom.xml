@@ -13,6 +13,12 @@
     <packaging>bundle</packaging>
     <name>bootstrap-themes</name>
 
+    <properties>
+        <bootstrap-italia.version>1.6.2</bootstrap-italia.version>
+        <splide.version>3.6.12</splide.version>
+        <popper.version>1.16.1-lts</popper.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>de.agilecoders.wicket</groupId>
@@ -32,6 +38,24 @@
         <dependency>
             <groupId>de.agilecoders.wicket.webjars</groupId>
             <artifactId>wicket-webjars</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>bootstrap-italia</artifactId>
+            <version>${bootstrap-italia.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>splide</artifactId>
+            <version>${splide.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>popper.js</artifactId>
+            <version>${popper.version}</version>
         </dependency>
 
     </dependencies>
