@@ -2,6 +2,7 @@ package de.agilecoders.wicket.extensions.markup.html.bootstrap.form.fileinput;
 
 import de.agilecoders.wicket.jquery.AbstractConfig;
 import de.agilecoders.wicket.jquery.IKey;
+import org.apache.wicket.util.lang.Bytes;
 
 import java.util.List;
 
@@ -141,15 +142,15 @@ public class FileInputConfig extends AbstractConfig {
         return this;
     }
 
-    /** Maximum file size for upload in KB - 0 (default) for no restriction on maximum file size */
-    public FileInputConfig maxFileSize(int maxFileSize) {
-        put(MaxFileSize, maxFileSize);
+    /** Maximum file size for upload - or no restriction if 0 (default) */
+    public FileInputConfig maxFileSize(Bytes maxFileSize) {
+        put(MaxFileSize, maxFileSize != null ? (int) Math.round(maxFileSize.kilobytes()) : 0);
         return this;
     }
 
-    /** Minimum file size for upload in KB - 0 (default) for no restriction on minimum file size */
-    public FileInputConfig minFileSize(int minFileSize) {
-        put(MinFileSize, minFileSize);
+    /** Minimum file size for upload - or no restriction if 0 (default) */
+    public FileInputConfig minFileSize(Bytes minFileSize) {
+        put(MinFileSize, minFileSize != null ? (int) Math.round(minFileSize.kilobytes()) : 0);
         return this;
     }
 
@@ -273,12 +274,12 @@ public class FileInputConfig extends AbstractConfig {
         return get(MinFileCount);
     }
 
-    public int maxFileSize() {
-        return get(MaxFileSize);
+    public Bytes maxFileSize() {
+        return Bytes.kilobytes(get(MaxFileSize));
     }
 
-    public int minFileSize() {
-        return get(MinFileSize);
+    public Bytes minFileSize() {
+        return Bytes.kilobytes(get(MinFileSize));
     }
 
     public String browseIcon() {
