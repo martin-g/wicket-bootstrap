@@ -2,6 +2,7 @@ package de.agilecoders.wicket.extensions.markup.html.bootstrap.form.fileinput;
 
 import de.agilecoders.wicket.jquery.AbstractConfig;
 import de.agilecoders.wicket.jquery.IKey;
+import org.apache.wicket.util.lang.Bytes;
 
 import java.util.List;
 
@@ -38,6 +39,10 @@ public class FileInputConfig extends AbstractConfig {
     public static final IKey<Integer> MaxFileCount = newKey("maxFileCount", 0);
 
     public static final IKey<Integer> MinFileCount = newKey("minFileCount", 0);
+
+    public static final IKey<Integer> MaxFileSize = newKey("maxFileSize", 0);
+
+    public static final IKey<Integer> MinFileSize = newKey("minFileSize", 0);
 
     public static final IKey<String> BrowseIcon = newKey("browseIcon", "<i class=\"glyphicon glyphicon-folder-open\"></i> &nbsp;");
 
@@ -137,6 +142,18 @@ public class FileInputConfig extends AbstractConfig {
         return this;
     }
 
+    /** Maximum file size for upload - or no restriction if 0 (default) */
+    public FileInputConfig maxFileSize(Bytes maxFileSize) {
+        put(MaxFileSize, maxFileSize != null ? (int) Math.round(maxFileSize.kilobytes()) : 0);
+        return this;
+    }
+
+    /** Minimum file size for upload - or no restriction if 0 (default) */
+    public FileInputConfig minFileSize(Bytes minFileSize) {
+        put(MinFileSize, minFileSize != null ? (int) Math.round(minFileSize.kilobytes()) : 0);
+        return this;
+    }
+
     public FileInputConfig browseIcon(String browseIcon) {
         put(BrowseIcon, browseIcon);
         return this;
@@ -173,10 +190,8 @@ public class FileInputConfig extends AbstractConfig {
     }
 
     /**
-     * Sets fileinput language. See {@link de.agilecoders.wicket.extensions.markup.html.bootstrap.form.fileinput.res.locales}
-     *
-     * @param language
-     * @return config
+     * Sets fileinput language.
+     * See {@link de.agilecoders.wicket.extensions.markup.html.bootstrap.form.fileinput.res.js.locales}
      */
     public FileInputConfig withLocale(String language) {
     	put(Language, language);
@@ -202,14 +217,6 @@ public class FileInputConfig extends AbstractConfig {
     	put(DropZoneClickTitle, dropZoneClickTitle);
     	return this;
     }
-    
-    public List<String> allowedFileTypes() {
-        return get(AllowedFileTypes);
-    }
-
-    public List<String> allowedFileExtensions() {
-        return get(AllowedFileExtensions);
-    }
 
     public boolean showCaption() {
         return get(ShowCaption);
@@ -229,6 +236,10 @@ public class FileInputConfig extends AbstractConfig {
 
     public String captionClass() {
         return getString(CaptionClass);
+    }
+
+    public String previewClass() {
+        return getString(PreviewClass);
     }
 
     public String mainClass() {
@@ -255,6 +266,22 @@ public class FileInputConfig extends AbstractConfig {
         return get(WrapTextLength);
     }
 
+    public int maxFileCount() {
+        return get(MaxFileCount);
+    }
+
+    public int minFileCount() {
+        return get(MinFileCount);
+    }
+
+    public Bytes maxFileSize() {
+        return Bytes.kilobytes(get(MaxFileSize));
+    }
+
+    public Bytes minFileSize() {
+        return Bytes.kilobytes(get(MinFileSize));
+    }
+
     public String browseIcon() {
         return get(BrowseIcon);
     }
@@ -267,8 +294,20 @@ public class FileInputConfig extends AbstractConfig {
         return get(UploadIcon);
     }
 
+    public String cancelIcon() {
+        return get(CancelIcon);
+    }
+
     public String previewFileType() {
         return get(PreviewFileType);
+    }
+
+    public List<String> allowedFileExtensions() {
+        return get(AllowedFileExtensions);
+    }
+
+    public List<String> allowedFileTypes() {
+        return get(AllowedFileTypes);
     }
 
     public String language() {
