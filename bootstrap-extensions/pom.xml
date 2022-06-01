@@ -63,6 +63,7 @@
             <groupId>org.webjars</groupId>
             <artifactId>font-awesome</artifactId>
             <version>${font-awesome.version}</version>
+            <optional>true</optional>
         </dependency>
 
         <dependency>
