@@ -62,7 +62,7 @@
         <!-- Note: closure-compiler -unshaded v20200920 (until at least v20210907) contains gson -->
         <google-closure.version>v20200830</google-closure.version>
         <javax.javaee-web-api.version>7.0</javax.javaee-web-api.version>
-        <jetty.version>9.4.44.v20210927</jetty.version>
+        <jetty.version>9.4.46.v20220331</jetty.version>
         <joda-time.version>2.10.13</joda-time.version>
         <jquerypp.version>1.0.1</jquerypp.version>
         <jquery.version>3.6.0</jquery.version>
