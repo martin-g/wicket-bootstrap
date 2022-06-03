@@ -7,8 +7,8 @@ import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.checkbox.boot
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.checkbox.bootstraptoggle.BootstrapToggle;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.checkbox.bootstraptoggle.BootstrapToggleConfig;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.checkboxx.CheckBoxX;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesome6CssReference;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesome6IconType;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeSettings;
+import org.apache.wicket.Application;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.form.AjaxFormComponentUpdatingBehavior;
 import org.apache.wicket.markup.head.CssHeaderItem;
@@ -43,17 +43,19 @@ public class CheckboxesPage extends BasePage {
     public void renderHead(IHeaderResponse response) {
         super.renderHead(response);
 
-        response.render(CssHeaderItem.forReference(FontAwesome6CssReference.instance()));
+        response.render(CssHeaderItem.forReference(FontAwesomeSettings.get(Application.get()).getCssResourceReference()));
     }
 
     private void addCheckboxPicker() {
         final NotificationPanel feedback = new NotificationPanel("checkBoxPickerFeedback");
         feedback.setOutputMarkupId(true);
 
+        FontAwesomeSettings fas = FontAwesomeSettings.get(Application.get());
         BootstrapCheckBoxPickerConfig config = new BootstrapCheckBoxPickerConfig();
         config
             .withOnClass("btn-info").withOffClass("btn-warning")
-            .withOnIcon(FontAwesome6IconType.thumbs_up_s).withOffIcon(FontAwesome6IconType.thumbs_down_s)
+            .withOnIcon(fas.getIconType(FontAwesomeSettings.IconKey.THUMBS_UP))
+            .withOffIcon(fas.getIconType(FontAwesomeSettings.IconKey.THUMBS_DOWN))
             .withReverse(true)
             .withStyle(ButtonGroup.Size.Small);
 

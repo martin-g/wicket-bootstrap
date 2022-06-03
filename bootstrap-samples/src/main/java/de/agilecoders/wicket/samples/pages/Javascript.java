@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeSettings;
+import org.apache.wicket.Application;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.extensions.markup.html.tabs.ITab;
@@ -36,7 +38,6 @@ import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.typeaheadV10.
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.typeaheadV10.TypeaheadConfig;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.typeaheadV10.bloodhound.Bloodhound;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.typeaheadV10.bloodhound.LocalBloodhound;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesome6IconType;
 import de.agilecoders.wicket.samples.panels.pagination.AjaxPaginationPanel;
 import de.agilecoders.wicket.samples.panels.pagination.PaginationPanel;
 
@@ -184,7 +185,8 @@ public class Javascript extends BasePage {
     }
 
     private Component newDropDown(String markupId) {
-        return new DropDownButton(markupId, Model.of("Dropdown (#89)"), Model.of(FontAwesome6IconType.bookmark_r)) {
+        return new DropDownButton(markupId, Model.of("Dropdown (#89)"),
+            Model.of(FontAwesomeSettings.get(Application.get()).getIconType(FontAwesomeSettings.IconKey.BOOKMARK))) {
             private static final long serialVersionUID = 1L;
 
             @Override
