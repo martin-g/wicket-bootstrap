@@ -113,7 +113,7 @@ if you want to use FontAwesome (with version for font-awesome 5 or 6):
     <dependency>
         <groupId>org.webjars</groupId>
         <artifactId>font-awesome</artifactId>
-        <version>${font-awesome.version}</version>
+        <version>6.1.0</version>
     </dependency>
 </dependencies>
 ```
