@@ -141,7 +141,7 @@ BootstrapSettings settings = new BootstrapSettings();
 settings.setXXX(...);
 Bootstrap.install(this, settings);
 
-// to (optionally) use configure FontAwesome5
+// to (optionally) switch to using FontAwesome5
 FontAwesomeSettings.get(Application.get()).setCssResourceReference(FontAwesome6CssReference.instance());
 ```
 

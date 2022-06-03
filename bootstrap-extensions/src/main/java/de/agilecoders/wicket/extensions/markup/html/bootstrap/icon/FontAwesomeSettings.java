@@ -71,30 +71,30 @@ public class FontAwesomeSettings {
                     iconTypeMap = new HashMap<>();
                     if (cssResourceReference instanceof FontAwesome6CssReference) {
                         iconTypeMap.put(CALENDAR, FontAwesome6IconType.calendar_r);
-                        iconTypeMap.put(UP, FontAwesome6IconType.arrow_up_s);
-                        iconTypeMap.put(DOWN, FontAwesome6IconType.arrow_down_s);
-                        iconTypeMap.put(DATE, FontAwesome6IconType.calendar_days_r);
-                        iconTypeMap.put(TIME, FontAwesome6IconType.clock_r);
-                        iconTypeMap.put(PREVIOUS, FontAwesome6IconType.arrow_left_s);
-                        iconTypeMap.put(NEXT, FontAwesome6IconType.arrow_right_s);
-                        iconTypeMap.put(TODAY, FontAwesome6IconType.calendar_check_r);
                         iconTypeMap.put(CLEAR, FontAwesome6IconType.eraser_s);
                         iconTypeMap.put(CLOSE, FontAwesome6IconType.xmark_s);
-                        iconTypeMap.put(FILLED, FontAwesome6IconType.star_s);
+                        iconTypeMap.put(DATE, FontAwesome6IconType.calendar_days_r);
+                        iconTypeMap.put(DOWN, FontAwesome6IconType.arrow_down_s);
                         iconTypeMap.put(EMPTY, FontAwesome6IconType.star_r);
+                        iconTypeMap.put(FILLED, FontAwesome6IconType.star_s);
+                        iconTypeMap.put(NEXT, FontAwesome6IconType.arrow_right_s);
+                        iconTypeMap.put(PREVIOUS, FontAwesome6IconType.arrow_left_s);
+                        iconTypeMap.put(TIME, FontAwesome6IconType.clock_r);
+                        iconTypeMap.put(TODAY, FontAwesome6IconType.calendar_check_r);
+                        iconTypeMap.put(UP, FontAwesome6IconType.arrow_up_s);
                     } else if (cssResourceReference instanceof FontAwesome5CssReference) {
                         iconTypeMap.put(CALENDAR, FontAwesome5IconType.calendar_alt_r);
-                        iconTypeMap.put(UP, FontAwesome5IconType.arrow_up_s);
-                        iconTypeMap.put(DOWN, FontAwesome5IconType.arrow_down_s);
-                        iconTypeMap.put(DATE, FontAwesome5IconType.calendar_alt_r);
-                        iconTypeMap.put(TIME, FontAwesome5IconType.clock_r);
-                        iconTypeMap.put(PREVIOUS, FontAwesome5IconType.arrow_left_s);
-                        iconTypeMap.put(NEXT, FontAwesome5IconType.arrow_right_s);
-                        iconTypeMap.put(TODAY, FontAwesome5IconType.calendar_check_r);
                         iconTypeMap.put(CLEAR, FontAwesome5IconType.eraser_s);
                         iconTypeMap.put(CLOSE, FontAwesome5IconType.times_s);
-                        iconTypeMap.put(FILLED, FontAwesome5IconType.star_s);
+                        iconTypeMap.put(DATE, FontAwesome5IconType.calendar_alt_r);
+                        iconTypeMap.put(DOWN, FontAwesome5IconType.arrow_down_s);
                         iconTypeMap.put(EMPTY, FontAwesome5IconType.star_r);
+                        iconTypeMap.put(FILLED, FontAwesome5IconType.star_s);
+                        iconTypeMap.put(NEXT, FontAwesome5IconType.arrow_right_s);
+                        iconTypeMap.put(PREVIOUS, FontAwesome5IconType.arrow_left_s);
+                        iconTypeMap.put(TIME, FontAwesome5IconType.clock_r);
+                        iconTypeMap.put(TODAY, FontAwesome5IconType.calendar_check_r);
+                        iconTypeMap.put(UP, FontAwesome5IconType.arrow_up_s);
                     }
                 }
             }
@@ -105,17 +105,17 @@ public class FontAwesomeSettings {
     /** Pre-canned Icons that need to be either FontAwesome 5 or 6 specific */
     public enum IconKey {
         CALENDAR,
-        UP,
-        DOWN,
-        DATE,
-        TIME,
-        PREVIOUS,
-        NEXT,
-        TODAY,
         CLEAR,
         CLOSE,
-        FILLED,
+        DATE,
+        DOWN,
         EMPTY,
+        FILLED,
+        NEXT,
+        PREVIOUS,
+        TIME,
+        TODAY,
+        UP,
         ;
     }
 }
