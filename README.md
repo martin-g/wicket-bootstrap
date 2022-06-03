@@ -56,6 +56,7 @@ Extensions
 * OpenWebIcons (2014-09-29): http://pfefferle.github.com/openwebicons/
 * [Twitter Typeahead (0.9.3)](https://github.com/l0rdn1kk0n/wicket-bootstrap/tree/master/bootstrap-extensions/src/main/java/de/agilecoders/wicket/extensions/markup/html/bootstrap/form/typeahead): http://twitter.github.io/typeahead.js/
 * [Twitter Typeahead (0.10.x)](https://github.com/l0rdn1kk0n/wicket-bootstrap/tree/master/bootstrap-extensions/src/main/java/de/agilecoders/wicket/extensions/markup/html/bootstrap/form/typeaheadv10): http://twitter.github.io/typeahead.js/
+* [FontAwesome](https://fontawesome.com/) in version 6 (default) or 5
 
 ## Maven
 wicket-bootstrap is [available](https://search.maven.org/artifact/de.agilecoders.wicket/wicket-bootstrap-core) in Maven central repository.
@@ -100,6 +101,23 @@ if you want to use a less compiler:
 </dependency>
 ```
 
+if you want to use FontAwesome (with version for font-awesome 5 or 6):
+
+```xml
+<dependencies>
+    <dependency>
+        <groupId>de.agilecoders.wicket</groupId>
+        <artifactId>wicket-bootstrap-extensions</artifactId>
+        <version>6.y.z</version>
+    </dependency>
+    <dependency>
+        <groupId>org.webjars</groupId>
+        <artifactId>font-awesome</artifactId>
+        <version>${font-awesome.version}</version>
+    </dependency>
+</dependencies>
+```
+
 all samples can be used with this dependency:
 
 ```xml
@@ -122,6 +140,9 @@ Bootstrap.install(this);
 BootstrapSettings settings = new BootstrapSettings();
 settings.setXXX(...);
 Bootstrap.install(this, settings);
+
+// to (optionally) use configure FontAwesome5
+FontAwesomeSettings.get(Application.get()).setCssResourceReference(FontAwesome6CssReference.instance());
 ```
 
 then you are able to use all wicket-bootstrap components.
