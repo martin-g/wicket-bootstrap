@@ -58,6 +58,29 @@ Extensions
 * [Twitter Typeahead (0.10.x)](https://github.com/l0rdn1kk0n/wicket-bootstrap/tree/master/bootstrap-extensions/src/main/java/de/agilecoders/wicket/extensions/markup/html/bootstrap/form/typeaheadv10): http://twitter.github.io/typeahead.js/
 * [FontAwesome](https://fontawesome.com/) in version 6 (default) or 5
 
+
+FontAwesome
+-----------
+
+You can use FontAwesome 5 or 6 with version 6 as the default.
+To override the default and use FontAwesome 5, override the version of the dependency in your pom.xml:
+
+```xml
+<dependency>
+    <groupId>org.webjars</groupId>
+    <artifactId>font-awesome</artifactId>
+    <version>5.15.4</version>
+</dependency>
+```
+
+For components in `bootstrap-extensions` that use FontAwesome icons to follow that choice,
+set the Bootstrap version as follows:
+
+```java
+// best place to do this is in Application#init()
+FontAwesomeSettings.get(Application.get()).setCssResourceReference(FontAwesome5CssReference.instance());
+```
+
 ## Maven
 wicket-bootstrap is [available](https://search.maven.org/artifact/de.agilecoders.wicket/wicket-bootstrap-core) in Maven central repository.
 
@@ -101,23 +124,6 @@ if you want to use a less compiler:
 </dependency>
 ```
 
-if you want to use FontAwesome (with version for font-awesome 5 or 6):
-
-```xml
-<dependencies>
-    <dependency>
-        <groupId>de.agilecoders.wicket</groupId>
-        <artifactId>wicket-bootstrap-extensions</artifactId>
-        <version>6.y.z</version>
-    </dependency>
-    <dependency>
-        <groupId>org.webjars</groupId>
-        <artifactId>font-awesome</artifactId>
-        <version>6.1.0</version>
-    </dependency>
-</dependencies>
-```
-
 all samples can be used with this dependency:
 
 ```xml
@@ -140,9 +146,6 @@ Bootstrap.install(this);
 BootstrapSettings settings = new BootstrapSettings();
 settings.setXXX(...);
 Bootstrap.install(this, settings);
-
-// to (optionally) switch to using FontAwesome5
-FontAwesomeSettings.get(Application.get()).setCssResourceReference(FontAwesome6CssReference.instance());
 ```
 
 then you are able to use all wicket-bootstrap components.

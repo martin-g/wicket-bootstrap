@@ -1,9 +1,10 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.form.datetime;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesome6IconType;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeSettings;
 import de.agilecoders.wicket.jquery.AbstractConfig;
 import de.agilecoders.wicket.jquery.IKey;
+import org.apache.wicket.Application;
 
 /**
  * datetime picker icon config
@@ -15,16 +16,28 @@ public class DatetimePickerIconConfig extends AbstractConfig {
 
     private static final long serialVersionUID = 1L;
 
-    private static final IKey<String> Up = newKey("up", FontAwesome6IconType.arrow_up_s.cssClassName());
-    private static final IKey<String> Down = newKey("down", FontAwesome6IconType.arrow_down_s.cssClassName());
-    private static final IKey<String> Date = newKey("date", FontAwesome6IconType.calendar_days_r.cssClassName());
-    private static final IKey<String> Time = newKey("time", FontAwesome6IconType.clock_r.cssClassName());
-    private static final IKey<String> Previous = newKey("previous", FontAwesome6IconType.arrow_left_s.cssClassName());
-    private static final IKey<String> Next = newKey("next", FontAwesome6IconType.arrow_right_s.cssClassName());
-    private static final IKey<String> Today = newKey("today", FontAwesome6IconType.calendar_check_r.cssClassName());
-    private static final IKey<String> Clear = newKey("clear", FontAwesome6IconType.eraser_s.cssClassName());
-    private static final IKey<String> Close = newKey("close", FontAwesome6IconType.xmark_s.cssClassName());
+    private static final IKey<String> Up = newKey("up", null);
+    private static final IKey<String> Down = newKey("down", null);
+    private static final IKey<String> Date = newKey("date", null);
+    private static final IKey<String> Time = newKey("time", null);
+    private static final IKey<String> Previous = newKey("previous", null);
+    private static final IKey<String> Next = newKey("next", null);
+    private static final IKey<String> Today = newKey("today", null);
+    private static final IKey<String> Clear = newKey("clear", null);
+    private static final IKey<String> Close = newKey("close", null);
 
+    public DatetimePickerIconConfig() {
+        FontAwesomeSettings fas = FontAwesomeSettings.get(Application.get());
+        put(Up, fas.getIconType(FontAwesomeSettings.IconKey.ARROW_UP).cssClassName());
+        put(Down, fas.getIconType(FontAwesomeSettings.IconKey.ARROW_DOWN).cssClassName());
+        put(Date, fas.getIconType(FontAwesomeSettings.IconKey.CALENDAR).cssClassName());
+        put(Time, fas.getIconType(FontAwesomeSettings.IconKey.CLOCK).cssClassName());
+        put(Previous, fas.getIconType(FontAwesomeSettings.IconKey.ARROW_LEFT).cssClassName());
+        put(Next, fas.getIconType(FontAwesomeSettings.IconKey.ARROW_RIGHT).cssClassName());
+        put(Today, fas.getIconType(FontAwesomeSettings.IconKey.TODAY).cssClassName());
+        put(Clear, fas.getIconType(FontAwesomeSettings.IconKey.CLEAR).cssClassName());
+        put(Close, fas.getIconType(FontAwesomeSettings.IconKey.CLOSE).cssClassName());
+    }
     /**
      * @param up up icon type
      * @return current instance
