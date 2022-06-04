@@ -3,8 +3,6 @@ package de.agilecoders.wicket.samples.components.basecss;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeSettings;
-import org.apache.wicket.Application;
 import org.apache.wicket.markup.html.link.AbstractLink;
 import org.apache.wicket.markup.html.link.BookmarkablePageLink;
 import org.apache.wicket.model.Model;
@@ -16,6 +14,7 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.button.ButtonList;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.Toolbar;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.Icon;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesome6IconType;
 import de.agilecoders.wicket.samples.components.base.Section;
 import de.agilecoders.wicket.samples.pages.ComponentsPage;
 
@@ -56,12 +55,11 @@ public class ButtonGroups extends Section<Void> {
 
             @Override
             protected List<AbstractLink> newButtons(String buttonMarkupId) {
-                FontAwesomeSettings fas = FontAwesomeSettings.get(Application.get());
                 return List.of(
-                        createIconButton(new Icon(fas.getIconType(FontAwesomeSettings.IconKey.ALIGN_LEFT))),
-                        createIconButton(new Icon(fas.getIconType(FontAwesomeSettings.IconKey.ALIGN_CENTER))),
-                        createIconButton(new Icon(fas.getIconType(FontAwesomeSettings.IconKey.ALIGN_RIGHT))),
-                        createIconButton(new Icon(fas.getIconType(FontAwesomeSettings.IconKey.ALIGN_JUSTIFY))));
+                        createIconButton(new Icon(FontAwesome6IconType.align_left_s)),
+                        createIconButton(new Icon(FontAwesome6IconType.align_center_s)),
+                        createIconButton(new Icon(FontAwesome6IconType.align_right_s)),
+                        createIconButton(new Icon(FontAwesome6IconType.align_justify_s)));
             }
         };
         add(verticalButtonGroup);

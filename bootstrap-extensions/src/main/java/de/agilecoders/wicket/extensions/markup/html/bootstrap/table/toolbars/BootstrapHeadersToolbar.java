@@ -1,7 +1,5 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.table.toolbars;
 
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeSettings;
-import org.apache.wicket.Application;
 import org.apache.wicket.extensions.markup.html.repeater.data.sort.ISortStateLocator;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.DataTable;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.HeadersToolbar;
@@ -16,9 +14,9 @@ import de.agilecoders.wicket.extensions.markup.html.bootstrap.table.sort.Bootstr
  * displayed stylized with {@link IconType}
  *
  * By default:
- * ascending {@link FontAwesome6IconType#sort_up_s}
- * descending {@link FontAwesome6IconType#sort_down_s}
- * unsorted  {@link  FontAwesome6IconType#sort_s} -> unsorted
+ * ascending {@link FontAwesome6IconType#sort_asc}
+ * descending {@link FontAwesome6IconType#sort_desc}
+ * unsorted  {@link  FontAwesome6IconType#sort} -> unsorted
  *
  * @author Eric Hamel <eric.hamel@me.com>
  *
@@ -38,17 +36,17 @@ public class BootstrapHeadersToolbar<S> extends HeadersToolbar<S>{
 
 			@Override
 			protected IconType ascendingIconType() {
-                return FontAwesomeSettings.get(Application.get()).getIconType(FontAwesomeSettings.IconKey.SORT_UP);
+				return FontAwesome6IconType.sort_up_s;
 			}
 
 			@Override
 			protected IconType descendingIconType() {
-                return FontAwesomeSettings.get(Application.get()).getIconType(FontAwesomeSettings.IconKey.SORT_DOWN);
+				return FontAwesome6IconType.sort_down_s;
 			}
 
 			@Override
 			protected IconType unsortedIconType() {
-                return FontAwesomeSettings.get(Application.get()).getIconType(FontAwesomeSettings.IconKey.SORT);
+				return FontAwesome6IconType.sort_s;
 			}
 		};
 	}
