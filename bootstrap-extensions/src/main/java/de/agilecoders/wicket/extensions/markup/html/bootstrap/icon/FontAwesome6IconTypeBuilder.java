@@ -226,7 +226,10 @@ public class FontAwesome6IconTypeBuilder {
 
         @Override
         public String getIconName() {
-            return "fa-" + name();
+            if (this.name().startsWith("_"))
+                return "fa-" + name().substring(1);
+            else
+                return "fa-" + name();
         }
     }
 

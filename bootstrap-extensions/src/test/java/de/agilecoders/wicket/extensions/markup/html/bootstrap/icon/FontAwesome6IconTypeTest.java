@@ -5,6 +5,9 @@ import static de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAw
 import static de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesome6IconTypeBuilder.FontAwesome6Regular.envelope_open;
 import static de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesome6IconTypeBuilder.FontAwesome6Solid.address_book;
 import static de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesome6IconTypeBuilder.FontAwesome6Solid.align_center;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.is;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
@@ -99,5 +102,26 @@ class FontAwesome6IconTypeTest {
             .build();
         assertEquals("fa-brands fa-500px fa-spin fa-fw fa-flip-horizontal fa-lg", fontAwesomeIcon.cssClassName(),
             "FontAwesome should use 'fa-brands fab-NAME fa-spin fa-fw fa-ROTATE fa-SIZE");
+    }
+
+
+    @Test
+    void withSolidIconWithNameStartingWithNumber() {
+        assertThat(FontAwesome6IconType._0_s.cssClassName(), is(equalTo("fa-solid fa-0")));
+        assertThat(FontAwesome6IconType._1_s.cssClassName(), is(equalTo("fa-solid fa-1")));
+        assertThat(FontAwesome6IconType._2_s.cssClassName(), is(equalTo("fa-solid fa-2")));
+        assertThat(FontAwesome6IconType._3_s.cssClassName(), is(equalTo("fa-solid fa-3")));
+        assertThat(FontAwesome6IconType._4_s.cssClassName(), is(equalTo("fa-solid fa-4")));
+        assertThat(FontAwesome6IconType._5_s.cssClassName(), is(equalTo("fa-solid fa-5")));
+        assertThat(FontAwesome6IconType._6_s.cssClassName(), is(equalTo("fa-solid fa-6")));
+        assertThat(FontAwesome6IconType._7_s.cssClassName(), is(equalTo("fa-solid fa-7")));
+        assertThat(FontAwesome6IconType._8_s.cssClassName(), is(equalTo("fa-solid fa-8")));
+        assertThat(FontAwesome6IconType._9_s.cssClassName(), is(equalTo("fa-solid fa-9")));
+    }
+
+    @Test
+    void withBrandIconWithNameStartingWithNumber() {
+        assertThat(FontAwesome6IconType._42_group.cssClassName(), is(equalTo("fa-brands fa-42-group")));
+        assertThat(FontAwesome6IconType._500px.cssClassName(), is(equalTo("fa-brands fa-500px")));
     }
 }
