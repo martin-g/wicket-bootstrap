@@ -30,7 +30,7 @@ class RatingConfigTest extends WicketApplicationTest {
 
     @Test
     void initval() {
-        RatingConfig config = new RatingConfig();
+    	RatingConfig config = new RatingConfig();
         config.withFractions(3);
         config.withStart(3);
         config.withStop(7);

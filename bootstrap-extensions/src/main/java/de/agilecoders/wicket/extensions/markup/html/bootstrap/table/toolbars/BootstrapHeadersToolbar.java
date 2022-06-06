@@ -38,17 +38,17 @@ public class BootstrapHeadersToolbar<S> extends HeadersToolbar<S>{
 
 			@Override
 			protected IconType ascendingIconType() {
-                return FontAwesomeSettings.get(Application.get()).getIconType(FontAwesomeSettings.IconKey.SORT_UP);
+				return FontAwesomeSettings.get(Application.get()).getIconType(FontAwesomeSettings.IconKey.SORT_UP);
 			}
 
 			@Override
 			protected IconType descendingIconType() {
-                return FontAwesomeSettings.get(Application.get()).getIconType(FontAwesomeSettings.IconKey.SORT_DOWN);
+				return FontAwesomeSettings.get(Application.get()).getIconType(FontAwesomeSettings.IconKey.SORT_DOWN);
 			}
 
 			@Override
 			protected IconType unsortedIconType() {
-                return FontAwesomeSettings.get(Application.get()).getIconType(FontAwesomeSettings.IconKey.SORT);
+				return FontAwesomeSettings.get(Application.get()).getIconType(FontAwesomeSettings.IconKey.SORT);
 			}
 		};
 	}
