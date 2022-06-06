@@ -328,10 +328,8 @@ public class FontAwesome6IconTypeBuilder {
 
         @Override
         public String getIconName() {
-            if (this == _500px)
-                return "fa-500px";
-            else if (this == _42_group)
-                return "fa-42_group";
+            if (this.name().startsWith("_"))
+                return "fa-" + name().substring(1);
             else
                 return "fa-" + name();
         }
