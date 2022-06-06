@@ -219,6 +219,60 @@
 					</div>
 				</div>
 			</section>
+
+			<section id="fontawesome-version">
+				<h2 class="pb-2 mt-4 mb-2 border-bottom">Choosing the FontAwesome version</h2>
+				<div class="row">
+				<div class="col-md-3 col-sm-4">
+				</div>
+				<div class="col-md-9 col-sm-8">
+						<p>
+							wicket-bootstrap by default depends on FontAwesome-6.x.
+						</p>
+						<div class="highlight">
+							<p>
+							If you prefer using FontAwesome-5.x, you can override the default choice
+							by declaring the dependency on FontAwesome-5.x.y in your own project's pom.xml explicitly:
+							</p>
+<pre class="prettyprint lang-xml">
+	&lt;dependency&gt;
+		&lt;groupId&gt;org.webjars&lt;/groupId&gt;
+		&lt;artifactId&gt;font-awesome&lt;/artifactId&gt;
+		&lt;version&gt;5.x.y&lt;/version&gt;
+	&lt;/dependency&gt;
+</pre>
+							<p>
+							Then simply use the respective classes for version 5 in your java code:
+							</p>
+							<div class="highlight">
+							<p>
+								JAVA :<br />
+								<code lang="java">
+									add(new Icon("shield-rotate-normal", FontAwesome5IconType.shield)); <br />
+									add(new Icon("shield-rotate-90",
+									FontAwesome5IconTypeBuilder.on(FontAwesome5Solid.shield)<br />
+									&nbsp;&nbsp;&nbsp;&nbsp;.rotate(Rotation.rotate_90).build()));<br />
+								</code>
+							</p>
+							</div>
+							<p>
+								Some of the wicket-components from <code>wicket-extensions</code> internally use
+								FontAwesome icons, as well. To let those components know about your choice the
+								FontAwesome version, you need to set the CSS resource reference of your choice into
+								the <code>FontAwesomeSettings</code> class, ideally in your application init method.
+							</p>
+							<div class="highlight">
+							<p>
+							JAVA :<br />
+							<code lang="java">
+								FontAwesomeSettings.get(Application.get()).setCssResourceReference(FontAwesome5CssReference.instance());
+							</code>
+							</p>
+							</div>
+						</div>
+				</div>
+				</div>
+			</section>
 		</div>
 	</wicket:extend>
 </body>
