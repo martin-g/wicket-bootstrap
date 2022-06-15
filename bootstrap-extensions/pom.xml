@@ -21,7 +21,7 @@
         <spin-js.version>2.1.0</spin-js.version>
         <animate.css.version>3.7.2</animate.css.version>
         <summernote.version>0.8.20</summernote.version>
-        <font-awesome.version>6.1.0</font-awesome.version>
+        <font-awesome.version>6.1.1</font-awesome.version>
     </properties>
 
     <dependencies>
