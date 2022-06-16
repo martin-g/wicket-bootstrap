@@ -1,5 +1,7 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.form.datetime;
 
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeSettings;
+import org.apache.wicket.Application;
 import org.apache.wicket.Component;
 import org.apache.wicket.MarkupContainer;
 import org.apache.wicket.behavior.AttributeAppender;
@@ -10,7 +12,6 @@ import org.apache.wicket.model.IModel;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.Icon;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesome5IconType;
 
 /**
  * Datetime-picker with calendar icon.
@@ -130,7 +131,7 @@ public abstract class AbstractDateTimePickerWithIcon<T> extends FormComponentPan
      * @return icon type
      */
     protected IconType newIconType() {
-        return FontAwesome5IconType.calendar_alt_r;
+        return FontAwesomeSettings.get(Application.get()).getIconType(FontAwesomeSettings.IconKey.CALENDAR);
     }
 
     @Override

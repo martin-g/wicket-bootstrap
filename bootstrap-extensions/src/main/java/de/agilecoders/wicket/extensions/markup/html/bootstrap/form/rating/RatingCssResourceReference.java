@@ -2,7 +2,8 @@ package de.agilecoders.wicket.extensions.markup.html.bootstrap.form.rating;
 
 import java.util.List;
 
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesome5CssReference;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeSettings;
+import org.apache.wicket.Application;
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.HeaderItem;
 import org.apache.wicket.request.resource.CssResourceReference;
@@ -35,7 +36,7 @@ public class RatingCssResourceReference extends CssResourceReference {
     @Override
     public List<HeaderItem> getDependencies() {
         List<HeaderItem> dependencies = Lists.newArrayList(super.getDependencies());
-        dependencies.add(CssHeaderItem.forReference(FontAwesome5CssReference.instance()));
+        dependencies.add(CssHeaderItem.forReference(FontAwesomeSettings.get(Application.get()).getCssResourceReference()));
 
         return dependencies;
     }

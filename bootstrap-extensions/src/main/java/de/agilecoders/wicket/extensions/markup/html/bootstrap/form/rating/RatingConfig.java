@@ -1,12 +1,12 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.form.rating;
 
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesome5IconType;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeSettings;
 import de.agilecoders.wicket.jquery.AbstractConfig;
 import de.agilecoders.wicket.jquery.IKey;
+import org.apache.wicket.Application;
 
 /**
  * @author daniel.jipa
- *
  */
 public class RatingConfig extends AbstractConfig {
 
@@ -20,15 +20,16 @@ public class RatingConfig extends AbstractConfig {
 
 	private static final IKey<Integer> fractions = newKey("fractions", 1);
 
-	private static final IKey<String> filled = newKey("filled", "glyphicon glyphicon-star");
+	private static final IKey<String> filled = newKey("filled", null);
 
-	private static final IKey<String> empty = newKey("empty", "glyphicon glyphicon-star-empty");
+	private static final IKey<String> empty = newKey("empty", null);
 
 	private static final IKey<String> filledSelected = newKey("filledSelected", null);
 
 	public RatingConfig() {
-		put(filled, FontAwesome5IconType.star_s.cssClassName());
-		put(empty, FontAwesome5IconType.star_r.cssClassName());
+		FontAwesomeSettings fontAwesomeSettings = FontAwesomeSettings.get(Application.get());
+		put(filled, fontAwesomeSettings.getIconType(FontAwesomeSettings.IconKey.FILLED).cssClassName());
+		put(empty, fontAwesomeSettings.getIconType(FontAwesomeSettings.IconKey.EMPTY).cssClassName());
 	}
 
 	public RatingConfig withStart(Integer value) {

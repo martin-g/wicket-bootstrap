@@ -56,6 +56,30 @@ Extensions
 * OpenWebIcons (2014-09-29): https://pfefferle.dev/openwebicons/
 * [Twitter Typeahead (0.9.3)](https://github.com/l0rdn1kk0n/wicket-bootstrap/tree/master/bootstrap-extensions/src/main/java/de/agilecoders/wicket/extensions/markup/html/bootstrap/form/typeahead): http://twitter.github.io/typeahead.js/
 * [Twitter Typeahead (0.10.x)](https://github.com/l0rdn1kk0n/wicket-bootstrap/tree/master/bootstrap-extensions/src/main/java/de/agilecoders/wicket/extensions/markup/html/bootstrap/form/typeaheadv10): http://twitter.github.io/typeahead.js/
+* [FontAwesome](https://fontawesome.com/) in version 6 (default) or 5
+
+
+FontAwesome
+-----------
+
+You can use FontAwesome 5 or 6 with version 6 as the default.
+To override the default and use FontAwesome 5, override the version of the dependency in your pom.xml:
+
+```xml
+<dependency>
+    <groupId>org.webjars</groupId>
+    <artifactId>font-awesome</artifactId>
+    <version>5.15.4</version>
+</dependency>
+```
+
+For components in `bootstrap-extensions` that use FontAwesome icons to follow that choice,
+set the Bootstrap version as follows:
+
+```java
+// best place to do this is in Application#init()
+FontAwesomeSettings.get(Application.get()).setCssResourceReference(FontAwesome5CssReference.instance());
+```
 
 ## Maven
 wicket-bootstrap is [available](https://search.maven.org/artifact/de.agilecoders.wicket/wicket-bootstrap-core) in Maven central repository.
