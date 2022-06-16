@@ -63,7 +63,7 @@
         <google-closure.version>v20200830</google-closure.version>
         <javax.javaee-web-api.version>7.0</javax.javaee-web-api.version>
         <jetty.version>9.4.46.v20220331</jetty.version>
-        <joda-time.version>2.10.13</joda-time.version>
+        <joda-time.version>2.10.14</joda-time.version>
         <jquerypp.version>1.0.1</jquerypp.version>
         <jquery.version>3.6.0</jquery.version>
         <junit-jupiter.version>5.8.2</junit-jupiter.version>
@@ -72,12 +72,12 @@
         <hamcrest.version>2.2</hamcrest.version>
         <logback.version>1.2.10</logback.version>
         <modernizr.version>2.8.3-1</modernizr.version>
-        <mockito.version>4.3.1</mockito.version>
+        <mockito.version>4.6.1</mockito.version>
         <popperjs.version>2.9.3</popperjs.version>
         <servlet-api.version>3.1.0</servlet-api.version>
         <slf4j.version>1.7.32</slf4j.version>
-        <wicket.version>9.8.0</wicket.version>
-        <wicketstuff.version>9.8.0</wicketstuff.version>
+        <wicket.version>9.10.0</wicket.version>
+        <wicketstuff.version>9.10.0</wicketstuff.version>
         <yuicompressor.version>2.4.8</yuicompressor.version>
 
         <maven-bundle-plugin.version>5.1.4</maven-bundle-plugin.version>
@@ -85,7 +85,7 @@
         <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
         <cobertura-maven-plugin.version>2.7</cobertura-maven-plugin.version>
         <coveralls-maven-plugin.version>4.3.0</coveralls-maven-plugin.version>
-        <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
+        <maven-surefire-plugin.version>3.0.0-M7</maven-surefire-plugin.version>
         <maven-deploy-plugin.version>3.0.0-M1</maven-deploy-plugin.version>
         <maven-javadoc-plugin.version>3.2.0</maven-javadoc-plugin.version>
         <maven-antrun-plugin.version>1.8</maven-antrun-plugin.version>
