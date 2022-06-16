@@ -27,15 +27,9 @@ public class RatingConfig extends AbstractConfig {
 	private static final IKey<String> filledSelected = newKey("filledSelected", null);
 
 	public RatingConfig() {
-		put(filled, getCssClassNameFor(FontAwesomeSettings.IconKey.FILLED));
-		put(empty, getCssClassNameFor(FontAwesomeSettings.IconKey.EMPTY));
-	}
-
-	private String getCssClassNameFor(FontAwesomeSettings.IconKey iconKey) {
-		return FontAwesomeSettings
-			.get(Application.get())
-			.getIconType(iconKey)
-			.cssClassName();
+		FontAwesomeSettings fontAwesomeSettings = FontAwesomeSettings.get(Application.get());
+		put(filled, fontAwesomeSettings.getIconType(FontAwesomeSettings.IconKey.FILLED).cssClassName());
+		put(empty, fontAwesomeSettings.getIconType(FontAwesomeSettings.IconKey.EMPTY).cssClassName());
 	}
 
 	public RatingConfig withStart(Integer value) {
