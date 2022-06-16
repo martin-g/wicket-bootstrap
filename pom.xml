@@ -45,7 +45,7 @@
         <maven.java.target>${java.version}</maven.java.target>
 
         <bootstrap.version>5.1.3</bootstrap.version>
-        <wicket-webjars.version>3.0.5</wicket-webjars.version>
+        <wicket-webjars.version>3.0.6</wicket-webjars.version>
         <wicket-jquery-selectors.version>3.0.4</wicket-jquery-selectors.version>
 
         <enforcer.disable>true</enforcer.disable>
