@@ -32,6 +32,11 @@ public interface IBootstrapSettings {
     String JS_CDN_PATTERN = "//stackpath.bootstrapcdn.com/bootstrap/%s/js/bootstrap.min.js";
 
     /**
+     * The url to the JavaScript resource bundle at a CDN network
+     */
+    String JS_BUNDLE_CDN_PATTERN = "//stackpath.bootstrapcdn.com/bootstrap/%s/js/bootstrap.bundle.min.js";
+
+    /**
      * The url to the modernizr JavaScript resource at a CDN network
      */
     String MODERNIZR_CDN_PATTERN = "//cdnjs.cloudflare.com/ajax/libs/modernizr/%s/modernizr.min.js";
@@ -216,6 +221,11 @@ public interface IBootstrapSettings {
     boolean useCdnResources();
 
     /**
+     * @return true, if bootstrap.bundle should be used
+     */
+    boolean useBundle();
+
+    /**
      * @return true, if wicket bootstrap uses the webjars library. If you don't want to use the webjars libraries,
      * please set bootstrap css/js, modernizr reference to your own instance or call {@link #useCdnResources(boolean)}.
      * Some components uses webjars references internally, so if you want to use them,
@@ -228,4 +238,10 @@ public interface IBootstrapSettings {
      * @return this instance
      */
     IBootstrapSettings useCdnResources(boolean useCdnResources);
+
+    /**
+     * @param useBundle a flag indicating whether bootstrap.bundle should be used instead of bootstrap+popper
+     * @return this instance
+     */
+    IBootstrapSettings useBundle(boolean useBundle);
 }
