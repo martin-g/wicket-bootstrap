@@ -16,7 +16,6 @@
     <properties>
         <bootstrap-italia.version>1.6.2</bootstrap-italia.version>
         <splide.version>3.6.12</splide.version>
-        <popper.version>1.16.1-lts</popper.version>
     </properties>
 
     <dependencies>
@@ -51,13 +50,6 @@
             <artifactId>splide</artifactId>
             <version>${splide.version}</version>
         </dependency>
-
-        <dependency>
-            <groupId>org.webjars</groupId>
-            <artifactId>popper.js</artifactId>
-            <version>${popper.version}</version>
-        </dependency>
-
     </dependencies>
 
     <build>
