@@ -22,19 +22,9 @@ public interface IBootstrapSettings {
     String MODERNIZR_VERSION = "2.8.3";
 
     /**
-     * The version of Popper.js
-     */
-    String POPPER_VERSION = "2.9.3";
-
-    /**
      * The url to the JavaScript resource at a CDN network
      */
-    String JS_CDN_PATTERN = "//stackpath.bootstrapcdn.com/bootstrap/%s/js/bootstrap.min.js";
-
-    /**
-     * The url to the JavaScript resource bundle at a CDN network
-     */
-    String JS_BUNDLE_CDN_PATTERN = "//stackpath.bootstrapcdn.com/bootstrap/%s/js/bootstrap.bundle.min.js";
+    String JS_CDN_PATTERN = "//stackpath.bootstrapcdn.com/bootstrap/%s/js/bootstrap.bundle.min.js";
 
     /**
      * The url to the modernizr JavaScript resource at a CDN network
@@ -47,11 +37,6 @@ public interface IBootstrapSettings {
     String CSS_CDN_PATTERN = "//stackpath.bootstrapcdn.com/bootstrap/%s/css/bootstrap.min.css";
 
     /**
-     * The url to the Popper.js Javascript resource at a CDN network
-     */
-    String POPPER_JS_CDN_PATTERN = "//unpkg.com/popper.js@%s/dist/umd/popper.min.js";
-
-    /**
      * @param version The version of Bootstrap. CDN resources use it to construct their urls
      * @return same instance for chaining
      */
@@ -62,12 +47,6 @@ public interface IBootstrapSettings {
      * @return same instance for chaining
      */
     IBootstrapSettings setModernizrVersion(String version);
-
-    /**
-     * @param version The version of popper.js. CDN resources use it to construct their urls
-     * @return same instance for chaining
-     */
-    IBootstrapSettings setPopperJsVersion(String version);
 
     /**
      * @return the deferJavascript flag
@@ -83,11 +62,6 @@ public interface IBootstrapSettings {
      * @return The version of modernizr. CDN resources use it to construct their urls
      */
     String getModernizrVersion();
-
-    /**
-     * @return The version of popper.js. CDN resources use it to construct their urls
-     */
-    String getPopperJsVersion();
 
     /**
      * @return True, if bootstrap resources should be added to each page automatically
@@ -110,11 +84,6 @@ public interface IBootstrapSettings {
     ResourceReference getModernizrResourceReference();
 
     /**
-     * @return the popper.js JavaScript resource reference
-     */
-    ResourceReference getPopperJsResourceReference();
-
-    /**
      * @param reference a reference to the base bootstrap css library.
      *                  Defaults to the embedded bootstrap.css
      * @return same instance for chaining
@@ -134,14 +103,6 @@ public interface IBootstrapSettings {
      * @return same instance for chaining
      */
     IBootstrapSettings setModernizrResourceReference(ResourceReference reference);
-
-    /**
-     *
-     * @param popperJsResourceReference a reference to the Popper.js library.
-     *                                  Defaults to the embedded popper.js.
-     * @return same instance for chaining
-     */
-    IBootstrapSettings setPopperJsResourceReference(ResourceReference popperJsResourceReference);
 
     /**
      * @return javascript resource filter name
@@ -221,11 +182,6 @@ public interface IBootstrapSettings {
     boolean useCdnResources();
 
     /**
-     * @return true, if bootstrap.bundle should be used
-     */
-    boolean useBundle();
-
-    /**
      * @return true, if wicket bootstrap uses the webjars library. If you don't want to use the webjars libraries,
      * please set bootstrap css/js, modernizr reference to your own instance or call {@link #useCdnResources(boolean)}.
      * Some components uses webjars references internally, so if you want to use them,
@@ -238,10 +194,4 @@ public interface IBootstrapSettings {
      * @return this instance
      */
     IBootstrapSettings useCdnResources(boolean useCdnResources);
-
-    /**
-     * @param useBundle a flag indicating whether bootstrap.bundle should be used instead of bootstrap+popper
-     * @return this instance
-     */
-    IBootstrapSettings useBundle(boolean useBundle);
 }
