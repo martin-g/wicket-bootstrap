@@ -3,9 +3,7 @@ package de.agilecoders.wicket.core.markup.html.references;
 import de.agilecoders.wicket.webjars.request.resource.WebjarsJavaScriptResourceReference;
 
 /**
- * represents the bootstrap js library
- *
- * @author miha
+ * represents the bootstrap.bundle js library
  */
 public class BootstrapBundleJavaScriptReference extends WebjarsJavaScriptResourceReference {
     private static final long serialVersionUID = 1L;
