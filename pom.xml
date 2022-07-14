@@ -454,17 +454,6 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-jar-plugin</artifactId>
                     <version>${maven-jar-plugin.version}</version>
-                    <configuration>
-                        <archive>
-                            <manifest>
-                                <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
-                                <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-                            </manifest>
-                            <manifestEntries>
-                                <Automatic-Module-Name>${autoModuleName}</Automatic-Module-Name>
-                            </manifestEntries>
-                        </archive>
-                    </configuration>
                 </plugin>
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
@@ -503,6 +492,7 @@
                         <instructions>
                             <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
                             <Bundle-Version>${project.version}</Bundle-Version>
+                            <Automatic-Module-Name>${autoModuleName}</Automatic-Module-Name>
                         </instructions>
                     </configuration>
                 </plugin>
