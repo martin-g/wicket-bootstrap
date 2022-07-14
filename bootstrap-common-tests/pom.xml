@@ -30,6 +30,9 @@
 
     <description>Tests for all Bootstrap Wicket modules</description>
 
+    <properties>
+        <autoModuleName>wicket.bootstrap.common.tests</autoModuleName>
+    </properties>
     <dependencies>
         <dependency>
             <groupId>de.agilecoders.wicket</groupId>
