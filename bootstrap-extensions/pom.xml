@@ -14,6 +14,8 @@
     <name>bootstrap-extensions</name>
 
     <properties>
+        <autoModuleName>wicket.bootstrap.extensions</autoModuleName>
+
         <inputmask.version>4.0.0</inputmask.version>
         <jqueryui.version>1.13.1</jqueryui.version>
         <typeaheadjs.version>0.11.1</typeaheadjs.version>

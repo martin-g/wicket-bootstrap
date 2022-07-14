@@ -18,6 +18,9 @@
         <url>https://github.com/l0rdn1kk0n/wicket-bootstrap/issues</url>
     </issueManagement>
 
+    <properties>
+        <autoModuleName>wicket.bootstrap.core</autoModuleName>
+    </properties>
     <dependencies>
 
         <dependency>
