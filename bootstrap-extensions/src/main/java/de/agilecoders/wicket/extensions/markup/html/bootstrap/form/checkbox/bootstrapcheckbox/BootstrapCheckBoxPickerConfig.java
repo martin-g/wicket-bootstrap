@@ -18,8 +18,8 @@ public class BootstrapCheckBoxPickerConfig extends AbstractConfig {
     private static final IKey<String> 	BaseCls = 			newKey("baseCls", "btn");
     private static final IKey<String> 	GroupCls = 			newKey("groupCls", null);
     private static final IKey<String> 	Cls = 				newKey("cls", null);
-    private static final IKey<String> 	OffCls = 			newKey("offClass", "btn-default");
-    private static final IKey<String> 	OnCls = 			newKey("onClass", "btn-default");
+    private static final IKey<String> 	OffCls = 			newKey("offCls", "btn-default");
+    private static final IKey<String> 	OnCls = 			newKey("onCls", "btn-default");
     private static final IKey<String> 	OffActiveCls = 		newKey("offActiveCls", "btn-danger");
     private static final IKey<String> 	OnActiveCls = 		newKey("onActiveCls", "btn-success");
     private static final IKey<String> 	OffLabel= 			newKey("offLabel", "No");
