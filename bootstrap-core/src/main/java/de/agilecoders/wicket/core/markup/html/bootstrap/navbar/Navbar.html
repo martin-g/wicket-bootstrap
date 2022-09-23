@@ -4,28 +4,30 @@
     </head>
     <body>
         <wicket:panel>
-            <a wicket:id="brandName" class="navbar-brand" href="#">
-                <img wicket:id="brandImage"/>
-                <span wicket:id="brandLabel"></span>
-            </a>
+            <div wicket:id="container">
+                <a wicket:id="brandName" class="navbar-brand" href="#">
+                    <img wicket:id="brandImage"/>
+                    <span wicket:id="brandLabel"></span>
+                </a>
 
-            <button type="button" class="navbar-toggler" data-toggle="collapse" wicket:id="collapseButton">
-                <span class="navbar-toggler-icon"></span>
-                <span wicket:id="toggleNavigationLabel" class="sr-only">[[CONTENT]]</span>
-            </button>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" wicket:id="collapseButton">
+                    <span class="navbar-toggler-icon"></span>
+                    <span wicket:id="toggleNavigationLabel" class="sr-only">[[CONTENT]]</span>
+                </button>
 
-            <div class="collapse navbar-collapse" role="navigation" wicket:id="collapse">
-                <ul wicket:id="navLeftListEnclosure" class="navbar-nav mr-auto">
-                    <li wicket:id="navLeftList">
-                        <div wicket:id="component">[[CONTENT]]</div>
-                    </li>
-                </ul>
-                <ul wicket:id="navRightListEnclosure" class="navbar-nav ml-auto">
-                    <li wicket:id="navRightList">
-                        <div wicket:id="component">[[CONTENT]]</div>
-                    </li>
-                </ul>
-                <div wicket:id="extraItems"></div>
+                <div class="collapse navbar-collapse" role="navigation" wicket:id="collapse">
+                    <ul wicket:id="navLeftListEnclosure" class="navbar-nav mr-auto">
+                        <li wicket:id="navLeftList">
+                            <div wicket:id="component">[[CONTENT]]</div>
+                        </li>
+                    </ul>
+                    <ul wicket:id="navRightListEnclosure" class="navbar-nav ml-auto">
+                        <li wicket:id="navRightList">
+                            <div wicket:id="component">[[CONTENT]]</div>
+                        </li>
+                    </ul>
+                    <div wicket:id="extraItems"></div>
+                </div>
             </div>
         </wicket:panel>
     </body>
