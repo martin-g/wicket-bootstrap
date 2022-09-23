@@ -71,6 +71,8 @@ public class Carousel extends Panel {
 
         checkComponentTag(tag, "div");
         Attributes.addClass(tag, "carousel", "slide");
+        Attributes.set(tag, "data-bs-ride", "carousel");
+        Attributes.set(tag, "data-bs-interval", String.valueOf(getInterval().toMillis()));
     }
 
     /**
@@ -114,7 +116,7 @@ public class Carousel extends Panel {
      * @return new list view.
      */
     protected Component newImageList(String wicketId) {
-        return new ListView<>(wicketId, model) {
+        return new ListView<ICarouselImage>(wicketId, model) {
             private static final long serialVersionUID = 1L;
 
             @Override
@@ -185,15 +187,6 @@ public class Carousel extends Panel {
         }
 
         return header;
-    }
-
-    @Override
-    public void renderHead(IHeaderResponse response) {
-        super.renderHead(response);
-
-        response.render(OnDomReadyHeaderItem.forScript("$('#" + Strings2.getMarkupId(this) + "').carousel({\n"
-                                                       + "  interval: " + getInterval().toMillis() + "\n"
-                                                       + "})"));
     }
 
     /**
