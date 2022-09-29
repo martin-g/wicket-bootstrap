@@ -149,7 +149,6 @@ public class Carousel extends Panel {
     protected Component newImage(final String markupId, final ICarouselImage image) {
         final Label img = new Label(markupId);
         img.add(new AttributeModifier("src", image.url()));
-        img.add(new AttributeModifier("class", "d-block w-100"));
         return img;
     }
 
