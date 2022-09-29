@@ -2,6 +2,7 @@ package de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.ButtonList;
 
+import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.html.link.AbstractLink;
 import org.apache.wicket.model.IModel;
 
@@ -22,7 +23,6 @@ public class MenuHeader extends AbstractLink {
 
         setBody(label);
     }
-
     @Override
     protected void onComponentTag(final ComponentTag tag) {
         super.onComponentTag(tag);
