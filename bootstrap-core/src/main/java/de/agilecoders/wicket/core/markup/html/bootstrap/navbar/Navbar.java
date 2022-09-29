@@ -137,6 +137,7 @@ public class Navbar extends Panel implements Invertible<Navbar> {
     private final IModel<CollapseBreakpoint> collapseBreakpoint = Model.of(CollapseBreakpoint.Large);
     private final IModel<Position> position = Model.of(Position.DEFAULT);
     private final Component brandNameLink;
+    private final IModel<Boolean> fluid = Model.of(true);
     private final List<INavbarComponent> components = new ArrayList<>();
     private final RepeatingView extraItems;
 
@@ -160,6 +161,7 @@ public class Navbar extends Panel implements Invertible<Navbar> {
 
         BootstrapResourcesBehavior.addTo(this);
 
+        final TransparentWebMarkupContainer container = newContainer("container");
         final TransparentWebMarkupContainer collapse = newCollapseContainer("collapse");
         final TransparentWebMarkupContainer collapseButton = newCollapseButton("collapseButton", "#" + collapse.getMarkupId());
 
@@ -181,8 +183,51 @@ public class Navbar extends Panel implements Invertible<Navbar> {
         navRightListEnclosure.setRenderBodyOnly(false).setOutputMarkupPlaceholderTag(true);
         collapse.add(navLeftListEnclosure, navRightListEnclosure);
 
-        add(collapse, collapseButton, brandNameLink);
+        container.add(collapse, collapseButton, brandNameLink);
         collapseButton.add(newToggleNavigationLabel("toggleNavigationLabel"));
+        add(container);
+    }
+    
+    /**
+     * creates a new transparent inner container which is used to append some css classes.
+     *
+     * @param componentId
+     *            The non-null id of a new navigation component
+     * @return a new inner container of the navigation bar.
+     */
+    protected TransparentWebMarkupContainer newContainer(final String componentId) {
+        return new TransparentWebMarkupContainer(componentId) {
+            @Override
+            protected void onComponentTag(final ComponentTag tag) {
+                super.onComponentTag(tag);
+
+                Attributes.removeClass(tag, "container", "container-fluid");
+
+                if (isFluid()) {
+                    Attributes.addClass(tag, "container-fluid");
+                } else {
+                    Attributes.addClass(tag, "container");
+                }
+            }
+        };
+    }
+
+    /**
+     * @return true, if the navigation is rendered for a fluid page layout.
+     */
+    public boolean isFluid() {
+        return fluid.getObject();
+    }
+
+    /**
+     * marks the navigation to be rendered inside a fluid page layout.
+     *
+     * @return the component's current instance.
+     */
+    public Navbar fluid(boolean fluid) {
+        this.fluid.setObject(fluid);
+
+        return this;
     }
 
     @Override
