@@ -273,7 +273,7 @@ public abstract class DropDownButton extends AbstractLink implements Activatable
             protected void configureLink(AbstractLink link) {
                 super.configureLink(link);
 
-                if (!(link instanceof MenuDivider)) {
+                if (!(link instanceof MenuDivider) && !(link instanceof MenuHeader)) {
                     link.add(new CssClassNameAppender("dropdown-item"));
                 }
             }
