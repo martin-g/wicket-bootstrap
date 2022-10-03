@@ -1,6 +1,6 @@
 /*!
- * @copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2015
- * @version 1.5.4
+ * @copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2021
+ * @version 1.5.7
  *
  * An extended checkbox plugin for Bootstrap 3 that allows three states and additional styles.
  *
@@ -41,18 +41,11 @@
     cursor: pointer;
     font-weight: 400;
     margin: 0;
-    display: inline-block;
-    vertical-align: middle;
 }
 
 .cbx-label.disabled {
     cursor: not-allowed;
     opacity: .65;
-}
-
-.cbx-native input {
-    position: absolute;
-    margin: 5px;
 }
 
 label + .cbx-container, .cbx-container + label, .cbx-container + .cbx-container {
@@ -102,56 +95,19 @@ label + .cbx-block, .cbx-block + label, .cbx-block + .cbx-block, label .cbx-bloc
 
 .cbx-icon {
     position: absolute;
-    margin: 1px;;
+    margin: 1px;
     top: 0;
     left: 0;
     bottom: 0;
     right: 0;
 }
 
-.cbx-icon-null {
-    background-color: #333;
-}
-
-.has-error .cbx-icon-null {
-    background-color: #843534;
-}
-
-.has-success .cbx-icon-null {
-    background-color: #2b542c;
-}
-
-.has-warning .cbx-icon-null {
-    background-color: #66512c;
-}
-
-.cbx-xs .cbx-icon-null {
-    padding: 4px;
-    margin: 2px;
-}
-
-.cbx-sm .cbx-icon-null {
-    padding: 5px;
-    margin: 3px;
-}
-
-.cbx-md .cbx-icon-null {
-    padding: 6px;
-    margin: 4px;
-}
-
-.cbx-lg .cbx-icon-null {
-    padding: 8px;
-    margin: 5px;
-}
-
-.cbx-xl .cbx-icon-null {
-    padding: 10px;
-    margin: 6px;
-}
-
-.cbx-disabled .cbx-icon-null {
-    background-color: #aaa;
+.cbx-icon-krajee {
+    position: absolute;
+    top: 15%;
+    bottom: 15%;
+    left: 15%;
+    right: 15%;
 }
 
 .cbx-active {
@@ -165,10 +121,9 @@ label + .cbx-block, .cbx-block + label, .cbx-block + .cbx-block, label .cbx-bloc
 }
 
 .cbx-active:hover, .cbx-active:focus {
-    border-color: #66afe9;
+    border-color: #86b7fe;
     outline: 0;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+    box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 25%);
 }
 
 .cbx-disabled {
@@ -179,54 +134,45 @@ label + .cbx-block, .cbx-block + label, .cbx-block + .cbx-block, label .cbx-bloc
 }
 
 .has-success .cbx-active {
-    border-color: #3c763d;
-    color: #2b542c;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    border-color: #198754;
+    color: #198754;
 }
 
 .has-success .cbx-active:hover, .has-success .cbx-active:focus {
-    border-color: #2b542c;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #67b168;
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #67b168;
+    border-color: #198754;
+    box-shadow: 0 0 0 0.25rem rgb(25 135 84 / 25%);
 }
 
 .has-warning .cbx-active {
-    border-color: #8a6d3b;
-    color: #66512c;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    border-color: #ffc107;
+    color: #ffc107;
 }
 
 .has-warning .cbx-active:hover, .has-warning .cbx-active:focus {
-    border-color: #66512c;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #c0a16b;
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #c0a16b;
+    border-color: #ffc107;
+    box-shadow: 0 0 0 0.25rem rgb(255 193 7 / 25%);
 }
 
 .has-error .cbx-active {
-    border-color: #a94442;
-    color: #843534;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    border-color: #dc3545;
+    color: #dc3545;
 }
 
 .has-error .cbx-active:hover, .has-error .cbx-active:focus {
-    border-color: #843534;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #ce8483;
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #ce8483;
+    border-color: #dc3545;
+    box-shadow: 0 0 0 0.25rem rgb(220 53 69 / 25%);
 }
 
 .has-success .cbx-label {
-    color: #2b542c;
+    color: #198754;
 }
 
 .has-warning .cbx-label {
-    color: #66512c;
+    color: #ffc107;
 }
 
 .has-error .cbx-label {
-    color: #843534;
+    color: #dc3545;
 }
 
 .cbx-block {
@@ -236,4 +182,13 @@ label + .cbx-block, .cbx-block + label, .cbx-block + .cbx-block, label .cbx-bloc
 
 .cbx-block + .cbx-block {
     margin: 5px 0 0 0;
+}
+
+.cbx-krajee, .cbx-enclosed {
+    display: inline-flex;
+    align-items: center;
+}
+
+.cbx-krajee input[type=checkbox] {
+    margin: 3px 3px 0;
 }
