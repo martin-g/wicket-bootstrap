@@ -399,7 +399,7 @@ public class Navbar extends Panel implements Invertible<Navbar> {
     }
 
     /**
-     * creates a new transparent container which is used to append the "data-target" attribute to the collapse button.
+     * creates a new transparent container which is used to append the "data-bs-target" attribute to the collapse button.
      *
      * @param componentId The non-null id of collapse button
      * @param selector    non-null jquery selector to collapse
@@ -408,7 +408,7 @@ public class Navbar extends Panel implements Invertible<Navbar> {
     protected TransparentWebMarkupContainer newCollapseButton(String componentId, String selector) {
         TransparentWebMarkupContainer button = new TransparentWebMarkupContainer(componentId);
         Args.notNull(selector, "selector");
-        button.add(new AttributeModifier("data-target", selector));
+        button.add(new AttributeModifier("data-bs-target", selector));
         return button;
     }
 
@@ -421,7 +421,7 @@ public class Navbar extends Panel implements Invertible<Navbar> {
      */
     protected TransparentWebMarkupContainer newCollapseContainer(String componentId) {
         TransparentWebMarkupContainer collapse = new TransparentWebMarkupContainer(componentId);
-        collapse.setOutputMarkupId(true); // needed to put the "data-target" attribute of the collapse button
+        collapse.setOutputMarkupId(true); // needed to put the "data-bs-target" attribute of the collapse button
         return collapse;
     }
 
