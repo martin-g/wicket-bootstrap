@@ -32,7 +32,7 @@ public class SimpleCard extends BootstrapGenericPanel<String> {
 
     @Override
     protected Component newTopImage(String id, IModel<String> model) {
-        return new ExternalImage(id, "http://placehold.it/260x180");
+        return new ExternalImage(id, "https://via.placeholder.com/260x180");
     }
 
     private class Footer extends Panel {
