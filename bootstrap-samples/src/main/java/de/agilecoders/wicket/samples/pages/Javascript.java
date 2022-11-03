@@ -178,9 +178,9 @@ public class Javascript extends BasePage {
      */
     private Component newCarousel(String markupId) {
         final List<ICarouselImage> images = Lists.<ICarouselImage>newArrayList(
-            new CarouselImage("http://placehold.it/820x480", "Header 1", "Description 1"),
-            new CarouselImage("http://placehold.it/820x480", "Header 2"),
-            new CarouselImage("http://placehold.it/820x480")
+            new CarouselImage("https://via.placeholder.com/820x480", "Header 1", "Description 1"),
+            new CarouselImage("https://via.placeholder.com/820x480", "Header 2"),
+            new CarouselImage("https://via.placeholder.com/820x480")
         );
 
         return new Carousel(markupId, images);

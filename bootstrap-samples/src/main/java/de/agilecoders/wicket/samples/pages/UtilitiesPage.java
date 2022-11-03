@@ -137,7 +137,7 @@ public class UtilitiesPage extends BasePage {
             @Override
             protected void populateItem(ListItem<BorderBehavior.Radius> item) {
                 BorderBehavior.Radius radius = item.getModelObject();
-                ExternalImage img = new ExternalImage("border-radius", "http://placehold.it/260x180");
+                ExternalImage img = new ExternalImage("border-radius", "https://via.placeholder.com/260x180");
                 img.add(new BorderBehavior().radius(radius));
                 item.add(img);
             }
@@ -149,7 +149,7 @@ public class UtilitiesPage extends BasePage {
             "    @Override\n" +
             "    protected void populateItem(ListItem<BorderBehavior.Radius> item) {\n" +
             "        BorderBehavior.Radius radius = item.getModelObject();\n" +
-            "        ExternalImage img = new ExternalImage(\"border-radius\", \"http://placehold.it/260x180\");\n" +
+            "        ExternalImage img = new ExternalImage(\"border-radius\", \"https://via.placeholder.com/260x180\");\n" +
             "        img.add(new BorderBehavior().radius(radius));\n" +
             "        item.add(img);\n" +
             "    }\n" +
