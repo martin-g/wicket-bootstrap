@@ -2,7 +2,7 @@
 @import "bootstrap.united.variables.scss";
 
 
-// United 5.1.3
+// United 5.2.2
 // Bootswatch
 
 
@@ -11,6 +11,10 @@
 $web-font-path: "https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap" !default;
 @if $web-font-path {
   @import url($web-font-path);
+}
+
+:root {
+  color-scheme: light;
 }
 
 // Indicators

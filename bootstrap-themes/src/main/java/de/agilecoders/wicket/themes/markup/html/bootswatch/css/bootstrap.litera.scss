@@ -2,8 +2,15 @@
 @import "bootstrap.litera.variables.scss";
 
 
-// Litera 5.1.3
+// Litera 5.2.2
 // Bootswatch
+
+
+// Variables
+
+:root {
+  color-scheme: light;
+}
 
 // Navbar
 
@@ -43,8 +50,8 @@ footer {
 }
 
 .lead {
-  color: $gray-600;
   font-family: $font-family-sans-serif;
+  color: $gray-600;
 }
 
 // Tables
@@ -69,8 +76,8 @@ table,
 // Indicators
 
 .alert {
-  color: $white;
   font-size: $font-size-sm;
+  color: $white;
 
   &,
   p {
@@ -79,8 +86,8 @@ table,
 
   a,
   .alert-link {
-    color: $white;
     font-weight: 400;
+    color: $white;
     text-decoration: underline;
   }
 

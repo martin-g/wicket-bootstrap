@@ -46,6 +46,10 @@ target
 .classpath
 .settings
 
+# vscode
+###########################
+.vscode
+
 # structure101 #
 ################
 s101plugin.state

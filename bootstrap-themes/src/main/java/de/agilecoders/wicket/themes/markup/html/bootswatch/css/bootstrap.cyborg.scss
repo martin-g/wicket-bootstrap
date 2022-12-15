@@ -2,7 +2,7 @@
 @import "bootstrap.cyborg.variables.scss";
 
 
-// Cyborg 5.1.3
+// Cyborg 5.2.2
 // Bootswatch
 
 
@@ -11,6 +11,10 @@
 $web-font-path: "https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" !default;
 @if $web-font-path {
   @import url($web-font-path);
+}
+
+:root {
+  color-scheme: dark;
 }
 
 // Navbar
@@ -59,6 +63,7 @@ legend {
 }
 
 .form-control {
+  color-scheme: light;
   background-clip: border-box;
 
   &:disabled,
@@ -80,8 +85,8 @@ legend {
 
     &.disabled,
     &.disabled:hover {
-      background-color: transparent;
       color: $nav-link-disabled-color;
+      background-color: transparent;
     }
 
     &.active {
@@ -105,8 +110,8 @@ legend {
 // Indicators
 
 .alert {
-  border: none;
   color: $white;
+  border: none;
 
   a,
   .alert-link {

@@ -79,6 +79,7 @@ abstract class BasePage extends GenericWebPage<Void> {
         add(new Code("code-internal"));
 
         add(new HeaderResponseContainer("footer-container", "footer-container"));
+        add(new HeaderResponseContainer("scripts-container", "scripts"));
     }
 
     /**

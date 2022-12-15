@@ -364,25 +364,25 @@ function sanitizeHtml(unsafeHtml, allowList, sanitizeFn) {
     }
 
     // Overrides
-    isWithContent() {
+    _isWithContent() {
       return true;
     }
 
-    getTipElement() {
-        if (this.tip) {
-            this.setContent(this.tip)
-            return this.tip
-        }
+    _getTipElement() {
+      if (this.tip) {
+          this.setContent(this.tip)
+          return this.tip
+      }
 
-        const element = document.createElement('div')
-        element.innerHTML = this._config.template
+      const element = document.createElement('div')
+      element.innerHTML = this._config.template
 
-        const tip = element.children[0]
-        this.setContent(tip)
-        tip.classList.remove(ClassName.FADE, ClassName.SHOW)
+      const tip = element.children[0]
+      this.setContent(tip)
+      tip.classList.remove(ClassName.FADE, ClassName.SHOW)
 
-        this.tip = tip
-        return this.tip
+      this.tip = tip
+      return this.tip
     }
 
     setContent(__tip) {
@@ -394,7 +394,7 @@ function sanitizeHtml(unsafeHtml, allowList, sanitizeFn) {
         content = content.call(this._element);
       }
 
-      this.setElementContent($tip.find(Selector.TITLE).get(0), this.getTitle());
+      this.setElementContent($tip.find(Selector.TITLE).get(0), this._getTitle());
       $tip.find(Selector.CONTENT).toggle(!!content);
 
       if (content) {
@@ -667,7 +667,7 @@ function sanitizeHtml(unsafeHtml, allowList, sanitizeFn) {
         return;
       }
 
-      var $tip = $(this.getTipElement());
+      var $tip = $(this._getTipElement());
       var key = event.key || Keymap[event.keyCode || event.which];
       var $group = $tip.find(Selector.BUTTONS);
       var $active = $group.find('.active');

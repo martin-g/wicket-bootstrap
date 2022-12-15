@@ -2,7 +2,7 @@
 @import "bootstrap.darkly.variables.scss";
 
 
-// Darkly 5.1.3
+// Darkly 5.2.2
 // Bootswatch
 
 
@@ -11,6 +11,10 @@
 $web-font-path: "https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&display=swap" !default;
 @if $web-font-path {
   @import url($web-font-path);
+}
+
+:root {
+  color-scheme: dark;
 }
 
 // Typography
@@ -22,6 +26,10 @@ $web-font-path: "https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0
 }
 
 // Forms
+
+.form-control {
+  color-scheme: light;
+}
 
 .input-group-addon {
   color: $white;
@@ -59,8 +67,8 @@ $web-font-path: "https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0
 // Indicators
 
 .alert {
-  border: none;
   color: $white;
+  border: none;
 
   a,
   .alert-link {

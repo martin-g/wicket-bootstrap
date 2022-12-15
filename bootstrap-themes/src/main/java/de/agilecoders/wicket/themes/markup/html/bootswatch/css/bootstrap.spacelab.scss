@@ -2,7 +2,7 @@
 @import "bootstrap.spacelab.variables.scss";
 
 
-// Spacelab 5.1.3
+// Spacelab 5.2.2
 // Bootswatch
 
 
@@ -13,7 +13,11 @@ $web-font-path: "https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,
   @import url($web-font-path);
 }
 
-// Mixins =
+:root {
+  color-scheme: light;
+}
+
+// Mixins
 
 @mixin btn-shadow($color) {
   @include gradient-y-three-colors(tint-color($color, 24%), $color, 50%, shade-color($color, 8%));
