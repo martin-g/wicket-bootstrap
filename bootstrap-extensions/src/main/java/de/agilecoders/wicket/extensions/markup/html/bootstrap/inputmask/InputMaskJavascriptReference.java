@@ -28,7 +28,7 @@ public final class InputMaskJavascriptReference extends WebjarsJavaScriptResourc
      * Construct resource reference.
      */
     private InputMaskJavascriptReference() {
-        super("inputmask/current/dist/jquery.inputmask.bundle.js");
+        super("inputmask/current/dist/jquery.inputmask.js");
     }
 
     @Override

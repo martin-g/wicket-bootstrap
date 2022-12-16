@@ -16,14 +16,14 @@
     <properties>
         <autoModuleName>wicket.bootstrap.extensions</autoModuleName>
 
-        <inputmask.version>4.0.0</inputmask.version>
-        <jqueryui.version>1.13.1</jqueryui.version>
+        <inputmask.version>5.0.6</inputmask.version>
+        <jqueryui.version>1.13.2</jqueryui.version>
         <typeaheadjs.version>0.11.1</typeaheadjs.version>
         <x-editable.version>1.5.1-1</x-editable.version>
         <spin-js.version>2.1.0</spin-js.version>
         <animate.css.version>3.7.2</animate.css.version>
         <summernote.version>0.8.20</summernote.version>
-        <font-awesome.version>6.1.1</font-awesome.version>
+        <font-awesome.version>6.2.0</font-awesome.version>
     </properties>
 
     <dependencies>

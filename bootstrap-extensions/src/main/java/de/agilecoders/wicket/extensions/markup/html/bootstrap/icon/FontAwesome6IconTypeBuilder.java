@@ -11,7 +11,7 @@ import java.util.List;
  *  &lt;dependency&gt;<br/>
  *      &lt;groupId&gt;org.webjars&lt;/groupId&gt;<br/>
  *      &lt;artifactId&gt;font-awesome&lt;/artifactId&gt;<br/>
- *      &lt;version&gt;6.1.1&lt;/version&gt;<br/>
+ *      &lt;version&gt;6.2.0&lt;/version&gt;<br/>
  *  &lt;/dependency&gt;<br/>
  *
  *

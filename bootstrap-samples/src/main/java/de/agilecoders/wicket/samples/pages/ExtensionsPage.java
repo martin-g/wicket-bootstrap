@@ -54,6 +54,7 @@ import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesome6C
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.OpenWebIconType;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.OpenWebIconsCssReference;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.inputmask.InputMaskBehavior;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.inputmask.InputMaskConfig;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.jqueryui.JQueryUICssReference;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.spinner.SpinnerAjaxButton;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.spinner.SpinnerAjaxLink;
@@ -80,7 +81,11 @@ public class ExtensionsPage extends BasePage {
      */
     public ExtensionsPage(PageParameters parameters) {
         super(parameters);
+    }
 
+    @Override
+    protected void onInitialize() {
+        super.onInitialize();
         List<Html5Player.IVideo> videos = Lists.<Html5Player.IVideo> newArrayList(new Video(
             "https://archive.org/download/CopyingIsNotTheft/CINT_Nik_H264_720.ogv", "video/ogg"),
             new Video("https://archive.org/download/CopyingIsNotTheft/CINT_Nik_H264_720_512kb.mp4",
@@ -313,12 +318,12 @@ public class ExtensionsPage extends BasePage {
     }
 
     private void confirmationButton() {
-        Form form = new Form("confirmationForm");
+        Form<?> form = new Form<>("confirmationForm");
         add(form);
 
         final NotificationPanel feedback = new NotificationPanel("confirmationFeedback");
         feedback.setOutputMarkupId(true);
-        add(feedback);
+        form.add(feedback);
 
         AjaxButton confirmationButton = new AjaxButton("confirmationButton", Model.of("Button")) {
             private static final long serialVersionUID = 1L;
@@ -344,7 +349,8 @@ public class ExtensionsPage extends BasePage {
                 target.add(feedback);
             }
         };
-        confirmationLink.add(new ConfirmationBehavior(new ConfirmationConfig().withBtnCancelLabel("Reject")));
+        confirmationLink.add(new ConfirmationBehavior(new ConfirmationConfig()
+                .withBtnCancelLabel("Reject")));
 
         form.add(new Code(
             "linkCode",
@@ -365,16 +371,20 @@ public class ExtensionsPage extends BasePage {
         super.renderHead(response);
 
         response.render(CssHeaderItem.forReference(OpenWebIconsCssReference.instance()));
-		response.render(CssHeaderItem.forReference(FontAwesome6CssReference.instance()));
-
+        response.render(CssHeaderItem.forReference(FontAwesome6CssReference.instance()));
     }
 
     private void addInputMaskDemo() {
-        TextField<String> textField = new TextField<>("inputMask",
+        TextField<String> textField1 = new TextField<>("inputMask1",
                 Model.of("l0rdn1kk0n"));
-        InputMaskBehavior inputMask = new InputMaskBehavior("a9aaa9aa9a");
-        textField.add(inputMask);
-        add(textField);
+        textField1.add(new InputMaskBehavior("a9aaa9aa9a"));
+        add(textField1);
+
+        TextField<String> textField2 = new TextField<>("inputMask2", Model.of(""));
+        textField2.add(new InputMaskBehavior(new InputMaskConfig()
+                .mask("€ 999.999.999,99")
+                .showMaskOnFocus(true)));
+        add(textField2);
     }
 
     /**

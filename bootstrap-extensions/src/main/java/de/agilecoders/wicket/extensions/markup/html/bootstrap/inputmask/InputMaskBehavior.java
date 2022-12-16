@@ -1,12 +1,12 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.inputmask;
 
 import org.apache.wicket.Component;
-import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapJavascriptBehavior;
+import de.agilecoders.wicket.core.util.References;
 
 import static de.agilecoders.wicket.jquery.JQuery.$;
 
@@ -43,8 +43,7 @@ public class InputMaskBehavior extends BootstrapJavascriptBehavior {
     @Override
     public void renderHead(Component component, IHeaderResponse headerResponse) {
         super.renderHead(component, headerResponse);
-        headerResponse.render(CssHeaderItem.forReference(InputMaskCssReference.getInstance()));
-        headerResponse.render(JavaScriptHeaderItem.forReference(InputMaskJavascriptReference.getInstance()));
+        References.renderWithFilter(headerResponse, JavaScriptHeaderItem.forReference(InputMaskJavascriptReference.getInstance()));
         headerResponse.render(
                 OnDomReadyHeaderItem.forScript($(component).chain("inputmask", config).build())
         );
