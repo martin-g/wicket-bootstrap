@@ -148,10 +148,11 @@
                             <p>Add confirmation behavior for buttons and links with <a target="_blank" href="http://mistic100.github.io/Bootstrap-Confirmation/">Bootstrap-Confirmation</a>.</p>
 
                             <div class="bs-docs-example">
-                                <div wicket:id="confirmationFeedback"></div>
                                 <form wicket:id="confirmationForm">
-                                    <button wicket:id="confirmationButton" type="button" class="btn btn-primary btn-sm">Button</button> | <a wicket:id="confirmationLink" class="btn btn-info btn-sm">Link</a>
-                                    <br><br>
+                                    <button wicket:id="confirmationButton" type="button" class="btn btn-primary btn-sm">Button</button> | <a wicket:id="confirmationLink" class="btn btn-info btn-sm" data-btn-ok-class="btn btn-sm btn-danger">Link</a>
+                                    <br/>
+                                    <div wicket:id="confirmationFeedback"></div>
+                                    <br/>
                                     <pre wicket:id="linkCode"></pre>
                                 </form>
                             </div>

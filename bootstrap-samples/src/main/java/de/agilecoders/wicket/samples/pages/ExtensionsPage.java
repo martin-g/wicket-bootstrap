@@ -323,7 +323,7 @@ public class ExtensionsPage extends BasePage {
 
         final NotificationPanel feedback = new NotificationPanel("confirmationFeedback");
         feedback.setOutputMarkupId(true);
-        add(feedback);
+        form.add(feedback);
 
         AjaxButton confirmationButton = new AjaxButton("confirmationButton", Model.of("Button")) {
             private static final long serialVersionUID = 1L;
@@ -349,7 +349,8 @@ public class ExtensionsPage extends BasePage {
                 target.add(feedback);
             }
         };
-        confirmationLink.add(new ConfirmationBehavior(new ConfirmationConfig().withBtnCancelLabel("Reject")));
+        confirmationLink.add(new ConfirmationBehavior(new ConfirmationConfig()
+                .withBtnCancelLabel("Reject")));
 
         form.add(new Code(
             "linkCode",
