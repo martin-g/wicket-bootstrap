@@ -147,7 +147,7 @@ public class WicketApplication extends WebApplication {
             getResourceSettings().setCachingStrategy(new NoOpResourceCachingStrategy());
         }
 
-        getHeaderResponseDecorators().add(response -> new JavaScriptFilteredIntoFooterHeaderResponse(response, "scripts"));
+        getHeaderResponseDecorators().add(response -> new JavaScriptFilteredIntoFooterHeaderResponse(response, "footer-container"));
         getRequestCycleSettings().setRenderStrategy(RequestCycleSettings.RenderStrategy.ONE_PASS_RENDER);
     }
 
