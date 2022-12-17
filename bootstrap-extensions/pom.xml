@@ -24,6 +24,8 @@
         <animate.css.version>3.7.2</animate.css.version>
         <summernote.version>0.8.20</summernote.version>
         <font-awesome.version>6.2.0</font-awesome.version>
+        <momentjs.version>2.29.4</momentjs.version>
+        <tempusdominus.version>5.39.0</tempusdominus.version>
     </properties>
 
     <dependencies>
@@ -52,13 +54,13 @@
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>tempusdominus-bootstrap-4</artifactId>
-            <version>5.39.0</version>
+            <version>${tempusdominus.version}</version>
         </dependency>
 
         <dependency>
-            <groupId>org.webjars.bower</groupId>
+            <groupId>org.webjars</groupId>
             <artifactId>momentjs</artifactId>
-            <version>2.24.0</version>
+            <version>${momentjs.version}</version>
         </dependency>
 
         <dependency>
