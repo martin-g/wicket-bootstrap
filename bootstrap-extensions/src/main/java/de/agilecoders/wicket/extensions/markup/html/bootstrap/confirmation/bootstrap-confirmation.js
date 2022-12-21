@@ -201,10 +201,7 @@
      * @private
      */
     _getConfig(_config) {
-      const config = super._getConfig({
-        ...this.constructor.Default,
-        ...(typeof _config === 'object' && _config ? _config : {})
-      });
+      const config = super._getConfig(_config);
 
       const dataAttrs = $(this._element).data();
       Object.keys(dataAttrs).forEach(function (dataAttr) {
