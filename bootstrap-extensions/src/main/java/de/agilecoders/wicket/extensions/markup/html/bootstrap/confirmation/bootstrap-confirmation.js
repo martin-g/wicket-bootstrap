@@ -122,7 +122,10 @@
       if ((this.config.popout || this.config.singleton) && !this.config.rootSelector) {
         throw new Error('The rootSelector option is required to use popout and singleton features since jQuery 3.');
       } // keep trace of selectors
-      element.setAttribute('title', element.getAttribute('data-bs-original-title'));
+      const origTitle = element.getAttribute('data-bs-original-title');
+      if (origTitle) {
+        element.setAttribute('title', origTitle);
+      }
       element.setAttribute('data-bs-original-title', '');
 
 
@@ -169,6 +172,8 @@
         } else {
           this._setStandardButtons($tip);
         }
+        const hasBody = $tip.find('.popover-body').length > 0;
+        $tip.find('.confirmation-buttons').addClass(hasBody ? 'mb-2 ms-2 me-2' : 'm-2');
         this._setupKeyupEvent();
       }
       return this.tip;
@@ -181,7 +186,9 @@
       this._cleanKeyupEvent();
 
       if (this._element) {
+        const $e = $(this._element);
         super.dispose();
+        $e.data(DATA_KEY, null);
       }
     }
 
@@ -240,12 +247,17 @@
      * @private
      */
     _setConfirmationListeners() {
-      var self = this;
+      const self = this;
+      // preserve original jQuery listeners
+      const allListeners = $._data(this._element, 'events') || {};
+      const listeners = allListeners[this.config.trigger] ? [...allListeners[this.config.trigger]] : []
 
       if (!this.config.selector) {
         // cancel original event
-        $(this._element).on(this.config.trigger, function (e, ack) {
-          if (!ack) {
+        $(this._element).off().on(this.config.trigger, function (e, ack) {
+          if (ack === true) {
+            listeners.forEach(l => l.handler(e, ack));
+          } else {
             e.preventDefault();
             e.stopPropagation();
             e.stopImmediatePropagation();
@@ -263,7 +275,9 @@
       } else {
         // cancel original event
         $(this._element).on(this.config.trigger, this.config.selector, function (e, ack) {
-          if (!ack) {
+          if (ack === true) {
+            listeners.forEach(l => l.handler(e, ack));
+          } else {
             e.preventDefault();
             e.stopPropagation();
             e.stopImmediatePropagation();
@@ -454,7 +468,7 @@
 
         _config.rootSelector = $(this).selector || _config.rootSelector; // this.selector removed in jQuery > 3
 
-        if (!data && /destroy|hide/.test(config)) {
+        if (!data && /dispose|hide/.test(config)) {
           return;
         }
 

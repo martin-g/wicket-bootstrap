@@ -27,6 +27,7 @@ import org.wicketstuff.annotation.mount.MountPath;
 import com.google.common.collect.Lists;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.block.Code;
+import de.agilecoders.wicket.core.markup.html.bootstrap.button.BootstrapAjaxLink;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons;
 import de.agilecoders.wicket.core.markup.html.bootstrap.common.NotificationPanel;
 import de.agilecoders.wicket.core.markup.html.bootstrap.components.TooltipConfig;
@@ -51,6 +52,7 @@ import de.agilecoders.wicket.extensions.markup.html.bootstrap.html5player.Html5P
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.html5player.Html5VideoConfig;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.html5player.Video;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesome6CssReference;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesome6IconType;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.OpenWebIconType;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.OpenWebIconsCssReference;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.inputmask.InputMaskBehavior;
@@ -339,6 +341,7 @@ public class ExtensionsPage extends BasePage {
         confirmationButton.add(new ConfirmationBehavior(new ConfirmationConfig()
             .withTitle("My title?").withSingleton(true).withPopout(true).withBtnOkLabel("Confirm")
         ));
+        form.add(confirmationButton);
 
         AjaxLink<String> confirmationLink = new AjaxLink<>("confirmationLink", Model.of("Link")) {
             private static final long serialVersionUID = 1L;
@@ -351,7 +354,36 @@ public class ExtensionsPage extends BasePage {
         };
         confirmationLink.add(new ConfirmationBehavior(new ConfirmationConfig()
                 .withBtnCancelLabel("Reject")));
+        form.add(confirmationLink);
 
+        final String toggle = "Toggle ME! ";
+        BootstrapAjaxLink<Boolean> onTheFlyBtn = new BootstrapAjaxLink<>("confirmationOnTheFly", Model.of(false), Buttons.Type.Outline_Primary, Model.of(toggle + "Enable")) {
+            private static final long serialVersionUID = 1L;
+
+            @Override
+            public void onClick(AjaxRequestTarget target) {
+                final boolean newState = !Boolean.TRUE.equals(getModelObject());
+                if (newState) {
+                    info("Invoked DISABLED link's #onClick()!");
+                    add(new ConfirmationBehavior(new ConfirmationConfig()
+                            .withBtnCancelLabel("cancel")
+                            .withBtnOkLabel("ok")
+                            .withTitle("No doubts?")
+                            .withContent("Test")
+                            .withBtnOkClass("btn btn-sm btn-danger")
+                            .withBtnOkIconClass("fas fa-exclamation-triangle")));
+                } else {
+                    error("Invoked ENABLED link's #onClick()!");
+                    getBehaviors(ConfirmationBehavior.class).stream().forEach(b -> remove(b));
+                }
+                setModelObject(newState);
+                setLabel(Model.of(toggle + (newState ? "Disable" : "Enable")));
+                setIconType(newState ? FontAwesome6IconType.square_check_r : FontAwesome6IconType.square_r);
+                setType(newState ? Buttons.Type.Outline_Danger : Buttons.Type.Primary);
+                target.add(this, feedback);
+            }
+        };
+        form.add(onTheFlyBtn.setIconType(FontAwesome6IconType.square_r).setOutputMarkupId(true));
         form.add(new Code(
             "linkCode",
             Model.of("confirmationLink = new AjaxLink<String>(\"confirmationLink\", Model.of(\"Link\")) {\n"
@@ -362,8 +394,6 @@ public class ExtensionsPage extends BasePage {
                      + "};\n"
                      + "confirmationLink.add(new ConfirmationBehavior(new ConfirmationConfig().withBtnCancelLabel(\"Reject\")));\n"
             )));
-
-        form.add(confirmationButton, confirmationLink);
     }
 
     @Override

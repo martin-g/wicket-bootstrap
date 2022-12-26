@@ -17,6 +17,7 @@ public class ConfirmationConfig extends AbstractConfig {
     private static final long serialVersionUID = 1L;
     private static final IKey<String> Title = new Key<>("title", "Are you sure?");
     private static final IKey<String> Content = new Key<>("content", "");
+    private static final IKey<String> Container = new Key<>("container", "");
     private static final IKey<Boolean> Singleton = new Key<>("singleton", Boolean.FALSE);
     private static final IKey<Boolean> Popout = new Key<>("popout", Boolean.FALSE);
     private static final IKey<String> BtnOkClass = new Key<>("btnOkClass", "btn-xs btn-primary");
@@ -40,6 +41,11 @@ public class ConfirmationConfig extends AbstractConfig {
 
     public ConfirmationConfig withContent(String content) {
         put(Content, content);
+        return this;
+    }
+
+    public ConfirmationConfig withContainer(String container) {
+        put(Container, container);
         return this;
     }
 
