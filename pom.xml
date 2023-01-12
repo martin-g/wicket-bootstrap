@@ -9,7 +9,7 @@
 
     <groupId>de.agilecoders.wicket</groupId>
     <artifactId>bootstrap-parent</artifactId>
-    <version>6.0.1-SNAPSHOT</version>
+    <version>7.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>bootstrap-parent</name>
 
@@ -39,15 +39,15 @@
 
     <properties>
         <github.global.server>github</github.global.server>
-        <java.version>11</java.version>
+        <java.version>17</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.java.source>${java.version}</maven.java.source>
         <maven.java.target>${java.version}</maven.java.target>
         <autoModuleName>wicket.bootstrap.parent</autoModuleName>
 
         <bootstrap.version>5.2.3</bootstrap.version>
-        <wicket-webjars.version>3.0.6</wicket-webjars.version>
-        <wicket-jquery-selectors.version>3.0.4</wicket-jquery-selectors.version>
+        <wicket-webjars.version>4.0.0-SNAPSHOT</wicket-webjars.version>
+        <wicket-jquery-selectors.version>4.0.0-SNAPSHOT</wicket-jquery-selectors.version>
 
         <enforcer.disable>true</enforcer.disable>
         <pmd.disable>true</pmd.disable>
@@ -62,22 +62,21 @@
         <doxia.version>1.0</doxia.version>
         <!-- Note: closure-compiler -unshaded v20200920 (until at least v20210907) contains gson -->
         <google-closure.version>v20200830</google-closure.version>
-        <javax.javaee-web-api.version>7.0</javax.javaee-web-api.version>
-        <jetty.version>9.4.50.v20221201</jetty.version>
+        <jetty.version>11.0.13</jetty.version>
         <joda-time.version>2.12.2</joda-time.version>
         <jquerypp.version>1.0.1</jquerypp.version>
-        <jquery.version>3.6.1</jquery.version>
-        <junit-jupiter.version>5.9.1</junit-jupiter.version>
-        <junit-platform.version>1.9.1</junit-platform.version>
+        <jquery.version>3.6.3</jquery.version>
+        <junit-jupiter.version>5.9.2</junit-jupiter.version>
+        <junit-platform.version>1.9.2</junit-platform.version>
         <jsass.version>5.10.4</jsass.version>
         <hamcrest.version>2.2</hamcrest.version>
         <logback.version>1.2.10</logback.version>
         <modernizr.version>2.8.3-1</modernizr.version>
-        <mockito.version>4.10.0</mockito.version>
-        <servlet-api.version>3.1.0</servlet-api.version>
+        <mockito.version>4.11.0</mockito.version>
+        <jakarta.servlet-api.version>6.0.0</jakarta.servlet-api.version>
         <slf4j.version>2.0.6</slf4j.version>
-        <wicket.version>9.12.0</wicket.version>
-        <wicketstuff.version>9.12.0</wicketstuff.version>
+        <wicket.version>10.0.0-M1-SNAPSHOT</wicket.version>
+        <wicketstuff.version>10.0.0-SNAPSHOT</wicketstuff.version>
         <yuicompressor.version>2.4.8</yuicompressor.version>
 
         <maven-bundle-plugin.version>5.1.8</maven-bundle-plugin.version>
@@ -112,6 +111,7 @@
         <maven-scm-plugin.version>1.11.2</maven-scm-plugin.version>
         <maven-scm-publish-plugin.version>3.0.0</maven-scm-publish-plugin.version>
         <maven-source-plugin.version>3.2.1</maven-source-plugin.version>
+        <maven-war-plugin.version>3.3.2</maven-war-plugin.version>
         <versions-maven-plugin.version>2.14.0</versions-maven-plugin.version>
 
     </properties>
@@ -229,12 +229,6 @@
             </dependency>
 
             <dependency>
-                <groupId>javax</groupId>
-                <artifactId>javaee-web-api</artifactId>
-                <version>${javax.javaee-web-api.version}</version>
-            </dependency>
-
-            <dependency>
                 <groupId>org.kohsuke</groupId>
                 <artifactId>doxia-module-markdown</artifactId>
                 <version>${doxia.version}</version>
@@ -247,9 +241,9 @@
             </dependency>
 
             <dependency>
-                <groupId>javax.servlet</groupId>
-                <artifactId>javax.servlet-api</artifactId>
-                <version>${servlet-api.version}</version>
+                <groupId>jakarta.servlet</groupId>
+                <artifactId>jakarta.servlet-api</artifactId>
+                <version>${jakarta.servlet-api.version}</version>
                 <scope>provided</scope>
             </dependency>
 
@@ -495,6 +489,11 @@
                             <Automatic-Module-Name>${autoModuleName}</Automatic-Module-Name>
                         </instructions>
                     </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <version>${maven-war-plugin.version}</version>
                 </plugin>
             </plugins>
         </pluginManagement>

@@ -7,7 +7,6 @@ import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AbstractDefaultAjaxBehavior;
 import org.apache.wicket.ajax.AjaxRequestHandler;
 import org.apache.wicket.ajax.AjaxRequestTarget;
-import org.apache.wicket.ajax.AjaxRequestTarget.IJavaScriptResponse;
 import org.apache.wicket.ajax.attributes.AjaxRequestAttributes;
 import org.apache.wicket.event.IEvent;
 import org.apache.wicket.markup.ComponentTag;
@@ -122,9 +121,9 @@ public class ColorPickerTextField extends TextField<String> {
             final AjaxRequestHandler target = (AjaxRequestHandler) event.getPayload();
             target.addListener(new AjaxRequestTarget.IListener() {
                 @Override
-                public void onAfterRespond(Map<String, Component> map, IJavaScriptResponse response) {
+                public void onAfterRespond(Map<String, Component> map, AjaxRequestTarget response) {
                     if (isEnabledInHierarchy() && !wasEnhanced) {
-                        response.addJavaScript(createScript(config));
+                        response.appendJavaScript(createScript(config));
                         wasEnhanced = true;
                     } else if (!isEnabledInHierarchy()) {
                         // we need to enhance again when/if this component is enabled later
