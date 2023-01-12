@@ -187,7 +187,7 @@ public class Navbar extends Panel implements Invertible<Navbar> {
         collapseButton.add(newToggleNavigationLabel("toggleNavigationLabel"));
         add(container);
     }
-    
+
     /**
      * creates a new transparent inner container which is used to append some css classes.
      *
@@ -218,7 +218,7 @@ public class Navbar extends Panel implements Invertible<Navbar> {
     public boolean isFluid() {
         return fluid.getObject();
     }
-    
+
     /**
      * marks the navigation to be rendered inside a fluid page layout.
      *
@@ -285,6 +285,7 @@ public class Navbar extends Panel implements Invertible<Navbar> {
                 Component component = components.getModelObject();
                 components.add(new CssClassNameAppender("nav-item"));
                 components.add(component);
+                component.add(new CssClassNameAppender("nav-link"));
 
                 Behaviors.remove(components, activeStateAppender);
 
