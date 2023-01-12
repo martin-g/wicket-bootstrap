@@ -30,7 +30,7 @@ class DropDownButtonTest extends WicketApplicationTest {
         tester().startComponentInPage(newDropDownButton().setAlignment(DropDownAlignmentBehavior.Alignment.RIGHT));
         final TagTester tag = tester().getTagByWicketId("dropdown-menu");
 
-        assertCssClass(tag, "dropdown-menu", "dropdown-menu-right");
+        assertCssClass(tag, "dropdown-menu", "dropdown-menu-end");
     }
 
     @Test
@@ -46,7 +46,7 @@ class DropDownButtonTest extends WicketApplicationTest {
         tester().startComponentInPage(newSplitButton().setAlignment(DropDownAlignmentBehavior.Alignment.RIGHT));
         final TagTester tag = tester().getTagByWicketId("dropdown-menu");
 
-        assertCssClass(tag, "dropdown-menu", "dropdown-menu-right");
+        assertCssClass(tag, "dropdown-menu", "dropdown-menu-end");
     }
 
     private DropDownButton newSplitButton() {
@@ -74,7 +74,7 @@ class DropDownButtonTest extends WicketApplicationTest {
         };
     }
 
-    private BootstrapLink getDummyLink(final String buttonMarkupId) {
+    private BootstrapLink<Void> getDummyLink(final String buttonMarkupId) {
         return new BootstrapLink<Void>(buttonMarkupId, Buttons.Type.Menu) {
 
             @Override
