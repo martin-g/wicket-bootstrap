@@ -20,6 +20,7 @@ import com.google.common.collect.Lists;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.BootstrapAjaxLink;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons;
+import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.DropDownAlignmentBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.DropDownButton;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.MenuBookmarkablePageLink;
 import de.agilecoders.wicket.core.markup.html.bootstrap.carousel.Carousel;
@@ -204,7 +205,8 @@ public class Javascript extends BasePage {
 
                 return subMenu;
             }
-        };
+        }.setAlignment(DropDownAlignmentBehavior.Alignment.right(DropDownAlignmentBehavior.Size.LARGE),
+                DropDownAlignmentBehavior.Alignment.left());
     }
 
 
