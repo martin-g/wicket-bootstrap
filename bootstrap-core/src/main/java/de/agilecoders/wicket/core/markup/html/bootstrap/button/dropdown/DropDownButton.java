@@ -312,7 +312,7 @@ public abstract class DropDownButton extends AbstractLink implements Activatable
      * @param alignment The alignment of the button
      * @return this instance for chaining
      */
-    public DropDownButton setAlignment(final DropDownAlignmentBehavior.Alignment alignment) {
+    public DropDownButton setAlignment(final DropDownAlignmentBehavior.Alignment... alignment) {
         getDropDownAlignment().setAlignment(alignment);
         return this;
     }
