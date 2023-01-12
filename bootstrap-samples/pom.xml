@@ -5,7 +5,7 @@
     <parent>
         <groupId>de.agilecoders.wicket</groupId>
         <artifactId>bootstrap-parent</artifactId>
-        <version>6.0.1-SNAPSHOT</version>
+        <version>7.0.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
@@ -152,8 +152,8 @@
                             net.sf.cglib.proxy;version="[2,3)",
                             net.sf.cglib.core;version="[2,3)",
                             net.sf.cglib.reflect;version="[2,3)",
-                            javax.servlet;version="2.5.0",
-                            javax.servlet.http;version="2.5.0",
+                            jakarta.servlet;version="6.0.0",
+                            jakarta.servlet.http;version="6.0.0",
                             org.osgi.framework,
                             org.slf4j,
                             org.apache.wicket,

@@ -8,7 +8,7 @@ import org.apache.wicket.util.io.IOUtils;
 import org.apache.wicket.util.io.Streams;
 import org.apache.wicket.util.resource.ResourceStreamNotFoundException;
 
-import javax.servlet.ServletContext;
+import jakarta.servlet.ServletContext;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
