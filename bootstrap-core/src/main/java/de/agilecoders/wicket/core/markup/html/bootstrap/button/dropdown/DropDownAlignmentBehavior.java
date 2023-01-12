@@ -61,7 +61,7 @@ public class DropDownAlignmentBehavior extends BootstrapBaseBehavior {
     public static class Alignment implements ICssClassNameProvider {
         private static final String CLASS_RIGHT = "end";
         private static final String CLASS_LEFT = "start";
-        public static final Alignment RIGHT = new Alignment(CLASS_RIGHT);
+        public static final Alignment RIGHT = right();
         public static final Alignment NONE = new Alignment("");
 
         private final String className;
