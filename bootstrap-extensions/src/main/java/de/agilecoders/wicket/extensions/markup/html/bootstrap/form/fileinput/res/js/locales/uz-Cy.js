@@ -7,10 +7,21 @@
  * @see http://github.com/kartik-v/bootstrap-fileinput
  * @author CyanoFresh <cyanofresh@gmail.com>
  */
-(function ($) {
+(function (factory) {
+    'use strict';
+    if (typeof define === 'function' && define.amd) {
+        define(['jquery'], factory);
+    } else if (typeof module === 'object' && typeof module.exports === 'object') {
+        factory(require('jquery'));
+    } else {
+        factory(window.jQuery);
+    }
+}(function ($) {
     "use strict";
 
     $.fn.fileinputLocales['uz-cyrl'] = {
+        sizeUnits: ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'], 
+        bitRateUnits: ['B/s', 'KB/s', 'MB/s', 'GB/s', 'TB/s', 'PB/s', 'EB/s', 'ZB/s', 'YB/s'],
         fileSingle: 'файл',
         filePlural: 'файллар',
         browseLabel: 'Танлаш &hellip;',
@@ -29,8 +40,8 @@
         msgPlaceholder: '{files} танлаш ...',
         msgZoomModalHeading: 'Батафсил кўриб чиқиш',
         msgFileRequired: 'Юклаш учун файлни танлашингиз керак.',
-        msgSizeTooSmall: 'Сиз танлаган файл ҳажми:"{name}" (<b>{size} KB</b>). Танланган файл ҳажми <b>{minSize} KB</b> дан катта бўлиши лозим. Кўрсатилган ҳажмдан каттароқ файл юклашга уриниб кўринг',
-        msgSizeTooLarge: '"{name}" файл (<b>{size} KB</b>) рухсат этилган максимал юклаш ҳажм: <b>{maxSize} KB</b> дан катта. Кичикроқ файл юклашга уриниб кўринг!',
+        msgSizeTooSmall: 'Сиз танлаган файл ҳажми:"{name}" (<b>{size}</b>). Танланган файл ҳажми <b>{minSize}</b> дан катта бўлиши лозим. Кўрсатилган ҳажмдан каттароқ файл юклашга уриниб кўринг',
+        msgSizeTooLarge: '"{name}" файл (<b>{size}</b>) рухсат этилган максимал юклаш ҳажм: <b>{maxSize}</b> дан катта. Кичикроқ файл юклашга уриниб кўринг!',
         msgFilesTooLess: 'Yuklash uchun kamida <b>{n}</b> {files} tanlashingiz kerak. Yuklashga qaytadan urinib ko‘ring!',
         msgFilesTooMany: 'Сиз танлаган файллар миқдори : <b>({n})</b>, рухсат берилган максимал миқдор: <b>{m}</b> тадан ортиқ. Кўрсатилган миқдордан камроқ файл танлаб, юклашга қайтадан уриниб кўринг!',
         msgTotalFilesTooMany: 'Сиз максимум <b>{m}</b> та файл юклай оласиз (<b>{n}</b> та файл топилди).',
@@ -65,16 +76,17 @@
         msgLoading: '{Files} дан {index} файлини юклаш &hellip;',
         msgProgress: '{Files} дан {index}{name} файлини юклашда  - {percent}% тугалланди.',
         msgSelected: '{n} {files} танланган',
+        msgProcessing: 'Processing ...',
         msgFoldersNotAllowed: 'Фақат тортиб қўйиладон файллар! {n} та папка(lar) ўтказиб юборилди.',
-        msgImageWidthSmall: '"{name}" файл эни камида {size} px бўлиши лозим.',
-        msgImageHeightSmall: '"{name}" файл бўйи камида {size} px бўлиши лозим.',
-        msgImageWidthLarge: '"{name}" файл эни {size} px дан ошмаслиги лозим.',
-        msgImageHeightLarge: '"{name}" файл бўйи {size} px дан ошмаслиги лозим.',
+        msgImageWidthSmall: '"{name}" файл эни камида <b>{size} px</b> (detected <b>{dimension} px</b>) бўлиши лозим.',
+        msgImageHeightSmall: '"{name}" файл бўйи камида <b>{size} px</b> (detected <b>{dimension} px</b>) бўлиши лозим.',
+        msgImageWidthLarge: '"{name}" файл эни <b>{size} px</b> (detected <b>{dimension} px</b>) дан ошмаслиги лозим.',
+        msgImageHeightLarge: '"{name}" файл бўйи <b>{size} px</b> (detected <b>{dimension} px</b>) дан ошмаслиги лозим.',
         msgImageResizeError: 'Расм ўлчамини ўзгартириб бўлмади.',
         msgImageResizeException: 'Расм ҳажмини ўзгартиришда хато.<pre>{errors}</pre>',
         msgAjaxError: '{operation} амалиётида хатолик юз берди. Илтимос кейинроқ қайта уриниб кўринг!',
         msgAjaxProgressError: '{operation} бажарилмади',
-        msgDuplicateFile: '"{name}" номли "{size} KB" ҳажмдаги файл олдин танланган. Бошқа файлни танлашга уриниб кўринг.',
+        msgDuplicateFile: '"{name}" номли "{size}" ҳажмдаги файл олдин танланган. Бошқа файлни танлашга уриниб кўринг.',
         msgResumableUploadRetriesExceeded:  '<b>{file}</b> файлини юклаш учун <b>{max}</b> марта уриниш бекор қилинди! Хато тафсилотлари: <pre>{error}</pre>',
         msgPendingTime: '{time} қолган',
         msgCalculatingTime: 'қолган вақтни ҳисоблаш',
@@ -91,6 +103,7 @@
             uploadTitle: 'Файлни юклаш',
             uploadRetryTitle: 'Қайта уруниш',
             downloadTitle: 'Файлни юклаб олиш',
+            rotateTitle: 'Rotate 90 deg. clockwise',
             zoomTitle: 'Тафсилотларни кўриш',
             dragTitle: 'Кўчириш / қайта тартиблаш',
             indicatorNewTitle: 'Ҳали юкланмади',
@@ -102,10 +115,11 @@
         previewZoomButtonTitles: {
             prev: 'Олдинги файлни кўриш',
             next: 'Кейинги файлни кўриш',
+            rotate: 'Rotate 90 deg. clockwise',
             toggleheader: 'Сарлавҳани яшириш',
             fullscreen: 'Тўлиқ экранга ўтиш',
             borderless: 'Чегарасиз режимга ўтиш',
             close: 'Батафсил кўришни ёпиш'
         }
     };
-})(window.jQuery);
+}));
