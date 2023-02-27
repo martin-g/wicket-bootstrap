@@ -21,7 +21,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>io.bit3</groupId>
+            <groupId>ua.kasta</groupId>
             <artifactId>jsass</artifactId>
             <version>${jsass.version}</version>
         </dependency>
