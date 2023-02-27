@@ -9,10 +9,21 @@
  *
  * NOTE: this file must be saved in UTF-8 encoding.
  */
-(function ($) {
+(function (factory) {
+    'use strict';
+    if (typeof define === 'function' && define.amd) {
+        define(['jquery'], factory);
+    } else if (typeof module === 'object' && typeof module.exports === 'object') {
+        factory(require('jquery'));
+    } else {
+        factory(window.jQuery);
+    }
+}(function ($) {
     "use strict";
 
     $.fn.fileinputLocales['uk'] = {
+        sizeUnits: ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'], 
+        bitRateUnits: ['B/s', 'KB/s', 'MB/s', 'GB/s', 'TB/s', 'PB/s', 'EB/s', 'ZB/s', 'YB/s'],
         fileSingle: 'файл',
         filePlural: 'файли',
         browseLabel: 'Обрати &hellip;',
@@ -31,8 +42,8 @@
         msgPlaceholder: 'Оберіть {files} ...',
         msgZoomModalHeading: 'Детальний перегляд',
         msgFileRequired: 'Ви повинні обрати файл для завантаження.',
-        msgSizeTooSmall: 'Файл "{name}" (<b>{size} KB</b>) занадто малий і повинен бути більший, ніж <b>{minSize} KB</b>.',
-        msgSizeTooLarge: 'Файл "{name}" (<b>{size} KB</b>) перевищує максимальний розмір <b>{maxSize} KB</b>.',
+        msgSizeTooSmall: 'Файл "{name}" (<b>{size}</b>) занадто малий і повинен бути більший, ніж <b>{minSize}</b>.',
+        msgSizeTooLarge: 'Файл "{name}" (<b>{size}</b>) перевищує максимальний розмір <b>{maxSize}</b>.',
         msgFilesTooLess: 'Ви повинні обрати як мінімум <b>{n}</b> {files} для відвантаження.',
         msgFilesTooMany: 'Кількість обраних файлів <b>({n})</b> перевищує максимально допустиму кількість <b>{m}</b>.',
         msgTotalFilesTooMany: 'Ви можете відвантажити максимум <b>{m}</b> файл(ів) (<b>{n}</b> файл(ів) обрано).',
@@ -67,16 +78,17 @@
         msgLoading: 'Відвантаження файла {index} із {files} &hellip;',
         msgProgress: 'Відвантаження файла {index} із {files} - {name} - {percent}% завершено.',
         msgSelected: '{n} {files} обрано',
+        msgProcessing: 'Processing ...',
         msgFoldersNotAllowed: 'Дозволено перетягувати тільки файли! Пропущено {n} тек.',
-        msgImageWidthSmall: 'Ширина зображення "{name}" повинна бути не менше {size} px.',
-        msgImageHeightSmall: 'Висота зображення "{name}" повинна бути не менше {size} px.',
-        msgImageWidthLarge: 'Ширина зображення "{name}" не може перевищувати {size} px.',
-        msgImageHeightLarge: 'Висота зображення "{name}" не може перевищувати {size} px.',
+        msgImageWidthSmall: 'Ширина зображення "{name}" повинна бути не менше <b>{size} px</b> (detected <b>{dimension} px</b>).',
+        msgImageHeightSmall: 'Висота зображення "{name}" повинна бути не менше <b>{size} px</b> (detected <b>{dimension} px</b>).',
+        msgImageWidthLarge: 'Ширина зображення "{name}" не може перевищувати <b>{size} px</b> (detected <b>{dimension} px</b>).',
+        msgImageHeightLarge: 'Висота зображення "{name}" не може перевищувати <b>{size} px</b> (detected <b>{dimension} px</b>).',
         msgImageResizeError: 'Не вдалося отримати розміри зображення, щоб змінити розмір.',
         msgImageResizeException: 'Помилка при зміні розміру зображення.<pre>{errors}</pre>',
         msgAjaxError: 'Щось не так з операцією {operation}. Будь ласка, спробуйте пізніше!',
         msgAjaxProgressError: 'помилка {operation}',
-        msgDuplicateFile: 'Файл "{name}" з розміром "{size} KB" вже був обраний раніше. Пропуск повторюваного вибору.',
+        msgDuplicateFile: 'Файл "{name}" з розміром "{size}" вже був обраний раніше. Пропуск повторюваного вибору.',
         msgResumableUploadRetriesExceeded:  'Відвантаження перерване після <b>{max}</b> спроб для файлу <b>{file}</b>! Інформація про помилку: <pre>{error}</pre>',
         msgPendingTime: '{time} залишилося',
         msgCalculatingTime: 'розрахунок часу, який залишився',
@@ -93,6 +105,7 @@
             uploadTitle: 'Відвантажити файл',
             uploadRetryTitle: 'Повторити відвантаження',
             downloadTitle: 'Завантажити файл',
+            rotateTitle: 'Rotate 90 deg. clockwise',
             zoomTitle: 'Подивитися деталі',
             dragTitle: 'Перенести / Переставити',
             indicatorNewTitle: 'Ще не відвантажено',
@@ -104,10 +117,11 @@
         previewZoomButtonTitles: {
             prev: 'Переглянути попередній файл',
             next: 'Переглянути наступний файл',
+            rotate: 'Rotate 90 deg. clockwise',
             toggleheader: 'Перемкнути заголовок',
             fullscreen: 'Перемкнути повноекранний режим',
             borderless: 'Перемкнути режим без полів',
             close: 'Закрити детальний перегляд'
         }
     };
-})(window.jQuery);
+}));
