@@ -1,12 +1,12 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.form.select;
 
-import org.apache.wicket.resource.JQueryPluginResourceReference;
+import de.agilecoders.wicket.webjars.request.resource.WebjarsJavaScriptResourceReference;
 
 /**
  * @author Alexey Volkov
  * @since 02.11.14
  */
-public class SelectJSReference extends JQueryPluginResourceReference {
+public class SelectJSReference extends WebjarsJavaScriptResourceReference {
 
     private static final long serialVersionUID = 1L;
 
@@ -26,6 +26,6 @@ public class SelectJSReference extends JQueryPluginResourceReference {
      * Private constructor.
      */
     private SelectJSReference() {
-        super(SelectJSReference.class, "js/bootstrap-select.js");
+        super("bootstrap-select/current/dist/js/bootstrap-select.js");
     }
 }
