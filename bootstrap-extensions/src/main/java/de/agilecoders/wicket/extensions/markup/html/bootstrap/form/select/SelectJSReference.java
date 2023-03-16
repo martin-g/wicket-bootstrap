@@ -26,6 +26,6 @@ public class SelectJSReference extends WebjarsJavaScriptResourceReference {
      * Private constructor.
      */
     private SelectJSReference() {
-        super("bootstrap-select/current/dist/js/bootstrap-select.js");
+        super("bootstrap-select/current/dist/js/bootstrap-select.min.js");
     }
 }
