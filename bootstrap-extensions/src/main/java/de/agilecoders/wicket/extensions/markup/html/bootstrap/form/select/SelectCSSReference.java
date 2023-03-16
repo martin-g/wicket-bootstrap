@@ -1,6 +1,6 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.form.select;
 
-import org.apache.wicket.request.resource.CssResourceReference;
+import de.agilecoders.wicket.webjars.request.resource.WebjarsCssResourceReference;
 
 /**
  * Bootstrap select css reference
@@ -8,7 +8,7 @@ import org.apache.wicket.request.resource.CssResourceReference;
  * @author Alexey Volkov
  * @since 02.11.14
  */
-public class SelectCSSReference extends CssResourceReference {
+public class SelectCSSReference extends WebjarsCssResourceReference {
 
     private static final long serialVersionUID = 1L;
 
@@ -25,6 +25,6 @@ public class SelectCSSReference extends CssResourceReference {
     }
 
     private SelectCSSReference() {
-        super(BootstrapSelectBehavior.class, "css/bootstrap-select.css");
+        super("bootstrap-select/current/dist/css/bootstrap-select.min.css");
     }
 }
