@@ -60,6 +60,7 @@ public class IssuesPage extends BasePage {
 
 
         add(new NotificationPanel("feedback").hideAfter(Duration.ofSeconds(5L)));
+        info("Feedback for you!");
 
         // issue #80
         add(new ParentNavbar("navbar-parent"),
