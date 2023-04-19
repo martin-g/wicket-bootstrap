@@ -46,8 +46,8 @@
         <autoModuleName>wicket.bootstrap.parent</autoModuleName>
 
         <bootstrap.version>5.2.3</bootstrap.version>
-        <wicket-webjars.version>3.0.6</wicket-webjars.version>
-        <wicket-jquery-selectors.version>3.0.4</wicket-jquery-selectors.version>
+        <wicket-webjars.version>3.0.7</wicket-webjars.version>
+        <wicket-jquery-selectors.version>3.0.5</wicket-jquery-selectors.version>
 
         <enforcer.disable>true</enforcer.disable>
         <pmd.disable>true</pmd.disable>
