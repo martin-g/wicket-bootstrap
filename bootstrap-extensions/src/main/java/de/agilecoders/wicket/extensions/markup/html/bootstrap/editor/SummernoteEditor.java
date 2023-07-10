@@ -10,13 +10,13 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
-import org.apache.commons.fileupload2.FileItem;
-import org.apache.commons.fileupload2.FileUploadException;
 import org.apache.wicket.Application;
 import org.apache.wicket.WicketRuntimeException;
 import org.apache.wicket.ajax.AbstractDefaultAjaxBehavior;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.attributes.AjaxRequestAttributes;
+import org.apache.wicket.commons.fileupload2.FileItem;
+import org.apache.wicket.commons.fileupload2.FileUploadException;
 import org.apache.wicket.core.util.string.JavaScriptUtils;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.MarkupStream;
@@ -133,7 +133,7 @@ public class SummernoteEditor extends FormComponent<String> {
      * @param fileItemsMap
      *            a map with the image name and the list of file items (the image)
      */
-    protected void onImageUpload(AjaxRequestTarget target, Map<String,FileItem> fileItemsMap) {
+    protected void onImageUpload(AjaxRequestTarget target, Map<String, FileItem> fileItemsMap) {
         // NOOP
     }
 

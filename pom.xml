@@ -46,8 +46,8 @@
         <autoModuleName>wicket.bootstrap.parent</autoModuleName>
 
         <bootstrap.version>5.2.3</bootstrap.version>
-        <wicket-webjars.version>4.0.0-SNAPSHOT</wicket-webjars.version>
-        <wicket-jquery-selectors.version>4.0.0-SNAPSHOT</wicket-jquery-selectors.version>
+        <wicket-webjars.version>4.0.0</wicket-webjars.version>
+        <wicket-jquery-selectors.version>4.0.0</wicket-jquery-selectors.version>
 
         <enforcer.disable>true</enforcer.disable>
         <pmd.disable>true</pmd.disable>
@@ -75,8 +75,8 @@
         <mockito.version>4.11.0</mockito.version>
         <jakarta.servlet-api.version>6.0.0</jakarta.servlet-api.version>
         <slf4j.version>2.0.6</slf4j.version>
-        <wicket.version>10.0.0-M1-SNAPSHOT</wicket.version>
-        <wicketstuff.version>10.0.0-SNAPSHOT</wicketstuff.version>
+        <wicket.version>10.0.0-M1</wicket.version>
+        <wicketstuff.version>10.0.0-M1</wicketstuff.version>
         <yuicompressor.version>2.4.8</yuicompressor.version>
 
         <maven-bundle-plugin.version>5.1.8</maven-bundle-plugin.version>
@@ -428,7 +428,6 @@
                         <encoding>${project.build.sourceEncoding}</encoding>
                         <showDeprecation>true</showDeprecation>
                         <showWarnings>true</showWarnings>
-                        <optimize>true</optimize>
                     </configuration>
                 </plugin>
                 <plugin>

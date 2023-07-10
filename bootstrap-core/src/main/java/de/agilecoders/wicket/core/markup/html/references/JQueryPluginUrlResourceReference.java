@@ -40,7 +40,7 @@ public class JQueryPluginUrlResourceReference extends UrlResourceReference {
         }
         else
         {
-            backingLibraryReference = JQueryResourceReference.getV2();
+            backingLibraryReference = JQueryResourceReference.getV3();
         }
         return Dependencies.combine(super.getDependencies(), JavaScriptHeaderItem.forReference(backingLibraryReference));
     }
