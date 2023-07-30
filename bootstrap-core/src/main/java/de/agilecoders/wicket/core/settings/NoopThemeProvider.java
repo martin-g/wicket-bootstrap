@@ -1,6 +1,5 @@
 package de.agilecoders.wicket.core.settings;
 
-import java.util.Collections;
 import java.util.List;
 
 import org.apache.wicket.markup.head.CssHeaderItem;
@@ -44,7 +43,7 @@ public class NoopThemeProvider implements ThemeProvider {
 
         @Override
         public List<HeaderItem> getDependencies() {
-            return Collections.emptyList();
+            return List.of();
         }
 
         @Override
@@ -54,7 +53,7 @@ public class NoopThemeProvider implements ThemeProvider {
 
         @Override
         public Iterable<String> getCdnUrls() {
-            return Collections.emptyList();
+            return List.of();
         }
     }
 }

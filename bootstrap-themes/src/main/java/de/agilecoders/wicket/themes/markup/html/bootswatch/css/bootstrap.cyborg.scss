@@ -2,7 +2,7 @@
 @import "bootstrap.cyborg.variables.scss";
 
 
-// Cyborg 5.3.0
+// Cyborg 5.3.1
 // Bootswatch
 
 
@@ -11,10 +11,6 @@
 $web-font-path: "https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" !default;
 @if $web-font-path {
   @import url($web-font-path);
-}
-
-:root {
-  color-scheme: dark;
 }
 
 // Navbar
@@ -63,9 +59,6 @@ legend {
 }
 
 .form-control {
-  color-scheme: light;
-  background-clip: border-box;
-
   &:disabled,
   &[readonly] {
     border-color: transparent;
@@ -134,6 +127,11 @@ legend {
   &.bg-dark {
     color: $gray-900;
   }
+}
+
+.tooltip {
+  --bs-tooltip-bg: var(--bs-tertiary-bg);
+  --bs-tooltip-color: var(--bs-emphasis-color);
 }
 
 // Containers

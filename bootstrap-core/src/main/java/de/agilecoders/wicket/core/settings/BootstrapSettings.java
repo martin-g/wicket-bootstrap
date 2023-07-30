@@ -1,5 +1,6 @@
 package de.agilecoders.wicket.core.settings;
 
+import org.apache.wicket.protocol.http.WebSession;
 import org.apache.wicket.request.Url;
 import org.apache.wicket.request.resource.ResourceReference;
 import org.apache.wicket.request.resource.UrlResourceReference;
@@ -7,6 +8,7 @@ import org.apache.wicket.request.resource.UrlResourceReference;
 import de.agilecoders.wicket.core.markup.html.references.BootstrapJavaScriptReference;
 import de.agilecoders.wicket.core.markup.html.references.ModernizrJavaScriptReference;
 import de.agilecoders.wicket.core.markup.html.themes.bootstrap.BootstrapCssReference;
+import de.agilecoders.wicket.core.markup.html.themes.bootstrap.BootstrapCssRtlReference;
 
 /**
  * #### Description

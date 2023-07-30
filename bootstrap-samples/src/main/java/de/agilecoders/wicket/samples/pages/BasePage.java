@@ -14,6 +14,7 @@ import org.apache.wicket.markup.html.GenericWebPage;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.link.AbstractLink;
 import org.apache.wicket.model.Model;
+import org.apache.wicket.protocol.http.WebSession;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.util.string.StringValue;
 
@@ -62,7 +63,7 @@ abstract class BasePage extends GenericWebPage<Void> {
     public BasePage(final PageParameters parameters) {
         super(parameters);
 
-        add(new HtmlTag("html"));
+        add(new HtmlTag("html", WebSession.get().getLocale()));
         MobileViewportMetaTag mvt = new MobileViewportMetaTag("viewport");
         mvt.setWidth("device-width");
         mvt.setInitialScale("1");
