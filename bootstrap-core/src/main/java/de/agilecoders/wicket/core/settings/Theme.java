@@ -13,7 +13,6 @@ import org.apache.wicket.request.resource.ResourceReference;
 import org.apache.wicket.request.resource.UrlResourceReference;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -97,7 +96,7 @@ public class Theme implements ITheme {
 
     @Override
     public Iterable<String> getCdnUrls() {
-        return Collections.emptyList();
+        return List.of();
     }
 
     private void renderPackageReferences(IHeaderResponse response) {

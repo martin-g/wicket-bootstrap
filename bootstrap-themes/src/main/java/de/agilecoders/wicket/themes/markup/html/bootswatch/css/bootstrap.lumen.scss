@@ -2,7 +2,7 @@
 @import "bootstrap.lumen.variables.scss";
 
 
-// Lumen 5.2.2
+// Lumen 5.3.1
 // Bootswatch
 
 
@@ -11,10 +11,6 @@
 $web-font-path: "https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" !default;
 @if $web-font-path {
   @import url($web-font-path);
-}
-
-:root {
-  color-scheme: light;
 }
 
 // Mixins
@@ -33,6 +29,11 @@ $web-font-path: "https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,w
     &.bg-#{$color} {
       border-color: shade-color($value, 10%);
     }
+  }
+
+  &.bg-body-secondary,
+  &.bg-body-tertiary {
+    border-color: rgba(0, 0, 0, .1);
   }
 }
 
@@ -72,7 +73,7 @@ $web-font-path: "https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,w
 }
 
 .btn-outline-secondary {
-  color: $black;
+  color: var(--bs-tertiary-color);
 }
 
 [class*="btn-outline"] {
@@ -121,7 +122,7 @@ $web-font-path: "https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,w
 
 .nav-tabs {
   .nav-link {
-    color: $body-color;
+    color: var(--#{$prefix}body-color);
 
     &,
     &.disabled,
@@ -137,6 +138,7 @@ $web-font-path: "https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,w
     &.active {
       padding-bottom: add(.5rem, 6px);
       margin-top: 0;
+      color: var(--#{$prefix}body-color);
       border-bottom-color: transparent;
     }
   }
@@ -154,7 +156,7 @@ $web-font-path: "https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,w
 }
 
 .breadcrumb {
-  border-color: shade-color($breadcrumb-bg, 10%);
+  border-color: $pagination-border-color;
   @include shadow();
 }
 
