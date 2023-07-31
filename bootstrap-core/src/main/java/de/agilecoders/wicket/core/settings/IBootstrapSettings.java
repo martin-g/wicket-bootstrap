@@ -37,6 +37,11 @@ public interface IBootstrapSettings {
     String CSS_CDN_PATTERN = "//stackpath.bootstrapcdn.com/bootstrap/%s/css/bootstrap.min.css";
 
     /**
+     * The url to the right-to-left css resource at a CDN network
+     */
+    String CSS_RTL_CDN_PATTERN = "//stackpath.bootstrapcdn.com/bootstrap/%s/css/bootstrap.rtl.min.css";
+
+    /**
      * @param version The version of Bootstrap. CDN resources use it to construct their urls
      * @return same instance for chaining
      */
@@ -89,6 +94,13 @@ public interface IBootstrapSettings {
      * @return same instance for chaining
      */
     IBootstrapSettings setCssResourceReference(ResourceReference reference);
+
+    /**
+     * @param reference a reference to the RTL (right-to-left) bootstrap css library.
+     *                  Defaults to the embedded bootstrap.rtl.css
+     * @return same instance for chaining
+     */
+    IBootstrapSettings setCssRtlResourceReference(ResourceReference reference);
 
     /**
      * @param reference a reference to the base bootstrap JavaScript library.

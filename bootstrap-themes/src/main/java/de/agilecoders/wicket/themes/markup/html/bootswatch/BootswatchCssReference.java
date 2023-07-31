@@ -17,5 +17,4 @@ public class BootswatchCssReference extends CssResourceReference {
     public BootswatchCssReference(final String swatchName) {
         super(BootswatchCssReference.class, "css/bootstrap." + swatchName + ".css");
     }
-
 }

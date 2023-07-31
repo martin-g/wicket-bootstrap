@@ -6,14 +6,12 @@ import org.apache.wicket.WicketRuntimeException;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.string.Strings;
 
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 /**
  * The {@code BootswatchThemeProvider} provides access to all available
  * bootswatch themes.
- * 
+ *
  * @author miha
  */
 public class BootswatchThemeProvider implements ThemeProvider {
@@ -32,7 +30,7 @@ public class BootswatchThemeProvider implements ThemeProvider {
      * Constructor.
      */
     public BootswatchThemeProvider(final BootswatchTheme defaultTheme) {
-        this.themes = Collections.unmodifiableList(Arrays.asList(BootswatchTheme.values()));
+        this.themes = List.of(BootswatchTheme.values());
         this.defaultTheme = Args.notNull(defaultTheme, "defaultTheme");
     }
 

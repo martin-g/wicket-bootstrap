@@ -2,11 +2,13 @@ package de.agilecoders.wicket.core.markup.html.bootstrap.html;
 
 import java.util.Locale;
 
+import org.apache.wicket.Session;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.head.HeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.html.TransparentWebMarkupContainer;
+import org.apache.wicket.protocol.http.WebSession;
 
 import de.agilecoders.wicket.core.Bootstrap;
 import de.agilecoders.wicket.core.markup.html.references.ModernizrJavaScriptReference;
@@ -46,6 +48,7 @@ import de.agilecoders.wicket.core.util.CssClassNames;
  */
 public class HtmlTag extends TransparentWebMarkupContainer {
     private static final long serialVersionUID = 1L;
+    private final boolean isRtl;
     private final boolean useModernizr;
     private final Locale locale;
 
@@ -61,6 +64,7 @@ public class HtmlTag extends TransparentWebMarkupContainer {
 
         this.locale = locale;
         this.useModernizr = useModernizr;
+        this.isRtl = locale == null ? false : Session.isRtlLanguage(locale);
     }
 
     /**
@@ -113,6 +117,9 @@ public class HtmlTag extends TransparentWebMarkupContainer {
 
         if (locale != null) {
             tag.put("lang", toAttributeValue(locale));
+        }
+        if (isRtl) {
+            tag.put("dir", "rtl");
         }
 
         final CssClassNames.Builder cssClassNames = CssClassNames.newBuilder();
