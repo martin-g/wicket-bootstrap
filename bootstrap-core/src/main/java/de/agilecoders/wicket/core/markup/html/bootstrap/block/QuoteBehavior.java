@@ -58,7 +58,7 @@ public class QuoteBehavior extends Behavior {
      * @return this component's instance
      */
     public final QuoteBehavior pullRight() {
-        pullRight.setObject("pull-right");
+        pullRight.setObject("float-end");
 
         return this;
     }
