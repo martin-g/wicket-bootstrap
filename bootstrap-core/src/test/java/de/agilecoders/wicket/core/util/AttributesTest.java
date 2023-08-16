@@ -48,9 +48,9 @@ class AttributesTest extends WicketApplicationTest {
     @Test
     void removeClass() {
         ComponentTag tag = new ComponentTag("span", XmlTag.TagType.OPEN_CLOSE);
-        tag.put("class", "class1 pull-right class2");
+        tag.put("class", "class1 float-end class2");
 
-        Attributes.removeClass(tag, "pull-right");
+        Attributes.removeClass(tag, "float-end");
 
         assertThat(tag.getAttribute("class"), is(equalTo("class1 class2")));
     }

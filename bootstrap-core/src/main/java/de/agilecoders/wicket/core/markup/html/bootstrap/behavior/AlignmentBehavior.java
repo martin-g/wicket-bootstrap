@@ -37,8 +37,8 @@ public class AlignmentBehavior extends BootstrapBaseBehavior {
      * TODO miha: add documentation.
      */
     public enum Alignment implements ICssClassNameProvider {
-        RIGHT("pull-right"),
-        LEFT("pull-left"),
+        RIGHT("float-end"),
+        LEFT("float-start"),
         NONE("");
         private String className;
 
