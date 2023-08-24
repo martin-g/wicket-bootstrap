@@ -12,8 +12,6 @@ import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.wicketstuff.annotation.mount.MountPath;
 
-import com.google.common.collect.Lists;
-
 import de.agilecoders.wicket.core.markup.html.bootstrap.block.Code;
 import de.agilecoders.wicket.core.markup.html.bootstrap.block.CodeBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.utilities.BackgroundColorBehavior;
@@ -43,7 +41,7 @@ public class UtilitiesPage extends BasePage {
     }
 
     private void addBorderTypes() {
-        List<BorderBehavior.Type> additiveTypes = Lists.newArrayList(
+        List<BorderBehavior.Type> additiveTypes = List.of(
                 BorderBehavior.Type.All,
                 BorderBehavior.Type.Top,
                 BorderBehavior.Type.Right,
@@ -62,7 +60,7 @@ public class UtilitiesPage extends BasePage {
             }
         });
 
-        List<BorderBehavior.Type> subtractiveTypes = Lists.newArrayList(
+        List<BorderBehavior.Type> subtractiveTypes = List.of(
                 BorderBehavior.Type.None,
                 BorderBehavior.Type.ExceptTop,
                 BorderBehavior.Type.ExceptRight,
@@ -102,7 +100,7 @@ public class UtilitiesPage extends BasePage {
     }
 
     private void addBorderColors() {
-        List<BorderBehavior.Color> colors = Lists.newArrayList(BorderBehavior.Color.values());
+        List<BorderBehavior.Color> colors = List.of(BorderBehavior.Color.values());
         add(new ListView<>("border-colors", colors) {
             private static final long serialVersionUID = 1L;
 
@@ -130,7 +128,7 @@ public class UtilitiesPage extends BasePage {
     }
 
     private void addBorderRadius() {
-        List<BorderBehavior.Radius> radiuses = Lists.newArrayList(BorderBehavior.Radius.values());
+        List<BorderBehavior.Radius> radiuses = List.of(BorderBehavior.Radius.values());
         add(new ListView<>("border-radiuses", radiuses) {
             private static final long serialVersionUID = 1L;
 
@@ -158,7 +156,7 @@ public class UtilitiesPage extends BasePage {
     }
 
     private void addColors() {
-        List<ColorBehavior.Color> colors = Lists.newArrayList(ColorBehavior.Color.values());
+        List<ColorBehavior.Color> colors = List.of(ColorBehavior.Color.values());
         add(new ListView<>("text-colors", colors) {
             private static final long serialVersionUID = 1L;
 
@@ -233,7 +231,7 @@ public class UtilitiesPage extends BasePage {
     }
 
     private void addBackgroundColors() {
-        List<BackgroundColorBehavior.Color> colors = Lists.newArrayList(BackgroundColorBehavior.Color.values());
+        List<BackgroundColorBehavior.Color> colors = List.of(BackgroundColorBehavior.Color.values());
 
         add(new ListView<>("background-colors", colors) {
             private static final long serialVersionUID = 1L;

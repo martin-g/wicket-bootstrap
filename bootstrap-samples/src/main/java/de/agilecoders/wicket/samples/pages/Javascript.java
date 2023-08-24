@@ -6,7 +6,6 @@ import java.util.stream.Collectors;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
-import org.apache.wicket.extensions.markup.html.tabs.ITab;
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.html.basic.Label;
@@ -15,8 +14,6 @@ import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.request.resource.CssResourceReference;
 import org.wicketstuff.annotation.mount.MountPath;
-
-import com.google.common.collect.Lists;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.BootstrapAjaxLink;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons;
@@ -60,7 +57,7 @@ public class Javascript extends BasePage {
     public Javascript(PageParameters parameters) {
         super(parameters);
 
-        Collapsible collapsible = new Collapsible("accordion42", Lists.<ITab>newArrayList(
+        Collapsible collapsible = new Collapsible("accordion42", List.of(
             new TextContentTab(Model.of("Title 1"), Model.of("Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.")),
             new TextContentTab(Model.of("Title 2"), Model.of("Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.")),
             new TextContentTab(Model.of("Title 3"), Model.of("Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.")),
@@ -106,7 +103,7 @@ public class Javascript extends BasePage {
      * @return new typeahead instance
      */
     private Typeahead<String> newLocalTypeahead(final String markupId) {
-        final List<String> dataSource = Lists.newArrayList("abc", "def", "ghi");
+        final List<String> dataSource = List.of("abc", "def", "ghi");
 
         Bloodhound<String> bloodhound = new LocalBloodhound<>("sample", dataSource);
         TypeaheadConfig<String> config = new TypeaheadConfig<>(new DataSet<>(bloodhound));
@@ -122,7 +119,7 @@ public class Javascript extends BasePage {
      */
     private Component newRemoteTypeahead(final String id) {
 
-        final List<String> dataSource = Lists.newArrayList(
+        final List<String> dataSource = List.of(
             "Alabama", "Alaska", "Arizona", "Arkansas",
             "California", "Colorado", "Connecticut",
             "Delaware", "Florida", "Georgia", "Hawaii",
@@ -175,7 +172,7 @@ public class Javascript extends BasePage {
      * @return new carousel component
      */
     private Component newCarousel(String markupId) {
-        final List<ICarouselImage> images = Lists.<ICarouselImage>newArrayList(
+        final List<ICarouselImage> images = List.of(
             new CarouselImage("https://via.placeholder.com/820x480", "Header 1", "Description 1"),
             new CarouselImage("https://via.placeholder.com/820x480", "Header 2"),
             new CarouselImage("https://via.placeholder.com/820x480")
