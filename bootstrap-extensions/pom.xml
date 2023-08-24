@@ -80,6 +80,7 @@
             <groupId>com.google.javascript</groupId>
             <artifactId>closure-compiler-unshaded</artifactId>
             <version>${google-closure.version}</version>
+            <optional>true</optional>
         </dependency>
 
         <dependency>
