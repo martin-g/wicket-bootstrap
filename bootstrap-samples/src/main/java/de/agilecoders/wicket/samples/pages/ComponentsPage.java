@@ -21,8 +21,6 @@ import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.wicketstuff.annotation.mount.MountPath;
 
-import com.google.common.collect.Lists;
-
 import de.agilecoders.wicket.core.markup.html.bootstrap.badge.BootstrapBadge;
 import de.agilecoders.wicket.core.markup.html.bootstrap.block.Code;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.BootstrapAjaxLink;
@@ -193,7 +191,7 @@ public class ComponentsPage extends BasePage {
     }
 
     private void addLabels() {
-        List<BackgroundColorBehavior.Color> colors = Lists.newArrayList(BackgroundColorBehavior.Color.values());
+        List<BackgroundColorBehavior.Color> colors = List.of(BackgroundColorBehavior.Color.values());
         add(new ListView<>("badges", colors) {
             private static final long serialVersionUID = 1L;
 
@@ -213,7 +211,7 @@ public class ComponentsPage extends BasePage {
     }
 
     private void addBadges() {
-        List<BackgroundColorBehavior.Color> colors = Lists.newArrayList(BackgroundColorBehavior.Color.values());
+        List<BackgroundColorBehavior.Color> colors = List.of(BackgroundColorBehavior.Color.values());
 
         add(new ListView<>("badge-pills", colors) {
             private static final long serialVersionUID = 1L;
@@ -255,13 +253,13 @@ public class ComponentsPage extends BasePage {
     }
 
     private Component newTabs(String markupId) {
-        return new AjaxBootstrapTabbedPanel<>(markupId, Lists.newArrayList(
+        return new AjaxBootstrapTabbedPanel<>(markupId, List.of(
                 createTab("Section 1"), createTab("Section 2"), createTab("Section 3")
         ));
     }
 
     private Component newClientSideTabs(String markupId) {
-        return new ClientSideBootstrapTabbedPanel<>(markupId, Lists.newArrayList(
+        return new ClientSideBootstrapTabbedPanel<>(markupId, List.of(
                 createTab("Section 1"), createTab("Section 2"), createTab("Section 3")
         ));
     }

@@ -24,8 +24,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.wicketstuff.annotation.mount.MountPath;
 
-import com.google.common.collect.Lists;
-
 import de.agilecoders.wicket.core.markup.html.bootstrap.block.Code;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.BootstrapAjaxLink;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons;
@@ -88,7 +86,7 @@ public class ExtensionsPage extends BasePage {
     @Override
     protected void onInitialize() {
         super.onInitialize();
-        List<Html5Player.IVideo> videos = Lists.<Html5Player.IVideo> newArrayList(new Video(
+        List<Html5Player.IVideo> videos = List.of(new Video(
             "https://archive.org/download/CopyingIsNotTheft/CINT_Nik_H264_720.ogv", "video/ogg"),
             new Video("https://archive.org/download/CopyingIsNotTheft/CINT_Nik_H264_720_512kb.mp4",
                 "video/mp4"));

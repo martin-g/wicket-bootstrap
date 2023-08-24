@@ -1,6 +1,5 @@
 package de.agilecoders.wicket.samples.components.base;
 
-import com.google.common.collect.Lists;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.select.BootstrapSelect;
 import org.apache.wicket.model.Model;
 
@@ -17,7 +16,7 @@ public class StateSelect extends BootstrapSelect<String> {
     /**
      * states
      */
-    public static final List<String> DATA = Lists.newArrayList(
+    public static final List<String> DATA = List.of(
         "Alabama", "Alaska", "Arizona", "Arkansas",
         "California", "Colorado", "Connecticut",
         "Delaware", "Florida", "Georgia", "Hawaii",
