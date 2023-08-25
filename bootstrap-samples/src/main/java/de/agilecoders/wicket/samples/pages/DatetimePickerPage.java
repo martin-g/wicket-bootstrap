@@ -4,7 +4,11 @@ import static de.agilecoders.wicket.extensions.markup.html.bootstrap.form.dateti
 import static de.agilecoders.wicket.extensions.markup.html.bootstrap.form.datetime.DatetimePickerConfig.BTN_SHOW_CLOSE;
 import static de.agilecoders.wicket.extensions.markup.html.bootstrap.form.datetime.DatetimePickerConfig.BTN_SHOW_TODAY;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.Map;
+import java.util.TimeZone;
 
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
@@ -13,7 +17,6 @@ import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.resource.JQueryPluginResourceReference;
-import org.joda.time.LocalDate;
 import org.wicketstuff.annotation.mount.MountPath;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.block.Code;
@@ -50,14 +53,14 @@ public class DatetimePickerPage extends BasePage {
         LocalDate min = max.minusWeeks(1);
 
         DatetimePickerConfig simpleConfig = new DatetimePickerConfig()
-            .withMinDate(min.toDate())
-            .withMaxDate(max.toDate())
+            .withMinDate(Date.from(min.atStartOfDay(ZoneId.systemDefault()).toInstant()))
+            .withMaxDate(Date.from(min.atStartOfDay(ZoneId.systemDefault()).toInstant()))
             .withFormat("dd/MM/yyyy HH:mm:ss");
 
         DatetimePickerConfig birthDayConfig = new DatetimePickerConfig()
             .useView(DatetimePickerConfig.ViewModeType.YEARS)
             .withFormat("dd/MM/yyyy")
-            .withMaxDate(max.toDate());
+            .withMaxDate(Date.from(min.atStartOfDay(ZoneId.systemDefault()).toInstant()));
         DatetimePickerConfig maskedConfig = new DatetimePickerConfig()
             .withFormat("dd/MM/yyyy HH:mm:ss")
             .useMaskInput(true);

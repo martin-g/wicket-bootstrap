@@ -1,11 +1,11 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.form;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.util.lang.Args;
-import org.joda.time.DateTime;
 
 /**
  * A TextField that is mapped to a <code>java.util.Date</code> object.
@@ -17,7 +17,7 @@ import org.joda.time.DateTime;
  * @author Urs Joss
  */
 public class DateTextField extends
-    AbstractDateTextField<Date, org.apache.wicket.extensions.markup.html.form.DateTextField, DateTime, DateTextFieldConfig, DateTextField> {
+    AbstractDateTextField<Date, org.apache.wicket.extensions.markup.html.form.DateTextField, LocalDateTime, DateTextFieldConfig, DateTextField> {
 
     private static final long serialVersionUID = 3499287675713818823L;
 

@@ -64,7 +64,6 @@
         <google-closure.version>v20200830</google-closure.version>
         <javax.javaee-web-api.version>7.0</javax.javaee-web-api.version>
         <jetty.version>9.4.51.v20230217</jetty.version>
-        <joda-time.version>2.12.5</joda-time.version>
         <jquerypp.version>1.0.1</jquerypp.version>
         <jquery.version>3.6.4</jquery.version>
         <junit-jupiter.version>5.9.3</junit-jupiter.version>
@@ -266,12 +265,6 @@
                 <artifactId>mockito-core</artifactId>
                 <version>${mockito.version}</version>
                 <scope>test</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>joda-time</groupId>
-                <artifactId>joda-time</artifactId>
-                <version>${joda-time.version}</version>
             </dependency>
 
             <dependency>
@@ -542,7 +535,6 @@
             <properties>
                 <!-- Disable javadoc linter when building with Java 8
                  http://mail-archives.apache.org/mod_mbox/maven-users/201403.mbox/%3CCANWgJS5xHWiGE+Lecey+mZVbj9Via4JUWsaBeZtQr2aQNebupA@mail.gmail.com%3E
-                 http://blog.joda.org/2014/02/turning-off-doclint-in-jdk-8-javadoc.html
                  -->
                 <additionalparam>-Xdoclint:-html</additionalparam>
             </properties>
