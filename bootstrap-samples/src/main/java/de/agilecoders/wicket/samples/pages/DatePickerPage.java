@@ -13,9 +13,9 @@ import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
-import org.joda.time.DateTime;
 import org.wicketstuff.annotation.mount.MountPath;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
@@ -40,7 +40,7 @@ public class DatePickerPage extends BasePage {
             new Code("default-html-code", Model.of("//HTML\n<form><input wicket:id=\"default\"></form>")).setShowLineNumbers(true),
             new Code("default-java-code", Model.of("//JAVA\nadd(new DateTextField(\"default\"));")).setShowLineNumbers(true));
 
-        add(newDatePicker("birthday", new DateTextFieldConfig().showTodayButton(DateTextFieldConfig.TodayButton.TRUE).withStartDate(new DateTime().withYear(1900)).autoClose(true).withView(DateTextFieldConfig.View.Decade)),
+        add(newDatePicker("birthday", new DateTextFieldConfig().showTodayButton(DateTextFieldConfig.TodayButton.TRUE).withStartDate(LocalDateTime.now().withYear(1900)).autoClose(true).withView(DateTextFieldConfig.View.Decade)),
             new Code("birthday-html-code", Model.of("//HTML\n<form><input wicket:id=\"birthday\"></form>")).setShowLineNumbers(true),
             new Code("birthday-java-code", Model.of("//JAVA\nadd(new DateTextField(\"birthday\",\n\t\t new DateTextFieldConfig()\n"
                                                     + "\t\t\t.autoClose(true)\n"

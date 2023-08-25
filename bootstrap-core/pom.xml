@@ -44,11 +44,6 @@
             <version>${modernizr.version}</version>
         </dependency>
 
-        <dependency>
-            <groupId>joda-time</groupId>
-            <artifactId>joda-time</artifactId>
-        </dependency>
-
         <!--  WICKET DEPENDENCIES -->
         <dependency>
             <groupId>org.apache.wicket</groupId>

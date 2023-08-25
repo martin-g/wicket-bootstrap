@@ -1,10 +1,10 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.form;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.string.Strings;
-import org.joda.time.DateTime;
-import org.joda.time.format.DateTimeFormat;
-import org.joda.time.format.DateTimeFormatter;
 
 /**
  * Configuration holder for all {@link DateTextField} configurations.
@@ -12,27 +12,27 @@ import org.joda.time.format.DateTimeFormatter;
  * @author miha
  * @author Urs Joss
  */
-public class DateTextFieldConfig extends AbstractDateTextFieldConfig<DateTextFieldConfig, DateTime> {
+public class DateTextFieldConfig extends AbstractDateTextFieldConfig<DateTextFieldConfig, LocalDateTime> {
 
     @Override
-    public DateTextFieldConfig withStartDate(final DateTime value) {
+    public DateTextFieldConfig withStartDate(final LocalDateTime value) {
         put(StartDate, getDateAsString(value));
         return this;
     }
 
     @Override
-    public DateTextFieldConfig withEndDate(final DateTime value) {
+    public DateTextFieldConfig withEndDate(final LocalDateTime value) {
         put(EndDate, getDateAsString(Args.notNull(value, "value")));
         return this;
     }
 
-    private String getDateAsString(final DateTime value) {
+    private String getDateAsString(final LocalDateTime value) {
         final String format = getFormat();
         if (Strings.isEmpty(format)) {
             return value.toString();
         } else {
-            final DateTimeFormatter dateTimeFormatter = DateTimeFormat.forPattern(format);
-            return dateTimeFormatter.print(value);
+            final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(format);
+            return dateTimeFormatter.format(value);
         }
     }
 
