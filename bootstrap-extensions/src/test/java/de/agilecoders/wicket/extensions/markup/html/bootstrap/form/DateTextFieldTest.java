@@ -4,17 +4,17 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 import org.apache.wicket.model.Model;
-import org.joda.time.DateTime;
 import org.junit.jupiter.api.Test;
 
 /**
  * @author Urs Joss
  */
 class DateTextFieldTest extends
-    AbstractDateTextFieldTest<Date, org.apache.wicket.extensions.markup.html.form.DateTextField, DateTime, DateTextFieldConfig, DateTextField> {
+    AbstractDateTextFieldTest<Date, org.apache.wicket.extensions.markup.html.form.DateTextField, LocalDateTime, DateTextFieldConfig, DateTextField> {
 
     private final Date now = new Date();
 
@@ -33,13 +33,13 @@ class DateTextFieldTest extends
     }
 
     @Override
-    DateTime getStartDate() {
-        return DateTime.parse("2018-06-30T01:02:03.000");
+    LocalDateTime getStartDate() {
+        return LocalDateTime.parse("2018-06-30T01:02:03.000");
     }
 
     @Override
-    DateTime getEndDate() {
-        return DateTime.parse("2018-07-13T04:05:06.000");
+    LocalDateTime getEndDate() {
+        return LocalDateTime.parse("2018-07-13T04:05:06.000");
     }
 
     @Test
