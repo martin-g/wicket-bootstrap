@@ -183,7 +183,9 @@ abstract class BasePage extends GenericWebPage<Void> {
                 subMenu.add(new MenuBookmarkablePageLink<Void>(DatePickerPage.class, Model.of("DatePicker")).setIconType(
                     FontAwesome6IconType.clock_r));
                 subMenu.add(new MenuBookmarkablePageLink<Void>(DatetimePickerPage.class, Model.of("DateTimePicker")).setIconType(
-                    FontAwesome6IconType.clock_r));
+                    FontAwesome6IconType.calendar_days_r));
+                subMenu.add(new MenuBookmarkablePageLink<Void>(TempusDominusPickerPage.class, Model.of("TempusDominusPicker")).setIconType(
+                    FontAwesome6IconType.calendar_s));
                 subMenu.add(new MenuBookmarkablePageLink<Void>(IssuesPage.class, Model.of("Github Issues")).setIconType(
                     FontAwesome6IconType.book_s));
                 subMenu.add(new MenuBookmarkablePageLink<Void>(ExtensionsPage.class, Model.of("Extensions")).setIconType(

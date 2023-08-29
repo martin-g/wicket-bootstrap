@@ -7,6 +7,7 @@ import org.apache.wicket.request.resource.UrlResourceReference;
 
 import de.agilecoders.wicket.core.markup.html.references.BootstrapJavaScriptReference;
 import de.agilecoders.wicket.core.markup.html.references.ModernizrJavaScriptReference;
+import de.agilecoders.wicket.core.markup.html.references.PopperJavaScriptReference;
 import de.agilecoders.wicket.core.markup.html.themes.bootstrap.BootstrapCssReference;
 import de.agilecoders.wicket.core.markup.html.themes.bootstrap.BootstrapCssRtlReference;
 
@@ -25,12 +26,14 @@ public class BootstrapSettings implements IBootstrapSettings {
         private static ResourceReference modernizrJavaScriptReference = ModernizrJavaScriptReference.instance();
         private static ResourceReference bootstrapCssReference = BootstrapCssReference.instance();
         private static ResourceReference bootstrapCssRtlReference = BootstrapCssRtlReference.instance();
+        private static ResourceReference popperJavaScriptReference = PopperJavaScriptReference.instance();
     }
 
     private ResourceReference bootstrapJavaScriptReference = null;
     private ResourceReference modernizrJavaScriptReference = null;
     private ResourceReference bootstrapCssReference = null;
     private ResourceReference bootstrapCssRtlReference = null;
+    private ResourceReference popperJavaScriptReference = null;
 
     private ThemeProvider themeProvider;
     private ActiveThemeProvider activeThemeProvider;
@@ -42,6 +45,7 @@ public class BootstrapSettings implements IBootstrapSettings {
     private boolean deferJavascript;
     private String version = VERSION;
     private String modernizrVersion = MODERNIZR_VERSION;
+    private String popperVersion = POPPER_VERSION;
 
     /**
      * Constructor.
@@ -69,6 +73,12 @@ public class BootstrapSettings implements IBootstrapSettings {
     }
 
     @Override
+    public IBootstrapSettings setPopperJsVersion(String version) {
+        this.popperVersion = version;
+        return this;
+    }
+
+    @Override
     public String getVersion() {
         return version;
     }
@@ -81,6 +91,11 @@ public class BootstrapSettings implements IBootstrapSettings {
     @Override
     public String getModernizrVersion() {
         return modernizrVersion;
+    }
+
+    @Override
+    public String getPopperJsVersion() {
+        return popperVersion;
     }
 
     @Override
@@ -133,6 +148,20 @@ public class BootstrapSettings implements IBootstrapSettings {
         }
 
         return jsReference != null ? jsReference : Holder.modernizrJavaScriptReference;
+    }
+
+    @Override
+    public ResourceReference getPopperJsResourceReference() {
+        ResourceReference jsReference;
+
+        if (useCdnResources()) {
+            String cdnUrl = String.format(POPPER_JS_CDN_PATTERN, getPopperJsVersion());
+            jsReference = new UrlResourceReference(Url.parse(cdnUrl));
+        } else {
+            jsReference = popperJavaScriptReference;
+        }
+
+        return jsReference != null ? jsReference : Holder.popperJavaScriptReference;
     }
 
     @Override
@@ -190,6 +219,12 @@ public class BootstrapSettings implements IBootstrapSettings {
     @Override
     public BootstrapSettings setModernizrResourceReference(final ResourceReference modernizrJavaScriptReference) {
         this.modernizrJavaScriptReference = modernizrJavaScriptReference;
+        return this;
+    }
+
+    @Override
+    public IBootstrapSettings setPopperJsResourceReference(final ResourceReference popperJsResourceReference) {
+        this.popperJavaScriptReference = popperJsResourceReference;
         return this;
     }
 

@@ -12,6 +12,8 @@ import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.visit.IVisitor;
 
+import de.agilecoders.wicket.jquery.function.Function;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -90,7 +92,7 @@ public abstract class ValidationBehavior<T extends AbstractValidationConfig> ext
     }
 
     private void renderJavaScript(IHeaderResponse response, Component component) {
-        response.render($(component).chain(ParametrizedFunction.func("wb_validation", "validate"))
+        response.render($(component).chain(new Function("wb_validation", "validate"))
             .asDomReadyScript());
     }
 
