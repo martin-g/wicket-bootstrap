@@ -15,7 +15,7 @@ import de.agilecoders.wicket.jquery.util.Json.RawValue;
  *
  * @see <a href="https://getdatepicker.com/6/options/">JS widget options</a>
  */
-public class TempusDominusRestrictionsConfig<T> extends AbstractConfig {
+public class TempusDominusRestrictionsConfig extends AbstractConfig {
     private static final long serialVersionUID = 1L;
 
     private static final IKey<RawValue> MinDate = newKey("minDate", null);
@@ -40,7 +40,7 @@ public class TempusDominusRestrictionsConfig<T> extends AbstractConfig {
      * @param date Prevents the user from selecting a date/time before this value.
      * @return current instance
      */
-    public TempusDominusRestrictionsConfig<T> withMinDate(T date) {
+    public <T> TempusDominusRestrictionsConfig withMinDate(T date) {
         put(MinDate, TempusDominusConfig.createJsDate(date));
         return this;
     }
@@ -49,7 +49,7 @@ public class TempusDominusRestrictionsConfig<T> extends AbstractConfig {
      * @param date Prevents the user from selecting a date/time after this value.
      * @return current instance
      */
-    public TempusDominusRestrictionsConfig<T> withMaxDate(T date) {
+    public <T> TempusDominusRestrictionsConfig withMaxDate(T date) {
         put(MaxDate, TempusDominusConfig.createJsDate(date));
         return this;
     }
@@ -60,7 +60,7 @@ public class TempusDominusRestrictionsConfig<T> extends AbstractConfig {
      * @param date Disallows the user to select any of the provided days. Setting this takes precedence over options.minDate, options.maxDate configuration.
      * @return current instance
      */
-    public TempusDominusRestrictionsConfig<T> withDisabledDate(T date) {
+    public <T> TempusDominusRestrictionsConfig withDisabledDate(T date) {
         Args.isTrue(get(EnabledDates).isEmpty(), "Use one or the other, don't provide both enabledDates and disabledDates.");
         get(DisabledDates).add(TempusDominusConfig.createJsDate(date));
         return this;
@@ -72,7 +72,7 @@ public class TempusDominusRestrictionsConfig<T> extends AbstractConfig {
      * @param date Allows the user to select only from the provided days. Setting this takes precedence over options.minDate, options.maxDate configuration.
      * @return current instance
      */
-    public TempusDominusRestrictionsConfig<T> withEnabledDate(T date) {
+    public <T> TempusDominusRestrictionsConfig withEnabledDate(T date) {
         Args.isTrue(get(DisabledDates).isEmpty(), "Use one or the other, don't provide both enabledDates and disabledDates.");
         get(EnabledDates).add(TempusDominusConfig.createJsDate(date));
         return this;
@@ -85,7 +85,7 @@ public class TempusDominusRestrictionsConfig<T> extends AbstractConfig {
      *      options.minDate, options.maxDate, options.disabledDates and options.enabledDates configuration settings.
      * @return current instance
      */
-    public TempusDominusRestrictionsConfig<T> withDayOfWeekDisabled(int day) {
+    public TempusDominusRestrictionsConfig withDayOfWeekDisabled(int day) {
         Args.withinRange(0,6, day, "dayOfWeek");
         get(DaysOfWeekDisabled).add(day);
         return this;
@@ -98,7 +98,7 @@ public class TempusDominusRestrictionsConfig<T> extends AbstractConfig {
      * @param to end of interval
      * @return current instance
      */
-    public TempusDominusRestrictionsConfig<T> withDisabledTimeInterval(T from, T to) {
+    public <T> TempusDominusRestrictionsConfig withDisabledTimeInterval(T from, T to) {
         get(DisabledTimeIntervals).add(Map.of(
                 "from", TempusDominusConfig.createJsDate(from),
                 "to", TempusDominusConfig.createJsDate(to)));
@@ -111,7 +111,7 @@ public class TempusDominusRestrictionsConfig<T> extends AbstractConfig {
      * @param hour Allows the user to select only from the provided hours.
      * @return current instance
      */
-    public TempusDominusRestrictionsConfig<T> withEnabledHour(int hour) {
+    public TempusDominusRestrictionsConfig withEnabledHour(int hour) {
         Args.isTrue(get(DisabledHours).isEmpty(), "Use one or the other, don't provide both enabledHours and disabledHours.");
         Args.withinRange(0,23, hour, "hour");
         get(EnabledHours).add(hour);
@@ -124,7 +124,7 @@ public class TempusDominusRestrictionsConfig<T> extends AbstractConfig {
      * @param hour Disallows the user to select any of the provided hours.
      * @return current instance
      */
-    public TempusDominusRestrictionsConfig<T> withDisabledHour(int hour) {
+    public TempusDominusRestrictionsConfig withDisabledHour(int hour) {
         Args.isTrue(get(EnabledHours).isEmpty(), "Use one or the other, don't provide both enabledHours and disabledHours.");
         Args.withinRange(0,23, hour, "hour");
         get(DisabledHours).add(hour);

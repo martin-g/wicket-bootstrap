@@ -13,7 +13,7 @@ import de.agilecoders.wicket.jquery.IKey;
  *
  * @see <a href="https://getdatepicker.com/6/options/">JS widget options</a>
  */
-public class TempusDominusDisplayConfig<T> extends AbstractConfig {
+public class TempusDominusDisplayConfig extends AbstractConfig {
     private static final long serialVersionUID = 1L;
 
     public enum ButtonType {
@@ -132,16 +132,26 @@ public class TempusDominusDisplayConfig<T> extends AbstractConfig {
     /**
      * Construct config
      */
-    public TempusDominusDisplayConfig(Class<T> clazz) {
+    public TempusDominusDisplayConfig() {
         put(Icons, new TempusDominusIconConfig());
         put(Buttons, new HashMap<>(3));
         put(Components, new HashMap<>(9));
+    }
+
+    /**
+     * Will add restrictions based on class LocalDate/LocalTime/LocalDateTime etc.
+     *
+     * @param clazz Class of DateTime object to set restrictions
+     * @return current instance
+     */
+    public <T> TempusDominusDisplayConfig withClass(Class<T> clazz) {
         if (LocalTime.class == clazz) {
             withComponent(ComponentType.CALENDAR, false);
             withViewMode(ViewModeType.CLOCK);
         } else if (LocalDate.class == clazz) {
             withComponent(ComponentType.CLOCK, false);
         }
+        return this;
     }
 
     /**
@@ -150,7 +160,7 @@ public class TempusDominusDisplayConfig<T> extends AbstractConfig {
      *      correct styles and scripts needed.
      * @return current instance
      */
-    public TempusDominusDisplayConfig<T> withIcons(TempusDominusIconConfig cfg) {
+    public TempusDominusDisplayConfig withIcons(TempusDominusIconConfig cfg) {
         put(Icons, cfg);
         return this;
     }
@@ -159,7 +169,7 @@ public class TempusDominusDisplayConfig<T> extends AbstractConfig {
      * @param sideBySide Displays the date and time pickers side by side.
      * @return current instance
      */
-    public TempusDominusDisplayConfig<T> withSideBySide(boolean sideBySide) {
+    public TempusDominusDisplayConfig withSideBySide(boolean sideBySide) {
         put(SideBySide, sideBySide);
         return this;
     }
@@ -168,7 +178,7 @@ public class TempusDominusDisplayConfig<T> extends AbstractConfig {
      * @param calendarWeeks Displays an additional column with the calendar week for that week.
      * @return current instance
      */
-    public TempusDominusDisplayConfig<T> withCalendarWeeks(boolean calendarWeeks) {
+    public TempusDominusDisplayConfig withCalendarWeeks(boolean calendarWeeks) {
         put(CalendarWeeks, calendarWeeks);
         return this;
     }
@@ -178,7 +188,7 @@ public class TempusDominusDisplayConfig<T> extends AbstractConfig {
      *      birth picker.
      * @return current instance
      */
-    public TempusDominusDisplayConfig<T> withViewMode(ViewModeType view) {
+    public TempusDominusDisplayConfig withViewMode(ViewModeType view) {
         put(ViewMode, view.getCode());
         return this;
     }
@@ -188,7 +198,7 @@ public class TempusDominusDisplayConfig<T> extends AbstractConfig {
      *      icon are located.
      * @return current instance
      */
-    public TempusDominusDisplayConfig<T> withToolbarPlacement(ToolbarPlacementType place) {
+    public TempusDominusDisplayConfig withToolbarPlacement(ToolbarPlacementType place) {
         put(ToolbarPlacement, place.getPlacement());
         return this;
     }
@@ -197,7 +207,7 @@ public class TempusDominusDisplayConfig<T> extends AbstractConfig {
      * @param keep Keep the picker window open even after a date selection.
      * @return current instance
      */
-    public TempusDominusDisplayConfig<T> withKeepOpen(boolean keep) {
+    public TempusDominusDisplayConfig withKeepOpen(boolean keep) {
         put(KeepOpen, keep);
         return this;
     }
@@ -209,7 +219,7 @@ public class TempusDominusDisplayConfig<T> extends AbstractConfig {
      * @param value - Visible or not
      * @return current instance
      */
-    public TempusDominusDisplayConfig<T> withButton(ButtonType type, boolean value) {
+    public TempusDominusDisplayConfig withButton(ButtonType type, boolean value) {
         get(Buttons).put(type.getType(), value);
         return this;
     }
@@ -224,7 +234,7 @@ public class TempusDominusDisplayConfig<T> extends AbstractConfig {
      * @param on - visible or not
      * @return current instance
      */
-    public TempusDominusDisplayConfig<T> withComponent(ComponentType cmp, boolean on) {
+    public TempusDominusDisplayConfig withComponent(ComponentType cmp, boolean on) {
         get(Components).put(cmp.getComponent(), on);
         return this;
     }
@@ -233,7 +243,7 @@ public class TempusDominusDisplayConfig<T> extends AbstractConfig {
      * @param inline Displays the picker in a inline div instead of a popup.
      * @return current instance
      */
-    public TempusDominusDisplayConfig<T> withInline(boolean inline) {
+    public TempusDominusDisplayConfig withInline(boolean inline) {
         put(Inline, inline);
         return this;
     }
@@ -243,7 +253,7 @@ public class TempusDominusDisplayConfig<T> extends AbstractConfig {
      *      detect based on settings of the user's system.
      * @return current instance
      */
-    public TempusDominusDisplayConfig<T> withTheme(ThemeType theme) {
+    public TempusDominusDisplayConfig withTheme(ThemeType theme) {
         put(Theme, theme.getTheme());
         return this;
     }

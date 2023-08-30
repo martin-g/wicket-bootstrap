@@ -74,28 +74,30 @@ public class TempusDominusPickerPage extends BasePage {
 
         {
             // java.util.Date
-            TempusDominusConfig<Date> simpleConfig = new TempusDominusConfig<>(Date.class)
-                    .withRestrictions(new TempusDominusRestrictionsConfig<Date>()
+            TempusDominusConfig simpleConfig = new TempusDominusConfig()
+                    .withRestrictions(new TempusDominusRestrictionsConfig()
                             .withMinDate(Date.from(min.atStartOfDay(ZoneId.systemDefault()).toInstant()))
                             .withMaxDate(Date.from(max.atStartOfDay(ZoneId.systemDefault()).toInstant()))
                     )
-                    .withLocalization(new TempusDominusLocalizationConfig<>(Date.class)
+                    .withLocalization(new TempusDominusLocalizationConfig()
                             .withFormat("dd/MM/yyyy HH:mm:ss")
-                    );
+                    )
+                    .withClass(Date.class);
 
-            TempusDominusConfig<Date> birthDayConfig = new TempusDominusConfig<>(Date.class)
-                    .withDisplayConfig(new TempusDominusDisplayConfig<>(Date.class)
+            TempusDominusConfig birthDayConfig = new TempusDominusConfig()
+                    .withDisplayConfig(new TempusDominusDisplayConfig()
                             .withViewMode(ViewModeType.YEARS)
                             .withComponent(ComponentType.CLOCK, false)
                     )
-                    .withLocalization(new TempusDominusLocalizationConfig<>(Date.class)
+                    .withLocalization(new TempusDominusLocalizationConfig()
                             .withFormat("dd/MM/yyyy")
                     )
-                    .withRestrictions(new TempusDominusRestrictionsConfig<Date>()
+                    .withRestrictions(new TempusDominusRestrictionsConfig()
                             .withMinDate(Date.from(min.minusYears(6).atStartOfDay(ZoneId.systemDefault()).toInstant()))
-                    );
-            TempusDominusConfig<Date> iconsConfig = new TempusDominusConfig<>(Date.class)
-                    .withDisplayConfig(new TempusDominusDisplayConfig<>(Date.class)
+                    )
+                    .withClass(Date.class);
+            TempusDominusConfig iconsConfig = new TempusDominusConfig()
+                    .withDisplayConfig(new TempusDominusDisplayConfig()
                             .withButton(ButtonType.TODAY, true)
                             .withButton(ButtonType.CLEAR, true)
                             .withButton(ButtonType.CLOSE, true)
@@ -112,42 +114,43 @@ public class TempusDominusPickerPage extends BasePage {
                             )
                             .withComponent(ComponentType.SECONDS, true)
                     )
-                    .withLocalization(new TempusDominusLocalizationConfig<>(Date.class)
+                    .withLocalization(new TempusDominusLocalizationConfig()
                             .withFormat("dd/MM/yyyy HH:mm:ss")
-                    );
+                    )
+                    .withClass(Date.class);
 
             form.add(
                 new DateTextField("simple", simpleConfig.getFormat()).add(new TempusDominusBehavior(simpleConfig)),
                 new Code("simple-java-code", Model.of(
-                        "new TempusDominusConfig<>(Date.class)\n" + //
-                        "        .withRestrictions(new TempusDominusRestrictionsConfig<Date>()\n" + //
+                        "new TempusDominusConfig()\n" + //
+                        "        .withRestrictions(new TempusDominusRestrictionsConfig()\n" + //
                         "                .withMinDate(Date.from(min.atStartOfDay(ZoneId.systemDefault()).toInstant()))\n" + //
                         "                .withMaxDate(Date.from(max.atStartOfDay(ZoneId.systemDefault()).toInstant()))\n" + //
                         "        )\n" + //
-                        "        .withLocalization(new TempusDominusLocalizationConfig<>(Date.class)\n" + //
+                        "        .withLocalization(new TempusDominusLocalizationConfig()\n" + //
                         "                .withFormat(\"dd/MM/yyyy HH:mm:ss\")\n" + //
-                        "        );\n" + //
+                        "        ).withClass(Date.class);\n" + //
                         "")),
 
                 new DateTextField("birthday", simpleConfig.getFormat()).add(new TempusDominusBehavior(birthDayConfig)),
                 new Code("birthday-java-code", Model.of(
-                        "new TempusDominusConfig<>(Date.class)\n" + //
-                        "        .withDisplayConfig(new TempusDominusDisplayConfig<>(Date.class)\n" + //
+                        "new TempusDominusConfig()\n" + //
+                        "        .withDisplayConfig(new TempusDominusDisplayConfig()\n" + //
                         "                .withViewMode(ViewModeType.YEARS)\n" + //
                         "                .withComponent(ComponentType.CLOCK, false)\n" + //
                         "        )\n" + //
-                        "        .withLocalization(new TempusDominusLocalizationConfig<>(Date.class)\n" + //
+                        "        .withLocalization(new TempusDominusLocalizationConfig()\n" + //
                         "                .withFormat(\"dd/MM/yyyy\")\n" + //
                         "        )\n" + //
-                        "        .withRestrictions(new TempusDominusRestrictionsConfig<Date>()\n" + //
+                        "        .withRestrictions(new TempusDominusRestrictionsConfig()\n" + //
                         "                .withMinDate(Date.from(min.minusYears(6).atStartOfDay(ZoneId.systemDefault()).toInstant()))\n" + //
-                        "        );\n" + //
+                        "        ).withClass(Date.class);\n" + //
                         "")),
 
                 new DateTextField("icons", iconsConfig.getFormat()).add(new TempusDominusBehavior(iconsConfig)),
                 new Code("icons-java-code", Model.of(
-                        "new TempusDominusConfig<>(Date.class)\n" + //
-                        "        .withDisplayConfig(new TempusDominusDisplayConfig<>(Date.class)\n" + //
+                        "new TempusDominusConfig()\n" + //
+                        "        .withDisplayConfig(new TempusDominusDisplayConfig()\n" + //
                         "                .withButton(ButtonType.TODAY, true)\n" + //
                         "                .withButton(ButtonType.CLEAR, true)\n" + //
                         "                .withButton(ButtonType.CLOSE, true)\n" + //
@@ -164,65 +167,69 @@ public class TempusDominusPickerPage extends BasePage {
                         "                )\n" + //
                         "                .withComponent(ComponentType.SECONDS, true)\n" + //
                         "        )\n" + //
-                        "        .withLocalization(new TempusDominusLocalizationConfig<>(Date.class)\n" + //
+                        "        .withLocalization(new TempusDominusLocalizationConfig()\n" + //
                         "                .withFormat(\"dd/MM/yyyy HH:mm:ss\")\n" + //
-                        "        );\n" + //
+                        "        ).withClass(Date.class);\n" + //
                         ""))
                     );
         }
         {
             // java.time.*
-            TempusDominusConfig<LocalDateTime> simpleConfig = new TempusDominusConfig<>(LocalDateTime.class)
-                    .withRestrictions(new TempusDominusRestrictionsConfig<LocalDateTime>()
+            TempusDominusConfig simpleConfig = new TempusDominusConfig()
+                    .withRestrictions(new TempusDominusRestrictionsConfig()
                             .withMinDate(min.atStartOfDay())
                             .withMaxDate(max.atStartOfDay())
                     )
-                    .withLocalization(new TempusDominusLocalizationConfig<>(LocalDateTime.class)
+                    .withLocalization(new TempusDominusLocalizationConfig()
                             .withFormat("dd/MM/yyyy HH:mm:ss")
-                    );
+                    )
+                    .withClass(LocalDateTime.class);
 
-            TempusDominusConfig<LocalDate> birthDayConfig = new TempusDominusConfig<>(LocalDate.class)
-                    .withDisplayConfig(new TempusDominusDisplayConfig<>(LocalDate.class)
+            TempusDominusConfig birthDayConfig = new TempusDominusConfig()
+                    .withDisplayConfig(new TempusDominusDisplayConfig()
                             .withViewMode(ViewModeType.YEARS)
                     )
-                    .withRestrictions(new TempusDominusRestrictionsConfig<LocalDate>()
+                    .withRestrictions(new TempusDominusRestrictionsConfig()
                             .withMinDate(min.minusYears(6))
-                    );
-            TempusDominusConfig<LocalTime> timeConfig = new TempusDominusConfig<>(LocalTime.class);
+                    )
+                    .withClass(LocalDate.class);
+            TempusDominusConfig timeConfig = new TempusDominusConfig()
+                    .withClass(LocalTime.class);
 
-            TempusDominusConfig<ZonedDateTime> zonedConfig = new TempusDominusConfig<>(ZonedDateTime.class)
-                    .withRestrictions(new TempusDominusRestrictionsConfig<ZonedDateTime>()
+            TempusDominusConfig zonedConfig = new TempusDominusConfig()
+                    .withRestrictions(new TempusDominusRestrictionsConfig()
                             .withDayOfWeekDisabled(0)
                             .withDayOfWeekDisabled(6)
-                    );
+                    )
+                    .withClass(ZonedDateTime.class);
 
             form.add(
                 new LocalDateTimeTextField("localsimple", simpleConfig.getFormat()).add(new TempusDominusBehavior(simpleConfig)),
                 new Code("localsimple-java-code", Model.of(
-                        "new TempusDominusConfig<>(LocalDateTime.class)\n" + //
-                        "        .withRestrictions(new TempusDominusRestrictionsConfig<LocalDateTime>()\n" + //
+                        "new TempusDominusConfig()\n" + //
+                        "        .withRestrictions(new TempusDominusRestrictionsConfig()\n" + //
                         "                .withMinDate(min.atStartOfDay())\n" + //
                         "                .withMaxDate(max.atStartOfDay())\n" + //
                         "        )\n" + //
-                        "        .withLocalization(new TempusDominusLocalizationConfig<>(LocalDateTime.class)\n" + //
+                        "        .withLocalization(new TempusDominusLocalizationConfig()\n" + //
                         "                .withFormat(\"dd/MM/yyyy HH:mm:ss\")\n" + //
-                        "        );\n" + //
+                        "        ).withClass(LocalDateTime.class);\n" + //
                         "")),
 
                 new LocalDateTextField("localbirthday", simpleConfig.getFormat()).add(new TempusDominusBehavior(birthDayConfig)),
                 new Code("localbirthday-java-code", Model.of(
-                        "new TempusDominusConfig<>(LocalDate.class)\n" + //
-                        "        .withDisplayConfig(new TempusDominusDisplayConfig<>(LocalDate.class)\n" + //
+                        "new TempusDominusConfig()\n" + //
+                        "        .withDisplayConfig(new TempusDominusDisplayConfig()\n" + //
                         "                .withViewMode(ViewModeType.YEARS)\n" + //
                         "        )\n" + //
-                        "        .withRestrictions(new TempusDominusRestrictionsConfig<LocalDate>()\n" + //
+                        "        .withRestrictions(new TempusDominusRestrictionsConfig()\n" + //
                         "                .withMinDate(min.minusYears(6))\n" + //
-                        "        );\n" + //
+                        "        ).withClass(LocalDate.class);\n" + //
                         "")),
 
                 new LocalTimeTextField("localtime", timeConfig.getFormat()).add(new TempusDominusBehavior(timeConfig)),
                 new Code("localtime-java-code", Model.of(
-                        "new TempusDominusConfig<>(LocalTime.class)")),
+                        "new TempusDominusConfig().withClass(LocalTime.class)")),
 
                 new AbstractTempusDominusWithIcon<ZonedDateTime>("zoned", zonedConfig) {
                         private static final long serialVersionUID = 1L;
@@ -234,11 +241,11 @@ public class TempusDominusPickerPage extends BasePage {
 
                 },
                 new Code("zoned-java-code", Model.of(
-                        "new TempusDominusConfig<>(ZonedDateTime.class)\n" + //
-                        "        .withRestrictions(new TempusDominusRestrictionsConfig<ZonedDateTime>()\n" + //
+                        "new TempusDominusConfig()\n" + //
+                        "        .withRestrictions(new TempusDominusRestrictionsConfig()\n" + //
                         "                .withDayOfWeekDisabled(0)\n" + //
                         "                .withDayOfWeekDisabled(6)\n" + //
-                        "        );                    \n" + //
+                        "        ).withClass(ZonedDateTime.class);\n" + //
                         ""))
                 );
         }

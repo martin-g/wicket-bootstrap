@@ -22,22 +22,22 @@ import de.agilecoders.wicket.jquery.util.Json.RawValue;
  *
  * @see <a href="https://getdatepicker.com/6/options/">JS widget options</a>
  */
-public class TempusDominusConfig<T> extends AbstractConfig {
+public class TempusDominusConfig extends AbstractConfig {
     private static final long serialVersionUID = 1L;
 
     private static final IKey<Boolean> AllowInputToggle = newKey("allowInputToggle", false);
     private static final IKey<RawValue> Container = newKey("container", null);
     private static final IKey<Boolean> DateRange = newKey("dateRange", false);
     private static final IKey<RawValue> DefaultDate = newKey("defaultDate", null);
-    private static final IKey<TempusDominusDisplayConfig<?>> Display = newKey("display", null);
+    private static final IKey<TempusDominusDisplayConfig> Display = newKey("display", null);
     private static final IKey<Boolean> KeepInvalid = newKey("keepInvalid", false);
-    private static final IKey<TempusDominusLocalizationConfig<?>> Localization = newKey("localization", null);
+    private static final IKey<TempusDominusLocalizationConfig> Localization = newKey("localization", null);
     private static final IKey<Map<String, Object>> Meta = newKey("meta", null);
     private static final IKey<Boolean> MultipleDates = newKey("multipleDates", false);
     private static final IKey<String> MultipleDatesSeparator = newKey("multipleDatesSeparator", null);
     private static final IKey<Boolean> PromptTimeOnDateChange = newKey("promptTimeOnDateChange", false);
     private static final IKey<Integer> PromptTimeOnDateChangeTransitionDelay = newKey("promptTimeOnDateChangeTransitionDelay", null);
-    private static final IKey<TempusDominusRestrictionsConfig<?>> Restrictions = newKey("restrictions", null);
+    private static final IKey<TempusDominusRestrictionsConfig> Restrictions = newKey("restrictions", null);
     private static final IKey<Integer> Stepping = newKey("stepping", null);
     private static final IKey<Boolean> UseCurrent = newKey("useCurrent", true);
     private static final IKey<RawValue> ViewDate = newKey("viewDate", null);
@@ -45,17 +45,29 @@ public class TempusDominusConfig<T> extends AbstractConfig {
     /**
      * Construct config
      */
-    public TempusDominusConfig(Class<T> clazz) {
-        put(Display, new TempusDominusDisplayConfig<>(clazz));
-        put(Localization, new TempusDominusLocalizationConfig<>(clazz));
-        put(Restrictions, new TempusDominusRestrictionsConfig<T>());
+    public TempusDominusConfig() {
+        put(Display, new TempusDominusDisplayConfig());
+        put(Localization, new TempusDominusLocalizationConfig());
+        put(Restrictions, new TempusDominusRestrictionsConfig());
+    }
+
+    /**
+     * Will add restrictions based on class LocalDate/LocalTime/LocalDateTime etc.
+     *
+     * @param clazz Class of DateTime object to set restrictions
+     * @return current instance
+     */
+    public <T> TempusDominusConfig withClass(Class<T> clazz) {
+        get(Display).withClass(clazz);
+        get(Localization).withClass(clazz);
+        return this;
     }
 
     /**
      * @param allow If true, the picker will show on textbox focus.
      * @return current instance
      */
-    public TempusDominusConfig<T> withAllowInputToggle(boolean allow) {
+    public TempusDominusConfig withAllowInputToggle(boolean allow) {
         put(AllowInputToggle, allow);
         return this;
     }
@@ -65,7 +77,7 @@ public class TempusDominusConfig<T> extends AbstractConfig {
      *    (In case of application using shadow DOM for example).
      * @return current instance
      */
-    public TempusDominusConfig<T> withContainer(String container) {
+    public TempusDominusConfig withContainer(String container) {
         put(Container, new RawValue(container));
         return this;
     }
@@ -77,7 +89,7 @@ public class TempusDominusConfig<T> extends AbstractConfig {
      *      place. The range will be consider invalid if any of the dates in the range are disabled.
      * @return current instance
      */
-    public TempusDominusConfig<T> withDateRange(boolean dateRange) {
+    public TempusDominusConfig withDateRange(boolean dateRange) {
         put(DateRange, dateRange);
         return this;
     }
@@ -86,7 +98,7 @@ public class TempusDominusConfig<T> extends AbstractConfig {
      * @param defDate Sets the picker default date/time. Overrides useCurrent
      * @return current instance
      */
-    public TempusDominusConfig<T> withDefaultDate(T defDate) {
+    public <T> TempusDominusConfig withDefaultDate(T defDate) {
         put(DefaultDate, createJsDate(defDate));
         return this;
     }
@@ -96,7 +108,7 @@ public class TempusDominusConfig<T> extends AbstractConfig {
      *      You can disable components, buttons and change the default icons.
      * @return current instance
      */
-    public TempusDominusConfig<T> withDisplayConfig(TempusDominusDisplayConfig<T> cfg) {
+    public TempusDominusConfig withDisplayConfig(TempusDominusDisplayConfig cfg) {
         put(Display, cfg);
         return this;
     }
@@ -105,7 +117,7 @@ public class TempusDominusConfig<T> extends AbstractConfig {
      * @param keep Allows for the user to select a date that is invalid according to the rules.
      * @return current instance
     */
-    public TempusDominusConfig<T> withKeepInvalid(boolean keep) {
+    public TempusDominusConfig withKeepInvalid(boolean keep) {
         put(KeepInvalid, keep);
         return this;
     }
@@ -114,7 +126,7 @@ public class TempusDominusConfig<T> extends AbstractConfig {
      * @param cfg Most of the localization options are for title tooltips over icons.
      * @return current instance
      */
-    public TempusDominusConfig<T> withLocalization(TempusDominusLocalizationConfig<T> cfg) {
+    public TempusDominusConfig withLocalization(TempusDominusLocalizationConfig cfg) {
         put(Localization, cfg);
         return this;
     }
@@ -124,7 +136,7 @@ public class TempusDominusConfig<T> extends AbstractConfig {
      *      about the picker.
      * @return current instance
      */
-    public TempusDominusConfig<T> withMeta(Map<String, Object> map) {
+    public TempusDominusConfig withMeta(Map<String, Object> map) {
         put(Meta, map);
         return this;
     }
@@ -133,7 +145,7 @@ public class TempusDominusConfig<T> extends AbstractConfig {
      * @param multiple Allows multiple dates to be selected.
      * @return current instance
      */
-    public TempusDominusConfig<T> withMultipleDates(boolean multiple) {
+    public TempusDominusConfig withMultipleDates(boolean multiple) {
         put(MultipleDates, multiple);
         return this;
     }
@@ -143,7 +155,7 @@ public class TempusDominusConfig<T> extends AbstractConfig {
      *      the selected dates.
      * @return current instance
      */
-    public TempusDominusConfig<T> withMultipleDatesSeparator(String separator) {
+    public TempusDominusConfig withMultipleDatesSeparator(String separator) {
         put(MultipleDatesSeparator, separator);
         return this;
     }
@@ -154,7 +166,7 @@ public class TempusDominusConfig<T> extends AbstractConfig {
      *      `promptTimeOnDateChangeTransitionDelay`.
      * @return current instance
      */
-    public TempusDominusConfig<T> withPromptTimeOnDateChange(boolean prompt) {
+    public TempusDominusConfig withPromptTimeOnDateChange(boolean prompt) {
         put(PromptTimeOnDateChange, prompt);
         return this;
     }
@@ -164,7 +176,7 @@ public class TempusDominusConfig<T> extends AbstractConfig {
      *      picker will display the clock view.
      * @return current instance
      */
-    public TempusDominusConfig<T> withPromptTimeOnDateChangeTransitionDelay(int delay) {
+    public TempusDominusConfig withPromptTimeOnDateChangeTransitionDelay(int delay) {
         put(PromptTimeOnDateChangeTransitionDelay, delay);
         return this;
     }
@@ -174,7 +186,7 @@ public class TempusDominusConfig<T> extends AbstractConfig {
      *      on a set of rules.
      * @return current instance
      */
-    public TempusDominusConfig<T> withRestrictions(TempusDominusRestrictionsConfig<T> cfg) {
+    public TempusDominusConfig withRestrictions(TempusDominusRestrictionsConfig cfg) {
         put(Restrictions, cfg);
         return this;
     }
@@ -184,7 +196,7 @@ public class TempusDominusConfig<T> extends AbstractConfig {
      *      selection grid to step by this amount.
      * @return current instance
      */
-    public TempusDominusConfig<T> withStepping(int step) {
+    public TempusDominusConfig withStepping(int step) {
         put(Stepping, step);
         return this;
     }
@@ -194,7 +206,7 @@ public class TempusDominusConfig<T> extends AbstractConfig {
      *      the picker is opened.
      * @return current instance
      */
-    public TempusDominusConfig<T> withUseCurrent(boolean use) {
+    public TempusDominusConfig withUseCurrent(boolean use) {
         put(UseCurrent, use);
         return this;
     }
@@ -203,7 +215,7 @@ public class TempusDominusConfig<T> extends AbstractConfig {
      * @param date Set the view date of the picker. Setting this will not change the selected date(s).
      * @return current instance
      */
-    public TempusDominusConfig<T> withViewDate(T date) {
+    public <T> TempusDominusConfig withViewDate(T date) {
         put(ViewDate, createJsDate(date));
         return this;
     }

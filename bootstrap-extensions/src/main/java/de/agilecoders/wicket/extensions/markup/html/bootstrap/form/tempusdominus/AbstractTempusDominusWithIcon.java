@@ -20,7 +20,7 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
 public abstract class AbstractTempusDominusWithIcon<T> extends FormComponentPanel<T> {
     private static final long serialVersionUID = 1L;
 
-    private TempusDominusConfig<T> config;
+    private TempusDominusConfig config;
     private FormComponent<T> dateInput;
 
     /**
@@ -29,7 +29,7 @@ public abstract class AbstractTempusDominusWithIcon<T> extends FormComponentPane
      * @param markupId markup id
      * @param config   DateTimePicker config
      */
-    public AbstractTempusDominusWithIcon(String markupId, TempusDominusConfig<T> config) {
+    public AbstractTempusDominusWithIcon(String markupId, TempusDominusConfig config) {
         this(markupId, null, config);
     }
 
@@ -40,7 +40,7 @@ public abstract class AbstractTempusDominusWithIcon<T> extends FormComponentPane
      * @param model    model
      * @param config   DateTimePicker config
      */
-    public AbstractTempusDominusWithIcon(String markupId, IModel<T> model, TempusDominusConfig<T> config) {
+    public AbstractTempusDominusWithIcon(String markupId, IModel<T> model, TempusDominusConfig config) {
         super(markupId, model);
         setRenderBodyOnly(true);
         this.config = config;
@@ -85,7 +85,7 @@ public abstract class AbstractTempusDominusWithIcon<T> extends FormComponentPane
      * @param config config to use
      * @return current instance
      */
-    public AbstractTempusDominusWithIcon<T> with(TempusDominusConfig<T> config) {
+    public AbstractTempusDominusWithIcon<T> with(TempusDominusConfig config) {
         this.config = config;
         return this;
     }
@@ -95,7 +95,7 @@ public abstract class AbstractTempusDominusWithIcon<T> extends FormComponentPane
      *
      * @return current config
      */
-    public TempusDominusConfig<T> getConfig() {
+    public TempusDominusConfig getConfig() {
         return config;
     }
 

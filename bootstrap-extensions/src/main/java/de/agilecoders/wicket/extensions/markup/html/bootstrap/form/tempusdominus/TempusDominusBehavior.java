@@ -18,14 +18,14 @@ import de.agilecoders.wicket.jquery.function.Function;
 public class TempusDominusBehavior extends BootstrapJavascriptBehavior {
     private static final long serialVersionUID = 1L;
 
-    private final TempusDominusConfig<?> config;
+    private final TempusDominusConfig config;
 
     /**
      * Construct instance
      *
      * @param config config
      */
-    public TempusDominusBehavior(TempusDominusConfig<?> config) {
+    public TempusDominusBehavior(TempusDominusConfig config) {
         this.config = config;
     }
 
