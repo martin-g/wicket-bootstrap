@@ -70,7 +70,7 @@ public abstract class AbstractTempusDominusWithIcon<T> extends FormComponentPane
         Component iconContainer = newIconContainer("iconContainer")
                 .add(newIcon("icon"))
                 .add(AttributeAppender.append("data-td-target", mainId)
-                    ,AttributeAppender.append("data-td-toggle", "datetimepicker"));
+                    , AttributeAppender.append("data-td-toggle", "datetimepicker"));
 
 
         add(container

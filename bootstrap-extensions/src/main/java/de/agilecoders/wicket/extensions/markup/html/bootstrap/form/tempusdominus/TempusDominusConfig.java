@@ -244,7 +244,7 @@ public class TempusDominusConfig extends AbstractConfig {
         return get(Localization).getFormat();
     }
 
-    static <U> RawValue createJsDate(U date) {
+    public static <U> String formatDateISO(U date) {
         String strDate = null;
         if (date instanceof Date) {
             strDate = ISO_INSTANT.format(((Date)date).toInstant());
@@ -257,6 +257,11 @@ public class TempusDominusConfig extends AbstractConfig {
         } else if (date instanceof ZonedDateTime) {
             strDate = ISO_ZONED_DATE_TIME.format((ZonedDateTime)date);
         }
+        return strDate;
+    }
+
+    static <U> RawValue createJsDate(U date) {
+        String strDate = formatDateISO(date);
         return strDate == null ? null : new RawValue("new Date('" + strDate + "')");
     }
 }

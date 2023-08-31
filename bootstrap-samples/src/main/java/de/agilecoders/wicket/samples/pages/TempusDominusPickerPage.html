@@ -12,28 +12,27 @@
             <div class="bd-sidebar">
                 <ul class="dropdown-menu d-block">
                     <li><h6 class="dropdown-header">java.util.Date based Model</h6></li>
-                    <li><a class="dropdown-item" href="#datepicker" data-bs-toggle="collapse" aria-expanded="false" aria-controls="datepicker">
+                    <li><a class="dropdown-item" href="#simple-id" data-bs-toggle="collapse" aria-expanded="true" aria-controls="simple-id">
                         <i class="fas fa-chevron-right"></i>&nbsp;DatetimePicker</a>
                     </li>
-                    <li><a class="dropdown-item" href="#datepicker-birthday" data-bs-toggle="collapse" aria-expanded="false" aria-controls="datepicker-birthday">
+                    <li><a class="dropdown-item" href="#birthday-id" data-bs-toggle="collapse" aria-expanded="false" aria-controls="birthday-id">
                         <i class="fas fa-chevron-right"></i>&nbsp;BirthdayPicker</a>
                     </li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#datepicker-icons" data-bs-toggle="collapse" aria-expanded="false" aria-controls="datepicker-icons">
+                    <li><a class="dropdown-item" href="#icons-id" data-bs-toggle="collapse" aria-expanded="false" aria-controls="icons-id">
                         <i class="fas fa-chevron-right"></i>&nbsp;DatetimePicker with icons</a>
                     </li>
                     <li><h6 class="dropdown-header">java.time.* based Model</h6></li>
-                    <li><a class="dropdown-item" href="#localdatepicker" data-bs-toggle="collapse" aria-expanded="false" aria-controls="localdatepicker">
+                    <li><a class="dropdown-item" href="#localsimple-id" data-bs-toggle="collapse" aria-expanded="false" aria-controls="localsimple-id">
                         <i class="fas fa-chevron-right"></i>&nbsp;LocalDateTime based</a>
                     </li>
-                    <li><a class="dropdown-item" href="#localdatepicker-birthday" data-bs-toggle="collapse" aria-expanded="false" aria-controls="localdatepicker-birthday">
+                    <li><a class="dropdown-item" href="#localbirthday-id" data-bs-toggle="collapse" aria-expanded="false" aria-controls="localbirthday-id">
                         <i class="fas fa-chevron-right"></i>&nbsp;LocalDate based</a>
                     </li>
-                    <li><a class="dropdown-item" href="#localdatepicker-time" data-bs-toggle="collapse" aria-expanded="false" aria-controls="localdatepicker-time">
+                    <li><a class="dropdown-item" href="#localtime-id" data-bs-toggle="collapse" aria-expanded="false" aria-controls="localtime-id">
                         <i class="fas fa-chevron-right"></i>&nbsp;LocalTime based</a>
                     </li>
-                    <li><a class="dropdown-item" href="#zoneddatepicker-icon" data-bs-toggle="collapse" aria-expanded="false" aria-controls="zoneddatepicker-icon">
-                        <i class="fas fa-chevron-right"></i>&nbsp;ZonedDateTime based with icon</a>
+                    <li><a class="dropdown-item" href="#icon-id" data-bs-toggle="collapse" aria-expanded="false" aria-controls="icon-id">
+                        <i class="fas fa-chevron-right"></i>&nbsp;LocalDateTime based with icon</a>
                     </li>
                     <li>
                         <div class="p-2">
@@ -59,76 +58,82 @@
                     <p class="lead">A tempus-dominus picker from Eonasdan v6</p>
                 </div>
                 <div wicket:id="feedback"></div>
-                <div class="card" id="datepicker">
+                <div class="card" id="simple-id">
                     <div class="card-body">
                         <h5 class="card-title">Simple datetime picker.</h5>
                         <p class="card-text">
                             <input type="text" wicket:id="simple"/>
+                            <div wicket:id="simple-status"></div>
                         </p>
                         <h6 class="card-subtitle mb-2 text-body-secondary">Configuration code:</h6>
                         <pre wicket:id="simple-java-code"></pre>
                     </div>
                 </div>
-                <div class="card collapse mt-2" id="datepicker-birthday">
+                <div class="card collapse mt-2" id="birthday-id">
                     <div class="card-body">
                         <h5 class="card-title">Birthday picker.</h5>
                         <p class="card-text">
                             <input type="text" wicket:id="birthday"/>
+                            <div wicket:id="birthday-status"></div>
                         </p>
                         <h6 class="card-subtitle mb-2 text-body-secondary">Configuration code:</h6>
                         <pre wicket:id="birthday-java-code"></pre>
                     </div>
                 </div>
-                <div class="card collapse mt-2" id="datepicker-icons">
+                <div class="card collapse mt-2" id="icons-id">
                     <div class="card-body">
                         <h5 class="card-title">Datetime picker with FontAwesome icons.</h5>
                         <p class="card-text">
                             <input type="text" wicket:id="icons"/>
+                            <div wicket:id="icons-status"></div>
                         </p>
                         <h6 class="card-subtitle mb-2 text-body-secondary">Configuration code:</h6>
                         <pre wicket:id="icons-java-code"></pre>
                     </div>
                 </div>
 
-                <div class="card collapse mt-2" id="localdatepicker">
+                <div class="card collapse mt-2" id="localsimple-id">
                     <div class="card-body">
                         <h5 class="card-title">Simple Local datetime picker.</h5>
                         <p class="card-text">
                             <input type="text" wicket:id="localsimple"/>
+                            <div wicket:id="localsimple-status"></div>
                         </p>
                         <h6 class="card-subtitle mb-2 text-body-secondary">Configuration code:</h6>
                         <pre wicket:id="localsimple-java-code"></pre>
                     </div>
                 </div>
-                <div class="card collapse mt-2" id="localdatepicker-birthday">
+                <div class="card collapse mt-2" id="localbirthday-id">
                     <div class="card-body">
                         <h5 class="card-title">Birthday picker.</h5>
                         <p class="card-text">
                             <input type="text" wicket:id="localbirthday"/>
+                            <div wicket:id="localbirthday-status"></div>
                         </p>
                         <h6 class="card-subtitle mb-2 text-body-secondary">Configuration code:</h6>
                         <pre wicket:id="localbirthday-java-code"></pre>
                     </div>
                 </div>
-                <div class="card collapse mt-2" id="localdatepicker-time">
+                <div class="card collapse mt-2" id="localtime-id">
                     <div class="card-body">
                         <h5 class="card-title">Time picker.</h5>
                         <p class="card-text">
                             <input type="text" wicket:id="localtime"/>
+                            <div wicket:id="localtime-status"></div>
                         </p>
                         <h6 class="card-subtitle mb-2 text-body-secondary">Configuration code:</h6>
                         <pre wicket:id="localtime-java-code"></pre>
                     </div>
                 </div>
-
-                <div class="card collapse mt-2" id="zoneddatepicker-icon">
+                <div class="card collapse mt-2" id="icon-id">
                     <div class="card-body">
-                        <h5 class="card-title">ZonedDateTime based with icon.</h5>
+                        <h5 class="card-title">LocalDateTime based with icon.</h5>
                         <p class="card-text">
-                            <div wicket:id="zoned"></div>
+                            <div wicket:id="icon"></div>
+                            <div wicket:id="icon-status"></div>
                         </p>
                         <h6 class="card-subtitle mb-2 text-body-secondary">Configuration code:</h6>
-                        <pre wicket:id="zoned-java-code"></pre>
+                        <pre wicket:id="icon-java-code"></pre>
                     </div>
                 </div>
             </div>
