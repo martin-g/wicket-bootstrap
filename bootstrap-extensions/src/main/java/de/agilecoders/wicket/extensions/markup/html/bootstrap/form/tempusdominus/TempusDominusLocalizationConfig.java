@@ -8,6 +8,8 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.wicket.Session;
 import org.apache.wicket.util.lang.Args;
@@ -23,6 +25,7 @@ import de.agilecoders.wicket.jquery.util.Json.RawValue;
  */
 public class TempusDominusLocalizationConfig extends AbstractConfig {
     private static final long serialVersionUID = 1L;
+    private static final Pattern YEAR_PATTERN = Pattern.compile("^[^y]*([y]+)[^y]*$", Pattern.CASE_INSENSITIVE);
 
     public enum HourCycleType {
         H11("h11"), // Midnight: 00 AM; Night: 11 PM
@@ -418,7 +421,7 @@ public class TempusDominusLocalizationConfig extends AbstractConfig {
      * @return current instance
      */
     public TempusDominusLocalizationConfig withDateFormat(DateFormatType type, String format) {
-        get(DateFormats).put(type.name(), format);
+        get(DateFormats).put(type.name(), toJavaScriptDateFormat(format));
         return this;
     }
 
@@ -443,8 +446,17 @@ public class TempusDominusLocalizationConfig extends AbstractConfig {
         return this;
     }
 
-    private static String toJavaScriptDateFormat(final String javaFormat) {
-        return nullToEmpty(javaFormat).replace('a', 't');
+    private static String toJavaScriptDateFormat(final String _fmt) {
+        String jsFormat = nullToEmpty(_fmt).replace(" a", " t");
+        Matcher yearMatcher = YEAR_PATTERN.matcher(jsFormat);
+        if (yearMatcher.find()) {
+            String year = yearMatcher.group(1);
+            // only 2 or 4 'yyyy' are supported
+            if (year.length() < 2 || year.length() > 2) {
+                return jsFormat.substring(0, yearMatcher.start(1)) + "yyyy" + jsFormat.substring(yearMatcher.end(1));
+            }
+        }
+        return jsFormat;
     }
 
     public String getFormat() {

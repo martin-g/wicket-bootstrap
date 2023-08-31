@@ -68,7 +68,6 @@ abstract class BasePage extends GenericWebPage<Void> {
         mvt.setWidth("device-width");
         mvt.setInitialScale("1");
         add(mvt);
-//        add(new OptimizedMobileViewportNoZoomMetaTag("viewport1"));
         add(new IeEdgeMetaTag("ie-edge"));
         add(new MetaTag("description", Model.of("description"), Model.of("Apache Wicket & Bootstrap Demo")));
         add(new MetaTag("author", Model.of("author"), Model.of("Michael Haitz <michael.haitz@agile-coders.de>")));
@@ -265,11 +264,8 @@ abstract class BasePage extends GenericWebPage<Void> {
      */
     private Component newNavigation(String markupId) {
         WebMarkupContainer navigation = new WebMarkupContainer(markupId);
-        //navigation.add(new AffixBehavior("200"));
         navigation.setVisible(hasNavigation());
 
         return navigation;
     }
-
 }
-

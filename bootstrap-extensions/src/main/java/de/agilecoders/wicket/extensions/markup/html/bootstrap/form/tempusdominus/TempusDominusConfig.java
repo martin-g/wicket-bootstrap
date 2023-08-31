@@ -12,6 +12,7 @@ import java.time.LocalTime;
 import java.time.ZonedDateTime;
 import java.util.Date;
 import java.util.Map;
+import java.util.function.Consumer;
 
 import de.agilecoders.wicket.jquery.AbstractConfig;
 import de.agilecoders.wicket.jquery.IKey;
@@ -104,12 +105,26 @@ public class TempusDominusConfig extends AbstractConfig {
     }
 
     /**
-     * @param cfg The display options allow you to control much of the picker's look and feel.
+     * @param cfgUpdater Consumer accepting TempusDominusDisplayConfig so it can be updated:
+     *      The display options allow you to control much of the picker's look and feel.
      *      You can disable components, buttons and change the default icons.
      * @return current instance
      */
-    public TempusDominusConfig withDisplayConfig(TempusDominusDisplayConfig cfg) {
-        put(Display, cfg);
+    public TempusDominusConfig withDisplayConfig(Consumer<TempusDominusDisplayConfig> cfgUpdater) {
+        cfgUpdater.accept(get(Display));
+        return this;
+    }
+
+    /**
+     * Shortcut for Display -> Icons
+     *
+     * @param cfgUpdater Consumer accepting TempusDominusIconConfig so it can be updated:
+     *      The display options allow you to control much of the picker's look and feel.
+     *      You can disable components, buttons and change the default icons.
+     * @return current instance
+     */
+    public TempusDominusConfig withIcons(Consumer<TempusDominusIconConfig> cfgUpdater) {
+        get(Display).withIcons(cfgUpdater);
         return this;
     }
 
@@ -123,11 +138,12 @@ public class TempusDominusConfig extends AbstractConfig {
     }
 
     /**
-     * @param cfg Most of the localization options are for title tooltips over icons.
+     * @param cfgUpdater Consumer accepting TempusDominusDisplayConfig so it can be updated:
+     *      Most of the localization options are for title tooltips over icons.
      * @return current instance
      */
-    public TempusDominusConfig withLocalization(TempusDominusLocalizationConfig cfg) {
-        put(Localization, cfg);
+    public TempusDominusConfig withLocalization(Consumer<TempusDominusLocalizationConfig> cfgUpdater) {
+        cfgUpdater.accept(get(Localization));
         return this;
     }
 
@@ -182,12 +198,13 @@ public class TempusDominusConfig extends AbstractConfig {
     }
 
     /**
-     * @param cfg Restrictions allow you to prevent users from selected dates or times based
+     * @param cfgUpdater Consumer accepting TempusDominusDisplayConfig so it can be updated:
+     *      Restrictions allow you to prevent users from selected dates or times based
      *      on a set of rules.
      * @return current instance
      */
-    public TempusDominusConfig withRestrictions(TempusDominusRestrictionsConfig cfg) {
-        put(Restrictions, cfg);
+    public TempusDominusConfig withRestrictions(Consumer<TempusDominusRestrictionsConfig> cfgUpdater) {
+        cfgUpdater.accept(get(Restrictions));
         return this;
     }
 

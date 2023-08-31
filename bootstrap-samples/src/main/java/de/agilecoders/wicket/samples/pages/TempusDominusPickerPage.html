@@ -6,44 +6,59 @@
 </head>
 <body>
 <wicket:extend>
-    <div class="container bd-layout mt-3">
-        <div class="bd-sidebar">
-            <ul wicket:id="navigation" class="dropdown-menu d-block">
-                <li><h6 class="dropdown-header">java.util.Date based Model</h6></li>
-                <li><a class="dropdown-item" href="#datepicker" data-bs-toggle="collapse" aria-expanded="false" aria-controls="datepicker">
-                    <i class="fas fa-chevron-right"></i>&nbsp;DatetimePicker</a>
-                </li>
-                <li><a class="dropdown-item" href="#datepicker-birthday" data-bs-toggle="collapse" aria-expanded="false" aria-controls="datepicker-birthday">
-                    <i class="fas fa-chevron-right"></i>&nbsp;BirthdayPicker</a>
-                </li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#datepicker-icons" data-bs-toggle="collapse" aria-expanded="false" aria-controls="datepicker-icons">
-                    <i class="fas fa-chevron-right"></i>&nbsp;DatetimePicker with icons</a>
-                </li>
-                <li><h6 class="dropdown-header">java.time.* based Model</h6></li>
-                <li><a class="dropdown-item" href="#localdatepicker" data-bs-toggle="collapse" aria-expanded="false" aria-controls="localdatepicker">
-                    <i class="fas fa-chevron-right"></i>&nbsp;LocalDateTime based</a>
-                </li>
-                <li><a class="dropdown-item" href="#localdatepicker-birthday" data-bs-toggle="collapse" aria-expanded="false" aria-controls="localdatepicker-birthday">
-                    <i class="fas fa-chevron-right"></i>&nbsp;LocalDate based</a>
-                </li>
-                <li><a class="dropdown-item" href="#localdatepicker-time" data-bs-toggle="collapse" aria-expanded="false" aria-controls="localdatepicker-time">
-                    <i class="fas fa-chevron-right"></i>&nbsp;LocalTime based</a>
-                </li>
-                <li><a class="dropdown-item" href="#zoneddatepicker-icon" data-bs-toggle="collapse" aria-expanded="false" aria-controls="zoneddatepicker-icon">
-                    <i class="fas fa-chevron-right"></i>&nbsp;ZonedDateTime based with icon</a>
-                </li>
-            </ul>
-        </div>
-
-
-        <div class="bd-main">
-            <div class="container">
-                <h1>TempusDominus Picker</h1>
-
-                <p class="lead">A tempus-dominus picker from Eonasdan v6</p>
+    <div wicket:id="navigation"></div> <!-- required by parent -->
+    <form wicket:id="form">
+        <div class="container bd-layout mt-3">
+            <div class="bd-sidebar">
+                <ul class="dropdown-menu d-block">
+                    <li><h6 class="dropdown-header">java.util.Date based Model</h6></li>
+                    <li><a class="dropdown-item" href="#datepicker" data-bs-toggle="collapse" aria-expanded="false" aria-controls="datepicker">
+                        <i class="fas fa-chevron-right"></i>&nbsp;DatetimePicker</a>
+                    </li>
+                    <li><a class="dropdown-item" href="#datepicker-birthday" data-bs-toggle="collapse" aria-expanded="false" aria-controls="datepicker-birthday">
+                        <i class="fas fa-chevron-right"></i>&nbsp;BirthdayPicker</a>
+                    </li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#datepicker-icons" data-bs-toggle="collapse" aria-expanded="false" aria-controls="datepicker-icons">
+                        <i class="fas fa-chevron-right"></i>&nbsp;DatetimePicker with icons</a>
+                    </li>
+                    <li><h6 class="dropdown-header">java.time.* based Model</h6></li>
+                    <li><a class="dropdown-item" href="#localdatepicker" data-bs-toggle="collapse" aria-expanded="false" aria-controls="localdatepicker">
+                        <i class="fas fa-chevron-right"></i>&nbsp;LocalDateTime based</a>
+                    </li>
+                    <li><a class="dropdown-item" href="#localdatepicker-birthday" data-bs-toggle="collapse" aria-expanded="false" aria-controls="localdatepicker-birthday">
+                        <i class="fas fa-chevron-right"></i>&nbsp;LocalDate based</a>
+                    </li>
+                    <li><a class="dropdown-item" href="#localdatepicker-time" data-bs-toggle="collapse" aria-expanded="false" aria-controls="localdatepicker-time">
+                        <i class="fas fa-chevron-right"></i>&nbsp;LocalTime based</a>
+                    </li>
+                    <li><a class="dropdown-item" href="#zoneddatepicker-icon" data-bs-toggle="collapse" aria-expanded="false" aria-controls="zoneddatepicker-icon">
+                        <i class="fas fa-chevron-right"></i>&nbsp;ZonedDateTime based with icon</a>
+                    </li>
+                    <li>
+                        <div class="p-2">
+                            <h5>Set page Locale</h5>
+                            <div class="mb-3">
+                                <label wicket:for="languages" class="form-label">Select Language</label>
+                                <select class="form-select" wicket:id="languages"></select>
+                            </div>
+                            <div class="mb-3">
+                                <label wicket:for="countries" class="form-label">Select Country</label>
+                                <select class="form-select" wicket:id="countries"></select>
+                            </div>
+                            <button class="btn btn-primary" wicket:id="submit">Set</button>
+                        </div>
+                    </li>
+                </ul>
             </div>
-            <form wicket:id="form">
+
+            <div class="bd-main">
+                <div class="container">
+                    <h1>TempusDominus Picker</h1>
+
+                    <p class="lead">A tempus-dominus picker from Eonasdan v6</p>
+                </div>
+                <div wicket:id="feedback"></div>
                 <div class="card" id="datepicker">
                     <div class="card-body">
                         <h5 class="card-title">Simple datetime picker.</h5>
@@ -116,9 +131,9 @@
                         <pre wicket:id="zoned-java-code"></pre>
                     </div>
                 </div>
-            </form>
+            </div>
         </div>
-    </div>
+    </form>
 </wicket:extend>
 </body>
 </html>

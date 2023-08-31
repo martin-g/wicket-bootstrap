@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.Consumer;
 
 import de.agilecoders.wicket.jquery.AbstractConfig;
 import de.agilecoders.wicket.jquery.IKey;
@@ -155,13 +156,14 @@ public class TempusDominusDisplayConfig extends AbstractConfig {
     }
 
     /**
-     * @param cfg Any icon library that expects icons to be used like
+     * @param cfgUpdater Consumer accepting TempusDominusIconConfig so it can be updated:
+     *      Any icon library that expects icons to be used like
      *      &lt;i class='fas fa-calendar'&gt;&lt;/i&gt; will work, provided you include the
      *      correct styles and scripts needed.
      * @return current instance
      */
-    public TempusDominusDisplayConfig withIcons(TempusDominusIconConfig cfg) {
-        put(Icons, cfg);
+    public TempusDominusDisplayConfig withIcons(Consumer<TempusDominusIconConfig> cfgUpdater) {
+        cfgUpdater.accept(get(Icons));
         return this;
     }
 
