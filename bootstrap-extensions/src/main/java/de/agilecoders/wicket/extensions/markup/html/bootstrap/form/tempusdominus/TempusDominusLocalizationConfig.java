@@ -104,7 +104,7 @@ public class TempusDominusLocalizationConfig extends AbstractConfig {
      * @return current instance
      */
     public <T> TempusDominusLocalizationConfig withClass(Class<T> clazz) {
-        java.util.Locale locale = java.util.Locale.forLanguageTag(get(Locale));
+        java.util.Locale locale = getLocale();
         if (LocalTime.class == clazz) {
             withFormat(getPattern(SimpleDateFormat.getTimeInstance(DateFormat.MEDIUM, locale)));
         } else if (LocalDate.class == clazz) {
@@ -461,5 +461,9 @@ public class TempusDominusLocalizationConfig extends AbstractConfig {
 
     public String getFormat() {
         return javaFormat;
+    }
+
+    public java.util.Locale getLocale() {
+        return java.util.Locale.forLanguageTag(get(Locale));
     }
 }

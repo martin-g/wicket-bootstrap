@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.ZonedDateTime;
 import java.util.Date;
+import java.util.Locale;
 import java.util.Map;
 import java.util.function.Consumer;
 
@@ -32,7 +33,6 @@ public class TempusDominusConfig extends AbstractConfig {
     private static final IKey<RawValue> DefaultDate = newKey("defaultDate", null);
     private static final IKey<TempusDominusDisplayConfig> Display = newKey("display", null);
     private static final IKey<Boolean> KeepInvalid = newKey("keepInvalid", false);
-    private static final IKey<TempusDominusLocalizationConfig> Localization = newKey("localization", null);
     private static final IKey<Map<String, Object>> Meta = newKey("meta", null);
     private static final IKey<Boolean> MultipleDates = newKey("multipleDates", false);
     private static final IKey<String> MultipleDatesSeparator = newKey("multipleDatesSeparator", null);
@@ -43,12 +43,13 @@ public class TempusDominusConfig extends AbstractConfig {
     private static final IKey<Boolean> UseCurrent = newKey("useCurrent", true);
     private static final IKey<RawValue> ViewDate = newKey("viewDate", null);
 
+    private TempusDominusLocalizationConfig localization = new TempusDominusLocalizationConfig();
+
     /**
      * Construct config
      */
     public TempusDominusConfig() {
         put(Display, new TempusDominusDisplayConfig());
-        put(Localization, new TempusDominusLocalizationConfig());
         put(Restrictions, new TempusDominusRestrictionsConfig());
     }
 
@@ -59,8 +60,8 @@ public class TempusDominusConfig extends AbstractConfig {
      * @return current instance
      */
     public <T> TempusDominusConfig withClass(Class<T> clazz) {
-        get(Display).withClass(clazz);
-        get(Localization).withClass(clazz);
+        withDisplay(cfg -> cfg.withClass(clazz));
+        withLocalization(cfg -> cfg.withClass(clazz));
         return this;
     }
 
@@ -110,7 +111,7 @@ public class TempusDominusConfig extends AbstractConfig {
      *      You can disable components, buttons and change the default icons.
      * @return current instance
      */
-    public TempusDominusConfig withDisplayConfig(Consumer<TempusDominusDisplayConfig> cfgUpdater) {
+    public TempusDominusConfig withDisplay(Consumer<TempusDominusDisplayConfig> cfgUpdater) {
         cfgUpdater.accept(get(Display));
         return this;
     }
@@ -143,7 +144,7 @@ public class TempusDominusConfig extends AbstractConfig {
      * @return current instance
      */
     public TempusDominusConfig withLocalization(Consumer<TempusDominusLocalizationConfig> cfgUpdater) {
-        cfgUpdater.accept(get(Localization));
+        cfgUpdater.accept(localization);
         return this;
     }
 
@@ -241,7 +242,21 @@ public class TempusDominusConfig extends AbstractConfig {
      * @return Date format pattern set for TempusDominusLocalizationConfig.getFormat()
      */
     public String getFormat() {
-        return get(Localization).getFormat();
+        return localization.getFormat();
+    }
+
+    /**
+     * @return Date format pattern set for TempusDominusLocalizationConfig.getFormat()
+     */
+    public Locale getLocale() {
+        return localization.getLocale();
+    }
+
+    /**
+     * @return TempusDominusLocalizationConfig
+     */
+    TempusDominusLocalizationConfig getLocalization() {
+        return localization;
     }
 
     public static <U> String formatDateISO(U date) {

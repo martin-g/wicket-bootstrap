@@ -114,7 +114,7 @@ public class TempusDominusPickerPage extends BasePage {
         { // scope
             TempusDominusConfig birthDayConfig = new TempusDominusConfig()
                     .withClass(Date.class)
-                    .withDisplayConfig(cfg -> cfg
+                    .withDisplay(cfg -> cfg
                             .withViewMode(ViewModeType.YEARS)
                             .withComponent(ComponentType.CLOCK, false)
                     )
@@ -128,7 +128,7 @@ public class TempusDominusPickerPage extends BasePage {
                 new DateTextField("birthday", Model.of((Date)null), birthDayConfig.getFormat()),
                 "new TempusDominusConfig()\n" + //
                 "    .withClass(Date.class)\n" + //
-                "    .withDisplayConfig(cfg -> cfg\n" + //
+                "    .withDisplay(cfg -> cfg\n" + //
                 "            .withViewMode(ViewModeType.YEARS)\n" + //
                 "            .withComponent(ComponentType.CLOCK, false)\n" + //
                 "    )\n" + //
@@ -144,7 +144,7 @@ public class TempusDominusPickerPage extends BasePage {
         { // scope
             TempusDominusConfig iconsConfig = new TempusDominusConfig()
                 .withClass(Date.class)
-                .withDisplayConfig(cfg -> cfg
+                .withDisplay(cfg -> cfg
                         .withButton(ButtonType.TODAY, true)
                         .withButton(ButtonType.CLEAR, true)
                         .withButton(ButtonType.CLOSE, true)
@@ -168,7 +168,7 @@ public class TempusDominusPickerPage extends BasePage {
                 new DateTextField("icons", Model.of((Date)null), iconsConfig.getFormat()),
                 "new TempusDominusConfig()\n" + //
                 "    .withClass(Date.class)\n" + //
-                "    .withDisplayConfig(cfg -> cfg\n" + //
+                "    .withDisplay(cfg -> cfg\n" + //
                 "            .withButton(ButtonType.TODAY, true)\n" + //
                 "            .withButton(ButtonType.CLEAR, true)\n" + //
                 "            .withButton(ButtonType.CLOSE, true)\n" + //
@@ -219,7 +219,7 @@ public class TempusDominusPickerPage extends BasePage {
         { // scope
             TempusDominusConfig localBirthConfig = new TempusDominusConfig()
                 .withClass(LocalDate.class)
-                .withDisplayConfig(cfg -> cfg
+                .withDisplay(cfg -> cfg
                         .withViewMode(ViewModeType.YEARS)
                 )
                 .withRestrictions(cfg -> cfg
@@ -229,7 +229,7 @@ public class TempusDominusPickerPage extends BasePage {
                 new LocalDateTextField("localbirthday", Model.of((LocalDate)null), localBirthConfig.getFormat()),
                 "new TempusDominusConfig()\n" + //
                 "    .withClass(LocalDate.class)\n" + //
-                "    .withDisplayConfig(cfg -> cfg\n" + //
+                "    .withDisplay(cfg -> cfg\n" + //
                 "            .withViewMode(ViewModeType.YEARS)\n" + //
                 "    )\n" + //
                 "    .withRestrictions(cfg -> cfg\n" + //

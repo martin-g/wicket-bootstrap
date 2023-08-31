@@ -1,5 +1,12 @@
-function createTempusDominus(elementId, config) {
+function createTempusDominus(elementId, config, localization, lng) {
 	const el = document.getElementById(`${elementId}`);
+	let defLocalization = {};
+	if (tempusDominus.locales) {
+		const fullName = localization.locale.replace('-', '_');
+		const locale = tempusDominus.locales[fullName] || tempusDominus.locales[lng];
+		defLocalization = locale ? locale.localization : {};
+	}
+	config.localization = Object.assign({}, defLocalization, localization);
 	el.datetimepicker = new tempusDominus.TempusDominus(el, config);
 }
 
