@@ -1,6 +1,9 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.form.tempusdominus;
 
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeSettings;
+
+import java.util.List;
+
 import org.apache.wicket.Application;
 import org.apache.wicket.Component;
 import org.apache.wicket.MarkupContainer;
@@ -9,6 +12,9 @@ import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.form.FormComponent;
 import org.apache.wicket.markup.html.form.FormComponentPanel;
 import org.apache.wicket.model.IModel;
+import org.apache.wicket.util.convert.ConversionException;
+import org.apache.wicket.util.convert.IConverter;
+import org.apache.wicket.util.string.StringValue;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.Icon;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
@@ -42,11 +48,10 @@ public abstract class AbstractTempusDominusWithIcon<T> extends FormComponentPane
      */
     public AbstractTempusDominusWithIcon(String markupId, IModel<T> model, TempusDominusConfig config) {
         super(markupId, model);
-        setRenderBodyOnly(true);
         this.config = config;
     }
 
-	private FormComponent<T> getDateInput() {
+    private FormComponent<T> getDateInput() {
         if (dateInput == null) {
             dateInput = newInput("date", config.getFormat());
             dateInput.setModel(getModel());
@@ -56,27 +61,43 @@ public abstract class AbstractTempusDominusWithIcon<T> extends FormComponentPane
 
     @Override
     public void convertInput() {
-        setConvertedInput(getDateInput().getConvertedInput());
+        final IConverter<T> converter = getDateInput().getConverter(getType());
+
+        try
+        {
+            T obj = converter.convertToObject(getRawInput(), getLocale());
+            getDateInput().setConvertedInput(obj);
+            setConvertedInput(obj);
+        }
+        catch (ConversionException e)
+        {
+            error(newValidationError(e));
+        }
+    }
+
+    @Override
+    protected List<StringValue> getParameterValues(String inputName) {
+        return super.getParameterValues(inputName + ":date");
     }
 
     @Override
     protected void onInitialize() {
         super.onInitialize();
-        WebMarkupContainer container = new WebMarkupContainer("datetime");
-        container.setOutputMarkupId(true);
-        Component input = getDateInput();
-        final String mainId = "#" + container.getMarkupId();
+        setOutputMarkupId(true);
+        FormComponent<T> input = getDateInput();
+        setType(input.getType());
+        final String mainId = "#" + getMarkupId();
         input.add(AttributeAppender.append("data-td-target", mainId));
         Component iconContainer = newIconContainer("iconContainer")
                 .add(newIcon("icon"))
                 .add(AttributeAppender.append("data-td-target", mainId)
                     , AttributeAppender.append("data-td-toggle", "datetimepicker"));
+        add(AttributeAppender.append("class", "input-group date")
+            , AttributeAppender.append("data-td-target-input", "nearest")
+            , AttributeAppender.append("data-td-target-toggle", "nearest"));
 
-
-        add(container
-                .add(input, iconContainer)
-                .add(new TempusDominusBehavior(config))
-        );
+        add(input, iconContainer);
+        add(new TempusDominusBehavior(config, List.of("change")));
     }
 
     /**

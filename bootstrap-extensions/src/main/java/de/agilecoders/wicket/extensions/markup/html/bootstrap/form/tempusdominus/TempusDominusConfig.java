@@ -271,6 +271,9 @@ public class TempusDominusConfig extends AbstractConfig {
             strDate = ISO_LOCAL_DATE_TIME.format((LocalDateTime)date);
         } else if (date instanceof ZonedDateTime) {
             strDate = ISO_ZONED_DATE_TIME.format((ZonedDateTime)date);
+        } else if (date instanceof String) {
+            // nothing to convert
+            strDate = (String)date;
         }
         return strDate;
     }
