@@ -52,6 +52,7 @@ import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesome6I
 public class TempusDominusPickerPage extends BasePage {
     private static final long serialVersionUID = 1L;
     private Form<Object> form;
+    private NotificationPanel feedback;
 
     /**
      * Construct.
@@ -69,7 +70,7 @@ public class TempusDominusPickerPage extends BasePage {
         LocalDate min = max.minusWeeks(1);
 
         form = new Form<>("form");
-        final NotificationPanel feedback = new NotificationPanel("feedback");
+        feedback = new NotificationPanel("feedback");
         add(form.setOutputMarkupId(true));
 
         DropDownChoice<String> languages = new DropDownChoice<String>("languages"
@@ -94,7 +95,7 @@ public class TempusDominusPickerPage extends BasePage {
                     .withClass(Date.class)
                     .withRestrictions(cfg -> cfg
                             .withMinDate(Date.from(min.atStartOfDay(ZoneId.systemDefault()).toInstant()))
-                            .withMaxDate(Date.from(max.atStartOfDay(ZoneId.systemDefault()).toInstant()))
+                            .withMaxDate(Date.from(max.plusWeeks(2).atStartOfDay(ZoneId.systemDefault()).toInstant()))
                     );
             createBlock(
                 new DateTextField("simple", Model.of((Date)null), simpleConfig.getFormat()),
@@ -102,7 +103,7 @@ public class TempusDominusPickerPage extends BasePage {
                 "    .withClass(Date.class)\n" + //
                 "    .withRestrictions(cfg -> cfg\n" + //
                 "            .withMinDate(Date.from(min.atStartOfDay(ZoneId.systemDefault()).toInstant()))\n" + //
-                "            .withMaxDate(Date.from(max.atStartOfDay(ZoneId.systemDefault()).toInstant()))\n" + //
+                "            .withMaxDate(Date.from(max.plusWeeks(2).atStartOfDay(ZoneId.systemDefault()).toInstant()))\n" + //
                 "    );",
                 simpleConfig
             );
@@ -118,7 +119,7 @@ public class TempusDominusPickerPage extends BasePage {
                             .withFormat("dd/MM/yyyy")
                     )
                     .withRestrictions(cfg -> cfg
-                            .withMinDate(Date.from(min.minusYears(6).atStartOfDay(ZoneId.systemDefault()).toInstant()))
+                            .withMaxDate(Date.from(max.minusYears(6).atStartOfDay(ZoneId.systemDefault()).toInstant()))
                     );
             createBlock(
                 new DateTextField("birthday", Model.of((Date)null), birthDayConfig.getFormat()),
@@ -132,7 +133,7 @@ public class TempusDominusPickerPage extends BasePage {
                 "            .withFormat(\"dd/MM/yyyy\")\n" + //
                 "    )\n" + //
                 "    .withRestrictions(cfg -> cfg\n" + //
-                "            .withMinDate(Date.from(min.minusYears(6).atStartOfDay(ZoneId.systemDefault()).toInstant()))\n" + //
+                "            .withMaxDate(Date.from(max.minusYears(6).atStartOfDay(ZoneId.systemDefault()).toInstant()))\n" + //
                 "    );",
                 birthDayConfig
             );
@@ -219,7 +220,7 @@ public class TempusDominusPickerPage extends BasePage {
                         .withViewMode(ViewModeType.YEARS)
                 )
                 .withRestrictions(cfg -> cfg
-                        .withMinDate(min.minusYears(6))
+                        .withMaxDate(max.minusYears(6))
                 );
             createBlock(
                 new LocalDateTextField("localbirthday", Model.of((LocalDate)null), localBirthConfig.getFormat()),
@@ -229,7 +230,7 @@ public class TempusDominusPickerPage extends BasePage {
                 "            .withViewMode(ViewModeType.YEARS)\n" + //
                 "    )\n" + //
                 "    .withRestrictions(cfg -> cfg\n" + //
-                "            .withMinDate(min.minusYears(6))\n" + //
+                "            .withMaxDate(max.minusYears(6))\n" + //
                 "    );",
                 localBirthConfig
             );
@@ -316,6 +317,11 @@ public class TempusDominusPickerPage extends BasePage {
             protected void onUpdate(AjaxRequestTarget target) {
                 status.setDefaultModelObject(TempusDominusConfig.formatDateISO(input.getModelObject()));
                 target.add(status);
+            }
+
+            @Override
+            protected void onError(AjaxRequestTarget target, RuntimeException e) {
+                target.add(feedback);
             }
         });
         form.add(status.setOutputMarkupId(true));
