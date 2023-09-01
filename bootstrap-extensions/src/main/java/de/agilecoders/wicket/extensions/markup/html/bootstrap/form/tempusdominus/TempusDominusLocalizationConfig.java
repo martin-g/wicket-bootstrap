@@ -450,6 +450,7 @@ public class TempusDominusLocalizationConfig extends AbstractConfig {
         String jsFormat = nullToEmpty(_fmt).replace(" a", " t");
         Matcher yearMatcher = YEAR_PATTERN.matcher(jsFormat);
         if (yearMatcher.find()) {
+            // this code is required while https://github.com/Eonasdan/tempus-dominus/issues/2855 is not fixed :(
             String year = yearMatcher.group(1);
             // only 2 or 4 'yyyy' are supported
             if (year.length() < 2 || year.length() > 2) {
