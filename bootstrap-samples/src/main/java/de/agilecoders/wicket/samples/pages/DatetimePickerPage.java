@@ -33,6 +33,7 @@ import de.agilecoders.wicket.samples.panels.LocalDateTimePickerPanel;
  * @author Alexey Volkov
  * @since 01.02.15
  */
+@Deprecated
 @MountPath(value = "/datetimepicker")
 public class DatetimePickerPage extends BasePage {
     private static final long serialVersionUID = 1L;

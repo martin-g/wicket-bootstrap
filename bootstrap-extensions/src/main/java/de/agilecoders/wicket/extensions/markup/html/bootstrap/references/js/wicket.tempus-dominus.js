@@ -1,9 +1,9 @@
-function createTempusDominus(elementId, config, localization, lng, events) {
+function createTempusDominus(elementId, config, localization, lang, events) {
 	const el = document.getElementById(`${elementId}`);
 	let defLocalization = {};
 	if (tempusDominus.locales) {
 		const fullName = localization.locale.replace('-', '_');
-		const locale = tempusDominus.locales[fullName] || tempusDominus.locales[lng];
+		const locale = tempusDominus.locales[fullName] || tempusDominus.locales[lang];
 		defLocalization = locale ? locale.localization : {};
 	}
 	config.localization = Object.assign({}, defLocalization, localization);

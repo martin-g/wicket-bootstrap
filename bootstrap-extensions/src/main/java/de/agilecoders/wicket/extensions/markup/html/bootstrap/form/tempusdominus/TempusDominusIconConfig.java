@@ -8,9 +8,6 @@ import org.apache.wicket.Application;
 
 /**
  * datetime picker icon config
- *
- * @author Alexey Volkov
- * @since 07.02.15
  */
 public class TempusDominusIconConfig extends AbstractConfig {
     private static final long serialVersionUID = 1L;

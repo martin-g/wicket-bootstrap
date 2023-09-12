@@ -4,8 +4,6 @@ import de.agilecoders.wicket.webjars.request.resource.WebjarsJavaScriptResourceR
 
 /**
  * Represents Popper.js library.
- *
- * @author Jan Ferko
  */
 public class PopperJavaScriptReference extends WebjarsJavaScriptResourceReference {
     private static final long serialVersionUID = 1L;

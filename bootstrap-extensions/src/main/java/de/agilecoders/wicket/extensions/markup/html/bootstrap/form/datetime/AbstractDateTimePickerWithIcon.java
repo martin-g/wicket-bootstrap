@@ -19,6 +19,7 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
  * @author Alexey Volkov
  * @since 01.02.2015
  */
+@Deprecated
 public abstract class AbstractDateTimePickerWithIcon<T> extends FormComponentPanel<T> {
 
     private static final long serialVersionUID = 1L;
