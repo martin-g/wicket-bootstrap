@@ -34,8 +34,8 @@ https://wicketbootstrap.teliclab.info/ (courtesy hosted by [Shengche Hsiao](http
 Themes
 ------
 
-* Bootstrap (5.3.1): http://getbootstrap.com/
-* Bootswatch (5.3.1): http://bootswatch.com/
+* Bootstrap (5.3.2): http://getbootstrap.com/
+* Bootswatch (5.3.2): http://bootswatch.com/
 * Material Design by FezVrasta (0.3.0): https://github.com/FezVrasta/bootstrap-material-design
 * todc-bootstrap, google styled theme (3.3.7): https://todc.github.io/todc-bootstrap
 * metro-bootstrap (3.3.7): https://github.com/idleberg/m8tro-bootstrap

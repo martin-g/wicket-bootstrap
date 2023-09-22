@@ -45,9 +45,9 @@
         <maven.java.target>${java.version}</maven.java.target>
         <autoModuleName>wicket.bootstrap.parent</autoModuleName>
 
-        <bootstrap.version>5.3.1</bootstrap.version>
+        <bootstrap.version>5.3.2</bootstrap.version>
         <wicket-webjars.version>3.0.7</wicket-webjars.version>
-        <wicket-jquery-selectors.version>3.0.5</wicket-jquery-selectors.version>
+        <wicket-jquery-selectors.version>3.0.6</wicket-jquery-selectors.version>
 
         <enforcer.disable>true</enforcer.disable>
         <pmd.disable>true</pmd.disable>
@@ -57,36 +57,36 @@
 
         <!-- TODO -->
         <apiguardian-api.version>1.1.2</apiguardian-api.version>
-        <commons-lang3.version>3.12.0</commons-lang3.version>
+        <commons-lang3.version>3.13.0</commons-lang3.version>
         <contiperf.version>2.4.3</contiperf.version>
         <doxia.version>1.0</doxia.version>
         <!-- Note: closure-compiler -unshaded v20200920 (until at least v20210907) contains gson -->
-        <google-closure.version>v20200830</google-closure.version>
+        <google-closure.version>v20230802</google-closure.version>
         <javax.javaee-web-api.version>7.0</javax.javaee-web-api.version>
-        <jetty.version>9.4.51.v20230217</jetty.version>
+        <jetty.version>9.4.52.v20230823</jetty.version>
         <jquerypp.version>1.0.1</jquerypp.version>
-        <jquery.version>3.6.4</jquery.version>
-        <junit-jupiter.version>5.9.3</junit-jupiter.version>
-        <junit-platform.version>1.9.3</junit-platform.version>
+        <jquery.version>3.7.1</jquery.version>
+        <junit-jupiter.version>5.10.0</junit-jupiter.version>
+        <junit-platform.version>1.10.0</junit-platform.version>
         <jsass.version>5.10.5</jsass.version>
         <hamcrest.version>2.2</hamcrest.version>
-        <logback.version>1.2.10</logback.version>
+        <logback.version>1.4.11</logback.version>
         <modernizr.version>2.8.3-1</modernizr.version>
-        <mockito.version>5.3.1</mockito.version>
+        <mockito.version>5.5.0</mockito.version>
         <servlet-api.version>3.1.0</servlet-api.version>
-        <slf4j.version>2.0.7</slf4j.version>
-        <wicket.version>9.14.0</wicket.version>
-        <wicketstuff.version>9.14.0</wicketstuff.version>
+        <slf4j.version>2.0.9</slf4j.version>
+        <wicket.version>9.15.0</wicket.version>
+        <wicketstuff.version>9.15.0</wicketstuff.version>
         <yuicompressor.version>2.4.8</yuicompressor.version>
 
-        <maven-bundle-plugin.version>5.1.8</maven-bundle-plugin.version>
+        <maven-bundle-plugin.version>5.1.9</maven-bundle-plugin.version>
         <maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
         <maven-gpg-plugin.version>3.0.1</maven-gpg-plugin.version>
         <cobertura-maven-plugin.version>2.7</cobertura-maven-plugin.version>
         <coveralls-maven-plugin.version>4.3.0</coveralls-maven-plugin.version>
-        <maven-surefire-plugin.version>3.0.0</maven-surefire-plugin.version>
+        <maven-surefire-plugin.version>3.1.2</maven-surefire-plugin.version>
         <maven-deploy-plugin.version>3.1.1</maven-deploy-plugin.version>
-        <maven-javadoc-plugin.version>3.5.0</maven-javadoc-plugin.version>
+        <maven-javadoc-plugin.version>3.6.0</maven-javadoc-plugin.version>
         <maven-antrun-plugin.version>1.8</maven-antrun-plugin.version>
         <maven-assembly-plugin.version>3.2.0</maven-assembly-plugin.version>
         <maven-changelog-plugin.version>2.3</maven-changelog-plugin.version>
@@ -105,14 +105,14 @@
         <maven-jar-plugin.version>3.3.0</maven-jar-plugin.version>
         <maven-jxr-plugin.version>3.0.0</maven-jxr-plugin.version>
         <maven-project-info-reports-plugin.version>3.0.0</maven-project-info-reports-plugin.version>
-        <maven-release-plugin.version>3.0.0</maven-release-plugin.version>
+        <maven-release-plugin.version>3.0.1</maven-release-plugin.version>
         <maven-resources-plugin.version>3.1.0</maven-resources-plugin.version>
         <maven-site-plugin.version>3.9.0</maven-site-plugin.version>
         <maven-scm-plugin.version>1.11.2</maven-scm-plugin.version>
         <maven-scm-publish-plugin.version>3.0.0</maven-scm-publish-plugin.version>
         <maven-source-plugin.version>3.2.1</maven-source-plugin.version>
-        <maven-war-plugin.version>3.3.2</maven-war-plugin.version>
-        <versions-maven-plugin.version>2.15.0</versions-maven-plugin.version>
+        <maven-war-plugin.version>3.4.0</maven-war-plugin.version>
+        <versions-maven-plugin.version>2.16.1</versions-maven-plugin.version>
 
     </properties>
 
