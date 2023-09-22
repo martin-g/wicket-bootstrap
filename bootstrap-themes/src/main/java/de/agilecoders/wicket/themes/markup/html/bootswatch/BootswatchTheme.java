@@ -32,8 +32,8 @@ public enum BootswatchTheme implements ITheme {
      * The placeholders are:
      * - the version
      * - the theme name
-     * Example: ////cdn.jsdelivr.net/npm/bootswatch@5.3.1/dist/cosmo/bootstrap.min.css
-     * Example: ////cdn.jsdelivr.net/npm/bootswatch@5.3.1/dist/cosmo/bootstrap.rtl.min.css
+     * Example: ////cdn.jsdelivr.net/npm/bootswatch@5.3.2/dist/cosmo/bootstrap.min.css
+     * Example: ////cdn.jsdelivr.net/npm/bootswatch@5.3.2/dist/cosmo/bootstrap.rtl.min.css
      */
     private static final String CDN_PATTERN = "////cdn.jsdelivr.net/npm/bootswatch@%s/dist/%s/bootstrap%s.min.css";
 
