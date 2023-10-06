@@ -25,7 +25,6 @@ public class TempusDominusBehavior extends BootstrapJavascriptBehavior {
     private static final long serialVersionUID = 1L;
 
     private final TempusDominusConfig config;
-    private final List<String> events;
 
     /**
      * Construct instance
@@ -33,17 +32,7 @@ public class TempusDominusBehavior extends BootstrapJavascriptBehavior {
      * @param config config
      */
     public TempusDominusBehavior(TempusDominusConfig config) {
-        this(config, List.of());
-    }
-
-    /**
-     * Construct instance
-     *
-     * @param config config
-     */
-    public TempusDominusBehavior(TempusDominusConfig config, List<String> events) {
         this.config = config;
-        this.events = events;
     }
 
     private void addResourceIfExists(final IHeaderResponse response, String path) {
@@ -73,7 +62,6 @@ public class TempusDominusBehavior extends BootstrapJavascriptBehavior {
             , config
             , config.getLocalization()
             , locale.getLanguage()
-            , String.join(",", events)
             ).build()
         ));
     }

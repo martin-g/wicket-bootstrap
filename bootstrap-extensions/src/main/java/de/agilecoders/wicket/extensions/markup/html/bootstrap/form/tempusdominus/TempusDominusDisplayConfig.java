@@ -140,7 +140,7 @@ public class TempusDominusDisplayConfig extends AbstractConfig {
     }
 
     /**
-     * Will add restrictions based on class LocalDate/LocalTime/LocalDateTime etc.
+     * Will add restrictions based on class Date/LocalDate/LocalTime/LocalDateTime etc.
      *
      * @param clazz Class of DateTime object to set restrictions
      * @return current instance

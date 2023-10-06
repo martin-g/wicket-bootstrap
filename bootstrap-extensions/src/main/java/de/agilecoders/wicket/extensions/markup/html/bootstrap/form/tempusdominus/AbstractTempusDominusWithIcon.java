@@ -12,9 +12,6 @@ import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.form.FormComponent;
 import org.apache.wicket.markup.html.form.FormComponentPanel;
 import org.apache.wicket.model.IModel;
-import org.apache.wicket.util.convert.ConversionException;
-import org.apache.wicket.util.convert.IConverter;
-import org.apache.wicket.util.string.StringValue;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.Icon;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
@@ -61,23 +58,7 @@ public abstract class AbstractTempusDominusWithIcon<T> extends FormComponentPane
 
     @Override
     public void convertInput() {
-        final IConverter<T> converter = getDateInput().getConverter(getType());
-
-        try
-        {
-            T obj = converter.convertToObject(getRawInput(), getLocale());
-            getDateInput().setConvertedInput(obj);
-            setConvertedInput(obj);
-        }
-        catch (ConversionException e)
-        {
-            error(newValidationError(e));
-        }
-    }
-
-    @Override
-    protected List<StringValue> getParameterValues(String inputName) {
-        return super.getParameterValues(inputName + ":date");
+        setConvertedInput(getDateInput().getConvertedInput());
     }
 
     @Override
@@ -97,7 +78,7 @@ public abstract class AbstractTempusDominusWithIcon<T> extends FormComponentPane
             , AttributeAppender.append("data-td-target-toggle", "nearest"));
 
         add(input, iconContainer);
-        add(new TempusDominusBehavior(config, List.of("change")));
+        add(new TempusDominusBehavior(config));
     }
 
     /**

@@ -9,9 +9,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import org.apache.wicket.Component;
 import org.apache.wicket.Session;
 import org.apache.wicket.ajax.AjaxRequestTarget;
-import org.apache.wicket.ajax.attributes.AjaxRequestAttributes;
 import org.apache.wicket.ajax.form.OnChangeAjaxBehavior;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.extensions.markup.html.form.DateTextField;
@@ -252,15 +252,19 @@ public class TempusDominusPickerPage extends BasePage {
                         .withDayOfWeekDisabled(0)
                         .withDayOfWeekDisabled(6)
                 );
-                createBlock(
-                new AbstractTempusDominusWithIcon<>("icon", Model.of((LocalDateTime)null), iconConfig) {
-                    private static final long serialVersionUID = 1L;
+            FormComponent<?> iconInput = new AbstractTempusDominusWithIcon<>("icon", Model.of((LocalDateTime)null), iconConfig) {
+                private static final long serialVersionUID = 1L;
 
-                    @Override
-                    protected FormComponent<LocalDateTime> newInput(String wicketId, String dateFormat) {
-                        return new LocalDateTimeTextField(wicketId, dateFormat);
-                    }
-                },
+                @Override
+                protected FormComponent<LocalDateTime> newInput(String wicketId, String dateFormat) {
+                    LocalDateTimeTextField input = new LocalDateTimeTextField(wicketId, dateFormat);
+                    addStatus(this, input);
+
+                    return input;
+                }
+            };
+            createBlock(
+                iconInput,
                 "new TempusDominusConfig()\n" + //
                 "    .withClass(LocalDateTime.class)\n" + //
                 "    .withRestrictions(cfg -> cfg\n" + //
@@ -288,7 +292,7 @@ public class TempusDominusPickerPage extends BasePage {
         });
     }
 
-    private void addStatus(String id, FormComponent<?> input) {
+    private void addStatus(FormComponent<?> input, FormComponent<?> innerInput) {
         final IConverter converter = new IConverter() {
             public String convertToString(Object value, Locale locale) {
                 return TempusDominusConfig.formatDateISO(value);
@@ -300,22 +304,18 @@ public class TempusDominusPickerPage extends BasePage {
             }
         };
 
-        Label status = new Label(id + "-status", input.getModel()) {
+        Label status = new Label(input.getId() + "-status", input.getModel()) {
             @Override
             public <C> IConverter<C> getConverter(Class<C> type) {
                 return converter;
             }
         };
-        input.add(new OnChangeAjaxBehavior() {
-            @Override
-            protected void updateAjaxAttributes(AjaxRequestAttributes attributes) {
-                super.updateAjaxAttributes(attributes);
-                attributes.setSerializeRecursively(true);
-            }
-
+        FormComponent<?> dateInput = innerInput == null ? input : innerInput;
+        dateInput.setOutputMarkupId(true);
+        dateInput.add(new OnChangeAjaxBehavior() {
             @Override
             protected void onUpdate(AjaxRequestTarget target) {
-                status.setDefaultModelObject(TempusDominusConfig.formatDateISO(input.getModelObject()));
+                status.setDefaultModelObject(TempusDominusConfig.formatDateISO(dateInput.getModelObject()));
                 target.add(status);
             }
 
@@ -332,13 +332,13 @@ public class TempusDominusPickerPage extends BasePage {
     }
 
     private void createBlock(FormComponent<?> input, String code) {
-        addStatus(input.getId(), input);
         addCode(input.getId(), code);
         form.add(input);
     }
 
     private void createBlock(FormComponent<?> input, String code, TempusDominusConfig cfg) {
         createBlock(input, code);
+        addStatus(input, null);
         input.add(new TempusDominusBehavior(cfg));
     }
 
