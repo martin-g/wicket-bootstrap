@@ -1,6 +1,5 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.form.tempusdominus;
 
-import java.util.List;
 import java.util.Locale;
 
 import org.apache.wicket.Component;
@@ -57,7 +56,7 @@ public class TempusDominusBehavior extends BootstrapJavascriptBehavior {
             }
         }
         response.render(OnDomReadyHeaderItem.forScript(new Function(
-            "createTempusDominus"
+            "Wicket.Bootstrap.createTempusDominus"
             , component.getMarkupId()
             , config
             , config.getLocalization()
@@ -74,7 +73,7 @@ public class TempusDominusBehavior extends BootstrapJavascriptBehavior {
             if (target.getComponents().contains(component)) {
                 // if this component is being repainted by ajax, directly, we must destroy tempus-dominus so it removes
                 // its elements from DOM
-                target.prependJavaScript(new Function("destroyTempusDominus", component.getMarkupId()).build());
+                target.prependJavaScript(new Function("Wicket.Bootstrap.destroyTempusDominus", component.getMarkupId()).build());
             }
         }
     }

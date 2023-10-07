@@ -2,6 +2,7 @@ package de.agilecoders.wicket.extensions.markup.html.bootstrap.form.tempusdominu
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.temporal.Temporal;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Consumer;
@@ -145,7 +146,7 @@ public class TempusDominusDisplayConfig extends AbstractConfig {
      * @param clazz Class of DateTime object to set restrictions
      * @return current instance
      */
-    public <T> TempusDominusDisplayConfig withClass(Class<T> clazz) {
+    public <T extends Temporal> TempusDominusDisplayConfig withClass(Class<T> clazz) {
         if (LocalTime.class == clazz) {
             withComponent(ComponentType.CALENDAR, false);
             withViewMode(ViewModeType.CLOCK);

@@ -2,8 +2,6 @@ package de.agilecoders.wicket.extensions.markup.html.bootstrap.form.tempusdominu
 
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeSettings;
 
-import java.util.List;
-
 import org.apache.wicket.Application;
 import org.apache.wicket.Component;
 import org.apache.wicket.MarkupContainer;

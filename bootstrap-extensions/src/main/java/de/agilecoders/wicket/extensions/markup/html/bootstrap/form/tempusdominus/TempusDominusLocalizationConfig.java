@@ -6,6 +6,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.temporal.Temporal;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -94,7 +95,9 @@ public class TempusDominusLocalizationConfig extends AbstractConfig {
      */
     public TempusDominusLocalizationConfig() {
         put(DateFormats, new HashMap<>(6));
-        withLocale(Session.get().getLocale());
+        java.util.Locale locale = Session.get().getLocale();
+        withLocale(locale);
+        withFormat(getPattern(SimpleDateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.MEDIUM, locale)));
     }
 
     /**
@@ -103,7 +106,7 @@ public class TempusDominusLocalizationConfig extends AbstractConfig {
      * @param clazz Class of DateTime object to set restrictions
      * @return current instance
      */
-    public <T> TempusDominusLocalizationConfig withClass(Class<T> clazz) {
+    public <T extends Temporal> TempusDominusLocalizationConfig withClass(Class<T> clazz) {
         java.util.Locale locale = getLocale();
         if (LocalTime.class == clazz) {
             withFormat(getPattern(SimpleDateFormat.getTimeInstance(DateFormat.MEDIUM, locale)));

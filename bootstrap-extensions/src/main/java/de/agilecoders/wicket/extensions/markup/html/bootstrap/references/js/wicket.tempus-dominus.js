@@ -1,4 +1,12 @@
-function createTempusDominus(elementId, config, localization, lang) {
+if (typeof(Wicket) === 'undefined') {
+    window.Wicket = {};
+}
+
+if (typeof(Wicket.Bootstrap) === 'undefined') {
+    Wicket.Bootstrap = {};
+}
+
+Wicket.Bootstrap.createTempusDominus = function (elementId, config, localization, lang) {
     const el = document.getElementById(`${elementId}`);
     let defLocalization = {};
     if (tempusDominus.locales) {
@@ -10,7 +18,7 @@ function createTempusDominus(elementId, config, localization, lang) {
     el.datetimepicker = new tempusDominus.TempusDominus(el, config);
 }
 
-function destroyTempusDominus(elementId) {
+Wicket.Bootstrap.destroyTempusDominus = function (elementId) {
     const el = document.getElementById(`${elementId}`);
     if (el && el.datetimepicker) {
         el.datetimepicker.dispose();

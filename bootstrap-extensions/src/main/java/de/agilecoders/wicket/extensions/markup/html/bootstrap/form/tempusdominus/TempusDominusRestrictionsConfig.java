@@ -1,6 +1,8 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.form.tempusdominus;
 
+import java.time.temporal.Temporal;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -40,7 +42,16 @@ public class TempusDominusRestrictionsConfig extends AbstractConfig {
      * @param date Prevents the user from selecting a date/time before this value.
      * @return current instance
      */
-    public <T> TempusDominusRestrictionsConfig withMinDate(T date) {
+    public <T extends Temporal> TempusDominusRestrictionsConfig withMinDate(T date) {
+        put(MinDate, TempusDominusConfig.createJsDate(date));
+        return this;
+    }
+
+    /**
+     * @param date Prevents the user from selecting a date/time before this value.
+     * @return current instance
+     */
+    public TempusDominusRestrictionsConfig withMinDate(Date date) {
         put(MinDate, TempusDominusConfig.createJsDate(date));
         return this;
     }
@@ -49,7 +60,16 @@ public class TempusDominusRestrictionsConfig extends AbstractConfig {
      * @param date Prevents the user from selecting a date/time after this value.
      * @return current instance
      */
-    public <T> TempusDominusRestrictionsConfig withMaxDate(T date) {
+    public <T extends Temporal> TempusDominusRestrictionsConfig withMaxDate(T date) {
+        put(MaxDate, TempusDominusConfig.createJsDate(date));
+        return this;
+    }
+
+    /**
+     * @param date Prevents the user from selecting a date/time after this value.
+     * @return current instance
+     */
+    public TempusDominusRestrictionsConfig withMaxDate(Date date) {
         put(MaxDate, TempusDominusConfig.createJsDate(date));
         return this;
     }
@@ -60,7 +80,19 @@ public class TempusDominusRestrictionsConfig extends AbstractConfig {
      * @param date Disallows the user to select any of the provided days. Setting this takes precedence over options.minDate, options.maxDate configuration.
      * @return current instance
      */
-    public <T> TempusDominusRestrictionsConfig withDisabledDate(T date) {
+    public <T extends Temporal> TempusDominusRestrictionsConfig withDisabledDate(T date) {
+        Args.isTrue(get(EnabledDates).isEmpty(), "Use one or the other, don't provide both enabledDates and disabledDates.");
+        get(DisabledDates).add(TempusDominusConfig.createJsDate(date));
+        return this;
+    }
+
+    /**
+     * Adds the dates to disabled list
+     *
+     * @param date Disallows the user to select any of the provided days. Setting this takes precedence over options.minDate, options.maxDate configuration.
+     * @return current instance
+     */
+    public TempusDominusRestrictionsConfig withDisabledDate(Date date) {
         Args.isTrue(get(EnabledDates).isEmpty(), "Use one or the other, don't provide both enabledDates and disabledDates.");
         get(DisabledDates).add(TempusDominusConfig.createJsDate(date));
         return this;
@@ -72,7 +104,19 @@ public class TempusDominusRestrictionsConfig extends AbstractConfig {
      * @param date Allows the user to select only from the provided days. Setting this takes precedence over options.minDate, options.maxDate configuration.
      * @return current instance
      */
-    public <T> TempusDominusRestrictionsConfig withEnabledDate(T date) {
+    public <T extends Temporal> TempusDominusRestrictionsConfig withEnabledDate(T date) {
+        Args.isTrue(get(DisabledDates).isEmpty(), "Use one or the other, don't provide both enabledDates and disabledDates.");
+        get(EnabledDates).add(TempusDominusConfig.createJsDate(date));
+        return this;
+    }
+
+    /**
+     * Adds the dates to enabled list
+     *
+     * @param date Allows the user to select only from the provided days. Setting this takes precedence over options.minDate, options.maxDate configuration.
+     * @return current instance
+     */
+    public TempusDominusRestrictionsConfig withEnabledDate(Date date) {
         Args.isTrue(get(DisabledDates).isEmpty(), "Use one or the other, don't provide both enabledDates and disabledDates.");
         get(EnabledDates).add(TempusDominusConfig.createJsDate(date));
         return this;
@@ -98,7 +142,21 @@ public class TempusDominusRestrictionsConfig extends AbstractConfig {
      * @param to end of interval
      * @return current instance
      */
-    public <T> TempusDominusRestrictionsConfig withDisabledTimeInterval(T from, T to) {
+    public <T extends Temporal> TempusDominusRestrictionsConfig withDisabledTimeInterval(T from, T to) {
+        get(DisabledTimeIntervals).add(Map.of(
+                "from", TempusDominusConfig.createJsDate(from),
+                "to", TempusDominusConfig.createJsDate(to)));
+        return this;
+    }
+
+    /**
+     * Disables time selection between the given DateTimes.
+     *
+     * @param from start of interval
+     * @param to end of interval
+     * @return current instance
+     */
+    public TempusDominusRestrictionsConfig withDisabledTimeInterval(Date from, Date to) {
         get(DisabledTimeIntervals).add(Map.of(
                 "from", TempusDominusConfig.createJsDate(from),
                 "to", TempusDominusConfig.createJsDate(to)));

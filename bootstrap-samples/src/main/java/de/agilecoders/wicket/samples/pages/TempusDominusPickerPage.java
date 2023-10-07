@@ -9,7 +9,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-import org.apache.wicket.Component;
 import org.apache.wicket.Session;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.form.OnChangeAjaxBehavior;
@@ -92,7 +91,6 @@ public class TempusDominusPickerPage extends BasePage {
         // java.util.Date
         { // scope
             TempusDominusConfig simpleConfig = new TempusDominusConfig()
-                    .withClass(Date.class)
                     .withRestrictions(cfg -> cfg
                             .withMinDate(Date.from(min.atStartOfDay(ZoneId.systemDefault()).toInstant()))
                             .withMaxDate(Date.from(max.plusWeeks(2).atStartOfDay(ZoneId.systemDefault()).toInstant()))
@@ -100,7 +98,6 @@ public class TempusDominusPickerPage extends BasePage {
             createBlock(
                 new DateTextField("simple", Model.of((Date)null), simpleConfig.getFormat()),
                 "new TempusDominusConfig()\n" + //
-                "    .withClass(Date.class)\n" + //
                 "    .withRestrictions(cfg -> cfg\n" + //
                 "            .withMinDate(Date.from(min.atStartOfDay(ZoneId.systemDefault()).toInstant()))\n" + //
                 "            .withMaxDate(Date.from(max.plusWeeks(2).atStartOfDay(ZoneId.systemDefault()).toInstant()))\n" + //
@@ -110,7 +107,6 @@ public class TempusDominusPickerPage extends BasePage {
         }
         { // scope
             TempusDominusConfig birthDayConfig = new TempusDominusConfig()
-                    .withClass(Date.class)
                     .withDisplay(cfg -> cfg
                             .withViewMode(ViewModeType.YEARS)
                             .withComponent(ComponentType.CLOCK, false)
@@ -124,7 +120,6 @@ public class TempusDominusPickerPage extends BasePage {
             createBlock(
                 new DateTextField("birthday", Model.of((Date)null), birthDayConfig.getFormat()),
                 "new TempusDominusConfig()\n" + //
-                "    .withClass(Date.class)\n" + //
                 "    .withDisplay(cfg -> cfg\n" + //
                 "            .withViewMode(ViewModeType.YEARS)\n" + //
                 "            .withComponent(ComponentType.CLOCK, false)\n" + //
@@ -140,7 +135,6 @@ public class TempusDominusPickerPage extends BasePage {
         }
         { // scope
             TempusDominusConfig iconsConfig = new TempusDominusConfig()
-                .withClass(Date.class)
                 .withDisplay(cfg -> cfg
                         .withButton(ButtonType.TODAY, true)
                         .withButton(ButtonType.CLEAR, true)
@@ -164,7 +158,6 @@ public class TempusDominusPickerPage extends BasePage {
             createBlock(
                 new DateTextField("icons", Model.of((Date)null), iconsConfig.getFormat()),
                 "new TempusDominusConfig()\n" + //
-                "    .withClass(Date.class)\n" + //
                 "    .withDisplay(cfg -> cfg\n" + //
                 "            .withButton(ButtonType.TODAY, true)\n" + //
                 "            .withButton(ButtonType.CLEAR, true)\n" + //

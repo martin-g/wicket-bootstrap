@@ -10,6 +10,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.ZonedDateTime;
+import java.time.temporal.Temporal;
 import java.util.Date;
 import java.util.Locale;
 import java.util.Map;
@@ -59,7 +60,7 @@ public class TempusDominusConfig extends AbstractConfig {
      * @param clazz Class of DateTime object to set restrictions
      * @return current instance
      */
-    public <T> TempusDominusConfig withClass(Class<T> clazz) {
+    public <T extends Temporal> TempusDominusConfig withClass(Class<T> clazz) {
         withDisplay(cfg -> cfg.withClass(clazz));
         withLocalization(cfg -> cfg.withClass(clazz));
         return this;
@@ -100,7 +101,16 @@ public class TempusDominusConfig extends AbstractConfig {
      * @param defDate Sets the picker default date/time. Overrides useCurrent
      * @return current instance
      */
-    public <T> TempusDominusConfig withDefaultDate(T defDate) {
+    public <T extends Temporal> TempusDominusConfig withDefaultDate(T defDate) {
+        put(DefaultDate, createJsDate(defDate));
+        return this;
+    }
+
+    /**
+     * @param defDate Sets the picker default date/time. Overrides useCurrent
+     * @return current instance
+     */
+    public TempusDominusConfig withDefaultDate(Date defDate) {
         put(DefaultDate, createJsDate(defDate));
         return this;
     }
@@ -233,7 +243,16 @@ public class TempusDominusConfig extends AbstractConfig {
      * @param date Set the view date of the picker. Setting this will not change the selected date(s).
      * @return current instance
      */
-    public <T> TempusDominusConfig withViewDate(T date) {
+    public <T extends Temporal> TempusDominusConfig withViewDate(T date) {
+        put(ViewDate, createJsDate(date));
+        return this;
+    }
+
+    /**
+     * @param date Set the view date of the picker. Setting this will not change the selected date(s).
+     * @return current instance
+     */
+    public TempusDominusConfig withViewDate(Date date) {
         put(ViewDate, createJsDate(date));
         return this;
     }
