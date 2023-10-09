@@ -28,7 +28,7 @@ class BootstrapJsReferenceTest extends WicketApplicationTest {
 
         CharSequence url = tester().getRequestCycle().urlFor(jsResourceReference, null);
         assertThat(url.toString(), is(equalTo(
-                String.format("./wicket/resource/de.agilecoders.wicket.webjars.request.resource.WebjarsJavaScriptResourceReference/webjars/bootstrap/%s/js/bootstrap.bundle.js",
+                String.format("./wicket/resource/de.agilecoders.wicket.webjars.request.resource.WebjarsJavaScriptResourceReference/webjars/bootstrap/%s/js/bootstrap.js",
                               IBootstrapSettings.VERSION))));
 
         settings.useCdnResources(true);

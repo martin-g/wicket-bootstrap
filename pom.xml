@@ -48,6 +48,7 @@
         <bootstrap.version>5.3.2</bootstrap.version>
         <wicket-webjars.version>4.0.0</wicket-webjars.version>
         <wicket-jquery-selectors.version>4.0.0</wicket-jquery-selectors.version>
+        <popper.version>2.11.8</popper.version>
 
         <enforcer.disable>true</enforcer.disable>
         <pmd.disable>true</pmd.disable>
@@ -170,6 +171,11 @@
                 <groupId>org.webjars</groupId>
                 <artifactId>bootstrap</artifactId>
                 <version>${bootstrap.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.webjars.npm</groupId>
+                <artifactId>popperjs__core</artifactId>
+                <version>${popper.version}</version>
             </dependency>
 
             <dependency>

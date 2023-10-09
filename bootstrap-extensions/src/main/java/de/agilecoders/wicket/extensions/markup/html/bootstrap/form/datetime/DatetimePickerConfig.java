@@ -26,6 +26,7 @@ import de.agilecoders.wicket.jquery.util.Json.RawValue;
  * @since 02.02.2015
  * @see <a href="http://eonasdan.github.io/bootstrap-datetimepicker/Options/">JS widget options</a>
  */
+@Deprecated
 public class DatetimePickerConfig extends AbstractConfig {
 
     public enum ViewModeType {

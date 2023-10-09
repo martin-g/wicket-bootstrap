@@ -37,6 +37,10 @@
             <groupId>org.webjars</groupId>
             <artifactId>bootstrap</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.webjars.npm</groupId>
+            <artifactId>popperjs__core</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>org.webjars</groupId>

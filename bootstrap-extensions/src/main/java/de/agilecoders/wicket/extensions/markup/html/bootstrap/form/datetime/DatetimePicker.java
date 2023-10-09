@@ -11,6 +11,7 @@ import org.apache.wicket.model.IModel;
  * @author Alexey Volkov
  * @since 01.02.2015
  */
+@Deprecated
 public class DatetimePicker extends DateTextField {
 
     private static final long serialVersionUID = 1L;

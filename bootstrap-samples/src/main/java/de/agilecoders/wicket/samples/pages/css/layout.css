@@ -1,0 +1,17 @@
+.bd-layout {
+	display: grid;
+	grid-template-areas: "sidebar main";
+	grid-template-columns: 1fr 5fr;
+	gap: 0.5rem;
+}
+.bd-sidebar {
+	grid-area: sidebar;
+}
+.bd-sidebar ul.dropdown-menu {
+	position: sticky;
+	top: 5rem;
+}
+.bd-main {
+	grid-area: main;
+	min-height: 300px;
+}
