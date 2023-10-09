@@ -21,6 +21,7 @@ import de.agilecoders.wicket.jquery.function.IFunction;
  * @author Alexey Volkov
  * @since 01.02.2015
  */
+@Deprecated
 public class DatetimePickerBehavior extends BootstrapJavascriptBehavior {
 
     private static final long serialVersionUID = 1L;

@@ -1,6 +1,7 @@
-package de.agilecoders.wicket.extensions.markup.html.bootstrap.form.datetime;
+package de.agilecoders.wicket.extensions.markup.html.bootstrap.form.tempusdominus;
 
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeSettings;
+
 import org.apache.wicket.Application;
 import org.apache.wicket.Component;
 import org.apache.wicket.MarkupContainer;
@@ -14,17 +15,13 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.image.Icon;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
 
 /**
- * Datetime-picker with calendar icon.
+ * Tempus-dominus with calendar icon.
  *
- * @author Alexey Volkov
- * @since 01.02.2015
  */
-@Deprecated
-public abstract class AbstractDateTimePickerWithIcon<T> extends FormComponentPanel<T> {
-
+public abstract class AbstractTempusDominusWithIcon<T> extends FormComponentPanel<T> {
     private static final long serialVersionUID = 1L;
 
-    private DatetimePickerConfig config;
+    private TempusDominusConfig config;
     private FormComponent<T> dateInput;
 
     /**
@@ -33,7 +30,7 @@ public abstract class AbstractDateTimePickerWithIcon<T> extends FormComponentPan
      * @param markupId markup id
      * @param config   DateTimePicker config
      */
-    public AbstractDateTimePickerWithIcon(String markupId, DatetimePickerConfig config) {
+    public AbstractTempusDominusWithIcon(String markupId, TempusDominusConfig config) {
         this(markupId, null, config);
     }
 
@@ -44,17 +41,15 @@ public abstract class AbstractDateTimePickerWithIcon<T> extends FormComponentPan
      * @param model    model
      * @param config   DateTimePicker config
      */
-    public AbstractDateTimePickerWithIcon(String markupId, IModel<T> model, DatetimePickerConfig config) {
+    public AbstractTempusDominusWithIcon(String markupId, IModel<T> model, TempusDominusConfig config) {
         super(markupId, model);
-        setRenderBodyOnly(true);
         this.config = config;
     }
 
-	private FormComponent<T> getDateInput() {
+    private FormComponent<T> getDateInput() {
         if (dateInput == null) {
             dateInput = newInput("date", config.getFormat());
             dateInput.setModel(getModel());
-            dateInput.add(new DatetimePickerBehavior(config));
         }
         return dateInput;
     }
@@ -67,20 +62,21 @@ public abstract class AbstractDateTimePickerWithIcon<T> extends FormComponentPan
     @Override
     protected void onInitialize() {
         super.onInitialize();
-        Component input = getDateInput();
-        if (config.getMaskInput()) {
-            input.add(config.newMaskBehavior());
-        }
+        setOutputMarkupId(true);
+        FormComponent<T> input = getDateInput();
+        setType(input.getType());
+        final String mainId = "#" + getMarkupId();
+        input.add(AttributeAppender.append("data-td-target", mainId));
         Component iconContainer = newIconContainer("iconContainer")
                 .add(newIcon("icon"))
-                .add(
-                    new AttributeAppender("data-target", "#" + input.getMarkupId())
-                );
+                .add(AttributeAppender.append("data-td-target", mainId)
+                    , AttributeAppender.append("data-td-toggle", "datetimepicker"));
+        add(AttributeAppender.append("class", "input-group date")
+            , AttributeAppender.append("data-td-target-input", "nearest")
+            , AttributeAppender.append("data-td-target-toggle", "nearest"));
 
-
-        add(new WebMarkupContainer("dateWrapper")
-                .add(input, iconContainer)
-        );
+        add(input, iconContainer);
+        add(new TempusDominusBehavior(config));
     }
 
     /**
@@ -89,7 +85,7 @@ public abstract class AbstractDateTimePickerWithIcon<T> extends FormComponentPan
      * @param config config to use
      * @return current instance
      */
-    public AbstractDateTimePickerWithIcon<T> with(DatetimePickerConfig config) {
+    public AbstractTempusDominusWithIcon<T> with(TempusDominusConfig config) {
         this.config = config;
         return this;
     }
@@ -99,7 +95,7 @@ public abstract class AbstractDateTimePickerWithIcon<T> extends FormComponentPan
      *
      * @return current config
      */
-    public DatetimePickerConfig getConfig() {
+    public TempusDominusConfig getConfig() {
         return config;
     }
 

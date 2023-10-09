@@ -46,6 +46,7 @@
         <autoModuleName>wicket.bootstrap.parent</autoModuleName>
 
         <bootstrap.version>5.3.2</bootstrap.version>
+        <popper.version>2.11.8</popper.version>
         <wicket-webjars.version>3.0.7</wicket-webjars.version>
         <wicket-jquery-selectors.version>3.0.6</wicket-jquery-selectors.version>
 
@@ -171,6 +172,11 @@
                 <groupId>org.webjars</groupId>
                 <artifactId>bootstrap</artifactId>
                 <version>${bootstrap.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.webjars.npm</groupId>
+                <artifactId>popperjs__core</artifactId>
+                <version>${popper.version}</version>
             </dependency>
 
             <dependency>

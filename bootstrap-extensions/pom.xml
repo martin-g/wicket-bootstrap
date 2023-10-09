@@ -26,7 +26,8 @@
         <font-awesome.version>6.4.2</font-awesome.version>
         <momentjs.version>2.29.4</momentjs.version>
         <bootstrap-select.version>1.14.0-beta3</bootstrap-select.version>
-        <tempusdominus.version>5.39.0</tempusdominus.version>
+        <tempusdominus4.version>5.39.0</tempusdominus4.version>
+        <tempusdominus.version>6.7.11</tempusdominus.version>
     </properties>
 
     <dependencies>
@@ -55,13 +56,19 @@
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>tempusdominus-bootstrap-4</artifactId>
-            <version>${tempusdominus.version}</version>
+            <version>${tempusdominus4.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>momentjs</artifactId>
             <version>${momentjs.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.webjars.npm</groupId>
+            <artifactId>eonasdan__tempus-dominus</artifactId>
+            <version>${tempusdominus.version}</version>
         </dependency>
 
         <dependency>

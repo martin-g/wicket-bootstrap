@@ -12,6 +12,7 @@ import org.apache.wicket.Application;
  * @author Alexey Volkov
  * @since 07.02.15
  */
+@Deprecated
 public class DatetimePickerIconConfig extends AbstractConfig {
 
     private static final long serialVersionUID = 1L;
