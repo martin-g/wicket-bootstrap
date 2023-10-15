@@ -14,14 +14,12 @@
     <packaging>bundle</packaging>
 
     <properties>
-        <autoModuleName>wicket.bootstrap.saas</autoModuleName>
-
         <antlr.version>3.5.2</antlr.version>
     </properties>
 
     <dependencies>
         <dependency>
-            <groupId>ua.kasta</groupId>
+            <groupId>io.bit3</groupId>
             <artifactId>jsass</artifactId>
             <version>${jsass.version}</version>
         </dependency>
@@ -43,6 +41,10 @@
         </dependency>
 
         <!-- Test dependencies -->
+        <dependency>
+            <groupId>org.apache.wicket</groupId>
+            <artifactId>wicket-tester</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>

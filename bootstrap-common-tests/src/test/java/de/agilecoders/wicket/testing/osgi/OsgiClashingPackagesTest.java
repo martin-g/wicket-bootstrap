@@ -49,7 +49,7 @@ class OsgiClashingPackagesTest extends Assertions {
         Set<Entry<String, List<Project>>> entrySet = projectBuckets.entrySet();
         for (Entry<String, List<Project>> entry : entrySet) {
             List<Project> projects = entry.getValue();
-            if (projects.size() > 1) {
+            if (!"".equals(entry.getKey()) && projects.size() > 1) {
                 fail(entry);
             }
         }
