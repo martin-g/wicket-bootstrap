@@ -14,8 +14,6 @@
     <name>bootstrap-samples</name>
 
     <properties>
-        <autoModuleName>wicket.bootstrap.samples</autoModuleName>
-
         <wicket.configuration>DEVELOPMENT</wicket.configuration>
     </properties>
 
