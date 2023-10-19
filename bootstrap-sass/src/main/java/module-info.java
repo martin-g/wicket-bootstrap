@@ -2,7 +2,7 @@ module wicket.bootstrap.saas {
     exports de.agilecoders.wicket.sass;
 
     requires jsass;
-    requires wicket.webjars;
+    requires de.agilecoders.wicket.webjars;
 
     requires org.apache.commons.io;
     requires org.apache.commons.lang3;

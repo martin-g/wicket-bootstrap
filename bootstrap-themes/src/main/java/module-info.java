@@ -9,5 +9,5 @@ module wicket.bootstrap.themes {
     requires org.apache.wicket.util;
 
     requires wicket.bootstrap.core;
-    requires wicket.webjars;
+    requires de.agilecoders.wicket.webjars;
 }

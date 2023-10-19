@@ -43,7 +43,8 @@ module wicket.bootstrap.extensions {
     requires org.apache.wicket.util;
 
     requires wicket.bootstrap.core;
-    requires jquery.selectors;
+    requires de.agilecoders.wicket.jquery;
+    requires de.agilecoders.wicket.webjars;
 
     requires com.google.common;
     requires com.fasterxml.jackson.annotation;

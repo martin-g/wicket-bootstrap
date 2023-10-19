@@ -46,6 +46,6 @@ module wicket.bootstrap.core {
 
     requires org.slf4j;
 
-    requires jquery.selectors;
-    requires wicket.webjars;
+    requires de.agilecoders.wicket.jquery;
+    requires de.agilecoders.wicket.webjars;
 }
