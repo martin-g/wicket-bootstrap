@@ -6,14 +6,12 @@ import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
-import org.wicketstuff.annotation.mount.MountPath;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.common.NotificationPanel;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.markdown.MarkdownConfig;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.markdown.MarkdownTextArea;
 
 
-@MountPath(value = "/markdown")
 public class MarkdownPage extends BasePage {
 
 	private static final long serialVersionUID = 1L;

@@ -35,7 +35,6 @@ import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import java.time.Duration;
-import org.wicketstuff.annotation.mount.MountPath;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -46,7 +45,6 @@ import java.util.Date;
  * @author miha
  * @version 1.0
  */
-@MountPath(value = "/issues")
 public class IssuesPage extends BasePage {
     private static final long serialVersionUID = 1L;
 

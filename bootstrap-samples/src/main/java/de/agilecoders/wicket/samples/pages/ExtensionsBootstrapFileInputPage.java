@@ -8,11 +8,9 @@ import org.apache.wicket.markup.html.form.upload.FileUpload;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.util.ListModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
-import org.wicketstuff.annotation.mount.MountPath;
 
 import java.util.List;
 
-@MountPath(value = "/extensions/BootstrapFileInput")
 public class ExtensionsBootstrapFileInputPage extends BasePage {
     private static final long serialVersionUID = 1L;
     private final NotificationPanel feedback;

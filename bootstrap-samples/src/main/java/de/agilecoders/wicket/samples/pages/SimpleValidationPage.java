@@ -9,13 +9,11 @@ import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.BookmarkablePageLink;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
-import org.wicketstuff.annotation.mount.MountPath;
 
 /**
  * @author Alexey Volkov
  * @since 08.11.14
  */
-@MountPath("validation/simple")
 public class SimpleValidationPage extends BaseValidationPage {
 
     private static final long serialVersionUID = -5120266468076044285L;

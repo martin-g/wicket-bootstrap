@@ -17,12 +17,10 @@ import org.apache.wicket.markup.html.form.CheckBox;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
-import org.wicketstuff.annotation.mount.MountPath;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.common.NotificationPanel;
 
 
-@MountPath(value = "/checkboxes")
 public class CheckboxesPage extends BasePage {
     private static final long serialVersionUID = 1L;
 

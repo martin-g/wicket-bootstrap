@@ -22,7 +22,6 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.request.resource.CssResourceReference;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.wicketstuff.annotation.mount.MountPath;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.block.Code;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.BootstrapAjaxLink;
@@ -67,7 +66,6 @@ import de.agilecoders.wicket.extensions.markup.html.bootstrap.tour.TourStep;
  *
  * @author miha
  */
-@MountPath(value = "/extensions")
 public class ExtensionsPage extends BasePage {
     private static final long serialVersionUID = 1L;
 

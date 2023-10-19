@@ -10,7 +10,6 @@ import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
-import org.wicketstuff.annotation.mount.MountPath;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.block.Code;
 import de.agilecoders.wicket.core.markup.html.bootstrap.block.CodeBehavior;
@@ -21,7 +20,6 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.utilities.ColorBehavior;
 /**
  * @author Jan Ferko
  */
-@MountPath("/utilities")
 public class UtilitiesPage extends BasePage {
     private static final long serialVersionUID = 1L;
 

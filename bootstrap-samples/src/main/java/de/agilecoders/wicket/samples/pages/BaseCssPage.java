@@ -13,7 +13,6 @@ import org.apache.wicket.markup.repeater.RepeatingView;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
-import org.wicketstuff.annotation.mount.MountPath;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.block.Quote;
 import de.agilecoders.wicket.core.markup.html.bootstrap.form.BootstrapCheckbox;
@@ -36,7 +35,6 @@ import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesome6I
  * @author miha
  * @version 1.0
  */
-@MountPath(value = "/basecss", alt = "/css")
 public class BaseCssPage extends BasePage {
     private static final long serialVersionUID = 1L;
 

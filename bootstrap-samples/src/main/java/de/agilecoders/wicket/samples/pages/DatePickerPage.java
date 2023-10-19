@@ -13,7 +13,6 @@ import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
-import org.wicketstuff.annotation.mount.MountPath;
 
 import java.time.LocalDateTime;
 import java.util.Date;
@@ -24,7 +23,6 @@ import java.util.Date;
  * @author miha
  * @version 1.0
  */
-@MountPath(value = "/datepicker")
 public class DatePickerPage extends BasePage {
     private static final long serialVersionUID = 1L;
     private Date date = null;

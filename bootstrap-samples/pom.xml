@@ -18,12 +18,6 @@
     </properties>
 
     <dependencies>
-        <!-- WICKETSTUFF -->
-        <dependency>
-            <groupId>org.wicketstuff</groupId>
-            <artifactId>wicketstuff-annotation</artifactId>
-        </dependency>
-
         <!-- WICKET-BOOTSTRAP -->
         <dependency>
             <groupId>de.agilecoders.wicket</groupId>
@@ -128,7 +122,7 @@
                 <artifactId>jetty-maven-plugin</artifactId>
                 <version>${jetty.version}</version>
                 <configuration>
-                    <jettyXml>src/test/jetty/jetty.xml,src/test/jetty/jetty-http.xml,src/test/jetty/jetty-ssl.xml,src/test/jetty/jetty-https.xml</jettyXml>
+                    <jettyXmls>src/test/jetty/jetty.xml,src/test/jetty/jetty-http.xml,src/test/jetty/jetty-ssl.xml,src/test/jetty/jetty-https.xml</jettyXmls>
                     <stopKey />
                     <stopPort />
                 </configuration>

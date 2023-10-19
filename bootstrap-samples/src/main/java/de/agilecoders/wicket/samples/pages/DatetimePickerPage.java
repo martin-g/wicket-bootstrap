@@ -8,7 +8,6 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
 import java.util.Map;
-import java.util.TimeZone;
 
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
@@ -17,7 +16,6 @@ import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.resource.JQueryPluginResourceReference;
-import org.wicketstuff.annotation.mount.MountPath;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.block.Code;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.datetime.DatetimePickerConfig;
@@ -34,7 +32,6 @@ import de.agilecoders.wicket.samples.panels.LocalDateTimePickerPanel;
  * @since 01.02.15
  */
 @Deprecated
-@MountPath(value = "/datetimepicker")
 public class DatetimePickerPage extends BasePage {
     private static final long serialVersionUID = 1L;
 

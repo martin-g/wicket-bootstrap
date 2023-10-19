@@ -20,7 +20,6 @@ import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
-import org.wicketstuff.annotation.mount.MountPath;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -31,7 +30,6 @@ import java.util.List;
  *
  * @author drummer
  */
-@MountPath(value = "/datatable")
 public class DataTablePage extends BasePage {
     private static final long serialVersionUID = 1L;
     private static final int ROWS_PER_PAGE = 10;

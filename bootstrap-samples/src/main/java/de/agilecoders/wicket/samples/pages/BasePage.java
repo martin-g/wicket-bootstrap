@@ -177,7 +177,7 @@ abstract class BasePage extends GenericWebPage<Void> {
             protected List<AbstractLink> newSubMenuButtons(String buttonMarkupId) {
                 final List<AbstractLink> subMenu = new ArrayList<>();
 
-                subMenu.add(new MenuBookmarkablePageLink<Void>(Javascript.class, Model.of("Javascript")).setIconType(
+                subMenu.add(new MenuBookmarkablePageLink<Void>(JavascriptPage.class, Model.of("Javascript")).setIconType(
                     FontAwesome6IconType.rotate_s));
                 subMenu.add(new MenuBookmarkablePageLink<Void>(DatePickerPage.class, Model.of("DatePicker")).setIconType(
                     FontAwesome6IconType.clock_r));
