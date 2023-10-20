@@ -10,7 +10,6 @@ import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.markup.html.panel.Fragment;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
-import org.wicketstuff.annotation.mount.MountPath;
 
 /**
  * select page
@@ -18,7 +17,6 @@ import org.wicketstuff.annotation.mount.MountPath;
  * @author Alexey Volkov
  * @since 02.11.14
  */
-@MountPath(value = "/select")
 public class SelectPage extends BasePage {
 
     private static final long serialVersionUID = -7206242562056511774L;

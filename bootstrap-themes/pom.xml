@@ -14,8 +14,6 @@
     <name>bootstrap-themes</name>
 
     <properties>
-        <autoModuleName>wicket.bootstrap.themes</autoModuleName>
-
         <bootstrap-italia.version>1.6.2</bootstrap-italia.version>
         <splide.version>3.6.12</splide.version>
     </properties>

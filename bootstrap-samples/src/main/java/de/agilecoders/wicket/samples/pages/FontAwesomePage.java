@@ -3,7 +3,6 @@ package de.agilecoders.wicket.samples.pages;
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
-import org.wicketstuff.annotation.mount.MountPath;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.Icon;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesome6CssReference;
@@ -14,7 +13,6 @@ import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesome6I
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesome6IconTypeBuilder.Size;
 
 /** FontAwesome demo page. */
-@MountPath(value = "/fontawesome")
 public class FontAwesomePage extends BasePage {
 	/** serialVersionUID. */
 	private static final long serialVersionUID = 1L;

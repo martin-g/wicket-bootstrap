@@ -30,7 +30,6 @@ import org.apache.wicket.request.resource.CssResourceReference;
 import org.apache.wicket.util.convert.ConversionException;
 import org.apache.wicket.util.convert.IConverter;
 import org.apache.wicket.util.string.Strings;
-import org.wicketstuff.annotation.mount.MountPath;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.block.Code;
 import de.agilecoders.wicket.core.markup.html.bootstrap.common.NotificationPanel;
@@ -47,7 +46,6 @@ import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesome6I
  * Example page of tempus-dominus picker usage
  *
  */
-@MountPath(value = "/tempusdominus")
 public class TempusDominusPickerPage extends BasePage {
     private static final long serialVersionUID = 1L;
     private Form<Object> form;

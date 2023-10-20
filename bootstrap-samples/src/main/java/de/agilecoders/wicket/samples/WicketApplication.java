@@ -6,6 +6,25 @@ import java.util.Properties;
 
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesome6CssReference;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeSettings;
+import de.agilecoders.wicket.samples.pages.BaseCssPage;
+import de.agilecoders.wicket.samples.pages.CheckboxesPage;
+import de.agilecoders.wicket.samples.pages.ComponentsPage;
+import de.agilecoders.wicket.samples.pages.DataTablePage;
+import de.agilecoders.wicket.samples.pages.DatePickerPage;
+import de.agilecoders.wicket.samples.pages.DatetimePickerPage;
+import de.agilecoders.wicket.samples.pages.ExtensionsBootstrapFileInputPage;
+import de.agilecoders.wicket.samples.pages.ExtensionsPage;
+import de.agilecoders.wicket.samples.pages.FontAwesomePage;
+import de.agilecoders.wicket.samples.pages.InfiniteScrollingPage;
+import de.agilecoders.wicket.samples.pages.IssuesPage;
+import de.agilecoders.wicket.samples.pages.JavascriptPage;
+import de.agilecoders.wicket.samples.pages.MarkdownPage;
+import de.agilecoders.wicket.samples.pages.SelectPage;
+import de.agilecoders.wicket.samples.pages.SimpleValidationPage;
+import de.agilecoders.wicket.samples.pages.SummernotePage;
+import de.agilecoders.wicket.samples.pages.TempusDominusPickerPage;
+import de.agilecoders.wicket.samples.pages.TooltipValidationPage;
+import de.agilecoders.wicket.samples.pages.UtilitiesPage;
 import org.apache.wicket.Application;
 import org.apache.wicket.Page;
 import org.apache.wicket.RuntimeConfigurationType;
@@ -22,7 +41,6 @@ import org.apache.wicket.settings.RequestCycleSettings;
 import org.apache.wicket.util.file.Folder;
 import org.apache.wicket.util.io.IOUtils;
 import org.apache.wicket.util.string.Strings;
-import org.wicketstuff.annotation.scan.AnnotatedMountScanner;
 
 import de.agilecoders.wicket.core.Bootstrap;
 import de.agilecoders.wicket.core.request.resource.caching.version.Adler32ResourceVersion;
@@ -93,7 +111,7 @@ public class WicketApplication extends WebApplication {
 
         optimizeForWebPerformance();
 
-        new AnnotatedMountScanner().scanPackage("de.agilecoders.wicket.samples.pages").mount(this);
+        mountPages();
 
         if (Strings.isTrue(properties.getProperty("cdn.useCdn"))) {
             final String cdn = properties.getProperty("cdn.baseUrl");
@@ -102,8 +120,7 @@ public class WicketApplication extends WebApplication {
         }
 
         IPackageResourceGuard packageResourceGuard = getResourceSettings().getPackageResourceGuard();
-        if (packageResourceGuard instanceof SecurePackageResourceGuard) {
-            SecurePackageResourceGuard securePackageResourceGuard = (SecurePackageResourceGuard) packageResourceGuard;
+        if (packageResourceGuard instanceof SecurePackageResourceGuard securePackageResourceGuard) {
             securePackageResourceGuard.addPattern("+*.woff2");
         }
 
@@ -112,6 +129,32 @@ public class WicketApplication extends WebApplication {
         FontAwesomeSettings.get(Application.get()).setCssResourceReference(FontAwesome6CssReference.instance());
 
         WicketSource.configure(this);
+    }
+
+    private void mountPages() {
+        mountPage("/", HomePage.class);
+        mountPage("/home", HomePage.class);
+        mountPage("/basecss", BaseCssPage.class);
+        mountPage("/css", BaseCssPage.class);
+        mountPage("/checkboxes", CheckboxesPage.class);
+        mountPage("/components", ComponentsPage.class);
+        mountPage("/datatable", DataTablePage.class);
+        mountPage("/datepicker", DatePickerPage.class);
+        mountPage("/datetimepicker", DatetimePickerPage.class);
+        mountPage("/extensions", ExtensionsPage.class);
+        mountPage("/extensions/BootstrapFileInput", ExtensionsBootstrapFileInputPage.class);
+        mountPage("/fontawesome", FontAwesomePage.class);
+        mountPage("/javascript", JavascriptPage.class);
+        mountPage("/js", JavascriptPage.class);
+        mountPage("/infinitescroll", InfiniteScrollingPage.class);
+        mountPage("/issues", IssuesPage.class);
+        mountPage("/markdown", MarkdownPage.class);
+        mountPage("/select", SelectPage.class);
+        mountPage("/summernote", SummernotePage.class);
+        mountPage("/tempusdominus", TempusDominusPickerPage.class);
+        mountPage("/validation/simple", SimpleValidationPage.class);
+        mountPage("/validation/tooltip", TooltipValidationPage.class);
+        mountPage("/utilities", UtilitiesPage.class);
     }
 
     /**

@@ -13,7 +13,6 @@ import org.apache.wicket.markup.html.link.AbstractLink;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.request.resource.CssResourceReference;
-import org.wicketstuff.annotation.mount.MountPath;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.BootstrapAjaxLink;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons;
@@ -44,8 +43,7 @@ import de.agilecoders.wicket.samples.panels.pagination.PaginationPanel;
  * @author miha
  * @version 1.0
  */
-@MountPath(value = "/javascript", alt = "/js")
-public class Javascript extends BasePage {
+public class JavascriptPage extends BasePage {
     private static final long serialVersionUID = 1L;
 
 
@@ -54,7 +52,7 @@ public class Javascript extends BasePage {
      *
      * @param parameters the current page parameters.
      */
-    public Javascript(PageParameters parameters) {
+    public JavascriptPage(PageParameters parameters) {
         super(parameters);
 
         Collapsible collapsible = new Collapsible("accordion42", List.of(
@@ -162,7 +160,7 @@ public class Javascript extends BasePage {
     public void renderHead(IHeaderResponse response) {
         super.renderHead(response);
 
-        response.render(CssHeaderItem.forReference(new CssResourceReference(Javascript.class, "css/typeahead-demo.css")));
+        response.render(CssHeaderItem.forReference(new CssResourceReference(JavascriptPage.class, "css/typeahead-demo.css")));
     }
 
     /**
@@ -188,7 +186,7 @@ public class Javascript extends BasePage {
             @Override
             protected List<AbstractLink> newSubMenuButtons(String buttonMarkupId) {
                 List<AbstractLink> subMenu = new ArrayList<>();
-                subMenu.add(new MenuBookmarkablePageLink<Void>(Javascript.class).setLabel(Model.of("Link")));
+                subMenu.add(new MenuBookmarkablePageLink<Void>(JavascriptPage.class).setLabel(Model.of("Link")));
                 subMenu.add(new NavbarAjaxLink<String>("button", Model.of("Ajax Link")) {
                     private static final long serialVersionUID = 1L;
 

@@ -19,7 +19,6 @@ import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
-import org.wicketstuff.annotation.mount.MountPath;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.badge.BootstrapBadge;
 import de.agilecoders.wicket.core.markup.html.bootstrap.block.Code;
@@ -50,7 +49,6 @@ import de.agilecoders.wicket.samples.panels.SimpleCard;
  *
  * @author miha
  */
-@MountPath(value = "/components")
 public class ComponentsPage extends BasePage {
     private static final long serialVersionUID = 1L;
 

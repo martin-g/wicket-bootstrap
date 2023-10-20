@@ -18,9 +18,6 @@
         <url>https://github.com/l0rdn1kk0n/wicket-bootstrap/issues</url>
     </issueManagement>
 
-    <properties>
-        <autoModuleName>wicket.bootstrap.core</autoModuleName>
-    </properties>
     <dependencies>
 
         <dependency>
@@ -67,6 +64,11 @@
         <dependency>
             <groupId>org.apache.wicket</groupId>
             <artifactId>wicket-util</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.wicket</groupId>
+            <artifactId>wicket-tester</artifactId>
         </dependency>
 
         <!-- LOGGING DEPENDENCIES - LOG4J -->
