@@ -8,8 +8,9 @@ import de.agilecoders.wicket.core.util.Attributes;
 
 /**
  * Adds color utility classes to components.
- * See: https://getbootstrap.com/docs/4.1/utilities/colors/#color
+ * See: https://getbootstrap.com/docs/5.3/utilities/colors/
  *
+ * TODO add more colors for BS 5
  * @author Jan Ferko
  */
 public class ColorBehavior extends BootstrapBaseBehavior {
@@ -19,15 +20,25 @@ public class ColorBehavior extends BootstrapBaseBehavior {
      */
     public enum Color {
         Primary("primary"),
+        Primary_emphasis("primary-emphasis"),
         Secondary("secondary"),
+        Secondary_emphasis("secondary-emphasis"),
         Success("success"),
+        Success_emphasis("success-emphasis"),
         Danger("danger"),
+        Danger_emphasis("danger-emphasis"),
         Warning("warning"),
+        Warning_emphasis("warning-emphasis"),
         Info("info"),
+        Info_emphasis("info-emphasis"),
         Light("light"),
+        Light_emphasis("light-emphasis"),
         Dark("dark"),
+        Dark_emphasis("dark-emphasis"),
         Body("body"),
-        Muted("muted"),
+        Body_emphasis("body-emphasis"),
+        Body_secondary("body-secondary"),
+        Body_tertiary("body-tertiary"),
         White("white"),
         Black("black"),
         Black50("black-50"),
@@ -77,11 +88,27 @@ public class ColorBehavior extends BootstrapBaseBehavior {
     }
 
     /**
-     * Constructs new behavior that adds {@link Color#Success} to component
+     * Constructs new behavior that adds {@link Color#Primary_emphasis} to component
+     * @return behavior that adds primary emphasis color to component
+     */
+    public static ColorBehavior primaryEmphasis() {
+        return new ColorBehavior(Color.Primary_emphasis);
+    }
+
+    /**
+     * Constructs new behavior that adds {@link Color#Secondary} to component
      * @return behavior that adds secondary color to component
      */
     public static ColorBehavior secondary() {
         return new ColorBehavior(Color.Secondary);
+    }
+
+    /**
+     * Constructs new behavior that adds {@link Color#Secondary_emphasis} to component
+     * @return behavior that adds secondary emphasis color to component
+     */
+    public static ColorBehavior secondaryEmphasis() {
+        return new ColorBehavior(Color.Secondary_emphasis);
     }
 
     /**
@@ -93,11 +120,27 @@ public class ColorBehavior extends BootstrapBaseBehavior {
     }
 
     /**
+     * Constructs new behavior that adds {@link Color#Success_emphasis} to component
+     * @return behavior that adds success emphasis color to component
+     */
+    public static ColorBehavior successEmphasis() {
+        return new ColorBehavior(Color.Success_emphasis);
+    }
+
+    /**
      * Constructs new behavior that adds {@link Color#Danger} to component
      * @return behavior that adds danger color to component
      */
     public static ColorBehavior danger() {
         return new ColorBehavior(Color.Danger);
+    }
+
+    /**
+     * Constructs new behavior that adds {@link Color#Danger_emphasis} to component
+     * @return behavior that adds danger emphasis color to component
+     */
+    public static ColorBehavior dangerEmphasis() {
+        return new ColorBehavior(Color.Danger_emphasis);
     }
 
     /**
@@ -109,11 +152,27 @@ public class ColorBehavior extends BootstrapBaseBehavior {
     }
 
     /**
+     * Constructs new behavior that adds {@link Color#Warning_emphasis} to component
+     * @return behavior that adds warning emphasis color to component
+     */
+    public static ColorBehavior warningEmphasis() {
+        return new ColorBehavior(Color.Warning_emphasis);
+    }
+
+    /**
      * Constructs new behavior that adds {@link Color#Info} to component
      * @return behavior that adds info color to component
      */
     public static ColorBehavior info() {
         return new ColorBehavior(Color.Info);
+    }
+
+    /**
+     * Constructs new behavior that adds {@link Color#Info_emphasis} to component
+     * @return behavior that adds info emphasis color to component
+     */
+    public static ColorBehavior infoEmphasis() {
+        return new ColorBehavior(Color.Info_emphasis);
     }
 
     /**
@@ -125,11 +184,27 @@ public class ColorBehavior extends BootstrapBaseBehavior {
     }
 
     /**
+     * Constructs new behavior that adds {@link Color#Light_emphasis} to component
+     * @return behavior that adds light emphasis color to component
+     */
+    public static ColorBehavior lightEmphasis() {
+        return new ColorBehavior(Color.Light_emphasis);
+    }
+
+    /**
      * Constructs new behavior that adds {@link Color#Dark} to component
      * @return behavior that adds dark color to component
      */
     public static ColorBehavior dark() {
         return new ColorBehavior(Color.Dark);
+    }
+
+    /**
+     * Constructs new behavior that adds {@link Color#Dark_emphasis} to component
+     * @return behavior that adds dark emphasis color to component
+     */
+    public static ColorBehavior darkEmphasis() {
+        return new ColorBehavior(Color.Dark_emphasis);
     }
 
     /**
@@ -141,11 +216,27 @@ public class ColorBehavior extends BootstrapBaseBehavior {
     }
 
     /**
-     * Constructs new behavior that adds {@link Color#Muted} to component
-     * @return behavior that adds muted color to component
+     * Constructs new behavior that adds {@link Color#Body_emphasis} to component
+     * @return behavior that adds body emphasis color to component
      */
-    public static ColorBehavior muted() {
-        return new ColorBehavior(Color.Muted);
+    public static ColorBehavior bodyEmphasis() {
+        return new ColorBehavior(Color.Body_emphasis);
+    }
+
+    /**
+     * Constructs new behavior that adds {@link Color#Body_secondary} to component
+     * @return behavior that adds body secondary color to component
+     */
+    public static ColorBehavior bodySecondary() {
+        return new ColorBehavior(Color.Body_secondary);
+    }
+
+    /**
+     * Constructs new behavior that adds {@link Color#Body_tertiary} to component
+     * @return behavior that adds body tertiary color to component
+     */
+    public static ColorBehavior bodyTertiary() {
+        return new ColorBehavior(Color.Body_tertiary);
     }
 
     /**
@@ -154,6 +245,14 @@ public class ColorBehavior extends BootstrapBaseBehavior {
      */
     public static ColorBehavior white() {
         return new ColorBehavior(Color.White);
+    }
+
+    /**
+     * Constructs new behavior that adds {@link Color#Black} to component
+     * @return behavior that adds black color to component
+     */
+    public static ColorBehavior black() {
+        return new ColorBehavior(Color.Black);
     }
 
     /**
@@ -166,7 +265,6 @@ public class ColorBehavior extends BootstrapBaseBehavior {
 
     /**
      * Constructs new behavior that adds {@link Color#White50} to component
-     *
      * @return behavior that adds white-50 color to component
      */
     public static ColorBehavior white50() {
