@@ -8,7 +8,7 @@ import de.agilecoders.wicket.core.util.Attributes;
 
 /**
  * Behavior that adds different border utility classes to components.
- * https://getbootstrap.com/docs/4.1/utilities/borders/
+ * https://getbootstrap.com/docs/5.3/utilities/borders/
  *
  * @author Jan Ferko
  */
@@ -19,13 +19,22 @@ public class BorderBehavior extends BootstrapBaseBehavior {
      */
     public enum Color {
         Primary("primary"),
+        Primary_subtle("primary-subtle"),
         Secondary("secondary"),
+        Secondary_subtle("secondary-subtle"),
         Success("success"),
+        Success_subtle("success-subtle"),
         Danger("danger"),
+        Danger_subtle("danger-subtle"),
         Warning("warning"),
+        Warning_subtle("warning-subtle"),
         Info("info"),
+        Info_subtle("info-subtle"),
         Light("light"),
+        Light_subtle("light-subtle"),
         Dark("dark"),
+        Dark_subtle("dark-subtle"),
+        Black("black"),
         White("white");
 
         private final String value;
@@ -48,10 +57,11 @@ public class BorderBehavior extends BootstrapBaseBehavior {
     public enum Radius {
         All("rounded"),
         Top("rounded-top"),
-        Right("rounded-right"),
+        Right("rounded-end"),
         Bottom("rounded-bottom"),
-        Left("rounded-left"),
+        Left("rounded-start"),
         Circle("rounded-circle"),
+        Pill("rounded-pill"),
         None("rounded-0");
 
         private final String value;
@@ -74,13 +84,13 @@ public class BorderBehavior extends BootstrapBaseBehavior {
     public enum Type {
         All("border"),
         Top("border-top"),
-        Right("border-right"),
+        Right("border-end"),
         Bottom("border-bottom"),
-        Left("border-left"),
+        Left("border-start"),
         ExceptTop("border-top-0"),
-        ExceptRight("border-right-0"),
+        ExceptRight("border-end-0"),
         ExceptBottom("border-bottom-0"),
-        ExceptLeft("border-left-0"),
+        ExceptLeft("border-start-0"),
         None("border-0");
 
         private final String value;
