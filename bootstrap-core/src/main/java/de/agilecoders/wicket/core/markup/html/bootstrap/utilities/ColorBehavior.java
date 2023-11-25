@@ -2,8 +2,11 @@ package de.agilecoders.wicket.core.markup.html.bootstrap.utilities;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.ComponentTag;
+import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.Model;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
+import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNameProvider;
 import de.agilecoders.wicket.core.util.Attributes;
 
 /**
@@ -18,7 +21,7 @@ public class ColorBehavior extends BootstrapBaseBehavior {
     /**
      * Enum of available text colors.
      */
-    public enum Color {
+    public enum Color implements ICssClassNameProvider {
         Primary("primary"),
         Primary_emphasis("primary-emphasis"),
         Secondary("secondary"),
@@ -44,10 +47,10 @@ public class ColorBehavior extends BootstrapBaseBehavior {
         Black50("black-50"),
         White50("white-50");
 
-        private final String value;
+        private final String cssClassName;
 
         Color(String value) {
-            this.value = value;
+            this.cssClassName = "text-" + value;
         }
 
         /**
@@ -55,28 +58,37 @@ public class ColorBehavior extends BootstrapBaseBehavior {
          * @return Css class associated with this color.
          */
         public String cssClassName() {
-            return String.format("text-%s", this.value);
+            return cssClassName;
         }
     }
 
     /**
      * Color that should be added to component.
      */
-    private final Color color;
+    private final IModel<Color> colorModel;
 
     /**
      * Constructs new instance for given color.
      * @param color the color that should be added to component.
      */
     public ColorBehavior(Color color) {
-        this.color = color;
+    	this(Model.of(color));
     }
+    
+    /**
+	 * @param colorModel
+	 */
+	public ColorBehavior(IModel<Color> colorModel)
+	{
+		this.colorModel = colorModel;
+	}
 
-    @Override
+
+	@Override
     public void onComponentTag(Component component, ComponentTag tag) {
         super.onComponentTag(component, tag);
 
-        Attributes.addClass(tag, color.cssClassName());
+        Attributes.addClass(tag, colorModel.getObject());
     }
 
     /**
