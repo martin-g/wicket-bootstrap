@@ -65,7 +65,7 @@ public class ColorBehavior extends BootstrapBaseBehavior {
     /**
      * Color that should be added to component.
      */
-    private final IModel<Color> colorModel;
+    private IModel<Color> colorModel;
 
     /**
      * Constructs new instance for given color.
@@ -89,6 +89,39 @@ public class ColorBehavior extends BootstrapBaseBehavior {
         super.onComponentTag(component, tag);
 
         Attributes.addClass(tag, colorModel.getObject());
+    }
+	/**
+	 * Sets color.
+	 * @param color
+	 * @return this for chaining
+	 */
+    public ColorBehavior color(Color color) {
+        colorModel.setObject(color);
+        return this;
+    }
+    
+    /**
+     * Sets color model.
+     * @param colorModel
+     * @return this for chaining
+     */
+    public ColorBehavior color(IModel<Color> colorModel) {
+    	this.colorModel = colorModel;
+    	return this;
+    }
+
+    /**
+     * @return color
+     */
+    public Color getColor() {
+    	return colorModel.getObject();
+    }
+    
+    /**
+     * @return color model
+     */
+    public IModel<Color> getColorModel() {
+        return colorModel;
     }
 
     /**
