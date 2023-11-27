@@ -2,8 +2,11 @@ package de.agilecoders.wicket.core.markup.html.bootstrap.utilities;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.ComponentTag;
+import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.Model;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
+import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNameProvider;
 import de.agilecoders.wicket.core.util.Attributes;
 
 /**
@@ -16,7 +19,7 @@ public class BackgroundColorBehavior extends BootstrapBaseBehavior {
     /**
      * Enumeration of all possible background colors.
      */
-    public enum Color {
+    public enum Color implements ICssClassNameProvider {
         Primary("primary"),
         Secondary("secondary"),
         Danger("danger"),
@@ -28,10 +31,10 @@ public class BackgroundColorBehavior extends BootstrapBaseBehavior {
         White("white"),
         Transparent("transparent");
 
-        private final String value;
+        private final String cssClassName;
 
         Color(String value) {
-            this.value = value;
+            this.cssClassName = "bg-" + value;
         }
 
         /**
@@ -39,14 +42,14 @@ public class BackgroundColorBehavior extends BootstrapBaseBehavior {
          * @return Css class associated with this background color.
          */
         public String cssClassName() {
-            return String.format("bg-%s", value);
+            return cssClassName;
         }
     }
 
     /**
      * Background color that should be added to component.
      */
-    private Color color;
+    private IModel<Color> colorModel;
 
 
     /**
@@ -54,22 +57,58 @@ public class BackgroundColorBehavior extends BootstrapBaseBehavior {
      * @param color the background color that should be added to component.
      */
     public BackgroundColorBehavior(Color color) {
-        this.color = color;
+        this(Model.of(color));
     }
 
-    @Override
+    
+    /**
+	 * @param colorModel
+	 */
+	public BackgroundColorBehavior(IModel<Color> colorModel)
+	{
+		this.colorModel = colorModel;
+	}
+
+
+	@Override
     public void onComponentTag(Component component, ComponentTag tag) {
         super.onComponentTag(component, tag);
 
-        Attributes.addClass(tag, color.cssClassName());
+        Attributes.addClass(tag, colorModel.getObject());
     }
 
-    public void color(Color color) {
-        this.color = color;
+	/**
+	 * Sets color.
+	 * @param color
+	 * @return this for chaining
+	 */
+    public BackgroundColorBehavior color(Color color) {
+        colorModel.setObject(color);
+        return this;
+    }
+    
+    /**
+     * Sets color model.
+     * @param colorModel
+     * @return this for chaining
+     */
+    public BackgroundColorBehavior color(IModel<Color> colorModel) {
+    	this.colorModel = colorModel;
+    	return this;
     }
 
+    /**
+     * @return color
+     */
     public Color getColor() {
-        return this.color;
+    	return colorModel.getObject();
+    }
+    
+    /**
+     * @return color model
+     */
+    public IModel<Color> getColorModel() {
+        return colorModel;
     }
 
     /**
