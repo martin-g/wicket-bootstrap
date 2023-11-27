@@ -13,17 +13,14 @@ import de.agilecoders.wicket.core.util.Attributes;
 import de.agilecoders.wicket.core.util.Components;
 
 /**
- * A convenient implementation of the Bootstrap styles Panel of a Wicket {@link GenericPanel}.
+ * A convenient implementation of the Bootstrap-styled Card of a Wicket {@link GenericPanel}.
  *
- * documentation: http://getbootstrap.com/components/#panels
+ * documentation: https://getbootstrap.com/docs/5.3/components/card/
  *
  * Implement as you would a standard Wicket {@link GenericPanel}.
  *
- * Adding components to this panel will insert them below the markup for the body and aove the markup for the
- * footer, per the Bootstrap documentation. This is useful for:
- *
- * panels with tables - http://getbootstrap.com/components/#panels-tables
- * panel with list groups - http://getbootstrap.com/components/#panels-list-group
+ * Adding components to this panel will insert them below the markup for the body and above the markup for the
+ * footer, per the Bootstrap documentation.
  *
  * @author Eric Hamel <eric.hamel@me.com>
  *
