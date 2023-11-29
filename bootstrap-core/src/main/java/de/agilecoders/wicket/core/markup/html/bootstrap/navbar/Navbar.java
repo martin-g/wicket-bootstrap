@@ -293,7 +293,7 @@ public class Navbar extends Panel implements Invertible<Navbar> {
                     Activatable activatable = (Activatable) component;
 
                     if (activatable.isActive(component)) {
-                        components.add(activeStateAppender);
+                    	component.add(activeStateAppender);
                     }
                 }
 
