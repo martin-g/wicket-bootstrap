@@ -94,9 +94,15 @@ public abstract class SpinnerAjaxLink<T> extends BootstrapAjaxLink<T> {
     protected <L extends Serializable> Component newLabel(String markupId, IModel<L> model) {
         Component label = super.newLabel(markupId, model);
         label.setRenderBodyOnly(false);
-        if (Strings.isEmpty(label.getDefaultModelObjectAsString())) {
-            label.add(AttributeModifier.append("class", "sr-only"));
-        }
         return label;
+    }
+    
+    @Override
+    protected void onConfigure() {
+    	super.onConfigure();
+    	Component label = get("label");
+        if (Strings.isEmpty(label.getDefaultModelObjectAsString())) {
+        	label.add(AttributeModifier.append("class", "sr-only"));
+        }
     }
 }

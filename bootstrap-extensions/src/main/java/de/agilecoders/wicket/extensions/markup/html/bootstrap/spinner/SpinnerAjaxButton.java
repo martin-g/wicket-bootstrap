@@ -103,11 +103,11 @@ public class SpinnerAjaxButton extends BootstrapAjaxButton {
     }
 
     @Override
-    protected <L extends Serializable> Component newLabel(String markupId, IModel<L> model) {
-        Component label = super.newLabel(markupId, model);
+    protected void onConfigure() {
+    	super.onConfigure();
+    	Component label = get("label");
         if (Strings.isEmpty(label.getDefaultModelObjectAsString())) {
-            label.add(AttributeModifier.append("class", "sr-only"));
+        	label.add(AttributeModifier.append("class", "sr-only"));
         }
-        return label;
     }
 }
