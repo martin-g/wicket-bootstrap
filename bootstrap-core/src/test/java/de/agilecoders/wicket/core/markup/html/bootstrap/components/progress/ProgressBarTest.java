@@ -59,7 +59,7 @@ class ProgressBarTest extends WicketApplicationTest {
         assertEquals("" + ProgressBar.MIN, stackTester.getAttribute("aria-valuemin"));
         assertEquals("" + ProgressBar.MAX, stackTester.getAttribute("aria-valuemax"));
 
-        TagTester stackLabelTester = stackTester.getChild("class", Helper.screenReaderOnly);
+        TagTester stackLabelTester = stackTester.getChild("class", Helper.visuallyHidden);
         assertEquals("" + progress + "%", stackLabelTester.getValue());
     }
 

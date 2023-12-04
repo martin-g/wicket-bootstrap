@@ -108,7 +108,7 @@ public class SpinnerAjaxButton extends BootstrapAjaxButton {
     	super.onConfigure();
     	Component label = get("label");
         if (Strings.isEmpty(label.getDefaultModelObjectAsString())) {
-        	label.add(AttributeModifier.append("class", Helper.screenReaderOnly));
+        	label.add(AttributeModifier.append("class", Helper.visuallyHidden));
         }
     }
 }
