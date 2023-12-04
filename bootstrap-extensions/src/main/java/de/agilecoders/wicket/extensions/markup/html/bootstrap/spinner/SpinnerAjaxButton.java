@@ -11,6 +11,7 @@ import org.apache.wicket.util.string.Strings;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.BootstrapAjaxButton;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons;
+import de.agilecoders.wicket.core.util.CssClassNames.Helper;
 
 /**
  * A specialization of {@link de.agilecoders.wicket.core.markup.html.bootstrap.button.BootstrapAjaxButton}
@@ -107,7 +108,7 @@ public class SpinnerAjaxButton extends BootstrapAjaxButton {
     	super.onConfigure();
     	Component label = get("label");
         if (Strings.isEmpty(label.getDefaultModelObjectAsString())) {
-        	label.add(AttributeModifier.append("class", "sr-only"));
+        	label.add(AttributeModifier.append("class", Helper.screenReaderOnly));
         }
     }
 }

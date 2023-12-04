@@ -1,5 +1,6 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.components.progress;
 
+import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
@@ -9,6 +10,7 @@ import org.apache.wicket.model.IModel;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.utilities.BackgroundColorBehavior;
 import de.agilecoders.wicket.core.util.Attributes;
+import de.agilecoders.wicket.core.util.CssClassNames.Helper;
 
 /**
  * Represents a stack of the progress bar.
@@ -57,6 +59,7 @@ public class Stack extends GenericPanel<Integer> {
         super.onInitialize();
 
         srOnly = new Label("srOnly", createLabelModel());
+        srOnly.add(AttributeModifier.append("class", Helper.screenReaderOnly));
         add(srOnly);
     }
 
