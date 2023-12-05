@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import de.agilecoders.wicket.core.WicketApplicationTest;
 import de.agilecoders.wicket.core.markup.html.bootstrap.utilities.BackgroundColorBehavior;
+import de.agilecoders.wicket.core.util.CssClassNames.Helper;
 
 /**
  * Tests for ProgressBar
@@ -58,7 +59,7 @@ class ProgressBarTest extends WicketApplicationTest {
         assertEquals("" + ProgressBar.MIN, stackTester.getAttribute("aria-valuemin"));
         assertEquals("" + ProgressBar.MAX, stackTester.getAttribute("aria-valuemax"));
 
-        TagTester stackLabelTester = stackTester.getChild("class", "sr-only");
+        TagTester stackLabelTester = stackTester.getChild("class", Helper.visuallyHidden);
         assertEquals("" + progress + "%", stackLabelTester.getValue());
     }
 

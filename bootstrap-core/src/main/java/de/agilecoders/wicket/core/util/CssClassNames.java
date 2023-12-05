@@ -236,7 +236,7 @@ public final class CssClassNames {
     @SuppressWarnings("UnusedDeclaration")
     public static final class Helper {
         public static final String clearfix = "clearfix";
-        public static final String screenReaderOnly = "sr-only";
+        public static final String visuallyHidden = "visually-hidden";
     }
 
     @SuppressWarnings("UnusedDeclaration")
