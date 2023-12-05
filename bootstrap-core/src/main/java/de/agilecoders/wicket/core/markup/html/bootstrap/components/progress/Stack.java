@@ -1,5 +1,6 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.components.progress;
 
+import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
@@ -9,6 +10,7 @@ import org.apache.wicket.model.IModel;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.utilities.BackgroundColorBehavior;
 import de.agilecoders.wicket.core.util.Attributes;
+import de.agilecoders.wicket.core.util.CssClassNames.Helper;
 
 /**
  * Represents a stack of the progress bar.
@@ -19,7 +21,7 @@ public class Stack extends GenericPanel<Integer> {
     /**
      * A label for the stack's progress
      */
-    private Label srOnly;
+    private Label visuallyHidden;
 
     /**
      * The color type of the stack
@@ -56,8 +58,9 @@ public class Stack extends GenericPanel<Integer> {
     protected void onInitialize() {
         super.onInitialize();
 
-        srOnly = new Label("srOnly", createLabelModel());
-        add(srOnly);
+        visuallyHidden = new Label("visuallyHidden", createLabelModel());
+        visuallyHidden.add(AttributeModifier.append("class", Helper.visuallyHidden));
+        add(visuallyHidden);
     }
 
     public BackgroundColorBehavior.Color color() {
@@ -105,7 +108,7 @@ public class Stack extends GenericPanel<Integer> {
         super.onConfigure();
 
         if (labeled()) {
-            srOnly.setRenderBodyOnly(true);
+            visuallyHidden.setRenderBodyOnly(true);
         }
     }
 
