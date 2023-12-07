@@ -1,7 +1,10 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.dialog;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
@@ -39,7 +42,7 @@ public class Modal<T> extends GenericPanel<T> {
     public static final String BUTTON_MARKUP_ID = "button";
 
     /**
-     * @see <a href="https://getbootstrap.com/docs/4.3/components/modal/#optional-sizes">Modal Sizes</a>
+     * @see <a href="https://getbootstrap.com/docs/5.3/components/modal/#optional-sizes">Optional sizes</a>
      */
     public enum Size implements ICssClassNameProvider {
         Small("sm"),
@@ -67,6 +70,39 @@ public class Modal<T> extends GenericPanel<T> {
         }
     }
 
+    /**
+     * @see <a href="https://getbootstrap.com/docs/5.3/components/modal/#fullscreen-modal">Fullscreen Modal</a>
+     */
+    public enum Fullscreen implements ICssClassNameProvider {
+    	None(""),
+    	Always("fullscreen"),
+    	Sm_down("fullscreen-sm-down"),
+    	Md_down("fullscreen-md-down"),
+    	Lg_down("fullscreen-lg-down"),
+    	Xl_down("fullscreen-xl-down"),
+    	Xxl_down("fullscreen-xxl-down");
+    	
+    	
+    	private final String cssClassName;
+    	
+    	/**
+    	 * Construct.
+    	 *
+    	 * @param cssClassName the css class name of button type
+    	 */
+    	Fullscreen(final String cssClassName) {
+    		this.cssClassName = cssClassName;
+    	}
+    	
+    	/**
+    	 * @return css class name of button type
+    	 */
+    	@Override
+    	public String cssClassName() {
+    		return "modal-" + cssClassName;
+    	}
+    }
+
     public enum Backdrop {
         TRUE, FALSE, STATIC
     }
@@ -92,6 +128,7 @@ public class Modal<T> extends GenericPanel<T> {
     private AjaxEventBehavior closeBehavior;
 
     private Size size = Size.Default;
+    private Fullscreen fullscreen = Fullscreen.None;
 
     /**
      * Constructor.
@@ -205,21 +242,17 @@ public class Modal<T> extends GenericPanel<T> {
             protected void onComponentTag(ComponentTag tag) {
                 super.onComponentTag(tag);
 
-                Attributes.removeClass(tag, Size.Large.cssClassName(), Size.Small.cssClassName());
+                Set<Size> sizes = Arrays.stream(Size.values()).collect(Collectors.toSet());
+                sizes.remove(Size.Default);
+                sizes.forEach(s -> Attributes.removeClass(tag, s));                
+                if(sizes.contains(size))
+                	Attributes.addClass(tag, size);
 
-                switch (size) {
-                    case Large:
-                        Attributes.addClass(tag, Size.Large.cssClassName());
-                        break;
-                    case Small:
-                        Attributes.addClass(tag, Size.Small.cssClassName());
-                        break;
-                    case Extra_large:
-                        Attributes.addClass(tag, Size.Extra_large.cssClassName());
-                        break;
-                    default:
-                        // do nothing. the CSS classes are removed before the switch
-                }
+                Set<Fullscreen> fulscreens = Arrays.stream(Fullscreen.values()).collect(Collectors.toSet());
+                fulscreens.remove(Fullscreen.None);
+                fulscreens.forEach(s -> Attributes.removeClass(tag, s));                
+                if(fulscreens.contains(fullscreen))
+                	Attributes.addClass(tag, fullscreen);
             }
         };
     }
@@ -233,6 +266,17 @@ public class Modal<T> extends GenericPanel<T> {
     public Modal<T> size(Size size) {
         this.size = size;
         return this;
+    }
+    
+    /**
+     * Sets fullscreen modal.
+     *
+     * @param size The size of the modal dialog.
+     * @return {@code this}, for method chaining
+     */
+    public Modal<T> fullscreen(Fullscreen fullscreen) {
+    	this.fullscreen = fullscreen;
+    	return this;
     }
 
     @Override
