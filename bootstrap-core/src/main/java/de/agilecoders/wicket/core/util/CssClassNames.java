@@ -292,16 +292,43 @@ public final class CssClassNames {
 
     @SuppressWarnings("UnusedDeclaration")
     public static final class Typography {
+    	public static final String listInline = "list-inline";
+    	public static final String listInlineItem = "list-inline-item";
         public static final String lead = "lead";
+        public static final String initialism = "initialism";
+        public static final String textStart = "text-start";
+        public static final String textCenter = "text-center";
+        public static final String textEnd = "text-end";
+        public static final String textWrap = "text-wrap";
+        public static final String textNowrap = "text-nowrap";
+        public static final String textBreak = "text-break";
         public static final String lowercase = "text-lowercase";
         public static final String uppercase = "text-uppercase";
-        public static final String capitalize = "text-capitalize";
-        public static final String initialism = "initialism";
-        public static final String textLeft = "text-left";
-        public static final String textCenter = "text-center";
-        public static final String textRight = "text-right";
-        public static final String textJustify = "text-justify";
-        public static final String textNowrap = "text-nowrap";
-        public static final String listInline = "list-inline";
+        public static final String capitalize = "text-capitalize";        
+        public static final String fwBold = "fw-bold";
+        public static final String fwBolder = "fw-bolder";
+        public static final String fwSemibold= "fw-semibold";
+        public static final String fwNormal = "fw-normal";
+        public static final String fwLight = "fw-light";
+        public static final String fwLighter = "fw-lighter";
+        public static final String fstItalic = "fst-italic";
+        public static final String fstNormal = "fst-normal";
+        public static final String fs1 = "fs-1";
+        public static final String fs2 = "fs-2";
+        public static final String fs3 = "fs-3";
+        public static final String fs4 = "fs-4";
+        public static final String fs5 = "fs-5";
+        public static final String fs6 = "fs-6";        
+        public static final String lh1 = "lh-1";
+        public static final String lhSm = "lh-sm";
+        public static final String lhBase = "lh-base";
+        public static final String lhLg = "lh-lg";
+        public static final String textReset = "text-reset";
+        public static final String textMonospace = "text-monospace";
+        public static final String textDecorationNone = "text-decoration-none";
+        public static final String textDecorationUnderline = "text-decoration-underline";
+        public static final String textDecorationLineThrough = "text-decoration-line-through";
+        
     }
+
 }
