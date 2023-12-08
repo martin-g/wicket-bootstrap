@@ -50,7 +50,17 @@ public class BootstrapGenericPanel<T> extends GenericPanel<T>{
 	 * @param id the component id
 	 */
 	public BootstrapGenericPanel(String id){
-		this(id, null, null);
+		this(id, null, null, null);
+	}
+
+	/**
+	 * Construct.
+	 *
+	 * @param id the component id
+	 * @param panelType styling of the panel
+	 */
+	public BootstrapGenericPanel(String id, PanelType panelType){
+		this(id, null, null, panelType);
 	}
 
 	/**
@@ -61,9 +71,22 @@ public class BootstrapGenericPanel<T> extends GenericPanel<T>{
 	 * @param panelTitleModel the title model
 	 */
 	public BootstrapGenericPanel(String id, IModel<T> model, IModel<String> panelTitleModel) {
+		this(id, model, panelTitleModel, null);
+	}
+	
+	/**
+	 * Construct.
+	 *
+	 * @param id the component id
+	 * @param model the component model
+	 * @param panelTitleModel the title model
+	 * @param panelType styling of the panel
+	 */
+	public BootstrapGenericPanel(String id, IModel<T> model, IModel<String> panelTitleModel, PanelType panelType) {
 		super(id, model);
-
+		
 		this.titleModel = panelTitleModel;
+		this.panelType = panelType;
 	}
 	
 	/**
