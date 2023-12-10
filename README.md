@@ -100,12 +100,12 @@ samples (#877)
 </dependency>
 ```
 
-if you want to use a less compiler:
+if you want to use a sass compiler:
 
 ```xml
 <dependency>
     <groupId>de.agilecoders.wicket</groupId>
-    <artifactId>wicket-bootstrap-less</artifactId>
+    <artifactId>wicket-bootstrap-sass</artifactId>
     <version>4.0.0</version>
 samples (#877)
 </dependency>
