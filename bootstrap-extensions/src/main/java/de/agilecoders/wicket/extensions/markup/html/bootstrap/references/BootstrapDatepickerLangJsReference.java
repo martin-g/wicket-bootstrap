@@ -1,10 +1,10 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.references;
 
-import com.google.common.collect.Lists;
 import org.apache.wicket.markup.head.HeaderItem;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.request.resource.JavaScriptResourceReference;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -24,7 +24,7 @@ public class BootstrapDatepickerLangJsReference extends JavaScriptResourceRefere
 
     @Override
     public List<HeaderItem> getDependencies() {
-        final List<HeaderItem> dependencies = Lists.newArrayList(super.getDependencies());
+        final List<HeaderItem> dependencies = new ArrayList<>(super.getDependencies());
         dependencies.add(JavaScriptHeaderItem.forReference(BootstrapDatepickerJsReference.INSTANCE));
 
         return dependencies;
