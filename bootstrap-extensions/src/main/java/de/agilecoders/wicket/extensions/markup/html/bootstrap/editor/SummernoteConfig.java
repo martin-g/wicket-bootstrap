@@ -1,5 +1,6 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.editor;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -8,8 +9,6 @@ import java.util.Set;
 import java.util.UUID;
 
 import org.apache.wicket.WicketRuntimeException;
-
-import com.google.common.collect.Lists;
 
 import de.agilecoders.wicket.jquery.AbstractConfig;
 import de.agilecoders.wicket.jquery.IKey;
@@ -60,10 +59,10 @@ public class SummernoteConfig extends AbstractConfig {
         private static final long serialVersionUID = 1L;
 
         {
-            put("Style", Lists.newArrayList("style", "fontname", "fontsize", "color", "bold", "italic", "underline", "strikethrough", "clear"));
-            put("Layout", Lists.newArrayList("ul", "ol", "paragraph", "height"));
-            put("Insert", Lists.newArrayList("picture", "link", "video", "table", "hr"));
-            put("Misc", Lists.newArrayList("fullscreen", "codeview", "undo", "redo", "help"));
+            put("Style", Arrays.asList("style", "fontname", "fontsize", "color", "bold", "italic", "underline", "strikethrough", "clear"));
+            put("Layout", Arrays.asList("ul", "ol", "paragraph", "height"));
+            put("Insert", Arrays.asList("picture", "link", "video", "table", "hr"));
+            put("Misc", Arrays.asList("fullscreen", "codeview", "undo", "redo", "help"));
         }
     };
 
