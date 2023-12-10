@@ -17,7 +17,6 @@ Current release version:
 
 * [Wicket 9.x](http://wicket.apache.org/) and [Bootstrap 4.x](https://github.com/twbs/bootstrap/):  5.x
 * [Wicket 9.x](http://wicket.apache.org/) and [Bootstrap 3.4.0](https://github.com/twbs/bootstrap/):  4.x
-samples (#877)
 * [Wicket 8.x](http://wicket.apache.org/) and [Bootstrap 4.x](https://github.com/twbs/bootstrap/):  3.x
 * [Wicket 8.x](http://wicket.apache.org/) and [Bootstrap 3.4.0](https://github.com/twbs/bootstrap/):  2.x
 * [Wicket 7.x](http://wicket.apache.org/) and [Bootstrap 3.3.7](https://github.com/twbs/bootstrap/):  0.10.x
@@ -74,7 +73,6 @@ core maven dependency:
     <groupId>de.agilecoders.wicket</groupId>
     <artifactId>wicket-bootstrap-core</artifactId>
     <version>4.0.0</version>
-samples (#877)
 </dependency>
 ```
 
@@ -85,7 +83,6 @@ for all extensions:
     <groupId>de.agilecoders.wicket</groupId>
     <artifactId>wicket-bootstrap-extensions</artifactId>
     <version>4.0.0</version>
-samples (#877)
 </dependency>
 ```
 
@@ -96,7 +93,6 @@ for all themes:
     <groupId>de.agilecoders.wicket</groupId>
     <artifactId>wicket-bootstrap-themes</artifactId>
     <version>4.0.0</version>
-samples (#877)
 </dependency>
 ```
 
@@ -107,7 +103,6 @@ if you want to use a sass compiler:
     <groupId>de.agilecoders.wicket</groupId>
     <artifactId>wicket-bootstrap-sass</artifactId>
     <version>4.0.0</version>
-samples (#877)
 </dependency>
 ```
 
@@ -118,7 +113,6 @@ all samples can be used with this dependency:
     <groupId>de.agilecoders.wicket</groupId>
     <artifactId>wicket-bootstrap-samples</artifactId>
     <version>4.0.0</version>
-samples (#877)
 </dependency>
 ```
 
