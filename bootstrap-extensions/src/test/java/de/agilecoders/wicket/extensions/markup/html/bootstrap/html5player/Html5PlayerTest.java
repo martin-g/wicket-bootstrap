@@ -1,12 +1,12 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.html5player;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.apache.wicket.model.Model;
 import org.apache.wicket.util.tester.TagTester;
 import org.hamcrest.Matchers;
 
-import com.google.common.collect.Lists;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.WicketApplicationTest;
 import org.junit.jupiter.api.Test;
 
@@ -21,7 +21,7 @@ class Html5PlayerTest extends WicketApplicationTest {
 
     @Test
     void componentIsRendered() {
-        List<Html5Player.IVideo> videoList = Lists.newArrayList(
+        List<Html5Player.IVideo> videoList = List.of(
                 new Video("url", "type")
         );
         Html5Player player = new Html5Player("video", Model.ofList(videoList));
