@@ -172,17 +172,10 @@ public class Javascript extends BasePage {
      * @return new carousel component
      */
     private Component newCarousel(String markupId) {
-<<<<<<< HEAD
         final List<ICarouselImage> images = List.of(
             new CarouselImage("https://via.placeholder.com/820x480", "Header 1", "Description 1"),
             new CarouselImage("https://via.placeholder.com/820x480", "Header 2"),
             new CarouselImage("https://via.placeholder.com/820x480")
-=======
-        final List<ICarouselImage> images = List.<ICarouselImage>of(
-            new CarouselImage("http://placehold.it/820x480", "Header 1", "Description 1"),
-            new CarouselImage("http://placehold.it/820x480", "Header 2"),
-            new CarouselImage("http://placehold.it/820x480")
->>>>>>> 64fcbb32 (Remove Lists.newArrayList from Javascript)
         );
 
         return new Carousel(markupId, images);
