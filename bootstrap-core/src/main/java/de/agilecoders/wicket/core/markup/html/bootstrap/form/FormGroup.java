@@ -3,6 +3,8 @@ package de.agilecoders.wicket.core.markup.html.bootstrap.form;
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNameProvider;
 import de.agilecoders.wicket.core.util.Attributes;
 import de.agilecoders.wicket.core.util.Components;
+import de.agilecoders.wicket.core.util.CssClassNames;
+
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.AttributeAppender;
@@ -21,6 +23,10 @@ import org.apache.wicket.util.visit.IVisit;
 import org.apache.wicket.util.visit.IVisitor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import static de.agilecoders.wicket.core.util.CssClassNames.Form.controlStateInvalid;
+import static de.agilecoders.wicket.core.util.CssClassNames.Form.controlStateValid;
+import static de.agilecoders.wicket.core.util.CssClassNames.Form.group;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -169,7 +175,7 @@ public class FormGroup extends Border {
         super.onComponentTag(tag);
 
         checkComponentTag(tag, "div");
-        Attributes.addClass(tag, "form-group");
+        Attributes.addClass(tag, group);
     }
 
     @Override
@@ -240,16 +246,13 @@ public class FormGroup extends Border {
         stateClassName = "";
         feedback.setDefaultModelObject("");
 
-        String validComponentClass = "is-valid";
-        String invalidComponentClass = "is-invalid";
-        
         final List<FormComponent<?>> formComponents = findFormComponents();
      	
         formComponents.forEach(c -> c.add(new Behavior() {
 			@Override
 			public void onComponentTag(Component component, ComponentTag tag)
 			{
-				Attributes.removeClass(tag, validComponentClass, invalidComponentClass);
+				Attributes.removeClass(tag, controlStateValid, controlStateInvalid);
 			}
 			
 			@Override
@@ -273,9 +276,9 @@ public class FormGroup extends Border {
         			public void onComponentTag(Component component, ComponentTag tag)
         			{
         				if(FeedbackMessageToCssClassNameTransformer.INVALID_FEEDBACK.equals(stateClassName))
-        					Attributes.addClass(tag, invalidComponentClass);
+        					Attributes.addClass(tag, controlStateInvalid);
         				else
-        					Attributes.addClass(tag, validComponentClass);
+        					Attributes.addClass(tag, controlStateValid);
         			}
         			
         			@Override
