@@ -244,6 +244,8 @@ public final class CssClassNames {
         public static final String form = "form";
         public static final String formRow = "form-row";
         public static final String control = "form-control";
+        public static final String controlStateValid= "is-valid";
+        public static final String controlStateInvalid= "is-invalid";
         public static final String label = "col-form-label";
         public static final String staticControl = "form-control-static";
         public static final String feedbackControl = "form-control-feedback";
