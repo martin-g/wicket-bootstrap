@@ -42,6 +42,7 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.utilities.BackgroundColo
 import de.agilecoders.wicket.core.markup.html.bootstrap.utilities.BorderBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.utilities.ColorBehavior;
 import de.agilecoders.wicket.samples.components.basecss.ButtonGroups;
+import de.agilecoders.wicket.samples.panels.PanelTypesPanel;
 import de.agilecoders.wicket.samples.panels.SimpleCard;
 
 /**
@@ -92,6 +93,7 @@ public class ComponentsPage extends BasePage {
         addProgressBars();
 
         add(newCard("card-demo"));
+        add(newCardStyles("card-styles-demo"));
     }
 
     private void addProgressBars() {
@@ -241,13 +243,17 @@ public class ComponentsPage extends BasePage {
         add(badgeButton);
     }
 
-        private Component newCard(String markupId) {
+    private Component newCard(String markupId) {
         return new SimpleCard(markupId)
                 .add(new BorderBehavior()
                         .type(BorderBehavior.Type.All)
                         .color(BorderBehavior.Color.Dark)
                         .radius(BorderBehavior.Radius.All))
                 .add(ColorBehavior.success());
+    }
+
+    private Component newCardStyles(String markupId) {
+    	return new PanelTypesPanel(markupId);
     }
 
     private Component newTabs(String markupId) {
