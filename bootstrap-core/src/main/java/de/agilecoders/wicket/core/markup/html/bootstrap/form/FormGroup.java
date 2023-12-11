@@ -6,6 +6,7 @@ import de.agilecoders.wicket.core.util.Components;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.AttributeAppender;
+import org.apache.wicket.behavior.Behavior;
 import org.apache.wicket.feedback.FeedbackMessage;
 import org.apache.wicket.feedback.FeedbackMessages;
 import org.apache.wicket.markup.ComponentTag;
@@ -239,16 +240,50 @@ public class FormGroup extends Border {
         stateClassName = "";
         feedback.setDefaultModelObject("");
 
+        String validComponentClass = "is-valid";
+        String invalidComponentClass = "is-invalid";
+        
         final List<FormComponent<?>> formComponents = findFormComponents();
+     	
+        formComponents.forEach(c -> c.add(new Behavior() {
+			@Override
+			public void onComponentTag(Component component, ComponentTag tag)
+			{
+				Attributes.removeClass(tag, validComponentClass, invalidComponentClass);
+			}
+			
+			@Override
+			public boolean isTemporary(Component component) {
+				return true;
+			}
+		}));
+        
         for (final FormComponent<?> fc : formComponents) {
             final FeedbackMessages messages = fc.getFeedbackMessages();
 
             if (!messages.isEmpty()) {
                 final FeedbackMessage worstMessage = getWorstMessage(messages);
                 worstMessage.markRendered();
+                feedback.setDefaultModelObject(worstMessage.getMessage());
 
                 stateClassName = toClassName(worstMessage);
-                feedback.setDefaultModelObject(worstMessage.getMessage());
+
+                worstMessage.getReporter().add(new Behavior() {
+        			@Override
+        			public void onComponentTag(Component component, ComponentTag tag)
+        			{
+        				if(FeedbackMessageToCssClassNameTransformer.INVALID_FEEDBACK.equals(stateClassName))
+        					Attributes.addClass(tag, invalidComponentClass);
+        				else
+        					Attributes.addClass(tag, validComponentClass);
+        			}
+        			
+        			@Override
+        			public boolean isTemporary(Component component) {
+        				return true;
+        			}
+        		});                
+
 
                 break; // render worst message of first found child component with feedback message
             }
@@ -316,7 +351,10 @@ public class FormGroup extends Border {
      */
     public static class FeedbackMessageToCssClassNameTransformer implements Function<FeedbackMessage, String> {
 
-        @Override
+        private static final String VALID_FEEDBACK = "valid-feedback";
+		private static final String INVALID_FEEDBACK = "invalid-feedback";
+
+		@Override
         public String apply(final FeedbackMessage message) {
 
             if (message == null) {
@@ -326,9 +364,9 @@ public class FormGroup extends Border {
             switch (message.getLevel()) {
                 case FeedbackMessage.FATAL:
                 case FeedbackMessage.ERROR:
-                case FeedbackMessage.WARNING: return "invalid-feedback";
+                case FeedbackMessage.WARNING: return INVALID_FEEDBACK;
                 case FeedbackMessage.INFO:
-                case FeedbackMessage.SUCCESS: return "valid-feedback";
+                case FeedbackMessage.SUCCESS: return VALID_FEEDBACK;
                 default: return "";
             }
         }
