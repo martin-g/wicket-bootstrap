@@ -78,7 +78,7 @@ public class UtilitiesPage extends BasePage {
         });
 
         add(new Code("border-type-code", Model.of(
-                "List<BorderBehavior.Type> additiveTypes = Lists.newArrayList(\n" +
+                "List<BorderBehavior.Type> additiveTypes = List.of(\n" +
                 "    BorderBehavior.Type.All,\n" +
                 "    BorderBehavior.Type.Top,\n" +
                 "    BorderBehavior.Type.Right,\n" +
@@ -112,7 +112,7 @@ public class UtilitiesPage extends BasePage {
         });
 
         add(new Code("border-colors-code", Model.of(
-            "List<BorderBehavior.Color> colors = Lists.newArrayList(BorderBehavior.Color.values());\n" +
+            "List<BorderBehavior.Color> colors = List.of(BorderBehavior.Color.values());\n" +
             "add(new ListView<BorderBehavior.Color>(\"border-colors\", colors) {\n\n" +
             "    @Override\n" +
             "    protected void populateItem(ListItem<BorderBehavior.Color> item) {\n" +
@@ -140,7 +140,7 @@ public class UtilitiesPage extends BasePage {
         });
 
         add(new Code("border-radius-code", Model.of(
-            "List<BorderBehavior.Radius> radiuses = Lists.newArrayList(BorderBehavior.Radius.values());\n" +
+            "List<BorderBehavior.Radius> radiuses = List.of(BorderBehavior.Radius.values());\n" +
             "add(new ListView<BorderBehavior.Radius>(\"border-radiuses\", radiuses) {\n" +
             "    @Override\n" +
             "    protected void populateItem(ListItem<BorderBehavior.Radius> item) {\n" +
