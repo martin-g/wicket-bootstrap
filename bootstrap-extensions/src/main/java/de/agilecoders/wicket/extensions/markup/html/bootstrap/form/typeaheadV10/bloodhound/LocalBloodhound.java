@@ -1,13 +1,10 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.form.typeaheadV10.bloodhound;
 
-import com.google.common.base.Function;
-import com.google.common.base.Joiner;
-import com.google.common.collect.Lists;
-
 import de.agilecoders.wicket.jquery.util.Json;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * A {@link de.agilecoders.wicket.extensions.markup.html.bootstrap.form.typeaheadV10.bloodhound.Bloodhound}
@@ -26,13 +23,9 @@ public class LocalBloodhound<T> extends Bloodhound<T> {
     }
 
     private void initConfig(List<String> datasource) {
-
-        Function<String, String> createDatum = s -> {
-            // create a { value: element } datum
-            return String.format("{value: '%s'}", s);
-        };
-
-        String local = "[" + Joiner.on(',').join(Lists.transform(datasource, createDatum)) + "]";
+        String local = datasource.stream().map(ds ->
+            String.format("{value: '%s'}", ds)
+        ).collect(Collectors.joining(",", "[", "]"));
         getConfig().withLocal(new Json.RawValue(local));
     }
 

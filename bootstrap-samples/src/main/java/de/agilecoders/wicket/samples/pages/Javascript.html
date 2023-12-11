@@ -1559,7 +1559,7 @@ $('.carousel').carousel({
     &lt;input type="text" class="form-control"/&gt;</code></pre>
 
     <pre class="prettyprint linenums"><code class="java">
-    List&lt;String&gt; dataSource = Lists.newArrayList("abc", "def", "ghi");
+    List&lt;String&gt; dataSource = List.of("abc", "def", "ghi");
     Dataset dataset = new Dataset("demoLocal");
     dataset.withLocal(dataSource);
     Typeahead&lt;String&gt; typeahead = new Typeahead&lt;String&gt;(id, dataset);

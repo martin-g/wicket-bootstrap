@@ -94,7 +94,7 @@ public class ExtensionsPage extends BasePage {
 
         add(new Code(
                 "video-code",
-                Model.of("List<Html5Player.IVideo> videos = Lists.<Html5Player.IVideo>newArrayList(\n"
+                Model.of("List<Html5Player.IVideo> videos = List.<Html5Player.IVideo>of(\n"
                         + "\t\tnew Video(\"video.ogv\", \"video/ogg\"),\n"
                         + "\t\tnew Video(\"video.mp4\", \"video/mp4\")\n"
                         + ");\n"
@@ -106,7 +106,7 @@ public class ExtensionsPage extends BasePage {
                 .setHeight(360));
         add(new Code(
                 "video-custom-code",
-                Model.of("List<Html5Player.IVideo> videos = Lists.<Html5Player.IVideo>newArrayList(\n"
+                Model.of("List<Html5Player.IVideo> videos = List.<Html5Player.IVideo>of(\n"
                         + "\t\tnew Video(\"video.ogv\", \"video/ogg\"),\n"
                         + "\t\tnew Video(\"video.mp4\", \"video/mp4\")\n"
                         + ");\n"
