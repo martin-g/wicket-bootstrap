@@ -114,12 +114,12 @@ for all themes:
 </dependency>
 ```
 
-if you want to use a less compiler:
+if you want to use a sass compiler:
 
 ```xml
 <dependency>
     <groupId>de.agilecoders.wicket</groupId>
-    <artifactId>wicket-bootstrap-less</artifactId>
+    <artifactId>wicket-bootstrap-sass</artifactId>
     <version>6.y.z</version>
 </dependency>
 ```
