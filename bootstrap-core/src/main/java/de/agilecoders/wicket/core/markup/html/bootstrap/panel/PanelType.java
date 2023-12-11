@@ -51,9 +51,9 @@ public enum PanelType
 	Transparent(BackgroundColorBehavior.Color.Transparent, ColorBehavior.Color.Body, null);
 
 	
-	private BackgroundColorBehavior.Color backgroundColor;
-	private ColorBehavior.Color textColor;
-	private BorderBehavior.Color borderColor;
+	private final BackgroundColorBehavior.Color backgroundColor;
+	private final ColorBehavior.Color textColor;
+	private final BorderBehavior.Color borderColor;
 	
 	private PanelType(BackgroundColorBehavior.Color backgroundColor, ColorBehavior.Color textColor, Color borderColor) {
 		this.backgroundColor = backgroundColor;
