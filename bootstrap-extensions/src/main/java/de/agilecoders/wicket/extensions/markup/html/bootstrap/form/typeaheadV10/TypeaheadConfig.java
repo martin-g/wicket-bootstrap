@@ -1,7 +1,5 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.form.typeaheadV10;
 
-import com.google.common.collect.ObjectArrays;
-
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.typeaheadV10.bloodhound.Bloodhound;
 import de.agilecoders.wicket.jquery.AbstractConfig;
 import de.agilecoders.wicket.jquery.IKey;
@@ -25,7 +23,9 @@ public class TypeaheadConfig<T> extends AbstractConfig {
         }
 
         if (datasets != null) {
-            this.datasets = ObjectArrays.concat(firstSet, datasets);
+            this.datasets = new DataSet[datasets.length + 1];
+            this.datasets[0] = firstSet;
+            System.arraycopy(datasets, 0, this.datasets, 1, datasets.length);
         } else {
             this.datasets = new DataSet[]{firstSet};
         }
