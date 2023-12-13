@@ -8,8 +8,6 @@ import org.apache.wicket.feedback.FeedbackMessages;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.util.lang.Args;
 
-import static com.google.common.base.Strings.isNullOrEmpty;
-
 /**
  * <h1>Component behavior.</h1>
  * <p>This behavior adds an attribute to DOM element with feedback message.</p>
@@ -20,7 +18,7 @@ import static com.google.common.base.Strings.isNullOrEmpty;
 class FeedbackMessageBehavior extends Behavior {
 
     private static final long serialVersionUID = 3116618186507530804L;
-    private String attributeName;
+    private final String attributeName;
 
     /**
      * Construct.
@@ -35,18 +33,18 @@ class FeedbackMessageBehavior extends Behavior {
     @Override
     public void onComponentTag(Component component, ComponentTag tag) {
         FeedbackMessages messages = component.getFeedbackMessages();
-        if (messages != null && messages.size() > 0) {
+        if (messages != null && !messages.isEmpty()) {
             StringBuilder sb = new StringBuilder();
             for (FeedbackMessage message : messages.messages(ErrorLevelFeedbackMessageFilter.ALL)) {
                 if (!message.isRendered()) {
                     String msg = message.getMessage().toString();
-                    if (!isNullOrEmpty(msg)) {
+                    if (msg != null && !msg.isEmpty()) {
                         sb.append(msg);
                     }
                 }
             }
             String messageString = sb.toString();
-            if (!isNullOrEmpty(messageString)) {
+            if (!messageString.isEmpty()) {
                 tag.getAttributes().put(attributeName, messageString);
             }
         }
