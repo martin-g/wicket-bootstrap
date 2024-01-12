@@ -16,46 +16,44 @@
  */
 package de.agilecoders.wicket.core.markup.html.bootstrap.panel;
 
-import de.agilecoders.wicket.core.markup.html.bootstrap.utilities.BackgroundColorBehavior;
+import de.agilecoders.wicket.core.markup.html.bootstrap.utilities.BackgroundColorBehavior.BackgroundColor;
 import de.agilecoders.wicket.core.markup.html.bootstrap.utilities.BorderBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.utilities.BorderBehavior.Color;
-import de.agilecoders.wicket.core.markup.html.bootstrap.utilities.ColorBehavior;
+import de.agilecoders.wicket.core.markup.html.bootstrap.utilities.TextColorBehavior;
 
 /**
  * Automatically sets panel's header background and border.
  */
-public enum PanelType
-{
+public enum PanelType {
 	Default(null, null, null),
-	Primary(BackgroundColorBehavior.Color.Primary, ColorBehavior.Color.White, BorderBehavior.Color.Primary),
-	Primary_subtle(BackgroundColorBehavior.Color.Primary_subtle, ColorBehavior.Color.Primary_emphasis, BorderBehavior.Color.Primary_subtle),
-	Secondary(BackgroundColorBehavior.Color.Secondary, ColorBehavior.Color.White, BorderBehavior.Color.Secondary),
-	Secondary_subtle(BackgroundColorBehavior.Color.Secondary_subtle, ColorBehavior.Color.Secondary_emphasis, BorderBehavior.Color.Secondary_subtle),
-	Success(BackgroundColorBehavior.Color.Success, ColorBehavior.Color.White, BorderBehavior.Color.Success),
-	Success_subtle(BackgroundColorBehavior.Color.Success_subtle, ColorBehavior.Color.Success_emphasis, BorderBehavior.Color.Success_subtle),
-	Danger(BackgroundColorBehavior.Color.Danger, ColorBehavior.Color.White, BorderBehavior.Color.Danger),
-	Danger_subtle(BackgroundColorBehavior.Color.Danger_subtle, ColorBehavior.Color.Danger_emphasis, BorderBehavior.Color.Danger_subtle),
-	Warning(BackgroundColorBehavior.Color.Warning, ColorBehavior.Color.Black, BorderBehavior.Color.Warning),
-	Warning_subtle(BackgroundColorBehavior.Color.Warning_subtle, ColorBehavior.Color.Warning_emphasis, BorderBehavior.Color.Warning_subtle),
-	Info(BackgroundColorBehavior.Color.Info, ColorBehavior.Color.White, BorderBehavior.Color.Info),
-	Info_subtle(BackgroundColorBehavior.Color.Info_subtle, ColorBehavior.Color.Info_emphasis, BorderBehavior.Color.Info_subtle),
-	Light(BackgroundColorBehavior.Color.Light, ColorBehavior.Color.Black, BorderBehavior.Color.Light),
-	Light_subtle(BackgroundColorBehavior.Color.Light_subtle, ColorBehavior.Color.Light_emphasis, BorderBehavior.Color.Light_subtle),
-	Dark(BackgroundColorBehavior.Color.Dark, ColorBehavior.Color.White, BorderBehavior.Color.Dark),
-	Dark_subtle(BackgroundColorBehavior.Color.Dark_subtle, ColorBehavior.Color.Dark_emphasis, BorderBehavior.Color.Dark_subtle),
-	Body_secondary(BackgroundColorBehavior.Color.Body_secondary, null, BorderBehavior.Color.Primary),
-	Body_tertiary(BackgroundColorBehavior.Color.Body_tertiary, null, BorderBehavior.Color.Primary),
-	Body(BackgroundColorBehavior.Color.Body, ColorBehavior.Color.Body, BorderBehavior.Color.Primary),
-	Black(BackgroundColorBehavior.Color.Black, ColorBehavior.Color.White, BorderBehavior.Color.Black),
-	White(BackgroundColorBehavior.Color.White, ColorBehavior.Color.Black, BorderBehavior.Color.White),
-	Transparent(BackgroundColorBehavior.Color.Transparent, ColorBehavior.Color.Body, null);
+	Primary(BackgroundColor.Primary, TextColorBehavior.TextColor.White, BorderBehavior.Color.Primary),
+	Primary_subtle(BackgroundColor.Primary_Subtle, TextColorBehavior.TextColor.Primary_Emphasis, BorderBehavior.Color.Primary_subtle),
+	Secondary(BackgroundColor.Secondary, TextColorBehavior.TextColor.White, BorderBehavior.Color.Secondary),
+	Secondary_subtle(BackgroundColor.Secondary_Subtle, TextColorBehavior.TextColor.Secondary_Emphasis, BorderBehavior.Color.Secondary_subtle),
+	Success(BackgroundColor.Success, TextColorBehavior.TextColor.White, BorderBehavior.Color.Success),
+	Success_subtle(BackgroundColor.Success_Subtle, TextColorBehavior.TextColor.Success_Emphasis, BorderBehavior.Color.Success_subtle),
+	Danger(BackgroundColor.Danger, TextColorBehavior.TextColor.White, BorderBehavior.Color.Danger),
+	Danger_subtle(BackgroundColor.Danger_Subtle, TextColorBehavior.TextColor.Danger_Emphasis, BorderBehavior.Color.Danger_subtle),
+	Warning(BackgroundColor.Warning, TextColorBehavior.TextColor.Black, BorderBehavior.Color.Warning),
+	Warning_subtle(BackgroundColor.Warning_Subtle, TextColorBehavior.TextColor.Warning_Emphasis, BorderBehavior.Color.Warning_subtle),
+	Info(BackgroundColor.Info, TextColorBehavior.TextColor.White, BorderBehavior.Color.Info),
+	Info_subtle(BackgroundColor.Info_Subtle, TextColorBehavior.TextColor.Info_Emphasis, BorderBehavior.Color.Info_subtle),
+	Light(BackgroundColor.Light, TextColorBehavior.TextColor.Black, BorderBehavior.Color.Light),
+	Light_subtle(BackgroundColor.Light_Subtle, TextColorBehavior.TextColor.Light_Emphasis, BorderBehavior.Color.Light_subtle),
+	Dark(BackgroundColor.Dark, TextColorBehavior.TextColor.White, BorderBehavior.Color.Dark),
+	Dark_subtle(BackgroundColor.Dark_Subtle, TextColorBehavior.TextColor.Dark_Emphasis, BorderBehavior.Color.Dark_subtle),
+	Body_secondary(BackgroundColor.Body_Secondary, null, BorderBehavior.Color.Primary),
+	Body_tertiary(BackgroundColor.Body_Tertiary, null, BorderBehavior.Color.Primary),
+	Body(BackgroundColor.Body, TextColorBehavior.TextColor.Body, BorderBehavior.Color.Primary),
+	Black(BackgroundColor.Black, TextColorBehavior.TextColor.White, BorderBehavior.Color.Black),
+	White(BackgroundColor.White, TextColorBehavior.TextColor.Black, BorderBehavior.Color.White),
+	Transparent(BackgroundColor.Transparent, TextColorBehavior.TextColor.Body, null);
 
-	
-	private final BackgroundColorBehavior.Color backgroundColor;
-	private final ColorBehavior.Color textColor;
+	private final BackgroundColor backgroundColor;
+	private final TextColorBehavior.TextColor textColor;
 	private final BorderBehavior.Color borderColor;
-	
-	private PanelType(BackgroundColorBehavior.Color backgroundColor, ColorBehavior.Color textColor, Color borderColor) {
+
+	PanelType(final BackgroundColor backgroundColor, final TextColorBehavior.TextColor textColor, final Color borderColor) {
 		this.backgroundColor = backgroundColor;
 		this.textColor = textColor;
 		this.borderColor = borderColor;
@@ -64,14 +62,14 @@ public enum PanelType
 	/**
 	 * @return the backgroundColor
 	 */
-	public BackgroundColorBehavior.Color getBackgroundColor() {
+	public BackgroundColor getBackgroundColor() {
 		return backgroundColor;
 	}
 
 	/**
 	 * @return the textColor
 	 */
-	public ColorBehavior.Color getTextColor() {
+	public TextColorBehavior.TextColor getTextColor() {
 		return textColor;
 	}
 
@@ -81,5 +79,5 @@ public enum PanelType
 	public BorderBehavior.Color getBorderColor() {
 		return borderColor;
 	}
-	
+
 }

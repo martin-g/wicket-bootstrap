@@ -4,9 +4,8 @@ import org.apache.wicket.markup.repeater.RepeatingView;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.util.tester.TagTester;
 import org.junit.jupiter.api.Test;
-
 import de.agilecoders.wicket.core.WicketApplicationTest;
-import de.agilecoders.wicket.core.markup.html.bootstrap.utilities.BackgroundColorBehavior;
+import de.agilecoders.wicket.core.markup.html.bootstrap.utilities.BackgroundColorBehavior.BackgroundColor;
 import de.agilecoders.wicket.core.util.CssClassNames.Helper;
 
 /**
@@ -45,7 +44,7 @@ class ProgressBarTest extends WicketApplicationTest {
         tester().getApplication().getMarkupSettings().setStripWicketTags(true);
         String markupId = "progressBar";
         int progress = 23;
-        ProgressBar progressBar = new ProgressBar(id(), Model.of(progress), BackgroundColorBehavior.Color.Danger);
+        ProgressBar progressBar = new ProgressBar(id(), Model.of(progress), BackgroundColor.Danger);
         progressBar.setMarkupId(markupId);
         progressBar.active(true);
 

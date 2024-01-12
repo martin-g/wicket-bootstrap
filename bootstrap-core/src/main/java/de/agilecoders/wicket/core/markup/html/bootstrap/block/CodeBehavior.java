@@ -9,7 +9,6 @@ import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
-
 import de.agilecoders.wicket.core.Bootstrap;
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.CssClassNameAppender;
@@ -23,7 +22,7 @@ import de.agilecoders.wicket.jquery.util.Strings2;
 
 /**
  * #### Description
- *
+ * <p>
  * Wrap inline snippets of code with <code> and use <pre> for multiple
  * lines of code. Angle brackets will be escaped in the code for proper rendering.
  *
@@ -45,174 +44,175 @@ import de.agilecoders.wicket.jquery.util.Strings2;
  * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public class CodeBehavior extends Behavior {
-    private static final long serialVersionUID = 1L;
+
+	private static final long serialVersionUID = 1L;
 
 	/**
-     * enum that holds all possible languages
-     */
-    public enum Language implements ICssClassNameProvider {
-        DYNAMIC, // use this or don't set a lang for auto detection
+	 * enum that holds all possible languages
+	 */
+	public enum Language implements ICssClassNameProvider {
+		DYNAMIC, // use this or don't set a lang for auto detection
 
-        // auto detected
-        BSH, C, CC, CPP, CS, CSH, CYC, CV, HTM, HTML,
-        JAVA, JS, M, MXML, PERL, PL, PM, PY, RB, SH,
-        XHTML, XML, XSL,
+		// auto detected
+		BSH, C, CC, CPP, CS, CSH, CYC, CV, HTM, HTML,
+		JAVA, JS, M, MXML, PERL, PL, PM, PY, RB, SH,
+		XHTML, XML, XSL,
 
-        // plugins
-        APOLLO, BASIC, CLJ, CSS, DART, ERLANG, GO, HS, LISP,
-        LLVM, LUA, MATLAB, ML, MUMPS, N, PASCAL, PROTO, R, RD,
-        SCALA, SQL, TCL, TEX, VB, VHDL, WIKI, XQ, YAML;
+		// plugins
+		APOLLO, BASIC, CLJ, CSS, DART, ERLANG, GO, HS, LISP,
+		LLVM, LUA, MATLAB, ML, MUMPS, N, PASCAL, PROTO, R, RD,
+		SCALA, SQL, TCL, TEX, VB, VHDL, WIKI, XQ, YAML;
 
-        @Override
-        public String cssClassName() {
-            if (!DYNAMIC.equals(this)) {
-                return "lang-" + name().toLowerCase();
-            }
+		@Override
+		public String cssClassName() {
+			if (!DYNAMIC.equals(this)) {
+				return "lang-" + name().toLowerCase();
+			}
 
-            return "";
-        }
+			return "";
+		}
 
-    }
+	}
 
-    private final IModel<Boolean> lineNumbers;
-    private final IModel<String> cssClassNameModel;
-    private final IModel<Language> language;
-    private final IModel<Integer> from;
+	private final IModel<Boolean> lineNumbers;
+	private final IModel<String> cssClassNameModel;
+	private final IModel<Language> language;
+	private final IModel<Integer> from;
 
-    private final CssClassNameAppender cssClassNameAppender;
+	private final CssClassNameAppender cssClassNameAppender;
 
-    /**
-     * Constructor.
-     */
-    public CodeBehavior() {
-        super();
+	/**
+	 * Constructor.
+	 */
+	public CodeBehavior() {
+		super();
 
-        lineNumbers = Model.of(false);
-        cssClassNameModel = Model.of("");
-        language = Model.of(Language.DYNAMIC);
-        from = Model.of(0);
+		lineNumbers = Model.of(false);
+		cssClassNameModel = Model.of("");
+		language = Model.of(Language.DYNAMIC);
+		from = Model.of(0);
 
-        cssClassNameAppender = new CssClassNameAppender(cssClassNameModel);
-    }
+		cssClassNameAppender = new CssClassNameAppender(cssClassNameModel);
+	}
 
-    @Override
-    public void detach(Component component) {
-        super.detach(component);
+	@Override
+	public void detach(Component component) {
+		super.detach(component);
 
-        lineNumbers.detach();
-        cssClassNameModel.detach();
-        language.detach();
-        from.detach();
-    }
+		lineNumbers.detach();
+		cssClassNameModel.detach();
+		language.detach();
+		from.detach();
+	}
 
-    @Override
-    public void renderHead(final Component component, final IHeaderResponse response) {
-        super.renderHead(component, response);
+	@Override
+	public void renderHead(final Component component, final IHeaderResponse response) {
+		super.renderHead(component, response);
 
-        response.render(CssHeaderItem.forReference(PrettifyCssResourceReference.INSTANCE));
+		response.render(CssHeaderItem.forReference(PrettifyCssResourceReference.INSTANCE));
 
-        References.renderWithFilter(Bootstrap.getSettings(), response, JavaScriptHeaderItem.forReference(PrettifyJavaScriptReference.INSTANCE));
+		References.renderWithFilter(Bootstrap.getSettings(), response, JavaScriptHeaderItem.forReference(PrettifyJavaScriptReference.INSTANCE));
 
-        response.render(OnDomReadyHeaderItem.forScript(createInitializerScript(Strings2.getMarkupId(component))));
-    }
+		response.render(OnDomReadyHeaderItem.forScript(createInitializerScript(Strings2.getMarkupId(component))));
+	}
 
-    private CharSequence createInitializerScript(CharSequence markupId) {
-        return "$('#" + markupId + "').html(PR.prettyPrintOne($('#" + markupId + "').html().replace(/\\r\\n|\\r|\\n/g,'<br>'), '', $('#" + markupId + "').attr('class')));";
-    }
+	private CharSequence createInitializerScript(CharSequence markupId) {
+		return "$('#" + markupId + "').html(PR.prettyPrintOne($('#" + markupId + "').html(), '', $('#" + markupId + "').attr('class')));";
+	}
 
-    @Override
-    public void bind(final Component component) {
-        super.bind(component);
+	@Override
+	public void bind(final Component component) {
+		super.bind(component);
 
-        BootstrapBaseBehavior.addTo(component);
-        component.add(cssClassNameAppender);
-    }
+		BootstrapBaseBehavior.addTo(component);
+		component.add(cssClassNameAppender);
+	}
 
-    @Override
-    public void unbind(final Component component) {
-        super.unbind(component);
+	@Override
+	public void unbind(final Component component) {
+		super.unbind(component);
 
-        BootstrapBaseBehavior.removeFrom(component);
-        component.remove(cssClassNameAppender);
-    }
+		BootstrapBaseBehavior.removeFrom(component);
+		component.remove(cssClassNameAppender);
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void onConfigure(final Component component) {
-        super.onConfigure(component);
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void onConfigure(final Component component) {
+		super.onConfigure(component);
 
-        cssClassNameModel.setObject(createCssClassNames());
-    }
+		cssClassNameModel.setObject(createCssClassNames());
+	}
 
-    /**
-     * @return a list of css class names
-     */
-    private String createCssClassNames() {
-        return CssClassNames.parse("prettyprint").add(
-                createLineNumbersCssClass(),
-                language.getObject().cssClassName()).asString();
-    }
+	/**
+	 * @return a list of css class names
+	 */
+	private String createCssClassNames() {
+		return CssClassNames.parse("prettyprint").add(
+			createLineNumbersCssClass(),
+			language.getObject().cssClassName()).asString();
+	}
 
-    /**
-     * @return the css class name for the line number class
-     */
-    private String createLineNumbersCssClass() {
-        if (hasLineNumbers()) {
-            return "linenums" + (from.getObject() > 0 ? ":" + from.getObject() : "");
-        }
+	/**
+	 * @return the css class name for the line number class
+	 */
+	private String createLineNumbersCssClass() {
+		if (hasLineNumbers()) {
+			return "linenums" + (from.getObject() > 0 ? ":" + from.getObject() : "");
+		}
 
-        return "";
-    }
+		return "";
+	}
 
-    /**
-     * @return true, if line numbers will be rendered
-     */
-    public final boolean hasLineNumbers() {
-        return lineNumbers.getObject();
-    }
+	/**
+	 * @return true, if line numbers will be rendered
+	 */
+	public final boolean hasLineNumbers() {
+		return lineNumbers.getObject();
+	}
 
-    /**
-     * adds line numbers on the left side of code block.
-     *
-     * @return this instance
-     */
-    public final CodeBehavior setShowLineNumbers(final boolean showLineNumbers) {
-        this.lineNumbers.setObject(showLineNumbers);
+	/**
+	 * adds line numbers on the left side of code block.
+	 *
+	 * @return this instance
+	 */
+	public final CodeBehavior setShowLineNumbers(final boolean showLineNumbers) {
+		this.lineNumbers.setObject(showLineNumbers);
 
-        return this;
-    }
+		return this;
+	}
 
-    /**
-     * defines from which line number the counting will start.
-     *
-     * @param from which line the numbers will count
-     * @return this instance
-     */
-    public final CodeBehavior setStartFromLine(final int from) {
-        setShowLineNumbers(true);
-        this.from.setObject(from);
+	/**
+	 * defines from which line number the counting will start.
+	 *
+	 * @param from which line the numbers will count
+	 * @return this instance
+	 */
+	public final CodeBehavior setStartFromLine(final int from) {
+		setShowLineNumbers(true);
+		this.from.setObject(from);
 
-        return this;
-    }
+		return this;
+	}
 
-    /**
-     * sets the language.
-     *
-     * @param language the language to use
-     * @return this instance
-     */
-    public final CodeBehavior setLanguage(final Language language) {
-        this.language.setObject(language);
+	/**
+	 * sets the language.
+	 *
+	 * @param language the language to use
+	 * @return this instance
+	 */
+	public final CodeBehavior setLanguage(final Language language) {
+		this.language.setObject(language);
 
-        return this;
-    }
+		return this;
+	}
 
-    @Override
-    public void onComponentTag(Component component, ComponentTag tag) {
-        super.onComponentTag(component, tag);
+	@Override
+	public void onComponentTag(Component component, ComponentTag tag) {
+		super.onComponentTag(component, tag);
 
-        Components.assertTag(component, tag, "code", "pre","xmp");
-    }
+		Components.assertTag(component, tag, "code", "pre", "xmp");
+	}
 }

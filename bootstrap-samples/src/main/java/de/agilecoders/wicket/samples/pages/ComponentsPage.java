@@ -4,7 +4,6 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.extensions.markup.html.tabs.AbstractTab;
@@ -19,7 +18,6 @@ import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
-
 import de.agilecoders.wicket.core.markup.html.bootstrap.badge.BootstrapBadge;
 import de.agilecoders.wicket.core.markup.html.bootstrap.block.Code;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.BootstrapAjaxLink;
@@ -28,6 +26,7 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.MenuBookmarkablePageLink;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.MenuDivider;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.SplitButton;
+import de.agilecoders.wicket.core.markup.html.bootstrap.utilities.BackgroundColorBehavior.BackgroundColor;
 import de.agilecoders.wicket.core.markup.html.bootstrap.components.progress.ProgressBar;
 import de.agilecoders.wicket.core.markup.html.bootstrap.components.progress.Stack;
 import de.agilecoders.wicket.core.markup.html.bootstrap.components.progress.UpdatableProgressBar;
@@ -38,9 +37,8 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.form.radio.EnumRadioChoi
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
 import de.agilecoders.wicket.core.markup.html.bootstrap.tabs.AjaxBootstrapTabbedPanel;
 import de.agilecoders.wicket.core.markup.html.bootstrap.tabs.ClientSideBootstrapTabbedPanel;
-import de.agilecoders.wicket.core.markup.html.bootstrap.utilities.BackgroundColorBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.utilities.BorderBehavior;
-import de.agilecoders.wicket.core.markup.html.bootstrap.utilities.ColorBehavior;
+import de.agilecoders.wicket.core.markup.html.bootstrap.utilities.TextColorBehavior;
 import de.agilecoders.wicket.samples.components.basecss.ButtonGroups;
 import de.agilecoders.wicket.samples.panels.PanelTypesPanel;
 import de.agilecoders.wicket.samples.panels.SimpleCard;
@@ -51,6 +49,7 @@ import de.agilecoders.wicket.samples.panels.SimpleCard;
  * @author miha
  */
 public class ComponentsPage extends BasePage {
+
     private static final long serialVersionUID = 1L;
 
     private static enum Status {
@@ -115,28 +114,27 @@ public class ComponentsPage extends BasePage {
                 return () -> String.format("The progress is: %s%%", getModelObject());
             }
         };
-        labeledStack.labeled(true).color(BackgroundColorBehavior.Color.Success);
+        labeledStack.labeled(true).color(BackgroundColor.Success);
         labeledProgressBar.addStacks(labeledStack);
         add(labeledProgressBar);
 
-
         ProgressBar stacked = new ProgressBar("stacked");
         add(stacked);
-        Stack stackedStack1 = new Stack(stacked.getStackId(), Model.of(35)).color(BackgroundColorBehavior.Color.Success);
-        Stack stackedStack2 = new Stack(stacked.getStackId(), Model.of(20)).color(BackgroundColorBehavior.Color.Warning);
-        Stack stackedStack3 = new Stack(stacked.getStackId(), Model.of(10)).color(BackgroundColorBehavior.Color.Danger);
+        Stack stackedStack1 = new Stack(stacked.getStackId(), Model.of(35)).color(BackgroundColor.Success);
+        Stack stackedStack2 = new Stack(stacked.getStackId(), Model.of(20)).color(BackgroundColor.Warning);
+        Stack stackedStack3 = new Stack(stacked.getStackId(), Model.of(10)).color(BackgroundColor.Danger);
         stacked.addStacks(stackedStack1, stackedStack2, stackedStack3);
 
-        ProgressBar coloredInfo = new ProgressBar("coloredInfo", Model.of(20), BackgroundColorBehavior.Color.Info);
+        ProgressBar coloredInfo = new ProgressBar("coloredInfo", Model.of(20), BackgroundColor.Info);
         add(coloredInfo);
 
-        ProgressBar coloredSuccess = new ProgressBar("coloredSuccess", Model.of(40), BackgroundColorBehavior.Color.Success);
+        ProgressBar coloredSuccess = new ProgressBar("coloredSuccess", Model.of(40), BackgroundColor.Success);
         add(coloredSuccess);
 
-        ProgressBar coloredWarning = new ProgressBar("coloredWarning", Model.of(60), BackgroundColorBehavior.Color.Warning);
+        ProgressBar coloredWarning = new ProgressBar("coloredWarning", Model.of(60), BackgroundColor.Warning);
         add(coloredWarning);
 
-        ProgressBar coloredDanger = new ProgressBar("coloredDanger", Model.of(80), BackgroundColorBehavior.Color.Danger);
+        ProgressBar coloredDanger = new ProgressBar("coloredDanger", Model.of(80), BackgroundColor.Danger);
         add(coloredDanger);
 
         UpdatableProgressBar updatableBar = new UpdatableProgressBar("updatable", Model.of(0)) {
@@ -150,7 +148,6 @@ public class ComponentsPage extends BasePage {
         };
         updatableBar.updateInterval(Duration.ofSeconds(80L));
         add(updatableBar);
-
 
     }
 
@@ -171,7 +168,6 @@ public class ComponentsPage extends BasePage {
             }
         });
 
-
         IModel<Status> enumAjaxSelectedModel = Model.of(Status.submitted);
         enumAjaxSelected = new Label("enumAjaxSelected", enumAjaxSelectedModel);
         enumAjaxSelected.setOutputMarkupId(true);
@@ -191,19 +187,19 @@ public class ComponentsPage extends BasePage {
     }
 
     private void addLabels() {
-        List<BackgroundColorBehavior.Color> colors = List.of(BackgroundColorBehavior.Color.values());
+        final List<BackgroundColor> colors = List.of(BackgroundColor.values());
         add(new ListView<>("badges", colors) {
             private static final long serialVersionUID = 1L;
 
             @Override
-            protected void populateItem(ListItem<BackgroundColorBehavior.Color> item) {
-                BackgroundColorBehavior.Color color = item.getModelObject();
+            protected void populateItem(ListItem<BackgroundColor> item) {
+                final BackgroundColor backgroundColor = item.getModelObject();
 
-                item.add(new BootstrapBadge("badge", color.cssClassName(), color));
+                item.add(new BootstrapBadge("badge", backgroundColor.cssClassName(), backgroundColor));
 
-                Code code = new Code(
-                        "code",
-                        Model.of(String.format("<span class='badge %1$s'>%1$s</span>", color.cssClassName()))
+                final Code code = new Code(
+                    "code",
+                    Model.of(String.format("<span class='badge %1$s'>%1$s</span>", backgroundColor.cssClassName()))
                 );
                 item.add(code);
             }
@@ -211,21 +207,21 @@ public class ComponentsPage extends BasePage {
     }
 
     private void addBadges() {
-        List<BackgroundColorBehavior.Color> colors = List.of(BackgroundColorBehavior.Color.values());
+        final List<BackgroundColor> colors = List.of(BackgroundColor.values());
 
         add(new ListView<>("badge-pills", colors) {
             private static final long serialVersionUID = 1L;
 
             @Override
-            protected void populateItem(ListItem<BackgroundColorBehavior.Color> item) {
-                BackgroundColorBehavior.Color color = item.getModelObject();
+            protected void populateItem(ListItem<BackgroundColor> item) {
+                final BackgroundColor backgroundColor = item.getModelObject();
 
-                item.add(new Label("name", color.cssClassName()));
+                item.add(new Label("name", backgroundColor.cssClassName()));
 
-                item.add(new BootstrapBadge("badge", 1, color).setPill(true));
+                item.add(new BootstrapBadge("badge", 1, backgroundColor).setPill(true));
 
                 item.add(new Code("code",
-                        Model.of(String.format("<span class='badge badge-pills %1$s'>%1$s</span>", color.cssClassName()))
+                    Model.of(String.format("<span class='badge badge-pills %1$s'>%1$s</span>", backgroundColor.cssClassName()))
                 ));
             }
         });
@@ -239,32 +235,32 @@ public class ComponentsPage extends BasePage {
             }
         };
         badgeButton.add(new ButtonBehavior(Buttons.Type.Primary));
-        badgeButton.add(new BootstrapBadge("badge", Model.of(1), BackgroundColorBehavior.Color.Light));
+        badgeButton.add(new BootstrapBadge("badge", Model.of(1), BackgroundColor.Light));
         add(badgeButton);
     }
 
     private Component newCard(String markupId) {
         return new SimpleCard(markupId)
-                .add(new BorderBehavior()
-                        .type(BorderBehavior.Type.All)
-                        .color(BorderBehavior.Color.Dark)
-                        .radius(BorderBehavior.Radius.All))
-                .add(ColorBehavior.success());
+            .add(new BorderBehavior()
+                .type(BorderBehavior.Type.All)
+                .color(BorderBehavior.Color.Dark)
+                .radius(BorderBehavior.Radius.All))
+            .add(TextColorBehavior.success());
     }
 
     private Component newCardStyles(String markupId) {
-    	return new PanelTypesPanel(markupId);
+        return new PanelTypesPanel(markupId);
     }
 
     private Component newTabs(String markupId) {
         return new AjaxBootstrapTabbedPanel<>(markupId, List.of(
-                createTab("Section 1"), createTab("Section 2"), createTab("Section 3")
+            createTab("Section 1"), createTab("Section 2"), createTab("Section 3")
         ));
     }
 
     private Component newClientSideTabs(String markupId) {
         return new ClientSideBootstrapTabbedPanel<>(markupId, List.of(
-                createTab("Section 1"), createTab("Section 2"), createTab("Section 3")
+            createTab("Section 1"), createTab("Section 2"), createTab("Section 3")
         ));
     }
 
@@ -285,7 +281,6 @@ public class ComponentsPage extends BasePage {
             }
         };
     }
-
 
     /**
      * creates a new split button with some submenu links.

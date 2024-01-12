@@ -1,22 +1,20 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.navbar;
 
-import de.agilecoders.wicket.core.WicketApplicationTest;
-import de.agilecoders.wicket.core.markup.html.bootstrap.utilities.BackgroundColorBehavior;
-import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
+import static org.hamcrest.CoreMatchers.containsString;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
+import java.util.ArrayList;
+import java.util.List;
 import org.apache.wicket.Component;
 import org.apache.wicket.Page;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.util.tester.TagTester;
 import org.apache.wicket.util.visit.IVisitor;
 import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.hamcrest.CoreMatchers.containsString;
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.MatcherAssert.assertThat;
+import de.agilecoders.wicket.core.WicketApplicationTest;
+import de.agilecoders.wicket.core.markup.html.bootstrap.utilities.BackgroundColorBehavior.BackgroundColor;
+import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
 
 /**
  * Tests the {@code Navbar de.agilecoders.wicket.core.markup.html.bootstrap.navbar.Navbar}.
@@ -157,12 +155,12 @@ class NavbarTest extends WicketApplicationTest {
             @Override
             public Component create(String markupId) {
                 return new NavbarButton<Page>(Page.class, Model.of("Link Name"))
-                        .setIconType(new IconType("test-icon") {
-                            @Override
-                            public String cssClassName() {
-                                return "test-icon";
-                            }
-                        });
+                    .setIconType(new IconType("test-icon") {
+                        @Override
+                        public String cssClassName() {
+                            return "test-icon";
+                        }
+                    });
             }
 
             @Override
@@ -183,8 +181,9 @@ class NavbarTest extends WicketApplicationTest {
 
         Navbar navbar = new Navbar("id");
         navbar.visitChildren((IVisitor<Component, Void>) (component, arg1) -> {
-            if (!component.isStateless())
+            if (!component.isStateless()) {
                 statefulComponents.add(component.getId());
+            }
         });
 
         assertThat(statefulComponents.size(), is(equalTo(0)));
@@ -193,7 +192,7 @@ class NavbarTest extends WicketApplicationTest {
     @Test
     void navbarBackgroundIsRendered() {
         Navbar navbar = new Navbar("id")
-                .setBackgroundColor(BackgroundColorBehavior.Color.Success);
+            .setBackgroundColor(BackgroundColor.Success);
 
         tester().startComponentInPage(navbar);
 
@@ -206,7 +205,7 @@ class NavbarTest extends WicketApplicationTest {
     @Test
     void navbarCollapseBreakpointIsRendered() {
         Navbar navbar = new Navbar("id")
-                .setCollapseBreakdown(Navbar.CollapseBreakpoint.Small);
+            .setCollapseBreakdown(Navbar.CollapseBreakpoint.Small);
 
         tester().startComponentInPage(navbar);
 

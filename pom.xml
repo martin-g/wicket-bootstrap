@@ -59,7 +59,6 @@
         <checkstyle.disable>true</checkstyle.disable>
         <findbugs.disable>true</findbugs.disable>
 
-        <!-- TODO -->
         <apiguardian-api.version>1.1.2</apiguardian-api.version>
         <commons-lang3.version>3.13.0</commons-lang3.version>
         <contiperf.version>2.4.3</contiperf.version>
@@ -338,7 +337,6 @@
                 <version>${hamcrest.version}</version>
                 <scope>test</scope>
             </dependency>
-
         </dependencies>
     </dependencyManagement>
 

@@ -1,69 +1,68 @@
 <!DOCTYPE html>
 <html xmlns:wicket="http://wicket.apache.org">
 <head>
-    <meta charset="utf-8"/>
+    <meta charset="utf-8" />
     <title>ComponentsPage</title>
 </head>
 <body>
 <wicket:extend>
-<header class="jumbotron subhead" id="overview">
-    <div class="container">
-        <h1>Components</h1>
+    <header class="p-5 rounded-3 text-bg-secondary mb-3 subhead" id="overview">
+        <div class="container">
+            <h1>Components</h1>
 
-        <p class="lead">Dozens of reusable components built to provide navigation, alerts, popovers, and more.</p>
-    </div>
-</header>
-
-
-<div class="container">
-
-<div class="row">
-<div class="col-lg-3 bs-docs-sidebar">
-    <ul wicket:id="navigation" class="nav list-group bs-docs-sidenav">
-        <li><a href="#dropdowns"><i class="icon-chevron-right"></i> Dropdowns</a></li>
-        <li><a href="#buttonGroups"><i class="icon-chevron-right"></i> Button groups</a></li>
-        <li><a href="#buttonDropdowns"><i class="icon-chevron-right"></i> Button dropdowns</a></li>
-        <li><a href="#cards"><i class="icon-chevron-right"></i> Cards</a></li>
-        <li><a href="#radioChoices"><i class="icon-chevron-right"></i> Radio choices</a></li>
-        <li><a href="#navs"><i class="icon-chevron-right"></i> Navs</a></li>
-        <li><a href="#navbar"><i class="icon-chevron-right"></i> Navbar</a></li>
-        <li><a href="#breadcrumbs"><i class="icon-chevron-right"></i> Breadcrumbs</a></li>
-        <li><a href="#pagination"><i class="icon-chevron-right"></i> Pagination</a></li>
-        <li><a href="#labels-badges"><i class="icon-chevron-right"></i> Badges</a></li>
-        <li><a href="#typography"><i class="icon-chevron-right"></i> Typography</a></li>
-        <li><a href="#thumbnails"><i class="icon-chevron-right"></i> Thumbnails</a></li>
-        <li><a href="#alerts"><i class="icon-chevron-right"></i> Alerts</a></li>
-        <li><a href="#progress"><i class="icon-chevron-right"></i> Progress bars</a></li>
-        <li><a href="#media"><i class="icon-chevron-right"></i> Media object</a></li>
-        <li><a href="#misc"><i class="icon-chevron-right"></i> Misc</a></li>
-    </ul>
-</div>
-<div class="col-lg-9">
-
-
-<!-- Dropdowns
-================================================== -->
-<section id="dropdowns">
-    <div class="pb-2 mt-4 mb-2 border-bottom">
-        <h1>Dropdown menus</h1>
-    </div>
-
-    <h2>Example</h2>
-
-    <p>Toggleable, contextual menu for displaying lists of links. Made interactive with the <a href="./javascript#dropdowns">dropdown JavaScript plugin</a>.</p>
-
-    <div class="bs-docs-example">
-        <div class="dropdown clearfix">
-            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display: block; position: static; margin-bottom: 5px; *width: 180px;">
-                <li><a class="dropdown-item" tabindex="-1" href="#">Action</a></li>
-                <li><a class="dropdown-item" tabindex="-1" href="#">Another action</a></li>
-                <li><a class="dropdown-item" tabindex="-1" href="#">Something else here</a></li>
-                <li class="dropdown-divider"></li>
-                <li><a class="dropdown-item" tabindex="-1" href="#">Separated link</a></li>
-            </ul>
+            <p class="lead">Dozens of reusable components built to provide navigation, alerts, popovers, and more.</p>
         </div>
-    </div>
-<pre class="prettyprint linenums">
+    </header>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 bs-docs-sidebar">
+                <ul wicket:id="navigation" class="nav list-group bs-docs-sidenav">
+                    <li><a href="#dropdowns"><i class="icon-chevron-right"></i> Dropdowns</a></li>
+                    <li><a href="#buttonGroups"><i class="icon-chevron-right"></i> Button groups</a></li>
+                    <li><a href="#buttonDropdowns"><i class="icon-chevron-right"></i> Button dropdowns</a></li>
+                    <li><a href="#cards"><i class="icon-chevron-right"></i> Cards</a></li>
+                    <li><a href="#radioChoices"><i class="icon-chevron-right"></i> Radio choices</a></li>
+                    <li><a href="#navs"><i class="icon-chevron-right"></i> Navs</a></li>
+                    <li><a href="#navbar"><i class="icon-chevron-right"></i> Navbar</a></li>
+                    <li><a href="#breadcrumbs"><i class="icon-chevron-right"></i> Breadcrumbs</a></li>
+                    <li><a href="#pagination"><i class="icon-chevron-right"></i> Pagination</a></li>
+                    <li><a href="#labels-badges"><i class="icon-chevron-right"></i> Badges</a></li>
+                    <li><a href="#typography"><i class="icon-chevron-right"></i> Typography</a></li>
+                    <li><a href="#thumbnails"><i class="icon-chevron-right"></i> Thumbnails</a></li>
+                    <li><a href="#alerts"><i class="icon-chevron-right"></i> Alerts</a></li>
+                    <li><a href="#progress"><i class="icon-chevron-right"></i> Progress bars</a></li>
+                    <li><a href="#media"><i class="icon-chevron-right"></i> Media object</a></li>
+                    <li><a href="#misc"><i class="icon-chevron-right"></i> Misc</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-9">
+
+
+                <!-- Dropdowns
+                ================================================== -->
+                <section id="dropdowns">
+                    <div class="pb-2 mt-4 mb-2 border-bottom">
+                        <h1>Dropdown menus</h1>
+                    </div>
+
+                    <h2>Example</h2>
+
+                    <p>Toggleable, contextual menu for displaying lists of links. Made interactive with the <a href="./javascript#dropdowns">dropdown
+                        JavaScript plugin</a>.</p>
+
+                    <div class="bs-docs-example">
+                        <div class="dropdown clearfix">
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display: block; position: static; margin-bottom: 5px; *width: 180px;">
+                                <li><a class="dropdown-item" tabindex="-1" href="#">Action</a></li>
+                                <li><a class="dropdown-item" tabindex="-1" href="#">Another action</a></li>
+                                <li><a class="dropdown-item" tabindex="-1" href="#">Something else here</a></li>
+                                <li class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" tabindex="-1" href="#">Separated link</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <pre class="prettyprint linenums">
 &lt;ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu"&gt;
   &lt;li&gt;&lt;a class="dropdown-item" tabindex="-1" href="#"&gt;Action&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a class="dropdown-item" tabindex="-1" href="#"&gt;Another action&lt;/a&gt;&lt;/li&gt;
@@ -73,11 +72,13 @@
 &lt;/ul&gt;
 </pre>
 
-    <h2>Markup</h2>
+                    <h2>Markup</h2>
 
-    <p>Looking at just the dropdown menu, here's the required HTML. You need to wrap the dropdown's trigger and the dropdown menu within <code>.dropdown</code>, or another element that declares <code>position: relative;</code>. Then just create the menu.</p>
+                    <p>Looking at just the dropdown menu, here's the required HTML. You need to wrap the dropdown's trigger and the dropdown menu
+                        within <code>.dropdown</code>, or another element that declares <code>position: relative;</code>. Then just create the menu.
+                    </p>
 
-<pre class="prettyprint linenums">
+                    <pre class="prettyprint linenums">
 &lt;div class="dropdown"&gt;
   &lt;!-- Link or button to toggle dropdown --&gt;
   &lt;ul class="dropdown-menu" role="menu" aria-labelledby="dLabel"&gt;
@@ -90,122 +91,123 @@
 &lt;/div&gt;
 </pre>
 
-    <h2>Options</h2>
+                    <h2>Options</h2>
 
-    <p>Align menus to the right and add include additional levels of dropdowns.</p>
+                    <p>Align menus to the right and add include additional levels of dropdowns.</p>
 
-    <h3>Aligning the menus</h3>
+                    <h3>Aligning the menus</h3>
 
-    <p>Add <code>.pull-right</code> to a <code>.dropdown-menu</code> to right align the dropdown menu.</p>
-<pre class="prettyprint linenums">
+                    <p>Add <code>.pull-right</code> to a <code>.dropdown-menu</code> to right align the dropdown menu.</p>
+                    <pre class="prettyprint linenums">
 &lt;ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dLabel"&gt;
   ...
 &lt;/ul&gt;
 </pre>
 
-</section>
+                </section>
 
-<!-- Button Groups
-================================================== -->
-<section id="buttonGroups" wicket:id="buttonGroups">
-</section>
-
-
-<!-- Split button dropdowns
-================================================== -->
-<section id="buttonDropdowns">
-<div class="pb-2 mt-4 mb-2 border-bottom">
-    <h1>Button dropdown menus</h1>
-</div>
+                <!-- Button Groups
+                ================================================== -->
+                <section id="buttonGroups" wicket:id="buttonGroups">
+                </section>
 
 
-<h2>Overview and examples</h2>
+                <!-- Split button dropdowns
+                ================================================== -->
+                <section id="buttonDropdowns">
+                    <div class="pb-2 mt-4 mb-2 border-bottom">
+                        <h1>Button dropdown menus</h1>
+                    </div>
 
-<p>Use any button to trigger a dropdown menu by placing it within a <code>.btn-group</code> and providing the proper menu markup.</p>
 
-<div class="bs-docs-example">
-    <div class="btn-toolbar" style="margin: 0;">
-        <div class="btn-group">
-            <button type="button" class="btn btn-default dropdown-toggle" data-bs-toggle="dropdown">Action</button>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                <li class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Separated link</a></li>
-            </ul>
-        </div>
-        <!-- /btn-group -->
-        <div class="btn-group">
-            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">Action</button>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                <li class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Separated link</a></li>
-            </ul>
-        </div>
-        <!-- /btn-group -->
-        <div class="btn-group">
-            <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown">Danger</button>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                <li class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Separated link</a></li>
-            </ul>
-        </div>
-        <!-- /btn-group -->
-        <div class="btn-group">
-            <button type="button" class="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown">Warning</button>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                <li class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Separated link</a></li>
-            </ul>
-        </div>
-        <!-- /btn-group -->
-        <div class="btn-group">
-            <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown">Success</button>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                <li class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Separated link</a></li>
-            </ul>
-        </div>
-        <!-- /btn-group -->
-        <div class="btn-group">
-            <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown">Info</button>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                <li></li>
-                <li><a class="dropdown-item" href="#">Separated link</a></li>
-            </ul>
-        </div>
-        <!-- /btn-group -->
-        <div class="btn-group">
-            <button type="button" class="btn btn-inverse dropdown-toggle" data-bs-toggle="dropdown">Inverse</button>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                <li class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Separated link</a></li>
-            </ul>
-        </div>
-        <!-- /btn-group -->
-    </div>
-    <!-- /btn-toolbar -->
-</div>
-<pre class="prettyprint linenums">
+                    <h2>Overview and examples</h2>
+
+                    <p>Use any button to trigger a dropdown menu by placing it within a <code>.btn-group</code> and providing the proper menu markup.
+                    </p>
+
+                    <div class="bs-docs-example">
+                        <div class="btn-toolbar" style="margin: 0;">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-default dropdown-toggle" data-bs-toggle="dropdown">Action</button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                    <li class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="#">Separated link</a></li>
+                                </ul>
+                            </div>
+                            <!-- /btn-group -->
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">Action</button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                    <li class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="#">Separated link</a></li>
+                                </ul>
+                            </div>
+                            <!-- /btn-group -->
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown">Danger</button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                    <li class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="#">Separated link</a></li>
+                                </ul>
+                            </div>
+                            <!-- /btn-group -->
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown">Warning</button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                    <li class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="#">Separated link</a></li>
+                                </ul>
+                            </div>
+                            <!-- /btn-group -->
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown">Success</button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                    <li class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="#">Separated link</a></li>
+                                </ul>
+                            </div>
+                            <!-- /btn-group -->
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown">Info</button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                    <li></li>
+                                    <li><a class="dropdown-item" href="#">Separated link</a></li>
+                                </ul>
+                            </div>
+                            <!-- /btn-group -->
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-inverse dropdown-toggle" data-bs-toggle="dropdown">Inverse</button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                    <li class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="#">Separated link</a></li>
+                                </ul>
+                            </div>
+                            <!-- /btn-group -->
+                        </div>
+                        <!-- /btn-toolbar -->
+                    </div>
+                    <pre class="prettyprint linenums">
 &lt;div class="btn-group"&gt;
   &lt;a class="btn btn-default dropdown-toggle" data-bs-toggle="dropdown" href="#"&gt;
     Action
@@ -216,131 +218,133 @@
 &lt;/div&gt;
 </pre>
 
-<h3>Works with all button sizes</h3>
+                    <h3>Works with all button sizes</h3>
 
-<p>Button dropdowns work at any size: <code>.btn-lg</code>, or <code>.btn-sm</code>.</p>
+                    <p>Button dropdowns work at any size: <code>.btn-lg</code>, or <code>.btn-sm</code>.</p>
 
-<div class="bs-docs-example">
-    <div class="btn-toolbar" style="margin: 0;">
-        <div class="btn-group">
-            <button type="button" class="btn btn-lg dropdown-toggle" data-bs-toggle="dropdown">Large button</button>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                <li class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Separated link</a></li>
-            </ul>
-        </div>
-        <!-- /btn-group -->
-        <div class="btn-group">
-            <button type="button" class="btn btn-sm dropdown-toggle" data-bs-toggle="dropdown">Small button</button>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                <li class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Separated link</a></li>
-            </ul>
-        </div>
-        <!-- /btn-group -->
-    </div>
-    <!-- /btn-toolbar -->
-</div>
+                    <div class="bs-docs-example">
+                        <div class="btn-toolbar" style="margin: 0;">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-lg dropdown-toggle" data-bs-toggle="dropdown">Large button</button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                    <li class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="#">Separated link</a></li>
+                                </ul>
+                            </div>
+                            <!-- /btn-group -->
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-sm dropdown-toggle" data-bs-toggle="dropdown">Small button</button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                    <li class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="#">Separated link</a></li>
+                                </ul>
+                            </div>
+                            <!-- /btn-group -->
+                        </div>
+                        <!-- /btn-toolbar -->
+                    </div>
 
-<h3>Requires JavaScript</h3>
+                    <h3>Requires JavaScript</h3>
 
-<p>Button dropdowns require the <a href="./javascript#dropdowns">Bootstrap dropdown plugin</a> to function.</p>
+                    <p>Button dropdowns require the <a href="./javascript#dropdowns">Bootstrap dropdown plugin</a> to function.</p>
 
-<p>In some cases&mdash;like mobile&mdash;dropdown menus will extend outside the viewport. You need to resolve the alignment manually or with custom JavaScript.</p>
-
-
-<hr class="bs-docs-separator">
+                    <p>In some cases&mdash;like mobile&mdash;dropdown menus will extend outside the viewport. You need to resolve the alignment
+                        manually or with custom JavaScript.</p>
 
 
-<h2>Split button dropdowns</h2>
+                    <hr class="bs-docs-separator">
 
-<p>Building on the button group styles and markup, we can easily create a split button. Split buttons feature a standard action on the left and a dropdown toggle on the right with contextual links.</p>
 
-<div class="bs-docs-example">
-    <div class="btn-toolbar" style="margin: 0;">
-        <div wicket:id="splitbutton"></div>
-        <div class="btn-group">
-            <button type="button" class="btn btn-primary">Action</button>
-            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"></button>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                <li class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Separated link</a></li>
-            </ul>
-        </div>
-        <!-- /btn-group -->
-        <div class="btn-group">
-            <button type="button" class="btn btn-danger">Danger</button>
-            <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown"></button>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                <li class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Separated link</a></li>
-            </ul>
-        </div>
-        <!-- /btn-group -->
-        <div class="btn-group">
-            <button type="button" class="btn btn-warning">Warning</button>
-            <button type="button" class="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown"></button>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                <li class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Separated link</a></li>
-            </ul>
-        </div>
-        <!-- /btn-group -->
-        <div class="btn-group">
-            <button type="button" class="btn btn-success">Success</button>
-            <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown"></button>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                <li class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Separated link</a></li>
-            </ul>
-        </div>
-        <!-- /btn-group -->
-        <div class="btn-group">
-            <button type="button" class="btn btn-info">Info</button>
-            <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown"></button>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                <li class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Separated link</a></li>
-            </ul>
-        </div>
-        <!-- /btn-group -->
-        <div class="btn-group">
-            <button type="button" class="btn btn-inverse">Inverse</button>
-            <button type="button" class="btn btn-inverse dropdown-toggle" data-bs-toggle="dropdown"></button>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                <li class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Separated link</a></li>
-            </ul>
-        </div>
-        <!-- /btn-group -->
-    </div>
-    <!-- /btn-toolbar -->
-</div>
-<pre class="prettyprint linenums">
+                    <h2>Split button dropdowns</h2>
+
+                    <p>Building on the button group styles and markup, we can easily create a split button. Split buttons feature a standard action on
+                        the left and a dropdown toggle on the right with contextual links.</p>
+
+                    <div class="bs-docs-example">
+                        <div class="btn-toolbar" style="margin: 0;">
+                            <div wicket:id="splitbutton"></div>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-primary">Action</button>
+                                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"></button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                    <li class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="#">Separated link</a></li>
+                                </ul>
+                            </div>
+                            <!-- /btn-group -->
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-danger">Danger</button>
+                                <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown"></button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                    <li class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="#">Separated link</a></li>
+                                </ul>
+                            </div>
+                            <!-- /btn-group -->
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-warning">Warning</button>
+                                <button type="button" class="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown"></button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                    <li class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="#">Separated link</a></li>
+                                </ul>
+                            </div>
+                            <!-- /btn-group -->
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-success">Success</button>
+                                <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown"></button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                    <li class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="#">Separated link</a></li>
+                                </ul>
+                            </div>
+                            <!-- /btn-group -->
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-info">Info</button>
+                                <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown"></button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                    <li class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="#">Separated link</a></li>
+                                </ul>
+                            </div>
+                            <!-- /btn-group -->
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-inverse">Inverse</button>
+                                <button type="button" class="btn btn-inverse dropdown-toggle" data-bs-toggle="dropdown"></button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                    <li class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="#">Separated link</a></li>
+                                </ul>
+                            </div>
+                            <!-- /btn-group -->
+                        </div>
+                        <!-- /btn-toolbar -->
+                    </div>
+                    <pre class="prettyprint linenums">
 &lt;div class="btn-group"&gt;
   &lt;button class="btn"&gt;Action&lt;/button&gt;
   &lt;button class="btn dropdown-toggle" data-bs-toggle="dropdown"&gt;&lt;/button&gt;
@@ -350,58 +354,58 @@
 &lt;/div&gt;
 </pre>
 
-<h3>Sizes</h3>
+                    <h3>Sizes</h3>
 
-<p>Utilize the extra button classes <code>.btn-xs</code>, <code>.btn-sm</code>, or <code>.btn-lg</code> for sizing.</p>
+                    <p>Utilize the extra button classes <code>.btn-xs</code>, <code>.btn-sm</code>, or <code>.btn-lg</code> for sizing.</p>
 
-<div class="bs-docs-example">
-    <div class="btn-toolbar">
-        <div class="btn-group">
-            <button type="button" class="btn btn-default btn-lg">Large action</button>
-            <button type="button" class="btn btn-default btn-lg dropdown-toggle" data-bs-toggle="dropdown"></button>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                <li class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Separated link</a></li>
-            </ul>
-        </div>
-        <!-- /btn-group -->
-    </div>
-    <!-- /btn-toolbar -->
-    <div class="btn-toolbar">
-        <div class="btn-group">
-            <button type="button" class="btn btn-default btn-sm">Small action</button>
-            <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-bs-toggle="dropdown"></button>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                <li class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Separated link</a></li>
-            </ul>
-        </div>
-        <!-- /btn-group -->
-    </div>
-    <!-- /btn-toolbar -->
-    <div class="btn-toolbar">
-        <div class="btn-group">
-            <button type="button" class="btn btn-default btn-xs">Mini action</button>
-            <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-bs-toggle="dropdown"></button>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                <li class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Separated link</a></li>
-            </ul>
-        </div>
-        <!-- /btn-group -->
-    </div>
-    <!-- /btn-toolbar -->
-</div>
-<pre class="prettyprint linenums">
+                    <div class="bs-docs-example">
+                        <div class="btn-toolbar">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-default btn-lg">Large action</button>
+                                <button type="button" class="btn btn-default btn-lg dropdown-toggle" data-bs-toggle="dropdown"></button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                    <li class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="#">Separated link</a></li>
+                                </ul>
+                            </div>
+                            <!-- /btn-group -->
+                        </div>
+                        <!-- /btn-toolbar -->
+                        <div class="btn-toolbar">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-default btn-sm">Small action</button>
+                                <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-bs-toggle="dropdown"></button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                    <li class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="#">Separated link</a></li>
+                                </ul>
+                            </div>
+                            <!-- /btn-group -->
+                        </div>
+                        <!-- /btn-toolbar -->
+                        <div class="btn-toolbar">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-default btn-xs">Mini action</button>
+                                <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-bs-toggle="dropdown"></button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                    <li class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="#">Separated link</a></li>
+                                </ul>
+                            </div>
+                            <!-- /btn-group -->
+                        </div>
+                        <!-- /btn-toolbar -->
+                    </div>
+                    <pre class="prettyprint linenums">
 &lt;div class="btn-group"&gt;
   &lt;button class="btn btn-default btn-xs"&gt;Action&lt;/button&gt;
   &lt;button class="btn btn-default btn-xs dropdown-toggle" data-bs-toggle="dropdown"&gt;&lt;/button&gt;
@@ -411,41 +415,43 @@
 &lt;/div&gt;
 </pre>
 
-<h3>Dropup menus</h3>
+                    <h3>Dropup menus</h3>
 
-<p>Dropdown menus can also be toggled from the bottom up by adding a single class to the immediate parent of <code>.dropdown-menu</code>. It will flip the direction of the <code>caret</code> and reposition the menu itself to move from the bottom up instead of top down.</p>
+                    <p>Dropdown menus can also be toggled from the bottom up by adding a single class to the immediate parent of
+                        <code>.dropdown-menu</code>. It will flip the direction of the <code>caret</code> and reposition the menu itself to move from
+                        the bottom up instead of top down.</p>
 
-<div class="bs-docs-example">
-    <div class="btn-toolbar" style="margin: 0;">
-        <div class="form-group">
-            <div class="btn-group dropup">
-                <button type="button" class="btn btn-default">Dropup</button>
-                <button type="button" class="btn btn-default dropdown-toggle" data-bs-toggle="dropdown"></button>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    <li class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#">Separated link</a></li>
-                </ul>
-            </div>
-            <!-- /btn-group -->
-            <div class="btn-group dropup">
-                <button type="button" class="btn btn-default primary">Right dropup</button>
-                <button type="button" class="btn btn-default primary dropdown-toggle" data-bs-toggle="dropdown"></button>
-                <ul class="dropdown-menu pull-right">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    <li class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#">Separated link</a></li>
-                </ul>
-            </div>
-            <!-- /btn-group -->
-        </div>
-    </div>
-</div>
-<pre class="prettyprint linenums">
+                    <div class="bs-docs-example">
+                        <div class="btn-toolbar" style="margin: 0;">
+                            <div class="form-group">
+                                <div class="btn-group dropup">
+                                    <button type="button" class="btn btn-default">Dropup</button>
+                                    <button type="button" class="btn btn-default dropdown-toggle" data-bs-toggle="dropdown"></button>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a class="dropdown-item" href="#">Action</a></li>
+                                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                        <li class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item" href="#">Separated link</a></li>
+                                    </ul>
+                                </div>
+                                <!-- /btn-group -->
+                                <div class="btn-group dropup">
+                                    <button type="button" class="btn btn-default primary">Right dropup</button>
+                                    <button type="button" class="btn btn-default primary dropdown-toggle" data-bs-toggle="dropdown"></button>
+                                    <ul class="dropdown-menu pull-right">
+                                        <li><a class="dropdown-item" href="#">Action</a></li>
+                                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                        <li class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item" href="#">Separated link</a></li>
+                                    </ul>
+                                </div>
+                                <!-- /btn-group -->
+                            </div>
+                        </div>
+                    </div>
+                    <pre class="prettyprint linenums">
 &lt;div class="btn-group dropup"&gt;
   &lt;button class="btn btn-default"&gt;Dropup&lt;/button&gt;
   &lt;button class="btn btn-default dropdown-toggle" data-bs-toggle="dropdown"&gt;&lt;/button&gt;
@@ -455,81 +461,83 @@
 &lt;/div&gt;
 </pre>
 
-</section>
+                </section>
 
-<section id="cards">
-    <h2>Cards</h2>
+                <section id="cards">
+                    <h2>Cards</h2>
 
-    <p>Bootstrap’s cards provide a flexible and extensible content container with multiple variants and options.</p>
+                    <p>Bootstrap’s cards provide a flexible and extensible content container with multiple variants and options.</p>
 
-    <div class="bs-docs-example">
-        <div wicket:id="card-demo" style="width: 18rem;"></div>
-    </div>
-    
-    <h3 class="mt-3">Card styles</h3>
-    <div class="bs-docs-example">
-        <div wicket:id="card-styles-demo"></div>
-    </div>
-</section>
+                    <div class="bs-docs-example">
+                        <div wicket:id="card-demo" style="width: 18rem;"></div>
+                    </div>
 
-<section id="radioChoices">
+                    <h3 class="mt-3">Card styles</h3>
+                    <div class="bs-docs-example">
+                        <div wicket:id="card-styles-demo"></div>
+                    </div>
+                </section>
 
-    <h3>Radio buttons</h3>
+                <section id="radioChoices">
 
-    <p>Radio buttons as in <a href="http://getbootstrap.com/javascript/#buttons">buttons</a>.</p>
+                    <h3>Radio buttons</h3>
+
+                    <p>Radio buttons as in <a href="http://getbootstrap.com/javascript/#buttons">buttons</a>.</p>
 
 
-    <div class="bs-docs-example">
-        <span wicket:id="boolean"></span>
-    </div>
+                    <div class="bs-docs-example">
+                        <span wicket:id="boolean"></span>
+                    </div>
 
-    <p>
-        <pre class="prettyprint linenums">
+                    <p>
+                    <pre class="prettyprint linenums">
          add(new BooleanRadioGroup("boolean", new Model&lt;&gt;(Boolean.FALSE)));
         </pre>
-    </p>
+                    </p>
 
-    <p>Boolean radio buttons with AJAX: the selected value is <span wicket:id="booleanAjaxSelected"></span> </p>
+                    <p>Boolean radio buttons with AJAX: the selected value is <span wicket:id="booleanAjaxSelected"></span></p>
 
-    <div class="bs-docs-example">
-        <span wicket:id="booleanAjax"></span>
-    </div>
-
-
-    <p>Enum based radio buttons with AJAX: the selected value is <span wicket:id="enumAjaxSelected"></span> </p>
-
-    <div class="bs-docs-example">
-        <span wicket:id="enumAjax"></span>
-    </div>
-
-</section>
+                    <div class="bs-docs-example">
+                        <span wicket:id="booleanAjax"></span>
+                    </div>
 
 
-<!-- Nav, Tabs, & Pills
-================================================== -->
-<section id="navs">
-<div class="pb-2 mt-4 mb-2 border-bottom">
-    <h1>Nav: tabs, pills, and lists</h1>
-</div>
+                    <p>Enum based radio buttons with AJAX: the selected value is <span wicket:id="enumAjaxSelected"></span></p>
 
-<h2>Lightweight defaults
-    <small>Same markup, different classes</small>
-</h2>
-<p>All nav components here&mdash;tabs, pills, and lists&mdash;<strong>share the same base markup and styles</strong> through the <code>.nav</code>, <code>.nav-item</code> and <code>.nav-link</code> classes.</p>
-<p>The base .nav component does not include any .active state. The following examples include the class, mainly to demonstrate that this particular class does not trigger any special styling.</p>
+                    <div class="bs-docs-example">
+                        <span wicket:id="enumAjax"></span>
+                    </div>
 
-<h3>Basic tabs</h3>
+                </section>
 
-<p>Take a regular <code>&lt;ul&gt;</code> of links and add <code>.nav-tabs</code>:</p>
 
-<div class="bs-docs-example">
-    <ul class="nav nav-tabs">
-        <li class="nav-item"><a href="#" class="nav-link active">Home</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">Profile</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">Messages</a></li>
-    </ul>
-</div>
-<pre class="prettyprint linenums">
+                <!-- Nav, Tabs, & Pills
+                ================================================== -->
+                <section id="navs">
+                    <div class="pb-2 mt-4 mb-2 border-bottom">
+                        <h1>Nav: tabs, pills, and lists</h1>
+                    </div>
+
+                    <h2>Lightweight defaults
+                        <small>Same markup, different classes</small>
+                    </h2>
+                    <p>All nav components here&mdash;tabs, pills, and lists&mdash;<strong>share the same base markup and styles</strong> through the
+                        <code>.nav</code>, <code>.nav-item</code> and <code>.nav-link</code> classes.</p>
+                    <p>The base .nav component does not include any .active state. The following examples include the class, mainly to demonstrate
+                        that this particular class does not trigger any special styling.</p>
+
+                    <h3>Basic tabs</h3>
+
+                    <p>Take a regular <code>&lt;ul&gt;</code> of links and add <code>.nav-tabs</code>:</p>
+
+                    <div class="bs-docs-example">
+                        <ul class="nav nav-tabs">
+                            <li class="nav-item"><a href="#" class="nav-link active">Home</a></li>
+                            <li class="nav-item"><a href="#" class="nav-link">Profile</a></li>
+                            <li class="nav-item"><a href="#" class="nav-link">Messages</a></li>
+                        </ul>
+                    </div>
+                    <pre class="prettyprint linenums">
 &lt;ul class="nav nav-tabs"&gt;
   &lt;li class="nav-item"&gt;
     &lt;a href="#" class="nav-link active"&gt;Home&lt;/a&gt;
@@ -539,18 +547,18 @@
 &lt;/ul&gt;
 </pre>
 
-<h3>Basic pills</h3>
+                    <h3>Basic pills</h3>
 
-<p>Take that same HTML, but use <code>.nav-pills</code> instead:</p>
+                    <p>Take that same HTML, but use <code>.nav-pills</code> instead:</p>
 
-<div class="bs-docs-example">
-    <ul class="nav nav-pills">
-        <li class="nav-item"><a href="#" class="nav-link active">Home</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">Profile</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">Messages</a></li>
-    </ul>
-</div>
-<pre class="prettyprint linenums">
+                    <div class="bs-docs-example">
+                        <ul class="nav nav-pills">
+                            <li class="nav-item"><a href="#" class="nav-link active">Home</a></li>
+                            <li class="nav-item"><a href="#" class="nav-link">Profile</a></li>
+                            <li class="nav-item"><a href="#" class="nav-link">Messages</a></li>
+                        </ul>
+                    </div>
+                    <pre class="prettyprint linenums">
 &lt;ul class="nav nav-pills"&gt;
   &lt;li class="nav-item"&gt;
     &lt;a href="#" class="nav-link active"&gt;Home&lt;/a&gt;
@@ -560,18 +568,20 @@
 &lt;/ul&gt;
 </pre>
 
-<h3>Disabled state</h3>
+                    <h3>Disabled state</h3>
 
-<p>For any nav component (tabs, pills, or list), add <code>.disabled</code> for <strong>gray links and no hover effects</strong>. Links will remain clickable, however, unless you remove the <code>href</code> attribute. Alternatively, you could implement custom JavaScript to prevent those clicks.</p>
+                    <p>For any nav component (tabs, pills, or list), add <code>.disabled</code> for <strong>gray links and no hover effects</strong>.
+                        Links will remain clickable, however, unless you remove the <code>href</code> attribute. Alternatively, you could implement
+                        custom JavaScript to prevent those clicks.</p>
 
-<div class="bs-docs-example">
-    <ul class="nav nav-pills">
-        <li class="nav-item"><a href="#" class="nav-link active">Clickable link</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">Clickable link</a></li>
-        <li class="nav-item"><a href="#" class="nav-link disabled">Disabled link</a></li>
-    </ul>
-</div>
-<pre class="prettyprint linenums">
+                    <div class="bs-docs-example">
+                        <ul class="nav nav-pills">
+                            <li class="nav-item"><a href="#" class="nav-link active">Clickable link</a></li>
+                            <li class="nav-item"><a href="#" class="nav-link">Clickable link</a></li>
+                            <li class="nav-item"><a href="#" class="nav-link disabled">Disabled link</a></li>
+                        </ul>
+                    </div>
+                    <pre class="prettyprint linenums">
 &lt;ul class="nav nav-pills"&gt;
   ...
   &lt;li class="nav-item"&gt;&lt;a href="#" class="nav-link disabled"&gt;Home&lt;/a&gt;&lt;/li&gt;
@@ -579,26 +589,27 @@
 &lt;/ul&gt;
 </pre>
 
-<h3>Component alignment</h3>
+                    <h3>Component alignment</h3>
 
-<p>Change the horizontal alignment of your nav with <code>.justify-content-center</code> and <code>.justify-content-end</code> classes. By default, navs are left-aligned, but you can easily change them to center or right aligned</p>
+                    <p>Change the horizontal alignment of your nav with <code>.justify-content-center</code> and <code>.justify-content-end</code>
+                        classes. By default, navs are left-aligned, but you can easily change them to center or right aligned</p>
 
-<ul class="nav justify-content-end">
-    <li class="nav-item">
-        <a class="nav-link active" href="#">Active</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
-    </li>
-</ul>
+                    <ul class="nav justify-content-end">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">Active</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Link</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Link</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled" href="#">Disabled</a>
+                        </li>
+                    </ul>
 
-<pre class="prettyprint linenums">
+                    <pre class="prettyprint linenums">
 &lt;ul class="nav justify-content-end"&gt;
     &lt;li class="nav-item"&gt;
         &lt;a class="nav-link active" href="#"&gt;Active&lt;/a&gt;
@@ -615,79 +626,80 @@
 &lt;/ul&gt;
 </pre>
 
-<hr class="bs-docs-separator">
+                    <hr class="bs-docs-separator">
 
 
-<h2>Stackable</h2>
+                    <h2>Stackable</h2>
 
-<p>As tabs and pills are horizontal by default, just add a second class, <code>.flex-column</code>, to make them appear vertically stacked.
-Need to stack them on some viewports but not others? Use the responsive versions (e.g., <code>.flex-sm-column</code>).
-</p>
+                    <p>As tabs and pills are horizontal by default, just add a second class, <code>.flex-column</code>, to make them appear vertically
+                        stacked.
+                        Need to stack them on some viewports but not others? Use the responsive versions (e.g., <code>.flex-sm-column</code>).
+                    </p>
 
-<h3>Stacked tabs</h3>
+                    <h3>Stacked tabs</h3>
 
-<div class="bs-docs-example">
-    <ul class="nav nav-tabs .flex-column">
-        <li class="nav-item"><a href="#" class="nav-link active">Home</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">Profile</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">Messages</a></li>
-    </ul>
-</div>
-<pre class="prettyprint linenums">
+                    <div class="bs-docs-example">
+                        <ul class="nav nav-tabs .flex-column">
+                            <li class="nav-item"><a href="#" class="nav-link active">Home</a></li>
+                            <li class="nav-item"><a href="#" class="nav-link">Profile</a></li>
+                            <li class="nav-item"><a href="#" class="nav-link">Messages</a></li>
+                        </ul>
+                    </div>
+                    <pre class="prettyprint linenums">
 &lt;ul class="nav nav-tabs .flex-column"&gt;
   ...
 &lt;/ul&gt;
 </pre>
 
-<h3>Stacked pills</h3>
+                    <h3>Stacked pills</h3>
 
-<div class="bs-docs-example">
-    <ul class="nav nav-pills .flex-column">
-        <li class="nav-item"><a href="#" class="nav-link active">Home</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">Profile</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">Messages</a></li>
-    </ul>
-</div>
-<pre class="prettyprint linenums">
+                    <div class="bs-docs-example">
+                        <ul class="nav nav-pills .flex-column">
+                            <li class="nav-item"><a href="#" class="nav-link active">Home</a></li>
+                            <li class="nav-item"><a href="#" class="nav-link">Profile</a></li>
+                            <li class="nav-item"><a href="#" class="nav-link">Messages</a></li>
+                        </ul>
+                    </div>
+                    <pre class="prettyprint linenums">
 &lt;ul class="nav nav-pills .flex-column"&gt;
   ...
 &lt;/ul&gt;
 </pre>
 
 
-<hr class="bs-docs-separator">
+                    <hr class="bs-docs-separator">
 
 
-<h2>Dropdowns</h2>
+                    <h2>Dropdowns</h2>
 
-<p>Add dropdown menus with a little extra HTML and the <a href="./javascript#dropdowns">dropdowns JavaScript plugin</a>.</p>
+                    <p>Add dropdown menus with a little extra HTML and the <a href="./javascript#dropdowns">dropdowns JavaScript plugin</a>.</p>
 
-<h3>Tabs with dropdowns</h3>
+                    <h3>Tabs with dropdowns</h3>
 
-<div class="bs-docs-example">
-    <ul class="nav nav-tabs">
-        <li class="nav-item">
-            <a href="#" class="nav-link active">Active</a>
-        </li>
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">Dropdown</a>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                <li class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Separated link</a></li>
-            </ul>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
-        </li>
-    </ul>
-</div>
-<pre class="prettyprint linenums">
+                    <div class="bs-docs-example">
+                        <ul class="nav nav-tabs">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link active">Active</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">Dropdown</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                    <li class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="#">Separated link</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Link</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link disabled" href="#">Disabled</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <pre class="prettyprint linenums">
 &lt;ul class="nav nav-tabs"&gt;
   &lt;li class="nav-item dropdown"&gt;
     &lt;a class="nav-link dropdown-toggle"
@@ -702,32 +714,32 @@ Need to stack them on some viewports but not others? Use the responsive versions
 &lt;/ul&gt;
 </pre>
 
-<h3>Pills with dropdowns</h3>
+                    <h3>Pills with dropdowns</h3>
 
-<div class="bs-docs-example">
-    <ul class="nav nav-pills">
-        <li class="nav-item">
-            <a href="#" class="nav-link active">Home</a>
-        </li>
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">Dropdown</a>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                <li class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Separated link</a></li>
-            </ul>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
-        </li>
-    </ul>
-</div>
-<pre class="prettyprint linenums">
+                    <div class="bs-docs-example">
+                        <ul class="nav nav-pills">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link active">Home</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">Dropdown</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                    <li class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="#">Separated link</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Link</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link disabled" href="#">Disabled</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <pre class="prettyprint linenums">
 &lt;ul class="nav nav-pills"&gt;
   &lt;li class="nav-item dropdown"&gt;
     &lt;a class="nav-link dropdown-toggle"
@@ -743,34 +755,35 @@ Need to stack them on some viewports but not others? Use the responsive versions
 </pre>
 
 
-<hr class="bs-docs-separator">
+                    <hr class="bs-docs-separator">
 
 
-<h2>Nav lists</h2>
+                    <h2>Nav lists</h2>
 
-<p>A simple and easy way to build groups of nav links with optional headers. They're best used in sidebars like the Finder in OS X.</p>
+                    <p>A simple and easy way to build groups of nav links with optional headers. They're best used in sidebars like the Finder in OS
+                        X.</p>
 
-<h3>Example nav list</h3>
+                    <h3>Example nav list</h3>
 
-<p>Take a list of links and add <code>class="nav"</code>:</p>
+                    <p>Take a list of links and add <code>class="nav"</code>:</p>
 
-<div class="bs-docs-example">
-    <div class="well" style="max-width: 340px; padding: 8px 0;">
-        <ul class="nav flex-column">
-            <li class="nav-item">List header</li>
-            <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">Library</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">Applications</a></li>
-            <li class="nav-item">Another list header</li>
-            <li class="nav-item"><a href="#" class="nav-link">Profile</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">Settings</a></li>
-            <li class="nav-item"></li>
-            <li class="nav-item"><a href="#" class="nav-link">Help</a></li>
-        </ul>
-    </div>
-    <!-- /well -->
-</div>
-<pre class="prettyprint linenums">
+                    <div class="bs-docs-example">
+                        <div class="well" style="max-width: 340px; padding: 8px 0;">
+                            <ul class="nav flex-column">
+                                <li class="nav-item">List header</li>
+                                <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+                                <li class="nav-item"><a href="#" class="nav-link">Library</a></li>
+                                <li class="nav-item"><a href="#" class="nav-link">Applications</a></li>
+                                <li class="nav-item">Another list header</li>
+                                <li class="nav-item"><a href="#" class="nav-link">Profile</a></li>
+                                <li class="nav-item"><a href="#" class="nav-link">Settings</a></li>
+                                <li class="nav-item"></li>
+                                <li class="nav-item"><a href="#" class="nav-link">Help</a></li>
+                            </ul>
+                        </div>
+                        <!-- /well -->
+                    </div>
+                    <pre class="prettyprint linenums">
 &lt;ul class="nav flex-column"&gt;
   &lt;li class="nav-item"&gt;List header&lt;/li&gt;
   &lt;li class="nav-item"&gt;&lt;a class="nav-link active" href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
@@ -778,15 +791,15 @@ Need to stack them on some viewports but not others? Use the responsive versions
   ...
 &lt;/ul&gt;
 </pre>
-<p>
-    <span class="label label-info">Note</span>
-    For nesting within a nav list, include <code>class="nav nav-list"</code> on any nested <code>&lt;ul&gt;</code>.
-</p>
+                    <p>
+                        <span class="label label-info">Note</span>
+                        For nesting within a nav list, include <code>class="nav nav-list"</code> on any nested <code>&lt;ul&gt;</code>.
+                    </p>
 
-<h3>Horizontal dividers</h3>
+                    <h3>Horizontal dividers</h3>
 
-<p>Add a horizontal divider by creating an empty list item with the class <code>.dropdown-divider</code>, like so:</p>
-<pre class="prettyprint linenums">
+                    <p>Add a horizontal divider by creating an empty list item with the class <code>.dropdown-divider</code>, like so:</p>
+                    <pre class="prettyprint linenums">
 &lt;ul class="nav flex-column"&gt;
   ...
   &lt;li class="dropdown-divider"&gt;&lt;/li&gt;
@@ -795,21 +808,23 @@ Need to stack them on some viewports but not others? Use the responsive versions
 </pre>
 
 
-<hr class="bs-docs-separator">
+                    <hr class="bs-docs-separator">
 
 
-<h2>Tabbable nav</h2>
+                    <h2>Tabbable nav</h2>
 
-<p>Bring your tabs to life with a simple plugin to toggle between content via tabs. Bootstrap integrates tabbable tabs in four styles: top (default), right, bottom, and left.</p>
+                    <p>Bring your tabs to life with a simple plugin to toggle between content via tabs. Bootstrap integrates tabbable tabs in four
+                        styles: top (default), right, bottom, and left.</p>
 
-<h3>Tabbable example</h3>
+                    <h3>Tabbable example</h3>
 
-<p>To make tabs tabbable, create a <code>.tab-pane</code> with unique ID for every tab and wrap them in <code>.tab-content</code>.</p>
+                    <p>To make tabs tabbable, create a <code>.tab-pane</code> with unique ID for every tab and wrap them in <code>.tab-content</code>.
+                    </p>
 
-<div class="bs-docs-example" style="padding-bottom: 30px">
-    <div wicket:id="tabs"></div>
-</div>
-<pre class="prettyprint linenums">
+                    <div class="bs-docs-example" style="padding-bottom: 30px">
+                        <div wicket:id="tabs"></div>
+                    </div>
+                    <pre class="prettyprint linenums">
 &lt;div class="tabbable"&gt; &lt;!-- Only required for left/right tabs --&gt;
   &lt;ul class="nav nav-tabs"&gt;
     &lt;li class="active"&gt;&lt;a href="#tab1" data-bs-toggle="tab"&gt;Section 1&lt;/a&gt;&lt;/li&gt;
@@ -826,50 +841,51 @@ Need to stack them on some viewports but not others? Use the responsive versions
 &lt;/div&gt;
 </pre>
 
-<p>
-	Same example but no AJAX: just panel flipping at client side:
-</p>
+                    <p>
+                        Same example but no AJAX: just panel flipping at client side:
+                    </p>
 
-<div class="bs-docs-example" style="padding-bottom: 30px">
-    <div wicket:id="tabsClient"></div>
-</div>
+                    <div class="bs-docs-example" style="padding-bottom: 30px">
+                        <div wicket:id="tabsClient"></div>
+                    </div>
 
-<h4>Fade in tabs</h4>
+                    <h4>Fade in tabs</h4>
 
-<p>To make tabs fade in, add <code>.fade</code> to each <code>.tab-pane</code>.</p>
+                    <p>To make tabs fade in, add <code>.fade</code> to each <code>.tab-pane</code>.</p>
 
-<h4>Requires jQuery plugin</h4>
+                    <h4>Requires jQuery plugin</h4>
 
-<p>All tabbable tabs are powered by our lightweight jQuery plugin. Read more about how to bring tabbable tabs to life <a href="./javascript#tabs">on the JavaScript docs page</a>.</p>
+                    <p>All tabbable tabs are powered by our lightweight jQuery plugin. Read more about how to bring tabbable tabs to life
+                        <a href="./javascript#tabs">on the JavaScript docs page</a>.</p>
 
-<h3>Tabbable in any direction</h3>
+                    <h3>Tabbable in any direction</h3>
 
-<h4>Tabs on the bottom</h4>
+                    <h4>Tabs on the bottom</h4>
 
-<p>Flip the order of the HTML and add a class to put tabs on the bottom.</p>
+                    <p>Flip the order of the HTML and add a class to put tabs on the bottom.</p>
 
-<div class="bs-docs-example">
-    <div class="tabbable tabs-below">
-        <div class="tab-content">
-            <div class="tab-pane active" id="A">
-                <p>I'm in Section A.</p>
-            </div>
-            <div class="tab-pane" id="B">
-                <p>Howdy, I'm in Section B.</p>
-            </div>
-            <div class="tab-pane" id="C">
-                <p>What up girl, this is Section C.</p>
-            </div>
-        </div>
-        <ul class="nav nav-tabs">
-            <li class="active"><a href="#A" data-bs-toggle="tab">Section 1</a></li>
-            <li><a href="#B" data-bs-toggle="tab">Section 2</a></li>
-            <li><a href="#C" data-bs-toggle="tab">Section 3</a></li>
-        </ul>
-    </div>
-    <!-- /tabbable -->
-</div>
-<pre class="prettyprint linenums">
+                    <div class="bs-docs-example">
+                        <div class="tabbable tabs-below">
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="A">
+                                    <p>I'm in Section A.</p>
+                                </div>
+                                <div class="tab-pane" id="B">
+                                    <p>Howdy, I'm in Section B.</p>
+                                </div>
+                                <div class="tab-pane" id="C">
+                                    <p>What up girl, this is Section C.</p>
+                                </div>
+                            </div>
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#A" data-bs-toggle="tab">Section 1</a></li>
+                                <li><a href="#B" data-bs-toggle="tab">Section 2</a></li>
+                                <li><a href="#C" data-bs-toggle="tab">Section 3</a></li>
+                            </ul>
+                        </div>
+                        <!-- /tabbable -->
+                    </div>
+                    <pre class="prettyprint linenums">
 &lt;div class="tabbable tabs-below"&gt;
   &lt;div class="tab-content"&gt;
     ...
@@ -880,32 +896,32 @@ Need to stack them on some viewports but not others? Use the responsive versions
 &lt;/div&gt;
 </pre>
 
-<h4>Tabs on the left</h4>
+                    <h4>Tabs on the left</h4>
 
-<p>Swap the class to put tabs on the left.</p>
+                    <p>Swap the class to put tabs on the left.</p>
 
-<div class="bs-docs-example">
-    <div class="tabbable tabs-left">
-        <ul class="nav nav-tabs">
-            <li class="active"><a href="#lA" data-bs-toggle="tab">Section 1</a></li>
-            <li><a href="#lB" data-bs-toggle="tab">Section 2</a></li>
-            <li><a href="#lC" data-bs-toggle="tab">Section 3</a></li>
-        </ul>
-        <div class="tab-content">
-            <div class="tab-pane active" id="lA">
-                <p>I'm in Section A.</p>
-            </div>
-            <div class="tab-pane" id="lB">
-                <p>Howdy, I'm in Section B.</p>
-            </div>
-            <div class="tab-pane" id="lC">
-                <p>What up girl, this is Section C.</p>
-            </div>
-        </div>
-    </div>
-    <!-- /tabbable -->
-</div>
-<pre class="prettyprint linenums">
+                    <div class="bs-docs-example">
+                        <div class="tabbable tabs-left">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#lA" data-bs-toggle="tab">Section 1</a></li>
+                                <li><a href="#lB" data-bs-toggle="tab">Section 2</a></li>
+                                <li><a href="#lC" data-bs-toggle="tab">Section 3</a></li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="lA">
+                                    <p>I'm in Section A.</p>
+                                </div>
+                                <div class="tab-pane" id="lB">
+                                    <p>Howdy, I'm in Section B.</p>
+                                </div>
+                                <div class="tab-pane" id="lC">
+                                    <p>What up girl, this is Section C.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /tabbable -->
+                    </div>
+                    <pre class="prettyprint linenums">
 &lt;div class="tabbable tabs-left"&gt;
   &lt;ul class="nav nav-tabs"&gt;
     ...
@@ -916,32 +932,32 @@ Need to stack them on some viewports but not others? Use the responsive versions
 &lt;/div&gt;
 </pre>
 
-<h4>Tabs on the right</h4>
+                    <h4>Tabs on the right</h4>
 
-<p>Swap the class to put tabs on the right.</p>
+                    <p>Swap the class to put tabs on the right.</p>
 
-<div class="bs-docs-example">
-    <div class="tabbable tabs-right">
-        <ul class="nav nav-tabs">
-            <li class="active"><a href="#rA" data-bs-toggle="tab">Section 1</a></li>
-            <li><a href="#rB" data-bs-toggle="tab">Section 2</a></li>
-            <li><a href="#rC" data-bs-toggle="tab">Section 3</a></li>
-        </ul>
-        <div class="tab-content">
-            <div class="tab-pane active" id="rA">
-                <p>I'm in Section A.</p>
-            </div>
-            <div class="tab-pane" id="rB">
-                <p>Howdy, I'm in Section B.</p>
-            </div>
-            <div class="tab-pane" id="rC">
-                <p>What up girl, this is Section C.</p>
-            </div>
-        </div>
-    </div>
-    <!-- /tabbable -->
-</div>
-<pre class="prettyprint linenums">
+                    <div class="bs-docs-example">
+                        <div class="tabbable tabs-right">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#rA" data-bs-toggle="tab">Section 1</a></li>
+                                <li><a href="#rB" data-bs-toggle="tab">Section 2</a></li>
+                                <li><a href="#rC" data-bs-toggle="tab">Section 3</a></li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="rA">
+                                    <p>I'm in Section A.</p>
+                                </div>
+                                <div class="tab-pane" id="rB">
+                                    <p>Howdy, I'm in Section B.</p>
+                                </div>
+                                <div class="tab-pane" id="rC">
+                                    <p>What up girl, this is Section C.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /tabbable -->
+                    </div>
+                    <pre class="prettyprint linenums">
 &lt;div class="tabbable tabs-right"&gt;
   &lt;ul class="nav nav-tabs"&gt;
     ...
@@ -952,35 +968,36 @@ Need to stack them on some viewports but not others? Use the responsive versions
 &lt;/div&gt;
 </pre>
 
-</section>
+                </section>
 
 
-<!-- Navbar
-================================================== -->
-<section id="navbar">
-<div class="pb-2 mt-4 mb-2 border-bottom">
-    <h1>Navbar</h1>
-</div>
+                <!-- Navbar
+                ================================================== -->
+                <section id="navbar">
+                    <div class="pb-2 mt-4 mb-2 border-bottom">
+                        <h1>Navbar</h1>
+                    </div>
 
 
-<h2>Basic navbar</h2>
+                    <h2>Basic navbar</h2>
 
-<p>To start, navbars are static (not fixed to the top) and include support for a project name and basic navigation. Place one anywhere within a <code>.container</code>, which sets the width of your site and content.</p>
+                    <p>To start, navbars are static (not fixed to the top) and include support for a project name and basic navigation. Place one
+                        anywhere within a <code>.container</code>, which sets the width of your site and content.</p>
 
-<div class="bs-docs-example">
-    <div class="navbar navbar-light navbar-expand-lg">
-        <a class="navbar-brand" href="#">Title</a>
+                    <div class="bs-docs-example">
+                        <div class="navbar navbar-light navbar-expand-lg">
+                            <a class="navbar-brand" href="#">Title</a>
 
-        <div class="collapse navbar-collapse">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active"><a class="nav-link" href="#">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
-            </ul>
-        </div>
-    </div>
-</div>
-<pre class="prettyprint linenums">
+                            <div class="collapse navbar-collapse">
+                                <ul class="navbar-nav mr-auto">
+                                    <li class="nav-item active"><a class="nav-link" href="#">Home</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <pre class="prettyprint linenums">
 &lt;div class="navbar navbar-light navbar-expand-lg"&gt;
     &lt;a class="navbar-brand" href="#"&gt;Title&lt;/a&gt;
     &lt;div class="collapse navbar-collapse"&gt;
@@ -994,40 +1011,39 @@ Need to stack them on some viewports but not others? Use the responsive versions
 </pre>
 
 
-<hr class="bs-docs-separator">
+                    <hr class="bs-docs-separator">
 
+                    <h2>Navbar components</h2>
 
-<h2>Navbar components</h2>
+                    <h3>Brand</h3>
 
-<h3>Brand</h3>
+                    <p>A simple link to show your brand or project name only requires an anchor tag.</p>
 
-<p>A simple link to show your brand or project name only requires an anchor tag.</p>
-
-<div class="bs-docs-example">
-    <div class="navbar navbar-light navbar-expand-lg">
-        <a class="navbar-brand" href="#">Title</a>
-    </div>
-</div>
-<pre class="prettyprint linenums">
+                    <div class="bs-docs-example">
+                        <div class="navbar bg-body-tertiary navbar-expand-lg">
+                            <a class="navbar-brand" href="#">Title</a>
+                        </div>
+                    </div>
+                    <pre class="prettyprint linenums">
 &lt;a class="navbar-brand" href="#"&gt;Project name&lt;/a&gt;
 </pre>
 
-<h3>Nav links</h3>
+                    <h3>Nav links</h3>
 
-<p>Nav items are simple to add via unordered lists.</p>
+                    <p>Nav items are simple to add via unordered lists.</p>
 
-<div class="bs-docs-example">
-    <div class="navbar navbar-light navbar-expand-lg">
-        <div class="collapse navbar-collapse">
-            <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
-            </ul>
-        </div>
-    </div>
-</div>
-<pre class="prettyprint linenums">
+                    <div class="bs-docs-example">
+                        <div class="navbar bg-body-tertiary navbar-expand-lg">
+                            <div class="collapse navbar-collapse">
+                                <ul class="navbar-nav">
+                                    <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <pre class="prettyprint linenums">
 &lt;ul class="navbar-nav"&gt;
   &lt;li class="nav-item"&gt;
     &lt;a class="nav-link active" href="#">Home&lt;/a&gt;
@@ -1037,54 +1053,58 @@ Need to stack them on some viewports but not others? Use the responsive versions
 &lt;/ul&gt;
 </pre>
 
-<h3>Forms</h3>
+                    <h3>Forms</h3>
 
-<p>To properly style and position a form within the navbar, add the appropriate classes as shown below. For a default form, include <code>.navbar-form</code> and either <code>.pull-left</code> or <code>.pull-right</code> to properly align it.</p>
+                    <p>To properly style and position a form within the navbar, add the appropriate classes as shown below. For a default form,
+                        include <code>.navbar-form</code> and either <code>.pull-left</code> or <code>.pull-right</code> to properly align it.</p>
 
-<div class="bs-docs-example">
-    <div class="navbar navbar-light navbar-expand-lg">
-        <div class="collapse navbar-collapse">
-            <form class="form-inline pull-left">
-                <input type="text" class="form-control">
-                <button type="submit" class="btn">Submit</button>
-            </form>
-        </div>
-    </div>
-</div>
-<pre class="prettyprint linenums">
+                    <div class="bs-docs-example">
+                        <div class="navbar bg-body-tertiary navbar-expand-lg">
+                            <div class="collapse navbar-collapse">
+                                <form class="form-inline pull-left">
+                                    <input type="text" class="form-control">
+                                    <button type="submit" class="btn">Submit</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <pre class="prettyprint linenums">
 &lt;form class="form-inline pull-left"&gt;
   &lt;input type="text" class="form-control"&gt;
   &lt;button type="submit" class="btn"&gt;Submit&lt;/button&gt;
 &lt;/form&gt;
 </pre>
 
-<h3>Search form</h3>
+                    <h3>Search form</h3>
 
-<p>For a more customized search form, add <code>.navbar-search</code> to the <code>form</code> and <code>.search-query</code> to the input for specialized styles in the navbar.</p>
+                    <p>For a more customized search form, add <code>.navbar-search</code> to the <code>form</code> and <code>.search-query</code> to
+                        the input for specialized styles in the navbar.</p>
 
-<div class="bs-docs-example">
-    <div class="navbar navbar-light navbar-expand-lg">
-        <div class="collapse navbar-collapse">
-            <form class="form-inline pull-left">
-                <input type="text" class="search-query" placeholder="Search">
-            </form>
-        </div>
-    </div>
-</div>
-<pre class="prettyprint linenums">
+                    <div class="bs-docs-example">
+                        <div class="navbar bg-body-tertiary navbar-expand-lg">
+                            <div class="collapse navbar-collapse">
+                                <form class="form-inline pull-left">
+                                    <input type="text" class="search-query" placeholder="Search">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <pre class="prettyprint linenums">
 &lt;form class="form-inline pull-left"&gt;
   &lt;input type="text" class="search-query" placeholder="Search"&gt;
 &lt;/form&gt;
 </pre>
 
-<h3>Component alignment</h3>
+                    <h3>Component alignment</h3>
 
-<p>Align nav links, search form, or text, use the <code>.pull-left</code> or <code>.pull-right</code> utility classes. Both classes will add a CSS float in the specified direction.</p>
+                    <p>Align nav links, search form, or text, use the <code>.pull-left</code> or <code>.pull-right</code> utility classes. Both
+                        classes will add a CSS float in the specified direction.</p>
 
-<h3>Using dropdowns</h3>
+                    <h3>Using dropdowns</h3>
 
-<p>Add dropdowns and dropups to the nav with a bit of markup and the <a href="./javascript#dropdowns">dropdowns JavaScript plugin</a>.</p>
-<pre class="prettyprint linenums">
+                    <p>Add dropdowns and dropups to the nav with a bit of markup and the <a href="./javascript#dropdowns">dropdowns JavaScript
+                        plugin</a>.</p>
+                    <pre class="prettyprint linenums">
 &lt;ul class="nav"&gt;
   &lt;li class="nav-item dropdown"&gt;
     &lt;a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
@@ -1096,138 +1116,144 @@ Need to stack them on some viewports but not others? Use the responsive versions
   &lt;/li&gt;
 &lt;/ul&gt;
 </pre>
-<p>Visit the <a href="./javascript#dropdowns">JavaScript dropdowns documentation</a> for more markup and information on calling dropdowns.</p>
+                    <p>Visit the <a href="./javascript#dropdowns">JavaScript dropdowns documentation</a> for more markup and information on calling
+                        dropdowns.</p>
 
-<h3>Text</h3>
+                    <h3>Text</h3>
 
-<p>Wrap strings of text in an element with <code>.navbar-text</code>, usually on a <code>&lt;p&gt;</code> tag for proper leading and color.</p>
-
-
-<hr class="bs-docs-separator">
+                    <p>Wrap strings of text in an element with <code>.navbar-text</code>, usually on a <code>&lt;p&gt;</code> tag for proper leading
+                        and color.</p>
 
 
-<h2>Optional display types</h2>
+                    <hr class="bs-docs-separator">
 
-<p>Fix the navbar to the top or bottom of the viewport with an additional class on the outermost div, <code>.navbar</code>.</p>
 
-<h3>Fixed to top</h3>
+                    <h2>Optional display types</h2>
 
-<p>Add <code>.fixed-top</code> and remember to account for the hidden area underneath it by adding at least 40px <code>padding</code> to the <code>&lt;body&gt;</code>. Be sure to add this after the core Bootstrap CSS and before the optional responsive CSS.</p>
+                    <p>Fix the navbar to the top or bottom of the viewport with an additional class on the outermost div, <code>.navbar</code>.</p>
 
-<div class="bs-docs-example bs-navbar-top-example">
-    <div class="navbar navbar-light navbar-expand-lg fixed-top" style="position: absolute;">
-        <a class="navbar-brand" href="#">Title</a>
-        <div class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
-            </ul>
-        </div>
-    </div>
-</div>
-<pre class="prettyprint linenums">
+                    <h3>Fixed to top</h3>
+
+                    <p>Add <code>.fixed-top</code> and remember to account for the hidden area underneath it by adding at least 40px
+                        <code>padding</code> to the <code>&lt;body&gt;</code>. Be sure to add this after the core Bootstrap CSS and before the
+                        optional responsive CSS.</p>
+
+                    <div class="bs-docs-example bs-navbar-top-example">
+                        <div class="navbar bg-body-tertiary navbar-expand-lg fixed-top" style="position: relative;">
+                            <a class="navbar-brand" href="#">Title</a>
+                            <div class="collapse navbar-collapse">
+                                <ul class="nav navbar-nav">
+                                    <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <pre class="prettyprint linenums">
 &lt;div class="navbar navbar-light navbar-expand-lg fixed-top"&gt;
   ...
 &lt;/div&gt;
 </pre>
 
-<h3>Fixed to bottom</h3>
+                    <h3>Fixed to bottom</h3>
 
-<p>Add <code>.fixed-bottom</code> instead.</p>
+                    <p>Add <code>.fixed-bottom</code> instead.</p>
 
-<div class="bs-docs-example bs-navbar-bottom-example">
-    <div class="navbar navbar-light navbar-expand-lg fixed-bottom" style="position: absolute;">
-        <a class="navbar-brand" href="#">Title</a>
-        <div class="collapse navbar-collapse" style="width: auto; padding: 0 20px;">
-            <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
-            </ul>
-        </div>
-    </div>
-</div>
-<pre class="prettyprint linenums">
+                    <div class="bs-docs-example bs-navbar-bottom-example">
+                        <div class="navbar bg-body-tertiary navbar-expand-lg fixed-bottom" style="position: relative;">
+                            <a class="navbar-brand" href="#">Title</a>
+                            <div class="collapse navbar-collapse" style="width: auto; padding: 0 20px;">
+                                <ul class="navbar-nav">
+                                    <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <pre class="prettyprint linenums">
 &lt;div class="navbar navbar-light navbar-expand-lg fixed-bottom"&gt;
   ...
 &lt;/div&gt;
 </pre>
 
-<h3>Sticky top navbar</h3>
+                    <h3>Sticky top navbar</h3>
 
-<p>Create a full-width navbar that scrolls away with the page by adding <code>.navbar-static-top</code>. Unlike the <code>.sticky-top</code> class, you do not need to change any padding on the <code>body</code>.</p>
+                    <p>Create a full-width navbar that scrolls away with the page by adding <code>.navbar-static-top</code>. Unlike the <code>.sticky-top</code>
+                        class, you do not need to change any padding on the <code>body</code>.</p>
 
-<div class="bs-docs-example bs-navbar-top-example">
-    <div class="navbar navbar-light navbar-expand-lg sticky-top" style="margin: -1px -1px 0;">
-        <a class="navbar-brand" href="#">Title</a>
-        <div class="collapse navbar-collapse">
-            <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
-            </ul>
-        </div>
-    </div>
-</div>
-<pre class="prettyprint linenums">
+                    <div class="bs-docs-example bs-navbar-top-example">
+                        <div class="navbar bg-body-tertiary sticky-top navbar-expand-lg" style="margin: -1px -1px 0;">
+                            <a class="navbar-brand" href="#">Title</a>
+                            <div class="collapse navbar-collapse">
+                                <ul class="navbar-nav">
+                                    <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <pre class="prettyprint linenums">
 &lt;div class="navbar navbar-light navbar-expand-lg sticky-top"&gt;
   ...
 &lt;/div&gt;
 </pre>
 
 
-<hr class="bs-docs-separator">
+                    <hr class="bs-docs-separator">
 
 
-<h2>Responsive navbar</h2>
+                    <h2>Responsive navbar</h2>
 
-<p>To implement a collapsing responsive navbar, wrap your navbar content in a containing div, <code>.nav-collapse.collapse</code>, and add the navbar toggle button, <code>.navbar-toggle</code>.</p>
+                    <p>To implement a collapsing responsive navbar, wrap your navbar content in a containing div, <code>.nav-collapse.collapse</code>,
+                        and add the navbar toggle button, <code>.navbar-toggle</code>.</p>
 
-<div class="bs-docs-example">
-    <div class="navbar navbar-light navbar-expand-lg">
-        <button type="button" class="btn navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-responsive-collapse"></button>
-        <a class="navbar-brand" href="#">Title</a>
-        <div class="collapse navbar-collapse">
+                    <div class="bs-docs-example">
+                        <div class="navbar bg-body-tertiary navbar-expand-lg">
+                            <button type="button" class="btn navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-responsive-collapse"></button>
+                            <a class="navbar-brand" href="#">Title</a>
+                            <div class="collapse navbar-collapse">
 
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
-                <li class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Dropdown</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        <li></li>
-                        <li class="nav-header">Nav header</li>
-                        <li><a class="dropdown-item" href="#">Separated link</a></li>
-                        <li><a class="dropdown-item" href="#">One more separated link</a></li>
-                    </ul>
-                </li>
-            </ul>
-            <form class="form-inline pull-left" action="">
-                <input type="text" class="search-query form-control" placeholder="Search">
-            </form>
+                                <ul class="navbar-nav mr-auto">
+                                    <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+                                    <li class="nav-item dropdown">
+                                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Dropdown</a>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#">Action</a></li>
+                                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                            <li></li>
+                                            <li class="nav-header">Nav header</li>
+                                            <li><a class="dropdown-item" href="#">Separated link</a></li>
+                                            <li><a class="dropdown-item" href="#">One more separated link</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <form class="form-inline pull-left" action="">
+                                    <input type="text" class="search-query form-control" placeholder="Search">
+                                </form>
 
-            <ul class="navbar-nav navbar-right">
-                <li><a href="#">Link</a></li>
-                <li class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Dropdown</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        <li class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">Separated link</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </div>
-</div>
-<pre class="prettyprint linenums">
+                                <ul class="navbar-nav navbar-right">
+                                    <li><a href="#">Link</a></li>
+                                    <li class="nav-item dropdown">
+                                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Dropdown</a>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#">Action</a></li>
+                                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                            <li class="dropdown-divider"></li>
+                                            <li><a class="dropdown-item" href="#">Separated link</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <pre class="prettyprint linenums">
 &lt;div class="navbar"&gt;
 
       &lt;!-- .navbar-toggle is used as the toggle for collapsed navbar content --&gt;
@@ -1243,104 +1269,104 @@ Need to stack them on some viewports but not others? Use the responsive versions
 
 &lt;/div&gt;
 </pre>
-<div class="alert alert-info">
-    <strong>Heads up!</strong> The responsive navbar requires the <a href="./javascript#collapse">collapse plugin</a>.
-</div>
+                    <div class="alert alert-info">
+                        <strong>Heads up!</strong> The responsive navbar requires the <a href="./javascript#collapse">collapse plugin</a>.
+                    </div>
 
 
-<hr class="bs-docs-separator">
+                    <hr class="bs-docs-separator">
 
 
-<h2>Inverted type</h2>
+                    <h2>Inverted type</h2>
 
-<p>Modify the look of the navbar by adding <code>.navbar-dark</code> and background utility class.</p>
+                    <p>Modify the look of the navbar by adding <code>.navbar-dark</code> and background utility class.</p>
 
-<div class="bs-docs-example">
-    <div class="navbar navbar-expand-lg navbar-dark bg-dark" style="position: static;">
-        <a class="btn navbar-toggle" data-bs-toggle="collapse" data-bs-target=".navbar-inverse-collapse"></a>
-        <a class="navbar-brand" href="#">Title</a>
+                    <div class="bs-docs-example">
+                        <div class="navbar navbar-expand-lg border-bottom bg-dark" style="position: static;">
+                            <a class="btn navbar-toggle" data-bs-toggle="collapse" data-bs-target=".navbar-inverse-collapse"></a>
+                            <a class="navbar-brand" href="#">Title</a>
 
-        <div class="navbar-collapse collapse">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
-                <li class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Dropdown</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        <li class="dropdown-divider"></li>
-                        <li class="nav-header">Nav header</li>
-                        <li><a class="dropdown-item" href="#">Separated link</a></li>
-                        <li><a class="dropdown-item" href="#">One more separated link</a></li>
-                    </ul>
-                </li>
-            </ul>
-            <form class="navbar-search pull-left" action="">
-                <input type="text" class="search-query form-control" placeholder="Search">
-            </form>
-            <ul class="nav pull-right">
-                <li class="nav-item"><a href="#">Link</a></li>
-                <li class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Dropdown</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        <li class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">Separated link</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <!-- /navbar -->
-</div>
-<pre class="prettyprint linenums">
+                            <div class="navbar-collapse collapse">
+                                <ul class="navbar-nav mr-auto">
+                                    <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+                                    <li class="nav-item dropdown">
+                                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Dropdown</a>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#">Action</a></li>
+                                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                            <li class="dropdown-divider"></li>
+                                            <li class="nav-header">Nav header</li>
+                                            <li><a class="dropdown-item" href="#">Separated link</a></li>
+                                            <li><a class="dropdown-item" href="#">One more separated link</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <form class="navbar-search pull-left" action="">
+                                    <input type="text" class="search-query form-control" placeholder="Search">
+                                </form>
+                                <ul class="nav pull-right">
+                                    <li class="nav-item"><a href="#">Link</a></li>
+                                    <li class="nav-item dropdown">
+                                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Dropdown</a>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#">Action</a></li>
+                                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                            <li class="dropdown-divider"></li>
+                                            <li><a class="dropdown-item" href="#">Separated link</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- /navbar -->
+                    </div>
+                    <pre class="prettyprint linenums">
 &lt;div class="navbar navbar-expand-lg navbar-dark bg-dark"&gt;
   ...
 &lt;/div&gt;
 </pre>
 
-</section>
+                </section>
 
 
-<!-- Breadcrumbs
-================================================== -->
-<section id="breadcrumbs">
-    <div class="pb-2 mt-4 mb-2 border-bottom">
-        <h1>Breadcrumbs
-            <small></small>
-        </h1>
-    </div>
+                <!-- Breadcrumbs
+                ================================================== -->
+                <section id="breadcrumbs">
+                    <div class="pb-2 mt-4 mb-2 border-bottom">
+                        <h1>Breadcrumbs
+                            <small></small>
+                        </h1>
+                    </div>
 
-    <h2>Examples</h2>
+                    <h2>Examples</h2>
 
-    <p>A single example shown as it might be displayed across multiple pages.</p>
+                    <p>A single example shown as it might be displayed across multiple pages.</p>
 
-    <div class="bs-docs-example">
-        <nav>
-            <ul class="breadcrumb">
-                <li class="breadcrumb-item active">Home</li>
-            </ul>
-        </nav>
-        <nav>
-            <ul class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Library</li>
-            </ul>
-        </nav>
-        <nav>
-            <ul class="breadcrumb" style="margin-bottom: 5px;">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item"><a href="#">Library</a></li>
-                <li class="breadcrumb-item active">Data</li>
-            </ul>
-        </nav>
-    </div>
-<pre class="prettyprint linenums">
+                    <div class="bs-docs-example">
+                        <nav>
+                            <ul class="breadcrumb">
+                                <li class="breadcrumb-item active">Home</li>
+                            </ul>
+                        </nav>
+                        <nav>
+                            <ul class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                <li class="breadcrumb-item active">Library</li>
+                            </ul>
+                        </nav>
+                        <nav>
+                            <ul class="breadcrumb" style="margin-bottom: 5px;">
+                                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                <li class="breadcrumb-item"><a href="#">Library</a></li>
+                                <li class="breadcrumb-item active">Data</li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <pre class="prettyprint linenums">
 &lt;nav&gt;
     &lt;ul class="breadcrumb"&gt;
       &lt;li class="breadcrumb-item"&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
@@ -1350,32 +1376,33 @@ Need to stack them on some viewports but not others? Use the responsive versions
 &lt;/nav&gt;
 </pre>
 
-</section>
+                </section>
 
 
-<!-- Pagination
-================================================== -->
-<section id="pagination">
-<div class="pb-2 mt-4 mb-2 border-bottom">
-    <h1>Pagination</h1>
-</div>
+                <!-- Pagination
+                ================================================== -->
+                <section id="pagination">
+                    <div class="pb-2 mt-4 mb-2 border-bottom">
+                        <h1>Pagination</h1>
+                    </div>
 
-<h2>Standard pagination</h2>
+                    <h2>Standard pagination</h2>
 
-<p>Simple pagination inspired by Rdio, great for apps and search results. The large block is hard to miss, easily scalable, and provides large click areas.</p>
+                    <p>Simple pagination inspired by Rdio, great for apps and search results. The large block is hard to miss, easily scalable, and
+                        provides large click areas.</p>
 
-<div class="bs-docs-example">
-    <ul class="pagination">
-        <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item"><a class="page-link" href="#">4</a></li>
-        <li class="page-item"><a class="page-link" href="#">5</a></li>
-        <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
-    </ul>
-</div>
-<pre class="prettyprint linenums">
+                    <div class="bs-docs-example">
+                        <ul class="pagination">
+                            <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item"><a class="page-link" href="#">4</a></li>
+                            <li class="page-item"><a class="page-link" href="#">5</a></li>
+                            <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
+                        </ul>
+                    </div>
+                    <pre class="prettyprint linenums">
 &lt;ul class="pagination"&gt;
 &lt;li class="page-item" &gt;&lt;a class="page-link" href="#"&gt;Prev&lt;/a&gt;&lt;/li&gt;
 &lt;li class="page-item" &gt;&lt;a class="page-link" href="#"&gt;1&lt;/a&gt;&lt;/li&gt;
@@ -1387,35 +1414,37 @@ Need to stack them on some viewports but not others? Use the responsive versions
 </pre>
 
 
-<hr class="bs-docs-separator">
+                    <hr class="bs-docs-separator">
 
 
-<h2>Options</h2>
+                    <h2>Options</h2>
 
-<h3>Disabled and active states</h3>
+                    <h3>Disabled and active states</h3>
 
-<p>Links are customizable for different circumstances. Use <code>.disabled</code> for unclickable links and <code>.active</code> to indicate the current page.</p>
+                    <p>Links are customizable for different circumstances. Use <code>.disabled</code> for unclickable links and <code>.active</code>
+                        to indicate the current page.</p>
 
-<div class="bs-docs-example">
-    <ul class="pagination">
-        <li class="page-item disabled"><a class="page-link" href="#">&laquo;</a></li>
-        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item"><a class="page-link" href="#">4</a></li>
-        <li class="page-item"><a class="page-link" href="#">5</a></li>
-        <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
-    </ul>
-</div>
-<pre class="prettyprint linenums">
+                    <div class="bs-docs-example">
+                        <ul class="pagination">
+                            <li class="page-item disabled"><a class="page-link" href="#">&laquo;</a></li>
+                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item"><a class="page-link" href="#">4</a></li>
+                            <li class="page-item"><a class="page-link" href="#">5</a></li>
+                            <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
+                        </ul>
+                    </div>
+                    <pre class="prettyprint linenums">
 &lt;ul class="pagination"&gt;
   &lt;li class="page-item disabled"&gt;&lt;a class="page-link" href="#"&gt;Prev&lt;/a&gt;&lt;/li&gt;
   &lt;li class="page-item active"&gt;&lt;a class="page-link" href="#"&gt;1&lt;/a&gt;&lt;/li&gt;
   ...
 &lt;/ul&gt;
 </pre>
-<p>You can optionally swap out active or disabled anchors for spans to remove click functionality while retaining intended styles.</p>
-<pre class="prettyprint linenums">
+                    <p>You can optionally swap out active or disabled anchors for spans to remove click functionality while retaining intended
+                        styles.</p>
+                    <pre class="prettyprint linenums">
 &lt;ul class="pagination"&gt;
   &lt;li class="page-item disabled"&gt;&lt;span class="page-link"&gt;Prev&lt;/span&gt;&lt;/li&gt;
   &lt;li class="page-item active"&gt;&lt;span class="page-link"&gt;1&lt;/span&gt;&lt;/li&gt;
@@ -1423,46 +1452,46 @@ Need to stack them on some viewports but not others? Use the responsive versions
 &lt;/ul&gt;
 </pre>
 
-<h3>Sizes</h3>
+                    <h3>Sizes</h3>
 
-<p>Fancy larger or smaller pagination? Add <code>.pagination-lg</code> or <code>.pagination-sm</code> for additional sizes.</p>
+                    <p>Fancy larger or smaller pagination? Add <code>.pagination-lg</code> or <code>.pagination-sm</code> for additional sizes.</p>
 
-<div class="bs-docs-example">
-    <div>
-        <ul class="pagination pagination-lg">
-            <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">4</a></li>
-            <li class="page-item"><a class="page-link" href="#">5</a></li>
-            <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
-        </ul>
-    </div>
-    <div >
-        <ul class="pagination">
-            <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">4</a></li>
-            <li class="page-item"><a class="page-link" href="#">5</a></li>
-            <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
-        </ul>
-    </div>
-    <div>
-        <ul class="pagination pagination-sm">
-            <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">4</a></li>
-            <li class="page-item"><a class="page-link" href="#">5</a></li>
-            <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
-        </ul>
-    </div>
-</div>
-<pre class="prettyprint linenums">
+                    <div class="bs-docs-example">
+                        <div>
+                            <ul class="pagination pagination-lg">
+                                <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item"><a class="page-link" href="#">4</a></li>
+                                <li class="page-item"><a class="page-link" href="#">5</a></li>
+                                <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul class="pagination">
+                                <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item"><a class="page-link" href="#">4</a></li>
+                                <li class="page-item"><a class="page-link" href="#">5</a></li>
+                                <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul class="pagination pagination-sm">
+                                <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item"><a class="page-link" href="#">4</a></li>
+                                <li class="page-item"><a class="page-link" href="#">5</a></li>
+                                <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <pre class="prettyprint linenums">
 &lt;div&gt;
   &lt;ul class="pagination pagination-lg"&gt;
     ...
@@ -1479,106 +1508,108 @@ Need to stack them on some viewports but not others? Use the responsive versions
   &lt;/ul&gt;
 &lt;/div&gt;
 </pre>
-</section>
+                </section>
 
 
-<!-- Labels and badges
-================================================== -->
-<section id="labels-badges">
-    <div class="pb-2 mt-4 mb-2 border-bottom">
-        <h1>Badges</h1>
-        <p>Badges are our small count and labeling components.</p>
-    </div>
+                <!-- Labels and badges
+                ================================================== -->
+                <section id="labels-badges">
+                    <div class="pb-2 mt-4 mb-2 border-bottom">
+                        <h1>Badges</h1>
+                        <p>Badges are our small count and labeling components.</p>
+                    </div>
 
-    <table class="table table-bordered table-striped">
-        <thead>
-        <tr>
-            <th>Example</th>
-            <th>Markup</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr wicket:id="badges">
-            <td>
-                <span wicket:id="badge">1</span>
-            </td>
-            <td>
-                <code wicket:id="code">&lt;span class="badge"&gt;1&lt;/span&gt;</code>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                        <tr>
+                            <th>Example</th>
+                            <th>Markup</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr wicket:id="badges">
+                            <td>
+                                <span wicket:id="badge">1</span>
+                            </td>
+                            <td>
+                                <code wicket:id="code">&lt;span class="badge"&gt;1&lt;/span&gt;</code>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
 
-    <h3>Pills</h3>
+                    <h3>Pills</h3>
 
-    <p>
-        Use the <code>.badge-pill</code> modifier class to make badges more rounded (with a larger <code>border-radius</code> and additional horizontal <code>padding</code>).
-        Useful if you miss the badges from v3.
-    </p>
+                    <p>
+                        Use the <code>.badge-pill</code> modifier class to make badges more rounded (with a larger <code>border-radius</code> and
+                        additional horizontal <code>padding</code>).
+                        Useful if you miss the badges from v3.
+                    </p>
 
-    <table class="table table-bordered table-striped">
-        <thead>
-        <tr>
-            <th>Name</th>
-            <th>Example</th>
-            <th>Markup</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr wicket:id="badge-pills">
-            <td wicket:id="name">Default</td>
-            <td>
-                <span wicket:id="badge">1</span>
-            </td>
-            <td>
-                <code wicket:id="code">&lt;span class="badge"&gt;1&lt;/span&gt;</code>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Example</th>
+                            <th>Markup</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr wicket:id="badge-pills">
+                            <td wicket:id="name">Default</td>
+                            <td>
+                                <span wicket:id="badge">1</span>
+                            </td>
+                            <td>
+                                <code wicket:id="code">&lt;span class="badge"&gt;1&lt;/span&gt;</code>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
 
-    <div class="bs-docs-example">
-        <p>Badges can be used as part of links or buttons to provide a counter.</p>
+                    <div class="bs-docs-example">
+                        <p>Badges can be used as part of links or buttons to provide a counter.</p>
 
-        <div class="mb-2 p-2">
-            <a href="#" wicket:id="button-with-badge">
-                Submit <span wicket:id="badge"></span>
-                <span class="visually-hidden">unread messages</span>
-            </a>
-        </div>
+                        <div class="mb-2 p-2">
+                            <a href="#" wicket:id="button-with-badge">
+                                Submit <span wicket:id="badge"></span>
+                                <span class="visually-hidden">unread messages</span>
+                            </a>
+                        </div>
 
-        <pre class="prettyprint linenum">
+                        <pre class="prettyprint linenum">
             &lt;button wicket:id="badge-button"&gt;
                 Submit &lt;span wicket:id="button-count"&gt;&lt;/span&gt;
                 &lt;span class="visually-hidden"&gt;unread messages&lt;/span&gt;
             &lt;/button&gt;
         </pre>
-    </div>
+                    </div>
 
-</section>
+                </section>
 
 
-<!-- Typographic components
-================================================== -->
-<section id="typography">
-    <div class="pb-2 mt-4 mb-2 border-bottom">
-        <h1>Typographic components</h1>
-    </div>
+                <!-- Typographic components
+                ================================================== -->
+                <section id="typography">
+                    <div class="pb-2 mt-4 mb-2 border-bottom">
+                        <h1>Typographic components</h1>
+                    </div>
 
-    <h2>Hero unit</h2>
+                    <h2>Hero unit</h2>
 
-    <p>A lightweight, flexible component to showcase key content on your site. It works well on marketing and content-heavy sites.</p>
+                    <p>A lightweight, flexible component to showcase key content on your site. It works well on marketing and content-heavy sites.</p>
 
-    <div class="bs-docs-example">
-        <div class="jumbotron">
-            <h1>Hello, world!</h1>
+                    <div class="bs-docs-example">
+                        <div class="jumbotron">
+                            <h1>Hello, world!</h1>
 
-            <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+                            <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or
+                                information.</p>
 
-            <p><a class="btn btn-primary btn-lg">Learn more</a></p>
-        </div>
-    </div>
-<pre class="prettyprint linenums">
+                            <p><a class="btn btn-primary btn-lg">Learn more</a></p>
+                        </div>
+                    </div>
+                    <pre class="prettyprint linenums">
 &lt;div class="jumbotron"&gt;
   &lt;h1&gt;Heading&lt;/h1&gt;
   &lt;p&gt;Tagline&lt;/p&gt;
@@ -1590,124 +1621,133 @@ Need to stack them on some viewports but not others? Use the responsive versions
 &lt;/div&gt;
 </pre>
 
-    <h2>Page header</h2>
+                    <h2>Page header</h2>
 
-    <p>A simple shell for an <code>h1</code> to appropriately space out and segment sections of content on a page. It can utilize the <code>h1</code>'s default <code>small</code>, element as well most other components (with additional styles).</p>
+                    <p>A simple shell for an <code>h1</code> to appropriately space out and segment sections of content on a page. It can utilize the
+                        <code>h1</code>'s default <code>small</code>, element as well most other components (with additional styles).</p>
 
-    <div class="bs-docs-example">
-        <div class="pb-2 mt-4 mb-2 border-bottom">
-            <h1>Example page header
-                <small>Subtext for header</small>
-            </h1>
-        </div>
-    </div>
-<pre class="prettyprint linenums">
+                    <div class="bs-docs-example">
+                        <div class="pb-2 mt-4 mb-2 border-bottom">
+                            <h1>Example page header
+                                <small>Subtext for header</small>
+                            </h1>
+                        </div>
+                    </div>
+                    <pre class="prettyprint linenums">
 &lt;div class="pb-2 mt-4 mb-2 border-bottom"&gt;
   &lt;h1&gt;Example page header &lt;small&gt;Subtext for header&lt;/small&gt;&lt;/h1&gt;
 &lt;/div&gt;
 </pre>
 
-</section>
+                </section>
 
 
-<!-- Thumbnails
-================================================== -->
-<section id="thumbnails">
-    <div class="pb-2 mt-4 mb-2 border-bottom">
-        <h1>Thumbnails
-            <small>Grids of images, videos, text, and more</small>
-        </h1>
-    </div>
+                <!-- Thumbnails
+                ================================================== -->
+                <section id="thumbnails">
+                    <div class="pb-2 mt-4 mb-2 border-bottom">
+                        <h1>Thumbnails
+                            <small>Grids of images, videos, text, and more</small>
+                        </h1>
+                    </div>
 
-    <h2>Default thumbnails</h2>
+                    <h2>Default thumbnails</h2>
 
-    <p>By default, Bootstrap's thumbnails are designed to showcase linked images with minimal required markup.</p>
+                    <p>By default, Bootstrap's thumbnails are designed to showcase linked images with minimal required markup.</p>
 
-    <div class="row">
-        <div class="col-lg-3 col-sm-2 col-xs-1">
-            <a href="#" class="thumbnail">
-                <img src="https://via.placeholder.com/260x180" alt="">
-            </a>
-        </div>
-        <div class="col-lg-3 col-sm-2 col-xs-1">
-            <a href="#" class="thumbnail">
-                <img src="https://via.placeholder.com/260x180" alt="">
-            </a>
-        </div>
-        <div class="col-lg-3 col-sm-2 col-xs-1">
-            <a href="#" class="thumbnail">
-                <img src="https://via.placeholder.com/260x180" alt="">
-            </a>
-        </div>
-        <div class="col-lg-3 col-sm-2 col-xs-1">
-            <a href="#" class="thumbnail">
-                <img src="https://via.placeholder.com/260x180" alt="">
-            </a>
-        </div>
-    </div>
+                    <div class="row">
+                        <div class="col-lg-3 col-sm-2 col-xs-1">
+                            <a href="#" class="thumbnail">
+                                <img src="https://via.placeholder.com/260x180" alt="">
+                            </a>
+                        </div>
+                        <div class="col-lg-3 col-sm-2 col-xs-1">
+                            <a href="#" class="thumbnail">
+                                <img src="https://via.placeholder.com/260x180" alt="">
+                            </a>
+                        </div>
+                        <div class="col-lg-3 col-sm-2 col-xs-1">
+                            <a href="#" class="thumbnail">
+                                <img src="https://via.placeholder.com/260x180" alt="">
+                            </a>
+                        </div>
+                        <div class="col-lg-3 col-sm-2 col-xs-1">
+                            <a href="#" class="thumbnail">
+                                <img src="https://via.placeholder.com/260x180" alt="">
+                            </a>
+                        </div>
+                    </div>
 
-    <h2>Highly customizable</h2>
+                    <h2>Highly customizable</h2>
 
-    <p>With a bit of extra markup, it's possible to add any kind of HTML content like headings, paragraphs, or buttons into thumbnails.</p>
+                    <p>With a bit of extra markup, it's possible to add any kind of HTML content like headings, paragraphs, or buttons into
+                        thumbnails.</p>
 
-    <div class="row">
-        <div class="col-lg-4 col-sm-2 col-xs-1">
-            <div class="img-thumbnail">
-                <img src="https://via.placeholder.com/250x200" alt="">
+                    <div class="row">
+                        <div class="col-lg-4 col-sm-2 col-xs-1">
+                            <div class="img-thumbnail">
+                                <img src="https://via.placeholder.com/250x200" alt="">
 
-                <div class="caption">
-                    <h3>Thumbnail label</h3>
+                                <div class="caption">
+                                    <h3>Thumbnail label</h3>
 
-                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.
+                                        Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
 
-                    <p><a href="#" class="btn btn-primary">Action</a> <a href="#" class="btn">Action</a></p>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-sm-2 col-xs-1">
-            <div class="img-thumbnail">
-                <img src="https://via.placeholder.com/250x200" alt="">
+                                    <p><a href="#" class="btn btn-primary">Action</a> <a href="#" class="btn">Action</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-sm-2 col-xs-1">
+                            <div class="img-thumbnail">
+                                <img src="https://via.placeholder.com/250x200" alt="">
 
-                <div class="caption">
-                    <h3>Thumbnail label</h3>
+                                <div class="caption">
+                                    <h3>Thumbnail label</h3>
 
-                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.
+                                        Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
 
-                    <p><a href="#" class="btn btn-primary">Action</a> <a href="#" class="btn">Action</a></p>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-sm-2 col-xs-1">
-            <div class="img-thumbnail">
-                <img src="https://via.placeholder.com/250x200" alt="">
+                                    <p><a href="#" class="btn btn-primary">Action</a> <a href="#" class="btn">Action</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-sm-2 col-xs-1">
+                            <div class="img-thumbnail">
+                                <img src="https://via.placeholder.com/250x200" alt="">
 
-                <div class="caption">
-                    <h3>Thumbnail label</h3>
+                                <div class="caption">
+                                    <h3>Thumbnail label</h3>
 
-                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.
+                                        Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
 
-                    <p><a href="#" class="btn btn-primary">Action</a> <a href="#" class="btn">Action</a></p>
-                </div>
-            </div>
-        </div>
-    </div>
+                                    <p><a href="#" class="btn btn-primary">Action</a> <a href="#" class="btn">Action</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-    <h3>Why use thumbnails</h3>
+                    <h3>Why use thumbnails</h3>
 
-    <p>Thumbnails (previously <code>.media-grid</code> up until v1.4) are great for grids of photos or videos, image search results, retail products, portfolios, and much more. They can be links or static content.</p>
+                    <p>Thumbnails (previously <code>.media-grid</code> up until v1.4) are great for grids of photos or videos, image search results,
+                        retail products, portfolios, and much more. They can be links or static content.</p>
 
-    <h3>Simple, flexible markup</h3>
+                    <h3>Simple, flexible markup</h3>
 
-    <p>Thumbnail markup is simple&mdash;a <code>ul</code> with any number of <code>li</code> elements is all that is required. It's also super flexible, allowing for any type of content with just a bit more markup to wrap your contents.</p>
+                    <p>Thumbnail markup is simple&mdash;a <code>ul</code> with any number of <code>li</code> elements is all that is required. It's
+                        also super flexible, allowing for any type of content with just a bit more markup to wrap your contents.</p>
 
-    <h3>Uses grid column sizes</h3>
+                    <h3>Uses grid column sizes</h3>
 
-    <p>Lastly, the thumbnails component uses existing grid system classes&mdash;like <code>.col-lg-2</code> or <code>.col-lg-3</code>&mdash;for control of thumbnail dimensions.</p>
+                    <p>Lastly, the thumbnails component uses existing grid system classes&mdash;like <code>.col-lg-2</code> or <code>.col-lg-3</code>&mdash;for
+                        control of thumbnail dimensions.</p>
 
-    <h2>Markup</h2>
+                    <h2>Markup</h2>
 
-    <p>As mentioned previously, the required markup for thumbnails is light and straightforward. Here's a look at the default setup <strong>for linked images</strong>:</p>
-<pre class="prettyprint linenums">
+                    <p>As mentioned previously, the required markup for thumbnails is light and straightforward. Here's a look at the default setup
+                        <strong>for linked images</strong>:</p>
+                    <pre class="prettyprint linenums">
 &lt;ul class="thumbnails"&gt;
   &lt;li class="col-lg-4"&gt;
     &lt;a href="#" class="thumbnail"&gt;
@@ -1717,8 +1757,9 @@ Need to stack them on some viewports but not others? Use the responsive versions
   ...
 &lt;/ul&gt;
 </pre>
-    <p>For custom HTML content in thumbnails, the markup changes slightly. To allow block level content anywhere, we swap the <code>&lt;a&gt;</code> for a <code>&lt;div&gt;</code> like so:</p>
-<pre class="prettyprint linenums">
+                    <p>For custom HTML content in thumbnails, the markup changes slightly. To allow block level content anywhere, we swap the <code>&lt;a&gt;</code>
+                        for a <code>&lt;div&gt;</code> like so:</p>
+                    <pre class="prettyprint linenums">
 &lt;ul class="thumbnails"&gt;
   &lt;li class="col-lg-4"&gt;
     &lt;div class="thumbnail"&gt;
@@ -1731,203 +1772,206 @@ Need to stack them on some viewports but not others? Use the responsive versions
 &lt;/ul&gt;
 </pre>
 
-    <h2>More examples</h2>
+                    <h2>More examples</h2>
 
-    <p>Explore all your options with the various grid classes available to you. You can also mix and match different sizes.</p>
-    <div class="row">
-        <div class="col-lg-4">
-            <a href="#" class="thumbnail">
-                <img src="https://via.placeholder.com/360x270" alt="">
-            </a>
-        </div>
-        <div class="col-lg-3">
-            <a href="#" class="thumbnail">
-                <img src="https://via.placeholder.com/260x120" alt="">
-            </a>
-        </div>
-        <div class="col-lg-2">
-            <a href="#" class="thumbnail">
-                <img src="https://via.placeholder.com/160x120" alt="">
-            </a>
-        </div>
-        <div class="col-lg-3">
-            <a href="#" class="thumbnail">
-                <img src="https://via.placeholder.com/260x120" alt="">
-            </a>
-        </div>
-        <div class="col-lg-2">
-            <a href="#" class="thumbnail">
-                <img src="https://via.placeholder.com/160x120" alt="">
-            </a>
-        </div>
-    </div>
+                    <p>Explore all your options with the various grid classes available to you. You can also mix and match different sizes.</p>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <a href="#" class="thumbnail">
+                                <img src="https://via.placeholder.com/360x270" alt="">
+                            </a>
+                        </div>
+                        <div class="col-lg-3">
+                            <a href="#" class="thumbnail">
+                                <img src="https://via.placeholder.com/260x120" alt="">
+                            </a>
+                        </div>
+                        <div class="col-lg-2">
+                            <a href="#" class="thumbnail">
+                                <img src="https://via.placeholder.com/160x120" alt="">
+                            </a>
+                        </div>
+                        <div class="col-lg-3">
+                            <a href="#" class="thumbnail">
+                                <img src="https://via.placeholder.com/260x120" alt="">
+                            </a>
+                        </div>
+                        <div class="col-lg-2">
+                            <a href="#" class="thumbnail">
+                                <img src="https://via.placeholder.com/160x120" alt="">
+                            </a>
+                        </div>
+                    </div>
 
-</section>
+                </section>
 
 
-<!-- Alerts
-================================================== -->
-<section id="alerts">
-    <div class="pb-2 mt-4 mb-2 border-bottom">
-        <h1>Alerts
-            <small>Styles for success, warning, and error messages</small>
-        </h1>
-    </div>
+                <!-- Alerts
+                ================================================== -->
+                <section id="alerts">
+                    <div class="pb-2 mt-4 mb-2 border-bottom">
+                        <h1>Alerts
+                            <small>Styles for success, warning, and error messages</small>
+                        </h1>
+                    </div>
 
-    <h2>Default alert</h2>
+                    <h2>Default alert</h2>
 
-    <p>Wrap any text and an optional dismiss button in <code>.alert</code> for a basic warning alert message.</p>
+                    <p>Wrap any text and an optional dismiss button in <code>.alert</code> for a basic warning alert message.</p>
 
-    <div class="bs-docs-example">
-        <div class="alert alert-warning alert-dismissible">
-            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-            <strong>Warning!</strong> Best check yo self, you're not looking too good.
-        </div>
-    </div>
-<pre class="prettyprint linenums">
+                    <div class="bs-docs-example">
+                        <div class="alert alert-warning alert-dismissible">
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                            <strong>Warning!</strong> Best check yo self, you're not looking too good.
+                        </div>
+                    </div>
+                    <pre class="prettyprint linenums">
 &lt;div class="alert alert-warning"&gt;
   &lt;button type="button" class="btn-close" data-bs-dismiss="alert"&gt;&lt;/button&gt;
   &lt;strong&gt;Warning!&lt;/strong&gt; Best check yo self, you're not looking too good.
 &lt;/div&gt;
 </pre>
 
-    <h3>Dismiss buttons</h3>
+                    <h3>Dismiss buttons</h3>
 
-    <p>Mobile Safari and Mobile Opera browsers, in addition to the <code>data-bs-dismiss="alert"</code> attribute, require an <code>href="#"</code> for the dismissal of alerts when using an <code>&lt;a&gt;</code> tag.</p>
-    <pre class="prettyprint linenums">&lt;a href="#" class="btn-close" data-bs-dismiss="alert"&gt;&lt;/a&gt;</pre>
-    <p>Alternatively, you may use a <code>&lt;button&gt;</code> element with the data attribute, which we have opted to do for our docs. When using <code>&lt;button&gt;</code>, you must include <code>type="button"</code> or your forms may not submit.</p>
-    <pre class="prettyprint linenums">&lt;button type="button" class="btn-close" data-bs-dismiss="alert"&gt;&lt;/button&gt;</pre>
+                    <p>Mobile Safari and Mobile Opera browsers, in addition to the <code>data-bs-dismiss="alert"</code> attribute, require an <code>href="#"</code>
+                        for the dismissal of alerts when using an <code>&lt;a&gt;</code> tag.</p>
+                    <pre class="prettyprint linenums">&lt;a href="#" class="btn-close" data-bs-dismiss="alert"&gt;&lt;/a&gt;</pre>
+                    <p>Alternatively, you may use a <code>&lt;button&gt;</code> element with the data attribute, which we have opted to do for our
+                        docs. When using <code>&lt;button&gt;</code>, you must include <code>type="button"</code> or your forms may not submit.</p>
+                    <pre class="prettyprint linenums">&lt;button type="button" class="btn-close" data-bs-dismiss="alert"&gt;&lt;/button&gt;</pre>
 
-    <h3>Dismiss alerts via JavaScript</h3>
+                    <h3>Dismiss alerts via JavaScript</h3>
 
-    <p>Use the <a href="./javascript#alerts">alerts jQuery plugin</a> for quick and easy dismissal of alerts.</p>
-
-
-    <hr class="bs-docs-separator">
+                    <p>Use the <a href="./javascript#alerts">alerts jQuery plugin</a> for quick and easy dismissal of alerts.</p>
 
 
-    <h2>Options</h2>
+                    <hr class="bs-docs-separator">
 
-    <h2>Contextual alternatives</h2>
 
-    <p>Add optional classes to change an alert's connotation.</p>
+                    <h2>Options</h2>
 
-    <h3>Error or danger</h3>
+                    <h2>Contextual alternatives</h2>
 
-    <div class="bs-docs-example">
-        <div class="alert alert-error alert-dismissible">
-            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-            <strong>Oh snap!</strong> Change a few things up and try submitting again.
-        </div>
-    </div>
-<pre class="prettyprint linenums">
+                    <p>Add optional classes to change an alert's connotation.</p>
+
+                    <h3>Error or danger</h3>
+
+                    <div class="bs-docs-example">
+                        <div class="alert alert-error alert-dismissible">
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                            <strong>Oh snap!</strong> Change a few things up and try submitting again.
+                        </div>
+                    </div>
+                    <pre class="prettyprint linenums">
 &lt;div class="alert alert-error"&gt;
   ...
 &lt;/div&gt;
 </pre>
 
-    <h3>Success</h3>
+                    <h3>Success</h3>
 
-    <div class="bs-docs-example">
-        <div class="alert alert-success alert-dismissible">
-            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-            <strong>Well done!</strong> You successfully read this important alert message.
-        </div>
-    </div>
-<pre class="prettyprint linenums">
+                    <div class="bs-docs-example">
+                        <div class="alert alert-success alert-dismissible">
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                            <strong>Well done!</strong> You successfully read this important alert message.
+                        </div>
+                    </div>
+                    <pre class="prettyprint linenums">
 &lt;div class="alert alert-success"&gt;
   ...
 &lt;/div&gt;
 </pre>
 
-    <h3>Information</h3>
+                    <h3>Information</h3>
 
-    <div class="bs-docs-example">
-        <div class="alert alert-info alert-dismissible">
-            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-            <strong>Heads up!</strong> This alert needs your attention, but it's not super important.
-        </div>
-    </div>
-<pre class="prettyprint linenums">
+                    <div class="bs-docs-example">
+                        <div class="alert alert-info alert-dismissible">
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                            <strong>Heads up!</strong> This alert needs your attention, but it's not super important.
+                        </div>
+                    </div>
+                    <pre class="prettyprint linenums">
 &lt;div class="alert alert-info"&gt;
   ...
 &lt;/div&gt;
 </pre>
 
-</section>
+                </section>
 
 
-<!-- Progress bars
-================================================== -->
-<section id="progress">
-    <div class="pb-2 mt-4 mb-2 border-bottom">
-        <h1>Progress bars
-            <small>For loading, redirecting, or action status</small>
-        </h1>
-    </div>
+                <!-- Progress bars
+                ================================================== -->
+                <section id="progress">
+                    <div class="pb-2 mt-4 mb-2 border-bottom">
+                        <h1>Progress bars
+                            <small>For loading, redirecting, or action status</small>
+                        </h1>
+                    </div>
 
-    <h2>Examples and markup</h2>
+                    <h2>Examples and markup</h2>
 
-    <h3>Basic</h3>
+                    <h3>Basic</h3>
 
-    <p>Default progress bar with a vertical gradient.</p>
+                    <p>Default progress bar with a vertical gradient.</p>
 
-    <div class="bs-docs-example">
-        <div wicket:id="basic"></div>
-    </div>
-<pre class="prettyprint linenums">
+                    <div class="bs-docs-example">
+                        <div wicket:id="basic"></div>
+                    </div>
+                    <pre class="prettyprint linenums">
 &lt;div class="progress"&gt;
   &lt;div class="progress-bar" style="width: 60%;"&gt;&lt;/div&gt;
 &lt;/div&gt;
 </pre>
 
-    <h3>Striped</h3>
+                    <h3>Striped</h3>
 
-    <p>Uses a gradient to create a striped effect. Not available in IE7-8.</p>
+                    <p>Uses a gradient to create a striped effect. Not available in IE7-8.</p>
 
-    <div class="bs-docs-example">
-        <div wicket:id="striped"></div>
-    </div>
-<pre class="prettyprint linenums">
+                    <div class="bs-docs-example">
+                        <div wicket:id="striped"></div>
+                    </div>
+                    <pre class="prettyprint linenums">
 &lt;div class="progress"&gt;
   &lt;div class="progress-bar progress-bar-striped" style="width: 20%;"&gt;&lt;/div&gt;
 &lt;/div&gt;
 </pre>
 
-    <h3>Animated</h3>
+                    <h3>Animated</h3>
 
-    <p>Add <code>.progress-bar-animated</code> to <code>.progress-bar-striped</code> to animate the stripes right to left. Not available in all versions of IE.</p>
+                    <p>Add <code>.progress-bar-animated</code> to <code>.progress-bar-striped</code> to animate the stripes right to left. Not
+                        available in all versions of IE.</p>
 
-    <div class="bs-docs-example">
-        <div wicket:id="animated"></div>
-    </div>
-    <pre class="prettyprint linenums">
+                    <div class="bs-docs-example">
+                        <div wicket:id="animated"></div>
+                    </div>
+                    <pre class="prettyprint linenums">
 &lt;div class="progress"&gt;
   &lt;div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 40%;"&gt;&lt;/div&gt;
 &lt;/div&gt;
     </pre>
 
-    <h3>Labeled</h3>
+                    <h3>Labeled</h3>
 
-    <p>Use <code>Stack#labeled(true)</code> to show the stack's label.</p>
+                    <p>Use <code>Stack#labeled(true)</code> to show the stack's label.</p>
 
-    <div class="bs-docs-example">
-        <div wicket:id="labeled" style="height: 20px"></div>
-    </div>
-<pre class="prettyprint linenums">
+                    <div class="bs-docs-example">
+                        <div wicket:id="labeled" style="height: 20px"></div>
+                    </div>
+                    <pre class="prettyprint linenums">
 &lt;div class="progress"&gt;
   &lt;div class="progress-bar" style="width: 40%;"&gt;&lt;/div&gt;
 &lt;/div&gt;
 </pre>
 
-    <h3>Stacked</h3>
+                    <h3>Stacked</h3>
 
-    <p>Place multiple bars into the same <code>.progress</code> to stack them.</p>
+                    <p>Place multiple bars into the same <code>.progress</code> to stack them.</p>
 
-    <div class="bs-docs-example">
-        <div wicket:id="stacked"></div>
-    </div>
-<pre class="prettyprint linenums">
+                    <div class="bs-docs-example">
+                        <div wicket:id="stacked"></div>
+                    </div>
+                    <pre class="prettyprint linenums">
 &lt;div class="progress"&gt;
   &lt;div class="progress-bar bg-success" style="width: 35%;"&gt;&lt;/div&gt;
   &lt;div class="progress-bar bg-warning" style="width: 20%;"&gt;&lt;/div&gt;
@@ -1936,22 +1980,22 @@ Need to stack them on some viewports but not others? Use the responsive versions
 </pre>
 
 
-    <hr class="bs-docs-separator">
+                    <hr class="bs-docs-separator">
 
 
-    <h2>Options</h2>
+                    <h2>Options</h2>
 
-    <h3>Additional colors</h3>
+                    <h3>Additional colors</h3>
 
-    <p>Progress bars use background color utility classes for consistent styles.</p>
+                    <p>Progress bars use background color utility classes for consistent styles.</p>
 
-    <div class="bs-docs-example">
-        <div wicket:id="coloredInfo" style="margin-bottom: 9px;"></div>
-        <div wicket:id="coloredSuccess" style="margin-bottom: 9px;"></div>
-        <div wicket:id="coloredWarning" style="margin-bottom: 9px;"></div>
-        <div wicket:id="coloredDanger"></div>
-    </div>
-<pre class="prettyprint linenums">
+                    <div class="bs-docs-example">
+                        <div wicket:id="coloredInfo" style="margin-bottom: 9px;"></div>
+                        <div wicket:id="coloredSuccess" style="margin-bottom: 9px;"></div>
+                        <div wicket:id="coloredWarning" style="margin-bottom: 9px;"></div>
+                        <div wicket:id="coloredDanger"></div>
+                    </div>
+                    <pre class="prettyprint linenums">
 &lt;div class="progress"&gt;
   &lt;div class="progress-bar bg-info" style="width: 20%"&gt;&lt;/div&gt;
 &lt;/div&gt;
@@ -1966,25 +2010,25 @@ Need to stack them on some viewports but not others? Use the responsive versions
 &lt;/div&gt;
 </pre>
 
-    <h3>Striped bars</h3>
+                    <h3>Striped bars</h3>
 
-    <p>Similar to the solid colors, we have varied striped progress bars.</p>
+                    <p>Similar to the solid colors, we have varied striped progress bars.</p>
 
-    <div class="bs-docs-example">
-        <div class="progress" style="margin-bottom: 9px;">
-            <div class="progress-bar progress-bar-striped bg-info " style="width: 20%"></div>
-        </div>
-        <div class="progress" style="margin-bottom: 9px;">
-            <div class="progress-bar progress-bar-striped bg-success" style="width: 40%"></div>
-        </div>
-        <div class="progress" style="margin-bottom: 9px;">
-            <div class="progress-bar progress-bar-striped bg-warning" style="width: 60%"></div>
-        </div>
-        <div class="progress">
-            <div class="progress-bar progress-bar-striped bg-danger" style="width: 80%"></div>
-        </div>
-    </div>
-<pre class="prettyprint linenums">
+                    <div class="bs-docs-example">
+                        <div class="progress" style="margin-bottom: 9px;">
+                            <div class="progress-bar progress-bar-striped bg-info " style="width: 20%"></div>
+                        </div>
+                        <div class="progress" style="margin-bottom: 9px;">
+                            <div class="progress-bar progress-bar-striped bg-success" style="width: 40%"></div>
+                        </div>
+                        <div class="progress" style="margin-bottom: 9px;">
+                            <div class="progress-bar progress-bar-striped bg-warning" style="width: 60%"></div>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-striped bg-danger" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    <pre class="prettyprint linenums">
 &lt;div class="progress"&gt;
   &lt;div class="progress-bar progress-bar-striped bg-info" style="width: 20%"&gt;&lt;/div&gt;
 &lt;/div&gt;
@@ -2000,72 +2044,80 @@ Need to stack them on some viewports but not others? Use the responsive versions
 </pre>
 
 
-    <hr class="bs-docs-separator">
+                    <hr class="bs-docs-separator">
 
-    <h3>Updatable bars</h3>
+                    <h3>Updatable bars</h3>
 
-    <p>A ProgressBar with self updating Ajax behavior.</p>
+                    <p>A ProgressBar with self updating Ajax behavior.</p>
 
-    <div class="bs-docs-example">
-        <div wicket:id="updatable"></div>
-    </div>
-
-    <hr class="bs-docs-separator">
-
-    <h2>Browser support</h2>
-
-    <p>Progress bars use CSS3 gradients, transitions, and animations to achieve all their effects. These features are not supported in IE7-9 or older versions of Firefox.</p>
-
-    <p>Versions earlier than Internet Explorer 10 and Opera 12 do not support animations.</p>
-
-</section>
-
-
-<!-- Media object
-================================================== -->
-<section id="media">
-    <div class="pb-2 mt-4 mb-2 border-bottom">
-        <h1>Media object</h1>
-    </div>
-    <p class="lead">Abstract object styles for building various types of components (like blog comments, Tweets, etc) that feature a left- or right-aligned image alongside textual content.</p>
-
-    <h2>Default example</h2>
-
-    <p>The default media allow to float a media object (images, video, audio) to the left or right of a content block.</p>
-
-    <div class="bs-docs-example">
-        <div class="media">
-            <a class="media-left" href="#">
-                <img class="media-object" src="https://via.placeholder.com/64x64">
-            </a>
-
-            <div class="media-body">
-                <h4 class="media-heading">Media heading</h4>
-                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-            </div>
-        </div>
-        <div class="media">
-            <a class="media-left" href="#">
-                <img class="media-object" src="https://via.placeholder.com/64x64">
-            </a>
-
-            <div class="media-body">
-                <h4 class="media-heading">Media heading</h4>
-                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                <div class="media">
-                    <a class="media-left" href="#">
-                        <img class="media-object" src="https://via.placeholder.com/64x64">
-                    </a>
-
-                    <div class="media-body">
-                        <h4 class="media-heading">Media heading</h4>
-                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                    <div class="bs-docs-example">
+                        <div wicket:id="updatable"></div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-<pre class="prettyprint linenums">
+
+                    <hr class="bs-docs-separator">
+
+                    <h2>Browser support</h2>
+
+                    <p>Progress bars use CSS3 gradients, transitions, and animations to achieve all their effects. These features are not supported in
+                        IE7-9 or older versions of Firefox.</p>
+
+                    <p>Versions earlier than Internet Explorer 10 and Opera 12 do not support animations.</p>
+
+                </section>
+
+
+                <!-- Media object
+                ================================================== -->
+                <section id="media">
+                    <div class="pb-2 mt-4 mb-2 border-bottom">
+                        <h1>Media object</h1>
+                    </div>
+                    <p class="lead">Abstract object styles for building various types of components (like blog comments, Tweets, etc) that feature a
+                        left- or right-aligned image alongside textual content.</p>
+
+                    <h2>Default example</h2>
+
+                    <p>The default media allow to float a media object (images, video, audio) to the left or right of a content block.</p>
+
+                    <div class="bs-docs-example">
+                        <div class="media">
+                            <a class="media-left" href="#">
+                                <img class="media-object" src="https://via.placeholder.com/64x64">
+                            </a>
+
+                            <div class="media-body">
+                                <h4 class="media-heading">Media heading</h4>
+                                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio,
+                                vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia
+                                congue felis in faucibus.
+                            </div>
+                        </div>
+                        <div class="media">
+                            <a class="media-left" href="#">
+                                <img class="media-object" src="https://via.placeholder.com/64x64">
+                            </a>
+
+                            <div class="media-body">
+                                <h4 class="media-heading">Media heading</h4>
+                                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio,
+                                vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia
+                                congue felis in faucibus.
+                                <div class="media">
+                                    <a class="media-left" href="#">
+                                        <img class="media-object" src="https://via.placeholder.com/64x64">
+                                    </a>
+
+                                    <div class="media-body">
+                                        <h4 class="media-heading">Media heading</h4>
+                                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus
+                                        odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla.
+                                        Donec lacinia congue felis in faucibus.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <pre class="prettyprint linenums">
 &lt;div class="media"&gt;
   &lt;a class="media-left" href="#"&gt;
     &lt;img class="media-object" src="https://via.placeholder.com/64x64"&gt;
@@ -2083,72 +2135,77 @@ Need to stack them on some viewports but not others? Use the responsive versions
 </pre>
 
 
-    <hr class="bs-docs-separator">
+                    <hr class="bs-docs-separator">
 
 
-    <h2>Media list</h2>
+                    <h2>Media list</h2>
 
-    <p>With a bit of extra markup, you can use media inside list (useful for comment threads or articles lists).</p>
+                    <p>With a bit of extra markup, you can use media inside list (useful for comment threads or articles lists).</p>
 
-    <div class="bs-docs-example">
-        <ul class="media-list">
-            <li class="media">
-                <a class="media-left" href="#">
-                    <img class="media-object" src="https://via.placeholder.com/64x64">
-                </a>
-
-                <div class="media-body">
-                    <h4 class="media-heading">Media heading</h4>
-
-                    <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.</p>
-                    <!-- Nested media object -->
-                    <div class="media">
-                        <a class="media-left" href="#">
-                            <img class="media-object" src="https://via.placeholder.com/64x64">
-                        </a>
-
-                        <div class="media-body">
-                            <h4 class="media-heading">Nested media heading</h4>
-                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
-                            <!-- Nested media object -->
-                            <div class="media">
+                    <div class="bs-docs-example">
+                        <ul class="media-list">
+                            <li class="media">
                                 <a class="media-left" href="#">
                                     <img class="media-object" src="https://via.placeholder.com/64x64">
                                 </a>
 
                                 <div class="media-body">
-                                    <h4 class="media-heading">Nested media heading</h4>
-                                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
+                                    <h4 class="media-heading">Media heading</h4>
+
+                                    <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus
+                                        odio, vestibulum in vulputate at, tempus viverra turpis.</p>
+                                    <!-- Nested media object -->
+                                    <div class="media">
+                                        <a class="media-left" href="#">
+                                            <img class="media-object" src="https://via.placeholder.com/64x64">
+                                        </a>
+
+                                        <div class="media-body">
+                                            <h4 class="media-heading">Nested media heading</h4>
+                                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras
+                                            purus odio, vestibulum in vulputate at, tempus viverra turpis.
+                                            <!-- Nested media object -->
+                                            <div class="media">
+                                                <a class="media-left" href="#">
+                                                    <img class="media-object" src="https://via.placeholder.com/64x64">
+                                                </a>
+
+                                                <div class="media-body">
+                                                    <h4 class="media-heading">Nested media heading</h4>
+                                                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin
+                                                    commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Nested media object -->
+                                    <div class="media">
+                                        <a class="media-left" href="#">
+                                            <img class="media-object" src="https://via.placeholder.com/64x64">
+                                        </a>
+
+                                        <div class="media-body">
+                                            <h4 class="media-heading">Nested media heading</h4>
+                                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras
+                                            purus odio, vestibulum in vulputate at, tempus viverra turpis.
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Nested media object -->
-                    <div class="media">
-                        <a class="media-left" href="#">
-                            <img class="media-object" src="https://via.placeholder.com/64x64">
-                        </a>
+                            </li>
+                            <li class="media">
+                                <a class="media-right" href="#">
+                                    <img class="media-object" src="https://via.placeholder.com/64x64">
+                                </a>
 
-                        <div class="media-body">
-                            <h4 class="media-heading">Nested media heading</h4>
-                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
-                        </div>
+                                <div class="media-body">
+                                    <h4 class="media-heading">Media heading</h4>
+                                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus
+                                    odio, vestibulum in vulputate at, tempus viverra turpis.
+                                </div>
+                            </li>
+                        </ul>
                     </div>
-                </div>
-            </li>
-            <li class="media">
-                <a class="media-right" href="#">
-                    <img class="media-object" src="https://via.placeholder.com/64x64">
-                </a>
-
-                <div class="media-body">
-                    <h4 class="media-heading">Media heading</h4>
-                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
-                </div>
-            </li>
-        </ul>
-    </div>
-<pre class="prettyprint linenums">
+                    <pre class="prettyprint linenums">
 &lt;ul class="media-list"&gt;
   &lt;li class="media"&gt;
     &lt;a class="media-left" href="#"&gt;
@@ -2167,117 +2224,117 @@ Need to stack them on some viewports but not others? Use the responsive versions
 &lt;/ul&gt;
 </pre>
 
-</section>
+                </section>
 
 
-<!-- Miscellaneous
-================================================== -->
-<section id="misc">
-    <div class="pb-2 mt-4 mb-2 border-bottom">
-        <h1>Miscellaneous
-            <small>Lightweight utility components</small>
-        </h1>
-    </div>
+                <!-- Miscellaneous
+                ================================================== -->
+                <section id="misc">
+                    <div class="pb-2 mt-4 mb-2 border-bottom">
+                        <h1>Miscellaneous
+                            <small>Lightweight utility components</small>
+                        </h1>
+                    </div>
 
-    <h2>Wells</h2>
+                    <h2>Wells</h2>
 
-    <p>Use the well as a simple effect on an element to give it an inset effect.</p>
+                    <p>Use the well as a simple effect on an element to give it an inset effect.</p>
 
-    <div class="bs-docs-example">
-        <div class="well">
-            Look, I'm in a well!
-        </div>
-    </div>
-<pre class="prettyprint linenums">
+                    <div class="bs-docs-example">
+                        <div class="well">
+                            Look, I'm in a well!
+                        </div>
+                    </div>
+                    <pre class="prettyprint linenums">
 &lt;div class="well"&gt;
   ...
 &lt;/div&gt;
 </pre>
-    <h3>Optional classes</h3>
+                    <h3>Optional classes</h3>
 
-    <p>Control padding and rounded corners with two optional modifier classes.</p>
+                    <p>Control padding and rounded corners with two optional modifier classes.</p>
 
-    <div class="bs-docs-example">
-        <div class="well well-large">
-            Look, I'm in a well!
-        </div>
-    </div>
-<pre class="prettyprint linenums">
+                    <div class="bs-docs-example">
+                        <div class="well well-large">
+                            Look, I'm in a well!
+                        </div>
+                    </div>
+                    <pre class="prettyprint linenums">
 &lt;div class="well well-lg"&gt;
   ...
 &lt;/div&gt;
 </pre>
-    <div class="bs-docs-example">
-        <div class="well well-sm">
-            Look, I'm in a well!
-        </div>
-    </div>
-<pre class="prettyprint linenums">
+                    <div class="bs-docs-example">
+                        <div class="well well-sm">
+                            Look, I'm in a well!
+                        </div>
+                    </div>
+                    <pre class="prettyprint linenums">
 &lt;div class="well well-sm"&gt;
   ...
 &lt;/div&gt;
 </pre>
 
-    <h2>Close icon</h2>
+                    <h2>Close icon</h2>
 
-    <p>Use the generic close icon for dismissing content like modals and alerts.</p>
+                    <p>Use the generic close icon for dismissing content like modals and alerts.</p>
 
-    <div class="bs-docs-example">
-        <p>
-            <button type="button" class="btn-close" style="float: none;"></button>
-        </p>
-    </div>
-    <pre class="prettyprint linenums">&lt;button class="btn-close"&gt;&lt;/button&gt;</pre>
-    <p>iOS devices require an href="#" for click events if you would rather use an anchor.</p>
-    <pre class="prettyprint linenums">&lt;a class="btn-close" href="#"&gt;&lt;/a&gt;</pre>
+                    <div class="bs-docs-example">
+                        <p>
+                            <button type="button" class="btn-close" style="float: none;"></button>
+                        </p>
+                    </div>
+                    <pre class="prettyprint linenums">&lt;button class="btn-close"&gt;&lt;/button&gt;</pre>
+                    <p>iOS devices require an href="#" for click events if you would rather use an anchor.</p>
+                    <pre class="prettyprint linenums">&lt;a class="btn-close" href="#"&gt;&lt;/a&gt;</pre>
 
-    <h2>Helper classes</h2>
+                    <h2>Helper classes</h2>
 
-    <p>Simple, focused classes for small display or behavior tweaks.</p>
+                    <p>Simple, focused classes for small display or behavior tweaks.</p>
 
-    <h4>.pull-left</h4>
+                    <h4>.pull-left</h4>
 
-    <p>Float an element left</p>
-<pre class="prettyprint linenums">
+                    <p>Float an element left</p>
+                    <pre class="prettyprint linenums">
 class="pull-left"
 </pre>
-<pre class="prettyprint linenums">
+                    <pre class="prettyprint linenums">
 .pull-left {
   float: left;
 }
 </pre>
 
-    <h4>.pull-right</h4>
+                    <h4>.pull-right</h4>
 
-    <p>Float an element right</p>
-<pre class="prettyprint linenums">
+                    <p>Float an element right</p>
+                    <pre class="prettyprint linenums">
 class="pull-right"
 </pre>
-<pre class="prettyprint linenums">
+                    <pre class="prettyprint linenums">
 .pull-right {
   float: right;
 }
 </pre>
 
-    <h4>.text-muted</h4>
+                    <h4>.text-muted</h4>
 
-    <p>Change an element's color to <code>#999</code></p>
-<pre class="prettyprint linenums">
+                    <p>Change an element's color to <code>#999</code></p>
+                    <pre class="prettyprint linenums">
 class="text-muted"
 </pre>
-<pre class="prettyprint linenums">
+                    <pre class="prettyprint linenums">
 .text-muted {
   color: #999;
 }
 </pre>
 
-    <h4>.clearfix</h4>
+                    <h4>.clearfix</h4>
 
-    <p>Clear the <code>float</code> on any element</p>
-<pre class="prettyprint linenums">
+                    <p>Clear the <code>float</code> on any element</p>
+                    <pre class="prettyprint linenums">
 class="clearfix"
 </pre>
-<pre class="prettyprint linenums">
+                    <pre class="prettyprint linenums">
 .clearfix {
   *zoom: 1;
   &:before,
@@ -2291,10 +2348,10 @@ class="clearfix"
 }
 </pre>
 
-</section>
-</div>
-</div>
-</div>
+                </section>
+            </div>
+        </div>
+    </div>
 </wicket:extend>
 </body>
 </html>

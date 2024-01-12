@@ -3,7 +3,6 @@ package de.agilecoders.wicket.samples.pages;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
-
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
@@ -17,7 +16,6 @@ import org.apache.wicket.model.Model;
 import org.apache.wicket.protocol.http.WebSession;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.util.string.StringValue;
-
 import de.agilecoders.wicket.core.Bootstrap;
 import de.agilecoders.wicket.core.markup.html.bootstrap.block.Code;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.BootstrapExternalLink;
@@ -25,18 +23,19 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.DropDown
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.MenuBookmarkablePageLink;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.MenuDivider;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.MenuHeader;
+import de.agilecoders.wicket.core.markup.html.bootstrap.utilities.BackgroundColorBehavior.BackgroundColor;
 import de.agilecoders.wicket.core.markup.html.bootstrap.html.HtmlTag;
 import de.agilecoders.wicket.core.markup.html.bootstrap.html.IeEdgeMetaTag;
 import de.agilecoders.wicket.core.markup.html.bootstrap.html.MetaTag;
 import de.agilecoders.wicket.core.markup.html.bootstrap.html.MobileViewportMetaTag;
 import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.ImmutableNavbarComponent;
 import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.Navbar;
+import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.Navbar.Position;
 import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.NavbarButton;
 import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.NavbarComponents;
 import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.NavbarDropDownButton;
 import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.NavbarExternalLink;
 import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.NavbarText;
-import de.agilecoders.wicket.core.markup.html.bootstrap.utilities.BackgroundColorBehavior;
 import de.agilecoders.wicket.core.markup.html.references.BootlintHeaderItem;
 import de.agilecoders.wicket.core.settings.IBootstrapSettings;
 import de.agilecoders.wicket.core.settings.ITheme;
@@ -53,6 +52,7 @@ import de.agilecoders.wicket.samples.components.site.Footer;
  * @author miha
  */
 abstract class BasePage extends GenericWebPage<Void> {
+
     private static final long serialVersionUID = 1L;
 
     /**
@@ -96,24 +96,25 @@ abstract class BasePage extends GenericWebPage<Void> {
      */
     protected Navbar newNavbar(String markupId) {
         Navbar navbar = new Navbar(markupId)
-                .setPosition(Navbar.Position.TOP)
-                .setInverted(true)
-                .setBackgroundColor(BackgroundColorBehavior.Color.Dark);
+            .setPosition(Position.TOP)
+            .setInverted(true)
+            .setBackgroundColor(BackgroundColor.Dark)
+            .fluid(true);
 
         // show brand name
         navbar.setBrandName(Model.of("Wicket Bootstrap"));
 
         navbar.addComponents(NavbarComponents.transform(Navbar.ComponentPosition.LEFT,
-                        new NavbarButton<Void>(HomePage.class, Model.of("Overview")).setIconType(FontAwesome6IconType.house_s),
-                        new NavbarButton<Void>(BaseCssPage.class, Model.of("Base CSS")),
-                        new NavbarButton<Void>(ComponentsPage.class, Model.of("Components")),
-                        new NavbarButton<Void>(UtilitiesPage.class, Model.of("Utilities")),
-                        new NavbarExternalLink(Model.of("https://github.com/l0rdn1kk0n/wicket-bootstrap"))
-                                .setLabel(Model.of("Github"))
-                                .setTarget(BootstrapExternalLink.Target.blank)
-                                .setIconType(FontAwesome6IconType.upload_s),
-                        newAddonsDropDownButton(),
-                        newExamplesDropDownButton())
+            new NavbarButton<Void>(HomePage.class, Model.of("Overview")).setIconType(FontAwesome6IconType.house_s),
+            new NavbarButton<Void>(BaseCssPage.class, Model.of("Base CSS")),
+            new NavbarButton<Void>(ComponentsPage.class, Model.of("Components")),
+            new NavbarButton<Void>(UtilitiesPage.class, Model.of("Utilities")),
+            new NavbarExternalLink(Model.of("https://github.com/l0rdn1kk0n/wicket-bootstrap"))
+                .setLabel(Model.of("Github"))
+                .setTarget(BootstrapExternalLink.Target.blank)
+                .setIconType(FontAwesome6IconType.upload_s),
+            newAddonsDropDownButton(),
+            newExamplesDropDownButton())
         );
         navbar.addComponents(new NavbarText(navbar.newExtraItemId(), "Plain text").position(Navbar.ComponentPosition.RIGHT));
 

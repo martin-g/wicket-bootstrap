@@ -33,8 +33,9 @@ module wicket.bootstrap.core {
     exports de.agilecoders.wicket.core.markup.html.themes.bootstrap;
     exports de.agilecoders.wicket.core.settings;
     exports de.agilecoders.wicket.core.util;
+	exports de.agilecoders.wicket.core.markup.html.bootstrap.helpers;
 
-    requires org.apache.commons.lang3;
+	requires org.apache.commons.lang3;
 
     requires org.apache.wicket.core;
     requires org.apache.wicket.extensions;

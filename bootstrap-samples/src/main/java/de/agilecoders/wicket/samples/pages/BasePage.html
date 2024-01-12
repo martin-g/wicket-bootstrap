@@ -9,18 +9,31 @@
         <meta wicket:id="ie-edge">
         <link rel="shortcut icon" href="/demo/ico/favicon.ico">
         <wicket:header-items/>
+
+        <script type="application/javascript">
+            document.addEventListener("DOMContentLoaded", () => {
+                // Its flub but handles the margin-top problem of the content, because of the navbar which has position absolute.
+                let header = document.getElementById('navHeaderContainer');
+                let navbar = header.children[0];
+                document.getElementById('mainContainer').style.marginTop = (Math.ceil(navbar.getBoundingClientRect().height / 10) * 10) + "px";
+            });
+        </script>
     </head>
 
-    <body style="padding-top: 60px">
+    <body>
         <a name="top" style="display: none;"></a>
         <a class="visually-hidden" href="#content">Skip navigation</a>
 
-        <header wicket:id="navbar" class="bs-docs-nav"></header>
+        <header id="navHeaderContainer">
+            <div wicket:id="navbar" class="bs-docs-nav"></div>
+        </header>
 
-        <wicket:child/>
-        <wicket:container wicket:id="footer"></wicket:container>
+        <main id="mainContainer" class="container">
+            <wicket:child/>
+            <wicket:container wicket:id="footer"></wicket:container>
 
-        <pre style="display:none" wicket:id="code-internal"></pre>
+            <pre style="display:none" wicket:id="code-internal"></pre>
+        </main>
         <wicket:container wicket:id="footer-container"/>
     </body>
 </html>

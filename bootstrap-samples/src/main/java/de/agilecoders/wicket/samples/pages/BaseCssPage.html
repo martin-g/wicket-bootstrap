@@ -1,157 +1,168 @@
 <!DOCTYPE html>
 <html xmlns:wicket="http://wicket.apache.org">
 <head>
-    <meta charset="utf-8"/>
-    <title>BaseCssPage</title>
+	<meta charset="utf-8" />
+	<title>BaseCssPage</title>
 </head>
 <body>
 <wicket:extend>
-<!-- Docs page layout -->
-<header class="jumbotron subhead" id="content">
-    <div class="container">
-        <h1>CSS</h1>
+	<!-- Docs page layout -->
+	<header class="p-5 rounded-3 text-bg-secondary mb-3 subhead" id="content">
+		<div class="container">
+			<h1>CSS</h1>
+			<p>Global CSS settings, fundamental HTML elements styled and enhanced with extensible classes, and an advanced grid system.</p>
+		</div>
+	</header>
 
-        <p>Global CSS settings, fundamental HTML elements styled and enhanced with extensible classes, and an advanced grid system.</p>
-    </div>
-</header>
+	<div class="bs-old-docs">
+		<div class="container">
+			Looking for the Bootstrap 5 docs? <a href="https://getbootstrap.com/docs/5.3/getting-started/introduction/">Bootstrap 5 documentation</a>
+		</div>
+	</div>
 
-<!-- Callout for the old docs link -->
-<div class="bs-old-docs">
-    <div class="container">
-        <strong>
-            <a href="../2.3.2/">Looking for Bootstrap 2.3.2 docs?</a>
-        </strong>
-        We've moved it to a new home while we push forward with Bootstrap 3. <a href="http://blog.getbootstrap.com/">Read the blog</a> for details.
-    </div>
-</div>
+	<div class="container-fluid bs-docs-container">
+		<div class="row">
+			<div class="col-md-3">
+				<div class="bs-sidebar hidden-print mt-4" role="complementary">
+					<ul wicket:id="navigation" class="nav flex-column bs-sidenav">
+						<li class="nav-item"><a href="#typography">Typography</a></li>
+						<li class="nav-item"><a href="#code">Code</a></li>
+						<li class="nav-item"><a href="#tables">Tables</a></li>
+						<li class="nav-item"><a href="#forms">Forms</a></li>
+						<li class="nav-item"><a href="#buttons">Buttons</a></li>
+						<li class="nav-item"><a href="#images">Images</a></li>
+						<li class="nav-item"><a href="#icons">Icons by Glyphicons</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-md-9">
+
+				<!-- Typography
+				================================================== -->
+				<section id="typography">
+					<div class="pb-2 mt-4 mb-2 border-bottom">
+						<h1>Typography</h1>
+					</div>
+
+					<h2 id="headings">Headings</h2>
+
+					<p>All HTML headings, <code>&lt;h1&gt;</code> through <code>&lt;h6&gt;</code> are available.</p>
+
+					<div class="bs-docs-example">
+						<h1>h1. Heading 1</h1>
+
+						<h2>h2. Heading 2</h2>
+
+						<h3>h3. Heading 3</h3>
+						<h4>h4. Heading 4</h4>
+						<h5>h5. Heading 5</h5>
+						<h6>h6. Heading 6</h6>
+					</div>
+
+					<h2 id="body-copy">Body copy</h2>
+
+					<p>Bootstrap's global default <code>font-size</code> is <strong>14px</strong>, with a <code>line-height</code> of
+						<strong>20px</strong>. This is applied to the <code>&lt;body&gt;</code> and all paragraphs. In addition,
+						<code>&lt;p&gt;</code>
+						(paragraphs) receive a bottom margin of half their line-height (10px by default).</p>
+
+					<div class="bs-docs-example">
+						<p>Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes,
+							nascetur
+							ridiculus mus. Nullam id dolor id nibh ultricies vehicula.</p>
+
+						<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus
+							auctor
+							fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec
+							ullamcorper
+							nulla non metus auctor fringilla.</p>
+
+						<p>Maecenas sed diam eget risus varius blandit sit amet non magna. Donec id elit non mi porta gravida at eget metus. Duis
+							mollis,
+							est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
+					</div>
+					<pre class="prettyprint">&lt;p&gt;...&lt;/p&gt;</pre>
+
+					<h3>Lead body copy</h3>
+
+					<p>Make a paragraph stand out by adding <code>.lead</code>.</p>
+
+					<div class="bs-docs-example">
+						<p class="lead">Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo
+							luctus.</p>
+					</div>
+					<pre class="prettyprint">&lt;p class="lead"&gt;...&lt;/p&gt;</pre>
+
+					<h3>Built with Less</h3>
+
+					<p>The typographic scale is based on two LESS variables in <strong>variables.less</strong>: <code>@baseFontSize</code> and <code>@baseLineHeight</code>.
+						The first is the base font-size used throughout and the second is the base line-height. We use those variables and some simple
+						math to create the margins, paddings, and line-heights of all our type and more. Customize them and Bootstrap adapts.</p>
 
 
-<div class="container bs-docs-container">
-<div class="row">
-<div class="col-md-3">
-    <div class="bs-sidebar hidden-print" role="complementary">
-        <ul wicket:id="navigation" class="nav bs-sidenav">
-            <li><a href="#typography">Typography</a></li>
-            <li><a href="#code">Code</a></li>
-            <li><a href="#tables">Tables</a></li>
-            <li><a href="#forms">Forms</a></li>
-            <li><a href="#buttons">Buttons</a></li>
-            <li><a href="#images">Images</a></li>
-            <li><a href="#icons">Icons by Glyphicons</a></li>
-        </ul>
-    </div>
-</div>
-<div class="col-md-9">
+					<hr class="bs-docs-separator">
 
 
-<!-- Typography
-================================================== -->
-<section id="typography">
-<div class="pb-2 mt-4 mb-2 border-bottom">
-    <h1>Typography</h1>
-</div>
+					<h2 id="emphasis">Emphasis</h2>
 
-<h2 id="headings">Headings</h2>
+					<p>Make use of HTML's default emphasis tags with lightweight styles.</p>
 
-<p>All HTML headings, <code>&lt;h1&gt;</code> through <code>&lt;h6&gt;</code> are available.</p>
+					<h3><code>&lt;small&gt;</code></h3>
 
-<div class="bs-docs-example">
-    <h1>h1. Heading 1</h1>
-
-    <h2>h2. Heading 2</h2>
-
-    <h3>h3. Heading 3</h3>
-    <h4>h4. Heading 4</h4>
-    <h5>h5. Heading 5</h5>
-    <h6>h6. Heading 6</h6>
-</div>
-
-<h2 id="body-copy">Body copy</h2>
-
-<p>Bootstrap's global default <code>font-size</code> is <strong>14px</strong>, with a <code>line-height</code> of <strong>20px</strong>. This is applied to the <code>&lt;body&gt;</code> and all paragraphs. In addition, <code>&lt;p&gt;</code> (paragraphs) receive a bottom margin of half their line-height (10px by default).</p>
-
-<div class="bs-docs-example">
-    <p>Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.</p>
-
-    <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.</p>
-
-    <p>Maecenas sed diam eget risus varius blandit sit amet non magna. Donec id elit non mi porta gravida at eget metus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
-</div>
-<pre class="prettyprint">&lt;p&gt;...&lt;/p&gt;</pre>
-
-<h3>Lead body copy</h3>
-
-<p>Make a paragraph stand out by adding <code>.lead</code>.</p>
-
-<div class="bs-docs-example">
-    <p class="lead">Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus.</p>
-</div>
-<pre class="prettyprint">&lt;p class="lead"&gt;...&lt;/p&gt;</pre>
-
-<h3>Built with Less</h3>
-
-<p>The typographic scale is based on two LESS variables in <strong>variables.less</strong>: <code>@baseFontSize</code> and <code>@baseLineHeight</code>. The first is the base font-size used throughout and the second is the base line-height. We use those variables and some simple math to create the margins, paddings, and line-heights of all our type and more. Customize them and Bootstrap adapts.</p>
-
-
-<hr class="bs-docs-separator">
-
-
-<h2 id="emphasis">Emphasis</h2>
-
-<p>Make use of HTML's default emphasis tags with lightweight styles.</p>
-
-<h3><code>&lt;small&gt;</code></h3>
-
-<p>For de-emphasizing inline or blocks of text,
-    <small>use the small tag.</small>
-</p>
-<div class="bs-docs-example">
-    <p>
-        <small>This line of text is meant to be treated as fine print.</small>
-    </p>
-</div>
-<pre class="prettyprint">
+					<p>For de-emphasizing inline or blocks of text,
+						<small>use the small tag.</small>
+					</p>
+					<div class="bs-docs-example">
+						<p>
+							<small>This line of text is meant to be treated as fine print.</small>
+						</p>
+					</div>
+					<pre class="prettyprint">
 &lt;p&gt;
   &lt;small&gt;This line of text is meant to be treated as fine print.&lt;/small&gt;
 &lt;/p&gt;
 </pre>
 
-<h3>Bold</h3>
+					<h3>Bold</h3>
 
-<p>For emphasizing a snippet of text with a heavier font-weight.</p>
+					<p>For emphasizing a snippet of text with a heavier font-weight.</p>
 
-<div class="bs-docs-example">
-    <p>The following snippet of text is <strong>rendered as bold text</strong>.</p>
-</div>
-<pre class="prettyprint">&lt;strong&gt;rendered as bold text&lt;/strong&gt;</pre>
+					<div class="bs-docs-example">
+						<p>The following snippet of text is <strong>rendered as bold text</strong>.</p>
+					</div>
+					<pre class="prettyprint">&lt;strong&gt;rendered as bold text&lt;/strong&gt;</pre>
 
-<h3>Italics</h3>
+					<h3>Italics</h3>
 
-<p>For emphasizing a snippet of text with italics.</p>
+					<p>For emphasizing a snippet of text with italics.</p>
 
-<div class="bs-docs-example">
-    <p>The following snippet of text is <em>rendered as italicized text</em>.</p>
-</div>
-<pre class="prettyprint">&lt;em&gt;rendered as italicized text&lt;/em&gt;</pre>
+					<div class="bs-docs-example">
+						<p>The following snippet of text is <em>rendered as italicized text</em>.</p>
+					</div>
+					<pre class="prettyprint">&lt;em&gt;rendered as italicized text&lt;/em&gt;</pre>
 
-<p><span class="label label-info">Heads up!</span> Feel free to use <code>&lt;b&gt;</code> and <code>&lt;i&gt;</code> in HTML5. <code>&lt;b&gt;</code> is meant to highlight words or phrases without conveying additional importance while <code>&lt;i&gt;</code> is mostly for voice, technical terms, etc.</p>
+					<p><span class="label label-info">Heads up!</span> Feel free to use <code>&lt;b&gt;</code> and <code>&lt;i&gt;</code> in HTML5.
+						<code>&lt;b&gt;</code>
+						is meant to highlight words or phrases without conveying additional importance while <code>&lt;i&gt;</code> is mostly for
+						voice,
+						technical terms, etc.</p>
 
-<h3>Emphasis classes</h3>
+					<h3>Emphasis classes</h3>
 
-<p>Convey meaning through color with a handful of emphasis utility classes.</p>
+					<p>Convey meaning through color with a handful of emphasis utility classes.</p>
 
-<div class="bs-docs-example">
-    <p class="text-muted">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</p>
+					<div class="bs-docs-example">
+						<p class="text-muted">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</p>
 
-    <p class="text-warning">Etiam porta sem malesuada magna mollis euismod.</p>
+						<p class="text-warning">Etiam porta sem malesuada magna mollis euismod.</p>
 
-    <p class="text-error">Donec ullamcorper nulla non metus auctor fringilla.</p>
+						<p class="text-error">Donec ullamcorper nulla non metus auctor fringilla.</p>
 
-    <p class="text-info">Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis.</p>
+						<p class="text-info">Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis.</p>
 
-    <p class="text-success">Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
-</div>
-<pre class="prettyprint linenums">
+						<p class="text-success">Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
+					</div>
+					<pre class="prettyprint linenums">
 &lt;p class="text-muted"&gt;Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.&lt;/p&gt;
 &lt;p class="text-warning"&gt;Etiam porta sem malesuada magna mollis euismod.&lt;/p&gt;
 &lt;p class="text-error"&gt;Donec ullamcorper nulla non metus auctor fringilla.&lt;/p&gt;
@@ -160,56 +171,60 @@
 </pre>
 
 
-<hr class="bs-docs-separator">
+					<hr class="bs-docs-separator">
 
 
-<h2 id="abbreviations">Abbreviations</h2>
+					<h2 id="abbreviations">Abbreviations</h2>
 
-<p>Stylized implemenation of HTML's <code>&lt;abbr&gt;</code> element for abbreviations and acronyms to show the expanded version on hover. Abbreviations with a <code>title</code> attribute have a light dotted bottom border and a help cursor on hover, providing additional context on hover.</p>
+					<p>Stylized implemenation of HTML's <code>&lt;abbr&gt;</code> element for abbreviations and acronyms to show the expanded version
+						on
+						hover. Abbreviations with a <code>title</code> attribute have a light dotted bottom border and a help cursor on hover,
+						providing
+						additional context on hover.</p>
 
-<h3><code>&lt;abbr&gt;</code></h3>
+					<h3><code>&lt;abbr&gt;</code></h3>
 
-<p>For expanded text on long hover of an abbreviation, include the <code>title</code> attribute.</p>
+					<p>For expanded text on long hover of an abbreviation, include the <code>title</code> attribute.</p>
 
-<div class="bs-docs-example">
-    <p>An abbreviation of the word attribute is <abbr title="attribute">attr</abbr>.</p>
-</div>
-<pre class="prettyprint">&lt;abbr title="attribute"&gt;attr&lt;/abbr&gt;</pre>
+					<div class="bs-docs-example">
+						<p>An abbreviation of the word attribute is <abbr title="attribute">attr</abbr>.</p>
+					</div>
+					<pre class="prettyprint">&lt;abbr title="attribute"&gt;attr&lt;/abbr&gt;</pre>
 
-<h3><code>&lt;abbr class="initialism"&gt;</code></h3>
+					<h3><code>&lt;abbr class="initialism"&gt;</code></h3>
 
-<p>Add <code>.initialism</code> to an abbreviation for a slightly smaller font-size.</p>
+					<p>Add <code>.initialism</code> to an abbreviation for a slightly smaller font-size.</p>
 
-<div class="bs-docs-example">
-    <p><abbr title="HyperText Markup Language" class="initialism">HTML</abbr> is the best thing since sliced bread.</p>
-</div>
-<pre class="prettyprint">&lt;abbr title="HyperText Markup Language" class="initialism"&gt;HTML&lt;/abbr&gt;</pre>
-
-
-<hr class="bs-docs-separator">
+					<div class="bs-docs-example">
+						<p><abbr title="HyperText Markup Language" class="initialism">HTML</abbr> is the best thing since sliced bread.</p>
+					</div>
+					<pre class="prettyprint">&lt;abbr title="HyperText Markup Language" class="initialism"&gt;HTML&lt;/abbr&gt;</pre>
 
 
-<h2 id="addresses">Addresses</h2>
+					<hr class="bs-docs-separator">
 
-<p>Present contact information for the nearest ancestor or the entire body of work.</p>
 
-<h3><code>&lt;address&gt;</code></h3>
+					<h2 id="addresses">Addresses</h2>
 
-<p>Preserve formatting by ending all lines with <code>&lt;br&gt;</code>.</p>
+					<p>Present contact information for the nearest ancestor or the entire body of work.</p>
 
-<div class="bs-docs-example">
-    <address>
-        <strong>Twitter, Inc.</strong><br>
-        795 Folsom Ave, Suite 600<br>
-        San Francisco, CA 94107<br>
-        <abbr title="Phone">P:</abbr> (123) 456-7890
-    </address>
-    <address>
-        <strong>Full Name</strong><br>
-        <a href="mailto:#">first.last@gmail.com</a>
-    </address>
-</div>
-<pre class="prettyprint linenums">
+					<h3><code>&lt;address&gt;</code></h3>
+
+					<p>Preserve formatting by ending all lines with <code>&lt;br&gt;</code>.</p>
+
+					<div class="bs-docs-example">
+						<address>
+							<strong>Twitter, Inc.</strong><br>
+							795 Folsom Ave, Suite 600<br>
+							San Francisco, CA 94107<br>
+							<abbr title="Phone">P:</abbr> (123) 456-7890
+						</address>
+						<address>
+							<strong>Full Name</strong><br>
+							<a href="mailto:#">first.last@gmail.com</a>
+						</address>
+					</div>
+					<pre class="prettyprint linenums">
 &lt;address&gt;
   &lt;strong&gt;Twitter, Inc.&lt;/strong&gt;&lt;br&gt;
   795 Folsom Ave, Suite 600&lt;br&gt;
@@ -224,166 +239,168 @@
 </pre>
 
 
-<hr class="bs-docs-separator">
+					<hr class="bs-docs-separator">
 
 
-<h2 id="blockquotes">Blockquotes</h2>
+					<h2 id="blockquotes">Blockquotes</h2>
 
-<p>For quoting blocks of content from another source within your document.</p>
+					<p>For quoting blocks of content from another source within your document.</p>
 
-<h3>Default blockquote</h3>
+					<h3>Default blockquote</h3>
 
-<p>Wrap <code>&lt;blockquote&gt;</code> around any <abbr title="HyperText Markup Language">HTML</abbr> as the quote. For straight quotes we recommend a <code>&lt;p&gt;</code>.</p>
+					<p>Wrap <code>&lt;blockquote&gt;</code> around any <abbr title="HyperText Markup Language">HTML</abbr> as the quote. For straight
+						quotes we recommend a <code>&lt;p&gt;</code>.</p>
 
-<div class="bs-docs-example">
-    <blockquote wicket:id="quote">
-        <p wicket:id="quotation">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-    </blockquote>
-</div>
-<pre class="prettyprint linenums">
+					<div class="bs-docs-example">
+						<blockquote wicket:id="quote">
+							<p wicket:id="quotation">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+						</blockquote>
+					</div>
+					<pre class="prettyprint linenums">
 &lt;blockquote class="blockquote"&gt;
   &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.&lt;/p&gt;
 &lt;/blockquote&gt;
 </pre>
 
-<h3>Blockquote options</h3>
+					<h3>Blockquote options</h3>
 
-<p>Style and content changes for simple variations on a standard blockquote.</p>
+					<p>Style and content changes for simple variations on a standard blockquote.</p>
 
-<h4>Naming a source</h4>
+					<h4>Naming a source</h4>
 
-<p>Add <code>&lt;small&gt;</code> tag for identifying the source. Wrap the name of the source work in <code>&lt;cite&gt;</code>.</p>
+					<p>Add <code>&lt;small&gt;</code> tag for identifying the source. Wrap the name of the source work in <code>&lt;cite&gt;</code>.
+					</p>
 
-<div class="bs-docs-example">
-    <blockquote class="blockquote">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-        <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
-    </blockquote>
-</div>
-<pre class="prettyprint linenums">
+					<div class="bs-docs-example">
+						<blockquote class="blockquote">
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+							<small>Someone famous in <cite title="Source Title">Source Title</cite></small>
+						</blockquote>
+					</div>
+					<pre class="prettyprint linenums">
 &lt;blockquote class="blockquote"&gt;
   &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.&lt;/p&gt;
   &lt;small&gt;Someone famous &lt;cite title="Source Title"&gt;Source Title&lt;/cite&gt;&lt;/small&gt;
 &lt;/blockquote&gt;
 </pre>
 
-<h4>Alternate displays</h4>
+					<h4>Alternate displays</h4>
 
-<p>Use <code>.pull-right</code> for a floated, right-aligned blockquote.</p>
+					<p>Use <code>.pull-right</code> for a floated, right-aligned blockquote.</p>
 
-<div class="bs-docs-example" style="overflow: hidden;">
-    <blockquote class="blockquote pull-right">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-        <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
-    </blockquote>
-</div>
-<pre class="prettyprint linenums">
+					<div class="bs-docs-example" style="overflow: hidden;">
+						<blockquote class="blockquote pull-right">
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+							<small>Someone famous in <cite title="Source Title">Source Title</cite></small>
+						</blockquote>
+					</div>
+					<pre class="prettyprint linenums">
 &lt;blockquote class="blockquote pull-right"&gt;
   ...
 &lt;/blockquote&gt;
 </pre>
 
 
-<hr class="bs-docs-separator">
+					<hr class="bs-docs-separator">
 
 
-<!-- Lists -->
-<h2 id="lists">Lists</h2>
+					<!-- Lists -->
+					<h2 id="lists">Lists</h2>
 
-<h3>Unordered</h3>
+					<h3>Unordered</h3>
 
-<p>A list of items in which the order does <em>not</em> explicitly matter.</p>
+					<p>A list of items in which the order does <em>not</em> explicitly matter.</p>
 
-<div class="bs-docs-example">
-    <ul>
-        <li>Lorem ipsum dolor sit amet</li>
-        <li>Consectetur adipiscing elit</li>
-        <li>Integer molestie lorem at massa</li>
-        <li>Facilisis in pretium nisl aliquet</li>
-        <li>Nulla volutpat aliquam velit
-            <ul>
-                <li>Phasellus iaculis neque</li>
-                <li>Purus sodales ultricies</li>
-                <li>Vestibulum laoreet porttitor sem</li>
-                <li>Ac tristique libero volutpat at</li>
-            </ul>
-        </li>
-        <li>Faucibus porta lacus fringilla vel</li>
-        <li>Aenean sit amet erat nunc</li>
-        <li>Eget porttitor lorem</li>
-    </ul>
-</div>
-<pre class="prettyprint linenums">
+					<div class="bs-docs-example">
+						<ul>
+							<li>Lorem ipsum dolor sit amet</li>
+							<li>Consectetur adipiscing elit</li>
+							<li>Integer molestie lorem at massa</li>
+							<li>Facilisis in pretium nisl aliquet</li>
+							<li>Nulla volutpat aliquam velit
+								<ul>
+									<li>Phasellus iaculis neque</li>
+									<li>Purus sodales ultricies</li>
+									<li>Vestibulum laoreet porttitor sem</li>
+									<li>Ac tristique libero volutpat at</li>
+								</ul>
+							</li>
+							<li>Faucibus porta lacus fringilla vel</li>
+							<li>Aenean sit amet erat nunc</li>
+							<li>Eget porttitor lorem</li>
+						</ul>
+					</div>
+					<pre class="prettyprint linenums">
 &lt;ul&gt;
   &lt;li&gt;...&lt;/li&gt;
 &lt;/ul&gt;
 </pre>
 
-<h3>Ordered</h3>
+					<h3>Ordered</h3>
 
-<p>A list of items in which the order <em>does</em> explicitly matter.</p>
+					<p>A list of items in which the order <em>does</em> explicitly matter.</p>
 
-<div class="bs-docs-example">
-    <ol>
-        <li>Lorem ipsum dolor sit amet</li>
-        <li>Consectetur adipiscing elit</li>
-        <li>Integer molestie lorem at massa</li>
-        <li>Facilisis in pretium nisl aliquet</li>
-        <li>Nulla volutpat aliquam velit</li>
-        <li>Faucibus porta lacus fringilla vel</li>
-        <li>Aenean sit amet erat nunc</li>
-        <li>Eget porttitor lorem</li>
-    </ol>
-</div>
-<pre class="prettyprint linenums">
+					<div class="bs-docs-example">
+						<ol>
+							<li>Lorem ipsum dolor sit amet</li>
+							<li>Consectetur adipiscing elit</li>
+							<li>Integer molestie lorem at massa</li>
+							<li>Facilisis in pretium nisl aliquet</li>
+							<li>Nulla volutpat aliquam velit</li>
+							<li>Faucibus porta lacus fringilla vel</li>
+							<li>Aenean sit amet erat nunc</li>
+							<li>Eget porttitor lorem</li>
+						</ol>
+					</div>
+					<pre class="prettyprint linenums">
 &lt;ol&gt;
   &lt;li&gt;...&lt;/li&gt;
 &lt;/ol&gt;
 </pre>
 
-<h3>Unstyled</h3>
+					<h3>Unstyled</h3>
 
-<p>A list of items with no <code>list-style</code> or additional left padding.</p>
+					<p>A list of items with no <code>list-style</code> or additional left padding.</p>
 
-<div class="bs-docs-example">
-    <ul class="list-unstyled">
-        <li>Lorem ipsum dolor sit amet</li>
-        <li>Consectetur adipiscing elit</li>
-        <li>Integer molestie lorem at massa</li>
-        <li>Facilisis in pretium nisl aliquet</li>
-        <li>Nulla volutpat aliquam velit
-            <ul>
-                <li>Phasellus iaculis neque</li>
-                <li>Purus sodales ultricies</li>
-                <li>Vestibulum laoreet porttitor sem</li>
-                <li>Ac tristique libero volutpat at</li>
-            </ul>
-        </li>
-        <li>Faucibus porta lacus fringilla vel</li>
-        <li>Aenean sit amet erat nunc</li>
-        <li>Eget porttitor lorem</li>
-    </ul>
-</div>
-<pre class="prettyprint linenums">
+					<div class="bs-docs-example">
+						<ul class="list-unstyled">
+							<li>Lorem ipsum dolor sit amet</li>
+							<li>Consectetur adipiscing elit</li>
+							<li>Integer molestie lorem at massa</li>
+							<li>Facilisis in pretium nisl aliquet</li>
+							<li>Nulla volutpat aliquam velit
+								<ul>
+									<li>Phasellus iaculis neque</li>
+									<li>Purus sodales ultricies</li>
+									<li>Vestibulum laoreet porttitor sem</li>
+									<li>Ac tristique libero volutpat at</li>
+								</ul>
+							</li>
+							<li>Faucibus porta lacus fringilla vel</li>
+							<li>Aenean sit amet erat nunc</li>
+							<li>Eget porttitor lorem</li>
+						</ul>
+					</div>
+					<pre class="prettyprint linenums">
 &lt;ul class="list-unstyled"&gt;
   &lt;li&gt;...&lt;/li&gt;
 &lt;/ul&gt;
 </pre>
 
-<h3>Inline</h3>
+					<h3>Inline</h3>
 
-<p>
-    Remove a list’s bullets and apply some light margin with a combination of two classes, <code>.list-inline</code> and <code>.list-inline-item</code>.
-</p>
+					<p>
+						Remove a list’s bullets and apply some light margin with a combination of two classes, <code>.list-inline</code> and <code>.list-inline-item</code>.
+					</p>
 
-<div class="bs-docs-example">
-    <ul class="list-inline">
-        <li class="list-inline-item">Lorem ipsum</li>
-        <li class="list-inline-item">Phasellus iaculis</li>
-        <li class="list-inline-item">Nulla volutpat</li>
-    </ul>
-</div>
-<pre class="prettyprint linenums">
+					<div class="bs-docs-example">
+						<ul class="list-inline">
+							<li class="list-inline-item">Lorem ipsum</li>
+							<li class="list-inline-item">Phasellus iaculis</li>
+							<li class="list-inline-item">Nulla volutpat</li>
+						</ul>
+					</div>
+					<pre class="prettyprint linenums">
 &lt;ul class="list-inline"&gt;
     &lt;li class="list-inline-item"&gt;Lorem ipsum&lt;/li&gt;
     &lt;li class="list-inline-item"&gt;Phasellus iaculis&lt;/li&gt;
@@ -392,437 +409,448 @@
 </pre>
 
 
-<h3>Description</h3>
+					<h3>Description</h3>
 
-<p>A list of terms with their associated descriptions.</p>
+					<p>A list of terms with their associated descriptions.</p>
 
-<div class="bs-docs-example">
-    <dl>
-        <dt>Description lists</dt>
-        <dd>A description list is perfect for defining terms.</dd>
-        <dt>Euismod</dt>
-        <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
-        <dd>Donec id elit non mi porta gravida at eget metus.</dd>
-        <dt>Malesuada porta</dt>
-        <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
-    </dl>
-</div>
-<pre class="prettyprint linenums">
+					<div class="bs-docs-example">
+						<dl>
+							<dt>Description lists</dt>
+							<dd>A description list is perfect for defining terms.</dd>
+							<dt>Euismod</dt>
+							<dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
+							<dd>Donec id elit non mi porta gravida at eget metus.</dd>
+							<dt>Malesuada porta</dt>
+							<dd>Etiam porta sem malesuada magna mollis euismod.</dd>
+						</dl>
+					</div>
+					<pre class="prettyprint linenums">
 &lt;dl&gt;
   &lt;dt&gt;...&lt;/dt&gt;
   &lt;dd&gt;...&lt;/dd&gt;
 &lt;/dl&gt;
 </pre>
 
-<h4>Horizontal description</h4>
+					<h4>Horizontal description</h4>
 
-<p>Make terms and descriptions in <code>&lt;dl&gt;</code> line up side-by-side.</p>
+					<p>Make terms and descriptions in <code>&lt;dl&gt;</code> line up side-by-side.</p>
 
-<div class="bs-docs-example">
-    <dl class="row">
-        <dt class="col-sm-3">Description lists</dt>
-        <dd class="col-sm-9">A description list is perfect for defining terms.</dd>
-        <dt class="col-sm-3">Euismod</dt>
-        <dd class="col-sm-9">
-            <p>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</p>
-            <p>Donec id elit non mi porta gravida at eget metus.</p>
-        </dd>
-        <dt class="col-sm-3">Malesuada porta</dt>
-        <dd class="col-sm-9">Etiam porta sem malesuada magna mollis euismod.</dd>
-        <dt class="col-sm-3">Felis euismod semper eget lacinia</dt>
-        <dd class="col-sm-9">Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</dd>
-    </dl>
-</div>
-<pre class="prettyprint linenums">
+					<div class="bs-docs-example">
+						<dl class="row">
+							<dt class="col-sm-3">Description lists</dt>
+							<dd class="col-sm-9">A description list is perfect for defining terms.</dd>
+							<dt class="col-sm-3">Euismod</dt>
+							<dd class="col-sm-9">
+								<p>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</p>
+								<p>Donec id elit non mi porta gravida at eget metus.</p>
+							</dd>
+							<dt class="col-sm-3">Malesuada porta</dt>
+							<dd class="col-sm-9">Etiam porta sem malesuada magna mollis euismod.</dd>
+							<dt class="col-sm-3">Felis euismod semper eget lacinia</dt>
+							<dd class="col-sm-9">Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit
+								amet risus.
+							</dd>
+						</dl>
+					</div>
+					<pre class="prettyprint linenums">
 &lt;dl class="row"&gt;
   &lt;dt class="col-sm-3" &gt;...&lt;/dt&gt;
   &lt;dd class="col-sm-9" &gt;...&lt;/dd&gt;
 &lt;/dl&gt;
 </pre>
-<p>
-    <span class="label label-info">Heads up!</span>
-    Horizontal description lists will truncate terms that are too long to fit in the left column fix <code>text-overflow</code>. In narrower viewports, they will change to the default stacked layout.
-</p>
-</section>
+					<p>
+						<span class="label label-info">Heads up!</span>
+						Horizontal description lists will truncate terms that are too long to fit in the left column fix <code>text-overflow</code>.
+						In
+						narrower viewports, they will change to the default stacked layout.
+					</p>
+				</section>
 
 
-<!-- Code
-================================================== -->
-<section id="code">
-    <div class="pb-2 mt-4 mb-2 border-bottom">
-        <h1>Code</h1>
-    </div>
+				<!-- Code
+				================================================== -->
+				<section id="code">
+					<div class="pb-2 mt-4 mb-2 border-bottom">
+						<h1>Code</h1>
+					</div>
 
-    <h2>Inline</h2>
+					<h2>Inline</h2>
 
-    <p>Wrap inline snippets of code with <code>&lt;code&gt;</code>.</p>
+					<p>Wrap inline snippets of code with <code>&lt;code&gt;</code>.</p>
 
-    <div class="bs-docs-example">
-        For example, <code>&lt;section&gt;</code> should be wrapped as inline.
-    </div>
-<pre class="prettyprint linenums">
+					<div class="bs-docs-example">
+						For example, <code>&lt;section&gt;</code> should be wrapped as inline.
+					</div>
+					<pre class="prettyprint linenums">
 For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inline.
 </pre>
 
-    <h2>Basic block</h2>
+					<h2>Basic block</h2>
 
-    <p>Use <code>&lt;pre&gt;</code> for multiple lines of code. Be sure to escape any angle brackets in the code for proper rendering.</p>
+					<p>Use <code>&lt;pre&gt;</code> for multiple lines of code. Be sure to escape any angle brackets in the code for proper rendering.
+					</p>
 
-    <div class="bs-docs-example">
-        <pre>&lt;p&gt;Sample text here...&lt;/p&gt;</pre>
-    </div>
-<pre class="prettyprint linenums" style="margin-bottom: 9px;">
+					<div class="bs-docs-example">
+						<pre>&lt;p&gt;Sample text here...&lt;/p&gt;</pre>
+					</div>
+					<pre class="prettyprint linenums" style="margin-bottom: 9px;">
 &lt;pre&gt;
   &amp;lt;p&amp;gt;Sample text here...&amp;lt;/p&amp;gt;
 &lt;/pre&gt;
 </pre>
-    <p><span class="label label-info">Heads up!</span> Be sure to keep code within <code>&lt;pre&gt;</code> tags as close to the left as possible; it will render all tabs.</p>
+					<p><span class="label label-info">Heads up!</span> Be sure to keep code within <code>&lt;pre&gt;</code> tags as close to the left
+						as
+						possible; it will render all tabs.</p>
 
-    <p>You may optionally add the <code>.pre-scrollable</code> class which will set a max-height of 350px and provide a y-axis scrollbar.</p>
-</section>
+					<p>You may optionally add the <code>.pre-scrollable</code> class which will set a max-height of 350px and provide a y-axis
+						scrollbar.
+					</p>
+				</section>
 
 
-<!-- Tables
-================================================== -->
-<section id="tables">
-<div class="pb-2 mt-4 mb-2 border-bottom">
-    <h1>Tables</h1>
-</div>
+				<!-- Tables
+				================================================== -->
+				<section id="tables">
+					<div class="pb-2 mt-4 mb-2 border-bottom">
+						<h1>Tables</h1>
+					</div>
 
-<h2>Default styles</h2>
+					<h2>Default styles</h2>
 
-<p>For basic styling&mdash;light padding and only horizontal dividers&mdash;add the base class <code>.table</code> to any <code>&lt;table&gt;</code>.</p>
+					<p>For basic styling&mdash;light padding and only horizontal dividers&mdash;add the base class <code>.table</code> to any <code>&lt;table&gt;</code>.
+					</p>
 
-<div class="bs-docs-example">
-    <table class="table">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Username</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-<pre class="prettyprint linenums">
+					<div class="bs-docs-example">
+						<table class="table">
+							<thead>
+							<tr>
+								<th>#</th>
+								<th>First Name</th>
+								<th>Last Name</th>
+								<th>Username</th>
+							</tr>
+							</thead>
+							<tbody>
+							<tr>
+								<td>1</td>
+								<td>Mark</td>
+								<td>Otto</td>
+								<td>@mdo</td>
+							</tr>
+							<tr>
+								<td>2</td>
+								<td>Jacob</td>
+								<td>Thornton</td>
+								<td>@fat</td>
+							</tr>
+							<tr>
+								<td>3</td>
+								<td>Larry</td>
+								<td>the Bird</td>
+								<td>@twitter</td>
+							</tr>
+							</tbody>
+						</table>
+					</div>
+					<pre class="prettyprint linenums">
 &lt;table class="table"&gt;
   ...
 &lt;/table&gt;
 </pre>
 
 
-<hr class="bs-docs-separator">
+					<hr class="bs-docs-separator">
 
 
-<h2>Optional classes</h2>
+					<h2>Optional classes</h2>
 
-<p>Add any of the following classes to the <code>.table</code> base class.</p>
+					<p>Add any of the following classes to the <code>.table</code> base class.</p>
 
-<h3><code>.table-striped</code></h3>
+					<h3><code>.table-striped</code></h3>
 
-<p>Adds zebra-striping to any table row within the <code>&lt;tbody&gt;</code> via the <code>:nth-child</code> CSS selector (not available in IE7-IE8).</p>
+					<p>Adds zebra-striping to any table row within the <code>&lt;tbody&gt;</code> via the <code>:nth-child</code> CSS selector (not
+						available in IE7-IE8).</p>
 
-<div class="bs-docs-example">
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Username</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-<pre class="prettyprint linenums" style="margin-bottom: 18px;">
+					<div class="bs-docs-example">
+						<table class="table table-striped">
+							<thead>
+							<tr>
+								<th>#</th>
+								<th>First Name</th>
+								<th>Last Name</th>
+								<th>Username</th>
+							</tr>
+							</thead>
+							<tbody>
+							<tr>
+								<td>1</td>
+								<td>Mark</td>
+								<td>Otto</td>
+								<td>@mdo</td>
+							</tr>
+							<tr>
+								<td>2</td>
+								<td>Jacob</td>
+								<td>Thornton</td>
+								<td>@fat</td>
+							</tr>
+							<tr>
+								<td>3</td>
+								<td>Larry</td>
+								<td>the Bird</td>
+								<td>@twitter</td>
+							</tr>
+							</tbody>
+						</table>
+					</div>
+					<pre class="prettyprint linenums" style="margin-bottom: 18px;">
 &lt;table class="table table-striped"&gt;
   ...
 &lt;/table&gt;
 </pre>
 
-<h3><code>.table-bordered</code></h3>
+					<h3><code>.table-bordered</code></h3>
 
-<p>Add borders and rounded corners to the table.</p>
+					<p>Add borders and rounded corners to the table.</p>
 
-<div class="bs-docs-example">
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Username</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td rowspan="2">1</td>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-            </tr>
-            <tr>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@TwBootstrap</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td colspan="2">Larry the Bird</td>
-                <td>@twitter</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-<pre class="prettyprint linenums">
+					<div class="bs-docs-example">
+						<table class="table table-bordered">
+							<thead>
+							<tr>
+								<th>#</th>
+								<th>First Name</th>
+								<th>Last Name</th>
+								<th>Username</th>
+							</tr>
+							</thead>
+							<tbody>
+							<tr>
+								<td rowspan="2">1</td>
+								<td>Mark</td>
+								<td>Otto</td>
+								<td>@mdo</td>
+							</tr>
+							<tr>
+								<td>Mark</td>
+								<td>Otto</td>
+								<td>@TwBootstrap</td>
+							</tr>
+							<tr>
+								<td>2</td>
+								<td>Jacob</td>
+								<td>Thornton</td>
+								<td>@fat</td>
+							</tr>
+							<tr>
+								<td>3</td>
+								<td colspan="2">Larry the Bird</td>
+								<td>@twitter</td>
+							</tr>
+							</tbody>
+						</table>
+					</div>
+					<pre class="prettyprint linenums">
 &lt;table class="table table-bordered"&gt;
   ...
 &lt;/table&gt;
 </pre>
 
-<h3><code>.table-hover</code></h3>
+					<h3><code>.table-hover</code></h3>
 
-<p>Enable a hover state on table rows within a <code>&lt;tbody&gt;</code>.</p>
+					<p>Enable a hover state on table rows within a <code>&lt;tbody&gt;</code>.</p>
 
-<div class="bs-docs-example">
-    <table class="table table-hover">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Username</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td colspan="2">Larry the Bird</td>
-                <td>@twitter</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-<pre class="prettyprint linenums" style="margin-bottom: 18px;">
+					<div class="bs-docs-example">
+						<table class="table table-hover">
+							<thead>
+							<tr>
+								<th>#</th>
+								<th>First Name</th>
+								<th>Last Name</th>
+								<th>Username</th>
+							</tr>
+							</thead>
+							<tbody>
+							<tr>
+								<td>1</td>
+								<td>Mark</td>
+								<td>Otto</td>
+								<td>@mdo</td>
+							</tr>
+							<tr>
+								<td>2</td>
+								<td>Jacob</td>
+								<td>Thornton</td>
+								<td>@fat</td>
+							</tr>
+							<tr>
+								<td>3</td>
+								<td colspan="2">Larry the Bird</td>
+								<td>@twitter</td>
+							</tr>
+							</tbody>
+						</table>
+					</div>
+					<pre class="prettyprint linenums" style="margin-bottom: 18px;">
 &lt;table class="table table-hover"&gt;
   ...
 &lt;/table&gt;
 </pre>
 
-<h3><code>.table-sm</code></h3>
+					<h3><code>.table-sm</code></h3>
 
-<p>Makes tables more compact by cutting cell padding in half.</p>
+					<p>Makes tables more compact by cutting cell padding in half.</p>
 
-<div class="bs-docs-example">
-    <table class="table table-sm">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Username</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td colspan="2">Larry the Bird</td>
-                <td>@twitter</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-<pre class="prettyprint linenums" style="margin-bottom: 18px;">
+					<div class="bs-docs-example">
+						<table class="table table-sm">
+							<thead>
+							<tr>
+								<th>#</th>
+								<th>First Name</th>
+								<th>Last Name</th>
+								<th>Username</th>
+							</tr>
+							</thead>
+							<tbody>
+							<tr>
+								<td>1</td>
+								<td>Mark</td>
+								<td>Otto</td>
+								<td>@mdo</td>
+							</tr>
+							<tr>
+								<td>2</td>
+								<td>Jacob</td>
+								<td>Thornton</td>
+								<td>@fat</td>
+							</tr>
+							<tr>
+								<td>3</td>
+								<td colspan="2">Larry the Bird</td>
+								<td>@twitter</td>
+							</tr>
+							</tbody>
+						</table>
+					</div>
+					<pre class="prettyprint linenums" style="margin-bottom: 18px;">
 &lt;table class="table table-sm"&gt;
   ...
 &lt;/table&gt;
 </pre>
 
-<h3><code>.table-dark</code></h3>
+					<h3><code>.table-dark</code></h3>
 
-<p>Uses dark colors for rows and columns.</p>
+					<p>Uses dark colors for rows and columns.</p>
 
-<div class="bs-docs-example">
-    <table class="table table-dark">
-        <thead>
-        <tr>
-            <th>#</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Username</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>1</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td colspan="2">Larry the Bird</td>
-            <td>@twitter</td>
-        </tr>
-        </tbody>
-    </table>
-</div>
-<pre class="prettyprint linenums" style="margin-bottom: 18px;">
+					<div class="bs-docs-example">
+						<table class="table table-dark">
+							<thead>
+							<tr>
+								<th>#</th>
+								<th>First Name</th>
+								<th>Last Name</th>
+								<th>Username</th>
+							</tr>
+							</thead>
+							<tbody>
+							<tr>
+								<td>1</td>
+								<td>Mark</td>
+								<td>Otto</td>
+								<td>@mdo</td>
+							</tr>
+							<tr>
+								<td>2</td>
+								<td>Jacob</td>
+								<td>Thornton</td>
+								<td>@fat</td>
+							</tr>
+							<tr>
+								<td>3</td>
+								<td colspan="2">Larry the Bird</td>
+								<td>@twitter</td>
+							</tr>
+							</tbody>
+						</table>
+					</div>
+					<pre class="prettyprint linenums" style="margin-bottom: 18px;">
     &lt;table class="table table-dark"&gt;
       ...
     &lt;/table&gt;
 </pre>
 
 
-<hr class="bs-docs-separator">
+					<hr class="bs-docs-separator">
 
 
-<h2>Optional row classes</h2>
+					<h2>Optional row classes</h2>
 
-<p>Use contextual classes to color table rows.</p>
+					<p>Use contextual classes to color table rows.</p>
 
-<wicket:fragment wicket:id="contextual-row">
-    <td wicket:id="contextual-class">.table-active</td>
-    <td>Cell</td>
-    <td>Cell</td>
-</wicket:fragment>
+					<wicket:fragment wicket:id="contextual-row">
+						<td wicket:id="contextual-class">.table-active</td>
+						<td>Cell</td>
+						<td>Cell</td>
+					</wicket:fragment>
 
-<table class="table table-bordered table-striped">
-    <thead>
-        <tr>
-            <th>Class</th>
-            <th>Heading</th>
-            <th>Heading</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr wicket:id="table-contextual"></tr>
-    </tbody>
-</table>
+					<table class="table table-bordered table-striped">
+						<thead>
+						<tr>
+							<th>Class</th>
+							<th>Heading</th>
+							<th>Heading</th>
+						</tr>
+						</thead>
+						<tbody>
+						<tr wicket:id="table-contextual"></tr>
+						</tbody>
+					</table>
 
 
-<div class="bs-docs-example">
-    <table class="table">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Product</th>
-                <th>Payment Taken</th>
-                <th>Status</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr class="table-info">
-                <td>1</td>
-                <td>TB - Monthly</td>
-                <td>01/04/2012</td>
-                <td>In Stock</td>
-            </tr>
-            <tr class="table-success">
-                <td>1</td>
-                <td>TB - Monthly</td>
-                <td>02/04/2012</td>
-                <td>Approved</td>
-            </tr>
-            <tr class="table-danger">
-                <td>2</td>
-                <td>TB - Monthly</td>
-                <td>03/04/2012</td>
-                <td>Declined</td>
-            </tr>
-            <tr class="table-warning">
-                <td>3</td>
-                <td>TB - Monthly</td>
-                <td>04/04/2012</td>
-                <td>Pending</td>
-            </tr>
-            <tr class="table-active">
-                <td>4</td>
-                <td>TB - Monthly</td>
-                <td>05/04/2012</td>
-                <td>Call in to confirm</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-<pre class="prettyprint linenums">
+					<div class="bs-docs-example">
+						<table class="table">
+							<thead>
+							<tr>
+								<th>#</th>
+								<th>Product</th>
+								<th>Payment Taken</th>
+								<th>Status</th>
+							</tr>
+							</thead>
+							<tbody>
+							<tr class="table-info">
+								<td>1</td>
+								<td>TB - Monthly</td>
+								<td>01/04/2012</td>
+								<td>In Stock</td>
+							</tr>
+							<tr class="table-success">
+								<td>1</td>
+								<td>TB - Monthly</td>
+								<td>02/04/2012</td>
+								<td>Approved</td>
+							</tr>
+							<tr class="table-danger">
+								<td>2</td>
+								<td>TB - Monthly</td>
+								<td>03/04/2012</td>
+								<td>Declined</td>
+							</tr>
+							<tr class="table-warning">
+								<td>3</td>
+								<td>TB - Monthly</td>
+								<td>04/04/2012</td>
+								<td>Pending</td>
+							</tr>
+							<tr class="table-active">
+								<td>4</td>
+								<td>TB - Monthly</td>
+								<td>05/04/2012</td>
+								<td>Call in to confirm</td>
+							</tr>
+							</tbody>
+						</table>
+					</div>
+					<pre class="prettyprint linenums">
 ...
   &lt;tr class="table-success"&gt;
     &lt;td&gt;1&lt;/td&gt;
@@ -834,84 +862,86 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 </pre>
 
 
-<hr class="bs-docs-separator">
+					<hr class="bs-docs-separator">
 
 
-<h2>Supported table markup</h2>
+					<h2>Supported table markup</h2>
 
-<p>List of supported table HTML elements and how they should be used.</p>
-<table class="table table-bordered table-striped">
-    <colgroup>
-        <col class="col-lg-1"/>
-        <col class="col-lg-7"/>
-    </colgroup>
-    <thead>
-        <tr>
-            <th>Tag</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-                <code>&lt;table&gt;</code>
-            </td>
-            <td>
-                Wrapping element for displaying data in a tabular format
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <code>&lt;thead&gt;</code>
-            </td>
-            <td>
-                Container element for table header rows (<code>&lt;tr&gt;</code>) to label table columns
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <code>&lt;tbody&gt;</code>
-            </td>
-            <td>
-                Container element for table rows (<code>&lt;tr&gt;</code>) in the body of the table
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <code>&lt;tr&gt;</code>
-            </td>
-            <td>
-                Container element for a set of table cells (<code>&lt;td&gt;</code> or <code>&lt;th&gt;</code>) that appears on a single row
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <code>&lt;td&gt;</code>
-            </td>
-            <td>
-                Default table cell
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <code>&lt;th&gt;</code>
-            </td>
-            <td>
-                Special table cell for column (or row, depending on scope and placement) labels<br>
-                Must be used within a <code>&lt;thead&gt;</code>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <code>&lt;caption&gt;</code>
-            </td>
-            <td>
-                Description or summary of what the table holds, especially useful for screen readers
-            </td>
-        </tr>
-    </tbody>
-</table>
-<pre class="prettyprint linenums">
+					<p>List of supported table HTML elements and how they should be used.</p>
+					<table class="table table-bordered table-striped">
+						<colgroup>
+							<col class="col-lg-1" />
+							<col class="col-lg-7" />
+						</colgroup>
+						<thead>
+						<tr>
+							<th>Tag</th>
+							<th>Description</th>
+						</tr>
+						</thead>
+						<tbody>
+						<tr>
+							<td>
+								<code>&lt;table&gt;</code>
+							</td>
+							<td>
+								Wrapping element for displaying data in a tabular format
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<code>&lt;thead&gt;</code>
+							</td>
+							<td>
+								Container element for table header rows (<code>&lt;tr&gt;</code>) to label table columns
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<code>&lt;tbody&gt;</code>
+							</td>
+							<td>
+								Container element for table rows (<code>&lt;tr&gt;</code>) in the body of the table
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<code>&lt;tr&gt;</code>
+							</td>
+							<td>
+								Container element for a set of table cells (<code>&lt;td&gt;</code> or <code>&lt;th&gt;</code>) that appears on a
+								single
+								row
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<code>&lt;td&gt;</code>
+							</td>
+							<td>
+								Default table cell
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<code>&lt;th&gt;</code>
+							</td>
+							<td>
+								Special table cell for column (or row, depending on scope and placement) labels<br>
+								Must be used within a <code>&lt;thead&gt;</code>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<code>&lt;caption&gt;</code>
+							</td>
+							<td>
+								Description or summary of what the table holds, especially useful for screen readers
+							</td>
+						</tr>
+						</tbody>
+					</table>
+					<pre class="prettyprint linenums">
 &lt;table&gt;
   &lt;caption&gt;...&lt;/caption&gt;
   &lt;thead&gt;
@@ -929,34 +959,36 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 &lt;/table&gt;
 </pre>
 
-</section>
+				</section>
 
 
-<!-- Forms
-================================================== -->
-<section id="forms">
-<div class="pb-2 mt-4 mb-2 border-bottom">
-    <h1>Forms</h1>
-</div>
+				<!-- Forms
+				================================================== -->
+				<section id="forms">
+					<div class="pb-2 mt-4 mb-2 border-bottom">
+						<h1>Forms</h1>
+					</div>
 
-<h2>Default styles</h2>
+					<h2>Default styles</h2>
 
-<p>Individual form controls receive styling, but without any required base class on the <code>&lt;form&gt;</code> or large changes in markup. Results in stacked, left-aligned labels on top of form controls.</p>
+					<p>Individual form controls receive styling, but without any required base class on the <code>&lt;form&gt;</code> or large changes
+						in
+						markup. Results in stacked, left-aligned labels on top of form controls.</p>
 
-<form wicket:id="forms" class="bs-docs-example">
-    <div class="form-group">
-        <fieldset>
-            <legend>Legend</legend>
-            <label class="col-form-label">Label name</label>
-            <input type="text" class="form-control" placeholder="Type something...">
-            <span class="form-text">Example block-level help text here.</span>
-            <input type="checkbox" wicket:id="checkbox"/>
-            <span wicket:id="radio"></span>
-            <button type="submit" class="btn">Submit</button>
-        </fieldset>
-    </div>
-</form>
-<pre class="prettyprint linenums">
+					<form wicket:id="forms" class="bs-docs-example">
+						<div class="form-group">
+							<fieldset>
+								<legend>Legend</legend>
+								<label class="col-form-label">Label name</label>
+								<input type="text" class="form-control" placeholder="Type something...">
+								<span class="form-text">Example block-level help text here.</span>
+								<input type="checkbox" wicket:id="checkbox" />
+								<span wicket:id="radio"></span>
+								<button type="submit" class="btn">Submit</button>
+							</fieldset>
+						</div>
+					</form>
+					<pre class="prettyprint linenums">
 &lt;form&gt;
   &lt;fieldset&gt;
     &lt;legend&gt;Legend&lt;/legend&gt;
@@ -981,30 +1013,30 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 </pre>
 
 
-<hr class="bs-docs-separator">
+					<hr class="bs-docs-separator">
 
 
-<h2>Optional layouts</h2>
+					<h2>Optional layouts</h2>
 
-<p>Included with Bootstrap are three optional form layouts for common use cases.</p>
+					<p>Included with Bootstrap are three optional form layouts for common use cases.</p>
 
-<h3>Inline form</h3>
+					<h3>Inline form</h3>
 
-<p>Add <code>.form-inline</code> for left-aligned labels and inline-block controls for a compact layout.</p>
+					<p>Add <code>.form-inline</code> for left-aligned labels and inline-block controls for a compact layout.</p>
 
-<form class="bs-docs-example form-inline">
-    <div class="form-group">
-        <input type="text" class="form-control form-control-sm" placeholder="Email">
-        <input type="password" class="form-control form-control-sm" placeholder="Password">
+					<form class="bs-docs-example form-inline">
+						<div class="form-group">
+							<input type="text" class="form-control form-control-sm" placeholder="Email">
+							<input type="password" class="form-control form-control-sm" placeholder="Password">
 
-        <div class="form-check">
-            <input type="checkbox" class="form-check-input">
-            <label class="col-form-label">Remember me</label>
-        </div>
-        <button type="submit" class="btn">Sign in</button>
-    </div>
-</form>
-<pre class="prettyprint linenums">
+							<div class="form-check">
+								<input type="checkbox" class="form-check-input">
+								<label class="col-form-label">Remember me</label>
+							</div>
+							<button type="submit" class="btn">Sign in</button>
+						</div>
+					</form>
+					<pre class="prettyprint linenums">
 &lt;form class="form-inline"&gt;
   &lt;div class="form-group"&gt;
       &lt;input type="text" class="form-control input-sm" placeholder="Email"&gt;
@@ -1018,41 +1050,43 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 &lt;/form&gt;
 </pre>
 
-<h3>Horizontal form</h3>
+					<h3>Horizontal form</h3>
 
-<p>Right align labels and float them to the left to make them appear on the same line as controls. Requires the most markup changes from a default form:</p>
-<ul>
-    <li>Add <code>.form-horizontal</code> to the form</li>
-    <li>Wrap labels and controls in <code>.form-group</code></li>
-    <li>Add <code>.control-label</code> to the label</li>
-    <li>Wrap any associated controls in <code>.controls</code> for proper alignment</li>
-</ul>
-<form class="bs-docs-example">
-    <div class="form-group row">
-        <label class="col-form-label col-sm-2" for="inputEmail">Email</label>
-        <div class="col-sm-10">
-            <input type="text" class="form-control" id="inputEmail" placeholder="Email">
-        </div>
-    </div>
-    <div class="form-group row">
-        <label class="col-form-label col-sm-2" for="inputPassword">Password</label>
-        <div class="col-sm-10">
-            <input type="password" class="form-control"  id="inputPassword" placeholder="Password">
-        </div>
-    </div>
-    <div class="form-group row">
-        <div class="col-sm-10">
-            <div class="form-check">
-                <input type="checkbox" class="form-check-input">
-                <label class="form-check-label">Remember me</label>
-            </div>
-        </div>
-    </div>
-    <div class="form-group row">
-        <button type="submit" class="btn">Sign in</button>
-    </div>
-</form>
-<pre class="prettyprint linenums">
+					<p>Right align labels and float them to the left to make them appear on the same line as controls. Requires the most markup
+						changes
+						from a default form:</p>
+					<ul>
+						<li>Add <code>.form-horizontal</code> to the form</li>
+						<li>Wrap labels and controls in <code>.form-group</code></li>
+						<li>Add <code>.control-label</code> to the label</li>
+						<li>Wrap any associated controls in <code>.controls</code> for proper alignment</li>
+					</ul>
+					<form class="bs-docs-example">
+						<div class="form-group row">
+							<label class="col-form-label col-sm-2" for="inputEmail">Email</label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" id="inputEmail" placeholder="Email">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-form-label col-sm-2" for="inputPassword">Password</label>
+							<div class="col-sm-10">
+								<input type="password" class="form-control" id="inputPassword" placeholder="Password">
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-sm-10">
+								<div class="form-check">
+									<input type="checkbox" class="form-check-input">
+									<label class="form-check-label">Remember me</label>
+								</div>
+							</div>
+						</div>
+						<div class="form-group row">
+							<button type="submit" class="btn">Sign in</button>
+						</div>
+					</form>
+					<pre class="prettyprint linenums">
 &lt;form&gt;
   &lt;div class="form-group row"&gt;
     &lt;label class="col-form-label col-sm-2" for="inputEmail"&gt;Email&lt;/label&gt;
@@ -1081,67 +1115,69 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 </pre>
 
 
-<hr class="bs-docs-separator">
+					<hr class="bs-docs-separator">
 
 
-<h2>Supported form controls</h2>
+					<h2>Supported form controls</h2>
 
-<p>Examples of standard form controls supported in an example form layout.</p>
+					<p>Examples of standard form controls supported in an example form layout.</p>
 
-<h3>Inputs</h3>
+					<h3>Inputs</h3>
 
-<p>Most common form control, text-based input fields. Includes support for all HTML5 types: text, password, datetime, datetime-local, date, month, time, week, number, email, url, search, tel, and color.</p>
+					<p>Most common form control, text-based input fields. Includes support for all HTML5 types: text, password, datetime,
+						datetime-local,
+						date, month, time, week, number, email, url, search, tel, and color.</p>
 
-<p>Requires the use of a specified <code>type</code> at all times.</p>
+					<p>Requires the use of a specified <code>type</code> at all times.</p>
 
-<form class="bs-docs-example form-inline">
-    <div class="form-group">
-        <input type="text" class="form-control" placeholder="Text input">
-    </div>
-</form>
-<pre class="prettyprint linenums">
+					<form class="bs-docs-example form-inline">
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="Text input">
+						</div>
+					</form>
+					<pre class="prettyprint linenums">
 &lt;input type="text" class="form-control" placeholder="Text input"&gt;
 </pre>
 
-<h3>Textarea</h3>
+					<h3>Textarea</h3>
 
-<p>Form control which supports multiple lines of text. Change <code>rows</code> attribute as necessary.</p>
+					<p>Form control which supports multiple lines of text. Change <code>rows</code> attribute as necessary.</p>
 
-<form class="bs-docs-example form-inline">
-    <div class="form-group">
-        <textarea class="form-control" rows="3"></textarea>
-    </div>
-</form>
-<pre class="prettyprint linenums">
+					<form class="bs-docs-example form-inline">
+						<div class="form-group">
+							<textarea class="form-control" rows="3"></textarea>
+						</div>
+					</form>
+					<pre class="prettyprint linenums">
 &lt;textarea class="form-control" rows="3"&gt;&lt;/textarea&gt;
 </pre>
 
-<h3>Checkboxes and radios</h3>
+					<h3>Checkboxes and radios</h3>
 
-<p>Checkboxes are for selecting one or several options in a list while radios are for selecting one option from many.</p>
-<h4>Default (stacked)</h4>
+					<p>Checkboxes are for selecting one or several options in a list while radios are for selecting one option from many.</p>
+					<h4>Default (stacked)</h4>
 
-<form class="bs-docs-example">
-    <div class="form-check">
-        <input type="checkbox" value="" class="form-check-input">
-        <label class="form-check-label">
-            Option one is this and that&mdash;be sure to include why it's great
-        </label>
-    </div>
-    <div class="form-check">
-        <input class="form-check-input" type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-        <label class="form-check-label">
-            Option one is this and that&mdash;be sure to include why it's great
-        </label>
-    </div>
-    <div  class="form-check">
-        <input class="form-check-input" type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-        <label class="form-check-label">
-            Option two can be something else and selecting it will deselect option one
-        </label>
-    </div>
-</form>
-<pre class="prettyprint linenums">
+					<form class="bs-docs-example">
+						<div class="form-check">
+							<input type="checkbox" value="" class="form-check-input">
+							<label class="form-check-label">
+								Option one is this and that&mdash;be sure to include why it's great
+							</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input" type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+							<label class="form-check-label">
+								Option one is this and that&mdash;be sure to include why it's great
+							</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input" type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+							<label class="form-check-label">
+								Option two can be something else and selecting it will deselect option one
+							</label>
+						</div>
+					</form>
+					<pre class="prettyprint linenums">
 &lt;div class="form-check"&gt;
     &lt;input type="checkbox" value="" class="form-check-input"&gt;
     &lt;label class="form-check-label"&gt;
@@ -1162,25 +1198,25 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 &lt;/div&gt;
 </pre>
 
-<h4>Inline checkboxes</h4>
+					<h4>Inline checkboxes</h4>
 
-<p>Add the <code>.inline</code> class to a series of checkboxes or radios for controls appear on the same line.</p>
+					<p>Add the <code>.inline</code> class to a series of checkboxes or radios for controls appear on the same line.</p>
 
-<form class="bs-docs-example">
-    <div class="form-check form-check-inline">
-        <input type="checkbox" id="inlineCheckbox1" value="option1" class="form-check-input">
-        <label class="form-check-label">1</label>
-    </div>
-    <div class="form-check form-check-inline">
-        <input type="checkbox" id="inlineCheckbox2" value="option2" class="form-check-input">
-        <label class="form-check-label">2</label>
-    </div>
-    <div class="form-check form-check-inline">
-        <input type="checkbox" id="inlineCheckbox3" value="option3" class="form-check-input">
-        <label class="form-check-label">3</label>
-    </div>
-</form>
-<pre class="prettyprint linenums">
+					<form class="bs-docs-example">
+						<div class="form-check form-check-inline">
+							<input type="checkbox" id="inlineCheckbox1" value="option1" class="form-check-input">
+							<label class="form-check-label">1</label>
+						</div>
+						<div class="form-check form-check-inline">
+							<input type="checkbox" id="inlineCheckbox2" value="option2" class="form-check-input">
+							<label class="form-check-label">2</label>
+						</div>
+						<div class="form-check form-check-inline">
+							<input type="checkbox" id="inlineCheckbox3" value="option3" class="form-check-input">
+							<label class="form-check-label">3</label>
+						</div>
+					</form>
+					<pre class="prettyprint linenums">
 &lt;div class="form-check form-check-inline"&gt;
     &lt;label class="form-check-label"&gt;
       &lt;input type="checkbox" id="inlineCheckbox1" value="option1" class="form-check-input"&gt; 1
@@ -1197,28 +1233,28 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 &lt;/div&gt;
 </pre>
 
-<h3>Selects</h3>
+					<h3>Selects</h3>
 
-<p>Use the default option or specify a <code>multiple="multiple"</code> to show multiple options at once.</p>
+					<p>Use the default option or specify a <code>multiple="multiple"</code> to show multiple options at once.</p>
 
-<form class="bs-docs-example">
-    <select class="form-control" >
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
-    </select>
-    <br>
-    <select multiple="multiple" class="form-control" >
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
-    </select>
-</form>
-<pre class="prettyprint linenums">
+					<form class="bs-docs-example">
+						<select class="form-control">
+							<option>1</option>
+							<option>2</option>
+							<option>3</option>
+							<option>4</option>
+							<option>5</option>
+						</select>
+						<br>
+						<select multiple="multiple" class="form-control">
+							<option>1</option>
+							<option>2</option>
+							<option>3</option>
+							<option>4</option>
+							<option>5</option>
+						</select>
+					</form>
+					<pre class="prettyprint linenums">
 &lt;select&gt;
   &lt;option&gt;1&lt;/option&gt;
   &lt;option&gt;2&lt;/option&gt;
@@ -1237,36 +1273,36 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 </pre>
 
 
-<hr class="bs-docs-separator">
+					<hr class="bs-docs-separator">
 
 
-<h2>Extending form controls</h2>
+					<h2>Extending form controls</h2>
 
-<p>Adding on top of existing browser controls, Bootstrap includes other useful form components.</p>
+					<p>Adding on top of existing browser controls, Bootstrap includes other useful form components.</p>
 
-<h3>Prepended and appended inputs</h3>
+					<h3>Prepended and appended inputs</h3>
 
-<p>Add text or buttons before or after any text-based input. Do note that <code>select</code> elements are not supported here.</p>
+					<p>Add text or buttons before or after any text-based input. Do note that <code>select</code> elements are not supported here.</p>
 
-<h4>Default options</h4>
+					<h4>Default options</h4>
 
-<p>Wrap an <code>.add-on</code> and an <code>input</code> with one of two classes to prepend or append text to an input.</p>
+					<p>Wrap an <code>.add-on</code> and an <code>input</code> with one of two classes to prepend or append text to an input.</p>
 
-<form class="bs-docs-example">
-    <div class="form-group">
-        <div class="input-group">
-            <span class="input-group-text">@</span>
-            <input class="form-control" id="prependedInput" type="text" placeholder="Username">
-        </div>
-        <br>
+					<form class="bs-docs-example">
+						<div class="form-group">
+							<div class="input-group">
+								<span class="input-group-text">@</span>
+								<input class="form-control" id="prependedInput" type="text" placeholder="Username">
+							</div>
+							<br>
 
-        <div class="input-group">
-            <input class="form-control" id="appendedInput" type="text">
-            <span class="input-group-text">.00</span>
-        </div>
-    </div>
-</form>
-<pre class="prettyprint linenums">
+							<div class="input-group">
+								<input class="form-control" id="appendedInput" type="text">
+								<span class="input-group-text">.00</span>
+							</div>
+						</div>
+					</form>
+					<pre class="prettyprint linenums">
 &lt;div class="form-group"&gt;
     &lt;div class="input-group"&gt;
         &lt;span class="input-group-text"&gt;@&lt;/span&gt;
@@ -1279,20 +1315,20 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 &lt;/div&gt;
 </pre>
 
-<h4>Combined</h4>
+					<h4>Combined</h4>
 
-<p>Use both classes and two instances of <code>.add-on</code> to prepend and append an input.</p>
+					<p>Use both classes and two instances of <code>.add-on</code> to prepend and append an input.</p>
 
-<form class="bs-docs-example">
-    <div class="form-group">
-        <div class="input-group">
-            <span class="input-group-text">$</span>
-            <input class="form-control" id="appendedPrependedInput" type="text">
-            <span class="input-group-text">.00</span>
-        </div>
-    </div>
-</form>
-<pre class="prettyprint linenums">
+					<form class="bs-docs-example">
+						<div class="form-group">
+							<div class="input-group">
+								<span class="input-group-text">$</span>
+								<input class="form-control" id="appendedPrependedInput" type="text">
+								<span class="input-group-text">.00</span>
+							</div>
+						</div>
+					</form>
+					<pre class="prettyprint linenums">
 &lt;div class="form-group"&gt;
     &lt;div class="input-group"&gt;
         &lt;span class="input-group-text"&gt;$&lt;/span&gt;
@@ -1302,19 +1338,19 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 &lt;/div&gt;
 </pre>
 
-<h4>Buttons instead of text</h4>
+					<h4>Buttons instead of text</h4>
 
-<p>Instead of a <code>&lt;span&gt;</code> with text, use a <code>.btn</code> to attach a button (or two) to an input.</p>
+					<p>Instead of a <code>&lt;span&gt;</code> with text, use a <code>.btn</code> to attach a button (or two) to an input.</p>
 
-<form class="bs-docs-example">
-    <div class="form-group">
-        <div class="input-group">
-            <input class="form-control" id="appendedInputButton" type="text"/>
-            <button class="btn" type="button">Go!</button>
-        </div>
-    </div>
-</form>
-<pre class="prettyprint linenums">
+					<form class="bs-docs-example">
+						<div class="form-group">
+							<div class="input-group">
+								<input class="form-control" id="appendedInputButton" type="text" />
+								<button class="btn" type="button">Go!</button>
+							</div>
+						</div>
+					</form>
+					<pre class="prettyprint linenums">
 &lt;div class="form-group"&gt;
     &lt;div class="input-group"&gt;
         &lt;input class="form-control" id="appendedInputButton" type="text"/&gt;
@@ -1322,15 +1358,15 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
     &lt;/div&gt;
 &lt;/div&gt;
 </pre>
-<form class="bs-docs-example">
-    <div class="form-group">
-        <div class="input-group">
-            <input class="form-control" id="appendedInputButtons" type="text">
-            <button class="btn" type="button">Search</button>
-        </div>
-    </div>
-</form>
-<pre class="prettyprint linenums">
+					<form class="bs-docs-example">
+						<div class="form-group">
+							<div class="input-group">
+								<input class="form-control" id="appendedInputButtons" type="text">
+								<button class="btn" type="button">Search</button>
+							</div>
+						</div>
+					</form>
+					<pre class="prettyprint linenums">
 &lt;div class="form-group"&gt;
     &lt;div class="input-group"&gt;
         &lt;input class="form-control" id="appendedInputButtons" type="text"&gt;
@@ -1339,31 +1375,32 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 &lt;/div&gt;
 </pre>
 
-<h4>Button dropdowns</h4>
+					<h4>Button dropdowns</h4>
 
-<p></p>
+					<p></p>
 
-<form class="bs-docs-example">
-    <div class="row">
-        <div class="col-lg-6">
-            <div class="form-group">
-                <div class="input-group">
-                    <input class="form-control" id="appendedDropdownButton" type="text">
+					<form class="bs-docs-example">
+						<div class="row">
+							<div class="col-lg-6">
+								<div class="form-group">
+									<div class="input-group">
+										<input class="form-control" id="appendedDropdownButton" type="text">
 
-                    <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown">Action <span class="caret"></span></button>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                        <div class="dropdown-divider" role="separator"></div>
-                        <a class="dropdown-item" href="#">Separated link</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</form>
-<pre class="prettyprint linenums">
+										<button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown">Action <span class="caret"></span>
+										</button>
+										<div class="dropdown-menu">
+											<a class="dropdown-item" href="#">Action</a>
+											<a class="dropdown-item" href="#">Another action</a>
+											<a class="dropdown-item" href="#">Something else here</a>
+											<div class="dropdown-divider" role="separator"></div>
+											<a class="dropdown-item" href="#">Separated link</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+					<pre class="prettyprint linenums">
 &lt;div class="form-group"&gt;
     &lt;div class="input-group"&gt;
         &lt;input class="form-control" id="appendedDropdownButton" type="text"&gt;
@@ -1380,26 +1417,27 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 &lt;/div&gt;
 </pre>
 
-<form class="bs-docs-example">
-    <div class="row">
-        <div class="col-lg-6">
-            <div class="form-group">
-                <div class="input-group">
-                    <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown">Action <span class="caret"></span></button>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                        <div class="dropdown-divider" role="separator"></div>
-                        <a class="dropdown-item" href="#">Separated link</a>
-                    </div>
-                    <input class="form-control" id="prependedDropdownButton" type="text">
-                </div>
-            </div>
-        </div>
-    </div>
-</form>
-<pre class="prettyprint linenums">
+					<form class="bs-docs-example">
+						<div class="row">
+							<div class="col-lg-6">
+								<div class="form-group">
+									<div class="input-group">
+										<button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown">Action <span class="caret"></span>
+										</button>
+										<div class="dropdown-menu">
+											<a class="dropdown-item" href="#">Action</a>
+											<a class="dropdown-item" href="#">Another action</a>
+											<a class="dropdown-item" href="#">Something else here</a>
+											<div class="dropdown-divider" role="separator"></div>
+											<a class="dropdown-item" href="#">Separated link</a>
+										</div>
+										<input class="form-control" id="prependedDropdownButton" type="text">
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+					<pre class="prettyprint linenums">
 &lt;div class="form-group"&gt;
     &lt;div class="input-group"&gt;
         &lt;button class="btn dropdown-toggle" data-bs-toggle="dropdown"&gt;Action &lt;span class="caret"&gt;&lt;/span&gt;&lt;/button&gt;
@@ -1415,32 +1453,34 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 &lt;/div&gt;
 </pre>
 
-<form class="bs-docs-example">
-    <div class="form-group">
-        <div class="input-group">
-            <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown">Action <span class="caret"></span></button>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
-                <div class="dropdown-divider" role="separator"></div>
-                <a class="dropdown-item" href="#">Separated link</a>
-            </div>
+					<form class="bs-docs-example">
+						<div class="form-group">
+							<div class="input-group">
+								<button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown">Action <span class="caret"></span>
+								</button>
+								<div class="dropdown-menu">
+									<a class="dropdown-item" href="#">Action</a>
+									<a class="dropdown-item" href="#">Another action</a>
+									<a class="dropdown-item" href="#">Something else here</a>
+									<div class="dropdown-divider" role="separator"></div>
+									<a class="dropdown-item" href="#">Separated link</a>
+								</div>
 
-            <input class="form-control" id="appendedPrependedDropdownButton" type="text">
+								<input class="form-control" id="appendedPrependedDropdownButton" type="text">
 
-            <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown">Action <span class="caret"></span></button>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
-                <div class="dropdown-divider" role="separator"></div>
-                <a class="dropdown-item" href="#">Separated link</a>
-            </div>
-        </div>
-    </div>
-</form>
-<pre class="prettyprint linenums">
+								<button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown">Action <span class="caret"></span>
+								</button>
+								<div class="dropdown-menu">
+									<a class="dropdown-item" href="#">Action</a>
+									<a class="dropdown-item" href="#">Another action</a>
+									<a class="dropdown-item" href="#">Something else here</a>
+									<div class="dropdown-divider" role="separator"></div>
+									<a class="dropdown-item" href="#">Separated link</a>
+								</div>
+							</div>
+						</div>
+					</form>
+					<pre class="prettyprint linenums">
 &lt;div class="form-group"&gt;
     &lt;div class="input-group"&gt;
         &lt;button class="btn dropdown-toggle" data-bs-toggle="dropdown"&gt;Action &lt;span class="caret"&gt;&lt;/span&gt;&lt;/button&gt;
@@ -1466,44 +1506,46 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 &lt;/div&gt;
 </pre>
 
-<h3>Control sizing</h3>
+					<h3>Control sizing</h3>
 
-<p>Use relative sizing classes like <code>.input-large</code> or match your inputs to the grid column sizes using <code>.span*</code> classes.</p>
+					<p>Use relative sizing classes like <code>.input-large</code> or match your inputs to the grid column sizes using
+						<code>.span*</code>
+						classes.</p>
 
-<h4>Block level inputs</h4>
+					<h4>Block level inputs</h4>
 
-<p>Make any <code>&lt;input&gt;</code> or <code>&lt;textarea&gt;</code> element behave like a block level element.</p>
+					<p>Make any <code>&lt;input&gt;</code> or <code>&lt;textarea&gt;</code> element behave like a block level element.</p>
 
-<form class="bs-docs-example" style="padding-bottom: 15px;">
-    <div class="controls">
-        <input class="form-control input-block-level" type="text" placeholder=".input-block-level">
-    </div>
-</form>
-<pre class="prettyprint linenums">
+					<form class="bs-docs-example" style="padding-bottom: 15px;">
+						<div class="controls">
+							<input class="form-control input-block-level" type="text" placeholder=".input-block-level">
+						</div>
+					</form>
+					<pre class="prettyprint linenums">
 &lt;input class="form-control input-block-level" type="text" placeholder=".input-block-level"&gt;
 </pre>
 
-<h4>Relative sizing</h4>
+					<h4>Relative sizing</h4>
 
-<form class="bs-docs-example" style="padding-bottom: 15px;">
-    <div class="form-group">
-        <div class="controls docs-input-sizes">
-            <input class="form-control input-sm" type="text" placeholder=".input-small">
-            <input class="form-control" type="text" placeholder="default">
-            <input class="form-control input-lg" type="text" placeholder=".input-large">
-            <select class="form-control input-xs">
-                <option>.input-sm</option>
-            </select>
-            <select class="form-control">
-                <option>Default</option>
-            </select>
-            <select class="form-control input-lg">
-                <option>.input-lg</option>
-            </select>
-        </div>
-    </div>
-</form>
-<pre class="prettyprint linenums">
+					<form class="bs-docs-example" style="padding-bottom: 15px;">
+						<div class="form-group">
+							<div class="controls docs-input-sizes">
+								<input class="form-control input-sm" type="text" placeholder=".input-small">
+								<input class="form-control" type="text" placeholder="default">
+								<input class="form-control input-lg" type="text" placeholder=".input-large">
+								<select class="form-control input-xs">
+									<option>.input-sm</option>
+								</select>
+								<select class="form-control">
+									<option>Default</option>
+								</select>
+								<select class="form-control input-lg">
+									<option>.input-lg</option>
+								</select>
+							</div>
+						</div>
+					</form>
+					<pre class="prettyprint linenums">
 &lt;div class="form-group"&gt;
     &lt;div class="controls docs-input-sizes"&gt;
         &lt;input class="form-control input-sm" type="text" placeholder=".input-small"&gt;
@@ -1522,87 +1564,90 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 &lt;/div&gt;
 </pre>
 
-<h3>Help text</h3>
+					<h3>Help text</h3>
 
-<p>Block level support for help text that appears around form controls.</p>
+					<p>Block level support for help text that appears around form controls.</p>
 
-<h4>Block help</h4>
+					<h4>Block help</h4>
 
-<form class="bs-docs-example form-inline">
-    <div class="form-group">
-        <input type="text" class="form-control" />
-        <span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>
-    </div>
-</form>
-<pre class="prettyprint linenums">
+					<form class="bs-docs-example form-inline">
+						<div class="form-group">
+							<input type="text" class="form-control" />
+							<span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>
+						</div>
+					</form>
+					<pre class="prettyprint linenums">
 &lt;input type="text" class="form-control" &gt;&lt;span class="help-block"&gt;A longer block of help text that breaks onto a new line and may extend beyond one line.&lt;/span&gt;
 </pre>
 
 
-<hr class="bs-docs-separator">
+					<hr class="bs-docs-separator">
 
 
-<h2>Form control states</h2>
+					<h2>Form control states</h2>
 
-<p>Provide feedback to users or visitors with basic feedback states on form controls and labels.</p>
+					<p>Provide feedback to users or visitors with basic feedback states on form controls and labels.</p>
 
-<h3>Input focus</h3>
+					<h3>Input focus</h3>
 
-<p>We remove the default <code>outline</code> styles on some form controls and apply a <code>box-shadow</code> in its place for <code>:focus</code>.</p>
+					<p>We remove the default <code>outline</code> styles on some form controls and apply a <code>box-shadow</code> in its place for
+						<code>:focus</code>.
+					</p>
 
-<form class="bs-docs-example form-inline">
-    <input class="form-control input-lg" id="focusedInput" type="text" value="This is focused...">
-</form>
-<pre class="prettyprint linenums">
+					<form class="bs-docs-example form-inline">
+						<input class="form-control input-lg" id="focusedInput" type="text" value="This is focused...">
+					</form>
+					<pre class="prettyprint linenums">
 &lt;input class="form-control input-lg" id="focusedInput" type="text" value="This is focused..."&gt;
 </pre>
 
-<h3>Disabled inputs</h3>
+					<h3>Disabled inputs</h3>
 
-<p>Add the <code>disabled</code> attribute on an input to prevent user input and trigger a slightly different look.</p>
+					<p>Add the <code>disabled</code> attribute on an input to prevent user input and trigger a slightly different look.</p>
 
-<form class="bs-docs-example form-inline">
-    <div class="form-group">
-        <input class="form-control input-lg" id="disabledInput" type="text" placeholder="Disabled input here..." disabled/>
-    </div>
-</form>
-<pre class="prettyprint linenums">
+					<form class="bs-docs-example form-inline">
+						<div class="form-group">
+							<input class="form-control input-lg" id="disabledInput" type="text" placeholder="Disabled input here..." disabled />
+						</div>
+					</form>
+					<pre class="prettyprint linenums">
 &lt;input class="form-control input-lg" id="disabledInput" type="text" placeholder="Disabled input here..." disabled&gt;
 </pre>
 
-<h3>Validation states</h3>
+					<h3>Validation states</h3>
 
-<p>Bootstrap includes validation styles for error, warning, info, and success messages. To use, add the appropriate class to the surrounding <code>.form-group</code>.</p>
+					<p>Bootstrap includes validation styles for error, warning, info, and success messages. To use, add the appropriate class to the
+						surrounding <code>.form-group</code>.</p>
 
-<form class="bs-docs-example">
-    <div class="form-group">
-        <div class="has-warning">
-            <label class="control-label" for="inputWarning">Input with warning</label>
+					<form class="bs-docs-example">
+						<div class="form-group">
+							<div class="has-warning">
+								<label class="control-label" for="inputWarning">Input with warning</label>
 
-            <div class="controls">
-                <input type="text" class="form-control" id="inputWarning">
-                <span class="help-block">Something may have gone wrong</span>
-            </div>
-        </div>
-        <div class="has-error">
-            <label class="control-label" for="inputError">Input with error</label>
+								<div class="controls">
+									<input type="text" class="form-control" id="inputWarning">
+									<span class="help-block">Something may have gone wrong</span>
+								</div>
+							</div>
+							<div class="has-error">
+								<label class="control-label" for="inputError">Input with error</label>
 
-            <div class="controls">
-                <input type="text" class="form-control" id="inputError">
-                <span class="help-block">Please correct the error</span>
-            </div>
-        </div>
-        <div class="has-success">
-            <label class="control-label" for="inputSuccess">Input with success</label>
+								<div class="controls">
+									<input type="text" class="form-control" id="inputError">
+									<span class="help-block">Please correct the error</span>
+								</div>
+							</div>
+							<div class="has-success">
+								<label class="control-label" for="inputSuccess">Input with success</label>
 
-            <div class="controls">
-                <input type="text" class="form-control" id="inputSuccess">
-                <span class="help-block">Woohoo!</span>
-            </div>
-        </div>
-    </div>
-</form>
-<pre class="prettyprint linenums">
+								<div class="controls">
+									<input type="text" class="form-control" id="inputSuccess">
+									<span class="help-block">Woohoo!</span>
+								</div>
+							</div>
+						</div>
+					</form>
+					<pre class="prettyprint linenums">
 &lt;div class="form-group"&gt;
     &lt;div class="has-warning"&gt;
         &lt;label class="control-label" for="inputWarning"&gt;Input with warning&lt;/label&gt;
@@ -1631,115 +1676,119 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 &lt;/div&gt;
 </pre>
 
-</section>
+				</section>
 
 
-<!-- Buttons
-================================================== -->
-<section id="buttons">
-    <div class="pb-2 mt-4 mb-2 border-bottom">
-        <h1>Buttons</h1>
-    </div>
+				<!-- Buttons
+				================================================== -->
+				<section id="buttons">
+					<div class="pb-2 mt-4 mb-2 border-bottom">
+						<h1>Buttons</h1>
+					</div>
 
-    <h2>Default buttons</h2>
+					<h2>Default buttons</h2>
 
-    <p>Button styles can be applied to anything with the <code>.btn</code> class applied. However, typically you'll want to apply these to only <code>&lt;a&gt;</code> and <code>&lt;button&gt;</code> elements for the best rendering.</p>
-    <table class="table table-bordered table-striped">
-        <thead>
-            <tr>
-                <th>Button</th>
-                <th>class=""</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>
-                    <button type="button" class="btn">Default</button>
-                </td>
-                <td><code>btn</code></td>
-                <td>Standard gray button with gradient</td>
-            </tr>
-            <tr>
-                <td>
-                    <button type="button" class="btn btn-primary">Primary</button>
-                </td>
-                <td><code>btn btn-primary</code></td>
-                <td>Provides extra visual weight and identifies the primary action in a set of buttons</td>
-            </tr>
-            <tr>
-                <td>
-                    <button type="button" class="btn btn-info">Info</button>
-                </td>
-                <td><code>btn btn-info</code></td>
-                <td>Used as an alternative to the default styles</td>
-            </tr>
-            <tr>
-                <td>
-                    <button type="button" class="btn btn-success">Success</button>
-                </td>
-                <td><code>btn btn-success</code></td>
-                <td>Indicates a successful or positive action</td>
-            </tr>
-            <tr>
-                <td>
-                    <button type="button" class="btn btn-warning">Warning</button>
-                </td>
-                <td><code>btn btn-warning</code></td>
-                <td>Indicates caution should be taken with this action</td>
-            </tr>
-            <tr>
-                <td>
-                    <button type="button" class="btn btn-danger">Danger</button>
-                </td>
-                <td><code>btn btn-danger</code></td>
-                <td>Indicates a dangerous or potentially negative action</td>
-            </tr>
-            <tr>
-                <td>
-                    <button type="button" class="btn btn-inverse">Inverse</button>
-                </td>
-                <td><code>btn btn-inverse</code></td>
-                <td>Alternate dark gray button, not tied to a semantic action or use</td>
-            </tr>
-            <tr>
-                <td>
-                    <button type="button" class="btn btn-link">Link</button>
-                </td>
-                <td><code>btn btn-link</code></td>
-                <td>Deemphasize a button by making it look like a link while maintaining button behavior</td>
-            </tr>
-        </tbody>
-    </table>
+					<p>Button styles can be applied to anything with the <code>.btn</code> class applied. However, typically you'll want to apply
+						these to
+						only <code>&lt;a&gt;</code> and <code>&lt;button&gt;</code> elements for the best rendering.</p>
+					<table class="table table-bordered table-striped">
+						<thead>
+						<tr>
+							<th>Button</th>
+							<th>class=""</th>
+							<th>Description</th>
+						</tr>
+						</thead>
+						<tbody>
+						<tr>
+							<td>
+								<button type="button" class="btn">Default</button>
+							</td>
+							<td><code>btn</code></td>
+							<td>Standard gray button with gradient</td>
+						</tr>
+						<tr>
+							<td>
+								<button type="button" class="btn btn-primary">Primary</button>
+							</td>
+							<td><code>btn btn-primary</code></td>
+							<td>Provides extra visual weight and identifies the primary action in a set of buttons</td>
+						</tr>
+						<tr>
+							<td>
+								<button type="button" class="btn btn-info">Info</button>
+							</td>
+							<td><code>btn btn-info</code></td>
+							<td>Used as an alternative to the default styles</td>
+						</tr>
+						<tr>
+							<td>
+								<button type="button" class="btn btn-success">Success</button>
+							</td>
+							<td><code>btn btn-success</code></td>
+							<td>Indicates a successful or positive action</td>
+						</tr>
+						<tr>
+							<td>
+								<button type="button" class="btn btn-warning">Warning</button>
+							</td>
+							<td><code>btn btn-warning</code></td>
+							<td>Indicates caution should be taken with this action</td>
+						</tr>
+						<tr>
+							<td>
+								<button type="button" class="btn btn-danger">Danger</button>
+							</td>
+							<td><code>btn btn-danger</code></td>
+							<td>Indicates a dangerous or potentially negative action</td>
+						</tr>
+						<tr>
+							<td>
+								<button type="button" class="btn btn-inverse">Inverse</button>
+							</td>
+							<td><code>btn btn-inverse</code></td>
+							<td>Alternate dark gray button, not tied to a semantic action or use</td>
+						</tr>
+						<tr>
+							<td>
+								<button type="button" class="btn btn-link">Link</button>
+							</td>
+							<td><code>btn btn-link</code></td>
+							<td>Deemphasize a button by making it look like a link while maintaining button behavior</td>
+						</tr>
+						</tbody>
+					</table>
 
-    <h4>Cross browser compatibility</h4>
+					<h4>Cross browser compatibility</h4>
 
-    <p>IE9 doesn't crop background gradients on rounded corners, so we remove it. Related, IE9 jankifies disabled <code>button</code> elements, rendering text gray with a nasty text-shadow that we cannot fix.</p>
+					<p>IE9 doesn't crop background gradients on rounded corners, so we remove it. Related, IE9 jankifies disabled <code>button</code>
+						elements, rendering text gray with a nasty text-shadow that we cannot fix.</p>
 
 
-    <h2>Button sizes</h2>
+					<h2>Button sizes</h2>
 
-    <p>Fancy larger or smaller buttons? Add <code>.btn-lg</code>, <code>.btn-sm</code>, or <code>.btn-xs</code> for additional sizes.</p>
+					<p>Fancy larger or smaller buttons? Add <code>.btn-lg</code>, <code>.btn-sm</code>, or <code>.btn-xs</code> for additional sizes.
+					</p>
 
-    <div class="bs-docs-example">
-        <p>
-            <button type="button" class="btn btn-lg btn-primary">Large button</button>
-            <button type="button" class="btn btn-lg">Large button</button>
-        </p>
-        <p>
-            <button type="button" class="btn btn-primary">Default button</button>
-            <button type="button" class="btn">Default button</button>
-        </p>
-        <p>
-            <button type="button" class="btn btn-sm btn-primary">Small button</button>
-            <button type="button" class="btn btn-sm">Small button</button>
-        </p>
-        <p>
-            <button type="button" class="btn btn-xs btn-primary">Mini button</button>
-            <button type="button" class="btn btn-xs">Mini button</button>
-        </p>
-    </div>
-<pre class="prettyprint linenums">
+					<div class="bs-docs-example">
+						<p>
+							<button type="button" class="btn btn-lg btn-primary">Large button</button>
+							<button type="button" class="btn btn-lg">Large button</button>
+						</p>
+						<p>
+							<button type="button" class="btn btn-primary">Default button</button>
+							<button type="button" class="btn">Default button</button>
+						</p>
+						<p>
+							<button type="button" class="btn btn-sm btn-primary">Small button</button>
+							<button type="button" class="btn btn-sm">Small button</button>
+						</p>
+						<p>
+							<button type="button" class="btn btn-xs btn-primary">Mini button</button>
+							<button type="button" class="btn btn-xs">Mini button</button>
+						</p>
+					</div>
+					<pre class="prettyprint linenums">
 &lt;p&gt;
   &lt;button class="btn btn-lg btn-primary" type="button"&gt;Large button&lt;/button&gt;
   &lt;button class="btn btn-lg" type="button"&gt;Large button&lt;/button&gt;
@@ -1759,148 +1808,162 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 </pre>
 
 
-    <h2>Disabled state</h2>
+					<h2>Disabled state</h2>
 
-    <p>Make buttons look unclickable by fading them back 50%.</p>
+					<p>Make buttons look unclickable by fading them back 50%.</p>
 
-    <h3>Anchor element</h3>
+					<h3>Anchor element</h3>
 
-    <p>Add the <code>.disabled</code> class to <code>&lt;a&gt;</code> buttons.</p>
+					<p>Add the <code>.disabled</code> class to <code>&lt;a&gt;</code> buttons.</p>
 
-    <p class="bs-docs-example">
-        <a href="#" class="btn btn-lg btn-primary" disabled="disabled">Primary link</a>
-        <a href="#" class="btn btn-lg" disabled="disabled">Link</a>
-    </p>
-<pre class="prettyprint linenums">
+					<p class="bs-docs-example">
+						<a href="#" class="btn btn-lg btn-primary" disabled="disabled">Primary link</a>
+						<a href="#" class="btn btn-lg" disabled="disabled">Link</a>
+					</p>
+					<pre class="prettyprint linenums">
 &lt;a href="#" class="btn btn-lg btn-primary" disabled="disabled"&gt;Primary link&lt;/a&gt;
 &lt;a href="#" class="btn btn-lg" disabled="disabled"&gt;Link&lt;/a&gt;
 </pre>
-    <p>
-        <span class="label label-info">Heads up!</span>
-        We use <code>.disabled</code> as a utility class here, similar to the common <code>.active</code> class, so no prefix is required. Also, this class is only for aesthetic; you must use custom JavaScript to disable links here.
-    </p>
+					<p>
+						<span class="label label-info">Heads up!</span>
+						We use <code>.disabled</code> as a utility class here, similar to the common <code>.active</code> class, so no prefix is
+						required.
+						Also, this class is only for aesthetic; you must use custom JavaScript to disable links here.
+					</p>
 
-    <h3>Button element</h3>
+					<h3>Button element</h3>
 
-    <p>Add the <code>disabled</code> attribute to <code>&lt;button&gt;</code> buttons.</p>
+					<p>Add the <code>disabled</code> attribute to <code>&lt;button&gt;</code> buttons.</p>
 
-    <p class="bs-docs-example">
-        <button type="button" class="btn btn-lg btn-primary" disabled="disabled">Primary button</button>
-        <button type="button" class="btn btn-lg"  disabled="disabled">Button</button>
-    </p>
-<pre class="prettyprint linenums">
+					<p class="bs-docs-example">
+						<button type="button" class="btn btn-lg btn-primary" disabled="disabled">Primary button</button>
+						<button type="button" class="btn btn-lg" disabled="disabled">Button</button>
+					</p>
+					<pre class="prettyprint linenums">
 &lt;button type="button" class="btn btn-lg btn-primary" disabled="disabled"&gt;Primary button&lt;/button&gt;
 &lt;button type="button" class="btn btn-lg"  disabled="disabled"&gt;Button&lt;/button&gt;
 </pre>
 
 
-    <h2>One class, multiple tags</h2>
+					<h2>One class, multiple tags</h2>
 
-    <p>Use the <code>.btn</code> class on an <code>&lt;a&gt;</code>, <code>&lt;button&gt;</code>, or <code>&lt;input&gt;</code> element.</p>
+					<p>Use the <code>.btn</code> class on an <code>&lt;a&gt;</code>, <code>&lt;button&gt;</code>, or <code>&lt;input&gt;</code>
+						element.
+					</p>
 
-    <form class="bs-docs-example">
-        <a class="btn" href="">Link</a>
-        <button class="btn" type="submit">Button</button>
-        <input class="btn" type="button" value="Input">
-        <input class="btn" type="submit" value="Submit">
-    </form>
-<pre class="prettyprint linenums">
+					<form class="bs-docs-example">
+						<a class="btn" href="">Link</a>
+						<button class="btn" type="submit">Button</button>
+						<input class="btn" type="button" value="Input">
+						<input class="btn" type="submit" value="Submit">
+					</form>
+					<pre class="prettyprint linenums">
 &lt;a class="btn" href=""&gt;Link&lt;/a&gt;
 &lt;button class="btn" type="submit"&gt;Button&lt;/button&gt;
 &lt;input class="btn" type="button" value="Input"&gt;
 &lt;input class="btn" type="submit" value="Submit"&gt;
 </pre>
-    <p>As a best practice, try to match the element for your context to ensure matching cross-browser rendering. If you have an <code>input</code>, use an <code>&lt;input type="submit"&gt;</code> for your button.</p>
+					<p>As a best practice, try to match the element for your context to ensure matching cross-browser rendering. If you have an <code>input</code>,
+						use an <code>&lt;input type="submit"&gt;</code> for your button.</p>
 
-</section>
+				</section>
 
 
-<!-- Images
-================================================== -->
-<section id="images">
-    <div class="pb-2 mt-4 mb-2 border-bottom">
-        <h1>Images</h1>
-    </div>
+				<!-- Images
+				================================================== -->
+				<section id="images">
+					<div class="pb-2 mt-4 mb-2 border-bottom">
+						<h1>Images</h1>
+					</div>
 
-    <p>Add classes to an <code>&lt;img&gt;</code> element to easily style images in any project.</p>
+					<p>Add classes to an <code>&lt;img&gt;</code> element to easily style images in any project.</p>
 
-    <div class="bs-docs-example bs-docs-example-images">
-        <img src="https://via.placeholder.com/140x140" class="rounded">
-        <img src="https://via.placeholder.com/140x140" class="rounded-circle">
-        <img src="https://via.placeholder.com/140x140" class="img-thumbnail">
-    </div>
-<pre class="prettyprint linenums">
+					<div class="bs-docs-example bs-docs-example-images">
+						<img src="https://via.placeholder.com/140x140" class="rounded">
+						<img src="https://via.placeholder.com/140x140" class="rounded-circle">
+						<img src="https://via.placeholder.com/140x140" class="img-thumbnail">
+					</div>
+					<pre class="prettyprint linenums">
 &lt;img src="..." class="rounded"&gt;
 &lt;img src="..." class="rounded-circle"&gt;
 &lt;img src="..." class="img-thumbnail"&gt;
 </pre>
-    <p><span class="label label-info">Heads up!</span> <code>.rounded</code> and <code>.rounded-circle</code> do not work in IE7-8 due to lack of <code>border-radius</code> support.</p>
+					<p><span class="label label-info">Heads up!</span> <code>.rounded</code> and <code>.rounded-circle</code> do not work in IE7-8 due
+						to
+						lack of <code>border-radius</code> support.</p>
 
 
-</section>
+				</section>
 
 
-<!-- Icons
-================================================== -->
-<section id="icons">
-<div class="pb-2 mt-4 mb-2 border-bottom">
-    <h1>Icons
-        <small>by <a href="https://fontawesome.com/" target="_blank">Font Awesome</a></small>
-    </h1>
-</div>
+				<!-- Icons
+				================================================== -->
+				<section id="icons">
+					<div class="pb-2 mt-4 mb-2 border-bottom">
+						<h1>Icons
+							<small>by <a href="https://fontawesome.com/" target="_blank">Font Awesome</a></small>
+						</h1>
+					</div>
 
-<h2>Icon glyphs</h2>
+					<h2>Icon glyphs</h2>
 
-<wicket:fragment wicket:id="iconFragment">
-    <i wicket:id="iconValue"></i>
-    <span wicket:id="iconName"></span>
-</wicket:fragment>
+					<wicket:fragment wicket:id="iconFragment">
+						<i wicket:id="iconValue"></i>
+						<span wicket:id="iconName"></span>
+					</wicket:fragment>
 
-<p>Icons in sprite form, available in dark gray (default) and white, provided by <a href="https://fontawesome.com" target="_blank">Font Awesome</a>.</p>
-<ul class="the-icons clearfix">
-    <li wicket:id="iconsPanel"></li>
-</ul>
+					<p>Icons in sprite form, available in dark gray (default) and white, provided by
+						<a href="https://fontawesome.com" target="_blank">Font
+							Awesome</a>.</p>
+					<ul class="the-icons clearfix">
+						<li wicket:id="iconsPanel"></li>
+					</ul>
 
-<hr class="bs-docs-separator">
+					<hr class="bs-docs-separator">
 
-<h2>How to use</h2>
+					<h2>How to use</h2>
 
-<p>All icons require an <code>&lt;i&gt;</code> tag with a unique class, prefixed with <code>fa-</code>. To use, place the following code just about anywhere:</p>
-<pre class="prettyprint linenums">
+					<p>All icons require an <code>&lt;i&gt;</code> tag with a unique class, prefixed with <code>fa-</code>. To use, place the
+						following
+						code just about anywhere:</p>
+					<pre class="prettyprint linenums">
 &lt;i class="fa fa-search"&gt;&lt;/i&gt;
 </pre>
-<p>There are also styles available for inverted (white) icons, made ready with one extra class. We will specifically enforce this class on hover and active states for nav and dropdown links.</p>
-<pre class="prettyprint linenums">
+					<p>There are also styles available for inverted (white) icons, made ready with one extra class. We will specifically enforce this
+						class on hover and active states for nav and dropdown links.</p>
+					<pre class="prettyprint linenums">
 &lt;i class="fa fa-search fa-white"&gt;&lt;/i&gt;
 </pre>
-<p>
-    <span class="label label-info">Heads up!</span>
-    When using beside strings of text, as in buttons or nav links, be sure to leave a space after the <code>&lt;i&gt;</code> tag for proper spacing.
-</p>
+					<p>
+						<span class="label label-info">Heads up!</span>
+						When using beside strings of text, as in buttons or nav links, be sure to leave a space after the <code>&lt;i&gt;</code> tag
+						for
+						proper spacing.
+					</p>
 
 
-<hr class="bs-docs-separator">
+					<hr class="bs-docs-separator">
 
 
-<h2>Icon examples</h2>
+					<h2>Icon examples</h2>
 
-<p>Use them in buttons, button groups for a toolbar, navigation, or prepended form inputs.</p>
+					<p>Use them in buttons, button groups for a toolbar, navigation, or prepended form inputs.</p>
 
-<h4>Buttons</h4>
+					<h4>Buttons</h4>
 
-<h5>Button group in a button toolbar</h5>
+					<h5>Button group in a button toolbar</h5>
 
-<div class="bs-docs-example">
-    <div class="btn-toolbar">
-        <div class="btn-group">
-            <a class="btn" href="#"><i class="fa fa-align-left"></i></a>
-            <a class="btn" href="#"><i class="fa fa-align-center"></i></a>
-            <a class="btn" href="#"><i class="fa fa-align-right"></i></a>
-            <a class="btn" href="#"><i class="fa fa-align-justify"></i></a>
-        </div>
-    </div>
-</div>
-<pre class="prettyprint linenums">
+					<div class="bs-docs-example">
+						<div class="btn-toolbar">
+							<div class="btn-group">
+								<a class="btn" href="#"><i class="fa fa-align-left"></i></a>
+								<a class="btn" href="#"><i class="fa fa-align-center"></i></a>
+								<a class="btn" href="#"><i class="fa fa-align-right"></i></a>
+								<a class="btn" href="#"><i class="fa fa-align-justify"></i></a>
+							</div>
+						</div>
+					</div>
+					<pre class="prettyprint linenums">
 &lt;div class="btn-toolbar"&gt;
   &lt;div class="btn-group"&gt;
 
@@ -1912,22 +1975,22 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 &lt;/div&gt;
 </pre>
 
-<h5>Dropdown in a button group</h5>
+					<h5>Dropdown in a button group</h5>
 
-<div class="bs-docs-example">
-    <div class="btn-group">
-        <a class="btn btn-primary" href="#"><i class="fa fa-user"></i> User</a>
-        <a class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" href="#"><span class="caret"></span></a>
-        <ul class="dropdown-menu">
-            <li><a href="#"><i class="fa fa-pencil-alt"></i> Edit</a></li>
-            <li><a href="#"><i class="fa fa-trash"></i> Delete</a></li>
-            <li><a href="#"><i class="fa fa-ban"></i> Ban</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Make admin</a></li>
-        </ul>
-    </div>
-</div>
-<pre class="prettyprint linenums">
+					<div class="bs-docs-example">
+						<div class="btn-group">
+							<a class="btn btn-primary" href="#"><i class="fa fa-user"></i> User</a>
+							<a class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" href="#"><span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="#"><i class="fa fa-pencil-alt"></i> Edit</a></li>
+								<li><a href="#"><i class="fa fa-trash"></i> Delete</a></li>
+								<li><a href="#"><i class="fa fa-ban"></i> Ban</a></li>
+								<li class="divider"></li>
+								<li><a href="#">Make admin</a></li>
+							</ul>
+						</div>
+					</div>
+					<pre class="prettyprint linenums">
 &lt;div class="btn-group"&gt;
   &lt;a class="btn btn-primary" href="#"&gt;&lt;i class="fa fa-user"&gt;&lt;/i&gt; User&lt;/a&gt;
   &lt;a class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" href="#"&gt;&lt;span class="caret"&gt;&lt;/span&gt;&lt;/a&gt;
@@ -1941,29 +2004,29 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 &lt;/div&gt;
 </pre>
 
-<h5>Small button</h5>
+					<h5>Small button</h5>
 
-<div class="bs-docs-example">
-    <a class="btn btn-sm" href="#"><i class="fa fa-star"></i></a>
-</div>
-<pre class="prettyprint linenums">
+					<div class="bs-docs-example">
+						<a class="btn btn-sm" href="#"><i class="fa fa-star"></i></a>
+					</div>
+					<pre class="prettyprint linenums">
 &lt;a class="btn btn-sm" href="#"&gt;&lt;i class="fa fa-star"&gt;&lt;/i&gt;&lt;/a&gt;
 </pre>
 
 
-<h4>Navigation</h4>
+					<h4>Navigation</h4>
 
-<div class="bs-docs-example">
-    <div class="well" style="padding: 8px 0; margin-bottom: 0;">
-        <ul class="nav nav-list">
-            <li class="active"><a href="#"><i class="fa fa-home fa"></i> Home</a></li>
-            <li><a href="#"><i class="fa fa-book"></i> Library</a></li>
-            <li><a href="#"><i class="fa fa-pencil-alt"></i> Applications</a></li>
-            <li><a href="#">Misc</a></li>
-        </ul>
-    </div>
-</div>
-<pre class="prettyprint linenums">
+					<div class="bs-docs-example">
+						<div class="well" style="padding: 8px 0; margin-bottom: 0;">
+							<ul class="nav nav-list">
+								<li class="active"><a href="#"><i class="fa fa-home fa"></i> Home</a></li>
+								<li><a href="#"><i class="fa fa-book"></i> Library</a></li>
+								<li><a href="#"><i class="fa fa-pencil-alt"></i> Applications</a></li>
+								<li><a href="#">Misc</a></li>
+							</ul>
+						</div>
+					</div>
+					<pre class="prettyprint linenums">
 &lt;ul class="nav nav-list"&gt;
   &lt;li class="active"&gt;&lt;a href="#"&gt;&lt;i class="fa fa-home"&gt;&lt;/i&gt; Home&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href="#"&gt;&lt;i class="fa fa-book"&gt;&lt;/i&gt; Library&lt;/a&gt;&lt;/li&gt;
@@ -1972,21 +2035,21 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 &lt;/ul&gt;
 </pre>
 
-<h4>Form fields</h4>
+					<h4>Form fields</h4>
 
-<form class="bs-docs-example">
-    <div class="form-group">
-        <label class="control-label" for="inputIcon">Email address</label>
+					<form class="bs-docs-example">
+						<div class="form-group">
+							<label class="control-label" for="inputIcon">Email address</label>
 
-        <div class="controls">
-            <div class="input-group">
-                <span class="input-group-text"><i class="fa fa-envelope"></i></span>
-                <input class="form-control" id="inputIcon" type="text">
-            </div>
-        </div>
-    </div>
-</form>
-<pre class="prettyprint linenums">
+							<div class="controls">
+								<div class="input-group">
+									<span class="input-group-text"><i class="fa fa-envelope"></i></span>
+									<input class="form-control" id="inputIcon" type="text">
+								</div>
+							</div>
+						</div>
+					</form>
+					<pre class="prettyprint linenums">
 &lt;div class="form-group"&gt;
     &lt;label class="control-label" for="inputIcon"&gt;Email address&lt;/label&gt;
 
@@ -2001,12 +2064,10 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 &lt;/div&gt;
 </pre>
 
-</section>
-
-</div>
-
-</div>
-</div>
+				</section>
+			</div>
+		</div>
+	</div>
 </wicket:extend>
 </body>
 </html>

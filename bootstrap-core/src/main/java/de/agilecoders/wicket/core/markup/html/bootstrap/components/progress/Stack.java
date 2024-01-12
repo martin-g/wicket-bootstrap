@@ -7,7 +7,7 @@ import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.panel.GenericPanel;
 import org.apache.wicket.model.IModel;
-
+import de.agilecoders.wicket.core.markup.html.bootstrap.utilities.BackgroundColorBehavior.BackgroundColor;
 import de.agilecoders.wicket.core.markup.html.bootstrap.utilities.BackgroundColorBehavior;
 import de.agilecoders.wicket.core.util.Attributes;
 import de.agilecoders.wicket.core.util.CssClassNames.Helper;
@@ -16,6 +16,7 @@ import de.agilecoders.wicket.core.util.CssClassNames.Helper;
  * Represents a stack of the progress bar.
  */
 public class Stack extends GenericPanel<Integer> {
+
     private static final long serialVersionUID = 1L;
 
     /**
@@ -63,12 +64,12 @@ public class Stack extends GenericPanel<Integer> {
         add(visuallyHidden);
     }
 
-    public BackgroundColorBehavior.Color color() {
-        return backgroundColorBehavior.getColor();
+    public BackgroundColor color() {
+        return backgroundColorBehavior.getBackgroundColor();
     }
 
-    public Stack color(BackgroundColorBehavior.Color color) {
-        this.backgroundColorBehavior.color(color);
+    public Stack color(BackgroundColor backgroundColor) {
+        this.backgroundColorBehavior.withBackgroundColor(backgroundColor);
 
         return this;
     }

@@ -1,13 +1,11 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.components.progress;
 
 import java.time.Duration;
-
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.AjaxSelfUpdatingTimerBehavior;
 import org.apache.wicket.core.request.handler.IPartialPageRequestHandler;
 import org.apache.wicket.model.IModel;
-
-import de.agilecoders.wicket.core.markup.html.bootstrap.utilities.BackgroundColorBehavior;
+import de.agilecoders.wicket.core.markup.html.bootstrap.utilities.BackgroundColorBehavior.BackgroundColor;
 
 /**
  * A {@link de.agilecoders.wicket.core.markup.html.bootstrap.components.progress.ProgressBar} with
@@ -17,6 +15,7 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.utilities.BackgroundColo
  * @version 1.0
  */
 public abstract class UpdatableProgressBar extends ProgressBar {
+
     private static final long serialVersionUID = 1L;
     Duration updateInterval = Duration.ofSeconds(5L);
     private UpdateBehavior behavior;
@@ -26,11 +25,11 @@ public abstract class UpdatableProgressBar extends ProgressBar {
     }
 
     public UpdatableProgressBar(String id, IModel<Integer> model) {
-        this(id, model, BackgroundColorBehavior.Color.Secondary, false);
+        this(id, model, BackgroundColor.Secondary, false);
     }
 
-    public UpdatableProgressBar(String id, IModel<Integer> model, BackgroundColorBehavior.Color color, boolean labeled) {
-        super(id, model, color, labeled);
+    public UpdatableProgressBar(String id, IModel<Integer> model, BackgroundColor backgroundColor, boolean labeled) {
+        super(id, model, backgroundColor, labeled);
 
         setOutputMarkupId(true);
         active(true);
@@ -92,6 +91,7 @@ public abstract class UpdatableProgressBar extends ProgressBar {
      * #setUpdateInterval() method
      */
     private abstract static class UpdateBehavior extends AjaxSelfUpdatingTimerBehavior {
+
         private static final long serialVersionUID = 1L;
 
         /**

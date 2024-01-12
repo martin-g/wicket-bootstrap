@@ -1,12 +1,10 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.navbar;
 
 import static de.agilecoders.wicket.jquery.util.Generics2.transform;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
 import java.util.function.Predicate;
-
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.Page;
@@ -27,13 +25,12 @@ import org.apache.wicket.request.resource.ResourceReference;
 import org.apache.wicket.util.io.IClusterable;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.string.Strings;
-
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapResourcesBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.CssClassNameAppender;
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNameProvider;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.Activatable;
+import de.agilecoders.wicket.core.markup.html.bootstrap.utilities.BackgroundColorBehavior.BackgroundColor;
 import de.agilecoders.wicket.core.markup.html.bootstrap.common.Invertible;
-import de.agilecoders.wicket.core.markup.html.bootstrap.utilities.BackgroundColorBehavior;
 import de.agilecoders.wicket.core.util.Attributes;
 import de.agilecoders.wicket.core.util.Behaviors;
 import de.agilecoders.wicket.core.util.Models;
@@ -48,6 +45,7 @@ import de.agilecoders.wicket.jquery.util.Generics2;
  * @author miha
  */
 public class Navbar extends Panel implements Invertible<Navbar> {
+
     private static final long serialVersionUID = 1L;
     private static final String COMPONENT_ID = "component";
 
@@ -132,7 +130,7 @@ public class Navbar extends Panel implements Invertible<Navbar> {
     private static final PositionFilter POSITION_FILTER_RIGHT = new PositionFilter(ComponentPosition.RIGHT);
 
     private final IModel<String> invertModel = Model.of("navbar-light");
-    private final IModel<BackgroundColorBehavior.Color> backgroundColor = Model.of(BackgroundColorBehavior.Color.Light);
+    private final IModel<BackgroundColor> backgroundColor = Model.of(BackgroundColor.Light);
     private final CssClassNameAppender activeStateAppender = new CssClassNameAppender("active");
 
     private final IModel<CollapseBreakpoint> collapseBreakpoint = Model.of(CollapseBreakpoint.Large);
@@ -155,7 +153,7 @@ public class Navbar extends Panel implements Invertible<Navbar> {
      * Construct.
      *
      * @param componentId The non-null id of this component
-     * @param model       The component's model
+     * @param model The component's model
      */
     public Navbar(final String componentId, final IModel<?> model) {
         super(componentId, model);
@@ -191,8 +189,7 @@ public class Navbar extends Panel implements Invertible<Navbar> {
     /**
      * creates a new transparent inner container which is used to append some css classes.
      *
-     * @param componentId
-     *            The non-null id of a new navigation component
+     * @param componentId The non-null id of a new navigation component
      * @return a new inner container of the navigation bar.
      */
     protected TransparentWebMarkupContainer newContainer(final String componentId) {
@@ -242,10 +239,10 @@ public class Navbar extends Panel implements Invertible<Navbar> {
         super.onComponentTag(tag);
 
         Attributes.addClass(tag, "navbar",
-                collapseBreakpoint.getObject().cssClassName(),
-                invertModel.getObject(),
-                position.getObject().cssClassName(),
-                backgroundColor.getObject().cssClassName()
+            collapseBreakpoint.getObject().cssClassName(),
+            invertModel.getObject(),
+            position.getObject().cssClassName(),
+            backgroundColor.getObject().cssClassName()
         );
 
         Attributes.set(tag, "role", "navigation");
@@ -254,7 +251,7 @@ public class Navbar extends Panel implements Invertible<Navbar> {
     /**
      * creates a component model which holds only the components with a specific position.
      *
-     * @param components   to filter
+     * @param components to filter
      * @param withPosition position a component must have
      * @return new model
      */
@@ -273,7 +270,7 @@ public class Navbar extends Panel implements Invertible<Navbar> {
      * creates a new navigation list
      *
      * @param componentId The non-null id of a new navigation component
-     * @param listModel   The component's model
+     * @param listModel The component's model
      * @return a new navigation list view instance
      */
     protected Component newNavigation(String componentId, IModel<List<Component>> listModel) {
@@ -293,7 +290,7 @@ public class Navbar extends Panel implements Invertible<Navbar> {
                     Activatable activatable = (Activatable) component;
 
                     if (activatable.isActive(component)) {
-                    	component.add(activeStateAppender);
+                        component.add(activeStateAppender);
                     }
                 }
 
@@ -407,7 +404,7 @@ public class Navbar extends Panel implements Invertible<Navbar> {
     /**
      * @return background color of navbar
      */
-    public BackgroundColorBehavior.Color getBackgroundColor() {
+    public BackgroundColor getBackgroundColor() {
         return backgroundColor.getObject();
     }
 
@@ -469,7 +466,7 @@ public class Navbar extends Panel implements Invertible<Navbar> {
      * creates a new transparent container which is used to append the "data-bs-target" attribute to the collapse button.
      *
      * @param componentId The non-null id of collapse button
-     * @param selector    non-null jquery selector to collapse
+     * @param selector non-null jquery selector to collapse
      * @return a button container.
      */
     protected TransparentWebMarkupContainer newCollapseButton(String componentId, String selector) {
@@ -509,7 +506,7 @@ public class Navbar extends Panel implements Invertible<Navbar> {
      * sets an image in the brand button
      *
      * @param imageResourceReference required
-     * @param imageAltAttrModel      optional, but should be provided
+     * @param imageAltAttrModel optional, but should be provided
      * @return this instance for chaining
      */
     public Navbar setBrandImage(final ResourceReference imageResourceReference, final IModel<String> imageAltAttrModel) {
@@ -531,7 +528,7 @@ public class Navbar extends Panel implements Invertible<Navbar> {
      * @return the component's current instance
      */
     @Override
-	public Navbar setInverted(final boolean invert) {
+    public Navbar setInverted(final boolean invert) {
         this.invertModel.setObject(invert ? "navbar-dark" : "navbar-light");
 
         return this;
@@ -540,11 +537,11 @@ public class Navbar extends Panel implements Invertible<Navbar> {
     /**
      * Sets background color of navbar.
      *
-     * @param color the background color
+     * @param backgroundColor the background color
      * @return the component's current instace
      */
-    public Navbar setBackgroundColor(final BackgroundColorBehavior.Color color) {
-        this.backgroundColor.setObject(color);
+    public Navbar setBackgroundColor(final BackgroundColor backgroundColor) {
+        this.backgroundColor.setObject(backgroundColor);
 
         return this;
     }
@@ -586,6 +583,7 @@ public class Navbar extends Panel implements Invertible<Navbar> {
      * match the given {@link ComponentPosition}.
      */
     private static final class PositionFilter implements Predicate<INavbarComponent>, IClusterable {
+
         private static final long serialVersionUID = 1L;
         private final ComponentPosition position;
 
@@ -611,6 +609,7 @@ public class Navbar extends Panel implements Invertible<Navbar> {
      * A {@link Function} that maps a {@link INavbarComponent} to a {@link Component}
      */
     private static final class NavbarComponentToComponentFunction implements Function<INavbarComponent, Component>, IClusterable {
+
         private static final long serialVersionUID = 1L;
         private final String markupId;
 

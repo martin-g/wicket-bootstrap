@@ -3,9 +3,8 @@ package de.agilecoders.wicket.core.markup.html.bootstrap.badge;
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.Behavior;
 import org.apache.wicket.markup.ComponentTag;
-
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
-import de.agilecoders.wicket.core.markup.html.bootstrap.utilities.BackgroundColorBehavior;
+import de.agilecoders.wicket.core.markup.html.bootstrap.utilities.BackgroundColorBehavior.BackgroundColor;
 import de.agilecoders.wicket.core.util.Attributes;
 import de.agilecoders.wicket.core.util.Components;
 
@@ -15,22 +14,23 @@ import de.agilecoders.wicket.core.util.Components;
  * @author miha
  */
 public class BadgeBehavior extends Behavior {
+
     private static final long serialVersionUID = 1L;
 
-    private BackgroundColorBehavior.Color color;
+    private BackgroundColor backgroundColor;
 
     private boolean isPill;
 
     public BadgeBehavior() {
-        this(BackgroundColorBehavior.Color.Secondary, false);
+        this(BackgroundColor.Secondary, false);
     }
 
-    public BadgeBehavior(BackgroundColorBehavior.Color color) {
-        this(color, false);
+    public BadgeBehavior(BackgroundColor backgroundColor) {
+        this(backgroundColor, false);
     }
 
-    public BadgeBehavior(BackgroundColorBehavior.Color color, boolean isPill) {
-        this.color = color;
+    public BadgeBehavior(BackgroundColor backgroundColor, boolean isPill) {
+        this.backgroundColor = backgroundColor;
         this.isPill = isPill;
     }
 
@@ -39,7 +39,7 @@ public class BadgeBehavior extends Behavior {
         super.onComponentTag(component, tag);
 
         Components.assertTag(component, tag, "span", "a");
-        Attributes.addClass(tag, className(), color.cssClassName());
+        Attributes.addClass(tag, className(), backgroundColor.cssClassName());
         if (isPill) {
             Attributes.addClass(tag, pillClassName());
         }
@@ -60,7 +60,7 @@ public class BadgeBehavior extends Behavior {
     }
 
     protected String pillClassName() {
-        return  "rounded-pill";
+        return "rounded-pill";
     }
 
     protected String className() {
@@ -73,9 +73,8 @@ public class BadgeBehavior extends Behavior {
         return this;
     }
 
-    public BadgeBehavior color(BackgroundColorBehavior.Color color) {
-        this.color = color;
-
+    public BadgeBehavior color(BackgroundColor color) {
+        this.backgroundColor = backgroundColor;
         return this;
     }
 }

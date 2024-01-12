@@ -11,7 +11,7 @@ import org.apache.wicket.util.lang.Objects;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import de.agilecoders.wicket.core.markup.html.bootstrap.utilities.BackgroundColorBehavior;
+import de.agilecoders.wicket.core.markup.html.bootstrap.utilities.BackgroundColorBehavior.BackgroundColor;
 import de.agilecoders.wicket.core.util.Attributes;
 
 /**
@@ -35,7 +35,7 @@ public class ProgressBar extends GenericPanel<Integer> {
      * to add stacks to it
      *
      * @param id The component id
-     * @see #ProgressBar(String, org.apache.wicket.model.IModel, de.agilecoders.wicket.core.markup.html.bootstrap.utilities.BackgroundColorBehavior.Color, boolean, boolean, boolean)
+     * @see ProgressBar(String, org.apache.wicket.model.IModel, BackgroundColor , boolean, boolean, boolean)
      * @see #addStacks(Stack...)
      */
     public ProgressBar(String id) {
@@ -52,7 +52,7 @@ public class ProgressBar extends GenericPanel<Integer> {
      * @see #ProgressBar(String)
      */
     public ProgressBar(String id, IModel<Integer> model) {
-        this(id, model, BackgroundColorBehavior.Color.Secondary, false, false, false);
+        this(id, model, BackgroundColor.Secondary, false, false, false);
     }
 
     /**
@@ -62,11 +62,11 @@ public class ProgressBar extends GenericPanel<Integer> {
      *
      * @param id The component id
      * @param model The model that will be used for the default stack.
-     * @param color The color of the stack
+     * @param backgroundColor The color of the stack
      * @see #ProgressBar(String)
      */
-    public ProgressBar(String id, IModel<Integer> model, BackgroundColorBehavior.Color color) {
-        this(id, model, color, false, false, false);
+    public ProgressBar(String id, IModel<Integer> model, BackgroundColor backgroundColor) {
+        this(id, model, backgroundColor, false, false, false);
     }
 
     /**
@@ -80,7 +80,7 @@ public class ProgressBar extends GenericPanel<Integer> {
      * @see #ProgressBar(String)
      */
     public ProgressBar(String id, IModel<Integer> model, boolean labeled) {
-        this(id, model, BackgroundColorBehavior.Color.Secondary, labeled, false, false);
+        this(id, model, BackgroundColor.Secondary, labeled, false, false);
     }
 
     /**
@@ -90,12 +90,12 @@ public class ProgressBar extends GenericPanel<Integer> {
      *
      * @param id The component id
      * @param model The model that will be used for the default stack.
-     * @param color The color of the stack
+     * @param backgroundColor The color of the stack
      * @param labeled A flag whether the stack should be labeled or not
      * @see #ProgressBar(String)
      */
-    public ProgressBar(String id, IModel<Integer> model, BackgroundColorBehavior.Color color, boolean labeled) {
-        this(id, model, color, labeled, false, false);
+    public ProgressBar(String id, IModel<Integer> model, BackgroundColor backgroundColor, boolean labeled) {
+        this(id, model, backgroundColor, labeled, false, false);
     }
 
     /**
@@ -106,23 +106,23 @@ public class ProgressBar extends GenericPanel<Integer> {
      *
      * @param id The component id
      * @param model The model that will be used for the default stack.
-     * @param color The color of the stack
+     * @param backgroundColor The color of the stack
      * @param labeled A flag whether the stack should be labeled or not
      * @param animated A flag indicating whether the stack is active/active.
      * @param striped A flag indicating whether the stack is striped.
      * @see #ProgressBar(String)
      */
-    public ProgressBar(String id, IModel<Integer> model, BackgroundColorBehavior.Color color, boolean labeled, boolean animated, boolean striped) {
+    public ProgressBar(String id, IModel<Integer> model, BackgroundColor backgroundColor, boolean labeled, boolean animated, boolean striped) {
         super(id, model);
 
-        Args.notNull(color, "color");
+        Args.notNull(backgroundColor, "color");
 
         stacks = new RepeatingView("stacks");
         add(stacks);
 
         if (model != null) {
             Stack defaultStack = new Stack(getStackId(), () -> ProgressBar.this.getModelObject());
-            defaultStack.color(color).labeled(labeled).active(animated).striped(striped);
+            defaultStack.color(backgroundColor).labeled(labeled).active(animated).striped(striped);
             addStacks(defaultStack);
         }
     }

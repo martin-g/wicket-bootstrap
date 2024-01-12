@@ -11,7 +11,7 @@ import org.apache.wicket.markup.html.form.upload.FileUploadField;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.resource.ResourceReference;
-
+import de.agilecoders.wicket.core.markup.html.bootstrap.utilities.BackgroundColorBehavior.BackgroundColor;
 import de.agilecoders.wicket.core.markup.html.bootstrap.utilities.BackgroundColorBehavior;
 import de.agilecoders.wicket.core.util.Attributes;
 
@@ -20,6 +20,7 @@ import de.agilecoders.wicket.core.util.Attributes;
  * that uses Bootstrap markup and styles.
  */
 public class UploadProgressBar extends org.apache.wicket.extensions.ajax.markup.html.form.upload.UploadProgressBar {
+
     private static final long serialVersionUID = 1L;
 
     /**
@@ -103,12 +104,12 @@ public class UploadProgressBar extends org.apache.wicket.extensions.ajax.markup.
         return this;
     }
 
-    public BackgroundColorBehavior.Color color() {
-        return backgroundColorBehavior.getColor();
+    public BackgroundColor color() {
+        return backgroundColorBehavior.getBackgroundColor();
     }
 
-    public UploadProgressBar color(BackgroundColorBehavior.Color color) {
-        this.backgroundColorBehavior.color(color);
+    public UploadProgressBar color(BackgroundColor backgroundColor) {
+        this.backgroundColorBehavior.withBackgroundColor(backgroundColor);
         return this;
     }
 
@@ -187,8 +188,6 @@ public class UploadProgressBar extends org.apache.wicket.extensions.ajax.markup.
 
         ProgressBar.internalOnComponentTag(tag);
     }
-
-
 
     @Override
     public void renderHead(IHeaderResponse response) {
