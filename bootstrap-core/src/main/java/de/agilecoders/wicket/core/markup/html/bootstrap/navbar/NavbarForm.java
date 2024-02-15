@@ -35,13 +35,6 @@ public class NavbarForm<T> extends BootstrapForm<T> {
     }
 
     @Override
-    protected void onInitialize() {
-        super.onInitialize();
-
-        add(new NavbarFormBehavior());
-    }
-
-    @Override
     public void onComponentTag(ComponentTag tag) {
         if (!"form".equals(tag.getName())) {
             tag.setName("form");
