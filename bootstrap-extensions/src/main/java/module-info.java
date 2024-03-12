@@ -54,5 +54,5 @@ module wicket.bootstrap.extensions {
     requires org.slf4j;
 
     requires static yuicompressor;
-    requires static closure.compiler.unshaded.v20230802;
+    requires static closure.compiler.unshaded.v20231112;
 }

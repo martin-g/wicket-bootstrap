@@ -48,9 +48,9 @@
         <maven.java.source>${java.version}</maven.java.source>
         <maven.java.target>${java.version}</maven.java.target>
 
-        <bootstrap.version>5.3.2</bootstrap.version>
-        <wicket-webjars.version>4.0.1</wicket-webjars.version>
-        <wicket-jquery-selectors.version>4.0.2</wicket-jquery-selectors.version>
+        <bootstrap.version>5.3.3</bootstrap.version>
+        <wicket-webjars.version>4.0.2</wicket-webjars.version>
+        <wicket-jquery-selectors.version>4.0.3</wicket-jquery-selectors.version>
         <popper.version>2.11.8</popper.version>
 
         <enforcer.disable>true</enforcer.disable>
@@ -79,7 +79,6 @@
         <jakarta.servlet-api.version>6.0.0</jakarta.servlet-api.version>
         <slf4j.version>2.0.12</slf4j.version>
         <wicket.version>10.0.0</wicket.version>
-        <wicketstuff.version>10.0.0-M2</wicketstuff.version>
         <yuicompressor.version>2.4.8</yuicompressor.version>
 
         <maven-bundle-plugin.version>5.1.9</maven-bundle-plugin.version>
@@ -151,18 +150,6 @@
                 <artifactId>wicket-tester</artifactId>
                 <version>${wicket.version}</version>
                 <scope>test</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>org.wicketstuff</groupId>
-                <artifactId>wicketstuff-annotation</artifactId>
-                <version>${wicketstuff.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>org.apache.wicket</groupId>
-                        <artifactId>wicket</artifactId>
-                    </exclusion>
-                </exclusions>
             </dependency>
 
             <dependency>

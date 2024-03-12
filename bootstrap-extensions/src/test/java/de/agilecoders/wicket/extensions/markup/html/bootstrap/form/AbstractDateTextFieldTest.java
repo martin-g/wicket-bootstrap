@@ -299,7 +299,7 @@ abstract class AbstractDateTextFieldTest<T, P extends TextField<T> & AbstractTex
                     + "Wicket.Ajax.ajax({"
                         + "\"u\":\"./wicket/page?0-1.0-tf\","
                         + "\"c\":\"tf1\","
-                        + "\"ep\":[{\"name\":\"date\",\"value\":e.format()},{\"name\":\"datePickerEvent\",\"value\":\"clearDate\"}]"
+                        + "\"ep\":[{\"name\":\"datePickerEvent\",\"value\":\"clearDate\"},{\"name\":\"date\",\"value\":e.format()}]"
                     + "});\n"
                 + "});";
         // @formatter:on
