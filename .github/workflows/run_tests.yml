@@ -4,9 +4,11 @@ on:
     push:
       branches:
         - master
+        - 'wicket-*'
     pull_request:
       branches:
         - master
+        - 'wicket-*'
 
 jobs:
   build:
