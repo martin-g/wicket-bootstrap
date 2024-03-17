@@ -25,6 +25,8 @@ updates:
       interval: "weekly"
       day: "sunday"
     open-pull-requests-limit: 50
+    ignore:
+        - dependency-name: "font-awesome"
 
   - package-ecosystem: "github-actions"
     directory: "/"
