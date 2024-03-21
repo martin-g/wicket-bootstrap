@@ -10,7 +10,7 @@ import de.agilecoders.wicket.webjars.request.resource.WebjarsCssResourceReferenc
  *  &lt;dependency&gt;<br/>
  *      &lt;groupId&gt;org.webjars&lt;/groupId&gt;<br/>
  *      &lt;artifactId&gt;font-awesome&lt;/artifactId&gt;<br/>
- *      &lt;version&gt;6.2.0&lt;/version&gt;<br/>
+ *      &lt;version&gt;6.5.1&lt;/version&gt;<br/>
  *  &lt;/dependency&gt;<br/>
  *
  * reference for font awesome 6.x css
