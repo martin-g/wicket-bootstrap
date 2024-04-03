@@ -1370,7 +1370,9 @@ public class FontAwesome6IconType extends IconType {
     public static final FontAwesome6IconType synagogue_s = on(FontAwesome6Solid.synagogue).build();
     public static final FontAwesome6IconType syringe_s = on(FontAwesome6Solid.syringe).build();
     public static final FontAwesome6IconType t_s = on(FontAwesome6Solid.t).build();
+    public static final FontAwesome6IconType table_cells_column_lock_s = on(FontAwesome6Solid.table_cells_column_lock).build();
     public static final FontAwesome6IconType table_cells_large_s = on(FontAwesome6Solid.table_cells_large).build();
+    public static final FontAwesome6IconType table_cells_row_lock_s = on(FontAwesome6Solid.table_cells_row_lock).build();
     public static final FontAwesome6IconType table_cells_s = on(FontAwesome6Solid.table_cells).build();
     public static final FontAwesome6IconType table_columns_s = on(FontAwesome6Solid.table_columns).build();
     public static final FontAwesome6IconType table_list_s = on(FontAwesome6Solid.table_list).build();

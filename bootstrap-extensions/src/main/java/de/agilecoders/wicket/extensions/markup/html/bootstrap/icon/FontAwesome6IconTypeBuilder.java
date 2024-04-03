@@ -192,7 +192,7 @@ public class FontAwesome6IconTypeBuilder {
         staff_snake, stairs, stamp, stapler, star, star_and_crescent, star_half, star_half_stroke, star_of_david,
         star_of_life, sterling_sign, stethoscope, stop, stopwatch, stopwatch_20, store, store_slash, street_view,
         strikethrough, stroopwafel, subscript, suitcase_medical, suitcase, sun_plant_wilt, suitcase_rolling, sun,
-        superscript, swatchbook, synagogue, syringe, t, table, table_cells, table_cells_large, table_columns,
+        superscript, swatchbook, synagogue, syringe, t, table, table_cells_row_lock, table_cells, table_cells_column_lock, table_cells_large, table_columns,
         table_list, table_tennis_paddle_ball, tablet, tablet_button, tablet_screen_button, tablets, tachograph_digital,
         tag, tags, tape, tarp, tarp_droplet, taxi, teeth, teeth_open, temperature_arrow_down, temperature_arrow_up,
         temperature_empty, temperature_full, temperature_half, temperature_high, temperature_low, temperature_quarter,
