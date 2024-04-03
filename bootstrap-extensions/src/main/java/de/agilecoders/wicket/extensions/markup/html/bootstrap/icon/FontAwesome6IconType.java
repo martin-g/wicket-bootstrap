@@ -1627,6 +1627,7 @@ public class FontAwesome6IconType extends IconType {
     public static final FontAwesome6IconType blackberry = on(FontAwesome6Brand.blackberry).build();
     public static final FontAwesome6IconType blogger = on(FontAwesome6Brand.blogger).build();
     public static final FontAwesome6IconType blogger_b = on(FontAwesome6Brand.blogger_b).build();
+    public static final FontAwesome6IconType bluesky = on(FontAwesome6Brand.bluesky).build();
     public static final FontAwesome6IconType bluetooth = on(FontAwesome6Brand.bluetooth).build();
     public static final FontAwesome6IconType bluetooth_b = on(FontAwesome6Brand.bluetooth_b).build();
     public static final FontAwesome6IconType bootstrap = on(FontAwesome6Brand.bootstrap).build();
@@ -1809,6 +1810,7 @@ public class FontAwesome6IconType extends IconType {
     public static final FontAwesome6IconType joomla = on(FontAwesome6Brand.joomla).build();
     public static final FontAwesome6IconType js = on(FontAwesome6Brand.js).build();
     public static final FontAwesome6IconType jsfiddle = on(FontAwesome6Brand.jsfiddle).build();
+    public static final FontAwesome6IconType jxl = on(FontAwesome6Brand.jxl).build();
     public static final FontAwesome6IconType kaggle = on(FontAwesome6Brand.kaggle).build();
     public static final FontAwesome6IconType keybase = on(FontAwesome6Brand.keybase).build();
     public static final FontAwesome6IconType keycdn = on(FontAwesome6Brand.keycdn).build();
@@ -1970,8 +1972,11 @@ public class FontAwesome6IconType extends IconType {
     public static final FontAwesome6IconType square_threads = on(FontAwesome6Brand.square_threads).build();
     public static final FontAwesome6IconType square_tumblr = on(FontAwesome6Brand.square_tumblr).build();
     public static final FontAwesome6IconType square_twitter = on(FontAwesome6Brand.square_twitter).build();
+    public static final FontAwesome6IconType square_upwork = on(FontAwesome6Brand.square_upwork).build();
     public static final FontAwesome6IconType square_viadeo = on(FontAwesome6Brand.square_viadeo).build();
     public static final FontAwesome6IconType square_vimeo = on(FontAwesome6Brand.square_vimeo).build();
+    public static final FontAwesome6IconType square_web_awesome = on(FontAwesome6Brand.square_web_awesome).build();
+    public static final FontAwesome6IconType square_web_awesome_stroke = on(FontAwesome6Brand.square_web_awesome_stroke).build();
     public static final FontAwesome6IconType square_whatsapp = on(FontAwesome6Brand.square_whatsapp).build();
     public static final FontAwesome6IconType square_x_twitter = on(FontAwesome6Brand.square_x_twitter).build();
     public static final FontAwesome6IconType square_xing = on(FontAwesome6Brand.square_xing).build();
@@ -2037,6 +2042,7 @@ public class FontAwesome6IconType extends IconType {
     public static final FontAwesome6IconType vuejs = on(FontAwesome6Brand.vuejs).build();
     public static final FontAwesome6IconType watchman_monitoring = on(FontAwesome6Brand.watchman_monitoring).build();
     public static final FontAwesome6IconType waze = on(FontAwesome6Brand.waze).build();
+    public static final FontAwesome6IconType web_awesome = on(FontAwesome6Brand.web_awesome).build();
     public static final FontAwesome6IconType webflow = on(FontAwesome6Brand.webflow).build();
     public static final FontAwesome6IconType weebly = on(FontAwesome6Brand.weebly).build();
     public static final FontAwesome6IconType weibo = on(FontAwesome6Brand.weibo).build();
