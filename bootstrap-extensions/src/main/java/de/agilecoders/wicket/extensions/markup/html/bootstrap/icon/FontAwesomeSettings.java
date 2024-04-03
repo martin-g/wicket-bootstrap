@@ -74,8 +74,8 @@ public class FontAwesomeSettings {
                     iconTypeMap = new HashMap<>();
                     if (cssResourceReference instanceof FontAwesome6CssReference) {
                         iconTypeMap.put(ARROW_DOWN, FontAwesome6IconType.arrow_down_s);
-                        iconTypeMap.put(ARROW_LEFT, FontAwesome6IconType.align_left_s);
-                        iconTypeMap.put(ARROW_RIGHT, FontAwesome6IconType.align_right_s);
+                        iconTypeMap.put(ARROW_LEFT, FontAwesome6IconType.arrow_left_s);
+                        iconTypeMap.put(ARROW_RIGHT, FontAwesome6IconType.arrow_right_s);
                         iconTypeMap.put(ARROW_UP, FontAwesome6IconType.arrow_up_s);
                         iconTypeMap.put(CALENDAR, FontAwesome6IconType.calendar_days_r);
                         iconTypeMap.put(CLEAR, FontAwesome6IconType.eraser_s);
@@ -89,8 +89,8 @@ public class FontAwesomeSettings {
                         iconTypeMap.put(TODAY, FontAwesome6IconType.calendar_check_r);
                     } else if (cssResourceReference instanceof FontAwesome5CssReference) {
                         iconTypeMap.put(ARROW_DOWN, FontAwesome5IconType.arrow_down_s);
-                        iconTypeMap.put(ARROW_LEFT, FontAwesome5IconType.align_left_s);
-                        iconTypeMap.put(ARROW_RIGHT, FontAwesome5IconType.align_right_s);
+                        iconTypeMap.put(ARROW_LEFT, FontAwesome5IconType.arrow_left_s);
+                        iconTypeMap.put(ARROW_RIGHT, FontAwesome5IconType.arrow_right_s);
                         iconTypeMap.put(ARROW_UP, FontAwesome5IconType.arrow_up_s);
                         iconTypeMap.put(CALENDAR, FontAwesome5IconType.calendar_alt_r);
                         iconTypeMap.put(CLEAR, FontAwesome5IconType.eraser_s);
