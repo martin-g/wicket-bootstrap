@@ -19,9 +19,6 @@ public abstract class SplitButton extends DropDownButton {
     private AbstractLink btn;
     private WebMarkupContainer caret;
 
-    /**
-     * {@inheritDoc}
-     */
     public SplitButton(final String markupId, final IModel<String> model) {
         super(markupId, model);
     }

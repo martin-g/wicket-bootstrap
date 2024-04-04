@@ -28,8 +28,6 @@ import de.agilecoders.wicket.core.util.Dependencies;
  * ```
  * settings.setThemeProvider(new SingleThemeProvider(new BootstrapThemeTheme()));
  * ```
- *
- * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public class BootstrapThemeThemeCssReference extends CssResourceReference {
     private static final long serialVersionUID = 1L;

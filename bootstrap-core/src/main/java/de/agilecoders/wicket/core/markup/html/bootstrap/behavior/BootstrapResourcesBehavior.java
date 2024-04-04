@@ -15,8 +15,6 @@ import de.agilecoders.wicket.core.settings.IBootstrapSettings;
  * ```java
  * component.add(BootstrapResourceBehavior.instance());
  * ```
- *
- * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public class BootstrapResourcesBehavior extends BootstrapJavascriptBehavior {
     private static final long serialVersionUID = 1L;
@@ -35,9 +33,6 @@ public class BootstrapResourcesBehavior extends BootstrapJavascriptBehavior {
         return Holder.INSTANCE;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void renderHead(final IBootstrapSettings settings, final IHeaderResponse headerResponse) {
         super.renderHead(settings, headerResponse);

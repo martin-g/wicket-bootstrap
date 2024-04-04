@@ -20,8 +20,6 @@ import java.util.zip.Checksum;
  * <p/>
  * Using a {@link Checksum} is faster than using a {@link java.security.MessageDigest} but it has
  * a higher collision rate.
- *
- * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public abstract class ChecksumResourceVersion extends MessageDigestResourceVersion {
     private static final Pattern NON_PRINTABLE = Pattern.compile("[\\x00\\x08\\x0B\\x0C\\x0E-\\x1F]");

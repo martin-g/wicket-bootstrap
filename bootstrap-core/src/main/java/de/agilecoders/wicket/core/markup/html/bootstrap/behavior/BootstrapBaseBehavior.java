@@ -16,8 +16,6 @@ import de.agilecoders.wicket.core.settings.ITheme;
  * The {@code BootstrapBaseBehavior} renders the current active
  * {@link ITheme} which includes the {@link de.agilecoders.wicket.core.markup.html.themes.bootstrap.BootstrapCssReference}
  * if enabled to the response.
- *
- * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public class BootstrapBaseBehavior extends Behavior {
     private static final long serialVersionUID = 1L;
@@ -70,9 +68,6 @@ public class BootstrapBaseBehavior extends Behavior {
         return settings;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void renderHead(final Component component, final IHeaderResponse headerResponse) {
         IBootstrapSettings settings = getBootstrapSettings(component);

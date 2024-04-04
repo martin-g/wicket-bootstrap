@@ -31,8 +31,6 @@ import org.apache.wicket.model.Model;
  * ```html
  * <span wicket:id="componentId">content</span>
  * ```
- *
- * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public class LabelBehavior extends Behavior {
     private final IModel<LabelType> type;

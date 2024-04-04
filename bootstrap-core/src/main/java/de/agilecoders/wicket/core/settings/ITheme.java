@@ -10,8 +10,6 @@ import java.util.List;
  *
  * Interface that represents a theme. A theme is responsible for rendering of all web resources that
  * are needed.
- *
- * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public interface ITheme {
 

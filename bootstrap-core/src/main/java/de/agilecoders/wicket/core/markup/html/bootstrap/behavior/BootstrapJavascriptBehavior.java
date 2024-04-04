@@ -13,8 +13,6 @@ import de.agilecoders.wicket.core.util.References;
  * The {@code BootstrapJavascriptBehavior} renders the
  * {@link de.agilecoders.wicket.core.markup.html.references.BootstrapJavaScriptReference} to
  * the response.
- *
- * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public class BootstrapJavascriptBehavior extends BootstrapBaseBehavior {
     private static final long serialVersionUID = 1L;

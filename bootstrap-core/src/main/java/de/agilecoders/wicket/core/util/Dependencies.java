@@ -11,8 +11,6 @@ import de.agilecoders.wicket.jquery.util.Generics2;
  * #### Description
  *
  * Helper class to handle {@link org.apache.wicket.request.resource.ResourceReference} dependencies.
- *
- * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public final class Dependencies {
 

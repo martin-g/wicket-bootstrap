@@ -23,7 +23,7 @@ import org.apache.wicket.util.lang.Args;
  * ```
  *
  * ```html
- * <div wicket:id="id">Content</div>
+ * &lt;div wicket:id="id"&gt;Content&lt;/div&gt;
  * ```
  *
  * It is also possible to use a model that contains the {@link de.agilecoders.wicket.core.markup.html.bootstrap.behavior.AlignmentBehavior.Alignment}

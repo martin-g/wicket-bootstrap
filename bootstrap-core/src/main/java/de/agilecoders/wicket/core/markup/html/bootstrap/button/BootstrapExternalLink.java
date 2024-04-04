@@ -148,9 +148,6 @@ public abstract class BootstrapExternalLink extends ExternalLink implements IBoo
         super.onComponentTag(tag);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected final IMarkupSourcingStrategy newMarkupSourcingStrategy() {
         return new PanelMarkupSourcingStrategy(true);

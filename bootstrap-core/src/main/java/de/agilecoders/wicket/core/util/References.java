@@ -20,8 +20,6 @@ import static de.agilecoders.wicket.jquery.util.Strings2.nullToEmpty;
  * #### Description
  *
  * Helper class for {@link org.apache.wicket.request.resource.ResourceReference} handling.
- *
- * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public final class References {
 

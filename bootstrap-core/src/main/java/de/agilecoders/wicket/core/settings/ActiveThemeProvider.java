@@ -5,8 +5,6 @@ package de.agilecoders.wicket.core.settings;
  *
  * The {@code ActiveThemeProvider} interface is used to identify the active theme when rendering
  * web resources.
- *
- * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public interface ActiveThemeProvider {
 

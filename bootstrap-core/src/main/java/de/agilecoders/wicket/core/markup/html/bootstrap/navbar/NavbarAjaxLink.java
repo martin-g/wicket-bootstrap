@@ -90,9 +90,6 @@ public abstract class NavbarAjaxLink<T> extends org.apache.wicket.ajax.markup.ht
         splitter.setVisible(icon.getType() != null);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected IMarkupSourcingStrategy newMarkupSourcingStrategy() {
         return new PanelMarkupSourcingStrategy(true);

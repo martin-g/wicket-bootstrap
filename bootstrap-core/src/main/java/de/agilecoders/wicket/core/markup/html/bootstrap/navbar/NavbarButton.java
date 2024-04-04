@@ -44,10 +44,10 @@ public class NavbarButton<T> extends BootstrapBookmarkablePageLink<T> {
     public <P extends Page> NavbarButton(final Class<P> pageClass, final IModel<String> label) {
         this(pageClass, new PageParameters(), label);
     }
-    
+
     /**
      * Constructor.
-     * 
+     *
      * @param pageClass
      *            The class of page to link to
      * @param <P>
@@ -59,9 +59,6 @@ public class NavbarButton<T> extends BootstrapBookmarkablePageLink<T> {
         setIconType(iconType);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public NavbarButton<T> setIconType(final IconType icon) {
         super.setIconType(icon);

@@ -28,8 +28,6 @@ import org.apache.wicket.model.Model;
  *          <small>Someone famous</small>
  *     </blockquote>
  * ```
- *
- * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public class QuoteBehavior extends Behavior {
 

@@ -10,8 +10,6 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNamePr
  * A LabelType defines the type of label which changes highlighted color.
  *
  * documentation: http://getbootstrap.com/components/#labels
- *
- * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public enum LabelType implements ICssClassNameProvider, ICssClassNameModifier {
     Default,

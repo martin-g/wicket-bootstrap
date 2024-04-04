@@ -18,8 +18,6 @@ import org.apache.wicket.model.IModel;
  * ```html
  * <cite wicket:id="id">text</cite>
  * ```
- *
- * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public class Cite extends WebMarkupContainer {
 

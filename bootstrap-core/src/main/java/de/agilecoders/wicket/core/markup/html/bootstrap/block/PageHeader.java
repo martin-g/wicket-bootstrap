@@ -31,8 +31,6 @@ import org.apache.wicket.model.Model;
  * ```html
  * <div wicket:id="id"></div>
  * ```
- *
- * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public class PageHeader extends Panel {
 

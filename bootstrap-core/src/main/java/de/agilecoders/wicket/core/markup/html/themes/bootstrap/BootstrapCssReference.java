@@ -17,8 +17,6 @@ import de.agilecoders.wicket.webjars.request.resource.WebjarsCssResourceReferenc
  * ```
  *
  * The css resource will be loaded by wicket-webjars.
- *
- * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public class BootstrapCssReference extends WebjarsCssResourceReference {
     private static final long serialVersionUID = 1L;

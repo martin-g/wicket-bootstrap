@@ -137,9 +137,6 @@ public abstract class BootstrapAjaxLink<T> extends AjaxLink<T> implements IBoots
                .setVisible(false);
    }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected IMarkupSourcingStrategy newMarkupSourcingStrategy() {
         return new PanelMarkupSourcingStrategy(true);

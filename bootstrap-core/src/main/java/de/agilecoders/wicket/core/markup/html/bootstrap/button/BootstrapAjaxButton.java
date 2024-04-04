@@ -146,9 +146,6 @@ public abstract class BootstrapAjaxButton extends AjaxButton implements IBootstr
                 .setVisible(false);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected final IMarkupSourcingStrategy newMarkupSourcingStrategy() {
         return new PanelMarkupSourcingStrategy(true);

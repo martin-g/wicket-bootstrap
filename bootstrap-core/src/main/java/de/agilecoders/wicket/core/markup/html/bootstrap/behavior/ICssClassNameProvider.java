@@ -30,8 +30,6 @@ import org.apache.wicket.util.io.IClusterable;
  *         }
  *     }
  * ```
- *
- * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public interface ICssClassNameProvider extends IClusterable {
 

@@ -15,8 +15,6 @@ import java.util.List;
  * #### Description
  *
  * Bootstrap theme that uses the css resource reference from bootstrap settings.
- *
- * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public class BootstrapTheme extends Theme {
 

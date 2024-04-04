@@ -8,8 +8,6 @@ import org.apache.wicket.util.lang.Args;
  * #### Description
  * <p/>
  * Helper class for {@link Behavior}s
- *
- * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public final class Behaviors {
 

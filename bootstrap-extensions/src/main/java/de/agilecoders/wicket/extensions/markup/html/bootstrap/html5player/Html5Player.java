@@ -162,9 +162,6 @@ public class Html5Player extends Panel {
         };
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void renderHead(final IHeaderResponse response) {
         super.renderHead(response);

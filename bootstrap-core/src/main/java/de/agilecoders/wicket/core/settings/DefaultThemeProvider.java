@@ -20,8 +20,6 @@ import de.agilecoders.wicket.jquery.util.Generics2;
  * ```java
  * settings.setThemeProvider(new DefaultThemeProvider(settings));
  * ```
- *
- * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public class DefaultThemeProvider implements ThemeProvider {
 
