@@ -21,8 +21,6 @@ import org.apache.wicket.model.IModel;
  *          <small>Someone famous</small>
  *     </blockquote>
  * ```
- *
- * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public class Quote extends WebMarkupContainer {
 

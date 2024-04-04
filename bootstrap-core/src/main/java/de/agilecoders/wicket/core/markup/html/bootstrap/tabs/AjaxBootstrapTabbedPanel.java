@@ -16,16 +16,10 @@ import org.apache.wicket.model.IModel;
 public class AjaxBootstrapTabbedPanel<T extends ITab> extends BootstrapTabbedPanel<T> {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * {@inheritDoc}
-	 */
 	public AjaxBootstrapTabbedPanel(final String id, final List<T> tabs) {
 		this(id, tabs, null);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	public AjaxBootstrapTabbedPanel(final String id, final List<T> tabs, IModel<Integer> model) {
 		super(id, tabs, model);
 		setOutputMarkupId(true);

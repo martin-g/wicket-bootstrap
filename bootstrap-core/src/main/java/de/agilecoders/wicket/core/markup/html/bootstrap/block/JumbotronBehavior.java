@@ -37,8 +37,6 @@ import org.apache.wicket.markup.ComponentTag;
  *      </div>
  * </div>
  * ```
- *
- * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public class JumbotronBehavior extends Behavior {
 

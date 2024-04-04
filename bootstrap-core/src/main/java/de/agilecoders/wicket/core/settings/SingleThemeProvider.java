@@ -13,8 +13,6 @@ import java.util.List;
  * ```java
  * settings.setThemeProvider(new SingleThemeProvider(new MyCustomTheme()));
  * ````
- *
- * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public class SingleThemeProvider implements ThemeProvider {
     private final ITheme theme;

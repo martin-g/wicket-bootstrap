@@ -33,8 +33,6 @@ import org.apache.wicket.model.IModel;
  *      </div>
  * </div>
  * ```
- *
- * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public class Jumbotron extends WebMarkupContainer {
 

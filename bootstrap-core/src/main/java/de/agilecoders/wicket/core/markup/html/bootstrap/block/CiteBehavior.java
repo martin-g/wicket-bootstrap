@@ -23,8 +23,6 @@ import org.apache.wicket.markup.ComponentTag;
  * ```html
  * <cite wicket:id="id"></cite>
  * ```
- *
- * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public class CiteBehavior extends Behavior {
 

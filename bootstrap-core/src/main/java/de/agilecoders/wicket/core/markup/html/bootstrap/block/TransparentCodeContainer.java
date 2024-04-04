@@ -24,8 +24,6 @@ import org.apache.wicket.markup.html.TransparentWebMarkupContainer;
  * ```
  *
  * It's possible to use `pre`, `code` and `xmp` as tag name.
- *
- * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public class TransparentCodeContainer extends TransparentWebMarkupContainer {
     private static final long serialVersionUID = 1L;

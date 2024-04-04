@@ -17,8 +17,6 @@ import de.agilecoders.wicket.jquery.util.Strings2;
  * #### Description
  *
  * helper class for css class names
- *
- * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public final class CssClassNames {
 
@@ -306,7 +304,7 @@ public final class CssClassNames {
         public static final String textBreak = "text-break";
         public static final String lowercase = "text-lowercase";
         public static final String uppercase = "text-uppercase";
-        public static final String capitalize = "text-capitalize";        
+        public static final String capitalize = "text-capitalize";
         public static final String fwBold = "fw-bold";
         public static final String fwBolder = "fw-bolder";
         public static final String fwSemibold= "fw-semibold";
@@ -320,7 +318,7 @@ public final class CssClassNames {
         public static final String fs3 = "fs-3";
         public static final String fs4 = "fs-4";
         public static final String fs5 = "fs-5";
-        public static final String fs6 = "fs-6";        
+        public static final String fs6 = "fs-6";
         public static final String lh1 = "lh-1";
         public static final String lhSm = "lh-sm";
         public static final String lhBase = "lh-base";
@@ -330,7 +328,7 @@ public final class CssClassNames {
         public static final String textDecorationNone = "text-decoration-none";
         public static final String textDecorationUnderline = "text-decoration-underline";
         public static final String textDecorationLineThrough = "text-decoration-line-through";
-        
+
     }
 
 }

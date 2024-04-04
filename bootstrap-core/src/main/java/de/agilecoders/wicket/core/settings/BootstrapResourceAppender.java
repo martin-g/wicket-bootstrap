@@ -25,8 +25,6 @@ import org.apache.wicket.application.IComponentInstantiationListener;
  * ```java
  * app.getComponentInstantiationListener(BootstrapBaseBehavior.instance());
  * ```
- *
- * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public class BootstrapResourceAppender implements IComponentInstantiationListener {
 

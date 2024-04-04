@@ -35,8 +35,6 @@ import java.util.List;
  * // or (please use settings.setJsResourceFilterName("my-filter-name") instead)
  * app.setHeaderResponseDecorator(new RenderJavaScriptToFooterHeaderResponseDecorator("my-filter-name"));
  * ```
- *
- * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public class RenderJavaScriptToFooterHeaderResponseDecorator implements IHeaderResponseDecorator {
 

@@ -41,8 +41,6 @@ import de.agilecoders.wicket.jquery.util.Strings2;
  * ```
  *
  * It's possible to use `pre`, `code` and `xmp` as tag name.
- *
- * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public class CodeBehavior extends Behavior {
     private static final long serialVersionUID = 1L;
@@ -136,9 +134,6 @@ public class CodeBehavior extends Behavior {
         component.remove(cssClassNameAppender);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void onConfigure(final Component component) {
         super.onConfigure(component);

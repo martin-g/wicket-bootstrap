@@ -29,8 +29,6 @@ import java.util.List;
  *     }
  * }
  * ```
- *
- * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public class Theme implements ITheme {
 

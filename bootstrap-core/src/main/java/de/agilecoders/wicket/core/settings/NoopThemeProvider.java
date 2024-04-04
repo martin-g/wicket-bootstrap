@@ -12,8 +12,6 @@ import de.agilecoders.wicket.core.Bootstrap;
  * #### Description
  *
  * Special theme that uses {@link de.agilecoders.wicket.core.settings.IBootstrapSettings#getCssResourceReference()}
- *
- * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public class NoopThemeProvider implements ThemeProvider {
 

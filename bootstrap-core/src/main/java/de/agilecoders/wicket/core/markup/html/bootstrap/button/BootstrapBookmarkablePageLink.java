@@ -132,9 +132,6 @@ public class BootstrapBookmarkablePageLink<T> extends BookmarkablePageLink<T> im
                 .setEscapeModelStrings(false);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected final IMarkupSourcingStrategy newMarkupSourcingStrategy() {
         return new PanelMarkupSourcingStrategy(true);

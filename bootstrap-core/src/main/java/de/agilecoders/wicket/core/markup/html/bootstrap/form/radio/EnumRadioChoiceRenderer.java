@@ -35,7 +35,6 @@ public class EnumRadioChoiceRenderer<T extends Enum<T>> extends DefaultRadioChoi
         return Model.of(getDisplayValue(option).toString());
     }
 
-    /** {@inheritDoc} */
     public final CharSequence getDisplayValue(T object)
     {
         final String value;

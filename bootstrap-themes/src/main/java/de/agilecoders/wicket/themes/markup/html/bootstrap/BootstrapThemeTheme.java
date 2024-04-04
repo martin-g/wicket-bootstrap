@@ -21,8 +21,6 @@ import java.util.List;
  *     Bootstrap.install(this, settings);
  * }
  * ```
- *
- * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public class BootstrapThemeTheme extends Theme {
 

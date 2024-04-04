@@ -6,8 +6,6 @@ import org.apache.wicket.request.resource.ResourceReference;
  * #### Description
  *
  * Settings interface for bootstrap settings.
- *
- * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public interface IBootstrapSettings {
 
@@ -181,7 +179,7 @@ public interface IBootstrapSettings {
     IBootstrapSettings setUpdateSecurityManager(boolean activate);
 
     /**
-     * if true, the <script/> tag for the bootstrap javascript will get the defer="defer" attribute
+     * if true, the &lt;script/&gt; tag for the bootstrap javascript will get the defer="defer" attribute
      *
      * @param defer
      * @return same instance for chaining

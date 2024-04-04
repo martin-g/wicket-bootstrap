@@ -16,7 +16,6 @@ import de.agilecoders.wicket.core.markup.html.themes.bootstrap.BootstrapCssRtlRe
  *
  * Default {@link IBootstrapSettings} implementation
  *
- * @author Michael Haitz <michael.haitz@agilecoders.de>
  * @see IBootstrapSettings
  */
 public class BootstrapSettings implements IBootstrapSettings {

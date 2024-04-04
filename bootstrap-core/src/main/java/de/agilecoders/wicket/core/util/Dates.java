@@ -6,8 +6,6 @@ import static de.agilecoders.wicket.jquery.util.Strings2.nullToEmpty;
 
 /**
  * Helper class for dates.
- *
- * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public final class Dates {
 

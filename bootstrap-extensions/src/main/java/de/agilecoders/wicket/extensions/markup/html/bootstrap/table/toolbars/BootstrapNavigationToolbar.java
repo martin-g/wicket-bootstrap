@@ -87,7 +87,6 @@ public class BootstrapNavigationToolbar extends AbstractToolbar {
 		return new BootstrapNavigatorLabel(navigatorId, table, size);
 	}
 
-	/** {@inheritDoc} */
 	@Override
 	protected void onConfigure() {
 		super.onConfigure();

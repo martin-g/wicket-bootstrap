@@ -43,9 +43,6 @@ public class Video implements Html5Player.IVideo {
         this.type = mediaType;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public String getUrl() {
         return url.getObject();

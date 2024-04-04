@@ -387,23 +387,13 @@
                     <artifactId>maven-javadoc-plugin</artifactId>
                     <version>${maven-javadoc-plugin.version}</version>
                     <configuration>
-                        <skip>true</skip>
                         <quiet>true</quiet>
+                        <doclint>none</doclint>
                         <links>
-                            <link>http://docs.oracle.com/javase/6/docs/api/</link>
-                            <link>http://junit-team.github.io/junit/javadoc/latest/</link>
+                            <link>https://docs.oracle.com/en/java/javase/17/docs/api/</link>
+                            <link>https://junit.org/junit5/docs/current/api/</link>
                             <link>http://www.slf4j.org/apidocs/</link>
                         </links>
-                        <additionalJOptions>
-                            <additionalJOption>-J-Xmx32m</additionalJOption>
-                        </additionalJOptions>
-                        <doclet>ch.raffael.doclets.pegdown.PegdownDoclet</doclet>
-                        <docletArtifact>
-                            <groupId>ch.raffael.pegdown-doclet</groupId>
-                            <artifactId>pegdown-doclet</artifactId>
-                            <version>1.1</version>
-                        </docletArtifact>
-                        <useStandardDocletOptions>true</useStandardDocletOptions>
                     </configuration>
                     <executions>
                         <execution>
@@ -429,7 +419,6 @@
                     <configuration>
                         <source>${maven.java.source}</source>
                         <target>${maven.java.target}</target>
-                        <compilerVersion>${maven.java.source}</compilerVersion>
                         <encoding>${project.build.sourceEncoding}</encoding>
                         <showDeprecation>true</showDeprecation>
                         <showWarnings>true</showWarnings>
@@ -500,6 +489,13 @@
                 </plugin>
             </plugins>
         </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>${maven-javadoc-plugin.version}</version>
+            </plugin>
+        </plugins>
     </build>
 
     <profiles>
@@ -529,18 +525,6 @@
                     </plugin>
                 </plugins>
             </build>
-        </profile>
-        <profile>
-            <id>Java 11</id>
-            <activation>
-                <jdk>11</jdk>
-            </activation>
-            <properties>
-                <!-- Disable javadoc linter when building with Java 8
-                 http://mail-archives.apache.org/mod_mbox/maven-users/201403.mbox/%3CCANWgJS5xHWiGE+Lecey+mZVbj9Via4JUWsaBeZtQr2aQNebupA@mail.gmail.com%3E
-                 -->
-                <additionalparam>-Xdoclint:-html</additionalparam>
-            </properties>
         </profile>
     </profiles>
 

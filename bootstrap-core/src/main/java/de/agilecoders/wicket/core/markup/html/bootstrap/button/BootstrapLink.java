@@ -162,9 +162,6 @@ public abstract class BootstrapLink<T> extends Link<T> implements IBootstrapButt
         return new WebMarkupContainer(markupId).setRenderBodyOnly(true).setEscapeModelStrings(false).setVisible(false);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected final IMarkupSourcingStrategy newMarkupSourcingStrategy() {
         return new PanelMarkupSourcingStrategy(true);

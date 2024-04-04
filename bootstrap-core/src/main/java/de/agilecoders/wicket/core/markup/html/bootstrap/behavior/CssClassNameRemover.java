@@ -36,8 +36,6 @@ import de.agilecoders.wicket.core.util.CssClassNames;
  * component.add(new CssClassNameRemover(List("class-name-a", "class-name-b")));
  * component.add(new CssClassNameRemover(Model.of("class-name-a")));
  * ```
- *
- * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public class CssClassNameRemover extends CssClassNameAppender {
     private static final long serialVersionUID = 1L;

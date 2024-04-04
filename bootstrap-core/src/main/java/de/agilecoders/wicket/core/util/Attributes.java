@@ -13,8 +13,6 @@ import de.agilecoders.wicket.jquery.util.Generics2;
  * #### Description
  * <p/>
  * Helper class to interact with {@link org.apache.wicket.markup.ComponentTag} attributes.
- *
- * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public final class Attributes {
 

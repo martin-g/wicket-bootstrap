@@ -25,8 +25,6 @@ import org.apache.wicket.model.Model;
  * ```
  *
  * It's possible to use `pre`, `code` and `xmp` as tag name.
- *
- * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public class Code extends Label {
 

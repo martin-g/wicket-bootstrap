@@ -90,9 +90,6 @@ public abstract class BootstrapAjaxFallbackButton extends AjaxFallbackButton imp
         return label;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected IMarkupSourcingStrategy newMarkupSourcingStrategy() {
         return new PanelMarkupSourcingStrategy(true);

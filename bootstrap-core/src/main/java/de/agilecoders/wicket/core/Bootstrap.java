@@ -60,8 +60,6 @@ import de.agilecoders.wicket.webjars.WicketWebjars;
  * settings.useCdnResources(true);
  * Bootstrap.install(yourWicketApplication, settings);
  * ```
- *
- * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public final class Bootstrap {
 

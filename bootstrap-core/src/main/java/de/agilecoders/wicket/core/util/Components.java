@@ -11,8 +11,6 @@ import java.util.Set;
 
 /**
  * Helper class for components.
- *
- * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public final class Components {
 

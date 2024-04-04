@@ -31,8 +31,6 @@ import de.agilecoders.wicket.core.util.CssClassNames;
  * ```html
  *     <span class="className2 className3" wicket:id="foo"></span>
  * ```
- *
- * @author Michael Haitz <michael.haitz@agilecoders.de>
  */
 public class CssClassNameModifier extends AttributeModifier {
     private static final long serialVersionUID = 1L;
