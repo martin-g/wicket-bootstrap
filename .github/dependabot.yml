@@ -26,7 +26,7 @@ updates:
       day: "sunday"
     open-pull-requests-limit: 50
     ignore:
-        - dependency-name: "font-awesome" # needs to be done manually, to update the .java files too
+        - dependency-name: "org.webjars:font-awesome" # needs to be done manually, to update the .java files too
         - dependency-name: "org.webjars:typeaheadjs"  # see https://github.com/martin-g/wicket-bootstrap/pull/1011
 
   - package-ecosystem: "github-actions"
