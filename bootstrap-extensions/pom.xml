@@ -26,7 +26,6 @@
         <font-awesome.version>6.5.2</font-awesome.version>
         <momentjs.version>2.29.4</momentjs.version>
         <bootstrap-select.version>1.14.0-beta3</bootstrap-select.version>
-        <tempusdominus4.version>5.39.0</tempusdominus4.version>
         <tempusdominus.version>6.7.11</tempusdominus.version>
     </properties>
 
@@ -51,12 +50,6 @@
         <dependency>
             <groupId>org.apache.wicket</groupId>
             <artifactId>wicket-util</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.webjars</groupId>
-            <artifactId>tempusdominus-bootstrap-4</artifactId>
-            <version>${tempusdominus4.version}</version>
         </dependency>
 
         <dependency>
