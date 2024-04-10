@@ -4,11 +4,12 @@
     </head>
     <body>
         <wicket:panel>
-        	<div wicket:id="radioGroup" class="btn-group btn-group-toggle" data-bs-toggle="buttons">
-			  <label wicket:id="radios" class="btn">
-			    <input wicket:id="radio" type="radio"><span wicket:id="label"></span>
-			  </label>
-			</div>  
+          <div wicket:id="radioGroup" class="btn-group" role="group">
+             <span wicket:id="items">
+                <input wicket:id="radio" type="radio" class="btn-check" name="btnradio"/>	  
+                <label wicket:id="label" class="btn btn-outline-primary"/>
+             </span>
+          </div>  
         </wicket:panel>
     </body>
 </html>
