@@ -8,7 +8,6 @@ import de.agilecoders.wicket.jquery.util.Strings2;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.attributes.AjaxRequestAttributes;
 import org.apache.wicket.ajax.form.AjaxFormChoiceComponentUpdatingBehavior;
-import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
 import org.apache.wicket.markup.html.WebMarkupContainer;
@@ -117,25 +116,19 @@ public class BootstrapRadioGroup<T extends Serializable> extends GenericPanel<T>
                 }
             });
         }
-        RepeatingView radios = new RepeatingView("radios");
+        RepeatingView radios = new RepeatingView("items");
         radioGroup.add(radios);
-        for (final IModel<T> model: options) {
-            WebMarkupContainer wm = new WebMarkupContainer(radios.newChildId()) {
-                private static final long serialVersionUID = 1L;
+        for (final IModel<T> model : options) {
+           WebMarkupContainer wm = new WebMarkupContainer(radios.newChildId());
 
-                @Override
-                protected void onComponentTag(ComponentTag tag) {
-                    super.onComponentTag(tag);
-                    // TODO: use model comparator?
-                    boolean active = model.getObject().equals(BootstrapRadioGroup.this.getModel().getObject());
-                    tag.put("class", "btn "+ choiceRenderer.getButtonClass(model.getObject())+ (active ? " active" : ""));
-                }
-            };
-            radios.add(wm);
-            Radio<T> radio = newRadio("radio", model, radioGroup);
-            wm.add(radio);
-            wm.add(new Label("label", choiceRenderer.lableOf(model.getObject())).setRenderBodyOnly(true));
-        }
+           Radio<T> radio = newRadio("radio", model, radioGroup);
+           wm.add(radio);
+           Label label = new Label("label", choiceRenderer.lableOf(model.getObject()));
+           label.add(new AttributeAppender("for", radio.getMarkupId()));
+           wm.add(label);
+
+           radios.add(wm.setRenderBodyOnly(true));
+      }
     }
 
     @Override
