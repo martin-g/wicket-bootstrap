@@ -16,7 +16,9 @@ public interface IRadioChoiceRenderer<T> extends IDetachable {
      * @deprecated Please use {@link #labelOf(Object)}
      */
     @Deprecated(forRemoval = true)
-    IModel<String> lableOf(T option);
+    default IModel<String> lableOf(T option) {
+        return null;
+    }
 
     default IModel<String> labelOf(T option) {
         return lableOf(option);
