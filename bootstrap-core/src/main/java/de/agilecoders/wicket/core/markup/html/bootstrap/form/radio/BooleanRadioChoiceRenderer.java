@@ -28,7 +28,7 @@ public class BooleanRadioChoiceRenderer extends DefaultRadioChoiceRenderer<Boole
         this.resourceSource = resourceSource;
     }
 
-    public IModel<String> lableOf(Boolean option) {
+    public IModel<String> labelOf(Boolean option) {
         return Model.of(getDisplayValue(option).toString());
     }
 

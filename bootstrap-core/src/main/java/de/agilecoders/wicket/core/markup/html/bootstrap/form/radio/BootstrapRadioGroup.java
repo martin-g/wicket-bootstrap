@@ -117,18 +117,16 @@ public class BootstrapRadioGroup<T extends Serializable> extends GenericPanel<T>
                 }
             });
         }
-        RepeatingView radios = new RepeatingView("items");
+        RepeatingView radios = new RepeatingView("radios");
         radioGroup.add(radios);
         for (final IModel<T> model : options) {
            WebMarkupContainer wm = new WebMarkupContainer(radios.newChildId());
 
            Radio<T> radio = newRadio("radio", model, radioGroup);
            wm.add(radio);
-           Label label = new Label("label", choiceRenderer.lableOf(model.getObject()));
+           Label label = new Label("label", choiceRenderer.labelOf(model.getObject()));
            label.add(new AttributeAppender("for", radio.getMarkupId()));
            wm.add(label);
-
-           radios.add(wm.setRenderBodyOnly(true));
       }
     }
 
