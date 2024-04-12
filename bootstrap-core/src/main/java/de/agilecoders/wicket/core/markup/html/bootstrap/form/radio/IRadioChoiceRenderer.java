@@ -16,11 +16,11 @@ public interface IRadioChoiceRenderer<T> extends IDetachable {
      * @deprecated Please use {@link #labelOf(Object)}
      */
     @Deprecated(forRemoval = true)
-    default IModel<String> lableOf(T option) {
-        return labelOf(option);
-    };
+    IModel<String> lableOf(T option);
 
-    IModel<String> labelOf(T option);
+    default IModel<String> labelOf(T option) {
+        return lableOf(option);
+    };
 
     String getButtonClass(T option);
 }
