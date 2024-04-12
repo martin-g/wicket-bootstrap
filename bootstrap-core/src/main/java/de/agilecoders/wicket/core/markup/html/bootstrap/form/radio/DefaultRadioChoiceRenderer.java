@@ -30,7 +30,7 @@ public class DefaultRadioChoiceRenderer<T extends Serializable> implements IRadi
     }
 
     @Override
-    public IModel<String> lableOf(T option) {
+    public IModel<String> labelOf(T option) {
         String label = option != null ? option.toString() : "";
         if (propertyLabel != null) {
             Object value = PropertyResolver.getValue(propertyLabel, option);

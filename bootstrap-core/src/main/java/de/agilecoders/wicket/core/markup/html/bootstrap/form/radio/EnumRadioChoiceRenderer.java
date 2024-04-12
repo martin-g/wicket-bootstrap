@@ -31,7 +31,7 @@ public class EnumRadioChoiceRenderer<T extends Enum<T>> extends DefaultRadioChoi
     }
 
 
-    public IModel<String> lableOf(T option) {
+    public IModel<String> labelOf(T option) {
         return Model.of(getDisplayValue(option).toString());
     }
 
