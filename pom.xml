@@ -66,7 +66,7 @@
         <doxia.version>1.0</doxia.version>
         <!-- Note: closure-compiler -unshaded v20200920 (until at least v20210907) contains gson -->
         <google-closure.version>v20231112</google-closure.version>
-        <jetty.version>11.0.20</jetty.version>
+        <jetty.version>11.0.21</jetty.version>
         <jquerypp.version>1.0.1</jquerypp.version>
         <jquery.version>3.7.1</jquery.version>
         <junit-jupiter.version>5.10.2</junit-jupiter.version>
