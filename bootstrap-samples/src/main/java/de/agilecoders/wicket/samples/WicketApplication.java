@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
+import com.github.jennybrown8.wicketsource.WicketSource;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesome6CssReference;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeSettings;
 import de.agilecoders.wicket.samples.pages.BaseCssPage;
@@ -57,7 +58,6 @@ import de.agilecoders.wicket.samples.pages.HomePage;
 import de.agilecoders.wicket.sass.BootstrapSass;
 import de.agilecoders.wicket.themes.markup.html.bootswatch.BootswatchTheme;
 import de.agilecoders.wicket.themes.markup.html.bootswatch.BootswatchThemeProvider;
-import net.ftlines.wicketsource.WicketSource;
 
 /**
  * Demo Application instance.
