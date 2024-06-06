@@ -26,6 +26,7 @@
         <bootstrap-select.version>1.14.0-beta3</bootstrap-select.version>
         <tempusdominus4.version>5.39.0</tempusdominus4.version>
         <tempusdominus.version>6.9.5</tempusdominus.version>
+        <js-cookie.version>3.0.5</js-cookie.version>
     </properties>
 
     <dependencies>
@@ -73,6 +74,12 @@
             <groupId>org.webjars.npm</groupId>
             <artifactId>bootstrap-select</artifactId>
             <version>${bootstrap-select.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.webjars.npm</groupId>
+            <artifactId>js-cookie</artifactId>
+            <version>${js-cookie.version}</version>
         </dependency>
 
         <dependency>
