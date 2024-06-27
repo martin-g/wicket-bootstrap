@@ -127,6 +127,8 @@ public class BootstrapRadioGroup<T extends Serializable> extends GenericPanel<T>
            Label label = new Label("label", choiceRenderer.labelOf(model.getObject()));
            label.add(new AttributeAppender("for", radio.getMarkupId()));
            wm.add(label);
+
+           radios.add(wm.setRenderBodyOnly(true));
       }
     }
 
