@@ -33,7 +33,7 @@ public class MomentJsReference extends WebjarsJavaScriptResourceReference {
      * Private constructor.
      */
     private MomentJsReference() {
-        super("momentjs/current/min/moment.min.js");
+        super("moment/current/min/moment.min.js");
     }
 
     /**
