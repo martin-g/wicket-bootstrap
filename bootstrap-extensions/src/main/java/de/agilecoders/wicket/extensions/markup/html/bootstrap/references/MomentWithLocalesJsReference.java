@@ -33,7 +33,7 @@ public class MomentWithLocalesJsReference extends WebjarsJavaScriptResourceRefer
      * Private constructor.
      */
     private MomentWithLocalesJsReference() {
-        super("momentjs/current/min/moment-with-locales.min.js");
+        super("moment/current/min/moment-with-locales.js");
     }
 
     /**
