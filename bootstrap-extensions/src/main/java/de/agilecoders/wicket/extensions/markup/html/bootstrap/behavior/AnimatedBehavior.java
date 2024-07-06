@@ -27,10 +27,10 @@ import de.agilecoders.wicket.webjars.request.resource.WebjarsCssResourceReferenc
  *
  * #### Usage
  *
- * ```java Label label = new Label("id", Model.of("Animate me")); label.add(new
- * AnimatedBehavior(Animation.rollIn)); ```
+ * ```java Label label = new Label("id", Model.of("Animate me"));
+ *    label.add(new AnimatedBehavior(Animation.rollIn)); ```
  *
- * ```html <span wicket:id="id"></span> ```
+ * ```html &lt;span wicket:id="id"&gt;&lt;/span&gt;```
  *
  * @author daniel.jipa
  */

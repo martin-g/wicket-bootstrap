@@ -28,7 +28,7 @@ public class Html5VideoConfig extends AbstractConfig {
     private static final IKey<Boolean> ShowFullscreenButton = newKey("fullscreenMedia", true);
 
     /**
-     * show & set volume value 1..10
+     * show and set volume value 1..10
      */
     private static final IKey<Integer> Volume = newKey("volumeMedia", 5);
 
@@ -55,7 +55,7 @@ public class Html5VideoConfig extends AbstractConfig {
     }
 
     /**
-     * show & set volume value 1..10
+     * show and set volume value 1..10
      *
      * @param value mandatory parameter
      * @return this instance for chaining.

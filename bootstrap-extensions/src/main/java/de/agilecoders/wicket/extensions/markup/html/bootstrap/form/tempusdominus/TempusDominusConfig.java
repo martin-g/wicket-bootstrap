@@ -44,7 +44,8 @@ public class TempusDominusConfig extends AbstractConfig {
     private static final IKey<Boolean> UseCurrent = newKey("useCurrent", true);
     private static final IKey<RawValue> ViewDate = newKey("viewDate", null);
 
-    private TempusDominusLocalizationConfig localization = new TempusDominusLocalizationConfig();
+    // package private for checks
+    TempusDominusLocalizationConfig localization = new TempusDominusLocalizationConfig();
 
     /**
      * Construct config
@@ -260,8 +261,8 @@ public class TempusDominusConfig extends AbstractConfig {
     /**
      * @return Date format pattern set for TempusDominusLocalizationConfig.getFormat()
      */
-    public String getFormat() {
-        return localization.getFormat();
+    public String getJavaFormat() {
+        return localization.getJavaFormat();
     }
 
     /**

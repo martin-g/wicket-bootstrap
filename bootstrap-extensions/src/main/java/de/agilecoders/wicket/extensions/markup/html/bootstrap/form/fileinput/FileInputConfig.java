@@ -192,7 +192,7 @@ public class FileInputConfig extends AbstractConfig {
 
     /**
      * Sets fileinput language.
-     * See {@link de.agilecoders.wicket.extensions.markup.html.bootstrap.form.fileinput.res.js.locales}
+     * Check res/js/locales folder for available locales
      */
     public FileInputConfig withLocale(String language) {
     	put(Language, language);

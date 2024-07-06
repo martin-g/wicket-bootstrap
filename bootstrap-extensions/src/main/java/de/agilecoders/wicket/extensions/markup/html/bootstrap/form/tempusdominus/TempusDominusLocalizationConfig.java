@@ -9,8 +9,7 @@ import java.time.LocalTime;
 import java.time.temporal.Temporal;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.Optional;
 
 import org.apache.wicket.Session;
 import org.apache.wicket.util.lang.Args;
@@ -26,7 +25,6 @@ import de.agilecoders.wicket.jquery.util.Json.RawValue;
  */
 public class TempusDominusLocalizationConfig extends AbstractConfig {
     private static final long serialVersionUID = 1L;
-    private static final Pattern YEAR_PATTERN = Pattern.compile("^[^y]*([y]+)[^y]*$", Pattern.CASE_INSENSITIVE);
 
     public enum HourCycleType {
         H11("h11"), // Midnight: 00 AM; Night: 11 PM
@@ -81,12 +79,13 @@ public class TempusDominusLocalizationConfig extends AbstractConfig {
     private static final IKey<String> SelectTime = newKey("selectTime", null);
     private static final IKey<String> SelectDate = newKey("selectDate", null);
     private static final IKey<Map<String, String>> DayViewHeaderFormat = newKey("dayViewHeaderFormat", null);
-    private static final IKey<String> Locale = newKey("locale", null);
     private static final IKey<Integer> StartOfTheWeek = newKey("startOfTheWeek", 0);
     private static final IKey<String> HourCycle = newKey("hourCycle", null);
     private static final IKey<Map<String, String>> DateFormats = newKey("dateFormats", null);
     private static final IKey<RawValue> Ordinal = newKey("ordinal", null);
     private static final IKey<String> Format = newKey("format", null);
+    // package private for checks
+    static final IKey<String> Locale = newKey("locale", null);
 
     private String javaFormat;
 
@@ -97,7 +96,7 @@ public class TempusDominusLocalizationConfig extends AbstractConfig {
         put(DateFormats, new HashMap<>(6));
         java.util.Locale locale = Session.get().getLocale();
         withLocale(locale);
-        withFormat(getPattern(SimpleDateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.MEDIUM, locale)));
+        withJavaFormat(getPattern(SimpleDateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.MEDIUM, locale)));
     }
 
     /**
@@ -109,11 +108,11 @@ public class TempusDominusLocalizationConfig extends AbstractConfig {
     public <T extends Temporal> TempusDominusLocalizationConfig withClass(Class<T> clazz) {
         java.util.Locale locale = getLocale();
         if (LocalTime.class == clazz) {
-            withFormat(getPattern(SimpleDateFormat.getTimeInstance(DateFormat.MEDIUM, locale)));
+            withJavaFormat(getPattern(SimpleDateFormat.getTimeInstance(DateFormat.MEDIUM, locale)));
         } else if (LocalDate.class == clazz) {
-            withFormat(getPattern(SimpleDateFormat.getDateInstance(DateFormat.SHORT, locale)));
+            withJavaFormat(getPattern(SimpleDateFormat.getDateInstance(DateFormat.SHORT, locale)));
         } else {
-            withFormat(getPattern(SimpleDateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.MEDIUM, locale)));
+            withJavaFormat(getPattern(SimpleDateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.MEDIUM, locale)));
         }
         return this;
     }
@@ -415,6 +414,17 @@ public class TempusDominusLocalizationConfig extends AbstractConfig {
     }
 
     /**
+     * Will add Map with given formats
+     *
+     * @param map - map of formats
+     * @return current instance
+     */
+    public TempusDominusLocalizationConfig withDateFormats(Map<String, String> map) {
+        put(DateFormats, map);
+        return this;
+    }
+
+    /**
      * Will add given format to the Map
      *
      * These options describe shorthand format strings.
@@ -424,6 +434,9 @@ public class TempusDominusLocalizationConfig extends AbstractConfig {
      * @return current instance
      */
     public TempusDominusLocalizationConfig withDateFormat(DateFormatType type, String format) {
+        if (get(DateFormats) == null) {
+            put(DateFormats, new HashMap<>(6));
+        }
         get(DateFormats).put(type.name(), toJavaScriptDateFormat(format));
         return this;
     }
@@ -438,36 +451,37 @@ public class TempusDominusLocalizationConfig extends AbstractConfig {
     }
 
     /**
+     * @param format Default tokenized format to use (Can be JS date/time/date-time format or DateFormatType.name()).
+     * @return current instance
+     */
+    public TempusDominusLocalizationConfig withFormat(String format) {
+        put(Format, format);
+        return this;
+    }
+
+    /**
      * NOTE: this format is used for parsing Java date, so this should be valid Java format
      *
      * @param format Default tokenized format to use.
      * @return current instance
      */
-    public TempusDominusLocalizationConfig withFormat(String format) {
+    public TempusDominusLocalizationConfig withJavaFormat(String format) {
         this.javaFormat = format;
         put(Format, toJavaScriptDateFormat(format));
         return this;
     }
 
-    private static String toJavaScriptDateFormat(final String _fmt) {
-        String jsFormat = nullToEmpty(_fmt).replace(" a", " t");
-        Matcher yearMatcher = YEAR_PATTERN.matcher(jsFormat);
-        if (yearMatcher.find()) {
-            // this code is required while https://github.com/Eonasdan/tempus-dominus/issues/2855 is not fixed :(
-            String year = yearMatcher.group(1);
-            // only 2 or 4 'yyyy' are supported
-            if (year.length() < 2 || year.length() > 2) {
-                return jsFormat.substring(0, yearMatcher.start(1)) + "yyyy" + jsFormat.substring(yearMatcher.end(1));
-            }
-        }
-        return jsFormat;
+    public static String toJavaScriptDateFormat(final String _fmt) {
+        return nullToEmpty(_fmt).replace(" a", " t");
     }
 
-    public String getFormat() {
+    public String getJavaFormat() {
         return javaFormat;
     }
 
     public java.util.Locale getLocale() {
-        return java.util.Locale.forLanguageTag(get(Locale));
+        return Optional.ofNullable(get(Locale))
+                        .map(java.util.Locale::forLanguageTag)
+                        .orElse(Session.get().getLocale());
     }
 }

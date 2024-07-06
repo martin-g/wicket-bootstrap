@@ -12,10 +12,10 @@ import de.agilecoders.wicket.core.util.Components;
 
 /**
  * Use {@link TableContextBehavior} to color table rows or individual cells of a html table.
- * 
+ *
  * documentation: http://getbootstrap.com/css/#tables-contextual-classes
- * 
- * @author Eric Hamel <eric.hamel@me.com>
+ *
+ * @author Eric Hamel eric.hamel@me.com
  *
  */
 public class TableContextBehavior extends Behavior{
@@ -24,7 +24,7 @@ public class TableContextBehavior extends Behavior{
 
     /**
      * Construct.
-     * 
+     *
      * Default sets background as active.
      */
     public TableContextBehavior() {
@@ -50,7 +50,7 @@ public class TableContextBehavior extends Behavior{
 
         this.type = type;
     }
-    
+
     @Override
     public void onComponentTag(final Component component, final ComponentTag tag) {
         super.onComponentTag(component, tag);
@@ -91,5 +91,5 @@ public class TableContextBehavior extends Behavior{
 
         BootstrapBaseBehavior.removeFrom(component);
     }
-	
+
 }
