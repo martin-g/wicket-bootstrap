@@ -14,7 +14,7 @@
     <name>bootstrap-extensions</name>
 
     <properties>
-        <inputmask.version>5.0.6</inputmask.version>
+        <inputmask.version>5.0.9</inputmask.version>
         <jqueryui.version>1.13.3</jqueryui.version>
         <typeaheadjs.version>0.10.5-1</typeaheadjs.version>
         <x-editable.version>1.5.1-1</x-editable.version>
