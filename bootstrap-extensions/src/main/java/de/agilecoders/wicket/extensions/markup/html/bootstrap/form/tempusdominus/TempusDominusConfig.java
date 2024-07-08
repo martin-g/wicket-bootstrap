@@ -259,7 +259,20 @@ public class TempusDominusConfig extends AbstractConfig {
     }
 
     /**
-     * @return Date format pattern set for TempusDominusLocalizationConfig.getFormat()
+     * @deprecated
+     * This method was initially designed to return Java-based Date format
+     * But it has the same name as "localisation->format"
+     * <p> Please use {@link #getJavaFormat()} instead.
+     *
+     * @return Date format pattern set for Java-based formatters
+     */
+    @Deprecated(since = "7.0.7", forRemoval = true)
+    public String getFormat() {
+        return localization.getJavaFormat();
+    }
+
+    /**
+     * @return Date format pattern set for Java-based formatters
      */
     public String getJavaFormat() {
         return localization.getJavaFormat();
