@@ -23,7 +23,7 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
  * &lt;th wicket:id="order-by-border"&gt;Heading&lt;/th&gt;
  *
  * @param <S> the type of the sorting parameter
- * @author Eric Hamel <eric.hamel@me.com>
+ * @author Eric Hamel eric.hamel@me.com
  *
  */
 public abstract class BootstrapOrderByBorder<S> extends Border {

@@ -20,7 +20,7 @@ import de.agilecoders.wicket.extensions.markup.html.bootstrap.table.sort.Bootstr
  * descending {@link FontAwesome6IconType#sort_down_s}
  * unsorted  {@link  FontAwesome6IconType#sort_s} -> unsorted
  *
- * @author Eric Hamel <eric.hamel@me.com>
+ * @author Eric Hamel eric.hamel@me.com
  *
  * @param <S> the type of the sorting parameter
  */

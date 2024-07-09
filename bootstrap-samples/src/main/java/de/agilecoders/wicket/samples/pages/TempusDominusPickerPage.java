@@ -96,12 +96,13 @@ public class TempusDominusPickerPage extends BasePage {
                             .withMaxDate(Date.from(max.plusWeeks(2).atStartOfDay(ZoneId.systemDefault()).toInstant()))
                     );
             createBlock(
-                new DateTextField("simple", Model.of((Date)null), simpleConfig.getFormat()),
-                "new TempusDominusConfig()\n" + //
-                "    .withRestrictions(cfg -> cfg\n" + //
-                "            .withMinDate(Date.from(min.atStartOfDay(ZoneId.systemDefault()).toInstant()))\n" + //
-                "            .withMaxDate(Date.from(max.plusWeeks(2).atStartOfDay(ZoneId.systemDefault()).toInstant()))\n" + //
-                "    );",
+                new DateTextField("simple", Model.of((Date)null), simpleConfig.getJavaFormat()),
+                        """
+                        new TempusDominusConfig()
+                            .withRestrictions(cfg -> cfg
+                                .withMinDate(Date.from(min.atStartOfDay(ZoneId.systemDefault()).toInstant()))
+                                .withMaxDate(Date.from(max.plusWeeks(2).atStartOfDay(ZoneId.systemDefault()).toInstant()))
+                            );""",
                 simpleConfig
             );
         }
@@ -112,24 +113,25 @@ public class TempusDominusPickerPage extends BasePage {
                             .withComponent(ComponentType.CLOCK, false)
                     )
                     .withLocalization(cfg -> cfg
-                            .withFormat("dd/MM/yyyy")
+                            .withJavaFormat("dd/MM/yyyy")
                     )
                     .withRestrictions(cfg -> cfg
                             .withMaxDate(Date.from(max.minusYears(6).atStartOfDay(ZoneId.systemDefault()).toInstant()))
                     );
             createBlock(
-                new DateTextField("birthday", Model.of((Date)null), birthDayConfig.getFormat()),
-                "new TempusDominusConfig()\n" + //
-                "    .withDisplay(cfg -> cfg\n" + //
-                "            .withViewMode(ViewModeType.YEARS)\n" + //
-                "            .withComponent(ComponentType.CLOCK, false)\n" + //
-                "    )\n" + //
-                "    .withLocalization(cfg -> cfg\n" + //
-                "            .withFormat(\"dd/MM/yyyy\")\n" + //
-                "    )\n" + //
-                "    .withRestrictions(cfg -> cfg\n" + //
-                "            .withMaxDate(Date.from(max.minusYears(6).atStartOfDay(ZoneId.systemDefault()).toInstant()))\n" + //
-                "    );",
+                new DateTextField("birthday", Model.of((Date)null), birthDayConfig.getJavaFormat()),
+                        """
+                        new TempusDominusConfig()
+                            .withDisplay(cfg -> cfg
+                                .withViewMode(ViewModeType.YEARS)
+                                .withComponent(ComponentType.CLOCK, false)
+                            )
+                            .withLocalization(cfg -> cfg
+                                .withJavaFormat("dd/MM/yyyy")
+                            )
+                            .withRestrictions(cfg -> cfg
+                                .withMaxDate(Date.from(max.minusYears(6).atStartOfDay(ZoneId.systemDefault()).toInstant()))
+                            );""",
                 birthDayConfig
             );
         }
@@ -153,31 +155,32 @@ public class TempusDominusPickerPage extends BasePage {
                         .withComponent(ComponentType.SECONDS, true)
                 )
                 .withLocalization(cfg -> cfg
-                        .withFormat("dd/MM/yyyy HH:mm:ss")
+                        .withJavaFormat("dd/MM/yyyy HH:mm:ss")
                 );
             createBlock(
-                new DateTextField("icons", Model.of((Date)null), iconsConfig.getFormat()),
-                "new TempusDominusConfig()\n" + //
-                "    .withDisplay(cfg -> cfg\n" + //
-                "            .withButton(ButtonType.TODAY, true)\n" + //
-                "            .withButton(ButtonType.CLEAR, true)\n" + //
-                "            .withButton(ButtonType.CLOSE, true)\n" + //
-                "            .withIcons(icons -> icons\n" + //
-                "                    .withDateIcon(FontAwesome6IconType.calendar_days_r)\n" + //
-                "                    .withTimeIcon(FontAwesome6IconType.clock_s)\n" + //
-                "                    .withUpIcon(FontAwesome6IconType.arrow_up_s)\n" + //
-                "                    .withDownIcon(FontAwesome6IconType.arrow_down_s)\n" + //
-                "                    .withPreviousIcon(FontAwesome6IconType.arrow_left_s)\n" + //
-                "                    .withNextIcon(FontAwesome6IconType.arrow_right_s)\n" + //
-                "                    .withTodayIcon(FontAwesome6IconType.calendar_check_s)\n" + //
-                "                    .withClearIcon(FontAwesome6IconType.eraser_s)\n" + //
-                "                    .withCloseIcon(FontAwesome6IconType.xmark_s)\n" + //
-                "            )\n" + //
-                "            .withComponent(ComponentType.SECONDS, true)\n" + //
-                "    )\n" + //
-                "    .withLocalization(cfg -> cfg\n" + //
-                "            .withFormat(\"dd/MM/yyyy HH:mm:ss\")\n" + //
-                "    );",
+                new DateTextField("icons", Model.of((Date)null), iconsConfig.getJavaFormat()),
+                        """
+                        new TempusDominusConfig()
+                            .withDisplay(cfg -> cfg
+                                .withButton(ButtonType.TODAY, true)
+                                .withButton(ButtonType.CLEAR, true)
+                                .withButton(ButtonType.CLOSE, true)
+                                .withIcons(icons -> icons
+                                    .withDateIcon(FontAwesome6IconType.calendar_days_r)
+                                    .withTimeIcon(FontAwesome6IconType.clock_s)
+                                    .withUpIcon(FontAwesome6IconType.arrow_up_s)
+                                    .withDownIcon(FontAwesome6IconType.arrow_down_s)
+                                    .withPreviousIcon(FontAwesome6IconType.arrow_left_s)
+                                    .withNextIcon(FontAwesome6IconType.arrow_right_s)
+                                    .withTodayIcon(FontAwesome6IconType.calendar_check_s)
+                                    .withClearIcon(FontAwesome6IconType.eraser_s)
+                                    .withCloseIcon(FontAwesome6IconType.xmark_s)
+                                )
+                            .withComponent(ComponentType.SECONDS, true)
+                        )
+                        .withLocalization(cfg -> cfg
+                            .withJavaFormat("dd/MM/yyyy HH:mm:ss")
+                        );""",
                 iconsConfig
             );
         }
@@ -190,19 +193,20 @@ public class TempusDominusPickerPage extends BasePage {
                         .withMaxDate(max.atStartOfDay())
                 )
                 .withLocalization(cfg -> cfg
-                        .withFormat("dd/MM/yyyy HH:mm:ss")
+                        .withJavaFormat("dd/MM/yyyy HH:mm:ss")
                 );
             createBlock(
-                new LocalDateTimeTextField("localsimple", Model.of((LocalDateTime)null), localConfig.getFormat()),
-                "new TempusDominusConfig()\n" + //
-                "    .withClass(LocalDateTime.class)\n" + //
-                "    .withRestrictions(cfg -> cfg\n" + //
-                "            .withMinDate(min.atStartOfDay())\n" + //
-                "            .withMaxDate(max.atStartOfDay())\n" + //
-                "    )\n" + //
-                "    .withLocalization(cfg -> cfg\n" + //
-                "            .withFormat(\"dd/MM/yyyy HH:mm:ss\")\n" + //
-                "    );",
+                new LocalDateTimeTextField("localsimple", Model.of((LocalDateTime)null), localConfig.getJavaFormat()),
+                        """
+                        new TempusDominusConfig()
+                            .withClass(LocalDateTime.class)
+                            .withRestrictions(cfg -> cfg
+                                .withMinDate(min.atStartOfDay())
+                                .withMaxDate(max.atStartOfDay())
+                            )
+                            .withLocalization(cfg -> cfg
+                                .withJavaFormat("dd/MM/yyyy HH:mm:ss")
+                            );""",
                 localConfig
             );
         }
@@ -216,15 +220,16 @@ public class TempusDominusPickerPage extends BasePage {
                         .withMaxDate(max.minusYears(6))
                 );
             createBlock(
-                new LocalDateTextField("localbirthday", Model.of((LocalDate)null), localBirthConfig.getFormat()),
-                "new TempusDominusConfig()\n" + //
-                "    .withClass(LocalDate.class)\n" + //
-                "    .withDisplay(cfg -> cfg\n" + //
-                "            .withViewMode(ViewModeType.YEARS)\n" + //
-                "    )\n" + //
-                "    .withRestrictions(cfg -> cfg\n" + //
-                "            .withMaxDate(max.minusYears(6))\n" + //
-                "    );",
+                new LocalDateTextField("localbirthday", Model.of((LocalDate)null), localBirthConfig.getJavaFormat()),
+                        """
+                        new TempusDominusConfig()
+                            .withClass(LocalDate.class)
+                            .withDisplay(cfg -> cfg
+                                .withViewMode(ViewModeType.YEARS)
+                            )
+                            .withRestrictions(cfg -> cfg
+                                .withMaxDate(max.minusYears(6))
+                            );""",
                 localBirthConfig
             );
         }
@@ -232,9 +237,10 @@ public class TempusDominusPickerPage extends BasePage {
             TempusDominusConfig timeConfig = new TempusDominusConfig()
                 .withClass(LocalTime.class);
             createBlock(
-                new LocalTimeTextField("localtime", Model.of((LocalTime)null), timeConfig.getFormat()),
-                "new TempusDominusConfig()\n" + //
-                "    .withClass(LocalTime.class);",
+                new LocalTimeTextField("localtime", Model.of((LocalTime)null), timeConfig.getJavaFormat()),
+                        """
+                        new TempusDominusConfig()
+                            .withClass(LocalTime.class);""",
                 timeConfig
             );
         }
@@ -258,12 +264,13 @@ public class TempusDominusPickerPage extends BasePage {
             };
             createBlock(
                 iconInput,
-                "new TempusDominusConfig()\n" + //
-                "    .withClass(LocalDateTime.class)\n" + //
-                "    .withRestrictions(cfg -> cfg\n" + //
-                "            .withDayOfWeekDisabled(0)\n" + //
-                "            .withDayOfWeekDisabled(6)\n" + //
-                "    );"
+                """
+                new TempusDominusConfig()
+                    .withClass(LocalDateTime.class)
+                    .withRestrictions(cfg -> cfg
+                        .withDayOfWeekDisabled(0)
+                        .withDayOfWeekDisabled(6)
+                    );"""
             );
         }
         form.add(new AjaxButton("submit") {

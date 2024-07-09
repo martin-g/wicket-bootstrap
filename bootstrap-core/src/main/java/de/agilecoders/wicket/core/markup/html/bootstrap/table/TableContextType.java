@@ -12,7 +12,7 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNamePr
  *
  * documentation: http://getbootstrap.com/css/#tables-contextual-classes
  *
- * @author Eric Hamel <eric.hamel@me.com>
+ * @author Eric Hamel eric.hamel@me.com
  *
  */
 public enum TableContextType implements ICssClassNameProvider, ICssClassNameModifier {

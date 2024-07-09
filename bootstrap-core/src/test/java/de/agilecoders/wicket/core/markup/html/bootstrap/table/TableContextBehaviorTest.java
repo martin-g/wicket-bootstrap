@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 /**
  * Tests the {@link TableContextBehavior}
  *
- * @author Eric Hamel <eric.hamel@me.com>
+ * @author Eric Hamel eric.hamel@me.com
  */
 class TableContextBehaviorTest extends WicketApplicationTest{
 

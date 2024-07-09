@@ -14,7 +14,7 @@ import de.agilecoders.wicket.extensions.markup.html.bootstrap.navigation.Bootstr
  * Bootstrap styled toolbar that displays links used to navigate the pages of the datatable as well as a message
  * about which rows are being displayed and their total number in the data table .
  *
- * @author Eric Hamel <eric.hamel@me.com>
+ * @author Eric Hamel eric.hamel@me.com
  */
 public class BootstrapNavigationToolbar extends AbstractToolbar {
 	private static final long serialVersionUID = 1L;
