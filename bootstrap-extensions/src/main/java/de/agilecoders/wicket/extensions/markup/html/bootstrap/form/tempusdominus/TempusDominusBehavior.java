@@ -8,6 +8,7 @@ import org.apache.wicket.event.IEvent;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
+import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.string.Strings;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapJavascriptBehavior;
@@ -32,6 +33,7 @@ public class TempusDominusBehavior extends BootstrapJavascriptBehavior {
      */
     public TempusDominusBehavior(TempusDominusConfig config) {
         this.config = config;
+        Args.notNull(config.localization.get(TempusDominusLocalizationConfig.Locale), "locale");
     }
 
     private void addResourceIfExists(final IHeaderResponse response, String path) {

@@ -48,7 +48,7 @@ public abstract class AbstractTempusDominusWithIcon<T> extends FormComponentPane
 
     private FormComponent<T> getDateInput() {
         if (dateInput == null) {
-            dateInput = newInput("date", config.getFormat());
+            dateInput = newInput("date", config.getJavaFormat());
             dateInput.setModel(getModel());
         }
         return dateInput;

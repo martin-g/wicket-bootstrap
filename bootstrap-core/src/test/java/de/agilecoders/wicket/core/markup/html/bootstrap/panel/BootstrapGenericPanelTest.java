@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 /**
  * Tests the {@link BootstrapGenericPanel} class
  *
- * @author Eric Hamel <eric.hamel@me.com>
+ * @author Eric Hamel eric.hamel@me.com
  *
  */
 class BootstrapGenericPanelTest extends WicketApplicationTest{
