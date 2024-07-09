@@ -23,7 +23,7 @@ import de.agilecoders.wicket.extensions.markup.html.bootstrap.table.toolbars.Boo
  * @see BootstrapHeadersToolbar
  * @see NoRecordsToolbar
  *
- * @author Eric Hamel <eric.hamel@me.com>
+ * @author Eric Hamel eric.hamel@me.com
  *
  * @param <T> the model object type
  * @param <S> the type of the sorting parameter

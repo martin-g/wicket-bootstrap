@@ -28,7 +28,7 @@ import de.agilecoders.wicket.core.util.Components;
  * Adding components to this panel will insert them below the markup for the body and above the markup for the
  * footer, per the Bootstrap documentation.
  *
- * @author Eric Hamel <eric.hamel@me.com>
+ * @author Eric Hamel eric.hamel@me.com
  *
  * @param <T> the type of the panel's model object
  */
@@ -73,7 +73,7 @@ public class BootstrapGenericPanel<T> extends GenericPanel<T>{
 	public BootstrapGenericPanel(String id, IModel<T> model, IModel<String> panelTitleModel) {
 		this(id, model, panelTitleModel, null);
 	}
-	
+
 	/**
 	 * Construct.
 	 *
@@ -84,11 +84,11 @@ public class BootstrapGenericPanel<T> extends GenericPanel<T>{
 	 */
 	public BootstrapGenericPanel(String id, IModel<T> model, IModel<String> panelTitleModel, PanelType panelType) {
 		super(id, model);
-		
+
 		this.titleModel = panelTitleModel;
 		this.panelType = panelType;
 	}
-	
+
 	/**
 	 * @param panelType
 	 * @return this for chaining
@@ -97,7 +97,7 @@ public class BootstrapGenericPanel<T> extends GenericPanel<T>{
 		this.panelType = panelType;
 		return this;
 	}
-	
+
 	@Override
 	protected void onInitialize()
 	{
@@ -125,7 +125,7 @@ public class BootstrapGenericPanel<T> extends GenericPanel<T>{
 		Panel panelFooter = newFooterPanel(_PANEL_FOOTER_ID, getModel());
 		add(panelFooter);
 		Components.hideIfModelIsEmpty(panelFooter);
-		
+
 		header.add(new BackgroundColorBehavior(() -> panelType.getBackgroundColor()) {
 			@Override
 			public boolean isEnabled(Component component) {
@@ -138,7 +138,7 @@ public class BootstrapGenericPanel<T> extends GenericPanel<T>{
 				return isCustomPanelStyleSet();
 			}
 		});
-		
+
 		add(new BorderBehavior() {
 			public void onConfigure(Component component) {
 				color(panelType.getBorderColor());
@@ -149,11 +149,11 @@ public class BootstrapGenericPanel<T> extends GenericPanel<T>{
 			}
 		}.type(Type.All).radius(Radius.All));
 	}
-	
+
 	private boolean isCustomPanelStyleSet() {
 		return !PanelType.Default.equals(panelType) && panelType != null;
 	}
-	
+
 	@Override
 	protected void onComponentTag(ComponentTag tag) {
 		super.onComponentTag(tag);
@@ -194,7 +194,7 @@ public class BootstrapGenericPanel<T> extends GenericPanel<T>{
 
 		Panel emptyPanel = new EmptyPanel(id);
 		emptyPanel.setDefaultModel(new Model<>());
-		
+
 		return emptyPanel;
 
 	}
@@ -209,7 +209,7 @@ public class BootstrapGenericPanel<T> extends GenericPanel<T>{
 
 		Panel emptyPanel = new EmptyPanel(id);
 		emptyPanel.setDefaultModel(new Model<>());
-		
+
 		return emptyPanel;
 	}
 
