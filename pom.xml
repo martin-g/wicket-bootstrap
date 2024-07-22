@@ -61,7 +61,7 @@
 
         <!-- TODO -->
         <apiguardian-api.version>1.1.2</apiguardian-api.version>
-        <commons-lang3.version>3.14.0</commons-lang3.version>
+        <commons-lang3.version>3.15.0</commons-lang3.version>
         <contiperf.version>2.4.3</contiperf.version>
         <doxia.version>1.0</doxia.version>
         <!-- Note: closure-compiler -unshaded v20200920 (until at least v20210907) contains gson -->
