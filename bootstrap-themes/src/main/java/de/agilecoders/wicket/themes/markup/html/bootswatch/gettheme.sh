@@ -18,6 +18,6 @@ downloadTheme() {
 
 for theme in cerulean cosmo cyborg darkly flatly journal litera lumen lux materia minty morth pulse quartz sandstone simplex sketchy slate solar spacelab superhero united vapor yeti zephyr
 do
-    downloadTheme $theme 'v5.3.2' 2>&1 & >/dev/null
+    downloadTheme $theme 'v5.3.3' 2>&1 & >/dev/null
 done
 
