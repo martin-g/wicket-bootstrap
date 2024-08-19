@@ -23,11 +23,6 @@ Current release version:
 * [Wicket 6.x](http://wicket.apache.org/) and [Bootstrap 3.3.7](https://github.com/twbs/bootstrap/): 0.9.x
 * Wicket 6.x and Bootstrap 2.*: 0.8.4
 
-Demo
-------
-https://wicketbootstrap.teliclab.info/ (courtesy hosted by [Shengche Hsiao](https://github.com/Shengche))
-
-
 Themes
 ------
 
