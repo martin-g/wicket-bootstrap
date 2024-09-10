@@ -47,7 +47,7 @@
                     <groupId>org.webjars.npm</groupId>
                     <artifactId>video.js</artifactId>
                 </exclusion>                
-                <exclusion>  <!-- exclude dependency, no versions availablet -->
+                <exclusion>  <!-- exclude dependency, no versions available -->
                     <groupId>org.webjars.npm</groupId>
                     <artifactId>design-tokens-italia</artifactId>
                 </exclusion>    
