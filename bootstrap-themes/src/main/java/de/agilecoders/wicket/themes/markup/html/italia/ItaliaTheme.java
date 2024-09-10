@@ -44,16 +44,16 @@ public class ItaliaTheme extends Theme {
     public List<HeaderItem> getDependencies() {
 		List<HeaderItem> references = new ArrayList<>();
 		references.add(
-				CssHeaderItem.forReference(new WebjarsCssResourceReference("splide/current/css/splide-core.min.css")));
+				CssHeaderItem.forReference(new WebjarsCssResourceReference("splidejs__splide/current/dist/css/splide-core.min.css")));
 		references.add(CssHeaderItem
 				.forReference(
-						new WebjarsCssResourceReference("bootstrap-italia/current/css/bootstrap-italia.min.css"))
+						new WebjarsCssResourceReference("bootstrap-italia/current/dist/css/bootstrap-italia.min.css"))
 				.setId(BOOTSTRAP_THEME_MARKUP_ID));
 		references.add(new PriorityHeaderItem(JavaScriptHeaderItem
 				.forReference(Application.get().getJavaScriptLibrarySettings().getJQueryReference())));
-		references.add(JavaScriptHeaderItem.forReference(new WebjarsJavaScriptResourceReference("splide/current/js/splide.js")));
+		references.add(JavaScriptHeaderItem.forReference(new WebjarsJavaScriptResourceReference("splidejs__splide/current/dist/js/splide.min.js")));
 
-		WebjarsJavaScriptResourceReference italiaJsReference = new WebjarsJavaScriptResourceReference("bootstrap-italia/current/js/bootstrap-italia.min.js");
+		WebjarsJavaScriptResourceReference italiaJsReference = new WebjarsJavaScriptResourceReference("bootstrap-italia/current/dist/js/bootstrap-italia.min.js");
 
 		CharSequence urlForJs = RequestCycle.get().urlFor(italiaJsReference, null);
 
