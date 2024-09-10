@@ -43,14 +43,15 @@
             <artifactId>bootstrap-italia</artifactId>
             <version>${bootstrap-italia.version}</version>
             <exclusions>
+                <exclusion>  <!-- exclude dependency, use current wicket-bootstrap webjar version -->
+                    <groupId>org.webjars.npm</groupId>
+                    <artifactId>bootstrap</artifactId>
+                </exclusion>  
                 <exclusion>  <!-- exclude dependency, because causing dependency conflict -->
                     <groupId>org.webjars.npm</groupId>
                     <artifactId>video.js</artifactId>
                 </exclusion>                
-                <exclusion>  <!-- exclude dependency, no versions available -->
-                    <groupId>org.webjars.npm</groupId>
-                    <artifactId>design-tokens-italia</artifactId>
-                </exclusion>    
+                   
             </exclusions> 
         </dependency>
             
