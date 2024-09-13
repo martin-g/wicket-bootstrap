@@ -14,8 +14,7 @@
     <name>bootstrap-themes</name>
 
     <properties>
-        <bootstrap-italia.version>1.6.2</bootstrap-italia.version>
-        <splide.version>3.6.12</splide.version>
+        <bootstrap-italia.version>2.8.7</bootstrap-italia.version>        
     </properties>
 
     <dependencies>
@@ -40,16 +39,25 @@
         </dependency>
 
         <dependency>
-            <groupId>org.webjars</groupId>
+            <groupId>org.webjars.npm</groupId>
             <artifactId>bootstrap-italia</artifactId>
             <version>${bootstrap-italia.version}</version>
+            <exclusions>
+                <exclusion>  <!-- exclude dependency, use current wicket-bootstrap webjar version -->
+                    <groupId>org.webjars.npm</groupId>
+                    <artifactId>bootstrap</artifactId>
+                </exclusion>
+                <exclusion>  <!-- exclude dependency, because causing dependency conflict -->
+                    <groupId>org.webjars.npm</groupId>
+                    <artifactId>video.js</artifactId>
+                </exclusion>
+                <exclusion>  <!-- exclude dependency, because the dependency is not available at Maven Central -->
+                    <groupId>org.webjars.npm</groupId>
+                    <artifactId>design-tokens-italia</artifactId>
+                </exclusion>
+            </exclusions> 
         </dependency>
-
-        <dependency>
-            <groupId>org.webjars</groupId>
-            <artifactId>splide</artifactId>
-            <version>${splide.version}</version>
-        </dependency>
+            
     </dependencies>
 
     <build>
