@@ -46,12 +46,15 @@
                 <exclusion>  <!-- exclude dependency, use current wicket-bootstrap webjar version -->
                     <groupId>org.webjars.npm</groupId>
                     <artifactId>bootstrap</artifactId>
-                </exclusion>  
+                </exclusion>
                 <exclusion>  <!-- exclude dependency, because causing dependency conflict -->
                     <groupId>org.webjars.npm</groupId>
                     <artifactId>video.js</artifactId>
-                </exclusion>                
-                   
+                </exclusion>
+                <exclusion>  <!-- exclude dependency, because the dependency is not available at Maven Central -->
+                    <groupId>org.webjars.npm</groupId>
+                    <artifactId>design-tokens-italia</artifactId>
+                </exclusion>
             </exclusions> 
         </dependency>
             
