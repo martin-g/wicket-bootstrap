@@ -49,8 +49,8 @@
         <maven.java.target>${java.version}</maven.java.target>
 
         <bootstrap.version>5.3.3</bootstrap.version>
-        <wicket-webjars.version>4.0.4</wicket-webjars.version>
-        <wicket-jquery-selectors.version>4.0.5</wicket-jquery-selectors.version>
+        <wicket-webjars.version>4.0.5</wicket-webjars.version>
+        <wicket-jquery-selectors.version>4.0.6</wicket-jquery-selectors.version>
         <popper.version>2.11.8</popper.version>
 
         <enforcer.disable>true</enforcer.disable>
