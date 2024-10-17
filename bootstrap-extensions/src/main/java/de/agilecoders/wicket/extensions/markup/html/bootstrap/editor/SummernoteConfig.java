@@ -1,6 +1,6 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.editor;
 
-import java.util.Arrays;
+import com.google.common.collect.Lists;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -55,14 +55,14 @@ public class SummernoteConfig extends AbstractConfig {
     private static final IKey<Map<String, List<String>>> ToolbarOptions = newKey("ToolbarOptions", null);
 
 
-    private Map<String, List<String>> toolbarOptions = new LinkedHashMap<>() {
+    private final Map<String, List<String>> toolbarOptions = new LinkedHashMap<>() {
         private static final long serialVersionUID = 1L;
 
         {
-            put("Style", Arrays.asList("style", "fontname", "fontsize", "color", "bold", "italic", "underline", "strikethrough", "clear"));
-            put("Layout", Arrays.asList("ul", "ol", "paragraph", "height"));
-            put("Insert", Arrays.asList("picture", "link", "video", "table", "hr"));
-            put("Misc", Arrays.asList("fullscreen", "codeview", "undo", "redo", "help"));
+            put("Style", Lists.newArrayList("style", "fontname", "fontsize", "color", "bold", "italic", "underline", "strikethrough", "clear"));
+            put("Layout", Lists.newArrayList("ul", "ol", "paragraph", "height"));
+            put("Insert", Lists.newArrayList("picture", "link", "video", "table", "hr"));
+            put("Misc", Lists.newArrayList("fullscreen", "codeview", "undo", "redo", "help"));
         }
     };
 
