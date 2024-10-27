@@ -73,7 +73,7 @@
         <junit-platform.version>1.11.2</junit-platform.version>
         <jsass.version>5.11.1</jsass.version>
         <hamcrest.version>3.0</hamcrest.version>
-        <logback.version>1.5.11</logback.version>
+        <logback.version>1.5.12</logback.version>
         <modernizr.version>2.8.3-1</modernizr.version>
         <mockito.version>5.14.2</mockito.version>
         <jakarta.servlet-api.version>5.0.0</jakarta.servlet-api.version>
