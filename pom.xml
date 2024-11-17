@@ -114,7 +114,7 @@
         <maven-scm-publish-plugin.version>3.0.0</maven-scm-publish-plugin.version>
         <maven-source-plugin.version>3.3.1</maven-source-plugin.version>
         <maven-war-plugin.version>3.4.0</maven-war-plugin.version>
-        <versions-maven-plugin.version>2.17.1</versions-maven-plugin.version>
+        <versions-maven-plugin.version>2.18.0</versions-maven-plugin.version>
 
     </properties>
 
