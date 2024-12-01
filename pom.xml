@@ -81,7 +81,7 @@
         <wicket.version>10.2.0</wicket.version>
         <yuicompressor.version>2.4.8</yuicompressor.version>
 
-        <maven-bundle-plugin.version>5.1.9</maven-bundle-plugin.version>
+        <maven-bundle-plugin.version>6.0.0</maven-bundle-plugin.version>
         <maven-compiler-plugin.version>3.13.0</maven-compiler-plugin.version>
         <maven-gpg-plugin.version>3.2.7</maven-gpg-plugin.version>
         <cobertura-maven-plugin.version>2.7</cobertura-maven-plugin.version>
