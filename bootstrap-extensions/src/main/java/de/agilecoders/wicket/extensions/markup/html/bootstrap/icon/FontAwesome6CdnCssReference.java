@@ -11,14 +11,14 @@ import org.apache.wicket.request.resource.UrlResourceReference;
  *  &lt;dependency&gt;<br/>
  *      &lt;groupId&gt;org.webjars&lt;/groupId&gt;<br/>
  *      &lt;artifactId&gt;font-awesome&lt;/artifactId&gt;<br/>
- *      &lt;version&gt;6.6.0&lt;/version&gt;<br/>
+ *      &lt;version&gt;6.7.1&lt;/version&gt;<br/>
  *  &lt;/dependency&gt;<br/>
  *
  * reference for font awesome 6.x css via CDN
  */
 public class FontAwesome6CdnCssReference extends UrlResourceReference{
     private static final long serialVersionUID = 1L;
-    private static final String CDNURL = "https://use.fontawesome.com/releases/v6.6.0/css/all.css";
+    private static final String CDNURL = "https://use.fontawesome.com/releases/v6.7.1/css/all.css";
 
     /**
      * Singleton instance of this reference
