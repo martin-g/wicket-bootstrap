@@ -21,7 +21,7 @@ import org.apache.wicket.model.Model;
  * ```
  *
  * ```html
- * <code wicket:id="id"></code>
+ * {@code <code wicket:id="id"></code>}
  * ```
  *
  * It's possible to use `pre`, `code` and `xmp` as tag name.

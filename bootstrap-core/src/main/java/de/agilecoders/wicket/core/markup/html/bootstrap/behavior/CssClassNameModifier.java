@@ -15,9 +15,9 @@ import de.agilecoders.wicket.core.util.CssClassNames;
  *
  * #### Usage
  *
- * <pre>
+ * <pre>{@code
  *     <span class="className" wicket:id="foo"></span>
- * </pre>
+ * }</pre>
  *
  * can be modified with these CssClassNameAppender:
  *
@@ -29,7 +29,7 @@ import de.agilecoders.wicket.core.util.CssClassNames;
  * this will result in the following markup:
  *
  * ```html
- *     <span class="className2 className3" wicket:id="foo"></span>
+ *    {@code <span class="className2 className3" wicket:id="foo"></span>}
  * ```
  */
 public class CssClassNameModifier extends AttributeModifier {

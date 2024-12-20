@@ -8,7 +8,6 @@ import org.apache.wicket.markup.head.HeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.html.TransparentWebMarkupContainer;
-import org.apache.wicket.protocol.http.WebSession;
 
 import de.agilecoders.wicket.core.Bootstrap;
 import de.agilecoders.wicket.core.markup.html.references.ModernizrJavaScriptReference;
@@ -24,7 +23,7 @@ import de.agilecoders.wicket.core.util.CssClassNames;
  *
  * <h3>Usage:</h3>
  *
- * <pre lang="java">
+ * <pre lang="java">{@code
  *      class MyPage extends Page {
  *          public MyPage(PageParameters params) {
  *              // with chrome browser and bootstrap theme
@@ -35,14 +34,14 @@ import de.agilecoders.wicket.core.util.CssClassNames;
  *              add(new HtmlTag("html-tag", Locale.GERMAN, true)); // <html lang="de-de" class="ie7 lt-ie8 lt-ie9 bootstrap no-js"
  *          }
  *      }
- * </pre>
- * <pre lang="html">
+ * }</pre>
+ * <pre lang="html">{@code
  *      <!DOCTYPE html>
  *          <html wicket:id="html-tag">
  *              <head>
  *                  [...]
  *              </head>
- * </pre>
+ * }</pre>
  *
  * @author miha
  */

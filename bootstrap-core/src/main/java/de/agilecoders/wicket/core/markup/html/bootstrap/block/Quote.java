@@ -16,10 +16,12 @@ import org.apache.wicket.model.IModel;
  * ```
  *
  * ```html
+ * <pre>{@code
  *     <blockquote wicket:id="componentId">
  *          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis.</p>
  *          <small>Someone famous</small>
  *     </blockquote>
+ * }</pre>
  * ```
  */
 public class Quote extends WebMarkupContainer {
