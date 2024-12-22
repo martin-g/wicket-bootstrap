@@ -70,7 +70,7 @@
         <jquerypp.version>1.0.1</jquerypp.version>
         <jquery.version>3.7.1</jquery.version>
         <junit-jupiter.version>5.11.3</junit-jupiter.version>
-        <junit-platform.version>1.11.3</junit-platform.version>
+        <junit-platform.version>1.11.4</junit-platform.version>
         <jsass.version>5.11.1</jsass.version>
         <hamcrest.version>3.0</hamcrest.version>
         <logback.version>1.5.12</logback.version>
