@@ -15,7 +15,7 @@
 
     <properties>
         <inputmask.version>5.0.9</inputmask.version>
-        <jqueryui.version>1.14.0</jqueryui.version>
+        <jqueryui.version>1.14.1</jqueryui.version>
         <typeaheadjs.version>0.10.5-1</typeaheadjs.version>
         <x-editable.version>1.5.1-1</x-editable.version>
         <spin-js.version>2.1.0</spin-js.version>
