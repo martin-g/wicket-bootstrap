@@ -24,9 +24,11 @@ public final class Dependencies {
      * when using in `getDependencies()`:
      *
      * ```java
+     * <pre>{@code
      * public Iterable<? extends HeaderItem> getDependencies() {
      *     return Dependencies.combine(super.getDependencies(), myCustomCssHeaderItem, myCustomJsHeaderItem);
      * }
+     * }</pre>
      * ```
      *
      * @param headerItems the base header item list

@@ -1,6 +1,5 @@
 package de.agilecoders.wicket.themes.markup.html.bootswatch;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
@@ -25,7 +24,7 @@ import de.agilecoders.wicket.core.settings.ITheme;
  */
 public enum BootswatchTheme implements ITheme {
     Cerulean, Cosmo, Cyborg, Darkly, Flatly, Journal, Litera, Lumen, Lux, Materia,
-    Minty, Morth, Pulse, Quartz, Sandstone, Simplex, Sketchy, Slate, Solar, Spacelab,
+    Minty, Morph, Pulse, Quartz, Sandstone, Simplex, Sketchy, Slate, Solar, Spacelab,
     Superhero, United, Vapor, Yeti, Zephyr;
 
     /**

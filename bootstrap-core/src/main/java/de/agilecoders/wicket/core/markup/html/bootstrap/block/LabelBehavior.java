@@ -29,7 +29,7 @@ import org.apache.wicket.model.Model;
  * ```
  *
  * ```html
- * <span wicket:id="componentId">content</span>
+ * {@code <span wicket:id="componentId">content</span>}
  * ```
  */
 public class LabelBehavior extends Behavior {
