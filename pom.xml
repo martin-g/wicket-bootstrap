@@ -361,8 +361,10 @@
                         <doclint>none</doclint>
                         <links>
                             <link>https://docs.oracle.com/en/java/javase/17/docs/api/</link>
+                            <link>https://nightlies.apache.org/wicket/apidocs/10.x</link>
                             <link>https://junit.org/junit5/docs/current/api/</link>
                             <link>https://www.slf4j.org/apidocs/</link>
+                            <link>https://logback.qos.ch/apidocs</link>
                         </links>
                     </configuration>
                     <executions>
@@ -387,8 +389,7 @@
                     <artifactId>maven-compiler-plugin</artifactId>
                     <version>${maven-compiler-plugin.version}</version>
                     <configuration>
-                        <source>${maven.java.source}</source>
-                        <target>${maven.java.target}</target>
+                        <release>${maven.java.source}</release>
                         <encoding>${project.build.sourceEncoding}</encoding>
                         <showDeprecation>true</showDeprecation>
                         <showWarnings>true</showWarnings>
