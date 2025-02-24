@@ -69,8 +69,7 @@
         <jetty.version>11.0.24</jetty.version>
         <jquerypp.version>1.0.1</jquerypp.version>
         <jquery.version>3.7.1</jquery.version>
-        <junit-jupiter.version>5.11.4</junit-jupiter.version>
-        <junit-platform.version>1.11.4</junit-platform.version>
+        <junit-jupiter.version>5.12.0</junit-jupiter.version>
         <jsass.version>5.11.1</jsass.version>
         <hamcrest.version>3.0</hamcrest.version>
         <logback.version>1.5.16</logback.version>
@@ -281,43 +280,14 @@
                 <version>${apiguardian-api.version}</version>
                 <scope>test</scope>
             </dependency>
-            <dependency>
-                <groupId>org.junit.jupiter</groupId>
-                <artifactId>junit-jupiter</artifactId>
-                <scope>test</scope>
-                <version>${junit-jupiter.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.junit.jupiter</groupId>
-                <artifactId>junit-jupiter-api</artifactId>
-                <scope>test</scope>
-                <version>${junit-jupiter.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.junit.platform</groupId>
-                <artifactId>junit-platform-commons</artifactId>
-                <scope>test</scope>
-                <version>${junit-platform.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.junit.platform</groupId>
-                <artifactId>junit-platform-engine</artifactId>
-                <scope>test</scope>
-                <version>${junit-platform.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.junit.jupiter</groupId>
-                <artifactId>junit-jupiter-engine</artifactId>
-                <scope>test</scope>
-                <version>${junit-jupiter.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.junit.vintage</groupId>
-                <artifactId>junit-vintage-engine</artifactId>
-                <scope>test</scope>
-                <version>${junit-jupiter.version}</version>
-            </dependency>
 
+            <dependency>
+                <groupId>org.junit</groupId>
+                <artifactId>junit-bom</artifactId>
+                <version>${junit-jupiter.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
 
             <dependency>
                 <groupId>org.hamcrest</groupId>
