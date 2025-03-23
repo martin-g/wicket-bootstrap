@@ -14,7 +14,7 @@
     <name>bootstrap-themes</name>
 
     <properties>
-        <bootstrap-italia.version>2.13.3</bootstrap-italia.version>        
+        <bootstrap-italia.version>2.14.0</bootstrap-italia.version>        
     </properties>
 
     <dependencies>
