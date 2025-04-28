@@ -4,6 +4,7 @@ import org.apache.wicket.Application;
 import org.apache.wicket.markup.html.IPackageResourceGuard;
 import org.apache.wicket.markup.html.SecurePackageResourceGuard;
 import org.apache.wicket.request.resource.IResourceReferenceFactory;
+import org.apache.wicket.request.resource.IResourceUrlSanitizer;
 import org.apache.wicket.request.resource.ResourceReferenceRegistry;
 
 /**
@@ -39,6 +40,10 @@ public final class BootstrapSass {
         ResourceReferenceRegistry resourceReferenceRegistry = app.getResourceReferenceRegistry();
         IResourceReferenceFactory delegate = resourceReferenceRegistry.getResourceReferenceFactory();
         resourceReferenceRegistry.setResourceReferenceFactory(new SassResourceReferenceFactory(delegate));
+
+        IResourceUrlSanitizer sanitizer = app.getResourceSettings().getUrlSanitizer();
+        SassResourceUrlSanitizer sassSanitizer = new SassResourceUrlSanitizer(sanitizer);
+        app.getResourceSettings().setUrlSanitizer(sassSanitizer);
     }
 
     /**
