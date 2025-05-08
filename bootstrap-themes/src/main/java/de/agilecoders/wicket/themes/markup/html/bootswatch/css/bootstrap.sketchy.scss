@@ -2,7 +2,7 @@
 @import "bootstrap.sketchy.variables.scss";
 
 
-// Sketchy 5.3.3
+// Sketchy 5.3.5
 // Bootswatch
 
 
@@ -153,6 +153,15 @@ table {
   }
 }
 
+.table-primary,
+.table-secondary,
+.table-success,
+.table-warning,
+.table-danger,
+.table-info,
+.table-light {
+  --#{$prefix}table-color: #{$body-color};
+}
 
 // Forms
 
