@@ -2,7 +2,7 @@
 @import "bootstrap.yeti.variables.scss";
 
 
-// Yeti 5.3.3
+// Yeti 5.3.5
 // Bootswatch
 
 
@@ -223,6 +223,11 @@ $web-font-path: "https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,
 
 table {
   font-size: $font-size-sm;
+}
+
+.table-secondary,
+.table-light {
+  --#{$prefix}table-color: #{$body-color};
 }
 
 // Forms
