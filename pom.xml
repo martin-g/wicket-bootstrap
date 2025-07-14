@@ -71,8 +71,7 @@
         <jetty.version>9.4.52.v20230823</jetty.version>
         <jquerypp.version>1.0.1</jquerypp.version>
         <jquery.version>3.7.1</jquery.version>
-        <junit-jupiter.version>5.11.4</junit-jupiter.version>
-        <junit-platform.version>1.11.4</junit-platform.version>
+        <junit-jupiter.version>5.13.3</junit-jupiter.version>
         <jsass.version>5.11.1</jsass.version>
         <hamcrest.version>3.0</hamcrest.version>
         <logback.version>1.5.18</logback.version>
@@ -288,6 +287,13 @@
                 <artifactId>apiguardian-api</artifactId>
                 <version>${apiguardian-api.version}</version>
                 <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.junit</groupId>
+                <artifactId>junit-bom</artifactId>
+                <version>${junit-jupiter.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
             <dependency>
                 <groupId>org.junit.jupiter</groupId>
