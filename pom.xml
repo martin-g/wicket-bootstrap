@@ -49,7 +49,7 @@
         <maven.java.target>${java.version}</maven.java.target>
         <autoModuleName>wicket.bootstrap.parent</autoModuleName>
 
-        <bootstrap.version>5.3.5</bootstrap.version>
+        <bootstrap.version>5.3.7</bootstrap.version>
         <popper.version>2.11.8</popper.version>
         <wicket-webjars.version>3.0.8</wicket-webjars.version>
         <wicket-jquery-selectors.version>3.0.8</wicket-jquery-selectors.version>
