@@ -1065,14 +1065,14 @@ $('a[data-bs-toggle="tab"]').on('shown', function (e) {
     <pre class="prettyprint linenums">&lt;a class="btn-close" data-bs-dismiss="alert" href="#"&gt;&lt;/a&gt;</pre>
 
     <h3>Methods</h3>
-    <h4>bootstrap.Alert.getInstance(alertNode)</h4>
+    <h4>bootstrap.Alert.getOrCreateInstance('#myAlert')</h4>
 
     <p>Wraps all alerts with close functionality. To have your alerts animate out when closed, make sure they have the <code>.fade</code> and <code>.in</code> class already applied to them.</p>
     <h4>alert.close()</h4>
 
     <p>Closes an alert.</p>
-    <pre class="prettyprint linenums">var alertNode = document.querySelector('.alert')
-var alert = bootstrap.Alert.getInstance(alertNode)
+    <pre class="prettyprint linenums">
+var alert = bootstrap.Alert.getOrCreateInstance('#myAlert')
 alert.close()</pre>
 
 
