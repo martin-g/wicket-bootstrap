@@ -48,8 +48,8 @@ import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.spinner.Spinn
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.html5player.Html5Player;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.html5player.Html5VideoConfig;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.html5player.Video;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesome6CssReference;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesome6IconType;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesome7CssReference;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesome7IconType;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.OpenWebIconType;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.OpenWebIconsCssReference;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.inputmask.InputMaskBehavior;
@@ -374,12 +374,12 @@ public class ExtensionsPage extends BasePage {
                 }
                 setModelObject(newState);
                 setLabel(Model.of(toggle + (newState ? "Disable" : "Enable")));
-                setIconType(newState ? FontAwesome6IconType.square_check_r : FontAwesome6IconType.square_r);
+                setIconType(newState ? FontAwesome7IconType.square_check_r : FontAwesome7IconType.square_r);
                 setType(newState ? Buttons.Type.Outline_Danger : Buttons.Type.Primary);
                 target.add(this, feedback);
             }
         };
-        form.add(onTheFlyBtn.setIconType(FontAwesome6IconType.square_r).setOutputMarkupId(true));
+        form.add(onTheFlyBtn.setIconType(FontAwesome7IconType.square_r).setOutputMarkupId(true));
         form.add(new Code(
             "linkCode",
             Model.of("confirmationLink = new AjaxLink<String>(\"confirmationLink\", Model.of(\"Link\")) {\n"
@@ -397,7 +397,7 @@ public class ExtensionsPage extends BasePage {
         super.renderHead(response);
 
         response.render(CssHeaderItem.forReference(OpenWebIconsCssReference.instance()));
-        response.render(CssHeaderItem.forReference(FontAwesome6CssReference.instance()));
+        response.render(CssHeaderItem.forReference(FontAwesome7CssReference.instance()));
     }
 
     private void addInputMaskDemo() {

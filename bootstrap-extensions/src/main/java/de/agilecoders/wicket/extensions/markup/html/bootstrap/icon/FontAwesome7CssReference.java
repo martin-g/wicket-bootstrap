@@ -10,15 +10,12 @@ import de.agilecoders.wicket.webjars.request.resource.WebjarsCssResourceReferenc
  *  &lt;dependency&gt;<br/>
  *      &lt;groupId&gt;org.webjars&lt;/groupId&gt;<br/>
  *      &lt;artifactId&gt;font-awesome&lt;/artifactId&gt;<br/>
- *      &lt;version&gt;6.7.1&lt;/version&gt;<br/>
+ *      &lt;version&gt;7.0.1&lt;/version&gt;<br/>
  *  &lt;/dependency&gt;<br/>
  *
- * reference for font awesome 6.x css
- *
- * deprecated migrate to FontAwesome7CssReference
+ * reference for font awesome 7.x css
  */
-@Deprecated
-public class FontAwesome6CssReference extends WebjarsCssResourceReference {
+public class FontAwesome7CssReference extends WebjarsCssResourceReference {
     private static final long serialVersionUID = 1L;
 
     /**
@@ -26,20 +23,20 @@ public class FontAwesome6CssReference extends WebjarsCssResourceReference {
      */
     private static final class Holder {
 
-        private static final FontAwesome6CssReference INSTANCE = new FontAwesome6CssReference();
+        private static final FontAwesome7CssReference INSTANCE = new FontAwesome7CssReference();
     }
 
     /**
      * @return the single instance of the resource reference
      */
-    public static FontAwesome6CssReference instance() {
+    public static FontAwesome7CssReference instance() {
         return Holder.INSTANCE;
     }
 
     /**
      * Private constructor.
      */
-    private FontAwesome6CssReference() {
+    private FontAwesome7CssReference() {
         super("font-awesome/current/css/all.css");
     }
 }

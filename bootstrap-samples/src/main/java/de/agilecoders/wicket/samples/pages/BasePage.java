@@ -40,8 +40,8 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.utilities.BackgroundColo
 import de.agilecoders.wicket.core.markup.html.references.BootlintHeaderItem;
 import de.agilecoders.wicket.core.settings.IBootstrapSettings;
 import de.agilecoders.wicket.core.settings.ITheme;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesome6CssReference;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesome6IconType;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesome7CssReference;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesome7IconType;
 import de.agilecoders.wicket.samples.WicketApplication;
 import de.agilecoders.wicket.samples.assets.base.ApplicationJavaScript;
 import de.agilecoders.wicket.samples.assets.base.DocsCssResourceReference;
@@ -104,14 +104,14 @@ abstract class BasePage extends GenericWebPage<Void> {
         navbar.setBrandName(Model.of("Wicket Bootstrap"));
 
         navbar.addComponents(NavbarComponents.transform(Navbar.ComponentPosition.LEFT,
-                        new NavbarButton<Void>(HomePage.class, Model.of("Overview")).setIconType(FontAwesome6IconType.house_s),
+                        new NavbarButton<Void>(HomePage.class, Model.of("Overview")).setIconType(FontAwesome7IconType.house_s),
                         new NavbarButton<Void>(BaseCssPage.class, Model.of("Base CSS")),
                         new NavbarButton<Void>(ComponentsPage.class, Model.of("Components")),
                         new NavbarButton<Void>(UtilitiesPage.class, Model.of("Utilities")),
                         new NavbarExternalLink(Model.of("https://github.com/l0rdn1kk0n/wicket-bootstrap"))
                                 .setLabel(Model.of("Github"))
                                 .setTarget(BootstrapExternalLink.Target.blank)
-                                .setIconType(FontAwesome6IconType.upload_s),
+                                .setIconType(FontAwesome7IconType.upload_s),
                         newAddonsDropDownButton(),
                         newExamplesDropDownButton())
         );
@@ -143,7 +143,7 @@ abstract class BasePage extends GenericWebPage<Void> {
 
                 return subMenu;
             }
-        }.setIconType(FontAwesome6IconType.book_s);
+        }.setIconType(FontAwesome7IconType.book_s);
 
         navbar.addComponents(new ImmutableNavbarComponent(dropdown, Navbar.ComponentPosition.RIGHT));
 
@@ -178,34 +178,34 @@ abstract class BasePage extends GenericWebPage<Void> {
                 final List<AbstractLink> subMenu = new ArrayList<>();
 
                 subMenu.add(new MenuBookmarkablePageLink<Void>(JavascriptPage.class, Model.of("Javascript")).setIconType(
-                    FontAwesome6IconType.rotate_s));
+                    FontAwesome7IconType.rotate_s));
                 subMenu.add(new MenuBookmarkablePageLink<Void>(DatePickerPage.class, Model.of("DatePicker")).setIconType(
-                    FontAwesome6IconType.clock_r));
+                    FontAwesome7IconType.clock_r));
                 subMenu.add(new MenuBookmarkablePageLink<Void>(DatetimePickerPage.class, Model.of("DateTimePicker")).setIconType(
-                    FontAwesome6IconType.calendar_days_r));
+                    FontAwesome7IconType.calendar_days_r));
                 subMenu.add(new MenuBookmarkablePageLink<Void>(TempusDominusPickerPage.class, Model.of("TempusDominusPicker")).setIconType(
-                    FontAwesome6IconType.calendar_s));
+                    FontAwesome7IconType.calendar_s));
                 subMenu.add(new MenuBookmarkablePageLink<Void>(IssuesPage.class, Model.of("Github Issues")).setIconType(
-                    FontAwesome6IconType.book_s));
+                    FontAwesome7IconType.book_s));
                 subMenu.add(new MenuBookmarkablePageLink<Void>(ExtensionsPage.class, Model.of("Extensions")).setIconType(
-                    FontAwesome6IconType.align_justify_s));
+                    FontAwesome7IconType.align_justify_s));
                 subMenu.add(new MenuBookmarkablePageLink<Void>(SelectPage.class, Model.of("SelectPicker")).setIconType(
-                    FontAwesome6IconType.magnifying_glass_s));
+                    FontAwesome7IconType.magnifying_glass_s));
                 subMenu.add(new MenuBookmarkablePageLink<Void>(ExtensionsBootstrapFileInputPage.class, Model.of("Extensions - Bootstrap FileInput")).setIconType(
-                    FontAwesome6IconType.align_justify_s));
+                    FontAwesome7IconType.align_justify_s));
                 subMenu.add(new MenuBookmarkablePageLink<Void>(FontAwesomePage.class, Model.of("Font Awesome")).setIconType(
-                    FontAwesome6IconType.font_s));
+                    FontAwesome7IconType.font_s));
                 subMenu.add(new MenuBookmarkablePageLink<Void>(TooltipValidationPage.class, Model.of("Validation")).setIconType(
-                    FontAwesome6IconType.circle_check_r));
+                    FontAwesome7IconType.circle_check_r));
                 subMenu.add(new MenuBookmarkablePageLink<Void>(SummernotePage.class, Model.of("Summernote")).setIconType(
-                    FontAwesome6IconType.pen_to_square_r));
+                    FontAwesome7IconType.pen_to_square_r));
                 subMenu.add(new MenuBookmarkablePageLink<Void>(MarkdownPage.class, Model.of("Markdown")).setIconType(
-                    FontAwesome6IconType.pen_to_square_r));
+                    FontAwesome7IconType.pen_to_square_r));
                 subMenu.add(new MenuBookmarkablePageLink<Void>(CheckboxesPage.class, Model.of("Checkboxes and Toggles")).setIconType(
-                    FontAwesome6IconType.check_s));
+                    FontAwesome7IconType.check_s));
                 return subMenu;
             }
-        }.setIconType(FontAwesome6IconType.table_cells_s);
+        }.setIconType(FontAwesome7IconType.table_cells_s);
     }
 
     /**
@@ -241,7 +241,7 @@ abstract class BasePage extends GenericWebPage<Void> {
 
 //        response.render(CssHeaderItem.forReference(FixBootstrapStylesCssResourceReference.INSTANCE));
         response.render(new FilteredHeaderItem(JavaScriptHeaderItem.forReference(ApplicationJavaScript.INSTANCE), "footer-container"));
-        response.render(CssHeaderItem.forReference(FontAwesome6CssReference.instance()));
+        response.render(CssHeaderItem.forReference(FontAwesome7CssReference.instance()));
 
         if ("google".equalsIgnoreCase(activeTheme().name())) {
             response.render(CssHeaderItem.forReference(DocsCssResourceReference.GOOGLE));

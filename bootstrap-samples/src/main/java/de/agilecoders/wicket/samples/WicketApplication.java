@@ -5,7 +5,7 @@ import java.io.InputStream;
 import java.util.Properties;
 
 import com.github.jennybrown8.wicketsource.WicketSource;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesome6CssReference;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesome7CssReference;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeSettings;
 import de.agilecoders.wicket.samples.pages.BaseCssPage;
 import de.agilecoders.wicket.samples.pages.CheckboxesPage;
@@ -126,7 +126,7 @@ public class WicketApplication extends WebApplication {
 
         configureSummernote();
 
-        FontAwesomeSettings.get(Application.get()).setCssResourceReference(FontAwesome6CssReference.instance());
+        FontAwesomeSettings.get(Application.get()).setCssResourceReference(FontAwesome7CssReference.instance());
 
         WicketSource.configure(this);
     }

@@ -7,8 +7,8 @@ import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.checkbox.boot
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.checkbox.bootstraptoggle.BootstrapToggle;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.checkbox.bootstraptoggle.BootstrapToggleConfig;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.checkboxx.CheckBoxX;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesome6CssReference;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesome6IconType;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesome7CssReference;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesome7IconType;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.form.AjaxFormComponentUpdatingBehavior;
 import org.apache.wicket.markup.head.CssHeaderItem;
@@ -41,7 +41,7 @@ public class CheckboxesPage extends BasePage {
     public void renderHead(IHeaderResponse response) {
         super.renderHead(response);
 
-        response.render(CssHeaderItem.forReference(FontAwesome6CssReference.instance()));
+        response.render(CssHeaderItem.forReference(FontAwesome7CssReference.instance()));
     }
 
     private void addCheckboxPicker() {
@@ -51,7 +51,7 @@ public class CheckboxesPage extends BasePage {
         BootstrapCheckBoxPickerConfig config = new BootstrapCheckBoxPickerConfig();
         config
             .withOnClass("btn-info").withOffClass("btn-warning")
-            .withOnIcon(FontAwesome6IconType.thumbs_up_s).withOffIcon(FontAwesome6IconType.thumbs_down_s)
+            .withOnIcon(FontAwesome7IconType.thumbs_up_s).withOffIcon(FontAwesome7IconType.thumbs_down_s)
             .withReverse(true)
             .withStyle(ButtonGroup.Size.Small);
 
