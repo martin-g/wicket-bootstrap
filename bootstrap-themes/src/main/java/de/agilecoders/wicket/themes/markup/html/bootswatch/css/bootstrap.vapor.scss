@@ -2,7 +2,7 @@
 @import "bootstrap.vapor.variables.scss";
 
 
-// Vapor 5.3.3
+// Vapor 5.3.5
 // Bootswatch
 
 
@@ -225,6 +225,14 @@ table,
 .page-item.active {
   .page-link {
     @include box-shadow($component-active-bg);
+  }
+}
+
+.nav-underline {
+  .nav-link {
+    &.active {
+      @include text-shadow-sm($nav-underline-link-active-color);
+    }
   }
 }
 
