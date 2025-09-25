@@ -27,6 +27,6 @@ downloadTheme() {
 
 for theme in brite cerulean cosmo cyborg darkly flatly journal litera lumen lux materia minty morph pulse quartz sandstone simplex sketchy slate solar spacelab superhero united vapor yeti zephyr
 do
-    downloadTheme $theme 'v5.3.5'
+    downloadTheme $theme 'v5.3.8'
 done
 
