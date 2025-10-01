@@ -3,11 +3,13 @@ package de.agilecoders.wicket.samples.pages;
 import java.time.Duration;
 import java.util.List;
 
+import org.apache.wicket.ajax.AjaxEventBehavior;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
+import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Form;
@@ -321,7 +323,9 @@ public class ExtensionsPage extends BasePage {
 
         final NotificationPanel feedback = new NotificationPanel("confirmationFeedback");
         feedback.setOutputMarkupId(true);
-        form.add(feedback);
+        final NotificationPanel feedback2 = new NotificationPanel("confirmationFeedback2");
+        feedback2.setOutputMarkupId(true);
+        form.add(feedback, feedback2);
 
         AjaxButton confirmationButton = new AjaxButton("confirmationButton", Model.of("Button")) {
             private static final long serialVersionUID = 1L;
@@ -334,9 +338,26 @@ public class ExtensionsPage extends BasePage {
                 target.add(feedback);
             }
         };
+        /*confirmationButton.add(new AjaxEventBehavior("confirmed.bs.confirmation") {
+            private static final long serialVersionUID = 1L;
+
+            @Override
+            protected void onEvent(AjaxRequestTarget target) {
+                info("Invoked button's `confirmed.bs.confirmation` EventBehavior!");
+                target.add(feedback2);
+            }
+        });*/
         confirmationButton.add(new ConfirmationBehavior(new ConfirmationConfig()
             .withTitle("My title?").withSingleton(true).withPopout(true).withBtnOkLabel("Confirm")
-        ));
+        ), new AjaxEventBehavior("confirmed.bs.confirmation") {
+            private static final long serialVersionUID = 1L;
+
+            @Override
+            protected void onEvent(AjaxRequestTarget target) {
+                info("Invoked button's `confirmed.bs.confirmation` EventBehavior!");
+                target.add(feedback2);
+            }
+        });
         form.add(confirmationButton);
 
         AjaxLink<String> confirmationLink = new AjaxLink<>("confirmationLink", Model.of("Link")) {
@@ -398,6 +419,12 @@ public class ExtensionsPage extends BasePage {
 
         response.render(CssHeaderItem.forReference(OpenWebIconsCssReference.instance()));
         response.render(CssHeaderItem.forReference(FontAwesome7CssReference.instance()));
+        response.render(OnDomReadyHeaderItem.forScript("""
+                    document.querySelectorAll('#confirmation form button, #confirmation form a').forEach(el => {
+                        const printType = evt => {document.querySelector('#confirmation-js-feedback').textContent = `Got ${evt.type} JS event !`};
+                        el.addEventListener('confirmed.bs.confirmation', printType);
+                        el.addEventListener('canceled.bs.confirmation', printType);
+                    })"""));
     }
 
     private void addInputMaskDemo() {
