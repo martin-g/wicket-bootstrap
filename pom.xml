@@ -81,7 +81,7 @@
         <yuicompressor.version>2.4.8</yuicompressor.version>
 
         <maven-bundle-plugin.version>6.0.0</maven-bundle-plugin.version>
-        <maven-compiler-plugin.version>3.14.1</maven-compiler-plugin.version>
+        <maven-compiler-plugin.version>3.15.0</maven-compiler-plugin.version>
         <maven-gpg-plugin.version>3.2.8</maven-gpg-plugin.version>
         <cobertura-maven-plugin.version>2.7</cobertura-maven-plugin.version>
         <coveralls-maven-plugin.version>4.3.0</coveralls-maven-plugin.version>
