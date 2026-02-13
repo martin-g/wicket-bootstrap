@@ -23,9 +23,6 @@ public abstract class SplitButton extends DropDownButton {
         super(markupId, model);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public SplitButton(final String markupId, final IModel<String> model, final IModel<IconType> iconTypeModel) {
         super(markupId, model, iconTypeModel);
     }

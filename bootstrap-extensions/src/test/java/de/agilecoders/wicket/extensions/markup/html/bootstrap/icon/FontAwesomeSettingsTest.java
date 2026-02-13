@@ -49,11 +49,34 @@ class FontAwesomeSettingsTest extends WicketApplicationTest {
         @Test
         void cssClass_startsWith_fa_regular_or_fa_solid() {
             for (final FontAwesomeSettings.IconKey key : FontAwesomeSettings.IconKey.values()) {
-                assertThat("IconType with key " + key + " should be a FontAwesome5 icon", settings
+                assertThat("IconType with key " + key + " should be a FontAwesome6 icon", settings
                     .getIconType(key)
                     .cssClassName(), anyOf(startsWith("fa-regular "), startsWith("fa-solid ")));
 
             }
         }
     }
+
+    @Nested
+    class withFontAwesome7configured {
+
+        @BeforeEach
+        void setUp() {
+            FontAwesomeSettings
+                .get(Application.get())
+                .setCssResourceReference(FontAwesome7CssReference.instance());
+            settings = FontAwesomeSettings.get(Application.get());
+        }
+
+        @Test
+        void cssClass_startsWith_fa_regular_or_fa_solid() {
+            for (final FontAwesomeSettings.IconKey key : FontAwesomeSettings.IconKey.values()) {
+                assertThat("IconType with key " + key + " should be a FontAwesome6 icon", settings
+                    .getIconType(key)
+                    .cssClassName(), anyOf(startsWith("fa-regular "), startsWith("fa-solid ")));
+
+            }
+        }
+    }
+
 }

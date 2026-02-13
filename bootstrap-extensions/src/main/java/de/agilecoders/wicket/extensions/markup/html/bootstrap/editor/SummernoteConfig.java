@@ -1,8 +1,8 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.editor;
 
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -55,14 +55,14 @@ public class SummernoteConfig extends AbstractConfig {
     private static final IKey<Map<String, List<String>>> ToolbarOptions = newKey("ToolbarOptions", null);
 
 
-    private Map<String, List<String>> toolbarOptions = new LinkedHashMap<>() {
+    private final Map<String, List<String>> toolbarOptions = new LinkedHashMap<>() {
         private static final long serialVersionUID = 1L;
 
         {
-            put("Style", Arrays.asList("style", "fontname", "fontsize", "color", "bold", "italic", "underline", "strikethrough", "clear"));
-            put("Layout", Arrays.asList("ul", "ol", "paragraph", "height"));
-            put("Insert", Arrays.asList("picture", "link", "video", "table", "hr"));
-            put("Misc", Arrays.asList("fullscreen", "codeview", "undo", "redo", "help"));
+            put("Style", new ArrayList<>(List.of("style", "fontname", "fontsize", "color", "bold", "italic", "underline", "strikethrough", "clear")));
+            put("Layout", new ArrayList<>(List.of("ul", "ol", "paragraph", "height")));
+            put("Insert", new ArrayList<>(List.of("picture", "link", "video", "table", "hr")));
+            put("Misc", new ArrayList<>(List.of("fullscreen", "codeview", "undo", "redo", "help")));
         }
     };
 
@@ -242,6 +242,7 @@ public class SummernoteConfig extends AbstractConfig {
     /**
      * Gets a list of button ids of the given category
      *
+     * @param category
      * @return a list of button ids
      */
     public List<String> getButtons(String category) {

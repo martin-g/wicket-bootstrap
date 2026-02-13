@@ -21,7 +21,10 @@ import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesome6I
  *  &lt;/dependency&gt;<br/>
  *
  * All the icon types.
+ *
+ * @deprecated use {@link FontAwesome7IconType} instead (from font-awesome 7.x)
  */
+@Deprecated
 public class FontAwesome6IconType extends IconType {
 
     /**
@@ -30,6 +33,7 @@ public class FontAwesome6IconType extends IconType {
     private static final long serialVersionUID = 1L;
 
     // icon types of style 'solid' (tag '_s') and 'regular' (tag '_r') (where free)
+
     public static final FontAwesome6IconType _0_s = on(FontAwesome6Solid._0).build();
     public static final FontAwesome6IconType _1_s = on(FontAwesome6Solid._1).build();
     public static final FontAwesome6IconType _2_s = on(FontAwesome6Solid._2).build();
@@ -301,6 +305,7 @@ public class FontAwesome6IconType extends IconType {
     public static final FontAwesome6IconType chart_bar_r = on(FontAwesome6Regular.chart_bar).build();
     public static final FontAwesome6IconType chart_bar_s = on(FontAwesome6Solid.chart_bar).build();
     public static final FontAwesome6IconType chart_column_s = on(FontAwesome6Solid.chart_column).build();
+    public static final FontAwesome6IconType chart_diagram_s = on(FontAwesome6Solid.chart_diagram).build();
     public static final FontAwesome6IconType chart_gantt_s = on(FontAwesome6Solid.chart_gantt).build();
     public static final FontAwesome6IconType chart_line_s = on(FontAwesome6Solid.chart_line).build();
     public static final FontAwesome6IconType chart_pie_s = on(FontAwesome6Solid.chart_pie).build();
@@ -418,6 +423,7 @@ public class FontAwesome6IconType extends IconType {
     public static final FontAwesome6IconType comment_dots_r = on(FontAwesome6Regular.comment_dots).build();
     public static final FontAwesome6IconType comment_dots_s = on(FontAwesome6Solid.comment_dots).build();
     public static final FontAwesome6IconType comment_medical_s = on(FontAwesome6Solid.comment_medical).build();
+    public static final FontAwesome6IconType comment_nodes_s = on(FontAwesome6Solid.comment_nodes).build();
     public static final FontAwesome6IconType comment_r = on(FontAwesome6Regular.comment).build();
     public static final FontAwesome6IconType comment_s = on(FontAwesome6Solid.comment).build();
     public static final FontAwesome6IconType comment_slash_s = on(FontAwesome6Solid.comment_slash).build();
@@ -629,6 +635,8 @@ public class FontAwesome6IconType extends IconType {
     public static final FontAwesome6IconType file_excel_r = on(FontAwesome6Regular.file_excel).build();
     public static final FontAwesome6IconType file_excel_s = on(FontAwesome6Solid.file_excel).build();
     public static final FontAwesome6IconType file_export_s = on(FontAwesome6Solid.file_export).build();
+    public static final FontAwesome6IconType file_fragment_s = on(FontAwesome6Solid.file_fragment).build();
+    public static final FontAwesome6IconType file_half_dashed_s = on(FontAwesome6Solid.file_half_dashed).build();
     public static final FontAwesome6IconType file_image_r = on(FontAwesome6Regular.file_image).build();
     public static final FontAwesome6IconType file_image_s = on(FontAwesome6Solid.file_image).build();
     public static final FontAwesome6IconType file_import_s = on(FontAwesome6Solid.file_import).build();
@@ -810,6 +818,8 @@ public class FontAwesome6IconType extends IconType {
     public static final FontAwesome6IconType helicopter_symbol_s = on(FontAwesome6Solid.helicopter_symbol).build();
     public static final FontAwesome6IconType helmet_safety_s = on(FontAwesome6Solid.helmet_safety).build();
     public static final FontAwesome6IconType helmet_un_s = on(FontAwesome6Solid.helmet_un).build();
+    public static final FontAwesome6IconType hexagon_nodes_bolt_s = on(FontAwesome6Solid.hexagon_nodes_bolt).build();
+    public static final FontAwesome6IconType hexagon_nodes_s = on(FontAwesome6Solid.hexagon_nodes).build();
     public static final FontAwesome6IconType highlighter_s = on(FontAwesome6Solid.highlighter).build();
     public static final FontAwesome6IconType hill_avalanche_s = on(FontAwesome6Solid.hill_avalanche).build();
     public static final FontAwesome6IconType hill_rockslide_s = on(FontAwesome6Solid.hill_rockslide).build();
@@ -1301,6 +1311,7 @@ public class FontAwesome6IconType extends IconType {
     public static final FontAwesome6IconType spray_can_s = on(FontAwesome6Solid.spray_can).build();
     public static final FontAwesome6IconType spray_can_sparkles_s = on(FontAwesome6Solid.spray_can_sparkles).build();
     public static final FontAwesome6IconType square_arrow_up_right_s = on(FontAwesome6Solid.square_arrow_up_right).build();
+    public static final FontAwesome6IconType square_binary_s = on(FontAwesome6Solid.square_binary).build();
     public static final FontAwesome6IconType square_caret_down_r = on(FontAwesome6Regular.square_caret_down).build();
     public static final FontAwesome6IconType square_caret_down_s = on(FontAwesome6Solid.square_caret_down).build();
     public static final FontAwesome6IconType square_caret_left_r = on(FontAwesome6Regular.square_caret_left).build();
@@ -1373,6 +1384,7 @@ public class FontAwesome6IconType extends IconType {
     public static final FontAwesome6IconType table_cells_column_lock_s = on(FontAwesome6Solid.table_cells_column_lock).build();
     public static final FontAwesome6IconType table_cells_large_s = on(FontAwesome6Solid.table_cells_large).build();
     public static final FontAwesome6IconType table_cells_row_lock_s = on(FontAwesome6Solid.table_cells_row_lock).build();
+    public static final FontAwesome6IconType table_cells_row_unlock_s = on(FontAwesome6Solid.table_cells_row_unlock).build();
     public static final FontAwesome6IconType table_cells_s = on(FontAwesome6Solid.table_cells).build();
     public static final FontAwesome6IconType table_columns_s = on(FontAwesome6Solid.table_columns).build();
     public static final FontAwesome6IconType table_list_s = on(FontAwesome6Solid.table_list).build();
@@ -1417,6 +1429,7 @@ public class FontAwesome6IconType extends IconType {
     public static final FontAwesome6IconType thumbs_up_r = on(FontAwesome6Regular.thumbs_up).build();
     public static final FontAwesome6IconType thumbs_up_s = on(FontAwesome6Solid.thumbs_up).build();
     public static final FontAwesome6IconType thumbtack_s = on(FontAwesome6Solid.thumbtack).build();
+    public static final FontAwesome6IconType thumbtack_slash_s = on(FontAwesome6Solid.thumbtack_slash).build();
     public static final FontAwesome6IconType ticket_s = on(FontAwesome6Solid.ticket).build();
     public static final FontAwesome6IconType ticket_simple_s = on(FontAwesome6Solid.ticket_simple).build();
     public static final FontAwesome6IconType timeline_s = on(FontAwesome6Solid.timeline).build();
@@ -1556,6 +1569,7 @@ public class FontAwesome6IconType extends IconType {
     public static final FontAwesome6IconType water_ladder_s = on(FontAwesome6Solid.water_ladder).build();
     public static final FontAwesome6IconType water_s = on(FontAwesome6Solid.water).build();
     public static final FontAwesome6IconType wave_square_s = on(FontAwesome6Solid.wave_square).build();
+    public static final FontAwesome6IconType web_awesome_s = on(FontAwesome6Solid.web_awesome).build();
     public static final FontAwesome6IconType weight_hanging_s = on(FontAwesome6Solid.weight_hanging).build();
     public static final FontAwesome6IconType weight_scale_s = on(FontAwesome6Solid.weight_scale).build();
     public static final FontAwesome6IconType wheat_awn_circle_exclamation_s = on(FontAwesome6Solid.wheat_awn_circle_exclamation).build();
@@ -1683,12 +1697,14 @@ public class FontAwesome6IconType extends IconType {
     public static final FontAwesome6IconType creative_commons_share = on(FontAwesome6Brand.creative_commons_share).build();
     public static final FontAwesome6IconType creative_commons_zero = on(FontAwesome6Brand.creative_commons_zero).build();
     public static final FontAwesome6IconType critical_role = on(FontAwesome6Brand.critical_role).build();
+    public static final FontAwesome6IconType css = on(FontAwesome6Brand.css).build();
     public static final FontAwesome6IconType css3 = on(FontAwesome6Brand.css3).build();
     public static final FontAwesome6IconType css3_alt = on(FontAwesome6Brand.css3_alt).build();
     public static final FontAwesome6IconType cuttlefish = on(FontAwesome6Brand.cuttlefish).build();
     public static final FontAwesome6IconType d_and_d = on(FontAwesome6Brand.d_and_d).build();
     public static final FontAwesome6IconType d_and_d_beyond = on(FontAwesome6Brand.d_and_d_beyond).build();
     public static final FontAwesome6IconType dailymotion = on(FontAwesome6Brand.dailymotion).build();
+    public static final FontAwesome6IconType dart_lang = on(FontAwesome6Brand.dart_lang).build();
     public static final FontAwesome6IconType dashcube = on(FontAwesome6Brand.dashcube).build();
     public static final FontAwesome6IconType debian = on(FontAwesome6Brand.debian).build();
     public static final FontAwesome6IconType deezer = on(FontAwesome6Brand.deezer).build();
@@ -1731,6 +1747,7 @@ public class FontAwesome6IconType extends IconType {
     public static final FontAwesome6IconType fedex = on(FontAwesome6Brand.fedex).build();
     public static final FontAwesome6IconType fedora = on(FontAwesome6Brand.fedora).build();
     public static final FontAwesome6IconType figma = on(FontAwesome6Brand.figma).build();
+    public static final FontAwesome6IconType files_pinwheel = on(FontAwesome6Brand.files_pinwheel).build();
     public static final FontAwesome6IconType firefox = on(FontAwesome6Brand.firefox).build();
     public static final FontAwesome6IconType firefox_browser = on(FontAwesome6Brand.firefox_browser).build();
     public static final FontAwesome6IconType first_order = on(FontAwesome6Brand.first_order).build();
@@ -1738,6 +1755,7 @@ public class FontAwesome6IconType extends IconType {
     public static final FontAwesome6IconType firstdraft = on(FontAwesome6Brand.firstdraft).build();
     public static final FontAwesome6IconType flickr = on(FontAwesome6Brand.flickr).build();
     public static final FontAwesome6IconType flipboard = on(FontAwesome6Brand.flipboard).build();
+    public static final FontAwesome6IconType flutter = on(FontAwesome6Brand.flutter).build();
     public static final FontAwesome6IconType fly = on(FontAwesome6Brand.fly).build();
     public static final FontAwesome6IconType font_awesome = on(FontAwesome6Brand.font_awesome).build();
     public static final FontAwesome6IconType fonticons = on(FontAwesome6Brand.fonticons).build();
@@ -1952,6 +1970,7 @@ public class FontAwesome6IconType extends IconType {
     public static final FontAwesome6IconType speaker_deck = on(FontAwesome6Brand.speaker_deck).build();
     public static final FontAwesome6IconType spotify = on(FontAwesome6Brand.spotify).build();
     public static final FontAwesome6IconType square_behance = on(FontAwesome6Brand.square_behance).build();
+    public static final FontAwesome6IconType square_bluesky = on(FontAwesome6Brand.square_bluesky).build();
     public static final FontAwesome6IconType square_dribbble = on(FontAwesome6Brand.square_dribbble).build();
     public static final FontAwesome6IconType square_facebook = on(FontAwesome6Brand.square_facebook).build();
     public static final FontAwesome6IconType square_font_awesome = on(FontAwesome6Brand.square_font_awesome).build();

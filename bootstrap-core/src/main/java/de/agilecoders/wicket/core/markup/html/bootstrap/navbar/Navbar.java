@@ -42,8 +42,8 @@ import de.agilecoders.wicket.jquery.util.Generics2;
 /**
  * A {@link Navbar} is a navigation component that holds a list of elements,
  * mostly Links/MenuButtons/Dropdowns.
- * <p/>
- * <pre><div wicket:id="navbar" class="navbar"></div></pre>
+ *
+ * <pre>{@code<div wicket:id="navbar" class="navbar"></div>}</pre>
  *
  * @author miha
  */

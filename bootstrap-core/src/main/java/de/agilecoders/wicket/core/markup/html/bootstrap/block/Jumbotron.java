@@ -17,21 +17,25 @@ import org.apache.wicket.model.IModel;
  * ```
  *
  * ```html
+ * <pre>{@code
  *     <div wicket:id="componentId">
  *          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis.</p>
  *          <small>Someone famous</small>
  *     </div>
+ * }</pre>
  * ```
  *
  * To make the jumbotron full width, and without rounded corners, place it outside all `.containers` and instead add a
  * `.container` within.
  *
  * ```html
- * <div wicket:id="componentId">
- *      <div class="container">
- *          content
- *      </div>
- * </div>
+ * <pre>{@code
+ *     <div wicket:id="componentId">
+ *         <div class="container">
+ *             content
+ *         </div>
+ *     </div>
+ * }</pre>
  * ```
  */
 public class Jumbotron extends WebMarkupContainer {

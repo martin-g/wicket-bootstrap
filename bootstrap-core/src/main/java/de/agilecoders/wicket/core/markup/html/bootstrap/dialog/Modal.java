@@ -81,10 +81,10 @@ public class Modal<T> extends GenericPanel<T> {
     	Lg_down("fullscreen-lg-down"),
     	Xl_down("fullscreen-xl-down"),
     	Xxl_down("fullscreen-xxl-down");
-    	
-    	
+
+
     	private final String cssClassName;
-    	
+
     	/**
     	 * Construct.
     	 *
@@ -93,7 +93,7 @@ public class Modal<T> extends GenericPanel<T> {
     	Fullscreen(final String cssClassName) {
     		this.cssClassName = cssClassName;
     	}
-    	
+
     	/**
     	 * @return css class name of button type
     	 */
@@ -244,13 +244,13 @@ public class Modal<T> extends GenericPanel<T> {
 
                 Set<Size> sizes = Arrays.stream(Size.values()).collect(Collectors.toSet());
                 sizes.remove(Size.Default);
-                sizes.forEach(s -> Attributes.removeClass(tag, s));                
+                sizes.forEach(s -> Attributes.removeClass(tag, s));
                 if(sizes.contains(size))
                 	Attributes.addClass(tag, size);
 
                 Set<Fullscreen> fulscreens = Arrays.stream(Fullscreen.values()).collect(Collectors.toSet());
                 fulscreens.remove(Fullscreen.None);
-                fulscreens.forEach(s -> Attributes.removeClass(tag, s));                
+                fulscreens.forEach(s -> Attributes.removeClass(tag, s));
                 if(fulscreens.contains(fullscreen))
                 	Attributes.addClass(tag, fullscreen);
             }
@@ -267,11 +267,11 @@ public class Modal<T> extends GenericPanel<T> {
         this.size = size;
         return this;
     }
-    
+
     /**
      * Sets fullscreen modal.
      *
-     * @param size The size of the modal dialog.
+     * @param fullscreen Fullscreen mode of the modal dialog.
      * @return {@code this}, for method chaining
      */
     public Modal<T> fullscreen(Fullscreen fullscreen) {
@@ -306,7 +306,7 @@ public class Modal<T> extends GenericPanel<T> {
     }
 
     /**
-     * hook to react on modal close event. The {@link }
+     * hook to react on modal close event.
      *
      * @param target The current {@link IPartialPageRequestHandler}
      */
@@ -555,7 +555,6 @@ public class Modal<T> extends GenericPanel<T> {
      *
      * @param markupId markup id
      * @return initializer script
-     * @see #createInitializerScript
      */
     protected String createBasicInitializerScript(final String markupId) {
         return "new bootstrap.Modal(document.getElementById('" + markupId + "'))" // options are added as data-attributes

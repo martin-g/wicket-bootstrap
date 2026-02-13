@@ -1,7 +1,8 @@
 package de.agilecoders.wicket.sass;
 
-import static org.junit.Assert.*;
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.empty;
+import static org.hamcrest.Matchers.instanceOf;
 
 import io.bit3.jsass.Options;
 import org.junit.jupiter.api.Test;
