@@ -29,7 +29,7 @@ import org.apache.wicket.model.Model;
  * ```
  *
  * ```html
- * <div wicket:id="id"></div>
+ * {@code <div wicket:id="id"></div>}
  * ```
  */
 public class PageHeader extends Panel {

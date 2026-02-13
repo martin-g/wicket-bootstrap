@@ -21,7 +21,7 @@ import org.apache.wicket.markup.ComponentTag;
  * ```
  *
  * ```html
- * <cite wicket:id="id"></cite>
+ * {@code <cite wicket:id="id"></cite>}
  * ```
  */
 public class CiteBehavior extends Behavior {

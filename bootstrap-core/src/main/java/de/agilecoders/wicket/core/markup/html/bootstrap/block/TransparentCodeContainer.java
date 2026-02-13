@@ -20,7 +20,7 @@ import org.apache.wicket.markup.html.TransparentWebMarkupContainer;
  * ```
  *
  * ```html
- * <code wicket:id="id">content</code>
+ * {@code <code wicket:id="id">content</code>}
  * ```
  *
  * It's possible to use `pre`, `code` and `xmp` as tag name.

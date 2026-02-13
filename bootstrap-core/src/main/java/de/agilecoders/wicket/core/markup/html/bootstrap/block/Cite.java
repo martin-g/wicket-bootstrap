@@ -16,7 +16,7 @@ import org.apache.wicket.model.IModel;
  * ```
  *
  * ```html
- * <cite wicket:id="id">text</cite>
+ * {@code <cite wicket:id="id">text</cite>}
  * ```
  */
 public class Cite extends WebMarkupContainer {

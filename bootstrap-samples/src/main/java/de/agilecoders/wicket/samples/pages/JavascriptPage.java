@@ -33,7 +33,7 @@ import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.typeaheadV10.
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.typeaheadV10.TypeaheadConfig;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.typeaheadV10.bloodhound.Bloodhound;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.typeaheadV10.bloodhound.LocalBloodhound;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesome6IconType;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesome7IconType;
 import de.agilecoders.wicket.samples.panels.pagination.AjaxPaginationPanel;
 import de.agilecoders.wicket.samples.panels.pagination.PaginationPanel;
 
@@ -180,7 +180,7 @@ public class JavascriptPage extends BasePage {
     }
 
     private Component newDropDown(String markupId) {
-        return new DropDownButton(markupId, Model.of("Dropdown (#89)"), Model.of(FontAwesome6IconType.bookmark_r)) {
+        return new DropDownButton(markupId, Model.of("Dropdown (#89)"), Model.of(FontAwesome7IconType.bookmark_r)) {
             private static final long serialVersionUID = 1L;
 
             @Override

@@ -20,8 +20,8 @@ import org.apache.wicket.resource.JQueryPluginResourceReference;
 import de.agilecoders.wicket.core.markup.html.bootstrap.block.Code;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.datetime.DatetimePickerConfig;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.datetime.DatetimePickerIconConfig;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesome6CssReference;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesome6IconType;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesome7CssReference;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesome7IconType;
 import de.agilecoders.wicket.samples.panels.DatetimePickerPanel;
 import de.agilecoders.wicket.samples.panels.LocalDateTimePickerPanel;
 
@@ -66,15 +66,15 @@ public class DatetimePickerPage extends BasePage {
             .withButtons(Map.of(BTN_SHOW_TODAY, true, BTN_SHOW_CLEAR, true, BTN_SHOW_CLOSE, true))
             .with(
                 new DatetimePickerIconConfig()
-                    .useDateIcon(FontAwesome6IconType.calendar_days_r)
-                    .useTimeIcon(FontAwesome6IconType.clock_s)
-                    .useUpIcon(FontAwesome6IconType.arrow_up_s)
-                    .useDownIcon(FontAwesome6IconType.arrow_down_s)
-                    .usePreviousIcon(FontAwesome6IconType.arrow_left_s)
-                    .useNextIcon(FontAwesome6IconType.arrow_right_s)
-                    .useTodayIcon(FontAwesome6IconType.calendar_check_s)
-                    .useClearIcon(FontAwesome6IconType.eraser_s)
-                    .useCloseIcon(FontAwesome6IconType.xmark_s)
+                    .useDateIcon(FontAwesome7IconType.calendar_days_r)
+                    .useTimeIcon(FontAwesome7IconType.clock_s)
+                    .useUpIcon(FontAwesome7IconType.arrow_up_s)
+                    .useDownIcon(FontAwesome7IconType.arrow_down_s)
+                    .usePreviousIcon(FontAwesome7IconType.arrow_left_s)
+                    .useNextIcon(FontAwesome7IconType.arrow_right_s)
+                    .useTodayIcon(FontAwesome7IconType.calendar_check_s)
+                    .useClearIcon(FontAwesome7IconType.eraser_s)
+                    .useCloseIcon(FontAwesome7IconType.xmark_s)
             );
 
         form.add(
@@ -98,15 +98,15 @@ public class DatetimePickerPage extends BasePage {
                                                  + "            .withButtons(Map.of(BTN_SHOW_TODAY, true, BTN_SHOW_CLEAR, true, BTN_SHOW_CLOSE, true))\n"
                                                  + "            .with(\n"
                                                  + "                new DatetimePickerIconConfig()\n"
-                                                 + "                    .useDateIcon(FontAwesome6IconType.calendar_days_r)\n"
-                                                 + "                    .useTimeIcon(FontAwesome6IconType.clock_s)\n"
-                                                 + "                    .useUpIcon(FontAwesome6IconType.arrow_up_s)\n"
-                                                 + "                    .useDownIcon(FontAwesome6IconType.arrow_down_s)\n"
-                                                 + "                    .usePreviousIcon(FontAwesome6IconType.arrow_left_s)\n"
-                                                 + "                    .useNextIcon(FontAwesome6IconType.arrow_right_s)\n"
-                                                 + "                    .useTodayIcon(FontAwesome6IconType.calendar_check_s)\n"
-                                                 + "                    .useClearIcon(FontAwesome6IconType.eraser_s)\n"
-                                                 + "                    .useCloseIcon(FontAwesome6IconType.xmark_s)\n"
+                                                 + "                    .useDateIcon(FontAwesome7IconType.calendar_days_r)\n"
+                                                 + "                    .useTimeIcon(FontAwesome7IconType.clock_s)\n"
+                                                 + "                    .useUpIcon(FontAwesome7IconType.arrow_up_s)\n"
+                                                 + "                    .useDownIcon(FontAwesome7IconType.arrow_down_s)\n"
+                                                 + "                    .usePreviousIcon(FontAwesome7IconType.arrow_left_s)\n"
+                                                 + "                    .useNextIcon(FontAwesome7IconType.arrow_right_s)\n"
+                                                 + "                    .useTodayIcon(FontAwesome7IconType.calendar_check_s)\n"
+                                                 + "                    .useClearIcon(FontAwesome7IconType.eraser_s)\n"
+                                                 + "                    .useCloseIcon(FontAwesome7IconType.xmark_s)\n"
                                                  + "            );")),
             new LocalDateTimePickerPanel("localsimple", simpleConfig),
             new Code("localdefault-java-code", Model.of("new DatetimePickerConfig()\n"
@@ -126,15 +126,15 @@ public class DatetimePickerPage extends BasePage {
                     + "            .withButtons(Map.of(BTN_SHOW_TODAY, true, BTN_SHOW_CLEAR, true, BTN_SHOW_CLOSE, true))\n"
                     + "            .with(\n"
                     + "                new DatetimePickerIconConfig()\n"
-                    + "                    .useDateIcon(FontAwesome6IconType.calendar_days_r)\n"
-                    + "                    .useTimeIcon(FontAwesome6IconType.clock_s)\n"
-                    + "                    .useUpIcon(FontAwesome6IconType.arrow_up_s)\n"
-                    + "                    .useDownIcon(FontAwesome6IconType.arrow_down_s)\n"
-                    + "                    .usePreviousIcon(FontAwesome6IconType.arrow_left_s)\n"
-                    + "                    .useNextIcon(FontAwesome6IconType.arrow_right_s)\n"
-                    + "                    .useTodayIcon(FontAwesome6IconType.calendar_check_s)\n"
-                    + "                    .useClearIcon(FontAwesome6IconType.eraser_s)\n"
-                    + "                    .useCloseIcon(FontAwesome6IconType.xmark_s)\n"
+                    + "                    .useDateIcon(FontAwesome7IconType.calendar_days_r)\n"
+                    + "                    .useTimeIcon(FontAwesome7IconType.clock_s)\n"
+                    + "                    .useUpIcon(FontAwesome7IconType.arrow_up_s)\n"
+                    + "                    .useDownIcon(FontAwesome7IconType.arrow_down_s)\n"
+                    + "                    .usePreviousIcon(FontAwesome7IconType.arrow_left_s)\n"
+                    + "                    .useNextIcon(FontAwesome7IconType.arrow_right_s)\n"
+                    + "                    .useTodayIcon(FontAwesome7IconType.calendar_check_s)\n"
+                    + "                    .useClearIcon(FontAwesome7IconType.eraser_s)\n"
+                    + "                    .useCloseIcon(FontAwesome7IconType.xmark_s)\n"
                     + "            );"))
         );
     }
@@ -147,7 +147,7 @@ public class DatetimePickerPage extends BasePage {
     @Override
     public void renderHead(IHeaderResponse response) {
         super.renderHead(response);
-        response.render(CssHeaderItem.forReference(FontAwesome6CssReference.instance()));
+        response.render(CssHeaderItem.forReference(FontAwesome7CssReference.instance()));
 
         // Use JS to show/hide the demo <section>s because otherwise DateTimePicker JS widget confuses which <input> is being clicked
         response.render(JavaScriptHeaderItem.forReference(new JQueryPluginResourceReference(DatetimePickerPage.class, "DatetimePickerPage.js")));

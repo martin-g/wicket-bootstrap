@@ -2,7 +2,7 @@
 @import "bootstrap.lux.variables.scss";
 
 
-// Lux 5.3.3
+// Lux 5.3.8
 // Bootswatch
 
 
@@ -11,6 +11,10 @@
 $web-font-path: "https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;500;600;700&display=swap" !default;
 @if $web-font-path {
   @import url("#{$web-font-path}");
+}
+
+:root {
+  --bs-border-width: 0;
 }
 
 // Navbar
@@ -58,31 +62,43 @@ $web-font-path: "https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;3
     font-size: 10px;
   }
 
-  &-warning {
-    &,
-    &:hover,
-    &:not([disabled]):not(.disabled):active,
-    &:focus {
-      color: $white;
-    }
+  &-primary {
+    --bs-btn-hover-bg: #{$black};
+    --bs-btn-hover-border-color: #{$black};
+    --bs-btn-active-bg: #{$black};
+    --bs-btn-active-border-color: #{$black};
+  }
+
+  &-secondary {
+    --bs-btn-hover-bg: #{$gray-200};
+    --bs-btn-hover-border-color: #{$gray-200};
+    --bs-btn-active-bg: #{$gray-300};
+    --bs-btn-active-border-color: #{$gray-300};
+  }
+
+  &-light {
+    --bs-btn-hover-bg: #{$gray-300};
+    --bs-btn-hover-border-color: #{$gray-300};
+    --bs-btn-active-bg: #{$gray-400};
+    --bs-btn-active-border-color: #{$gray-400};
+  }
+
+  &-link {
+    font-weight: $btn-font-weight;
   }
 }
 
 .btn-outline-secondary {
-  color: $gray-600;
-  border-color: $gray-600;
+  --bs-btn-color: #{$black};
+  --bs-btn-hover-bg: #{$gray-200};
+  --bs-btn-hover-border-color: #{$gray-200};
+  --bs-btn-active-bg: #{$gray-300};
+  --bs-btn-active-border-color: #{$gray-300};
+  border-color: $gray-100;
+}
 
-  &:not([disabled]):not(.disabled):hover,
-  &:not([disabled]):not(.disabled):focus,
-  &:not([disabled]):not(.disabled):active {
-    color: $white;
-    background-color: $gray-400;
-    border-color: $gray-400;
-  }
-
-  &:not([disabled]):not(.disabled):focus {
-    box-shadow: 0 0 0 .2rem rgba($gray-400, .5);
-  }
+.btn-outline-light {
+  color: var(--bs-btn-active-color);
 }
 
 [class*="btn-outline-"] {
@@ -95,7 +111,37 @@ $web-font-path: "https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;3
 
 @include color-mode(dark) {
   .btn-primary {
-    background-color: #080808;
+    --bs-btn-bg: #080808;
+    --bs-btn-hover-bg: #{$black};
+  }
+
+  .btn-outline-primary {
+    color: $white;
+    border-color: #080808;
+    --bs-btn-hover-bg: #{$black};
+  }
+
+  .btn-outline-secondary {
+    --bs-btn-color: #{$white};
+    --bs-btn-hover-color: #{$black};
+    --bs-btn-hover-bg: #{$gray-200};
+    --bs-btn-hover-border-color: #{$gray-200};
+    --bs-btn-active-bg: #{$gray-300};
+    --bs-btn-active-border-color: #{$gray-300};
+  }
+
+  .btn-outline-light {
+    color: $white;
+
+    &:not([disabled]):not(.disabled):hover,
+    &:not([disabled]):not(.disabled):focus,
+    &:not([disabled]):not(.disabled):active {
+      color: var(--bs-btn-active-color);
+    }
+  }
+
+  .btn-outline-dark {
+    color: $white;
   }
 }
 
@@ -138,6 +184,16 @@ th {
       padding: .75rem;
     }
   }
+}
+
+.table-primary,
+.table-secondary,
+.table-success,
+.table-warning,
+.table-danger,
+.table-info,
+.table-light {
+  --#{$prefix}table-color: #{$body-color};
 }
 
 // Forms
@@ -226,5 +282,27 @@ th {
   .h5,
   .h6 {
     color: inherit;
+  }
+}
+
+.modal-dialog {
+  box-shadow: var(--bs-box-shadow);
+}
+
+.popover {
+  --bs-popover-border-color: transparent;
+  box-shadow: var(--bs-box-shadow);
+
+  .popover-arrow {
+    --bs-popover-border-width: 1px;
+  }
+}
+
+
+@include color-mode(dark) {
+  .modal-content,
+  .popover,
+  .toast {
+    background-color: lighten($gray-900, 5%);
   }
 }
