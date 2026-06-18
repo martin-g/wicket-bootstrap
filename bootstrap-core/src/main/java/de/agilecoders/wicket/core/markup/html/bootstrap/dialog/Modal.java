@@ -292,6 +292,10 @@ public class Modal<T> extends GenericPanel<T> {
             Attributes.removeClass(tag, "fade");
         }
 
+        // To receive the escape key event the tabindex attribute is needed. If it is missing the browser will ignore
+        // the event because the div has no focus. tabindex=-1 makes the modal div programmatically focusable
+        // but excludes it from the sequential keyboard navigation.
+        Attributes.set(tag, "tabindex", "-1");
         Attributes.set(tag, "data-bs-keyboard", "" + closeOnEscapeKey);
         Attributes.set(tag, "data-bs-focus", "" + !disableEnforceFocus.getObject());
 
