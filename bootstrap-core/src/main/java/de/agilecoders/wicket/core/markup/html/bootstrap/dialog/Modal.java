@@ -109,7 +109,6 @@ public class Modal<T> extends GenericPanel<T> {
 
     private boolean show = false;
     private boolean fadein = true;
-    private boolean keyboard = true;
     private boolean closeOnEscapeKey = true;
     private Backdrop backdrop = Backdrop.TRUE;
 
@@ -406,6 +405,13 @@ public class Modal<T> extends GenericPanel<T> {
     }
 
     /**
+     * @return true, if closing on <em>ESC</em> keyboard key is enabled or not
+     */
+    public boolean useCloseOnEscapeKey() {
+        return closeOnEscapeKey;
+    }
+
+    /**
      * Sets a flag that decides whether using the <em>ESC</em> keyboard
      * key will close this modal
      *
@@ -574,10 +580,13 @@ public class Modal<T> extends GenericPanel<T> {
     }
 
     /**
+     * @deprecated use {@link #useCloseOnEscapeKey()} instead
+     *
      * @return true, if keyboard usage is activated
      */
+    @Deprecated(since = "7.0.15", forRemoval = true)
     protected final boolean useKeyboard() {
-        return keyboard;
+        return closeOnEscapeKey;
     }
 
     /**
@@ -601,11 +610,14 @@ public class Modal<T> extends GenericPanel<T> {
     /**
      * Whether to enable keyboard interaction like ESC to close the dialog.
      *
+     * @deprecated use {@link #setCloseOnEscapeKey(boolean)} instead.
+     *
      * @param keyboard true, if keyboard interaction is enabled
      * @return This
      */
+    @Deprecated(since = "7.0.15", forRemoval = true)
     public final Modal<T> setUseKeyboard(boolean keyboard) {
-        this.keyboard = keyboard;
+        this.closeOnEscapeKey = keyboard;
         return this;
     }
 
