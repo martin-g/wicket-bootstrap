@@ -295,7 +295,7 @@ public class Modal<T> extends GenericPanel<T> {
         // the event because the div has no focus. tabindex=-1 makes the modal div programmatically focusable
         // but excludes it from the sequential keyboard navigation.
         Attributes.set(tag, "tabindex", "-1");
-        Attributes.set(tag, "data-bs-keyboard", "" + closeOnEscapeKey);
+        Attributes.set(tag, "data-bs-keyboard", "" + useCloseOnEscapeKey());
         Attributes.set(tag, "data-bs-focus", "" + !disableEnforceFocus.getObject());
 
         if (backdrop != Backdrop.TRUE) {
@@ -407,7 +407,7 @@ public class Modal<T> extends GenericPanel<T> {
     /**
      * @return true, if closing on <em>ESC</em> keyboard key is enabled or not
      */
-    public boolean useCloseOnEscapeKey() {
+    public final boolean useCloseOnEscapeKey() {
         return closeOnEscapeKey;
     }
 
@@ -586,7 +586,7 @@ public class Modal<T> extends GenericPanel<T> {
      */
     @Deprecated(since = "7.0.15", forRemoval = true)
     protected final boolean useKeyboard() {
-        return closeOnEscapeKey;
+        return useCloseOnEscapeKey();
     }
 
     /**
