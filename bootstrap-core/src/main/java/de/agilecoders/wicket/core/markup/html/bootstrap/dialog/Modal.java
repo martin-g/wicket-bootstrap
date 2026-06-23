@@ -109,7 +109,6 @@ public class Modal<T> extends GenericPanel<T> {
 
     private boolean show = false;
     private boolean fadein = true;
-    private boolean keyboard = true;
     private boolean closeOnEscapeKey = true;
     private Backdrop backdrop = Backdrop.TRUE;
 
@@ -292,6 +291,10 @@ public class Modal<T> extends GenericPanel<T> {
             Attributes.removeClass(tag, "fade");
         }
 
+        // To receive the escape key event the tabindex attribute is needed. If it is missing the browser will ignore
+        // the event because the div has no focus. tabindex=-1 makes the modal div programmatically focusable
+        // but excludes it from the sequential keyboard navigation.
+        Attributes.set(tag, "tabindex", "-1");
         Attributes.set(tag, "data-bs-keyboard", "" + closeOnEscapeKey);
         Attributes.set(tag, "data-bs-focus", "" + !disableEnforceFocus.getObject());
 
@@ -399,6 +402,13 @@ public class Modal<T> extends GenericPanel<T> {
     public Modal<T> setCloseOnEscapeKey(boolean close) {
         this.closeOnEscapeKey = close;
         return this;
+    }
+
+    /**
+     * @return true, if closing on <em>ESC</em> keyboard key is enabled or not
+     */
+    public boolean useCloseOnEscapeKey() {
+        return closeOnEscapeKey;
     }
 
     /**
@@ -571,10 +581,13 @@ public class Modal<T> extends GenericPanel<T> {
     }
 
     /**
+     * @deprecated use {@link #useCloseOnEscapeKey()} instead
+     *
      * @return true, if keyboard usage is activated
      */
+    @Deprecated(since = "7.0.15", forRemoval = true)
     protected final boolean useKeyboard() {
-        return keyboard;
+        return closeOnEscapeKey;
     }
 
     /**
@@ -598,11 +611,14 @@ public class Modal<T> extends GenericPanel<T> {
     /**
      * Whether to enable keyboard interaction like ESC to close the dialog.
      *
+     * @deprecated use {@link #setCloseOnEscapeKey(boolean)} instead.
+     *
      * @param keyboard true, if keyboard interaction is enabled
      * @return This
      */
+    @Deprecated(since = "7.0.15", forRemoval = true)
     public final Modal<T> setUseKeyboard(boolean keyboard) {
-        this.keyboard = keyboard;
+        this.closeOnEscapeKey = keyboard;
         return this;
     }
 
