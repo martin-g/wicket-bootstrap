@@ -46,7 +46,6 @@ module wicket.bootstrap.extensions {
     requires de.agilecoders.wicket.jquery;
     requires de.agilecoders.wicket.webjars;
 
-    requires com.google.common;
     requires com.fasterxml.jackson.annotation;
     requires com.fasterxml.jackson.core;
     requires com.fasterxml.jackson.databind;
@@ -54,5 +53,5 @@ module wicket.bootstrap.extensions {
     requires org.slf4j;
 
     requires static yuicompressor;
-    requires static closure.compiler.unshaded.v20231112;
+    requires static closure.compiler.unshaded.v20250407;
 }
