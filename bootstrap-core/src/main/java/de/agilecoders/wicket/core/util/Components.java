@@ -4,6 +4,7 @@ import de.agilecoders.wicket.jquery.util.Generics2;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.MarkupException;
+import org.apache.wicket.markup.html.panel.EmptyPanel;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.string.Strings;
 
@@ -102,6 +103,17 @@ public final class Components {
      */
     public static void hideIfModelIsEmpty(final Component component) {
         if (component != null && Strings.isEmpty(component.getDefaultModelObjectAsString())) {
+            component.setVisible(false);
+        }
+    }
+
+    /**
+     * checks if it's an empty panel, the component will be hidden.
+     *
+     * @param component component to check
+     */
+    public static void hideIfEmptyPanel(final Component component) {
+        if (component instanceof EmptyPanel) {
             component.setVisible(false);
         }
     }
