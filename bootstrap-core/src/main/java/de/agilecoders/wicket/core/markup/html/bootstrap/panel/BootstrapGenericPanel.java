@@ -191,7 +191,6 @@ public class BootstrapGenericPanel<T> extends GenericPanel<T>{
 
 		Panel emptyPanel = new EmptyPanel(id);
 		emptyPanel.setDefaultModel(new Model<>());
-        emptyPanel.setVisible(false);
 		return emptyPanel;
 
 	}
@@ -206,7 +205,6 @@ public class BootstrapGenericPanel<T> extends GenericPanel<T>{
 
 		Panel emptyPanel = new EmptyPanel(id);
 		emptyPanel.setDefaultModel(new Model<>());
-        emptyPanel.setVisible(false);
 
 		return emptyPanel;
 	}
@@ -221,7 +219,6 @@ public class BootstrapGenericPanel<T> extends GenericPanel<T>{
 	protected Component newTopImage(String id, IModel<T> model) {
 	    Panel emptyTopImage = new EmptyPanel(id);
 	    emptyTopImage.setDefaultModel(new Model<>());
-        emptyTopImage.setVisible(false);
 
 	    return emptyTopImage;
     }
