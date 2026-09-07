@@ -4,7 +4,6 @@ import de.agilecoders.wicket.jquery.util.Generics2;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.MarkupException;
-import org.apache.wicket.markup.html.panel.EmptyPanel;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.string.Strings;
 

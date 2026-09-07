@@ -4,7 +4,6 @@ import de.agilecoders.wicket.core.WicketApplicationTest;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.markup.html.panel.EmptyPanel;
 import org.apache.wicket.model.Model;
 import org.junit.jupiter.api.Test;
 
