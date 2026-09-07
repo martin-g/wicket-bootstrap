@@ -114,17 +114,14 @@ public class BootstrapGenericPanel<T> extends GenericPanel<T>{
 		//Top Panel Image
         Component topImage = newTopImage(_PANEL_IMAGE_ID, getModel());
         add(topImage);
-        Components.hideIfEmptyPanel(topImage);
 
 		//Panel Body
 		Panel panelBody = newBodyPanel(_PANEL_BODY_ID, getModel());
 		add(panelBody);
-		Components.hideIfEmptyPanel(panelBody);
 
 		//Panel Footer
 		Panel panelFooter = newFooterPanel(_PANEL_FOOTER_ID, getModel());
 		add(panelFooter);
-		Components.hideIfEmptyPanel(panelFooter);
 
 		header.add(new BackgroundColorBehavior(() -> panelType.getBackgroundColor()) {
 			@Override
@@ -194,7 +191,7 @@ public class BootstrapGenericPanel<T> extends GenericPanel<T>{
 
 		Panel emptyPanel = new EmptyPanel(id);
 		emptyPanel.setDefaultModel(new Model<>());
-
+        emptyPanel.setVisible(false);
 		return emptyPanel;
 
 	}
@@ -209,6 +206,7 @@ public class BootstrapGenericPanel<T> extends GenericPanel<T>{
 
 		Panel emptyPanel = new EmptyPanel(id);
 		emptyPanel.setDefaultModel(new Model<>());
+        emptyPanel.setVisible(false);
 
 		return emptyPanel;
 	}
@@ -223,6 +221,7 @@ public class BootstrapGenericPanel<T> extends GenericPanel<T>{
 	protected Component newTopImage(String id, IModel<T> model) {
 	    Panel emptyTopImage = new EmptyPanel(id);
 	    emptyTopImage.setDefaultModel(new Model<>());
+        emptyTopImage.setVisible(false);
 
 	    return emptyTopImage;
     }

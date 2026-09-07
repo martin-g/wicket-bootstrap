@@ -108,17 +108,6 @@ public final class Components {
     }
 
     /**
-     * checks if it's an empty panel, the component will be hidden.
-     *
-     * @param component component to check
-     */
-    public static void hideIfEmptyPanel(final Component component) {
-        if (component instanceof EmptyPanel) {
-            component.setVisible(false);
-        }
-    }
-
-    /**
      * sets all given components visible
      *
      * @param components The components to show

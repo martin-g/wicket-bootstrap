@@ -56,14 +56,4 @@ class ComponentsWicketTest extends WicketApplicationTest {
 
         assertThat(componentA.isVisible(), is(equalTo(false)));
     }
-
-    @Test
-    void componentWillBeInvisibleIfEmptyPanel() {
-        Component componentA = new EmptyPanel("containerA");
-        componentA.setDefaultModel(Model.of(""));
-
-        Components.hideIfEmptyPanel(componentA);
-
-        assertThat(componentA.isVisible(), is(equalTo(false)));
-    }
 }
