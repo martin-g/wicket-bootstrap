@@ -122,7 +122,7 @@ public class ProgressBar extends GenericPanel<Integer> {
 
         if (model != null) {
             Stack defaultStack = new Stack(getStackId(), () -> ProgressBar.this.getModelObject());
-            defaultStack.color(color).labeled(labeled).active(animated).striped(striped);
+            defaultStack.color(color).labeled(labeled).animated(animated).striped(striped);
             addStacks(defaultStack);
         }
     }
@@ -170,10 +170,10 @@ public class ProgressBar extends GenericPanel<Integer> {
         return this;
     }
 
-    public boolean active() {
+    public boolean animated() {
         Boolean active = stacks.visitChildren(Stack.class, (c, v) -> {
             Stack stack = (Stack) c;
-            if (stack.active()) {
+            if (stack.animated()) {
                 v.stop(true);
             }
         });
@@ -181,10 +181,10 @@ public class ProgressBar extends GenericPanel<Integer> {
         return Objects.booleanValue(active);
     }
 
-    public ProgressBar active(boolean value) {
+    public ProgressBar animated(boolean value) {
         stacks.visitChildren(Stack.class, (c, v) -> {
             Stack stack = (Stack) c;
-            stack.active(value);
+            stack.animated(value);
             if (value) {
                 stack.striped(true);
             }
