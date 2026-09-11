@@ -53,7 +53,7 @@ class ProgressBarTest extends WicketApplicationTest {
 //        System.err.println("RES:\n" + tester().getLastResponseAsString());
         TagTester progressBarTester = tester().getTagById(markupId);
         assertEquals("progress", progressBarTester.getAttribute("class"));
-        TagTester stackTester = progressBarTester.getChild("class", "progress-bar progress-bar-active progress-bar-striped bg-danger");
+        TagTester stackTester = progressBarTester.getChild("class", "progress-bar progress-bar-animated progress-bar-striped bg-danger");
         assertEquals("progressbar", stackTester.getAttribute("role"));
         assertEquals("" + progress, stackTester.getAttribute("aria-valuenow"));
         assertEquals("" + ProgressBar.MIN, stackTester.getAttribute("aria-valuemin"));
