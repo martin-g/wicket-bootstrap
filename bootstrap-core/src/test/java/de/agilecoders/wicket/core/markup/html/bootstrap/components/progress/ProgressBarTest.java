@@ -35,7 +35,7 @@ class ProgressBarTest extends WicketApplicationTest {
     @Test
     void animatedBarIsAlwaysStripped() {
         ProgressBar progressBar = new ProgressBar(id(), Model.of(1));
-        progressBar.active(true);
+        progressBar.animated(true);
 
         assertTrue(progressBar.striped());
     }
@@ -47,13 +47,13 @@ class ProgressBarTest extends WicketApplicationTest {
         int progress = 23;
         ProgressBar progressBar = new ProgressBar(id(), Model.of(progress), BackgroundColorBehavior.Color.Danger);
         progressBar.setMarkupId(markupId);
-        progressBar.active(true);
+        progressBar.animated(true);
 
         startComponentInPage(progressBar);
 //        System.err.println("RES:\n" + tester().getLastResponseAsString());
         TagTester progressBarTester = tester().getTagById(markupId);
         assertEquals("progress", progressBarTester.getAttribute("class"));
-        TagTester stackTester = progressBarTester.getChild("class", "progress-bar progress-bar-active progress-bar-striped bg-danger");
+        TagTester stackTester = progressBarTester.getChild("class", "progress-bar progress-bar-animated progress-bar-striped bg-danger");
         assertEquals("progressbar", stackTester.getAttribute("role"));
         assertEquals("" + progress, stackTester.getAttribute("aria-valuenow"));
         assertEquals("" + ProgressBar.MIN, stackTester.getAttribute("aria-valuemin"));

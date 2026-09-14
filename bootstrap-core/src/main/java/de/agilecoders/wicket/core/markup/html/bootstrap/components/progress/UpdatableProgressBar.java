@@ -33,7 +33,7 @@ public abstract class UpdatableProgressBar extends ProgressBar {
         super(id, model, color, labeled);
 
         setOutputMarkupId(true);
-        active(true);
+        animated(true);
 
         behavior = new UpdateBehavior(updateInterval) {
             private static final long serialVersionUID = 1L;
@@ -79,7 +79,7 @@ public abstract class UpdatableProgressBar extends ProgressBar {
     }
 
     protected void onComplete(IPartialPageRequestHandler target) {
-        active(false);
+        animated(false);
         striped(false);
 
         target.add(this);

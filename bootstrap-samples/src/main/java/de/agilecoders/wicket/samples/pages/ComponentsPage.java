@@ -103,7 +103,7 @@ public class ComponentsPage extends BasePage {
         ProgressBar striped = new ProgressBar("striped", Model.of(20)).striped(true);
         add(striped);
 
-        ProgressBar animated = new ProgressBar("animated", Model.of(45)).active(true);
+        ProgressBar animated = new ProgressBar("animated", Model.of(45)).animated(true);
         add(animated);
 
         ProgressBar labeledProgressBar = new ProgressBar("labeled");
