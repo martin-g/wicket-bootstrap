@@ -91,10 +91,25 @@ public class Stack extends GenericPanel<Integer> {
         return this;
     }
 
+    /**
+     * @deprecated use {@link #animated()}
+     */
+    @Deprecated
+    public boolean active() { return animated(); }
+    
     public boolean animated() {
         return animated;
     }
 
+
+    /**
+     * @deprecated use {@link #animated(boolean)}
+     */
+    @Deprecated
+    public Stack active(boolean value) {
+        return animated(value);
+    }
+    
     public Stack animated(boolean value) {
         animated = value;
         if (value) {

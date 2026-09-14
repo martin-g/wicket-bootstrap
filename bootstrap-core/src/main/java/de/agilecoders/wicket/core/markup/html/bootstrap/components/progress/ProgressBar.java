@@ -170,6 +170,14 @@ public class ProgressBar extends GenericPanel<Integer> {
         return this;
     }
 
+    /**
+     * @deprecated use {@link #animated()}
+     */
+    @Deprecated
+    public boolean active() {
+        return animated();
+    }
+
     public boolean animated() {
         Boolean active = stacks.visitChildren(Stack.class, (c, v) -> {
             Stack stack = (Stack) c;
@@ -179,6 +187,14 @@ public class ProgressBar extends GenericPanel<Integer> {
         });
 
         return Objects.booleanValue(active);
+    }
+
+    /**
+     * @deprecated use {@link #animated(boolean)}
+     */
+    @Deprecated
+    public ProgressBar active(boolean value) {
+        return animated(true);
     }
 
     public ProgressBar animated(boolean value) {
