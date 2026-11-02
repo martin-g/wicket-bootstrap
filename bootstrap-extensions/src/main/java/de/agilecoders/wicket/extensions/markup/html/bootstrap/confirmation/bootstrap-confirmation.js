@@ -397,7 +397,7 @@
                     if (button.cancel) {
                         self.config.onCancel.call(self._element, button.value);
                         EventHandler.trigger(self._element, EVENT_CANCELED, [button.value]);
-                    } else {
+                    } else if (self.config && self._element) {
                         self.config.onConfirm.call(self._element, button.value);
                         EventHandler.trigger(self._element, EVENT_CONFIRMED, [button.value]);
                         EventHandler.trigger(self._element, self.config.confirmationEvent, [true]);
