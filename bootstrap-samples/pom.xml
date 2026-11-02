@@ -56,8 +56,8 @@
             <version>${jetty.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.eclipse.jetty.ee11</groupId>
-            <artifactId>jetty-ee11-webapp</artifactId>
+            <groupId>org.eclipse.jetty.ee10</groupId>
+            <artifactId>jetty-ee10-webapp</artifactId>
             <version>${jetty.version}</version>
         </dependency>
 
@@ -118,8 +118,8 @@
         </testResources>
         <plugins>
             <plugin>
-                <groupId>org.eclipse.jetty.ee11</groupId>
-                <artifactId>jetty-ee11-maven-plugin</artifactId>
+                <groupId>org.eclipse.jetty.ee10</groupId>
+                <artifactId>jetty-ee10-maven-plugin</artifactId>
                 <version>${jetty.version}</version>
                 <configuration>
                     <jettyXmls>src/test/jetty/jetty.xml,src/test/jetty/jetty-http.xml,src/test/jetty/jetty-ssl.xml,src/test/jetty/jetty-https.xml</jettyXmls>
