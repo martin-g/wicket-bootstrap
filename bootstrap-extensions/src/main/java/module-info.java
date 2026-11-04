@@ -47,8 +47,8 @@ module wicket.bootstrap.extensions {
     requires de.agilecoders.wicket.webjars;
 
     requires com.fasterxml.jackson.annotation;
-    requires com.fasterxml.jackson.core;
-    requires com.fasterxml.jackson.databind;
+    requires tools.jackson.core;
+    requires tools.jackson.databind;
 
     requires org.slf4j;
 

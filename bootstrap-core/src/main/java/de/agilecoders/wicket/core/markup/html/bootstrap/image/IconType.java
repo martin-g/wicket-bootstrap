@@ -2,6 +2,11 @@ package de.agilecoders.wicket.core.markup.html.bootstrap.image;
 
 import org.apache.wicket.util.lang.Args;
 
+import tools.jackson.core.JsonGenerator;
+import tools.jackson.databind.SerializationContext;
+import tools.jackson.databind.ValueSerializer;
+import tools.jackson.databind.annotation.JsonSerialize;
+
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.CssClassNameAppender;
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNameModifier;
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNameProvider;
@@ -9,6 +14,7 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.ICssClassNamePr
 /**
  * References all available icons inside the icon sprite.
  */
+@JsonSerialize(using = IconType.IconTypeSerializer.class)
 public abstract class IconType implements ICssClassNameProvider, ICssClassNameModifier {
     /** serialVersionUID. */
     private static final long serialVersionUID = 1L;
@@ -59,5 +65,14 @@ public abstract class IconType implements ICssClassNameProvider, ICssClassNameMo
     public String getTagBody() {
         return tagBody;
     }
-}
 
+    /**
+     * Serializes an icon type as its css class name.
+     */
+    public static class IconTypeSerializer extends ValueSerializer<IconType> {
+        @Override
+        public void serialize(IconType iconType, JsonGenerator jsonGenerator, SerializationContext context) {
+            jsonGenerator.writeString(iconType.getCssClassName());
+        }
+    }
+}

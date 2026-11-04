@@ -2,7 +2,7 @@
 @import "bootstrap.materia.variables.scss";
 
 
-// Materia 5.3.3
+// Materia 5.3.8
 // Bootswatch
 
 
@@ -240,6 +240,16 @@ p {
   background-color: $primary;
 }
 
+.table-primary,
+.table-secondary,
+.table-success,
+.table-warning,
+.table-danger,
+.table-info,
+.table-light {
+  --#{$prefix}table-color: #{$body-color};
+}
+
 // Forms
 
 .col-form-label {
@@ -321,7 +331,7 @@ select.form-control {
   margin-top: 1px;
   border: 2px solid $gray-400;
 
-  &:checked[type="radio"] {
+  :not(.form-check) > &:checked[type="radio"] {
     background-image: escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='2' fill='#{$blue}' stroke='#{$white}'/></svg>")), var(--bs-gradient);
     background-size: 1.8em;
   }

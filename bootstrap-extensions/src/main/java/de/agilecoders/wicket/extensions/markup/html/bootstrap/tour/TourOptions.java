@@ -5,10 +5,11 @@ import java.io.IOException;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
-import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.databind.JsonSerializer;
-import com.fasterxml.jackson.databind.SerializerProvider;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import tools.jackson.core.JacksonException;
+import tools.jackson.core.JsonGenerator;
+import tools.jackson.databind.ValueSerializer;
+import tools.jackson.databind.SerializationContext;
+import tools.jackson.databind.annotation.JsonSerialize;
 
 import de.agilecoders.wicket.jquery.AbstractConfig;
 import de.agilecoders.wicket.jquery.IKey;
@@ -244,18 +245,18 @@ public class TourOptions extends AbstractConfig {
     /**
      * Serializer for BackdropPadding
      */
-    private static class BackdropPaddingSerializer extends JsonSerializer<BackdropPadding> {
+    private static class BackdropPaddingSerializer extends ValueSerializer<BackdropPadding> {
 
         @Override
-        public void serialize(BackdropPadding value, JsonGenerator jgen, SerializerProvider provider) throws IOException {
+        public void serialize(BackdropPadding value, JsonGenerator jgen, SerializationContext provider) throws JacksonException {
             if ((value.top == value.right) && (value.right == value.bottom) && (value.bottom == value.left)) {
                 jgen.writeNumber(value.top);
             } else {
                 jgen.writeStartObject();
-                jgen.writeNumberField("top",    value.top);
-                jgen.writeNumberField("right",  value.right);
-                jgen.writeNumberField("bottom", value.bottom);
-                jgen.writeNumberField("left",   value.left);
+                jgen.writeNumberProperty("top",    value.top);
+                jgen.writeNumberProperty("right",  value.right);
+                jgen.writeNumberProperty("bottom", value.bottom);
+                jgen.writeNumberProperty("left",   value.left);
                 jgen.writeEndObject();
             }
         }

@@ -21,7 +21,10 @@ import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesome6I
  *  &lt;/dependency&gt;<br/>
  *
  * All the icon types.
+ *
+ * @deprecated use {@link FontAwesome7IconType} instead (from font-awesome 7.x)
  */
+@Deprecated
 public class FontAwesome6IconType extends IconType {
 
     /**

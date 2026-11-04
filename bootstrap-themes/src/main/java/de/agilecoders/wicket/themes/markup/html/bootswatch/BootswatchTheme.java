@@ -23,7 +23,7 @@ import de.agilecoders.wicket.core.settings.ITheme;
  * @author miha
  */
 public enum BootswatchTheme implements ITheme {
-    Cerulean, Cosmo, Cyborg, Darkly, Flatly, Journal, Litera, Lumen, Lux, Materia,
+    Brite, Cerulean, Cosmo, Cyborg, Darkly, Flatly, Journal, Litera, Lumen, Lux, Materia,
     Minty, Morph, Pulse, Quartz, Sandstone, Simplex, Sketchy, Slate, Solar, Spacelab,
     Superhero, United, Vapor, Yeti, Zephyr;
 

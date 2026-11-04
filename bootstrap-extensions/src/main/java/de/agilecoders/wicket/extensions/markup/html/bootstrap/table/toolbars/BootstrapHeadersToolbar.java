@@ -8,7 +8,7 @@ import org.apache.wicket.extensions.markup.html.repeater.data.table.HeadersToolb
 import org.apache.wicket.markup.html.WebMarkupContainer;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesome6IconType;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesome7IconType;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.table.sort.BootstrapOrderByBorder;
 
 /**
@@ -16,9 +16,9 @@ import de.agilecoders.wicket.extensions.markup.html.bootstrap.table.sort.Bootstr
  * displayed stylized with {@link IconType}
  *
  * By default:
- * ascending {@link FontAwesome6IconType#sort_up_s}
- * descending {@link FontAwesome6IconType#sort_down_s}
- * unsorted  {@link  FontAwesome6IconType#sort_s} -> unsorted
+ * ascending {@link FontAwesome7IconType#sort_up_s}
+ * descending {@link FontAwesome7IconType#sort_down_s}
+ * unsorted  {@link  FontAwesome7IconType#sort_s} -> unsorted
  *
  * @author Eric Hamel eric.hamel@me.com
  *

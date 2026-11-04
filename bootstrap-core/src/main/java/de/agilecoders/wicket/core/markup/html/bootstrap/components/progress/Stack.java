@@ -91,11 +91,26 @@ public class Stack extends GenericPanel<Integer> {
         return this;
     }
 
-    public boolean active() {
+    /**
+     * @deprecated use {@link #animated()}
+     */
+    @Deprecated
+    public boolean active() { return animated(); }
+    
+    public boolean animated() {
         return animated;
     }
 
+
+    /**
+     * @deprecated use {@link #animated(boolean)}
+     */
+    @Deprecated
     public Stack active(boolean value) {
+        return animated(value);
+    }
+    
+    public Stack animated(boolean value) {
         animated = value;
         if (value) {
             striped(true);
@@ -122,7 +137,7 @@ public class Stack extends GenericPanel<Integer> {
         Attributes.set(tag, "aria-valuemax", String.valueOf(ProgressBar.MAX));
 
         if (animated) {
-            Attributes.addClass(tag, "progress-bar-active");
+            Attributes.addClass(tag, "progress-bar-animated");
         }
 
         if (striped) {

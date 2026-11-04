@@ -31,7 +31,10 @@ import java.util.List;
  * <code>FontAwesome6IconTypeBuilder.on(FontAwesome6Graphic.key).size(Size.four).spin().rotate(Rotation.rotate_90).build()</code>
  * </li>
  * </ul>
+ *
+ * deprecated use FontAwesome7IconTypeBuilder instead
  */
+@Deprecated
 public class FontAwesome6IconTypeBuilder {
 
     public interface FontAwesome6Graphic {

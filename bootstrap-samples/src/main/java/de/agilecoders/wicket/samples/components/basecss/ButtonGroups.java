@@ -14,7 +14,7 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.button.ButtonList;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.Toolbar;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.Icon;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesome6IconType;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesome7IconType;
 import de.agilecoders.wicket.samples.components.base.Section;
 import de.agilecoders.wicket.samples.pages.ComponentsPage;
 
@@ -56,10 +56,10 @@ public class ButtonGroups extends Section<Void> {
             @Override
             protected List<AbstractLink> newButtons(String buttonMarkupId) {
                 return List.of(
-                        createIconButton(new Icon(FontAwesome6IconType.align_left_s)),
-                        createIconButton(new Icon(FontAwesome6IconType.align_center_s)),
-                        createIconButton(new Icon(FontAwesome6IconType.align_right_s)),
-                        createIconButton(new Icon(FontAwesome6IconType.align_justify_s)));
+                        createIconButton(new Icon(FontAwesome7IconType.align_left_s)),
+                        createIconButton(new Icon(FontAwesome7IconType.align_center_s)),
+                        createIconButton(new Icon(FontAwesome7IconType.align_right_s)),
+                        createIconButton(new Icon(FontAwesome7IconType.align_justify_s)));
             }
         };
         add(verticalButtonGroup);

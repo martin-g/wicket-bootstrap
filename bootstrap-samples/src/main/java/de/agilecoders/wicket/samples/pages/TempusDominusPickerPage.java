@@ -39,8 +39,8 @@ import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.tempusdominus
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.tempusdominus.TempusDominusDisplayConfig.ButtonType;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.tempusdominus.TempusDominusDisplayConfig.ComponentType;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.tempusdominus.TempusDominusDisplayConfig.ViewModeType;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesome6CssReference;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesome6IconType;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesome7CssReference;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesome7IconType;
 
 /**
  * Example page of tempus-dominus picker usage
@@ -140,15 +140,15 @@ public class TempusDominusPickerPage extends BasePage {
                         .withButton(ButtonType.CLEAR, true)
                         .withButton(ButtonType.CLOSE, true)
                         .withIcons(icons -> icons
-                                .withDateIcon(FontAwesome6IconType.calendar_days_r)
-                                .withTimeIcon(FontAwesome6IconType.clock_s)
-                                .withUpIcon(FontAwesome6IconType.arrow_up_s)
-                                .withDownIcon(FontAwesome6IconType.arrow_down_s)
-                                .withPreviousIcon(FontAwesome6IconType.arrow_left_s)
-                                .withNextIcon(FontAwesome6IconType.arrow_right_s)
-                                .withTodayIcon(FontAwesome6IconType.calendar_check_s)
-                                .withClearIcon(FontAwesome6IconType.eraser_s)
-                                .withCloseIcon(FontAwesome6IconType.xmark_s)
+                                .withDateIcon(FontAwesome7IconType.calendar_days_r)
+                                .withTimeIcon(FontAwesome7IconType.clock_s)
+                                .withUpIcon(FontAwesome7IconType.arrow_up_s)
+                                .withDownIcon(FontAwesome7IconType.arrow_down_s)
+                                .withPreviousIcon(FontAwesome7IconType.arrow_left_s)
+                                .withNextIcon(FontAwesome7IconType.arrow_right_s)
+                                .withTodayIcon(FontAwesome7IconType.calendar_check_s)
+                                .withClearIcon(FontAwesome7IconType.eraser_s)
+                                .withCloseIcon(FontAwesome7IconType.xmark_s)
                         )
                         .withComponent(ComponentType.SECONDS, true)
                 )
@@ -164,15 +164,15 @@ public class TempusDominusPickerPage extends BasePage {
                                 .withButton(ButtonType.CLEAR, true)
                                 .withButton(ButtonType.CLOSE, true)
                                 .withIcons(icons -> icons
-                                    .withDateIcon(FontAwesome6IconType.calendar_days_r)
-                                    .withTimeIcon(FontAwesome6IconType.clock_s)
-                                    .withUpIcon(FontAwesome6IconType.arrow_up_s)
-                                    .withDownIcon(FontAwesome6IconType.arrow_down_s)
-                                    .withPreviousIcon(FontAwesome6IconType.arrow_left_s)
-                                    .withNextIcon(FontAwesome6IconType.arrow_right_s)
-                                    .withTodayIcon(FontAwesome6IconType.calendar_check_s)
-                                    .withClearIcon(FontAwesome6IconType.eraser_s)
-                                    .withCloseIcon(FontAwesome6IconType.xmark_s)
+                                    .withDateIcon(FontAwesome7IconType.calendar_days_r)
+                                    .withTimeIcon(FontAwesome7IconType.clock_s)
+                                    .withUpIcon(FontAwesome7IconType.arrow_up_s)
+                                    .withDownIcon(FontAwesome7IconType.arrow_down_s)
+                                    .withPreviousIcon(FontAwesome7IconType.arrow_left_s)
+                                    .withNextIcon(FontAwesome7IconType.arrow_right_s)
+                                    .withTodayIcon(FontAwesome7IconType.calendar_check_s)
+                                    .withClearIcon(FontAwesome7IconType.eraser_s)
+                                    .withCloseIcon(FontAwesome7IconType.xmark_s)
                                 )
                             .withComponent(ComponentType.SECONDS, true)
                         )
@@ -349,6 +349,6 @@ public class TempusDominusPickerPage extends BasePage {
     public void renderHead(IHeaderResponse response) {
         super.renderHead(response);
         response.render(CssHeaderItem.forReference(new CssResourceReference(TempusDominusPickerPage.class, "css/layout.css")));
-        response.render(CssHeaderItem.forReference(FontAwesome6CssReference.instance()));
+        response.render(CssHeaderItem.forReference(FontAwesome7CssReference.instance()));
     }
 }

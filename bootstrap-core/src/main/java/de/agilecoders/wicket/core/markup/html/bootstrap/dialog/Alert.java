@@ -178,8 +178,8 @@ public class Alert extends GenericPanel<String> {
         super.renderHead(response);
 
         if (duration != null && duration.toSeconds() > 0) {
-            response.render(OnDomReadyHeaderItem.forScript("window.setTimeout(function(){ const node = document.getElementById('" + getMarkupId() + "');"
-                    + "bootstrap.Alert.getInstance(node).close();}," + duration.toMillis() + ");"));
+            response.render(OnDomReadyHeaderItem.forScript("window.setTimeout(function(){"
+                    + "bootstrap.Alert.getOrCreateInstance('#" + getMarkupId() + "').close();}," + duration.toMillis() + ");"));
         }
     }
 

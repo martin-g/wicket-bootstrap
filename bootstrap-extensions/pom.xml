@@ -5,7 +5,7 @@
     <parent>
         <groupId>de.agilecoders.wicket</groupId>
         <artifactId>bootstrap-parent</artifactId>
-        <version>7.0.10-SNAPSHOT</version>
+        <version>8.0.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
@@ -14,19 +14,19 @@
     <name>bootstrap-extensions</name>
 
     <properties>
-        <inputmask.version>5.0.9</inputmask.version>
-        <jqueryui.version>1.14.1</jqueryui.version>
+        <inputmask.version>5.0.10</inputmask.version>
+        <jqueryui.version>1.14.2</jqueryui.version>
         <typeaheadjs.version>0.10.5-1</typeaheadjs.version>
         <x-editable.version>1.5.1-1</x-editable.version>
         <spin-js.version>2.1.0</spin-js.version>
         <animate.css.version>3.7.2</animate.css.version>
         <summernote.version>0.9.1</summernote.version>
-        <font-awesome.version>6.7.2</font-awesome.version>
-        <momentjs.version>2.30.1</momentjs.version>
+        <font-awesome.version>7.3.0</font-awesome.version>
+        <momentjs.version>2.31.0</momentjs.version>
         <bootstrap-select.version>1.14.0-beta3</bootstrap-select.version>
         <tempusdominus4.version>5.39.0</tempusdominus4.version>
-        <tempusdominus.version>6.10.3</tempusdominus.version>
-        <js-cookie.version>3.0.5</js-cookie.version>
+        <tempusdominus.version>6.10.4</tempusdominus.version>
+        <js-cookie.version>3.0.8</js-cookie.version>
     </properties>
 
     <dependencies>

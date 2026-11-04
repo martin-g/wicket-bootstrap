@@ -1,9 +1,15 @@
 package de.agilecoders.wicket.core.markup.html.bootstrap.tabs;
 
+import java.io.Serializable;
 import java.util.List;
+import java.util.Objects;
 
+import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.CssClassNameAppender;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
+import org.apache.wicket.ajax.AjaxEventBehavior;
+import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.behavior.Behavior;
 import org.apache.wicket.extensions.markup.html.tabs.ITab;
 import org.apache.wicket.extensions.markup.html.tabs.TabbedPanel;
 import org.apache.wicket.markup.ComponentTag;
@@ -17,8 +23,12 @@ import org.apache.wicket.util.lang.Args;
 /**
  * <p>
  * 	A "pure" client side stateless tabs component. You use it as you would use {@link TabbedPanel},
- * 	but instead of generating links that trigger server round trips id does generates just "client
+ * 	but instead of generating links that trigger server round trips id does generate just "client
  * 	side" links.
+ *
+ * 	To keep the current selected tab active after a page refresh one could set the "shouldNotifyTabChange" variable to
+ * 	true. In that case the server will be notified via AJAX and the "activeTabIndexModel" is updated. The
+ * 	"shouldNotifyTabChange" variable only has an effect if the "activeTabIndexModel" is not null.
  * </p>
  *
  * @author Ernesto Reinaldo Barreiro (reiern70@gmailcom)
@@ -26,6 +36,8 @@ import org.apache.wicket.util.lang.Args;
 public class ClientSideBootstrapTabbedPanel<T extends ITab> extends GenericPanel<Integer> {
     private static final long serialVersionUID = 1L;
     private final List<T> tabs;
+
+    private boolean shouldNotifyTabChange;
 
     /**
      * Constructor.
@@ -74,15 +86,42 @@ public class ClientSideBootstrapTabbedPanel<T extends ITab> extends GenericPanel
         }
     }
 
+    public ClientSideBootstrapTabbedPanel<T> withShouldNotifyTabChange(final boolean shouldNotifyTabChange) {
+        this.shouldNotifyTabChange = shouldNotifyTabChange;
+        return this;
+    }
+
     // creates tabs panel.
     private WebMarkupContainer createTabPanel(String id, T tab, final int tabIndex, final IModel<Integer> activeTabIndexModel, String tabPanelId) {
         WebMarkupContainer tabPanel = new WebMarkupContainer(id);
-        tabPanel.add(new AttributeModifier("class", () -> {
-                int activeTab = activeTabIndexModel!=null? activeTabIndexModel.getObject():0;
-                boolean isActive = (tabIndex == activeTab);
-                return "tab" + tabIndex + (isActive?" active":"");
-            }));
+        tabPanel.add(new CssClassNameAppender("tab" + tabIndex));
+
         WebMarkupContainer link = newTabLink("link", tabPanelId, tabIndex);
+        link.add(new AttributeModifier("class", () -> {
+            final int activeTab = activeTabIndexModel != null ? activeTabIndexModel.getObject() : 0;
+            final boolean isActive = (tabIndex == activeTab);
+            return isActive ? "active" : "";
+        }) {
+            @Override
+            protected Serializable newValue(final String currentValue, final String replacementValue) {
+                return currentValue + " " + replacementValue;
+            }
+        });
+        link.add(new Behavior() {
+            @Override
+            public void onConfigure(Component component) {
+                super.onConfigure(component);
+                final List<ActiveTabClickAjaxEventBehavior> activeTabClickAjaxEventBehaviors = link.getBehaviors(ActiveTabClickAjaxEventBehavior.class);
+                if (shouldNotifyTabChange && Objects.nonNull(activeTabIndexModel)) {
+                    // avoid duplicated behaviors on component
+                    if (activeTabClickAjaxEventBehaviors.isEmpty()) {
+                        link.add(new ActiveTabClickAjaxEventBehavior(tabIndex, activeTabIndexModel));
+                    }
+                } else {
+                    activeTabClickAjaxEventBehaviors.forEach(link::remove);
+                }
+            }
+        });
         tabPanel.add(link);
         link.add(newTabTitleLabel("title", wrap(tab.getTitle()), tabIndex));
         return tabPanel;
@@ -93,10 +132,10 @@ public class ClientSideBootstrapTabbedPanel<T extends ITab> extends GenericPanel
         WebMarkupContainer panel = tab.getPanel(id);
         panel.setRenderBodyOnly(false);
         panel.add(new AttributeModifier("class", () -> {
-                int activeTab = activeTabIndexModel!=null? activeTabIndexModel.getObject():0;
-                boolean isActive = (tabIndex == activeTab);
-                return "tab" + tabIndex + (isActive?" tab-pane fade in active":" tab-pane fade");
-            }));
+            int activeTab = activeTabIndexModel != null ? activeTabIndexModel.getObject() : 0;
+            boolean isActive = (tabIndex == activeTab);
+            return "tab" + tabIndex + (isActive ? " tab-pane fade show active" : " tab-pane fade");
+        }));
         panel.setOutputMarkupId(true);
         return panel;
     }
@@ -185,4 +224,28 @@ public class ClientSideBootstrapTabbedPanel<T extends ITab> extends GenericPanel
         return "nav nav-tabs";
     }
 
+    private static class ActiveTabClickAjaxEventBehavior extends AjaxEventBehavior {
+
+        private final int tabIndex;
+        private final IModel<Integer> activeTabIndexModel;
+
+        /**
+         * Constructor
+         *
+         * @param tabIndex the Index of the Tab the Behavior belongs to
+         * @param activeTabIndexModel the Model that hold the index value of the current active tab
+         */
+        public ActiveTabClickAjaxEventBehavior(final int tabIndex, final IModel<Integer> activeTabIndexModel) {
+            super("click");
+            this.tabIndex = tabIndex;
+            this.activeTabIndexModel = activeTabIndexModel;
+        }
+
+        @Override
+        protected void onEvent(final AjaxRequestTarget target) {
+            if (Objects.nonNull(activeTabIndexModel)) {
+                activeTabIndexModel.setObject(tabIndex);
+            }
+        }
+    }
 }

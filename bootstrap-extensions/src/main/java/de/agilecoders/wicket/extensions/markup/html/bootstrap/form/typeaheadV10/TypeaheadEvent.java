@@ -1,6 +1,6 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.form.typeaheadV10;
 
-import com.fasterxml.jackson.databind.JsonNode;
+import tools.jackson.databind.JsonNode;
 
 import org.apache.wicket.util.io.IClusterable;
 

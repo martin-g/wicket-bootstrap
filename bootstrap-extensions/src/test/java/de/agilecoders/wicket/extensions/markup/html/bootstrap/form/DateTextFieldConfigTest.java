@@ -1,7 +1,7 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.form;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import tools.jackson.core.JacksonException;
+import tools.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class DateTextFieldConfigTest {
 
     @Test
-    void serializeTodayButton() throws JsonProcessingException {
+    void serializeTodayButton() throws JacksonException {
         ObjectMapper mapper = new ObjectMapper();
         assertEquals("false", mapper.writeValueAsString(DateTextFieldConfig.TodayButton.FALSE));
         assertEquals("true", mapper.writeValueAsString(DateTextFieldConfig.TodayButton.TRUE));

@@ -1,5 +1,12 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.form.select;
 
+import java.util.Collections;
+import java.util.List;
+
+import org.apache.wicket.Application;
+import org.apache.wicket.markup.head.HeaderItem;
+import org.apache.wicket.markup.head.JavaScriptHeaderItem;
+
 import de.agilecoders.wicket.webjars.request.resource.WebjarsJavaScriptResourceReference;
 
 /**
@@ -27,5 +34,15 @@ public class SelectJSReference extends WebjarsJavaScriptResourceReference {
      */
     private SelectJSReference() {
         super("bootstrap-select/current/dist/js/bootstrap-select.min.js");
+    }
+
+
+    @Override
+    public List<HeaderItem> getDependencies() {
+        
+        return Collections.singletonList(
+            JavaScriptHeaderItem.forReference(Application.get().getJavaScriptLibrarySettings().getJQueryReference())
+        );
+        
     }
 }

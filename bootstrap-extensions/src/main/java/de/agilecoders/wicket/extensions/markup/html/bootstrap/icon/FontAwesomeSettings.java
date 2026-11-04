@@ -28,7 +28,7 @@ public class FontAwesomeSettings {
 
     private Map<IconKey, IconType> iconTypeMap = null;
 
-    private WebjarsCssResourceReference cssResourceReference = FontAwesome6CssReference.instance();
+    private WebjarsCssResourceReference cssResourceReference = FontAwesome7CssReference.instance();
 
     private static final MetaDataKey<FontAwesomeSettings> KEY = new MetaDataKey<>() {
     };
@@ -72,7 +72,22 @@ public class FontAwesomeSettings {
             synchronized (this) {
                 if (iconTypeMap == null) {
                     iconTypeMap = new HashMap<>();
-                    if (cssResourceReference instanceof FontAwesome6CssReference) {
+                    if (cssResourceReference instanceof FontAwesome7CssReference) {
+                        iconTypeMap.put(ARROW_DOWN, FontAwesome7IconType.arrow_down_s);
+                        iconTypeMap.put(ARROW_LEFT, FontAwesome7IconType.arrow_left_s);
+                        iconTypeMap.put(ARROW_RIGHT, FontAwesome7IconType.arrow_right_s);
+                        iconTypeMap.put(ARROW_UP, FontAwesome7IconType.arrow_up_s);
+                        iconTypeMap.put(CALENDAR, FontAwesome7IconType.calendar_days_r);
+                        iconTypeMap.put(CLEAR, FontAwesome7IconType.eraser_s);
+                        iconTypeMap.put(CLOCK, FontAwesome7IconType.clock_r);
+                        iconTypeMap.put(CLOSE, FontAwesome7IconType.xmark_s);
+                        iconTypeMap.put(EMPTY, FontAwesome7IconType.star_r);
+                        iconTypeMap.put(FILLED, FontAwesome7IconType.star_s);
+                        iconTypeMap.put(SORT, FontAwesome7IconType.sort_s);
+                        iconTypeMap.put(SORT_DOWN, FontAwesome7IconType.sort_down_s);
+                        iconTypeMap.put(SORT_UP, FontAwesome7IconType.sort_up_s);
+                        iconTypeMap.put(TODAY, FontAwesome7IconType.calendar_check_r);
+                    } else if (cssResourceReference instanceof FontAwesome6CssReference) {
                         iconTypeMap.put(ARROW_DOWN, FontAwesome6IconType.arrow_down_s);
                         iconTypeMap.put(ARROW_LEFT, FontAwesome6IconType.arrow_left_s);
                         iconTypeMap.put(ARROW_RIGHT, FontAwesome6IconType.arrow_right_s);
