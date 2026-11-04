@@ -9,7 +9,7 @@
 
     <groupId>de.agilecoders.wicket</groupId>
     <artifactId>bootstrap-parent</artifactId>
-    <version>7.0.17-SNAPSHOT</version>
+    <version>8.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>bootstrap-parent</name>
 
@@ -43,14 +43,14 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
         <github.global.server>github</github.global.server>
-        <java.version>17</java.version>
+        <java.version>21</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.java.source>${java.version}</maven.java.source>
         <maven.java.target>${java.version}</maven.java.target>
 
         <bootstrap.version>5.3.8</bootstrap.version>
-        <wicket-webjars.version>4.0.16</wicket-webjars.version>
-        <wicket-jquery-selectors.version>4.0.16</wicket-jquery-selectors.version>
+        <wicket-webjars.version>5.0.0</wicket-webjars.version>
+        <wicket-jquery-selectors.version>5.0.0</wicket-jquery-selectors.version>
         <popper.version>2.11.8</popper.version>
 
         <enforcer.disable>true</enforcer.disable>

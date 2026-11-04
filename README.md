@@ -7,12 +7,14 @@ Wicket-Bootstrap is based on the Bootstrap toolkit and the [Apache Wicket Framew
 
 | Branch | Build |
 | ------ | ----- |
+| wicket-11.x-bootstrap-5.x | [![Java CI](https://github.com/martin-g/wicket-bootstrap/actions/workflows/run_tests.yml/badge.svg?branch=wicket-11.x-bootstrap-5.x)](https://github.com/martin-g/wicket-bootstrap/actions/workflows/run_tests.yml) |
 | wicket-10.x-bootstrap-5.x | [![Java CI](https://github.com/martin-g/wicket-bootstrap/actions/workflows/run_tests.yml/badge.svg?branch=wicket-10.x-bootstrap-5.x)](https://github.com/martin-g/wicket-bootstrap/actions/workflows/run_tests.yml) |
 | wicket-9.x-bootstrap-5.x | [![Java CI](https://github.com/martin-g/wicket-bootstrap/actions/workflows/run_tests.yml/badge.svg?branch=wicket-9.x-bootstrap-5.x)](https://github.com/martin-g/wicket-bootstrap/actions/workflows/run_tests.yml)  |
 | wicket-9.x-bootstrap-4.x | [![Java CI](https://github.com/martin-g/wicket-bootstrap/actions/workflows/run_tests.yml/badge.svg?branch=wicket-9.x-bootstrap-4.x)](https://github.com/martin-g/wicket-bootstrap/actions/workflows/run_tests.yml) |
 | wicket-8.x-bootstrap-4.x | [![Java CI](https://github.com/martin-g/wicket-bootstrap/actions/workflows/run_tests.yml/badge.svg?branch=wicket-8.x-bootstrap-4.x)](https://github.com/martin-g/wicket-bootstrap/actions/workflows/run_tests.yml) |
 Current release version:
 
+* [Wicket 11.x](http://wicket.apache.org/) and [Bootstrap 5.x](https://github.com/twbs/bootstrap/):  8.x
 * [Wicket 10.x](http://wicket.apache.org/) and [Bootstrap 5.x](https://github.com/twbs/bootstrap/):  7.x
 * [Wicket 9.x](http://wicket.apache.org/) and [Bootstrap 5.x](https://github.com/twbs/bootstrap/):  6.x
 * [Wicket 9.x](http://wicket.apache.org/) and [Bootstrap 4.x](https://github.com/twbs/bootstrap/):  5.x
