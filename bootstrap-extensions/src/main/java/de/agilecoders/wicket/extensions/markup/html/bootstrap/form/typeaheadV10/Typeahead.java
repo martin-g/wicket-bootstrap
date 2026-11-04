@@ -1,6 +1,6 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.form.typeaheadV10;
 
-import com.fasterxml.jackson.databind.JsonNode;
+import tools.jackson.databind.JsonNode;
 
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.typeaheadV10.bloodhound.Bloodhound;
 import de.agilecoders.wicket.jquery.JQuery;

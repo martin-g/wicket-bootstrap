@@ -1,9 +1,10 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.form.validation;
 
-import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.databind.JsonSerializer;
-import com.fasterxml.jackson.databind.SerializerProvider;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import tools.jackson.core.JacksonException;
+import tools.jackson.core.JsonGenerator;
+import tools.jackson.databind.ValueSerializer;
+import tools.jackson.databind.SerializationContext;
+import tools.jackson.databind.annotation.JsonSerialize;
 import de.agilecoders.wicket.core.markup.html.bootstrap.components.TooltipConfig;
 import de.agilecoders.wicket.jquery.IKey;
 
@@ -193,16 +194,16 @@ public class TooltipValidationConfig extends AbstractValidationConfig {
     /**
      * Serializer for Delay
      */
-    private static class DelaySerializer extends JsonSerializer<Delay> {
+    private static class DelaySerializer extends ValueSerializer<Delay> {
 
         @Override
-        public void serialize(Delay value, JsonGenerator jgen, SerializerProvider provider) throws IOException {
+        public void serialize(Delay value, JsonGenerator jgen, SerializationContext provider) throws JacksonException {
             if (value.show == value.hide) {
                 jgen.writeNumber(value.show);
             } else {
                 jgen.writeStartObject();
-                jgen.writeObjectField("show", value.show);
-                jgen.writeObjectField("hide", value.hide);
+                jgen.writePOJOProperty("show", value.show);
+                jgen.writePOJOProperty("hide", value.hide);
                 jgen.writeEndObject();
             }
         }

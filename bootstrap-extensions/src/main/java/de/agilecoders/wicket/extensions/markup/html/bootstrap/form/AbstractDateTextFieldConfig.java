@@ -2,10 +2,11 @@ package de.agilecoders.wicket.extensions.markup.html.bootstrap.form;
 
 import java.io.IOException;
 
-import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.databind.JsonSerializer;
-import com.fasterxml.jackson.databind.SerializerProvider;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import tools.jackson.core.JacksonException;
+import tools.jackson.core.JsonGenerator;
+import tools.jackson.databind.ValueSerializer;
+import tools.jackson.databind.SerializationContext;
+import tools.jackson.databind.annotation.JsonSerialize;
 import de.agilecoders.wicket.core.util.Dates;
 import de.agilecoders.wicket.jquery.AbstractConfig;
 import de.agilecoders.wicket.jquery.IKey;
@@ -356,11 +357,11 @@ public abstract class AbstractDateTextFieldConfig<C extends AbstractDateTextFiel
     /**
      * Serializer for TodayButton
      */
-    private static class TodayButtonSerializer extends JsonSerializer<TodayButton> {
+    private static class TodayButtonSerializer extends ValueSerializer<TodayButton> {
 
         @Override
         public void serialize(AbstractDateTextFieldConfig.TodayButton value, JsonGenerator jgen,
-            SerializerProvider provider) throws IOException {
+            SerializationContext provider) throws JacksonException {
             switch (value) {
             case TRUE:
                 jgen.writeBoolean(true);

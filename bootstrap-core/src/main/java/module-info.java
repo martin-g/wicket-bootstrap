@@ -41,8 +41,8 @@ module wicket.bootstrap.core {
     requires org.apache.wicket.request;
     requires org.apache.wicket.util;
 
-    requires com.fasterxml.jackson.core;
-    requires com.fasterxml.jackson.databind;
+    requires tools.jackson.core;
+    requires tools.jackson.databind;
 
     requires org.slf4j;
 

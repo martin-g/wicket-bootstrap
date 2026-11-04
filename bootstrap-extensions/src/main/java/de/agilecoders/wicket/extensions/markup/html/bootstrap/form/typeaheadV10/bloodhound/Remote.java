@@ -1,10 +1,10 @@
 package de.agilecoders.wicket.extensions.markup.html.bootstrap.form.typeaheadV10.bloodhound;
 
-import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonSerializer;
-import com.fasterxml.jackson.databind.SerializerProvider;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import tools.jackson.core.JsonGenerator;
+import tools.jackson.core.JacksonException;
+import tools.jackson.databind.ValueSerializer;
+import tools.jackson.databind.SerializationContext;
+import tools.jackson.databind.annotation.JsonSerialize;
 
 import de.agilecoders.wicket.jquery.AbstractConfig;
 import de.agilecoders.wicket.jquery.IKey;
@@ -110,11 +110,11 @@ public class Remote extends AbstractConfig {
         return new Remote(url);
     }
 
-    public static class RemoteSerializer extends JsonSerializer<Remote> {
+    public static class RemoteSerializer extends ValueSerializer<Remote> {
 
         @Override
-        public void serialize(Remote remote, JsonGenerator jsonGenerator, SerializerProvider serializerProvider)
-            throws IOException, JsonProcessingException {
+        public void serialize(Remote remote, JsonGenerator jsonGenerator, SerializationContext serializerProvider)
+            throws JacksonException {
 
             if (remote.isSimple()) {
                 jsonGenerator.writeString(remote.getString(Url));
@@ -125,11 +125,11 @@ public class Remote extends AbstractConfig {
         }
     }
 
-    public static class RateLimitBySerializer extends JsonSerializer<RateLimit> {
+    public static class RateLimitBySerializer extends ValueSerializer<RateLimit> {
         @Override
         public void serialize(Remote.RateLimit rateLimitBy, JsonGenerator jsonGenerator,
-                              SerializerProvider serializerProvider)
-            throws IOException, JsonProcessingException {
+                              SerializationContext serializerProvider)
+            throws JacksonException {
             jsonGenerator.writeString(rateLimitBy.name().toLowerCase());
         }
     }
