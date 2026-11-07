@@ -14,18 +14,18 @@
     <name>bootstrap-parent</name>
 
     <description>wicket with bootstrap integration</description>
-    <url>https://github.com/l0rdn1kk0n/wicket-bootstrap</url>
+    <url>https://github.com/martin-g/wicket-bootstrap</url>
 
     <scm>
-        <url>git@github.com:l0rdn1kk0n/wicket-bootstrap.git</url>
-        <connection>scm:git:git@github.com/l0rdn1kk0n/wicket-bootstrap.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com/l0rdn1kk0n/wicket-bootstrap.git</developerConnection>
+        <url>git@github.com:martin-g/wicket-bootstrap.git</url>
+        <connection>scm:git:git@github.com/martin-g/wicket-bootstrap.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/martin-g/wicket-bootstrap.git</developerConnection>
         <tag>HEAD</tag>
     </scm>
 
     <issueManagement>
         <system>github</system>
-        <url>https://github.com/l0rdn1kk0n/wicket-bootstrap/issues</url>
+        <url>https://github.com/martin-g/wicket-bootstrap/issues</url>
     </issueManagement>
 
     <modules>
