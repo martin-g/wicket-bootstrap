@@ -38,7 +38,7 @@ public class BootstrapJavaScriptReference extends WebjarsJavaScriptResourceRefer
      * Private constructor.
      */
     private BootstrapJavaScriptReference() {
-        super("/bootstrap/current/js/bootstrap.js");
+        super("/bootstrap/current/dist/js/bootstrap.js");
     }
 
     @Override
