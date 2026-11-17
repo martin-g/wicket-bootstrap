@@ -42,7 +42,7 @@ public class BootstrapCssRtlReference extends WebjarsCssResourceReference {
      * Private constructor.
      */
     private BootstrapCssRtlReference() {
-        super("/bootstrap/current/css/bootstrap.rtl.css");
+        super("/bootstrap/current/dist/css/bootstrap.rtl.css");
     }
 
 }
