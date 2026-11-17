@@ -30,7 +30,7 @@
         </dependency>
 
         <dependency>
-            <groupId>org.webjars</groupId>
+            <groupId>org.webjars.npm</groupId>
             <artifactId>bootstrap</artifactId>
             <scope>test</scope>
         </dependency>
